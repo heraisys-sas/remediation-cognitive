@@ -1,0 +1,499 @@
+/* =====================================================================
+   Feuille de style — module Entraînement (Sprint 1)
+   Règles projet (non négociables) :
+   - dark mode par défaut, fond sombre enveloppant ;
+   - couleurs oklch douces et désaturées, une seule couleur d'accent
+     (le sarcelle) ; le vert/rouge très désaturés n'apparaissent QUE
+     dans le feedback correct/incorrect, jamais en décoratif ;
+   - contrastes calmes mais conformes WCAG AA pour le texte courant ;
+   - zéro scintillement : pas de pulse, pas de flash, pas de mouvement
+     d'élément — uniquement des transitions de couleur courtes et douces
+     (et désactivées si prefers-reduced-motion) ;
+   - faible densité : typographie ample, gros boutons, espacements généreux.
+   ===================================================================== */
+
+:root {
+  /* Palette — oklch, désaturée, enveloppante (teinte ~262, bleu-gris neutre) */
+  --fond:            oklch(0.165 0.012 262);  /* fond principal, profond */
+  --fond-haut:       oklch(0.20  0.014 262);  /* léger dégradé d'ouverture (statique) */
+  --surface:         oklch(0.205 0.014 262);  /* cartes */
+  --surface-haute:   oklch(0.245 0.016 262);  /* champs, barre de progression */
+  --bordure:         oklch(0.31  0.018 262);
+
+  /* Texte : blanc cassé doux (jamais blanc pur, éblouissant) */
+  --texte:           oklch(0.90  0.008 262);
+  --texte-secondaire: oklch(0.74 0.012 262);
+
+  /* Accent unique : sarcelle doux et désaturé */
+  --accent:          oklch(0.78  0.075 190);
+  --accent-survole:  oklch(0.83  0.070 190);
+  --texte-sur-accent: oklch(0.19 0.020 220);
+
+  /* États sémantiques — uniquement pour le feedback de réponse */
+  --succes:          oklch(0.80  0.070 155);
+  --succes-fond:     oklch(0.255 0.028 155);
+  --imprecision:     oklch(0.76  0.060 25);   /* rouge très adouci */
+  --imprecision-fond: oklch(0.255 0.025 25);
+
+  color-scheme: dark;
+}
+
+* { box-sizing: border-box; }
+
+html { -webkit-text-size-adjust: 100%; }
+
+body {
+  margin: 0;
+  min-height: 100vh;
+  /* Fond enveloppant : très léger éclaircissement en haut, statique, sans image. */
+  background:
+    radial-gradient(120% 90% at 50% 0%, var(--fond-haut) 0%, var(--fond) 68%)
+    var(--fond);
+  color: var(--texte);
+  font-family: system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+  font-size: 1.0625rem;      /* 17 px, lecture ample */
+  line-height: 1.65;
+  -webkit-font-smoothing: antialiased;
+}
+
+::selection { background: oklch(0.34 0.05 200); }
+
+/* Le [hidden] doit toujours gagner, même face aux règles d'affichage. */
+[hidden] { display: none !important; }
+
+/* ---------------------------------------------------------------------
+   Structure générale : une colonne centrée, densité volontairement basse
+   --------------------------------------------------------------------- */
+
+.conteneur {
+  max-width: 42rem;
+  margin: 0 auto;
+  padding: 1.25rem clamp(1.25rem, 4vw, 2.5rem) 3rem;
+}
+
+.entete {
+  max-width: 42rem;
+  margin: 0 auto;
+  padding: 2.25rem clamp(1.25rem, 4vw, 2.5rem) 0;
+}
+
+.entete-titre {
+  margin: 0;
+  font-size: 1.35rem;
+  font-weight: 700;
+  letter-spacing: 0.01em;
+}
+
+.entete-sous-titre {
+  margin: 0.2rem 0 0;
+  color: var(--texte-secondaire);
+}
+
+.pied-page {
+  max-width: 42rem;
+  margin: 0 auto;
+  padding: 0 clamp(1.25rem, 4vw, 2.5rem) 2.5rem;
+  color: var(--texte-secondaire);
+  font-size: 0.95rem;
+  text-align: center;
+}
+
+.pied-page p { margin: 0; }
+
+.noscript {
+  max-width: 42rem;
+  margin: 1rem auto;
+  padding: 0 1.5rem;
+  color: var(--texte-secondaire);
+  text-align: center;
+}
+
+/* ---------------------------------------------------------------------
+   Vues et titres
+   --------------------------------------------------------------------- */
+
+.vue { margin-top: 1.75rem; }
+
+.titre-vue {
+  margin: 0 0 0.35rem;
+  font-size: 1.6rem;
+  font-weight: 700;
+  line-height: 1.3;
+}
+
+/* Les titres reçoivent le focus programmatique au changement d'écran :
+   pas d'anneau visible sur un élément non interactif. */
+.titre-vue:focus { outline: none; }
+
+.intro-vue {
+  margin: 0 0 1.5rem;
+  color: var(--texte-secondaire);
+}
+
+/* ---------------------------------------------------------------------
+   Lien d'évitement (visible uniquement au focus clavier)
+   --------------------------------------------------------------------- */
+
+.lien-evitement {
+  position: absolute;
+  left: -9999px;
+  top: 0.5rem;
+  z-index: 10;
+  padding: 0.6rem 1rem;
+  border-radius: 10px;
+  background: var(--surface-haute);
+  color: var(--texte);
+}
+
+.lien-evitement:focus { left: 0.5rem; }
+
+/* ---------------------------------------------------------------------
+   Focus clavier : visible, ample, calme
+   --------------------------------------------------------------------- */
+
+.bouton:focus-visible,
+.champ:focus-visible,
+.aide summary:focus-visible,
+.lien-evitement:focus-visible {
+  outline: 2px solid var(--accent);
+  outline-offset: 2px;
+}
+
+/* ---------------------------------------------------------------------
+   Boutons : larges, doux, sans mouvement
+   --------------------------------------------------------------------- */
+
+.bouton {
+  min-height: 3.4rem;
+  padding: 0.7rem 1.7rem;
+  border: 1px solid transparent;
+  border-radius: 12px;
+  font: inherit;
+  font-size: 1.08rem;
+  font-weight: 600;
+  cursor: pointer;
+  /* Transition de couleur uniquement — aucun déplacement, aucun pulse. */
+  transition: background-color 0.18s ease, border-color 0.18s ease, color 0.18s ease;
+}
+
+.bouton-large { width: 100%; }
+
+.bouton-primaire {
+  background: var(--accent);
+  color: var(--texte-sur-accent);
+}
+
+.bouton-primaire:hover { background: var(--accent-survole); }
+
+.bouton-secondaire {
+  background: transparent;
+  border-color: var(--bordure);
+  color: var(--texte);
+}
+
+.bouton-secondaire:hover { background: var(--surface-haute); }
+
+.bouton-discret {
+  background: transparent;
+  color: var(--texte-secondaire);
+  min-height: 2.9rem;
+}
+
+.bouton-discret:hover { color: var(--texte); }
+
+.bouton[disabled] {
+  opacity: 0.55;
+  cursor: default;
+}
+
+/* ---------------------------------------------------------------------
+   Écran 1 : cartes de thème
+   --------------------------------------------------------------------- */
+
+.grille-themes {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(15rem, 1fr));
+  gap: 1rem;
+}
+
+.carte-theme {
+  display: flex;
+  flex-direction: column;
+  gap: 0.6rem;
+  padding: 1.4rem 1.5rem;
+  border: 1px solid var(--bordure);
+  border-radius: 16px;
+  background: var(--surface);
+}
+
+.carte-theme h3 {
+  margin: 0;
+  font-size: 1.18rem;
+  font-weight: 700;
+}
+
+.carte-theme p {
+  margin: 0;
+  color: var(--texte-secondaire);
+  flex-grow: 1;
+}
+
+.carte-theme .bouton { margin-top: 0.8rem; }
+
+/* Notices calmes (limite de séances, séance vide) : surface + filet accent */
+.notice {
+  margin: 0 0 1.4rem;
+  padding: 1rem 1.25rem;
+  border-left: 3px solid var(--accent);
+  border-radius: 12px;
+  background: var(--surface);
+  color: var(--texte);
+}
+
+/* ---------------------------------------------------------------------
+   Bandeau d'incident (réseau / séance inactive) : discret, rechargeable
+   --------------------------------------------------------------------- */
+
+.bandeau {
+  margin: 0 0 1.4rem;
+  padding: 1rem 1.25rem;
+  border: 1px solid var(--bordure);
+  border-radius: 12px;
+  background: var(--surface);
+}
+
+.bandeau-message { margin: 0 0 0.7rem; color: var(--texte); }
+
+.bandeau-actions {
+  display: flex;
+  gap: 0.6rem;
+  flex-wrap: wrap;
+}
+
+/* ---------------------------------------------------------------------
+   Écran 2 : séance
+   --------------------------------------------------------------------- */
+
+/* Progression discrète */
+.progression { margin: 0 0 1.4rem; }
+
+.progression-texte {
+  margin: 0 0 0.45rem;
+  color: var(--texte-secondaire);
+  font-size: 0.98rem;
+}
+
+.barre {
+  height: 5px;
+  border-radius: 999px;
+  background: var(--surface-haute);
+  overflow: hidden;
+}
+
+.barre-remplie {
+  height: 100%;
+  border-radius: inherit;
+  background: var(--accent);
+  /* Largeur : transition courte et douce uniquement. */
+  transition: width 0.25s ease-out;
+}
+
+/* Énoncé : grande carte aérée, lisible d'un coup d'œil */
+.carte-enonce {
+  padding: 2rem 1.75rem;
+  border: 1px solid var(--bordure);
+  border-radius: 16px;
+  background: var(--surface);
+}
+
+.enonce {
+  margin: 0;
+  font-size: clamp(1.55rem, 4.5vw, 2.3rem);
+  font-weight: 600;
+  line-height: 1.35;
+  text-align: center;
+  overflow-wrap: break-word;
+  white-space: pre-wrap;
+}
+
+/* Variante code (prédiction de sortie Python) : monospace, alignée à gauche */
+.enonce-code {
+  font-family: ui-monospace, "SF Mono", SFMono-Regular, Menlo, Consolas, "Liberation Mono", monospace;
+  font-size: clamp(1rem, 2.6vw, 1.3rem);
+  font-weight: 400;
+  text-align: left;
+  line-height: 1.6;
+}
+
+.aide { margin-top: 1.1rem; }
+
+.aide summary {
+  cursor: pointer;
+  color: var(--texte-secondaire);
+  font-size: 0.98rem;
+  padding: 0.35rem 0.25rem;
+  border-radius: 8px;
+}
+
+.aide summary:hover { color: var(--texte); }
+
+.aide p {
+  margin: 0.5rem 0 0.25rem;
+  color: var(--texte);
+}
+
+/* Zone de réponse : un seul champ, gros */
+.zone-reponse {
+  display: flex;
+  flex-direction: column;
+  gap: 0.7rem;
+  margin-top: 1.6rem;
+}
+
+.etiquette {
+  font-weight: 600;
+  font-size: 1.02rem;
+}
+
+.champ {
+  width: 100%;
+  padding: 0.85rem 1.05rem;
+  border: 1px solid var(--bordure);
+  border-radius: 12px;
+  background: var(--surface-haute);
+  color: var(--texte);
+  font: inherit;
+  font-size: 1.3rem;   /* ≥ 16 px : évite le zoom auto sur mobile */
+}
+
+.champ:focus-visible {
+  border-color: var(--accent);
+  outline-offset: 0;
+}
+
+.indice {
+  margin: 0;
+  color: var(--texte-secondaire);
+  font-size: 0.98rem;
+}
+
+/* Feedback : cartes sémantiques, très désaturées, gauche teintée */
+.carte-feedback {
+  margin-top: 1.5rem;
+  padding: 1.15rem 1.35rem;
+  border-radius: 12px;
+  border-left: 4px solid var(--bordure);
+  background: var(--surface);
+}
+
+.feedback-correct {
+  border-left-color: var(--succes);
+  background: var(--succes-fond);
+}
+
+.feedback-incorrect {
+  border-left-color: var(--imprecision);
+  background: var(--imprecision-fond);
+}
+
+.feedback-titre {
+  margin: 0 0 0.35rem;
+  font-weight: 700;
+  font-size: 1.1rem;
+}
+
+.feedback-attendue { margin: 0 0 0.35rem; }
+
+.feedback-commentaire {
+  margin: 0;
+  color: var(--texte);
+}
+
+.actions-suite { margin-top: 1.5rem; }
+
+/* « Terminer la séance » : toujours visible sous la séance */
+.pied-seance {
+  margin-top: 2.25rem;
+  text-align: center;
+}
+
+/* ---------------------------------------------------------------------
+   Écran 3 : résumé
+   --------------------------------------------------------------------- */
+
+/* Proposition d'arrêt (arret_propose) : douce, enveloppante, accent unique */
+.carte-arret {
+  margin: 1.25rem 0;
+  padding: 1.3rem 1.5rem;
+  border-left: 3px solid var(--accent);
+  border-radius: 12px;
+  background: var(--surface);
+}
+
+.carte-arret-message {
+  margin: 0;
+  font-size: 1.12rem;
+  font-weight: 600;
+  line-height: 1.6;
+}
+
+.carte-arret-note {
+  margin: 0.5rem 0 0;
+  color: var(--texte-secondaire);
+  font-size: 0.98rem;
+}
+
+.grille-stats {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 1rem;
+  margin: 1.75rem 0;
+}
+
+.grille-stats > div {
+  display: flex;          /* place la valeur (dd) au-dessus de l'étiquette (dt) */
+  flex-direction: column;
+  padding: 1.1rem 0.9rem;
+  border: 1px solid var(--bordure);
+  border-radius: 14px;
+  background: var(--surface);
+  text-align: center;
+}
+
+.grille-stats dt {
+  order: 2;               /* étiquette sous la valeur */
+  color: var(--texte-secondaire);
+  font-size: 0.92rem;
+}
+
+.grille-stats dd {
+  order: 1;
+  margin: 0 0 0.2rem;
+  font-size: 1.9rem;
+  font-weight: 700;
+  line-height: 1.2;
+}
+
+/* dl en flex par paire pour placer dd (valeur) au-dessus de dt (étiquette) */
+
+.ligne-discrete {
+  margin: 0 0 1.5rem;
+  color: var(--texte-secondaire);
+}
+
+/* ---------------------------------------------------------------------
+   Préférences utilisateur : aucun mouvement si motion réduite demandée
+   --------------------------------------------------------------------- */
+
+@media (prefers-reduced-motion: reduce) {
+  * {
+    transition-duration: 0.01ms !important;
+    animation-duration: 0.01ms !important;
+  }
+}
+
+/* Écrans étroits : on resserre doucement la grille de statistiques */
+@media (max-width: 30rem) {
+  .grille-stats { grid-template-columns: repeat(2, 1fr); }
+  .carte-enonce { padding: 1.5rem 1.15rem; }
+}

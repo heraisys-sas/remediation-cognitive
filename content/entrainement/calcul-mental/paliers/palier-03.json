@@ -1,0 +1,534 @@
+[
+  {
+    "id": "cm-10-10x1",
+    "type": "production",
+    "module": "entrainement",
+    "theme": "calcul-mental",
+    "fonctions_ciblees": [
+      "automatisation"
+    ],
+    "palier": 3,
+    "prerequis": [
+      "cm-palier-2"
+    ],
+    "cap_complexite": null,
+    "contenu": {
+      "enonce": "10 × 1",
+      "aide": null
+    },
+    "reponse": {
+      "valeur": 10
+    },
+    "meta": {
+      "auteur": "generation-automatique (tools/generate_items.py)",
+      "date_creation": "2026-09-03",
+      "relecture_ortho": {
+        "statut": "a_revoir"
+      }
+    }
+  },
+  {
+    "id": "cm-10-1x10",
+    "type": "production",
+    "module": "entrainement",
+    "theme": "calcul-mental",
+    "fonctions_ciblees": [
+      "automatisation"
+    ],
+    "palier": 3,
+    "prerequis": [
+      "cm-palier-2"
+    ],
+    "cap_complexite": null,
+    "contenu": {
+      "enonce": "1 × 10",
+      "aide": null
+    },
+    "reponse": {
+      "valeur": 10
+    },
+    "meta": {
+      "auteur": "generation-automatique (tools/generate_items.py)",
+      "date_creation": "2026-09-03",
+      "relecture_ortho": {
+        "statut": "a_revoir"
+      }
+    }
+  },
+  {
+    "id": "cm-10-10x2",
+    "type": "production",
+    "module": "entrainement",
+    "theme": "calcul-mental",
+    "fonctions_ciblees": [
+      "automatisation"
+    ],
+    "palier": 3,
+    "prerequis": [
+      "cm-palier-2"
+    ],
+    "cap_complexite": null,
+    "contenu": {
+      "enonce": "10 × 2",
+      "aide": null
+    },
+    "reponse": {
+      "valeur": 20
+    },
+    "meta": {
+      "auteur": "generation-automatique (tools/generate_items.py)",
+      "date_creation": "2026-09-03",
+      "relecture_ortho": {
+        "statut": "a_revoir"
+      }
+    }
+  },
+  {
+    "id": "cm-10-2x10",
+    "type": "production",
+    "module": "entrainement",
+    "theme": "calcul-mental",
+    "fonctions_ciblees": [
+      "automatisation"
+    ],
+    "palier": 3,
+    "prerequis": [
+      "cm-palier-2"
+    ],
+    "cap_complexite": null,
+    "contenu": {
+      "enonce": "2 × 10",
+      "aide": null
+    },
+    "reponse": {
+      "valeur": 20
+    },
+    "meta": {
+      "auteur": "generation-automatique (tools/generate_items.py)",
+      "date_creation": "2026-09-03",
+      "relecture_ortho": {
+        "statut": "a_revoir"
+      }
+    }
+  },
+  {
+    "id": "cm-10-10x3",
+    "type": "production",
+    "module": "entrainement",
+    "theme": "calcul-mental",
+    "fonctions_ciblees": [
+      "automatisation"
+    ],
+    "palier": 3,
+    "prerequis": [
+      "cm-palier-2"
+    ],
+    "cap_complexite": null,
+    "contenu": {
+      "enonce": "10 × 3",
+      "aide": null
+    },
+    "reponse": {
+      "valeur": 30
+    },
+    "meta": {
+      "auteur": "generation-automatique (tools/generate_items.py)",
+      "date_creation": "2026-09-03",
+      "relecture_ortho": {
+        "statut": "a_revoir"
+      }
+    }
+  },
+  {
+    "id": "cm-10-3x10",
+    "type": "production",
+    "module": "entrainement",
+    "theme": "calcul-mental",
+    "fonctions_ciblees": [
+      "automatisation"
+    ],
+    "palier": 3,
+    "prerequis": [
+      "cm-palier-2"
+    ],
+    "cap_complexite": null,
+    "contenu": {
+      "enonce": "3 × 10",
+      "aide": null
+    },
+    "reponse": {
+      "valeur": 30
+    },
+    "meta": {
+      "auteur": "generation-automatique (tools/generate_items.py)",
+      "date_creation": "2026-09-03",
+      "relecture_ortho": {
+        "statut": "a_revoir"
+      }
+    }
+  },
+  {
+    "id": "cm-10-10x4",
+    "type": "production",
+    "module": "entrainement",
+    "theme": "calcul-mental",
+    "fonctions_ciblees": [
+      "automatisation"
+    ],
+    "palier": 3,
+    "prerequis": [
+      "cm-palier-2"
+    ],
+    "cap_complexite": null,
+    "contenu": {
+      "enonce": "10 × 4",
+      "aide": null
+    },
+    "reponse": {
+      "valeur": 40
+    },
+    "meta": {
+      "auteur": "generation-automatique (tools/generate_items.py)",
+      "date_creation": "2026-09-03",
+      "relecture_ortho": {
+        "statut": "a_revoir"
+      }
+    }
+  },
+  {
+    "id": "cm-10-4x10",
+    "type": "production",
+    "module": "entrainement",
+    "theme": "calcul-mental",
+    "fonctions_ciblees": [
+      "automatisation"
+    ],
+    "palier": 3,
+    "prerequis": [
+      "cm-palier-2"
+    ],
+    "cap_complexite": null,
+    "contenu": {
+      "enonce": "4 × 10",
+      "aide": null
+    },
+    "reponse": {
+      "valeur": 40
+    },
+    "meta": {
+      "auteur": "generation-automatique (tools/generate_items.py)",
+      "date_creation": "2026-09-03",
+      "relecture_ortho": {
+        "statut": "a_revoir"
+      }
+    }
+  },
+  {
+    "id": "cm-10-10x5",
+    "type": "production",
+    "module": "entrainement",
+    "theme": "calcul-mental",
+    "fonctions_ciblees": [
+      "automatisation"
+    ],
+    "palier": 3,
+    "prerequis": [
+      "cm-palier-2"
+    ],
+    "cap_complexite": null,
+    "contenu": {
+      "enonce": "10 × 5",
+      "aide": null
+    },
+    "reponse": {
+      "valeur": 50
+    },
+    "meta": {
+      "auteur": "generation-automatique (tools/generate_items.py)",
+      "date_creation": "2026-09-03",
+      "relecture_ortho": {
+        "statut": "a_revoir"
+      }
+    }
+  },
+  {
+    "id": "cm-10-5x10",
+    "type": "production",
+    "module": "entrainement",
+    "theme": "calcul-mental",
+    "fonctions_ciblees": [
+      "automatisation"
+    ],
+    "palier": 3,
+    "prerequis": [
+      "cm-palier-2"
+    ],
+    "cap_complexite": null,
+    "contenu": {
+      "enonce": "5 × 10",
+      "aide": null
+    },
+    "reponse": {
+      "valeur": 50
+    },
+    "meta": {
+      "auteur": "generation-automatique (tools/generate_items.py)",
+      "date_creation": "2026-09-03",
+      "relecture_ortho": {
+        "statut": "a_revoir"
+      }
+    }
+  },
+  {
+    "id": "cm-10-10x6",
+    "type": "production",
+    "module": "entrainement",
+    "theme": "calcul-mental",
+    "fonctions_ciblees": [
+      "automatisation"
+    ],
+    "palier": 3,
+    "prerequis": [
+      "cm-palier-2"
+    ],
+    "cap_complexite": null,
+    "contenu": {
+      "enonce": "10 × 6",
+      "aide": null
+    },
+    "reponse": {
+      "valeur": 60
+    },
+    "meta": {
+      "auteur": "generation-automatique (tools/generate_items.py)",
+      "date_creation": "2026-09-03",
+      "relecture_ortho": {
+        "statut": "a_revoir"
+      }
+    }
+  },
+  {
+    "id": "cm-10-6x10",
+    "type": "production",
+    "module": "entrainement",
+    "theme": "calcul-mental",
+    "fonctions_ciblees": [
+      "automatisation"
+    ],
+    "palier": 3,
+    "prerequis": [
+      "cm-palier-2"
+    ],
+    "cap_complexite": null,
+    "contenu": {
+      "enonce": "6 × 10",
+      "aide": null
+    },
+    "reponse": {
+      "valeur": 60
+    },
+    "meta": {
+      "auteur": "generation-automatique (tools/generate_items.py)",
+      "date_creation": "2026-09-03",
+      "relecture_ortho": {
+        "statut": "a_revoir"
+      }
+    }
+  },
+  {
+    "id": "cm-10-10x7",
+    "type": "production",
+    "module": "entrainement",
+    "theme": "calcul-mental",
+    "fonctions_ciblees": [
+      "automatisation"
+    ],
+    "palier": 3,
+    "prerequis": [
+      "cm-palier-2"
+    ],
+    "cap_complexite": null,
+    "contenu": {
+      "enonce": "10 × 7",
+      "aide": null
+    },
+    "reponse": {
+      "valeur": 70
+    },
+    "meta": {
+      "auteur": "generation-automatique (tools/generate_items.py)",
+      "date_creation": "2026-09-03",
+      "relecture_ortho": {
+        "statut": "a_revoir"
+      }
+    }
+  },
+  {
+    "id": "cm-10-7x10",
+    "type": "production",
+    "module": "entrainement",
+    "theme": "calcul-mental",
+    "fonctions_ciblees": [
+      "automatisation"
+    ],
+    "palier": 3,
+    "prerequis": [
+      "cm-palier-2"
+    ],
+    "cap_complexite": null,
+    "contenu": {
+      "enonce": "7 × 10",
+      "aide": null
+    },
+    "reponse": {
+      "valeur": 70
+    },
+    "meta": {
+      "auteur": "generation-automatique (tools/generate_items.py)",
+      "date_creation": "2026-09-03",
+      "relecture_ortho": {
+        "statut": "a_revoir"
+      }
+    }
+  },
+  {
+    "id": "cm-10-10x8",
+    "type": "production",
+    "module": "entrainement",
+    "theme": "calcul-mental",
+    "fonctions_ciblees": [
+      "automatisation"
+    ],
+    "palier": 3,
+    "prerequis": [
+      "cm-palier-2"
+    ],
+    "cap_complexite": null,
+    "contenu": {
+      "enonce": "10 × 8",
+      "aide": null
+    },
+    "reponse": {
+      "valeur": 80
+    },
+    "meta": {
+      "auteur": "generation-automatique (tools/generate_items.py)",
+      "date_creation": "2026-09-03",
+      "relecture_ortho": {
+        "statut": "a_revoir"
+      }
+    }
+  },
+  {
+    "id": "cm-10-8x10",
+    "type": "production",
+    "module": "entrainement",
+    "theme": "calcul-mental",
+    "fonctions_ciblees": [
+      "automatisation"
+    ],
+    "palier": 3,
+    "prerequis": [
+      "cm-palier-2"
+    ],
+    "cap_complexite": null,
+    "contenu": {
+      "enonce": "8 × 10",
+      "aide": null
+    },
+    "reponse": {
+      "valeur": 80
+    },
+    "meta": {
+      "auteur": "generation-automatique (tools/generate_items.py)",
+      "date_creation": "2026-09-03",
+      "relecture_ortho": {
+        "statut": "a_revoir"
+      }
+    }
+  },
+  {
+    "id": "cm-10-10x9",
+    "type": "production",
+    "module": "entrainement",
+    "theme": "calcul-mental",
+    "fonctions_ciblees": [
+      "automatisation"
+    ],
+    "palier": 3,
+    "prerequis": [
+      "cm-palier-2"
+    ],
+    "cap_complexite": null,
+    "contenu": {
+      "enonce": "10 × 9",
+      "aide": null
+    },
+    "reponse": {
+      "valeur": 90
+    },
+    "meta": {
+      "auteur": "generation-automatique (tools/generate_items.py)",
+      "date_creation": "2026-09-03",
+      "relecture_ortho": {
+        "statut": "a_revoir"
+      }
+    }
+  },
+  {
+    "id": "cm-10-9x10",
+    "type": "production",
+    "module": "entrainement",
+    "theme": "calcul-mental",
+    "fonctions_ciblees": [
+      "automatisation"
+    ],
+    "palier": 3,
+    "prerequis": [
+      "cm-palier-2"
+    ],
+    "cap_complexite": null,
+    "contenu": {
+      "enonce": "9 × 10",
+      "aide": null
+    },
+    "reponse": {
+      "valeur": 90
+    },
+    "meta": {
+      "auteur": "generation-automatique (tools/generate_items.py)",
+      "date_creation": "2026-09-03",
+      "relecture_ortho": {
+        "statut": "a_revoir"
+      }
+    }
+  },
+  {
+    "id": "cm-10-10x10",
+    "type": "production",
+    "module": "entrainement",
+    "theme": "calcul-mental",
+    "fonctions_ciblees": [
+      "automatisation"
+    ],
+    "palier": 3,
+    "prerequis": [
+      "cm-palier-2"
+    ],
+    "cap_complexite": null,
+    "contenu": {
+      "enonce": "10 × 10",
+      "aide": null
+    },
+    "reponse": {
+      "valeur": 100
+    },
+    "meta": {
+      "auteur": "generation-automatique (tools/generate_items.py)",
+      "date_creation": "2026-09-03",
+      "relecture_ortho": {
+        "statut": "a_revoir"
+      }
+    }
+  }
+]

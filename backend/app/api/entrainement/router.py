@@ -1,0 +1,104 @@
+"""Routes HTTP du module entraînement — mapping pur du contrat d'API.
+
+Source de vérité : docs/30-technique/api-contract.md. Toute la logique
+vit dans service.py ; les libellés visibles viennent du vocabulaire
+centralisé (domain.messages) — aucune chaîne utilisateur construite ici,
+seuls les codes machine du contrat (``erreur``) sont fixés par celui-ci.
+"""
+
+from __future__ import annotations
+
+from fastapi import APIRouter, Request
+from fastapi.responses import JSONResponse
+from pydantic import BaseModel
+
+from ...domain import messages
+from .service import (
+    GestionnaireSessions,
+    ItemHorsSeance,
+    LimiteSessionsAtteinte,
+    ReponseInvalide,
+    SessionDejaTerminee,
+    SessionInconnue,
+    ThemeInconnu,
+)
+
+router = APIRouter(prefix="/api/entrainement", tags=["entrainement"])
+
+
+class ReponseUtilisateur(BaseModel):
+    """Corps de POST …/reponses (contrat : reponse str|number, temps_ms int)."""
+
+    item_id: str
+    reponse: str | int | float
+    temps_ms: int
+
+
+def _gestionnaire(request: Request) -> GestionnaireSessions:
+    """Récupère le gestionnaire métier attaché à l'application."""
+    return request.app.state.gestionnaire_entrainement
+
+
+def _erreur(statut: int, code: str) -> JSONResponse:
+    """Réponse d'erreur : code machine du contrat + message du vocabulaire."""
+    return JSONResponse(
+        status_code=statut,
+        content={
+            "erreur": code,
+            "message": messages.texte("entrainement", f"erreur_{code}"),
+        },
+    )
+
+
+@router.get("/themes")
+def lister_themes(request: Request) -> dict:
+    """GET /api/entrainement/themes — thèmes disponibles."""
+    return {"themes": _gestionnaire(request).contenu.themes()}
+
+
+@router.post("/{theme}/sessions", status_code=201)
+def demarrer_session(theme: str, request: Request):
+    """POST /api/entrainement/{theme}/sessions — 201 (items sans réponse) ou 429."""
+    try:
+        return _gestionnaire(request).demarrer(theme)
+    except ThemeInconnu:
+        return _erreur(404, "theme_inconnu")
+    except ReponseInvalide:
+        return _erreur(422, "reponse_invalide")
+    except LimiteSessionsAtteinte:
+        # Corps exact du contrat (garde-fou de dosage, non contournable).
+        return JSONResponse(
+            status_code=429,
+            content={
+                "erreur": "limite_sessions_atteinte",
+                "sessions_restantes_aujourdhui": 0,
+            },
+        )
+
+
+@router.post("/{theme}/sessions/{session_id}/reponses")
+def envoyer_reponse(theme: str, session_id: str, corps: ReponseUtilisateur, request: Request):
+    """POST …/reponses — correction serveur immédiate (feedback guidé)."""
+    try:
+        return _gestionnaire(request).repondre(
+            theme, session_id, corps.item_id, corps.reponse, corps.temps_ms
+        )
+    except SessionInconnue:
+        return _erreur(404, "session_inconnue")
+    except SessionDejaTerminee:
+        return _erreur(409, "session_terminee")
+    except ItemHorsSeance:
+        return _erreur(404, "item_hors_seance")
+    except ReponseInvalide:
+        return _erreur(422, "reponse_invalide")
+
+
+@router.post("/{theme}/sessions/{session_id}/fin")
+def terminer_session(theme: str, session_id: str, request: Request):
+    """POST …/fin — résumé, proposition d'arrêt éventuelle, persistance."""
+    try:
+        return _gestionnaire(request).terminer(theme, session_id)
+    except SessionInconnue:
+        return _erreur(404, "session_inconnue")
+    except SessionDejaTerminee:
+        return _erreur(409, "session_terminee")

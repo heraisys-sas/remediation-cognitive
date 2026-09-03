@@ -1,0 +1,84 @@
+{
+  "theme": "calcul-mental",
+  "paliers": [
+    {
+      "id": "cm-palier-1",
+      "table": 2,
+      "prerequis": [],
+      "fichier": "paliers/palier-01.json",
+      "nb_items": 19
+    },
+    {
+      "id": "cm-palier-2",
+      "table": 5,
+      "prerequis": [
+        "cm-palier-1"
+      ],
+      "fichier": "paliers/palier-02.json",
+      "nb_items": 19
+    },
+    {
+      "id": "cm-palier-3",
+      "table": 10,
+      "prerequis": [
+        "cm-palier-2"
+      ],
+      "fichier": "paliers/palier-03.json",
+      "nb_items": 19
+    },
+    {
+      "id": "cm-palier-4",
+      "table": 3,
+      "prerequis": [
+        "cm-palier-3"
+      ],
+      "fichier": "paliers/palier-04.json",
+      "nb_items": 19
+    },
+    {
+      "id": "cm-palier-5",
+      "table": 4,
+      "prerequis": [
+        "cm-palier-4"
+      ],
+      "fichier": "paliers/palier-05.json",
+      "nb_items": 19
+    },
+    {
+      "id": "cm-palier-6",
+      "table": 6,
+      "prerequis": [
+        "cm-palier-5"
+      ],
+      "fichier": "paliers/palier-06.json",
+      "nb_items": 19
+    },
+    {
+      "id": "cm-palier-7",
+      "table": 7,
+      "prerequis": [
+        "cm-palier-6"
+      ],
+      "fichier": "paliers/palier-07.json",
+      "nb_items": 19
+    },
+    {
+      "id": "cm-palier-8",
+      "table": 8,
+      "prerequis": [
+        "cm-palier-7"
+      ],
+      "fichier": "paliers/palier-08.json",
+      "nb_items": 19
+    },
+    {
+      "id": "cm-palier-9",
+      "table": 9,
+      "prerequis": [
+        "cm-palier-8"
+      ],
+      "fichier": "paliers/palier-09.json",
+      "nb_items": 19
+    }
+  ]
+}

@@ -1,0 +1,118 @@
+<!doctype html>
+<html lang="fr">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <!-- Environnement sombre par défaut (photophobie SPC) : on annonce le schéma sombre
+       au navigateur pour que champs, barres de défilement et nuanciers natifs suivent. -->
+  <meta name="color-scheme" content="dark" />
+  <meta name="theme-color" content="#14161b" />
+  <title>Entraînement — séances courtes</title>
+  <link rel="stylesheet" href="src/styles.css" />
+</head>
+<body>
+  <!-- Lien d'évitement : première tabulation, pour sauter directement au contenu. -->
+  <a class="lien-evitement" href="#zone-principale">Aller au contenu principal</a>
+
+  <header class="entete">
+    <h1 class="entete-titre">Entraînement</h1>
+    <p class="entete-sous-titre">Des séances courtes, à ton rythme.</p>
+  </header>
+
+  <main id="zone-principale" class="conteneur">
+
+    <!-- Bandeau transversal pour les incidents (réseau, séance inactive).
+         role="status" + aria-live="polite" : annoncé sans interrompre l'utilisateur. -->
+    <div id="bandeau-erreur" class="bandeau" role="status" aria-live="polite" hidden>
+      <p id="bandeau-message" class="bandeau-message"></p>
+      <div class="bandeau-actions">
+        <button id="bouton-reessayer" type="button" class="bouton bouton-secondaire" hidden>Réessayer</button>
+        <button id="bouton-retour-themes" type="button" class="bouton bouton-discret" hidden>Retour aux thèmes</button>
+      </div>
+    </div>
+
+    <!-- Écran 1 : choix du thème -->
+    <section id="vue-themes" class="vue" aria-labelledby="titre-themes">
+      <h2 id="titre-themes" class="titre-vue" tabindex="-1">Choisis ta séance</h2>
+      <p class="intro-vue">Quelque chose de court et tranquille — quelques minutes suffisent.</p>
+      <p id="notice-themes" class="notice" role="status" hidden></p>
+      <div id="liste-themes" class="grille-themes"></div>
+    </section>
+
+    <!-- Écran 2 : séance (une question à la fois) -->
+    <section id="vue-seance" class="vue" aria-labelledby="titre-seance" hidden>
+      <h2 id="titre-seance" class="titre-vue" tabindex="-1"></h2>
+
+      <!-- Progression discrète : texte lisible + fine barre -->
+      <div class="progression">
+        <p id="progression-texte" class="progression-texte"></p>
+        <div id="barre-progression" class="barre" role="progressbar"
+             aria-label="Progression de la séance"
+             aria-valuemin="0" aria-valuemax="0" aria-valuenow="0">
+          <div id="barre-remplie" class="barre-remplie" style="width: 0%"></div>
+        </div>
+      </div>
+
+      <article class="carte carte-enonce">
+        <p id="enonce" class="enonce"></p>
+        <!-- Aide optionnelle fournie par l'item (contenu.aide) — repliée par défaut. -->
+        <details id="zone-aide" class="aide" hidden>
+          <summary>Voir un coup de pouce</summary>
+          <p id="texte-aide"></p>
+        </details>
+      </article>
+
+      <!-- Un seul champ de saisie ; Entrée = valider (soumission du formulaire). -->
+      <form id="formulaire-reponse" class="zone-reponse" novalidate>
+        <label class="etiquette" for="champ-reponse">Ta réponse</label>
+        <input id="champ-reponse" name="reponse" type="text" class="champ"
+               autocomplete="off" autocapitalize="none" spellcheck="false"
+               enterkeyhint="done" />
+        <p id="indice-reponse" class="indice" hidden>Écris d’abord ta réponse, puis valide.</p>
+        <button id="bouton-valider" type="submit" class="bouton bouton-primaire bouton-large">Valider</button>
+      </form>
+
+      <!-- Feedback immédiat (correct / incorrect + réponse attendue), annoncé poliment. -->
+      <div id="carte-feedback" class="carte-feedback" role="status" aria-live="polite" hidden></div>
+
+      <div class="actions-suite">
+        <button id="bouton-suivant" type="button" class="bouton bouton-primaire bouton-large" hidden>Suivant</button>
+      </div>
+
+      <!-- Toujours visible pendant la séance : l'utilisateur garde la main à tout moment. -->
+      <div class="pied-seance">
+        <button id="bouton-terminer" type="button" class="bouton bouton-secondaire">Terminer la séance</button>
+      </div>
+    </section>
+
+    <!-- Écran 3 : résumé -->
+    <section id="vue-resume" class="vue" aria-labelledby="titre-resume" hidden>
+      <h2 id="titre-resume" class="titre-vue" tabindex="-1">Séance terminée</h2>
+
+      <!-- Proposition d'arrêt (arret_propose) : bienveillante, jamais forcée. -->
+      <div id="carte-arret" class="carte-arret" role="status" hidden>
+        <p class="carte-arret-message">Tu sembles fatigué·e — c’est le bon moment pour souffler. On s’arrête ici, c’est déjà très bien.</p>
+        <p class="carte-arret-note">C’est une suggestion : tu décides toujours.</p>
+      </div>
+
+      <dl id="stats-resume" class="grille-stats"></dl>
+      <p id="ligne-seances-restantes" class="ligne-discrete"></p>
+
+      <div class="actions-suite">
+        <button id="bouton-nouvelle-seance" type="button" class="bouton bouton-primaire bouton-large">Nouvelle séance</button>
+      </div>
+    </section>
+
+  </main>
+
+  <footer class="pied-page">
+    <p>Doucement, régulièrement — c’est ce qui compte.</p>
+  </footer>
+
+  <noscript>
+    <p class="noscript">Cette page a besoin de JavaScript pour afficher les séances.</p>
+  </noscript>
+
+  <script src="src/app.js" defer></script>
+</body>
+</html>

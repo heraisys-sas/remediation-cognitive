@@ -17,3 +17,20 @@ def ajuster_palier(
     if taux_reussite_glissant < seuil_bas:
         return max(1, palier_actuel - 1)
     return palier_actuel
+
+
+def calculer_taux_glissant(historique: list[bool], fenetre: int = 8) -> float:
+    """Taux de réussite sur les ``fenetre`` derniers essais.
+
+    - ``historique`` : résultats chronologiques (True = réussite) ;
+    - ``fenetre`` : taille de la fenêtre glissante (défaut 8).
+
+    Si la fenêtre dépasse la taille de l'historique, tout l'historique est
+    utilisé ; un historique vide vaut 0.0 ; ``fenetre < 1`` lève ValueError.
+    """
+    if fenetre < 1:
+        raise ValueError(f"fenetre invalide : {fenetre} (attendu >= 1)")
+    if not historique:
+        return 0.0
+    dernieres = historique[-fenetre:]
+    return sum(1 for reussite in dernieres if reussite) / len(dernieres)

@@ -20,6 +20,30 @@ VOCABULAIRES = {
     },
     "entrainement": {
         "titre_session": "Session d'entraînement",
+        # Libellés des thèmes exposés par l'API (contrat GET /themes).
+        "themes": {
+            "calcul-mental": {
+                "nom": "Calcul mental",
+                "description": "Tables et calcul rapide, paliers progressifs",
+            },
+            "anglais": {
+                "nom": "Anglais — verbes irréguliers",
+                "description": "Rappel actif : écris le verbe demandé, sans proposition de choix",
+            },
+            "python": {
+                "nom": "Python",
+                "description": "Commandes du langage et prédiction de sortie de snippets",
+            },
+        },
+        # Feedback immédiat guidé (correction serveur).
+        "feedback_correcte": "Bien joué, réponse correcte !",
+        "feedback_incorrecte": "Pas tout à fait — la réponse attendue s'affiche, on y reviendra.",
+        # Messages d'erreur (clés : erreur_<code machine du contrat>).
+        "erreur_theme_inconnu": "Thème inconnu.",
+        "erreur_session_inconnue": "Séance introuvable (elle n'existe plus en mémoire).",
+        "erreur_session_terminee": "Cette séance est déjà terminée.",
+        "erreur_item_hors_seance": "Cet item ne fait pas partie de la séance en cours.",
+        "erreur_reponse_invalide": "Réponse ou temps invalide.",
     },
 }
 

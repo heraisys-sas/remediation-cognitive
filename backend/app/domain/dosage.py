@@ -13,6 +13,13 @@ def verifier_droit_de_session(nb_sessions_du_jour: int, limite: int) -> bool:
     return nb_sessions_du_jour < limite
 
 
+# Garde-fous chiffrés du sprint 1 (docs/30-technique/api-contract.md) —
+# paramétrables ici uniquement, jamais côté client.
+LIMITE_SESSIONS_JOUR = 3
+MAX_ITEMS_PAR_SEANCE = 12
+DUREE_MAX_SEANCE_S = 600
+
+
 def appliquer_cap_difficulte(palier_demande: int, cap_actif: int) -> int:
     """Ne jamais dépasser le cap de difficulté actif."""
     return min(palier_demande, cap_actif)
