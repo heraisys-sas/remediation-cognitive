@@ -33,6 +33,7 @@ Docs d'entrée : `docs/00-produit/vision.md`, `docs/00-produit/cadre-reglementai
 - **Décisions structurantes** : nouvel ADR dans `docs/30-technique/adr/` (format : contexte / décision / conséquences).
 - **Journal** : relectures dans `docs/10-clinique/relectures.md`, événements produit dans `CHANGELOG.md`.
 - **Secrets** : jamais de clé ou donnée réelle dans le dépôt (`.gitignore` exclut `.env`, `data/`, clés) — les données de bilan chiffrées restent hors du dépôt.
+- **Licence** : BSD-3-Clause — toute contribution intégrée au dépôt entre sous cette licence ; matériel protégé tiers interdit.
 
 ## Commandes
 
@@ -44,9 +45,8 @@ python3 -m pytest -q engine/tests    # moteurs seuls
 
 ## Décisions ouvertes
 
-- **Licence** (code et contenu) — ne pas diffuser le dépôt tant que non tranchée.
-- **Framework frontend** — React retenu par défaut, ADR à formaliser.
-- **Gestion des clés de chiffrement** — ADR à produire au premier sprint backend.
+- Framework frontend — React retenu par défaut, ADR à formaliser.
+- Gestion des clés de chiffrement — ADR à produire au premier sprint backend.
 
 ## Mémoire partagée
 

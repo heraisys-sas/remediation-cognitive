@@ -17,8 +17,8 @@
 
 ## Reste à faire (état au 2026-09-03)
 
-- Licence à trancher (ne pas diffuser le dépôt d'ici là).
+- ~~Licence à trancher~~ **fait** : BSD-3-Clause actée, `LICENSE` rempli.
 - Framework frontend à formaliser en ADR (React par défaut).
 - Gestion des clés de chiffrement : ADR au premier sprint backend.
 - Dépendances backend à figer (fastapi, uvicorn, pydantic, fsrs, reportlab…).
-- Distant git à configurer si souhaité (dépôt local uniquement à ce stade).
+- Distant git à configurer (dépôt GitHub privé en cours de création sous le compte olivier.hernandez@heraisys.com).

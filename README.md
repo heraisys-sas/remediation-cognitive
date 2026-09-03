@@ -38,9 +38,12 @@ infra/         Déploiement, isolation HDS
 
 Détail : [feuille de route](docs/00-produit/feuille-de-route.md).
 
+## Licence
+
+BSD-3-Clause — voir [LICENSE](LICENSE). S'applique au code et au contenu original ; matériel protégé tiers strictement exclu (cf. [cadre réglementaire](docs/00-produit/cadre-reglementaire.md)).
+
 ## Décisions ouvertes
 
-- Licence du code et du contenu (voir [cadre réglementaire](docs/00-produit/cadre-reglementaire.md)) — ne pas diffuser le dépôt tant que non tranchée.
 - Framework frontend : React retenu par défaut, ADR à formaliser.
 - Hébergement HDS : à ouvrir uniquement en Phase 3 le cas échéant.
 

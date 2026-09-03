@@ -26,4 +26,4 @@ Relecture **informelle et bienveillante** du contenu (choix des items, progressi
 
 ## Licence
 
-À trancher (code et contenu). Ne pas diffuser le dépôt tant que non décidée.
+**BSD-3-Clause** (actée le 2026-09-03) — voir `LICENSE` à la racine. S'applique au code et au contenu original du dépôt ; le matériel protégé tiers (ECPA/Pearson, items standardisés) reste strictement exclu et ne doit jamais être intégré.
