@@ -1,0 +1,12 @@
+[project]
+name = "remediation-cognitive"
+version = "0.1.0"
+description = "Bilan et rééducation cognitive (syndrome post-commotionnel) — moteur adaptatif commun, entraînement (hors MDR), rééducation et bilan (usage familial)"
+requires-python = ">=3.11"
+
+[tool.pytest.ini_options]
+testpaths = ["backend/tests", "engine/tests"]
+pythonpath = ["."]
+
+# Dépendances à figer lors du premier sprint backend :
+# fastapi, uvicorn, pydantic, fsrs, python-multipart, reportlab (export PDF)

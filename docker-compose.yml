@@ -1,0 +1,3 @@
+# Squelette — services à définir quand les Dockerfiles existeront (backend, frontend).
+# Ne pas lancer tel quel.
+services: {}

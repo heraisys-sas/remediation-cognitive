@@ -1,0 +1,31 @@
+# Python
+__pycache__/
+*.py[cod]
+.venv/
+venv/
+.pytest_cache/
+.mypy_cache/
+.ruff_cache/
+*.egg-info/
+
+# Node / frontend
+node_modules/
+dist/
+build/
+
+# Environnement et secrets — jamais versionnés
+.env
+.env.*
+*.key
+*.pem
+secrets/
+
+# Données de bilan et de session — JAMAIS dans le dépôt (données de santé)
+data/
+*.session
+*.db
+*.sqlite
+
+# OS
+.DS_Store
+Thumbs.db

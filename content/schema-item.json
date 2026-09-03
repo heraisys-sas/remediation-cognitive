@@ -1,0 +1,94 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "content/schema-item.json",
+  "title": "Item d'exercice",
+  "description": "Format normalisé d'un item de contenu. Validation obligatoire avant intégration ; relecture orthophoniste tracée dans meta.relecture_ortho.",
+  "type": "object",
+  "required": ["id", "module", "theme", "type", "palier", "contenu"],
+  "additionalProperties": false,
+  "properties": {
+    "id": {
+      "type": "string",
+      "pattern": "^[a-z0-9-]+$",
+      "description": "Identifiant stable de l'item, ex. 'py-cmd-enumerate-01'."
+    },
+    "module": {
+      "enum": ["entrainement", "reeducation", "bilan"]
+    },
+    "theme": {
+      "type": "string",
+      "description": "ex. calcul-mental, anglais, python/concepts/bases, attention-soutenue…"
+    },
+    "type": {
+      "enum": [
+        "production",
+        "qcm",
+        "prediction-sortie",
+        "restitution-errorless",
+        "rt-continu",
+        "double-tache",
+        "empan",
+        "n-back",
+        "stroop",
+        "trail-making",
+        "multi-etapes"
+      ]
+    },
+    "fonctions_ciblees": {
+      "type": "array",
+      "items": {
+        "enum": [
+          "attention-soutenue",
+          "attention-divisee",
+          "attention-selective",
+          "attention-alternee",
+          "memoire-travail",
+          "inhibition",
+          "flexibilite",
+          "planification",
+          "vitesse-traitement",
+          "automatisation",
+          "memorisation-longue"
+        ]
+      }
+    },
+    "palier": {
+      "type": "integer",
+      "minimum": 1
+    },
+    "prerequis": {
+      "type": "array",
+      "items": { "type": "string" },
+      "description": "Identifiants des items ou concepts prérequis (alimente le graphe de connaissances)."
+    },
+    "cap_complexite": {
+      "type": ["string", "null"],
+      "description": "Justification pédagogique du cap, ex. '2 niveaux d imbrication max (phase initiale)'."
+    },
+    "contenu": {
+      "type": "object",
+      "description": "Corps de l'item, spécifique au type d'exercice."
+    },
+    "reponse": {
+      "type": "object",
+      "description": "Réponse attendue et tolérances (spécifique au type)."
+    },
+    "meta": {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "auteur": { "type": "string" },
+        "date_creation": { "type": "string", "format": "date" },
+        "relecture_ortho": {
+          "type": "object",
+          "additionalProperties": false,
+          "properties": {
+            "statut": { "enum": ["a_revoir", "relecture_en_cours", "valide_informel"] },
+            "date": { "type": "string", "format": "date" },
+            "commentaire": { "type": "string" }
+          }
+        }
+      }
+    }
+  }
+}
