@@ -35,3 +35,11 @@ Progression par paliers très fins, répétition espacée, feedback immédiat, p
 ## Orthophonie française
 
 Approche PACE adaptable aux troubles pragmatiques légers. Logique psychométrique des outils standard francophones (GREFEX, TEA-Ch, BCEFA) pour calibrer les items — **sans reproduire le matériel protégé** (droits ECPA/Pearson).
+
+## Entraînement cérébral — familles classiques (sprint 2)
+
+Empan numérique (endroit/envers), sonde n-back, double tâche de filtrage,
+calcul sériel à total courant (famille PASAT assimilée — protocole non copié :
+visuel, rythme libre, opérations variables), apprentissage par paires,
+séries à règle — familles classiques d'entraînement cognitif, implémentées en
+100 % original : la logique est assimilée, jamais le matériel des tests protégés.

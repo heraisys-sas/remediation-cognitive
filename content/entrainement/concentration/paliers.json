@@ -1,0 +1,84 @@
+{
+  "theme": "concentration",
+  "paliers": [
+    {
+      "id": "co-palier-1",
+      "description": "Chaîne de 3 opérations",
+      "prerequis": [],
+      "fichier": "paliers/palier-01.json",
+      "nb_items": 18
+    },
+    {
+      "id": "co-palier-2",
+      "description": "Chaîne de 4 opérations",
+      "prerequis": [
+        "co-palier-1"
+      ],
+      "fichier": "paliers/palier-02.json",
+      "nb_items": 18
+    },
+    {
+      "id": "co-palier-3",
+      "description": "Cascade de soustractions",
+      "prerequis": [
+        "co-palier-2"
+      ],
+      "fichier": "paliers/palier-03.json",
+      "nb_items": 18
+    },
+    {
+      "id": "co-palier-4",
+      "description": "Double tâche : somme des chiffres",
+      "prerequis": [
+        "co-palier-3"
+      ],
+      "fichier": "paliers/palier-04.json",
+      "nb_items": 18
+    },
+    {
+      "id": "co-palier-5",
+      "description": "Chaîne de 5 + premières séries",
+      "prerequis": [
+        "co-palier-4"
+      ],
+      "fichier": "paliers/palier-05.json",
+      "nb_items": 18
+    },
+    {
+      "id": "co-palier-6",
+      "description": "Double tâche 7 éléments",
+      "prerequis": [
+        "co-palier-5"
+      ],
+      "fichier": "paliers/palier-06.json",
+      "nb_items": 18
+    },
+    {
+      "id": "co-palier-7",
+      "description": "Chaîne de 6 + séries géométriques",
+      "prerequis": [
+        "co-palier-6"
+      ],
+      "fichier": "paliers/palier-07.json",
+      "nb_items": 18
+    },
+    {
+      "id": "co-palier-8",
+      "description": "Chaîne de 7 + double tâche 9",
+      "prerequis": [
+        "co-palier-7"
+      ],
+      "fichier": "paliers/palier-08.json",
+      "nb_items": 18
+    },
+    {
+      "id": "co-palier-9",
+      "description": "Chaînes longues et séries alternées",
+      "prerequis": [
+        "co-palier-8"
+      ],
+      "fichier": "paliers/palier-09.json",
+      "nb_items": 18
+    }
+  ]
+}

@@ -1,0 +1,488 @@
+[
+  {
+    "id": "co-1-chaine-01",
+    "type": "chaine-calcul",
+    "module": "entrainement",
+    "theme": "concentration",
+    "fonctions_ciblees": [
+      "attention-soutenue",
+      "memoire-travail"
+    ],
+    "palier": 1,
+    "prerequis": [],
+    "cap_complexite": null,
+    "contenu": {
+      "enonce": "8 − 6 + 4 + 5",
+      "aide": "Calcule de gauche à droite, étape par étape."
+    },
+    "reponse": {
+      "valeur": 11
+    },
+    "meta": {
+      "auteur": "generation-automatique (tools/generer_memo_concentration.py)",
+      "date_creation": "2026-09-10",
+      "relecture_ortho": {
+        "statut": "a_revoir"
+      }
+    }
+  },
+  {
+    "id": "co-1-chaine-02",
+    "type": "chaine-calcul",
+    "module": "entrainement",
+    "theme": "concentration",
+    "fonctions_ciblees": [
+      "attention-soutenue",
+      "memoire-travail"
+    ],
+    "palier": 1,
+    "prerequis": [],
+    "cap_complexite": null,
+    "contenu": {
+      "enonce": "6 − 4 + 8 − 7",
+      "aide": "Calcule de gauche à droite, étape par étape."
+    },
+    "reponse": {
+      "valeur": 3
+    },
+    "meta": {
+      "auteur": "generation-automatique (tools/generer_memo_concentration.py)",
+      "date_creation": "2026-09-10",
+      "relecture_ortho": {
+        "statut": "a_revoir"
+      }
+    }
+  },
+  {
+    "id": "co-1-chaine-03",
+    "type": "chaine-calcul",
+    "module": "entrainement",
+    "theme": "concentration",
+    "fonctions_ciblees": [
+      "attention-soutenue",
+      "memoire-travail"
+    ],
+    "palier": 1,
+    "prerequis": [],
+    "cap_complexite": null,
+    "contenu": {
+      "enonce": "12 − 9 + 6 − 5",
+      "aide": "Calcule de gauche à droite, étape par étape."
+    },
+    "reponse": {
+      "valeur": 4
+    },
+    "meta": {
+      "auteur": "generation-automatique (tools/generer_memo_concentration.py)",
+      "date_creation": "2026-09-10",
+      "relecture_ortho": {
+        "statut": "a_revoir"
+      }
+    }
+  },
+  {
+    "id": "co-1-chaine-04",
+    "type": "chaine-calcul",
+    "module": "entrainement",
+    "theme": "concentration",
+    "fonctions_ciblees": [
+      "attention-soutenue",
+      "memoire-travail"
+    ],
+    "palier": 1,
+    "prerequis": [],
+    "cap_complexite": null,
+    "contenu": {
+      "enonce": "3 + 9 + 12 + 12",
+      "aide": "Calcule de gauche à droite, étape par étape."
+    },
+    "reponse": {
+      "valeur": 36
+    },
+    "meta": {
+      "auteur": "generation-automatique (tools/generer_memo_concentration.py)",
+      "date_creation": "2026-09-10",
+      "relecture_ortho": {
+        "statut": "a_revoir"
+      }
+    }
+  },
+  {
+    "id": "co-1-chaine-05",
+    "type": "chaine-calcul",
+    "module": "entrainement",
+    "theme": "concentration",
+    "fonctions_ciblees": [
+      "attention-soutenue",
+      "memoire-travail"
+    ],
+    "palier": 1,
+    "prerequis": [],
+    "cap_complexite": null,
+    "contenu": {
+      "enonce": "18 − 13 + 14 − 17",
+      "aide": "Calcule de gauche à droite, étape par étape."
+    },
+    "reponse": {
+      "valeur": 2
+    },
+    "meta": {
+      "auteur": "generation-automatique (tools/generer_memo_concentration.py)",
+      "date_creation": "2026-09-10",
+      "relecture_ortho": {
+        "statut": "a_revoir"
+      }
+    }
+  },
+  {
+    "id": "co-1-chaine-06",
+    "type": "chaine-calcul",
+    "module": "entrainement",
+    "theme": "concentration",
+    "fonctions_ciblees": [
+      "attention-soutenue",
+      "memoire-travail"
+    ],
+    "palier": 1,
+    "prerequis": [],
+    "cap_complexite": null,
+    "contenu": {
+      "enonce": "9 − 7 + 2 + 8",
+      "aide": "Calcule de gauche à droite, étape par étape."
+    },
+    "reponse": {
+      "valeur": 12
+    },
+    "meta": {
+      "auteur": "generation-automatique (tools/generer_memo_concentration.py)",
+      "date_creation": "2026-09-10",
+      "relecture_ortho": {
+        "statut": "a_revoir"
+      }
+    }
+  },
+  {
+    "id": "co-1-chaine-07",
+    "type": "chaine-calcul",
+    "module": "entrainement",
+    "theme": "concentration",
+    "fonctions_ciblees": [
+      "attention-soutenue",
+      "memoire-travail"
+    ],
+    "palier": 1,
+    "prerequis": [],
+    "cap_complexite": null,
+    "contenu": {
+      "enonce": "5 + 10 + 7 − 20",
+      "aide": "Calcule de gauche à droite, étape par étape."
+    },
+    "reponse": {
+      "valeur": 2
+    },
+    "meta": {
+      "auteur": "generation-automatique (tools/generer_memo_concentration.py)",
+      "date_creation": "2026-09-10",
+      "relecture_ortho": {
+        "statut": "a_revoir"
+      }
+    }
+  },
+  {
+    "id": "co-1-chaine-08",
+    "type": "chaine-calcul",
+    "module": "entrainement",
+    "theme": "concentration",
+    "fonctions_ciblees": [
+      "attention-soutenue",
+      "memoire-travail"
+    ],
+    "palier": 1,
+    "prerequis": [],
+    "cap_complexite": null,
+    "contenu": {
+      "enonce": "16 − 5 − 9 + 17",
+      "aide": "Calcule de gauche à droite, étape par étape."
+    },
+    "reponse": {
+      "valeur": 19
+    },
+    "meta": {
+      "auteur": "generation-automatique (tools/generer_memo_concentration.py)",
+      "date_creation": "2026-09-10",
+      "relecture_ortho": {
+        "statut": "a_revoir"
+      }
+    }
+  },
+  {
+    "id": "co-1-chaine-09",
+    "type": "chaine-calcul",
+    "module": "entrainement",
+    "theme": "concentration",
+    "fonctions_ciblees": [
+      "attention-soutenue",
+      "memoire-travail"
+    ],
+    "palier": 1,
+    "prerequis": [],
+    "cap_complexite": null,
+    "contenu": {
+      "enonce": "20 − 9 − 3 + 16",
+      "aide": "Calcule de gauche à droite, étape par étape."
+    },
+    "reponse": {
+      "valeur": 24
+    },
+    "meta": {
+      "auteur": "generation-automatique (tools/generer_memo_concentration.py)",
+      "date_creation": "2026-09-10",
+      "relecture_ortho": {
+        "statut": "a_revoir"
+      }
+    }
+  },
+  {
+    "id": "co-1-chaine-10",
+    "type": "chaine-calcul",
+    "module": "entrainement",
+    "theme": "concentration",
+    "fonctions_ciblees": [
+      "attention-soutenue",
+      "memoire-travail"
+    ],
+    "palier": 1,
+    "prerequis": [],
+    "cap_complexite": null,
+    "contenu": {
+      "enonce": "13 − 10 + 7 + 6",
+      "aide": "Calcule de gauche à droite, étape par étape."
+    },
+    "reponse": {
+      "valeur": 16
+    },
+    "meta": {
+      "auteur": "generation-automatique (tools/generer_memo_concentration.py)",
+      "date_creation": "2026-09-10",
+      "relecture_ortho": {
+        "statut": "a_revoir"
+      }
+    }
+  },
+  {
+    "id": "co-1-chaine-11",
+    "type": "chaine-calcul",
+    "module": "entrainement",
+    "theme": "concentration",
+    "fonctions_ciblees": [
+      "attention-soutenue",
+      "memoire-travail"
+    ],
+    "palier": 1,
+    "prerequis": [],
+    "cap_complexite": null,
+    "contenu": {
+      "enonce": "19 − 15 + 5 + 19",
+      "aide": "Calcule de gauche à droite, étape par étape."
+    },
+    "reponse": {
+      "valeur": 28
+    },
+    "meta": {
+      "auteur": "generation-automatique (tools/generer_memo_concentration.py)",
+      "date_creation": "2026-09-10",
+      "relecture_ortho": {
+        "statut": "a_revoir"
+      }
+    }
+  },
+  {
+    "id": "co-1-chaine-12",
+    "type": "chaine-calcul",
+    "module": "entrainement",
+    "theme": "concentration",
+    "fonctions_ciblees": [
+      "attention-soutenue",
+      "memoire-travail"
+    ],
+    "palier": 1,
+    "prerequis": [],
+    "cap_complexite": null,
+    "contenu": {
+      "enonce": "8 + 19 − 2 + 11",
+      "aide": "Calcule de gauche à droite, étape par étape."
+    },
+    "reponse": {
+      "valeur": 36
+    },
+    "meta": {
+      "auteur": "generation-automatique (tools/generer_memo_concentration.py)",
+      "date_creation": "2026-09-10",
+      "relecture_ortho": {
+        "statut": "a_revoir"
+      }
+    }
+  },
+  {
+    "id": "co-1-chaine-13",
+    "type": "chaine-calcul",
+    "module": "entrainement",
+    "theme": "concentration",
+    "fonctions_ciblees": [
+      "attention-soutenue",
+      "memoire-travail"
+    ],
+    "palier": 1,
+    "prerequis": [],
+    "cap_complexite": null,
+    "contenu": {
+      "enonce": "4 + 9 + 17 + 5",
+      "aide": "Calcule de gauche à droite, étape par étape."
+    },
+    "reponse": {
+      "valeur": 35
+    },
+    "meta": {
+      "auteur": "generation-automatique (tools/generer_memo_concentration.py)",
+      "date_creation": "2026-09-10",
+      "relecture_ortho": {
+        "statut": "a_revoir"
+      }
+    }
+  },
+  {
+    "id": "co-1-chaine-14",
+    "type": "chaine-calcul",
+    "module": "entrainement",
+    "theme": "concentration",
+    "fonctions_ciblees": [
+      "attention-soutenue",
+      "memoire-travail"
+    ],
+    "palier": 1,
+    "prerequis": [],
+    "cap_complexite": null,
+    "contenu": {
+      "enonce": "17 + 7 + 15 + 15",
+      "aide": "Calcule de gauche à droite, étape par étape."
+    },
+    "reponse": {
+      "valeur": 54
+    },
+    "meta": {
+      "auteur": "generation-automatique (tools/generer_memo_concentration.py)",
+      "date_creation": "2026-09-10",
+      "relecture_ortho": {
+        "statut": "a_revoir"
+      }
+    }
+  },
+  {
+    "id": "co-1-chaine-15",
+    "type": "chaine-calcul",
+    "module": "entrainement",
+    "theme": "concentration",
+    "fonctions_ciblees": [
+      "attention-soutenue",
+      "memoire-travail"
+    ],
+    "palier": 1,
+    "prerequis": [],
+    "cap_complexite": null,
+    "contenu": {
+      "enonce": "3 + 5 + 15 − 8",
+      "aide": "Calcule de gauche à droite, étape par étape."
+    },
+    "reponse": {
+      "valeur": 15
+    },
+    "meta": {
+      "auteur": "generation-automatique (tools/generer_memo_concentration.py)",
+      "date_creation": "2026-09-10",
+      "relecture_ortho": {
+        "statut": "a_revoir"
+      }
+    }
+  },
+  {
+    "id": "co-1-chaine-16",
+    "type": "chaine-calcul",
+    "module": "entrainement",
+    "theme": "concentration",
+    "fonctions_ciblees": [
+      "attention-soutenue",
+      "memoire-travail"
+    ],
+    "palier": 1,
+    "prerequis": [],
+    "cap_complexite": null,
+    "contenu": {
+      "enonce": "5 + 15 − 3 + 14",
+      "aide": "Calcule de gauche à droite, étape par étape."
+    },
+    "reponse": {
+      "valeur": 31
+    },
+    "meta": {
+      "auteur": "generation-automatique (tools/generer_memo_concentration.py)",
+      "date_creation": "2026-09-10",
+      "relecture_ortho": {
+        "statut": "a_revoir"
+      }
+    }
+  },
+  {
+    "id": "co-1-chaine-17",
+    "type": "chaine-calcul",
+    "module": "entrainement",
+    "theme": "concentration",
+    "fonctions_ciblees": [
+      "attention-soutenue",
+      "memoire-travail"
+    ],
+    "palier": 1,
+    "prerequis": [],
+    "cap_complexite": null,
+    "contenu": {
+      "enonce": "4 + 12 + 11 + 7",
+      "aide": "Calcule de gauche à droite, étape par étape."
+    },
+    "reponse": {
+      "valeur": 34
+    },
+    "meta": {
+      "auteur": "generation-automatique (tools/generer_memo_concentration.py)",
+      "date_creation": "2026-09-10",
+      "relecture_ortho": {
+        "statut": "a_revoir"
+      }
+    }
+  },
+  {
+    "id": "co-1-chaine-18",
+    "type": "chaine-calcul",
+    "module": "entrainement",
+    "theme": "concentration",
+    "fonctions_ciblees": [
+      "attention-soutenue",
+      "memoire-travail"
+    ],
+    "palier": 1,
+    "prerequis": [],
+    "cap_complexite": null,
+    "contenu": {
+      "enonce": "4 + 8 + 8 + 15",
+      "aide": "Calcule de gauche à droite, étape par étape."
+    },
+    "reponse": {
+      "valeur": 35
+    },
+    "meta": {
+      "auteur": "generation-automatique (tools/generer_memo_concentration.py)",
+      "date_creation": "2026-09-10",
+      "relecture_ortho": {
+        "statut": "a_revoir"
+      }
+    }
+  }
+]

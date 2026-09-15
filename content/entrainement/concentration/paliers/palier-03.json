@@ -1,0 +1,524 @@
+[
+  {
+    "id": "co-3-cascade-01",
+    "type": "chaine-calcul",
+    "module": "entrainement",
+    "theme": "concentration",
+    "fonctions_ciblees": [
+      "attention-soutenue",
+      "automatisation"
+    ],
+    "palier": 3,
+    "prerequis": [
+      "co-palier-2"
+    ],
+    "cap_complexite": null,
+    "contenu": {
+      "enonce": "91 − 4 − 4 − 4 − 4 − 4",
+      "aide": "Retranche toujours le même nombre — garde le rythme."
+    },
+    "reponse": {
+      "valeur": 71
+    },
+    "meta": {
+      "auteur": "generation-automatique (tools/generer_memo_concentration.py)",
+      "date_creation": "2026-09-10",
+      "relecture_ortho": {
+        "statut": "a_revoir"
+      }
+    }
+  },
+  {
+    "id": "co-3-cascade-02",
+    "type": "chaine-calcul",
+    "module": "entrainement",
+    "theme": "concentration",
+    "fonctions_ciblees": [
+      "attention-soutenue",
+      "automatisation"
+    ],
+    "palier": 3,
+    "prerequis": [
+      "co-palier-2"
+    ],
+    "cap_complexite": null,
+    "contenu": {
+      "enonce": "72 − 9 − 9 − 9 − 9 − 9",
+      "aide": "Retranche toujours le même nombre — garde le rythme."
+    },
+    "reponse": {
+      "valeur": 27
+    },
+    "meta": {
+      "auteur": "generation-automatique (tools/generer_memo_concentration.py)",
+      "date_creation": "2026-09-10",
+      "relecture_ortho": {
+        "statut": "a_revoir"
+      }
+    }
+  },
+  {
+    "id": "co-3-cascade-03",
+    "type": "chaine-calcul",
+    "module": "entrainement",
+    "theme": "concentration",
+    "fonctions_ciblees": [
+      "attention-soutenue",
+      "automatisation"
+    ],
+    "palier": 3,
+    "prerequis": [
+      "co-palier-2"
+    ],
+    "cap_complexite": null,
+    "contenu": {
+      "enonce": "97 − 6 − 6 − 6 − 6 − 6",
+      "aide": "Retranche toujours le même nombre — garde le rythme."
+    },
+    "reponse": {
+      "valeur": 67
+    },
+    "meta": {
+      "auteur": "generation-automatique (tools/generer_memo_concentration.py)",
+      "date_creation": "2026-09-10",
+      "relecture_ortho": {
+        "statut": "a_revoir"
+      }
+    }
+  },
+  {
+    "id": "co-3-cascade-04",
+    "type": "chaine-calcul",
+    "module": "entrainement",
+    "theme": "concentration",
+    "fonctions_ciblees": [
+      "attention-soutenue",
+      "automatisation"
+    ],
+    "palier": 3,
+    "prerequis": [
+      "co-palier-2"
+    ],
+    "cap_complexite": null,
+    "contenu": {
+      "enonce": "92 − 9 − 9 − 9 − 9 − 9",
+      "aide": "Retranche toujours le même nombre — garde le rythme."
+    },
+    "reponse": {
+      "valeur": 47
+    },
+    "meta": {
+      "auteur": "generation-automatique (tools/generer_memo_concentration.py)",
+      "date_creation": "2026-09-10",
+      "relecture_ortho": {
+        "statut": "a_revoir"
+      }
+    }
+  },
+  {
+    "id": "co-3-cascade-05",
+    "type": "chaine-calcul",
+    "module": "entrainement",
+    "theme": "concentration",
+    "fonctions_ciblees": [
+      "attention-soutenue",
+      "automatisation"
+    ],
+    "palier": 3,
+    "prerequis": [
+      "co-palier-2"
+    ],
+    "cap_complexite": null,
+    "contenu": {
+      "enonce": "91 − 8 − 8 − 8 − 8 − 8",
+      "aide": "Retranche toujours le même nombre — garde le rythme."
+    },
+    "reponse": {
+      "valeur": 51
+    },
+    "meta": {
+      "auteur": "generation-automatique (tools/generer_memo_concentration.py)",
+      "date_creation": "2026-09-10",
+      "relecture_ortho": {
+        "statut": "a_revoir"
+      }
+    }
+  },
+  {
+    "id": "co-3-cascade-06",
+    "type": "chaine-calcul",
+    "module": "entrainement",
+    "theme": "concentration",
+    "fonctions_ciblees": [
+      "attention-soutenue",
+      "automatisation"
+    ],
+    "palier": 3,
+    "prerequis": [
+      "co-palier-2"
+    ],
+    "cap_complexite": null,
+    "contenu": {
+      "enonce": "65 − 6 − 6 − 6 − 6 − 6",
+      "aide": "Retranche toujours le même nombre — garde le rythme."
+    },
+    "reponse": {
+      "valeur": 35
+    },
+    "meta": {
+      "auteur": "generation-automatique (tools/generer_memo_concentration.py)",
+      "date_creation": "2026-09-10",
+      "relecture_ortho": {
+        "statut": "a_revoir"
+      }
+    }
+  },
+  {
+    "id": "co-3-cascade-07",
+    "type": "chaine-calcul",
+    "module": "entrainement",
+    "theme": "concentration",
+    "fonctions_ciblees": [
+      "attention-soutenue",
+      "automatisation"
+    ],
+    "palier": 3,
+    "prerequis": [
+      "co-palier-2"
+    ],
+    "cap_complexite": null,
+    "contenu": {
+      "enonce": "78 − 6 − 6 − 6 − 6 − 6",
+      "aide": "Retranche toujours le même nombre — garde le rythme."
+    },
+    "reponse": {
+      "valeur": 48
+    },
+    "meta": {
+      "auteur": "generation-automatique (tools/generer_memo_concentration.py)",
+      "date_creation": "2026-09-10",
+      "relecture_ortho": {
+        "statut": "a_revoir"
+      }
+    }
+  },
+  {
+    "id": "co-3-cascade-08",
+    "type": "chaine-calcul",
+    "module": "entrainement",
+    "theme": "concentration",
+    "fonctions_ciblees": [
+      "attention-soutenue",
+      "automatisation"
+    ],
+    "palier": 3,
+    "prerequis": [
+      "co-palier-2"
+    ],
+    "cap_complexite": null,
+    "contenu": {
+      "enonce": "93 − 3 − 3 − 3 − 3 − 3",
+      "aide": "Retranche toujours le même nombre — garde le rythme."
+    },
+    "reponse": {
+      "valeur": 78
+    },
+    "meta": {
+      "auteur": "generation-automatique (tools/generer_memo_concentration.py)",
+      "date_creation": "2026-09-10",
+      "relecture_ortho": {
+        "statut": "a_revoir"
+      }
+    }
+  },
+  {
+    "id": "co-3-cascade-09",
+    "type": "chaine-calcul",
+    "module": "entrainement",
+    "theme": "concentration",
+    "fonctions_ciblees": [
+      "attention-soutenue",
+      "automatisation"
+    ],
+    "palier": 3,
+    "prerequis": [
+      "co-palier-2"
+    ],
+    "cap_complexite": null,
+    "contenu": {
+      "enonce": "69 − 8 − 8 − 8 − 8 − 8",
+      "aide": "Retranche toujours le même nombre — garde le rythme."
+    },
+    "reponse": {
+      "valeur": 29
+    },
+    "meta": {
+      "auteur": "generation-automatique (tools/generer_memo_concentration.py)",
+      "date_creation": "2026-09-10",
+      "relecture_ortho": {
+        "statut": "a_revoir"
+      }
+    }
+  },
+  {
+    "id": "co-3-cascade-10",
+    "type": "chaine-calcul",
+    "module": "entrainement",
+    "theme": "concentration",
+    "fonctions_ciblees": [
+      "attention-soutenue",
+      "automatisation"
+    ],
+    "palier": 3,
+    "prerequis": [
+      "co-palier-2"
+    ],
+    "cap_complexite": null,
+    "contenu": {
+      "enonce": "77 − 5 − 5 − 5 − 5 − 5",
+      "aide": "Retranche toujours le même nombre — garde le rythme."
+    },
+    "reponse": {
+      "valeur": 52
+    },
+    "meta": {
+      "auteur": "generation-automatique (tools/generer_memo_concentration.py)",
+      "date_creation": "2026-09-10",
+      "relecture_ortho": {
+        "statut": "a_revoir"
+      }
+    }
+  },
+  {
+    "id": "co-3-cascade-11",
+    "type": "chaine-calcul",
+    "module": "entrainement",
+    "theme": "concentration",
+    "fonctions_ciblees": [
+      "attention-soutenue",
+      "automatisation"
+    ],
+    "palier": 3,
+    "prerequis": [
+      "co-palier-2"
+    ],
+    "cap_complexite": null,
+    "contenu": {
+      "enonce": "73 − 9 − 9 − 9 − 9 − 9",
+      "aide": "Retranche toujours le même nombre — garde le rythme."
+    },
+    "reponse": {
+      "valeur": 28
+    },
+    "meta": {
+      "auteur": "generation-automatique (tools/generer_memo_concentration.py)",
+      "date_creation": "2026-09-10",
+      "relecture_ortho": {
+        "statut": "a_revoir"
+      }
+    }
+  },
+  {
+    "id": "co-3-cascade-12",
+    "type": "chaine-calcul",
+    "module": "entrainement",
+    "theme": "concentration",
+    "fonctions_ciblees": [
+      "attention-soutenue",
+      "automatisation"
+    ],
+    "palier": 3,
+    "prerequis": [
+      "co-palier-2"
+    ],
+    "cap_complexite": null,
+    "contenu": {
+      "enonce": "96 − 9 − 9 − 9 − 9 − 9",
+      "aide": "Retranche toujours le même nombre — garde le rythme."
+    },
+    "reponse": {
+      "valeur": 51
+    },
+    "meta": {
+      "auteur": "generation-automatique (tools/generer_memo_concentration.py)",
+      "date_creation": "2026-09-10",
+      "relecture_ortho": {
+        "statut": "a_revoir"
+      }
+    }
+  },
+  {
+    "id": "co-3-cascade-13",
+    "type": "chaine-calcul",
+    "module": "entrainement",
+    "theme": "concentration",
+    "fonctions_ciblees": [
+      "attention-soutenue",
+      "automatisation"
+    ],
+    "palier": 3,
+    "prerequis": [
+      "co-palier-2"
+    ],
+    "cap_complexite": null,
+    "contenu": {
+      "enonce": "78 − 7 − 7 − 7 − 7 − 7",
+      "aide": "Retranche toujours le même nombre — garde le rythme."
+    },
+    "reponse": {
+      "valeur": 43
+    },
+    "meta": {
+      "auteur": "generation-automatique (tools/generer_memo_concentration.py)",
+      "date_creation": "2026-09-10",
+      "relecture_ortho": {
+        "statut": "a_revoir"
+      }
+    }
+  },
+  {
+    "id": "co-3-cascade-14",
+    "type": "chaine-calcul",
+    "module": "entrainement",
+    "theme": "concentration",
+    "fonctions_ciblees": [
+      "attention-soutenue",
+      "automatisation"
+    ],
+    "palier": 3,
+    "prerequis": [
+      "co-palier-2"
+    ],
+    "cap_complexite": null,
+    "contenu": {
+      "enonce": "88 − 3 − 3 − 3 − 3 − 3",
+      "aide": "Retranche toujours le même nombre — garde le rythme."
+    },
+    "reponse": {
+      "valeur": 73
+    },
+    "meta": {
+      "auteur": "generation-automatique (tools/generer_memo_concentration.py)",
+      "date_creation": "2026-09-10",
+      "relecture_ortho": {
+        "statut": "a_revoir"
+      }
+    }
+  },
+  {
+    "id": "co-3-cascade-15",
+    "type": "chaine-calcul",
+    "module": "entrainement",
+    "theme": "concentration",
+    "fonctions_ciblees": [
+      "attention-soutenue",
+      "automatisation"
+    ],
+    "palier": 3,
+    "prerequis": [
+      "co-palier-2"
+    ],
+    "cap_complexite": null,
+    "contenu": {
+      "enonce": "79 − 7 − 7 − 7 − 7 − 7",
+      "aide": "Retranche toujours le même nombre — garde le rythme."
+    },
+    "reponse": {
+      "valeur": 44
+    },
+    "meta": {
+      "auteur": "generation-automatique (tools/generer_memo_concentration.py)",
+      "date_creation": "2026-09-10",
+      "relecture_ortho": {
+        "statut": "a_revoir"
+      }
+    }
+  },
+  {
+    "id": "co-3-cascade-16",
+    "type": "chaine-calcul",
+    "module": "entrainement",
+    "theme": "concentration",
+    "fonctions_ciblees": [
+      "attention-soutenue",
+      "automatisation"
+    ],
+    "palier": 3,
+    "prerequis": [
+      "co-palier-2"
+    ],
+    "cap_complexite": null,
+    "contenu": {
+      "enonce": "78 − 6 − 6 − 6 − 6 − 6",
+      "aide": "Retranche toujours le même nombre — garde le rythme."
+    },
+    "reponse": {
+      "valeur": 48
+    },
+    "meta": {
+      "auteur": "generation-automatique (tools/generer_memo_concentration.py)",
+      "date_creation": "2026-09-10",
+      "relecture_ortho": {
+        "statut": "a_revoir"
+      }
+    }
+  },
+  {
+    "id": "co-3-cascade-17",
+    "type": "chaine-calcul",
+    "module": "entrainement",
+    "theme": "concentration",
+    "fonctions_ciblees": [
+      "attention-soutenue",
+      "automatisation"
+    ],
+    "palier": 3,
+    "prerequis": [
+      "co-palier-2"
+    ],
+    "cap_complexite": null,
+    "contenu": {
+      "enonce": "67 − 9 − 9 − 9 − 9 − 9",
+      "aide": "Retranche toujours le même nombre — garde le rythme."
+    },
+    "reponse": {
+      "valeur": 22
+    },
+    "meta": {
+      "auteur": "generation-automatique (tools/generer_memo_concentration.py)",
+      "date_creation": "2026-09-10",
+      "relecture_ortho": {
+        "statut": "a_revoir"
+      }
+    }
+  },
+  {
+    "id": "co-3-cascade-18",
+    "type": "chaine-calcul",
+    "module": "entrainement",
+    "theme": "concentration",
+    "fonctions_ciblees": [
+      "attention-soutenue",
+      "automatisation"
+    ],
+    "palier": 3,
+    "prerequis": [
+      "co-palier-2"
+    ],
+    "cap_complexite": null,
+    "contenu": {
+      "enonce": "85 − 4 − 4 − 4 − 4 − 4",
+      "aide": "Retranche toujours le même nombre — garde le rythme."
+    },
+    "reponse": {
+      "valeur": 65
+    },
+    "meta": {
+      "auteur": "generation-automatique (tools/generer_memo_concentration.py)",
+      "date_creation": "2026-09-10",
+      "relecture_ortho": {
+        "statut": "a_revoir"
+      }
+    }
+  }
+]

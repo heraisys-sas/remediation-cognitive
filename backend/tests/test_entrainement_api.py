@@ -15,7 +15,7 @@ from backend.app.domain.contenu import ChargeurContenu
 from backend.app.main import creer_app
 
 CONTENU = ChargeurContenu()
-THEMES_ATTENDUS = {"calcul-mental", "anglais", "python"}
+THEMES_ATTENDUS = {"calcul-mental", "anglais", "python", "memoire", "concentration"}
 
 
 # -- utilitaires -----------------------------------------------------------------
@@ -253,6 +253,71 @@ def test_baseline_rt_adaptative(client):
 
 
 # -- correction serveur par thème ------------------------------------------------------
+
+
+def test_correction_memoire_tolerante(client):
+    """Mémoire : espaces et casse ignorés (empan tapé avec espaces, n-back minuscule)."""
+    payload = _demarrer(client, "memoire")
+    item = payload["items"][0]
+    attendue = str(_valeur_attendue("memoire", item["id"]))
+    if attendue.isdigit():
+        saisie = " ".join(attendue)          # "582" → "5 8 2"
+    else:
+        saisie = attendue.lower()            # n-back : k pour K
+    reponse = _repondre(client, "memoire", payload["session_id"], item["id"], saisie)
+    assert reponse.status_code == 200
+    assert reponse.json()["correcte"] is True
+    # Et une mauvaise réponse reste fausse.
+    autre = payload["items"][1]
+    reponse = _repondre(
+        client, "memoire", payload["session_id"], autre["id"],
+        str(_valeur_attendue("memoire", autre["id"])) + "9",
+    )
+    assert reponse.json()["correcte"] is False
+
+
+def test_correction_concentration_numerique(client):
+    """Concentration : chaînes, double tâches et séries ont des réponses numériques."""
+    payload = _demarrer(client, "concentration")
+    item = payload["items"][0]
+    attendue = _valeur_attendue("concentration", item["id"])
+    reponse = _repondre(
+        client, "concentration", payload["session_id"], item["id"], str(attendue)
+    )
+    assert reponse.status_code == 200
+    assert reponse.json()["correcte"] is True
+    # "43,0" est accepté comme 43 (tolérance numérique du contrat).
+    autre = payload["items"][1]
+    attendue_autre = _valeur_attendue("concentration", autre["id"])
+    reponse = _repondre(
+        client, "concentration", payload["session_id"], autre["id"],
+        f"{attendue_autre},0",
+    )
+    assert reponse.json()["correcte"] is True
+
+
+def test_cycle_complet_memoire(client):
+    """Cycle E2E du thème mémoire : affichage temporisé dans le payload,
+    réponse attendue jamais exposée comme clé, résumé cohérent."""
+    payload = _demarrer(client, "memoire")
+    items = payload["items"]
+    assert 1 <= len(items) <= 12
+    assert not _contient_cle(payload, "reponse")
+    assert not _contient_cle(payload, "valeur")
+    for item in items:
+        # Chaque item de mémoire porte son affichage temporisé (phase de mémorisation).
+        assert "affichage" in item["contenu"]
+        assert item["contenu"]["affichage"]["mode"] in {"sequence", "liste"}
+        reponse = _repondre(
+            client, "memoire", payload["session_id"], item["id"],
+            str(_valeur_attendue("memoire", item["id"])),
+        )
+        assert reponse.status_code == 200
+        assert reponse.json()["correcte"] is True
+    fin = _finir(client, "memoire", payload["session_id"]).json()
+    assert fin["resume"]["items"] == len(items)
+    assert fin["resume"]["taux_reussite"] == 1.0
+    assert fin["arret_propose"] is False
 
 
 def test_correction_serveur_par_theme(client):

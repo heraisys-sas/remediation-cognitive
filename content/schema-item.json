@@ -31,7 +31,10 @@
         "n-back",
         "stroop",
         "trail-making",
-        "multi-etapes"
+        "multi-etapes",
+        "chaine-calcul",
+        "serie-manquante",
+        "paires-associatives"
       ]
     },
     "fonctions_ciblees": {

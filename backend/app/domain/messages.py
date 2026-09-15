@@ -34,6 +34,14 @@ VOCABULAIRES = {
                 "nom": "Python",
                 "description": "Commandes du langage et prédiction de sortie de snippets",
             },
+            "memoire": {
+                "nom": "Mémoire",
+                "description": "Empans de chiffres, séquences et associations — mémorisation progressive",
+            },
+            "concentration": {
+                "nom": "Concentration",
+                "description": "Calculs chaînés, double tâche et séries — une attention qui tient",
+            },
         },
         # Feedback immédiat guidé (correction serveur).
         "feedback_correcte": "Bien joué, réponse correcte !",

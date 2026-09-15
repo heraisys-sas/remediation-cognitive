@@ -24,6 +24,20 @@
 - Mêmes épreuves toutes les 2 semaines → courbe de récupération.
 - Scores bruts + trajectoire personnelle uniquement (côté patient).
 
+## Fatigue progressive conçue dans le contenu (sprint 2)
+
+Les familles mémorisation/concentration intègrent la montée en charge **dans les
+items eux-mêmes** : la longueur des calculs chaînés (3 → 7 opérations) et la
+taille des empans (3 → 6 chiffres) croissent par palier. Conséquences :
+
+- la fatigue cognitive devient mesurable **au sein même d'une séance** (le RT et
+  le taux d'erreur montent naturellement quand la chaîne s'allonge) — la
+  détection existante fait le reste ;
+- le cap de difficulté (7 opérations maximum) est posé dans les items
+  (`cap_complexite`) et rappelé dans l'UI ;
+- l'affichage temporisé (phase de mémorisation) ne compte PAS dans `temps_ms` :
+  seul le temps de réponse est mesuré.
+
 ## Bilan de charge (vérification)
 
 Chaque évolution de palier ou de dosage doit être revue à l'aune de la CLT : la charge extrinsèque (interface, consignes, contexte) doit rester minimale pour laisser la capacité disponible à la tâche elle-même.

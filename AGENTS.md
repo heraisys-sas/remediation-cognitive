@@ -14,13 +14,13 @@ Logiciel de **bilan et rééducation cognitive** pour adultes avec syndrome post
 
 Docs d'entrée : `docs/00-produit/vision.md`, `docs/00-produit/cadre-reglementaire.md`, `docs/00-produit/feuille-de-route.md`.
 
-## État courant — sprint 1 livré (2026-09-03)
+## État courant — sprint 2 livré (2026-09-15)
 
-- **Jouable de bout en bout** : cycle calcul mental complet — moteur + API + interface. Lancer `python3 -m uvicorn backend.app.main:app` puis ouvrir `/ui/`.
-- **Implémenté** : `engine/` (FSRS 6.3.2 encapsulé, SessionRunner, maîtrise 90 % × 3, fatigue = proposition) ; `backend/` (routes `/api/entrainement` selon le contrat `docs/30-technique/api-contract.md`, correction serveur, persistance JSON sous `backend/data/` — gitignored) ; `frontend/` (SPA vanilla sur `/ui`) ; 191 items de contenu (9 paliers calcul mental + échantillons anglais/Python).
-- **Tests** : 96 passed (`python3 -m pytest -q`). Toute modification doit les garder verts.
-- **Contrat d'API figé** : `docs/30-technique/api-contract.md` — le modifier = décision structurante (ADR).
-- **Traçabilité du sprint** : `.cluster/sprint1/` (plan, rapports de lots, revue d'exécution, revue de conformité) et `memories/2026-09-03-sprint-1.md` (pièges et reste à faire).
+- **Jouable de bout en bout** : cinq thèmes d'entraînement — calcul mental (cycle complet), anglais, Python, **mémoire** (empan endroit/envers, paires associatives, sonde n-back) et **concentration** (calcul chaîné, cascades, double tâche, séries) avec phase de mémorisation temporisée. Lancer `python3 -m uvicorn backend.app.main:app` puis ouvrir `/ui/`.
+- **Implémenté** : `engine/` (FSRS 6.3.2 encapsulé, SessionRunner, maîtrise 90 % × 3, fatigue = proposition) ; `backend/` (routes `/api/entrainement` selon le contrat `docs/30-technique/api-contract.md`, correction serveur par thème, persistance JSON sous `backend/data/` — gitignored) ; `frontend/` (SPA vanilla sur `/ui`, affichage temporisé : consigne → stimulus → masqué → question) ; 497 items de contenu (9 paliers calcul mental, échantillons anglais/Python, mémoire 8 paliers × 18, concentration 9 paliers × 18 — génération déterministe `tools/generer_memo_concentration.py`, graine 20260904).
+- **Tests** : 99 passed (`python3 -m pytest -q`) ; validateur de contenu multi-thèmes 0 erreur (`python3 tools/validate_items.py`). Toute modification doit les garder verts.
+- **Contrat d'API figé** : `docs/30-technique/api-contract.md` — le modifier = décision structurante (ADR). Extension sprint 2 : `contenu.affichage` (sequence/liste) documenté.
+- **Traçabilité du sprint** : `.cluster/sprint1/` (sprint 1) et `.cluster/enrichissement/` (sprint 2 : plan, spécification) ; `memories/2026-09-03-sprint-1.md` et `memories/2026-09-15-enrichissement-memo-concentration.md` (pièges et reste à faire).
 
 ## Règles non négociables (garde-fous cliniques)
 
@@ -60,7 +60,8 @@ Dépendances effectives du sprint 1 : fastapi, uvicorn, httpx, pytest, fsrs (paq
 - Quota journalier : 3 séances/jour **par thème** (jusqu'à 9/jour au total) — global ou par thème, à trancher (paramétrable dans `backend/app/domain/dosage.py`).
 - Framework frontend — vanilla sans build au sprint 1 ; React+Vite quand l'UI se complexifiera (ADR-003 à formaliser).
 - Gestion des clés de chiffrement — ADR à produire (le stockage JSON actuel n'est pas chiffré ; périmètre non médical uniquement).
-- Mode errorless d'entrée de palier et prerequis anglais/Python complets — sprint 2.
+- Mode errorless d'entrée de palier et prerequis anglais/Python complets — reportés (le sprint 2 a livré mémoire/concentration avant).
+- Relecture orthographique et clinique des 306 items générés (`meta.relecture_ortho` = `a_revoir`) avant diffusion au-delà de l'usage familial.
 - `requirements.txt` verrouillé + README développeur « démarrage en 5 minutes ».
 
 ## Mémoire partagée

@@ -42,6 +42,7 @@ const refs = {
   barreProgression: $("barre-progression"),
   barreRemplie: $("barre-remplie"),
   enonce: $("enonce"),
+  zoneMemo: $("zone-memo"),
   zoneAide: $("zone-aide"),
   texteAide: $("texte-aide"),
   formulaire: $("formulaire-reponse"),
@@ -71,6 +72,7 @@ const etat = {
   confirmationFin: false,  // « Terminer » en deux temps (évite les accidents)
   minuterieConfirmation: null,
   reessai: null,           // action à relancer après une erreur réseau
+  minuteriesMemo: [],      // minuteries de la phase de mémorisation
 };
 
 /* ---------------------------------------------------------------------
@@ -136,14 +138,35 @@ function formaterTaux(taux) {
   return `${Math.round(taux * 100)} %`;
 }
 
+/** Clavier adapté au type d'item (numérique quand la réponse est un nombre). */
+const TYPES_REPONSE_NUMERIQUE = new Set([
+  "production", "chaine-calcul", "serie-manquante", "double-tache",
+  "empan", "paires-associatives",
+]);
+
+function inputmodePour(type) {
+  return TYPES_REPONSE_NUMERIQUE.has(type) ? "numeric" : "text";
+}
+
+/** Annule les minuteries de la phase de mémorisation et masque la zone. */
+function annulerMemo() {
+  for (const minuterie of etat.minuteriesMemo) clearTimeout(minuterie);
+  etat.minuteriesMemo = [];
+  refs.zoneMemo.hidden = true;
+  refs.zoneMemo.replaceChildren();
+}
+
 /**
  * Normalise la saisie pour le corps de POST /reponses (contrat : str | number).
- * Thème calcul-mental : si la saisie est numérique, on envoie un nombre.
- * Sinon (anglais, prédiction de sortie…) on envoie la chaîne brute.
+ * Thèmes calcul-mental et concentration : saisie numérique → nombre.
+ * Sinon (anglais, mémoire, prédiction de sortie…) on envoie la chaîne brute.
  */
 function normaliserReponse(brut, theme) {
   const texte = brut.trim();
-  if (theme && theme.id === "calcul-mental" && /^-?\d+(?:[.,]\d+)?$/.test(texte)) {
+  if (
+    theme && (theme.id === "calcul-mental" || theme.id === "concentration")
+    && /^-?\d+(?:[.,]\d+)?$/.test(texte)
+  ) {
     const nombre = Number(texte.replace(",", "."));
     if (Number.isFinite(nombre)) return nombre;
   }
@@ -301,6 +324,7 @@ function rendreThemes(themes) {
 
 /** Repli sûr vers l'écran des thèmes (après incident ou fin de séance). */
 function revenirAuxThemes() {
+  annulerMemo();
   etat.theme = null;
   etat.session = null;
   etat.repondu = false;
@@ -380,12 +404,13 @@ function preparerEcranSeance() {
   masquerBandeau();
 }
 
-/** Affiche l'item courant : énoncé, aide éventuelle, champ vierge, progression. */
+/** Affiche l'item courant : progression, puis phase mémo ou question directe. */
 function montrerItem() {
   const items = etat.session.items;
   const item = items[etat.indexItem];
   const total = items.length;
   etat.repondu = false;
+  annulerMemo();
 
   // Progression discrète : « Question n sur max » + fine barre.
   refs.progressionTexte.textContent = `Question ${etat.indexItem + 1} sur ${total}`;
@@ -393,8 +418,107 @@ function montrerItem() {
   refs.barreProgression.setAttribute("aria-valuenow", String(etat.indexItem + 1));
   refs.barreRemplie.style.width = `${((etat.indexItem + 1) / total) * 100}%`;
 
-  // Énoncé : grand texte ; variante monospace pour la prédiction de sortie.
   const contenu = item.contenu || {};
+  if (contenu.affichage) {
+    // Exercices de mémorisation : consigne → stimulus temporisé → question.
+    afficherPhaseMemo(item);
+    return;
+  }
+  afficherQuestion(item);
+}
+
+/** Phase de mémorisation : la consigne est posée, le stimulus attend le signal. */
+function afficherPhaseMemo(item) {
+  const contenu = item.contenu || {};
+  const affichage = contenu.affichage;
+  const estSequence = affichage.mode === "sequence";
+  const dureeEstimee = estSequence
+    ? Math.round((affichage.elements.length * (affichage.duree_par_item_ms + 250)) / 1000)
+    : Math.round(affichage.duree_totale_ms / 1000);
+  const mention = estSequence
+    ? `${affichage.elements.length} éléments · environ ${dureeEstimee} s`
+    : `${affichage.elements.length} paires · environ ${dureeEstimee} s`;
+
+  // Consigne dans la carte énoncé ; le stimulus reste masqué jusqu'au signal
+  // de l'utilisateur (set attentionnel : on sait quoi chercher avant de voir).
+  refs.enonce.textContent = contenu.consigne ?? "Mémorise le contenu affiché.";
+  refs.enonce.className = "enonce";
+  refs.zoneAide.hidden = true;
+  refs.carteFeedback.hidden = true;
+  refs.boutonSuivant.hidden = true;
+  refs.formulaire.hidden = true;
+
+  const boutonAfficher = creerElement("button", {
+    classe: "bouton bouton-primaire bouton-large",
+    texte: "Afficher",
+    attributs: { type: "button" },
+  });
+  boutonAfficher.addEventListener("click", () => jouerAffichage(item));
+  refs.zoneMemo.replaceChildren(
+    creerElement("div", { classe: "memo-actions" },
+      boutonAfficher,
+      creerElement("span", { classe: "memo-mention", texte: mention })
+    )
+  );
+  refs.zoneMemo.hidden = false;
+  reglerEtatBoutons();
+}
+
+/** Lecture temporisée du stimulus (séquence élément par élément, ou liste). */
+function jouerAffichage(item) {
+  const affichage = item.contenu.affichage;
+  const plateau = creerElement("div", { classe: "memo-plateau" });
+  const indicateur = creerElement("p", { classe: "memo-points" });
+  const boutonPasser = creerElement("button", {
+    classe: "bouton bouton-secondaire",
+    texte: "Passer",
+    attributs: { type: "button" },
+  });
+  boutonPasser.addEventListener("click", () => afficherQuestion(item));
+  refs.zoneMemo.replaceChildren(plateau, indicateur, boutonPasser);
+
+  if (affichage.mode === "liste") {
+    const liste = creerElement("ul", { classe: "memo-liste" });
+    for (const [gauche, droite] of affichage.elements) {
+      liste.append(
+        creerElement("li", { classe: "memo-paire" },
+          creerElement("span", { texte: gauche }),
+          creerElement("span", { texte: droite })
+        )
+      );
+    }
+    plateau.append(liste);
+    etat.minuteriesMemo.push(
+      setTimeout(() => afficherQuestion(item), affichage.duree_totale_ms)
+    );
+    return;
+  }
+
+  // Séquence : un élément à la fois, 250 ms de blanc entre chaque.
+  const blancMemoMs = 250;
+  let delai = 0;
+  affichage.elements.forEach((element, index) => {
+    etat.minuteriesMemo.push(setTimeout(() => {
+      plateau.replaceChildren(
+        creerElement("span", { classe: "memo-element", texte: element })
+      );
+      indicateur.textContent = `${index + 1} / ${affichage.elements.length}`;
+    }, delai));
+    delai += affichage.duree_par_item_ms;
+    if (index < affichage.elements.length - 1) {
+      etat.minuteriesMemo.push(setTimeout(() => { plateau.replaceChildren(); }, delai));
+      delai += blancMemoMs;
+    }
+  });
+  etat.minuteriesMemo.push(setTimeout(() => afficherQuestion(item), delai));
+}
+
+/** Phase question : le stimulus a disparu — énoncé, saisie, focus. */
+function afficherQuestion(item) {
+  annulerMemo();
+  const contenu = item.contenu || {};
+
+  // Énoncé : grand texte ; variante monospace pour la prédiction de sortie.
   refs.enonce.textContent = contenu.enonce ?? "";
   refs.enonce.className =
     "enonce" + (item.type === "prediction-sortie" ? " enonce-code" : "");
@@ -408,13 +532,10 @@ function montrerItem() {
     refs.zoneAide.hidden = true;
   }
 
-  // Champ de saisie : remise à zéro, clavier numérique pour le calcul mental.
+  // Champ de saisie : remise à zéro, clavier adapté au type d'item.
   refs.champReponse.value = "";
   refs.champReponse.disabled = false;
-  refs.champReponse.setAttribute(
-    "inputmode",
-    etat.theme.id === "calcul-mental" ? "numeric" : "text"
-  );
+  refs.champReponse.setAttribute("inputmode", inputmodePour(item.type));
   refs.indiceReponse.hidden = true;
 
   // On masque le feedback précédent et on redonne la main.
@@ -538,6 +659,7 @@ async function finirSeance() {
   if (etat.actionEnCours || !etat.session) return;
   etat.actionEnCours = true;
   reglerEtatBoutons();
+  annulerMemo();
   reinitialiserConfirmationFin();
 
   try {

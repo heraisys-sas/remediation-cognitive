@@ -8,7 +8,7 @@ Base : `/api/entrainement` — périmètre **hors médical**. Format JSON. Pas d
 `{"status": "ok"}`
 
 ### GET /api/entrainement/themes
-`{"themes": [{"id": "calcul-mental", "nom": "Calcul mental", "description": "Tables et calcul rapide, paliers progressifs"}, ...]}`
+`{"themes": [{"id": "calcul-mental", "nom": "Calcul mental", "description": "Tables et calcul rapide, paliers progressifs"}, {"id": "anglais", …}, {"id": "python", …}, {"id": "memoire", "nom": "Mémoire", "description": "Empans de chiffres, séquences et associations — mémorisation progressive"}, {"id": "concentration", "nom": "Concentration", "description": "Calculs chaînés, double tâche et séries — une attention qui tient"}]}`
 
 ### POST /api/entrainement/{theme}/sessions
 Démarre une séance. Sélection serveur : items dus (FSRS) d'abord, puis nouveaux du palier courant.
@@ -44,4 +44,33 @@ Clôture la séance, applique FSRS + maîtrise, persiste.
  "contenu": {"enonce": "7 × 8", "aide": null}, "reponse": {"valeur": 56}}
 ```
 
-Types du sprint : `production` (saisie libre), `prediction-sortie` (python : exécution mentale d'un snippet, cap 1 niveau d'imbrication en échantillon).
+Types du sprint 1 : `production` (saisie libre), `prediction-sortie` (python : exécution mentale d'un snippet).
+
+## Types d'exercices — sprint 2 (mémorisation & concentration)
+
+Nouveaux thèmes `memoire` et `concentration`, nouvelles familles : `chaine-calcul`
+(chaînes d'additions/soustractions évaluées de gauche à droite — la longueur 3 → 7
+opérations croît la charge de mémoire de travail et conduit progressivement à la
+fatigue, détectée par le garde-fou existant), `serie-manquante` (suites
+arithmétiques/géométriques/alternées), `paires-associatives` (mot–nombre), et
+activation des types `empan`, `n-back` (sonde temporelle), `double-tache`
+(filtrage chiffres/lettres) sur ces thèmes.
+
+### Affichage temporisé (phase de mémorisation)
+
+Les items de ces familles portent `contenu.affichage` :
+- `{"mode": "sequence", "duree_par_item_ms": int, "elements": [str,…]}` — éléments
+  montrés un par un (250 ms de blanc entre chaque) ;
+- `{"mode": "liste", "duree_totale_ms": int, "elements": [[str, str],…]}` — toutes
+  les lignes pendant la durée totale.
+
+Déroulé imposé à l'interface : **consigne → stimulus temporisé → le stimulus
+DISPARAÎT → question → saisie**. Le temps de mémorisation ne compte pas dans
+`temps_ms`. Le garde-fou de durée (600 s) couvre la séance entière, affichage inclus.
+
+### Note d'honnêteté sur le stimulus
+
+Le stimulus des items temporisés (séquence de chiffres, paires…) voyage dans le
+payload client : en usage familial mono-utilisateur c'est assumé (l'interface ne
+l'affiche que pendant la phase de mémorisation) ; un mode serveur-poussé pourra
+être étudié plus tard si le besoin apparaît.

@@ -1,0 +1,620 @@
+[
+  {
+    "id": "co-8-chaine-61",
+    "type": "chaine-calcul",
+    "module": "entrainement",
+    "theme": "concentration",
+    "fonctions_ciblees": [
+      "attention-soutenue",
+      "memoire-travail"
+    ],
+    "palier": 8,
+    "prerequis": [
+      "co-palier-7"
+    ],
+    "cap_complexite": "7 opérations maximum",
+    "contenu": {
+      "enonce": "4 + 47 − 31 − 11 + 2 − 2 + 38 − 43",
+      "aide": "Calcule de gauche à droite, étape par étape."
+    },
+    "reponse": {
+      "valeur": 4
+    },
+    "meta": {
+      "auteur": "generation-automatique (tools/generer_memo_concentration.py)",
+      "date_creation": "2026-09-10",
+      "relecture_ortho": {
+        "statut": "a_revoir"
+      }
+    }
+  },
+  {
+    "id": "co-8-chaine-62",
+    "type": "chaine-calcul",
+    "module": "entrainement",
+    "theme": "concentration",
+    "fonctions_ciblees": [
+      "attention-soutenue",
+      "memoire-travail"
+    ],
+    "palier": 8,
+    "prerequis": [
+      "co-palier-7"
+    ],
+    "cap_complexite": "7 opérations maximum",
+    "contenu": {
+      "enonce": "19 − 4 − 7 + 25 − 20 + 39 + 23 − 31",
+      "aide": "Calcule de gauche à droite, étape par étape."
+    },
+    "reponse": {
+      "valeur": 44
+    },
+    "meta": {
+      "auteur": "generation-automatique (tools/generer_memo_concentration.py)",
+      "date_creation": "2026-09-10",
+      "relecture_ortho": {
+        "statut": "a_revoir"
+      }
+    }
+  },
+  {
+    "id": "co-8-chaine-63",
+    "type": "chaine-calcul",
+    "module": "entrainement",
+    "theme": "concentration",
+    "fonctions_ciblees": [
+      "attention-soutenue",
+      "memoire-travail"
+    ],
+    "palier": 8,
+    "prerequis": [
+      "co-palier-7"
+    ],
+    "cap_complexite": "7 opérations maximum",
+    "contenu": {
+      "enonce": "36 − 21 − 2 − 5 + 35 − 39 + 34 − 9",
+      "aide": "Calcule de gauche à droite, étape par étape."
+    },
+    "reponse": {
+      "valeur": 29
+    },
+    "meta": {
+      "auteur": "generation-automatique (tools/generer_memo_concentration.py)",
+      "date_creation": "2026-09-10",
+      "relecture_ortho": {
+        "statut": "a_revoir"
+      }
+    }
+  },
+  {
+    "id": "co-8-chaine-64",
+    "type": "chaine-calcul",
+    "module": "entrainement",
+    "theme": "concentration",
+    "fonctions_ciblees": [
+      "attention-soutenue",
+      "memoire-travail"
+    ],
+    "palier": 8,
+    "prerequis": [
+      "co-palier-7"
+    ],
+    "cap_complexite": "7 opérations maximum",
+    "contenu": {
+      "enonce": "46 − 17 − 20 + 5 + 18 + 15 − 42 − 3",
+      "aide": "Calcule de gauche à droite, étape par étape."
+    },
+    "reponse": {
+      "valeur": 2
+    },
+    "meta": {
+      "auteur": "generation-automatique (tools/generer_memo_concentration.py)",
+      "date_creation": "2026-09-10",
+      "relecture_ortho": {
+        "statut": "a_revoir"
+      }
+    }
+  },
+  {
+    "id": "co-8-chaine-65",
+    "type": "chaine-calcul",
+    "module": "entrainement",
+    "theme": "concentration",
+    "fonctions_ciblees": [
+      "attention-soutenue",
+      "memoire-travail"
+    ],
+    "palier": 8,
+    "prerequis": [
+      "co-palier-7"
+    ],
+    "cap_complexite": "7 opérations maximum",
+    "contenu": {
+      "enonce": "36 − 32 + 11 − 9 + 49 − 11 − 17 + 46",
+      "aide": "Calcule de gauche à droite, étape par étape."
+    },
+    "reponse": {
+      "valeur": 73
+    },
+    "meta": {
+      "auteur": "generation-automatique (tools/generer_memo_concentration.py)",
+      "date_creation": "2026-09-10",
+      "relecture_ortho": {
+        "statut": "a_revoir"
+      }
+    }
+  },
+  {
+    "id": "co-8-chaine-66",
+    "type": "chaine-calcul",
+    "module": "entrainement",
+    "theme": "concentration",
+    "fonctions_ciblees": [
+      "attention-soutenue",
+      "memoire-travail"
+    ],
+    "palier": 8,
+    "prerequis": [
+      "co-palier-7"
+    ],
+    "cap_complexite": "7 opérations maximum",
+    "contenu": {
+      "enonce": "15 − 12 + 25 − 12 − 13 + 48 + 12 − 26",
+      "aide": "Calcule de gauche à droite, étape par étape."
+    },
+    "reponse": {
+      "valeur": 37
+    },
+    "meta": {
+      "auteur": "generation-automatique (tools/generer_memo_concentration.py)",
+      "date_creation": "2026-09-10",
+      "relecture_ortho": {
+        "statut": "a_revoir"
+      }
+    }
+  },
+  {
+    "id": "co-8-chaine-67",
+    "type": "chaine-calcul",
+    "module": "entrainement",
+    "theme": "concentration",
+    "fonctions_ciblees": [
+      "attention-soutenue",
+      "memoire-travail"
+    ],
+    "palier": 8,
+    "prerequis": [
+      "co-palier-7"
+    ],
+    "cap_complexite": "7 opérations maximum",
+    "contenu": {
+      "enonce": "20 + 37 + 22 − 49 + 43 − 23 + 16 − 29",
+      "aide": "Calcule de gauche à droite, étape par étape."
+    },
+    "reponse": {
+      "valeur": 37
+    },
+    "meta": {
+      "auteur": "generation-automatique (tools/generer_memo_concentration.py)",
+      "date_creation": "2026-09-10",
+      "relecture_ortho": {
+        "statut": "a_revoir"
+      }
+    }
+  },
+  {
+    "id": "co-8-chaine-68",
+    "type": "chaine-calcul",
+    "module": "entrainement",
+    "theme": "concentration",
+    "fonctions_ciblees": [
+      "attention-soutenue",
+      "memoire-travail"
+    ],
+    "palier": 8,
+    "prerequis": [
+      "co-palier-7"
+    ],
+    "cap_complexite": "7 opérations maximum",
+    "contenu": {
+      "enonce": "29 − 17 + 23 − 18 − 2 − 2 − 11 + 45",
+      "aide": "Calcule de gauche à droite, étape par étape."
+    },
+    "reponse": {
+      "valeur": 47
+    },
+    "meta": {
+      "auteur": "generation-automatique (tools/generer_memo_concentration.py)",
+      "date_creation": "2026-09-10",
+      "relecture_ortho": {
+        "statut": "a_revoir"
+      }
+    }
+  },
+  {
+    "id": "co-8-chaine-69",
+    "type": "chaine-calcul",
+    "module": "entrainement",
+    "theme": "concentration",
+    "fonctions_ciblees": [
+      "attention-soutenue",
+      "memoire-travail"
+    ],
+    "palier": 8,
+    "prerequis": [
+      "co-palier-7"
+    ],
+    "cap_complexite": "7 opérations maximum",
+    "contenu": {
+      "enonce": "3 + 40 − 6 + 27 − 3 − 32 − 23 − 3",
+      "aide": "Calcule de gauche à droite, étape par étape."
+    },
+    "reponse": {
+      "valeur": 3
+    },
+    "meta": {
+      "auteur": "generation-automatique (tools/generer_memo_concentration.py)",
+      "date_creation": "2026-09-10",
+      "relecture_ortho": {
+        "statut": "a_revoir"
+      }
+    }
+  },
+  {
+    "id": "co-8-chaine-70",
+    "type": "chaine-calcul",
+    "module": "entrainement",
+    "theme": "concentration",
+    "fonctions_ciblees": [
+      "attention-soutenue",
+      "memoire-travail"
+    ],
+    "palier": 8,
+    "prerequis": [
+      "co-palier-7"
+    ],
+    "cap_complexite": "7 opérations maximum",
+    "contenu": {
+      "enonce": "29 + 22 − 30 − 3 + 3 − 12 + 27 + 28",
+      "aide": "Calcule de gauche à droite, étape par étape."
+    },
+    "reponse": {
+      "valeur": 64
+    },
+    "meta": {
+      "auteur": "generation-automatique (tools/generer_memo_concentration.py)",
+      "date_creation": "2026-09-10",
+      "relecture_ortho": {
+        "statut": "a_revoir"
+      }
+    }
+  },
+  {
+    "id": "co-8-chaine-71",
+    "type": "chaine-calcul",
+    "module": "entrainement",
+    "theme": "concentration",
+    "fonctions_ciblees": [
+      "attention-soutenue",
+      "memoire-travail"
+    ],
+    "palier": 8,
+    "prerequis": [
+      "co-palier-7"
+    ],
+    "cap_complexite": "7 opérations maximum",
+    "contenu": {
+      "enonce": "18 − 9 + 22 − 2 + 45 + 40 + 25 + 32",
+      "aide": "Calcule de gauche à droite, étape par étape."
+    },
+    "reponse": {
+      "valeur": 171
+    },
+    "meta": {
+      "auteur": "generation-automatique (tools/generer_memo_concentration.py)",
+      "date_creation": "2026-09-10",
+      "relecture_ortho": {
+        "statut": "a_revoir"
+      }
+    }
+  },
+  {
+    "id": "co-8-chaine-72",
+    "type": "chaine-calcul",
+    "module": "entrainement",
+    "theme": "concentration",
+    "fonctions_ciblees": [
+      "attention-soutenue",
+      "memoire-travail"
+    ],
+    "palier": 8,
+    "prerequis": [
+      "co-palier-7"
+    ],
+    "cap_complexite": "7 opérations maximum",
+    "contenu": {
+      "enonce": "35 − 22 − 5 − 4 + 45 + 38 + 2 − 38",
+      "aide": "Calcule de gauche à droite, étape par étape."
+    },
+    "reponse": {
+      "valeur": 51
+    },
+    "meta": {
+      "auteur": "generation-automatique (tools/generer_memo_concentration.py)",
+      "date_creation": "2026-09-10",
+      "relecture_ortho": {
+        "statut": "a_revoir"
+      }
+    }
+  },
+  {
+    "id": "co-8-double-37",
+    "type": "double-tache",
+    "module": "entrainement",
+    "theme": "concentration",
+    "fonctions_ciblees": [
+      "attention-divisee",
+      "attention-selective"
+    ],
+    "palier": 8,
+    "prerequis": [
+      "co-palier-7"
+    ],
+    "cap_complexite": null,
+    "contenu": {
+      "consigne": "Tu verras une suite mêlant lettres et chiffres : prépare-toi à additionner les chiffres.",
+      "affichage": {
+        "mode": "sequence",
+        "duree_par_item_ms": 1000,
+        "elements": [
+          "4",
+          "F",
+          "3",
+          "H",
+          "S",
+          "S",
+          "N",
+          "A",
+          "4"
+        ]
+      },
+      "enonce": "Quelle était la somme des chiffres ?",
+      "aide": null
+    },
+    "reponse": {
+      "valeur": 11
+    },
+    "meta": {
+      "auteur": "generation-automatique (tools/generer_memo_concentration.py)",
+      "date_creation": "2026-09-10",
+      "relecture_ortho": {
+        "statut": "a_revoir"
+      }
+    }
+  },
+  {
+    "id": "co-8-double-38",
+    "type": "double-tache",
+    "module": "entrainement",
+    "theme": "concentration",
+    "fonctions_ciblees": [
+      "attention-divisee",
+      "attention-selective"
+    ],
+    "palier": 8,
+    "prerequis": [
+      "co-palier-7"
+    ],
+    "cap_complexite": null,
+    "contenu": {
+      "consigne": "Tu verras une suite mêlant lettres et chiffres : prépare-toi à additionner les chiffres.",
+      "affichage": {
+        "mode": "sequence",
+        "duree_par_item_ms": 1000,
+        "elements": [
+          "2",
+          "N",
+          "G",
+          "9",
+          "H",
+          "9",
+          "N",
+          "T",
+          "S"
+        ]
+      },
+      "enonce": "Quelle était la somme des chiffres ?",
+      "aide": null
+    },
+    "reponse": {
+      "valeur": 20
+    },
+    "meta": {
+      "auteur": "generation-automatique (tools/generer_memo_concentration.py)",
+      "date_creation": "2026-09-10",
+      "relecture_ortho": {
+        "statut": "a_revoir"
+      }
+    }
+  },
+  {
+    "id": "co-8-double-39",
+    "type": "double-tache",
+    "module": "entrainement",
+    "theme": "concentration",
+    "fonctions_ciblees": [
+      "attention-divisee",
+      "attention-selective"
+    ],
+    "palier": 8,
+    "prerequis": [
+      "co-palier-7"
+    ],
+    "cap_complexite": null,
+    "contenu": {
+      "consigne": "Tu verras une suite mêlant lettres et chiffres : prépare-toi à additionner les chiffres.",
+      "affichage": {
+        "mode": "sequence",
+        "duree_par_item_ms": 1000,
+        "elements": [
+          "T",
+          "T",
+          "5",
+          "J",
+          "C",
+          "4",
+          "T",
+          "3",
+          "R"
+        ]
+      },
+      "enonce": "Quelle était la somme des chiffres ?",
+      "aide": null
+    },
+    "reponse": {
+      "valeur": 12
+    },
+    "meta": {
+      "auteur": "generation-automatique (tools/generer_memo_concentration.py)",
+      "date_creation": "2026-09-10",
+      "relecture_ortho": {
+        "statut": "a_revoir"
+      }
+    }
+  },
+  {
+    "id": "co-8-double-40",
+    "type": "double-tache",
+    "module": "entrainement",
+    "theme": "concentration",
+    "fonctions_ciblees": [
+      "attention-divisee",
+      "attention-selective"
+    ],
+    "palier": 8,
+    "prerequis": [
+      "co-palier-7"
+    ],
+    "cap_complexite": null,
+    "contenu": {
+      "consigne": "Tu verras une suite mêlant lettres et chiffres : prépare-toi à additionner les chiffres.",
+      "affichage": {
+        "mode": "sequence",
+        "duree_par_item_ms": 1000,
+        "elements": [
+          "C",
+          "S",
+          "J",
+          "9",
+          "F",
+          "4",
+          "G",
+          "C",
+          "3"
+        ]
+      },
+      "enonce": "Quelle était la somme des chiffres ?",
+      "aide": null
+    },
+    "reponse": {
+      "valeur": 16
+    },
+    "meta": {
+      "auteur": "generation-automatique (tools/generer_memo_concentration.py)",
+      "date_creation": "2026-09-10",
+      "relecture_ortho": {
+        "statut": "a_revoir"
+      }
+    }
+  },
+  {
+    "id": "co-8-double-41",
+    "type": "double-tache",
+    "module": "entrainement",
+    "theme": "concentration",
+    "fonctions_ciblees": [
+      "attention-divisee",
+      "attention-selective"
+    ],
+    "palier": 8,
+    "prerequis": [
+      "co-palier-7"
+    ],
+    "cap_complexite": null,
+    "contenu": {
+      "consigne": "Tu verras une suite mêlant lettres et chiffres : prépare-toi à additionner les chiffres.",
+      "affichage": {
+        "mode": "sequence",
+        "duree_par_item_ms": 1000,
+        "elements": [
+          "9",
+          "K",
+          "6",
+          "G",
+          "K",
+          "8",
+          "C",
+          "E",
+          "C"
+        ]
+      },
+      "enonce": "Quelle était la somme des chiffres ?",
+      "aide": null
+    },
+    "reponse": {
+      "valeur": 23
+    },
+    "meta": {
+      "auteur": "generation-automatique (tools/generer_memo_concentration.py)",
+      "date_creation": "2026-09-10",
+      "relecture_ortho": {
+        "statut": "a_revoir"
+      }
+    }
+  },
+  {
+    "id": "co-8-double-42",
+    "type": "double-tache",
+    "module": "entrainement",
+    "theme": "concentration",
+    "fonctions_ciblees": [
+      "attention-divisee",
+      "attention-selective"
+    ],
+    "palier": 8,
+    "prerequis": [
+      "co-palier-7"
+    ],
+    "cap_complexite": null,
+    "contenu": {
+      "consigne": "Tu verras une suite mêlant lettres et chiffres : prépare-toi à additionner les chiffres.",
+      "affichage": {
+        "mode": "sequence",
+        "duree_par_item_ms": 1000,
+        "elements": [
+          "E",
+          "7",
+          "S",
+          "7",
+          "T",
+          "J",
+          "G",
+          "1",
+          "L"
+        ]
+      },
+      "enonce": "Quelle était la somme des chiffres ?",
+      "aide": null
+    },
+    "reponse": {
+      "valeur": 15
+    },
+    "meta": {
+      "auteur": "generation-automatique (tools/generer_memo_concentration.py)",
+      "date_creation": "2026-09-10",
+      "relecture_ortho": {
+        "statut": "a_revoir"
+      }
+    }
+  }
+]

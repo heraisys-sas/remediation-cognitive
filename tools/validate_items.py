@@ -19,7 +19,10 @@ correspond à un manifest : le palier doit exister, l'``id`` doit suivre le
 motif ``cm-<table>-<a>x<b>`` avec la table déclarée par le manifest, un des
 deux facteurs doit valoir la table et la réponse doit valoir ``a × b``. Les
 références ``cm-palier-N`` placées dans ``prerequis`` doivent pointer vers un
-palier existant du manifest.
+palier existant du manifest. Multi-thèmes : chaque manifest déclare son thème
+(calcul-mental, memoire, concentration…) ; le contrôle de cohérence spécifique
+(tables, produits) ne s'applique qu'au calcul-mental, les autres thèmes ayant
+des identifiants à structure libre.
 
 Usage :
 
@@ -41,8 +44,9 @@ RACINE_DEPOT = Path(__file__).resolve().parent.parent
 DOSSIER_CONTENU = RACINE_DEPOT / "content"
 FICHIER_SCHEMA = DOSSIER_CONTENU / "schema-item.json"
 
-#: Références de paliers attendues dans les prerequis (convention calcul-mental).
-MOTIF_REF_PALIER = re.compile(r"^cm-palier-\d+$")
+#: Références de paliers attendues dans les prerequis (convention multi-thèmes :
+# cm-palier-N, me-palier-N, co-palier-N…).
+MOTIF_REF_PALIER = re.compile(r"^[a-z]+-palier-\d+$")
 
 #: Motif d'un identifiant d'item de calcul mental : cm-<table>-<a>x<b>.
 MOTIF_ID_CALCUL = re.compile(r"^cm-(\d+)-(\d+)x(\d+)$")
@@ -180,9 +184,10 @@ def erreurs_item(item: object, chemin: Path, regles: dict, ids_vus: dict[str, Pa
             ajouter(prefixe + f"{champ} doit être un objet")
 
     erreurs.extend(erreurs_meta(item.get("meta"), prefixe, regles))
-    erreurs.extend(
-        erreurs_coherence_calcul(item, prefixe, manifest_par_theme)
-    )
+    if item.get("theme") == "calcul-mental":
+        erreurs.extend(
+            erreurs_coherence_calcul(item, prefixe, manifest_par_theme)
+        )
     return erreurs
 
 
@@ -295,8 +300,16 @@ def erreurs_manifest(manifest: object, chemin: Path, donnees_par_fichier: dict[P
             ids_vus_manifest.add(identifiant)
             ids_paliers_connus.add(identifiant)
 
-        if not est_entier(entree.get("table")) or not 1 <= entree.get("table", 0) <= 10:
-            erreurs.append(prefixe + f"palier {position} : table doit être un entier 1..10")
+        if theme == "calcul-mental":
+            if not est_entier(entree.get("table")) or not 1 <= entree.get("table", 0) <= 10:
+                erreurs.append(prefixe + f"palier {position} : table doit être un entier 1..10")
+        else:
+            # Thèmes à familles multiples (memoire, concentration…) : une
+            # description remplace la table ; le champ table n'est pas attendu.
+            if "table" in entree:
+                erreurs.append(prefixe + f"palier {position} : champ table hors thème calcul-mental")
+            if "description" in entree and not isinstance(entree["description"], str):
+                erreurs.append(prefixe + f"palier {position} : description doit être une chaîne")
 
         prerequis = entree.get("prerequis", [])
         if not isinstance(prerequis, list) or not all(isinstance(p, str) for p in prerequis):

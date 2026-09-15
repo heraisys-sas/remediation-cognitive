@@ -1,0 +1,524 @@
+[
+  {
+    "id": "co-9-chaine-73",
+    "type": "chaine-calcul",
+    "module": "entrainement",
+    "theme": "concentration",
+    "fonctions_ciblees": [
+      "attention-soutenue",
+      "memoire-travail"
+    ],
+    "palier": 9,
+    "prerequis": [
+      "co-palier-8"
+    ],
+    "cap_complexite": "7 opérations maximum",
+    "contenu": {
+      "enonce": "30 − 20 − 7 + 20 + 31 + 45 − 19 − 57",
+      "aide": "Calcule de gauche à droite, étape par étape."
+    },
+    "reponse": {
+      "valeur": 23
+    },
+    "meta": {
+      "auteur": "generation-automatique (tools/generer_memo_concentration.py)",
+      "date_creation": "2026-09-10",
+      "relecture_ortho": {
+        "statut": "a_revoir"
+      }
+    }
+  },
+  {
+    "id": "co-9-chaine-74",
+    "type": "chaine-calcul",
+    "module": "entrainement",
+    "theme": "concentration",
+    "fonctions_ciblees": [
+      "attention-soutenue",
+      "memoire-travail"
+    ],
+    "palier": 9,
+    "prerequis": [
+      "co-palier-8"
+    ],
+    "cap_complexite": "7 opérations maximum",
+    "contenu": {
+      "enonce": "10 − 7 + 7 − 2 − 6 + 30 + 32 − 58",
+      "aide": "Calcule de gauche à droite, étape par étape."
+    },
+    "reponse": {
+      "valeur": 6
+    },
+    "meta": {
+      "auteur": "generation-automatique (tools/generer_memo_concentration.py)",
+      "date_creation": "2026-09-10",
+      "relecture_ortho": {
+        "statut": "a_revoir"
+      }
+    }
+  },
+  {
+    "id": "co-9-chaine-75",
+    "type": "chaine-calcul",
+    "module": "entrainement",
+    "theme": "concentration",
+    "fonctions_ciblees": [
+      "attention-soutenue",
+      "memoire-travail"
+    ],
+    "palier": 9,
+    "prerequis": [
+      "co-palier-8"
+    ],
+    "cap_complexite": "7 opérations maximum",
+    "contenu": {
+      "enonce": "48 + 11 − 10 − 4 + 3 + 7 − 51 + 10",
+      "aide": "Calcule de gauche à droite, étape par étape."
+    },
+    "reponse": {
+      "valeur": 14
+    },
+    "meta": {
+      "auteur": "generation-automatique (tools/generer_memo_concentration.py)",
+      "date_creation": "2026-09-10",
+      "relecture_ortho": {
+        "statut": "a_revoir"
+      }
+    }
+  },
+  {
+    "id": "co-9-chaine-76",
+    "type": "chaine-calcul",
+    "module": "entrainement",
+    "theme": "concentration",
+    "fonctions_ciblees": [
+      "attention-soutenue",
+      "memoire-travail"
+    ],
+    "palier": 9,
+    "prerequis": [
+      "co-palier-8"
+    ],
+    "cap_complexite": "7 opérations maximum",
+    "contenu": {
+      "enonce": "12 + 52 + 20 + 34 − 21 − 4 + 47 − 19",
+      "aide": "Calcule de gauche à droite, étape par étape."
+    },
+    "reponse": {
+      "valeur": 121
+    },
+    "meta": {
+      "auteur": "generation-automatique (tools/generer_memo_concentration.py)",
+      "date_creation": "2026-09-10",
+      "relecture_ortho": {
+        "statut": "a_revoir"
+      }
+    }
+  },
+  {
+    "id": "co-9-chaine-77",
+    "type": "chaine-calcul",
+    "module": "entrainement",
+    "theme": "concentration",
+    "fonctions_ciblees": [
+      "attention-soutenue",
+      "memoire-travail"
+    ],
+    "palier": 9,
+    "prerequis": [
+      "co-palier-8"
+    ],
+    "cap_complexite": "7 opérations maximum",
+    "contenu": {
+      "enonce": "3 + 34 − 32 − 3 + 38 + 7 − 4 − 16",
+      "aide": "Calcule de gauche à droite, étape par étape."
+    },
+    "reponse": {
+      "valeur": 27
+    },
+    "meta": {
+      "auteur": "generation-automatique (tools/generer_memo_concentration.py)",
+      "date_creation": "2026-09-10",
+      "relecture_ortho": {
+        "statut": "a_revoir"
+      }
+    }
+  },
+  {
+    "id": "co-9-chaine-78",
+    "type": "chaine-calcul",
+    "module": "entrainement",
+    "theme": "concentration",
+    "fonctions_ciblees": [
+      "attention-soutenue",
+      "memoire-travail"
+    ],
+    "palier": 9,
+    "prerequis": [
+      "co-palier-8"
+    ],
+    "cap_complexite": "7 opérations maximum",
+    "contenu": {
+      "enonce": "49 − 44 − 2 + 14 − 3 − 8 + 33 + 51",
+      "aide": "Calcule de gauche à droite, étape par étape."
+    },
+    "reponse": {
+      "valeur": 90
+    },
+    "meta": {
+      "auteur": "generation-automatique (tools/generer_memo_concentration.py)",
+      "date_creation": "2026-09-10",
+      "relecture_ortho": {
+        "statut": "a_revoir"
+      }
+    }
+  },
+  {
+    "id": "co-9-chaine-79",
+    "type": "chaine-calcul",
+    "module": "entrainement",
+    "theme": "concentration",
+    "fonctions_ciblees": [
+      "attention-soutenue",
+      "memoire-travail"
+    ],
+    "palier": 9,
+    "prerequis": [
+      "co-palier-8"
+    ],
+    "cap_complexite": "7 opérations maximum",
+    "contenu": {
+      "enonce": "34 − 9 + 13 − 17 + 30 + 38 − 11 + 20",
+      "aide": "Calcule de gauche à droite, étape par étape."
+    },
+    "reponse": {
+      "valeur": 98
+    },
+    "meta": {
+      "auteur": "generation-automatique (tools/generer_memo_concentration.py)",
+      "date_creation": "2026-09-10",
+      "relecture_ortho": {
+        "statut": "a_revoir"
+      }
+    }
+  },
+  {
+    "id": "co-9-chaine-80",
+    "type": "chaine-calcul",
+    "module": "entrainement",
+    "theme": "concentration",
+    "fonctions_ciblees": [
+      "attention-soutenue",
+      "memoire-travail"
+    ],
+    "palier": 9,
+    "prerequis": [
+      "co-palier-8"
+    ],
+    "cap_complexite": "7 opérations maximum",
+    "contenu": {
+      "enonce": "60 + 25 − 4 − 10 − 11 + 52 + 20 − 52",
+      "aide": "Calcule de gauche à droite, étape par étape."
+    },
+    "reponse": {
+      "valeur": 80
+    },
+    "meta": {
+      "auteur": "generation-automatique (tools/generer_memo_concentration.py)",
+      "date_creation": "2026-09-10",
+      "relecture_ortho": {
+        "statut": "a_revoir"
+      }
+    }
+  },
+  {
+    "id": "co-9-chaine-81",
+    "type": "chaine-calcul",
+    "module": "entrainement",
+    "theme": "concentration",
+    "fonctions_ciblees": [
+      "attention-soutenue",
+      "memoire-travail"
+    ],
+    "palier": 9,
+    "prerequis": [
+      "co-palier-8"
+    ],
+    "cap_complexite": "7 opérations maximum",
+    "contenu": {
+      "enonce": "23 − 5 + 16 − 29 + 56 + 14 + 54 − 27",
+      "aide": "Calcule de gauche à droite, étape par étape."
+    },
+    "reponse": {
+      "valeur": 102
+    },
+    "meta": {
+      "auteur": "generation-automatique (tools/generer_memo_concentration.py)",
+      "date_creation": "2026-09-10",
+      "relecture_ortho": {
+        "statut": "a_revoir"
+      }
+    }
+  },
+  {
+    "id": "co-9-serie-13",
+    "type": "serie-manquante",
+    "module": "entrainement",
+    "theme": "concentration",
+    "fonctions_ciblees": [
+      "memoire-travail",
+      "vitesse-traitement"
+    ],
+    "palier": 9,
+    "prerequis": [
+      "co-palier-8"
+    ],
+    "cap_complexite": null,
+    "contenu": {
+      "enonce": "15, 17, 21, 23, __, 29 — quel nombre manque ?",
+      "aide": "Cherche la règle de la suite."
+    },
+    "reponse": {
+      "valeur": 27
+    },
+    "meta": {
+      "auteur": "generation-automatique (tools/generer_memo_concentration.py)",
+      "date_creation": "2026-09-10",
+      "relecture_ortho": {
+        "statut": "a_revoir"
+      }
+    }
+  },
+  {
+    "id": "co-9-serie-14",
+    "type": "serie-manquante",
+    "module": "entrainement",
+    "theme": "concentration",
+    "fonctions_ciblees": [
+      "memoire-travail",
+      "vitesse-traitement"
+    ],
+    "palier": 9,
+    "prerequis": [
+      "co-palier-8"
+    ],
+    "cap_complexite": null,
+    "contenu": {
+      "enonce": "12, 16, 19, __, 26, 30 — quel nombre manque ?",
+      "aide": "Cherche la règle de la suite."
+    },
+    "reponse": {
+      "valeur": 23
+    },
+    "meta": {
+      "auteur": "generation-automatique (tools/generer_memo_concentration.py)",
+      "date_creation": "2026-09-10",
+      "relecture_ortho": {
+        "statut": "a_revoir"
+      }
+    }
+  },
+  {
+    "id": "co-9-serie-15",
+    "type": "serie-manquante",
+    "module": "entrainement",
+    "theme": "concentration",
+    "fonctions_ciblees": [
+      "memoire-travail",
+      "vitesse-traitement"
+    ],
+    "palier": 9,
+    "prerequis": [
+      "co-palier-8"
+    ],
+    "cap_complexite": null,
+    "contenu": {
+      "enonce": "2, 3, 5, __, 8, 9 — quel nombre manque ?",
+      "aide": "Cherche la règle de la suite."
+    },
+    "reponse": {
+      "valeur": 6
+    },
+    "meta": {
+      "auteur": "generation-automatique (tools/generer_memo_concentration.py)",
+      "date_creation": "2026-09-10",
+      "relecture_ortho": {
+        "statut": "a_revoir"
+      }
+    }
+  },
+  {
+    "id": "co-9-serie-16",
+    "type": "serie-manquante",
+    "module": "entrainement",
+    "theme": "concentration",
+    "fonctions_ciblees": [
+      "memoire-travail",
+      "vitesse-traitement"
+    ],
+    "palier": 9,
+    "prerequis": [
+      "co-palier-8"
+    ],
+    "cap_complexite": null,
+    "contenu": {
+      "enonce": "7, 8, 13, 14, __, 20 — quel nombre manque ?",
+      "aide": "Cherche la règle de la suite."
+    },
+    "reponse": {
+      "valeur": 19
+    },
+    "meta": {
+      "auteur": "generation-automatique (tools/generer_memo_concentration.py)",
+      "date_creation": "2026-09-10",
+      "relecture_ortho": {
+        "statut": "a_revoir"
+      }
+    }
+  },
+  {
+    "id": "co-9-serie-17",
+    "type": "serie-manquante",
+    "module": "entrainement",
+    "theme": "concentration",
+    "fonctions_ciblees": [
+      "memoire-travail",
+      "vitesse-traitement"
+    ],
+    "palier": 9,
+    "prerequis": [
+      "co-palier-8"
+    ],
+    "cap_complexite": null,
+    "contenu": {
+      "enonce": "4, 7, 8, __, 12, 15 — quel nombre manque ?",
+      "aide": "Cherche la règle de la suite."
+    },
+    "reponse": {
+      "valeur": 11
+    },
+    "meta": {
+      "auteur": "generation-automatique (tools/generer_memo_concentration.py)",
+      "date_creation": "2026-09-10",
+      "relecture_ortho": {
+        "statut": "a_revoir"
+      }
+    }
+  },
+  {
+    "id": "co-9-serie-18",
+    "type": "serie-manquante",
+    "module": "entrainement",
+    "theme": "concentration",
+    "fonctions_ciblees": [
+      "memoire-travail",
+      "vitesse-traitement"
+    ],
+    "palier": 9,
+    "prerequis": [
+      "co-palier-8"
+    ],
+    "cap_complexite": null,
+    "contenu": {
+      "enonce": "14, 18, 19, 23, __, 28 — quel nombre manque ?",
+      "aide": "Cherche la règle de la suite."
+    },
+    "reponse": {
+      "valeur": 24
+    },
+    "meta": {
+      "auteur": "generation-automatique (tools/generer_memo_concentration.py)",
+      "date_creation": "2026-09-10",
+      "relecture_ortho": {
+        "statut": "a_revoir"
+      }
+    }
+  },
+  {
+    "id": "co-9-serie-19",
+    "type": "serie-manquante",
+    "module": "entrainement",
+    "theme": "concentration",
+    "fonctions_ciblees": [
+      "memoire-travail",
+      "vitesse-traitement"
+    ],
+    "palier": 9,
+    "prerequis": [
+      "co-palier-8"
+    ],
+    "cap_complexite": null,
+    "contenu": {
+      "enonce": "4, 9, 10, 15, __, 21 — quel nombre manque ?",
+      "aide": "Cherche la règle de la suite."
+    },
+    "reponse": {
+      "valeur": 16
+    },
+    "meta": {
+      "auteur": "generation-automatique (tools/generer_memo_concentration.py)",
+      "date_creation": "2026-09-10",
+      "relecture_ortho": {
+        "statut": "a_revoir"
+      }
+    }
+  },
+  {
+    "id": "co-9-serie-20",
+    "type": "serie-manquante",
+    "module": "entrainement",
+    "theme": "concentration",
+    "fonctions_ciblees": [
+      "memoire-travail",
+      "vitesse-traitement"
+    ],
+    "palier": 9,
+    "prerequis": [
+      "co-palier-8"
+    ],
+    "cap_complexite": null,
+    "contenu": {
+      "enonce": "13, 15, 20, 22, __, 29 — quel nombre manque ?",
+      "aide": "Cherche la règle de la suite."
+    },
+    "reponse": {
+      "valeur": 27
+    },
+    "meta": {
+      "auteur": "generation-automatique (tools/generer_memo_concentration.py)",
+      "date_creation": "2026-09-10",
+      "relecture_ortho": {
+        "statut": "a_revoir"
+      }
+    }
+  },
+  {
+    "id": "co-9-serie-21",
+    "type": "serie-manquante",
+    "module": "entrainement",
+    "theme": "concentration",
+    "fonctions_ciblees": [
+      "memoire-travail",
+      "vitesse-traitement"
+    ],
+    "palier": 9,
+    "prerequis": [
+      "co-palier-8"
+    ],
+    "cap_complexite": null,
+    "contenu": {
+      "enonce": "8, 12, 14, __, 20, 24 — quel nombre manque ?",
+      "aide": "Cherche la règle de la suite."
+    },
+    "reponse": {
+      "valeur": 18
+    },
+    "meta": {
+      "auteur": "generation-automatique (tools/generer_memo_concentration.py)",
+      "date_creation": "2026-09-10",
+      "relecture_ortho": {
+        "statut": "a_revoir"
+      }
+    }
+  }
+]

@@ -1,0 +1,776 @@
+[
+  {
+    "id": "co-6-double-19",
+    "type": "double-tache",
+    "module": "entrainement",
+    "theme": "concentration",
+    "fonctions_ciblees": [
+      "attention-divisee",
+      "attention-selective"
+    ],
+    "palier": 6,
+    "prerequis": [
+      "co-palier-5"
+    ],
+    "cap_complexite": null,
+    "contenu": {
+      "consigne": "Tu verras une suite mêlant lettres et chiffres : prépare-toi à additionner les chiffres.",
+      "affichage": {
+        "mode": "sequence",
+        "duree_par_item_ms": 1000,
+        "elements": [
+          "1",
+          "L",
+          "T",
+          "G",
+          "L",
+          "7",
+          "G"
+        ]
+      },
+      "enonce": "Quelle était la somme des chiffres ?",
+      "aide": null
+    },
+    "reponse": {
+      "valeur": 8
+    },
+    "meta": {
+      "auteur": "generation-automatique (tools/generer_memo_concentration.py)",
+      "date_creation": "2026-09-10",
+      "relecture_ortho": {
+        "statut": "a_revoir"
+      }
+    }
+  },
+  {
+    "id": "co-6-double-20",
+    "type": "double-tache",
+    "module": "entrainement",
+    "theme": "concentration",
+    "fonctions_ciblees": [
+      "attention-divisee",
+      "attention-selective"
+    ],
+    "palier": 6,
+    "prerequis": [
+      "co-palier-5"
+    ],
+    "cap_complexite": null,
+    "contenu": {
+      "consigne": "Tu verras une suite mêlant lettres et chiffres : prépare-toi à additionner les chiffres.",
+      "affichage": {
+        "mode": "sequence",
+        "duree_par_item_ms": 1000,
+        "elements": [
+          "J",
+          "3",
+          "R",
+          "K",
+          "9",
+          "K",
+          "R"
+        ]
+      },
+      "enonce": "Quelle était la somme des chiffres ?",
+      "aide": null
+    },
+    "reponse": {
+      "valeur": 12
+    },
+    "meta": {
+      "auteur": "generation-automatique (tools/generer_memo_concentration.py)",
+      "date_creation": "2026-09-10",
+      "relecture_ortho": {
+        "statut": "a_revoir"
+      }
+    }
+  },
+  {
+    "id": "co-6-double-21",
+    "type": "double-tache",
+    "module": "entrainement",
+    "theme": "concentration",
+    "fonctions_ciblees": [
+      "attention-divisee",
+      "attention-selective"
+    ],
+    "palier": 6,
+    "prerequis": [
+      "co-palier-5"
+    ],
+    "cap_complexite": null,
+    "contenu": {
+      "consigne": "Tu verras une suite mêlant lettres et chiffres : prépare-toi à additionner les chiffres.",
+      "affichage": {
+        "mode": "sequence",
+        "duree_par_item_ms": 1000,
+        "elements": [
+          "3",
+          "F",
+          "C",
+          "1",
+          "H",
+          "S",
+          "K"
+        ]
+      },
+      "enonce": "Quelle était la somme des chiffres ?",
+      "aide": null
+    },
+    "reponse": {
+      "valeur": 4
+    },
+    "meta": {
+      "auteur": "generation-automatique (tools/generer_memo_concentration.py)",
+      "date_creation": "2026-09-10",
+      "relecture_ortho": {
+        "statut": "a_revoir"
+      }
+    }
+  },
+  {
+    "id": "co-6-double-22",
+    "type": "double-tache",
+    "module": "entrainement",
+    "theme": "concentration",
+    "fonctions_ciblees": [
+      "attention-divisee",
+      "attention-selective"
+    ],
+    "palier": 6,
+    "prerequis": [
+      "co-palier-5"
+    ],
+    "cap_complexite": null,
+    "contenu": {
+      "consigne": "Tu verras une suite mêlant lettres et chiffres : prépare-toi à additionner les chiffres.",
+      "affichage": {
+        "mode": "sequence",
+        "duree_par_item_ms": 1000,
+        "elements": [
+          "T",
+          "3",
+          "S",
+          "E",
+          "7",
+          "R",
+          "G"
+        ]
+      },
+      "enonce": "Quelle était la somme des chiffres ?",
+      "aide": null
+    },
+    "reponse": {
+      "valeur": 10
+    },
+    "meta": {
+      "auteur": "generation-automatique (tools/generer_memo_concentration.py)",
+      "date_creation": "2026-09-10",
+      "relecture_ortho": {
+        "statut": "a_revoir"
+      }
+    }
+  },
+  {
+    "id": "co-6-double-23",
+    "type": "double-tache",
+    "module": "entrainement",
+    "theme": "concentration",
+    "fonctions_ciblees": [
+      "attention-divisee",
+      "attention-selective"
+    ],
+    "palier": 6,
+    "prerequis": [
+      "co-palier-5"
+    ],
+    "cap_complexite": null,
+    "contenu": {
+      "consigne": "Tu verras une suite mêlant lettres et chiffres : prépare-toi à additionner les chiffres.",
+      "affichage": {
+        "mode": "sequence",
+        "duree_par_item_ms": 1000,
+        "elements": [
+          "2",
+          "N",
+          "E",
+          "9",
+          "C",
+          "F",
+          "N"
+        ]
+      },
+      "enonce": "Quelle était la somme des chiffres ?",
+      "aide": null
+    },
+    "reponse": {
+      "valeur": 11
+    },
+    "meta": {
+      "auteur": "generation-automatique (tools/generer_memo_concentration.py)",
+      "date_creation": "2026-09-10",
+      "relecture_ortho": {
+        "statut": "a_revoir"
+      }
+    }
+  },
+  {
+    "id": "co-6-double-24",
+    "type": "double-tache",
+    "module": "entrainement",
+    "theme": "concentration",
+    "fonctions_ciblees": [
+      "attention-divisee",
+      "attention-selective"
+    ],
+    "palier": 6,
+    "prerequis": [
+      "co-palier-5"
+    ],
+    "cap_complexite": null,
+    "contenu": {
+      "consigne": "Tu verras une suite mêlant lettres et chiffres : prépare-toi à additionner les chiffres.",
+      "affichage": {
+        "mode": "sequence",
+        "duree_par_item_ms": 1000,
+        "elements": [
+          "C",
+          "C",
+          "6",
+          "T",
+          "3",
+          "R",
+          "K"
+        ]
+      },
+      "enonce": "Quelle était la somme des chiffres ?",
+      "aide": null
+    },
+    "reponse": {
+      "valeur": 9
+    },
+    "meta": {
+      "auteur": "generation-automatique (tools/generer_memo_concentration.py)",
+      "date_creation": "2026-09-10",
+      "relecture_ortho": {
+        "statut": "a_revoir"
+      }
+    }
+  },
+  {
+    "id": "co-6-double-25",
+    "type": "double-tache",
+    "module": "entrainement",
+    "theme": "concentration",
+    "fonctions_ciblees": [
+      "attention-divisee",
+      "attention-selective"
+    ],
+    "palier": 6,
+    "prerequis": [
+      "co-palier-5"
+    ],
+    "cap_complexite": null,
+    "contenu": {
+      "consigne": "Tu verras une suite mêlant lettres et chiffres : prépare-toi à additionner les chiffres.",
+      "affichage": {
+        "mode": "sequence",
+        "duree_par_item_ms": 1000,
+        "elements": [
+          "J",
+          "5",
+          "K",
+          "5",
+          "N",
+          "F",
+          "T"
+        ]
+      },
+      "enonce": "Quelle était la somme des chiffres ?",
+      "aide": null
+    },
+    "reponse": {
+      "valeur": 10
+    },
+    "meta": {
+      "auteur": "generation-automatique (tools/generer_memo_concentration.py)",
+      "date_creation": "2026-09-10",
+      "relecture_ortho": {
+        "statut": "a_revoir"
+      }
+    }
+  },
+  {
+    "id": "co-6-double-26",
+    "type": "double-tache",
+    "module": "entrainement",
+    "theme": "concentration",
+    "fonctions_ciblees": [
+      "attention-divisee",
+      "attention-selective"
+    ],
+    "palier": 6,
+    "prerequis": [
+      "co-palier-5"
+    ],
+    "cap_complexite": null,
+    "contenu": {
+      "consigne": "Tu verras une suite mêlant lettres et chiffres : prépare-toi à additionner les chiffres.",
+      "affichage": {
+        "mode": "sequence",
+        "duree_par_item_ms": 1000,
+        "elements": [
+          "8",
+          "J",
+          "E",
+          "J",
+          "8",
+          "N",
+          "E"
+        ]
+      },
+      "enonce": "Quelle était la somme des chiffres ?",
+      "aide": null
+    },
+    "reponse": {
+      "valeur": 16
+    },
+    "meta": {
+      "auteur": "generation-automatique (tools/generer_memo_concentration.py)",
+      "date_creation": "2026-09-10",
+      "relecture_ortho": {
+        "statut": "a_revoir"
+      }
+    }
+  },
+  {
+    "id": "co-6-double-27",
+    "type": "double-tache",
+    "module": "entrainement",
+    "theme": "concentration",
+    "fonctions_ciblees": [
+      "attention-divisee",
+      "attention-selective"
+    ],
+    "palier": 6,
+    "prerequis": [
+      "co-palier-5"
+    ],
+    "cap_complexite": null,
+    "contenu": {
+      "consigne": "Tu verras une suite mêlant lettres et chiffres : prépare-toi à additionner les chiffres.",
+      "affichage": {
+        "mode": "sequence",
+        "duree_par_item_ms": 1000,
+        "elements": [
+          "F",
+          "A",
+          "9",
+          "R",
+          "A",
+          "7",
+          "J"
+        ]
+      },
+      "enonce": "Quelle était la somme des chiffres ?",
+      "aide": null
+    },
+    "reponse": {
+      "valeur": 16
+    },
+    "meta": {
+      "auteur": "generation-automatique (tools/generer_memo_concentration.py)",
+      "date_creation": "2026-09-10",
+      "relecture_ortho": {
+        "statut": "a_revoir"
+      }
+    }
+  },
+  {
+    "id": "co-6-double-28",
+    "type": "double-tache",
+    "module": "entrainement",
+    "theme": "concentration",
+    "fonctions_ciblees": [
+      "attention-divisee",
+      "attention-selective"
+    ],
+    "palier": 6,
+    "prerequis": [
+      "co-palier-5"
+    ],
+    "cap_complexite": null,
+    "contenu": {
+      "consigne": "Tu verras une suite mêlant lettres et chiffres : prépare-toi à compter les lettres.",
+      "affichage": {
+        "mode": "sequence",
+        "duree_par_item_ms": 1000,
+        "elements": [
+          "E",
+          "R",
+          "3",
+          "G",
+          "J",
+          "5",
+          "F"
+        ]
+      },
+      "enonce": "Combien de lettres y avait-il ?",
+      "aide": null
+    },
+    "reponse": {
+      "valeur": 5
+    },
+    "meta": {
+      "auteur": "generation-automatique (tools/generer_memo_concentration.py)",
+      "date_creation": "2026-09-10",
+      "relecture_ortho": {
+        "statut": "a_revoir"
+      }
+    }
+  },
+  {
+    "id": "co-6-double-29",
+    "type": "double-tache",
+    "module": "entrainement",
+    "theme": "concentration",
+    "fonctions_ciblees": [
+      "attention-divisee",
+      "attention-selective"
+    ],
+    "palier": 6,
+    "prerequis": [
+      "co-palier-5"
+    ],
+    "cap_complexite": null,
+    "contenu": {
+      "consigne": "Tu verras une suite mêlant lettres et chiffres : prépare-toi à compter les lettres.",
+      "affichage": {
+        "mode": "sequence",
+        "duree_par_item_ms": 1000,
+        "elements": [
+          "3",
+          "R",
+          "K",
+          "1",
+          "S",
+          "N",
+          "L"
+        ]
+      },
+      "enonce": "Combien de lettres y avait-il ?",
+      "aide": null
+    },
+    "reponse": {
+      "valeur": 5
+    },
+    "meta": {
+      "auteur": "generation-automatique (tools/generer_memo_concentration.py)",
+      "date_creation": "2026-09-10",
+      "relecture_ortho": {
+        "statut": "a_revoir"
+      }
+    }
+  },
+  {
+    "id": "co-6-double-30",
+    "type": "double-tache",
+    "module": "entrainement",
+    "theme": "concentration",
+    "fonctions_ciblees": [
+      "attention-divisee",
+      "attention-selective"
+    ],
+    "palier": 6,
+    "prerequis": [
+      "co-palier-5"
+    ],
+    "cap_complexite": null,
+    "contenu": {
+      "consigne": "Tu verras une suite mêlant lettres et chiffres : prépare-toi à compter les lettres.",
+      "affichage": {
+        "mode": "sequence",
+        "duree_par_item_ms": 1000,
+        "elements": [
+          "G",
+          "4",
+          "R",
+          "A",
+          "5",
+          "K",
+          "E"
+        ]
+      },
+      "enonce": "Combien de lettres y avait-il ?",
+      "aide": null
+    },
+    "reponse": {
+      "valeur": 5
+    },
+    "meta": {
+      "auteur": "generation-automatique (tools/generer_memo_concentration.py)",
+      "date_creation": "2026-09-10",
+      "relecture_ortho": {
+        "statut": "a_revoir"
+      }
+    }
+  },
+  {
+    "id": "co-6-double-31",
+    "type": "double-tache",
+    "module": "entrainement",
+    "theme": "concentration",
+    "fonctions_ciblees": [
+      "attention-divisee",
+      "attention-selective"
+    ],
+    "palier": 6,
+    "prerequis": [
+      "co-palier-5"
+    ],
+    "cap_complexite": null,
+    "contenu": {
+      "consigne": "Tu verras une suite mêlant lettres et chiffres : prépare-toi à compter les lettres.",
+      "affichage": {
+        "mode": "sequence",
+        "duree_par_item_ms": 1000,
+        "elements": [
+          "6",
+          "A",
+          "C",
+          "3",
+          "C",
+          "L",
+          "T"
+        ]
+      },
+      "enonce": "Combien de lettres y avait-il ?",
+      "aide": null
+    },
+    "reponse": {
+      "valeur": 5
+    },
+    "meta": {
+      "auteur": "generation-automatique (tools/generer_memo_concentration.py)",
+      "date_creation": "2026-09-10",
+      "relecture_ortho": {
+        "statut": "a_revoir"
+      }
+    }
+  },
+  {
+    "id": "co-6-double-32",
+    "type": "double-tache",
+    "module": "entrainement",
+    "theme": "concentration",
+    "fonctions_ciblees": [
+      "attention-divisee",
+      "attention-selective"
+    ],
+    "palier": 6,
+    "prerequis": [
+      "co-palier-5"
+    ],
+    "cap_complexite": null,
+    "contenu": {
+      "consigne": "Tu verras une suite mêlant lettres et chiffres : prépare-toi à compter les lettres.",
+      "affichage": {
+        "mode": "sequence",
+        "duree_par_item_ms": 1000,
+        "elements": [
+          "T",
+          "E",
+          "5",
+          "C",
+          "F",
+          "6",
+          "F"
+        ]
+      },
+      "enonce": "Combien de lettres y avait-il ?",
+      "aide": null
+    },
+    "reponse": {
+      "valeur": 5
+    },
+    "meta": {
+      "auteur": "generation-automatique (tools/generer_memo_concentration.py)",
+      "date_creation": "2026-09-10",
+      "relecture_ortho": {
+        "statut": "a_revoir"
+      }
+    }
+  },
+  {
+    "id": "co-6-double-33",
+    "type": "double-tache",
+    "module": "entrainement",
+    "theme": "concentration",
+    "fonctions_ciblees": [
+      "attention-divisee",
+      "attention-selective"
+    ],
+    "palier": 6,
+    "prerequis": [
+      "co-palier-5"
+    ],
+    "cap_complexite": null,
+    "contenu": {
+      "consigne": "Tu verras une suite mêlant lettres et chiffres : prépare-toi à compter les lettres.",
+      "affichage": {
+        "mode": "sequence",
+        "duree_par_item_ms": 1000,
+        "elements": [
+          "2",
+          "S",
+          "G",
+          "E",
+          "2",
+          "G",
+          "N"
+        ]
+      },
+      "enonce": "Combien de lettres y avait-il ?",
+      "aide": null
+    },
+    "reponse": {
+      "valeur": 5
+    },
+    "meta": {
+      "auteur": "generation-automatique (tools/generer_memo_concentration.py)",
+      "date_creation": "2026-09-10",
+      "relecture_ortho": {
+        "statut": "a_revoir"
+      }
+    }
+  },
+  {
+    "id": "co-6-double-34",
+    "type": "double-tache",
+    "module": "entrainement",
+    "theme": "concentration",
+    "fonctions_ciblees": [
+      "attention-divisee",
+      "attention-selective"
+    ],
+    "palier": 6,
+    "prerequis": [
+      "co-palier-5"
+    ],
+    "cap_complexite": null,
+    "contenu": {
+      "consigne": "Tu verras une suite mêlant lettres et chiffres : prépare-toi à compter les lettres.",
+      "affichage": {
+        "mode": "sequence",
+        "duree_par_item_ms": 1000,
+        "elements": [
+          "2",
+          "T",
+          "N",
+          "5",
+          "G",
+          "G",
+          "L"
+        ]
+      },
+      "enonce": "Combien de lettres y avait-il ?",
+      "aide": null
+    },
+    "reponse": {
+      "valeur": 5
+    },
+    "meta": {
+      "auteur": "generation-automatique (tools/generer_memo_concentration.py)",
+      "date_creation": "2026-09-10",
+      "relecture_ortho": {
+        "statut": "a_revoir"
+      }
+    }
+  },
+  {
+    "id": "co-6-double-35",
+    "type": "double-tache",
+    "module": "entrainement",
+    "theme": "concentration",
+    "fonctions_ciblees": [
+      "attention-divisee",
+      "attention-selective"
+    ],
+    "palier": 6,
+    "prerequis": [
+      "co-palier-5"
+    ],
+    "cap_complexite": null,
+    "contenu": {
+      "consigne": "Tu verras une suite mêlant lettres et chiffres : prépare-toi à compter les lettres.",
+      "affichage": {
+        "mode": "sequence",
+        "duree_par_item_ms": 1000,
+        "elements": [
+          "5",
+          "C",
+          "N",
+          "R",
+          "8",
+          "K",
+          "C"
+        ]
+      },
+      "enonce": "Combien de lettres y avait-il ?",
+      "aide": null
+    },
+    "reponse": {
+      "valeur": 5
+    },
+    "meta": {
+      "auteur": "generation-automatique (tools/generer_memo_concentration.py)",
+      "date_creation": "2026-09-10",
+      "relecture_ortho": {
+        "statut": "a_revoir"
+      }
+    }
+  },
+  {
+    "id": "co-6-double-36",
+    "type": "double-tache",
+    "module": "entrainement",
+    "theme": "concentration",
+    "fonctions_ciblees": [
+      "attention-divisee",
+      "attention-selective"
+    ],
+    "palier": 6,
+    "prerequis": [
+      "co-palier-5"
+    ],
+    "cap_complexite": null,
+    "contenu": {
+      "consigne": "Tu verras une suite mêlant lettres et chiffres : prépare-toi à compter les lettres.",
+      "affichage": {
+        "mode": "sequence",
+        "duree_par_item_ms": 1000,
+        "elements": [
+          "E",
+          "C",
+          "J",
+          "3",
+          "G",
+          "2",
+          "F"
+        ]
+      },
+      "enonce": "Combien de lettres y avait-il ?",
+      "aide": null
+    },
+    "reponse": {
+      "valeur": 5
+    },
+    "meta": {
+      "auteur": "generation-automatique (tools/generer_memo_concentration.py)",
+      "date_creation": "2026-09-10",
+      "relecture_ortho": {
+        "statut": "a_revoir"
+      }
+    }
+  }
+]

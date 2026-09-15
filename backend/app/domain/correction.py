@@ -6,10 +6,14 @@ serveur avant la soumission de l'utilisateur. La comparaison se fait ici
 après coup pour le feedback guidé) est renvoyé par l'API.
 
 Règles par thème (docs/30-technique/api-contract.md) :
-- ``calcul-mental`` : comparaison numérique — accepte ``56`` ou ``"56"`` ;
-- ``anglais``       : texte insensible à la casse, espaces trimmés ;
-- ``python``        : chaîne exacte trimmée — production comme
-  ``prediction-sortie``.
+- ``calcul-mental``  : comparaison numérique — accepte ``56`` ou ``"56"`` ;
+- ``anglais``        : texte insensible à la casse, espaces trimmés ;
+- ``python``         : chaîne exacte trimmée — production comme
+  ``prediction-sortie`` ;
+- ``memoire``        : texte insensible à la casse, TOUS les espaces ignorés
+  (les empans tapés avec espaces restent valides) ;
+- ``concentration``  : comparaison numérique (chaînes, cascades, double tâche,
+  séries — réponses entières).
 """
 
 from __future__ import annotations
@@ -50,19 +54,32 @@ def _corriger_numerique(reponse, attendue) -> bool:
     return abs(valeur - cible) <= TOLERANCE_NUMERIQUE
 
 
+def _corriger_sans_espaces(reponse, attendue) -> bool:
+    """Compare deux textes en ignorant TOUT espace et la casse (thème memoire).
+
+    Les empans tapés avec des espaces (``"5 8 2 9 4"``) restent équivalents
+    à la séquence collée (``"58294"``) ; la casse est ignorée pour le n-back.
+    """
+    nettoyer = lambda valeur: "".join(str(valeur or "").split()).lower()
+    return nettoyer(reponse) == nettoyer(attendue)
+
+
 def corriger(theme: str, item: dict, reponse) -> bool:
     """Retourne True si la réponse soumise correspond à la réponse attendue.
 
-    - ``theme`` : identifiant API du thème (calcul-mental, anglais, python) ;
+    - ``theme`` : identifiant API du thème (calcul-mental, anglais, python,
+      memoire, concentration) ;
     - ``item`` : item complet côté serveur (avec ``reponse.valeur``) ;
     - ``reponse`` : réponse utilisateur (str ou nombre, corps du contrat).
 
     Fonction interne serveur : ne jamais l'exposer avant soumission.
     """
     attendue = (item.get("reponse") or {}).get("valeur")
-    if theme == "calcul-mental":
+    if theme in ("calcul-mental", "concentration"):
         return _corriger_numerique(reponse, attendue)
-    if theme == "anglais":
+    if theme in ("anglais", "memoire"):
+        if theme == "memoire":
+            return _corriger_sans_espaces(reponse, attendue)
         return (
             _normaliser_texte(reponse).lower()
             == _normaliser_texte(attendue).lower()

@@ -497,3 +497,86 @@ body {
   .grille-stats { grid-template-columns: repeat(2, 1fr); }
   .carte-enonce { padding: 1.5rem 1.15rem; }
 }
+
+/* ---------------------------------------------------------------------
+   Phase de mémorisation (sprint 2) : consigne → stimulus temporisé →
+   question. Aucun mouvement : le plateau et l'indicateur réservent
+   leur espace (min-height) pour éviter tout décalage de mise en page.
+   --------------------------------------------------------------------- */
+
+.zone-memo {
+  margin-top: 1.25rem;
+  padding: 1.75rem 1.5rem;
+  border: 1px solid var(--bordure);
+  border-radius: 16px;
+  background: var(--surface);
+  display: grid;
+  gap: 1.1rem;
+  justify-items: center;
+}
+
+.memo-actions {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.6rem;
+  width: 100%;
+}
+
+.memo-mention {
+  color: var(--texte-secondaire);
+  font-size: 0.98rem;
+}
+
+.memo-plateau {
+  width: 100%;
+  min-height: 7.5rem;   /* espace réservé : rien ne bouge entre deux éléments */
+  display: grid;
+  place-items: center;
+}
+
+.memo-element {
+  font-size: clamp(2.6rem, 9vw, 4rem);
+  font-weight: 700;
+  letter-spacing: 0.18em;   /* chiffres et lettres espacés, lecture séquentielle */
+  font-variant-numeric: tabular-nums;
+  text-align: center;
+  overflow-wrap: break-word;
+}
+
+.memo-points {
+  min-height: 1.6rem;
+  margin: 0;
+  color: var(--texte-secondaire);
+  font-variant-numeric: tabular-nums;
+}
+
+.memo-liste {
+  width: 100%;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+  display: grid;
+  gap: 0.75rem;
+}
+
+.memo-paire {
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+  gap: 1.5rem;
+  padding: 0.75rem 1rem;
+  border: 1px solid var(--bordure);
+  border-radius: 12px;
+  background: var(--surface-haute);
+  font-size: 1.25rem;
+}
+
+.memo-paire span + span {
+  font-weight: 700;
+  font-variant-numeric: tabular-nums;
+}
+
+@media (max-width: 30rem) {
+  .zone-memo { padding: 1.35rem 1rem; }
+}
