@@ -26,3 +26,9 @@ Améliorer le logiciel avec des entraînements issus des techniques établies �
 - Relecture ortho/clinique `a_revoir` sur les 306 items.
 - Errorless d'entrée de palier + prerequis anglais/Python (reportés).
 - ADR-003 (React+Vite), requirements.txt, README dev.
+
+## Suites (2026-09-20)
+
+- **Vérification indépendante des réponses** : `tools/verifier_reponses.py` (nouveau) recalcule la réponse de chaque item depuis son énoncé — 497 items, 0 anomalie (séries à solution unique, bornes respectées, identifiants uniques). Contrôle à relancer après toute régénération de contenu.
+- **Délégation indisponible** : les envois d'agents acceptés en début de session ont tous échoué à l'exécution (réponse 403 du fournisseur, 0 jeton produit) ; les lots livrés ont donc été relus et complétés à la main, et la vérification des réponses a été faite directement par script.
+- **Demandes produit ouvertes** : exercices de récupération indicée (rappel d'un souvenir présent mais inaccessible) et exercices de remise en lien social après isolement prolongé — note d'orientation dans `DELIVERY/` (hors dépôt).
