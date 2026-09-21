@@ -74,3 +74,71 @@ Le stimulus des items temporisés (séquence de chiffres, paires…) voyage dans
 payload client : en usage familial mono-utilisateur c'est assumé (l'interface ne
 l'affiche que pendant la phase de mémorisation) ; un mode serveur-poussé pourra
 être étudié plus tard si le besoin apparaît.
+
+## Sprint 3 — accès au mot, vie sociale, aides progressives (ADR-004)
+
+### Thèmes supplémentaires
+
+`evocation` (« Retrouver le mot ») et `social` (« Vie sociale ») rejoignent les thèmes exposés par
+`GET /api/entrainement/themes` (sept thèmes au total). Nouveaux types d'items : `rappel-indice`,
+`reconnaissance`, `rappel-source`, `emotion-vignette`, `reponse-adaptee`, `lecture-intention`.
+
+### Choix de réponse (`contenu.options`)
+
+Les items à choix portent leurs propositions dans `contenu.options` (au moins trois, distinctes, la
+réponse attendue figurant obligatoirement parmi elles). L'interface envoie la **proposition
+sélectionnée** comme `reponse` ; la comparaison est tolérante (casse, accents, espaces, guillemets).
+
+### Indices progressifs et essai « assisté »
+
+Les items `rappel-indice` portent `contenu.indices` : hiérarchie d'aides
+(`{ "type": "semantique" | "phonologique" | "orthographique" | "contextuel", "texte": "…" }`).
+Un indice **ne contient jamais la réponse** (contrôle bloquant du validateur) ; révéler tous les
+indices puis afficher la réponse est un geste d'interface.
+
+`POST /api/entrainement/{theme}/sessions/{session_id}/reponses` accepte un champ **optionnel** :
+
+```json
+{"item_id": "ev-2-rappel-01", "reponse": "", "temps_ms": 4200, "indice_utilise": 4}
+```
+
+- `indice_utilise` : nombre d'indices consultés (`0` = sans aide). Absent = `0`.
+- `indice_utilise = nb_indices + 1` : la réponse a été **affichée** → essai **assisté**.
+- Hors bornes (`> nb_indices + 1`) → `422 reponse_invalide`.
+
+Réponse (champs additifs) :
+
+```json
+{"correcte": false, "assistee": true, "attendue": "verre", "feedback": "Voici la réponse — on la reverra bientôt, sans indice cette fois."}
+```
+
+Un essai assisté n'est **pas** un échec signalé à l'utilisateur, mais il n'est pas non plus une
+réussite pour le moteur : carte FSRS notée en échec, non compté dans `resume.correctes`.
+
+### Résumé de fin de séance (champs additifs)
+
+```json
+{"resume": {"items": 8, "correctes": 6, "assistees": 1, "sans_aide": 4, "duree_s": 214, "taux_reussite": 0.75},
+ "arret_propose": false, "motif_arret": null, "sessions_restantes_aujourdhui": 2}
+```
+
+`assistees` et `sans_aide` ne sont présents que pour les thèmes portant des indices. `sans_aide`
+compte les items retrouvés **sans aucune aide** — c'est la mesure de progrès pertinente pour
+l'accès au mot (moins d'aides nécessaires), pas la vitesse.
+
+La baseline de temps servant à la détection de fatigue n'est alimentée que par les premières
+réponses correctes **et** sans aide.
+
+### Périmètre `/api/social` — missions hors écran et carnet
+
+Base : `/api/social`. Périmètre hors médical, mais **stockage séparé** des données d'entraînement.
+
+- `GET /api/social/missions` → `{"missions": [{id, niveau, titre, pourquoi, etapes[], duree_estimee_min, repere}, …], "ressentis": ["facile", "moyen", "difficile", "inattendu"]}`.
+  Une mission n'a **aucune réponse attendue** : c'est une préparation d'interaction réelle.
+- `GET /api/social/journal` → `{"entrees": [{id, mission_id, texte, ressenti, date}, …]}` (ordre chronologique).
+- `POST /api/social/journal` `{"mission_id": "ms-01", "texte": "…", "ressenti": "facile"}` → `201 {"entree": {…}}`.
+  `404 mission_inconnue` si la mission n'existe pas ; `422 note_invalide` si le texte est vide ou
+  dépasse 2 000 caractères.
+
+Stockage : `backend/data/journal/journal.json` — séparé de `backend/data/entrainement/`, jamais
+joint aux données de séance (ADR-002 / ADR-004), borné aux 500 notes les plus récentes.

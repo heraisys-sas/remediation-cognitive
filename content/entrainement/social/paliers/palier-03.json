@@ -1,0 +1,352 @@
+[
+  {
+    "type": "lecture-intention",
+    "fonctions_ciblees": [
+      "cognition-sociale",
+      "pragmatique"
+    ],
+    "contenu": {
+      "consigne": "Lis la parole et le ton, puis choisis ce que la personne cherche à dire.",
+      "enonce": "« Ça va, tu es sûr ? » — voix douce, sourcils un peu froncés.",
+      "options": [
+        "elle te reproche quelque chose",
+        "elle s'inquiète pour toi",
+        "elle te taquine"
+      ],
+      "aide": "Le ton et le geste comptent autant que les mots."
+    },
+    "reponse": {
+      "valeur": "elle s'inquiète pour toi"
+    },
+    "id": "so-3-intention-01",
+    "palier": 3,
+    "prerequis": [
+      "so-palier-2"
+    ],
+    "module": "entrainement",
+    "theme": "social",
+    "cap_complexite": null,
+    "meta": {
+      "auteur": "redaction-assistee (tools/generer_evocation_social.py)",
+      "date_creation": "2026-09-20",
+      "relecture_ortho": {
+        "statut": "a_revoir"
+      }
+    }
+  },
+  {
+    "type": "lecture-intention",
+    "fonctions_ciblees": [
+      "cognition-sociale",
+      "pragmatique"
+    ],
+    "contenu": {
+      "consigne": "Lis la parole et le ton, puis choisis ce que la personne cherche à dire.",
+      "enonce": "« Tiens, tiens… » — sourire léger, en regardant ce que tu portes.",
+      "options": [
+        "elle remarque quelque chose d'inhabituel",
+        "elle t'annonce une mauvaise nouvelle",
+        "elle te demande de partir"
+      ],
+      "aide": "Le ton et le geste comptent autant que les mots."
+    },
+    "reponse": {
+      "valeur": "elle remarque quelque chose d'inhabituel"
+    },
+    "id": "so-3-intention-02",
+    "palier": 3,
+    "prerequis": [
+      "so-palier-2"
+    ],
+    "module": "entrainement",
+    "theme": "social",
+    "cap_complexite": null,
+    "meta": {
+      "auteur": "redaction-assistee (tools/generer_evocation_social.py)",
+      "date_creation": "2026-09-20",
+      "relecture_ortho": {
+        "statut": "a_revoir"
+      }
+    }
+  },
+  {
+    "type": "lecture-intention",
+    "fonctions_ciblees": [
+      "cognition-sociale",
+      "pragmatique"
+    ],
+    "contenu": {
+      "consigne": "Lis la parole et le ton, puis choisis ce que la personne cherche à dire.",
+      "enonce": "« Bon, on verra. » — soupir, ton qui baisse en fin de phrase.",
+      "options": [
+        "elle n'approuve pas mais évite la discussion",
+        "elle n'a pas entendu",
+        "elle est enthousiaste"
+      ],
+      "aide": "Le ton et le geste comptent autant que les mots."
+    },
+    "reponse": {
+      "valeur": "elle n'approuve pas mais évite la discussion"
+    },
+    "id": "so-3-intention-03",
+    "palier": 3,
+    "prerequis": [
+      "so-palier-2"
+    ],
+    "module": "entrainement",
+    "theme": "social",
+    "cap_complexite": null,
+    "meta": {
+      "auteur": "redaction-assistee (tools/generer_evocation_social.py)",
+      "date_creation": "2026-09-20",
+      "relecture_ortho": {
+        "statut": "a_revoir"
+      }
+    }
+  },
+  {
+    "type": "lecture-intention",
+    "fonctions_ciblees": [
+      "cognition-sociale",
+      "pragmatique"
+    ],
+    "contenu": {
+      "consigne": "Lis la parole et le ton, puis choisis ce que la personne cherche à dire.",
+      "enonce": "« Tu peux répéter ? » — sourcils levés, tête penchée.",
+      "options": [
+        "elle est en colère",
+        "elle veut changer de sujet",
+        "elle n'a pas compris ou n'a pas entendu"
+      ],
+      "aide": "Le ton et le geste comptent autant que les mots."
+    },
+    "reponse": {
+      "valeur": "elle n'a pas compris ou n'a pas entendu"
+    },
+    "id": "so-3-intention-04",
+    "palier": 3,
+    "prerequis": [
+      "so-palier-2"
+    ],
+    "module": "entrainement",
+    "theme": "social",
+    "cap_complexite": null,
+    "meta": {
+      "auteur": "redaction-assistee (tools/generer_evocation_social.py)",
+      "date_creation": "2026-09-20",
+      "relecture_ortho": {
+        "statut": "a_revoir"
+      }
+    }
+  },
+  {
+    "type": "lecture-intention",
+    "fonctions_ciblees": [
+      "cognition-sociale",
+      "pragmatique"
+    ],
+    "contenu": {
+      "consigne": "Lis la parole et le ton, puis choisis ce que la personne cherche à dire.",
+      "enonce": "« Ne t'inquiète pas pour ça. » — voix calme, main posée sur la table.",
+      "options": [
+        "elle te reproche d'être inquiet",
+        "elle ne veut plus te parler",
+        "elle veut te rassurer"
+      ],
+      "aide": "Le ton et le geste comptent autant que les mots."
+    },
+    "reponse": {
+      "valeur": "elle veut te rassurer"
+    },
+    "id": "so-3-intention-05",
+    "palier": 3,
+    "prerequis": [
+      "so-palier-2"
+    ],
+    "module": "entrainement",
+    "theme": "social",
+    "cap_complexite": null,
+    "meta": {
+      "auteur": "redaction-assistee (tools/generer_evocation_social.py)",
+      "date_creation": "2026-09-20",
+      "relecture_ortho": {
+        "statut": "a_revoir"
+      }
+    }
+  },
+  {
+    "type": "lecture-intention",
+    "fonctions_ciblees": [
+      "cognition-sociale",
+      "pragmatique"
+    ],
+    "contenu": {
+      "consigne": "Lis la parole et le ton, puis choisis ce que la personne cherche à dire.",
+      "enonce": "« Ah bon ? » — ton qui monte, yeux écarquillés.",
+      "options": [
+        "elle est d'accord",
+        "elle est surprise",
+        "elle s'ennuie"
+      ],
+      "aide": null
+    },
+    "reponse": {
+      "valeur": "elle est surprise"
+    },
+    "id": "so-3-intention-06",
+    "palier": 3,
+    "prerequis": [
+      "so-palier-2"
+    ],
+    "module": "entrainement",
+    "theme": "social",
+    "cap_complexite": null,
+    "meta": {
+      "auteur": "redaction-assistee (tools/generer_evocation_social.py)",
+      "date_creation": "2026-09-20",
+      "relecture_ortho": {
+        "statut": "a_revoir"
+      }
+    }
+  },
+  {
+    "type": "lecture-intention",
+    "fonctions_ciblees": [
+      "cognition-sociale",
+      "pragmatique"
+    ],
+    "contenu": {
+      "consigne": "Lis la parole et le ton, puis choisis ce que la personne cherche à dire.",
+      "enonce": "« Bien sûr, comme toujours. » — sourire pincé, regard qui se détourne.",
+      "options": [
+        "elle est distraite",
+        "elle marque une contrariété",
+        "elle félicite sincèrement"
+      ],
+      "aide": null
+    },
+    "reponse": {
+      "valeur": "elle marque une contrariété"
+    },
+    "id": "so-3-intention-07",
+    "palier": 3,
+    "prerequis": [
+      "so-palier-2"
+    ],
+    "module": "entrainement",
+    "theme": "social",
+    "cap_complexite": null,
+    "meta": {
+      "auteur": "redaction-assistee (tools/generer_evocation_social.py)",
+      "date_creation": "2026-09-20",
+      "relecture_ortho": {
+        "statut": "a_revoir"
+      }
+    }
+  },
+  {
+    "type": "lecture-intention",
+    "fonctions_ciblees": [
+      "cognition-sociale",
+      "pragmatique"
+    ],
+    "contenu": {
+      "consigne": "Lis la parole et le ton, puis choisis ce que la personne cherche à dire.",
+      "enonce": "« Tu veux que je vienne avec toi ? » — voix douce, tournée vers toi.",
+      "options": [
+        "elle propose de t'aider",
+        "elle te met en garde",
+        "elle veut partir"
+      ],
+      "aide": null
+    },
+    "reponse": {
+      "valeur": "elle propose de t'aider"
+    },
+    "id": "so-3-intention-08",
+    "palier": 3,
+    "prerequis": [
+      "so-palier-2"
+    ],
+    "module": "entrainement",
+    "theme": "social",
+    "cap_complexite": null,
+    "meta": {
+      "auteur": "redaction-assistee (tools/generer_evocation_social.py)",
+      "date_creation": "2026-09-20",
+      "relecture_ortho": {
+        "statut": "a_revoir"
+      }
+    }
+  },
+  {
+    "type": "lecture-intention",
+    "fonctions_ciblees": [
+      "cognition-sociale",
+      "pragmatique"
+    ],
+    "contenu": {
+      "consigne": "Lis la parole et le ton, puis choisis ce que la personne cherche à dire.",
+      "enonce": "« On en reparle demain matin ? » — ton posé, sans sourire.",
+      "options": [
+        "elle a oublié la question",
+        "elle préfère reporter pour l'instant",
+        "elle refuse définitivement"
+      ],
+      "aide": null
+    },
+    "reponse": {
+      "valeur": "elle préfère reporter pour l'instant"
+    },
+    "id": "so-3-intention-09",
+    "palier": 3,
+    "prerequis": [
+      "so-palier-2"
+    ],
+    "module": "entrainement",
+    "theme": "social",
+    "cap_complexite": null,
+    "meta": {
+      "auteur": "redaction-assistee (tools/generer_evocation_social.py)",
+      "date_creation": "2026-09-20",
+      "relecture_ortho": {
+        "statut": "a_revoir"
+      }
+    }
+  },
+  {
+    "type": "lecture-intention",
+    "fonctions_ciblees": [
+      "cognition-sociale",
+      "pragmatique"
+    ],
+    "contenu": {
+      "consigne": "Lis la parole et le ton, puis choisis ce que la personne cherche à dire.",
+      "enonce": "« J'ai pensé à toi en voyant ça. » — voix légère, en te tendant un objet.",
+      "options": [
+        "elle te rend un service dû",
+        "elle a eu une attention pour toi",
+        "elle veut te vendre quelque chose"
+      ],
+      "aide": null
+    },
+    "reponse": {
+      "valeur": "elle a eu une attention pour toi"
+    },
+    "id": "so-3-intention-10",
+    "palier": 3,
+    "prerequis": [
+      "so-palier-2"
+    ],
+    "module": "entrainement",
+    "theme": "social",
+    "cap_complexite": null,
+    "meta": {
+      "auteur": "redaction-assistee (tools/generer_evocation_social.py)",
+      "date_creation": "2026-09-20",
+      "relecture_ortho": {
+        "statut": "a_revoir"
+      }
+    }
+  }
+]

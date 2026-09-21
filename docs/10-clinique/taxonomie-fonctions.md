@@ -40,3 +40,20 @@ Le graphe de connaissances (`backend/app/kg/`) modélise ces relations — plut�
 | Paires associatives | paires-associatives | MDT + mémorisation longue | 2 → 4 paires |
 
 Chaque item du contenu (`content/schema-item.json`) porte `fonctions_ciblees` et `prerequis` — la source de vérité du graphe.
+
+## Familles « accès au mot » et « vie sociale » (sprint 3)
+
+| Famille | Type | Fonctions | Progression |
+|---|---|---|---|
+| Reconnaissance lexicale | reconnaissance | accès lexical | palier 1 et 5 (cran d'entrée) |
+| Rappel indicé (indices progressifs) | rappel-indice | accès lexical + récupération | paliers 2, 3, 5 — indices retirés à mesure |
+| Rappel de la source | rappel-source | mémoire épisodique (source) + récupération | palier 4 |
+| Vignette d'émotion | emotion-vignette | cognition sociale | paliers 1 et 4 |
+| Réponse adaptée | reponse-adaptee | cognition sociale + pragmatique | paliers 2 et 4 |
+| Lecture d'intention | lecture-intention | cognition sociale + pragmatique | palier 3 |
+| Missions réelles | hors moteur | transfert écologique | 4 niveaux (préparation + carnet) |
+
+Deux familles de la rééducation de l'accès lexical sont mobilisées : l'indiçage progressif
+(sémantique puis phonologique) et la récupération espacée avec estompage des aides. Le principe
+d'apprentissage sans erreur est porté par l'interface : l'essai se clôt en affichant la réponse,
+sans imposer d'échec (ADR-004).

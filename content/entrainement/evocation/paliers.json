@@ -1,0 +1,48 @@
+{
+  "theme": "evocation",
+  "paliers": [
+    {
+      "id": "ev-palier-1",
+      "description": "Reconnaître le mot juste parmi trois propositions",
+      "prerequis": [],
+      "fichier": "paliers/palier-01.json",
+      "nb_items": 10
+    },
+    {
+      "id": "ev-palier-2",
+      "description": "Retrouver des mots concrets à partir de leur définition",
+      "prerequis": [
+        "ev-palier-1"
+      ],
+      "fichier": "paliers/palier-02.json",
+      "nb_items": 10
+    },
+    {
+      "id": "ev-palier-3",
+      "description": "Retrouver des notions plus abstraites, avec indices progressifs",
+      "prerequis": [
+        "ev-palier-2"
+      ],
+      "fichier": "paliers/palier-03.json",
+      "nb_items": 10
+    },
+    {
+      "id": "ev-palier-4",
+      "description": "Retrouver le contexte d'une information (mémoire de la source)",
+      "prerequis": [
+        "ev-palier-3"
+      ],
+      "fichier": "paliers/palier-04.json",
+      "nb_items": 10
+    },
+    {
+      "id": "ev-palier-5",
+      "description": "Alterner reconnaissance et rappel indicé",
+      "prerequis": [
+        "ev-palier-4"
+      ],
+      "fichier": "paliers/palier-05.json",
+      "nb_items": 10
+    }
+  ]
+}

@@ -59,3 +59,34 @@ Détail des paliers : `content/entrainement/memoire/` et `content/entrainement/c
 ## Transition thérapeutique → développement
 
 Une fois les fonctions exécutives/attentionnelles stabilisées, ce module porte l'objectif « **aller au-delà de la moyenne sans mettre la barre trop haut** » : cap de difficulté adaptative avec justification pédagogique explicite — éviter l'auto-exigence excessive typique post-SPC (le patient qui veut « prouver » qu'il va bien).
+
+## Retrouver le mot (sprint 3)
+
+Thème d'**accès lexical** : l'information est là, le chemin pour la retrouver est encombré. On
+n'apprend pas de nouveaux mots — on s'entraîne à déclencher le rappel avec de moins en moins d'aide.
+
+- **Reconnaissance** : définitions avec trois mots de la même famille (cran d'entrée, sans échec).
+- **Rappel indicé** : indices révélés **un par un** (catégorie → attaque phonologique → forme
+  écrite) ; le dernier cran affiche la réponse et clôt l'essai **sans erreur**. Progression mesurée
+  par le nombre d'items retrouvés **sans aide** (`resume.sans_aide`), jamais par la vitesse.
+- **Rappel de la source** : fiche temporisée (contexte + information), puis question sur le
+  **contexte** — mémoire de la source, souvent atteinte après une commotion.
+
+Détail des paliers : `content/entrainement/evocation/README.md`.
+
+## Vie sociale (sprint 3)
+
+Thème de **remise en lien**, pensé pour des personnes longtemps peu socialisées. Le logiciel
+prépare, fait répéter à froid et garde la trace ; la mise en situation réelle reste le facteur actif.
+
+- **Vignette d'émotion** : situation courte → émotion ressentie (trois propositions).
+- **Réponse adaptée** : trois répliques (adaptée, trop directe, à côté) — demande, refus, politesse, sortie d'échange.
+- **Lecture d'intention** : une parole avec son ton → ce que la personne cherche à dire.
+- **Missions hors écran + carnet** : 8 missions graduées (saluer, demander une information, passer un
+  appel court, proposer une rencontre…), chacune avec un pourquoi, des étapes et un repère de
+  réussite modeste ; l'utilisateur réalise la mission dans la vie réelle, puis note ce qui s'est
+  passé dans son carnet (stockage séparé).
+
+Détail : `content/entrainement/social/README.md`. Précautions : pas de diagnostic, pas de norme,
+aucun contenu protégé ; en cas d'isolement profond avec signes dépressifs, l'outil reste un
+complément et une orientation professionnelle s'impose.

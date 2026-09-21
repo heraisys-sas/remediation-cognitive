@@ -27,11 +27,16 @@ router = APIRouter(prefix="/api/entrainement", tags=["entrainement"])
 
 
 class ReponseUtilisateur(BaseModel):
-    """Corps de POST …/reponses (contrat : reponse str|number, temps_ms int)."""
+    """Corps de POST …/reponses (contrat : reponse str|number, temps_ms int).
+
+    ``indice_utilise`` (optionnel) : nombre d'indices consultés ; la valeur
+    ``nb_indices + 1`` signale un essai clos par affichage de la réponse.
+    """
 
     item_id: str
     reponse: str | int | float
     temps_ms: int
+    indice_utilise: int | None = None
 
 
 def _gestionnaire(request: Request) -> GestionnaireSessions:
@@ -81,7 +86,12 @@ def envoyer_reponse(theme: str, session_id: str, corps: ReponseUtilisateur, requ
     """POST …/reponses — correction serveur immédiate (feedback guidé)."""
     try:
         return _gestionnaire(request).repondre(
-            theme, session_id, corps.item_id, corps.reponse, corps.temps_ms
+            theme,
+            session_id,
+            corps.item_id,
+            corps.reponse,
+            corps.temps_ms,
+            corps.indice_utilise,
         )
     except SessionInconnue:
         return _erreur(404, "session_inconnue")

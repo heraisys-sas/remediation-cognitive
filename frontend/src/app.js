@@ -14,6 +14,16 @@
    ===================================================================== */
 
 const API_BASE = "/api/entrainement";
+const API_SOCIAL = "/api/social";
+
+//: Types dont la réponse se choisit parmi des propositions (contenu.options).
+const TYPES_A_CHOIX = new Set([
+  "reconnaissance",
+  "rappel-source",
+  "emotion-vignette",
+  "reponse-adaptee",
+  "lecture-intention",
+]);
 
 /* ---------------------------------------------------------------------
    Raccourcis DOM (l'HTML statique porte toutes les vues)
@@ -26,11 +36,13 @@ const refs = {
     themes: $("vue-themes"),
     seance: $("vue-seance"),
     resume: $("vue-resume"),
+    missions: $("vue-missions"),
   },
   titres: {
     themes: $("titre-themes"),
     seance: $("titre-seance"),
     resume: $("titre-resume"),
+    missions: $("titre-missions"),
   },
   bandeau: $("bandeau-erreur"),
   bandeauMessage: $("bandeau-message"),
@@ -43,6 +55,8 @@ const refs = {
   barreRemplie: $("barre-remplie"),
   enonce: $("enonce"),
   zoneMemo: $("zone-memo"),
+  zoneChoix: $("zone-choix"),
+  zoneIndices: $("zone-indices"),
   zoneAide: $("zone-aide"),
   texteAide: $("texte-aide"),
   formulaire: $("formulaire-reponse"),
@@ -56,6 +70,16 @@ const refs = {
   statsResume: $("stats-resume"),
   ligneSeancesRestantes: $("ligne-seances-restantes"),
   boutonNouvelleSeance: $("bouton-nouvelle-seance"),
+  boutonMissions: $("bouton-missions"),
+  listeMissions: $("liste-missions"),
+  zoneNoteMission: $("zone-note-mission"),
+  titreNote: $("titre-note"),
+  champNote: $("champ-note"),
+  champRessenti: $("champ-ressenti"),
+  boutonEnregistrerNote: $("bouton-enregistrer-note"),
+  messageNote: $("message-note"),
+  journalMissions: $("journal-missions"),
+  boutonRetourJournal: $("bouton-retour-journal"),
 };
 
 /* ---------------------------------------------------------------------
@@ -73,6 +97,10 @@ const etat = {
   minuterieConfirmation: null,
   reessai: null,           // action à relancer après une erreur réseau
   minuteriesMemo: [],      // minuteries de la phase de mémorisation
+  indicesReveles: 0,       // indices consultés sur l'item courant (0 = sans aide)
+  optionChoisie: null,     // proposition choisie (types à choix)
+  missions: [],            // missions hors écran chargées du serveur
+  missionActive: null,     // mission en cours de notation
 };
 
 /* ---------------------------------------------------------------------
@@ -410,6 +438,8 @@ function montrerItem() {
   const item = items[etat.indexItem];
   const total = items.length;
   etat.repondu = false;
+  etat.indicesReveles = 0;
+  etat.optionChoisie = null;
   annulerMemo();
 
   // Progression discrète : « Question n sur max » + fine barre.
@@ -532,20 +562,87 @@ function afficherQuestion(item) {
     refs.zoneAide.hidden = true;
   }
 
-  // Champ de saisie : remise à zéro, clavier adapté au type d'item.
-  refs.champReponse.value = "";
-  refs.champReponse.disabled = false;
-  refs.champReponse.setAttribute("inputmode", inputmodePour(item.type));
-  refs.indiceReponse.hidden = true;
+  // Choix de réponse ou saisie libre selon le type d'exercice.
+  const options = Array.isArray(contenu.options) ? contenu.options : null;
+  const avecChoix = Boolean(options) && TYPES_A_CHOIX.has(item.type);
+  refs.zoneChoix.replaceChildren();
+  refs.zoneChoix.hidden = !avecChoix;
+  refs.zoneIndices.replaceChildren();
+  refs.zoneIndices.hidden = true;
+  if (avecChoix) rendreOptions(options);
+  refs.formulaire.hidden = avecChoix;
+
+  // Indices progressifs (accès au mot) : proposés, jamais imposés.
+  if (Array.isArray(contenu.indices) && contenu.indices.length) rendreIndices(item);
 
   // On masque le feedback précédent et on redonne la main.
   refs.carteFeedback.hidden = true;
   refs.boutonSuivant.hidden = true;
-  refs.formulaire.hidden = false;
   reglerEtatBoutons();
 
   etat.debutQuestion = Date.now();
-  refs.champReponse.focus();
+  if (avecChoix) {
+    const premier = refs.zoneChoix.querySelector("button");
+    if (premier) premier.focus();
+  } else {
+    refs.champReponse.focus();
+  }
+}
+
+/** Propositions cliquables : un clic vaut réponse soumise (pas de saisie). */
+function rendreOptions(options) {
+  const bac = creerElement("div", { classe: "grille-options" });
+  for (const option of options) {
+    const bouton = creerElement("button", {
+      classe: "bouton bouton-option",
+      texte: option,
+      attributs: { type: "button" },
+    });
+    bouton.addEventListener("click", () => {
+      if (etat.repondu || etat.actionEnCours) return;
+      etat.optionChoisie = option;
+      soumettreValeur(option, null);
+    });
+    bac.append(bouton);
+  }
+  refs.zoneChoix.replaceChildren(bac);
+}
+
+/** Indices progressifs : révélés un par un ; le dernier cran affiche la réponse. */
+function rendreIndices(item) {
+  const indices = item.contenu.indices;
+  const statut = creerElement("p", { classe: "indice-statut" });
+  const liste = creerElement("ol", { classe: "liste-indices" });
+  const bouton = creerElement("button", {
+    classe: "bouton bouton-secondaire",
+    texte: "Un indice",
+    attributs: { type: "button" },
+  });
+  const majBouton = () => {
+    const restants = indices.length - etat.indicesReveles;
+    bouton.textContent = restants > 0 ? "Un indice" : "Voir la réponse";
+    statut.textContent =
+      etat.indicesReveles === 0
+        ? "Aucun indice utilisé pour l’instant."
+        : `${etat.indicesReveles} indice${etat.indicesReveles > 1 ? "s" : ""} utilisé${etat.indicesReveles > 1 ? "s" : ""}.`;
+  };
+  bouton.addEventListener("click", () => {
+    if (etat.repondu || etat.actionEnCours) return;
+    if (etat.indicesReveles < indices.length) {
+      liste.append(
+        creerElement("li", { classe: "indice-item", texte: indices[etat.indicesReveles].texte })
+      );
+      etat.indicesReveles += 1;
+      majBouton();
+      return;
+    }
+    // Tous les indices ont été consultés : la réponse s'affiche et l'essai est
+    // clos SANS ERREUR (le moteur le compte comme non retrouvé).
+    soumettreValeur("", indices.length + 1);
+  });
+  majBouton();
+  refs.zoneIndices.replaceChildren(statut, liste, bouton);
+  refs.zoneIndices.hidden = false;
 }
 
 /** Validation (Entrée ou bouton) → POST /reponses → feedback immédiat. */
@@ -559,6 +656,16 @@ async function validerReponse() {
     refs.champReponse.focus();
     return;
   }
+  await soumettreValeur(brut, etat.indicesReveles);
+}
+
+/**
+ * Soumet une réponse (saisie libre ou proposition choisie) et affiche le retour.
+ * ``indiceUtilise`` : nombre d'indices consultés ; ``nbIndices + 1`` signale un
+ * essai clos par affichage de la réponse (aucune erreur commise par l'utilisateur).
+ */
+async function soumettreValeur(brut, indiceUtilise) {
+  if (etat.actionEnCours || etat.repondu || !etat.session) return;
 
   const item = etat.session.items[etat.indexItem];
   const corps = {
@@ -566,6 +673,9 @@ async function validerReponse() {
     reponse: normaliserReponse(brut, etat.theme),
     temps_ms: Math.max(0, Date.now() - etat.debutQuestion),
   };
+  if (Number.isInteger(indiceUtilise) && indiceUtilise > 0) {
+    corps.indice_utilise = indiceUtilise;
+  }
 
   etat.actionEnCours = true;
   reglerEtatBoutons();
@@ -595,13 +705,13 @@ async function validerReponse() {
   } catch (erreur) {
     if (erreur.type === "reseau") {
       // La saisie est conservée : on peut réessayer sans rien retaper.
-      afficherErreurReseau(validerReponse);
+      afficherErreurReseau(() => soumettreValeur(brut, indiceUtilise));
     } else if (erreur.type === "api" && (erreur.status === 404 || erreur.status === 409)) {
       refs.champReponse.disabled = true;
       afficherBandeau("Cette séance n’est plus disponible.", { retour: true });
     } else {
       afficherBandeau("La réponse n’a pas pu être vérifiée pour le moment.", {
-        reessayer: validerReponse,
+        reessayer: () => soumettreValeur(brut, indiceUtilise),
       });
     }
   } finally {
@@ -613,20 +723,22 @@ async function validerReponse() {
 /** Rend le feedback dans la carte aria-live="polite". */
 function rendreFeedback(resultat) {
   const correcte = Boolean(resultat.correcte);
+  const assistee = Boolean(resultat.assistee);
   refs.carteFeedback.replaceChildren();
   refs.carteFeedback.className =
-    "carte-feedback " + (correcte ? "feedback-correct" : "feedback-incorrect");
+    "carte-feedback " +
+    (assistee ? "feedback-assiste" : correcte ? "feedback-correct" : "feedback-incorrect");
 
   refs.carteFeedback.append(
     creerElement("p", {
       classe: "feedback-titre",
-      texte: correcte ? "✓ Bonne réponse !" : "✕ Pas tout à fait",
+      texte: assistee ? "Réponse affichée" : correcte ? "✓ Bonne réponse !" : "✕ Pas tout à fait",
     })
   );
 
   if (resultat.attendue !== undefined && resultat.attendue !== null) {
     const ligne = creerElement("p", { classe: "feedback-attendue" });
-    ligne.append("Réponse attendue : ");
+    ligne.append(assistee ? "Réponse : " : "Réponse attendue : ");
     ligne.append(creerElement("strong", { texte: String(resultat.attendue) }));
     refs.carteFeedback.append(ligne);
   }
@@ -728,6 +840,173 @@ function rendreResume(donnees) {
 }
 
 /* ---------------------------------------------------------------------
+   Missions hors écran et carnet (périmètre social, stockage séparé)
+   --------------------------------------------------------------------- */
+
+/** Ouvre l'écran des missions et charge la liste proposée par le serveur. */
+async function ouvrirMissions() {
+  etat.missionActive = null;
+  refs.zoneNoteMission.hidden = true;
+  refs.messageNote.hidden = true;
+  refs.listeMissions.replaceChildren();
+  refs.journalMissions.replaceChildren(
+    creerElement("p", { classe: "ligne-discrete", texte: "Chargement…" })
+  );
+  afficherVue("missions");
+  try {
+    const donnees = await fetchSocial("/missions");
+    etat.missions = donnees.missions || [];
+    rendreMissions(etat.missions, donnees.ressentis || []);
+    masquerBandeau();
+    await chargerJournal();
+  } catch {
+    refs.journalMissions.replaceChildren();
+    afficherBandeau("Les missions n’ont pas pu être chargées pour le moment.", { retour: true });
+  }
+}
+
+/** Rend les missions : préparation hors écran, aucune réponse attendue. */
+function rendreMissions(missions, ressentis) {
+  refs.champRessenti.replaceChildren(
+    creerElement("option", { texte: "—", attributs: { value: "" } }),
+    ...ressentis.map((ressenti) =>
+      creerElement("option", { texte: ressenti, attributs: { value: ressenti } })
+    )
+  );
+  refs.listeMissions.replaceChildren();
+  if (!missions.length) {
+    refs.listeMissions.append(
+      creerElement("p", { classe: "ligne-discrete", texte: "Aucune mission proposée pour le moment." })
+    );
+    return;
+  }
+  for (const mission of missions) {
+    const bouton = creerElement("button", {
+      classe: "bouton bouton-secondaire",
+      texte: "Mission faite — noter",
+      attributs: { type: "button" },
+    });
+    bouton.addEventListener("click", () => ouvrirNoteMission(mission));
+    refs.listeMissions.append(
+      creerElement("article", { classe: "carte carte-mission" },
+        creerElement("h3", { texte: mission.titre }),
+        creerElement("p", { classe: "mission-pourquoi", texte: mission.pourquoi }),
+        creerElement("ol", { classe: "mission-etapes" },
+          ...mission.etapes.map((etape) => creerElement("li", { texte: etape }))
+        ),
+        creerElement("p", { classe: "mission-repere", texte: `Repère de réussite : ${mission.repere}` }),
+        bouton
+      )
+    );
+  }
+}
+
+/** Prépare la zone de note pour la mission choisie. */
+function ouvrirNoteMission(mission) {
+  etat.missionActive = mission;
+  refs.titreNote.textContent = `Noter : ${mission.titre}`;
+  refs.champNote.value = "";
+  refs.champRessenti.value = "";
+  refs.messageNote.hidden = true;
+  refs.zoneNoteMission.hidden = false;
+  refs.champNote.focus();
+}
+
+/** Enregistre une note de mission (aucun jugement, aucune comparaison). */
+async function enregistrerNote() {
+  if (etat.actionEnCours || !etat.missionActive) return;
+  const texte = refs.champNote.value.trim();
+  if (!texte) {
+    refs.messageNote.hidden = false;
+    refs.messageNote.textContent = "Écris quelques mots avant d’enregistrer.";
+    return;
+  }
+  etat.actionEnCours = true;
+  refs.boutonEnregistrerNote.disabled = true;
+  try {
+    await fetchSocial("/journal", {
+      method: "POST",
+      body: JSON.stringify({
+        mission_id: etat.missionActive.id,
+        texte,
+        ressenti: refs.champRessenti.value || null,
+      }),
+    });
+    masquerBandeau();
+    refs.zoneNoteMission.hidden = true;
+    refs.messageNote.hidden = false;
+    refs.messageNote.textContent = "Note enregistrée — elle reste sur cet appareil.";
+    etat.missionActive = null;
+    await chargerJournal();
+  } catch {
+    afficherBandeau("La note n’a pas pu être enregistrée pour le moment.", {
+      reessayer: enregistrerNote,
+    });
+  } finally {
+    etat.actionEnCours = false;
+    refs.boutonEnregistrerNote.disabled = false;
+  }
+}
+
+/** Affiche les notes déjà écrites, la plus récente en premier. */
+async function chargerJournal() {
+  try {
+    const donnees = await fetchSocial("/journal");
+    const entrees = (donnees.entrees || []).slice().reverse();
+    refs.journalMissions.replaceChildren();
+    if (!entrees.length) {
+      refs.journalMissions.append(
+        creerElement("p", { classe: "ligne-discrete", texte: "Aucune note pour l’instant." })
+      );
+      return;
+    }
+    for (const entree of entrees) {
+      const mission = etat.missions.find((m) => m.id === entree.mission_id);
+      const details = [formaterDate(entree.date), entree.ressenti].filter(Boolean).join(" · ");
+      refs.journalMissions.append(
+        creerElement("article", { classe: "carte carte-note" },
+          creerElement("p", { classe: "note-titre", texte: mission ? mission.titre : entree.mission_id }),
+          creerElement("p", { classe: "note-texte", texte: entree.texte }),
+          creerElement("p", { classe: "note-meta", texte: details })
+        )
+      );
+    }
+  } catch {
+    refs.journalMissions.replaceChildren(
+      creerElement("p", { classe: "ligne-discrete", texte: "Carnet indisponible pour le moment." })
+    );
+  }
+}
+
+/** Date lisible d'une note (français, sans heure). */
+function formaterDate(iso) {
+  const date = new Date(iso);
+  if (Number.isNaN(date.getTime())) return "";
+  return date.toLocaleDateString("fr-FR", { day: "numeric", month: "long", year: "numeric" });
+}
+
+/** Appel direct du périmètre social (base /api/social, hors sessions). */
+async function fetchSocial(chemin, options = {}) {
+  const entetes = { "Accept": "application/json" };
+  if (options.body !== undefined) entetes["Content-Type"] = "application/json";
+  let reponse;
+  try {
+    reponse = await fetch(API_SOCIAL + chemin, { ...options, headers: entetes });
+  } catch {
+    const erreur = new Error("réseau indisponible");
+    erreur.type = "reseau";
+    throw erreur;
+  }
+  if (!reponse.ok) {
+    const erreur = new Error(`API ${reponse.status}`);
+    erreur.type = "api";
+    erreur.status = reponse.status;
+    throw erreur;
+  }
+  return reponse.json();
+}
+
+/* ---------------------------------------------------------------------
    Initialisation et branchements
    --------------------------------------------------------------------- */
 
@@ -753,6 +1032,9 @@ function brancherEvenements() {
   });
 
   refs.boutonNouvelleSeance.addEventListener("click", revenirAuxThemes);
+  refs.boutonMissions.addEventListener("click", ouvrirMissions);
+  refs.boutonRetourJournal.addEventListener("click", revenirAuxThemes);
+  refs.boutonEnregistrerNote.addEventListener("click", enregistrerNote);
 }
 
 function init() {

@@ -34,7 +34,13 @@
         "multi-etapes",
         "chaine-calcul",
         "serie-manquante",
-        "paires-associatives"
+        "paires-associatives",
+        "rappel-indice",
+        "reconnaissance",
+        "rappel-source",
+        "emotion-vignette",
+        "reponse-adaptee",
+        "lecture-intention"
       ]
     },
     "fonctions_ciblees": {
@@ -51,7 +57,11 @@
           "planification",
           "vitesse-traitement",
           "automatisation",
-          "memorisation-longue"
+          "memorisation-longue",
+          "acces-lexical",
+          "recuperation",
+          "cognition-sociale",
+          "pragmatique"
         ]
       }
     },
@@ -70,7 +80,7 @@
     },
     "contenu": {
       "type": "object",
-      "description": "Corps de l'item, spécifique au type d'exercice."
+      "description": "Corps de l'item, spécifique au type d'exercice. Champs conventionnels : enonce, consigne, aide, options (liste de propositions pour les types à choix : reconnaissance, rappel-source, emotion-vignette, reponse-adaptee, lecture-intention — la réponse attendue doit y figurer), indices (hiérarchie d'aides des items rappel-indice : [{type: semantique|phonologique|orthographique, texte}], jamais la réponse elle-même), affichage (phase de mémorisation temporisée : mode sequence|liste)."
     },
     "reponse": {
       "type": "object",

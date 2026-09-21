@@ -51,6 +51,30 @@ MOTIF_REF_PALIER = re.compile(r"^[a-z]+-palier-\d+$")
 #: Motif d'un identifiant d'item de calcul mental : cm-<table>-<a>x<b>.
 MOTIF_ID_CALCUL = re.compile(r"^cm-(\d+)-(\d+)x(\d+)$")
 
+#: Types dont la réponse est choisie parmi ``contenu.options``.
+TYPES_A_CHOIX = {
+    "reconnaissance",
+    "rappel-source",
+    "emotion-vignette",
+    "reponse-adaptee",
+    "lecture-intention",
+}
+
+#: Types dont le contenu porte une hiérarchie d'indices (``contenu.indices``).
+TYPES_A_INDICES = {"rappel-indice"}
+
+#: Types d'indices admis dans ``contenu.indices``.
+TYPES_INDICE = {"semantique", "phonologique", "orthographique", "contextuel"}
+
+
+def _normaliser_texte(valeur: str) -> str:
+    """Minuscules sans accents ni espaces — comparaison indice ↔ réponse."""
+    import unicodedata
+
+    decompose = unicodedata.normalize("NFD", valeur.casefold())
+    sans_accents = "".join(c for c in decompose if not unicodedata.combining(c))
+    return "".join(sans_accents.split())
+
 
 # --- Lecture du schéma --------------------------------------------------------
 
@@ -184,10 +208,64 @@ def erreurs_item(item: object, chemin: Path, regles: dict, ids_vus: dict[str, Pa
             ajouter(prefixe + f"{champ} doit être un objet")
 
     erreurs.extend(erreurs_meta(item.get("meta"), prefixe, regles))
+    erreurs.extend(erreurs_contenu(item, prefixe))
     if item.get("theme") == "calcul-mental":
         erreurs.extend(
             erreurs_coherence_calcul(item, prefixe, manifest_par_theme)
         )
+    return erreurs
+
+
+def erreurs_contenu(item: dict, prefixe: str) -> list[str]:
+    """Vérifie les conventions de ``contenu`` liées au type d'exercice.
+
+    - types à choix : ``options`` (≥ 3 propositions distinctes) et la réponse
+      attendue doit figurer parmi elles ;
+    - types à indices : ``indices`` (≥ 2) avec type et texte, et **aucun indice
+      ne doit contenir la réponse** (sinon l'essai n'est plus un rappel).
+    """
+    erreurs: list[str] = []
+    type_item = item.get("type")
+    contenu = item.get("contenu")
+    if not isinstance(contenu, dict):
+        return erreurs
+    reponse = item.get("reponse", {}).get("valeur") if isinstance(item.get("reponse"), dict) else None
+
+    options = contenu.get("options")
+    if type_item in TYPES_A_CHOIX:
+        if not isinstance(options, list) or len(options) < 3:
+            erreurs.append(prefixe + f"type {type_item} : contenu.options doit lister au moins 3 propositions")
+        else:
+            if not all(isinstance(option, str) and option.strip() for option in options):
+                erreurs.append(prefixe + "contenu.options doit être une liste de chaînes non vides")
+            elif len({_normaliser_texte(option) for option in options}) != len(options):
+                erreurs.append(prefixe + "contenu.options contient des propositions identiques")
+            elif not isinstance(reponse, str) or _normaliser_texte(reponse) not in {
+                _normaliser_texte(option) for option in options
+            }:
+                erreurs.append(prefixe + f"la réponse attendue {reponse!r} n'est pas proposée dans options")
+    elif options is not None and (not isinstance(options, list) or len(options) < 2):
+        erreurs.append(prefixe + "contenu.options doit être une liste d'au moins 2 propositions")
+
+    indices = contenu.get("indices")
+    if type_item in TYPES_A_INDICES:
+        if not isinstance(indices, list) or len(indices) < 2:
+            erreurs.append(prefixe + f"type {type_item} : contenu.indices doit contenir au moins 2 indices")
+        else:
+            for position, indice in enumerate(indices, start=1):
+                if not isinstance(indice, dict):
+                    erreurs.append(prefixe + f"indice {position} : objet attendu")
+                    continue
+                if indice.get("type") not in TYPES_INDICE:
+                    erreurs.append(prefixe + f"indice {position} : type d'indice inconnu {indice.get('type')!r}")
+                texte = indice.get("texte")
+                if not isinstance(texte, str) or not texte.strip():
+                    erreurs.append(prefixe + f"indice {position} : texte manquant")
+                    continue
+                if isinstance(reponse, str) and _normaliser_texte(reponse) in _normaliser_texte(texte):
+                    erreurs.append(
+                        prefixe + f"indice {position} contient la réponse — un indice ne doit pas la donner"
+                    )
     return erreurs
 
 
@@ -358,6 +436,41 @@ def erreurs_manifest(manifest: object, chemin: Path, donnees_par_fichier: dict[P
     return erreurs
 
 
+def erreurs_missions(donnees: object, chemin: Path) -> list[str]:
+    """Vérifie le fichier de missions hors écran (``content/.../missions.json``)."""
+    prefixe = f"{chemin.relative_to(RACINE_DEPOT)}: "
+    if not isinstance(donnees, dict) or not isinstance(donnees.get("missions"), list):
+        return [prefixe + "fichier de missions attendu : objet avec une liste 'missions'"]
+    erreurs: list[str] = []
+    ids_vus: set[str] = set()
+    for position, mission in enumerate(donnees["missions"], start=1):
+        if not isinstance(mission, dict):
+            erreurs.append(prefixe + f"mission {position} : objet attendu")
+            continue
+        identifiant = mission.get("id")
+        if not isinstance(identifiant, str) or not identifiant:
+            erreurs.append(prefixe + f"mission {position} : id manquant")
+        elif identifiant in ids_vus:
+            erreurs.append(prefixe + f"mission {position} : id dupliqué {identifiant!r}")
+        else:
+            ids_vus.add(identifiant)
+        if not isinstance(mission.get("titre"), str) or not mission["titre"].strip():
+            erreurs.append(prefixe + f"mission {position} : titre manquant")
+        if not est_entier(mission.get("niveau")) or mission["niveau"] < 1:
+            erreurs.append(prefixe + f"mission {position} : niveau doit être un entier ≥ 1")
+        etapes = mission.get("etapes")
+        if not isinstance(etapes, list) or not etapes or not all(isinstance(e, str) and e.strip() for e in etapes):
+            erreurs.append(prefixe + f"mission {position} : etapes doit être une liste non vide de chaînes")
+        for champ in ("pourquoi", "repere"):
+            if not isinstance(mission.get(champ), str) or not mission[champ].strip():
+                erreurs.append(prefixe + f"mission {position} : {champ} manquant")
+        if "duree_estimee_min" in mission and (
+            not est_entier(mission["duree_estimee_min"]) or mission["duree_estimee_min"] < 1
+        ):
+            erreurs.append(prefixe + f"mission {position} : duree_estimee_min doit être un entier ≥ 1")
+    return erreurs
+
+
 # --- Orchestration ------------------------------------------------------------
 
 
@@ -383,6 +496,7 @@ def main() -> int:
             )
 
     est_manifest = lambda donnees: isinstance(donnees, dict) and isinstance(donnees.get("paliers"), list)
+    est_missions = lambda donnees: isinstance(donnees, dict) and isinstance(donnees.get("missions"), list)
 
     # Passe 2a : manifests d'abord (les items en dépendent).
     themes_manifests: dict[str, dict[int, dict]] = {}
@@ -394,12 +508,15 @@ def main() -> int:
                 donnees, chemin, donnees_par_fichier, themes_manifests, ids_paliers_connus
             )
 
-    # Passe 2b : items.
+    # Passe 2b : items (et fichiers de missions hors écran).
     ids_vus: dict[str, Path] = {}
     erreurs_items: dict[Path, list[str]] = {}
     total_items = 0
     for chemin, donnees in donnees_par_fichier.items():
         if est_manifest(donnees):
+            continue
+        if est_missions(donnees):
+            erreurs_items[chemin] = erreurs_missions(donnees, chemin)
             continue
         items = donnees if isinstance(donnees, list) else [donnees]
         messages: list[str] = []
@@ -421,6 +538,9 @@ def main() -> int:
         if chemin in erreurs_manifests:
             messages = erreurs_manifests[chemin]
             etiquette = "manifest"
+        elif est_missions(donnees_par_fichier[chemin]):
+            messages = erreurs_items.get(chemin, [])
+            etiquette = f"{len(donnees_par_fichier[chemin]['missions'])} mission(s)"
         else:
             messages = erreurs_items.get(chemin, [])
             donnees = donnees_par_fichier[chemin]

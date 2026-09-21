@@ -1,0 +1,462 @@
+[
+  {
+    "type": "rappel-source",
+    "fonctions_ciblees": [
+      "memorisation-longue",
+      "recuperation"
+    ],
+    "contenu": {
+      "consigne": "Mémorise la fiche affichée : tu devras dire dans quel contexte tu l'as vue.",
+      "affichage": {
+        "mode": "liste",
+        "duree_totale_ms": 12000,
+        "elements": [
+          [
+            "Note collée sur le frigo",
+            "Le code du garage est 4721."
+          ]
+        ]
+      },
+      "enonce": "Dans quel contexte as-tu vu : « Le code du garage est 4721. » ?",
+      "options": [
+        "Note collée sur le frigo",
+        "Carnet de courses",
+        "SMS reçu le matin",
+        "Message sur le répondeur"
+      ],
+      "aide": "Repense à l'endroit, pas seulement au texte."
+    },
+    "reponse": {
+      "valeur": "Note collée sur le frigo"
+    },
+    "id": "ev-4-source-01",
+    "palier": 4,
+    "prerequis": [
+      "ev-palier-3"
+    ],
+    "module": "entrainement",
+    "theme": "evocation",
+    "cap_complexite": null,
+    "meta": {
+      "auteur": "redaction-assistee (tools/generer_evocation_social.py)",
+      "date_creation": "2026-09-20",
+      "relecture_ortho": {
+        "statut": "a_revoir"
+      }
+    }
+  },
+  {
+    "type": "rappel-source",
+    "fonctions_ciblees": [
+      "memorisation-longue",
+      "recuperation"
+    ],
+    "contenu": {
+      "consigne": "Mémorise la fiche affichée : tu devras dire dans quel contexte tu l'as vue.",
+      "affichage": {
+        "mode": "liste",
+        "duree_totale_ms": 12000,
+        "elements": [
+          [
+            "SMS de l'orthophoniste",
+            "Le rendez-vous est décalé au mardi 14 h."
+          ]
+        ]
+      },
+      "enonce": "Dans quel contexte as-tu vu : « Le rendez-vous est décalé au mardi 14 h. » ?",
+      "options": [
+        "Affichette du cabinet",
+        "SMS de l'orthophoniste",
+        "Courriel de l'assurance",
+        "Note sur le frigo"
+      ],
+      "aide": "Repense à l'endroit, pas seulement au texte."
+    },
+    "reponse": {
+      "valeur": "SMS de l'orthophoniste"
+    },
+    "id": "ev-4-source-02",
+    "palier": 4,
+    "prerequis": [
+      "ev-palier-3"
+    ],
+    "module": "entrainement",
+    "theme": "evocation",
+    "cap_complexite": null,
+    "meta": {
+      "auteur": "redaction-assistee (tools/generer_evocation_social.py)",
+      "date_creation": "2026-09-20",
+      "relecture_ortho": {
+        "statut": "a_revoir"
+      }
+    }
+  },
+  {
+    "type": "rappel-source",
+    "fonctions_ciblees": [
+      "memorisation-longue",
+      "recuperation"
+    ],
+    "contenu": {
+      "consigne": "Mémorise la fiche affichée : tu devras dire dans quel contexte tu l'as vue.",
+      "affichage": {
+        "mode": "liste",
+        "duree_totale_ms": 12000,
+        "elements": [
+          [
+            "Affichette dans le hall de l'immeuble",
+            "Coupure d'eau jeudi entre 9 h et 12 h."
+          ]
+        ]
+      },
+      "enonce": "Dans quel contexte as-tu vu : « Coupure d'eau jeudi entre 9 h et 12 h. » ?",
+      "options": [
+        "Affichette dans le hall de l'immeuble",
+        "Message sur le répondeur",
+        "SMS de la gardienne",
+        "Bulletin municipal"
+      ],
+      "aide": "Repense à l'endroit, pas seulement au texte."
+    },
+    "reponse": {
+      "valeur": "Affichette dans le hall de l'immeuble"
+    },
+    "id": "ev-4-source-03",
+    "palier": 4,
+    "prerequis": [
+      "ev-palier-3"
+    ],
+    "module": "entrainement",
+    "theme": "evocation",
+    "cap_complexite": null,
+    "meta": {
+      "auteur": "redaction-assistee (tools/generer_evocation_social.py)",
+      "date_creation": "2026-09-20",
+      "relecture_ortho": {
+        "statut": "a_revoir"
+      }
+    }
+  },
+  {
+    "type": "rappel-source",
+    "fonctions_ciblees": [
+      "memorisation-longue",
+      "recuperation"
+    ],
+    "contenu": {
+      "consigne": "Mémorise la fiche affichée : tu devras dire dans quel contexte tu l'as vue.",
+      "affichage": {
+        "mode": "liste",
+        "duree_totale_ms": 12000,
+        "elements": [
+          [
+            "Post-it sur le plan de travail",
+            "Il reste deux boîtes de thé dans le placard."
+          ]
+        ]
+      },
+      "enonce": "Dans quel contexte as-tu vu : « Il reste deux boîtes de thé dans le placard. » ?",
+      "options": [
+        "Note vocale",
+        "Post-it sur le plan de travail",
+        "Carnet de courses",
+        "Liste partagée sur le téléphone"
+      ],
+      "aide": "Repense à l'endroit, pas seulement au texte."
+    },
+    "reponse": {
+      "valeur": "Post-it sur le plan de travail"
+    },
+    "id": "ev-4-source-04",
+    "palier": 4,
+    "prerequis": [
+      "ev-palier-3"
+    ],
+    "module": "entrainement",
+    "theme": "evocation",
+    "cap_complexite": null,
+    "meta": {
+      "auteur": "redaction-assistee (tools/generer_evocation_social.py)",
+      "date_creation": "2026-09-20",
+      "relecture_ortho": {
+        "statut": "a_revoir"
+      }
+    }
+  },
+  {
+    "type": "rappel-source",
+    "fonctions_ciblees": [
+      "memorisation-longue",
+      "recuperation"
+    ],
+    "contenu": {
+      "consigne": "Mémorise la fiche affichée : tu devras dire dans quel contexte tu l'as vue.",
+      "affichage": {
+        "mode": "liste",
+        "duree_totale_ms": 12000,
+        "elements": [
+          [
+            "Bulletin municipal reçu par courrier",
+            "La collecte du verre passe le premier lundi du mois."
+          ]
+        ]
+      },
+      "enonce": "Dans quel contexte as-tu vu : « La collecte du verre passe le premier lundi du mois. » ?",
+      "options": [
+        "Affichette dans le hall",
+        "Bulletin municipal reçu par courrier",
+        "Site de la mairie",
+        "SMS reçu le matin"
+      ],
+      "aide": "Repense à l'endroit, pas seulement au texte."
+    },
+    "reponse": {
+      "valeur": "Bulletin municipal reçu par courrier"
+    },
+    "id": "ev-4-source-05",
+    "palier": 4,
+    "prerequis": [
+      "ev-palier-3"
+    ],
+    "module": "entrainement",
+    "theme": "evocation",
+    "cap_complexite": null,
+    "meta": {
+      "auteur": "redaction-assistee (tools/generer_evocation_social.py)",
+      "date_creation": "2026-09-20",
+      "relecture_ortho": {
+        "statut": "a_revoir"
+      }
+    }
+  },
+  {
+    "type": "rappel-source",
+    "fonctions_ciblees": [
+      "memorisation-longue",
+      "recuperation"
+    ],
+    "contenu": {
+      "consigne": "Mémorise la fiche affichée : tu devras dire dans quel contexte tu l'as vue.",
+      "affichage": {
+        "mode": "liste",
+        "duree_totale_ms": 12000,
+        "elements": [
+          [
+            "Courriel de la banque",
+            "Le prélèvement part le 5 de chaque mois."
+          ]
+        ]
+      },
+      "enonce": "Dans quel contexte as-tu vu : « Le prélèvement part le 5 de chaque mois. » ?",
+      "options": [
+        "Relevé papier",
+        "SMS de la banque",
+        "Application de paiement",
+        "Courriel de la banque"
+      ],
+      "aide": "Repense à l'endroit, pas seulement au texte."
+    },
+    "reponse": {
+      "valeur": "Courriel de la banque"
+    },
+    "id": "ev-4-source-06",
+    "palier": 4,
+    "prerequis": [
+      "ev-palier-3"
+    ],
+    "module": "entrainement",
+    "theme": "evocation",
+    "cap_complexite": null,
+    "meta": {
+      "auteur": "redaction-assistee (tools/generer_evocation_social.py)",
+      "date_creation": "2026-09-20",
+      "relecture_ortho": {
+        "statut": "a_revoir"
+      }
+    }
+  },
+  {
+    "type": "rappel-source",
+    "fonctions_ciblees": [
+      "memorisation-longue",
+      "recuperation"
+    ],
+    "contenu": {
+      "consigne": "Mémorise la fiche affichée : tu devras dire dans quel contexte tu l'as vue.",
+      "affichage": {
+        "mode": "liste",
+        "duree_totale_ms": 12000,
+        "elements": [
+          [
+            "Note lue dans le carnet de santé",
+            "Allergie signalée à la pénicilline."
+          ]
+        ]
+      },
+      "enonce": "Dans quel contexte as-tu vu : « Allergie signalée à la pénicilline. » ?",
+      "options": [
+        "Ordonnance de la pharmacie",
+        "Note lue dans le carnet de santé",
+        "Carnet de rendez-vous",
+        "Courriel du médecin"
+      ],
+      "aide": "Repense à l'endroit, pas seulement au texte."
+    },
+    "reponse": {
+      "valeur": "Note lue dans le carnet de santé"
+    },
+    "id": "ev-4-source-07",
+    "palier": 4,
+    "prerequis": [
+      "ev-palier-3"
+    ],
+    "module": "entrainement",
+    "theme": "evocation",
+    "cap_complexite": null,
+    "meta": {
+      "auteur": "redaction-assistee (tools/generer_evocation_social.py)",
+      "date_creation": "2026-09-20",
+      "relecture_ortho": {
+        "statut": "a_revoir"
+      }
+    }
+  },
+  {
+    "type": "rappel-source",
+    "fonctions_ciblees": [
+      "memorisation-longue",
+      "recuperation"
+    ],
+    "contenu": {
+      "consigne": "Mémorise la fiche affichée : tu devras dire dans quel contexte tu l'as vue.",
+      "affichage": {
+        "mode": "liste",
+        "duree_totale_ms": 12000,
+        "elements": [
+          [
+            "Mémos du téléphone",
+            "Le mot de passe du wifi a été changé en août."
+          ]
+        ]
+      },
+      "enonce": "Dans quel contexte as-tu vu : « Le mot de passe du wifi a été changé en août. » ?",
+      "options": [
+        "Notebook de la cuisine",
+        "Mémos du téléphone",
+        "Étiquette au dos du boîtier",
+        "SMS de l'opérateur"
+      ],
+      "aide": "Repense à l'endroit, pas seulement au texte."
+    },
+    "reponse": {
+      "valeur": "Mémos du téléphone"
+    },
+    "id": "ev-4-source-08",
+    "palier": 4,
+    "prerequis": [
+      "ev-palier-3"
+    ],
+    "module": "entrainement",
+    "theme": "evocation",
+    "cap_complexite": null,
+    "meta": {
+      "auteur": "redaction-assistee (tools/generer_evocation_social.py)",
+      "date_creation": "2026-09-20",
+      "relecture_ortho": {
+        "statut": "a_revoir"
+      }
+    }
+  },
+  {
+    "type": "rappel-source",
+    "fonctions_ciblees": [
+      "memorisation-longue",
+      "recuperation"
+    ],
+    "contenu": {
+      "consigne": "Mémorise la fiche affichée : tu devras dire dans quel contexte tu l'as vue.",
+      "affichage": {
+        "mode": "liste",
+        "duree_totale_ms": 12000,
+        "elements": [
+          [
+            "Panneau à l'entrée du parc",
+            "Le portail ferme à 20 h en semaine."
+          ]
+        ]
+      },
+      "enonce": "Dans quel contexte as-tu vu : « Le portail ferme à 20 h en semaine. » ?",
+      "options": [
+        "Affiche du marché",
+        "Message vocal",
+        "Panneau à l'entrée du parc",
+        "Site de la ville"
+      ],
+      "aide": "Repense à l'endroit, pas seulement au texte."
+    },
+    "reponse": {
+      "valeur": "Panneau à l'entrée du parc"
+    },
+    "id": "ev-4-source-09",
+    "palier": 4,
+    "prerequis": [
+      "ev-palier-3"
+    ],
+    "module": "entrainement",
+    "theme": "evocation",
+    "cap_complexite": null,
+    "meta": {
+      "auteur": "redaction-assistee (tools/generer_evocation_social.py)",
+      "date_creation": "2026-09-20",
+      "relecture_ortho": {
+        "statut": "a_revoir"
+      }
+    }
+  },
+  {
+    "type": "rappel-source",
+    "fonctions_ciblees": [
+      "memorisation-longue",
+      "recuperation"
+    ],
+    "contenu": {
+      "consigne": "Mémorise la fiche affichée : tu devras dire dans quel contexte tu l'as vue.",
+      "affichage": {
+        "mode": "liste",
+        "duree_totale_ms": 12000,
+        "elements": [
+          [
+            "Note dans l'agenda papier",
+            "Le vélo doit être récupéré chez le réparateur vendredi."
+          ]
+        ]
+      },
+      "enonce": "Dans quel contexte as-tu vu : « Le vélo doit être récupéré chez le réparateur vendredi. » ?",
+      "options": [
+        "Ticket de dépôt",
+        "Note dans l'agenda papier",
+        "Fil de discussion familial",
+        "SMS de la boutique"
+      ],
+      "aide": "Repense à l'endroit, pas seulement au texte."
+    },
+    "reponse": {
+      "valeur": "Note dans l'agenda papier"
+    },
+    "id": "ev-4-source-10",
+    "palier": 4,
+    "prerequis": [
+      "ev-palier-3"
+    ],
+    "module": "entrainement",
+    "theme": "evocation",
+    "cap_complexite": null,
+    "meta": {
+      "auteur": "redaction-assistee (tools/generer_evocation_social.py)",
+      "date_creation": "2026-09-20",
+      "relecture_ortho": {
+        "statut": "a_revoir"
+      }
+    }
+  }
+]

@@ -15,7 +15,15 @@ from backend.app.domain.contenu import ChargeurContenu
 from backend.app.main import creer_app
 
 CONTENU = ChargeurContenu()
-THEMES_ATTENDUS = {"calcul-mental", "anglais", "python", "memoire", "concentration"}
+THEMES_ATTENDUS = {
+    "calcul-mental",
+    "anglais",
+    "python",
+    "memoire",
+    "concentration",
+    "evocation",
+    "social",
+}
 
 
 # -- utilitaires -----------------------------------------------------------------
@@ -33,10 +41,12 @@ def _valeur_attendue(theme, item_id):
     return CONTENU.item(theme, item_id)["reponse"]["valeur"]
 
 
-def _repondre(client, theme, session_id, item_id, reponse, temps_ms=900):
+def _repondre(client, theme, session_id, item_id, reponse, temps_ms=900, indice_utilise=None):
+    corps = {"item_id": item_id, "reponse": reponse, "temps_ms": temps_ms}
+    if indice_utilise is not None:
+        corps["indice_utilise"] = indice_utilise
     return client.post(
-        f"/api/entrainement/{theme}/sessions/{session_id}/reponses",
-        json={"item_id": item_id, "reponse": reponse, "temps_ms": temps_ms},
+        f"/api/entrainement/{theme}/sessions/{session_id}/reponses", json=corps
     )
 
 
@@ -130,7 +140,7 @@ def test_cycle_complet_avec_resume_coherent(client, tmp_path):
     reponse = _repondre(client, "calcul-mental", payload["session_id"], items[0]["id"], str(bonne))
     assert reponse.status_code == 200
     corps = reponse.json()
-    assert set(corps) == {"correcte", "attendue", "feedback"}
+    assert set(corps) == {"correcte", "assistee", "attendue", "feedback"}
     assert corps["correcte"] is True
     assert corps["attendue"] == bonne
     assert corps["feedback"]
@@ -414,7 +424,7 @@ def test_arret_propose_jamais_force(client):
             temps_ms=9000,
         )
         assert reponse.status_code == 200
-        assert set(reponse.json()) == {"correcte", "attendue", "feedback"}
+        assert set(reponse.json()) == {"correcte", "assistee", "attendue", "feedback"}
 
     reponse = _finir(client, "calcul-mental", payload["session_id"])
     assert reponse.status_code == 200  # la séance va à son terme normalement

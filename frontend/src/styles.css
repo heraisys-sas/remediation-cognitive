@@ -580,3 +580,80 @@ body {
 @media (max-width: 30rem) {
   .zone-memo { padding: 1.35rem 1rem; }
 }
+
+/* ---------------------------------------------------------------------
+   Choix de réponse (types à propositions) et indices progressifs
+   --------------------------------------------------------------------- */
+
+.zone-choix { margin-top: 1.25rem; }
+
+.grille-options { display: grid; gap: 0.75rem; }
+
+.bouton-option {
+  width: 100%;
+  text-align: left;
+  background: var(--surface-haute);
+  color: var(--texte);
+  border: 1px solid var(--bordure);
+  font-weight: 500;
+  line-height: 1.45;
+}
+
+.bouton-option:hover:not(:disabled) { border-color: var(--accent); }
+
+.bouton-option:disabled { opacity: 0.55; cursor: default; }
+
+.zone-indices {
+  margin-top: 1rem;
+  display: grid;
+  gap: 0.75rem;
+  justify-items: start;
+}
+
+.indice-statut { margin: 0; color: var(--texte-secondaire); font-size: 0.98rem; }
+
+.liste-indices { margin: 0; padding-left: 1.25rem; display: grid; gap: 0.4rem; }
+
+/* Essai clos sans erreur : teinte neutre, aucun rouge. */
+.feedback-assiste {
+  background: var(--surface-haute);
+  border: 1px solid var(--bordure);
+}
+
+/* ---------------------------------------------------------------------
+   Missions hors écran et carnet
+   --------------------------------------------------------------------- */
+
+.liste-missions { display: grid; gap: 1rem; }
+
+.carte-mission { display: grid; gap: 0.6rem; }
+
+.mission-pourquoi { margin: 0; color: var(--texte-secondaire); }
+
+.mission-etapes { margin: 0; padding-left: 1.25rem; display: grid; gap: 0.3rem; }
+
+.mission-repere { margin: 0; font-size: 0.95rem; color: var(--texte-secondaire); }
+
+.zone-note {
+  margin-top: 1rem;
+  padding: 1.25rem;
+  border: 1px solid var(--bordure);
+  border-radius: 16px;
+  background: var(--surface);
+  display: grid;
+  gap: 0.6rem;
+}
+
+.titre-note { margin: 1rem 0 0; font-size: 1.15rem; }
+
+.champ-zone { min-height: 6rem; resize: vertical; font: inherit; }
+
+.journal { display: grid; gap: 0.75rem; }
+
+.carte-note { display: grid; gap: 0.35rem; }
+
+.note-titre { margin: 0; font-weight: 600; }
+
+.note-texte { margin: 0; }
+
+.note-meta { margin: 0; font-size: 0.9rem; color: var(--texte-secondaire); }

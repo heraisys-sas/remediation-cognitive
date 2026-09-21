@@ -15,7 +15,6 @@ import json
 from pathlib import Path
 
 from . import messages
-
 RACINE_PROJET = Path(__file__).resolve().parents[3]
 """Racine du dépôt remediation-cognitive (résolution indépendante du CWD)."""
 
@@ -28,7 +27,12 @@ _SOURCES_PAR_THEME: dict[str, tuple[str, str]] = {
     "python": ("python/commandes", "builtins.json"),
     "memoire": ("memoire/paliers", "palier-*.json"),
     "concentration": ("concentration/paliers", "palier-*.json"),
+    "evocation": ("evocation/paliers", "palier-*.json"),
+    "social": ("social/paliers", "palier-*.json"),
 }
+
+#: Fichier de missions hors écran du thème social (préparation d'interactions réelles).
+_FICHIER_MISSIONS = Path("content/entrainement/social/missions.json")
 
 
 class ChargeurContenu:
@@ -40,6 +44,25 @@ class ChargeurContenu:
 
     def __init__(self) -> None:
         self._cache_items: dict[str, list[dict]] = {}
+        self._cache_missions: list[dict] | None = None
+
+    # -- missions hors écran --------------------------------------------------
+
+    def missions(self) -> list[dict]:
+        """Missions de préparation d'interactions réelles (thème social).
+
+        Hors moteur de séance : une mission n'a pas de réponse attendue —
+        l'application fournit la préparation et le suivi, pas une note.
+        """
+        if self._cache_missions is None:
+            chemin = RACINE_PROJET / _FICHIER_MISSIONS
+            try:
+                donnees = json.loads(chemin.read_text(encoding="utf-8"))
+            except (FileNotFoundError, json.JSONDecodeError):
+                donnees = {}
+            missions = donnees.get("missions") if isinstance(donnees, dict) else None
+            self._cache_missions = missions if isinstance(missions, list) else []
+        return self._cache_missions
 
     # -- thèmes ------------------------------------------------------------
 

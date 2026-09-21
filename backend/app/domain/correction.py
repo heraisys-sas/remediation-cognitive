@@ -13,11 +13,15 @@ Règles par thème (docs/30-technique/api-contract.md) :
 - ``memoire``        : texte insensible à la casse, TOUS les espaces ignorés
   (les empans tapés avec espaces restent valides) ;
 - ``concentration``  : comparaison numérique (chaînes, cascades, double tâche,
-  séries — réponses entières).
+  séries — réponses entières) ;
+- ``evocation``      : texte tolérant — casse, accents, espaces et guillemets
+  ignorés (un mot retrouvé se juge sur le mot, pas sur son accent) ;
+- ``social``         : texte tolérant — la réponse est la proposition choisie.
 """
 
 from __future__ import annotations
 
+import unicodedata
 from numbers import Real
 
 # Tolérance de comparaison flottante (représentations décimales exactes).
@@ -64,6 +68,18 @@ def _corriger_sans_espaces(reponse, attendue) -> bool:
     return nettoyer(reponse) == nettoyer(attendue)
 
 
+def _clef_texte(valeur) -> str:
+    """Clé de comparaison souple : casse, accents, espaces et guillemets ignorés.
+
+    Sert aux thèmes ``evocation`` (mot retrouvé) et ``social`` (proposition
+    choisie) : l'objectif est le rappel du mot ou du sens, pas l'orthographe
+    exacte ni la typographie — un mot juste écrit sans accent reste juste.
+    """
+    texte = unicodedata.normalize("NFD", str(valeur or "").casefold())
+    sans_accents = "".join(c for c in texte if not unicodedata.combining(c))
+    return " ".join(sans_accents.replace("«", " ").replace("»", " ").split())
+
+
 def corriger(theme: str, item: dict, reponse) -> bool:
     """Retourne True si la réponse soumise correspond à la réponse attendue.
 
@@ -77,6 +93,8 @@ def corriger(theme: str, item: dict, reponse) -> bool:
     attendue = (item.get("reponse") or {}).get("valeur")
     if theme in ("calcul-mental", "concentration"):
         return _corriger_numerique(reponse, attendue)
+    if theme in ("evocation", "social"):
+        return _clef_texte(reponse) == _clef_texte(attendue)
     if theme in ("anglais", "memoire"):
         if theme == "memoire":
             return _corriger_sans_espaces(reponse, attendue)

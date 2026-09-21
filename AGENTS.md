@@ -14,13 +14,13 @@ Logiciel de **bilan et rééducation cognitive** pour adultes avec syndrome post
 
 Docs d'entrée : `docs/00-produit/vision.md`, `docs/00-produit/cadre-reglementaire.md`, `docs/00-produit/feuille-de-route.md`.
 
-## État courant — sprint 2 livré (2026-09-15)
+## État courant — sprint 3 livré (2026-09-21)
 
-- **Jouable de bout en bout** : cinq thèmes d'entraînement — calcul mental (cycle complet), anglais, Python, **mémoire** (empan endroit/envers, paires associatives, sonde n-back) et **concentration** (calcul chaîné, cascades, double tâche, séries) avec phase de mémorisation temporisée. Lancer `python3 -m uvicorn backend.app.main:app` puis ouvrir `/ui/`.
-- **Implémenté** : `engine/` (FSRS 6.3.2 encapsulé, SessionRunner, maîtrise 90 % × 3, fatigue = proposition) ; `backend/` (routes `/api/entrainement` selon le contrat `docs/30-technique/api-contract.md`, correction serveur par thème, persistance JSON sous `backend/data/` — gitignored) ; `frontend/` (SPA vanilla sur `/ui`, affichage temporisé : consigne → stimulus → masqué → question) ; 497 items de contenu (9 paliers calcul mental, échantillons anglais/Python, mémoire 8 paliers × 18, concentration 9 paliers × 18 — génération déterministe `tools/generer_memo_concentration.py`, graine 20260904).
-- **Tests** : 99 passed (`python3 -m pytest -q`) ; validateur de contenu multi-thèmes 0 erreur (`python3 tools/validate_items.py`). Toute modification doit les garder verts.
-- **Contrat d'API figé** : `docs/30-technique/api-contract.md` — le modifier = décision structurante (ADR). Extension sprint 2 : `contenu.affichage` (sequence/liste) documenté.
-- **Traçabilité du sprint** : `.cluster/sprint1/` (sprint 1) et `.cluster/enrichissement/` (sprint 2 : plan, spécification) ; `memories/2026-09-03-sprint-1.md` et `memories/2026-09-15-enrichissement-memo-concentration.md` (pièges et reste à faire).
+- **Jouable de bout en bout** : sept thèmes — calcul mental, anglais, Python, mémoire (empan, paires associatives, n-back), concentration (chaînes, cascades, double tâche, séries), **retrouver le mot** (reconnaissance, rappel indicé à indices progressifs, rappel de la source) et **vie sociale** (vignettes d'émotion, réponses adaptées, lecture d'intention) — plus un écran **missions hors écran & carnet**. Lancer `python3 -m uvicorn backend.app.main:app` puis ouvrir `/ui/`.
+- **Implémenté** : `engine/` (FSRS 6.3.2 encapsulé, SessionRunner, maîtrise 90 % × 3, fatigue = proposition) ; `backend/` (routes `/api/entrainement` selon le contrat + périmètre `/api/social` pour missions et carnet, correction serveur par thème, persistance JSON sous `backend/data/` — gitignored) ; `frontend/` (SPA vanilla sur `/ui`) ; **587 items de contenu** (9 paliers calcul mental, anglais/Python, mémoire 8 × 18, concentration 9 × 18, evocation 5 × 10, social 4 × 10) + 8 missions — généré par `tools/generer_memo_concentration.py` et `tools/generer_evocation_social.py` (déterministes).
+- **Tests** : 106 passed (`python3 -m pytest -q`). Contrôles de cohérence : `python3 tools/validate_items.py` (schéma, manifests, options, indices — 0 erreur), `python3 tools/verifier_reponses.py` (réponses recalculées — 0 anomalie), `python3 tools/verifier_interface.py` (identifiants interface ↔ HTML). Toute modification doit les garder verts.
+- **Contrat d'API figé** : `docs/30-technique/api-contract.md` — le modifier = décision structurante (ADR). Extensions récentes : `contenu.affichage` (sprint 2), `contenu.options`/`contenu.indices` + champ `indice_utilise` et essai « assisté » + périmètre `/api/social` (sprint 3, ADR-004).
+- **Traçabilité du sprint** : `.cluster/sprint1/` et `.cluster/enrichissement/` ; `memories/2026-09-03-sprint-1.md`, `memories/2026-09-15-enrichissement-memo-concentration.md`, `memories/2026-09-21-acces-au-mot-et-vie-sociale.md`.
 
 ## Règles non négociables (garde-fous cliniques)
 
@@ -46,11 +46,15 @@ Docs d'entrée : `docs/00-produit/vision.md`, `docs/00-produit/cadre-reglementai
 ## Commandes
 
 ```bash
-pip3 install -r <(printf 'fastapi\nuvicorn\nhttpx\npytest\nfsrs\n')  # dépendances actuelles (aucun requirements.txt encore)
+pip3 install -r <(printf 'fastapi\nuvicorn\nhttpx\npytest\nfsrs\npython-docx\n')  # dépendances actuelles (aucun requirements.txt encore)
 python3 -m pytest -q                 # tous les tests (backend/tests + engine/tests)
 python3 -m pytest -q engine/tests    # moteurs seuls
 python3 -m uvicorn backend.app.main:app   # serveur de dev → /ui/ (interface) et /docs (API)
-python3 tools/validate_items.py      # valide tout le contenu contre le schéma
+python3 tools/validate_items.py      # schéma, manifests, options, indices
+python3 tools/verifier_reponses.py   # réponses recalculées depuis l'énoncé
+python3 tools/verifier_interface.py  # identifiants demandés par l'interface ↔ présents dans l'HTML
+python3 tools/generer_memo_concentration.py --dry-run   # régénère mémoire/concentration
+python3 tools/generer_evocation_social.py --dry-run     # régénère evocation/social + missions
 ```
 
 Dépendances effectives du sprint 1 : fastapi, uvicorn, httpx, pytest, fsrs (paquet officiel open-spaced-repetition). Un `requirements.txt`/lock est à produire au prochain sprint.
@@ -60,8 +64,9 @@ Dépendances effectives du sprint 1 : fastapi, uvicorn, httpx, pytest, fsrs (paq
 - Quota journalier : 3 séances/jour **par thème** (jusqu'à 9/jour au total) — global ou par thème, à trancher (paramétrable dans `backend/app/domain/dosage.py`).
 - Framework frontend — vanilla sans build au sprint 1 ; React+Vite quand l'UI se complexifiera (ADR-003 à formaliser).
 - Gestion des clés de chiffrement — ADR à produire (le stockage JSON actuel n'est pas chiffré ; périmètre non médical uniquement).
-- Mode errorless d'entrée de palier et prerequis anglais/Python complets — reportés (le sprint 2 a livré mémoire/concentration avant).
-- Relecture orthographique et clinique des 306 items générés (`meta.relecture_ortho` = `a_revoir`) avant diffusion au-delà de l'usage familial.
+- Mode errorless d'entrée de palier et prerequis anglais/Python complets — reportés (le sprint 2 a livré mémoire/concentration, le sprint 3 l'accès au mot et la vie sociale).
+- Relecture orthographique et clinique des 396 items générés (`meta.relecture_ortho` = `a_revoir`) et des 8 missions avant diffusion au-delà de l'usage familial.
+- Carnet des missions : mono-utilisateur, aucune donnée de séance n'y transite — à confirmer si un usage multi-profils arrive.
 - `requirements.txt` verrouillé + README développeur « démarrage en 5 minutes ».
 
 ## Mémoire partagée

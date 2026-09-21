@@ -42,16 +42,30 @@ VOCABULAIRES = {
                 "nom": "Concentration",
                 "description": "Calculs chaînés, double tâche et séries — une attention qui tient",
             },
+            "evocation": {
+                "nom": "Retrouver le mot",
+                "description": "Définitions, indices progressifs, mémoire du contexte — retrouver ce qu'on sait déjà",
+            },
+            "social": {
+                "nom": "Vie sociale",
+                "description": "Situations, intentions et réponses qui conviennent — se remettre en lien",
+            },
         },
         # Feedback immédiat guidé (correction serveur).
         "feedback_correcte": "Bien joué, réponse correcte !",
         "feedback_incorrecte": "Pas tout à fait — la réponse attendue s'affiche, on y reviendra.",
+        "feedback_assiste": "Voici la réponse — on la reverra bientôt, sans indice cette fois.",
         # Messages d'erreur (clés : erreur_<code machine du contrat>).
         "erreur_theme_inconnu": "Thème inconnu.",
         "erreur_session_inconnue": "Séance introuvable (elle n'existe plus en mémoire).",
         "erreur_session_terminee": "Cette séance est déjà terminée.",
         "erreur_item_hors_seance": "Cet item ne fait pas partie de la séance en cours.",
         "erreur_reponse_invalide": "Réponse ou temps invalide.",
+    },
+    "social": {
+        "titre_session": "Missions hors écran",
+        "mission_inconnue": "Mission inconnue.",
+        "journal_entree_invalide": "Note invalide (texte manquant ou trop long).",
     },
 }
 

@@ -37,6 +37,9 @@
       <p class="intro-vue">Quelque chose de court et tranquille — quelques minutes suffisent.</p>
       <p id="notice-themes" class="notice" role="status" hidden></p>
       <div id="liste-themes" class="grille-themes"></div>
+      <div class="actions-suite">
+        <button id="bouton-missions" type="button" class="bouton bouton-secondaire bouton-large">Missions hors écran &amp; journal</button>
+      </div>
     </section>
 
     <!-- Écran 2 : séance (une question à la fois) -->
@@ -66,6 +69,13 @@
            Le stimulus disparaît AVANT la saisie (garde-fou ergonomique). -->
       <div id="zone-memo" class="zone-memo" hidden></div>
 
+      <!-- Choix de réponse (types à propositions : reconnaissance, situations,
+           intentions) : remplace la saisie libre, une seule proposition possible. -->
+      <div id="zone-choix" class="zone-choix" role="group" aria-label="Propositions" hidden></div>
+
+      <!-- Indices progressifs (accès au mot) : révélés un par un, jamais la réponse. -->
+      <div id="zone-indices" class="zone-indices" hidden></div>
+
       <!-- Un seul champ de saisie ; Entrée = valider (soumission du formulaire). -->
       <form id="formulaire-reponse" class="zone-reponse" novalidate>
         <label class="etiquette" for="champ-reponse">Ta réponse</label>
@@ -86,6 +96,33 @@
       <!-- Toujours visible pendant la séance : l'utilisateur garde la main à tout moment. -->
       <div class="pied-seance">
         <button id="bouton-terminer" type="button" class="bouton bouton-secondaire">Terminer la séance</button>
+      </div>
+    </section>
+
+    <!-- Écran « Missions hors écran » : préparer une interaction réelle, la
+         réaliser hors application, puis noter ce qui s'est passé. Le journal
+         vit dans son propre stockage (aucune donnée d'entraînement mêlée). -->
+    <section id="vue-missions" class="vue" aria-labelledby="titre-missions" hidden>
+      <h2 id="titre-missions" class="titre-vue" tabindex="-1">Missions hors écran</h2>
+      <p class="intro-vue">Une petite action dans la vie réelle, préparée ici, puis notée à ton retour. Rien n’est noté ni comparé : c’est ton carnet.</p>
+
+      <div id="liste-missions" class="liste-missions"></div>
+
+      <div id="zone-note-mission" class="zone-note" hidden>
+        <h3 id="titre-note" class="titre-note"></h3>
+        <label class="etiquette" for="champ-note">Ce qui s’est passé</label>
+        <textarea id="champ-note" class="champ champ-zone" rows="4"></textarea>
+        <label class="etiquette" for="champ-ressenti">Comment tu l’as vécu (facultatif)</label>
+        <select id="champ-ressenti" class="champ"></select>
+        <button id="bouton-enregistrer-note" type="button" class="bouton bouton-primaire bouton-large">Enregistrer la note</button>
+        <p id="message-note" class="notice" role="status" hidden></p>
+      </div>
+
+      <h3 class="titre-note">Mon carnet</h3>
+      <div id="journal-missions" class="journal"></div>
+
+      <div class="actions-suite">
+        <button id="bouton-retour-journal" type="button" class="bouton bouton-secondaire bouton-large">Retour aux thèmes</button>
       </div>
     </section>
 

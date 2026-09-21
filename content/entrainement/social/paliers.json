@@ -1,0 +1,39 @@
+{
+  "theme": "social",
+  "paliers": [
+    {
+      "id": "so-palier-1",
+      "description": "Reconnaître l'émotion ressentie dans une situation",
+      "prerequis": [],
+      "fichier": "paliers/palier-01.json",
+      "nb_items": 10
+    },
+    {
+      "id": "so-palier-2",
+      "description": "Choisir la réponse qui convient dans un échange",
+      "prerequis": [
+        "so-palier-1"
+      ],
+      "fichier": "paliers/palier-02.json",
+      "nb_items": 10
+    },
+    {
+      "id": "so-palier-3",
+      "description": "Lire l'intention derrière une parole et son ton",
+      "prerequis": [
+        "so-palier-2"
+      ],
+      "fichier": "paliers/palier-03.json",
+      "nb_items": 10
+    },
+    {
+      "id": "so-palier-4",
+      "description": "Alterner réponse adaptée et lecture d'intention",
+      "prerequis": [
+        "so-palier-3"
+      ],
+      "fichier": "paliers/palier-04.json",
+      "nb_items": 10
+    }
+  ]
+}

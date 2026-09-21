@@ -1,0 +1,352 @@
+[
+  {
+    "type": "reponse-adaptee",
+    "fonctions_ciblees": [
+      "cognition-sociale",
+      "pragmatique"
+    ],
+    "contenu": {
+      "consigne": "Choisis la réponse qui te semble convenir le mieux.",
+      "enonce": "Une collègue te dit : « Tu as une minute ? J'ai besoin d'un avis. » Tu es en pleine tâche.",
+      "options": [
+        "« Là je termine un truc : je viens te voir dans dix minutes ? »",
+        "« Non. »",
+        "« Pourquoi tu me demandes toujours à moi ? »"
+      ],
+      "aide": "Cherche la réponse qui laisse une porte ouverte aux deux personnes."
+    },
+    "reponse": {
+      "valeur": "« Là je termine un truc : je viens te voir dans dix minutes ? »"
+    },
+    "id": "so-2-reponse-01",
+    "palier": 2,
+    "prerequis": [
+      "so-palier-1"
+    ],
+    "module": "entrainement",
+    "theme": "social",
+    "cap_complexite": null,
+    "meta": {
+      "auteur": "redaction-assistee (tools/generer_evocation_social.py)",
+      "date_creation": "2026-09-20",
+      "relecture_ortho": {
+        "statut": "a_revoir"
+      }
+    }
+  },
+  {
+    "type": "reponse-adaptee",
+    "fonctions_ciblees": [
+      "cognition-sociale",
+      "pragmatique"
+    ],
+    "contenu": {
+      "consigne": "Choisis la réponse qui te semble convenir le mieux.",
+      "enonce": "L'orthophoniste propose de décaler la séance de jeudi. Tu ne peux pas ce jour-là.",
+      "options": [
+        "« Jeudi je ne peux pas, mais vendredi matin je suis libre. »",
+        "« Comme vous voulez, peu importe. »",
+        "« Ça ne m'arrange pas du tout. »"
+      ],
+      "aide": "Cherche la réponse qui laisse une porte ouverte aux deux personnes."
+    },
+    "reponse": {
+      "valeur": "« Jeudi je ne peux pas, mais vendredi matin je suis libre. »"
+    },
+    "id": "so-2-reponse-02",
+    "palier": 2,
+    "prerequis": [
+      "so-palier-1"
+    ],
+    "module": "entrainement",
+    "theme": "social",
+    "cap_complexite": null,
+    "meta": {
+      "auteur": "redaction-assistee (tools/generer_evocation_social.py)",
+      "date_creation": "2026-09-20",
+      "relecture_ortho": {
+        "statut": "a_revoir"
+      }
+    }
+  },
+  {
+    "type": "reponse-adaptee",
+    "fonctions_ciblees": [
+      "cognition-sociale",
+      "pragmatique"
+    ],
+    "contenu": {
+      "consigne": "Choisis la réponse qui te semble convenir le mieux.",
+      "enonce": "Un voisin que tu connais peu te demande si tu peux récupérer un colis pour lui.",
+      "options": [
+        "« Je ne fais pas ce genre de choses. »",
+        "« Oui, je serai là en fin de journée. »",
+        "« Pourquoi vous ne le faites pas vous-même ? »"
+      ],
+      "aide": "Cherche la réponse qui laisse une porte ouverte aux deux personnes."
+    },
+    "reponse": {
+      "valeur": "« Oui, je serai là en fin de journée. »"
+    },
+    "id": "so-2-reponse-03",
+    "palier": 2,
+    "prerequis": [
+      "so-palier-1"
+    ],
+    "module": "entrainement",
+    "theme": "social",
+    "cap_complexite": null,
+    "meta": {
+      "auteur": "redaction-assistee (tools/generer_evocation_social.py)",
+      "date_creation": "2026-09-20",
+      "relecture_ortho": {
+        "statut": "a_revoir"
+      }
+    }
+  },
+  {
+    "type": "reponse-adaptee",
+    "fonctions_ciblees": [
+      "cognition-sociale",
+      "pragmatique"
+    ],
+    "contenu": {
+      "consigne": "Choisis la réponse qui te semble convenir le mieux.",
+      "enonce": "Tu arrives en retard à un rendez-vous chez un ami. Il dit : « Ah, te voilà. »",
+      "options": [
+        "« Tu m'attendais depuis longtemps ? »",
+        "« Ce n'est pas ma faute, il y avait du monde. »",
+        "« Désolé, j'ai mal calculé le temps de trajet. »"
+      ],
+      "aide": "Cherche la réponse qui laisse une porte ouverte aux deux personnes."
+    },
+    "reponse": {
+      "valeur": "« Désolé, j'ai mal calculé le temps de trajet. »"
+    },
+    "id": "so-2-reponse-04",
+    "palier": 2,
+    "prerequis": [
+      "so-palier-1"
+    ],
+    "module": "entrainement",
+    "theme": "social",
+    "cap_complexite": null,
+    "meta": {
+      "auteur": "redaction-assistee (tools/generer_evocation_social.py)",
+      "date_creation": "2026-09-20",
+      "relecture_ortho": {
+        "statut": "a_revoir"
+      }
+    }
+  },
+  {
+    "type": "reponse-adaptee",
+    "fonctions_ciblees": [
+      "cognition-sociale",
+      "pragmatique"
+    ],
+    "contenu": {
+      "consigne": "Choisis la réponse qui te semble convenir le mieux.",
+      "enonce": "Au téléphone, tu n'entends pas bien ce que dit ton interlocuteur.",
+      "options": [
+        "« Oui, oui, d'accord. » (sans avoir compris)",
+        "« Vous parlez trop vite. »",
+        "« Je vous entends mal : pouvez-vous répéter la deuxième phrase ? »"
+      ],
+      "aide": "Cherche la réponse qui laisse une porte ouverte aux deux personnes."
+    },
+    "reponse": {
+      "valeur": "« Je vous entends mal : pouvez-vous répéter la deuxième phrase ? »"
+    },
+    "id": "so-2-reponse-05",
+    "palier": 2,
+    "prerequis": [
+      "so-palier-1"
+    ],
+    "module": "entrainement",
+    "theme": "social",
+    "cap_complexite": null,
+    "meta": {
+      "auteur": "redaction-assistee (tools/generer_evocation_social.py)",
+      "date_creation": "2026-09-20",
+      "relecture_ortho": {
+        "statut": "a_revoir"
+      }
+    }
+  },
+  {
+    "type": "reponse-adaptee",
+    "fonctions_ciblees": [
+      "cognition-sociale",
+      "pragmatique"
+    ],
+    "contenu": {
+      "consigne": "Choisis la réponse qui te semble convenir le mieux.",
+      "enonce": "Une amie te propose de venir à un repas où tu ne connais personne.",
+      "options": [
+        "« Vous mangez quoi ? »",
+        "« Non merci, je ne connais personne. »",
+        "« Avec plaisir — je repars vers 22 h, c'est possible ? »"
+      ],
+      "aide": "Cherche la réponse qui laisse une porte ouverte aux deux personnes."
+    },
+    "reponse": {
+      "valeur": "« Avec plaisir — je repars vers 22 h, c'est possible ? »"
+    },
+    "id": "so-2-reponse-06",
+    "palier": 2,
+    "prerequis": [
+      "so-palier-1"
+    ],
+    "module": "entrainement",
+    "theme": "social",
+    "cap_complexite": null,
+    "meta": {
+      "auteur": "redaction-assistee (tools/generer_evocation_social.py)",
+      "date_creation": "2026-09-20",
+      "relecture_ortho": {
+        "statut": "a_revoir"
+      }
+    }
+  },
+  {
+    "type": "reponse-adaptee",
+    "fonctions_ciblees": [
+      "cognition-sociale",
+      "pragmatique"
+    ],
+    "contenu": {
+      "consigne": "Choisis la réponse qui te semble convenir le mieux.",
+      "enonce": "À la pharmacie, tu veux vérifier si une boîte est compatible avec ton traitement.",
+      "options": [
+        "« Est-ce que je peux vous montrer mon ordonnance pour vérifier ? »",
+        "« Vous êtes sûre de ce que vous dites ? »",
+        "« Vous avez d'autres marques ? Lesquelles sont les moins chères ? »"
+      ],
+      "aide": "Cherche la réponse qui laisse une porte ouverte aux deux personnes."
+    },
+    "reponse": {
+      "valeur": "« Est-ce que je peux vous montrer mon ordonnance pour vérifier ? »"
+    },
+    "id": "so-2-reponse-07",
+    "palier": 2,
+    "prerequis": [
+      "so-palier-1"
+    ],
+    "module": "entrainement",
+    "theme": "social",
+    "cap_complexite": null,
+    "meta": {
+      "auteur": "redaction-assistee (tools/generer_evocation_social.py)",
+      "date_creation": "2026-09-20",
+      "relecture_ortho": {
+        "statut": "a_revoir"
+      }
+    }
+  },
+  {
+    "type": "reponse-adaptee",
+    "fonctions_ciblees": [
+      "cognition-sociale",
+      "pragmatique"
+    ],
+    "contenu": {
+      "consigne": "Choisis la réponse qui te semble convenir le mieux.",
+      "enonce": "Quelqu'un te fait une remarque désagréable devant d'autres personnes.",
+      "options": [
+        "« Vous êtes vraiment désagréable. »",
+        "« De quoi vous parlez ? »",
+        "« Je préfère qu'on en parle à deux, plus tard. »"
+      ],
+      "aide": "Cherche la réponse qui laisse une porte ouverte aux deux personnes."
+    },
+    "reponse": {
+      "valeur": "« Je préfère qu'on en parle à deux, plus tard. »"
+    },
+    "id": "so-2-reponse-08",
+    "palier": 2,
+    "prerequis": [
+      "so-palier-1"
+    ],
+    "module": "entrainement",
+    "theme": "social",
+    "cap_complexite": null,
+    "meta": {
+      "auteur": "redaction-assistee (tools/generer_evocation_social.py)",
+      "date_creation": "2026-09-20",
+      "relecture_ortho": {
+        "statut": "a_revoir"
+      }
+    }
+  },
+  {
+    "type": "reponse-adaptee",
+    "fonctions_ciblees": [
+      "cognition-sociale",
+      "pragmatique"
+    ],
+    "contenu": {
+      "consigne": "Choisis la réponse qui te semble convenir le mieux.",
+      "enonce": "Tu es invité chez quelqu'un et tu ne sais pas quoi apporter.",
+      "options": [
+        "« Je viens les mains vides, c'est plus simple. »",
+        "« Est-ce que j'apporte quelque chose pour le dessert ? »",
+        "« À quelle heure vous servez ? »"
+      ],
+      "aide": "Cherche la réponse qui laisse une porte ouverte aux deux personnes."
+    },
+    "reponse": {
+      "valeur": "« Est-ce que j'apporte quelque chose pour le dessert ? »"
+    },
+    "id": "so-2-reponse-09",
+    "palier": 2,
+    "prerequis": [
+      "so-palier-1"
+    ],
+    "module": "entrainement",
+    "theme": "social",
+    "cap_complexite": null,
+    "meta": {
+      "auteur": "redaction-assistee (tools/generer_evocation_social.py)",
+      "date_creation": "2026-09-20",
+      "relecture_ortho": {
+        "statut": "a_revoir"
+      }
+    }
+  },
+  {
+    "type": "reponse-adaptee",
+    "fonctions_ciblees": [
+      "cognition-sociale",
+      "pragmatique"
+    ],
+    "contenu": {
+      "consigne": "Choisis la réponse qui te semble convenir le mieux.",
+      "enonce": "Un proche te raconte un souci. Tu ne sais pas quoi dire.",
+      "options": [
+        "« Il faut faire attention, tu sais. »",
+        "« Je ne sais pas trop quoi dire, mais je suis là si tu veux en parler. »",
+        "« Tu veux un conseil ? Moi à ta place… »"
+      ],
+      "aide": "Cherche la réponse qui laisse une porte ouverte aux deux personnes."
+    },
+    "reponse": {
+      "valeur": "« Je ne sais pas trop quoi dire, mais je suis là si tu veux en parler. »"
+    },
+    "id": "so-2-reponse-10",
+    "palier": 2,
+    "prerequis": [
+      "so-palier-1"
+    ],
+    "module": "entrainement",
+    "theme": "social",
+    "cap_complexite": null,
+    "meta": {
+      "auteur": "redaction-assistee (tools/generer_evocation_social.py)",
+      "date_creation": "2026-09-20",
+      "relecture_ortho": {
+        "statut": "a_revoir"
+      }
+    }
+  }
+]

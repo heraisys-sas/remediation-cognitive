@@ -20,7 +20,9 @@ from fastapi.staticfiles import StaticFiles
 
 from .api.entrainement import router as router_entrainement
 from .api.entrainement.service import GestionnaireSessions
+from .api.social import router as router_social
 from .domain.contenu import RACINE_PROJET
+from .storage.journal import StockageJournal
 from .storage.store import StockageJSON
 
 
@@ -56,6 +58,14 @@ def creer_app(
         horloge=horloge,
     )
     application.include_router(router_entrainement)
+
+    # Carnet des missions hors écran (thème social) : stockage SÉPARÉ des
+    # données d'entraînement (il contient des éléments personnels) — même
+    # horloge que les séances, pour dater les notes de façon cohérente.
+    racine_journal = Path(racine_donnees).parent / "journal" if racine_donnees else None
+    application.state.stockage_journal = StockageJournal(racine=racine_journal)
+    application.state.horloge = application.state.gestionnaire_entrainement.horloge
+    application.include_router(router_social)
 
     # Interface statique : montage tolérant — le dossier frontend/ peut
     # ne pas exister encore (livré en parallèle) ; /ui rend alors 404.

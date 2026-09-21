@@ -116,6 +116,11 @@ class SessionEnCours:
     reponses: dict[str, bool] = field(default_factory=dict)
     # Temps (ms) des premières réponses correctes — baseline RT adaptative.
     temps_reference: list[float] = field(default_factory=list)
+    # Indices consultés par item (0 = sans aide) — mesure de l'aide nécessaire.
+    indices_utilises: dict[str, int] = field(default_factory=dict)
+    # Essais clos en affichant la réponse : aucune erreur commise par
+    # l'utilisateur, mais pas de récupération réussie non plus.
+    assistees: set[str] = field(default_factory=set)
     terminee: bool = False
 
 
@@ -228,8 +233,23 @@ class GestionnaireSessions:
 
     # -- réponses ------------------------------------------------------------
 
-    def repondre(self, theme: str, session_id: str, item_id: str, reponse, temps_ms) -> dict:
+    def repondre(
+        self,
+        theme: str,
+        session_id: str,
+        item_id: str,
+        reponse,
+        temps_ms,
+        indice_utilise: int | None = None,
+    ) -> dict:
         """Corrige côté serveur et retourne le payload 200 du contrat.
+
+        ``indice_utilise`` (optionnel, 0 par défaut) : nombre d'indices
+        consultés par l'utilisateur. La valeur ``nb_indices + 1`` signale que
+        la réponse a été AFFICHÉE — l'essai est alors « assisté » : aucune
+        erreur n'est commise (principe errorless) mais la récupération n'a pas
+        eu lieu, donc la carte FSRS est notée en échec et le taux de réussite
+        ne la compte pas comme réussite.
 
         Lève ``SessionInconnue`` (404), ``SessionDejaTerminee`` (409),
         ``ItemHorsSeance`` (404) ou ``ReponseInvalide`` (422).
@@ -247,20 +267,39 @@ class GestionnaireSessions:
             # fatigue — celle-ci reste une simple proposition.
             self._cloturer(session, self.horloge())
             raise SessionDejaTerminee()
-        correcte = corriger(theme, item, reponse)
+        nb_indices = len((item.get("contenu") or {}).get("indices") or [])
+        if indice_utilise is None:
+            indice_utilise = 0
+        if (
+            isinstance(indice_utilise, bool)
+            or not isinstance(indice_utilise, int)
+            or indice_utilise < 0
+            or indice_utilise > nb_indices + 1
+        ):
+            raise ReponseInvalide("indice_utilise hors bornes")
+        assistee = nb_indices > 0 and indice_utilise > nb_indices
+        correcte = False if assistee else corriger(theme, item, reponse)
         try:
             session.runner.enregistrer_reponse(item_id, correcte, temps_ms)
         except ValueError as exc:
             raise ReponseInvalide(str(exc)) from exc
         premiere_reponse = item_id not in session.reponses
         session.reponses.setdefault(item_id, correcte)
-        if premiere_reponse and correcte:
-            # Seules les premières réponses correctes nourrissent la
-            # baseline RT (les essais dupliqués la fausseraient).
-            session.temps_reference.append(float(temps_ms))
-        cle = "feedback_correcte" if correcte else "feedback_incorrecte"
+        if premiere_reponse:
+            session.indices_utilises[item_id] = indice_utilise
+            if assistee:
+                session.assistees.add(item_id)
+            elif correcte and indice_utilise == 0:
+                # Seules les premières réponses correctes SANS AIDE nourrissent
+                # la baseline RT (les essais aidés ou dupliqués la fausseraient).
+                session.temps_reference.append(float(temps_ms))
+        if assistee:
+            cle = "feedback_assiste"
+        else:
+            cle = "feedback_correcte" if correcte else "feedback_incorrecte"
         return {
             "correcte": correcte,
+            "assistee": assistee,
             "attendue": item["reponse"]["valeur"],
             "feedback": messages.texte("entrainement", cle),
         }
@@ -284,7 +323,7 @@ class GestionnaireSessions:
             - self.stockage.lire_compteur(theme, self.horloge().date()),
         )
         arret_propose = bool(resume_moteur["alerte_fatigue"])
-        return {
+        retour = {
             "resume": {
                 "items": nb_repondu,
                 "correctes": nb_correctes,
@@ -295,6 +334,16 @@ class GestionnaireSessions:
             "motif_arret": "fatigue" if arret_propose else None,
             "sessions_restantes_aujourdhui": restantes,
         }
+        # Champs propres aux exercices d'accès au mot : aide réellement
+        # nécessaire et essais clos sans erreur (réponse affichée).
+        if session.indices_utilises or session.assistees:
+            retour["resume"]["assistees"] = len(session.assistees)
+            retour["resume"]["sans_aide"] = sum(
+                1
+                for item_id, correcte in session.reponses.items()
+                if correcte and session.indices_utilises.get(item_id, 0) == 0
+            )
+        return retour
 
     def _cloturer(
         self, session: SessionEnCours, maintenant: datetime

@@ -1,0 +1,109 @@
+{
+  "theme": "social",
+  "missions": [
+    {
+      "id": "ms-01",
+      "niveau": 1,
+      "titre": "Saluer une personne croisée",
+      "pourquoi": "Rétablir un geste simple qui demande peu d'énergie et qui ouvre la journée.",
+      "etapes": [
+        "Choisis une personne que tu croises régulièrement (voisin, commerçant).",
+        "Prépare deux phrases : « Bonjour » puis « Bonne journée ».",
+        "Dis-les au prochain passage, sans attendre de conversation."
+      ],
+      "duree_estimee_min": 2,
+      "repere": "Tu as dit les deux phrases — c'est réussi, même si la réponse a été brève."
+    },
+    {
+      "id": "ms-02",
+      "niveau": 1,
+      "titre": "Demander une information simple",
+      "pourquoi": "S'entraîner à ouvrir une demande courte, dans un lieu où c'est normal de la poser.",
+      "etapes": [
+        "Choisis un lieu familier (boulangerie, pharmacie, accueil).",
+        "Écris ta question en une phrase : « Où puis-je trouver… ? »",
+        "Pose-la, écoute la réponse, remercie."
+      ],
+      "duree_estimee_min": 5,
+      "repere": "La question a été posée à voix haute — peu importe la réponse obtenue."
+    },
+    {
+      "id": "ms-03",
+      "niveau": 2,
+      "titre": "Répondre à un message en attente",
+      "pourquoi": "Un message sans réponse entretient l'évitement ; y répondre en ferme la boucle.",
+      "etapes": [
+        "Repère un message en attente depuis plusieurs jours.",
+        "Écris une réponse courte (deux phrases suffisent).",
+        "Relis-la, puis envoie-la."
+      ],
+      "duree_estimee_min": 10,
+      "repere": "Le message est parti, même s'il tient en deux lignes."
+    },
+    {
+      "id": "ms-04",
+      "niveau": 2,
+      "titre": "Passer un appel court",
+      "pourquoi": "Le téléphone fait souvent peur après une longue période de retrait : une durée limitée rend l'exercice supportable.",
+      "etapes": [
+        "Écris sur un papier l'objet de l'appel en une phrase.",
+        "Note une phrase d'ouverture et une phrase de sortie.",
+        "Appelle, dis tes deux phrases, puis termine l'appel."
+      ],
+      "duree_estimee_min": 10,
+      "repere": "L'appel a eu lieu et tu as raccroché toi-même."
+    },
+    {
+      "id": "ms-05",
+      "niveau": 3,
+      "titre": "Proposer une rencontre courte",
+      "pourquoi": "Proposer est plus difficile que répondre : c'est le pas qui change vraiment la situation.",
+      "etapes": [
+        "Choisis une personne avec qui tu as déjà passé un bon moment.",
+        "Propose un créneau court et précis (café de 45 minutes, marche de 20 minutes).",
+        "Précise ce que tu proposes, sans justification longue."
+      ],
+      "duree_estimee_min": 15,
+      "repere": "La proposition a été envoyée ; la réponse ne dépend pas de toi."
+    },
+    {
+      "id": "ms-06",
+      "niveau": 3,
+      "titre": "Participer sans parler",
+      "pourquoi": "Être présent sans obligation de parler fatigue moins et relance l'habitude d'être avec d'autres.",
+      "etapes": [
+        "Repère un moment collectif accessible (cours, club, repas partagé).",
+        "Fixe-toi un objectif minimal : rester vingt minutes.",
+        "Prépare une phrase de sortie pour partir tranquillement."
+      ],
+      "duree_estimee_min": 30,
+      "repere": "Tu es resté le temps prévu — c'est la réussite de la mission."
+    },
+    {
+      "id": "ms-07",
+      "niveau": 4,
+      "titre": "Reprendre contact avec une personne perdue de vue",
+      "pourquoi": "Renouer évite de repartir de zéro : le lien existe déjà, il faut juste le réactiver.",
+      "etapes": [
+        "Choisis une personne dont tu as de bons souvenirs.",
+        "Écris un message simple : un souvenir précis, puis une question.",
+        "Envoie. Si la réponse tarde, ce n'est pas un verdict sur toi."
+      ],
+      "duree_estimee_min": 20,
+      "repere": "Le message est envoyé."
+    },
+    {
+      "id": "ms-08",
+      "niveau": 4,
+      "titre": "Demander de l'aide à quelqu'un",
+      "pourquoi": "Demander aide maintient les liens, alors que ne jamais demander finit par éloigner.",
+      "etapes": [
+        "Repère un petit service que quelqu'un peut rendre facilement.",
+        "Formule la demande en précisant la durée : « Est-ce que tu pourrais m'aider dix minutes ? »",
+        "Remercie explicitement après."
+      ],
+      "duree_estimee_min": 15,
+      "repere": "La demande a été formulée clairement."
+    }
+  ]
+}
