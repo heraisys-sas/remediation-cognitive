@@ -8,9 +8,9 @@
       "consigne": "Choisis le mot qui correspond à la définition.",
       "enonce": "Capacité à attendre sans s'énerver.",
       "options": [
-        "patience",
+        "tolérance",
         "prudence",
-        "tolérance"
+        "patience"
       ],
       "aide": "Relis la définition en entier avant de choisir."
     },
@@ -40,9 +40,9 @@
       "consigne": "Choisis le mot qui correspond à la définition.",
       "enonce": "Geste qu'on fait sans y penser, toujours de la même façon.",
       "options": [
+        "habitude",
         "routine",
-        "manie",
-        "habitude"
+        "manie"
       ],
       "aide": "Relis la définition en entier avant de choisir."
     },
@@ -72,8 +72,8 @@
       "consigne": "Choisis le mot qui correspond à la définition.",
       "enonce": "Absence de bruit.",
       "options": [
-        "silence",
         "repos",
+        "silence",
         "calme"
       ],
       "aide": "Relis la définition en entier avant de choisir."
@@ -104,9 +104,9 @@
       "consigne": "Choisis le mot qui correspond à la définition.",
       "enonce": "Ce qui reste en mémoire d'un moment passé.",
       "options": [
-        "récit",
         "image",
-        "souvenir"
+        "souvenir",
+        "récit"
       ],
       "aide": "Relis la définition en entier avant de choisir."
     },
@@ -136,9 +136,9 @@
       "consigne": "Choisis le mot qui correspond à la définition.",
       "enonce": "Choix qu'on arrête après avoir hésité.",
       "options": [
-        "projet",
+        "avis",
         "décision",
-        "avis"
+        "projet"
       ],
       "aide": "Relis la définition en entier avant de choisir."
     },
@@ -200,9 +200,9 @@
       "consigne": "Choisis le mot qui correspond à la définition.",
       "enonce": "Petit objet qui ouvre une porte.",
       "options": [
+        "poignée",
         "clé",
-        "cadenas",
-        "poignée"
+        "cadenas"
       ],
       "aide": "Relis la définition en entier avant de choisir."
     },
@@ -233,8 +233,8 @@
       "enonce": "Objet qu'on ouvre quand il pleut.",
       "options": [
         "bottes",
-        "parapluie",
-        "manteau"
+        "manteau",
+        "parapluie"
       ],
       "aide": "Relis la définition en entier avant de choisir."
     },
@@ -264,9 +264,9 @@
       "consigne": "Choisis le mot qui correspond à la définition.",
       "enonce": "Série de marches pour changer d'étage.",
       "options": [
-        "ascenseur",
         "couloir",
-        "escalier"
+        "escalier",
+        "ascenseur"
       ],
       "aide": "Relis la définition en entier avant de choisir."
     },
@@ -296,8 +296,8 @@
       "consigne": "Choisis le mot qui correspond à la définition.",
       "enonce": "Ustensile pour manger la soupe.",
       "options": [
-        "cuillère",
         "couteau",
+        "cuillère",
         "fourchette"
       ],
       "aide": "Relis la définition en entier avant de choisir."

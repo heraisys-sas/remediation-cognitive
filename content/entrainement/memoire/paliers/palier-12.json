@@ -18,16 +18,16 @@
         "mode": "sequence",
         "duree_par_item_ms": 900,
         "elements": [
-          "drapeau",
-          "nuage",
-          "tapis"
+          "radis",
+          "chemise",
+          "rivière"
         ]
       },
       "enonce": "Tape les mots à l'envers (le dernier d'abord).",
       "aide": null
     },
     "reponse": {
-      "valeur": "tapis nuage drapeau"
+      "valeur": "rivière chemise radis"
     },
     "meta": {
       "auteur": "generation-automatique (tools/generer_memo_concentration.py)",
@@ -56,16 +56,16 @@
         "mode": "sequence",
         "duree_par_item_ms": 900,
         "elements": [
-          "plage",
-          "musique",
-          "soleil"
+          "guitare",
+          "radis",
+          "lune"
         ]
       },
       "enonce": "Tape les mots à l'envers (le dernier d'abord).",
       "aide": null
     },
     "reponse": {
-      "valeur": "soleil musique plage"
+      "valeur": "lune radis guitare"
     },
     "meta": {
       "auteur": "generation-automatique (tools/generer_memo_concentration.py)",
@@ -94,16 +94,16 @@
         "mode": "sequence",
         "duree_par_item_ms": 900,
         "elements": [
-          "guitare",
-          "cuisine",
-          "orange"
+          "horloge",
+          "fromage",
+          "jardin"
         ]
       },
       "enonce": "Tape les mots à l'envers (le dernier d'abord).",
       "aide": null
     },
     "reponse": {
-      "valeur": "orange cuisine guitare"
+      "valeur": "jardin fromage horloge"
     },
     "meta": {
       "auteur": "generation-automatique (tools/generer_memo_concentration.py)",
@@ -132,16 +132,16 @@
         "mode": "sequence",
         "duree_par_item_ms": 900,
         "elements": [
-          "horloge",
-          "journal",
-          "musique"
+          "feuille",
+          "ballon",
+          "sable"
         ]
       },
       "enonce": "Tape les mots à l'envers (le dernier d'abord).",
       "aide": null
     },
     "reponse": {
-      "valeur": "musique journal horloge"
+      "valeur": "sable ballon feuille"
     },
     "meta": {
       "auteur": "generation-automatique (tools/generer_memo_concentration.py)",
@@ -170,16 +170,16 @@
         "mode": "sequence",
         "duree_par_item_ms": 900,
         "elements": [
-          "jardin",
-          "sable",
-          "panier"
+          "drapeau",
+          "chemin",
+          "chocolat"
         ]
       },
       "enonce": "Tape les mots à l'envers (le dernier d'abord).",
       "aide": null
     },
     "reponse": {
-      "valeur": "panier sable jardin"
+      "valeur": "chocolat chemin drapeau"
     },
     "meta": {
       "auteur": "generation-automatique (tools/generer_memo_concentration.py)",
@@ -208,16 +208,16 @@
         "mode": "sequence",
         "duree_par_item_ms": 900,
         "elements": [
-          "chocolat",
-          "marteau",
-          "pomme"
+          "plage",
+          "jardinier",
+          "cuisine"
         ]
       },
       "enonce": "Tape les mots à l'envers (le dernier d'abord).",
       "aide": null
     },
     "reponse": {
-      "valeur": "pomme marteau chocolat"
+      "valeur": "cuisine jardinier plage"
     },
     "meta": {
       "auteur": "generation-automatique (tools/generer_memo_concentration.py)",
@@ -246,16 +246,16 @@
         "mode": "sequence",
         "duree_par_item_ms": 900,
         "elements": [
-          "chat",
-          "manteau",
-          "montagne"
+          "plage",
+          "table",
+          "chat"
         ]
       },
       "enonce": "Tape les mots à l'envers (le dernier d'abord).",
       "aide": null
     },
     "reponse": {
-      "valeur": "montagne manteau chat"
+      "valeur": "chat table plage"
     },
     "meta": {
       "auteur": "generation-automatique (tools/generer_memo_concentration.py)",
@@ -284,16 +284,16 @@
         "mode": "sequence",
         "duree_par_item_ms": 900,
         "elements": [
-          "ballon",
-          "marteau",
-          "cuisine"
+          "porte",
+          "crayon",
+          "ballon"
         ]
       },
       "enonce": "Tape les mots à l'envers (le dernier d'abord).",
       "aide": null
     },
     "reponse": {
-      "valeur": "cuisine marteau ballon"
+      "valeur": "ballon crayon porte"
     },
     "meta": {
       "auteur": "generation-automatique (tools/generer_memo_concentration.py)",
@@ -322,16 +322,16 @@
         "mode": "sequence",
         "duree_par_item_ms": 900,
         "elements": [
-          "radis",
-          "bureau",
-          "horloge"
+          "voiture",
+          "plage",
+          "jardin"
         ]
       },
       "enonce": "Tape les mots à l'envers (le dernier d'abord).",
       "aide": null
     },
     "reponse": {
-      "valeur": "horloge bureau radis"
+      "valeur": "jardin plage voiture"
     },
     "meta": {
       "auteur": "generation-automatique (tools/generer_memo_concentration.py)",
@@ -360,17 +360,17 @@
         "mode": "sequence",
         "duree_par_item_ms": 900,
         "elements": [
-          "camion",
-          "colline",
-          "bateau",
-          "chaussure"
+          "stylo",
+          "porte",
+          "journal",
+          "feuille"
         ]
       },
       "enonce": "Tape les mots à l'envers (le dernier d'abord).",
       "aide": null
     },
     "reponse": {
-      "valeur": "chaussure bateau colline camion"
+      "valeur": "feuille journal porte stylo"
     },
     "meta": {
       "auteur": "generation-automatique (tools/generer_memo_concentration.py)",
@@ -399,17 +399,17 @@
         "mode": "sequence",
         "duree_par_item_ms": 900,
         "elements": [
-          "table",
-          "marteau",
-          "jardinier",
-          "vélo"
+          "plage",
+          "sable",
+          "chapeau",
+          "porte"
         ]
       },
       "enonce": "Tape les mots à l'envers (le dernier d'abord).",
       "aide": null
     },
     "reponse": {
-      "valeur": "vélo jardinier marteau table"
+      "valeur": "porte chapeau sable plage"
     },
     "meta": {
       "auteur": "generation-automatique (tools/generer_memo_concentration.py)",
@@ -438,17 +438,17 @@
         "mode": "sequence",
         "duree_par_item_ms": 900,
         "elements": [
-          "chaussure",
-          "rivière",
-          "montre",
-          "fenêtre"
+          "chapeau",
+          "manteau",
+          "feuille",
+          "panier"
         ]
       },
       "enonce": "Tape les mots à l'envers (le dernier d'abord).",
       "aide": null
     },
     "reponse": {
-      "valeur": "fenêtre montre rivière chaussure"
+      "valeur": "panier feuille manteau chapeau"
     },
     "meta": {
       "auteur": "generation-automatique (tools/generer_memo_concentration.py)",
@@ -477,17 +477,17 @@
         "mode": "sequence",
         "duree_par_item_ms": 900,
         "elements": [
-          "soleil",
-          "jardinier",
-          "fromage",
-          "feuille"
+          "horloge",
+          "chaussure",
+          "tapis",
+          "panier"
         ]
       },
       "enonce": "Tape les mots à l'envers (le dernier d'abord).",
       "aide": null
     },
     "reponse": {
-      "valeur": "feuille fromage jardinier soleil"
+      "valeur": "panier tapis chaussure horloge"
     },
     "meta": {
       "auteur": "generation-automatique (tools/generer_memo_concentration.py)",
@@ -516,17 +516,17 @@
         "mode": "sequence",
         "duree_par_item_ms": 900,
         "elements": [
-          "stylo",
-          "jardin",
-          "jardinier",
-          "sable"
+          "cuisine",
+          "bateau",
+          "sable",
+          "radis"
         ]
       },
       "enonce": "Tape les mots à l'envers (le dernier d'abord).",
       "aide": null
     },
     "reponse": {
-      "valeur": "sable jardinier jardin stylo"
+      "valeur": "radis sable bateau cuisine"
     },
     "meta": {
       "auteur": "generation-automatique (tools/generer_memo_concentration.py)",
@@ -555,17 +555,17 @@
         "mode": "sequence",
         "duree_par_item_ms": 900,
         "elements": [
-          "chemin",
-          "crayon",
-          "rivière",
-          "bureau"
+          "stylo",
+          "journal",
+          "fromage",
+          "lune"
         ]
       },
       "enonce": "Tape les mots à l'envers (le dernier d'abord).",
       "aide": null
     },
     "reponse": {
-      "valeur": "bureau rivière crayon chemin"
+      "valeur": "lune fromage journal stylo"
     },
     "meta": {
       "auteur": "generation-automatique (tools/generer_memo_concentration.py)",
@@ -594,17 +594,17 @@
         "mode": "sequence",
         "duree_par_item_ms": 900,
         "elements": [
+          "drapeau",
+          "lune",
           "bouteille",
-          "colline",
-          "plage",
-          "manteau"
+          "musique"
         ]
       },
       "enonce": "Tape les mots à l'envers (le dernier d'abord).",
       "aide": null
     },
     "reponse": {
-      "valeur": "manteau plage colline bouteille"
+      "valeur": "musique bouteille lune drapeau"
     },
     "meta": {
       "auteur": "generation-automatique (tools/generer_memo_concentration.py)",
@@ -633,17 +633,17 @@
         "mode": "sequence",
         "duree_par_item_ms": 900,
         "elements": [
-          "cuisine",
-          "panier",
-          "bouteille",
-          "crayon"
+          "feuille",
+          "fenêtre",
+          "chapeau",
+          "bouteille"
         ]
       },
       "enonce": "Tape les mots à l'envers (le dernier d'abord).",
       "aide": null
     },
     "reponse": {
-      "valeur": "crayon bouteille panier cuisine"
+      "valeur": "bouteille chapeau fenêtre feuille"
     },
     "meta": {
       "auteur": "generation-automatique (tools/generer_memo_concentration.py)",
@@ -672,17 +672,17 @@
         "mode": "sequence",
         "duree_par_item_ms": 900,
         "elements": [
-          "musique",
+          "montagne",
           "chemin",
-          "soleil",
-          "montagne"
+          "tapis",
+          "ballon"
         ]
       },
       "enonce": "Tape les mots à l'envers (le dernier d'abord).",
       "aide": null
     },
     "reponse": {
-      "valeur": "montagne soleil chemin musique"
+      "valeur": "ballon tapis chemin montagne"
     },
     "meta": {
       "auteur": "generation-automatique (tools/generer_memo_concentration.py)",

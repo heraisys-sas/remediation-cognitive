@@ -120,6 +120,20 @@ def _item(
     }
 
 
+def _rng_perimetre(perimetre: str) -> random.Random:
+    """Générateur aléatoire isolé par périmètre (« thème:famille »).
+
+    Un générateur PARTAGÉ rend le contenu instable : ajouter une famille ou un
+    palier décale le tirage de tout ce qui suit, et du contenu déjà livré est
+    réécrit silencieusement (mêmes identifiants, exercices différents) — c'est
+    arrivé au sprint 4 pour le thème « concentration ». Chaque périmètre tire
+    donc de sa propre séquence, dérivée de la graine et de son nom : deux
+    exécutions restent identiques, et une extension ne touche que la famille
+    qu'elle ajoute.
+    """
+    return random.Random(f"{GRAINE}:{perimetre}")
+
+
 def _chiffres_sans_doublon_adjacent(rng: random.Random, longueur: int) -> list[str]:
     """Chiffres 0..9 en chaînes, sans deux chiffres identiques consécutifs."""
     chiffres = [str(rng.randrange(10))]
@@ -384,8 +398,12 @@ def _serie(rng, palier, regle, nn, prerequis, date_creation):
 # --- Composition des paliers ------------------------------------------------------
 
 
-def _paliers_memoire(rng, date_creation):
-    """Construit les 8 paliers du thème « memoire » (18 items chacun)."""
+def _paliers_memoire(date_creation):
+    """Construit les 12 paliers du thème « memoire » (18 items chacun).
+
+    Chaque famille (empan, empan de mots, paires, n-back) tire ses items d'un
+    générateur isolé — voir ``_rng_perimetre``.
+    """
     paliers = []
     compositions = [
         # (nb, type, paramètres) — voir spec .cluster/enrichissement/spec.md
@@ -410,10 +428,12 @@ def _paliers_memoire(rng, date_creation):
         + [("mots", {"longueur": 4, "envers": True})] * 9,
     ]
     compteurs: dict[str, int] = {}
+    rngs: dict[str, random.Random] = {}
     for numero, composition in enumerate(compositions, start=1):
         prerequis = [] if numero == 1 else [f"me-palier-{numero - 1}"]
         items = []
         for famille, parametres in composition:
+            rng = rngs.setdefault(famille, _rng_perimetre(f"memoire:{famille}"))
             compteurs[famille] = compteurs.get(famille, 0) + 1
             nn = compteurs[famille]
             if famille == "empan":
@@ -432,8 +452,12 @@ def _paliers_memoire(rng, date_creation):
     return paliers
 
 
-def _paliers_concentration(rng, date_creation):
-    """Construit les 9 paliers du thème « concentration » (18 items chacun)."""
+def _paliers_concentration(date_creation):
+    """Construit les 9 paliers du thème « concentration » (18 items chacun).
+
+    Chaque famille (chaîne, cascade, double tâche, série) tire ses items d'un
+    générateur isolé — voir ``_rng_perimetre``.
+    """
     paliers = []
     compositions = [
         [("chaine", {"nb_ops": 3, "borne": 20})] * 18,
@@ -452,10 +476,12 @@ def _paliers_concentration(rng, date_creation):
         + [("serie", {"regle": "alternee"})] * 9,
     ]
     compteurs: dict[str, int] = {}
+    rngs: dict[str, random.Random] = {}
     for numero, composition in enumerate(compositions, start=1):
         prerequis = [] if numero == 1 else [f"co-palier-{numero - 1}"]
         items = []
         for famille, parametres in composition:
+            rng = rngs.setdefault(famille, _rng_perimetre(f"concentration:{famille}"))
             compteurs[famille] = compteurs.get(famille, 0) + 1
             nn = compteurs[famille]
             if famille == "chaine":
@@ -539,9 +565,8 @@ def main() -> int:
                          help="date_creation (meta), AAAA-MM-JJ (défaut : %(default)s)")
     options = parseur.parse_args()
 
-    rng = random.Random(GRAINE)
-    memoire = _paliers_memoire(rng, options.date)
-    concentration = _paliers_concentration(rng, options.date)
+    memoire = _paliers_memoire(options.date)
+    concentration = _paliers_concentration(options.date)
 
     cibles: dict[Path, object] = {}
     for numero, items in enumerate(memoire, start=1):

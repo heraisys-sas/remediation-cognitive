@@ -14,11 +14,11 @@
     ],
     "cap_complexite": null,
     "contenu": {
-      "enonce": "29 + 24 − 15 + 9 − 7 + 2",
+      "enonce": "25 − 12 − 8 − 3 + 2 + 24",
       "aide": "Calcule de gauche à droite, étape par étape."
     },
     "reponse": {
-      "valeur": 42
+      "valeur": 28
     },
     "meta": {
       "auteur": "generation-automatique (tools/generer_memo_concentration.py)",
@@ -43,11 +43,11 @@
     ],
     "cap_complexite": null,
     "contenu": {
-      "enonce": "24 + 18 − 23 + 9 + 9 + 10",
+      "enonce": "7 + 9 + 18 − 28 − 4 + 12",
       "aide": "Calcule de gauche à droite, étape par étape."
     },
     "reponse": {
-      "valeur": 47
+      "valeur": 14
     },
     "meta": {
       "auteur": "generation-automatique (tools/generer_memo_concentration.py)",
@@ -72,11 +72,11 @@
     ],
     "cap_complexite": null,
     "contenu": {
-      "enonce": "17 − 13 + 22 − 13 + 4 + 6",
+      "enonce": "7 + 27 − 14 − 12 − 3 − 3",
       "aide": "Calcule de gauche à droite, étape par étape."
     },
     "reponse": {
-      "valeur": 23
+      "valeur": 2
     },
     "meta": {
       "auteur": "generation-automatique (tools/generer_memo_concentration.py)",
@@ -101,11 +101,11 @@
     ],
     "cap_complexite": null,
     "contenu": {
-      "enonce": "4 + 19 + 16 − 25 − 11 + 13",
+      "enonce": "14 + 23 − 14 − 4 + 10 − 26",
       "aide": "Calcule de gauche à droite, étape par étape."
     },
     "reponse": {
-      "valeur": 16
+      "valeur": 3
     },
     "meta": {
       "auteur": "generation-automatique (tools/generer_memo_concentration.py)",
@@ -130,11 +130,11 @@
     ],
     "cap_complexite": null,
     "contenu": {
-      "enonce": "30 + 22 + 6 − 9 + 8 + 4",
+      "enonce": "11 − 8 + 10 + 11 + 17 − 13",
       "aide": "Calcule de gauche à droite, étape par étape."
     },
     "reponse": {
-      "valeur": 61
+      "valeur": 28
     },
     "meta": {
       "auteur": "generation-automatique (tools/generer_memo_concentration.py)",
@@ -159,11 +159,11 @@
     ],
     "cap_complexite": null,
     "contenu": {
-      "enonce": "25 − 4 + 21 − 14 − 20 + 23",
+      "enonce": "28 + 23 − 4 − 7 − 10 + 6",
       "aide": "Calcule de gauche à droite, étape par étape."
     },
     "reponse": {
-      "valeur": 31
+      "valeur": 36
     },
     "meta": {
       "auteur": "generation-automatique (tools/generer_memo_concentration.py)",
@@ -188,11 +188,11 @@
     ],
     "cap_complexite": null,
     "contenu": {
-      "enonce": "10 − 6 + 4 + 4 + 16 − 14",
+      "enonce": "9 − 3 + 2 + 17 + 22 − 7",
       "aide": "Calcule de gauche à droite, étape par étape."
     },
     "reponse": {
-      "valeur": 14
+      "valeur": 40
     },
     "meta": {
       "auteur": "generation-automatique (tools/generer_memo_concentration.py)",
@@ -217,7 +217,7 @@
     ],
     "cap_complexite": null,
     "contenu": {
-      "enonce": "25 + 4 − 11 + 8 − 15 + 13",
+      "enonce": "29 + 29 − 14 − 24 + 28 − 24",
       "aide": "Calcule de gauche à droite, étape par étape."
     },
     "reponse": {
@@ -246,11 +246,11 @@
     ],
     "cap_complexite": null,
     "contenu": {
-      "enonce": "9 − 2 − 2 + 12 + 14 − 18",
+      "enonce": "7 + 7 + 3 + 6 − 5 − 3",
       "aide": "Calcule de gauche à droite, étape par étape."
     },
     "reponse": {
-      "valeur": 13
+      "valeur": 15
     },
     "meta": {
       "auteur": "generation-automatique (tools/generer_memo_concentration.py)",
@@ -275,11 +275,11 @@
     ],
     "cap_complexite": null,
     "contenu": {
-      "enonce": "18 − 14 + 24 − 7 − 14 + 23",
+      "enonce": "3 + 3 + 2 − 4 + 12 + 16",
       "aide": "Calcule de gauche à droite, étape par étape."
     },
     "reponse": {
-      "valeur": 30
+      "valeur": 32
     },
     "meta": {
       "auteur": "generation-automatique (tools/generer_memo_concentration.py)",
@@ -304,11 +304,11 @@
     ],
     "cap_complexite": null,
     "contenu": {
-      "enonce": "6 + 4 + 14 + 9 + 19 + 3",
+      "enonce": "23 − 10 + 6 + 9 + 12 + 2",
       "aide": "Calcule de gauche à droite, étape par étape."
     },
     "reponse": {
-      "valeur": 55
+      "valeur": 42
     },
     "meta": {
       "auteur": "generation-automatique (tools/generer_memo_concentration.py)",
@@ -333,11 +333,11 @@
     ],
     "cap_complexite": null,
     "contenu": {
-      "enonce": "19 − 4 + 9 + 15 − 8 − 24",
+      "enonce": "22 − 15 − 5 + 12 − 11 + 23",
       "aide": "Calcule de gauche à droite, étape par étape."
     },
     "reponse": {
-      "valeur": 7
+      "valeur": 26
     },
     "meta": {
       "auteur": "generation-automatique (tools/generer_memo_concentration.py)",
@@ -362,11 +362,11 @@
     ],
     "cap_complexite": null,
     "contenu": {
-      "enonce": "23, __, 41, 50, 59 — quel nombre manque ?",
+      "enonce": "3, __, 13, 18, 23 — quel nombre manque ?",
       "aide": "Cherche la règle de la suite."
     },
     "reponse": {
-      "valeur": 32
+      "valeur": 8
     },
     "meta": {
       "auteur": "generation-automatique (tools/generer_memo_concentration.py)",
@@ -391,11 +391,11 @@
     ],
     "cap_complexite": null,
     "contenu": {
-      "enonce": "26, 28, __, 32, 34 — quel nombre manque ?",
+      "enonce": "15, 17, __, 21, 23 — quel nombre manque ?",
       "aide": "Cherche la règle de la suite."
     },
     "reponse": {
-      "valeur": 30
+      "valeur": 19
     },
     "meta": {
       "auteur": "generation-automatique (tools/generer_memo_concentration.py)",
@@ -420,11 +420,11 @@
     ],
     "cap_complexite": null,
     "contenu": {
-      "enonce": "25, __, 41, 49, 57 — quel nombre manque ?",
+      "enonce": "30, __, 38, 42, 46 — quel nombre manque ?",
       "aide": "Cherche la règle de la suite."
     },
     "reponse": {
-      "valeur": 33
+      "valeur": 34
     },
     "meta": {
       "auteur": "generation-automatique (tools/generer_memo_concentration.py)",
@@ -449,11 +449,11 @@
     ],
     "cap_complexite": null,
     "contenu": {
-      "enonce": "19, 21, __, 25, 27 — quel nombre manque ?",
+      "enonce": "15, 23, __, 39, 47 — quel nombre manque ?",
       "aide": "Cherche la règle de la suite."
     },
     "reponse": {
-      "valeur": 23
+      "valeur": 31
     },
     "meta": {
       "auteur": "generation-automatique (tools/generer_memo_concentration.py)",
@@ -478,7 +478,7 @@
     ],
     "cap_complexite": null,
     "contenu": {
-      "enonce": "8, __, 16, 20, 24 — quel nombre manque ?",
+      "enonce": "4, __, 20, 28, 36 — quel nombre manque ?",
       "aide": "Cherche la règle de la suite."
     },
     "reponse": {
@@ -507,11 +507,11 @@
     ],
     "cap_complexite": null,
     "contenu": {
-      "enonce": "8, 11, __, 17, 20 — quel nombre manque ?",
+      "enonce": "29, __, 37, 41, 45 — quel nombre manque ?",
       "aide": "Cherche la règle de la suite."
     },
     "reponse": {
-      "valeur": 14
+      "valeur": 33
     },
     "meta": {
       "auteur": "generation-automatique (tools/generer_memo_concentration.py)",

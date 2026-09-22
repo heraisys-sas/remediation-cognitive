@@ -229,8 +229,8 @@
       "enonce": "Sentiment d'être préoccupé par ce qui pourrait arriver.",
       "options": [
         "surprise",
-        "curiosité",
-        "inquiétude"
+        "inquiétude",
+        "curiosité"
       ],
       "aide": null
     },
@@ -263,8 +263,8 @@
       "enonce": "Gêne ressentie devant des personnes qu'on connaît peu.",
       "options": [
         "timidité",
-        "réserve",
-        "pudeur"
+        "pudeur",
+        "réserve"
       ],
       "aide": null
     },
@@ -296,9 +296,9 @@
       "consigne": "Choisis le mot qui correspond à la définition.",
       "enonce": "Fait d'agir avec précaution.",
       "options": [
-        "patience",
         "calme",
-        "prudence"
+        "prudence",
+        "patience"
       ],
       "aide": null
     },
@@ -330,9 +330,9 @@
       "consigne": "Choisis le mot qui correspond à la définition.",
       "enonce": "Force qui permet d'agir et de tenir la journée.",
       "options": [
-        "entrain",
         "énergie",
-        "souffle"
+        "souffle",
+        "entrain"
       ],
       "aide": null
     },
@@ -364,9 +364,9 @@
       "consigne": "Choisis le mot qui correspond à la définition.",
       "enonce": "Envie d'apprendre et de savoir.",
       "options": [
+        "envie",
         "curiosité",
-        "intérêt",
-        "envie"
+        "intérêt"
       ],
       "aide": null
     },

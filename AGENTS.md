@@ -39,6 +39,7 @@ Docs d'entrée : `docs/00-produit/vision.md`, `docs/00-produit/cadre-reglementai
 
 - **Langues** : documentation et contenu en français ; identifiants de code en anglais, docstrings/commentaires en français.
 - **Contenu** : tout item passe par `content/schema-item.json` avant intégration ; relecture orthophoniste tracée dans `meta.relecture_ortho` — relecture **informelle**, jamais présenter comme une validation clinique.
+- **Contenu généré** : tirages aléatoires **isolés par `thème:famille`** (jamais de générateur partagé), extension ajoutée en fin de famille, et **aucune régénération d'un contenu déjà servi** (remplacer les identifiants si un changement s'impose). Toute modification de contenu est annoncée dans le message de commit — règle complète : `docs/30-technique/contenu-versionne.md`.
 - **Moteur** (`engine/`) : toute évolution exige des tests de non-régression dans `engine/tests/`.
 - **Décisions structurantes** : nouvel ADR dans `docs/30-technique/adr/` (format : contexte / décision / conséquences).
 - **Journal** : relectures dans `docs/10-clinique/relectures.md`, événements produit dans `CHANGELOG.md`.

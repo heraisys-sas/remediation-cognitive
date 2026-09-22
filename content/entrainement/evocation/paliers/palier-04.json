@@ -19,10 +19,10 @@
       },
       "enonce": "Dans quel contexte as-tu vu : « Le code du garage est 4721. » ?",
       "options": [
-        "Note collée sur le frigo",
-        "Carnet de courses",
         "SMS reçu le matin",
-        "Message sur le répondeur"
+        "Note collée sur le frigo",
+        "Message sur le répondeur",
+        "Carnet de courses"
       ],
       "aide": "Repense à l'endroit, pas seulement au texte."
     },
@@ -65,9 +65,9 @@
       },
       "enonce": "Dans quel contexte as-tu vu : « Le rendez-vous est décalé au mardi 14 h. » ?",
       "options": [
+        "Courriel de l'assurance",
         "Affichette du cabinet",
         "SMS de l'orthophoniste",
-        "Courriel de l'assurance",
         "Note sur le frigo"
       ],
       "aide": "Repense à l'endroit, pas seulement au texte."
@@ -111,10 +111,10 @@
       },
       "enonce": "Dans quel contexte as-tu vu : « Coupure d'eau jeudi entre 9 h et 12 h. » ?",
       "options": [
+        "Bulletin municipal",
         "Affichette dans le hall de l'immeuble",
-        "Message sur le répondeur",
         "SMS de la gardienne",
-        "Bulletin municipal"
+        "Message sur le répondeur"
       ],
       "aide": "Repense à l'endroit, pas seulement au texte."
     },
@@ -157,10 +157,10 @@
       },
       "enonce": "Dans quel contexte as-tu vu : « Il reste deux boîtes de thé dans le placard. » ?",
       "options": [
-        "Note vocale",
         "Post-it sur le plan de travail",
-        "Carnet de courses",
-        "Liste partagée sur le téléphone"
+        "Liste partagée sur le téléphone",
+        "Note vocale",
+        "Carnet de courses"
       ],
       "aide": "Repense à l'endroit, pas seulement au texte."
     },
@@ -203,10 +203,10 @@
       },
       "enonce": "Dans quel contexte as-tu vu : « La collecte du verre passe le premier lundi du mois. » ?",
       "options": [
+        "SMS reçu le matin",
         "Affichette dans le hall",
-        "Bulletin municipal reçu par courrier",
         "Site de la mairie",
-        "SMS reçu le matin"
+        "Bulletin municipal reçu par courrier"
       ],
       "aide": "Repense à l'endroit, pas seulement au texte."
     },
@@ -250,9 +250,9 @@
       "enonce": "Dans quel contexte as-tu vu : « Le prélèvement part le 5 de chaque mois. » ?",
       "options": [
         "Relevé papier",
-        "SMS de la banque",
         "Application de paiement",
-        "Courriel de la banque"
+        "Courriel de la banque",
+        "SMS de la banque"
       ],
       "aide": "Repense à l'endroit, pas seulement au texte."
     },
@@ -295,10 +295,10 @@
       },
       "enonce": "Dans quel contexte as-tu vu : « Allergie signalée à la pénicilline. » ?",
       "options": [
-        "Ordonnance de la pharmacie",
         "Note lue dans le carnet de santé",
-        "Carnet de rendez-vous",
-        "Courriel du médecin"
+        "Courriel du médecin",
+        "Ordonnance de la pharmacie",
+        "Carnet de rendez-vous"
       ],
       "aide": "Repense à l'endroit, pas seulement au texte."
     },
@@ -341,8 +341,8 @@
       },
       "enonce": "Dans quel contexte as-tu vu : « Le mot de passe du wifi a été changé en août. » ?",
       "options": [
-        "Notebook de la cuisine",
         "Mémos du téléphone",
+        "Notebook de la cuisine",
         "Étiquette au dos du boîtier",
         "SMS de l'opérateur"
       ],
@@ -387,10 +387,10 @@
       },
       "enonce": "Dans quel contexte as-tu vu : « Le portail ferme à 20 h en semaine. » ?",
       "options": [
-        "Affiche du marché",
+        "Site de la ville",
         "Message vocal",
-        "Panneau à l'entrée du parc",
-        "Site de la ville"
+        "Affiche du marché",
+        "Panneau à l'entrée du parc"
       ],
       "aide": "Repense à l'endroit, pas seulement au texte."
     },
@@ -433,10 +433,10 @@
       },
       "enonce": "Dans quel contexte as-tu vu : « Le vélo doit être récupéré chez le réparateur vendredi. » ?",
       "options": [
-        "Ticket de dépôt",
         "Note dans l'agenda papier",
         "Fil de discussion familial",
-        "SMS de la boutique"
+        "SMS de la boutique",
+        "Ticket de dépôt"
       ],
       "aide": "Repense à l'endroit, pas seulement au texte."
     },

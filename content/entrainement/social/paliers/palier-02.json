@@ -44,9 +44,9 @@
       "consigne": "Choisis la réponse qui te semble convenir le mieux.",
       "enonce": "L'orthophoniste propose de décaler la séance de jeudi. Tu ne peux pas ce jour-là.",
       "options": [
-        "« Jeudi je ne peux pas, mais vendredi matin je suis libre. »",
         "« Comme vous voulez, peu importe. »",
-        "« Ça ne m'arrange pas du tout. »"
+        "« Ça ne m'arrange pas du tout. »",
+        "« Jeudi je ne peux pas, mais vendredi matin je suis libre. »"
       ],
       "aide": "Cherche la réponse qui laisse une porte ouverte aux deux personnes."
     },
@@ -114,8 +114,8 @@
       "consigne": "Choisis la réponse qui te semble convenir le mieux.",
       "enonce": "Tu arrives en retard à un rendez-vous chez un ami. Il dit : « Ah, te voilà. »",
       "options": [
-        "« Tu m'attendais depuis longtemps ? »",
         "« Ce n'est pas ma faute, il y avait du monde. »",
+        "« Tu m'attendais depuis longtemps ? »",
         "« Désolé, j'ai mal calculé le temps de trajet. »"
       ],
       "aide": "Cherche la réponse qui laisse une porte ouverte aux deux personnes."
@@ -185,8 +185,8 @@
       "enonce": "Une amie te propose de venir à un repas où tu ne connais personne.",
       "options": [
         "« Vous mangez quoi ? »",
-        "« Non merci, je ne connais personne. »",
-        "« Avec plaisir — je repars vers 22 h, c'est possible ? »"
+        "« Avec plaisir — je repars vers 22 h, c'est possible ? »",
+        "« Non merci, je ne connais personne. »"
       ],
       "aide": "Cherche la réponse qui laisse une porte ouverte aux deux personnes."
     },
@@ -219,8 +219,8 @@
       "consigne": "Choisis la réponse qui te semble convenir le mieux.",
       "enonce": "À la pharmacie, tu veux vérifier si une boîte est compatible avec ton traitement.",
       "options": [
-        "« Est-ce que je peux vous montrer mon ordonnance pour vérifier ? »",
         "« Vous êtes sûre de ce que vous dites ? »",
+        "« Est-ce que je peux vous montrer mon ordonnance pour vérifier ? »",
         "« Vous avez d'autres marques ? Lesquelles sont les moins chères ? »"
       ],
       "aide": "Cherche la réponse qui laisse une porte ouverte aux deux personnes."
@@ -254,9 +254,9 @@
       "consigne": "Choisis la réponse qui te semble convenir le mieux.",
       "enonce": "Quelqu'un te fait une remarque désagréable devant d'autres personnes.",
       "options": [
-        "« Vous êtes vraiment désagréable. »",
         "« De quoi vous parlez ? »",
-        "« Je préfère qu'on en parle à deux, plus tard. »"
+        "« Je préfère qu'on en parle à deux, plus tard. »",
+        "« Vous êtes vraiment désagréable. »"
       ],
       "aide": "Cherche la réponse qui laisse une porte ouverte aux deux personnes."
     },
@@ -290,8 +290,8 @@
       "enonce": "Tu es invité chez quelqu'un et tu ne sais pas quoi apporter.",
       "options": [
         "« Je viens les mains vides, c'est plus simple. »",
-        "« Est-ce que j'apporte quelque chose pour le dessert ? »",
-        "« À quelle heure vous servez ? »"
+        "« À quelle heure vous servez ? »",
+        "« Est-ce que j'apporte quelque chose pour le dessert ? »"
       ],
       "aide": "Cherche la réponse qui laisse une porte ouverte aux deux personnes."
     },
@@ -325,8 +325,8 @@
       "enonce": "Un proche te raconte un souci. Tu ne sais pas quoi dire.",
       "options": [
         "« Il faut faire attention, tu sais. »",
-        "« Je ne sais pas trop quoi dire, mais je suis là si tu veux en parler. »",
-        "« Tu veux un conseil ? Moi à ta place… »"
+        "« Tu veux un conseil ? Moi à ta place… »",
+        "« Je ne sais pas trop quoi dire, mais je suis là si tu veux en parler. »"
       ],
       "aide": "Cherche la réponse qui laisse une porte ouverte aux deux personnes."
     },

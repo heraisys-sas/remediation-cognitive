@@ -8,9 +8,9 @@
       "consigne": "Lis la situation, puis choisis ce que ressent la personne.",
       "enonce": "Sami a envoyé un message il y a trois jours. Toujours pas de réponse. Il relit son message plusieurs fois par jour.",
       "options": [
-        "colère",
         "fierté",
-        "inquiétude"
+        "inquiétude",
+        "colère"
       ],
       "aide": "Repère ce que fait ou dit la personne : c'est là que se trouve l'indice."
     },
@@ -41,8 +41,8 @@
       "enonce": "Léa arrive au café : trois personnes qu'elle apprécie se sont déjà installées et lui font signe de venir.",
       "options": [
         "embarras",
-        "indifférence",
-        "plaisir"
+        "plaisir",
+        "indifférence"
       ],
       "aide": "Repère ce que fait ou dit la personne : c'est là que se trouve l'indice."
     },
@@ -72,9 +72,9 @@
       "consigne": "Lis la situation, puis choisis ce que ressent la personne.",
       "enonce": "Un ami raconte une anecdote où Marc est un peu maladroit. Tout le monde rit, y compris Marc, mais il rougit.",
       "options": [
+        "gêne",
         "ennui",
-        "soulagement",
-        "gêne"
+        "soulagement"
       ],
       "aide": "Repère ce que fait ou dit la personne : c'est là que se trouve l'indice."
     },
@@ -105,8 +105,8 @@
       "enonce": "Nadia attend une réponse pour un logement. Le courrier arrive enfin, et la lettre commence par « Nous avons le plaisir de… ».",
       "options": [
         "soulagement",
-        "nostalgie",
-        "déception"
+        "déception",
+        "nostalgie"
       ],
       "aide": "Repère ce que fait ou dit la personne : c'est là que se trouve l'indice."
     },
@@ -136,9 +136,9 @@
       "consigne": "Lis la situation, puis choisis ce que ressent la personne.",
       "enonce": "À la caisse, la personne devant Thomas prend beaucoup de temps et discute avec l'hôtesse. Thomas soupire et regarde sa montre.",
       "options": [
-        "peur",
         "tristesse",
-        "impatience"
+        "impatience",
+        "peur"
       ],
       "aide": "Repère ce que fait ou dit la personne : c'est là que se trouve l'indice."
     },
@@ -168,9 +168,9 @@
       "consigne": "Lis la situation, puis choisis ce que ressent la personne.",
       "enonce": "Camille découvre que son voisin a arrosé ses plantes pendant son absence, sans qu'elle ait rien demandé.",
       "options": [
-        "indifférence",
+        "méfiance",
         "reconnaissance",
-        "méfiance"
+        "indifférence"
       ],
       "aide": "Repère ce que fait ou dit la personne : c'est là que se trouve l'indice."
     },
@@ -200,8 +200,8 @@
       "consigne": "Lis la situation, puis choisis ce que ressent la personne.",
       "enonce": "Au téléphone, on annonce à Julien que son dossier est refusé. Il reste silencieux quelques secondes.",
       "options": [
-        "déception",
         "ennui",
+        "déception",
         "euphorie"
       ],
       "aide": "Repère ce que fait ou dit la personne : c'est là que se trouve l'indice."
@@ -264,9 +264,9 @@
       "consigne": "Lis la situation, puis choisis ce que ressent la personne.",
       "enonce": "Paul croise son ancien collègue qui l'a beaucoup aidé. Il sourit et ralentit le pas pour lui parler.",
       "options": [
-        "crainte",
+        "agacement",
         "sympathie",
-        "agacement"
+        "crainte"
       ],
       "aide": "Repère ce que fait ou dit la personne : c'est là que se trouve l'indice."
     },
@@ -296,9 +296,9 @@
       "consigne": "Lis la situation, puis choisis ce que ressent la personne.",
       "enonce": "L'affiche annonce la fermeture de la salle de sport où Sophie va trois fois par semaine depuis un an.",
       "options": [
-        "indifférence",
         "joie",
-        "contrariété"
+        "contrariété",
+        "indifférence"
       ],
       "aide": "Repère ce que fait ou dit la personne : c'est là que se trouve l'indice."
     },

@@ -18,17 +18,17 @@
         "mode": "sequence",
         "duree_par_item_ms": 900,
         "elements": [
-          "ballon",
-          "colline",
-          "poisson",
-          "voiture"
+          "bouteille",
+          "drapeau",
+          "journal",
+          "porte"
         ]
       },
       "enonce": "Tape les mots dans l'ordre, en les séparant par des espaces.",
       "aide": null
     },
     "reponse": {
-      "valeur": "ballon colline poisson voiture"
+      "valeur": "bouteille drapeau journal porte"
     },
     "meta": {
       "auteur": "generation-automatique (tools/generer_memo_concentration.py)",
@@ -57,17 +57,17 @@
         "mode": "sequence",
         "duree_par_item_ms": 900,
         "elements": [
-          "montagne",
-          "fromage",
-          "bouteille",
-          "cuisine"
+          "drapeau",
+          "nuage",
+          "chat",
+          "poisson"
         ]
       },
       "enonce": "Tape les mots dans l'ordre, en les séparant par des espaces.",
       "aide": null
     },
     "reponse": {
-      "valeur": "montagne fromage bouteille cuisine"
+      "valeur": "drapeau nuage chat poisson"
     },
     "meta": {
       "auteur": "generation-automatique (tools/generer_memo_concentration.py)",
@@ -96,17 +96,17 @@
         "mode": "sequence",
         "duree_par_item_ms": 900,
         "elements": [
-          "poisson",
-          "bouteille",
-          "colline",
-          "nuage"
+          "chemise",
+          "cuisine",
+          "bougie",
+          "bureau"
         ]
       },
       "enonce": "Tape les mots dans l'ordre, en les séparant par des espaces.",
       "aide": null
     },
     "reponse": {
-      "valeur": "poisson bouteille colline nuage"
+      "valeur": "chemise cuisine bougie bureau"
     },
     "meta": {
       "auteur": "generation-automatique (tools/generer_memo_concentration.py)",
@@ -135,17 +135,17 @@
         "mode": "sequence",
         "duree_par_item_ms": 900,
         "elements": [
-          "fenêtre",
-          "chemise",
-          "jardin",
-          "musique"
+          "manteau",
+          "neige",
+          "porte",
+          "camion"
         ]
       },
       "enonce": "Tape les mots dans l'ordre, en les séparant par des espaces.",
       "aide": null
     },
     "reponse": {
-      "valeur": "fenêtre chemise jardin musique"
+      "valeur": "manteau neige porte camion"
     },
     "meta": {
       "auteur": "generation-automatique (tools/generer_memo_concentration.py)",
@@ -174,17 +174,17 @@
         "mode": "sequence",
         "duree_par_item_ms": 900,
         "elements": [
-          "bougie",
-          "chemise",
           "camion",
-          "jardinier"
+          "jardin",
+          "musique",
+          "panier"
         ]
       },
       "enonce": "Tape les mots dans l'ordre, en les séparant par des espaces.",
       "aide": null
     },
     "reponse": {
-      "valeur": "bougie chemise camion jardinier"
+      "valeur": "camion jardin musique panier"
     },
     "meta": {
       "auteur": "generation-automatique (tools/generer_memo_concentration.py)",
@@ -213,17 +213,17 @@
         "mode": "sequence",
         "duree_par_item_ms": 900,
         "elements": [
-          "vélo",
-          "plage",
-          "soleil",
-          "chemin"
+          "jardin",
+          "rivière",
+          "journal",
+          "ballon"
         ]
       },
       "enonce": "Tape les mots dans l'ordre, en les séparant par des espaces.",
       "aide": null
     },
     "reponse": {
-      "valeur": "vélo plage soleil chemin"
+      "valeur": "jardin rivière journal ballon"
     },
     "meta": {
       "auteur": "generation-automatique (tools/generer_memo_concentration.py)",
@@ -252,17 +252,17 @@
         "mode": "sequence",
         "duree_par_item_ms": 900,
         "elements": [
+          "vélo",
           "radis",
-          "chaussure",
-          "chocolat",
-          "panier"
+          "chapeau",
+          "drapeau"
         ]
       },
       "enonce": "Tape les mots dans l'ordre, en les séparant par des espaces.",
       "aide": null
     },
     "reponse": {
-      "valeur": "radis chaussure chocolat panier"
+      "valeur": "vélo radis chapeau drapeau"
     },
     "meta": {
       "auteur": "generation-automatique (tools/generer_memo_concentration.py)",
@@ -291,17 +291,17 @@
         "mode": "sequence",
         "duree_par_item_ms": 900,
         "elements": [
-          "drapeau",
-          "tapis",
-          "montre",
-          "musique"
+          "cahier",
+          "jardinier",
+          "manteau",
+          "jardin"
         ]
       },
       "enonce": "Tape les mots dans l'ordre, en les séparant par des espaces.",
       "aide": null
     },
     "reponse": {
-      "valeur": "drapeau tapis montre musique"
+      "valeur": "cahier jardinier manteau jardin"
     },
     "meta": {
       "auteur": "generation-automatique (tools/generer_memo_concentration.py)",
@@ -330,17 +330,17 @@
         "mode": "sequence",
         "duree_par_item_ms": 900,
         "elements": [
-          "bouteille",
-          "stylo",
-          "soleil",
-          "jardin"
+          "lune",
+          "vélo",
+          "plage",
+          "marteau"
         ]
       },
       "enonce": "Tape les mots dans l'ordre, en les séparant par des espaces.",
       "aide": null
     },
     "reponse": {
-      "valeur": "bouteille stylo soleil jardin"
+      "valeur": "lune vélo plage marteau"
     },
     "meta": {
       "auteur": "generation-automatique (tools/generer_memo_concentration.py)",
@@ -369,17 +369,17 @@
         "mode": "sequence",
         "duree_par_item_ms": 900,
         "elements": [
-          "cahier",
-          "table",
-          "musique",
-          "manteau"
+          "bureau",
+          "tapis",
+          "orange",
+          "jardin"
         ]
       },
       "enonce": "Tape les mots dans l'ordre, en les séparant par des espaces.",
       "aide": null
     },
     "reponse": {
-      "valeur": "cahier table musique manteau"
+      "valeur": "bureau tapis orange jardin"
     },
     "meta": {
       "auteur": "generation-automatique (tools/generer_memo_concentration.py)",
@@ -408,17 +408,17 @@
         "mode": "sequence",
         "duree_par_item_ms": 900,
         "elements": [
-          "musique",
-          "bureau",
-          "fromage",
-          "chat"
+          "poisson",
+          "ballon",
+          "porte",
+          "montre"
         ]
       },
       "enonce": "Tape les mots dans l'ordre, en les séparant par des espaces.",
       "aide": null
     },
     "reponse": {
-      "valeur": "musique bureau fromage chat"
+      "valeur": "poisson ballon porte montre"
     },
     "meta": {
       "auteur": "generation-automatique (tools/generer_memo_concentration.py)",
@@ -447,17 +447,17 @@
         "mode": "sequence",
         "duree_par_item_ms": 900,
         "elements": [
-          "montre",
-          "chapeau",
-          "drapeau",
-          "table"
+          "crayon",
+          "montagne",
+          "musique",
+          "sable"
         ]
       },
       "enonce": "Tape les mots dans l'ordre, en les séparant par des espaces.",
       "aide": null
     },
     "reponse": {
-      "valeur": "montre chapeau drapeau table"
+      "valeur": "crayon montagne musique sable"
     },
     "meta": {
       "auteur": "generation-automatique (tools/generer_memo_concentration.py)",
@@ -487,16 +487,16 @@
         "duree_par_item_ms": 900,
         "elements": [
           "fenêtre",
-          "feuille",
-          "montagne",
-          "voiture"
+          "cuisine",
+          "nuage",
+          "camion"
         ]
       },
       "enonce": "Tape les mots dans l'ordre, en les séparant par des espaces.",
       "aide": null
     },
     "reponse": {
-      "valeur": "fenêtre feuille montagne voiture"
+      "valeur": "fenêtre cuisine nuage camion"
     },
     "meta": {
       "auteur": "generation-automatique (tools/generer_memo_concentration.py)",
@@ -525,17 +525,17 @@
         "mode": "sequence",
         "duree_par_item_ms": 900,
         "elements": [
-          "jardin",
-          "horloge",
-          "drapeau",
-          "bouteille"
+          "jardinier",
+          "pomme",
+          "camion",
+          "orange"
         ]
       },
       "enonce": "Tape les mots dans l'ordre, en les séparant par des espaces.",
       "aide": null
     },
     "reponse": {
-      "valeur": "jardin horloge drapeau bouteille"
+      "valeur": "jardinier pomme camion orange"
     },
     "meta": {
       "auteur": "generation-automatique (tools/generer_memo_concentration.py)",
@@ -564,17 +564,17 @@
         "mode": "sequence",
         "duree_par_item_ms": 900,
         "elements": [
-          "horloge",
-          "panier",
-          "nuage",
-          "soleil"
+          "pomme",
+          "guitare",
+          "jardinier",
+          "fenêtre"
         ]
       },
       "enonce": "Tape les mots dans l'ordre, en les séparant par des espaces.",
       "aide": null
     },
     "reponse": {
-      "valeur": "horloge panier nuage soleil"
+      "valeur": "pomme guitare jardinier fenêtre"
     },
     "meta": {
       "auteur": "generation-automatique (tools/generer_memo_concentration.py)",
@@ -603,17 +603,17 @@
         "mode": "sequence",
         "duree_par_item_ms": 900,
         "elements": [
-          "horloge",
-          "plage",
-          "jardinier",
-          "bureau"
+          "crayon",
+          "drapeau",
+          "fenêtre",
+          "bouteille"
         ]
       },
       "enonce": "Tape les mots dans l'ordre, en les séparant par des espaces.",
       "aide": null
     },
     "reponse": {
-      "valeur": "horloge plage jardinier bureau"
+      "valeur": "crayon drapeau fenêtre bouteille"
     },
     "meta": {
       "auteur": "generation-automatique (tools/generer_memo_concentration.py)",
@@ -642,17 +642,17 @@
         "mode": "sequence",
         "duree_par_item_ms": 900,
         "elements": [
-          "stylo",
-          "jardin",
-          "ballon",
-          "bureau"
+          "journal",
+          "chat",
+          "fenêtre",
+          "radis"
         ]
       },
       "enonce": "Tape les mots dans l'ordre, en les séparant par des espaces.",
       "aide": null
     },
     "reponse": {
-      "valeur": "stylo jardin ballon bureau"
+      "valeur": "journal chat fenêtre radis"
     },
     "meta": {
       "auteur": "generation-automatique (tools/generer_memo_concentration.py)",
@@ -681,17 +681,17 @@
         "mode": "sequence",
         "duree_par_item_ms": 900,
         "elements": [
-          "soleil",
-          "rivière",
-          "neige",
-          "manteau"
+          "journal",
+          "tapis",
+          "poisson",
+          "rivière"
         ]
       },
       "enonce": "Tape les mots dans l'ordre, en les séparant par des espaces.",
       "aide": null
     },
     "reponse": {
-      "valeur": "soleil rivière neige manteau"
+      "valeur": "journal tapis poisson rivière"
     },
     "meta": {
       "auteur": "generation-automatique (tools/generer_memo_concentration.py)",

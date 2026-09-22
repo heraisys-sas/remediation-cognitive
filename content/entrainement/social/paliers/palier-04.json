@@ -9,8 +9,8 @@
       "consigne": "Choisis la réponse qui te semble convenir le mieux.",
       "enonce": "Une collègue te dit : « Tu as une minute ? J'ai besoin d'un avis. » Tu es en pleine tâche.",
       "options": [
-        "« Non. »",
         "« Pourquoi tu me demandes toujours à moi ? »",
+        "« Non. »",
         "« Là je termine un truc : je viens te voir dans dix minutes ? »"
       ],
       "aide": null
@@ -44,8 +44,8 @@
       "consigne": "Choisis la réponse qui te semble convenir le mieux.",
       "enonce": "L'orthophoniste propose de décaler la séance de jeudi. Tu ne peux pas ce jour-là.",
       "options": [
-        "« Jeudi je ne peux pas, mais vendredi matin je suis libre. »",
         "« Comme vous voulez, peu importe. »",
+        "« Jeudi je ne peux pas, mais vendredi matin je suis libre. »",
         "« Ça ne m'arrange pas du tout. »"
       ],
       "aide": null
@@ -80,8 +80,8 @@
       "enonce": "Un voisin que tu connais peu te demande si tu peux récupérer un colis pour lui.",
       "options": [
         "« Je ne fais pas ce genre de choses. »",
-        "« Pourquoi vous ne le faites pas vous-même ? »",
-        "« Oui, je serai là en fin de journée. »"
+        "« Oui, je serai là en fin de journée. »",
+        "« Pourquoi vous ne le faites pas vous-même ? »"
       ],
       "aide": null
     },
@@ -149,9 +149,9 @@
       "consigne": "Choisis la réponse qui te semble convenir le mieux.",
       "enonce": "Au téléphone, tu n'entends pas bien ce que dit ton interlocuteur.",
       "options": [
+        "« Oui, oui, d'accord. » (sans avoir compris)",
         "« Vous parlez trop vite. »",
-        "« Je vous entends mal : pouvez-vous répéter la deuxième phrase ? »",
-        "« Oui, oui, d'accord. » (sans avoir compris)"
+        "« Je vous entends mal : pouvez-vous répéter la deuxième phrase ? »"
       ],
       "aide": null
     },
@@ -183,9 +183,9 @@
       "consigne": "Lis la situation, puis choisis ce que ressent la personne.",
       "enonce": "Sami a envoyé un message il y a trois jours. Toujours pas de réponse. Il relit son message plusieurs fois par jour.",
       "options": [
+        "inquiétude",
         "fierté",
-        "colère",
-        "inquiétude"
+        "colère"
       ],
       "aide": null
     },
@@ -251,9 +251,9 @@
       "consigne": "Lis la situation, puis choisis ce que ressent la personne.",
       "enonce": "Un ami raconte une anecdote où Marc est un peu maladroit. Tout le monde rit, y compris Marc, mais il rougit.",
       "options": [
-        "soulagement",
+        "gêne",
         "ennui",
-        "gêne"
+        "soulagement"
       ],
       "aide": null
     },
@@ -285,8 +285,8 @@
       "consigne": "Lis la situation, puis choisis ce que ressent la personne.",
       "enonce": "Nadia attend une réponse pour un logement. Le courrier arrive enfin, et la lettre commence par « Nous avons le plaisir de… ».",
       "options": [
-        "nostalgie",
         "déception",
+        "nostalgie",
         "soulagement"
       ],
       "aide": null
@@ -319,9 +319,9 @@
       "consigne": "Lis la situation, puis choisis ce que ressent la personne.",
       "enonce": "À la caisse, la personne devant Thomas prend beaucoup de temps et discute avec l'hôtesse. Thomas soupire et regarde sa montre.",
       "options": [
-        "impatience",
         "tristesse",
-        "peur"
+        "peur",
+        "impatience"
       ],
       "aide": null
     },

@@ -18,16 +18,16 @@
         "mode": "sequence",
         "duree_par_item_ms": 900,
         "elements": [
-          "fromage",
-          "pomme",
-          "chapeau"
+          "chat",
+          "feuille",
+          "bouteille"
         ]
       },
       "enonce": "Tape les mots dans l'ordre, en les séparant par des espaces.",
       "aide": null
     },
     "reponse": {
-      "valeur": "fromage pomme chapeau"
+      "valeur": "chat feuille bouteille"
     },
     "meta": {
       "auteur": "generation-automatique (tools/generer_memo_concentration.py)",
@@ -56,16 +56,16 @@
         "mode": "sequence",
         "duree_par_item_ms": 900,
         "elements": [
-          "chaussure",
-          "rivière",
-          "cuisine"
+          "soleil",
+          "feuille",
+          "fromage"
         ]
       },
       "enonce": "Tape les mots dans l'ordre, en les séparant par des espaces.",
       "aide": null
     },
     "reponse": {
-      "valeur": "chaussure rivière cuisine"
+      "valeur": "soleil feuille fromage"
     },
     "meta": {
       "auteur": "generation-automatique (tools/generer_memo_concentration.py)",
@@ -94,16 +94,16 @@
         "mode": "sequence",
         "duree_par_item_ms": 900,
         "elements": [
-          "jardin",
-          "nuage",
-          "montre"
+          "guitare",
+          "chemise",
+          "porte"
         ]
       },
       "enonce": "Tape les mots dans l'ordre, en les séparant par des espaces.",
       "aide": null
     },
     "reponse": {
-      "valeur": "jardin nuage montre"
+      "valeur": "guitare chemise porte"
     },
     "meta": {
       "auteur": "generation-automatique (tools/generer_memo_concentration.py)",
@@ -132,16 +132,16 @@
         "mode": "sequence",
         "duree_par_item_ms": 900,
         "elements": [
+          "montagne",
           "feuille",
-          "manteau",
-          "fenêtre"
+          "jardinier"
         ]
       },
       "enonce": "Tape les mots dans l'ordre, en les séparant par des espaces.",
       "aide": null
     },
     "reponse": {
-      "valeur": "feuille manteau fenêtre"
+      "valeur": "montagne feuille jardinier"
     },
     "meta": {
       "auteur": "generation-automatique (tools/generer_memo_concentration.py)",
@@ -170,16 +170,16 @@
         "mode": "sequence",
         "duree_par_item_ms": 900,
         "elements": [
-          "cahier",
-          "ballon",
-          "voiture"
+          "plage",
+          "colline",
+          "ballon"
         ]
       },
       "enonce": "Tape les mots dans l'ordre, en les séparant par des espaces.",
       "aide": null
     },
     "reponse": {
-      "valeur": "cahier ballon voiture"
+      "valeur": "plage colline ballon"
     },
     "meta": {
       "auteur": "generation-automatique (tools/generer_memo_concentration.py)",
@@ -208,16 +208,16 @@
         "mode": "sequence",
         "duree_par_item_ms": 900,
         "elements": [
-          "soleil",
-          "drapeau",
-          "montagne"
+          "plage",
+          "feuille",
+          "soleil"
         ]
       },
       "enonce": "Tape les mots dans l'ordre, en les séparant par des espaces.",
       "aide": null
     },
     "reponse": {
-      "valeur": "soleil drapeau montagne"
+      "valeur": "plage feuille soleil"
     },
     "meta": {
       "auteur": "generation-automatique (tools/generer_memo_concentration.py)",
@@ -246,16 +246,16 @@
         "mode": "sequence",
         "duree_par_item_ms": 900,
         "elements": [
-          "nuage",
-          "crayon",
-          "vélo"
+          "bougie",
+          "montagne",
+          "chemise"
         ]
       },
       "enonce": "Tape les mots dans l'ordre, en les séparant par des espaces.",
       "aide": null
     },
     "reponse": {
-      "valeur": "nuage crayon vélo"
+      "valeur": "bougie montagne chemise"
     },
     "meta": {
       "auteur": "generation-automatique (tools/generer_memo_concentration.py)",
@@ -284,16 +284,16 @@
         "mode": "sequence",
         "duree_par_item_ms": 900,
         "elements": [
-          "montagne",
-          "cahier",
-          "porte"
+          "bureau",
+          "soleil",
+          "plage"
         ]
       },
       "enonce": "Tape les mots dans l'ordre, en les séparant par des espaces.",
       "aide": null
     },
     "reponse": {
-      "valeur": "montagne cahier porte"
+      "valeur": "bureau soleil plage"
     },
     "meta": {
       "auteur": "generation-automatique (tools/generer_memo_concentration.py)",
@@ -322,16 +322,16 @@
         "mode": "sequence",
         "duree_par_item_ms": 900,
         "elements": [
-          "chemin",
-          "journal",
-          "orange"
+          "chapeau",
+          "marteau",
+          "camion"
         ]
       },
       "enonce": "Tape les mots dans l'ordre, en les séparant par des espaces.",
       "aide": null
     },
     "reponse": {
-      "valeur": "chemin journal orange"
+      "valeur": "chapeau marteau camion"
     },
     "meta": {
       "auteur": "generation-automatique (tools/generer_memo_concentration.py)",
@@ -360,16 +360,16 @@
         "mode": "sequence",
         "duree_par_item_ms": 900,
         "elements": [
-          "horloge",
-          "manteau",
-          "voiture"
+          "chocolat",
+          "chat",
+          "marteau"
         ]
       },
       "enonce": "Tape les mots dans l'ordre, en les séparant par des espaces.",
       "aide": null
     },
     "reponse": {
-      "valeur": "horloge manteau voiture"
+      "valeur": "chocolat chat marteau"
     },
     "meta": {
       "auteur": "generation-automatique (tools/generer_memo_concentration.py)",
@@ -398,16 +398,16 @@
         "mode": "sequence",
         "duree_par_item_ms": 900,
         "elements": [
-          "chaussure",
-          "manteau",
-          "nuage"
+          "vélo",
+          "neige",
+          "cuisine"
         ]
       },
       "enonce": "Tape les mots dans l'ordre, en les séparant par des espaces.",
       "aide": null
     },
     "reponse": {
-      "valeur": "chaussure manteau nuage"
+      "valeur": "vélo neige cuisine"
     },
     "meta": {
       "auteur": "generation-automatique (tools/generer_memo_concentration.py)",
@@ -436,16 +436,16 @@
         "mode": "sequence",
         "duree_par_item_ms": 900,
         "elements": [
-          "cahier",
-          "radis",
-          "chemise"
+          "chocolat",
+          "cuisine",
+          "poisson"
         ]
       },
       "enonce": "Tape les mots dans l'ordre, en les séparant par des espaces.",
       "aide": null
     },
     "reponse": {
-      "valeur": "cahier radis chemise"
+      "valeur": "chocolat cuisine poisson"
     },
     "meta": {
       "auteur": "generation-automatique (tools/generer_memo_concentration.py)",
@@ -474,16 +474,16 @@
         "mode": "sequence",
         "duree_par_item_ms": 900,
         "elements": [
-          "tapis",
-          "sable",
-          "jardinier"
+          "chemise",
+          "montre",
+          "colline"
         ]
       },
       "enonce": "Tape les mots dans l'ordre, en les séparant par des espaces.",
       "aide": null
     },
     "reponse": {
-      "valeur": "tapis sable jardinier"
+      "valeur": "chemise montre colline"
     },
     "meta": {
       "auteur": "generation-automatique (tools/generer_memo_concentration.py)",
@@ -512,16 +512,16 @@
         "mode": "sequence",
         "duree_par_item_ms": 900,
         "elements": [
-          "montagne",
-          "chemin",
-          "bouteille"
+          "voiture",
+          "radis",
+          "nuage"
         ]
       },
       "enonce": "Tape les mots dans l'ordre, en les séparant par des espaces.",
       "aide": null
     },
     "reponse": {
-      "valeur": "montagne chemin bouteille"
+      "valeur": "voiture radis nuage"
     },
     "meta": {
       "auteur": "generation-automatique (tools/generer_memo_concentration.py)",
@@ -550,16 +550,16 @@
         "mode": "sequence",
         "duree_par_item_ms": 900,
         "elements": [
-          "fromage",
-          "jardinier",
-          "lune"
+          "plage",
+          "musique",
+          "chemin"
         ]
       },
       "enonce": "Tape les mots dans l'ordre, en les séparant par des espaces.",
       "aide": null
     },
     "reponse": {
-      "valeur": "fromage jardinier lune"
+      "valeur": "plage musique chemin"
     },
     "meta": {
       "auteur": "generation-automatique (tools/generer_memo_concentration.py)",
@@ -588,16 +588,16 @@
         "mode": "sequence",
         "duree_par_item_ms": 900,
         "elements": [
-          "manteau",
-          "pomme",
-          "neige"
+          "jardin",
+          "chocolat",
+          "stylo"
         ]
       },
       "enonce": "Tape les mots dans l'ordre, en les séparant par des espaces.",
       "aide": null
     },
     "reponse": {
-      "valeur": "manteau pomme neige"
+      "valeur": "jardin chocolat stylo"
     },
     "meta": {
       "auteur": "generation-automatique (tools/generer_memo_concentration.py)",
@@ -626,16 +626,16 @@
         "mode": "sequence",
         "duree_par_item_ms": 900,
         "elements": [
-          "sable",
-          "chocolat",
-          "bateau"
+          "voiture",
+          "fenêtre",
+          "orange"
         ]
       },
       "enonce": "Tape les mots dans l'ordre, en les séparant par des espaces.",
       "aide": null
     },
     "reponse": {
-      "valeur": "sable chocolat bateau"
+      "valeur": "voiture fenêtre orange"
     },
     "meta": {
       "auteur": "generation-automatique (tools/generer_memo_concentration.py)",
@@ -664,16 +664,16 @@
         "mode": "sequence",
         "duree_par_item_ms": 900,
         "elements": [
-          "horloge",
-          "panier",
-          "rivière"
+          "feuille",
+          "radis",
+          "marteau"
         ]
       },
       "enonce": "Tape les mots dans l'ordre, en les séparant par des espaces.",
       "aide": null
     },
     "reponse": {
-      "valeur": "horloge panier rivière"
+      "valeur": "feuille radis marteau"
     },
     "meta": {
       "auteur": "generation-automatique (tools/generer_memo_concentration.py)",

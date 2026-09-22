@@ -36,6 +36,9 @@ RACINE_DEPOT = Path(__file__).resolve().parent.parent
 BASE_SORTIE = RACINE_DEPOT / "content" / "entrainement" / "rappel-series"
 
 #: Graine du générateur (déterminisme du contenu versionné).
+#: Ce thème n'a qu'une seule famille (« rappel-libre ») : son tirage est donc
+#: déjà isolé par construction — pas de flux partagé à découpler ici
+#: (règle du dépôt : docs/30-technique/contenu-versionne.md).
 GRAINE: int = 20260922
 DATE_CREATION: str = "2026-09-22"
 AUTEUR: str = "redaction-assistee (tools/generer_rappel_series.py)"

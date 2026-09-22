@@ -18,18 +18,18 @@
         "mode": "sequence",
         "duree_par_item_ms": 800,
         "elements": [
-          "3",
-          "0",
           "5",
-          "9",
-          "3"
+          "4",
+          "5",
+          "8",
+          "0"
         ]
       },
       "enonce": "Tape la séquence de mémoire, dans l'ordre.",
       "aide": null
     },
     "reponse": {
-      "valeur": "30593"
+      "valeur": "54580"
     },
     "meta": {
       "auteur": "generation-automatique (tools/generer_memo_concentration.py)",
@@ -58,18 +58,18 @@
         "mode": "sequence",
         "duree_par_item_ms": 800,
         "elements": [
-          "5",
+          "8",
           "9",
-          "0",
-          "5",
-          "8"
+          "2",
+          "4",
+          "7"
         ]
       },
       "enonce": "Tape la séquence de mémoire, dans l'ordre.",
       "aide": null
     },
     "reponse": {
-      "valeur": "59058"
+      "valeur": "89247"
     },
     "meta": {
       "auteur": "generation-automatique (tools/generer_memo_concentration.py)",
@@ -98,18 +98,18 @@
         "mode": "sequence",
         "duree_par_item_ms": 800,
         "elements": [
-          "7",
-          "0",
-          "2",
-          "5",
-          "9"
+          "1",
+          "4",
+          "1",
+          "4",
+          "2"
         ]
       },
       "enonce": "Tape la séquence de mémoire, dans l'ordre.",
       "aide": null
     },
     "reponse": {
-      "valeur": "70259"
+      "valeur": "14142"
     },
     "meta": {
       "auteur": "generation-automatique (tools/generer_memo_concentration.py)",
@@ -138,18 +138,18 @@
         "mode": "sequence",
         "duree_par_item_ms": 800,
         "elements": [
-          "6",
-          "5",
-          "6",
+          "1",
           "2",
-          "0"
+          "1",
+          "5",
+          "8"
         ]
       },
       "enonce": "Tape la séquence de mémoire, dans l'ordre.",
       "aide": null
     },
     "reponse": {
-      "valeur": "65620"
+      "valeur": "12158"
     },
     "meta": {
       "auteur": "generation-automatique (tools/generer_memo_concentration.py)",
@@ -178,18 +178,18 @@
         "mode": "sequence",
         "duree_par_item_ms": 800,
         "elements": [
-          "3",
-          "8",
+          "6",
           "1",
-          "4",
-          "6"
+          "2",
+          "3",
+          "8"
         ]
       },
       "enonce": "Tape la séquence de mémoire, dans l'ordre.",
       "aide": null
     },
     "reponse": {
-      "valeur": "38146"
+      "valeur": "61238"
     },
     "meta": {
       "auteur": "generation-automatique (tools/generer_memo_concentration.py)",
@@ -218,18 +218,18 @@
         "mode": "sequence",
         "duree_par_item_ms": 800,
         "elements": [
-          "0",
-          "6",
-          "0",
+          "5",
           "1",
-          "5"
+          "7",
+          "6",
+          "4"
         ]
       },
       "enonce": "Tape la séquence de mémoire, dans l'ordre.",
       "aide": null
     },
     "reponse": {
-      "valeur": "06015"
+      "valeur": "51764"
     },
     "meta": {
       "auteur": "generation-automatique (tools/generer_memo_concentration.py)",
@@ -258,18 +258,18 @@
         "mode": "sequence",
         "duree_par_item_ms": 800,
         "elements": [
-          "9",
-          "2",
+          "8",
           "6",
           "1",
-          "6"
+          "2",
+          "4"
         ]
       },
       "enonce": "Tape la séquence de mémoire, dans l'ordre.",
       "aide": null
     },
     "reponse": {
-      "valeur": "92616"
+      "valeur": "86124"
     },
     "meta": {
       "auteur": "generation-automatique (tools/generer_memo_concentration.py)",
@@ -298,18 +298,18 @@
         "mode": "sequence",
         "duree_par_item_ms": 800,
         "elements": [
-          "7",
+          "0",
           "8",
+          "1",
           "2",
-          "7",
-          "9"
+          "3"
         ]
       },
       "enonce": "Tape la séquence de mémoire, dans l'ordre.",
       "aide": null
     },
     "reponse": {
-      "valeur": "78279"
+      "valeur": "08123"
     },
     "meta": {
       "auteur": "generation-automatique (tools/generer_memo_concentration.py)",
@@ -338,18 +338,18 @@
         "mode": "sequence",
         "duree_par_item_ms": 800,
         "elements": [
+          "1",
           "6",
-          "2",
-          "6",
-          "9",
-          "6"
+          "5",
+          "0",
+          "9"
         ]
       },
       "enonce": "Tape la séquence de mémoire, dans l'ordre.",
       "aide": null
     },
     "reponse": {
-      "valeur": "62696"
+      "valeur": "16509"
     },
     "meta": {
       "auteur": "generation-automatique (tools/generer_memo_concentration.py)",
@@ -379,9 +379,9 @@
         "duree_par_item_ms": 800,
         "elements": [
           "0",
-          "6",
           "2",
-          "4",
+          "5",
+          "7",
           "0"
         ]
       },
@@ -389,7 +389,7 @@
       "aide": null
     },
     "reponse": {
-      "valeur": "06240"
+      "valeur": "02570"
     },
     "meta": {
       "auteur": "generation-automatique (tools/generer_memo_concentration.py)",
@@ -420,20 +420,20 @@
         "duree_totale_ms": 8000,
         "elements": [
           [
-            "ARBRE",
-            "20"
+            "PORTE",
+            "73"
           ],
           [
-            "LIVRE",
-            "63"
+            "PLUIE",
+            "96"
           ]
         ]
       },
-      "enonce": "Nombre associé à « ARBRE » ?",
+      "enonce": "Nombre associé à « PORTE » ?",
       "aide": null
     },
     "reponse": {
-      "valeur": "20"
+      "valeur": "73"
     },
     "meta": {
       "auteur": "generation-automatique (tools/generer_memo_concentration.py)",
@@ -464,20 +464,20 @@
         "duree_totale_ms": 8000,
         "elements": [
           [
-            "NUAGE",
-            "74"
+            "PIERRE",
+            "38"
           ],
           [
-            "TRAIN",
-            "55"
+            "NUAGE",
+            "68"
           ]
         ]
       },
-      "enonce": "Nombre associé à « NUAGE » ?",
+      "enonce": "Nombre associé à « PIERRE » ?",
       "aide": null
     },
     "reponse": {
-      "valeur": "74"
+      "valeur": "38"
     },
     "meta": {
       "auteur": "generation-automatique (tools/generer_memo_concentration.py)",
@@ -508,20 +508,20 @@
         "duree_totale_ms": 8000,
         "elements": [
           [
-            "TABLE",
-            "34"
+            "PIERRE",
+            "96"
           ],
           [
-            "LUNE",
-            "64"
+            "LIVRE",
+            "73"
           ]
         ]
       },
-      "enonce": "Nombre associé à « LUNE » ?",
+      "enonce": "Nombre associé à « LIVRE » ?",
       "aide": null
     },
     "reponse": {
-      "valeur": "64"
+      "valeur": "73"
     },
     "meta": {
       "auteur": "generation-automatique (tools/generer_memo_concentration.py)",
@@ -552,20 +552,20 @@
         "duree_totale_ms": 8000,
         "elements": [
           [
-            "PLUIE",
-            "98"
+            "LIVRE",
+            "99"
           ],
           [
-            "PORTE",
-            "19"
+            "ROUE",
+            "92"
           ]
         ]
       },
-      "enonce": "Nombre associé à « PLUIE » ?",
+      "enonce": "Nombre associé à « ROUE » ?",
       "aide": null
     },
     "reponse": {
-      "valeur": "98"
+      "valeur": "92"
     },
     "meta": {
       "auteur": "generation-automatique (tools/generer_memo_concentration.py)",
@@ -596,20 +596,20 @@
         "duree_totale_ms": 8000,
         "elements": [
           [
-            "LIVRE",
-            "31"
+            "PORTE",
+            "44"
           ],
           [
-            "FLEUR",
-            "21"
+            "PONT",
+            "97"
           ]
         ]
       },
-      "enonce": "Nombre associé à « LIVRE » ?",
+      "enonce": "Nombre associé à « PONT » ?",
       "aide": null
     },
     "reponse": {
-      "valeur": "31"
+      "valeur": "97"
     },
     "meta": {
       "auteur": "generation-automatique (tools/generer_memo_concentration.py)",
@@ -640,20 +640,20 @@
         "duree_totale_ms": 8000,
         "elements": [
           [
-            "PORTE",
-            "13"
+            "ROUE",
+            "17"
           ],
           [
-            "PIERRE",
-            "19"
+            "PLUIE",
+            "24"
           ]
         ]
       },
-      "enonce": "Nombre associé à « PORTE » ?",
+      "enonce": "Nombre associé à « ROUE » ?",
       "aide": null
     },
     "reponse": {
-      "valeur": "13"
+      "valeur": "17"
     },
     "meta": {
       "auteur": "generation-automatique (tools/generer_memo_concentration.py)",
@@ -684,20 +684,20 @@
         "duree_totale_ms": 8000,
         "elements": [
           [
-            "TABLE",
-            "50"
+            "ARBRE",
+            "23"
           ],
           [
-            "FLEUR",
-            "71"
+            "PONT",
+            "55"
           ]
         ]
       },
-      "enonce": "Nombre associé à « FLEUR » ?",
+      "enonce": "Nombre associé à « PONT » ?",
       "aide": null
     },
     "reponse": {
-      "valeur": "71"
+      "valeur": "55"
     },
     "meta": {
       "auteur": "generation-automatique (tools/generer_memo_concentration.py)",
@@ -728,20 +728,20 @@
         "duree_totale_ms": 8000,
         "elements": [
           [
-            "PONT",
-            "48"
+            "ROUE",
+            "56"
           ],
           [
-            "TABLE",
-            "74"
+            "LIVRE",
+            "54"
           ]
         ]
       },
-      "enonce": "Nombre associé à « PONT » ?",
+      "enonce": "Nombre associé à « LIVRE » ?",
       "aide": null
     },
     "reponse": {
-      "valeur": "48"
+      "valeur": "54"
     },
     "meta": {
       "auteur": "generation-automatique (tools/generer_memo_concentration.py)",

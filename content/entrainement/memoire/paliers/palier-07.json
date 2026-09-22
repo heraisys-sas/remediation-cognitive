@@ -18,19 +18,19 @@
         "mode": "sequence",
         "duree_par_item_ms": 800,
         "elements": [
-          "4",
-          "5",
-          "3",
           "1",
-          "3",
-          "4"
+          "0",
+          "4",
+          "1",
+          "4",
+          "5"
         ]
       },
       "enonce": "Tape la séquence à l'envers (de mémoire).",
       "aide": null
     },
     "reponse": {
-      "valeur": "431354"
+      "valeur": "541401"
     },
     "meta": {
       "auteur": "generation-automatique (tools/generer_memo_concentration.py)",
@@ -59,19 +59,19 @@
         "mode": "sequence",
         "duree_par_item_ms": 800,
         "elements": [
-          "5",
-          "1",
-          "8",
+          "3",
           "4",
-          "2",
-          "4"
+          "9",
+          "7",
+          "8",
+          "5"
         ]
       },
       "enonce": "Tape la séquence à l'envers (de mémoire).",
       "aide": null
     },
     "reponse": {
-      "valeur": "424815"
+      "valeur": "587943"
     },
     "meta": {
       "auteur": "generation-automatique (tools/generer_memo_concentration.py)",
@@ -100,11 +100,11 @@
         "mode": "sequence",
         "duree_par_item_ms": 800,
         "elements": [
-          "2",
-          "3",
+          "4",
+          "9",
+          "5",
           "7",
-          "1",
-          "6",
+          "5",
           "3"
         ]
       },
@@ -112,7 +112,7 @@
       "aide": null
     },
     "reponse": {
-      "valeur": "361732"
+      "valeur": "357594"
     },
     "meta": {
       "auteur": "generation-automatique (tools/generer_memo_concentration.py)",
@@ -141,19 +141,19 @@
         "mode": "sequence",
         "duree_par_item_ms": 800,
         "elements": [
+          "4",
           "0",
-          "3",
-          "0",
+          "7",
           "9",
-          "1",
-          "0"
+          "3",
+          "7"
         ]
       },
       "enonce": "Tape la séquence à l'envers (de mémoire).",
       "aide": null
     },
     "reponse": {
-      "valeur": "019030"
+      "valeur": "739704"
     },
     "meta": {
       "auteur": "generation-automatique (tools/generer_memo_concentration.py)",
@@ -182,19 +182,19 @@
         "mode": "sequence",
         "duree_par_item_ms": 800,
         "elements": [
-          "4",
-          "8",
-          "2",
-          "9",
           "6",
-          "9"
+          "8",
+          "9",
+          "4",
+          "7",
+          "5"
         ]
       },
       "enonce": "Tape la séquence à l'envers (de mémoire).",
       "aide": null
     },
     "reponse": {
-      "valeur": "969284"
+      "valeur": "574986"
     },
     "meta": {
       "auteur": "generation-automatique (tools/generer_memo_concentration.py)",
@@ -223,19 +223,19 @@
         "mode": "sequence",
         "duree_par_item_ms": 800,
         "elements": [
-          "2",
-          "0",
-          "8",
           "9",
-          "7",
-          "5"
+          "5",
+          "4",
+          "5",
+          "0",
+          "8"
         ]
       },
       "enonce": "Tape la séquence à l'envers (de mémoire).",
       "aide": null
     },
     "reponse": {
-      "valeur": "579802"
+      "valeur": "805459"
     },
     "meta": {
       "auteur": "generation-automatique (tools/generer_memo_concentration.py)",
@@ -264,19 +264,19 @@
         "mode": "sequence",
         "duree_par_item_ms": 800,
         "elements": [
-          "5",
-          "2",
-          "5",
+          "9",
           "4",
-          "1",
-          "0"
+          "3",
+          "9",
+          "6",
+          "7"
         ]
       },
       "enonce": "Tape la séquence à l'envers (de mémoire).",
       "aide": null
     },
     "reponse": {
-      "valeur": "014525"
+      "valeur": "769349"
     },
     "meta": {
       "auteur": "generation-automatique (tools/generer_memo_concentration.py)",
@@ -306,10 +306,10 @@
         "duree_par_item_ms": 800,
         "elements": [
           "9",
-          "4",
-          "2",
-          "3",
-          "0",
+          "8",
+          "6",
+          "5",
+          "7",
           "4"
         ]
       },
@@ -317,7 +317,7 @@
       "aide": null
     },
     "reponse": {
-      "valeur": "403249"
+      "valeur": "475689"
     },
     "meta": {
       "auteur": "generation-automatique (tools/generer_memo_concentration.py)",
@@ -347,20 +347,20 @@
         "mode": "sequence",
         "duree_par_item_ms": 1200,
         "elements": [
-          "P",
-          "B",
-          "L",
-          "B",
-          "P",
+          "M",
           "T",
-          "K"
+          "P",
+          "L",
+          "T",
+          "M",
+          "R"
         ]
       },
       "enonce": "Quel élément était 3 positions avant la fin ? Tape-le.",
       "aide": null
     },
     "reponse": {
-      "valeur": "B"
+      "valeur": "L"
     },
     "meta": {
       "auteur": "generation-automatique (tools/generer_memo_concentration.py)",
@@ -390,12 +390,12 @@
         "mode": "sequence",
         "duree_par_item_ms": 1200,
         "elements": [
-          "R",
-          "K",
-          "P",
           "T",
+          "B",
           "K",
           "M",
+          "P",
+          "L",
           "B"
         ]
       },
@@ -403,7 +403,7 @@
       "aide": null
     },
     "reponse": {
-      "valeur": "T"
+      "valeur": "M"
     },
     "meta": {
       "auteur": "generation-automatique (tools/generer_memo_concentration.py)",
@@ -433,13 +433,13 @@
         "mode": "sequence",
         "duree_par_item_ms": 1200,
         "elements": [
-          "K",
-          "T",
+          "P",
           "M",
-          "T",
           "L",
+          "T",
           "K",
-          "P"
+          "B",
+          "M"
         ]
       },
       "enonce": "Quel élément était 3 positions avant la fin ? Tape-le.",
@@ -476,20 +476,20 @@
         "mode": "sequence",
         "duree_par_item_ms": 1200,
         "elements": [
-          "K",
-          "P",
-          "K",
+          "T",
           "R",
           "K",
           "B",
-          "T"
+          "L",
+          "M",
+          "B"
         ]
       },
       "enonce": "Quel élément était 3 positions avant la fin ? Tape-le.",
       "aide": null
     },
     "reponse": {
-      "valeur": "R"
+      "valeur": "B"
     },
     "meta": {
       "auteur": "generation-automatique (tools/generer_memo_concentration.py)",
@@ -519,20 +519,20 @@
         "mode": "sequence",
         "duree_par_item_ms": 1200,
         "elements": [
+          "L",
+          "M",
+          "T",
+          "B",
           "P",
-          "B",
-          "T",
-          "R",
-          "T",
-          "B",
-          "T"
+          "L",
+          "R"
         ]
       },
       "enonce": "Quel élément était 3 positions avant la fin ? Tape-le.",
       "aide": null
     },
     "reponse": {
-      "valeur": "R"
+      "valeur": "B"
     },
     "meta": {
       "auteur": "generation-automatique (tools/generer_memo_concentration.py)",
@@ -563,19 +563,19 @@
         "duree_par_item_ms": 1200,
         "elements": [
           "K",
-          "L",
-          "M",
+          "P",
           "K",
-          "L",
+          "P",
           "T",
-          "B"
+          "M",
+          "R"
         ]
       },
       "enonce": "Quel élément était 3 positions avant la fin ? Tape-le.",
       "aide": null
     },
     "reponse": {
-      "valeur": "K"
+      "valeur": "P"
     },
     "meta": {
       "auteur": "generation-automatique (tools/generer_memo_concentration.py)",
@@ -605,20 +605,20 @@
         "mode": "sequence",
         "duree_par_item_ms": 1200,
         "elements": [
-          "T",
+          "K",
           "B",
-          "P",
-          "T",
+          "L",
+          "K",
+          "B",
           "M",
-          "P",
-          "M"
+          "K"
         ]
       },
       "enonce": "Quel élément était 3 positions avant la fin ? Tape-le.",
       "aide": null
     },
     "reponse": {
-      "valeur": "T"
+      "valeur": "K"
     },
     "meta": {
       "auteur": "generation-automatique (tools/generer_memo_concentration.py)",
@@ -648,20 +648,20 @@
         "mode": "sequence",
         "duree_par_item_ms": 1200,
         "elements": [
-          "L",
-          "M",
-          "L",
           "R",
-          "K",
           "L",
-          "M"
+          "B",
+          "T",
+          "M",
+          "P",
+          "T"
         ]
       },
       "enonce": "Quel élément était 3 positions avant la fin ? Tape-le.",
       "aide": null
     },
     "reponse": {
-      "valeur": "R"
+      "valeur": "T"
     },
     "meta": {
       "auteur": "generation-automatique (tools/generer_memo_concentration.py)",
@@ -691,12 +691,12 @@
         "mode": "sequence",
         "duree_par_item_ms": 1200,
         "elements": [
-          "T",
-          "M",
-          "B",
+          "K",
           "R",
-          "P",
           "L",
+          "P",
+          "K",
+          "T",
           "M"
         ]
       },
@@ -704,7 +704,7 @@
       "aide": null
     },
     "reponse": {
-      "valeur": "R"
+      "valeur": "P"
     },
     "meta": {
       "auteur": "generation-automatique (tools/generer_memo_concentration.py)",
@@ -735,19 +735,19 @@
         "duree_par_item_ms": 1200,
         "elements": [
           "P",
+          "B",
+          "T",
           "K",
           "P",
-          "T",
-          "P",
-          "T",
-          "R"
+          "R",
+          "K"
         ]
       },
       "enonce": "Quel élément était 3 positions avant la fin ? Tape-le.",
       "aide": null
     },
     "reponse": {
-      "valeur": "T"
+      "valeur": "K"
     },
     "meta": {
       "auteur": "generation-automatique (tools/generer_memo_concentration.py)",

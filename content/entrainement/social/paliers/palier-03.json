@@ -9,9 +9,9 @@
       "consigne": "Lis la parole et le ton, puis choisis ce que la personne cherche à dire.",
       "enonce": "« Ça va, tu es sûr ? » — voix douce, sourcils un peu froncés.",
       "options": [
-        "elle te reproche quelque chose",
+        "elle te taquine",
         "elle s'inquiète pour toi",
-        "elle te taquine"
+        "elle te reproche quelque chose"
       ],
       "aide": "Le ton et le geste comptent autant que les mots."
     },
@@ -44,9 +44,9 @@
       "consigne": "Lis la parole et le ton, puis choisis ce que la personne cherche à dire.",
       "enonce": "« Tiens, tiens… » — sourire léger, en regardant ce que tu portes.",
       "options": [
-        "elle remarque quelque chose d'inhabituel",
+        "elle te demande de partir",
         "elle t'annonce une mauvaise nouvelle",
-        "elle te demande de partir"
+        "elle remarque quelque chose d'inhabituel"
       ],
       "aide": "Le ton et le geste comptent autant que les mots."
     },
@@ -80,8 +80,8 @@
       "enonce": "« Bon, on verra. » — soupir, ton qui baisse en fin de phrase.",
       "options": [
         "elle n'approuve pas mais évite la discussion",
-        "elle n'a pas entendu",
-        "elle est enthousiaste"
+        "elle est enthousiaste",
+        "elle n'a pas entendu"
       ],
       "aide": "Le ton et le geste comptent autant que les mots."
     },
@@ -114,9 +114,9 @@
       "consigne": "Lis la parole et le ton, puis choisis ce que la personne cherche à dire.",
       "enonce": "« Tu peux répéter ? » — sourcils levés, tête penchée.",
       "options": [
+        "elle n'a pas compris ou n'a pas entendu",
         "elle est en colère",
-        "elle veut changer de sujet",
-        "elle n'a pas compris ou n'a pas entendu"
+        "elle veut changer de sujet"
       ],
       "aide": "Le ton et le geste comptent autant que les mots."
     },
@@ -149,8 +149,8 @@
       "consigne": "Lis la parole et le ton, puis choisis ce que la personne cherche à dire.",
       "enonce": "« Ne t'inquiète pas pour ça. » — voix calme, main posée sur la table.",
       "options": [
-        "elle te reproche d'être inquiet",
         "elle ne veut plus te parler",
+        "elle te reproche d'être inquiet",
         "elle veut te rassurer"
       ],
       "aide": "Le ton et le geste comptent autant que les mots."
@@ -184,9 +184,9 @@
       "consigne": "Lis la parole et le ton, puis choisis ce que la personne cherche à dire.",
       "enonce": "« Ah bon ? » — ton qui monte, yeux écarquillés.",
       "options": [
-        "elle est d'accord",
+        "elle s'ennuie",
         "elle est surprise",
-        "elle s'ennuie"
+        "elle est d'accord"
       ],
       "aide": null
     },
@@ -219,9 +219,9 @@
       "consigne": "Lis la parole et le ton, puis choisis ce que la personne cherche à dire.",
       "enonce": "« Bien sûr, comme toujours. » — sourire pincé, regard qui se détourne.",
       "options": [
-        "elle est distraite",
+        "elle félicite sincèrement",
         "elle marque une contrariété",
-        "elle félicite sincèrement"
+        "elle est distraite"
       ],
       "aide": null
     },
@@ -290,8 +290,8 @@
       "enonce": "« On en reparle demain matin ? » — ton posé, sans sourire.",
       "options": [
         "elle a oublié la question",
-        "elle préfère reporter pour l'instant",
-        "elle refuse définitivement"
+        "elle refuse définitivement",
+        "elle préfère reporter pour l'instant"
       ],
       "aide": null
     },

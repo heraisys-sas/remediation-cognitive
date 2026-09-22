@@ -16,16 +16,16 @@
         "mode": "sequence",
         "duree_par_item_ms": 800,
         "elements": [
-          "1",
-          "3",
-          "6"
+          "5",
+          "4",
+          "9"
         ]
       },
       "enonce": "Tape la séquence de mémoire, dans l'ordre.",
       "aide": null
     },
     "reponse": {
-      "valeur": "136"
+      "valeur": "549"
     },
     "meta": {
       "auteur": "generation-automatique (tools/generer_memo_concentration.py)",
@@ -52,16 +52,16 @@
         "mode": "sequence",
         "duree_par_item_ms": 800,
         "elements": [
-          "4",
-          "8",
-          "3"
+          "1",
+          "2",
+          "5"
         ]
       },
       "enonce": "Tape la séquence de mémoire, dans l'ordre.",
       "aide": null
     },
     "reponse": {
-      "valeur": "483"
+      "valeur": "125"
     },
     "meta": {
       "auteur": "generation-automatique (tools/generer_memo_concentration.py)",
@@ -88,16 +88,16 @@
         "mode": "sequence",
         "duree_par_item_ms": 800,
         "elements": [
-          "3",
-          "7",
-          "2"
+          "4",
+          "5",
+          "4"
         ]
       },
       "enonce": "Tape la séquence de mémoire, dans l'ordre.",
       "aide": null
     },
     "reponse": {
-      "valeur": "372"
+      "valeur": "454"
     },
     "meta": {
       "auteur": "generation-automatique (tools/generer_memo_concentration.py)",
@@ -124,16 +124,16 @@
         "mode": "sequence",
         "duree_par_item_ms": 800,
         "elements": [
-          "0",
-          "4",
-          "5"
+          "8",
+          "9",
+          "0"
         ]
       },
       "enonce": "Tape la séquence de mémoire, dans l'ordre.",
       "aide": null
     },
     "reponse": {
-      "valeur": "045"
+      "valeur": "890"
     },
     "meta": {
       "auteur": "generation-automatique (tools/generer_memo_concentration.py)",
@@ -160,7 +160,7 @@
         "mode": "sequence",
         "duree_par_item_ms": 800,
         "elements": [
-          "7",
+          "4",
           "8",
           "4"
         ]
@@ -169,7 +169,7 @@
       "aide": null
     },
     "reponse": {
-      "valeur": "784"
+      "valeur": "484"
     },
     "meta": {
       "auteur": "generation-automatique (tools/generer_memo_concentration.py)",
@@ -196,16 +196,16 @@
         "mode": "sequence",
         "duree_par_item_ms": 800,
         "elements": [
-          "3",
-          "8",
-          "4"
+          "0",
+          "1",
+          "6"
         ]
       },
       "enonce": "Tape la séquence de mémoire, dans l'ordre.",
       "aide": null
     },
     "reponse": {
-      "valeur": "384"
+      "valeur": "016"
     },
     "meta": {
       "auteur": "generation-automatique (tools/generer_memo_concentration.py)",
@@ -232,16 +232,16 @@
         "mode": "sequence",
         "duree_par_item_ms": 800,
         "elements": [
-          "0",
+          "1",
           "2",
-          "1"
+          "4"
         ]
       },
       "enonce": "Tape la séquence de mémoire, dans l'ordre.",
       "aide": null
     },
     "reponse": {
-      "valeur": "021"
+      "valeur": "124"
     },
     "meta": {
       "auteur": "generation-automatique (tools/generer_memo_concentration.py)",
@@ -268,7 +268,7 @@
         "mode": "sequence",
         "duree_par_item_ms": 800,
         "elements": [
-          "5",
+          "0",
           "4",
           "7"
         ]
@@ -277,7 +277,7 @@
       "aide": null
     },
     "reponse": {
-      "valeur": "547"
+      "valeur": "047"
     },
     "meta": {
       "auteur": "generation-automatique (tools/generer_memo_concentration.py)",
@@ -304,16 +304,16 @@
         "mode": "sequence",
         "duree_par_item_ms": 800,
         "elements": [
-          "0",
-          "3",
-          "6"
+          "1",
+          "2",
+          "0"
         ]
       },
       "enonce": "Tape la séquence de mémoire, dans l'ordre.",
       "aide": null
     },
     "reponse": {
-      "valeur": "036"
+      "valeur": "120"
     },
     "meta": {
       "auteur": "generation-automatique (tools/generer_memo_concentration.py)",
@@ -340,16 +340,16 @@
         "mode": "sequence",
         "duree_par_item_ms": 800,
         "elements": [
-          "4",
-          "0",
-          "2"
+          "3",
+          "1",
+          "9"
         ]
       },
       "enonce": "Tape la séquence de mémoire, dans l'ordre.",
       "aide": null
     },
     "reponse": {
-      "valeur": "402"
+      "valeur": "319"
     },
     "meta": {
       "auteur": "generation-automatique (tools/generer_memo_concentration.py)",
@@ -376,16 +376,16 @@
         "mode": "sequence",
         "duree_par_item_ms": 800,
         "elements": [
-          "9",
+          "7",
           "4",
-          "9"
+          "0"
         ]
       },
       "enonce": "Tape la séquence de mémoire, dans l'ordre.",
       "aide": null
     },
     "reponse": {
-      "valeur": "949"
+      "valeur": "740"
     },
     "meta": {
       "auteur": "generation-automatique (tools/generer_memo_concentration.py)",
@@ -412,16 +412,16 @@
         "mode": "sequence",
         "duree_par_item_ms": 800,
         "elements": [
+          "6",
           "7",
-          "4",
-          "1"
+          "3"
         ]
       },
       "enonce": "Tape la séquence de mémoire, dans l'ordre.",
       "aide": null
     },
     "reponse": {
-      "valeur": "741"
+      "valeur": "673"
     },
     "meta": {
       "auteur": "generation-automatique (tools/generer_memo_concentration.py)",
@@ -448,16 +448,16 @@
         "mode": "sequence",
         "duree_par_item_ms": 800,
         "elements": [
-          "1",
-          "6",
-          "8"
+          "8",
+          "4",
+          "6"
         ]
       },
       "enonce": "Tape la séquence de mémoire, dans l'ordre.",
       "aide": null
     },
     "reponse": {
-      "valeur": "168"
+      "valeur": "846"
     },
     "meta": {
       "auteur": "generation-automatique (tools/generer_memo_concentration.py)",
@@ -484,16 +484,16 @@
         "mode": "sequence",
         "duree_par_item_ms": 800,
         "elements": [
-          "7",
-          "0",
-          "5"
+          "1",
+          "4",
+          "9"
         ]
       },
       "enonce": "Tape la séquence de mémoire, dans l'ordre.",
       "aide": null
     },
     "reponse": {
-      "valeur": "705"
+      "valeur": "149"
     },
     "meta": {
       "auteur": "generation-automatique (tools/generer_memo_concentration.py)",
@@ -520,16 +520,16 @@
         "mode": "sequence",
         "duree_par_item_ms": 800,
         "elements": [
-          "0",
-          "6",
-          "8"
+          "5",
+          "9",
+          "3"
         ]
       },
       "enonce": "Tape la séquence de mémoire, dans l'ordre.",
       "aide": null
     },
     "reponse": {
-      "valeur": "068"
+      "valeur": "593"
     },
     "meta": {
       "auteur": "generation-automatique (tools/generer_memo_concentration.py)",
@@ -556,16 +556,16 @@
         "mode": "sequence",
         "duree_par_item_ms": 800,
         "elements": [
-          "8",
-          "2",
-          "6"
+          "0",
+          "7",
+          "9"
         ]
       },
       "enonce": "Tape la séquence de mémoire, dans l'ordre.",
       "aide": null
     },
     "reponse": {
-      "valeur": "826"
+      "valeur": "079"
     },
     "meta": {
       "auteur": "generation-automatique (tools/generer_memo_concentration.py)",
@@ -592,16 +592,16 @@
         "mode": "sequence",
         "duree_par_item_ms": 800,
         "elements": [
-          "6",
-          "4",
-          "0"
+          "1",
+          "3",
+          "7"
         ]
       },
       "enonce": "Tape la séquence de mémoire, dans l'ordre.",
       "aide": null
     },
     "reponse": {
-      "valeur": "640"
+      "valeur": "137"
     },
     "meta": {
       "auteur": "generation-automatique (tools/generer_memo_concentration.py)",
@@ -628,16 +628,16 @@
         "mode": "sequence",
         "duree_par_item_ms": 800,
         "elements": [
-          "4",
-          "2",
-          "1"
+          "6",
+          "5",
+          "8"
         ]
       },
       "enonce": "Tape la séquence de mémoire, dans l'ordre.",
       "aide": null
     },
     "reponse": {
-      "valeur": "421"
+      "valeur": "658"
     },
     "meta": {
       "auteur": "generation-automatique (tools/generer_memo_concentration.py)",

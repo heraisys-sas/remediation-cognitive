@@ -42,6 +42,25 @@ def meta() -> dict:
     }
 
 
+#: Générateurs aléatoires isolés par « thème:famille » (règle du dépôt :
+#: un tirage partagé fait qu'ajouter un contenu réécrit silencieusement le
+#: contenu existant — voir docs/30-technique/contenu-versionne.md).
+_RNG_FAMILLES: dict[str, random.Random] = {}
+
+
+def melanger(theme: str, famille: str, options: list) -> None:
+    """Mélange l'ordre des propositions avec le générateur isolé de la famille.
+
+    Seul l'ORDRE des propositions dépend du hasard ici (les mots et situations
+    sont rédigés) : l'isolation garantit qu'ajouter une famille ne change pas
+    l'ordre des propositions des autres.
+    """
+    rng = _RNG_FAMILLES.setdefault(
+        f"{theme}:{famille}", random.Random(f"{GRAINE}:{theme}:{famille}")
+    )
+    rng.shuffle(options)
+
+
 def indices_mot(mot: str, categorie: str, attaque: str) -> list[dict]:
     """Hiérarchie d'indices d'un mot : catégorie, attaque phonologique, forme écrite."""
     return [
@@ -110,7 +129,6 @@ FICHES_SOURCE = [
 
 def items_evocation() -> list[dict]:
     """Assemble les items du thème evocation (5 paliers de 10 items)."""
-    rng = random.Random(GRAINE)
     items: list[dict] = []
 
     def ajouter(palier: int, famille: str, numero: int, item: dict) -> None:
@@ -126,7 +144,7 @@ def items_evocation() -> list[dict]:
     # Palier 1 — reconnaissance : la réponse est proposée avec deux leurres.
     for numero, (mot, definition, _cat, _att, leurres) in enumerate(MOTS_ABSTRAITS[:5] + MOTS_CONCRETS[:5], start=1):
         options = [mot] + list(leurres)
-        rng.shuffle(options)
+        melanger("evocation", "reconnaissance", options)
         ajouter(1, "reconnaissance", numero, {
             "type": "reconnaissance",
             "fonctions_ciblees": ["acces-lexical"],
@@ -170,7 +188,7 @@ def items_evocation() -> list[dict]:
     # Palier 4 — rappel de la source : où l'information a-t-elle été vue ?
     for numero, (ident, contexte, information, leurres) in enumerate(FICHES_SOURCE, start=1):
         options = [contexte] + list(leurres)
-        rng.shuffle(options)
+        melanger("evocation", "source", options)
         ajouter(4, "source", numero, {
             "type": "rappel-source",
             "fonctions_ciblees": ["memorisation-longue", "recuperation"],
@@ -214,7 +232,7 @@ def items_evocation() -> list[dict]:
         })
     for numero, (mot, definition, _cat, _att, leurres) in enumerate(MOTS_ABSTRAITS[10:], start=6):
         options = [mot] + list(leurres)
-        rng.shuffle(options)
+        melanger("evocation", "reconnaissance", options)
         ajouter(5, "reconnaissance", numero, {
             "type": "reconnaissance",
             "fonctions_ciblees": ["acces-lexical"],
@@ -329,7 +347,6 @@ INTENTIONS = [
 
 def items_social() -> list[dict]:
     """Assemble les items du thème social (4 paliers de 10 items)."""
-    rng = random.Random(GRAINE + 1)
     items: list[dict] = []
 
     def ajouter(palier: int, famille: str, numero: int, item: dict) -> None:
@@ -345,7 +362,7 @@ def items_social() -> list[dict]:
     # Palier 1 — reconnaître l'émotion d'une personne dans une situation.
     for numero, (situation, emotion, leurres) in enumerate(SITUATIONS_EMOTION, start=1):
         options = [emotion] + list(leurres)
-        rng.shuffle(options)
+        melanger("social", "emotion", options)
         ajouter(1, "emotion", numero, {
             "type": "emotion-vignette",
             "fonctions_ciblees": ["cognition-sociale"],
@@ -361,7 +378,7 @@ def items_social() -> list[dict]:
     # Palier 2 — choisir la réponse qui convient.
     for numero, (situation, adaptee, _directe, _cote) in enumerate(SITUATIONS_REPONSE, start=1):
         options = [adaptee] + [option for option in (SITUATIONS_REPONSE[numero - 1][2], SITUATIONS_REPONSE[numero - 1][3])]
-        rng.shuffle(options)
+        melanger("social", "reponse", options)
         ajouter(2, "reponse", numero, {
             "type": "reponse-adaptee",
             "fonctions_ciblees": ["cognition-sociale", "pragmatique"],
@@ -377,7 +394,7 @@ def items_social() -> list[dict]:
     # Palier 3 — lecture d'intention (sur les 5 premières situations) + émotions restantes.
     for numero, (parole, intention, leurres) in enumerate(INTENTIONS[:5], start=1):
         options = [intention] + list(leurres)
-        rng.shuffle(options)
+        melanger("social", "intention", options)
         ajouter(3, "intention", numero, {
             "type": "lecture-intention",
             "fonctions_ciblees": ["cognition-sociale", "pragmatique"],
@@ -391,7 +408,7 @@ def items_social() -> list[dict]:
         })
     for numero, (parole, intention, leurres) in enumerate(INTENTIONS[5:], start=6):
         options = [intention] + list(leurres)
-        rng.shuffle(options)
+        melanger("social", "intention", options)
         ajouter(3, "intention", numero, {
             "type": "lecture-intention",
             "fonctions_ciblees": ["cognition-sociale", "pragmatique"],
@@ -407,7 +424,7 @@ def items_social() -> list[dict]:
     # Palier 4 — alternance réponse adaptée / intention.
     for numero, (situation, adaptee, directe, cote) in enumerate(SITUATIONS_REPONSE[:5], start=1):
         options = [adaptee, directe, cote]
-        rng.shuffle(options)
+        melanger("social", "reponse", options)
         ajouter(4, "reponse", numero, {
             "type": "reponse-adaptee",
             "fonctions_ciblees": ["cognition-sociale", "pragmatique"],
@@ -421,7 +438,7 @@ def items_social() -> list[dict]:
         })
     for numero, (situation, emotion, leurres) in enumerate(SITUATIONS_EMOTION[:5], start=6):
         options = [emotion] + list(leurres)
-        rng.shuffle(options)
+        melanger("social", "emotion", options)
         ajouter(4, "emotion", numero, {
             "type": "emotion-vignette",
             "fonctions_ciblees": ["cognition-sociale"],

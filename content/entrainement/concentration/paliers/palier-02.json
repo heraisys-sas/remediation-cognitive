@@ -14,11 +14,11 @@
     ],
     "cap_complexite": null,
     "contenu": {
-      "enonce": "16 − 14 + 4 − 3 + 16",
+      "enonce": "14 + 10 − 15 + 18 + 16",
       "aide": "Calcule de gauche à droite, étape par étape."
     },
     "reponse": {
-      "valeur": 19
+      "valeur": 43
     },
     "meta": {
       "auteur": "generation-automatique (tools/generer_memo_concentration.py)",
@@ -43,11 +43,11 @@
     ],
     "cap_complexite": null,
     "contenu": {
-      "enonce": "2 + 14 + 11 − 5 − 16",
+      "enonce": "2 + 17 − 12 + 10 + 8",
       "aide": "Calcule de gauche à droite, étape par étape."
     },
     "reponse": {
-      "valeur": 6
+      "valeur": 25
     },
     "meta": {
       "auteur": "generation-automatique (tools/generer_memo_concentration.py)",
@@ -72,11 +72,11 @@
     ],
     "cap_complexite": null,
     "contenu": {
-      "enonce": "10 + 18 + 12 + 13 + 15",
+      "enonce": "15 − 10 + 14 + 11 + 16",
       "aide": "Calcule de gauche à droite, étape par étape."
     },
     "reponse": {
-      "valeur": 68
+      "valeur": 46
     },
     "meta": {
       "auteur": "generation-automatique (tools/generer_memo_concentration.py)",
@@ -101,11 +101,11 @@
     ],
     "cap_complexite": null,
     "contenu": {
-      "enonce": "3 + 6 − 6 + 3 − 4",
+      "enonce": "8 + 14 + 8 + 17 + 20",
       "aide": "Calcule de gauche à droite, étape par étape."
     },
     "reponse": {
-      "valeur": 2
+      "valeur": 67
     },
     "meta": {
       "auteur": "generation-automatique (tools/generer_memo_concentration.py)",
@@ -130,11 +130,11 @@
     ],
     "cap_complexite": null,
     "contenu": {
-      "enonce": "20 − 5 + 3 − 9 − 3",
+      "enonce": "19 − 11 + 2 − 3 − 4",
       "aide": "Calcule de gauche à droite, étape par étape."
     },
     "reponse": {
-      "valeur": 6
+      "valeur": 3
     },
     "meta": {
       "auteur": "generation-automatique (tools/generer_memo_concentration.py)",
@@ -159,11 +159,11 @@
     ],
     "cap_complexite": null,
     "contenu": {
-      "enonce": "16 − 13 + 20 − 14 − 3",
+      "enonce": "8 − 6 + 19 − 15 + 2",
       "aide": "Calcule de gauche à droite, étape par étape."
     },
     "reponse": {
-      "valeur": 6
+      "valeur": 8
     },
     "meta": {
       "auteur": "generation-automatique (tools/generer_memo_concentration.py)",
@@ -188,11 +188,11 @@
     ],
     "cap_complexite": null,
     "contenu": {
-      "enonce": "17 + 12 − 8 + 19 + 20",
+      "enonce": "2 + 15 − 14 + 2 + 10",
       "aide": "Calcule de gauche à droite, étape par étape."
     },
     "reponse": {
-      "valeur": 60
+      "valeur": 15
     },
     "meta": {
       "auteur": "generation-automatique (tools/generer_memo_concentration.py)",
@@ -217,11 +217,11 @@
     ],
     "cap_complexite": null,
     "contenu": {
-      "enonce": "20 − 7 + 11 + 18 − 11",
+      "enonce": "11 + 20 + 5 + 2 + 16",
       "aide": "Calcule de gauche à droite, étape par étape."
     },
     "reponse": {
-      "valeur": 31
+      "valeur": 54
     },
     "meta": {
       "auteur": "generation-automatique (tools/generer_memo_concentration.py)",
@@ -246,11 +246,11 @@
     ],
     "cap_complexite": null,
     "contenu": {
-      "enonce": "13 − 7 − 4 + 10 + 5",
+      "enonce": "7 − 4 + 14 + 11 − 20",
       "aide": "Calcule de gauche à droite, étape par étape."
     },
     "reponse": {
-      "valeur": 17
+      "valeur": 8
     },
     "meta": {
       "auteur": "generation-automatique (tools/generer_memo_concentration.py)",
@@ -275,11 +275,11 @@
     ],
     "cap_complexite": null,
     "contenu": {
-      "enonce": "19 − 4 + 6 + 16 + 8",
+      "enonce": "3 + 17 − 3 + 14 + 10",
       "aide": "Calcule de gauche à droite, étape par étape."
     },
     "reponse": {
-      "valeur": 45
+      "valeur": 41
     },
     "meta": {
       "auteur": "generation-automatique (tools/generer_memo_concentration.py)",
@@ -304,11 +304,11 @@
     ],
     "cap_complexite": null,
     "contenu": {
-      "enonce": "14 + 5 + 3 − 11 − 2",
+      "enonce": "13 − 3 − 5 + 9 − 4",
       "aide": "Calcule de gauche à droite, étape par étape."
     },
     "reponse": {
-      "valeur": 9
+      "valeur": 10
     },
     "meta": {
       "auteur": "generation-automatique (tools/generer_memo_concentration.py)",
@@ -333,11 +333,11 @@
     ],
     "cap_complexite": null,
     "contenu": {
-      "enonce": "15 + 2 + 10 + 18 − 14",
+      "enonce": "15 − 9 + 10 − 5 + 12",
       "aide": "Calcule de gauche à droite, étape par étape."
     },
     "reponse": {
-      "valeur": 31
+      "valeur": 23
     },
     "meta": {
       "auteur": "generation-automatique (tools/generer_memo_concentration.py)",
@@ -362,11 +362,11 @@
     ],
     "cap_complexite": null,
     "contenu": {
-      "enonce": "15 − 7 + 10 − 2 + 13",
+      "enonce": "14 − 11 + 11 + 16 + 13",
       "aide": "Calcule de gauche à droite, étape par étape."
     },
     "reponse": {
-      "valeur": 29
+      "valeur": 43
     },
     "meta": {
       "auteur": "generation-automatique (tools/generer_memo_concentration.py)",
@@ -391,11 +391,11 @@
     ],
     "cap_complexite": null,
     "contenu": {
-      "enonce": "14 + 4 + 3 + 13 − 2",
+      "enonce": "15 + 13 − 12 + 20 − 14",
       "aide": "Calcule de gauche à droite, étape par étape."
     },
     "reponse": {
-      "valeur": 32
+      "valeur": 22
     },
     "meta": {
       "auteur": "generation-automatique (tools/generer_memo_concentration.py)",
@@ -420,11 +420,11 @@
     ],
     "cap_complexite": null,
     "contenu": {
-      "enonce": "6 + 6 − 9 + 12 + 7",
+      "enonce": "17 − 2 + 19 − 2 + 6",
       "aide": "Calcule de gauche à droite, étape par étape."
     },
     "reponse": {
-      "valeur": 22
+      "valeur": 38
     },
     "meta": {
       "auteur": "generation-automatique (tools/generer_memo_concentration.py)",
@@ -449,11 +449,11 @@
     ],
     "cap_complexite": null,
     "contenu": {
-      "enonce": "11 − 7 + 15 + 8 + 12",
+      "enonce": "17 + 18 − 10 + 20 + 10",
       "aide": "Calcule de gauche à droite, étape par étape."
     },
     "reponse": {
-      "valeur": 39
+      "valeur": 55
     },
     "meta": {
       "auteur": "generation-automatique (tools/generer_memo_concentration.py)",
@@ -478,11 +478,11 @@
     ],
     "cap_complexite": null,
     "contenu": {
-      "enonce": "5 − 2 + 10 + 12 − 9",
+      "enonce": "4 + 12 + 7 − 10 − 11",
       "aide": "Calcule de gauche à droite, étape par étape."
     },
     "reponse": {
-      "valeur": 16
+      "valeur": 2
     },
     "meta": {
       "auteur": "generation-automatique (tools/generer_memo_concentration.py)",
@@ -507,11 +507,11 @@
     ],
     "cap_complexite": null,
     "contenu": {
-      "enonce": "7 − 2 + 13 + 10 + 16",
+      "enonce": "20 + 18 − 12 − 9 + 9",
       "aide": "Calcule de gauche à droite, étape par étape."
     },
     "reponse": {
-      "valeur": 44
+      "valeur": 26
     },
     "meta": {
       "auteur": "generation-automatique (tools/generer_memo_concentration.py)",
