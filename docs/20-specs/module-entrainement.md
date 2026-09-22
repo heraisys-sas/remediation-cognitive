@@ -114,3 +114,20 @@ Les éléments d'un empan défilent à **un par seconde environ** (800 ms par ch
 les éléments, ce n'est pas une pause d'attente. L'interface annonce le rythme
 explicitement, et le validateur borne ce rythme (400–2000 ms) : une pause d'attente
 déguisée en empan ne peut plus entrer dans le contenu.
+
+## Programme de 8 semaines (sprint 5)
+
+Cadre temporel **proposé**, jamais imposé : 8 semaines × 7 jours avec 5 séances,
+1 journée légère et 1 jour de repos par semaine ; durée de 6 à 9 minutes selon la
+semaine ; rotation des thèmes pour alterner les domaines.
+
+Chaque semaine porte un **plafond de palier** par thème — borne haute de complexité
+(2 en semaine 1, 9 en semaine 8, ramenée aux paliers disponibles). Ce plafond n'est
+jamais un objectif : l'avancement reste piloté par la maîtrise (90 % × 3 séances) et
+par la fatigue. Une journée manquée ne se rattrape pas ; après deux séances sous
+50 % de réussite sur un thème, le palier courant est repris avant toute nouvelle
+montée en complexité.
+
+L'écran « Programme » de l'interface montre le plan du jour (thème proposé, durée,
+borne de palier), la vue d'ensemble des huit semaines et les règles en clair. Détail
+du contenu : `content/programmes/README.md`.

@@ -47,6 +47,7 @@
       </section>
 
       <div class="actions-suite">
+        <button id="bouton-programme" type="button" class="bouton bouton-primaire bouton-large">Programme de 8 semaines</button>
         <button id="bouton-missions" type="button" class="bouton bouton-secondaire bouton-large">Missions hors écran &amp; journal</button>
       </div>
     </section>
@@ -132,6 +133,24 @@
 
       <div class="actions-suite">
         <button id="bouton-retour-journal" type="button" class="bouton bouton-secondaire bouton-large">Retour aux thèmes</button>
+      </div>
+    </section>
+
+    <!-- Écran « Programme » : rythme proposé sur 8 semaines. Le programme borne,
+         il ne contraint pas — la progression des paliers suit la maîtrise. -->
+    <section id="vue-programme" class="vue" aria-labelledby="titre-programme" hidden>
+      <h2 id="titre-programme" class="titre-vue" tabindex="-1">Programme de 8 semaines</h2>
+      <p class="intro-vue">Un rythme proposé, pas une obligation. Le programme indique quoi faire chaque jour ; l’avancement des paliers reste décidé par ce qui est maîtrisé.</p>
+
+      <article id="plan-jour" class="carte carte-jour"></article>
+
+      <h3 class="titre-note">Les 8 semaines</h3>
+      <div id="semaines-programme" class="programme-semaines"></div>
+
+      <div id="regles-programme" class="regles-programme"></div>
+
+      <div class="actions-suite">
+        <button id="bouton-retour-programme" type="button" class="bouton bouton-secondaire bouton-large">Retour aux thèmes</button>
       </div>
     </section>
 

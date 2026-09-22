@@ -1,0 +1,611 @@
+{
+  "titre": "Programme de 8 semaines",
+  "duree_semaines": 8,
+  "seances_par_jour": 1,
+  "themes": [
+    "calcul-mental",
+    "memoire",
+    "concentration",
+    "evocation",
+    "social",
+    "rappel-series"
+  ],
+  "themes_extra": [
+    "anglais",
+    "python"
+  ],
+  "paliers_disponibles": {
+    "calcul-mental": 9,
+    "memoire": 12,
+    "concentration": 9,
+    "evocation": 5,
+    "social": 4,
+    "rappel-series": 4
+  },
+  "regles": {
+    "progression": "Le passage d'un palier reste piloté par la maîtrise (90 % de réussite sur 3 séances consécutives). Le plafond hebdomadaire de ce programme est une borne, jamais un objectif : un palier non maîtrisé se reprend.",
+    "fatigue": "La proposition d'arrêt en fin de séance est respectée ; une séance peut être close à tout moment.",
+    "jours_manques": "Une journée manquée ne se rattrape pas : le programme reprend simplement au jour suivant, sans cumul.",
+    "alternance": "Les domaines alternent dans la semaine (calcul, mémoire, concentration, langage, social) : l'alternance limite la fatigue sur un même réseau et favorise le transfert.",
+    "duree": "Une séance dure de 6 à 9 minutes selon la semaine, jamais plus de 10 minutes ; la journée légère est volontairement plus courte.",
+    "recul": "Si deux séances consécutives d'un thème passent sous 50 % de réussite, le palier courant se reprend avant toute nouvelle montée en complexité."
+  },
+  "semaines": [
+    {
+      "semaine": 1,
+      "duree_min": 6,
+      "plafond_palier": {
+        "calcul-mental": 2,
+        "memoire": 2,
+        "concentration": 2,
+        "evocation": 2,
+        "social": 2,
+        "rappel-series": 2
+      },
+      "jours": [
+        {
+          "jour": 1,
+          "type": "seance",
+          "duree_min": 6,
+          "themes": [
+            "calcul-mental"
+          ]
+        },
+        {
+          "jour": 2,
+          "type": "seance",
+          "duree_min": 6,
+          "themes": [
+            "memoire"
+          ]
+        },
+        {
+          "jour": 3,
+          "type": "seance",
+          "duree_min": 6,
+          "themes": [
+            "concentration"
+          ]
+        },
+        {
+          "jour": 4,
+          "type": "seance",
+          "duree_min": 6,
+          "themes": [
+            "evocation"
+          ]
+        },
+        {
+          "jour": 5,
+          "type": "seance",
+          "duree_min": 6,
+          "themes": [
+            "social"
+          ]
+        },
+        {
+          "jour": 6,
+          "type": "legere",
+          "duree_min": 4,
+          "themes": [
+            "au-choix"
+          ],
+          "themes_extra": [
+            "anglais",
+            "python"
+          ]
+        },
+        {
+          "jour": 7,
+          "type": "repos",
+          "duree_min": 0,
+          "themes": []
+        }
+      ]
+    },
+    {
+      "semaine": 2,
+      "duree_min": 6,
+      "plafond_palier": {
+        "calcul-mental": 3,
+        "memoire": 3,
+        "concentration": 3,
+        "evocation": 3,
+        "social": 3,
+        "rappel-series": 3
+      },
+      "jours": [
+        {
+          "jour": 1,
+          "type": "seance",
+          "duree_min": 6,
+          "themes": [
+            "memoire"
+          ]
+        },
+        {
+          "jour": 2,
+          "type": "seance",
+          "duree_min": 6,
+          "themes": [
+            "concentration"
+          ]
+        },
+        {
+          "jour": 3,
+          "type": "seance",
+          "duree_min": 6,
+          "themes": [
+            "evocation"
+          ]
+        },
+        {
+          "jour": 4,
+          "type": "seance",
+          "duree_min": 6,
+          "themes": [
+            "social"
+          ]
+        },
+        {
+          "jour": 5,
+          "type": "seance",
+          "duree_min": 6,
+          "themes": [
+            "rappel-series"
+          ]
+        },
+        {
+          "jour": 6,
+          "type": "legere",
+          "duree_min": 4,
+          "themes": [
+            "au-choix"
+          ],
+          "themes_extra": [
+            "anglais",
+            "python"
+          ]
+        },
+        {
+          "jour": 7,
+          "type": "repos",
+          "duree_min": 0,
+          "themes": []
+        }
+      ]
+    },
+    {
+      "semaine": 3,
+      "duree_min": 7,
+      "plafond_palier": {
+        "calcul-mental": 4,
+        "memoire": 4,
+        "concentration": 4,
+        "evocation": 4,
+        "social": 4,
+        "rappel-series": 4
+      },
+      "jours": [
+        {
+          "jour": 1,
+          "type": "seance",
+          "duree_min": 7,
+          "themes": [
+            "concentration"
+          ]
+        },
+        {
+          "jour": 2,
+          "type": "seance",
+          "duree_min": 7,
+          "themes": [
+            "evocation"
+          ]
+        },
+        {
+          "jour": 3,
+          "type": "seance",
+          "duree_min": 7,
+          "themes": [
+            "social"
+          ]
+        },
+        {
+          "jour": 4,
+          "type": "seance",
+          "duree_min": 7,
+          "themes": [
+            "rappel-series"
+          ]
+        },
+        {
+          "jour": 5,
+          "type": "seance",
+          "duree_min": 7,
+          "themes": [
+            "calcul-mental"
+          ]
+        },
+        {
+          "jour": 6,
+          "type": "legere",
+          "duree_min": 5,
+          "themes": [
+            "au-choix"
+          ],
+          "themes_extra": [
+            "anglais",
+            "python"
+          ]
+        },
+        {
+          "jour": 7,
+          "type": "repos",
+          "duree_min": 0,
+          "themes": []
+        }
+      ]
+    },
+    {
+      "semaine": 4,
+      "duree_min": 7,
+      "plafond_palier": {
+        "calcul-mental": 5,
+        "memoire": 5,
+        "concentration": 5,
+        "evocation": 5,
+        "social": 4,
+        "rappel-series": 4
+      },
+      "jours": [
+        {
+          "jour": 1,
+          "type": "seance",
+          "duree_min": 7,
+          "themes": [
+            "evocation"
+          ]
+        },
+        {
+          "jour": 2,
+          "type": "seance",
+          "duree_min": 7,
+          "themes": [
+            "social"
+          ]
+        },
+        {
+          "jour": 3,
+          "type": "seance",
+          "duree_min": 7,
+          "themes": [
+            "rappel-series"
+          ]
+        },
+        {
+          "jour": 4,
+          "type": "seance",
+          "duree_min": 7,
+          "themes": [
+            "calcul-mental"
+          ]
+        },
+        {
+          "jour": 5,
+          "type": "seance",
+          "duree_min": 7,
+          "themes": [
+            "memoire"
+          ]
+        },
+        {
+          "jour": 6,
+          "type": "legere",
+          "duree_min": 5,
+          "themes": [
+            "au-choix"
+          ],
+          "themes_extra": [
+            "anglais",
+            "python"
+          ]
+        },
+        {
+          "jour": 7,
+          "type": "repos",
+          "duree_min": 0,
+          "themes": []
+        }
+      ]
+    },
+    {
+      "semaine": 5,
+      "duree_min": 8,
+      "plafond_palier": {
+        "calcul-mental": 6,
+        "memoire": 6,
+        "concentration": 6,
+        "evocation": 5,
+        "social": 4,
+        "rappel-series": 4
+      },
+      "jours": [
+        {
+          "jour": 1,
+          "type": "seance",
+          "duree_min": 8,
+          "themes": [
+            "social"
+          ]
+        },
+        {
+          "jour": 2,
+          "type": "seance",
+          "duree_min": 8,
+          "themes": [
+            "rappel-series"
+          ]
+        },
+        {
+          "jour": 3,
+          "type": "seance",
+          "duree_min": 8,
+          "themes": [
+            "calcul-mental"
+          ]
+        },
+        {
+          "jour": 4,
+          "type": "seance",
+          "duree_min": 8,
+          "themes": [
+            "memoire"
+          ]
+        },
+        {
+          "jour": 5,
+          "type": "seance",
+          "duree_min": 8,
+          "themes": [
+            "concentration"
+          ]
+        },
+        {
+          "jour": 6,
+          "type": "legere",
+          "duree_min": 6,
+          "themes": [
+            "au-choix"
+          ],
+          "themes_extra": [
+            "anglais",
+            "python"
+          ]
+        },
+        {
+          "jour": 7,
+          "type": "repos",
+          "duree_min": 0,
+          "themes": []
+        }
+      ]
+    },
+    {
+      "semaine": 6,
+      "duree_min": 8,
+      "plafond_palier": {
+        "calcul-mental": 7,
+        "memoire": 7,
+        "concentration": 7,
+        "evocation": 5,
+        "social": 4,
+        "rappel-series": 4
+      },
+      "jours": [
+        {
+          "jour": 1,
+          "type": "seance",
+          "duree_min": 8,
+          "themes": [
+            "rappel-series"
+          ]
+        },
+        {
+          "jour": 2,
+          "type": "seance",
+          "duree_min": 8,
+          "themes": [
+            "calcul-mental"
+          ]
+        },
+        {
+          "jour": 3,
+          "type": "seance",
+          "duree_min": 8,
+          "themes": [
+            "memoire"
+          ]
+        },
+        {
+          "jour": 4,
+          "type": "seance",
+          "duree_min": 8,
+          "themes": [
+            "concentration"
+          ]
+        },
+        {
+          "jour": 5,
+          "type": "seance",
+          "duree_min": 8,
+          "themes": [
+            "evocation"
+          ]
+        },
+        {
+          "jour": 6,
+          "type": "legere",
+          "duree_min": 6,
+          "themes": [
+            "au-choix"
+          ],
+          "themes_extra": [
+            "anglais",
+            "python"
+          ]
+        },
+        {
+          "jour": 7,
+          "type": "repos",
+          "duree_min": 0,
+          "themes": []
+        }
+      ]
+    },
+    {
+      "semaine": 7,
+      "duree_min": 9,
+      "plafond_palier": {
+        "calcul-mental": 8,
+        "memoire": 8,
+        "concentration": 8,
+        "evocation": 5,
+        "social": 4,
+        "rappel-series": 4
+      },
+      "jours": [
+        {
+          "jour": 1,
+          "type": "seance",
+          "duree_min": 9,
+          "themes": [
+            "calcul-mental"
+          ]
+        },
+        {
+          "jour": 2,
+          "type": "seance",
+          "duree_min": 9,
+          "themes": [
+            "memoire"
+          ]
+        },
+        {
+          "jour": 3,
+          "type": "seance",
+          "duree_min": 9,
+          "themes": [
+            "concentration"
+          ]
+        },
+        {
+          "jour": 4,
+          "type": "seance",
+          "duree_min": 9,
+          "themes": [
+            "evocation"
+          ]
+        },
+        {
+          "jour": 5,
+          "type": "seance",
+          "duree_min": 9,
+          "themes": [
+            "social"
+          ]
+        },
+        {
+          "jour": 6,
+          "type": "legere",
+          "duree_min": 7,
+          "themes": [
+            "au-choix"
+          ],
+          "themes_extra": [
+            "anglais",
+            "python"
+          ]
+        },
+        {
+          "jour": 7,
+          "type": "repos",
+          "duree_min": 0,
+          "themes": []
+        }
+      ]
+    },
+    {
+      "semaine": 8,
+      "duree_min": 9,
+      "plafond_palier": {
+        "calcul-mental": 9,
+        "memoire": 9,
+        "concentration": 9,
+        "evocation": 5,
+        "social": 4,
+        "rappel-series": 4
+      },
+      "jours": [
+        {
+          "jour": 1,
+          "type": "seance",
+          "duree_min": 9,
+          "themes": [
+            "memoire"
+          ]
+        },
+        {
+          "jour": 2,
+          "type": "seance",
+          "duree_min": 9,
+          "themes": [
+            "concentration"
+          ]
+        },
+        {
+          "jour": 3,
+          "type": "seance",
+          "duree_min": 9,
+          "themes": [
+            "evocation"
+          ]
+        },
+        {
+          "jour": 4,
+          "type": "seance",
+          "duree_min": 9,
+          "themes": [
+            "social"
+          ]
+        },
+        {
+          "jour": 5,
+          "type": "seance",
+          "duree_min": 9,
+          "themes": [
+            "rappel-series"
+          ]
+        },
+        {
+          "jour": 6,
+          "type": "legere",
+          "duree_min": 7,
+          "themes": [
+            "au-choix"
+          ],
+          "themes_extra": [
+            "anglais",
+            "python"
+          ]
+        },
+        {
+          "jour": 7,
+          "type": "repos",
+          "duree_min": 0,
+          "themes": []
+        }
+      ]
+    }
+  ]
+}

@@ -35,6 +35,9 @@ _SOURCES_PAR_THEME: dict[str, tuple[str, str]] = {
 #: Fichier de missions hors écran du thème social (préparation d'interactions réelles).
 _FICHIER_MISSIONS = Path("content/entrainement/social/missions.json")
 
+#: Programme d'entraînement (cadrage du rythme et des paliers).
+_FICHIER_PROGRAMME = Path("content/programmes/8-semaines.json")
+
 
 class ChargeurContenu:
     """Charge et met en cache les items d'entraînement par thème.
@@ -46,6 +49,20 @@ class ChargeurContenu:
     def __init__(self) -> None:
         self._cache_items: dict[str, list[dict]] = {}
         self._cache_missions: list[dict] | None = None
+        self._cache_programme: dict | None = None
+
+    # -- programme d'entraînement ---------------------------------------------
+
+    def programme(self) -> dict:
+        """Programme de 8 semaines (contenu de cadrage ; dict vide si absent)."""
+        if self._cache_programme is None:
+            chemin = RACINE_PROJET / _FICHIER_PROGRAMME
+            try:
+                donnees = json.loads(chemin.read_text(encoding="utf-8"))
+            except (FileNotFoundError, json.JSONDecodeError):
+                donnees = {}
+            self._cache_programme = donnees if isinstance(donnees, dict) else {}
+        return self._cache_programme
 
     # -- missions hors écran --------------------------------------------------
 

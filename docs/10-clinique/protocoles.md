@@ -41,3 +41,22 @@ taille des empans (3 → 6 chiffres) croissent par palier. Conséquences :
 ## Bilan de charge (vérification)
 
 Chaque évolution de palier ou de dosage doit être revue à l'aune de la CLT : la charge extrinsèque (interface, consignes, contexte) doit rester minimale pour laisser la capacité disponible à la tâche elle-même.
+
+## Cadre temporel proposé sur deux mois (sprint 5)
+
+Le programme de 8 semaines formalise la progressivité attendue : paliers fins,
+reprise sans échec, répétition espacée, alternance des domaines — et il ajoute trois
+garde-fous explicites.
+
+1. **La maîtrise prime sur le calendrier.** Le plafond hebdomadaire de palier est une
+   borne : un palier non maîtrisé se reprend, même si la semaine autorise plus haut.
+2. **La fatigue est respectée.** La proposition d'arrêt reste une proposition, et une
+   séance peut être close à tout moment (garde-fou inchangé).
+3. **Pas de dette.** Une journée manquée ne se rattrape pas : le programme reprend au
+   jour suivant, sans cumul. Le rythme prévoit d'ailleurs une journée légère et un
+   jour de repos par semaine.
+
+Le recul est explicite : après deux séances consécutives sous 50 % de réussite sur un
+thème, le palier courant est repris avant toute nouvelle montée en complexité. Aucune
+observance, aucun taux de complétion n'est calculé : le programme propose un rythme,
+il ne mesure pas la personne.

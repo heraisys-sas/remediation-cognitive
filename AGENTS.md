@@ -14,14 +14,15 @@ Logiciel de **bilan et rééducation cognitive** pour adultes avec syndrome post
 
 Docs d'entrée : `docs/00-produit/vision.md`, `docs/00-produit/cadre-reglementaire.md`, `docs/00-produit/feuille-de-route.md`.
 
-## État courant — sprint 4 livré (2026-09-22)
+## État courant — sprint 5 livré (2026-09-22)
 
-- **Jouable de bout en bout** : huit thèmes — calcul mental, mémoire (empans de **chiffres et de mots**, paires associatives, n-back), concentration, **retrouver le mot**, **vie sociale**, **rappel de séries** (rappel libre + rappel différé), et les thèmes d'appoint Python / anglais regroupés en section **« Extra »** en bas de l'accueil ; plus l'écran **missions hors écran & carnet**. Lancer `python3 -m uvicorn backend.app.main:app` puis ouvrir `/ui/`.
-- **Implémenté** : `engine/` (moteur inchangé) ; `backend/` (à `/api/entrainement` + `/api/social` : correction serveur par thème, essais assistés, rappel libre au seuil, persistance JSON sous `backend/data/` — gitignored) ; `frontend/` (SPA vanilla sur `/ui` : phase de mémorisation temporisée, séries de mots, compte à rebours du rappel différé, propositions cliquables, indices progressifs).
-- **Contenu** : **691 items** + 8 missions, généré de façon déterministe (`tools/generer_memo_concentration.py`, `tools/generer_evocation_social.py`, `tools/generer_rappel_series.py`).
-- **Tests** : 110 passed (`python3 -m pytest -q`). Contrôles : `python3 tools/validate_items.py` (schéma, manifests, propositions, indices, rythme d'affichage, séries — 0 erreur), `python3 tools/verifier_reponses.py` (réponses recalculées — 0 anomalie), `python3 tools/verifier_interface.py` (identifiants + réinitialisation du champ de saisie).
-- **Contrat d'API figé** : `docs/30-technique/api-contract.md` — toute modification = ADR. Dernières décisions : ADR-004 (aides progressives, options, périmètre social), ADR-005 (empan de mots, rappel libre, rythme d'affichage).
-- **Traçabilité** : `.cluster/sprint1/`, `.cluster/enrichissement/`, `.cluster/sprint3/` ; `memories/2026-09-03-sprint-1.md`, `2026-09-15-enrichissement-memo-concentration.md`, `2026-09-21-acces-au-mot-et-vie-sociale.md`, `2026-09-22-empan-de-mots-et-rappel-de-series.md`.
+- **Jouable de bout en bout** : huit thèmes (calcul mental, mémoire avec empans de chiffres **et de mots**, concentration, retrouver le mot, vie sociale, rappel de séries, plus Python/anglais en section **Extra**) et trois écrans transverses : **programme de 8 semaines**, **missions hors écran & carnet**, séance. Lancer `python3 -m uvicorn backend.app.main:app` puis ouvrir `/ui/`.
+- **Implémenté** : `engine/` (moteur inchangé) ; `backend/` — `/api/entrainement`, `/api/social`, `/api/programme` (correction par thème, essais assistés, rappel libre au seuil, plan du jour) ; `frontend/` (SPA vanilla : phase de mémorisation temporisée, séries de mots, compte à rebours, propositions cliquables, indices progressifs).
+- **Contenu** : **691 items** + 8 missions + **programme de 8 semaines**, générés de façon déterministe (`tools/generer_memo_concentration.py`, `generer_evocation_social.py`, `generer_rappel_series.py`, `generer_programme.py`).
+- **Tests** : 114 passed (`python3 -m pytest -q`). Contrôles : `tools/validate_items.py` (schéma, manifests, propositions, indices, rythme d'affichage, séries, programme — 0 erreur), `tools/verifier_reponses.py` (0 anomalie), `tools/verifier_interface.py`.
+- **Contrat d'API figé** : `docs/30-technique/api-contract.md` — toute modification = ADR. Décisions : ADR-004 (aides progressives, options, périmètre social), ADR-005 (empan de mots, rappel libre, rythme), ADR-006 (programme, progression non contrainte).
+- **Garde-fou produit** : le programme propose un rythme — il ne mesure rien. Aucun taux d'observance ni de complétion ne doit être calculé (ADR-006).
+- **Traçabilité** : `.cluster/sprint1/`, `.cluster/enrichissement/`, `.cluster/sprint3/`, `.cluster/sprint4/`, `.cluster/sprint5/` ; journaux `memories/2026-09-03-sprint-1.md`, `2026-09-15-…`, `2026-09-21-…`, `2026-09-22-empan-de-mots-et-rappel-de-series.md`, `2026-09-22-programme-de-8-semaines.md`.
 
 ## Règles non négociables (garde-fous cliniques)
 
@@ -57,6 +58,7 @@ python3 tools/verifier_interface.py  # identifiants et réinitialisation du cham
 python3 tools/generer_memo_concentration.py --dry-run   # régénère mémoire/concentration
 python3 tools/generer_evocation_social.py --dry-run     # régénère evocation/social + missions
 python3 tools/generer_rappel_series.py --dry-run        # régénère rappel-series
+python3 tools/generer_programme.py --dry-run             # régénère le programme de 8 semaines
 ```
 
 Dépendances effectives du sprint 1 : fastapi, uvicorn, httpx, pytest, fsrs (paquet officiel open-spaced-repetition). Un `requirements.txt`/lock est à produire au prochain sprint.

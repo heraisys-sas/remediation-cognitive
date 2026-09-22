@@ -195,3 +195,38 @@ jamais une note, jamais une norme.
 - aucun mot dupliqué dans une séquence ni entre les séries d'un même item ;
 - les cibles déclarées correspondent exactement aux séries affichées (selon la portée) ;
 - seuil et délai bornés ; modes d'affichage connus (`sequence`, `liste`, `series`).
+
+## Sprint 5 — programme d'entraînement (ADR-006)
+
+### GET /api/programme
+
+Renvoie le programme de 8 semaines, le **plan du jour** et les règles de progression.
+La date de début est posée au premier appel et **n'est plus jamais déplacée** par la
+suite (relire le programme ne décale pas le calendrier).
+
+```json
+{
+  "programme": { "titre": "Programme de 8 semaines", "duree_semaines": 8, "semaines": [ … ], "regles": { … } },
+  "date_debut": "2026-09-22",
+  "aujourd_hui": {
+    "semaine": 1, "jour": 1, "type": "seance", "duree_min": 6,
+    "themes": ["calcul-mental"], "themes_extra": [],
+    "plafond_palier": { "calcul-mental": 2, "memoire": 2, "…": 2 },
+    "jour_depuis_debut": 1, "jours_restants": 55, "termine": false
+  },
+  "regles": { "progression": "…", "fatigue": "…", "jours_manques": "…", "alternance": "…", "duree": "…", "recul": "…" }
+}
+```
+
+- `type` : `seance` (un thème), `legere` (journée courte, `themes: ["au-choix"]` et
+  `themes_extra` proposés), `repos` (aucun thème).
+- Hors période : `aujourd_hui.type` vaut `a_venir` (avant la date de début) ou
+  `termine` (après la huitième semaine, jamais prolongée d'office).
+
+**Le programme ne contraint rien** : `plafond_palier` est une borne haute de
+difficulté pour la semaine. L'avancement réel d'un palier reste décidé par la
+maîtrise (90 % × 3 séances) et par la tolérance à la fatigue. Aucun taux
+d'observance ni de complétion n'est calculé — ce ne serait pas une mesure clinique.
+
+Stockage : `backend/data/programme/programme.json` (hors dépôt), limité à la date de
+début — périmètre entraînement, aucune donnée de santé (ADR-002).

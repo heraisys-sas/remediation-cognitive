@@ -20,9 +20,11 @@ from fastapi.staticfiles import StaticFiles
 
 from .api.entrainement import router as router_entrainement
 from .api.entrainement.service import GestionnaireSessions
+from .api.programme import router as router_programme
 from .api.social import router as router_social
 from .domain.contenu import RACINE_PROJET
 from .storage.journal import StockageJournal
+from .storage.programme import StockageProgramme
 from .storage.store import StockageJSON
 
 
@@ -66,6 +68,12 @@ def creer_app(
     application.state.stockage_journal = StockageJournal(racine=racine_journal)
     application.state.horloge = application.state.gestionnaire_entrainement.horloge
     application.include_router(router_social)
+
+    # Programme d'entraînement : état local minimal (date de début), périmètre
+    # entraînement — aucune donnée de santé, aucun suivi de performance.
+    racine_programme = Path(racine_donnees).parent / "programme" if racine_donnees else None
+    application.state.stockage_programme = StockageProgramme(racine=racine_programme)
+    application.include_router(router_programme)
 
     # Interface statique : montage tolérant — le dossier frontend/ peut
     # ne pas exister encore (livré en parallèle) ; /ui rend alors 404.

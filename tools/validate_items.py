@@ -533,6 +533,90 @@ def erreurs_manifest(manifest: object, chemin: Path, donnees_par_fichier: dict[P
     return erreurs
 
 
+#: Thèmes réellement jouables (contrat GET /api/entrainement/themes) : le
+#: programme ne peut proposer qu'un thème que l'API expose.
+THEMES_CONNUS = {
+    "calcul-mental", "anglais", "python", "memoire", "concentration",
+    "evocation", "social", "rappel-series",
+}
+
+#: Types de jour admis dans un programme.
+TYPES_JOUR = {"seance", "legere", "repos"}
+
+
+def erreurs_programme(
+    donnees: object, chemin: Path, paliers_par_theme: dict[str, int]
+) -> list[str]:
+    """Vérifie un programme d'entraînement (semaines, jours, plafonds, thèmes).
+
+    Contrôles : structure des 7 jours, thèmes proposés réellement jouables,
+    plafonds de palier cohérents avec le contenu disponible, jour de repos sans
+    thème, séance d'un seul thème à la fois (alternance), durées bornées.
+    """
+    prefixe = f"{chemin.relative_to(RACINE_DEPOT)}: "
+    if not isinstance(donnees, dict) or not isinstance(donnees.get("semaines"), list):
+        return [prefixe + "programme attendu : objet avec une liste 'semaines'"]
+
+    erreurs: list[str] = []
+    semaines = donnees["semaines"]
+    if not est_entier(donnees.get("duree_semaines")) or donnees["duree_semaines"] != len(semaines):
+        erreurs.append(prefixe + "duree_semaines doit correspondre au nombre de semaines listées")
+
+    for position, semaine in enumerate(semaines, start=1):
+        if not isinstance(semaine, dict):
+            erreurs.append(prefixe + f"semaine {position} : objet attendu")
+            continue
+        if semaine.get("semaine") != position:
+            erreurs.append(prefixe + f"semaine {position} : champ semaine = {semaine.get('semaine')!r}")
+        duree = semaine.get("duree_min")
+        if not est_entier(duree) or not 1 <= duree <= 15:
+            erreurs.append(prefixe + f"semaine {position} : duree_min doit être un entier 1..15")
+
+        plafonds = semaine.get("plafond_palier")
+        if not isinstance(plafonds, dict) or not plafonds:
+            erreurs.append(prefixe + f"semaine {position} : plafond_palier manquant")
+        else:
+            for theme, plafond in plafonds.items():
+                if theme not in THEMES_CONNUS:
+                    erreurs.append(prefixe + f"semaine {position} : thème inconnu {theme!r}")
+                    continue
+                if not est_entier(plafond) or plafond < 1:
+                    erreurs.append(prefixe + f"semaine {position} : plafond {theme} doit être ≥ 1")
+                elif theme in paliers_par_theme and plafond > paliers_par_theme[theme]:
+                    erreurs.append(
+                        prefixe
+                        + f"semaine {position} : plafond {theme} ({plafond}) dépasse les "
+                        + f"{paliers_par_theme[theme]} paliers disponibles"
+                    )
+
+        jours = semaine.get("jours")
+        if not isinstance(jours, list) or len(jours) != 7:
+            erreurs.append(prefixe + f"semaine {position} : 7 jours attendus")
+            continue
+        for jour in jours:
+            if not isinstance(jour, dict):
+                erreurs.append(prefixe + f"semaine {position} : jour attendu comme objet")
+                continue
+            type_jour = jour.get("type")
+            if type_jour not in TYPES_JOUR:
+                erreurs.append(prefixe + f"semaine {position} jour {jour.get('jour')!r} : type {type_jour!r}")
+            themes = jour.get("themes")
+            if not isinstance(themes, list) or not all(isinstance(t, str) for t in themes):
+                erreurs.append(prefixe + f"semaine {position} : themes doit être un tableau")
+                continue
+            for theme in themes:
+                if theme != "au-choix" and theme not in THEMES_CONNUS:
+                    erreurs.append(prefixe + f"semaine {position} : thème inconnu {theme!r}")
+            if type_jour == "repos" and themes:
+                erreurs.append(prefixe + f"semaine {position} jour {jour.get('jour')} : un jour de repos ne propose pas de thème")
+            if type_jour == "seance" and len(themes) != 1:
+                erreurs.append(prefixe + f"semaine {position} jour {jour.get('jour')} : une séance propose un seul thème")
+            duree_jour = jour.get("duree_min")
+            if not est_entier(duree_jour) or not 0 <= duree_jour <= 15:
+                erreurs.append(prefixe + f"semaine {position} jour {jour.get('jour')} : duree_min 0..15 attendu")
+    return erreurs
+
+
 def erreurs_missions(donnees: object, chemin: Path) -> list[str]:
     """Vérifie le fichier de missions hors écran (``content/.../missions.json``)."""
     prefixe = f"{chemin.relative_to(RACINE_DEPOT)}: "
@@ -594,6 +678,7 @@ def main() -> int:
 
     est_manifest = lambda donnees: isinstance(donnees, dict) and isinstance(donnees.get("paliers"), list)
     est_missions = lambda donnees: isinstance(donnees, dict) and isinstance(donnees.get("missions"), list)
+    est_programme = lambda donnees: isinstance(donnees, dict) and isinstance(donnees.get("semaines"), list)
 
     # Passe 2a : manifests d'abord (les items en dépendent).
     themes_manifests: dict[str, dict[int, dict]] = {}
@@ -614,6 +699,12 @@ def main() -> int:
             continue
         if est_missions(donnees):
             erreurs_items[chemin] = erreurs_missions(donnees, chemin)
+            continue
+        if est_programme(donnees):
+            paliers_par_theme = {
+                theme: len(registre) for theme, registre in themes_manifests.items()
+            }
+            erreurs_items[chemin] = erreurs_programme(donnees, chemin, paliers_par_theme)
             continue
         items = donnees if isinstance(donnees, list) else [donnees]
         messages: list[str] = []
@@ -638,6 +729,9 @@ def main() -> int:
         elif est_missions(donnees_par_fichier[chemin]):
             messages = erreurs_items.get(chemin, [])
             etiquette = f"{len(donnees_par_fichier[chemin]['missions'])} mission(s)"
+        elif est_programme(donnees_par_fichier[chemin]):
+            messages = erreurs_items.get(chemin, [])
+            etiquette = f"{len(donnees_par_fichier[chemin]['semaines'])} semaine(s)"
         else:
             messages = erreurs_items.get(chemin, [])
             donnees = donnees_par_fichier[chemin]
