@@ -23,6 +23,7 @@ THEMES_ATTENDUS = {
     "concentration",
     "evocation",
     "social",
+    "rappel-series",
 }
 
 

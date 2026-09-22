@@ -14,11 +14,11 @@
     ],
     "cap_complexite": null,
     "contenu": {
-      "enonce": "91 − 4 − 4 − 4 − 4 − 4",
+      "enonce": "72 − 7 − 7 − 7 − 7 − 7",
       "aide": "Retranche toujours le même nombre — garde le rythme."
     },
     "reponse": {
-      "valeur": 71
+      "valeur": 37
     },
     "meta": {
       "auteur": "generation-automatique (tools/generer_memo_concentration.py)",
@@ -43,11 +43,11 @@
     ],
     "cap_complexite": null,
     "contenu": {
-      "enonce": "72 − 9 − 9 − 9 − 9 − 9",
+      "enonce": "60 − 7 − 7 − 7 − 7 − 7",
       "aide": "Retranche toujours le même nombre — garde le rythme."
     },
     "reponse": {
-      "valeur": 27
+      "valeur": 25
     },
     "meta": {
       "auteur": "generation-automatique (tools/generer_memo_concentration.py)",
@@ -72,11 +72,11 @@
     ],
     "cap_complexite": null,
     "contenu": {
-      "enonce": "97 − 6 − 6 − 6 − 6 − 6",
+      "enonce": "77 − 9 − 9 − 9 − 9 − 9",
       "aide": "Retranche toujours le même nombre — garde le rythme."
     },
     "reponse": {
-      "valeur": 67
+      "valeur": 32
     },
     "meta": {
       "auteur": "generation-automatique (tools/generer_memo_concentration.py)",
@@ -101,11 +101,11 @@
     ],
     "cap_complexite": null,
     "contenu": {
-      "enonce": "92 − 9 − 9 − 9 − 9 − 9",
+      "enonce": "90 − 6 − 6 − 6 − 6 − 6",
       "aide": "Retranche toujours le même nombre — garde le rythme."
     },
     "reponse": {
-      "valeur": 47
+      "valeur": 60
     },
     "meta": {
       "auteur": "generation-automatique (tools/generer_memo_concentration.py)",
@@ -130,11 +130,11 @@
     ],
     "cap_complexite": null,
     "contenu": {
-      "enonce": "91 − 8 − 8 − 8 − 8 − 8",
+      "enonce": "66 − 6 − 6 − 6 − 6 − 6",
       "aide": "Retranche toujours le même nombre — garde le rythme."
     },
     "reponse": {
-      "valeur": 51
+      "valeur": 36
     },
     "meta": {
       "auteur": "generation-automatique (tools/generer_memo_concentration.py)",
@@ -159,11 +159,11 @@
     ],
     "cap_complexite": null,
     "contenu": {
-      "enonce": "65 − 6 − 6 − 6 − 6 − 6",
+      "enonce": "97 − 5 − 5 − 5 − 5 − 5",
       "aide": "Retranche toujours le même nombre — garde le rythme."
     },
     "reponse": {
-      "valeur": 35
+      "valeur": 72
     },
     "meta": {
       "auteur": "generation-automatique (tools/generer_memo_concentration.py)",
@@ -188,11 +188,11 @@
     ],
     "cap_complexite": null,
     "contenu": {
-      "enonce": "78 − 6 − 6 − 6 − 6 − 6",
+      "enonce": "97 − 8 − 8 − 8 − 8 − 8",
       "aide": "Retranche toujours le même nombre — garde le rythme."
     },
     "reponse": {
-      "valeur": 48
+      "valeur": 57
     },
     "meta": {
       "auteur": "generation-automatique (tools/generer_memo_concentration.py)",
@@ -217,11 +217,11 @@
     ],
     "cap_complexite": null,
     "contenu": {
-      "enonce": "93 − 3 − 3 − 3 − 3 − 3",
+      "enonce": "74 − 8 − 8 − 8 − 8 − 8",
       "aide": "Retranche toujours le même nombre — garde le rythme."
     },
     "reponse": {
-      "valeur": 78
+      "valeur": 34
     },
     "meta": {
       "auteur": "generation-automatique (tools/generer_memo_concentration.py)",
@@ -246,11 +246,11 @@
     ],
     "cap_complexite": null,
     "contenu": {
-      "enonce": "69 − 8 − 8 − 8 − 8 − 8",
+      "enonce": "90 − 8 − 8 − 8 − 8 − 8",
       "aide": "Retranche toujours le même nombre — garde le rythme."
     },
     "reponse": {
-      "valeur": 29
+      "valeur": 50
     },
     "meta": {
       "auteur": "generation-automatique (tools/generer_memo_concentration.py)",
@@ -275,11 +275,11 @@
     ],
     "cap_complexite": null,
     "contenu": {
-      "enonce": "77 − 5 − 5 − 5 − 5 − 5",
+      "enonce": "91 − 7 − 7 − 7 − 7 − 7",
       "aide": "Retranche toujours le même nombre — garde le rythme."
     },
     "reponse": {
-      "valeur": 52
+      "valeur": 56
     },
     "meta": {
       "auteur": "generation-automatique (tools/generer_memo_concentration.py)",
@@ -304,11 +304,11 @@
     ],
     "cap_complexite": null,
     "contenu": {
-      "enonce": "73 − 9 − 9 − 9 − 9 − 9",
+      "enonce": "89 − 5 − 5 − 5 − 5 − 5",
       "aide": "Retranche toujours le même nombre — garde le rythme."
     },
     "reponse": {
-      "valeur": 28
+      "valeur": 64
     },
     "meta": {
       "auteur": "generation-automatique (tools/generer_memo_concentration.py)",
@@ -333,11 +333,11 @@
     ],
     "cap_complexite": null,
     "contenu": {
-      "enonce": "96 − 9 − 9 − 9 − 9 − 9",
+      "enonce": "77 − 8 − 8 − 8 − 8 − 8",
       "aide": "Retranche toujours le même nombre — garde le rythme."
     },
     "reponse": {
-      "valeur": 51
+      "valeur": 37
     },
     "meta": {
       "auteur": "generation-automatique (tools/generer_memo_concentration.py)",
@@ -362,11 +362,11 @@
     ],
     "cap_complexite": null,
     "contenu": {
-      "enonce": "78 − 7 − 7 − 7 − 7 − 7",
+      "enonce": "69 − 5 − 5 − 5 − 5 − 5",
       "aide": "Retranche toujours le même nombre — garde le rythme."
     },
     "reponse": {
-      "valeur": 43
+      "valeur": 44
     },
     "meta": {
       "auteur": "generation-automatique (tools/generer_memo_concentration.py)",
@@ -391,11 +391,11 @@
     ],
     "cap_complexite": null,
     "contenu": {
-      "enonce": "88 − 3 − 3 − 3 − 3 − 3",
+      "enonce": "97 − 3 − 3 − 3 − 3 − 3",
       "aide": "Retranche toujours le même nombre — garde le rythme."
     },
     "reponse": {
-      "valeur": 73
+      "valeur": 82
     },
     "meta": {
       "auteur": "generation-automatique (tools/generer_memo_concentration.py)",
@@ -420,11 +420,11 @@
     ],
     "cap_complexite": null,
     "contenu": {
-      "enonce": "79 − 7 − 7 − 7 − 7 − 7",
+      "enonce": "66 − 6 − 6 − 6 − 6 − 6",
       "aide": "Retranche toujours le même nombre — garde le rythme."
     },
     "reponse": {
-      "valeur": 44
+      "valeur": 36
     },
     "meta": {
       "auteur": "generation-automatique (tools/generer_memo_concentration.py)",
@@ -449,11 +449,11 @@
     ],
     "cap_complexite": null,
     "contenu": {
-      "enonce": "78 − 6 − 6 − 6 − 6 − 6",
+      "enonce": "87 − 9 − 9 − 9 − 9 − 9",
       "aide": "Retranche toujours le même nombre — garde le rythme."
     },
     "reponse": {
-      "valeur": 48
+      "valeur": 42
     },
     "meta": {
       "auteur": "generation-automatique (tools/generer_memo_concentration.py)",
@@ -478,11 +478,11 @@
     ],
     "cap_complexite": null,
     "contenu": {
-      "enonce": "67 − 9 − 9 − 9 − 9 − 9",
+      "enonce": "90 − 9 − 9 − 9 − 9 − 9",
       "aide": "Retranche toujours le même nombre — garde le rythme."
     },
     "reponse": {
-      "valeur": 22
+      "valeur": 45
     },
     "meta": {
       "auteur": "generation-automatique (tools/generer_memo_concentration.py)",
@@ -507,11 +507,11 @@
     ],
     "cap_complexite": null,
     "contenu": {
-      "enonce": "85 − 4 − 4 − 4 − 4 − 4",
+      "enonce": "74 − 8 − 8 − 8 − 8 − 8",
       "aide": "Retranche toujours le même nombre — garde le rythme."
     },
     "reponse": {
-      "valeur": 65
+      "valeur": 34
     },
     "meta": {
       "auteur": "generation-automatique (tools/generer_memo_concentration.py)",

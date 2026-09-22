@@ -63,6 +63,13 @@ TYPES_A_CHOIX = {
 #: Types dont le contenu porte une hiérarchie d'indices (``contenu.indices``).
 TYPES_A_INDICES = {"rappel-indice"}
 
+#: Modes d'affichage temporisé admis.
+MODES_AFFICHAGE = {"sequence", "liste", "series"}
+
+#: Bornes du rythme d'affichage d'un élément (ms). Au-delà, ce n'est plus une
+#: présentation d'empan mais une pause d'attente : le contenu serait mal calibré.
+RYTHME_MIN_MS, RYTHME_MAX_MS = 400, 2000
+
 #: Types d'indices admis dans ``contenu.indices``.
 TYPES_INDICE = {"semantique", "phonologique", "orthographique", "contextuel"}
 
@@ -266,6 +273,96 @@ def erreurs_contenu(item: dict, prefixe: str) -> list[str]:
                     erreurs.append(
                         prefixe + f"indice {position} contient la réponse — un indice ne doit pas la donner"
                     )
+
+    # Affichage temporisé : mode connu et rythme d'un élément plausible.
+    affichage = contenu.get("affichage")
+    if affichage is not None:
+        if not isinstance(affichage, dict):
+            erreurs.append(prefixe + "contenu.affichage doit être un objet")
+        else:
+            mode = affichage.get("mode")
+            if mode not in MODES_AFFICHAGE:
+                erreurs.append(prefixe + f"affichage.mode inconnu : {mode!r}")
+            if mode in ("sequence", "series"):
+                duree = affichage.get("duree_par_item_ms")
+                if not est_entier(duree) or not RYTHME_MIN_MS <= duree <= RYTHME_MAX_MS:
+                    erreurs.append(
+                        prefixe
+                        + f"affichage.duree_par_item_ms hors {RYTHME_MIN_MS}..{RYTHME_MAX_MS} ms : {duree!r}"
+                    )
+
+    # Empan de mots : séquence de mots distincts, réponse = séquence ou inverse.
+    if type_item == "empan-mots":
+        elements = affichage.get("elements") if isinstance(affichage, dict) else None
+        if not isinstance(elements, list) or len(elements) < 3:
+            erreurs.append(prefixe + "empan-mots : au moins 3 mots attendus")
+        elif not all(isinstance(mot, str) and mot.strip() for mot in elements):
+            erreurs.append(prefixe + "empan-mots : mots attendus sous forme de chaînes non vides")
+        elif len({_normaliser_texte(mot) for mot in elements}) != len(elements):
+            erreurs.append(prefixe + "empan-mots : mots dupliqués dans la séquence")
+        elif isinstance(reponse, str):
+            direct = _normaliser_texte(" ".join(elements))
+            inverse = _normaliser_texte(" ".join(reversed(elements)))
+            if _normaliser_texte(reponse) not in {direct, inverse}:
+                erreurs.append(prefixe + "empan-mots : la réponse n'est pas la séquence ni son inverse")
+        else:
+            erreurs.append(prefixe + "empan-mots : réponse attendue sous forme de texte")
+
+    # Rappel libre de séries : cohérence séries ↔ cibles, seuil et délai bornés.
+    if type_item == "rappel-libre":
+        erreurs.extend(erreurs_rappel_libre(item, prefixe, contenu, affichage))
+
+    return erreurs
+
+
+def erreurs_rappel_libre(item: dict, prefixe: str, contenu: dict, affichage: object) -> list[str]:
+    """Vérifie un item de rappel libre (séries, portée, seuil, délai, cibles)."""
+    erreurs: list[str] = []
+    series = affichage.get("series") if isinstance(affichage, dict) else None
+    if not isinstance(series, list) or not series:
+        erreurs.append(prefixe + "rappel-libre : affichage.series doit lister au moins une série")
+        return erreurs
+
+    mots: list[str] = []
+    for position, serie in enumerate(series, start=1):
+        if not isinstance(serie, list) or len(serie) < 3:
+            erreurs.append(prefixe + f"rappel-libre : série {position} — au moins 3 mots attendus")
+            continue
+        if not all(isinstance(mot, str) and mot.strip() for mot in serie):
+            erreurs.append(prefixe + f"rappel-libre : série {position} — mots attendus comme chaînes non vides")
+            continue
+        mots.extend(_normaliser_texte(mot) for mot in serie)
+    if len(set(mots)) != len(mots):
+        erreurs.append(
+            prefixe + "rappel-libre : un mot revient dans plusieurs séries — le comptage serait ambigu"
+        )
+
+    portee = contenu.get("portee")
+    if portee not in {"toutes-series", "premiere-serie"}:
+        erreurs.append(prefixe + f"rappel-libre : portee inconnue {portee!r}")
+    delai = contenu.get("delai_s", 0)
+    if not est_entier(delai) or not 0 <= delai <= 180:
+        erreurs.append(prefixe + f"rappel-libre : delai_s doit être un entier 0..180 : {delai!r}")
+
+    reponse = item.get("reponse") if isinstance(item.get("reponse"), dict) else {}
+    cibles, seuil = reponse.get("valeur"), reponse.get("seuil")
+    if not isinstance(cibles, list) or not cibles or not all(
+        isinstance(mot, str) and mot.strip() for mot in cibles
+    ):
+        erreurs.append(prefixe + "rappel-libre : reponse.valeur doit lister les mots cibles")
+        return erreurs
+    if isinstance(seuil, bool) or not isinstance(seuil, (int, float)) or not 0.25 <= float(seuil) <= 1:
+        erreurs.append(prefixe + f"rappel-libre : reponse.seuil hors 0.25..1 : {seuil!r}")
+
+    attendu = (
+        [_normaliser_texte(mot) for mot in series[0]]
+        if portee == "premiere-serie"
+        else list(mots)
+    )
+    if sorted(_normaliser_texte(mot) for mot in cibles) != sorted(attendu):
+        erreurs.append(
+            prefixe + "rappel-libre : les cibles déclarées ne correspondent pas aux séries affichées"
+        )
     return erreurs
 
 

@@ -19,20 +19,20 @@
         "mode": "sequence",
         "duree_par_item_ms": 1000,
         "elements": [
-          "1",
-          "L",
-          "T",
-          "G",
-          "L",
-          "7",
-          "G"
+          "2",
+          "H",
+          "H",
+          "K",
+          "2",
+          "A",
+          "T"
         ]
       },
       "enonce": "Quelle était la somme des chiffres ?",
       "aide": null
     },
     "reponse": {
-      "valeur": 8
+      "valeur": 4
     },
     "meta": {
       "auteur": "generation-automatique (tools/generer_memo_concentration.py)",
@@ -62,20 +62,20 @@
         "mode": "sequence",
         "duree_par_item_ms": 1000,
         "elements": [
-          "J",
-          "3",
-          "R",
-          "K",
-          "9",
-          "K",
-          "R"
+          "C",
+          "6",
+          "G",
+          "T",
+          "L",
+          "7",
+          "N"
         ]
       },
       "enonce": "Quelle était la somme des chiffres ?",
       "aide": null
     },
     "reponse": {
-      "valeur": 12
+      "valeur": 13
     },
     "meta": {
       "auteur": "generation-automatique (tools/generer_memo_concentration.py)",
@@ -105,20 +105,20 @@
         "mode": "sequence",
         "duree_par_item_ms": 1000,
         "elements": [
-          "3",
-          "F",
-          "C",
-          "1",
-          "H",
+          "R",
+          "4",
+          "K",
           "S",
-          "K"
+          "F",
+          "A",
+          "1"
         ]
       },
       "enonce": "Quelle était la somme des chiffres ?",
       "aide": null
     },
     "reponse": {
-      "valeur": 4
+      "valeur": 5
     },
     "meta": {
       "auteur": "generation-automatique (tools/generer_memo_concentration.py)",
@@ -148,13 +148,13 @@
         "mode": "sequence",
         "duree_par_item_ms": 1000,
         "elements": [
-          "T",
-          "3",
-          "S",
-          "E",
-          "7",
-          "R",
-          "G"
+          "J",
+          "L",
+          "2",
+          "A",
+          "8",
+          "J",
+          "F"
         ]
       },
       "enonce": "Quelle était la somme des chiffres ?",
@@ -191,20 +191,20 @@
         "mode": "sequence",
         "duree_par_item_ms": 1000,
         "elements": [
-          "2",
-          "N",
-          "E",
-          "9",
+          "1",
+          "A",
+          "1",
           "C",
-          "F",
-          "N"
+          "C",
+          "A",
+          "K"
         ]
       },
       "enonce": "Quelle était la somme des chiffres ?",
       "aide": null
     },
     "reponse": {
-      "valeur": 11
+      "valeur": 2
     },
     "meta": {
       "auteur": "generation-automatique (tools/generer_memo_concentration.py)",
@@ -234,20 +234,20 @@
         "mode": "sequence",
         "duree_par_item_ms": 1000,
         "elements": [
+          "G",
+          "J",
           "C",
-          "C",
-          "6",
-          "T",
-          "3",
+          "7",
           "R",
-          "K"
+          "S",
+          "1"
         ]
       },
       "enonce": "Quelle était la somme des chiffres ?",
       "aide": null
     },
     "reponse": {
-      "valeur": 9
+      "valeur": 8
     },
     "meta": {
       "auteur": "generation-automatique (tools/generer_memo_concentration.py)",
@@ -277,20 +277,20 @@
         "mode": "sequence",
         "duree_par_item_ms": 1000,
         "elements": [
-          "J",
-          "5",
-          "K",
-          "5",
-          "N",
+          "3",
           "F",
-          "T"
+          "A",
+          "F",
+          "T",
+          "L",
+          "9"
         ]
       },
       "enonce": "Quelle était la somme des chiffres ?",
       "aide": null
     },
     "reponse": {
-      "valeur": 10
+      "valeur": 12
     },
     "meta": {
       "auteur": "generation-automatique (tools/generer_memo_concentration.py)",
@@ -320,20 +320,20 @@
         "mode": "sequence",
         "duree_par_item_ms": 1000,
         "elements": [
-          "8",
-          "J",
-          "E",
-          "J",
-          "8",
           "N",
-          "E"
+          "N",
+          "6",
+          "R",
+          "8",
+          "S",
+          "L"
         ]
       },
       "enonce": "Quelle était la somme des chiffres ?",
       "aide": null
     },
     "reponse": {
-      "valeur": 16
+      "valeur": 14
     },
     "meta": {
       "auteur": "generation-automatique (tools/generer_memo_concentration.py)",
@@ -363,20 +363,20 @@
         "mode": "sequence",
         "duree_par_item_ms": 1000,
         "elements": [
-          "F",
-          "A",
-          "9",
-          "R",
-          "A",
+          "4",
+          "E",
           "7",
-          "J"
+          "T",
+          "L",
+          "L",
+          "F"
         ]
       },
       "enonce": "Quelle était la somme des chiffres ?",
       "aide": null
     },
     "reponse": {
-      "valeur": 16
+      "valeur": 11
     },
     "meta": {
       "auteur": "generation-automatique (tools/generer_memo_concentration.py)",
@@ -406,13 +406,13 @@
         "mode": "sequence",
         "duree_par_item_ms": 1000,
         "elements": [
-          "E",
-          "R",
+          "C",
+          "T",
+          "4",
+          "C",
           "3",
-          "G",
-          "J",
-          "5",
-          "F"
+          "C",
+          "T"
         ]
       },
       "enonce": "Combien de lettres y avait-il ?",
@@ -449,13 +449,13 @@
         "mode": "sequence",
         "duree_par_item_ms": 1000,
         "elements": [
-          "3",
-          "R",
-          "K",
-          "1",
+          "8",
+          "L",
+          "L",
           "S",
-          "N",
-          "L"
+          "1",
+          "F",
+          "H"
         ]
       },
       "enonce": "Combien de lettres y avait-il ?",
@@ -492,12 +492,12 @@
         "mode": "sequence",
         "duree_par_item_ms": 1000,
         "elements": [
-          "G",
-          "4",
-          "R",
-          "A",
-          "5",
-          "K",
+          "C",
+          "T",
+          "H",
+          "3",
+          "T",
+          "1",
           "E"
         ]
       },
@@ -535,13 +535,13 @@
         "mode": "sequence",
         "duree_par_item_ms": 1000,
         "elements": [
-          "6",
-          "A",
-          "C",
-          "3",
-          "C",
-          "L",
-          "T"
+          "1",
+          "N",
+          "J",
+          "8",
+          "E",
+          "S",
+          "R"
         ]
       },
       "enonce": "Combien de lettres y avait-il ?",
@@ -578,13 +578,13 @@
         "mode": "sequence",
         "duree_par_item_ms": 1000,
         "elements": [
-          "T",
+          "N",
           "E",
           "5",
-          "C",
-          "F",
-          "6",
-          "F"
+          "T",
+          "A",
+          "G",
+          "9"
         ]
       },
       "enonce": "Combien de lettres y avait-il ?",
@@ -621,13 +621,13 @@
         "mode": "sequence",
         "duree_par_item_ms": 1000,
         "elements": [
-          "2",
-          "S",
-          "G",
+          "C",
+          "A",
+          "T",
+          "1",
           "E",
-          "2",
-          "G",
-          "N"
+          "8",
+          "A"
         ]
       },
       "enonce": "Combien de lettres y avait-il ?",
@@ -665,12 +665,12 @@
         "duree_par_item_ms": 1000,
         "elements": [
           "2",
-          "T",
+          "A",
+          "9",
+          "S",
           "N",
-          "5",
-          "G",
-          "G",
-          "L"
+          "E",
+          "H"
         ]
       },
       "enonce": "Combien de lettres y avait-il ?",
@@ -707,13 +707,13 @@
         "mode": "sequence",
         "duree_par_item_ms": 1000,
         "elements": [
-          "5",
+          "H",
           "C",
+          "3",
           "N",
-          "R",
-          "8",
-          "K",
-          "C"
+          "H",
+          "6",
+          "E"
         ]
       },
       "enonce": "Combien de lettres y avait-il ?",
@@ -750,13 +750,13 @@
         "mode": "sequence",
         "duree_par_item_ms": 1000,
         "elements": [
-          "E",
-          "C",
+          "6",
+          "A",
           "J",
-          "3",
-          "G",
-          "2",
-          "F"
+          "K",
+          "9",
+          "K",
+          "S"
         ]
       },
       "enonce": "Combien de lettres y avait-il ?",

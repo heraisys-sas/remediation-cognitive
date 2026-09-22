@@ -5,9 +5,10 @@ Génère, avec la seule bibliothèque standard et une graine fixe (déterminisme
 deux exécutions produisent des fichiers identiques), le contenu des deux
 nouveaux thèmes d'entraînement :
 
-- ``content/entrainement/memoire/paliers/palier-01.json`` … ``palier-08.json`` :
+- ``content/entrainement/memoire/paliers/palier-01.json`` … ``palier-12.json`` :
   empans de chiffres (endroit/envers), paires associatives mot–nombre, sondes
-  n-back (rappel temporel) — 18 items par palier, 144 au total ;
+  n-back (rappel temporel), puis **empans de mots** (paliers 9 à 12, matériel
+  verbal) — 18 items par palier ;
 - ``content/entrainement/concentration/paliers/palier-01.json`` …
   ``palier-09.json`` : chaînes de calcul (additions/soustractions de gauche à
   droite, longueur croissante 3 → 7), cascades de soustractions, double tâche
@@ -59,6 +60,25 @@ MOTS_PAIRES = [
     "LUNE", "PONT", "ARBRE", "ROUE", "FLEUR", "TRAIN",
     "PORTE", "NUAGE", "PIERRE", "LIVRE", "PLUIE", "TABLE",
 ]
+
+#: Pool de mots pour l'empan de mots et le rappel de séries : concrets, courts
+#: (1–2 syllabes), et choisis pour limiter les confusions phonologiques entre eux.
+MOTS_EMPAN = [
+    "chat", "lune", "porte", "stylo", "table", "rivière", "pomme", "jardin",
+    "montre", "nuage", "panier", "bougie", "fromage", "manteau", "chemin",
+    "fenêtre", "sable", "crayon", "chapeau", "cuisine", "voiture", "orange",
+    "marteau", "plage", "tapis", "guitare", "bureau", "soleil", "poisson",
+    "chemise", "montagne", "bouteille", "chaussure", "journal", "musique",
+    "neige", "bateau", "colline", "horloge", "feuille", "chocolat", "drapeau",
+    "camion", "radis", "vélo", "ballon", "cahier", "jardinier",
+]
+
+#: Rythme d'affichage des séquences : un élément par seconde environ.
+#: Le blanc inter-éléments sert seulement à marquer la séparation visuelle
+#: (segmentation perceptive) — il n'ajoute aucune pause d'attente.
+DUREE_ITEM_MS: int = 800
+DUREE_ITEM_MOTS_MS: int = 900
+BLANC_INTER_ITEM_MS: int = 120
 
 #: Caps de complexité explicites (dosage anti sur-sollicitation).
 CAP_CHAINE_7 = "7 opérations maximum"
@@ -136,7 +156,7 @@ def _empan(rng, palier, longueur, envers, nn, prerequis, date_creation):
         "consigne": "Mémorise la séquence de chiffres.",
         "affichage": {
             "mode": "sequence",
-            "duree_par_item_ms": 800,
+            "duree_par_item_ms": DUREE_ITEM_MS,
             "elements": elements,
         },
         "enonce": enonce,
@@ -144,6 +164,35 @@ def _empan(rng, palier, longueur, envers, nn, prerequis, date_creation):
     }
     return _item(
         f"me-{palier}-empan-{nn:02d}", "empan", "memoire", ["memoire-travail"],
+        palier, prerequis, None, contenu, {"valeur": attendue}, date_creation,
+    )
+
+
+def _empan_mots(rng, palier, longueur, envers, nn, prerequis, date_creation):
+    """Empan de mots : même logique que l'empan de chiffres, matériel verbal.
+
+    Le rappel verbal est plus sensible à la similarité phonologique : les mots
+    sont donc sans doublon dans la séquence et tirés d'un ensemble concret.
+    """
+    elements = rng.sample(MOTS_EMPAN, longueur)
+    if envers:
+        attendue = " ".join(reversed(elements))
+        enonce = "Tape les mots à l'envers (le dernier d'abord)."
+    else:
+        attendue = " ".join(elements)
+        enonce = "Tape les mots dans l'ordre, en les séparant par des espaces."
+    contenu = {
+        "consigne": "Mémorise les mots affichés.",
+        "affichage": {
+            "mode": "sequence",
+            "duree_par_item_ms": DUREE_ITEM_MOTS_MS,
+            "elements": elements,
+        },
+        "enonce": enonce,
+        "aide": None,
+    }
+    return _item(
+        f"me-{palier}-mots-{nn:02d}", "empan-mots", "memoire", ["memoire-travail"],
         palier, prerequis, None, contenu, {"valeur": attendue}, date_creation,
     )
 
@@ -353,6 +402,12 @@ def _paliers_memoire(rng, date_creation):
         [("empan", {"longueur": 6, "envers": True})] * 8
         + [("nback", {"pas": 3})] * 10,
         [("paires", {"nb_paires": 4})] * 8 + [("nback", {"pas": 4})] * 10,
+        # Paliers 9 à 12 — empan de mots (matériel verbal, même logique que les chiffres).
+        [("mots", {"longueur": 3, "envers": False})] * 18,
+        [("mots", {"longueur": 4, "envers": False})] * 18,
+        [("mots", {"longueur": 5, "envers": False})] * 18,
+        [("mots", {"longueur": 3, "envers": True})] * 9
+        + [("mots", {"longueur": 4, "envers": True})] * 9,
     ]
     compteurs: dict[str, int] = {}
     for numero, composition in enumerate(compositions, start=1):
@@ -364,6 +419,9 @@ def _paliers_memoire(rng, date_creation):
             if famille == "empan":
                 items.append(_empan(rng, numero, parametres["longueur"],
                                     parametres["envers"], nn, prerequis, date_creation))
+            elif famille == "mots":
+                items.append(_empan_mots(rng, numero, parametres["longueur"],
+                                         parametres["envers"], nn, prerequis, date_creation))
             elif famille == "paires":
                 items.append(_paires(rng, numero, parametres["nb_paires"],
                                      nn, prerequis, date_creation))
@@ -443,6 +501,10 @@ DESCRIPTIONS_MEMOIRE = [
     "Envers 5 + paires 3",
     "Envers 6 + sonde n-back (pas 3)",
     "Paires 4 + sonde n-back (pas 4)",
+    "Empan de mots 3, endroit",
+    "Empan de mots 4, endroit",
+    "Empan de mots 5, endroit",
+    "Empan de mots envers 3 et 4",
 ]
 
 DESCRIPTIONS_CONCENTRATION = [

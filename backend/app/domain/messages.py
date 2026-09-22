@@ -36,7 +36,11 @@ VOCABULAIRES = {
             },
             "memoire": {
                 "nom": "Mémoire",
-                "description": "Empans de chiffres, séquences et associations — mémorisation progressive",
+                "description": "Empans de chiffres et de mots, séquences et associations — mémorisation progressive",
+            },
+            "rappel-series": {
+                "nom": "Rappel de séries",
+                "description": "Plusieurs séries de mots, puis rappel libre de tout ce dont on se souvient",
             },
             "concentration": {
                 "nom": "Concentration",

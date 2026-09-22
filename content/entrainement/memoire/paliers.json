@@ -70,6 +70,42 @@
       ],
       "fichier": "paliers/palier-08.json",
       "nb_items": 18
+    },
+    {
+      "id": "me-palier-9",
+      "description": "Empan de mots 3, endroit",
+      "prerequis": [
+        "me-palier-8"
+      ],
+      "fichier": "paliers/palier-09.json",
+      "nb_items": 18
+    },
+    {
+      "id": "me-palier-10",
+      "description": "Empan de mots 4, endroit",
+      "prerequis": [
+        "me-palier-9"
+      ],
+      "fichier": "paliers/palier-10.json",
+      "nb_items": 18
+    },
+    {
+      "id": "me-palier-11",
+      "description": "Empan de mots 5, endroit",
+      "prerequis": [
+        "me-palier-10"
+      ],
+      "fichier": "paliers/palier-11.json",
+      "nb_items": 18
+    },
+    {
+      "id": "me-palier-12",
+      "description": "Empan de mots envers 3 et 4",
+      "prerequis": [
+        "me-palier-11"
+      ],
+      "fichier": "paliers/palier-12.json",
+      "nb_items": 18
     }
   ]
 }

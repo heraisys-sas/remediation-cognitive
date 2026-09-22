@@ -11,9 +11,12 @@ Règles par thème (docs/30-technique/api-contract.md) :
 - ``python``         : chaîne exacte trimmée — production comme
   ``prediction-sortie`` ;
 - ``memoire``        : texte insensible à la casse, TOUS les espaces ignorés
-  (les empans tapés avec espaces restent valides) ;
+  (les empans tapés avec espaces restent valides) — sauf ``empan-mots``, où
+  l'ORDRE des mots est significatif (comparaison mot à mot, sans accents) ;
 - ``concentration``  : comparaison numérique (chaînes, cascades, double tâche,
   séries — réponses entières) ;
+- ``rappel-series``  : rappel libre — réussite si la part de mots retrouvés
+  atteint le seuil déclaré par l'item (``reponse.seuil``) ;
 - ``evocation``      : texte tolérant — casse, accents, espaces et guillemets
   ignorés (un mot retrouvé se juge sur le mot, pas sur son accent) ;
 - ``social``         : texte tolérant — la réponse est la proposition choisie.
@@ -21,6 +24,7 @@ Règles par thème (docs/30-technique/api-contract.md) :
 
 from __future__ import annotations
 
+import re
 import unicodedata
 from numbers import Real
 
@@ -80,6 +84,45 @@ def _clef_texte(valeur) -> str:
     return " ".join(sans_accents.replace("«", " ").replace("»", " ").split())
 
 
+def _mots(texte) -> list[str]:
+    """Découpe un texte en mots normalisés (accents, casse et ponctuation ignorés)."""
+    return [
+        _clef_texte(mot)
+        for mot in re.split(r"[^0-9A-Za-z\u00C0-\u024F']+", str(texte or ""))
+        if mot.strip()
+    ]
+
+
+def _corriger_mots_ordonnes(reponse, attendue) -> bool:
+    """Empan de mots : la SÉQUENCE compte (mots dans l'ordre attendu).
+
+    La tolérance porte sur la saisie (accents, casse, ponctuation), pas sur
+    l'ordre : retrouver les mots dans le désordre n'est pas la même tâche.
+    """
+    return _mots(reponse) == _mots(attendue)
+
+
+def _corriger_rappel_libre(item: dict, reponse) -> bool:
+    """Rappel libre : réussi si la part de mots retrouvés atteint le seuil.
+
+    Aucun ordre n'est exigé — le rappel libre mesure ce qui revient, pas la
+    restitution d'une liste. Comparaison sans accents ni casse ; le pluriel
+    simple (mot + « s ») est toléré.
+    """
+    reponse_item = item.get("reponse") or {}
+    cibles = reponse_item.get("valeur") or []
+    if not isinstance(cibles, list) or not cibles:
+        return False
+    seuil = float(reponse_item.get("seuil") or 1.0)
+    jetons = set(_mots(reponse))
+    trouves = sum(
+        1
+        for mot in cibles
+        if _clef_texte(mot) in jetons or f"{_clef_texte(mot)}s" in jetons
+    )
+    return (trouves / len(cibles)) >= seuil
+
+
 def corriger(theme: str, item: dict, reponse) -> bool:
     """Retourne True si la réponse soumise correspond à la réponse attendue.
 
@@ -93,10 +136,14 @@ def corriger(theme: str, item: dict, reponse) -> bool:
     attendue = (item.get("reponse") or {}).get("valeur")
     if theme in ("calcul-mental", "concentration"):
         return _corriger_numerique(reponse, attendue)
+    if theme == "rappel-series":
+        return _corriger_rappel_libre(item, reponse)
     if theme in ("evocation", "social"):
         return _clef_texte(reponse) == _clef_texte(attendue)
     if theme in ("anglais", "memoire"):
         if theme == "memoire":
+            if item.get("type") == "empan-mots":
+                return _corriger_mots_ordonnes(reponse, attendue)
             return _corriger_sans_espaces(reponse, attendue)
         return (
             _normaliser_texte(reponse).lower()

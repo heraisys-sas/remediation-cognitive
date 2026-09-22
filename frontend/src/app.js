@@ -25,6 +25,13 @@ const TYPES_A_CHOIX = new Set([
   "lecture-intention",
 ]);
 
+//: Thèmes d'appoint regroupés dans la section « Extra » de l'écran d'accueil.
+const THEMES_EXTRA = new Set(["python", "anglais"]);
+
+//: Blanc entre deux éléments d'une séquence (segmentation visuelle uniquement —
+//: ce n'est pas une pause d'attente : le rythme reste d'un élément par seconde).
+const BLANC_INTER_ITEM_MS = 120;
+
 /* ---------------------------------------------------------------------
    Raccourcis DOM (l'HTML statique porte toutes les vues)
    --------------------------------------------------------------------- */
@@ -50,6 +57,8 @@ const refs = {
   boutonRetourThemes: $("bouton-retour-themes"),
   noticeThemes: $("notice-themes"),
   listeThemes: $("liste-themes"),
+  sectionExtra: $("section-extra"),
+  listeThemesExtra: $("liste-themes-extra"),
   progressionTexte: $("progression-texte"),
   barreProgression: $("barre-progression"),
   barreRemplie: $("barre-remplie"),
@@ -101,6 +110,7 @@ const etat = {
   optionChoisie: null,     // proposition choisie (types à choix)
   missions: [],            // missions hors écran chargées du serveur
   missionActive: null,     // mission en cours de notation
+  reponseSoumise: "",      // dernière réponse envoyée (comparaison d'affichage)
 };
 
 /* ---------------------------------------------------------------------
@@ -176,9 +186,32 @@ function inputmodePour(type) {
   return TYPES_REPONSE_NUMERIQUE.has(type) ? "numeric" : "text";
 }
 
+/** Clé de comparaison d'un mot : minuscules, sans accents (tolérance de saisie). */
+function clefMot(texte) {
+  return String(texte ?? "")
+    .normalize("NFD")
+    .replace(/[\u0300-\u036f]/g, "")
+    .toLowerCase()
+    .trim();
+}
+
+/** Découpe une réponse libre en mots (virgules, espaces, points-virgules…). */
+function motsDe(texte) {
+  return String(texte ?? "")
+    .split(/[^0-9A-Za-z\u00C0-\u024F']+/)
+    .filter(Boolean)
+    .map(clefMot);
+}
+
 /** Annule les minuteries de la phase de mémorisation et masque la zone. */
 function annulerMemo() {
-  for (const minuterie of etat.minuteriesMemo) clearTimeout(minuterie);
+  for (const minuterie of etat.minuteriesMemo) {
+    // Les identifiants sont partagés entre timeouts et intervals : on nettoie
+    // les deux (sinon un compte à rebours de rappel différé survivrait au
+    // changement d'écran).
+    clearTimeout(minuterie);
+    clearInterval(minuterie);
+  }
   etat.minuteriesMemo = [];
   refs.zoneMemo.hidden = true;
   refs.zoneMemo.replaceChildren();
@@ -314,6 +347,8 @@ async function chargerThemes() {
     rendreThemes(donnees.themes || []);
   } catch (erreur) {
     refs.listeThemes.replaceChildren();
+    refs.listeThemesExtra.replaceChildren();
+    refs.sectionExtra.hidden = true;
     if (erreur.type === "reseau") {
       afficherErreurReseau(chargerThemes);
     } else {
@@ -328,6 +363,8 @@ async function chargerThemes() {
 
 function rendreThemes(themes) {
   refs.listeThemes.replaceChildren();
+  refs.listeThemesExtra.replaceChildren();
+  refs.sectionExtra.hidden = true;
   masquerNoticeThemes();
 
   if (!themes.length) {
@@ -335,19 +372,28 @@ function rendreThemes(themes) {
     return;
   }
 
+  // Deux groupes : les familles d'entraînement, puis les thèmes d'appoint
+  // (vocabulaire, commandes) rangés dans « Extra », en bas de l'écran.
   for (const theme of themes) {
-    const carte = creerElement("article", { classe: "carte-theme" },
-      creerElement("h3", { texte: theme.nom }),
-      creerElement("p", { texte: theme.description || "" }),
-      creerElement("button", {
-        classe: "bouton bouton-primaire",
-        texte: "Commencer",
-        attributs: { type: "button" },
-      })
-    );
-    carte.querySelector("button").addEventListener("click", () => demarrerSession(theme));
-    refs.listeThemes.append(carte);
+    const cible = THEMES_EXTRA.has(theme.id) ? refs.listeThemesExtra : refs.listeThemes;
+    cible.append(carteTheme(theme));
   }
+  refs.sectionExtra.hidden = !refs.listeThemesExtra.childElementCount;
+}
+
+/** Carte cliquable d'un thème : nom, description, bouton « Commencer ». */
+function carteTheme(theme) {
+  const carte = creerElement("article", { classe: "carte-theme" },
+    creerElement("h3", { texte: theme.nom }),
+    creerElement("p", { texte: theme.description || "" }),
+    creerElement("button", {
+      classe: "bouton bouton-primaire",
+      texte: "Commencer",
+      attributs: { type: "button" },
+    })
+  );
+  carte.querySelector("button").addEventListener("click", () => demarrerSession(theme));
+  return carte;
 }
 
 /** Repli sûr vers l'écran des thèmes (après incident ou fin de séance). */
@@ -462,12 +508,14 @@ function afficherPhaseMemo(item) {
   const contenu = item.contenu || {};
   const affichage = contenu.affichage;
   const estSequence = affichage.mode === "sequence";
-  const dureeEstimee = estSequence
-    ? Math.round((affichage.elements.length * (affichage.duree_par_item_ms + 250)) / 1000)
-    : Math.round(affichage.duree_totale_ms / 1000);
-  const mention = estSequence
-    ? `${affichage.elements.length} éléments · environ ${dureeEstimee} s`
-    : `${affichage.elements.length} paires · environ ${dureeEstimee} s`;
+  const estSeries = affichage.mode === "series";
+  const parElement = (affichage.duree_par_item_ms + BLANC_INTER_ITEM_MS) / 1000;
+  const nbElements = estSeries
+    ? affichage.series.reduce((total, serie) => total + serie.length, 0)
+    : affichage.elements.length;
+  const mention = estSequence || estSeries
+    ? `${nbElements} éléments · un toutes les ${parElement.toFixed(2).replace(".", ",")} s`
+    : `${affichage.elements.length} paires · environ ${Math.round(affichage.duree_totale_ms / 1000)} s`;
 
   // Consigne dans la carte énoncé ; le stimulus reste masqué jusqu'au signal
   // de l'utilisateur (set attentionnel : on sait quoi chercher avant de voir).
@@ -519,28 +567,74 @@ function jouerAffichage(item) {
     }
     plateau.append(liste);
     etat.minuteriesMemo.push(
-      setTimeout(() => afficherQuestion(item), affichage.duree_totale_ms)
+      setTimeout(() => jouerDelaiOuQuestion(item), affichage.duree_totale_ms)
     );
     return;
   }
 
-  // Séquence : un élément à la fois, 250 ms de blanc entre chaque.
-  const blancMemoMs = 250;
+  // Séquence de chiffres/mots ou séries de mots : un élément à la fois. Le blanc
+  // inter-éléments ne sert qu'à séparer visuellement les éléments (segmentation
+  // perceptive) : il n'ajoute AUCUNE pause d'attente.
+  const groupes = affichage.mode === "series" ? affichage.series : [affichage.elements];
+  const blancMemoMs = BLANC_INTER_ITEM_MS;
   let delai = 0;
-  affichage.elements.forEach((element, index) => {
-    etat.minuteriesMemo.push(setTimeout(() => {
-      plateau.replaceChildren(
-        creerElement("span", { classe: "memo-element", texte: element })
-      );
-      indicateur.textContent = `${index + 1} / ${affichage.elements.length}`;
-    }, delai));
-    delai += affichage.duree_par_item_ms;
-    if (index < affichage.elements.length - 1) {
+  groupes.forEach((groupe, indexGroupe) => {
+    groupe.forEach((element, index) => {
+      etat.minuteriesMemo.push(setTimeout(() => {
+        if (affichage.mode === "series" && index === 0) {
+          plateau.append(creerElement("p", {
+            classe: "memo-serie-titre",
+            texte: `Série ${indexGroupe + 1} / ${groupes.length}`,
+          }));
+        }
+        plateau.append(creerElement("span", { classe: "memo-element", texte: element }));
+        indicateur.textContent = affichage.mode === "series"
+          ? `Série ${indexGroupe + 1} / ${groupes.length}`
+          : `${index + 1} / ${groupe.length}`;
+      }, delai));
+      delai += affichage.duree_par_item_ms;
+      if (index < groupe.length - 1) {
+        etat.minuteriesMemo.push(setTimeout(() => {
+          for (const noeud of plateau.querySelectorAll(".memo-element")) noeud.remove();
+        }, delai));
+        delai += blancMemoMs;
+      }
+    });
+    if (indexGroupe < groupes.length - 1) {
       etat.minuteriesMemo.push(setTimeout(() => { plateau.replaceChildren(); }, delai));
-      delai += blancMemoMs;
+      delai += Number(affichage.pause_serie_ms || 1500);
     }
   });
-  etat.minuteriesMemo.push(setTimeout(() => afficherQuestion(item), delai));
+  etat.minuteriesMemo.push(setTimeout(() => jouerDelaiOuQuestion(item), delai));
+}
+
+/** Après le stimulus : attente volontaire (rappel différé) puis question. */
+function jouerDelaiOuQuestion(item) {
+  const delai = Number((item.contenu && item.contenu.delai_s) || 0);
+  if (!delai) {
+    afficherQuestion(item);
+    return;
+  }
+  // Rappel différé : l'attente est affichée, pas cachée — et l'utilisateur
+  // peut toujours passer (aucune contrainte de temps imposée).
+  const restant = creerElement("p", { classe: "memo-attente" });
+  const boutonPasser = creerElement("button", {
+    classe: "bouton bouton-secondaire",
+    texte: "Passer l'attente",
+    attributs: { type: "button" },
+  });
+  boutonPasser.addEventListener("click", () => afficherQuestion(item));
+  let secondes = Math.round(delai);
+  const majTexte = () => { restant.textContent = `Encore ${secondes} s avant la question…`; };
+  majTexte();
+  refs.zoneMemo.replaceChildren(restant, boutonPasser);
+  refs.zoneMemo.hidden = false;
+  const intervalle = setInterval(() => {
+    secondes -= 1;
+    majTexte();
+    if (secondes <= 0) afficherQuestion(item);
+  }, 1000);
+  etat.minuteriesMemo.push(intervalle);
 }
 
 /** Phase question : le stimulus a disparu — énoncé, saisie, focus. */
@@ -561,6 +655,13 @@ function afficherQuestion(item) {
     refs.texteAide.textContent = "";
     refs.zoneAide.hidden = true;
   }
+
+  // Champ de saisie : remise à zéro OBLIGATOIRE à chaque nouvelle question
+  // (la réponse précédente ne doit jamais rester affichée), clavier adapté.
+  refs.champReponse.value = "";
+  refs.champReponse.disabled = false;
+  refs.champReponse.setAttribute("inputmode", inputmodePour(item.type));
+  refs.indiceReponse.hidden = true;
 
   // Choix de réponse ou saisie libre selon le type d'exercice.
   const options = Array.isArray(contenu.options) ? contenu.options : null;
@@ -676,6 +777,7 @@ async function soumettreValeur(brut, indiceUtilise) {
   if (Number.isInteger(indiceUtilise) && indiceUtilise > 0) {
     corps.indice_utilise = indiceUtilise;
   }
+  etat.reponseSoumise = String(brut);
 
   etat.actionEnCours = true;
   reglerEtatBoutons();
@@ -724,19 +826,54 @@ async function soumettreValeur(brut, indiceUtilise) {
 function rendreFeedback(resultat) {
   const correcte = Boolean(resultat.correcte);
   const assistee = Boolean(resultat.assistee);
+  // Rappel libre : la réponse attendue est une LISTE de mots — on montre ce qui
+  // a été retrouvé et ce qui manquait, plutôt qu'un « tout juste / tout faux ».
+  const rappelLibre = Array.isArray(resultat.attendue);
   refs.carteFeedback.replaceChildren();
   refs.carteFeedback.className =
     "carte-feedback " +
-    (assistee ? "feedback-assiste" : correcte ? "feedback-correct" : "feedback-incorrect");
+    (rappelLibre
+      ? "feedback-rappel"
+      : assistee
+        ? "feedback-assiste"
+        : correcte
+          ? "feedback-correct"
+          : "feedback-incorrect");
 
   refs.carteFeedback.append(
     creerElement("p", {
       classe: "feedback-titre",
-      texte: assistee ? "Réponse affichée" : correcte ? "✓ Bonne réponse !" : "✕ Pas tout à fait",
+      texte: rappelLibre
+        ? "Rappel terminé"
+        : assistee
+          ? "Réponse affichée"
+          : correcte
+            ? "✓ Bonne réponse !"
+            : "✕ Pas tout à fait",
     })
   );
 
-  if (resultat.attendue !== undefined && resultat.attendue !== null) {
+  if (rappelLibre) {
+    const jetons = new Set(motsDe(etat.reponseSoumise));
+    const trouves = resultat.attendue.filter(
+      (mot) => jetons.has(clefMot(mot)) || jetons.has(`${clefMot(mot)}s`)
+    );
+    refs.carteFeedback.append(
+      creerElement("p", {
+        classe: "feedback-attendue",
+        texte: `Retrouvés : ${trouves.length} sur ${resultat.attendue.length}`,
+      })
+    );
+    const manques = resultat.attendue.filter((mot) => !trouves.includes(mot));
+    if (manques.length) {
+      refs.carteFeedback.append(
+        creerElement("p", {
+          classe: "feedback-commentaire",
+          texte: `Il restait : ${manques.join(", ")}`,
+        })
+      );
+    }
+  } else if (resultat.attendue !== undefined && resultat.attendue !== null) {
     const ligne = creerElement("p", { classe: "feedback-attendue" });
     ligne.append(assistee ? "Réponse : " : "Réponse attendue : ");
     ligne.append(creerElement("strong", { texte: String(resultat.attendue) }));

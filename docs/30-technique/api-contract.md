@@ -142,3 +142,56 @@ Base : `/api/social`. Périmètre hors médical, mais **stockage séparé** des 
 
 Stockage : `backend/data/journal/journal.json` — séparé de `backend/data/entrainement/`, jamais
 joint aux données de séance (ADR-002 / ADR-004), borné aux 500 notes les plus récentes.
+
+## Sprint 4 — empan de mots, rappel libre de séries, rythme d'affichage (ADR-005)
+
+### Empan de mots (`empan-mots`, thème `memoire`, paliers 9 à 12)
+
+Séquence de mots affichés un par un (`mode: "sequence"`, 900 ms par élément), à
+retranscrire **dans l'ordre** (ou à l'envers selon l'énoncé). La comparaison est
+ordonnée et tolérante à la saisie : accents, casse et ponctuation ignorés, ordre
+significatif.
+
+### Rappel libre (`rappel-libre`, thème `rappel-series`)
+
+```json
+{
+  "type": "rappel-libre",
+  "contenu": {
+    "consigne": "Mémorise chaque série de mots, l'une après l'autre.",
+    "affichage": {
+      "mode": "series",
+      "series": [["chat", "lune", "porte"], ["table", "nuage", "crayon"]],
+      "duree_par_item_ms": 1000,
+      "pause_serie_ms": 1500
+    },
+    "delai_s": 20,
+    "portee": "toutes-series",
+    "enonce": "Écris tous les mots dont tu te souviens, toutes séries confondues, séparés par des espaces.",
+    "aide": "Note d'abord les mots qui viennent sans effort, puis cherche les autres."
+  },
+  "reponse": { "valeur": ["chat", "lune", "porte", "table", "nuage", "crayon"], "seuil": 0.6 }
+}
+```
+
+- `affichage.mode: "series"` — les séries sont présentées l'une après l'autre, avec
+  une pause entre elles ; un mot ne peut pas apparaître dans deux séries.
+- `delai_s` — attente (0 à 180 s) entre l'affichage et la question : **rappel
+  différé**. L'interface affiche un compte à rebours et laisse passer l'attente.
+- `portee` — `toutes-series` (rappel de l'ensemble) ou `premiere-serie`.
+- `reponse.valeur` — **liste** des mots cibles ; `reponse.seuil` — part de mots à
+  retrouver (0,25 à 1).
+
+Correction serveur : réussite si `mots retrouvés / cibles ≥ seuil`. Ordre
+indifférent, accents et casse ignorés, pluriel simple (`mot` + « s ») toléré, mots
+en trop sans pénalité. La réponse renvoie `attendue` sous forme de **liste**, ce qui
+permet à l'interface d'afficher « Retrouvés : n sur m » puis les mots manquants —
+jamais une note, jamais une norme.
+
+### Invariantes de contenu ajoutées au validateur
+
+- rythme d'affichage d'un élément : **400 à 2000 ms** (au-delà, ce n'est plus une
+  présentation d'empan mais une pause d'attente) ;
+- aucun mot dupliqué dans une séquence ni entre les séries d'un même item ;
+- les cibles déclarées correspondent exactement aux séries affichées (selon la portée) ;
+- seuil et délai bornés ; modes d'affichage connus (`sequence`, `liste`, `series`).

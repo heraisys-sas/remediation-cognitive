@@ -57,3 +57,16 @@ Deux familles de la rééducation de l'accès lexical sont mobilisées : l'indi�
 (sémantique puis phonologique) et la récupération espacée avec estompage des aides. Le principe
 d'apprentissage sans erreur est porté par l'interface : l'essai se clôt en affichant la réponse,
 sans imposer d'échec (ADR-004).
+
+## Familles « empan de mots » et « rappel libre » (sprint 4)
+
+| Famille | Type | Fonctions | Progression |
+|---|---|---|---|
+| Empan de mots | empan-mots | mémoire de travail (verbale) | 3 → 5 mots endroit, puis 3–4 envers |
+| Rappel libre de séries | rappel-libre | récupération + mémoire épisodique | 1 série → 3 séries → rappel différé (20 s) |
+
+Le rappel libre sollicite la **récupération sans indice** (rien n'est proposé) et
+l'interférence entre séries successives ; le rappel différé ajoute la résistance au
+délai. Ces épreuves produisent un résultat **partiel** par nature : le seuil déclaré
+sert de repère de séance, il ne doit jamais devenir un score de mémoire comparable
+entre personnes (garde-fou clinique inchangé).

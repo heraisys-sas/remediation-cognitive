@@ -657,3 +657,41 @@ body {
 .note-texte { margin: 0; }
 
 .note-meta { margin: 0; font-size: 0.9rem; color: var(--texte-secondaire); }
+
+/* ---------------------------------------------------------------------
+   Section « Extra » : thèmes d'appoint, en bas de l'écran d'accueil
+   --------------------------------------------------------------------- */
+
+.section-extra {
+  margin-top: 2.25rem;
+  padding-top: 1.5rem;
+  border-top: 1px solid var(--bordure);
+}
+
+.titre-extra {
+  margin: 0 0 0.35rem;
+  font-size: 1.15rem;
+  letter-spacing: 0.02em;
+  color: var(--texte-secondaire);
+  text-transform: uppercase;
+}
+
+.intro-extra {
+  margin: 0 0 1rem;
+  color: var(--texte-secondaire);
+  font-size: 0.98rem;
+}
+
+/* Bandeau de série pendant la présentation d'un rappel de séries. */
+.memo-serie-titre {
+  margin: 0 0 0.4rem;
+  color: var(--texte-secondaire);
+  font-size: 0.95rem;
+}
+
+/* Attente volontaire (rappel différé) : compte à rebours calme, sans jugement. */
+.memo-attente {
+  margin: 0;
+  font-size: 1.15rem;
+  font-variant-numeric: tabular-nums;
+}

@@ -90,3 +90,27 @@ prépare, fait répéter à froid et garde la trace ; la mise en situation réel
 Détail : `content/entrainement/social/README.md`. Précautions : pas de diagnostic, pas de norme,
 aucun contenu protégé ; en cas d'isolement profond avec signes dépressifs, l'outil reste un
 complément et une orientation professionnelle s'impose.
+
+## Empan de mots et rappel de séries (sprint 4)
+
+Deux ajouts à la famille « mémoire » :
+
+- **Empan de mots** (thème mémoire, paliers 9 à 12) : 3 → 5 mots à l'endroit, puis
+  3 et 4 mots à l'envers. L'ordre est significatif, la saisie est tolérante
+  (accents, casse, ponctuation).
+- **Rappel de séries** (thème dédié, 4 paliers) : une série de 4 mots, puis deux et
+  trois séries avec rappel **de l'ensemble** — c'est l'interférence entre séries qui
+  fait la difficulté —, puis un **rappel différé** : 20 secondes d'attente avant la
+  question, sur toutes les séries ou sur la première seulement.
+
+Le rappel libre n'est pas un tout-ou-rien : chaque item déclare un **seuil** de mots
+retrouvés (0,5 à 0,75), et l'interface indique ensuite ce qui a été retrouvé et ce
+qui manquait. Ce retour est la valeur pédagogique de l'exercice — jamais une note.
+
+## Rythme de présentation (correctif sprint 4)
+
+Les éléments d'un empan défilent à **un par seconde environ** (800 ms par chiffre,
+900 ms par mot) ; le blanc inter-éléments (120 ms) ne sert qu'à séparer visuellement
+les éléments, ce n'est pas une pause d'attente. L'interface annonce le rythme
+explicitement, et le validateur borne ce rythme (400–2000 ms) : une pause d'attente
+déguisée en empan ne peut plus entrer dans le contenu.

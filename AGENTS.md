@@ -14,13 +14,14 @@ Logiciel de **bilan et rééducation cognitive** pour adultes avec syndrome post
 
 Docs d'entrée : `docs/00-produit/vision.md`, `docs/00-produit/cadre-reglementaire.md`, `docs/00-produit/feuille-de-route.md`.
 
-## État courant — sprint 3 livré (2026-09-21)
+## État courant — sprint 4 livré (2026-09-22)
 
-- **Jouable de bout en bout** : sept thèmes — calcul mental, anglais, Python, mémoire (empan, paires associatives, n-back), concentration (chaînes, cascades, double tâche, séries), **retrouver le mot** (reconnaissance, rappel indicé à indices progressifs, rappel de la source) et **vie sociale** (vignettes d'émotion, réponses adaptées, lecture d'intention) — plus un écran **missions hors écran & carnet**. Lancer `python3 -m uvicorn backend.app.main:app` puis ouvrir `/ui/`.
-- **Implémenté** : `engine/` (FSRS 6.3.2 encapsulé, SessionRunner, maîtrise 90 % × 3, fatigue = proposition) ; `backend/` (routes `/api/entrainement` selon le contrat + périmètre `/api/social` pour missions et carnet, correction serveur par thème, persistance JSON sous `backend/data/` — gitignored) ; `frontend/` (SPA vanilla sur `/ui`) ; **587 items de contenu** (9 paliers calcul mental, anglais/Python, mémoire 8 × 18, concentration 9 × 18, evocation 5 × 10, social 4 × 10) + 8 missions — généré par `tools/generer_memo_concentration.py` et `tools/generer_evocation_social.py` (déterministes).
-- **Tests** : 106 passed (`python3 -m pytest -q`). Contrôles de cohérence : `python3 tools/validate_items.py` (schéma, manifests, options, indices — 0 erreur), `python3 tools/verifier_reponses.py` (réponses recalculées — 0 anomalie), `python3 tools/verifier_interface.py` (identifiants interface ↔ HTML). Toute modification doit les garder verts.
-- **Contrat d'API figé** : `docs/30-technique/api-contract.md` — le modifier = décision structurante (ADR). Extensions récentes : `contenu.affichage` (sprint 2), `contenu.options`/`contenu.indices` + champ `indice_utilise` et essai « assisté » + périmètre `/api/social` (sprint 3, ADR-004).
-- **Traçabilité du sprint** : `.cluster/sprint1/` et `.cluster/enrichissement/` ; `memories/2026-09-03-sprint-1.md`, `memories/2026-09-15-enrichissement-memo-concentration.md`, `memories/2026-09-21-acces-au-mot-et-vie-sociale.md`.
+- **Jouable de bout en bout** : huit thèmes — calcul mental, mémoire (empans de **chiffres et de mots**, paires associatives, n-back), concentration, **retrouver le mot**, **vie sociale**, **rappel de séries** (rappel libre + rappel différé), et les thèmes d'appoint Python / anglais regroupés en section **« Extra »** en bas de l'accueil ; plus l'écran **missions hors écran & carnet**. Lancer `python3 -m uvicorn backend.app.main:app` puis ouvrir `/ui/`.
+- **Implémenté** : `engine/` (moteur inchangé) ; `backend/` (à `/api/entrainement` + `/api/social` : correction serveur par thème, essais assistés, rappel libre au seuil, persistance JSON sous `backend/data/` — gitignored) ; `frontend/` (SPA vanilla sur `/ui` : phase de mémorisation temporisée, séries de mots, compte à rebours du rappel différé, propositions cliquables, indices progressifs).
+- **Contenu** : **691 items** + 8 missions, généré de façon déterministe (`tools/generer_memo_concentration.py`, `tools/generer_evocation_social.py`, `tools/generer_rappel_series.py`).
+- **Tests** : 110 passed (`python3 -m pytest -q`). Contrôles : `python3 tools/validate_items.py` (schéma, manifests, propositions, indices, rythme d'affichage, séries — 0 erreur), `python3 tools/verifier_reponses.py` (réponses recalculées — 0 anomalie), `python3 tools/verifier_interface.py` (identifiants + réinitialisation du champ de saisie).
+- **Contrat d'API figé** : `docs/30-technique/api-contract.md` — toute modification = ADR. Dernières décisions : ADR-004 (aides progressives, options, périmètre social), ADR-005 (empan de mots, rappel libre, rythme d'affichage).
+- **Traçabilité** : `.cluster/sprint1/`, `.cluster/enrichissement/`, `.cluster/sprint3/` ; `memories/2026-09-03-sprint-1.md`, `2026-09-15-enrichissement-memo-concentration.md`, `2026-09-21-acces-au-mot-et-vie-sociale.md`, `2026-09-22-empan-de-mots-et-rappel-de-series.md`.
 
 ## Règles non négociables (garde-fous cliniques)
 
@@ -50,11 +51,12 @@ pip3 install -r <(printf 'fastapi\nuvicorn\nhttpx\npytest\nfsrs\npython-docx\n')
 python3 -m pytest -q                 # tous les tests (backend/tests + engine/tests)
 python3 -m pytest -q engine/tests    # moteurs seuls
 python3 -m uvicorn backend.app.main:app   # serveur de dev → /ui/ (interface) et /docs (API)
-python3 tools/validate_items.py      # schéma, manifests, options, indices
+python3 tools/validate_items.py      # schéma, manifests, options, indices, rythme, séries
 python3 tools/verifier_reponses.py   # réponses recalculées depuis l'énoncé
-python3 tools/verifier_interface.py  # identifiants demandés par l'interface ↔ présents dans l'HTML
+python3 tools/verifier_interface.py  # identifiants et réinitialisation du champ de saisie
 python3 tools/generer_memo_concentration.py --dry-run   # régénère mémoire/concentration
 python3 tools/generer_evocation_social.py --dry-run     # régénère evocation/social + missions
+python3 tools/generer_rappel_series.py --dry-run        # régénère rappel-series
 ```
 
 Dépendances effectives du sprint 1 : fastapi, uvicorn, httpx, pytest, fsrs (paquet officiel open-spaced-repetition). Un `requirements.txt`/lock est à produire au prochain sprint.
@@ -64,9 +66,10 @@ Dépendances effectives du sprint 1 : fastapi, uvicorn, httpx, pytest, fsrs (paq
 - Quota journalier : 3 séances/jour **par thème** (jusqu'à 9/jour au total) — global ou par thème, à trancher (paramétrable dans `backend/app/domain/dosage.py`).
 - Framework frontend — vanilla sans build au sprint 1 ; React+Vite quand l'UI se complexifiera (ADR-003 à formaliser).
 - Gestion des clés de chiffrement — ADR à produire (le stockage JSON actuel n'est pas chiffré ; périmètre non médical uniquement).
-- Mode errorless d'entrée de palier et prerequis anglais/Python complets — reportés (le sprint 2 a livré mémoire/concentration, le sprint 3 l'accès au mot et la vie sociale).
-- Relecture orthographique et clinique des 396 items générés (`meta.relecture_ortho` = `a_revoir`) et des 8 missions avant diffusion au-delà de l'usage familial.
+- Mode errorless d'entrée de palier et prerequis anglais/Python complets — reportés (sprints 2, 3 et 4 ont livré les familles de mémoire, d'accès au mot et de rappel).
+- Relecture orthographique et clinique des items générés (`meta.relecture_ortho` = `a_revoir`) et des 8 missions avant diffusion au-delà de l'usage familial.
 - Carnet des missions : mono-utilisateur, aucune donnée de séance n'y transite — à confirmer si un usage multi-profils arrive.
+- Rappels libres : les seuils servent de repères de séance — ne jamais en faire des scores de mémoire comparables (garde-fou issu d'ADR-005).
 - `requirements.txt` verrouillé + README développeur « démarrage en 5 minutes ».
 
 ## Mémoire partagée

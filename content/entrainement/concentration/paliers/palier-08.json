@@ -14,11 +14,11 @@
     ],
     "cap_complexite": "7 opérations maximum",
     "contenu": {
-      "enonce": "4 + 47 − 31 − 11 + 2 − 2 + 38 − 43",
+      "enonce": "39 + 23 + 48 − 29 − 41 + 7 − 13 + 18",
       "aide": "Calcule de gauche à droite, étape par étape."
     },
     "reponse": {
-      "valeur": 4
+      "valeur": 52
     },
     "meta": {
       "auteur": "generation-automatique (tools/generer_memo_concentration.py)",
@@ -43,11 +43,11 @@
     ],
     "cap_complexite": "7 opérations maximum",
     "contenu": {
-      "enonce": "19 − 4 − 7 + 25 − 20 + 39 + 23 − 31",
+      "enonce": "26 − 8 + 12 + 24 − 49 − 2 + 41 + 17",
       "aide": "Calcule de gauche à droite, étape par étape."
     },
     "reponse": {
-      "valeur": 44
+      "valeur": 61
     },
     "meta": {
       "auteur": "generation-automatique (tools/generer_memo_concentration.py)",
@@ -72,11 +72,11 @@
     ],
     "cap_complexite": "7 opérations maximum",
     "contenu": {
-      "enonce": "36 − 21 − 2 − 5 + 35 − 39 + 34 − 9",
+      "enonce": "21 − 2 − 17 + 23 − 23 + 30 − 5 − 20",
       "aide": "Calcule de gauche à droite, étape par étape."
     },
     "reponse": {
-      "valeur": 29
+      "valeur": 7
     },
     "meta": {
       "auteur": "generation-automatique (tools/generer_memo_concentration.py)",
@@ -101,11 +101,11 @@
     ],
     "cap_complexite": "7 opérations maximum",
     "contenu": {
-      "enonce": "46 − 17 − 20 + 5 + 18 + 15 − 42 − 3",
+      "enonce": "9 − 6 + 27 + 26 + 19 + 36 − 22 + 6",
       "aide": "Calcule de gauche à droite, étape par étape."
     },
     "reponse": {
-      "valeur": 2
+      "valeur": 95
     },
     "meta": {
       "auteur": "generation-automatique (tools/generer_memo_concentration.py)",
@@ -130,11 +130,11 @@
     ],
     "cap_complexite": "7 opérations maximum",
     "contenu": {
-      "enonce": "36 − 32 + 11 − 9 + 49 − 11 − 17 + 46",
+      "enonce": "48 − 31 + 45 − 19 − 10 − 22 − 3 − 6",
       "aide": "Calcule de gauche à droite, étape par étape."
     },
     "reponse": {
-      "valeur": 73
+      "valeur": 2
     },
     "meta": {
       "auteur": "generation-automatique (tools/generer_memo_concentration.py)",
@@ -159,11 +159,11 @@
     ],
     "cap_complexite": "7 opérations maximum",
     "contenu": {
-      "enonce": "15 − 12 + 25 − 12 − 13 + 48 + 12 − 26",
+      "enonce": "30 + 32 − 48 + 11 − 6 − 3 + 3 + 7",
       "aide": "Calcule de gauche à droite, étape par étape."
     },
     "reponse": {
-      "valeur": 37
+      "valeur": 26
     },
     "meta": {
       "auteur": "generation-automatique (tools/generer_memo_concentration.py)",
@@ -188,11 +188,11 @@
     ],
     "cap_complexite": "7 opérations maximum",
     "contenu": {
-      "enonce": "20 + 37 + 22 − 49 + 43 − 23 + 16 − 29",
+      "enonce": "13 − 4 − 7 + 4 − 3 + 34 − 21 − 2",
       "aide": "Calcule de gauche à droite, étape par étape."
     },
     "reponse": {
-      "valeur": 37
+      "valeur": 14
     },
     "meta": {
       "auteur": "generation-automatique (tools/generer_memo_concentration.py)",
@@ -217,11 +217,11 @@
     ],
     "cap_complexite": "7 opérations maximum",
     "contenu": {
-      "enonce": "29 − 17 + 23 − 18 − 2 − 2 − 11 + 45",
+      "enonce": "44 + 47 − 19 − 24 − 38 + 32 − 37 + 25",
       "aide": "Calcule de gauche à droite, étape par étape."
     },
     "reponse": {
-      "valeur": 47
+      "valeur": 30
     },
     "meta": {
       "auteur": "generation-automatique (tools/generer_memo_concentration.py)",
@@ -246,11 +246,11 @@
     ],
     "cap_complexite": "7 opérations maximum",
     "contenu": {
-      "enonce": "3 + 40 − 6 + 27 − 3 − 32 − 23 − 3",
+      "enonce": "38 + 7 − 4 − 16 + 13 + 22 − 10 − 8",
       "aide": "Calcule de gauche à droite, étape par étape."
     },
     "reponse": {
-      "valeur": 3
+      "valeur": 42
     },
     "meta": {
       "auteur": "generation-automatique (tools/generer_memo_concentration.py)",
@@ -275,11 +275,11 @@
     ],
     "cap_complexite": "7 opérations maximum",
     "contenu": {
-      "enonce": "29 + 22 − 30 − 3 + 3 − 12 + 27 + 28",
+      "enonce": "29 + 33 + 34 − 16 + 13 − 17 + 30 + 38",
       "aide": "Calcule de gauche à droite, étape par étape."
     },
     "reponse": {
-      "valeur": 64
+      "valeur": 144
     },
     "meta": {
       "auteur": "generation-automatique (tools/generer_memo_concentration.py)",
@@ -304,11 +304,11 @@
     ],
     "cap_complexite": "7 opérations maximum",
     "contenu": {
-      "enonce": "18 − 9 + 22 − 2 + 45 + 40 + 25 + 32",
+      "enonce": "33 + 20 + 29 − 19 − 10 − 11 + 44 + 23",
       "aide": "Calcule de gauche à droite, étape par étape."
     },
     "reponse": {
-      "valeur": 171
+      "valeur": 109
     },
     "meta": {
       "auteur": "generation-automatique (tools/generer_memo_concentration.py)",
@@ -333,11 +333,11 @@
     ],
     "cap_complexite": "7 opérations maximum",
     "contenu": {
-      "enonce": "35 − 22 − 5 − 4 + 45 + 38 + 2 − 38",
+      "enonce": "28 + 23 − 47 + 48 − 42 + 10 − 18 + 14",
       "aide": "Calcule de gauche à droite, étape par étape."
     },
     "reponse": {
-      "valeur": 51
+      "valeur": 16
     },
     "meta": {
       "auteur": "generation-automatique (tools/generer_memo_concentration.py)",
@@ -367,22 +367,22 @@
         "mode": "sequence",
         "duree_par_item_ms": 1000,
         "elements": [
-          "4",
+          "7",
           "F",
-          "3",
-          "H",
-          "S",
-          "S",
           "N",
-          "A",
-          "4"
+          "L",
+          "J",
+          "K",
+          "7",
+          "H",
+          "1"
         ]
       },
       "enonce": "Quelle était la somme des chiffres ?",
       "aide": null
     },
     "reponse": {
-      "valeur": 11
+      "valeur": 15
     },
     "meta": {
       "auteur": "generation-automatique (tools/generer_memo_concentration.py)",
@@ -413,21 +413,21 @@
         "duree_par_item_ms": 1000,
         "elements": [
           "2",
-          "N",
-          "G",
-          "9",
-          "H",
-          "9",
-          "N",
+          "C",
+          "L",
           "T",
-          "S"
+          "J",
+          "3",
+          "H",
+          "2",
+          "C"
         ]
       },
       "enonce": "Quelle était la somme des chiffres ?",
       "aide": null
     },
     "reponse": {
-      "valeur": 20
+      "valeur": 7
     },
     "meta": {
       "auteur": "generation-automatique (tools/generer_memo_concentration.py)",
@@ -458,21 +458,21 @@
         "duree_par_item_ms": 1000,
         "elements": [
           "T",
+          "8",
+          "E",
+          "L",
+          "1",
           "T",
-          "5",
           "J",
-          "C",
           "4",
-          "T",
-          "3",
-          "R"
+          "F"
         ]
       },
       "enonce": "Quelle était la somme des chiffres ?",
       "aide": null
     },
     "reponse": {
-      "valeur": 12
+      "valeur": 13
     },
     "meta": {
       "auteur": "generation-automatique (tools/generer_memo_concentration.py)",
@@ -502,22 +502,22 @@
         "mode": "sequence",
         "duree_par_item_ms": 1000,
         "elements": [
-          "C",
-          "S",
-          "J",
-          "9",
-          "F",
           "4",
-          "G",
-          "C",
-          "3"
+          "H",
+          "A",
+          "5",
+          "L",
+          "N",
+          "T",
+          "9",
+          "S"
         ]
       },
       "enonce": "Quelle était la somme des chiffres ?",
       "aide": null
     },
     "reponse": {
-      "valeur": 16
+      "valeur": 18
     },
     "meta": {
       "auteur": "generation-automatique (tools/generer_memo_concentration.py)",
@@ -547,22 +547,22 @@
         "mode": "sequence",
         "duree_par_item_ms": 1000,
         "elements": [
-          "9",
-          "K",
-          "6",
-          "G",
-          "K",
-          "8",
-          "C",
-          "E",
-          "C"
+          "2",
+          "L",
+          "H",
+          "N",
+          "S",
+          "T",
+          "3",
+          "S",
+          "7"
         ]
       },
       "enonce": "Quelle était la somme des chiffres ?",
       "aide": null
     },
     "reponse": {
-      "valeur": 23
+      "valeur": 12
     },
     "meta": {
       "auteur": "generation-automatique (tools/generer_memo_concentration.py)",
@@ -592,22 +592,22 @@
         "mode": "sequence",
         "duree_par_item_ms": 1000,
         "elements": [
+          "C",
+          "5",
           "E",
-          "7",
-          "S",
-          "7",
-          "T",
+          "N",
+          "8",
           "J",
-          "G",
           "1",
-          "L"
+          "H",
+          "R"
         ]
       },
       "enonce": "Quelle était la somme des chiffres ?",
       "aide": null
     },
     "reponse": {
-      "valeur": 15
+      "valeur": 14
     },
     "meta": {
       "auteur": "generation-automatique (tools/generer_memo_concentration.py)",

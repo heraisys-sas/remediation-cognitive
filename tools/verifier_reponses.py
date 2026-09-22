@@ -40,7 +40,7 @@ MOTIF_NOMBRE_AVANT = re.compile(r"(\d+)\s*positions?\s*avant la fin")
 
 #: Familles pour lesquelles une réponse est recalculable automatiquement.
 FAMILLES_CALCULABLES = {
-    "empan", "n-back", "paires-associatives", "chaine-calcul",
+    "empan", "empan-mots", "n-back", "paires-associatives", "chaine-calcul",
     "double-tache", "serie-manquante",
 }
 
@@ -82,6 +82,16 @@ def verifier_item(item: dict) -> list[str]:
         attendu = "".join(reversed(elements)) if ("invers" in bas or "envers" in bas) else "".join(elements)
         if str(reponse) != attendu:
             anomalies.append(f"{ident} : attendu {attendu!r}, fichier {reponse!r}")
+
+    elif typ == "empan-mots":
+        elements = contenu.get("affichage", {}).get("elements", [])
+        bas = enonce.lower()
+        inverse = "invers" in bas or "envers" in bas
+        attendu = " ".join(reversed(elements)) if inverse else " ".join(elements)
+        if str(reponse) != attendu:
+            anomalies.append(f"{ident} : attendu {attendu!r}, fichier {reponse!r}")
+        if len(set(elements)) != len(elements):
+            anomalies.append(f"{ident} : mot répété dans la séquence {elements}")
 
     elif typ == "n-back":
         elements = contenu.get("affichage", {}).get("elements", [])

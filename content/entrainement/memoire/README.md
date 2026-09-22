@@ -26,3 +26,24 @@ Contenu produit par `tools/generer_memo_concentration.py` (déterministe, graine
 ## Moteur
 
 Identique aux autres thèmes : paliers (90 % × 3 séances), FSRS, détection de fatigue. L'affichage temporisé (phase de mémorisation distincte de la question, stimulus masqué avant la saisie) est pris en charge par l'interface ; le temps de mémorisation ne compte pas dans `temps_ms`.
+
+## Empan de mots (sprint 4, paliers 9 à 12)
+
+Même logique que l'empan de chiffres, avec du matériel verbal : trois à cinq mots
+courts présentés un par un, à retranscrire **dans l'ordre** (puis à l'envers aux
+paliers 11 et 12). L'ordre est significatif : la comparaison se fait mot à mot,
+sans accents ni casse.
+
+- palier 9 : 3 mots, endroit · palier 10 : 4 mots, endroit · palier 11 : 5 mots,
+  endroit · palier 12 : 3 et 4 mots, envers.
+- Le rappel verbal est sensible à la similarité phonologique et au sens : le pool
+  est concret, court, et sans doublon dans une même séquence.
+
+## Rythme d'affichage (correctif sprint 4)
+
+Le rythme est d'environ **un élément par seconde** : 800 ms pour un chiffre,
+900 ms pour un mot, plus un **blanc de 120 ms** qui ne sert qu'à séparer
+visuellement les éléments — ce n'est pas une pause d'attente. L'interface affiche
+désormais le rythme explicitement (« 3 éléments · un toutes les 0,92 s ») au lieu
+d'une durée approximative qui pouvait se lire comme un temps de pause. Le
+validateur borne ce rythme entre 400 et 2000 ms par élément.

@@ -19,18 +19,18 @@
         "mode": "sequence",
         "duree_par_item_ms": 1000,
         "elements": [
-          "N",
-          "9",
+          "S",
           "C",
-          "L",
-          "1"
+          "8",
+          "E",
+          "5"
         ]
       },
       "enonce": "Quelle était la somme des chiffres ?",
       "aide": null
     },
     "reponse": {
-      "valeur": 10
+      "valeur": 13
     },
     "meta": {
       "auteur": "generation-automatique (tools/generer_memo_concentration.py)",
@@ -60,18 +60,18 @@
         "mode": "sequence",
         "duree_par_item_ms": 1000,
         "elements": [
-          "T",
-          "4",
-          "C",
-          "J",
-          "9"
+          "G",
+          "3",
+          "L",
+          "1",
+          "F"
         ]
       },
       "enonce": "Quelle était la somme des chiffres ?",
       "aide": null
     },
     "reponse": {
-      "valeur": 13
+      "valeur": 4
     },
     "meta": {
       "auteur": "generation-automatique (tools/generer_memo_concentration.py)",
@@ -101,18 +101,18 @@
         "mode": "sequence",
         "duree_par_item_ms": 1000,
         "elements": [
-          "2",
-          "C",
-          "J",
-          "K",
-          "1"
+          "N",
+          "L",
+          "9",
+          "E",
+          "9"
         ]
       },
       "enonce": "Quelle était la somme des chiffres ?",
       "aide": null
     },
     "reponse": {
-      "valeur": 3
+      "valeur": 18
     },
     "meta": {
       "auteur": "generation-automatique (tools/generer_memo_concentration.py)",
@@ -142,18 +142,18 @@
         "mode": "sequence",
         "duree_par_item_ms": 1000,
         "elements": [
-          "5",
-          "J",
+          "1",
           "R",
-          "5",
-          "C"
+          "8",
+          "G",
+          "N"
         ]
       },
       "enonce": "Quelle était la somme des chiffres ?",
       "aide": null
     },
     "reponse": {
-      "valeur": 10
+      "valeur": 9
     },
     "meta": {
       "auteur": "generation-automatique (tools/generer_memo_concentration.py)",
@@ -183,18 +183,18 @@
         "mode": "sequence",
         "duree_par_item_ms": 1000,
         "elements": [
-          "G",
-          "6",
-          "G",
+          "2",
+          "K",
+          "K",
           "S",
-          "7"
+          "3"
         ]
       },
       "enonce": "Quelle était la somme des chiffres ?",
       "aide": null
     },
     "reponse": {
-      "valeur": 13
+      "valeur": 5
     },
     "meta": {
       "auteur": "generation-automatique (tools/generer_memo_concentration.py)",
@@ -224,11 +224,11 @@
         "mode": "sequence",
         "duree_par_item_ms": 1000,
         "elements": [
-          "7",
-          "N",
-          "8",
-          "H",
-          "C"
+          "G",
+          "E",
+          "9",
+          "F",
+          "6"
         ]
       },
       "enonce": "Quelle était la somme des chiffres ?",
@@ -265,18 +265,18 @@
         "mode": "sequence",
         "duree_par_item_ms": 1000,
         "elements": [
-          "5",
           "H",
-          "K",
-          "1",
-          "R"
+          "3",
+          "N",
+          "4",
+          "S"
         ]
       },
       "enonce": "Quelle était la somme des chiffres ?",
       "aide": null
     },
     "reponse": {
-      "valeur": 6
+      "valeur": 7
     },
     "meta": {
       "auteur": "generation-automatique (tools/generer_memo_concentration.py)",
@@ -306,18 +306,18 @@
         "mode": "sequence",
         "duree_par_item_ms": 1000,
         "elements": [
-          "4",
-          "K",
+          "9",
           "T",
-          "5",
-          "S"
+          "G",
+          "L",
+          "7"
         ]
       },
       "enonce": "Quelle était la somme des chiffres ?",
       "aide": null
     },
     "reponse": {
-      "valeur": 9
+      "valeur": 16
     },
     "meta": {
       "auteur": "generation-automatique (tools/generer_memo_concentration.py)",
@@ -347,18 +347,18 @@
         "mode": "sequence",
         "duree_par_item_ms": 1000,
         "elements": [
-          "H",
-          "R",
-          "7",
-          "A",
-          "3"
+          "4",
+          "G",
+          "3",
+          "S",
+          "T"
         ]
       },
       "enonce": "Quelle était la somme des chiffres ?",
       "aide": null
     },
     "reponse": {
-      "valeur": 10
+      "valeur": 7
     },
     "meta": {
       "auteur": "generation-automatique (tools/generer_memo_concentration.py)",
@@ -388,18 +388,18 @@
         "mode": "sequence",
         "duree_par_item_ms": 1000,
         "elements": [
-          "8",
-          "T",
-          "N",
-          "N",
-          "1"
+          "J",
+          "3",
+          "R",
+          "K",
+          "9"
         ]
       },
       "enonce": "Quelle était la somme des chiffres ?",
       "aide": null
     },
     "reponse": {
-      "valeur": 9
+      "valeur": 12
     },
     "meta": {
       "auteur": "generation-automatique (tools/generer_memo_concentration.py)",
@@ -431,16 +431,16 @@
         "elements": [
           "8",
           "H",
-          "4",
-          "R",
-          "K"
+          "3",
+          "L",
+          "E"
         ]
       },
       "enonce": "Quelle était la somme des chiffres ?",
       "aide": null
     },
     "reponse": {
-      "valeur": 12
+      "valeur": 11
     },
     "meta": {
       "auteur": "generation-automatique (tools/generer_memo_concentration.py)",
@@ -470,18 +470,18 @@
         "mode": "sequence",
         "duree_par_item_ms": 1000,
         "elements": [
-          "7",
+          "S",
+          "3",
           "J",
-          "C",
-          "7",
-          "F"
+          "R",
+          "5"
         ]
       },
       "enonce": "Quelle était la somme des chiffres ?",
       "aide": null
     },
     "reponse": {
-      "valeur": 14
+      "valeur": 8
     },
     "meta": {
       "auteur": "generation-automatique (tools/generer_memo_concentration.py)",
@@ -511,18 +511,18 @@
         "mode": "sequence",
         "duree_par_item_ms": 1000,
         "elements": [
-          "S",
-          "3",
-          "G",
+          "2",
           "N",
-          "9"
+          "E",
+          "9",
+          "C"
         ]
       },
       "enonce": "Quelle était la somme des chiffres ?",
       "aide": null
     },
     "reponse": {
-      "valeur": 12
+      "valeur": 11
     },
     "meta": {
       "auteur": "generation-automatique (tools/generer_memo_concentration.py)",
@@ -553,17 +553,17 @@
         "duree_par_item_ms": 1000,
         "elements": [
           "6",
-          "J",
-          "6",
-          "J",
-          "T"
+          "T",
+          "E",
+          "R",
+          "8"
         ]
       },
       "enonce": "Quelle était la somme des chiffres ?",
       "aide": null
     },
     "reponse": {
-      "valeur": 12
+      "valeur": 14
     },
     "meta": {
       "auteur": "generation-automatique (tools/generer_memo_concentration.py)",
@@ -593,18 +593,18 @@
         "mode": "sequence",
         "duree_par_item_ms": 1000,
         "elements": [
-          "S",
           "J",
-          "2",
-          "R",
-          "9"
+          "5",
+          "K",
+          "5",
+          "N"
         ]
       },
       "enonce": "Quelle était la somme des chiffres ?",
       "aide": null
     },
     "reponse": {
-      "valeur": 11
+      "valeur": 10
     },
     "meta": {
       "auteur": "generation-automatique (tools/generer_memo_concentration.py)",
@@ -634,18 +634,18 @@
         "mode": "sequence",
         "duree_par_item_ms": 1000,
         "elements": [
-          "9",
-          "J",
-          "E",
-          "9",
-          "J"
+          "L",
+          "4",
+          "G",
+          "6",
+          "K"
         ]
       },
       "enonce": "Quelle était la somme des chiffres ?",
       "aide": null
     },
     "reponse": {
-      "valeur": 18
+      "valeur": 10
     },
     "meta": {
       "auteur": "generation-automatique (tools/generer_memo_concentration.py)",
@@ -675,18 +675,18 @@
         "mode": "sequence",
         "duree_par_item_ms": 1000,
         "elements": [
+          "7",
+          "E",
           "J",
-          "2",
-          "J",
-          "1",
-          "J"
+          "8",
+          "N"
         ]
       },
       "enonce": "Quelle était la somme des chiffres ?",
       "aide": null
     },
     "reponse": {
-      "valeur": 3
+      "valeur": 15
     },
     "meta": {
       "auteur": "generation-automatique (tools/generer_memo_concentration.py)",
@@ -716,18 +716,18 @@
         "mode": "sequence",
         "duree_par_item_ms": 1000,
         "elements": [
-          "K",
-          "A",
-          "1",
-          "R",
-          "7"
+          "7",
+          "J",
+          "G",
+          "S",
+          "3"
         ]
       },
       "enonce": "Quelle était la somme des chiffres ?",
       "aide": null
     },
     "reponse": {
-      "valeur": 8
+      "valeur": 10
     },
     "meta": {
       "auteur": "generation-automatique (tools/generer_memo_concentration.py)",
