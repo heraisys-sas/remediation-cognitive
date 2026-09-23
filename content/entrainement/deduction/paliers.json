@@ -1,0 +1,30 @@
+{
+  "theme": "deduction",
+  "paliers": [
+    {
+      "id": "de-palier-1",
+      "description": "Indices directs, peu de recoupements",
+      "prerequis": [],
+      "fichier": "paliers/palier-01.json",
+      "nb_items": 4
+    },
+    {
+      "id": "de-palier-2",
+      "description": "Indices de ligne et de colonne à recouper",
+      "prerequis": [
+        "de-palier-1"
+      ],
+      "fichier": "paliers/palier-02.json",
+      "nb_items": 4
+    },
+    {
+      "id": "de-palier-3",
+      "description": "Indices négatifs : il faut éliminer pour déduire",
+      "prerequis": [
+        "de-palier-2"
+      ],
+      "fichier": "paliers/palier-03.json",
+      "nb_items": 4
+    }
+  ]
+}

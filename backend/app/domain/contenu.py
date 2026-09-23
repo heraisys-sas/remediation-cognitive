@@ -29,6 +29,7 @@ _SOURCES_PAR_THEME: dict[str, tuple[str, str]] = {
     "concentration": ("concentration/paliers", "palier-*.json"),
     "rappel-series": ("rappel-series/paliers", "palier-*.json"),
     "quotidien": ("quotidien/paliers", "palier-*.json"),
+    "deduction": ("deduction/paliers", "palier-*.json"),
     "evocation": ("evocation/paliers", "palier-*.json"),
     "social": ("social/paliers", "palier-*.json"),
 }

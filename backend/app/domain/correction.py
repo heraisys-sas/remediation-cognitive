@@ -145,6 +145,18 @@ def _corriger_estimation(item: dict, reponse) -> bool:
     return _corriger_numerique(reponse, reponse_item.get("valeur"))
 
 
+def _corriger_grille(item: dict, reponse) -> bool:
+    """Grille de déduction : la grille soumise doit être exacte (9 cases).
+
+    La réponse est une chaîne « figure:couleur;… » (ordre de lecture) ; la
+    comparaison est insensible à la casse, le découpage sur « ; ».
+    """
+    attendue = str((item.get("reponse") or {}).get("valeur") or "")
+    cellules_attendues = [c.strip().lower() for c in attendue.split(";") if c.strip()]
+    cellules_donnees = [c.strip().lower() for c in str(reponse or "").split(";") if c.strip()]
+    return cellules_donnees == cellules_attendues
+
+
 def corriger(theme: str, item: dict, reponse) -> bool:
     """Retourne True si la réponse soumise correspond à la réponse attendue.
 
@@ -158,6 +170,8 @@ def corriger(theme: str, item: dict, reponse) -> bool:
     attendue = (item.get("reponse") or {}).get("valeur")
     if theme in ("calcul-mental", "concentration"):
         return _corriger_numerique(reponse, attendue)
+    if theme == "deduction":
+        return _corriger_grille(item, reponse)
     if theme == "quotidien":
         if item.get("type") == "estimation-temps":
             return _corriger_estimation(item, reponse)

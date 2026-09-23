@@ -25,6 +25,7 @@ THEMES_ATTENDUS = {
     "social",
     "rappel-series",
     "quotidien",
+    "deduction",
 }
 
 

@@ -46,6 +46,10 @@ VOCABULAIRES = {
                 "nom": "Au quotidien",
                 "description": "Mémoire de travail, planification et anticipation dans des situations de la vie",
             },
+            "deduction": {
+                "nom": "Déduction",
+                "description": "Grilles logiques 3×3 : figures et couleurs à placer en recoupant les indices",
+            },
             "concentration": {
                 "nom": "Concentration",
                 "description": "Calculs chaînés, double tâche et séries — une attention qui tient",

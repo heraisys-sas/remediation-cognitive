@@ -2,6 +2,14 @@
 
 Format : [date] — [périmètre] — description. Les retours informels de l'orthophoniste sont journalisés ici, sans caution clinique.
 
+## 2026-09-24 · Déduction — grille logique 3×3 (figures × couleurs)
+
+- **Nouvel exercice** — thème « Déduction » (12 grilles, 3 paliers) : grille 3×3 à remplir avec 3 figures et 3 couleurs, chaque figure et chaque couleur une fois par ligne et par colonne (carré latin), à résoudre en **recoupant six indices** (directs → ligne/colonne → négatifs). Sollicite raisonnement, mémoire de travail et fonctions exécutives.
+- **Garanties** — chaque indice est vrai pour la solution (contrôle du validateur) ; les six indices déterminent la solution **de façon unique** (solveur intégré au générateur `tools/generer_deduction.py` : la génération échoue en cas d'ambiguïté).
+- **Interface** — palette de 9 jetons (figure × couleur), placement par clic, bouton « Vider la grille », correction qui affiche les cases justes et fausses. La solution ne fuit jamais avant validation (test de non-divulgation).
+- **Contrôles** — validateur 64 fichiers / **775 items / 0 erreur** ; réponses recalculées 0 anomalie ; garde-fous cliniques sans violation ; **124 tests** (2 nouveaux : correction exacte/inexacte, cohérence des indices avec la solution).
+- **À vérifier** — l'interaction de placement est nouvelle : un passage visuel dans le navigateur reste à faire ; relecture orthophoniste à faire.
+
 ## 2026-09-23 · Remédiation — exercices fonctionnels (retournement de cadrage)
 
 - **Constat d'orthophoniste** — les exercices précédents (empan, n-back, chaînes de calcul, séries) sont des **entraînements aux tests d'évaluation**, pas de la remédiation : ils mesurent une fonction, s'y entraîner transfère peu à la vie quotidienne. Retournement acté dans `docs/10-clinique/remediation.md` : on ne développe plus d'exercice d'allure évaluative ; on remédie la fonction **dans des situations de vie, avec des stratégies**, pour qu'elle se transfère. Les épreuves existantes seront **déplacées vers une section « évaluation »** quand ce module existera (elles restent utiles comme repères de progression).

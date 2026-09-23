@@ -71,6 +71,7 @@ const refs = {
   zoneMemo: $("zone-memo"),
   zoneChoix: $("zone-choix"),
   zoneIndices: $("zone-indices"),
+  zoneGrille: $("zone-grille"),
   zoneAide: $("zone-aide"),
   texteAide: $("texte-aide"),
   formulaire: $("formulaire-reponse"),
@@ -124,6 +125,8 @@ const etat = {
   missionActive: null,     // mission en cours de notation
   reponseSoumise: "",      // dernière réponse envoyée (comparaison d'affichage)
   themesParId: new Map(),  // thèmes indexés par identifiant (écran programme)
+  grille: null,            // grille de déduction : 9 cases (jeton « figure:couleur » ou null)
+  jetonChoisi: null,       // jeton de la palette actuellement sélectionné
 };
 
 /* ---------------------------------------------------------------------
@@ -654,6 +657,8 @@ function jouerDelaiOuQuestion(item) {
 function afficherQuestion(item) {
   annulerMemo();
   const contenu = item.contenu || {};
+  refs.zoneGrille.hidden = true;
+  refs.zoneGrille.replaceChildren();
 
   // Énoncé : grand texte ; variante monospace pour la prédiction de sortie.
   refs.enonce.textContent = contenu.enonce ?? "";
@@ -667,6 +672,21 @@ function afficherQuestion(item) {
   } else {
     refs.texteAide.textContent = "";
     refs.zoneAide.hidden = true;
+  }
+
+  // Grille de déduction : placement de jetons, pas de saisie de texte.
+  if (item.type === "grille-deduction") {
+    refs.formulaire.hidden = true;
+    refs.zoneChoix.hidden = true;
+    refs.zoneIndices.hidden = true;
+    refs.carteFeedback.hidden = true;
+    refs.boutonSuivant.hidden = true;
+    rendreGrille(item);
+    reglerEtatBoutons();
+    etat.debutQuestion = Date.now();
+    const premier = refs.zoneGrille.querySelector(".jeton");
+    if (premier) premier.focus();
+    return;
   }
 
   // Champ de saisie : remise à zéro OBLIGATOIRE à chaque nouvelle question
@@ -837,6 +857,10 @@ async function soumettreValeur(brut, indiceUtilise) {
 
 /** Rend le feedback dans la carte aria-live="polite". */
 function rendreFeedback(resultat) {
+  if (etat.theme && etat.theme.id === "deduction") {
+    rendreFeedbackGrille(resultat);
+    return;
+  }
   const correcte = Boolean(resultat.correcte);
   const assistee = Boolean(resultat.assistee);
   // Rappel libre : la réponse attendue est une LISTE de mots — on montre ce qui
@@ -1307,6 +1331,160 @@ function rendreRegles(regles) {
 function nomTheme(identifiant) {
   const theme = etat.themesParId.get(identifiant);
   return theme ? theme.nom : identifiant;
+}
+
+/* ---------------------------------------------------------------------
+   Grille de déduction 3×3 : figures × couleurs, indices à recouper
+   --------------------------------------------------------------------- */
+
+const GLYPHES = { cercle: "●", carre: "■", triangle: "▲" };
+const TEINTES = { rouge: "#e2574c", bleu: "#5b8dd9", vert: "#5aa469" };
+const NOMS_CASES = [
+  "en haut à gauche", "en haut au centre", "en haut à droite",
+  "au milieu à gauche", "au centre", "au milieu à droite",
+  "en bas à gauche", "en bas au centre", "en bas à droite",
+];
+const NOMS_LIGNES = ["du haut", "du milieu", "du bas"];
+const NOMS_COLONNES = ["de gauche", "du centre", "de droite"];
+
+/** Formule un indice structuré en français lisible. */
+function formaterEnonce(indice) {
+  switch (indice.type) {
+    case "case-couleur": return `La case ${NOMS_CASES[indice.case]} est ${indice.couleur}.`;
+    case "case-figure": return `La case ${NOMS_CASES[indice.case]} contient un ${indice.figure} ${GLYPHES[indice.figure]}.`;
+    case "ligne": return `Le ${indice.figure} ${GLYPHES[indice.figure]} est sur la ligne ${NOMS_LIGNES[indice.ligne]}.`;
+    case "colonne": return `Le ${indice.couleur} est dans la colonne ${NOMS_COLONNES[indice.colonne]}.`;
+    case "pas-couleur": return `La case ${NOMS_CASES[indice.case]} n'est pas ${indice.couleur}.`;
+    case "pas-figure": return `La case ${NOMS_CASES[indice.case]} ne contient pas de ${indice.figure}.`;
+    case "regle":
+      return indice.variante === 0
+        ? "Chaque ligne contient les trois couleurs."
+        : "Chaque colonne contient les trois figures.";
+    default: return "";
+  }
+}
+
+/** Affiche la grille, la palette de jetons et les indices d'une grille de déduction. */
+function rendreGrille(item) {
+  const contenu = item.contenu;
+  etat.grille = Array(9).fill(null);
+  etat.jetonChoisi = null;
+
+  const plateau = creerElement("div", { classe: "grille-3x3" });
+  const cellules = [];
+  for (let c = 0; c < 9; c++) {
+    const bouton = creerElement("button", {
+      classe: "cellule",
+      attributs: { type: "button", "aria-label": NOMS_CASES[c] },
+    });
+    bouton.addEventListener("click", () => placerCellule(c, bouton));
+    plateau.append(bouton);
+    cellules.push(bouton);
+  }
+
+  const palette = creerElement("div", { classe: "palette", attributs: { "aria-label": "Jetons disponibles" } });
+  const jetons = [];
+  for (const couleur of contenu.couleurs) {
+    for (const figure of contenu.figures) {
+      const jeton = creerElement("button", {
+        classe: "jeton",
+        texte: GLYPHES[figure],
+        attributs: {
+          type: "button",
+          "aria-label": `${figure} ${couleur}`,
+          "data-jeton": `${figure}:${couleur}`,
+        },
+      });
+      jeton.style.color = TEINTES[couleur];
+      jeton.addEventListener("click", () => {
+        etat.jetonChoisi = `${figure}:${couleur}`;
+        for (const j of jetons) j.classList.remove("jeton-actif");
+        jeton.classList.add("jeton-actif");
+      });
+      palette.append(jeton);
+      jetons.push(jeton);
+    }
+  }
+
+  const boutonVider = creerElement("button", {
+    classe: "bouton bouton-secondaire",
+    texte: "Vider la grille",
+    attributs: { type: "button" },
+  });
+  boutonVider.addEventListener("click", () => {
+    etat.grille = Array(9).fill(null);
+    etat.jetonChoisi = null;
+    for (const j of jetons) j.classList.remove("jeton-actif");
+    for (const b of cellules) { b.textContent = ""; b.style.color = ""; }
+  });
+
+  const boutonValider = creerElement("button", {
+    classe: "bouton bouton-primaire bouton-large",
+    texte: "Valider",
+    attributs: { type: "button" },
+  });
+  boutonValider.addEventListener("click", () => {
+    if (etat.grille.every(Boolean)) soumettreGrille();
+  });
+
+  const indices = creerElement("ul", { classe: "grille-indices" },
+    ...contenu.enonces.map((e) => creerElement("li", { texte: formaterEnonce(e) }))
+  );
+
+  refs.zoneGrille.replaceChildren(
+    creerElement("div", { classe: "grille-corps" }, plateau, palette),
+    indices,
+    creerElement("div", { classe: "grille-actions" }, boutonVider, boutonValider)
+  );
+  refs.zoneGrille.hidden = false;
+
+  function placerCellule(c, bouton) {
+    if (!etat.jetonChoisi) return;
+    if (etat.grille[c] === etat.jetonChoisi) {
+      etat.grille[c] = null;
+      bouton.textContent = "";
+      bouton.style.color = "";
+    } else {
+      etat.grille[c] = etat.jetonChoisi;
+      const [figure, couleur] = etat.jetonChoisi.split(":");
+      bouton.textContent = GLYPHES[figure];
+      bouton.style.color = TEINTES[couleur];
+    }
+  }
+}
+
+/** Envoie la grille au serveur (chaîne « figure:couleur;… », ordre de lecture). */
+async function soumettreGrille() {
+  const chaine = etat.grille.map((cellule) => cellule || "").join(";");
+  await soumettreValeur(chaine, null);
+}
+
+/** Feedback dédié : solution affichée, cases justes et fausses distinguées. */
+function rendreFeedbackGrille(resultat) {
+  const solution = String(resultat.attendue || "").split(";");
+  refs.carteFeedback.replaceChildren();
+  refs.carteFeedback.className =
+    "carte-feedback " + (resultat.correcte ? "feedback-correct" : "feedback-incorrect");
+  refs.carteFeedback.append(
+    creerElement("p", {
+      classe: "feedback-titre",
+      texte: resultat.correcte ? "✓ Grille exacte !" : "✕ Pas tout à fait",
+    })
+  );
+  const plateau = creerElement("div", { classe: "grille-3x3 grille-solution" });
+  for (let c = 0; c < 9; c++) {
+    const cellule = creerElement("div", { classe: "cellule-solution" });
+    const [figure, couleur] = (solution[c] || ":").split(":");
+    cellule.textContent = GLYPHES[figure] || "";
+    cellule.style.color = TEINTES[couleur] || "";
+    cellule.classList.add(etat.grille && etat.grille[c] === solution[c] ? "bonne" : "mauvaise");
+    plateau.append(cellule);
+  }
+  refs.carteFeedback.append(plateau);
+  refs.carteFeedback.append(
+    creerElement("p", { classe: "feedback-commentaire", texte: resultat.feedback })
+  );
+  refs.carteFeedback.hidden = false;
 }
 
 /* ---------------------------------------------------------------------

@@ -749,3 +749,80 @@ body {
   color: var(--texte);
   font-size: 0.97rem;
 }
+
+/* ---------------------------------------------------------------------
+   Grille de déduction 3×3 : figures × couleurs, indices à recouper
+   --------------------------------------------------------------------- */
+
+.zone-grille { margin-top: 1.25rem; display: grid; gap: 1rem; }
+
+.grille-corps {
+  display: grid;
+  grid-template-columns: auto 1fr;
+  gap: 1rem;
+  align-items: start;
+  justify-items: center;
+}
+
+.grille-3x3 {
+  display: grid;
+  grid-template-columns: repeat(3, 3.4rem);
+  grid-auto-rows: 3.4rem;
+  gap: 0.4rem;
+}
+
+.cellule {
+  font-size: 1.6rem;
+  line-height: 1;
+  background: var(--surface-haute);
+  border: 1px solid var(--bordure);
+  border-radius: 10px;
+  cursor: pointer;
+  min-height: 0;
+  padding: 0;
+}
+
+.cellule:hover { border-color: var(--accent); }
+
+.palette {
+  display: grid;
+  grid-template-columns: repeat(3, 2.7rem);
+  grid-auto-rows: 2.7rem;
+  gap: 0.35rem;
+}
+
+.jeton {
+  font-size: 1.3rem;
+  line-height: 1;
+  background: var(--surface-haute);
+  border: 1px solid var(--bordure);
+  border-radius: 8px;
+  cursor: pointer;
+  padding: 0;
+}
+
+.jeton-actif {
+  border-color: var(--accent);
+  outline: 2px solid var(--accent);
+  outline-offset: 1px;
+}
+
+.grille-indices { margin: 0; padding-left: 1.2rem; display: grid; gap: 0.4rem; }
+
+.grille-actions { display: grid; gap: 0.6rem; }
+
+.cellule-solution {
+  display: grid;
+  place-items: center;
+  font-size: 1.4rem;
+  border-radius: 8px;
+  border: 1px solid var(--bordure);
+}
+
+.cellule-solution.bonne { background: var(--succes-fond); }
+.cellule-solution.mauvaise { background: var(--imprecision-fond); }
+
+@media (max-width: 30rem) {
+  .grille-corps { grid-template-columns: 1fr; }
+  .palette { grid-template-columns: repeat(3, 3rem); }
+}
