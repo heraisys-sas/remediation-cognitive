@@ -1,0 +1,422 @@
+[
+  {
+    "id": "qo-6-solution-01",
+    "type": "meilleure-solution",
+    "module": "entrainement",
+    "theme": "quotidien",
+    "fonctions_ciblees": [
+      "planification",
+      "fonctions-executives"
+    ],
+    "palier": 6,
+    "prerequis": [
+      "qo-palier-5"
+    ],
+    "cap_complexite": null,
+    "contenu": {
+      "consigne": "Choisis l'action la plus utile. Astuce : commence par ce qui est simple et vérifiable.",
+      "enonce": "La lumière de la salle de bain ne s'allume plus.",
+      "options": [
+        "Changer toute l'installation",
+        "Appeler un électricien sans rien vérifier",
+        "Vérifier l'ampoule puis le disjoncteur"
+      ],
+      "aide": "La bonne solution est souvent la plus simple et la plus directe."
+    },
+    "reponse": {
+      "valeur": "Vérifier l'ampoule puis le disjoncteur"
+    },
+    "meta": {
+      "auteur": "redaction-assistee (tools/generer_quotidien.py)",
+      "date_creation": "2026-09-23",
+      "relecture_ortho": {
+        "statut": "a_revoir"
+      }
+    }
+  },
+  {
+    "id": "qo-6-solution-02",
+    "type": "meilleure-solution",
+    "module": "entrainement",
+    "theme": "quotidien",
+    "fonctions_ciblees": [
+      "planification",
+      "fonctions-executives"
+    ],
+    "palier": 6,
+    "prerequis": [
+      "qo-palier-5"
+    ],
+    "cap_complexite": null,
+    "contenu": {
+      "consigne": "Choisis l'action la plus utile. Astuce : commence par ce qui est simple et vérifiable.",
+      "enonce": "Tu as oublié un rendez-vous.",
+      "options": [
+        "Te reprocher de l'avoir oublié",
+        "Le noter avec une alarme dès maintenant",
+        "Ne plus prendre de rendez-vous"
+      ],
+      "aide": "La bonne solution est souvent la plus simple et la plus directe."
+    },
+    "reponse": {
+      "valeur": "Le noter avec une alarme dès maintenant"
+    },
+    "meta": {
+      "auteur": "redaction-assistee (tools/generer_quotidien.py)",
+      "date_creation": "2026-09-23",
+      "relecture_ortho": {
+        "statut": "a_revoir"
+      }
+    }
+  },
+  {
+    "id": "qo-6-solution-03",
+    "type": "meilleure-solution",
+    "module": "entrainement",
+    "theme": "quotidien",
+    "fonctions_ciblees": [
+      "planification",
+      "fonctions-executives"
+    ],
+    "palier": 6,
+    "prerequis": [
+      "qo-palier-5"
+    ],
+    "cap_complexite": null,
+    "contenu": {
+      "consigne": "Choisis l'action la plus utile. Astuce : commence par ce qui est simple et vérifiable.",
+      "enonce": "Tu ne retrouves plus tes papiers.",
+      "options": [
+        "Les laisser là où ils tombent",
+        "Leur créer une place fixe et les y ranger",
+        "Chercher partout à chaque fois"
+      ],
+      "aide": "La bonne solution est souvent la plus simple et la plus directe."
+    },
+    "reponse": {
+      "valeur": "Leur créer une place fixe et les y ranger"
+    },
+    "meta": {
+      "auteur": "redaction-assistee (tools/generer_quotidien.py)",
+      "date_creation": "2026-09-23",
+      "relecture_ortho": {
+        "statut": "a_revoir"
+      }
+    }
+  },
+  {
+    "id": "qo-6-solution-04",
+    "type": "meilleure-solution",
+    "module": "entrainement",
+    "theme": "quotidien",
+    "fonctions_ciblees": [
+      "planification",
+      "fonctions-executives"
+    ],
+    "palier": 6,
+    "prerequis": [
+      "qo-palier-5"
+    ],
+    "cap_complexite": null,
+    "contenu": {
+      "consigne": "Choisis l'action la plus utile. Astuce : commence par ce qui est simple et vérifiable.",
+      "enonce": "Un formulaire te semble compliqué.",
+      "options": [
+        "Le remplir au hasard",
+        "Le laisser de côté",
+        "Le remplir section par section, et demander de l'aide si besoin"
+      ],
+      "aide": "La bonne solution est souvent la plus simple et la plus directe."
+    },
+    "reponse": {
+      "valeur": "Le remplir section par section, et demander de l'aide si besoin"
+    },
+    "meta": {
+      "auteur": "redaction-assistee (tools/generer_quotidien.py)",
+      "date_creation": "2026-09-23",
+      "relecture_ortho": {
+        "statut": "a_revoir"
+      }
+    }
+  },
+  {
+    "id": "qo-6-solution-05",
+    "type": "meilleure-solution",
+    "module": "entrainement",
+    "theme": "quotidien",
+    "fonctions_ciblees": [
+      "planification",
+      "fonctions-executives"
+    ],
+    "palier": 6,
+    "prerequis": [
+      "qo-palier-5"
+    ],
+    "cap_complexite": null,
+    "contenu": {
+      "consigne": "Choisis l'action la plus utile. Astuce : commence par ce qui est simple et vérifiable.",
+      "enonce": "Tu te sens perdu face à plusieurs tâches.",
+      "options": [
+        "Attendre que ça passe",
+        "Tout commencer en même temps",
+        "En choisir une, la finir, puis passer à la suivante"
+      ],
+      "aide": "La bonne solution est souvent la plus simple et la plus directe."
+    },
+    "reponse": {
+      "valeur": "En choisir une, la finir, puis passer à la suivante"
+    },
+    "meta": {
+      "auteur": "redaction-assistee (tools/generer_quotidien.py)",
+      "date_creation": "2026-09-23",
+      "relecture_ortho": {
+        "statut": "a_revoir"
+      }
+    }
+  },
+  {
+    "id": "qo-6-solution-06",
+    "type": "meilleure-solution",
+    "module": "entrainement",
+    "theme": "quotidien",
+    "fonctions_ciblees": [
+      "planification",
+      "fonctions-executives"
+    ],
+    "palier": 6,
+    "prerequis": [
+      "qo-palier-5"
+    ],
+    "cap_complexite": null,
+    "contenu": {
+      "consigne": "Choisis l'action la plus utile. Astuce : commence par ce qui est simple et vérifiable.",
+      "enonce": "Le bruit t'empêche de te concentrer.",
+      "options": [
+        "Réduire les sources de bruit ou faire une pause",
+        "Abandonner la tâche",
+        "Continuer en s'énervant"
+      ],
+      "aide": "La bonne solution est souvent la plus simple et la plus directe."
+    },
+    "reponse": {
+      "valeur": "Réduire les sources de bruit ou faire une pause"
+    },
+    "meta": {
+      "auteur": "redaction-assistee (tools/generer_quotidien.py)",
+      "date_creation": "2026-09-23",
+      "relecture_ortho": {
+        "statut": "a_revoir"
+      }
+    }
+  },
+  {
+    "id": "qo-6-solution-07",
+    "type": "meilleure-solution",
+    "module": "entrainement",
+    "theme": "quotidien",
+    "fonctions_ciblees": [
+      "planification",
+      "fonctions-executives"
+    ],
+    "palier": 6,
+    "prerequis": [
+      "qo-palier-5"
+    ],
+    "cap_complexite": null,
+    "contenu": {
+      "consigne": "Choisis l'action la plus utile. Astuce : commence par ce qui est simple et vérifiable.",
+      "enonce": "Tu as du mal à te souvenir des courses.",
+      "options": [
+        "Compter sur ta mémoire",
+        "Écrire une liste et la garder sur toi",
+        "Acheter au hasard"
+      ],
+      "aide": "La bonne solution est souvent la plus simple et la plus directe."
+    },
+    "reponse": {
+      "valeur": "Écrire une liste et la garder sur toi"
+    },
+    "meta": {
+      "auteur": "redaction-assistee (tools/generer_quotidien.py)",
+      "date_creation": "2026-09-23",
+      "relecture_ortho": {
+        "statut": "a_revoir"
+      }
+    }
+  },
+  {
+    "id": "qo-6-solution-08",
+    "type": "meilleure-solution",
+    "module": "entrainement",
+    "theme": "quotidien",
+    "fonctions_ciblees": [
+      "planification",
+      "fonctions-executives"
+    ],
+    "palier": 6,
+    "prerequis": [
+      "qo-palier-5"
+    ],
+    "cap_complexite": null,
+    "contenu": {
+      "consigne": "Choisis l'action la plus utile. Astuce : commence par ce qui est simple et vérifiable.",
+      "enonce": "Un rendez-vous change de jour.",
+      "options": [
+        "Le noter tout de suite au bon endroit",
+        "Le mémoriser de tête",
+        "S'en occuper plus tard"
+      ],
+      "aide": "La bonne solution est souvent la plus simple et la plus directe."
+    },
+    "reponse": {
+      "valeur": "Le noter tout de suite au bon endroit"
+    },
+    "meta": {
+      "auteur": "redaction-assistee (tools/generer_quotidien.py)",
+      "date_creation": "2026-09-23",
+      "relecture_ortho": {
+        "statut": "a_revoir"
+      }
+    }
+  },
+  {
+    "id": "qo-6-solution-09",
+    "type": "meilleure-solution",
+    "module": "entrainement",
+    "theme": "quotidien",
+    "fonctions_ciblees": [
+      "planification",
+      "fonctions-executives"
+    ],
+    "palier": 6,
+    "prerequis": [
+      "qo-palier-5"
+    ],
+    "cap_complexite": null,
+    "contenu": {
+      "consigne": "Choisis l'action la plus utile. Astuce : commence par ce qui est simple et vérifiable.",
+      "enonce": "Une tâche te paraît énorme.",
+      "options": [
+        "La faire d'un seul bloc",
+        "La découper en petites étapes",
+        "La reporter indéfiniment"
+      ],
+      "aide": "La bonne solution est souvent la plus simple et la plus directe."
+    },
+    "reponse": {
+      "valeur": "La découper en petites étapes"
+    },
+    "meta": {
+      "auteur": "redaction-assistee (tools/generer_quotidien.py)",
+      "date_creation": "2026-09-23",
+      "relecture_ortho": {
+        "statut": "a_revoir"
+      }
+    }
+  },
+  {
+    "id": "qo-6-solution-10",
+    "type": "meilleure-solution",
+    "module": "entrainement",
+    "theme": "quotidien",
+    "fonctions_ciblees": [
+      "planification",
+      "fonctions-executives"
+    ],
+    "palier": 6,
+    "prerequis": [
+      "qo-palier-5"
+    ],
+    "cap_complexite": null,
+    "contenu": {
+      "consigne": "Choisis l'action la plus utile. Astuce : commence par ce qui est simple et vérifiable.",
+      "enonce": "Tu te fatigues vite en lisant.",
+      "options": [
+        "Lire d'une traite jusqu'au bout",
+        "Faire des pauses courtes",
+        "Arrêter de lire"
+      ],
+      "aide": "La bonne solution est souvent la plus simple et la plus directe."
+    },
+    "reponse": {
+      "valeur": "Faire des pauses courtes"
+    },
+    "meta": {
+      "auteur": "redaction-assistee (tools/generer_quotidien.py)",
+      "date_creation": "2026-09-23",
+      "relecture_ortho": {
+        "statut": "a_revoir"
+      }
+    }
+  },
+  {
+    "id": "qo-6-solution-11",
+    "type": "meilleure-solution",
+    "module": "entrainement",
+    "theme": "quotidien",
+    "fonctions_ciblees": [
+      "planification",
+      "fonctions-executives"
+    ],
+    "palier": 6,
+    "prerequis": [
+      "qo-palier-5"
+    ],
+    "cap_complexite": null,
+    "contenu": {
+      "consigne": "Choisis l'action la plus utile. Astuce : commence par ce qui est simple et vérifiable.",
+      "enonce": "Tu hésites avant de demander un renseignement.",
+      "options": [
+        "Préparer ta question en une phrase",
+        "Renoncer à demander",
+        "Improviser sans savoir quoi dire"
+      ],
+      "aide": "La bonne solution est souvent la plus simple et la plus directe."
+    },
+    "reponse": {
+      "valeur": "Préparer ta question en une phrase"
+    },
+    "meta": {
+      "auteur": "redaction-assistee (tools/generer_quotidien.py)",
+      "date_creation": "2026-09-23",
+      "relecture_ortho": {
+        "statut": "a_revoir"
+      }
+    }
+  },
+  {
+    "id": "qo-6-solution-12",
+    "type": "meilleure-solution",
+    "module": "entrainement",
+    "theme": "quotidien",
+    "fonctions_ciblees": [
+      "planification",
+      "fonctions-executives"
+    ],
+    "palier": 6,
+    "prerequis": [
+      "qo-palier-5"
+    ],
+    "cap_complexite": null,
+    "contenu": {
+      "consigne": "Choisis l'action la plus utile. Astuce : commence par ce qui est simple et vérifiable.",
+      "enonce": "Ton téléphone sonne pendant que tu es occupé.",
+      "options": [
+        "Le mettre en silencieux et rappeler plus tard",
+        "Répondre en abandonnant ce que tu fais",
+        "Couper le téléphone"
+      ],
+      "aide": "La bonne solution est souvent la plus simple et la plus directe."
+    },
+    "reponse": {
+      "valeur": "Le mettre en silencieux et rappeler plus tard"
+    },
+    "meta": {
+      "auteur": "redaction-assistee (tools/generer_quotidien.py)",
+      "date_creation": "2026-09-23",
+      "relecture_ortho": {
+        "statut": "a_revoir"
+      }
+    }
+  }
+]

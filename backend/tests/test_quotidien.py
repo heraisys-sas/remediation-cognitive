@@ -77,6 +77,21 @@ def test_etape_suivante_planification(client, tmp_path):
     ).json()["correcte"] is False
 
 
+def test_familles_choix_initiation_intention_solution(client, tmp_path):
+    """Paliers 4 à 6 : initiation, plan « si-alors », résolution de problème."""
+    for palier, type_attendu in ((4, "par-ou-commencer"), (5, "si-alors"), (6, "meilleure-solution")):
+        _forcer_palier(tmp_path, "quotidien", palier)
+        payload = _demarrer(client, "quotidien")
+        item = payload["items"][0]
+        assert item["type"] == type_attendu
+        assert len(item["contenu"]["options"]) == 3
+        bonne = _attendue("quotidien", item["id"])
+        assert bonne in item["contenu"]["options"]
+        assert _repondre(
+            client, "quotidien", payload["session_id"], item["id"], bonne
+        ).json()["correcte"] is True
+
+
 def test_estimation_temps_fourchette(client, tmp_path):
     """Une estimation est correcte dans sa fourchette, pas en dehors."""
     _forcer_palier(tmp_path, "quotidien", 3)

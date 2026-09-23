@@ -204,6 +204,159 @@ def _item_estimation(numero: int, palier: int, prerequis: list[str]) -> dict:
     }
 
 
+# --- Initiation / planification : par où commencer ----------------------------
+#: (situation, première action adaptée, deux leurres)
+PAR_OU_COMMENCER = [
+    ("Tu dois ranger l'appartement avant l'arrivée d'un invité.",
+     "Ranger une pièce à la fois, en commençant par la plus visible",
+     ["Passer d'une pièce à l'autre au hasard", "Acheter de nouvelles étagères"]),
+    ("Tu prépares un dossier pour une demande d'aide.",
+     "Lister d'abord les documents demandés",
+     ["Rédiger la lettre sans savoir quoi joindre", "Attendre la date limite"]),
+    ("Tu organises un déménagement dans un mois.",
+     "Faire une liste des choses à faire et la classer par échéance",
+     ["Tout faire le dernier jour", "Espérer que ça se fasse tout seul"]),
+    ("Tu reprends un projet laissé de côté depuis des semaines.",
+     "Relire où tu t'étais arrêté",
+     ["Recommencer depuis le début", "Le laisser encore de côté"]),
+    ("Tu prépares un repas pour six personnes.",
+     "Vérifier les ingrédients et les quantités",
+     ["Allumer le four sans savoir quoi cuisiner", "Dresser la table d'abord"]),
+    ("Tu veux te remettre à une activité physique.",
+     "Choisir une activité simple et un créneau fixe",
+     ["Acheter tout l'équipement avant de commencer", "Attendre d'être en forme"]),
+    ("Tu as trois papiers administratifs à traiter.",
+     "Traiter d'abord celui dont l'échéance est la plus proche",
+     ["Les empiler et ne plus y toucher", "Tout faire en même temps"]),
+    ("Tu dois appeler pour faire une réclamation.",
+     "Noter en trois mots ce que tu veux dire avant d'appeler",
+     ["Appeler sans préparation", "Repousser l'appel"]),
+    ("Tu prépares un déplacement de deux jours.",
+     "Réserver le trajet et l'hébergement d'abord",
+     ["Choisir d'abord ce que tu mettras dans la valise", "Partir sans rien réserver"]),
+    ("Tu veux ranger les papiers de la maison.",
+     "Créer des dossiers par thème et tout y ranger",
+     ["Tout mettre dans un même carton", "Jeter sans trier"]),
+    ("Tu as un rendez-vous important demain matin.",
+     "Préparer les papiers et le trajet la veille",
+     ["Tout improviser le matin", "Annuler le rendez-vous"]),
+    ("Tu dois réparer un objet cassé.",
+     "Chercher la notice ou un tutoriel avant de démonter",
+     ["Démonter sans regarder comment c'est fait", "Le jeter directement"]),
+]
+
+
+# --- Mémoire prospective : implémentation d'intention (« si … alors … ») --------
+#: (chose à se rappeler de faire, plan « si-alors » efficace, deux leurres)
+SI_ALORS = [
+    ("Prendre ton traitement le soir.",
+     "Quand je me brosserai les dents, je prendrai le traitement",
+     ["J'essaierai d'y penser", "Je le prendrai si j'y pense"]),
+    ("Rendre un livre à la bibliothèque.",
+     "Quand je sortirai avec mon sac, je mettrai le livre dedans",
+     ["J'essaierai de m'en souvenir", "Je le rendrai un jour"]),
+    ("Arroser les plantes le dimanche.",
+     "Le dimanche après le café, j'arrose les plantes",
+     ["Je le ferai quand j'aurai le temps", "J'espère ne pas oublier"]),
+    ("Répondre à un message important.",
+     "Quand je m'installerai après le repas, je répondrai",
+     ["Je répondrai plus tard", "Je laisserai le message en attente"]),
+    ("Ne pas oublier le four allumé.",
+     "Je règle une minuterie dès que j'allume le four",
+     ["Je ferai attention", "Je vérifierai de temps en temps"]),
+    ("Payer une facture avant le 5.",
+     "Quand la facture arrivera, je la paie tout de suite",
+     ["Je la paierai à la dernière minute", "Je la classerai pour plus tard"]),
+    ("Toujours retrouver tes clés.",
+     "Je les pose toujours au même endroit, près de la porte",
+     ["Je les poserai où je peux", "Je les chercherai quand j'en aurai besoin"]),
+    ("Ne pas manquer le rendez-vous.",
+     "Je le note dans le téléphone avec une alarme la veille",
+     ["Je m'en souviendrai tout seul", "Je le retiendrai de tête"]),
+    ("Rappeler le médecin.",
+     "Je programme le rappel dans le téléphone maintenant",
+     ["Je rappellerai quand j'y penserai", "J'attendrai qu'on me rappelle"]),
+    ("Sortir les poubelles le jeudi soir.",
+     "Le jeudi soir après le dîner, je sors les poubelles",
+     ["Je les sortirai quand elles seront pleines", "J'attendrai de m'en souvenir"]),
+    ("Boire de l'eau dans la journée.",
+     "Je remplis une bouteille le matin et je la garde près de moi",
+     ["J'essaierai d'y penser", "Je boirai seulement quand j'aurai soif"]),
+    ("Ranger après avoir cuisiné.",
+     "Je range au fur et à mesure pendant la cuisson",
+     ["Je rangerai tout à la fin", "Je laisserai pour demain"]),
+]
+
+
+# --- Résolution de problème : la meilleure solution ---------------------------
+#: (problème pratique, meilleure action, deux leurres)
+MEILLEURE_SOLUTION = [
+    ("La lumière de la salle de bain ne s'allume plus.",
+     "Vérifier l'ampoule puis le disjoncteur",
+     ["Changer toute l'installation", "Appeler un électricien sans rien vérifier"]),
+    ("Tu as oublié un rendez-vous.",
+     "Le noter avec une alarme dès maintenant",
+     ["Te reprocher de l'avoir oublié", "Ne plus prendre de rendez-vous"]),
+    ("Tu ne retrouves plus tes papiers.",
+     "Leur créer une place fixe et les y ranger",
+     ["Chercher partout à chaque fois", "Les laisser là où ils tombent"]),
+    ("Un formulaire te semble compliqué.",
+     "Le remplir section par section, et demander de l'aide si besoin",
+     ["Le remplir au hasard", "Le laisser de côté"]),
+    ("Tu te sens perdu face à plusieurs tâches.",
+     "En choisir une, la finir, puis passer à la suivante",
+     ["Tout commencer en même temps", "Attendre que ça passe"]),
+    ("Le bruit t'empêche de te concentrer.",
+     "Réduire les sources de bruit ou faire une pause",
+     ["Continuer en s'énervant", "Abandonner la tâche"]),
+    ("Tu as du mal à te souvenir des courses.",
+     "Écrire une liste et la garder sur toi",
+     ["Compter sur ta mémoire", "Acheter au hasard"]),
+    ("Un rendez-vous change de jour.",
+     "Le noter tout de suite au bon endroit",
+     ["Le mémoriser de tête", "S'en occuper plus tard"]),
+    ("Une tâche te paraît énorme.",
+     "La découper en petites étapes",
+     ["La faire d'un seul bloc", "La reporter indéfiniment"]),
+    ("Tu te fatigues vite en lisant.",
+     "Faire des pauses courtes",
+     ["Lire d'une traite jusqu'au bout", "Arrêter de lire"]),
+    ("Tu hésites avant de demander un renseignement.",
+     "Préparer ta question en une phrase",
+     ["Renoncer à demander", "Improviser sans savoir quoi dire"]),
+    ("Ton téléphone sonne pendant que tu es occupé.",
+     "Le mettre en silencieux et rappeler plus tard",
+     ["Répondre en abandonnant ce que tu fais", "Couper le téléphone"]),
+]
+
+
+def _item_choix(numero: int, palier: int, famille: str, type_item: str,
+                prerequis: list[str], donnees: list, consigne: str, aide: str,
+                fonctions: list[str]) -> dict:
+    """Item fonctionnel à choix : la meilleure action/stratégie parmi trois."""
+    situation, bonne, leurres = donnees[numero - 1]
+    options = [bonne] + list(leurres)
+    melanger(famille, options)
+    return {
+        "id": f"qo-{palier}-{famille}-{numero:02d}",
+        "type": type_item,
+        "module": "entrainement",
+        "theme": "quotidien",
+        "fonctions_ciblees": fonctions,
+        "palier": palier,
+        "prerequis": prerequis,
+        "cap_complexite": None,
+        "contenu": {
+            "consigne": consigne,
+            "enonce": situation,
+            "options": options,
+            "aide": aide,
+        },
+        "reponse": {"valeur": bonne},
+        "meta": _meta(),
+    }
+
+
 def construire_paliers() -> list[list[dict]]:
     paliers = []
     # Palier 1 — prise de message (mémoire de travail fonctionnelle).
@@ -218,6 +371,33 @@ def construire_paliers() -> list[list[dict]]:
     paliers.append([
         _item_estimation(n, 3, ["qo-palier-2"]) for n in range(1, 13)
     ])
+    # Palier 4 — par où commencer (initiation).
+    paliers.append([
+        _item_choix(n, 4, "debut", "par-ou-commencer", ["qo-palier-3"],
+                    PAR_OU_COMMENCER,
+                    "Choisis par où commencer. Astuce : commence par ce qui rend la suite possible.",
+                    "Quelle première action débloque toutes les autres ?",
+                    ["planification", "fonctions-executives"])
+        for n in range(1, 13)
+    ])
+    # Palier 5 — implémentation d'intention (mémoire prospective).
+    paliers.append([
+        _item_choix(n, 5, "sialors", "si-alors", ["qo-palier-4"],
+                    SI_ALORS,
+                    "Choisis le plan « si … alors … » le plus fiable. Astuce : accroche l'action à un moment précis de ta journée.",
+                    "Un plan précis, lié à un repère, est plus sûr qu'une bonne intention.",
+                    ["memoire-prospective", "planification"])
+        for n in range(1, 13)
+    ])
+    # Palier 6 — meilleure solution (résolution de problème).
+    paliers.append([
+        _item_choix(n, 6, "solution", "meilleure-solution", ["qo-palier-5"],
+                    MEILLEURE_SOLUTION,
+                    "Choisis l'action la plus utile. Astuce : commence par ce qui est simple et vérifiable.",
+                    "La bonne solution est souvent la plus simple et la plus directe.",
+                    ["planification", "fonctions-executives"])
+        for n in range(1, 13)
+    ])
     return paliers
 
 
@@ -226,6 +406,9 @@ def _manifest(paliers: list[list[dict]]) -> dict:
         "Prendre un message et en retenir les détails (mémoire de travail)",
         "Choisir la prochaine étape d'une tâche (planification)",
         "Estimer le temps nécessaire (anticipation)",
+        "Choisir par où commencer (initiation)",
+        "Construire un plan « si … alors » pour ne rien oublier (mémoire prospective)",
+        "Choisir la meilleure solution à un problème (résolution de problème)",
     ]
     return {
         "theme": "quotidien",

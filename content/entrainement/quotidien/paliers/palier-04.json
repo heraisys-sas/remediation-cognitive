@@ -1,0 +1,422 @@
+[
+  {
+    "id": "qo-4-debut-01",
+    "type": "par-ou-commencer",
+    "module": "entrainement",
+    "theme": "quotidien",
+    "fonctions_ciblees": [
+      "planification",
+      "fonctions-executives"
+    ],
+    "palier": 4,
+    "prerequis": [
+      "qo-palier-3"
+    ],
+    "cap_complexite": null,
+    "contenu": {
+      "consigne": "Choisis par où commencer. Astuce : commence par ce qui rend la suite possible.",
+      "enonce": "Tu dois ranger l'appartement avant l'arrivée d'un invité.",
+      "options": [
+        "Ranger une pièce à la fois, en commençant par la plus visible",
+        "Acheter de nouvelles étagères",
+        "Passer d'une pièce à l'autre au hasard"
+      ],
+      "aide": "Quelle première action débloque toutes les autres ?"
+    },
+    "reponse": {
+      "valeur": "Ranger une pièce à la fois, en commençant par la plus visible"
+    },
+    "meta": {
+      "auteur": "redaction-assistee (tools/generer_quotidien.py)",
+      "date_creation": "2026-09-23",
+      "relecture_ortho": {
+        "statut": "a_revoir"
+      }
+    }
+  },
+  {
+    "id": "qo-4-debut-02",
+    "type": "par-ou-commencer",
+    "module": "entrainement",
+    "theme": "quotidien",
+    "fonctions_ciblees": [
+      "planification",
+      "fonctions-executives"
+    ],
+    "palier": 4,
+    "prerequis": [
+      "qo-palier-3"
+    ],
+    "cap_complexite": null,
+    "contenu": {
+      "consigne": "Choisis par où commencer. Astuce : commence par ce qui rend la suite possible.",
+      "enonce": "Tu prépares un dossier pour une demande d'aide.",
+      "options": [
+        "Rédiger la lettre sans savoir quoi joindre",
+        "Attendre la date limite",
+        "Lister d'abord les documents demandés"
+      ],
+      "aide": "Quelle première action débloque toutes les autres ?"
+    },
+    "reponse": {
+      "valeur": "Lister d'abord les documents demandés"
+    },
+    "meta": {
+      "auteur": "redaction-assistee (tools/generer_quotidien.py)",
+      "date_creation": "2026-09-23",
+      "relecture_ortho": {
+        "statut": "a_revoir"
+      }
+    }
+  },
+  {
+    "id": "qo-4-debut-03",
+    "type": "par-ou-commencer",
+    "module": "entrainement",
+    "theme": "quotidien",
+    "fonctions_ciblees": [
+      "planification",
+      "fonctions-executives"
+    ],
+    "palier": 4,
+    "prerequis": [
+      "qo-palier-3"
+    ],
+    "cap_complexite": null,
+    "contenu": {
+      "consigne": "Choisis par où commencer. Astuce : commence par ce qui rend la suite possible.",
+      "enonce": "Tu organises un déménagement dans un mois.",
+      "options": [
+        "Tout faire le dernier jour",
+        "Espérer que ça se fasse tout seul",
+        "Faire une liste des choses à faire et la classer par échéance"
+      ],
+      "aide": "Quelle première action débloque toutes les autres ?"
+    },
+    "reponse": {
+      "valeur": "Faire une liste des choses à faire et la classer par échéance"
+    },
+    "meta": {
+      "auteur": "redaction-assistee (tools/generer_quotidien.py)",
+      "date_creation": "2026-09-23",
+      "relecture_ortho": {
+        "statut": "a_revoir"
+      }
+    }
+  },
+  {
+    "id": "qo-4-debut-04",
+    "type": "par-ou-commencer",
+    "module": "entrainement",
+    "theme": "quotidien",
+    "fonctions_ciblees": [
+      "planification",
+      "fonctions-executives"
+    ],
+    "palier": 4,
+    "prerequis": [
+      "qo-palier-3"
+    ],
+    "cap_complexite": null,
+    "contenu": {
+      "consigne": "Choisis par où commencer. Astuce : commence par ce qui rend la suite possible.",
+      "enonce": "Tu reprends un projet laissé de côté depuis des semaines.",
+      "options": [
+        "Recommencer depuis le début",
+        "Le laisser encore de côté",
+        "Relire où tu t'étais arrêté"
+      ],
+      "aide": "Quelle première action débloque toutes les autres ?"
+    },
+    "reponse": {
+      "valeur": "Relire où tu t'étais arrêté"
+    },
+    "meta": {
+      "auteur": "redaction-assistee (tools/generer_quotidien.py)",
+      "date_creation": "2026-09-23",
+      "relecture_ortho": {
+        "statut": "a_revoir"
+      }
+    }
+  },
+  {
+    "id": "qo-4-debut-05",
+    "type": "par-ou-commencer",
+    "module": "entrainement",
+    "theme": "quotidien",
+    "fonctions_ciblees": [
+      "planification",
+      "fonctions-executives"
+    ],
+    "palier": 4,
+    "prerequis": [
+      "qo-palier-3"
+    ],
+    "cap_complexite": null,
+    "contenu": {
+      "consigne": "Choisis par où commencer. Astuce : commence par ce qui rend la suite possible.",
+      "enonce": "Tu prépares un repas pour six personnes.",
+      "options": [
+        "Vérifier les ingrédients et les quantités",
+        "Dresser la table d'abord",
+        "Allumer le four sans savoir quoi cuisiner"
+      ],
+      "aide": "Quelle première action débloque toutes les autres ?"
+    },
+    "reponse": {
+      "valeur": "Vérifier les ingrédients et les quantités"
+    },
+    "meta": {
+      "auteur": "redaction-assistee (tools/generer_quotidien.py)",
+      "date_creation": "2026-09-23",
+      "relecture_ortho": {
+        "statut": "a_revoir"
+      }
+    }
+  },
+  {
+    "id": "qo-4-debut-06",
+    "type": "par-ou-commencer",
+    "module": "entrainement",
+    "theme": "quotidien",
+    "fonctions_ciblees": [
+      "planification",
+      "fonctions-executives"
+    ],
+    "palier": 4,
+    "prerequis": [
+      "qo-palier-3"
+    ],
+    "cap_complexite": null,
+    "contenu": {
+      "consigne": "Choisis par où commencer. Astuce : commence par ce qui rend la suite possible.",
+      "enonce": "Tu veux te remettre à une activité physique.",
+      "options": [
+        "Acheter tout l'équipement avant de commencer",
+        "Attendre d'être en forme",
+        "Choisir une activité simple et un créneau fixe"
+      ],
+      "aide": "Quelle première action débloque toutes les autres ?"
+    },
+    "reponse": {
+      "valeur": "Choisir une activité simple et un créneau fixe"
+    },
+    "meta": {
+      "auteur": "redaction-assistee (tools/generer_quotidien.py)",
+      "date_creation": "2026-09-23",
+      "relecture_ortho": {
+        "statut": "a_revoir"
+      }
+    }
+  },
+  {
+    "id": "qo-4-debut-07",
+    "type": "par-ou-commencer",
+    "module": "entrainement",
+    "theme": "quotidien",
+    "fonctions_ciblees": [
+      "planification",
+      "fonctions-executives"
+    ],
+    "palier": 4,
+    "prerequis": [
+      "qo-palier-3"
+    ],
+    "cap_complexite": null,
+    "contenu": {
+      "consigne": "Choisis par où commencer. Astuce : commence par ce qui rend la suite possible.",
+      "enonce": "Tu as trois papiers administratifs à traiter.",
+      "options": [
+        "Les empiler et ne plus y toucher",
+        "Traiter d'abord celui dont l'échéance est la plus proche",
+        "Tout faire en même temps"
+      ],
+      "aide": "Quelle première action débloque toutes les autres ?"
+    },
+    "reponse": {
+      "valeur": "Traiter d'abord celui dont l'échéance est la plus proche"
+    },
+    "meta": {
+      "auteur": "redaction-assistee (tools/generer_quotidien.py)",
+      "date_creation": "2026-09-23",
+      "relecture_ortho": {
+        "statut": "a_revoir"
+      }
+    }
+  },
+  {
+    "id": "qo-4-debut-08",
+    "type": "par-ou-commencer",
+    "module": "entrainement",
+    "theme": "quotidien",
+    "fonctions_ciblees": [
+      "planification",
+      "fonctions-executives"
+    ],
+    "palier": 4,
+    "prerequis": [
+      "qo-palier-3"
+    ],
+    "cap_complexite": null,
+    "contenu": {
+      "consigne": "Choisis par où commencer. Astuce : commence par ce qui rend la suite possible.",
+      "enonce": "Tu dois appeler pour faire une réclamation.",
+      "options": [
+        "Noter en trois mots ce que tu veux dire avant d'appeler",
+        "Repousser l'appel",
+        "Appeler sans préparation"
+      ],
+      "aide": "Quelle première action débloque toutes les autres ?"
+    },
+    "reponse": {
+      "valeur": "Noter en trois mots ce que tu veux dire avant d'appeler"
+    },
+    "meta": {
+      "auteur": "redaction-assistee (tools/generer_quotidien.py)",
+      "date_creation": "2026-09-23",
+      "relecture_ortho": {
+        "statut": "a_revoir"
+      }
+    }
+  },
+  {
+    "id": "qo-4-debut-09",
+    "type": "par-ou-commencer",
+    "module": "entrainement",
+    "theme": "quotidien",
+    "fonctions_ciblees": [
+      "planification",
+      "fonctions-executives"
+    ],
+    "palier": 4,
+    "prerequis": [
+      "qo-palier-3"
+    ],
+    "cap_complexite": null,
+    "contenu": {
+      "consigne": "Choisis par où commencer. Astuce : commence par ce qui rend la suite possible.",
+      "enonce": "Tu prépares un déplacement de deux jours.",
+      "options": [
+        "Choisir d'abord ce que tu mettras dans la valise",
+        "Partir sans rien réserver",
+        "Réserver le trajet et l'hébergement d'abord"
+      ],
+      "aide": "Quelle première action débloque toutes les autres ?"
+    },
+    "reponse": {
+      "valeur": "Réserver le trajet et l'hébergement d'abord"
+    },
+    "meta": {
+      "auteur": "redaction-assistee (tools/generer_quotidien.py)",
+      "date_creation": "2026-09-23",
+      "relecture_ortho": {
+        "statut": "a_revoir"
+      }
+    }
+  },
+  {
+    "id": "qo-4-debut-10",
+    "type": "par-ou-commencer",
+    "module": "entrainement",
+    "theme": "quotidien",
+    "fonctions_ciblees": [
+      "planification",
+      "fonctions-executives"
+    ],
+    "palier": 4,
+    "prerequis": [
+      "qo-palier-3"
+    ],
+    "cap_complexite": null,
+    "contenu": {
+      "consigne": "Choisis par où commencer. Astuce : commence par ce qui rend la suite possible.",
+      "enonce": "Tu veux ranger les papiers de la maison.",
+      "options": [
+        "Tout mettre dans un même carton",
+        "Créer des dossiers par thème et tout y ranger",
+        "Jeter sans trier"
+      ],
+      "aide": "Quelle première action débloque toutes les autres ?"
+    },
+    "reponse": {
+      "valeur": "Créer des dossiers par thème et tout y ranger"
+    },
+    "meta": {
+      "auteur": "redaction-assistee (tools/generer_quotidien.py)",
+      "date_creation": "2026-09-23",
+      "relecture_ortho": {
+        "statut": "a_revoir"
+      }
+    }
+  },
+  {
+    "id": "qo-4-debut-11",
+    "type": "par-ou-commencer",
+    "module": "entrainement",
+    "theme": "quotidien",
+    "fonctions_ciblees": [
+      "planification",
+      "fonctions-executives"
+    ],
+    "palier": 4,
+    "prerequis": [
+      "qo-palier-3"
+    ],
+    "cap_complexite": null,
+    "contenu": {
+      "consigne": "Choisis par où commencer. Astuce : commence par ce qui rend la suite possible.",
+      "enonce": "Tu as un rendez-vous important demain matin.",
+      "options": [
+        "Tout improviser le matin",
+        "Préparer les papiers et le trajet la veille",
+        "Annuler le rendez-vous"
+      ],
+      "aide": "Quelle première action débloque toutes les autres ?"
+    },
+    "reponse": {
+      "valeur": "Préparer les papiers et le trajet la veille"
+    },
+    "meta": {
+      "auteur": "redaction-assistee (tools/generer_quotidien.py)",
+      "date_creation": "2026-09-23",
+      "relecture_ortho": {
+        "statut": "a_revoir"
+      }
+    }
+  },
+  {
+    "id": "qo-4-debut-12",
+    "type": "par-ou-commencer",
+    "module": "entrainement",
+    "theme": "quotidien",
+    "fonctions_ciblees": [
+      "planification",
+      "fonctions-executives"
+    ],
+    "palier": 4,
+    "prerequis": [
+      "qo-palier-3"
+    ],
+    "cap_complexite": null,
+    "contenu": {
+      "consigne": "Choisis par où commencer. Astuce : commence par ce qui rend la suite possible.",
+      "enonce": "Tu dois réparer un objet cassé.",
+      "options": [
+        "Chercher la notice ou un tutoriel avant de démonter",
+        "Le jeter directement",
+        "Démonter sans regarder comment c'est fait"
+      ],
+      "aide": "Quelle première action débloque toutes les autres ?"
+    },
+    "reponse": {
+      "valeur": "Chercher la notice ou un tutoriel avant de démonter"
+    },
+    "meta": {
+      "auteur": "redaction-assistee (tools/generer_quotidien.py)",
+      "date_creation": "2026-09-23",
+      "relecture_ortho": {
+        "statut": "a_revoir"
+      }
+    }
+  }
+]

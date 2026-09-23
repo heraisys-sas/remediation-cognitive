@@ -25,6 +25,33 @@
       ],
       "fichier": "paliers/palier-03.json",
       "nb_items": 12
+    },
+    {
+      "id": "qo-palier-4",
+      "description": "Choisir par où commencer (initiation)",
+      "prerequis": [
+        "qo-palier-3"
+      ],
+      "fichier": "paliers/palier-04.json",
+      "nb_items": 12
+    },
+    {
+      "id": "qo-palier-5",
+      "description": "Construire un plan « si … alors » pour ne rien oublier (mémoire prospective)",
+      "prerequis": [
+        "qo-palier-4"
+      ],
+      "fichier": "paliers/palier-05.json",
+      "nb_items": 12
+    },
+    {
+      "id": "qo-palier-6",
+      "description": "Choisir la meilleure solution à un problème (résolution de problème)",
+      "prerequis": [
+        "qo-palier-5"
+      ],
+      "fichier": "paliers/palier-06.json",
+      "nb_items": 12
     }
   ]
 }

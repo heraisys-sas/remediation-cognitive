@@ -59,6 +59,9 @@ TYPES_A_CHOIX = {
     "reponse-adaptee",
     "lecture-intention",
     "etape-suivante",
+    "par-ou-commencer",
+    "si-alors",
+    "meilleure-solution",
 }
 
 #: Types dont le contenu porte une hiérarchie d'indices (``contenu.indices``).

@@ -1,0 +1,422 @@
+[
+  {
+    "id": "qo-5-sialors-01",
+    "type": "si-alors",
+    "module": "entrainement",
+    "theme": "quotidien",
+    "fonctions_ciblees": [
+      "memoire-prospective",
+      "planification"
+    ],
+    "palier": 5,
+    "prerequis": [
+      "qo-palier-4"
+    ],
+    "cap_complexite": null,
+    "contenu": {
+      "consigne": "Choisis le plan « si … alors … » le plus fiable. Astuce : accroche l'action à un moment précis de ta journée.",
+      "enonce": "Prendre ton traitement le soir.",
+      "options": [
+        "Je le prendrai si j'y pense",
+        "Quand je me brosserai les dents, je prendrai le traitement",
+        "J'essaierai d'y penser"
+      ],
+      "aide": "Un plan précis, lié à un repère, est plus sûr qu'une bonne intention."
+    },
+    "reponse": {
+      "valeur": "Quand je me brosserai les dents, je prendrai le traitement"
+    },
+    "meta": {
+      "auteur": "redaction-assistee (tools/generer_quotidien.py)",
+      "date_creation": "2026-09-23",
+      "relecture_ortho": {
+        "statut": "a_revoir"
+      }
+    }
+  },
+  {
+    "id": "qo-5-sialors-02",
+    "type": "si-alors",
+    "module": "entrainement",
+    "theme": "quotidien",
+    "fonctions_ciblees": [
+      "memoire-prospective",
+      "planification"
+    ],
+    "palier": 5,
+    "prerequis": [
+      "qo-palier-4"
+    ],
+    "cap_complexite": null,
+    "contenu": {
+      "consigne": "Choisis le plan « si … alors … » le plus fiable. Astuce : accroche l'action à un moment précis de ta journée.",
+      "enonce": "Rendre un livre à la bibliothèque.",
+      "options": [
+        "J'essaierai de m'en souvenir",
+        "Je le rendrai un jour",
+        "Quand je sortirai avec mon sac, je mettrai le livre dedans"
+      ],
+      "aide": "Un plan précis, lié à un repère, est plus sûr qu'une bonne intention."
+    },
+    "reponse": {
+      "valeur": "Quand je sortirai avec mon sac, je mettrai le livre dedans"
+    },
+    "meta": {
+      "auteur": "redaction-assistee (tools/generer_quotidien.py)",
+      "date_creation": "2026-09-23",
+      "relecture_ortho": {
+        "statut": "a_revoir"
+      }
+    }
+  },
+  {
+    "id": "qo-5-sialors-03",
+    "type": "si-alors",
+    "module": "entrainement",
+    "theme": "quotidien",
+    "fonctions_ciblees": [
+      "memoire-prospective",
+      "planification"
+    ],
+    "palier": 5,
+    "prerequis": [
+      "qo-palier-4"
+    ],
+    "cap_complexite": null,
+    "contenu": {
+      "consigne": "Choisis le plan « si … alors … » le plus fiable. Astuce : accroche l'action à un moment précis de ta journée.",
+      "enonce": "Arroser les plantes le dimanche.",
+      "options": [
+        "Je le ferai quand j'aurai le temps",
+        "J'espère ne pas oublier",
+        "Le dimanche après le café, j'arrose les plantes"
+      ],
+      "aide": "Un plan précis, lié à un repère, est plus sûr qu'une bonne intention."
+    },
+    "reponse": {
+      "valeur": "Le dimanche après le café, j'arrose les plantes"
+    },
+    "meta": {
+      "auteur": "redaction-assistee (tools/generer_quotidien.py)",
+      "date_creation": "2026-09-23",
+      "relecture_ortho": {
+        "statut": "a_revoir"
+      }
+    }
+  },
+  {
+    "id": "qo-5-sialors-04",
+    "type": "si-alors",
+    "module": "entrainement",
+    "theme": "quotidien",
+    "fonctions_ciblees": [
+      "memoire-prospective",
+      "planification"
+    ],
+    "palier": 5,
+    "prerequis": [
+      "qo-palier-4"
+    ],
+    "cap_complexite": null,
+    "contenu": {
+      "consigne": "Choisis le plan « si … alors … » le plus fiable. Astuce : accroche l'action à un moment précis de ta journée.",
+      "enonce": "Répondre à un message important.",
+      "options": [
+        "Je répondrai plus tard",
+        "Je laisserai le message en attente",
+        "Quand je m'installerai après le repas, je répondrai"
+      ],
+      "aide": "Un plan précis, lié à un repère, est plus sûr qu'une bonne intention."
+    },
+    "reponse": {
+      "valeur": "Quand je m'installerai après le repas, je répondrai"
+    },
+    "meta": {
+      "auteur": "redaction-assistee (tools/generer_quotidien.py)",
+      "date_creation": "2026-09-23",
+      "relecture_ortho": {
+        "statut": "a_revoir"
+      }
+    }
+  },
+  {
+    "id": "qo-5-sialors-05",
+    "type": "si-alors",
+    "module": "entrainement",
+    "theme": "quotidien",
+    "fonctions_ciblees": [
+      "memoire-prospective",
+      "planification"
+    ],
+    "palier": 5,
+    "prerequis": [
+      "qo-palier-4"
+    ],
+    "cap_complexite": null,
+    "contenu": {
+      "consigne": "Choisis le plan « si … alors … » le plus fiable. Astuce : accroche l'action à un moment précis de ta journée.",
+      "enonce": "Ne pas oublier le four allumé.",
+      "options": [
+        "Je vérifierai de temps en temps",
+        "Je règle une minuterie dès que j'allume le four",
+        "Je ferai attention"
+      ],
+      "aide": "Un plan précis, lié à un repère, est plus sûr qu'une bonne intention."
+    },
+    "reponse": {
+      "valeur": "Je règle une minuterie dès que j'allume le four"
+    },
+    "meta": {
+      "auteur": "redaction-assistee (tools/generer_quotidien.py)",
+      "date_creation": "2026-09-23",
+      "relecture_ortho": {
+        "statut": "a_revoir"
+      }
+    }
+  },
+  {
+    "id": "qo-5-sialors-06",
+    "type": "si-alors",
+    "module": "entrainement",
+    "theme": "quotidien",
+    "fonctions_ciblees": [
+      "memoire-prospective",
+      "planification"
+    ],
+    "palier": 5,
+    "prerequis": [
+      "qo-palier-4"
+    ],
+    "cap_complexite": null,
+    "contenu": {
+      "consigne": "Choisis le plan « si … alors … » le plus fiable. Astuce : accroche l'action à un moment précis de ta journée.",
+      "enonce": "Payer une facture avant le 5.",
+      "options": [
+        "Je la paierai à la dernière minute",
+        "Je la classerai pour plus tard",
+        "Quand la facture arrivera, je la paie tout de suite"
+      ],
+      "aide": "Un plan précis, lié à un repère, est plus sûr qu'une bonne intention."
+    },
+    "reponse": {
+      "valeur": "Quand la facture arrivera, je la paie tout de suite"
+    },
+    "meta": {
+      "auteur": "redaction-assistee (tools/generer_quotidien.py)",
+      "date_creation": "2026-09-23",
+      "relecture_ortho": {
+        "statut": "a_revoir"
+      }
+    }
+  },
+  {
+    "id": "qo-5-sialors-07",
+    "type": "si-alors",
+    "module": "entrainement",
+    "theme": "quotidien",
+    "fonctions_ciblees": [
+      "memoire-prospective",
+      "planification"
+    ],
+    "palier": 5,
+    "prerequis": [
+      "qo-palier-4"
+    ],
+    "cap_complexite": null,
+    "contenu": {
+      "consigne": "Choisis le plan « si … alors … » le plus fiable. Astuce : accroche l'action à un moment précis de ta journée.",
+      "enonce": "Toujours retrouver tes clés.",
+      "options": [
+        "Je les chercherai quand j'en aurai besoin",
+        "Je les pose toujours au même endroit, près de la porte",
+        "Je les poserai où je peux"
+      ],
+      "aide": "Un plan précis, lié à un repère, est plus sûr qu'une bonne intention."
+    },
+    "reponse": {
+      "valeur": "Je les pose toujours au même endroit, près de la porte"
+    },
+    "meta": {
+      "auteur": "redaction-assistee (tools/generer_quotidien.py)",
+      "date_creation": "2026-09-23",
+      "relecture_ortho": {
+        "statut": "a_revoir"
+      }
+    }
+  },
+  {
+    "id": "qo-5-sialors-08",
+    "type": "si-alors",
+    "module": "entrainement",
+    "theme": "quotidien",
+    "fonctions_ciblees": [
+      "memoire-prospective",
+      "planification"
+    ],
+    "palier": 5,
+    "prerequis": [
+      "qo-palier-4"
+    ],
+    "cap_complexite": null,
+    "contenu": {
+      "consigne": "Choisis le plan « si … alors … » le plus fiable. Astuce : accroche l'action à un moment précis de ta journée.",
+      "enonce": "Ne pas manquer le rendez-vous.",
+      "options": [
+        "Je le note dans le téléphone avec une alarme la veille",
+        "Je m'en souviendrai tout seul",
+        "Je le retiendrai de tête"
+      ],
+      "aide": "Un plan précis, lié à un repère, est plus sûr qu'une bonne intention."
+    },
+    "reponse": {
+      "valeur": "Je le note dans le téléphone avec une alarme la veille"
+    },
+    "meta": {
+      "auteur": "redaction-assistee (tools/generer_quotidien.py)",
+      "date_creation": "2026-09-23",
+      "relecture_ortho": {
+        "statut": "a_revoir"
+      }
+    }
+  },
+  {
+    "id": "qo-5-sialors-09",
+    "type": "si-alors",
+    "module": "entrainement",
+    "theme": "quotidien",
+    "fonctions_ciblees": [
+      "memoire-prospective",
+      "planification"
+    ],
+    "palier": 5,
+    "prerequis": [
+      "qo-palier-4"
+    ],
+    "cap_complexite": null,
+    "contenu": {
+      "consigne": "Choisis le plan « si … alors … » le plus fiable. Astuce : accroche l'action à un moment précis de ta journée.",
+      "enonce": "Rappeler le médecin.",
+      "options": [
+        "Je rappellerai quand j'y penserai",
+        "J'attendrai qu'on me rappelle",
+        "Je programme le rappel dans le téléphone maintenant"
+      ],
+      "aide": "Un plan précis, lié à un repère, est plus sûr qu'une bonne intention."
+    },
+    "reponse": {
+      "valeur": "Je programme le rappel dans le téléphone maintenant"
+    },
+    "meta": {
+      "auteur": "redaction-assistee (tools/generer_quotidien.py)",
+      "date_creation": "2026-09-23",
+      "relecture_ortho": {
+        "statut": "a_revoir"
+      }
+    }
+  },
+  {
+    "id": "qo-5-sialors-10",
+    "type": "si-alors",
+    "module": "entrainement",
+    "theme": "quotidien",
+    "fonctions_ciblees": [
+      "memoire-prospective",
+      "planification"
+    ],
+    "palier": 5,
+    "prerequis": [
+      "qo-palier-4"
+    ],
+    "cap_complexite": null,
+    "contenu": {
+      "consigne": "Choisis le plan « si … alors … » le plus fiable. Astuce : accroche l'action à un moment précis de ta journée.",
+      "enonce": "Sortir les poubelles le jeudi soir.",
+      "options": [
+        "Je les sortirai quand elles seront pleines",
+        "J'attendrai de m'en souvenir",
+        "Le jeudi soir après le dîner, je sors les poubelles"
+      ],
+      "aide": "Un plan précis, lié à un repère, est plus sûr qu'une bonne intention."
+    },
+    "reponse": {
+      "valeur": "Le jeudi soir après le dîner, je sors les poubelles"
+    },
+    "meta": {
+      "auteur": "redaction-assistee (tools/generer_quotidien.py)",
+      "date_creation": "2026-09-23",
+      "relecture_ortho": {
+        "statut": "a_revoir"
+      }
+    }
+  },
+  {
+    "id": "qo-5-sialors-11",
+    "type": "si-alors",
+    "module": "entrainement",
+    "theme": "quotidien",
+    "fonctions_ciblees": [
+      "memoire-prospective",
+      "planification"
+    ],
+    "palier": 5,
+    "prerequis": [
+      "qo-palier-4"
+    ],
+    "cap_complexite": null,
+    "contenu": {
+      "consigne": "Choisis le plan « si … alors … » le plus fiable. Astuce : accroche l'action à un moment précis de ta journée.",
+      "enonce": "Boire de l'eau dans la journée.",
+      "options": [
+        "J'essaierai d'y penser",
+        "Je boirai seulement quand j'aurai soif",
+        "Je remplis une bouteille le matin et je la garde près de moi"
+      ],
+      "aide": "Un plan précis, lié à un repère, est plus sûr qu'une bonne intention."
+    },
+    "reponse": {
+      "valeur": "Je remplis une bouteille le matin et je la garde près de moi"
+    },
+    "meta": {
+      "auteur": "redaction-assistee (tools/generer_quotidien.py)",
+      "date_creation": "2026-09-23",
+      "relecture_ortho": {
+        "statut": "a_revoir"
+      }
+    }
+  },
+  {
+    "id": "qo-5-sialors-12",
+    "type": "si-alors",
+    "module": "entrainement",
+    "theme": "quotidien",
+    "fonctions_ciblees": [
+      "memoire-prospective",
+      "planification"
+    ],
+    "palier": 5,
+    "prerequis": [
+      "qo-palier-4"
+    ],
+    "cap_complexite": null,
+    "contenu": {
+      "consigne": "Choisis le plan « si … alors … » le plus fiable. Astuce : accroche l'action à un moment précis de ta journée.",
+      "enonce": "Ranger après avoir cuisiné.",
+      "options": [
+        "Je rangerai tout à la fin",
+        "Je laisserai pour demain",
+        "Je range au fur et à mesure pendant la cuisson"
+      ],
+      "aide": "Un plan précis, lié à un repère, est plus sûr qu'une bonne intention."
+    },
+    "reponse": {
+      "valeur": "Je range au fur et à mesure pendant la cuisson"
+    },
+    "meta": {
+      "auteur": "redaction-assistee (tools/generer_quotidien.py)",
+      "date_creation": "2026-09-23",
+      "relecture_ortho": {
+        "statut": "a_revoir"
+      }
+    }
+  }
+]
