@@ -1,0 +1,30 @@
+{
+  "theme": "quotidien",
+  "paliers": [
+    {
+      "id": "qo-palier-1",
+      "description": "Prendre un message et en retenir les détails (mémoire de travail)",
+      "prerequis": [],
+      "fichier": "paliers/palier-01.json",
+      "nb_items": 12
+    },
+    {
+      "id": "qo-palier-2",
+      "description": "Choisir la prochaine étape d'une tâche (planification)",
+      "prerequis": [
+        "qo-palier-1"
+      ],
+      "fichier": "paliers/palier-02.json",
+      "nb_items": 12
+    },
+    {
+      "id": "qo-palier-3",
+      "description": "Estimer le temps nécessaire (anticipation)",
+      "prerequis": [
+        "qo-palier-2"
+      ],
+      "fichier": "paliers/palier-03.json",
+      "nb_items": 12
+    }
+  ]
+}

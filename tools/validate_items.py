@@ -58,6 +58,7 @@ TYPES_A_CHOIX = {
     "emotion-vignette",
     "reponse-adaptee",
     "lecture-intention",
+    "etape-suivante",
 }
 
 #: Types dont le contenu porte une hiérarchie d'indices (``contenu.indices``).
@@ -311,6 +312,34 @@ def erreurs_contenu(item: dict, prefixe: str) -> list[str]:
     # Rappel libre de séries : cohérence séries ↔ cibles, seuil et délai bornés.
     if type_item == "rappel-libre":
         erreurs.extend(erreurs_rappel_libre(item, prefixe, contenu, affichage))
+
+    # Prise de message (mémoire de travail fonctionnelle) : le fait demandé
+    # doit être présent dans le message affiché — sinon la question serait
+    # introuvable depuis le stimulus (exercice mal formé).
+    if type_item == "prise-message":
+        elements = (affichage or {}).get("elements") if isinstance(affichage, dict) else None
+        message = " ".join(
+            ligne[0] if isinstance(ligne, list) and ligne else str(ligne)
+            for ligne in (elements or [])
+        )
+        if not message.strip():
+            erreurs.append(prefixe + "prise-message : affichage.elements doit contenir le message")
+        elif isinstance(reponse, str) and _normaliser_texte(reponse) not in _normaliser_texte(message):
+            erreurs.append(prefixe + "prise-message : la réponse n'est pas dans le message affiché")
+
+    # Estimation de durée : réponse bornée par une fourchette cohérente.
+    if type_item == "estimation-temps":
+        reponse_bloc = item.get("reponse") if isinstance(item.get("reponse"), dict) else {}
+        valeur = reponse_bloc.get("valeur")
+        intervalle = reponse_bloc.get("intervalle")
+        if not isinstance(valeur, (int, float)) or isinstance(valeur, bool):
+            erreurs.append(prefixe + "estimation-temps : reponse.valeur doit être un nombre")
+        if not isinstance(intervalle, list) or len(intervalle) != 2 or not all(
+            isinstance(b, (int, float)) and not isinstance(b, bool) for b in intervalle
+        ):
+            erreurs.append(prefixe + "estimation-temps : reponse.intervalle doit être [min, max]")
+        elif isinstance(valeur, (int, float)) and not intervalle[0] <= valeur <= intervalle[1]:
+            erreurs.append(prefixe + "estimation-temps : la valeur attendue doit être dans la fourchette")
 
     return erreurs
 

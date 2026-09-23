@@ -1,0 +1,422 @@
+[
+  {
+    "id": "qo-2-etape-01",
+    "type": "etape-suivante",
+    "module": "entrainement",
+    "theme": "quotidien",
+    "fonctions_ciblees": [
+      "planification",
+      "fonctions-executives"
+    ],
+    "palier": 2,
+    "prerequis": [
+      "qo-palier-1"
+    ],
+    "cap_complexite": null,
+    "contenu": {
+      "consigne": "Choisis la prochaine étape. Astuce : demande-toi ce qui doit venir AVANT le reste.",
+      "enonce": "Tu veux préparer un repas pour deux. Les ingrédients sont posés sur le plan de travail.",
+      "options": [
+        "Ranger les courses",
+        "Préchauffer le four",
+        "Servir à table"
+      ],
+      "aide": "Pense à l'ordre logique : que faut-il faire d'abord pour que la suite soit possible ?"
+    },
+    "reponse": {
+      "valeur": "Préchauffer le four"
+    },
+    "meta": {
+      "auteur": "redaction-assistee (tools/generer_quotidien.py)",
+      "date_creation": "2026-09-23",
+      "relecture_ortho": {
+        "statut": "a_revoir"
+      }
+    }
+  },
+  {
+    "id": "qo-2-etape-02",
+    "type": "etape-suivante",
+    "module": "entrainement",
+    "theme": "quotidien",
+    "fonctions_ciblees": [
+      "planification",
+      "fonctions-executives"
+    ],
+    "palier": 2,
+    "prerequis": [
+      "qo-palier-1"
+    ],
+    "cap_complexite": null,
+    "contenu": {
+      "consigne": "Choisis la prochaine étape. Astuce : demande-toi ce qui doit venir AVANT le reste.",
+      "enonce": "Tu dois renouveler une ordonnance. Le médecin vient de te la remettre.",
+      "options": [
+        "Rappeler le médecin pour redemander",
+        "Aller à la pharmacie avec l'ordonnance",
+        "Jeter les anciennes boîtes"
+      ],
+      "aide": "Pense à l'ordre logique : que faut-il faire d'abord pour que la suite soit possible ?"
+    },
+    "reponse": {
+      "valeur": "Aller à la pharmacie avec l'ordonnance"
+    },
+    "meta": {
+      "auteur": "redaction-assistee (tools/generer_quotidien.py)",
+      "date_creation": "2026-09-23",
+      "relecture_ortho": {
+        "statut": "a_revoir"
+      }
+    }
+  },
+  {
+    "id": "qo-2-etape-03",
+    "type": "etape-suivante",
+    "module": "entrainement",
+    "theme": "quotidien",
+    "fonctions_ciblees": [
+      "planification",
+      "fonctions-executives"
+    ],
+    "palier": 2,
+    "prerequis": [
+      "qo-palier-1"
+    ],
+    "cap_complexite": null,
+    "contenu": {
+      "consigne": "Choisis la prochaine étape. Astuce : demande-toi ce qui doit venir AVANT le reste.",
+      "enonce": "Tu organises une sortie au marché samedi. Tu as noté la liste des achats.",
+      "options": [
+        "Ranger les achats en rentrant",
+        "Payer à la caisse",
+        "Préparer un sac ou un cabas"
+      ],
+      "aide": "Pense à l'ordre logique : que faut-il faire d'abord pour que la suite soit possible ?"
+    },
+    "reponse": {
+      "valeur": "Préparer un sac ou un cabas"
+    },
+    "meta": {
+      "auteur": "redaction-assistee (tools/generer_quotidien.py)",
+      "date_creation": "2026-09-23",
+      "relecture_ortho": {
+        "statut": "a_revoir"
+      }
+    }
+  },
+  {
+    "id": "qo-2-etape-04",
+    "type": "etape-suivante",
+    "module": "entrainement",
+    "theme": "quotidien",
+    "fonctions_ciblees": [
+      "planification",
+      "fonctions-executives"
+    ],
+    "palier": 2,
+    "prerequis": [
+      "qo-palier-1"
+    ],
+    "cap_complexite": null,
+    "contenu": {
+      "consigne": "Choisis la prochaine étape. Astuce : demande-toi ce qui doit venir AVANT le reste.",
+      "enonce": "Tu veux prendre rendez-vous chez le coiffeur. Tu as le numéro sous les yeux.",
+      "options": [
+        "Choisir une nouvelle coupe",
+        "Appeler et proposer un créneau",
+        "Couper les cheveux"
+      ],
+      "aide": "Pense à l'ordre logique : que faut-il faire d'abord pour que la suite soit possible ?"
+    },
+    "reponse": {
+      "valeur": "Appeler et proposer un créneau"
+    },
+    "meta": {
+      "auteur": "redaction-assistee (tools/generer_quotidien.py)",
+      "date_creation": "2026-09-23",
+      "relecture_ortho": {
+        "statut": "a_revoir"
+      }
+    }
+  },
+  {
+    "id": "qo-2-etape-05",
+    "type": "etape-suivante",
+    "module": "entrainement",
+    "theme": "quotidien",
+    "fonctions_ciblees": [
+      "planification",
+      "fonctions-executives"
+    ],
+    "palier": 2,
+    "prerequis": [
+      "qo-palier-1"
+    ],
+    "cap_complexite": null,
+    "contenu": {
+      "consigne": "Choisis la prochaine étape. Astuce : demande-toi ce qui doit venir AVANT le reste.",
+      "enonce": "Tu viens de vider le lave-vaisselle. Les assiettes sont sur la table.",
+      "options": [
+        "Mettre la table pour le soir",
+        "Ranger les assiettes dans le placard",
+        "Lancer une nouvelle machine"
+      ],
+      "aide": "Pense à l'ordre logique : que faut-il faire d'abord pour que la suite soit possible ?"
+    },
+    "reponse": {
+      "valeur": "Ranger les assiettes dans le placard"
+    },
+    "meta": {
+      "auteur": "redaction-assistee (tools/generer_quotidien.py)",
+      "date_creation": "2026-09-23",
+      "relecture_ortho": {
+        "statut": "a_revoir"
+      }
+    }
+  },
+  {
+    "id": "qo-2-etape-06",
+    "type": "etape-suivante",
+    "module": "entrainement",
+    "theme": "quotidien",
+    "fonctions_ciblees": [
+      "planification",
+      "fonctions-executives"
+    ],
+    "palier": 2,
+    "prerequis": [
+      "qo-palier-1"
+    ],
+    "cap_complexite": null,
+    "contenu": {
+      "consigne": "Choisis la prochaine étape. Astuce : demande-toi ce qui doit venir AVANT le reste.",
+      "enonce": "Tu prépares ta valise pour deux jours. Les vêtements sont sortis de l'armoire.",
+      "options": [
+        "Plier et ranger les vêtements dans la valise",
+        "Fermer la valise",
+        "Appeler le taxi"
+      ],
+      "aide": "Pense à l'ordre logique : que faut-il faire d'abord pour que la suite soit possible ?"
+    },
+    "reponse": {
+      "valeur": "Plier et ranger les vêtements dans la valise"
+    },
+    "meta": {
+      "auteur": "redaction-assistee (tools/generer_quotidien.py)",
+      "date_creation": "2026-09-23",
+      "relecture_ortho": {
+        "statut": "a_revoir"
+      }
+    }
+  },
+  {
+    "id": "qo-2-etape-07",
+    "type": "etape-suivante",
+    "module": "entrainement",
+    "theme": "quotidien",
+    "fonctions_ciblees": [
+      "planification",
+      "fonctions-executives"
+    ],
+    "palier": 2,
+    "prerequis": [
+      "qo-palier-1"
+    ],
+    "cap_complexite": null,
+    "contenu": {
+      "consigne": "Choisis la prochaine étape. Astuce : demande-toi ce qui doit venir AVANT le reste.",
+      "enonce": "Tu reçois un courrier de la mairie demandant un justificatif. Tu as trouvé le document.",
+      "options": [
+        "Faire une copie du justificatif",
+        "Poster l'enveloppe",
+        "Ranger le courrier"
+      ],
+      "aide": "Pense à l'ordre logique : que faut-il faire d'abord pour que la suite soit possible ?"
+    },
+    "reponse": {
+      "valeur": "Faire une copie du justificatif"
+    },
+    "meta": {
+      "auteur": "redaction-assistee (tools/generer_quotidien.py)",
+      "date_creation": "2026-09-23",
+      "relecture_ortho": {
+        "statut": "a_revoir"
+      }
+    }
+  },
+  {
+    "id": "qo-2-etape-08",
+    "type": "etape-suivante",
+    "module": "entrainement",
+    "theme": "quotidien",
+    "fonctions_ciblees": [
+      "planification",
+      "fonctions-executives"
+    ],
+    "palier": 2,
+    "prerequis": [
+      "qo-palier-1"
+    ],
+    "cap_complexite": null,
+    "contenu": {
+      "consigne": "Choisis la prochaine étape. Astuce : demande-toi ce qui doit venir AVANT le reste.",
+      "enonce": "Tu veux réserver une table pour vendredi. Tu es devant le site du restaurant.",
+      "options": [
+        "Commander le menu",
+        "Choisir le nombre de personnes et l'heure",
+        "Aller au restaurant"
+      ],
+      "aide": "Pense à l'ordre logique : que faut-il faire d'abord pour que la suite soit possible ?"
+    },
+    "reponse": {
+      "valeur": "Choisir le nombre de personnes et l'heure"
+    },
+    "meta": {
+      "auteur": "redaction-assistee (tools/generer_quotidien.py)",
+      "date_creation": "2026-09-23",
+      "relecture_ortho": {
+        "statut": "a_revoir"
+      }
+    }
+  },
+  {
+    "id": "qo-2-etape-09",
+    "type": "etape-suivante",
+    "module": "entrainement",
+    "theme": "quotidien",
+    "fonctions_ciblees": [
+      "planification",
+      "fonctions-executives"
+    ],
+    "palier": 2,
+    "prerequis": [
+      "qo-palier-1"
+    ],
+    "cap_complexite": null,
+    "contenu": {
+      "consigne": "Choisis la prochaine étape. Astuce : demande-toi ce qui doit venir AVANT le reste.",
+      "enonce": "Tu dois arroser les plantes. L'arrosoir est vide.",
+      "options": [
+        "Remplir l'arrosoir",
+        "Ranger l'arrosoir",
+        "Vider l'eau des soucoupes"
+      ],
+      "aide": "Pense à l'ordre logique : que faut-il faire d'abord pour que la suite soit possible ?"
+    },
+    "reponse": {
+      "valeur": "Remplir l'arrosoir"
+    },
+    "meta": {
+      "auteur": "redaction-assistee (tools/generer_quotidien.py)",
+      "date_creation": "2026-09-23",
+      "relecture_ortho": {
+        "statut": "a_revoir"
+      }
+    }
+  },
+  {
+    "id": "qo-2-etape-10",
+    "type": "etape-suivante",
+    "module": "entrainement",
+    "theme": "quotidien",
+    "fonctions_ciblees": [
+      "planification",
+      "fonctions-executives"
+    ],
+    "palier": 2,
+    "prerequis": [
+      "qo-palier-1"
+    ],
+    "cap_complexite": null,
+    "contenu": {
+      "consigne": "Choisis la prochaine étape. Astuce : demande-toi ce qui doit venir AVANT le reste.",
+      "enonce": "Tu prépares un gâteau. La recette est ouverte et les œufs sont sortis.",
+      "options": [
+        "Casser les œufs dans le saladier",
+        "Couper des parts",
+        "Sortir le gâteau du four"
+      ],
+      "aide": "Pense à l'ordre logique : que faut-il faire d'abord pour que la suite soit possible ?"
+    },
+    "reponse": {
+      "valeur": "Casser les œufs dans le saladier"
+    },
+    "meta": {
+      "auteur": "redaction-assistee (tools/generer_quotidien.py)",
+      "date_creation": "2026-09-23",
+      "relecture_ortho": {
+        "statut": "a_revoir"
+      }
+    }
+  },
+  {
+    "id": "qo-2-etape-11",
+    "type": "etape-suivante",
+    "module": "entrainement",
+    "theme": "quotidien",
+    "fonctions_ciblees": [
+      "planification",
+      "fonctions-executives"
+    ],
+    "palier": 2,
+    "prerequis": [
+      "qo-palier-1"
+    ],
+    "cap_complexite": null,
+    "contenu": {
+      "consigne": "Choisis la prochaine étape. Astuce : demande-toi ce qui doit venir AVANT le reste.",
+      "enonce": "Tu veux envoyer un colis. Le colis est fermé mais pas encore adressé.",
+      "options": [
+        "Le déposer au bureau de poste",
+        "Écrire l'adresse sur le colis",
+        "Ouvrir le colis"
+      ],
+      "aide": "Pense à l'ordre logique : que faut-il faire d'abord pour que la suite soit possible ?"
+    },
+    "reponse": {
+      "valeur": "Écrire l'adresse sur le colis"
+    },
+    "meta": {
+      "auteur": "redaction-assistee (tools/generer_quotidien.py)",
+      "date_creation": "2026-09-23",
+      "relecture_ortho": {
+        "statut": "a_revoir"
+      }
+    }
+  },
+  {
+    "id": "qo-2-etape-12",
+    "type": "etape-suivante",
+    "module": "entrainement",
+    "theme": "quotidien",
+    "fonctions_ciblees": [
+      "planification",
+      "fonctions-executives"
+    ],
+    "palier": 2,
+    "prerequis": [
+      "qo-palier-1"
+    ],
+    "cap_complexite": null,
+    "contenu": {
+      "consigne": "Choisis la prochaine étape. Astuce : demande-toi ce qui doit venir AVANT le reste.",
+      "enonce": "Tu planifies ta matinée. Le réveil est réglé à 8 h.",
+      "options": [
+        "Prendre le petit-déjeuner",
+        "Partir à l'heure",
+        "Préparer les vêtements la veille"
+      ],
+      "aide": "Pense à l'ordre logique : que faut-il faire d'abord pour que la suite soit possible ?"
+    },
+    "reponse": {
+      "valeur": "Préparer les vêtements la veille"
+    },
+    "meta": {
+      "auteur": "redaction-assistee (tools/generer_quotidien.py)",
+      "date_creation": "2026-09-23",
+      "relecture_ortho": {
+        "statut": "a_revoir"
+      }
+    }
+  }
+]

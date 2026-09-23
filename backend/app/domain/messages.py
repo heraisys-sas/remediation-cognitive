@@ -42,6 +42,10 @@ VOCABULAIRES = {
                 "nom": "Rappel de séries",
                 "description": "Plusieurs séries de mots, puis rappel libre de tout ce dont on se souvient",
             },
+            "quotidien": {
+                "nom": "Au quotidien",
+                "description": "Mémoire de travail, planification et anticipation dans des situations de la vie",
+            },
             "concentration": {
                 "nom": "Concentration",
                 "description": "Calculs chaînés, double tâche et séries — une attention qui tient",

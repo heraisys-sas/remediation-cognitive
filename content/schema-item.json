@@ -40,6 +40,9 @@
         "rappel-indice",
         "reconnaissance",
         "rappel-source",
+        "prise-message",
+        "etape-suivante",
+        "estimation-temps",
         "emotion-vignette",
         "reponse-adaptee",
         "lecture-intention"
@@ -63,7 +66,9 @@
           "acces-lexical",
           "recuperation",
           "cognition-sociale",
-          "pragmatique"
+          "pragmatique",
+          "fonctions-executives",
+          "memoire-prospective"
         ]
       }
     },

@@ -2,6 +2,14 @@
 
 Format : [date] — [périmètre] — description. Les retours informels de l'orthophoniste sont journalisés ici, sans caution clinique.
 
+## 2026-09-23 · Remédiation — exercices fonctionnels (retournement de cadrage)
+
+- **Constat d'orthophoniste** — les exercices précédents (empan, n-back, chaînes de calcul, séries) sont des **entraînements aux tests d'évaluation**, pas de la remédiation : ils mesurent une fonction, s'y entraîner transfère peu à la vie quotidienne. Retournement acté dans `docs/10-clinique/remediation.md` : on ne développe plus d'exercice d'allure évaluative ; on remédie la fonction **dans des situations de vie, avec des stratégies**, pour qu'elle se transfère. Les épreuves existantes seront **déplacées vers une section « évaluation »** quand ce module existera (elles restent utiles comme repères de progression).
+- **Premier lot fonctionnel** — nouveau thème « Au quotidien » (3 paliers, 36 items) : **prise de message** (mémoire de travail : retenir qui/quoi/quand puis répondre), **étape suivante** (planification : choisir la prochaine étape d'une tâche), **estimation de durée** (anticipation, acceptée dans une fourchette). Chaque consigne enseigne une stratégie (regrouper, ordonner, comparer à une situation vécue).
+- **Format et correction** — types `prise-message`, `etape-suivante`, `estimation-temps` ; fonctions `fonctions-executives` et `memoire-prospective` ; correction par fourchette pour l'estimation ; validateur : la réponse d'un prise-message doit figurer dans le message affiché (contrôle bloquant — a attrapé une réponse dérivée « celui de 16 h 42 » non présente telle quelle).
+- **Contrôles** — validateur 57 fichiers / 727 items / 0 erreur ; réponses recalculées 0 anomalie ; garde-fous cliniques sans violation ; **121 tests** (3 nouveaux sur le thème).
+- **Réserves** — relecture orthophoniste à faire ; les familles suivantes (par où commencer, remettre les étapes dans l'ordre, repérer une info dans un courrier, mémoire prospective) restent à construire ; le déplacement des épreuves vers « évaluation » est documenté mais non réalisé (à faire quand le module bilan existera).
+
 ## 2026-09-23 · Clinique — garde-fous automatisés, cadre d'usage et repères d'orientation
 
 - **Contrôle clinique automatisé** — nouveau `tools/verifier_clinique.py` : vérifie sur le code et le contenu réels (1) que le vocabulaire non médical ne contient aucun terme clinique ou normatif, (2) le thème sombre sans animation et le respect de `prefers-reduced-motion` (photophobie), (3) qu'aucun instrument protégé (PASAT, MMSE, MoCA, ECPA, Pearson, Raven, GREFEX, TEA-Ch, BCEFA, RL/RI, 15 mots de Rey…) n'apparaît dans le contenu des items, (4) que chaque item porte un statut de relecture et qu'un « valide_informel » est daté. Résultat : aucune violation, 691 items à revoir.

@@ -24,6 +24,7 @@ THEMES_ATTENDUS = {
     "evocation",
     "social",
     "rappel-series",
+    "quotidien",
 }
 
 

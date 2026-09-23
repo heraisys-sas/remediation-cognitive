@@ -14,15 +14,17 @@ Logiciel de **bilan et rééducation cognitive** pour adultes avec syndrome post
 
 Docs d'entrée : `docs/00-produit/vision.md`, `docs/00-produit/cadre-reglementaire.md`, `docs/00-produit/feuille-de-route.md`.
 
-## État courant — sprint 5 livré (2026-09-22)
+## État courant — sprint 6 livré (2026-09-23)
 
-- **Jouable de bout en bout** : huit thèmes (calcul mental, mémoire avec empans de chiffres **et de mots**, concentration, retrouver le mot, vie sociale, rappel de séries, plus Python/anglais en section **Extra**) et trois écrans transverses : **programme de 8 semaines**, **missions hors écran & carnet**, séance. Lancer `python3 -m uvicorn backend.app.main:app` puis ouvrir `/ui/`.
-- **Implémenté** : `engine/` (moteur inchangé) ; `backend/` — `/api/entrainement`, `/api/social`, `/api/programme` (correction par thème, essais assistés, rappel libre au seuil, plan du jour) ; `frontend/` (SPA vanilla : phase de mémorisation temporisée, séries de mots, compte à rebours, propositions cliquables, indices progressifs).
-- **Contenu** : **691 items** + 8 missions + **programme de 8 semaines**, générés de façon déterministe (`tools/generer_memo_concentration.py`, `generer_evocation_social.py`, `generer_rappel_series.py`, `generer_programme.py`).
-- **Tests** : 118 passed (`python3 -m pytest -q`). Contrôles : `tools/validate_items.py`, `tools/verifier_reponses.py`, `tools/verifier_interface.py`, `tools/verifier_clinique.py` (garde-fous cliniques automatisés).
+- **Jouable de bout en bout** : neuf thèmes — calcul mental, mémoire (empans de chiffres et de mots), concentration, retrouver le mot, vie sociale, rappel de séries, **au quotidien** (remédiation fonctionnelle : prise de message, étape suivante, estimation de durée), plus Python/anglais en section « Extra » ; et les écrans transverses : programme de 8 semaines, missions hors écran & carnet, repères d'orientation. Lancer `python3 -m uvicorn backend.app.main:app` puis ouvrir `/ui/`.
+- **Principe clinique réaffirmé** : remédiation fonctionnelle plutôt qu'entraînement aux tests (ADR de fait : `docs/10-clinique/remediation.md`).
+
+- **Implémenté** : `engine/` (moteur inchangé) ; `backend/` — `/api/entrainement`, `/api/social`, `/api/programme` (correction par thème, essais assistés, rappel libre au seuil, estimation par fourchette, plan du jour) ; `frontend/` (SPA vanilla : phase de mémorisation temporisée, séries de mots, compte à rebours, propositions cliquables, indices progressifs).
+- **Contenu** : **727 items** + 8 missions + **programme de 8 semaines**, générés de façon déterministe (`tools/generer_memo_concentration.py`, `generer_evocation_social.py`, `generer_rappel_series.py`, `generer_quotidien.py`, `generer_programme.py`).
+- **Tests** : 121 passed (`python3 -m pytest -q`). Contrôles : `tools/validate_items.py`, `tools/verifier_reponses.py`, `tools/verifier_interface.py`, `tools/verifier_clinique.py` (garde-fous cliniques automatisés).
 - **Contrat d'API figé** : `docs/30-technique/api-contract.md` — toute modification = ADR. Décisions : ADR-004 (aides progressives, options, périmètre social), ADR-005 (empan de mots, rappel libre, rythme), ADR-006 (programme, progression non contrainte).
 - **Garde-fou produit** : le programme propose un rythme — il ne mesure rien. Aucun taux d'observance ni de complétion ne doit être calculé (ADR-006).
-- **Traçabilité** : `.cluster/sprint1/`, `.cluster/enrichissement/`, `.cluster/sprint3/`, `.cluster/sprint4/`, `.cluster/sprint5/` ; journaux `memories/2026-09-03-sprint-1.md`, `2026-09-15-…`, `2026-09-21-…`, `2026-09-22-empan-de-mots-et-rappel-de-series.md`, `2026-09-22-programme-de-8-semaines.md`.
+- **Traçabilité** : `.cluster/sprint1/`, `.cluster/enrichissement/`, `.cluster/sprint3/`, `.cluster/sprint4/`, `.cluster/sprint5/` ; journaux `memories/2026-09-03-sprint-1.md`, `2026-09-15-…`, `2026-09-21-…`, `2026-09-22-empan-de-mots-et-rappel-de-series.md`, `2026-09-22-programme-de-8-semaines.md`, `2026-09-23-renforcer-le-clinique.md`, `2026-09-23-remediation-fonctionnelle.md`.
 
 ## Règles non négociables (garde-fous cliniques)
 
@@ -34,6 +36,7 @@ Docs d'entrée : `docs/00-produit/vision.md`, `docs/00-produit/cadre-reglementai
 6. **Environnement visuel calme** : dark mode par défaut, contrastes doux, zéro scintillement (photophobie SPC).
 7. **Phase aiguë post-SPC : bloquer et simplifier** ; l'interleaving n'arrive qu'après un socle acquis.
 8. Errorless en entrée de palier ; la détection de fatigue **propose** l'arrêt, jamais forcée.
+9. **Remédiation, pas évaluation** : aucun nouvel exercice d'allure évaluative (empan, n-back, séries…) ; on travaille la fonction altérée dans des situations de vie avec des stratégies — `docs/10-clinique/remediation.md`. Les épreuves existantes seront déplacées vers une section « évaluation » quand le module bilan existera.
 
 ## Conventions
 
@@ -61,6 +64,7 @@ python3 tools/generer_memo_concentration.py --dry-run   # régénère mémoire/c
 python3 tools/generer_evocation_social.py --dry-run     # régénère evocation/social + missions
 python3 tools/generer_rappel_series.py --dry-run        # régénère rappel-series
 python3 tools/generer_programme.py --dry-run             # régénère le programme de 8 semaines
+python3 tools/generer_quotidien.py --dry-run             # régénère le thème « au quotidien »
 ```
 
 Dépendances effectives du sprint 1 : fastapi, uvicorn, httpx, pytest, fsrs (paquet officiel open-spaced-repetition). Un `requirements.txt`/lock est à produire au prochain sprint.

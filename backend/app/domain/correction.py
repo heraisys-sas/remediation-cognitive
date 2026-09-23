@@ -123,6 +123,28 @@ def _corriger_rappel_libre(item: dict, reponse) -> bool:
     return (trouves / len(cibles)) >= seuil
 
 
+def _corriger_estimation(item: dict, reponse) -> bool:
+    """Estimation de durée : acceptée dans la fourchette déclarée par l'item.
+
+    Une estimation n'est pas une mesure exacte : la réponse est correcte si elle
+    tombe dans ``reponse.intervalle`` (bornes incluses).
+    """
+    reponse_item = item.get("reponse") or {}
+    intervalle = reponse_item.get("intervalle")
+    if isinstance(reponse, bool):
+        return False
+    if isinstance(reponse, Real):
+        nombre = float(reponse)
+    else:
+        try:
+            nombre = float(str(reponse).strip().replace(",", "."))
+        except ValueError:
+            return False
+    if isinstance(intervalle, list) and len(intervalle) == 2:
+        return float(intervalle[0]) <= nombre <= float(intervalle[1])
+    return _corriger_numerique(reponse, reponse_item.get("valeur"))
+
+
 def corriger(theme: str, item: dict, reponse) -> bool:
     """Retourne True si la réponse soumise correspond à la réponse attendue.
 
@@ -136,6 +158,11 @@ def corriger(theme: str, item: dict, reponse) -> bool:
     attendue = (item.get("reponse") or {}).get("valeur")
     if theme in ("calcul-mental", "concentration"):
         return _corriger_numerique(reponse, attendue)
+    if theme == "quotidien":
+        if item.get("type") == "estimation-temps":
+            return _corriger_estimation(item, reponse)
+        # prise-message et etape-suivante : texte tolérant (accents, casse, espaces).
+        return _clef_texte(reponse) == _clef_texte(attendue)
     if theme == "rappel-series":
         return _corriger_rappel_libre(item, reponse)
     if theme in ("evocation", "social"):

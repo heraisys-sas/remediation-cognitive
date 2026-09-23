@@ -192,7 +192,7 @@ function formaterTaux(taux) {
 /** Clavier adapté au type d'item (numérique quand la réponse est un nombre). */
 const TYPES_REPONSE_NUMERIQUE = new Set([
   "production", "chaine-calcul", "serie-manquante", "double-tache",
-  "empan", "paires-associatives",
+  "empan", "paires-associatives", "estimation-temps",
 ]);
 
 function inputmodePour(type) {
