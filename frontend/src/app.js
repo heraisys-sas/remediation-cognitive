@@ -46,6 +46,7 @@ const refs = {
     resume: $("vue-resume"),
     missions: $("vue-missions"),
     programme: $("vue-programme"),
+    reperes: $("vue-reperes"),
   },
   titres: {
     themes: $("titre-themes"),
@@ -53,6 +54,7 @@ const refs = {
     resume: $("titre-resume"),
     missions: $("titre-missions"),
     programme: $("titre-programme"),
+    reperes: $("titre-reperes"),
   },
   bandeau: $("bandeau-erreur"),
   bandeauMessage: $("bandeau-message"),
@@ -97,6 +99,8 @@ const refs = {
   semainesProgramme: $("semaines-programme"),
   reglesProgramme: $("regles-programme"),
   boutonRetourProgramme: $("bouton-retour-programme"),
+  boutonReperes: $("bouton-reperes"),
+  boutonRetourReperes: $("bouton-retour-reperes"),
 };
 
 /* ---------------------------------------------------------------------
@@ -1334,6 +1338,8 @@ function brancherEvenements() {
   refs.boutonMissions.addEventListener("click", ouvrirMissions);
   refs.boutonProgramme.addEventListener("click", ouvrirProgramme);
   refs.boutonRetourProgramme.addEventListener("click", revenirAuxThemes);
+  refs.boutonReperes.addEventListener("click", () => afficherVue("reperes"));
+  refs.boutonRetourReperes.addEventListener("click", revenirAuxThemes);
   refs.boutonRetourJournal.addEventListener("click", revenirAuxThemes);
   refs.boutonEnregistrerNote.addEventListener("click", enregistrerNote);
 }

@@ -19,7 +19,7 @@ Docs d'entrée : `docs/00-produit/vision.md`, `docs/00-produit/cadre-reglementai
 - **Jouable de bout en bout** : huit thèmes (calcul mental, mémoire avec empans de chiffres **et de mots**, concentration, retrouver le mot, vie sociale, rappel de séries, plus Python/anglais en section **Extra**) et trois écrans transverses : **programme de 8 semaines**, **missions hors écran & carnet**, séance. Lancer `python3 -m uvicorn backend.app.main:app` puis ouvrir `/ui/`.
 - **Implémenté** : `engine/` (moteur inchangé) ; `backend/` — `/api/entrainement`, `/api/social`, `/api/programme` (correction par thème, essais assistés, rappel libre au seuil, plan du jour) ; `frontend/` (SPA vanilla : phase de mémorisation temporisée, séries de mots, compte à rebours, propositions cliquables, indices progressifs).
 - **Contenu** : **691 items** + 8 missions + **programme de 8 semaines**, générés de façon déterministe (`tools/generer_memo_concentration.py`, `generer_evocation_social.py`, `generer_rappel_series.py`, `generer_programme.py`).
-- **Tests** : 114 passed (`python3 -m pytest -q`). Contrôles : `tools/validate_items.py` (schéma, manifests, propositions, indices, rythme d'affichage, séries, programme — 0 erreur), `tools/verifier_reponses.py` (0 anomalie), `tools/verifier_interface.py`.
+- **Tests** : 118 passed (`python3 -m pytest -q`). Contrôles : `tools/validate_items.py`, `tools/verifier_reponses.py`, `tools/verifier_interface.py`, `tools/verifier_clinique.py` (garde-fous cliniques automatisés).
 - **Contrat d'API figé** : `docs/30-technique/api-contract.md` — toute modification = ADR. Décisions : ADR-004 (aides progressives, options, périmètre social), ADR-005 (empan de mots, rappel libre, rythme), ADR-006 (programme, progression non contrainte).
 - **Garde-fou produit** : le programme propose un rythme — il ne mesure rien. Aucun taux d'observance ni de complétion ne doit être calculé (ADR-006).
 - **Traçabilité** : `.cluster/sprint1/`, `.cluster/enrichissement/`, `.cluster/sprint3/`, `.cluster/sprint4/`, `.cluster/sprint5/` ; journaux `memories/2026-09-03-sprint-1.md`, `2026-09-15-…`, `2026-09-21-…`, `2026-09-22-empan-de-mots-et-rappel-de-series.md`, `2026-09-22-programme-de-8-semaines.md`.
@@ -56,6 +56,7 @@ python3 -m uvicorn backend.app.main:app   # serveur de dev → /ui/ (interface) 
 python3 tools/validate_items.py      # schéma, manifests, options, indices, rythme, séries
 python3 tools/verifier_reponses.py   # réponses recalculées depuis l'énoncé
 python3 tools/verifier_interface.py  # identifiants et réinitialisation du champ de saisie
+python3 tools/verifier_clinique.py   # garde-fous cliniques (vocabulaire, photophobie, matériel protégé, relecture)
 python3 tools/generer_memo_concentration.py --dry-run   # régénère mémoire/concentration
 python3 tools/generer_evocation_social.py --dry-run     # régénère evocation/social + missions
 python3 tools/generer_rappel_series.py --dry-run        # régénère rappel-series

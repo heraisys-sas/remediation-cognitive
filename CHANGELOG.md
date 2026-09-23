@@ -2,6 +2,14 @@
 
 Format : [date] — [périmètre] — description. Les retours informels de l'orthophoniste sont journalisés ici, sans caution clinique.
 
+## 2026-09-23 · Clinique — garde-fous automatisés, cadre d'usage et repères d'orientation
+
+- **Contrôle clinique automatisé** — nouveau `tools/verifier_clinique.py` : vérifie sur le code et le contenu réels (1) que le vocabulaire non médical ne contient aucun terme clinique ou normatif, (2) le thème sombre sans animation et le respect de `prefers-reduced-motion` (photophobie), (3) qu'aucun instrument protégé (PASAT, MMSE, MoCA, ECPA, Pearson, Raven, GREFEX, TEA-Ch, BCEFA, RL/RI, 15 mots de Rey…) n'apparaît dans le contenu des items, (4) que chaque item porte un statut de relecture et qu'un « valide_informel » est daté. Résultat : aucune violation, 691 items à revoir.
+- **Cadre d'usage** — nouveau `docs/10-clinique/cadre-usage.md` : ce que le logiciel est / n'est pas, précautions par famille d'exercices, signes d'alerte non diagnostiques, statuts de relecture. Référence pour la relecture orthophoniste.
+- **Repères dans l'application** — bouton « Repères — quand en parler » sur l'accueil : quatre situations génériques (difficulté croissante, maux de tête aggravés, humeur/sommeil dégradés, gêne au quotidien) qui invitent à en parler à un professionnel, sans jamais poser de diagnostic.
+- **Tests** — 4 nouveaux tests verrouillent les outils de contrôle (validateur, réponses, interface, clinique) ; **118 tests** au total.
+- **Rappel de périmètre** — le contrôle clinique automatisé ne remplace pas la relecture orthophoniste ni l'usage réel : il garantit les garde-fous, pas la validité clinique.
+
 ## 2026-09-22 · Correctif — stabilité du contenu généré (isolation des tirages)
 
 - **Constat (revue de commits)** — au sprint 4, l'ajout des paliers d'empan de mots a consommé 72 tirages sur un générateur aléatoire **partagé entre thèmes** : le thème `concentration`, généré ensuite, a été **réécrit à identifiants constants** (161 items sur 162, contenu différent, structure identique). Passé inaperçu car le message de commit ne parlait que d'ajouts.
