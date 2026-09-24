@@ -330,6 +330,65 @@ MEILLEURE_SOLUTION = [
 ]
 
 
+# --- Aide externe (mémoire prospective) : quelle aide est adaptée ? ------------
+#: (situation, aide adaptée, deux aides moins efficaces)
+AIDE_EXTERNE = [
+    ("Tu dois te souvenir de sortir les poubelles jeudi soir.",
+     "Régler une alarme sur le téléphone pour jeudi à 20 h",
+     ["Compter sur ta mémoire", "L'écrire sur un papier rangé dans un tiroir"]),
+    ("Tu dois rappeler le médecin demain matin.",
+     "Programmer le rappel dans le téléphone pour demain 9 h",
+     ["Espérer y penser", "Le noter sur un papier que tu laisses chez toi"]),
+    ("Tu dois prendre un médicament avant chaque repas.",
+     "Poser les boîtes sur la table où tu prends tes repas",
+     ["Ranger les boîtes dans un placard", "Compter sur ta mémoire"]),
+    ("Tu dois emporter ton dossier pour le rendez-vous de demain.",
+     "Poser le dossier près de tes clés, sur ton chemin de sortie",
+     ["Le laisser sur le bureau", "Le ranger dans un tiroir"]),
+    ("Tu dois arroser les plantes en partant.",
+     "Poser l'arrosoir devant la porte d'entrée",
+     ["Ranger l'arrosoir au garage", "L'écrire dans un carnet que tu ne relis pas"]),
+    ("Tu dois rendre un livre à la bibliothèque.",
+     "Mettre le livre dans ton sac tout de suite",
+     ["Le poser près de la porte de la chambre", "Le noter dans un agenda"]),
+    ("Tu dois transmettre un message à ta sœur dès que possible.",
+     "Lui envoyer tout de suite un message : « je dois te dire quelque chose »",
+     ["Attendre de la croiser", "L'écrire dans un carnet"]),
+    ("Tu dois acheter du pain en rentrant.",
+     "Mettre un rappel à l'heure à laquelle tu passes devant la boulangerie",
+     ["Y penser en chemin", "L'écrire une fois rentré"]),
+]
+
+# --- Gestion de la pression temporelle (vitesse en situation) -------------------
+#: (situation, stratégie utile, deux stratégies qui font perdre du temps)
+GESTION_DU_TEMPS = [
+    ("Tu dois être prêt dans dix minutes et il reste trois choses à faire.",
+     "Faire d'abord ce qui est indispensable, laisser le reste",
+     ["Tout faire en même temps", "Renoncer à sortir"]),
+    ("Le bus part dans cinq minutes et tu n'as pas encore tes affaires.",
+     "Rassembler l'essentiel (clés, billet) et partir",
+     ["Chercher tout ce qui manque", "Attendre le prochain sans rien préparer"]),
+    ("Un appel se prolonge alors que tu dois partir.",
+     "Dire que tu rappelles plus tard, puis raccrocher",
+     ["Continuer à écouter", "Raccrocher sans rien dire"]),
+    ("Tu as trois rendez-vous le même jour.",
+     "Vérifier les trajets et prévoir de la marge entre les trois",
+     ["Les enchaîner au plus serré", "Tout regrouper le matin"]),
+    ("Tu dois rendre un devoir demain et il te reste une heure.",
+     "Commencer par la partie la plus importante",
+     ["Relire d'abord tout le texte", "Attendre le dernier moment"]),
+    ("Tu prépares un repas et tout doit être prêt en même temps.",
+     "Commencer par ce qui cuit le plus longtemps",
+     ["Tout commencer en même temps", "Servir au fur et à mesure"]),
+    ("Tu es déjà en retard et quelqu'un t'aborde dans la rue.",
+     "Dire en une phrase que tu es pressé et continuer ton chemin",
+     ["T'arrêter pour discuter", "Faire semblant de ne pas entendre"]),
+    ("Tu dois prendre la route et tu sens la fatigue monter.",
+     "T'arrêter maintenant pour une pause courte",
+     ["Finir vite ce que tu fais, puis partir", "Partir sans pause pour arriver plus tôt"]),
+]
+
+
 def _item_choix(numero: int, palier: int, famille: str, type_item: str,
                 prerequis: list[str], donnees: list, consigne: str, aide: str,
                 fonctions: list[str]) -> dict:
@@ -398,6 +457,24 @@ def construire_paliers() -> list[list[dict]]:
                     ["planification", "fonctions-executives"])
         for n in range(1, 13)
     ])
+    # Palier 7 — aide externe adaptée (mémoire prospective : le bon support au bon endroit).
+    paliers.append([
+        _item_choix(n, 7, "aide", "aide-externe", ["qo-palier-6"],
+                    AIDE_EXTERNE,
+                    "Choisis l'aide la plus efficace. Astuce : une bonne aide est au bon endroit, au bon moment, et visible juste avant l'action.",
+                    "Se souvenir, c'est plus facile quand le rappel est placé là où l'action aura lieu.",
+                    ["memoire-prospective", "planification"])
+        for n in range(1, 9)
+    ])
+    # Palier 8 — gestion de la pression temporelle.
+    paliers.append([
+        _item_choix(n, 8, "temps", "gestion-du-temps", ["qo-palier-7"],
+                    GESTION_DU_TEMPS,
+                    "Choisis la réaction la plus utile quand le temps presse. Astuce : mieux vaut décider vite de l'essentiel que tout tenter à la fois.",
+                    "Dans l'urgence, on gagne du temps en simplifiant, pas en accélérant.",
+                    ["planification", "fonctions-executives"])
+        for n in range(1, 9)
+    ])
     return paliers
 
 
@@ -409,6 +486,8 @@ def _manifest(paliers: list[list[dict]]) -> dict:
         "Choisir par où commencer (initiation)",
         "Construire un plan « si … alors » pour ne rien oublier (mémoire prospective)",
         "Choisir la meilleure solution à un problème (résolution de problème)",
+        "Choisir la bonne aide externe (mémoire prospective)",
+        "Gérer la pression du temps (vitesse en situation)",
     ]
     return {
         "theme": "quotidien",

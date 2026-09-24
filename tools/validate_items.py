@@ -67,6 +67,8 @@ TYPES_A_CHOIX = {
     "auto-instruction",
     "plan-a-verifier",
     "reperer-info",
+    "aide-externe",
+    "gestion-du-temps",
 }
 
 #: Types dont le contenu porte une hiérarchie d'indices (``contenu.indices``).

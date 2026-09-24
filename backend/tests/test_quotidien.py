@@ -93,6 +93,19 @@ def test_etape_suivante_planification(client, tmp_path):
     ).json()["correcte"] is False
 
 
+def test_aide_externe_et_gestion_du_temps(client, tmp_path):
+    """Paliers 7 et 8 : aide externe adaptée (mémoire prospective) et pression temporelle."""
+    for palier, type_attendu in ((7, "aide-externe"), (8, "gestion-du-temps")):
+        _forcer_palier(tmp_path, "quotidien", palier)
+        payload = _demarrer(client, "quotidien")
+        item = payload["items"][0]
+        assert item["type"] == type_attendu
+        assert len(item["contenu"]["options"]) == 3
+        assert _repondre(
+            client, "quotidien", payload["session_id"], item["id"], _attendue("quotidien", item["id"])
+        ).json()["correcte"] is True
+
+
 def test_familles_choix_initiation_intention_solution(client, tmp_path):
     """Paliers 4 à 6 : initiation, plan « si-alors », résolution de problème."""
     for palier, type_attendu in ((4, "par-ou-commencer"), (5, "si-alors"), (6, "meilleure-solution")):

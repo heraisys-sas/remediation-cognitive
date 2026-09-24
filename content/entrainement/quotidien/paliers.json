@@ -52,6 +52,24 @@
       ],
       "fichier": "paliers/palier-06.json",
       "nb_items": 12
+    },
+    {
+      "id": "qo-palier-7",
+      "description": "Choisir la bonne aide externe (mémoire prospective)",
+      "prerequis": [
+        "qo-palier-6"
+      ],
+      "fichier": "paliers/palier-07.json",
+      "nb_items": 8
+    },
+    {
+      "id": "qo-palier-8",
+      "description": "Gérer la pression du temps (vitesse en situation)",
+      "prerequis": [
+        "qo-palier-7"
+      ],
+      "fichier": "paliers/palier-08.json",
+      "nb_items": 8
     }
   ]
 }

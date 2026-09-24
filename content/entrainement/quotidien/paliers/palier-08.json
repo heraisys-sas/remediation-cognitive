@@ -1,0 +1,282 @@
+[
+  {
+    "id": "qo-8-temps-01",
+    "type": "gestion-du-temps",
+    "module": "entrainement",
+    "theme": "quotidien",
+    "fonctions_ciblees": [
+      "planification",
+      "fonctions-executives"
+    ],
+    "palier": 8,
+    "prerequis": [
+      "qo-palier-7"
+    ],
+    "cap_complexite": null,
+    "contenu": {
+      "consigne": "Choisis la réaction la plus utile quand le temps presse. Astuce : mieux vaut décider vite de l'essentiel que tout tenter à la fois.",
+      "enonce": "Tu dois être prêt dans dix minutes et il reste trois choses à faire.",
+      "options": [
+        "Tout faire en même temps",
+        "Renoncer à sortir",
+        "Faire d'abord ce qui est indispensable, laisser le reste"
+      ],
+      "aide": "Dans l'urgence, on gagne du temps en simplifiant, pas en accélérant."
+    },
+    "reponse": {
+      "valeur": "Faire d'abord ce qui est indispensable, laisser le reste"
+    },
+    "meta": {
+      "auteur": "redaction-assistee (tools/generer_quotidien.py)",
+      "date_creation": "2026-09-23",
+      "relecture_ortho": {
+        "statut": "a_revoir"
+      }
+    }
+  },
+  {
+    "id": "qo-8-temps-02",
+    "type": "gestion-du-temps",
+    "module": "entrainement",
+    "theme": "quotidien",
+    "fonctions_ciblees": [
+      "planification",
+      "fonctions-executives"
+    ],
+    "palier": 8,
+    "prerequis": [
+      "qo-palier-7"
+    ],
+    "cap_complexite": null,
+    "contenu": {
+      "consigne": "Choisis la réaction la plus utile quand le temps presse. Astuce : mieux vaut décider vite de l'essentiel que tout tenter à la fois.",
+      "enonce": "Le bus part dans cinq minutes et tu n'as pas encore tes affaires.",
+      "options": [
+        "Rassembler l'essentiel (clés, billet) et partir",
+        "Attendre le prochain sans rien préparer",
+        "Chercher tout ce qui manque"
+      ],
+      "aide": "Dans l'urgence, on gagne du temps en simplifiant, pas en accélérant."
+    },
+    "reponse": {
+      "valeur": "Rassembler l'essentiel (clés, billet) et partir"
+    },
+    "meta": {
+      "auteur": "redaction-assistee (tools/generer_quotidien.py)",
+      "date_creation": "2026-09-23",
+      "relecture_ortho": {
+        "statut": "a_revoir"
+      }
+    }
+  },
+  {
+    "id": "qo-8-temps-03",
+    "type": "gestion-du-temps",
+    "module": "entrainement",
+    "theme": "quotidien",
+    "fonctions_ciblees": [
+      "planification",
+      "fonctions-executives"
+    ],
+    "palier": 8,
+    "prerequis": [
+      "qo-palier-7"
+    ],
+    "cap_complexite": null,
+    "contenu": {
+      "consigne": "Choisis la réaction la plus utile quand le temps presse. Astuce : mieux vaut décider vite de l'essentiel que tout tenter à la fois.",
+      "enonce": "Un appel se prolonge alors que tu dois partir.",
+      "options": [
+        "Continuer à écouter",
+        "Raccrocher sans rien dire",
+        "Dire que tu rappelles plus tard, puis raccrocher"
+      ],
+      "aide": "Dans l'urgence, on gagne du temps en simplifiant, pas en accélérant."
+    },
+    "reponse": {
+      "valeur": "Dire que tu rappelles plus tard, puis raccrocher"
+    },
+    "meta": {
+      "auteur": "redaction-assistee (tools/generer_quotidien.py)",
+      "date_creation": "2026-09-23",
+      "relecture_ortho": {
+        "statut": "a_revoir"
+      }
+    }
+  },
+  {
+    "id": "qo-8-temps-04",
+    "type": "gestion-du-temps",
+    "module": "entrainement",
+    "theme": "quotidien",
+    "fonctions_ciblees": [
+      "planification",
+      "fonctions-executives"
+    ],
+    "palier": 8,
+    "prerequis": [
+      "qo-palier-7"
+    ],
+    "cap_complexite": null,
+    "contenu": {
+      "consigne": "Choisis la réaction la plus utile quand le temps presse. Astuce : mieux vaut décider vite de l'essentiel que tout tenter à la fois.",
+      "enonce": "Tu as trois rendez-vous le même jour.",
+      "options": [
+        "Tout regrouper le matin",
+        "Vérifier les trajets et prévoir de la marge entre les trois",
+        "Les enchaîner au plus serré"
+      ],
+      "aide": "Dans l'urgence, on gagne du temps en simplifiant, pas en accélérant."
+    },
+    "reponse": {
+      "valeur": "Vérifier les trajets et prévoir de la marge entre les trois"
+    },
+    "meta": {
+      "auteur": "redaction-assistee (tools/generer_quotidien.py)",
+      "date_creation": "2026-09-23",
+      "relecture_ortho": {
+        "statut": "a_revoir"
+      }
+    }
+  },
+  {
+    "id": "qo-8-temps-05",
+    "type": "gestion-du-temps",
+    "module": "entrainement",
+    "theme": "quotidien",
+    "fonctions_ciblees": [
+      "planification",
+      "fonctions-executives"
+    ],
+    "palier": 8,
+    "prerequis": [
+      "qo-palier-7"
+    ],
+    "cap_complexite": null,
+    "contenu": {
+      "consigne": "Choisis la réaction la plus utile quand le temps presse. Astuce : mieux vaut décider vite de l'essentiel que tout tenter à la fois.",
+      "enonce": "Tu dois rendre un devoir demain et il te reste une heure.",
+      "options": [
+        "Attendre le dernier moment",
+        "Relire d'abord tout le texte",
+        "Commencer par la partie la plus importante"
+      ],
+      "aide": "Dans l'urgence, on gagne du temps en simplifiant, pas en accélérant."
+    },
+    "reponse": {
+      "valeur": "Commencer par la partie la plus importante"
+    },
+    "meta": {
+      "auteur": "redaction-assistee (tools/generer_quotidien.py)",
+      "date_creation": "2026-09-23",
+      "relecture_ortho": {
+        "statut": "a_revoir"
+      }
+    }
+  },
+  {
+    "id": "qo-8-temps-06",
+    "type": "gestion-du-temps",
+    "module": "entrainement",
+    "theme": "quotidien",
+    "fonctions_ciblees": [
+      "planification",
+      "fonctions-executives"
+    ],
+    "palier": 8,
+    "prerequis": [
+      "qo-palier-7"
+    ],
+    "cap_complexite": null,
+    "contenu": {
+      "consigne": "Choisis la réaction la plus utile quand le temps presse. Astuce : mieux vaut décider vite de l'essentiel que tout tenter à la fois.",
+      "enonce": "Tu prépares un repas et tout doit être prêt en même temps.",
+      "options": [
+        "Servir au fur et à mesure",
+        "Tout commencer en même temps",
+        "Commencer par ce qui cuit le plus longtemps"
+      ],
+      "aide": "Dans l'urgence, on gagne du temps en simplifiant, pas en accélérant."
+    },
+    "reponse": {
+      "valeur": "Commencer par ce qui cuit le plus longtemps"
+    },
+    "meta": {
+      "auteur": "redaction-assistee (tools/generer_quotidien.py)",
+      "date_creation": "2026-09-23",
+      "relecture_ortho": {
+        "statut": "a_revoir"
+      }
+    }
+  },
+  {
+    "id": "qo-8-temps-07",
+    "type": "gestion-du-temps",
+    "module": "entrainement",
+    "theme": "quotidien",
+    "fonctions_ciblees": [
+      "planification",
+      "fonctions-executives"
+    ],
+    "palier": 8,
+    "prerequis": [
+      "qo-palier-7"
+    ],
+    "cap_complexite": null,
+    "contenu": {
+      "consigne": "Choisis la réaction la plus utile quand le temps presse. Astuce : mieux vaut décider vite de l'essentiel que tout tenter à la fois.",
+      "enonce": "Tu es déjà en retard et quelqu'un t'aborde dans la rue.",
+      "options": [
+        "T'arrêter pour discuter",
+        "Faire semblant de ne pas entendre",
+        "Dire en une phrase que tu es pressé et continuer ton chemin"
+      ],
+      "aide": "Dans l'urgence, on gagne du temps en simplifiant, pas en accélérant."
+    },
+    "reponse": {
+      "valeur": "Dire en une phrase que tu es pressé et continuer ton chemin"
+    },
+    "meta": {
+      "auteur": "redaction-assistee (tools/generer_quotidien.py)",
+      "date_creation": "2026-09-23",
+      "relecture_ortho": {
+        "statut": "a_revoir"
+      }
+    }
+  },
+  {
+    "id": "qo-8-temps-08",
+    "type": "gestion-du-temps",
+    "module": "entrainement",
+    "theme": "quotidien",
+    "fonctions_ciblees": [
+      "planification",
+      "fonctions-executives"
+    ],
+    "palier": 8,
+    "prerequis": [
+      "qo-palier-7"
+    ],
+    "cap_complexite": null,
+    "contenu": {
+      "consigne": "Choisis la réaction la plus utile quand le temps presse. Astuce : mieux vaut décider vite de l'essentiel que tout tenter à la fois.",
+      "enonce": "Tu dois prendre la route et tu sens la fatigue monter.",
+      "options": [
+        "T'arrêter maintenant pour une pause courte",
+        "Finir vite ce que tu fais, puis partir",
+        "Partir sans pause pour arriver plus tôt"
+      ],
+      "aide": "Dans l'urgence, on gagne du temps en simplifiant, pas en accélérant."
+    },
+    "reponse": {
+      "valeur": "T'arrêter maintenant pour une pause courte"
+    },
+    "meta": {
+      "auteur": "redaction-assistee (tools/generer_quotidien.py)",
+      "date_creation": "2026-09-23",
+      "relecture_ortho": {
+        "statut": "a_revoir"
+      }
+    }
+  }
+]

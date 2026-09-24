@@ -2,6 +2,12 @@
 
 Format : [date] — [périmètre] — description. Les retours informels de l'orthophoniste sont journalisés ici, sans caution clinique.
 
+## 2026-09-24 · Au quotidien — aide externe et pression du temps (paliers 7 et 8)
+
+- **Aide externe adaptée** (palier 7, mémoire prospective) — choisir le bon support pour ne pas oublier : alarme au bon moment, objet déplacé au bon endroit, dossier sur le chemin de sortie. Règle enseignée : une aide est efficace quand elle est **au bon endroit, au bon moment, et visible juste avant l'action** — « compter sur sa mémoire » ou « noter dans un carnet qu'on ne relit pas » n'en sont pas.
+- **Gestion de la pression du temps** (palier 8, vitesse en situation) — décider vite de l'essentiel quand le temps presse. Choix de conception : **pas d'exercice chronométré** (fatigant, anxiogène, transfert faible), mais la stratégie qui aide réellement en situation (simplifier, prioriser, préparer), dans l'esprit du *Time Pressure Management*.
+- **Contrôles** — **851 items / 0 erreur** ; **135 tests** (aide externe, pression du temps).
+
 ## 2026-09-24 · Méthodes — approfondissement (PQRST ×2, vérification de plan, repérage d'info)
 
 - **PQRST** — chaque texte est désormais testé par **deux questions de mémoire** (12 items au lieu de 6) : on ne peut pas réussir en retenant une seule information.
