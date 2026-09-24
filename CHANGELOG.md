@@ -2,6 +2,16 @@
 
 Format : [date] — [périmètre] — description. Les retours informels de l'orthophoniste sont journalisés ici, sans caution clinique.
 
+## 2026-09-25 · Couche de capacités du poste (local) — sens, voix, écoute
+
+- **Similarité sémantique hors ligne** — `backend/app/domain/capacites.py` utilise les **empreintes de phrases d'Apple** (`NLEmbedding`) quand elles existent, sinon une comparaison lexicale (sans aucune dépendance). Seuil **0,78**, calibré sur cas réels (paraphrases 0,80–0,90 ; distracteurs 0,42–0,68).
+- **La correction juge le sens** — un synonyme est accepté en accès lexical (« bicyclette » pour « vélo », « toubib » pour « médecin ») et une formulation proche en prise de message (« la cave » pour « la porte de la cave »). Une réponse éloignée reste refusée.
+- **Voix du système** — synthèse par `say`/`afconvert` (macOS), PowerShell/SAPI (Windows), `espeak` (Linux) ; **dictée assurée côté client** par l'API du navigateur, qui s'appuie sur les moteurs de l'OS. Tout **local** : aucune donnée ne quitte le poste.
+- **API** — `GET /api/capacites`, `POST /api/capacites/similarite`, `POST /api/capacites/synthese`.
+- **Interface** — boutons « Répondre à voix haute » et « Écouter la consigne », masqués si le poste ne les propose pas ; repli clavier toujours possible.
+- **Portabilité** — aucun paquet obligatoire ; sur macOS, `pyobjc-framework-NaturalLanguage` active les empreintes. `docs/30-technique/pistes-extension-ia.md` mis à jour (local vs serveur, capacités par plateforme, étape suivante : ONNX).
+- **Contrôles** — **811 items / 0 erreur** ; **140 tests**.
+
 ## 2026-09-25 · Reconnaissance des réponses : tolérance élargie
 
 - **Correctif** — « 15h » n'était pas accepté pour « 15 h » : la normalisation des heures exigeait des minutes. Elle couvre maintenant l'heure seule et l'heure pleine (« 15 h » = « 15h » = « 15:00 » = « 15h00 »), dans **toutes** les familles concernées (méthodes, vie quotidienne, accès au mot), et plus seulement la prise de message.

@@ -887,3 +887,6 @@ body {
   display: grid;
   gap: 0.25rem;
 }
+
+/* Boutons de capacité du poste (dictée, écoute) : secondaires, jamais imposés. */
+#bouton-dicter, #bouton-ecouter { margin-top: 0.5rem; align-self: start; }

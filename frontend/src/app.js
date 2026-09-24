@@ -29,6 +29,12 @@ const TYPES_A_CHOIX = new Set([
 //: Thèmes d'appoint regroupés dans la section « Extra » de l'écran d'accueil.
 const THEMES_EXTRA = new Set(["python", "anglais"]);
 
+//: Capacités du poste (voix, synthèse) — repli neutre si le module est absent.
+const CAPACITES = (typeof Capacites !== "undefined")
+  ? Capacites
+  : { voixDisponible: () => false, syntheseDisponible: () => false,
+      dicter: () => null, lire: () => false, arreter: () => {} };
+
 //: Blanc entre deux éléments d'une séquence (segmentation visuelle uniquement —
 //: ce n'est pas une pause d'attente : le rythme reste d'un élément par seconde).
 const BLANC_INTER_ITEM_MS = 120;
@@ -105,6 +111,8 @@ const refs = {
   boutonRetourProgramme: $("bouton-retour-programme"),
   boutonReperes: $("bouton-reperes"),
   boutonRetourReperes: $("bouton-retour-reperes"),
+  boutonDicter: $("bouton-dicter"),
+  boutonEcouter: $("bouton-ecouter"),
 };
 
 /* ---------------------------------------------------------------------
@@ -684,6 +692,12 @@ function afficherQuestion(item) {
   refs.zoneGrille.replaceChildren();
   refs.zoneGeneration.hidden = true;
   refs.zoneGeneration.replaceChildren();
+  // Capacités du poste : réinitialisées pour chaque question (la dictée ne
+  // s'affiche que pour une réponse à saisir ; l'écoute suit la disponibilité).
+  CAPACITES.arreter();
+  refs.boutonDicter.hidden = true;
+  refs.boutonDicter.textContent = "🎤 Répondre à voix haute";
+  refs.boutonEcouter.hidden = !CAPACITES.syntheseDisponible();
 
   // Énoncé : grand texte ; variante monospace pour la prédiction de sortie.
   refs.enonce.textContent = contenu.enonce ?? "";
@@ -735,6 +749,8 @@ function afficherQuestion(item) {
   refs.zoneIndices.hidden = true;
   if (avecChoix) rendreOptions(options, item);
   refs.formulaire.hidden = avecChoix;
+  // Réponse à dicter possible seulement quand on attend un texte libre.
+  refs.boutonDicter.hidden = !(CAPACITES.voixDisponible() && !avecChoix);
 
   // Indices progressifs (accès au mot) : proposés, jamais imposés.
   if (Array.isArray(contenu.indices) && contenu.indices.length) rendreIndices(item);
@@ -1637,11 +1653,27 @@ function brancherEvenements() {
   });
 
   refs.boutonNouvelleSeance.addEventListener("click", revenirAuxThemes);
-  refs.boutonMissions.addEventListener("click", ouvrirMissions);
-  refs.boutonProgramme.addEventListener("click", ouvrirProgramme);
+  refs.boutonMissions.addEventListener("click", ouvrirMissions);  refs.boutonProgramme.addEventListener("click", ouvrirProgramme);
   refs.boutonRetourProgramme.addEventListener("click", revenirAuxThemes);
   refs.boutonReperes.addEventListener("click", () => afficherVue("reperes"));
   refs.boutonRetourReperes.addEventListener("click", revenirAuxThemes);
+
+  // Capacités du poste : écouter la consigne, répondre à voix haute.
+  refs.boutonEcouter.addEventListener("click", () => {
+    const item = etat.session && etat.session.items[etat.indexItem];
+    if (!item) return;
+    const texte = [item.contenu.consigne, item.contenu.enonce].filter(Boolean).join(". ");
+    CAPACITES.lire(texte);
+  });
+  refs.boutonDicter.addEventListener("click", () => {
+    if (!etat.session || etat.repondu) return;
+    CAPACITES.dicter({
+      onDebut: () => { refs.boutonDicter.textContent = "🎙️ Je t'écoute…"; },
+      onResultat: (texte) => { refs.champReponse.value = texte; },
+      onFin: () => { refs.boutonDicter.textContent = "🎤 Répondre à voix haute"; },
+      onErreur: () => { refs.boutonDicter.textContent = "🎤 Répondre à voix haute"; },
+    });
+  });
   refs.boutonRetourJournal.addEventListener("click", revenirAuxThemes);
   refs.boutonEnregistrerNote.addEventListener("click", enregistrerNote);
 }

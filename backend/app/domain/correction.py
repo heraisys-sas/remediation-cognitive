@@ -27,6 +27,8 @@ import re
 import unicodedata
 from numbers import Real
 
+from . import capacites
+
 # Tolérance de comparaison flottante (représentations décimales exactes).
 TOLERANCE_NUMERIQUE = 1e-9
 
@@ -146,7 +148,8 @@ def _corriger_mot(reponse, item: dict) -> bool:
             tolerance = 1 if len(clef) < 7 else 2
             if _distance(donnees, clef) <= tolerance:
                 return True
-    return False
+    # Dernier recours : le poste sait-il comparer le SENS (synonymes) ?
+    return capacites.proche(str(reponse or ""), [str(c) for c in cibles if c])
 
 
 def _mots(texte) -> list[str]:
@@ -242,7 +245,10 @@ def corriger(theme: str, item: dict, reponse) -> bool:
         return _clef_reponse(reponse) == _clef_reponse(attendue)
     if theme == "quotidien":
         if item.get("type") == "prise-message":
-            return _clef_reponse(reponse) == _clef_reponse(attendue)
+            if _clef_reponse(reponse) == _clef_reponse(attendue):
+                return True
+            # Formulation proche (« la cave » pour « la porte de la cave »).
+            return capacites.proche(str(reponse or ""), [str(attendue)])
         if item.get("type") == "estimation-temps":
             return _corriger_estimation(item, reponse)
         # etape-suivante et les familles à choix : la proposition choisie, en clair.

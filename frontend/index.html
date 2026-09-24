@@ -78,6 +78,7 @@
 
       <article class="carte carte-enonce">
         <p id="enonce" class="enonce"></p>
+      <button id="bouton-ecouter" type="button" class="bouton bouton-secondaire" hidden>🔊 Écouter la consigne</button>
         <!-- Aide optionnelle fournie par l'item (contenu.aide) — repliée par défaut. -->
         <details id="zone-aide" class="aide" hidden>
           <summary>Voir un coup de pouce</summary>
@@ -120,6 +121,7 @@
         <input id="champ-reponse" name="reponse" type="text" class="champ"
                autocomplete="off" autocapitalize="none" spellcheck="false"
                enterkeyhint="done" />
+        <button id="bouton-dicter" type="button" class="bouton bouton-secondaire" hidden>🎤 Répondre à voix haute</button>
         <p id="indice-reponse" class="indice" hidden>Écris d’abord ta réponse, puis valide.</p>
         <button id="bouton-valider" type="submit" class="bouton bouton-primaire bouton-large">Valider</button>
       </form>
@@ -229,6 +231,7 @@
     <p class="noscript">Cette page a besoin de JavaScript pour afficher les séances.</p>
   </noscript>
 
+  <script src="src/capacites.js" defer></script>
   <script src="src/app.js" defer></script>
 </body>
 </html>

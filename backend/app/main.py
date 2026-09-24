@@ -20,6 +20,7 @@ from fastapi.staticfiles import StaticFiles
 
 from .api.entrainement import router as router_entrainement
 from .api.entrainement.service import GestionnaireSessions
+from .api.capacites import router as router_capacites
 from .api.programme import router as router_programme
 from .api.missions import router as router_missions
 from .domain.contenu import RACINE_PROJET
@@ -74,6 +75,9 @@ def creer_app(
     racine_programme = Path(racine_donnees).parent / "programme" if racine_donnees else None
     application.state.stockage_programme = StockageProgramme(racine=racine_programme)
     application.include_router(router_programme)
+
+    # Capacités du poste (similarité de textes, synthèse vocale) — tout reste local.
+    application.include_router(router_capacites)
 
     # Interface statique : montage tolérant — le dossier frontend/ peut
     # ne pas exister encore (livré en parallèle) ; /ui rend alors 404.

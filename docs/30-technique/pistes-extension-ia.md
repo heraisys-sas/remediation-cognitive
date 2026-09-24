@@ -20,6 +20,30 @@ C'est l'**étape 2**. Aujourd'hui, une réponse libre ne peut être jugée que p
 - **Un LLM à l'exécution pour corriger** : lent, non déterministe, non testable. S'il est utilisé, ce doit être derrière un seuil et toujours avec un repli sur la règle explicite.
 - **Un modèle qui « note » la personne** : on garde des règles lisibles et vérifiables. L'IA aide à *comprendre* la réponse, jamais à *évaluer* la personne.
 
+## Implémenté (2026-09-25) — étape 0 + étape 2 partielle
+
+- **Couche de capacités** (`backend/app/domain/capacites.py` + `/api/capacites`) : chaque
+  besoin prend ce que le système fournit, sinon un repli qui ne dépend de rien.
+  - **Similarité** : **empreintes de phrases d'Apple** (`NaturalLanguage`/`NLEmbedding`,
+    hors ligne, aucun modèle embarqué) quand elles sont là ; sinon comparaison lexicale
+    (n-grammes + recouvrement de mots). Fournisseur annoncé par `GET /api/capacites`.
+  - **Seuil 0,78**, calibré sur des cas réels : paraphrases 0,80–0,90 ; distracteurs 0,42–0,68.
+    Vérifié : « le toubib » ≈ « le médecin » (0,86), « la boulangerie » vs « le médecin » (0,60, refusé).
+  - **Synthèse** : voix du système (`say` + `afconvert` sur macOS, PowerShell/SAPI sur Windows,
+    `espeak` sur Linux) → WAV.
+  - **Voix (dictée)** : assurée **côté client** (`frontend/src/capacites.js`, API du navigateur,
+    qui s'appuie sur les moteurs de l'OS) — le serveur ne capte pas le micro.
+- **Utilisée dans la correction** : un **synonyme** est accepté pour l'accès lexical, et une
+  **formulation proche** pour une prise de message — la réponse est jugée sur le sens, pas sur la forme.
+- **Interface** : bouton « Répondre à voix haute » (masqué si le poste ne l'a pas) et
+  « Écouter la consigne » ; tout retombe proprement sur le clavier.
+- **Dépendance optionnelle** : sur macOS, `pyobjc-framework-NaturalLanguage` (installé ici)
+  active les empreintes ; ailleurs, le repli lexical fonctionne sans rien installer, et
+  l'ajout d'un moteur embarqué (ONNX Runtime + mini-modèle) est la branche à écrire.
+
+**Reste à faire** : fournisseur ONNX (Windows/Linux), reconnaissance vocale native dans une
+enveloppe tablette, et consolidation des synonymes par item.
+
 ## Ordre conseillé
 
 1 (lexical, tout de suite) → 2 (empreintes, le vrai saut) → 3 (voix) → 4 (contenu) → 5 (adaptatif, après un pilote réel).
