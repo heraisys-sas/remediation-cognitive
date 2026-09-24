@@ -40,22 +40,33 @@ def test_grille_deduction_structure_et_correction(client):
 
 
 def test_grille_deduction_indices_vrais_pour_la_solution():
-    """Chaque indice est cohérent avec la solution (garde-fou de validité)."""
+    """Chaque indice (à deux informations) est cohérent avec la solution."""
+    def cellule(fig, coul, i_f, i_c):
+        for i in range(len(fig)):
+            if fig[i] == i_f and coul[i] == i_c:
+                return i
+        return -1
+
     def vrai(indice, fig, coul, n, ifig, icoul):
+        if indice["type"] == "regle":
+            return True
+        case = cellule(fig, coul, ifig[indice["figure"]], icoul[indice["couleur"]])
+        if case < 0:
+            return False
         coins = {0, n - 1, n * (n - 1), n * n - 1}
         bords = {i for i in range(n * n) if i // n in (0, n - 1) or i % n in (0, n - 1)}
         t = indice["type"]
-        if t == "case-couleur": return coul[indice["case"]] == icoul[indice["couleur"]]
-        if t == "case-figure": return fig[indice["case"]] == ifig[indice["figure"]]
-        if t == "ligne": return ifig[indice["figure"]] in (fig[indice["ligne"] * n + c] for c in range(n))
-        if t == "colonne": return icoul[indice["couleur"]] in (coul[r * n + indice["colonne"]] for r in range(n))
-        if t == "coin-couleur": return any(coul[i] == icoul[indice["couleur"]] for i in coins)
-        if t == "coin-figure": return any(fig[i] == ifig[indice["figure"]] for i in coins)
-        if t == "bord-couleur": return any(coul[i] == icoul[indice["couleur"]] for i in bords)
-        if t == "bord-figure": return any(fig[i] == ifig[indice["figure"]] for i in bords)
-        if t == "pas-couleur": return coul[indice["case"]] != icoul[indice["couleur"]]
-        if t == "pas-figure": return fig[indice["case"]] != ifig[indice["figure"]]
-        if t == "regle": return True
+        if t == "case": return case == indice["case"]
+        if t == "ligne": return case // n == indice["ligne"]
+        if t == "colonne": return case % n == indice["colonne"]
+        if t == "pas-coin": return case not in coins
+        if t == "pas-bord": return case not in bords
+        if t.startswith("voisin-"):
+            autre = cellule(fig, coul, ifig[indice["figure2"]], icoul[indice["couleur2"]])
+            if t == "voisin-droite": return autre == case + 1 and case % n != n - 1
+            if t == "voisin-gauche": return autre == case - 1 and case % n != 0
+            if t == "voisin-dessous": return autre == case + n
+            if t == "voisin-dessus": return autre == case - n
         return False
 
     for item in CONTENU.items("deduction"):
@@ -65,6 +76,8 @@ def test_grille_deduction_indices_vrais_pour_la_solution():
         ifig = {f: i for i, f in enumerate(figures)}
         icoul = {c: i for i, c in enumerate(couleurs)}
         cellules = item["reponse"]["grille"]
+        # Chaque figure colorée est unique dans la grille.
+        assert len({(f, c) for f, c in cellules}) == n * n, item["id"]
         fig = [ifig[f] for f, _ in cellules]
         coul = [icoul[c] for _, c in cellules]
         for indice in item["contenu"]["enonces"] + item["contenu"].get("indices", []):

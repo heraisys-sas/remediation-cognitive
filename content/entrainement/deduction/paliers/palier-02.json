@@ -14,7 +14,7 @@
     ],
     "cap_complexite": null,
     "contenu": {
-      "consigne": "Place les figures et les couleurs en recoupant les indices. Chaque figure et chaque couleur apparaît une fois par ligne et par colonne.",
+      "consigne": "Place les figures colorées en recoupant les indices. Chaque figure colorée (un carré bleu, un rond rouge…) apparaît une seule fois dans la grille.",
       "figures": [
         "cercle",
         "carre",
@@ -27,75 +27,73 @@
       ],
       "enonces": [
         {
-          "type": "case-figure",
-          "case": 0,
-          "figure": "carre"
+          "type": "voisin-droite",
+          "figure": "triangle",
+          "couleur": "bleu",
+          "figure2": "carre",
+          "couleur2": "rouge"
         },
         {
-          "type": "case-figure",
-          "case": 5,
-          "figure": "cercle"
+          "type": "case",
+          "figure": "triangle",
+          "couleur": "vert",
+          "case": 2
+        },
+        {
+          "type": "voisin-dessus",
+          "figure": "carre",
+          "couleur": "vert",
+          "figure2": "triangle",
+          "couleur2": "bleu"
+        },
+        {
+          "type": "regle",
+          "variante": 1
         },
         {
           "type": "regle",
           "variante": 0
         },
         {
-          "type": "case-couleur",
-          "case": 7,
-          "couleur": "rouge"
-        },
-        {
-          "type": "case-couleur",
-          "case": 6,
-          "couleur": "bleu"
-        },
-        {
-          "type": "case-couleur",
-          "case": 4,
-          "couleur": "bleu"
+          "type": "regle",
+          "variante": 1
         }
       ],
       "indices": [
         {
-          "type": "case-figure",
-          "case": 1,
-          "figure": "cercle"
+          "type": "case",
+          "figure": "cercle",
+          "couleur": "rouge",
+          "case": 1
         },
         {
-          "type": "case-figure",
-          "case": 2,
-          "figure": "triangle"
-        },
-        {
-          "type": "case-figure",
-          "case": 3,
-          "figure": "triangle"
-        },
-        {
-          "type": "case-couleur",
-          "case": 0,
+          "type": "pas-coin",
+          "figure": "cercle",
           "couleur": "rouge"
         },
         {
-          "type": "case-couleur",
-          "case": 1,
-          "couleur": "vert"
-        },
-        {
-          "type": "case-couleur",
-          "case": 2,
-          "couleur": "bleu"
+          "type": "ligne",
+          "figure": "cercle",
+          "couleur": "rouge",
+          "ligne": 0
         }
       ],
-      "aide": "Commence par les indices qui désignent une case précise, puis recoupe avec les autres."
+      "aide": "Chaque indice donne deux informations : la figure colorée et sa place. Commence par celles qui désignent une case."
     },
     "reponse": {
-      "valeur": "carre:rouge;cercle:vert;triangle:bleu;triangle:vert;carre:bleu;cercle:rouge;cercle:bleu;triangle:rouge;carre:vert",
+      "valeur": "carre:bleu;cercle:rouge;triangle:vert;cercle:vert;triangle:bleu;carre:rouge;triangle:rouge;carre:vert;cercle:bleu",
       "grille": [
         [
           "carre",
+          "bleu"
+        ],
+        [
+          "cercle",
           "rouge"
+        ],
+        [
+          "triangle",
+          "vert"
         ],
         [
           "cercle",
@@ -104,22 +102,10 @@
         [
           "triangle",
           "bleu"
-        ],
-        [
-          "triangle",
-          "vert"
         ],
         [
           "carre",
-          "bleu"
-        ],
-        [
-          "cercle",
           "rouge"
-        ],
-        [
-          "cercle",
-          "bleu"
         ],
         [
           "triangle",
@@ -128,6 +114,10 @@
         [
           "carre",
           "vert"
+        ],
+        [
+          "cercle",
+          "bleu"
         ]
       ]
     },
@@ -154,7 +144,7 @@
     ],
     "cap_complexite": null,
     "contenu": {
-      "consigne": "Place les figures et les couleurs en recoupant les indices. Chaque figure et chaque couleur apparaît une fois par ligne et par colonne.",
+      "consigne": "Place les figures colorées en recoupant les indices. Chaque figure colorée (un carré bleu, un rond rouge…) apparaît une seule fois dans la grille.",
       "figures": [
         "cercle",
         "carre",
@@ -167,73 +157,78 @@
       ],
       "enonces": [
         {
-          "type": "case-figure",
-          "case": 4,
-          "figure": "carre"
+          "type": "voisin-droite",
+          "figure": "triangle",
+          "couleur": "vert",
+          "figure2": "cercle",
+          "couleur2": "rouge"
         },
         {
-          "type": "case-figure",
-          "case": 2,
-          "figure": "cercle"
+          "type": "voisin-droite",
+          "figure": "triangle",
+          "couleur": "bleu",
+          "figure2": "cercle",
+          "couleur2": "vert"
+        },
+        {
+          "type": "case",
+          "figure": "cercle",
+          "couleur": "vert",
+          "case": 5
+        },
+        {
+          "type": "voisin-dessous",
+          "figure": "triangle",
+          "couleur": "vert",
+          "figure2": "carre",
+          "couleur2": "rouge"
         },
         {
           "type": "regle",
           "variante": 0
         },
         {
-          "type": "colonne",
-          "couleur": "rouge",
-          "colonne": 0
-        },
-        {
-          "type": "case-couleur",
-          "case": 0,
-          "couleur": "rouge"
-        },
-        {
-          "type": "case-couleur",
-          "case": 4,
-          "couleur": "vert"
+          "type": "regle",
+          "variante": 1
         }
       ],
       "indices": [
         {
-          "type": "case-figure",
-          "case": 0,
-          "figure": "carre"
+          "type": "case",
+          "figure": "cercle",
+          "couleur": "rouge",
+          "case": 1
         },
         {
-          "type": "case-figure",
-          "case": 1,
-          "figure": "triangle"
+          "type": "pas-coin",
+          "figure": "cercle",
+          "couleur": "rouge"
         },
         {
-          "type": "case-figure",
-          "case": 3,
-          "figure": "cercle"
-        },
-        {
-          "type": "case-couleur",
-          "case": 1,
-          "couleur": "bleu"
-        },
-        {
-          "type": "case-couleur",
-          "case": 2,
-          "couleur": "vert"
-        },
-        {
-          "type": "case-couleur",
-          "case": 3,
-          "couleur": "bleu"
+          "type": "ligne",
+          "figure": "cercle",
+          "couleur": "rouge",
+          "ligne": 0
         }
       ],
-      "aide": "Commence par les indices qui désignent une case précise, puis recoupe avec les autres."
+      "aide": "Chaque indice donne deux informations : la figure colorée et sa place. Commence par celles qui désignent une case."
     },
     "reponse": {
-      "valeur": "carre:rouge;triangle:bleu;cercle:vert;cercle:bleu;carre:vert;triangle:rouge;triangle:vert;cercle:rouge;carre:bleu",
+      "valeur": "triangle:vert;cercle:rouge;carre:bleu;carre:rouge;triangle:bleu;cercle:vert;cercle:bleu;carre:vert;triangle:rouge",
       "grille": [
         [
+          "triangle",
+          "vert"
+        ],
+        [
+          "cercle",
+          "rouge"
+        ],
+        [
+          "carre",
+          "bleu"
+        ],
+        [
           "carre",
           "rouge"
         ],
@@ -256,18 +251,6 @@
         [
           "triangle",
           "rouge"
-        ],
-        [
-          "triangle",
-          "vert"
-        ],
-        [
-          "cercle",
-          "rouge"
-        ],
-        [
-          "carre",
-          "bleu"
         ]
       ]
     },
@@ -294,7 +277,7 @@
     ],
     "cap_complexite": null,
     "contenu": {
-      "consigne": "Place les figures et les couleurs en recoupant les indices. Chaque figure et chaque couleur apparaît une fois par ligne et par colonne.",
+      "consigne": "Place les figures colorées en recoupant les indices. Chaque figure colorée (un carré bleu, un rond rouge…) apparaît une seule fois dans la grille.",
       "figures": [
         "cercle",
         "carre",
@@ -307,75 +290,64 @@
       ],
       "enonces": [
         {
-          "type": "ligne",
-          "figure": "cercle",
-          "ligne": 0
+          "type": "voisin-gauche",
+          "figure": "triangle",
+          "couleur": "vert",
+          "figure2": "cercle",
+          "couleur2": "bleu"
         },
         {
-          "type": "case-figure",
-          "case": 4,
-          "figure": "carre"
+          "type": "case",
+          "figure": "triangle",
+          "couleur": "vert",
+          "case": 4
         },
         {
-          "type": "case-figure",
-          "case": 8,
-          "figure": "cercle"
+          "type": "voisin-dessous",
+          "figure": "carre",
+          "couleur": "vert",
+          "figure2": "cercle",
+          "couleur2": "bleu"
         },
         {
-          "type": "case-couleur",
-          "case": 5,
-          "couleur": "rouge"
+          "type": "regle",
+          "variante": 1
         },
         {
-          "type": "case-couleur",
-          "case": 8,
-          "couleur": "vert"
+          "type": "regle",
+          "variante": 0
         },
         {
-          "type": "case-couleur",
-          "case": 4,
-          "couleur": "vert"
+          "type": "regle",
+          "variante": 1
         }
       ],
       "indices": [
         {
-          "type": "case-figure",
-          "case": 0,
-          "figure": "triangle"
+          "type": "case",
+          "figure": "cercle",
+          "couleur": "rouge",
+          "case": 1
         },
         {
-          "type": "case-figure",
-          "case": 1,
-          "figure": "cercle"
-        },
-        {
-          "type": "case-figure",
-          "case": 2,
-          "figure": "carre"
-        },
-        {
-          "type": "case-couleur",
-          "case": 0,
-          "couleur": "vert"
-        },
-        {
-          "type": "case-couleur",
-          "case": 1,
+          "type": "pas-coin",
+          "figure": "cercle",
           "couleur": "rouge"
         },
         {
-          "type": "case-couleur",
-          "case": 2,
-          "couleur": "bleu"
+          "type": "ligne",
+          "figure": "cercle",
+          "couleur": "rouge",
+          "ligne": 0
         }
       ],
-      "aide": "Commence par les indices qui désignent une case précise, puis recoupe avec les autres."
+      "aide": "Chaque indice donne deux informations : la figure colorée et sa place. Commence par celles qui désignent une case."
     },
     "reponse": {
-      "valeur": "triangle:vert;cercle:rouge;carre:bleu;cercle:bleu;carre:vert;triangle:rouge;carre:rouge;triangle:bleu;cercle:vert",
+      "valeur": "carre:vert;cercle:rouge;triangle:bleu;cercle:bleu;triangle:vert;carre:rouge;triangle:rouge;carre:bleu;cercle:vert",
       "grille": [
         [
-          "triangle",
+          "carre",
           "vert"
         ],
         [
@@ -383,7 +355,7 @@
           "rouge"
         ],
         [
-          "carre",
+          "triangle",
           "bleu"
         ],
         [
@@ -391,19 +363,19 @@
           "bleu"
         ],
         [
-          "carre",
+          "triangle",
           "vert"
         ],
         [
-          "triangle",
-          "rouge"
-        ],
-        [
           "carre",
           "rouge"
         ],
         [
           "triangle",
+          "rouge"
+        ],
+        [
+          "carre",
           "bleu"
         ],
         [
@@ -435,7 +407,7 @@
     ],
     "cap_complexite": null,
     "contenu": {
-      "consigne": "Place les figures et les couleurs en recoupant les indices. Chaque figure et chaque couleur apparaît une fois par ligne et par colonne.",
+      "consigne": "Place les figures colorées en recoupant les indices. Chaque figure colorée (un carré bleu, un rond rouge…) apparaît une seule fois dans la grille.",
       "figures": [
         "cercle",
         "carre",
@@ -448,104 +420,95 @@
       ],
       "enonces": [
         {
-          "type": "case-figure",
-          "case": 1,
-          "figure": "triangle"
-        },
-        {
           "type": "ligne",
-          "figure": "cercle",
+          "figure": "triangle",
+          "couleur": "bleu",
           "ligne": 0
         },
         {
-          "type": "case-figure",
-          "case": 8,
-          "figure": "carre"
+          "type": "voisin-dessous",
+          "figure": "triangle",
+          "couleur": "bleu",
+          "figure2": "carre",
+          "couleur2": "rouge"
         },
         {
-          "type": "case-couleur",
-          "case": 6,
-          "couleur": "rouge"
+          "type": "case",
+          "figure": "carre",
+          "couleur": "rouge",
+          "case": 3
         },
         {
-          "type": "case-couleur",
-          "case": 8,
-          "couleur": "bleu"
+          "type": "case",
+          "figure": "carre",
+          "couleur": "vert",
+          "case": 1
         },
         {
-          "type": "case-couleur",
-          "case": 0,
-          "couleur": "bleu"
+          "type": "regle",
+          "variante": 0
+        },
+        {
+          "type": "regle",
+          "variante": 1
         }
       ],
       "indices": [
         {
-          "type": "case-figure",
-          "case": 0,
-          "figure": "carre"
+          "type": "case",
+          "figure": "cercle",
+          "couleur": "rouge",
+          "case": 2
         },
         {
-          "type": "case-figure",
-          "case": 2,
-          "figure": "cercle"
+          "type": "ligne",
+          "figure": "cercle",
+          "couleur": "rouge",
+          "ligne": 0
         },
         {
-          "type": "case-figure",
-          "case": 3,
-          "figure": "cercle"
-        },
-        {
-          "type": "case-couleur",
-          "case": 1,
-          "couleur": "rouge"
-        },
-        {
-          "type": "case-couleur",
-          "case": 2,
-          "couleur": "vert"
-        },
-        {
-          "type": "case-couleur",
-          "case": 3,
-          "couleur": "vert"
+          "type": "colonne",
+          "figure": "cercle",
+          "couleur": "rouge",
+          "colonne": 2
         }
       ],
-      "aide": "Commence par les indices qui désignent une case précise, puis recoupe avec les autres."
+      "aide": "Chaque indice donne deux informations : la figure colorée et sa place. Commence par celles qui désignent une case."
     },
     "reponse": {
-      "valeur": "carre:bleu;triangle:rouge;cercle:vert;cercle:vert;carre:bleu;triangle:rouge;triangle:rouge;cercle:vert;carre:bleu",
+      "valeur": "triangle:bleu;carre:vert;cercle:rouge;carre:rouge;cercle:bleu;triangle:vert;cercle:vert;triangle:rouge;carre:bleu",
       "grille": [
         [
+          "triangle",
+          "bleu"
+        ],
+        [
           "carre",
+          "vert"
+        ],
+        [
+          "cercle",
+          "rouge"
+        ],
+        [
+          "carre",
+          "rouge"
+        ],
+        [
+          "cercle",
           "bleu"
         ],
         [
           "triangle",
-          "rouge"
-        ],
-        [
-          "cercle",
           "vert"
         ],
         [
           "cercle",
           "vert"
-        ],
-        [
-          "carre",
-          "bleu"
         ],
         [
           "triangle",
           "rouge"
-        ],
-        [
-          "triangle",
-          "rouge"
-        ],
-        [
-          "cercle",
-          "vert"
         ],
         [
           "carre",

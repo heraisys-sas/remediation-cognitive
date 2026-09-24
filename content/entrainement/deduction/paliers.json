@@ -3,7 +3,7 @@
   "paliers": [
     {
       "id": "de-palier-1",
-      "description": "Indices directs, peu de recoupements",
+      "description": "Indices de position (chaque phrase donne la figure colorée et sa case)",
       "prerequis": [],
       "fichier": "paliers/palier-01.json",
       "nb_items": 4
@@ -19,7 +19,7 @@
     },
     {
       "id": "de-palier-3",
-      "description": "Indices négatifs : éliminer pour déduire",
+      "description": "Indices de voisinage : deux figures colorées reliées entre elles",
       "prerequis": [
         "de-palier-2"
       ],
@@ -28,7 +28,7 @@
     },
     {
       "id": "de-palier-4",
-      "description": "Grille 4×4 : plus de figures, de couleurs et d'indices",
+      "description": "Grille 4×4 : plus de figures colorées et d'indices",
       "prerequis": [
         "de-palier-3"
       ],

@@ -2,6 +2,14 @@
 
 Format : [date] — [périmètre] — description. Les retours informels de l'orthophoniste sont journalisés ici, sans caution clinique.
 
+## 2026-09-24 · Déduction — indices à deux informations (retour d'usage)
+
+- **Règle clarifiée** — chaque **figure colorée** (un carré bleu, un cercle rouge…) apparaît **une seule fois** dans la grille. La solution est un couple de carrés latins **orthogonaux** : c'est cette unicité qui rend les indices non ambigus.
+- **Indices à deux informations** — chaque phrase nomme une figure colorée **et** indique soit sa position (« le carré bleu est en haut à gauche »), soit sa relation à une autre figure colorée (« le carré vert est juste en dessous du cercle bleu »), soit une élimination (« n'est pas dans un coin »). Nouveaux types : `case`, `ligne`, `colonne`, `voisin-gauche/droite/dessus/dessous`, `pas-coin`, `pas-bord`.
+- **Validateur** — contrôle supplémentaire : chaque figure colorée unique dans la grille ; les indices à deux informations sont vérifiés comme vrais pour la solution.
+- **Affichage** — libellés accentués (« carré ») dans l'interface.
+- **Contrôles** — **851 items / 0 erreur** ; **135 tests** (dont l'unicité des figures colorées et la véracité des nouveaux indices).
+
 ## 2026-09-24 · Au quotidien — aide externe et pression du temps (paliers 7 et 8)
 
 - **Aide externe adaptée** (palier 7, mémoire prospective) — choisir le bon support pour ne pas oublier : alarme au bon moment, objet déplacé au bon endroit, dossier sur le chemin de sortie. Règle enseignée : une aide est efficace quand elle est **au bon endroit, au bon moment, et visible juste avant l'action** — « compter sur sa mémoire » ou « noter dans un carnet qu'on ne relit pas » n'en sont pas.

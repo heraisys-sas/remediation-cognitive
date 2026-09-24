@@ -1375,6 +1375,9 @@ function nomTheme(identifiant) {
    --------------------------------------------------------------------- */
 
 const GLYPHES = { cercle: "●", carre: "■", triangle: "▲", losange: "◆" };
+//: Libellés affichés des figures (les identifiants de contenu sont sans accent).
+const LIBELLES_FIGURES = { cercle: "cercle", carre: "carré", triangle: "triangle", losange: "losange" };
+const libelleFigure = (figure) => LIBELLES_FIGURES[figure] || figure;
 const TEINTES = { rouge: "#e2574c", bleu: "#5b8dd9", vert: "#5aa469", jaune: "#d9b04a" };
 const NOMS_CASES_3 = [
   "en haut à gauche", "en haut au centre", "en haut à droite",
@@ -1400,24 +1403,27 @@ function nomsPour(n) {
   };
 }
 
-/** Formule un indice structuré en français lisible (n = taille de la grille). */
+/** Formule un indice structuré en français lisible (n = taille de la grille).
+ *  Chaque indice porte deux informations : une figure colorée et sa place
+ *  (ou sa relation à une autre figure colorée). */
 function formaterEnonce(indice, n) {
   const noms = nomsPour(n);
+  const fc = `${libelleFigure(indice.figure)} ${indice.couleur}`;
+  const fc2 = `${libelleFigure(indice.figure2)} ${indice.couleur2}`;
   switch (indice.type) {
-    case "case-couleur": return `La case ${noms.cases[indice.case]} est ${indice.couleur}.`;
-    case "case-figure": return `La case ${noms.cases[indice.case]} contient un ${indice.figure} ${GLYPHES[indice.figure]}.`;
-    case "ligne": return `Le ${indice.figure} ${GLYPHES[indice.figure]} est sur la ligne ${noms.lignes[indice.ligne]}.`;
-    case "colonne": return `Le ${indice.couleur} est dans la colonne ${noms.colonnes[indice.colonne]}.`;
-    case "coin-couleur": return `Le ${indice.couleur} est dans un coin.`;
-    case "coin-figure": return `Le ${indice.figure} ${GLYPHES[indice.figure]} est dans un coin.`;
-    case "bord-couleur": return `Le ${indice.couleur} est sur le bord.`;
-    case "bord-figure": return `Le ${indice.figure} ${GLYPHES[indice.figure]} est sur le bord.`;
-    case "pas-couleur": return `La case ${noms.cases[indice.case]} n'est pas ${indice.couleur}.`;
-    case "pas-figure": return `La case ${noms.cases[indice.case]} ne contient pas de ${indice.figure}.`;
+    case "case": return `Le ${fc} est ${noms.cases[indice.case]}.`;
+    case "ligne": return `Le ${fc} est sur la ligne ${noms.lignes[indice.ligne]}.`;
+    case "colonne": return `Le ${fc} est dans la colonne ${noms.colonnes[indice.colonne]}.`;
+    case "pas-coin": return `Le ${fc} n'est pas dans un coin.`;
+    case "pas-bord": return `Le ${fc} n'est pas sur le bord.`;
+    case "voisin-gauche": return `Le ${fc} est juste à gauche du ${fc2}.`;
+    case "voisin-droite": return `Le ${fc} est juste à droite du ${fc2}.`;
+    case "voisin-dessus": return `Le ${fc} est juste au-dessus du ${fc2}.`;
+    case "voisin-dessous": return `Le ${fc} est juste en dessous du ${fc2}.`;
     case "regle":
       return indice.variante === 0
-        ? "Chaque ligne contient toutes les couleurs."
-        : "Chaque colonne contient toutes les figures.";
+        ? "Chaque figure colorée apparaît une seule fois dans la grille."
+        : "Chaque ligne contient toutes les figures, une fois chacune.";
     default: return "";
   }
 }
@@ -1454,7 +1460,7 @@ function rendreGrille(item) {
         texte: GLYPHES[figure],
         attributs: {
           type: "button",
-          "aria-label": `${figure} ${couleur}`,
+          "aria-label": `${libelleFigure(figure)} ${couleur}`,
           "data-jeton": `${figure}:${couleur}`,
         },
       });

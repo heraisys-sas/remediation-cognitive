@@ -374,40 +374,56 @@ def erreurs_contenu(item: dict, prefixe: str) -> list[str]:
 
 #: Types d'indices admis dans une grille de déduction.
 TYPES_INDICE_GRILLE = {
-    "case-couleur", "case-figure", "ligne", "colonne",
-    "coin-couleur", "coin-figure", "bord-couleur", "bord-figure",
-    "pas-couleur", "pas-figure", "regle",
+    "case", "ligne", "colonne", "pas-coin", "pas-bord",
+    "voisin-gauche", "voisin-droite", "voisin-dessus", "voisin-dessous", "regle",
 }
+
+
+def _cellule_grille(fig: list[int], coul: list[int], i_f: int, i_c: int) -> int:
+    """Case de la figure colorée (i_f, i_c) ; -1 si absente (grille non orthogonale)."""
+    for i in range(len(fig)):
+        if fig[i] == i_f and coul[i] == i_c:
+            return i
+    return -1
 
 
 def _predicat_grille(indice: dict, fig: list[int], coul: list[int],
                      index_figure: dict, index_couleur: dict, n: int) -> bool:
-    """Un indice de grille est-il vrai pour la solution (fig/coul = listes d'indices) ?"""
+    """Un indice (à deux informations) est-il vrai pour la solution ?"""
     t = indice.get("type")
-    coins = {0, n - 1, n * (n - 1), n * n - 1}
-    bords = {i for i in range(n * n) if i // n in (0, n - 1) or i % n in (0, n - 1)}
-    if t == "case-couleur":
-        return coul[indice["case"]] == index_couleur[indice["couleur"]]
-    if t == "case-figure":
-        return fig[indice["case"]] == index_figure[indice["figure"]]
-    if t == "ligne":
-        return index_figure[indice["figure"]] in (fig[indice["ligne"] * n + c] for c in range(n))
-    if t == "colonne":
-        return index_couleur[indice["couleur"]] in (coul[r * n + indice["colonne"]] for r in range(n))
-    if t == "coin-couleur":
-        return any(coul[i] == index_couleur[indice["couleur"]] for i in coins)
-    if t == "coin-figure":
-        return any(fig[i] == index_figure[indice["figure"]] for i in coins)
-    if t == "bord-couleur":
-        return any(coul[i] == index_couleur[indice["couleur"]] for i in bords)
-    if t == "bord-figure":
-        return any(fig[i] == index_figure[indice["figure"]] for i in bords)
-    if t == "pas-couleur":
-        return coul[indice["case"]] != index_couleur[indice["couleur"]]
-    if t == "pas-figure":
-        return fig[indice["case"]] != index_figure[indice["figure"]]
     if t == "regle":
         return True
+    if indice.get("figure") not in index_figure or indice.get("couleur") not in index_couleur:
+        return False
+    case = _cellule_grille(fig, coul, index_figure[indice["figure"]], index_couleur[indice["couleur"]])
+    if case < 0:
+        return False
+    coins = {0, n - 1, n * (n - 1), n * n - 1}
+    bords = {i for i in range(n * n) if i // n in (0, n - 1) or i % n in (0, n - 1)}
+    if t == "case":
+        return case == indice["case"]
+    if t == "ligne":
+        return case // n == indice["ligne"]
+    if t == "colonne":
+        return case % n == indice["colonne"]
+    if t == "pas-coin":
+        return case not in coins
+    if t == "pas-bord":
+        return case not in bords
+    if t.startswith("voisin-"):
+        if indice.get("figure2") not in index_figure or indice.get("couleur2") not in index_couleur:
+            return False
+        autre = _cellule_grille(fig, coul, index_figure[indice["figure2"]], index_couleur[indice["couleur2"]])
+        if autre < 0:
+            return False
+        if t == "voisin-droite":
+            return autre == case + 1 and case % n != n - 1
+        if t == "voisin-gauche":
+            return autre == case - 1 and case % n != 0
+        if t == "voisin-dessous":
+            return autre == case + n
+        if t == "voisin-dessus":
+            return autre == case - n
     return False
 
 
@@ -445,7 +461,7 @@ def _erreurs_grille_deduction(item: dict, prefixe: str, contenu: dict) -> list[s
             return erreurs
         cellules.append(case)
 
-    # Carré latin : chaque figure et chaque couleur, une fois par ligne et par colonne.
+    # Chaque figure une fois par ligne et par colonne (carré latin)…
     for r in range(n):
         ligne_f = sorted(cellules[r * n + c][0] for c in range(n))
         ligne_c = sorted(cellules[r * n + c][1] for c in range(n))
@@ -456,6 +472,10 @@ def _erreurs_grille_deduction(item: dict, prefixe: str, contenu: dict) -> list[s
         col_c = sorted(cellules[r * n + c][1] for r in range(n))
         if col_f != sorted(figures) or col_c != sorted(couleurs):
             erreurs.append(prefixe + f"grille-deduction : la colonne {c + 1} ne contient pas chaque figure et couleur")
+    # …et CHAQUE figure colorée une seule fois dans toute la grille.
+    combinaisons = [(f, c) for f, c in cellules]
+    if len(set(combinaisons)) != n * n:
+        erreurs.append(prefixe + "grille-deduction : une figure colorée apparaît plusieurs fois (chaque combinaison doit être unique)")
 
     if valeur != ";".join(f"{f}:{c}" for f, c in cellules):
         erreurs.append(prefixe + "grille-deduction : reponse.valeur ne correspond pas à reponse.grille")
