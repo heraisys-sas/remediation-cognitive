@@ -2,6 +2,13 @@
 
 Format : [date] — [périmètre] — description. Les retours informels de l'orthophoniste sont journalisés ici, sans caution clinique.
 
+## 2026-09-25 · Réponses dictées : les nombres en lettres sont compris
+
+- **Bug corrigé** — une réponse donnée à voix haute dans un exercice de calcul (« six ») était refusée alors que 6 était attendu. La comparaison numérique n'acceptait que les chiffres ; elle comprend désormais les **nombres en toutes lettres** (« six » = 6, « quarante-deux » = 42, « quatre-vingt-dix-sept » = 97, « deux cent trente » = 230), y compris avec la ponctuation finale qu'ajoute la dictée (« six. »).
+- **Portée** — calcul mental, concentration (chaînes, cascades, double tâche, séries) et estimation de durée. « sept » pour 8 reste refusé, comme « banane ».
+- **À savoir** — la reconnaissance **sémantique** (empreintes de phrases) est active, mais elle ne sert qu'aux réponses **en texte** : pour les nombres, c'est cette conversion déterministe qui s'applique (mesuré : « deux »/« 2 » ne sont proches qu'à 0,33 pour le modèle, alors que la conversion est exacte).
+- **Contrôles** — 811 items / 0 erreur ; **143 tests**.
+
 ## 2026-09-25 · Lecture automatique par défaut, désactivable à tout moment
 
 - **Lecture par défaut** — tout ce qui s'affiche se dit : la consigne pendant la mémorisation, le stimulus (texte, liste, fiche) à l'affichage, puis la question.

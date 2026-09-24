@@ -24,3 +24,13 @@ Principe tenu : local d'abord, déterministe quand possible, et l'IA **jamais en
 ## Contrôles
 
 **811 items / 0 erreur**, **134 tests**.
+
+## Suite (même jour) — les réponses dictées en chiffres
+
+Bug : une réponse orale « six » dans un exercice de concentration était refusée (6 attendu).
+
+Cause : `_corriger_numerique` n'acceptait que les chiffres ; la conversion lettres → chiffres existait mais n'était branchée que sur les réponses **en texte**.
+
+Correctif : un convertisseur français complet (unités, dizaines, irréguliers « soixante-dix » / « quatre-vingt-dix », « cent », « mille », traits d'union, « et », ponctuation finale de la dictée) branché sur **toutes** les comparaisons numériques — calcul mental, concentration, estimation.
+
+À retenir : la **similarité sémantique ne sert pas aux nombres** (« deux » et « 2 » ne sont proches qu'à 0,33 pour le modèle). Deux outils distincts, chacun sur son terrain : le sens pour le texte, une conversion exacte pour les nombres.
