@@ -113,6 +113,7 @@ const refs = {
   boutonRetourReperes: $("bouton-retour-reperes"),
   boutonDicter: $("bouton-dicter"),
   boutonEcouter: $("bouton-ecouter"),
+  rappelConsigne: $("rappel-consigne"),
 };
 
 /* ---------------------------------------------------------------------
@@ -139,6 +140,7 @@ const etat = {
   grille: null,            // grille de déduction : 9 cases (jeton « figure:couleur » ou null)
   jetonChoisi: null,       // jeton de la palette actuellement sélectionné
   enonceCourant: "",       // ce qui est affiché à l'écran (pour « Écouter »)
+  consignesVues: new Set(), // rappels de méthode déjà affichés (une fois par type)
 };
 
 /* ---------------------------------------------------------------------
@@ -521,6 +523,8 @@ function montrerItem() {
   etat.repondu = false;
   etat.indicesReveles = 0;
   etat.optionChoisie = null;
+  if (etat.indexItem === 0) etat.consignesVues = new Set();  // rappels par séance
+  refs.rappelConsigne.hidden = true;
   annulerMemo();
 
   // Progression discrète : « Question n sur max » + fine barre.
@@ -554,11 +558,19 @@ function afficherPhaseMemo(item) {
 
   // Consigne dans la carte énoncé ; le stimulus reste masqué jusqu'au signal
   // de l'utilisateur (set attentionnel : on sait quoi chercher avant de voir).
-  refs.enonce.textContent = contenu.consigne ?? "Mémorise le contenu affiché.";
+  // La consigne de méthode n'est affichée qu'UNE fois par type dans la séance :
+  // ensuite une phrase courte suffit (la répétition serait rébarbative).
+  const methodeDejaVue = etat.consignesVues.has(item.type);
+  const consigneAffichee = (contenu.consigne && !methodeDejaVue)
+    ? contenu.consigne
+    : "Mémorise le contenu affiché.";
+  if (contenu.consigne) etat.consignesVues.add(item.type);
+  refs.enonce.textContent = consigneAffichee;
   refs.enonce.className = "enonce";
-  // « Écouter » lit la consigne à ce stade : la question n'est pas encore posée.
-  etat.enonceCourant = contenu.consigne ?? "";
+  // « Écouter » lit ce qui est affiché à ce stade : la consigne, pas la question.
+  etat.enonceCourant = consigneAffichee;
   refs.boutonEcouter.hidden = !CAPACITES.syntheseDisponible();
+  refs.rappelConsigne.hidden = true;
   refs.zoneAide.hidden = true;
   refs.carteFeedback.hidden = true;
   refs.boutonSuivant.hidden = true;
@@ -717,8 +729,19 @@ function afficherQuestion(item) {
   refs.enonce.textContent = contenu.enonce ?? "";
   refs.enonce.className =
     "enonce" + (item.type === "prediction-sortie" ? " enonce-code" : "");
-  // « Écouter » lit désormais la consigne ET la question (toutes deux affichées).
-  etat.enonceCourant = [contenu.consigne, contenu.enonce].filter(Boolean).join(". ");
+  // « Écouter » ne lit que la QUESTION : la consigne est un rappel de méthode, pas
+  // une formule à répéter à chaque question (elle serait rébarbative à la longue).
+  etat.enonceCourant = contenu.enonce ?? "";
+
+  // Rappel de méthode : affiché une seule fois par type d'exercice dans la séance.
+  // (Les items à stimulus le montrent déjà pendant la phase de mémorisation.)
+  if (contenu.consigne && !contenu.affichage && !etat.consignesVues.has(item.type)) {
+    etat.consignesVues.add(item.type);
+    refs.rappelConsigne.textContent = contenu.consigne;
+    refs.rappelConsigne.hidden = false;
+  } else {
+    refs.rappelConsigne.hidden = true;
+  }
 
   // Aide optionnelle (contenu.aide) : repliée par défaut.
   if (contenu.aide) {

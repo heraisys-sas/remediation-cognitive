@@ -27,3 +27,12 @@ Un bouton qui lit « tout le contenu de l'item » casse la logique pédagogique 
 ## Contrôles
 
 811 items / 0 erreur ; 140 tests.
+
+## Suite (même jour) — ne pas répéter la consigne
+
+Retour d'usage : la consigne de méthode répétée à chaque question est rébarbative.
+
+- **Audio** : on ne lit plus que la **question** (la consigne reste lisible pendant la mémorisation, et accessible via le tableau de bord « Méthode — avant de répondre »).
+- **Écrit** : la consigne de méthode n'est **affichée qu'une fois par type d'exercice dans la séance** (un ensemble `etat.consignesVues` suit les types déjà vus ; remis à zéro à chaque séance). Ensuite, une phrase courte du style « Mémorise le contenu affiché. » suffit.
+
+Leçon : dans un entraînement répétitif, **la pédagogie doit décroître** — la première occurrence enseigne, les suivantes entraînent. Répéter une méthode à chaque item la transforme en bruit.

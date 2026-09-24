@@ -890,3 +890,11 @@ body {
 
 /* Boutons de capacité du poste (dictée, écoute) : secondaires, jamais imposés. */
 #bouton-dicter, #bouton-ecouter { margin-top: 0.5rem; align-self: start; }
+
+/* Rappel de méthode : discret, affiché une seule fois par type d'exercice. */
+.rappel-consigne {
+  margin: 0.4rem 0 0;
+  color: var(--texte-secondaire);
+  font-size: 0.98rem;
+  font-style: italic;
+}

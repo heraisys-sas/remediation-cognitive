@@ -2,6 +2,13 @@
 
 Format : [date] — [périmètre] — description. Les retours informels de l'orthophoniste sont journalisés ici, sans caution clinique.
 
+## 2026-09-25 · Consignes : dites une fois, pas répétées à chaque question
+
+- **Constat** — la consigne de méthode (« focalise-toi sur le qui, quoi, comment »…) revenait à chaque question, à l'écrit comme à l'oral : rébarbatif, et cela noie la question elle-même.
+- **Correctif** — l'audio ne lit plus que la **question** ; la consigne de méthode n'est **affichée qu'une fois par type d'exercice dans la séance** (ensuite, une phrase courte du type « Mémorise le contenu affiché. » suffit). Le rappel de méthode reste disponible à tout moment dans le panneau « Méthode — avant de répondre ».
+- **Effet** — la séance s'allège : la première occurrence d'un type porte la méthode, les suivantes ne portent que l'exercice.
+- **Contrôles** — 811 items / 0 erreur ; 140 tests.
+
 ## 2026-09-25 · Écoute : plus de fuite d'indice, et ergonomie de la mémorisation
 
 - **Bug corrigé** — « Écouter » lisait la **question** pendant la phase de mémorisation : la réponse était donc suggérée avant même d'avoir vu le stimulus (signalé sur « au quotidien », mais le défaut concernait toutes les familles à stimulus). Le bouton lit désormais **ce qui est affiché** : la consigne pendant la mémorisation, puis la consigne et la question une fois affichées.
