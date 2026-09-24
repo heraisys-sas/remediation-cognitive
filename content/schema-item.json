@@ -54,10 +54,7 @@
         "plan-a-verifier",
         "reperer-info",
         "aide-externe",
-        "gestion-du-temps",
-        "emotion-vignette",
-        "reponse-adaptee",
-        "lecture-intention"
+        "gestion-du-temps"
       ]
     },
     "fonctions_ciblees": {
@@ -99,7 +96,7 @@
     },
     "contenu": {
       "type": "object",
-      "description": "Corps de l'item, spécifique au type d'exercice. Champs conventionnels : enonce, consigne, aide, options (liste de propositions pour les types à choix : reconnaissance, rappel-source, emotion-vignette, reponse-adaptee, lecture-intention — la réponse attendue doit y figurer), indices (hiérarchie d'aides des items rappel-indice : [{type: semantique|phonologique|orthographique, texte}], jamais la réponse elle-même), affichage (phase de mémorisation temporisée : mode sequence|liste)."
+      "description": "Corps de l'item, spécifique au type d'exercice. Champs conventionnels : enonce, consigne, aide, options (liste de propositions pour les types à choix : reconnaissance, rappel-source, pqrst, etape-suivante… — la réponse attendue doit y figurer), indices (hiérarchie d'aides des items rappel-indice : [{type: semantique|phonologique|orthographique, texte}], jamais la réponse elle-même), affichage (phase de mémorisation temporisée : mode sequence|liste)."
     },
     "reponse": {
       "type": "object",

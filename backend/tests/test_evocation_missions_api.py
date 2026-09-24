@@ -1,4 +1,4 @@
-"""Tests des thèmes « Retrouver le mot » (evocation) et « Vie sociale » (social).
+"""Tests du thème « Retrouver le mot » (evocation) et des missions dans la vraie vie.
 
 Couvre : correction tolérante (accents, casse, espaces), réponse choisie parmi
 des propositions, indices progressifs, essai « assisté » (réponse affichée,
@@ -147,46 +147,11 @@ def test_evocation_indice_utilise_hors_bornes(client, tmp_path):
     assert reponse.json()["erreur"] == "reponse_invalide"
 
 
-# -- Thème social --------------------------------------------------------------
 
-
-def test_social_vignette_emotion(client):
-    """Palier 1 : situation lue, émotion choisie parmi les propositions."""
-    payload = _demarrer(client, "social")
-    item = payload["items"][0]
-    assert item["type"] == "emotion-vignette"
-    attendue = _attendue("social", item["id"])
-    assert attendue in item["contenu"]["options"]
-    reponse = _repondre(client, "social", payload["session_id"], item["id"], attendue)
-    assert reponse.status_code == 200 and reponse.json()["correcte"] is True
-
-    autre = payload["items"][1]
-    mauvaise = next(
-        option for option in autre["contenu"]["options"]
-        if option != _attendue("social", autre["id"])
-    )
-    assert _repondre(
-        client, "social", payload["session_id"], autre["id"], mauvaise
-    ).json()["correcte"] is False
-
-
-def test_social_reponse_adaptee(client, tmp_path):
-    """Palier 2 : la meilleure réponse est reconnue, une réponse à côté non."""
-    _forcer_palier(tmp_path, "social", 2)
-    payload = _demarrer(client, "social")
-    item = payload["items"][0]
-    assert item["type"] == "reponse-adaptee"
-    reponse = _repondre(
-        client, "social", payload["session_id"], item["id"], _attendue("social", item["id"])
-    )
-    assert reponse.json()["correcte"] is True
-
-
-# -- Missions hors écran et journal -------------------------------------------
 
 
 def test_missions_listees(client):
-    reponse = client.get("/api/social/missions")
+    reponse = client.get("/api/missions")
     assert reponse.status_code == 200
     corps = reponse.json()
     assert len(corps["missions"]) == 8
@@ -200,17 +165,17 @@ def test_missions_listees(client):
 
 def test_journal_missions_cycle_complet(client, tmp_path):
     """Le carnet vit dans son propre stockage, séparé de l'entraînement."""
-    assert client.get("/api/social/journal").json() == {"entrees": []}
+    assert client.get("/api/missions/journal").json() == {"entrees": []}
 
     creation = client.post(
-        "/api/social/journal",
+        "/api/missions/journal",
         json={"mission_id": "ms-01", "texte": "J'ai dit bonjour au voisin.", "ressenti": "facile"},
     )
     assert creation.status_code == 201
     entree = creation.json()["entree"]
     assert entree["mission_id"] == "ms-01" and entree["texte"] and entree["date"]
 
-    entrees = client.get("/api/social/journal").json()["entrees"]
+    entrees = client.get("/api/missions/journal").json()["entrees"]
     assert len(entrees) == 1 and entrees[0]["id"] == entree["id"]
 
     # Stockage séparé : journal/ n'est PAS sous le dossier de l'entraînement.
@@ -219,8 +184,8 @@ def test_journal_missions_cycle_complet(client, tmp_path):
 
     # Mission inconnue → 404 ; note vide → 422.
     assert client.post(
-        "/api/social/journal", json={"mission_id": "inconnue", "texte": "note"}
+        "/api/missions/journal", json={"mission_id": "inconnue", "texte": "note"}
     ).status_code == 404
     assert client.post(
-        "/api/social/journal", json={"mission_id": "ms-01", "texte": "   "}
+        "/api/missions/journal", json={"mission_id": "ms-01", "texte": "   "}
     ).status_code == 422

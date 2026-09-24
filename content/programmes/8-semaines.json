@@ -7,7 +7,9 @@
     "memoire",
     "concentration",
     "evocation",
-    "social",
+    "quotidien",
+    "methodes",
+    "deduction",
     "rappel-series"
   ],
   "themes_extra": [
@@ -18,15 +20,17 @@
     "calcul-mental": 9,
     "memoire": 12,
     "concentration": 9,
-    "evocation": 5,
-    "social": 4,
+    "evocation": 7,
+    "quotidien": 8,
+    "methodes": 5,
+    "deduction": 4,
     "rappel-series": 4
   },
   "regles": {
     "progression": "Le passage d'un palier reste piloté par la maîtrise (90 % de réussite sur 3 séances consécutives). Le plafond hebdomadaire de ce programme est une borne, jamais un objectif : un palier non maîtrisé se reprend.",
     "fatigue": "La proposition d'arrêt en fin de séance est respectée ; une séance peut être close à tout moment.",
     "jours_manques": "Une journée manquée ne se rattrape pas : le programme reprend simplement au jour suivant, sans cumul.",
-    "alternance": "Les domaines alternent dans la semaine (calcul, mémoire, concentration, langage, social) : l'alternance limite la fatigue sur un même réseau et favorise le transfert.",
+    "alternance": "Les domaines alternent dans la semaine (calcul, mémoire, concentration, langage, vie quotidienne, méthodes, déduction) : l'alternance limite la fatigue sur un même réseau et favorise le transfert.",
     "duree": "Une séance dure de 6 à 9 minutes selon la semaine, jamais plus de 10 minutes ; la journée légère est volontairement plus courte.",
     "recul": "Si deux séances consécutives d'un thème passent sous 50 % de réussite, le palier courant se reprend avant toute nouvelle montée en complexité."
   },
@@ -39,7 +43,9 @@
         "memoire": 2,
         "concentration": 2,
         "evocation": 2,
-        "social": 2,
+        "quotidien": 2,
+        "methodes": 2,
+        "deduction": 2,
         "rappel-series": 2
       },
       "jours": [
@@ -80,7 +86,7 @@
           "type": "seance",
           "duree_min": 6,
           "themes": [
-            "social"
+            "quotidien"
           ]
         },
         {
@@ -111,7 +117,9 @@
         "memoire": 3,
         "concentration": 3,
         "evocation": 3,
-        "social": 3,
+        "quotidien": 3,
+        "methodes": 3,
+        "deduction": 3,
         "rappel-series": 3
       },
       "jours": [
@@ -144,7 +152,7 @@
           "type": "seance",
           "duree_min": 6,
           "themes": [
-            "social"
+            "quotidien"
           ]
         },
         {
@@ -152,7 +160,7 @@
           "type": "seance",
           "duree_min": 6,
           "themes": [
-            "rappel-series"
+            "methodes"
           ]
         },
         {
@@ -183,7 +191,9 @@
         "memoire": 4,
         "concentration": 4,
         "evocation": 4,
-        "social": 4,
+        "quotidien": 4,
+        "methodes": 4,
+        "deduction": 4,
         "rappel-series": 4
       },
       "jours": [
@@ -208,7 +218,7 @@
           "type": "seance",
           "duree_min": 7,
           "themes": [
-            "social"
+            "quotidien"
           ]
         },
         {
@@ -216,7 +226,7 @@
           "type": "seance",
           "duree_min": 7,
           "themes": [
-            "rappel-series"
+            "methodes"
           ]
         },
         {
@@ -224,7 +234,7 @@
           "type": "seance",
           "duree_min": 7,
           "themes": [
-            "calcul-mental"
+            "deduction"
           ]
         },
         {
@@ -255,7 +265,9 @@
         "memoire": 5,
         "concentration": 5,
         "evocation": 5,
-        "social": 4,
+        "quotidien": 5,
+        "methodes": 5,
+        "deduction": 4,
         "rappel-series": 4
       },
       "jours": [
@@ -272,7 +284,7 @@
           "type": "seance",
           "duree_min": 7,
           "themes": [
-            "social"
+            "quotidien"
           ]
         },
         {
@@ -280,7 +292,7 @@
           "type": "seance",
           "duree_min": 7,
           "themes": [
-            "rappel-series"
+            "methodes"
           ]
         },
         {
@@ -288,7 +300,7 @@
           "type": "seance",
           "duree_min": 7,
           "themes": [
-            "calcul-mental"
+            "deduction"
           ]
         },
         {
@@ -296,7 +308,7 @@
           "type": "seance",
           "duree_min": 7,
           "themes": [
-            "memoire"
+            "rappel-series"
           ]
         },
         {
@@ -326,8 +338,10 @@
         "calcul-mental": 6,
         "memoire": 6,
         "concentration": 6,
-        "evocation": 5,
-        "social": 4,
+        "evocation": 6,
+        "quotidien": 6,
+        "methodes": 5,
+        "deduction": 4,
         "rappel-series": 4
       },
       "jours": [
@@ -336,7 +350,7 @@
           "type": "seance",
           "duree_min": 8,
           "themes": [
-            "social"
+            "quotidien"
           ]
         },
         {
@@ -344,7 +358,7 @@
           "type": "seance",
           "duree_min": 8,
           "themes": [
-            "rappel-series"
+            "methodes"
           ]
         },
         {
@@ -352,7 +366,7 @@
           "type": "seance",
           "duree_min": 8,
           "themes": [
-            "calcul-mental"
+            "deduction"
           ]
         },
         {
@@ -360,7 +374,7 @@
           "type": "seance",
           "duree_min": 8,
           "themes": [
-            "memoire"
+            "rappel-series"
           ]
         },
         {
@@ -368,7 +382,7 @@
           "type": "seance",
           "duree_min": 8,
           "themes": [
-            "concentration"
+            "calcul-mental"
           ]
         },
         {
@@ -398,8 +412,10 @@
         "calcul-mental": 7,
         "memoire": 7,
         "concentration": 7,
-        "evocation": 5,
-        "social": 4,
+        "evocation": 7,
+        "quotidien": 7,
+        "methodes": 5,
+        "deduction": 4,
         "rappel-series": 4
       },
       "jours": [
@@ -408,7 +424,7 @@
           "type": "seance",
           "duree_min": 8,
           "themes": [
-            "rappel-series"
+            "methodes"
           ]
         },
         {
@@ -416,7 +432,7 @@
           "type": "seance",
           "duree_min": 8,
           "themes": [
-            "calcul-mental"
+            "deduction"
           ]
         },
         {
@@ -424,7 +440,7 @@
           "type": "seance",
           "duree_min": 8,
           "themes": [
-            "memoire"
+            "rappel-series"
           ]
         },
         {
@@ -432,7 +448,7 @@
           "type": "seance",
           "duree_min": 8,
           "themes": [
-            "concentration"
+            "calcul-mental"
           ]
         },
         {
@@ -440,7 +456,7 @@
           "type": "seance",
           "duree_min": 8,
           "themes": [
-            "evocation"
+            "memoire"
           ]
         },
         {
@@ -470,8 +486,10 @@
         "calcul-mental": 8,
         "memoire": 8,
         "concentration": 8,
-        "evocation": 5,
-        "social": 4,
+        "evocation": 7,
+        "quotidien": 8,
+        "methodes": 5,
+        "deduction": 4,
         "rappel-series": 4
       },
       "jours": [
@@ -480,7 +498,7 @@
           "type": "seance",
           "duree_min": 9,
           "themes": [
-            "calcul-mental"
+            "deduction"
           ]
         },
         {
@@ -488,7 +506,7 @@
           "type": "seance",
           "duree_min": 9,
           "themes": [
-            "memoire"
+            "rappel-series"
           ]
         },
         {
@@ -496,7 +514,7 @@
           "type": "seance",
           "duree_min": 9,
           "themes": [
-            "concentration"
+            "calcul-mental"
           ]
         },
         {
@@ -504,7 +522,7 @@
           "type": "seance",
           "duree_min": 9,
           "themes": [
-            "evocation"
+            "memoire"
           ]
         },
         {
@@ -512,7 +530,7 @@
           "type": "seance",
           "duree_min": 9,
           "themes": [
-            "social"
+            "concentration"
           ]
         },
         {
@@ -542,8 +560,10 @@
         "calcul-mental": 9,
         "memoire": 9,
         "concentration": 9,
-        "evocation": 5,
-        "social": 4,
+        "evocation": 7,
+        "quotidien": 8,
+        "methodes": 5,
+        "deduction": 4,
         "rappel-series": 4
       },
       "jours": [
@@ -552,7 +572,7 @@
           "type": "seance",
           "duree_min": 9,
           "themes": [
-            "memoire"
+            "rappel-series"
           ]
         },
         {
@@ -560,7 +580,7 @@
           "type": "seance",
           "duree_min": 9,
           "themes": [
-            "concentration"
+            "calcul-mental"
           ]
         },
         {
@@ -568,7 +588,7 @@
           "type": "seance",
           "duree_min": 9,
           "themes": [
-            "evocation"
+            "memoire"
           ]
         },
         {
@@ -576,7 +596,7 @@
           "type": "seance",
           "duree_min": 9,
           "themes": [
-            "social"
+            "concentration"
           ]
         },
         {
@@ -584,7 +604,7 @@
           "type": "seance",
           "duree_min": 9,
           "themes": [
-            "rappel-series"
+            "evocation"
           ]
         },
         {

@@ -14,7 +14,7 @@
    ===================================================================== */
 
 const API_BASE = "/api/entrainement";
-const API_SOCIAL = "/api/social";
+const API_MISSIONS = "/api/missions";
 const API_PROGRAMME = "/api/programme";
 
 //: Types dont la réponse se choisit parmi des propositions (contenu.options).
@@ -1065,7 +1065,7 @@ async function ouvrirMissions() {
   );
   afficherVue("missions");
   try {
-    const donnees = await fetchSocial("/missions");
+    const donnees = await fetchMissions("/missions");
     etat.missions = donnees.missions || [];
     rendreMissions(etat.missions, donnees.ressentis || []);
     masquerBandeau();
@@ -1135,7 +1135,7 @@ async function enregistrerNote() {
   etat.actionEnCours = true;
   refs.boutonEnregistrerNote.disabled = true;
   try {
-    await fetchSocial("/journal", {
+    await fetchMissions("/journal", {
       method: "POST",
       body: JSON.stringify({
         mission_id: etat.missionActive.id,
@@ -1162,7 +1162,7 @@ async function enregistrerNote() {
 /** Affiche les notes déjà écrites, la plus récente en premier. */
 async function chargerJournal() {
   try {
-    const donnees = await fetchSocial("/journal");
+    const donnees = await fetchMissions("/journal");
     const entrees = (donnees.entrees || []).slice().reverse();
     refs.journalMissions.replaceChildren();
     if (!entrees.length) {
@@ -1217,9 +1217,9 @@ async function fetchJson(base, chemin, options = {}) {
   return reponse.json();
 }
 
-/** Appel direct du périmètre social (base /api/social, hors sessions). */
-function fetchSocial(chemin, options = {}) {
-  return fetchJson(API_SOCIAL, chemin, options);
+/** Appel direct du périmètre missions (base /api/missions, hors sessions). */
+function fetchMissions(chemin, options = {}) {
+  return fetchJson(API_MISSIONS, chemin, options);
 }
 
 /* ---------------------------------------------------------------------

@@ -2,6 +2,15 @@
 
 Format : [date] — [périmètre] — description. Les retours informels de l'orthophoniste sont journalisés ici, sans caution clinique.
 
+## 2026-09-24 · Retrait du thème « vie sociale », missions conservées et renommées
+
+- **Thème retiré** — l'entraînement « vie sociale » (vignettes d'émotion, réponses adaptées, lecture d'intention ; 4 paliers, 40 items) est supprimé : jugé **trop simple à l'usage**, et redondant avec les missions.
+- **Missions conservées, section renommée** — les 8 missions hors écran passent de « Missions hors écran » à **« Missions dans la vraie vie »**, avec un intitulé qui dit *pourquoi* elles existent : ce n'est pas l'exercice à l'écran qui rétablit le lien, c'est l'action réelle. Le texte d'introduction et `content/missions/README.md` explicitent les raisons (érosion des automatismes, anticipation négative, exposition progressive).
+- **Contenu réorganisé** — les missions quittent `content/entrainement/social/` pour `content/missions/` ; le périmètre API `/api/social` devient **`/api/missions`** (`GET /api/missions`, `GET|POST /api/missions/journal`).
+- **Programme de 8 semaines** — la rotation ne propose plus le thème retiré et intègre les thèmes actuels (quotidien, méthodes, déduction) ; plafonds de paliers mis à jour.
+- **Documentation** — taxonomie, cadre d'usage, spécifications, contrat d'API et ADR-004 (annoté) mis à jour ; README dédié aux missions.
+- **Contrôles** — **811 items / 0 erreur** ; **133 tests**.
+
 ## 2026-09-24 · Déduction — méthode des logic grids (taxonomie complète, aucun indice décoratif)
 
 - **Recherche** — les puzzles de logique classiques suivent une taxonomie d'indices (*true/false*, *multi-elimination*, *neither/nor*, *either/or*, *greater/lesser*) et deux règles de qualité : **chaque combinaison est unique** et **aucune référence n'est répétée inutilement** dans les indices.

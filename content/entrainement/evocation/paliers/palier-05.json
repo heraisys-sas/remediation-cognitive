@@ -36,7 +36,7 @@
     "theme": "evocation",
     "cap_complexite": null,
     "meta": {
-      "auteur": "redaction-assistee (tools/generer_evocation_social.py)",
+      "auteur": "redaction-assistee (tools/generer_evocation.py)",
       "date_creation": "2026-09-20",
       "relecture_ortho": {
         "statut": "a_revoir"
@@ -80,7 +80,7 @@
     "theme": "evocation",
     "cap_complexite": null,
     "meta": {
-      "auteur": "redaction-assistee (tools/generer_evocation_social.py)",
+      "auteur": "redaction-assistee (tools/generer_evocation.py)",
       "date_creation": "2026-09-20",
       "relecture_ortho": {
         "statut": "a_revoir"
@@ -124,7 +124,7 @@
     "theme": "evocation",
     "cap_complexite": null,
     "meta": {
-      "auteur": "redaction-assistee (tools/generer_evocation_social.py)",
+      "auteur": "redaction-assistee (tools/generer_evocation.py)",
       "date_creation": "2026-09-20",
       "relecture_ortho": {
         "statut": "a_revoir"
@@ -168,7 +168,7 @@
     "theme": "evocation",
     "cap_complexite": null,
     "meta": {
-      "auteur": "redaction-assistee (tools/generer_evocation_social.py)",
+      "auteur": "redaction-assistee (tools/generer_evocation.py)",
       "date_creation": "2026-09-20",
       "relecture_ortho": {
         "statut": "a_revoir"
@@ -212,7 +212,7 @@
     "theme": "evocation",
     "cap_complexite": null,
     "meta": {
-      "auteur": "redaction-assistee (tools/generer_evocation_social.py)",
+      "auteur": "redaction-assistee (tools/generer_evocation.py)",
       "date_creation": "2026-09-20",
       "relecture_ortho": {
         "statut": "a_revoir"
@@ -246,7 +246,7 @@
     "theme": "evocation",
     "cap_complexite": null,
     "meta": {
-      "auteur": "redaction-assistee (tools/generer_evocation_social.py)",
+      "auteur": "redaction-assistee (tools/generer_evocation.py)",
       "date_creation": "2026-09-20",
       "relecture_ortho": {
         "statut": "a_revoir"
@@ -280,7 +280,7 @@
     "theme": "evocation",
     "cap_complexite": null,
     "meta": {
-      "auteur": "redaction-assistee (tools/generer_evocation_social.py)",
+      "auteur": "redaction-assistee (tools/generer_evocation.py)",
       "date_creation": "2026-09-20",
       "relecture_ortho": {
         "statut": "a_revoir"
@@ -314,7 +314,7 @@
     "theme": "evocation",
     "cap_complexite": null,
     "meta": {
-      "auteur": "redaction-assistee (tools/generer_evocation_social.py)",
+      "auteur": "redaction-assistee (tools/generer_evocation.py)",
       "date_creation": "2026-09-20",
       "relecture_ortho": {
         "statut": "a_revoir"
@@ -348,7 +348,7 @@
     "theme": "evocation",
     "cap_complexite": null,
     "meta": {
-      "auteur": "redaction-assistee (tools/generer_evocation_social.py)",
+      "auteur": "redaction-assistee (tools/generer_evocation.py)",
       "date_creation": "2026-09-20",
       "relecture_ortho": {
         "statut": "a_revoir"
@@ -382,7 +382,7 @@
     "theme": "evocation",
     "cap_complexite": null,
     "meta": {
-      "auteur": "redaction-assistee (tools/generer_evocation_social.py)",
+      "auteur": "redaction-assistee (tools/generer_evocation.py)",
       "date_creation": "2026-09-20",
       "relecture_ortho": {
         "statut": "a_revoir"

@@ -55,9 +55,6 @@ MOTIF_ID_CALCUL = re.compile(r"^cm-(\d+)-(\d+)x(\d+)$")
 TYPES_A_CHOIX = {
     "reconnaissance",
     "rappel-source",
-    "emotion-vignette",
-    "reponse-adaptee",
-    "lecture-intention",
     "etape-suivante",
     "par-ou-commencer",
     "si-alors",
@@ -729,7 +726,7 @@ def erreurs_manifest(manifest: object, chemin: Path, donnees_par_fichier: dict[P
 #: programme ne peut proposer qu'un thème que l'API expose.
 THEMES_CONNUS = {
     "calcul-mental", "anglais", "python", "memoire", "concentration",
-    "evocation", "social", "rappel-series",
+    "evocation", "rappel-series", "quotidien", "deduction", "methodes",
 }
 
 #: Types de jour admis dans un programme.

@@ -37,7 +37,7 @@ NOM_FICHIER = "8-semaines.json"
 SEMAINES = 8
 
 #: Thèmes principaux, dans l'ordre de rotation hebdomadaire.
-THEMES = ["calcul-mental", "memoire", "concentration", "evocation", "social", "rappel-series"]
+THEMES = ["calcul-mental", "memoire", "concentration", "evocation", "quotidien", "methodes", "deduction", "rappel-series"]
 
 #: Thèmes d'appoint, proposés seulement en journée légère « au choix ».
 THEMES_EXTRA = ["anglais", "python"]
@@ -47,8 +47,10 @@ PALIERS_DISPONIBLES = {
     "calcul-mental": 9,
     "memoire": 12,
     "concentration": 9,
-    "evocation": 5,
-    "social": 4,
+    "evocation": 7,
+    "quotidien": 8,
+    "methodes": 5,
+    "deduction": 4,
     "rappel-series": 4,
 }
 
@@ -75,8 +77,8 @@ REGLES = {
     ),
     "alternance": (
         "Les domaines alternent dans la semaine (calcul, mémoire, concentration, "
-        "langage, social) : l'alternance limite la fatigue sur un même réseau et "
-        "favorise le transfert."
+        "langage, vie quotidienne, méthodes, déduction) : l'alternance limite la fatigue "
+        "sur un même réseau et favorise le transfert."
     ),
     "duree": (
         "Une séance dure de 6 à 9 minutes selon la semaine, jamais plus de 10 minutes ; "

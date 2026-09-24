@@ -19,7 +19,6 @@ Règles par thème (docs/30-technique/api-contract.md) :
   atteint le seuil déclaré par l'item (``reponse.seuil``) ;
 - ``evocation``      : texte tolérant — casse, accents, espaces et guillemets
   ignorés (un mot retrouvé se juge sur le mot, pas sur son accent) ;
-- ``social``         : texte tolérant — la réponse est la proposition choisie.
 """
 
 from __future__ import annotations
@@ -75,9 +74,9 @@ def _corriger_sans_espaces(reponse, attendue) -> bool:
 def _clef_texte(valeur) -> str:
     """Clé de comparaison souple : casse, accents, espaces et guillemets ignorés.
 
-    Sert aux thèmes ``evocation`` (mot retrouvé) et ``social`` (proposition
-    choisie) : l'objectif est le rappel du mot ou du sens, pas l'orthographe
-    exacte ni la typographie — un mot juste écrit sans accent reste juste.
+    Sert au thème ``evocation`` (mot retrouvé) : l'objectif est le rappel du mot,
+    pas l'orthographe exacte ni la typographie — un mot juste écrit sans accent
+    reste juste.
     """
     texte = unicodedata.normalize("NFD", str(valeur or "").casefold())
     sans_accents = "".join(c for c in texte if not unicodedata.combining(c))
@@ -209,7 +208,7 @@ def corriger(theme: str, item: dict, reponse) -> bool:
         return _clef_texte(reponse) == _clef_texte(attendue)
     if theme == "rappel-series":
         return _corriger_rappel_libre(item, reponse)
-    if theme in ("evocation", "social"):
+    if theme == "evocation":
         return _clef_texte(reponse) == _clef_texte(attendue)
     if theme in ("anglais", "memoire"):
         if theme == "memoire":

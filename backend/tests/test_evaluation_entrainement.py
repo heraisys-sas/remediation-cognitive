@@ -18,7 +18,7 @@ def test_categories_des_themes(client):
     themes = {t["id"]: t for t in client.get("/api/entrainement/themes").json()["themes"]}
     for identifiant in THEMES_EVALUATION:
         assert themes[identifiant]["categorie"] == "evaluation", identifiant
-    for identifiant in ("evocation", "social", "quotidien", "deduction", "calcul-mental"):
+    for identifiant in ("evocation", "quotidien", "deduction", "methodes", "calcul-mental"):
         assert themes[identifiant]["categorie"] == "entrainement", identifiant
 
 

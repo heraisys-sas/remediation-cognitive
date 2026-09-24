@@ -48,7 +48,7 @@ D'ici là, deux règles :
 
 Mis en œuvre : les thèmes sont désormais **catégorisés**.
 
-- **Entraînement (remédiation)** — calcul mental, retrouver le mot (dont SFA/PCA), vie sociale, au quotidien, méthodes, déduction.
+- **Entraînement (remédiation)** — calcul mental, retrouver le mot (dont SFA/PCA), au quotidien, méthodes, déduction.
 - **Évaluation (mesures)** — mémoire (empans, n-back, paires), concentration (chaînes, cascades, double tâche, séries), rappel de séries.
 
 Conséquences concrètes :
@@ -56,6 +56,8 @@ Conséquences concrètes :
 - les thèmes d'évaluation restent **jouables** (pour se situer) mais sont plafonnés à **une séance par jour** : répéter une mesure la fausse par l'apprentissage du matériel ;
 - l'interface les range dans une section « Évaluation » distincte, présentée comme telle ;
 - aucun nouveau contenu d'allure évaluative n'est ajouté à la section entraînement (règle maintenue).
+
+Le thème d'entraînement « vie sociale » (vignettes d'émotion, réponses adaptées, intentions) a depuis été **retiré** : trop simple à l'usage, et redondant avec les missions. Les **missions dans la vraie vie** restent — elles portent la composante d'exposition réelle, seule à agir.
 
 ## Méthodes implémentées (2026-09-24)
 

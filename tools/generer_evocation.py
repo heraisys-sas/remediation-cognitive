@@ -1,13 +1,17 @@
 #!/usr/bin/env python3
-"""Génère le contenu des thèmes « evocation » et « social » (accès au mot, vie sociale).
+"""Génère le contenu du thème « evocation » (accès au mot) et les missions hors écran.
 
 Contenu rédigé puis assemblé de façon déterministe (aucun aléatoire non maîtrisé) :
 - ``evocation`` : retrouver un mot à partir de sa définition, avec indices
   progressifs (catégorie → attaque phonologique → lettres), reconnaissance
   parmi trois mots, et rappel du contexte d'une information (mémoire de la
   source) ;
-- ``social`` : lecture d'une situation (émotion ressentie), choix de la
-  réponse qui convient, lecture d'une intention.
+- ``missions`` : les missions d'interaction réelle (hors écran) — préparées ici,
+  réalisées dans la vie réelle, notées dans le carnet.
+
+Note : le thème d'entraînement « vie sociale » (vignettes d'émotion, réponses
+adaptées, intentions) a été RETIRÉ — jugé trop simple à l'usage. Les missions
+sont conservées : c'est l'exposition réelle qui agit, pas l'exercice à l'écran.
 
 Les mots, définitions et situations sont originaux ; aucun matériel protégé
 n'est reproduit. Les indices ne doivent jamais contenir la réponse — la
@@ -15,8 +19,8 @@ révélation complète est un mode d'interface, pas un indice de contenu.
 
 Usage :
 
-    python3 tools/generer_evocation_social.py            # écrit le contenu
-    python3 tools/generer_evocation_social.py --dry-run  # affiche sans écrire
+    python3 tools/generer_evocation.py            # écrit le contenu
+    python3 tools/generer_evocation.py --dry-run  # affiche sans écrire
 """
 
 from __future__ import annotations
@@ -30,7 +34,7 @@ RACINE_DEPOT = Path(__file__).resolve().parent.parent
 DOSSIER_CONTENU = RACINE_DEPOT / "content" / "entrainement"
 GRAINE = 20260920
 DATE_CREATION = "2026-09-20"
-AUTEUR = "redaction-assistee (tools/generer_evocation_social.py)"
+AUTEUR = "redaction-assistee (tools/generer_evocation.py)"
 
 
 def meta() -> dict:
@@ -329,208 +333,6 @@ def items_evocation() -> list[dict]:
 # --------------------------------------------------------------------------
 
 #: (situation, émotion attendue, deux autres émotions plausibles)
-SITUATIONS_EMOTION = [
-    ("Sami a envoyé un message il y a trois jours. Toujours pas de réponse. Il relit son message plusieurs fois par jour.",
-     "inquiétude", ["colère", "fierté"]),
-    ("Léa arrive au café : trois personnes qu'elle apprécie se sont déjà installées et lui font signe de venir.",
-     "plaisir", ["embarras", "indifférence"]),
-    ("Un ami raconte une anecdote où Marc est un peu maladroit. Tout le monde rit, y compris Marc, mais il rougit.",
-     "gêne", ["ennui", "soulagement"]),
-    ("Nadia attend une réponse pour un logement. Le courrier arrive enfin, et la lettre commence par « Nous avons le plaisir de… ».",
-     "soulagement", ["déception", "nostalgie"]),
-    ("À la caisse, la personne devant Thomas prend beaucoup de temps et discute avec l'hôtesse. Thomas soupire et regarde sa montre.",
-     "impatience", ["tristesse", "peur"]),
-    ("Camille découvre que son voisin a arrosé ses plantes pendant son absence, sans qu'elle ait rien demandé.",
-     "reconnaissance", ["méfiance", "indifférence"]),
-    ("Au téléphone, on annonce à Julien que son dossier est refusé. Il reste silencieux quelques secondes.",
-     "déception", ["euphorie", "ennui"]),
-    ("Chaque fois qu'Amina propose une idée en réunion, on passe à autre chose. Elle commence à ne plus rien proposer.",
-     "découragement", ["fierté", "amusement"]),
-    ("Paul croise son ancien collègue qui l'a beaucoup aidé. Il sourit et ralentit le pas pour lui parler.",
-     "sympathie", ["agacement", "crainte"]),
-    ("L'affiche annonce la fermeture de la salle de sport où Sophie va trois fois par semaine depuis un an.",
-     "contrariété", ["indifférence", "joie"]),
-]
-
-#: (situation, réponse adaptée, réponse trop directe, réponse à côté)
-SITUATIONS_REPONSE = [
-    ("Une collègue te dit : « Tu as une minute ? J'ai besoin d'un avis. » Tu es en pleine tâche.",
-     "« Là je termine un truc : je viens te voir dans dix minutes ? »",
-     "« Non. »",
-     "« Pourquoi tu me demandes toujours à moi ? »"),
-    ("L'orthophoniste propose de décaler la séance de jeudi. Tu ne peux pas ce jour-là.",
-     "« Jeudi je ne peux pas, mais vendredi matin je suis libre. »",
-     "« Ça ne m'arrange pas du tout. »",
-     "« Comme vous voulez, peu importe. »"),
-    ("Un voisin que tu connais peu te demande si tu peux récupérer un colis pour lui.",
-     "« Oui, je serai là en fin de journée. »",
-     "« Je ne fais pas ce genre de choses. »",
-     "« Pourquoi vous ne le faites pas vous-même ? »"),
-    ("Tu arrives en retard à un rendez-vous chez un ami. Il dit : « Ah, te voilà. »",
-     "« Désolé, j'ai mal calculé le temps de trajet. »",
-     "« Ce n'est pas ma faute, il y avait du monde. »",
-     "« Tu m'attendais depuis longtemps ? »"),
-    ("Au téléphone, tu n'entends pas bien ce que dit ton interlocuteur.",
-     "« Je vous entends mal : pouvez-vous répéter la deuxième phrase ? »",
-     "« Vous parlez trop vite. »",
-     "« Oui, oui, d'accord. » (sans avoir compris)"),
-    ("Une amie te propose de venir à un repas où tu ne connais personne.",
-     "« Avec plaisir — je repars vers 22 h, c'est possible ? »",
-     "« Non merci, je ne connais personne. »",
-     "« Vous mangez quoi ? »"),
-    ("À la pharmacie, tu veux vérifier si une boîte est compatible avec ton traitement.",
-     "« Est-ce que je peux vous montrer mon ordonnance pour vérifier ? »",
-     "« Vous êtes sûre de ce que vous dites ? »",
-     "« Vous avez d'autres marques ? Lesquelles sont les moins chères ? »"),
-    ("Quelqu'un te fait une remarque désagréable devant d'autres personnes.",
-     "« Je préfère qu'on en parle à deux, plus tard. »",
-     "« Vous êtes vraiment désagréable. »",
-     "« De quoi vous parlez ? »"),
-    ("Tu es invité chez quelqu'un et tu ne sais pas quoi apporter.",
-     "« Est-ce que j'apporte quelque chose pour le dessert ? »",
-     "« Je viens les mains vides, c'est plus simple. »",
-     "« À quelle heure vous servez ? »"),
-    ("Un proche te raconte un souci. Tu ne sais pas quoi dire.",
-     "« Je ne sais pas trop quoi dire, mais je suis là si tu veux en parler. »",
-     "« Il faut faire attention, tu sais. »",
-     "« Tu veux un conseil ? Moi à ta place… »"),
-]
-
-#: (parole entendue avec son ton, intention attendue, deux autres lectures)
-INTENTIONS = [
-    ("« Ça va, tu es sûr ? » — voix douce, sourcils un peu froncés.",
-     "elle s'inquiète pour toi", ["elle te reproche quelque chose", "elle te taquine"]),
-    ("« Tiens, tiens… » — sourire léger, en regardant ce que tu portes.",
-     "elle remarque quelque chose d'inhabituel", ["elle t'annonce une mauvaise nouvelle", "elle te demande de partir"]),
-    ("« Bon, on verra. » — soupir, ton qui baisse en fin de phrase.",
-     "elle n'approuve pas mais évite la discussion", ["elle est enthousiaste", "elle n'a pas entendu"]),
-    ("« Tu peux répéter ? » — sourcils levés, tête penchée.",
-     "elle n'a pas compris ou n'a pas entendu", ["elle est en colère", "elle veut changer de sujet"]),
-    ("« Ne t'inquiète pas pour ça. » — voix calme, main posée sur la table.",
-     "elle veut te rassurer", ["elle te reproche d'être inquiet", "elle ne veut plus te parler"]),
-    ("« Ah bon ? » — ton qui monte, yeux écarquillés.",
-     "elle est surprise", ["elle s'ennuie", "elle est d'accord"]),
-    ("« Bien sûr, comme toujours. » — sourire pincé, regard qui se détourne.",
-     "elle marque une contrariété", ["elle félicite sincèrement", "elle est distraite"]),
-    ("« Tu veux que je vienne avec toi ? » — voix douce, tournée vers toi.",
-     "elle propose de t'aider", ["elle te met en garde", "elle veut partir"]),
-    ("« On en reparle demain matin ? » — ton posé, sans sourire.",
-     "elle préfère reporter pour l'instant", ["elle refuse définitivement", "elle a oublié la question"]),
-    ("« J'ai pensé à toi en voyant ça. » — voix légère, en te tendant un objet.",
-     "elle a eu une attention pour toi", ["elle veut te vendre quelque chose", "elle te rend un service dû"]),
-]
-
-
-def items_social() -> list[dict]:
-    """Assemble les items du thème social (4 paliers de 10 items)."""
-    items: list[dict] = []
-
-    def ajouter(palier: int, famille: str, numero: int, item: dict) -> None:
-        item["id"] = f"so-{palier}-{famille}-{numero:02d}"
-        item["palier"] = palier
-        item["prerequis"] = [f"so-palier-{palier - 1}"] if palier > 1 else []
-        item["module"] = "entrainement"
-        item["theme"] = "social"
-        item["cap_complexite"] = None
-        item["meta"] = meta()
-        items.append(item)
-
-    # Palier 1 — reconnaître l'émotion d'une personne dans une situation.
-    for numero, (situation, emotion, leurres) in enumerate(SITUATIONS_EMOTION, start=1):
-        options = [emotion] + list(leurres)
-        melanger("social", "emotion", options)
-        ajouter(1, "emotion", numero, {
-            "type": "emotion-vignette",
-            "fonctions_ciblees": ["cognition-sociale"],
-            "contenu": {
-                "consigne": "Lis la situation, puis choisis ce que ressent la personne.",
-                "enonce": situation,
-                "options": options,
-                "aide": "Repère ce que fait ou dit la personne : c'est là que se trouve l'indice.",
-            },
-            "reponse": {"valeur": emotion},
-        })
-
-    # Palier 2 — choisir la réponse qui convient.
-    for numero, (situation, adaptee, _directe, _cote) in enumerate(SITUATIONS_REPONSE, start=1):
-        options = [adaptee] + [option for option in (SITUATIONS_REPONSE[numero - 1][2], SITUATIONS_REPONSE[numero - 1][3])]
-        melanger("social", "reponse", options)
-        ajouter(2, "reponse", numero, {
-            "type": "reponse-adaptee",
-            "fonctions_ciblees": ["cognition-sociale", "pragmatique"],
-            "contenu": {
-                "consigne": "Choisis la réponse qui te semble convenir le mieux.",
-                "enonce": situation,
-                "options": options,
-                "aide": "Cherche la réponse qui laisse une porte ouverte aux deux personnes.",
-            },
-            "reponse": {"valeur": adaptee},
-        })
-
-    # Palier 3 — lecture d'intention (sur les 5 premières situations) + émotions restantes.
-    for numero, (parole, intention, leurres) in enumerate(INTENTIONS[:5], start=1):
-        options = [intention] + list(leurres)
-        melanger("social", "intention", options)
-        ajouter(3, "intention", numero, {
-            "type": "lecture-intention",
-            "fonctions_ciblees": ["cognition-sociale", "pragmatique"],
-            "contenu": {
-                "consigne": "Lis la parole et le ton, puis choisis ce que la personne cherche à dire.",
-                "enonce": parole,
-                "options": options,
-                "aide": "Le ton et le geste comptent autant que les mots.",
-            },
-            "reponse": {"valeur": intention},
-        })
-    for numero, (parole, intention, leurres) in enumerate(INTENTIONS[5:], start=6):
-        options = [intention] + list(leurres)
-        melanger("social", "intention", options)
-        ajouter(3, "intention", numero, {
-            "type": "lecture-intention",
-            "fonctions_ciblees": ["cognition-sociale", "pragmatique"],
-            "contenu": {
-                "consigne": "Lis la parole et le ton, puis choisis ce que la personne cherche à dire.",
-                "enonce": parole,
-                "options": options,
-                "aide": None,
-            },
-            "reponse": {"valeur": intention},
-        })
-
-    # Palier 4 — alternance réponse adaptée / intention.
-    for numero, (situation, adaptee, directe, cote) in enumerate(SITUATIONS_REPONSE[:5], start=1):
-        options = [adaptee, directe, cote]
-        melanger("social", "reponse", options)
-        ajouter(4, "reponse", numero, {
-            "type": "reponse-adaptee",
-            "fonctions_ciblees": ["cognition-sociale", "pragmatique"],
-            "contenu": {
-                "consigne": "Choisis la réponse qui te semble convenir le mieux.",
-                "enonce": situation,
-                "options": options,
-                "aide": None,
-            },
-            "reponse": {"valeur": adaptee},
-        })
-    for numero, (situation, emotion, leurres) in enumerate(SITUATIONS_EMOTION[:5], start=6):
-        options = [emotion] + list(leurres)
-        melanger("social", "emotion", options)
-        ajouter(4, "emotion", numero, {
-            "type": "emotion-vignette",
-            "fonctions_ciblees": ["cognition-sociale"],
-            "contenu": {
-                "consigne": "Lis la situation, puis choisis ce que ressent la personne.",
-                "enonce": situation,
-                "options": options,
-                "aide": None,
-            },
-            "reponse": {"valeur": emotion},
-        })
-
-    return items
-
-
-#: Missions hors écran : préparation d'une micro-interaction, puis note brève.
 MISSIONS = [
     {
         "id": "ms-01",
@@ -642,15 +444,13 @@ MISSIONS = [
 def ecrire_contenu(dry_run: bool = False) -> dict:
     """Écrit les paliers, les manifestes et les missions ; retourne les compteurs."""
     paliers_evocation = 7
-    paliers_social = 4
     items_ev = items_evocation()
-    items_so = items_social()
 
     def paquet(items: list[dict], thème: str, palier: int) -> list[dict]:
         return [item for item in items if item["palier"] == palier]
 
     ecritures = []
-    for thème, items, nb_paliers in (("evocation", items_ev, paliers_evocation), ("social", items_so, paliers_social)):
+    for thème, items, nb_paliers in (("evocation", items_ev, paliers_evocation),):
         for palier in range(1, nb_paliers + 1):
             chemin = DOSSIER_CONTENU / thème / "paliers" / f"palier-{palier:02d}.json"
             ecritures.append((chemin, paquet(items, thème, palier)))
@@ -668,7 +468,7 @@ def ecrire_contenu(dry_run: bool = False) -> dict:
             ],
         }
         ecritures.append((DOSSIER_CONTENU / thème / "paliers.json", manifeste))
-    ecritures.append((DOSSIER_CONTENU / "social" / "missions.json", {"theme": "social", "missions": MISSIONS}))
+    ecritures.append((RACINE_DEPOT / "content" / "missions" / "missions.json", {"theme": "missions", "missions": MISSIONS}))
 
     for chemin, donnees in ecritures:
         if not dry_run:
@@ -677,9 +477,8 @@ def ecrire_contenu(dry_run: bool = False) -> dict:
 
     return {
         "evocation": len(items_ev),
-        "social": len(items_so),
         "missions": len(MISSIONS),
-        "paliers": {"evocation": paliers_evocation, "social": paliers_social},
+        "paliers": {"evocation": paliers_evocation},
     }
 
 
@@ -693,12 +492,6 @@ DESCRIPTION_PALIERS = {
         "Analyse sémantique (SFA) : décrire le mot par ses caractéristiques, puis le nommer",
         "Analyse phonologique (PCA) : décomposer le mot par ses sons, puis le nommer",
     ],
-    "social": [
-        "Reconnaître l'émotion ressentie dans une situation",
-        "Choisir la réponse qui convient dans un échange",
-        "Lire l'intention derrière une parole et son ton",
-        "Alterner réponse adaptée et lecture d'intention",
-    ],
 }
 
 
@@ -711,7 +504,6 @@ def main() -> None:
     print(
         f"{prefixe}evocation : {compteurs['evocation']} items "
         f"({compteurs['paliers']['evocation']} paliers) | "
-        f"social : {compteurs['social']} items ({compteurs['paliers']['social']} paliers) | "
         f"missions : {compteurs['missions']}"
     )
 

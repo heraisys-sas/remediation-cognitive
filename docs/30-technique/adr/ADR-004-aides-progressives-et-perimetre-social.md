@@ -39,3 +39,11 @@ Deux besoins cliniques ne rentraient pas dans le format en vigueur :
 - (−) Le contrat d'API et le schéma d'item s'étendent : compatibilité ascendante assurée (champ optionnel, champs de réponse additifs), mais toute modification ultérieure devra rester aussi prudente.
 - (−) Le contenu devient plus exigeant à relire : indices à valider cliniquement (formulation, absence de fuite) — la relecture orthophoniste reste à faire.
 - (−) Troisième périmètre de stockage à tenir isolé (entraînement, journal, bilan à venir).
+
+
+## Suivi (2026-09-24)
+
+Le **thème d'entraînement « vie sociale » a été retiré** (jugé trop simple à l'usage) et le
+périmètre annexe a été renommé : `/api/social` → **`/api/missions`**, les missions vivant
+désormais dans `content/missions/missions.json`. Le reste de la décision (aides progressives,
+options, essai assisté, stockage séparé du carnet) reste inchangé et en vigueur.

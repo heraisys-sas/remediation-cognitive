@@ -75,11 +75,11 @@ payload client : en usage familial mono-utilisateur c'est assumé (l'interface n
 l'affiche que pendant la phase de mémorisation) ; un mode serveur-poussé pourra
 être étudié plus tard si le besoin apparaît.
 
-## Sprint 3 — accès au mot, vie sociale, aides progressives (ADR-004)
+## Sprint 3 — accès au mot, aides progressives (ADR-004)
 
 ### Thèmes supplémentaires
 
-`evocation` (« Retrouver le mot ») et `social` (« Vie sociale ») rejoignent les thèmes exposés par
+`evocation` (« Retrouver le mot ») rejoint les thèmes exposés par
 `GET /api/entrainement/themes` (sept thèmes au total). Nouveaux types d'items : `rappel-indice`,
 `reconnaissance`, `rappel-source`, `emotion-vignette`, `reponse-adaptee`, `lecture-intention`.
 
@@ -129,14 +129,16 @@ l'accès au mot (moins d'aides nécessaires), pas la vitesse.
 La baseline de temps servant à la détection de fatigue n'est alimentée que par les premières
 réponses correctes **et** sans aide.
 
-### Périmètre `/api/social` — missions hors écran et carnet
+### Périmètre `/api/missions` — missions dans la vraie vie et carnet
 
-Base : `/api/social`. Périmètre hors médical, mais **stockage séparé** des données d'entraînement.
+> Le thème d'entraînement « vie sociale » a été retiré (trop simple) ; les missions d'interaction réelle sont conservées. Les routes ont suivi le renommage : `/api/social` → `/api/missions`.
 
-- `GET /api/social/missions` → `{"missions": [{id, niveau, titre, pourquoi, etapes[], duree_estimee_min, repere}, …], "ressentis": ["facile", "moyen", "difficile", "inattendu"]}`.
+Base : `/api/missions`. Périmètre hors médical, mais **stockage séparé** des données d'entraînement.
+
+- `GET /api/missions` → `{"missions": [{id, niveau, titre, pourquoi, etapes[], duree_estimee_min, repere}, …], "ressentis": ["facile", "moyen", "difficile", "inattendu"]}`.
   Une mission n'a **aucune réponse attendue** : c'est une préparation d'interaction réelle.
-- `GET /api/social/journal` → `{"entrees": [{id, mission_id, texte, ressenti, date}, …]}` (ordre chronologique).
-- `POST /api/social/journal` `{"mission_id": "ms-01", "texte": "…", "ressenti": "facile"}` → `201 {"entree": {…}}`.
+- `GET /api/missions/journal` → `{"entrees": [{id, mission_id, texte, ressenti, date}, …]}` (ordre chronologique).
+- `POST /api/missions/journal` `{"mission_id": "ms-01", "texte": "…", "ressenti": "facile"}` → `201 {"entree": {…}}`.
   `404 mission_inconnue` si la mission n'existe pas ; `422 note_invalide` si le texte est vide ou
   dépasse 2 000 caractères.
 

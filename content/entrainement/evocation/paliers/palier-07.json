@@ -30,7 +30,7 @@
       "valeur": "réfrigérateur"
     },
     "meta": {
-      "auteur": "redaction-assistee (tools/generer_evocation_social.py)",
+      "auteur": "redaction-assistee (tools/generer_evocation.py)",
       "date_creation": "2026-09-20",
       "relecture_ortho": {
         "statut": "a_revoir"
@@ -68,7 +68,7 @@
       "valeur": "crayon"
     },
     "meta": {
-      "auteur": "redaction-assistee (tools/generer_evocation_social.py)",
+      "auteur": "redaction-assistee (tools/generer_evocation.py)",
       "date_creation": "2026-09-20",
       "relecture_ortho": {
         "statut": "a_revoir"
@@ -106,7 +106,7 @@
       "valeur": "gare"
     },
     "meta": {
-      "auteur": "redaction-assistee (tools/generer_evocation_social.py)",
+      "auteur": "redaction-assistee (tools/generer_evocation.py)",
       "date_creation": "2026-09-20",
       "relecture_ortho": {
         "statut": "a_revoir"
@@ -144,7 +144,7 @@
       "valeur": "bonnet"
     },
     "meta": {
-      "auteur": "redaction-assistee (tools/generer_evocation_social.py)",
+      "auteur": "redaction-assistee (tools/generer_evocation.py)",
       "date_creation": "2026-09-20",
       "relecture_ortho": {
         "statut": "a_revoir"
@@ -182,7 +182,7 @@
       "valeur": "armoire"
     },
     "meta": {
-      "auteur": "redaction-assistee (tools/generer_evocation_social.py)",
+      "auteur": "redaction-assistee (tools/generer_evocation.py)",
       "date_creation": "2026-09-20",
       "relecture_ortho": {
         "statut": "a_revoir"
@@ -220,7 +220,7 @@
       "valeur": "mètre"
     },
     "meta": {
-      "auteur": "redaction-assistee (tools/generer_evocation_social.py)",
+      "auteur": "redaction-assistee (tools/generer_evocation.py)",
       "date_creation": "2026-09-20",
       "relecture_ortho": {
         "statut": "a_revoir"

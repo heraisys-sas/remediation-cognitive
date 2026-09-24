@@ -27,7 +27,7 @@ Le contrôle `tools/verifier_clinique.py` vérifie en continu que le vocabulaire
 | Double tâche | attention divisée / sélective | La plus coûteuse : la proposer en début de séance, jamais en fin |
 | Rappel libre de séries | récupération sans indice | Le résultat est **partiel par nature** : c'est un repère de travail, jamais un score |
 | Retrouver le mot (indices) | accès lexical | Demander de l'aide fait partie de l'exercice, sans pénalité ; l'essai se clôt sans erreur |
-| Vie sociale / missions | cognition sociale, pragmatique | Préparation à froid seulement : l'exposition réelle reste le facteur actif |
+| Missions dans la vraie vie | exposition réelle (le facteur qui agit) | Préparation à froid seulement ; la réalisation se fait dehors, et se note dans le carnet |
 
 ## Signes d'alerte (non diagnostiques) — quand en parler à un professionnel
 

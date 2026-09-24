@@ -32,11 +32,10 @@ _SOURCES_PAR_THEME: dict[str, tuple[str, str]] = {
     "deduction": ("deduction/paliers", "palier-*.json"),
     "methodes": ("methodes/paliers", "palier-*.json"),
     "evocation": ("evocation/paliers", "palier-*.json"),
-    "social": ("social/paliers", "palier-*.json"),
 }
 
-#: Fichier de missions hors écran du thème social (préparation d'interactions réelles).
-_FICHIER_MISSIONS = Path("content/entrainement/social/missions.json")
+#: Fichier des missions d'interaction réelle (hors écran, périmètre « missions »).
+_FICHIER_MISSIONS = Path("content/missions/missions.json")
 
 #: Catégorie de chaque thème : « entrainement » (remédiation, régulier) ou
 #: « evaluation » (mesures — à faire ponctuellement pour ne pas être faussées
@@ -46,7 +45,6 @@ _CATEGORIE_PAR_THEME: dict[str, str] = {
     "anglais": "entrainement",
     "python": "entrainement",
     "evocation": "entrainement",
-    "social": "entrainement",
     "quotidien": "entrainement",
     "deduction": "entrainement",
     "methodes": "entrainement",
@@ -87,7 +85,7 @@ class ChargeurContenu:
     # -- missions hors écran --------------------------------------------------
 
     def missions(self) -> list[dict]:
-        """Missions de préparation d'interactions réelles (thème social).
+        """Missions d'interaction réelle (hors écran).
 
         Hors moteur de séance : une mission n'a pas de réponse attendue —
         l'application fournit la préparation et le suivi, pas une note.

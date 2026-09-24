@@ -22,7 +22,6 @@ THEMES_ATTENDUS = {
     "memoire",
     "concentration",
     "evocation",
-    "social",
     "rappel-series",
     "quotidien",
     "deduction",

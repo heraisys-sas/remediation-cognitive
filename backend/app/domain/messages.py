@@ -62,10 +62,6 @@ VOCABULAIRES = {
                 "nom": "Retrouver le mot",
                 "description": "Définitions, indices progressifs, mémoire du contexte — retrouver ce qu'on sait déjà",
             },
-            "social": {
-                "nom": "Vie sociale",
-                "description": "Situations, intentions et réponses qui conviennent — se remettre en lien",
-            },
         },
         # Feedback immédiat guidé (correction serveur).
         "feedback_correcte": "Bien joué, réponse correcte !",
@@ -78,8 +74,8 @@ VOCABULAIRES = {
         "erreur_item_hors_seance": "Cet item ne fait pas partie de la séance en cours.",
         "erreur_reponse_invalide": "Réponse ou temps invalide.",
     },
-    "social": {
-        "titre_session": "Missions hors écran",
+    "missions": {
+        "titre_session": "Missions dans la vraie vie",
         "mission_inconnue": "Mission inconnue.",
         "journal_entree_invalide": "Note invalide (texte manquant ou trop long).",
     },

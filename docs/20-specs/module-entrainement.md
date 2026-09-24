@@ -74,22 +74,14 @@ n'apprend pas de nouveaux mots — on s'entraîne à déclencher le rappel avec 
 
 Détail des paliers : `content/entrainement/evocation/README.md`.
 
-## Vie sociale (sprint 3)
+## Missions dans la vraie vie (sprint 3, révisé)
 
-Thème de **remise en lien**, pensé pour des personnes longtemps peu socialisées. Le logiciel
-prépare, fait répéter à froid et garde la trace ; la mise en situation réelle reste le facteur actif.
-
-- **Vignette d'émotion** : situation courte → émotion ressentie (trois propositions).
-- **Réponse adaptée** : trois répliques (adaptée, trop directe, à côté) — demande, refus, politesse, sortie d'échange.
-- **Lecture d'intention** : une parole avec son ton → ce que la personne cherche à dire.
-- **Missions hors écran + carnet** : 8 missions graduées (saluer, demander une information, passer un
-  appel court, proposer une rencontre…), chacune avec un pourquoi, des étapes et un repère de
-  réussite modeste ; l'utilisateur réalise la mission dans la vie réelle, puis note ce qui s'est
-  passé dans son carnet (stockage séparé).
-
-Détail : `content/entrainement/social/README.md`. Précautions : pas de diagnostic, pas de norme,
-aucun contenu protégé ; en cas d'isolement profond avec signes dépressifs, l'outil reste un
-complément et une orientation professionnelle s'impose.
+Le thème d'entraînement « vie sociale » (vignettes d'émotion, réponses adaptées, lecture
+d'intention) a été **retiré** : trop simple à l'usage, et redondant avec les missions.
+Les **missions dans la vraie vie** sont conservées : après un isolement prolongé, c'est
+l'**exposition réelle** qui agit, pas l'exercice à l'écran. Le logiciel prépare la mission,
+la personne la réalise dehors, le carnet garde la trace. Détail et raisons :
+`content/missions/README.md`.
 
 ## Empan de mots et rappel de séries (sprint 4)
 

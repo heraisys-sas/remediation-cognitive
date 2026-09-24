@@ -54,7 +54,7 @@ MATERIEL_PROTEGE = [
 #: missions et le programme — pas les README ni la documentation).
 MOTIFS_CONTENU = [
     "content/entrainement/**/paliers/*.json",
-    "content/entrainement/**/missions.json",
+    "content/missions/*.json",
     "content/programmes/*.json",
 ]
 

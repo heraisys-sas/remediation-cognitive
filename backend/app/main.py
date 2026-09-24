@@ -21,7 +21,7 @@ from fastapi.staticfiles import StaticFiles
 from .api.entrainement import router as router_entrainement
 from .api.entrainement.service import GestionnaireSessions
 from .api.programme import router as router_programme
-from .api.social import router as router_social
+from .api.missions import router as router_missions
 from .domain.contenu import RACINE_PROJET
 from .storage.journal import StockageJournal
 from .storage.programme import StockageProgramme
@@ -67,7 +67,7 @@ def creer_app(
     racine_journal = Path(racine_donnees).parent / "journal" if racine_donnees else None
     application.state.stockage_journal = StockageJournal(racine=racine_journal)
     application.state.horloge = application.state.gestionnaire_entrainement.horloge
-    application.include_router(router_social)
+    application.include_router(router_missions)
 
     # Programme d'entraînement : état local minimal (date de début), périmètre
     # entraînement — aucune donnée de santé, aucun suivi de performance.
