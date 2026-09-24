@@ -2,6 +2,15 @@
 
 Format : [date] — [périmètre] — description. Les retours informels de l'orthophoniste sont journalisés ici, sans caution clinique.
 
+## 2026-09-24 · Évaluation vs entraînement + quatre méthodes de remédiation
+
+- **Section « Évaluation »** — les thèmes sont catégorisés : les mesures (mémoire, concentration, rappel de séries) sont sorties de l'entraînement et regroupées dans une section dédiée, plafonnée à **une séance par jour** (répéter une mesure la fausse). L'entraînement de remédiation garde son dosage (3 séances/jour). API : chaque thème expose sa `categorie`.
+- **SFA / PCA** — enrichissement de « retrouver le mot » (paliers 6 et 7) : l'utilisateur **génère lui-même les attributs** (catégorie, usage, lieu → ou premier son, syllabes, rime) puis nomme le mot. Les attributs ne sont pas notés — c'est leur génération qui fait le travail.
+- **Méthodes** (nouveau thème, 22 items) — **PQRST** (mémoire de textes : lire avec une intention et se tester), **Goal Management Training** (but → plan d'étapes → vérification), **auto-instruction de Meichenbaum** (quelle question se poser avant d'agir).
+- **Interface** — section « Évaluation » sur l'accueil, mode d'affichage « texte » (PQRST), zone de génération guidée (SFA/PCA), auto-instruction comme fil conducteur rappelé dans les consignes.
+- **Contrôles** — **813 items / 0 erreur** ; **132 tests** (catégories, limite d'évaluation à 1 séance/jour, PQRST/GMT/auto-instruction, SFA/PCA).
+- **Réserves** — passage visuel des nouveaux écrans à faire ; relecture orthophoniste à faire.
+
 ## 2026-09-24 · Déduction — suite : grille 4×4, indices de secours, nouveaux types
 
 - **Grille 4×4** — nouveau palier 4 du thème « Déduction » : 4 figures (cercle, carré, triangle, losange) × 4 couleurs (rouge, bleu, vert, jaune), carré latin d'ordre 4, **12 indices** à recouper. Le solveur d'unicité travaille désormais **par dimension** (figures / couleurs), ce qui rend la 4×4 rapide et exacte.

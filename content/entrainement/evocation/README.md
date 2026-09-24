@@ -27,3 +27,12 @@
 ## Génération
 
 Contenu rédigé puis assemblé par `tools/generer_evocation_social.py` (déterministe, graine 20260920). Toute retouche manuelle met à jour `meta.relecture_ortho` ; la relecture orthophoniste formelle reste à faire.
+
+## Analyse du mot : SFA et PCA (paliers 6 et 7)
+
+L'enrichissement « remédiation » du manque du mot : au lieu de recevoir des indices, **l'utilisateur génère lui-même les attributs** du mot, puis le nomme. C'est le mécanisme actif des deux méthodes classiques de l'aphasiologie.
+
+- **Palier 6 — SFA** (analyse sémantique) : à partir d'une définition, l'utilisateur décrit le mot par sa catégorie, son usage, le lieu où on le trouve, ce à quoi il pense — puis tape le mot.
+- **Palier 7 — PCA** (analyse phonologique) : même principe, mais l'analyse porte sur les sons — premier son, nombre de syllabes, rime, dernier son — puis le mot.
+
+Les notes saisies dans les étapes ne sont **pas** évaluées (elles ne servent qu'à débloquer le mot) : seule la réponse finale est corrigée, avec la tolérance habituelle (casse, accents). Cette absence de notation est volontaire : l'objectif est la génération des attributs, pas leur exactitude.

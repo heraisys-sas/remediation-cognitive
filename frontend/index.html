@@ -38,6 +38,15 @@
       <p id="notice-themes" class="notice" role="status" hidden></p>
       <div id="liste-themes" class="grille-themes"></div>
 
+      <!-- Section « Évaluation » : thèmes qui mesurent (empans, attention,
+           rappel de listes). Jouables pour se situer, mais à ne pas répéter
+           quotidiennement — sinon la mesure est faussée par l'apprentissage. -->
+      <section id="section-evaluation" class="section-extra" aria-labelledby="titre-evaluation" hidden>
+        <h3 id="titre-evaluation" class="titre-extra">Évaluation</h3>
+        <p class="intro-extra">Des mesures pour se situer — une séance par jour au plus. Répéter une mesure la fausse : pour progresser, ce sont les entraînements ci-dessus.</p>
+        <div id="liste-themes-evaluation" class="grille-themes"></div>
+      </section>
+
       <!-- Thèmes d'appoint (vocabulaire, commandes) : regroupés en bas, ils ne
            relèvent pas des familles d'entraînement cognitif principales. -->
       <section id="section-extra" class="section-extra" aria-labelledby="titre-extra" hidden>
@@ -86,6 +95,10 @@
 
       <!-- Grille de déduction 3×3 : palette de jetons (figure × couleur) à placer. -->
       <div id="zone-grille" class="zone-grille" hidden></div>
+
+      <!-- Génération guidée (SFA/PCA) : l'utilisateur écrit ses attributs avant de nommer.
+           Ces notes ne sont pas notées : elles servent à retrouver le mot. -->
+      <div id="zone-generation" class="zone-generation" hidden></div>
 
       <!-- Indices progressifs (accès au mot) : révélés un par un, jamais la réponse. -->
       <div id="zone-indices" class="zone-indices" hidden></div>

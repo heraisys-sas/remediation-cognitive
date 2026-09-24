@@ -43,6 +43,24 @@
       ],
       "fichier": "paliers/palier-05.json",
       "nb_items": 10
+    },
+    {
+      "id": "ev-palier-6",
+      "description": "Analyse sémantique (SFA) : décrire le mot par ses caractéristiques, puis le nommer",
+      "prerequis": [
+        "ev-palier-5"
+      ],
+      "fichier": "paliers/palier-06.json",
+      "nb_items": 6
+    },
+    {
+      "id": "ev-palier-7",
+      "description": "Analyse phonologique (PCA) : décomposer le mot par ses sons, puis le nommer",
+      "prerequis": [
+        "ev-palier-6"
+      ],
+      "fichier": "paliers/palier-07.json",
+      "nb_items": 6
     }
   ]
 }

@@ -33,6 +33,7 @@ from ...domain.contenu import ChargeurContenu
 from ...domain.correction import corriger
 from ...domain.dosage import (
     DUREE_MAX_SEANCE_S,
+    LIMITES_SESSIONS_JOUR,
     LIMITE_SESSIONS_JOUR,
     MAX_ITEMS_PAR_SEANCE,
 )
@@ -162,13 +163,14 @@ class GestionnaireSessions:
         """
         if not self.contenu.theme_existe(theme):
             raise ThemeInconnu(theme)
+        limite = self._limite_sessions(theme)
         with self._verrou_dosage:
             maintenant = self.horloge()
             aujourd_hui = maintenant.date()
             nb_sessions = self.stockage.lire_compteur(theme, aujourd_hui)
-            if nb_sessions >= LIMITE_SESSIONS_JOUR:
+            if nb_sessions >= limite:
                 raise LimiteSessionsAtteinte(
-                    restantes=max(0, LIMITE_SESSIONS_JOUR - nb_sessions)
+                    restantes=max(0, limite - nb_sessions)
                 )
             etat_maitrise = self.stockage.lire_maitrise(theme)
             palier = self._palier_courant(theme, etat_maitrise["palier_courant"])
@@ -210,6 +212,15 @@ class GestionnaireSessions:
                 "duree_max_s": DUREE_MAX_SEANCE_S,
             },
         }
+
+    def _limite_sessions(self, theme: str) -> int:
+        """Limite de séances du jour selon la catégorie du thème.
+
+        L'évaluation est plafonnée plus bas que l'entraînement : répéter une
+        mesure la fausse (effet d'apprentissage du matériel).
+        """
+        categorie = self.contenu.categorie(theme)
+        return LIMITES_SESSIONS_JOUR.get(categorie, LIMITE_SESSIONS_JOUR)
 
     def _palier_courant(self, theme: str, palier_stocke: int) -> int:
         """Palier de travail : celui du stockage, borné au contenu disponible."""
@@ -319,7 +330,7 @@ class GestionnaireSessions:
         )
         restantes = max(
             0,
-            LIMITE_SESSIONS_JOUR
+            self._limite_sessions(theme)
             - self.stockage.lire_compteur(theme, self.horloge().date()),
         )
         arret_propose = bool(resume_moteur["alerte_fatigue"])

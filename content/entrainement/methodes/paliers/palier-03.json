@@ -1,0 +1,282 @@
+[
+  {
+    "id": "mt-3-autoinstruction-01",
+    "type": "auto-instruction",
+    "module": "entrainement",
+    "theme": "methodes",
+    "fonctions_ciblees": [
+      "fonctions-executives",
+      "planification"
+    ],
+    "palier": 3,
+    "prerequis": [
+      "mt-palier-2"
+    ],
+    "cap_complexite": null,
+    "contenu": {
+      "consigne": "Auto-instruction : avant d'agir, mets-toi une consigne à voix basse — « qu'est-ce que je dois faire ? » puis « comment ? » puis « vérifie ».",
+      "enonce": "Tu ouvres une boîte de médicaments avec une notice.",
+      "options": [
+        "Combien de temps ça va me prendre ?",
+        "Qu'est-ce que je dois faire exactement, et dans quel ordre ?",
+        "Est-ce que je vais y arriver ?"
+      ],
+      "aide": "La première question porte sur le but et le moyen, pas sur le résultat attendu."
+    },
+    "reponse": {
+      "valeur": "Qu'est-ce que je dois faire exactement, et dans quel ordre ?"
+    },
+    "meta": {
+      "auteur": "redaction-assistee (tools/generer_methodes.py)",
+      "date_creation": "2026-09-24",
+      "relecture_ortho": {
+        "statut": "a_revoir"
+      }
+    }
+  },
+  {
+    "id": "mt-3-autoinstruction-02",
+    "type": "auto-instruction",
+    "module": "entrainement",
+    "theme": "methodes",
+    "fonctions_ciblees": [
+      "fonctions-executives",
+      "planification"
+    ],
+    "palier": 3,
+    "prerequis": [
+      "mt-palier-2"
+    ],
+    "cap_complexite": null,
+    "contenu": {
+      "consigne": "Auto-instruction : avant d'agir, mets-toi une consigne à voix basse — « qu'est-ce que je dois faire ? » puis « comment ? » puis « vérifie ».",
+      "enonce": "Tu reçois un courrier administratif que tu ne comprends pas.",
+      "options": [
+        "Pourquoi m'envoie-t-on toujours des papiers ?",
+        "Ai-je déjà vu ça ?",
+        "De quoi parle ce courrier, et qu'attend-on de moi ?"
+      ],
+      "aide": "La première question porte sur le but et le moyen, pas sur le résultat attendu."
+    },
+    "reponse": {
+      "valeur": "De quoi parle ce courrier, et qu'attend-on de moi ?"
+    },
+    "meta": {
+      "auteur": "redaction-assistee (tools/generer_methodes.py)",
+      "date_creation": "2026-09-24",
+      "relecture_ortho": {
+        "statut": "a_revoir"
+      }
+    }
+  },
+  {
+    "id": "mt-3-autoinstruction-03",
+    "type": "auto-instruction",
+    "module": "entrainement",
+    "theme": "methodes",
+    "fonctions_ciblees": [
+      "fonctions-executives",
+      "planification"
+    ],
+    "palier": 3,
+    "prerequis": [
+      "mt-palier-2"
+    ],
+    "cap_complexite": null,
+    "contenu": {
+      "consigne": "Auto-instruction : avant d'agir, mets-toi une consigne à voix basse — « qu'est-ce que je dois faire ? » puis « comment ? » puis « vérifie ».",
+      "enonce": "Tu commences un nouveau livre.",
+      "options": [
+        "Combien de pages il reste ?",
+        "Est-ce que je vais aimer ?",
+        "De quoi parle-t-il, et qu'est-ce que je cherche à retenir ?"
+      ],
+      "aide": "La première question porte sur le but et le moyen, pas sur le résultat attendu."
+    },
+    "reponse": {
+      "valeur": "De quoi parle-t-il, et qu'est-ce que je cherche à retenir ?"
+    },
+    "meta": {
+      "auteur": "redaction-assistee (tools/generer_methodes.py)",
+      "date_creation": "2026-09-24",
+      "relecture_ortho": {
+        "statut": "a_revoir"
+      }
+    }
+  },
+  {
+    "id": "mt-3-autoinstruction-04",
+    "type": "auto-instruction",
+    "module": "entrainement",
+    "theme": "methodes",
+    "fonctions_ciblees": [
+      "fonctions-executives",
+      "planification"
+    ],
+    "palier": 3,
+    "prerequis": [
+      "mt-palier-2"
+    ],
+    "cap_complexite": null,
+    "contenu": {
+      "consigne": "Auto-instruction : avant d'agir, mets-toi une consigne à voix basse — « qu'est-ce que je dois faire ? » puis « comment ? » puis « vérifie ».",
+      "enonce": "Tu dois remplir un formulaire de plusieurs pages.",
+      "options": [
+        "Par quoi je commence, et que me faut-il sous les yeux ?",
+        "Est-ce long ?",
+        "Est-ce que je vais me tromper ?"
+      ],
+      "aide": "La première question porte sur le but et le moyen, pas sur le résultat attendu."
+    },
+    "reponse": {
+      "valeur": "Par quoi je commence, et que me faut-il sous les yeux ?"
+    },
+    "meta": {
+      "auteur": "redaction-assistee (tools/generer_methodes.py)",
+      "date_creation": "2026-09-24",
+      "relecture_ortho": {
+        "statut": "a_revoir"
+      }
+    }
+  },
+  {
+    "id": "mt-3-autoinstruction-05",
+    "type": "auto-instruction",
+    "module": "entrainement",
+    "theme": "methodes",
+    "fonctions_ciblees": [
+      "fonctions-executives",
+      "planification"
+    ],
+    "palier": 3,
+    "prerequis": [
+      "mt-palier-2"
+    ],
+    "cap_complexite": null,
+    "contenu": {
+      "consigne": "Auto-instruction : avant d'agir, mets-toi une consigne à voix basse — « qu'est-ce que je dois faire ? » puis « comment ? » puis « vérifie ».",
+      "enonce": "Tu prépares un repas jamais essayé.",
+      "options": [
+        "Quelles sont les étapes, et ai-je tout ce qu'il faut ?",
+        "Est-ce que ce sera bon ?",
+        "Ai-je le temps ?"
+      ],
+      "aide": "La première question porte sur le but et le moyen, pas sur le résultat attendu."
+    },
+    "reponse": {
+      "valeur": "Quelles sont les étapes, et ai-je tout ce qu'il faut ?"
+    },
+    "meta": {
+      "auteur": "redaction-assistee (tools/generer_methodes.py)",
+      "date_creation": "2026-09-24",
+      "relecture_ortho": {
+        "statut": "a_revoir"
+      }
+    }
+  },
+  {
+    "id": "mt-3-autoinstruction-06",
+    "type": "auto-instruction",
+    "module": "entrainement",
+    "theme": "methodes",
+    "fonctions_ciblees": [
+      "fonctions-executives",
+      "planification"
+    ],
+    "palier": 3,
+    "prerequis": [
+      "mt-palier-2"
+    ],
+    "cap_complexite": null,
+    "contenu": {
+      "consigne": "Auto-instruction : avant d'agir, mets-toi une consigne à voix basse — « qu'est-ce que je dois faire ? » puis « comment ? » puis « vérifie ».",
+      "enonce": "Tu ranges une pièce en désordre.",
+      "options": [
+        "Est-ce que c'est fini bientôt ?",
+        "Qu'est-ce que je veux obtenir, et par quel coin je commence ?",
+        "Où tout cela va-t-il aller ?"
+      ],
+      "aide": "La première question porte sur le but et le moyen, pas sur le résultat attendu."
+    },
+    "reponse": {
+      "valeur": "Qu'est-ce que je veux obtenir, et par quel coin je commence ?"
+    },
+    "meta": {
+      "auteur": "redaction-assistee (tools/generer_methodes.py)",
+      "date_creation": "2026-09-24",
+      "relecture_ortho": {
+        "statut": "a_revoir"
+      }
+    }
+  },
+  {
+    "id": "mt-3-autoinstruction-07",
+    "type": "auto-instruction",
+    "module": "entrainement",
+    "theme": "methodes",
+    "fonctions_ciblees": [
+      "fonctions-executives",
+      "planification"
+    ],
+    "palier": 3,
+    "prerequis": [
+      "mt-palier-2"
+    ],
+    "cap_complexite": null,
+    "contenu": {
+      "consigne": "Auto-instruction : avant d'agir, mets-toi une consigne à voix basse — « qu'est-ce que je dois faire ? » puis « comment ? » puis « vérifie ».",
+      "enonce": "Tu appelles pour un problème de facture.",
+      "options": [
+        "Quel est mon problème, et quel résultat je veux obtenir ?",
+        "Combien de temps ça va durer ?",
+        "Vont-ils me croire ?"
+      ],
+      "aide": "La première question porte sur le but et le moyen, pas sur le résultat attendu."
+    },
+    "reponse": {
+      "valeur": "Quel est mon problème, et quel résultat je veux obtenir ?"
+    },
+    "meta": {
+      "auteur": "redaction-assistee (tools/generer_methodes.py)",
+      "date_creation": "2026-09-24",
+      "relecture_ortho": {
+        "statut": "a_revoir"
+      }
+    }
+  },
+  {
+    "id": "mt-3-autoinstruction-08",
+    "type": "auto-instruction",
+    "module": "entrainement",
+    "theme": "methodes",
+    "fonctions_ciblees": [
+      "fonctions-executives",
+      "planification"
+    ],
+    "palier": 3,
+    "prerequis": [
+      "mt-palier-2"
+    ],
+    "cap_complexite": null,
+    "contenu": {
+      "consigne": "Auto-instruction : avant d'agir, mets-toi une consigne à voix basse — « qu'est-ce que je dois faire ? » puis « comment ? » puis « vérifie ».",
+      "enonce": "Tu dois réviser un texte pour le lendemain.",
+      "options": [
+        "Ai-je tout lu ?",
+        "Qu'est-ce que je dois savoir dire, et comment je vais le vérifier ?",
+        "Est-ce que je vais retenir ?"
+      ],
+      "aide": "La première question porte sur le but et le moyen, pas sur le résultat attendu."
+    },
+    "reponse": {
+      "valeur": "Qu'est-ce que je dois savoir dire, et comment je vais le vérifier ?"
+    },
+    "meta": {
+      "auteur": "redaction-assistee (tools/generer_methodes.py)",
+      "date_creation": "2026-09-24",
+      "relecture_ortho": {
+        "statut": "a_revoir"
+      }
+    }
+  }
+]

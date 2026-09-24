@@ -50,6 +50,10 @@ VOCABULAIRES = {
                 "nom": "Déduction",
                 "description": "Grilles logiques 3×3 : figures et couleurs à placer en recoupant les indices",
             },
+            "methodes": {
+                "nom": "Méthodes",
+                "description": "PQRST, but et étapes, auto-instruction : des méthodes pour s'organiser et retenir",
+            },
             "concentration": {
                 "nom": "Concentration",
                 "description": "Calculs chaînés, double tâche et séries — une attention qui tient",

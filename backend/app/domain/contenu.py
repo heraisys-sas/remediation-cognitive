@@ -30,12 +30,30 @@ _SOURCES_PAR_THEME: dict[str, tuple[str, str]] = {
     "rappel-series": ("rappel-series/paliers", "palier-*.json"),
     "quotidien": ("quotidien/paliers", "palier-*.json"),
     "deduction": ("deduction/paliers", "palier-*.json"),
+    "methodes": ("methodes/paliers", "palier-*.json"),
     "evocation": ("evocation/paliers", "palier-*.json"),
     "social": ("social/paliers", "palier-*.json"),
 }
 
 #: Fichier de missions hors écran du thème social (préparation d'interactions réelles).
 _FICHIER_MISSIONS = Path("content/entrainement/social/missions.json")
+
+#: Catégorie de chaque thème : « entrainement » (remédiation, régulier) ou
+#: « evaluation » (mesures — à faire ponctuellement pour ne pas être faussées
+#: par l'apprentissage du matériel).
+_CATEGORIE_PAR_THEME: dict[str, str] = {
+    "calcul-mental": "entrainement",
+    "anglais": "entrainement",
+    "python": "entrainement",
+    "evocation": "entrainement",
+    "social": "entrainement",
+    "quotidien": "entrainement",
+    "deduction": "entrainement",
+    "methodes": "entrainement",
+    "memoire": "evaluation",
+    "concentration": "evaluation",
+    "rappel-series": "evaluation",
+}
 
 #: Programme d'entraînement (cadrage du rythme et des paliers).
 _FICHIER_PROGRAMME = Path("content/programmes/8-semaines.json")
@@ -87,13 +105,25 @@ class ChargeurContenu:
     # -- thèmes ------------------------------------------------------------
 
     def themes(self) -> list[dict]:
-        """Métadonnées des thèmes exposés par l'API (contrat GET /themes)."""
+        """Métadonnées des thèmes exposés par l'API (contrat GET /themes).
+
+        Chaque thème porte sa ``categorie`` : « entrainement » (remédiation) ou
+        « evaluation » (mesures) — l'interface sépare les deux sections.
+        """
         libelles = messages.VOCABULAIRES["entrainement"]["themes"]
         return [
-            {"id": theme_id, **libelles[theme_id]}
+            {
+                "id": theme_id,
+                "categorie": self.categorie(theme_id),
+                **libelles[theme_id],
+            }
             for theme_id in _SOURCES_PAR_THEME
             if theme_id in libelles
         ]
+
+    def categorie(self, theme: str) -> str:
+        """Catégorie du thème (« entrainement » par défaut)."""
+        return _CATEGORIE_PAR_THEME.get(theme, "entrainement")
 
     def theme_existe(self, theme: str) -> bool:
         """True si le thème fait partie du registre de l'API."""

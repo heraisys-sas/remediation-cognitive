@@ -1,0 +1,37 @@
+# 2026-09-24 — Section évaluation + quatre méthodes de remédiation
+
+## Demande
+
+1. Implémenter une **section évaluation** où déplacer ce qui ne doit pas être entraîné (pour ne pas fausser les mesures).
+2. Puis, dans l'entraînement : **SFA/PCA** (manque du mot, l'utilisateur génère les attributs), **auto-instruction** (Meichenbaum), **PQRST** (mémoire de textes), **GMT** scénarisé (planification).
+
+## Livré
+
+### 1. Séparation évaluation / entraînement
+- Catégorie par thème (`entrainement` / `evaluation`) exposée par l'API ; l'interface range l'accueil en trois groupes : entraînement, **évaluation**, extra.
+- **Évaluation = mémoire, concentration, rappel de séries** (les paradigmes qui mesurent) : plafonnés à **1 séance/jour** (garde-fou `LIMITES_SESSIONS_JOUR`), car répéter une mesure la fausse par apprentissage du matériel.
+- Aucun nouveau contenu d'allure évaluative n'entre dans l'entraînement (règle maintenue).
+
+### 2. SFA / PCA (paliers 6 et 7 de « retrouver le mot »)
+- L'utilisateur **génère les attributs** (catégorie, usage, lieu pour la SFA ; premier son, syllabes, rime pour la PCA) dans une zone de génération guidée, puis **nomme le mot**.
+- Les notes ne sont **pas notées** — c'est leur génération qui fait le travail (mécanisme actif des deux méthodes).
+- Nouveau type `analyse-mot`, nouvelle zone d'interface `zone-generation`.
+
+### 3. Thème « Méthodes » (22 items)
+- **PQRST** : texte affiché temporisé (mode d'affichage `texte`), puis question de mémoire.
+- **GMT** : choisir le plan d'étapes cohérent (et vérifier son plan).
+- **Auto-instruction** : quelle question se poser avant d'agir — le fil conducteur est aussi rappelé dans les consignes d'autres familles.
+
+## Point d'attention rencontré
+
+Le préfixe d'identifiants du nouveau thème (`me-`) **collisionnait** avec celui de « mémoire » : le validateur l'a signalé (ids dupliqués). Préfixe changé en `mt-`. Leçon : un préfixe par thème, et laisser le validateur faire son travail.
+
+## Contrôles
+
+813 items / 0 erreur ; 132 tests (catégories, limite d'évaluation, PQRST/GMT/auto-instruction, SFA/PCA) ; garde-fous cliniques sans violation.
+
+## Reste à faire
+
+- Passage visuel des nouveaux écrans (section évaluation, texte PQRST, génération SFA/PCA).
+- Relecture orthophoniste du nouveau contenu.
+- Envisager des **questions de compréhension multiples** par texte PQRST (aujourd'hui une par texte).

@@ -62,6 +62,8 @@ const refs = {
   boutonRetourThemes: $("bouton-retour-themes"),
   noticeThemes: $("notice-themes"),
   listeThemes: $("liste-themes"),
+  sectionEvaluation: $("section-evaluation"),
+  listeThemesEvaluation: $("liste-themes-evaluation"),
   sectionExtra: $("section-extra"),
   listeThemesExtra: $("liste-themes-extra"),
   progressionTexte: $("progression-texte"),
@@ -72,6 +74,7 @@ const refs = {
   zoneChoix: $("zone-choix"),
   zoneIndices: $("zone-indices"),
   zoneGrille: $("zone-grille"),
+  zoneGeneration: $("zone-generation"),
   zoneAide: $("zone-aide"),
   texteAide: $("texte-aide"),
   formulaire: $("formulaire-reponse"),
@@ -363,7 +366,9 @@ async function chargerThemes() {
     rendreThemes(donnees.themes || []);
   } catch (erreur) {
     refs.listeThemes.replaceChildren();
+    refs.listeThemesEvaluation.replaceChildren();
     refs.listeThemesExtra.replaceChildren();
+    refs.sectionEvaluation.hidden = true;
     refs.sectionExtra.hidden = true;
     if (erreur.type === "reseau") {
       afficherErreurReseau(chargerThemes);
@@ -379,7 +384,9 @@ async function chargerThemes() {
 
 function rendreThemes(themes) {
   refs.listeThemes.replaceChildren();
+  refs.listeThemesEvaluation.replaceChildren();
   refs.listeThemesExtra.replaceChildren();
+  refs.sectionEvaluation.hidden = true;
   refs.sectionExtra.hidden = true;
   masquerNoticeThemes();
 
@@ -388,12 +395,15 @@ function rendreThemes(themes) {
     return;
   }
 
-  // Deux groupes : les familles d'entraînement, puis les thèmes d'appoint
-  // (vocabulaire, commandes) rangés dans « Extra », en bas de l'écran.
+  // Trois groupes : les entraînements de remédiation, puis les mesures
+  // (évaluation), puis les thèmes d'appoint (vocabulaire, commandes).
   for (const theme of themes) {
-    const cible = THEMES_EXTRA.has(theme.id) ? refs.listeThemesExtra : refs.listeThemes;
+    let cible = refs.listeThemes;
+    if (THEMES_EXTRA.has(theme.id)) cible = refs.listeThemesExtra;
+    else if (theme.categorie === "evaluation") cible = refs.listeThemesEvaluation;
     cible.append(carteTheme(theme));
   }
+  refs.sectionEvaluation.hidden = !refs.listeThemesEvaluation.childElementCount;
   refs.sectionExtra.hidden = !refs.listeThemesExtra.childElementCount;
 }
 
@@ -571,6 +581,19 @@ function jouerAffichage(item) {
   boutonPasser.addEventListener("click", () => afficherQuestion(item));
   refs.zoneMemo.replaceChildren(plateau, indicateur, boutonPasser);
 
+  if (affichage.mode === "texte") {
+    // Texte à lire (méthode PQRST) : affiché pendant la durée prévue, puis masqué.
+    plateau.replaceChildren(
+      creerElement("div", { classe: "memo-texte" },
+        ...affichage.elements.map((paragraphe) => creerElement("p", { texte: paragraphe }))
+      )
+    );
+    etat.minuteriesMemo.push(
+      setTimeout(() => jouerDelaiOuQuestion(item), affichage.duree_totale_ms)
+    );
+    return;
+  }
+
   if (affichage.mode === "liste") {
     const liste = creerElement("ul", { classe: "memo-liste" });
     for (const [gauche, droite] of affichage.elements) {
@@ -659,6 +682,8 @@ function afficherQuestion(item) {
   const contenu = item.contenu || {};
   refs.zoneGrille.hidden = true;
   refs.zoneGrille.replaceChildren();
+  refs.zoneGeneration.hidden = true;
+  refs.zoneGeneration.replaceChildren();
 
   // Énoncé : grand texte ; variante monospace pour la prédiction de sortie.
   refs.enonce.textContent = contenu.enonce ?? "";
@@ -672,6 +697,11 @@ function afficherQuestion(item) {
   } else {
     refs.texteAide.textContent = "";
     refs.zoneAide.hidden = true;
+  }
+
+  // Analyse du mot (SFA/PCA) : l'utilisateur génère ses attributs, puis nomme.
+  if (item.type === "analyse-mot") {
+    rendreGeneration(item);
   }
 
   // Grille de déduction : placement de jetons, pas de saisie de texte.
@@ -1536,6 +1566,31 @@ function rendreFeedbackGrille(resultat) {
     creerElement("p", { classe: "feedback-commentaire", texte: resultat.feedback })
   );
   refs.carteFeedback.hidden = false;
+}
+
+/** Zone de génération guidée d'une analyse du mot (SFA/PCA). */
+function rendreGeneration(item) {
+  const contenu = item.contenu;
+  const bloc = creerElement("div", {});
+  bloc.append(creerElement("p", { classe: "generation-consigne", texte: contenu.consigne || "" }));
+  bloc.append(creerElement("p", { classe: "generation-definition", texte: contenu.definition || "" }));
+  const etapes = creerElement("div", { classe: "generation-etapes" });
+  for (const etape of contenu.etapes || []) {
+    const ligne = creerElement("div", { classe: "generation-etape" });
+    ligne.append(creerElement("label", { texte: etape }));
+    ligne.append(creerElement("input", {
+      classe: "champ",
+      attributs: { type: "text", autocomplete: "off", spellcheck: "false" },
+    }));
+    etapes.append(ligne);
+  }
+  bloc.append(etapes);
+  bloc.append(creerElement("p", {
+    classe: "generation-note",
+    texte: "Tes notes ne sont pas notées : elles servent seulement à retrouver le mot.",
+  }));
+  refs.zoneGeneration.replaceChildren(bloc);
+  refs.zoneGeneration.hidden = false;
 }
 
 /* ---------------------------------------------------------------------

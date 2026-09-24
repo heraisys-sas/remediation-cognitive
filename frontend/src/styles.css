@@ -826,3 +826,37 @@ body {
   .grille-corps { grid-template-columns: 1fr; }
   .palette { grid-template-columns: repeat(3, 3rem); }
 }
+
+/* Texte à lire (méthode PQRST) : paragraphes amples, lisibles, sans mouvement. */
+.memo-texte {
+  text-align: left;
+  max-width: 34rem;
+}
+
+.memo-texte p { margin: 0 0 0.7rem; }
+
+/* ---------------------------------------------------------------------
+   Analyse du mot (SFA/PCA) : génération guidée des attributs
+   --------------------------------------------------------------------- */
+
+.zone-generation {
+  margin-top: 1.25rem;
+  padding: 1.25rem;
+  border: 1px solid var(--bordure);
+  border-radius: 16px;
+  background: var(--surface);
+  display: grid;
+  gap: 0.75rem;
+}
+
+.generation-consigne { margin: 0; color: var(--texte-secondaire); font-size: 0.98rem; }
+
+.generation-definition { margin: 0; font-size: 1.2rem; font-weight: 600; }
+
+.generation-etapes { display: grid; gap: 0.6rem; }
+
+.generation-etape { display: grid; gap: 0.3rem; }
+
+.generation-etape label { color: var(--texte-secondaire); font-size: 0.95rem; }
+
+.generation-note { margin: 0; font-size: 0.9rem; color: var(--texte-secondaire); font-style: italic; }

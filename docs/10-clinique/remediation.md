@@ -43,3 +43,23 @@ D'ici là, deux règles :
 ## La ligne directrice, en une phrase
 
 **On n'entraîne pas au test : on remédie la fonction dans la vie.** Chaque nouvel exercice doit pouvoir répondre à la question « à quoi ça me sert demain ? » — sinon il n'entre pas dans le contenu.
+
+## Séparation évaluation / entraînement (2026-09-24)
+
+Mis en œuvre : les thèmes sont désormais **catégorisés**.
+
+- **Entraînement (remédiation)** — calcul mental, retrouver le mot (dont SFA/PCA), vie sociale, au quotidien, méthodes, déduction.
+- **Évaluation (mesures)** — mémoire (empans, n-back, paires), concentration (chaînes, cascades, double tâche, séries), rappel de séries.
+
+Conséquences concrètes :
+
+- les thèmes d'évaluation restent **jouables** (pour se situer) mais sont plafonnés à **une séance par jour** : répéter une mesure la fausse par l'apprentissage du matériel ;
+- l'interface les range dans une section « Évaluation » distincte, présentée comme telle ;
+- aucun nouveau contenu d'allure évaluative n'est ajouté à la section entraînement (règle maintenue).
+
+## Méthodes implémentées (2026-09-24)
+
+- **SFA / PCA** (analyse du mot) — l'utilisateur génère les attributs sémantiques ou phonologiques, puis nomme. Palier 6 et 7 de « retrouver le mot ».
+- **PQRST** — mémoire de textes : parcourir, questionner, lire, énoncer, se tester.
+- **Goal Management Training** — choisir le but, puis le plan d'étapes cohérent, et le vérifier.
+- **Auto-instruction (Meichenbaum)** — « qu'est-ce que je dois faire ? comment ? vérifie » : la question à se poser avant d'agir.

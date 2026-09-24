@@ -62,13 +62,16 @@ TYPES_A_CHOIX = {
     "par-ou-commencer",
     "si-alors",
     "meilleure-solution",
+    "pqrst",
+    "but-etapes",
+    "auto-instruction",
 }
 
 #: Types dont le contenu porte une hiérarchie d'indices (``contenu.indices``).
 TYPES_A_INDICES = {"rappel-indice"}
 
 #: Modes d'affichage temporisé admis.
-MODES_AFFICHAGE = {"sequence", "liste", "series"}
+MODES_AFFICHAGE = {"sequence", "liste", "series", "texte"}
 
 #: Bornes du rythme d'affichage d'un élément (ms). Au-delà, ce n'est plus une
 #: présentation d'empan mais une pause d'attente : le contenu serait mal calibré.
@@ -343,6 +346,20 @@ def erreurs_contenu(item: dict, prefixe: str) -> list[str]:
             erreurs.append(prefixe + "estimation-temps : reponse.intervalle doit être [min, max]")
         elif isinstance(valeur, (int, float)) and not intervalle[0] <= valeur <= intervalle[1]:
             erreurs.append(prefixe + "estimation-temps : la valeur attendue doit être dans la fourchette")
+
+    # Analyse du mot (SFA/PCA) : méthode, définition, étapes de génération, mot cible.
+    if type_item == "analyse-mot":
+        if contenu.get("methode") not in ("semantique", "phonologique"):
+            erreurs.append(prefixe + "analyse-mot : contenu.methode doit être 'semantique' ou 'phonologique'")
+        if not isinstance(contenu.get("definition"), str) or not contenu.get("definition", "").strip():
+            erreurs.append(prefixe + "analyse-mot : contenu.definition manquante")
+        etapes = contenu.get("etapes")
+        if not isinstance(etapes, list) or len(etapes) < 2 or not all(
+            isinstance(e, str) and e.strip() for e in etapes
+        ):
+            erreurs.append(prefixe + "analyse-mot : contenu.etapes doit être une liste d'au moins 2 questions")
+        if not isinstance(reponse, str) or not reponse.strip():
+            erreurs.append(prefixe + "analyse-mot : réponse attendue (le mot) manquante")
 
     # Grille de déduction : structure, carré latin, indices vrais pour la solution.
     if type_item == "grille-deduction":

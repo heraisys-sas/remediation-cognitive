@@ -1,0 +1,242 @@
+[
+  {
+    "id": "mt-1-pqrst-01",
+    "type": "pqrst",
+    "module": "entrainement",
+    "theme": "methodes",
+    "fonctions_ciblees": [
+      "memorisation-longue",
+      "recuperation"
+    ],
+    "palier": 1,
+    "prerequis": [],
+    "cap_complexite": null,
+    "contenu": {
+      "consigne": "Méthode PQRST : Parcours le texte, pose-toi une question, Lis-le, reformule-le pour toi, puis Teste-toi en répondant de mémoire (le texte est caché).",
+      "enonce": "À quelle heure est le rendez-vous ?",
+      "options": [
+        "12 h",
+        "15 h",
+        "16 h"
+      ],
+      "aide": "Reformule le texte en une phrase avant de répondre.",
+      "affichage": {
+        "mode": "texte",
+        "duree_totale_ms": 25000,
+        "elements": [
+          "Le rendez-vous est fixé au mardi 12 mars à 15 h. Le cabinet se trouve au deuxième étage, sans ascenseur. Il faut apporter la carte de mutuelle et arriver dix minutes avant."
+        ]
+      }
+    },
+    "reponse": {
+      "valeur": "15 h"
+    },
+    "meta": {
+      "auteur": "redaction-assistee (tools/generer_methodes.py)",
+      "date_creation": "2026-09-24",
+      "relecture_ortho": {
+        "statut": "a_revoir"
+      }
+    }
+  },
+  {
+    "id": "mt-1-pqrst-02",
+    "type": "pqrst",
+    "module": "entrainement",
+    "theme": "methodes",
+    "fonctions_ciblees": [
+      "memorisation-longue",
+      "recuperation"
+    ],
+    "palier": 1,
+    "prerequis": [],
+    "cap_complexite": null,
+    "contenu": {
+      "consigne": "Méthode PQRST : Parcours le texte, pose-toi une question, Lis-le, reformule-le pour toi, puis Teste-toi en répondant de mémoire (le texte est caché).",
+      "enonce": "Quand les producteurs repartent-ils ?",
+      "options": [
+        "à 7 h",
+        "à 11 h",
+        "à 13 h"
+      ],
+      "aide": "Reformule le texte en une phrase avant de répondre.",
+      "affichage": {
+        "mode": "texte",
+        "duree_totale_ms": 25000,
+        "elements": [
+          "Le marché a lieu le samedi matin, place de l'église. Les producteurs arrivent vers 7 h et repartent à 13 h. Le stationnement est gratuit jusqu'à 11 h."
+        ]
+      }
+    },
+    "reponse": {
+      "valeur": "à 13 h"
+    },
+    "meta": {
+      "auteur": "redaction-assistee (tools/generer_methodes.py)",
+      "date_creation": "2026-09-24",
+      "relecture_ortho": {
+        "statut": "a_revoir"
+      }
+    }
+  },
+  {
+    "id": "mt-1-pqrst-03",
+    "type": "pqrst",
+    "module": "entrainement",
+    "theme": "methodes",
+    "fonctions_ciblees": [
+      "memorisation-longue",
+      "recuperation"
+    ],
+    "palier": 1,
+    "prerequis": [],
+    "cap_complexite": null,
+    "contenu": {
+      "consigne": "Méthode PQRST : Parcours le texte, pose-toi une question, Lis-le, reformule-le pour toi, puis Teste-toi en répondant de mémoire (le texte est caché).",
+      "enonce": "Que faut-il laisser ouvert ?",
+      "options": [
+        "la fenêtre",
+        "la cave",
+        "le portail"
+      ],
+      "aide": "Reformule le texte en une phrase avant de répondre.",
+      "affichage": {
+        "mode": "texte",
+        "duree_totale_ms": 25000,
+        "elements": [
+          "Le technicien passera jeudi entre 9 h et 11 h. Il faut dégager l'accès au sous-sol et laisser le portail ouvert. Le devis est de 180 euros."
+        ]
+      }
+    },
+    "reponse": {
+      "valeur": "le portail"
+    },
+    "meta": {
+      "auteur": "redaction-assistee (tools/generer_methodes.py)",
+      "date_creation": "2026-09-24",
+      "relecture_ortho": {
+        "statut": "a_revoir"
+      }
+    }
+  },
+  {
+    "id": "mt-1-pqrst-04",
+    "type": "pqrst",
+    "module": "entrainement",
+    "theme": "methodes",
+    "fonctions_ciblees": [
+      "memorisation-longue",
+      "recuperation"
+    ],
+    "palier": 1,
+    "prerequis": [],
+    "cap_complexite": null,
+    "contenu": {
+      "consigne": "Méthode PQRST : Parcours le texte, pose-toi une question, Lis-le, reformule-le pour toi, puis Teste-toi en répondant de mémoire (le texte est caché).",
+      "enonce": "Combien de places restent ?",
+      "options": [
+        "deux",
+        "trois",
+        "une"
+      ],
+      "aide": "Reformule le texte en une phrase avant de répondre.",
+      "affichage": {
+        "mode": "texte",
+        "duree_totale_ms": 25000,
+        "elements": [
+          "Le départ est prévu à 8 h 15 devant la gare. La voiture est bleue et il reste deux places. Le trajet dure environ une heure."
+        ]
+      }
+    },
+    "reponse": {
+      "valeur": "deux"
+    },
+    "meta": {
+      "auteur": "redaction-assistee (tools/generer_methodes.py)",
+      "date_creation": "2026-09-24",
+      "relecture_ortho": {
+        "statut": "a_revoir"
+      }
+    }
+  },
+  {
+    "id": "mt-1-pqrst-05",
+    "type": "pqrst",
+    "module": "entrainement",
+    "theme": "methodes",
+    "fonctions_ciblees": [
+      "memorisation-longue",
+      "recuperation"
+    ],
+    "palier": 1,
+    "prerequis": [],
+    "cap_complexite": null,
+    "contenu": {
+      "consigne": "Méthode PQRST : Parcours le texte, pose-toi une question, Lis-le, reformule-le pour toi, puis Teste-toi en répondant de mémoire (le texte est caché).",
+      "enonce": "Où se fait l'inscription ?",
+      "options": [
+        "au bord du bassin",
+        "au guichet du premier étage",
+        "à l'accueil du rez-de-chaussée"
+      ],
+      "aide": "Reformule le texte en une phrase avant de répondre.",
+      "affichage": {
+        "mode": "texte",
+        "duree_totale_ms": 25000,
+        "elements": [
+          "L'inscription se fait le mercredi après-midi, au guichet du premier étage. Il faut un certificat médical et une photo. Les cours commencent la semaine suivante."
+        ]
+      }
+    },
+    "reponse": {
+      "valeur": "au guichet du premier étage"
+    },
+    "meta": {
+      "auteur": "redaction-assistee (tools/generer_methodes.py)",
+      "date_creation": "2026-09-24",
+      "relecture_ortho": {
+        "statut": "a_revoir"
+      }
+    }
+  },
+  {
+    "id": "mt-1-pqrst-06",
+    "type": "pqrst",
+    "module": "entrainement",
+    "theme": "methodes",
+    "fonctions_ciblees": [
+      "memorisation-longue",
+      "recuperation"
+    ],
+    "palier": 1,
+    "prerequis": [],
+    "cap_complexite": null,
+    "contenu": {
+      "consigne": "Méthode PQRST : Parcours le texte, pose-toi une question, Lis-le, reformule-le pour toi, puis Teste-toi en répondant de mémoire (le texte est caché).",
+      "enonce": "Combien de temps le colis est-il gardé ?",
+      "options": [
+        "un mois",
+        "sept jours",
+        "trois jours"
+      ],
+      "aide": "Reformule le texte en une phrase avant de répondre.",
+      "affichage": {
+        "mode": "texte",
+        "duree_totale_ms": 25000,
+        "elements": [
+          "Le colis est arrivé lundi et sera gardé sept jours au point relais. Il se trouve au tabac de la place. Il faut présenter une pièce d'identité."
+        ]
+      }
+    },
+    "reponse": {
+      "valeur": "sept jours"
+    },
+    "meta": {
+      "auteur": "redaction-assistee (tools/generer_methodes.py)",
+      "date_creation": "2026-09-24",
+      "relecture_ortho": {
+        "statut": "a_revoir"
+      }
+    }
+  }
+]

@@ -1,0 +1,282 @@
+[
+  {
+    "id": "mt-2-gmt-01",
+    "type": "but-etapes",
+    "module": "entrainement",
+    "theme": "methodes",
+    "fonctions_ciblees": [
+      "planification",
+      "fonctions-executives"
+    ],
+    "palier": 2,
+    "prerequis": [
+      "mt-palier-1"
+    ],
+    "cap_complexite": null,
+    "contenu": {
+      "consigne": "Goal Management Training : pose d'abord ton but, puis choisis le plan d'étapes cohérent, et vérifie-le avant de te lancer.",
+      "enonce": "Tu veux inviter des amis à dîner samedi soir.",
+      "options": [
+        "Cuisiner, puis décider du menu",
+        "Choisir le menu, vérifier les ingrédients, faire les courses, puis cuisiner",
+        "Attendre samedi et improviser"
+      ],
+      "aide": "Un bon plan met d'abord ce qui rend la suite possible."
+    },
+    "reponse": {
+      "valeur": "Choisir le menu, vérifier les ingrédients, faire les courses, puis cuisiner"
+    },
+    "meta": {
+      "auteur": "redaction-assistee (tools/generer_methodes.py)",
+      "date_creation": "2026-09-24",
+      "relecture_ortho": {
+        "statut": "a_revoir"
+      }
+    }
+  },
+  {
+    "id": "mt-2-gmt-02",
+    "type": "but-etapes",
+    "module": "entrainement",
+    "theme": "methodes",
+    "fonctions_ciblees": [
+      "planification",
+      "fonctions-executives"
+    ],
+    "palier": 2,
+    "prerequis": [
+      "mt-palier-1"
+    ],
+    "cap_complexite": null,
+    "contenu": {
+      "consigne": "Goal Management Training : pose d'abord ton but, puis choisis le plan d'étapes cohérent, et vérifie-le avant de te lancer.",
+      "enonce": "Tu dois déménager dans deux semaines.",
+      "options": [
+        "Tout faire la veille du départ",
+        "Lister les affaires par pièce, réserver le camion, emballer, puis transporter",
+        "Transporter d'abord, emballer ensuite"
+      ],
+      "aide": "Un bon plan met d'abord ce qui rend la suite possible."
+    },
+    "reponse": {
+      "valeur": "Lister les affaires par pièce, réserver le camion, emballer, puis transporter"
+    },
+    "meta": {
+      "auteur": "redaction-assistee (tools/generer_methodes.py)",
+      "date_creation": "2026-09-24",
+      "relecture_ortho": {
+        "statut": "a_revoir"
+      }
+    }
+  },
+  {
+    "id": "mt-2-gmt-03",
+    "type": "but-etapes",
+    "module": "entrainement",
+    "theme": "methodes",
+    "fonctions_ciblees": [
+      "planification",
+      "fonctions-executives"
+    ],
+    "palier": 2,
+    "prerequis": [
+      "mt-palier-1"
+    ],
+    "cap_complexite": null,
+    "contenu": {
+      "consigne": "Goal Management Training : pose d'abord ton but, puis choisis le plan d'étapes cohérent, et vérifie-le avant de te lancer.",
+      "enonce": "Tu prépares un dossier pour un logement.",
+      "options": [
+        "Lire la liste des pièces demandées, rassembler les documents, puis déposer le dossier",
+        "Écrire une lettre d'abord",
+        "Déposer le dossier vide"
+      ],
+      "aide": "Un bon plan met d'abord ce qui rend la suite possible."
+    },
+    "reponse": {
+      "valeur": "Lire la liste des pièces demandées, rassembler les documents, puis déposer le dossier"
+    },
+    "meta": {
+      "auteur": "redaction-assistee (tools/generer_methodes.py)",
+      "date_creation": "2026-09-24",
+      "relecture_ortho": {
+        "statut": "a_revoir"
+      }
+    }
+  },
+  {
+    "id": "mt-2-gmt-04",
+    "type": "but-etapes",
+    "module": "entrainement",
+    "theme": "methodes",
+    "fonctions_ciblees": [
+      "planification",
+      "fonctions-executives"
+    ],
+    "palier": 2,
+    "prerequis": [
+      "mt-palier-1"
+    ],
+    "cap_complexite": null,
+    "contenu": {
+      "consigne": "Goal Management Training : pose d'abord ton but, puis choisis le plan d'étapes cohérent, et vérifie-le avant de te lancer.",
+      "enonce": "Tu veux repeindre la cuisine.",
+      "options": [
+        "Commencer par ranger le matériel",
+        "Peindre, puis protéger les meubles",
+        "Protéger les meubles, préparer les murs, peindre, puis ranger"
+      ],
+      "aide": "Un bon plan met d'abord ce qui rend la suite possible."
+    },
+    "reponse": {
+      "valeur": "Protéger les meubles, préparer les murs, peindre, puis ranger"
+    },
+    "meta": {
+      "auteur": "redaction-assistee (tools/generer_methodes.py)",
+      "date_creation": "2026-09-24",
+      "relecture_ortho": {
+        "statut": "a_revoir"
+      }
+    }
+  },
+  {
+    "id": "mt-2-gmt-05",
+    "type": "but-etapes",
+    "module": "entrainement",
+    "theme": "methodes",
+    "fonctions_ciblees": [
+      "planification",
+      "fonctions-executives"
+    ],
+    "palier": 2,
+    "prerequis": [
+      "mt-palier-1"
+    ],
+    "cap_complexite": null,
+    "contenu": {
+      "consigne": "Goal Management Training : pose d'abord ton but, puis choisis le plan d'étapes cohérent, et vérifie-le avant de te lancer.",
+      "enonce": "Tu organises un week-end avec un ami.",
+      "options": [
+        "Préparer la valise avant de choisir les dates",
+        "Choisir les dates, réserver le logement, puis préparer les affaires",
+        "Partir sans rien réserver"
+      ],
+      "aide": "Un bon plan met d'abord ce qui rend la suite possible."
+    },
+    "reponse": {
+      "valeur": "Choisir les dates, réserver le logement, puis préparer les affaires"
+    },
+    "meta": {
+      "auteur": "redaction-assistee (tools/generer_methodes.py)",
+      "date_creation": "2026-09-24",
+      "relecture_ortho": {
+        "statut": "a_revoir"
+      }
+    }
+  },
+  {
+    "id": "mt-2-gmt-06",
+    "type": "but-etapes",
+    "module": "entrainement",
+    "theme": "methodes",
+    "fonctions_ciblees": [
+      "planification",
+      "fonctions-executives"
+    ],
+    "palier": 2,
+    "prerequis": [
+      "mt-palier-1"
+    ],
+    "cap_complexite": null,
+    "contenu": {
+      "consigne": "Goal Management Training : pose d'abord ton but, puis choisis le plan d'étapes cohérent, et vérifie-le avant de te lancer.",
+      "enonce": "Tu dois rendre un dossier administratif avant vendredi.",
+      "options": [
+        "Envoyer un dossier incomplet",
+        "Attendre le dernier jour pour commencer",
+        "Vérifier la date limite, remplir le formulaire, joindre les pièces, puis envoyer"
+      ],
+      "aide": "Un bon plan met d'abord ce qui rend la suite possible."
+    },
+    "reponse": {
+      "valeur": "Vérifier la date limite, remplir le formulaire, joindre les pièces, puis envoyer"
+    },
+    "meta": {
+      "auteur": "redaction-assistee (tools/generer_methodes.py)",
+      "date_creation": "2026-09-24",
+      "relecture_ortho": {
+        "statut": "a_revoir"
+      }
+    }
+  },
+  {
+    "id": "mt-2-gmt-07",
+    "type": "but-etapes",
+    "module": "entrainement",
+    "theme": "methodes",
+    "fonctions_ciblees": [
+      "planification",
+      "fonctions-executives"
+    ],
+    "palier": 2,
+    "prerequis": [
+      "mt-palier-1"
+    ],
+    "cap_complexite": null,
+    "contenu": {
+      "consigne": "Goal Management Training : pose d'abord ton but, puis choisis le plan d'étapes cohérent, et vérifie-le avant de te lancer.",
+      "enonce": "Tu veux préparer une soupe pour la semaine.",
+      "options": [
+        "Acheter au hasard",
+        "Cuisiner sans avoir les légumes",
+        "Lister les légumes, faire les courses, cuisiner, puis répartir en portions"
+      ],
+      "aide": "Un bon plan met d'abord ce qui rend la suite possible."
+    },
+    "reponse": {
+      "valeur": "Lister les légumes, faire les courses, cuisiner, puis répartir en portions"
+    },
+    "meta": {
+      "auteur": "redaction-assistee (tools/generer_methodes.py)",
+      "date_creation": "2026-09-24",
+      "relecture_ortho": {
+        "statut": "a_revoir"
+      }
+    }
+  },
+  {
+    "id": "mt-2-gmt-08",
+    "type": "but-etapes",
+    "module": "entrainement",
+    "theme": "methodes",
+    "fonctions_ciblees": [
+      "planification",
+      "fonctions-executives"
+    ],
+    "palier": 2,
+    "prerequis": [
+      "mt-palier-1"
+    ],
+    "cap_complexite": null,
+    "contenu": {
+      "consigne": "Goal Management Training : pose d'abord ton but, puis choisis le plan d'étapes cohérent, et vérifie-le avant de te lancer.",
+      "enonce": "Tu décides de reprendre le sport.",
+      "options": [
+        "Acheter tout l'équipement avant de choisir l'activité",
+        "Attendre d'être motivé",
+        "Choisir une activité, fixer un créneau, prévoir une tenue, puis commencer doucement"
+      ],
+      "aide": "Un bon plan met d'abord ce qui rend la suite possible."
+    },
+    "reponse": {
+      "valeur": "Choisir une activité, fixer un créneau, prévoir une tenue, puis commencer doucement"
+    },
+    "meta": {
+      "auteur": "redaction-assistee (tools/generer_methodes.py)",
+      "date_creation": "2026-09-24",
+      "relecture_ortho": {
+        "statut": "a_revoir"
+      }
+    }
+  }
+]

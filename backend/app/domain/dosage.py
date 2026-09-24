@@ -19,6 +19,15 @@ LIMITE_SESSIONS_JOUR = 3
 MAX_ITEMS_PAR_SEANCE = 12
 DUREE_MAX_SEANCE_S = 600
 
+#: Limite de séances par jour selon la CATÉGORIE du thème.
+#: L'évaluation est volontairement limitée à une séance par jour : répéter une
+#: mesure la fausse (effet d'apprentissage), alors que l'entraînement de
+#: remédiation gagne à être régulier.
+LIMITES_SESSIONS_JOUR: dict[str, int] = {
+    "entrainement": 3,
+    "evaluation": 1,
+}
+
 
 def appliquer_cap_difficulte(palier_demande: int, cap_actif: int) -> int:
     """Ne jamais dépasser le cap de difficulté actif."""

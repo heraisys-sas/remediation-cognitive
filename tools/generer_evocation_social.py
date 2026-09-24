@@ -127,6 +127,73 @@ FICHES_SOURCE = [
 ]
 
 
+#: SFA — analyse sémantique : (définition du concept, mot cible)
+ANALYSE_SFA = [
+    ("Ce mot désigne un objet qui sert à enfoncer des clous.", "marteau"),
+    ("Ce mot désigne un objet qui sert à se protéger de la pluie.", "parapluie"),
+    ("Ce mot désigne un objet qui sert à couper du papier.", "ciseaux"),
+    ("Ce mot désigne un lieu où l'on emprunte des livres.", "bibliothèque"),
+    ("Ce mot désigne un objet qui sert à ouvrir une porte.", "clé"),
+    ("Ce mot désigne un véhicule à deux roues que l'on fait avancer en pédalant.", "vélo"),
+]
+
+#: PCA — analyse phonologique : (définition du concept, mot cible)
+ANALYSE_PCA = [
+    ("Ce mot désigne un appareil qui conserve les aliments au froid.", "réfrigérateur"),
+    ("Ce mot désigne un objet qui sert à écrire et que l'on peut effacer.", "crayon"),
+    ("Ce mot désigne un endroit où l'on attend le train.", "gare"),
+    ("Ce mot désigne un objet que l'on met sur la tête quand il fait froid.", "bonnet"),
+    ("Ce mot désigne un meuble où l'on range les vêtements.", "armoire"),
+    ("Ce mot désigne un objet qui sert à mesurer une longueur.", "mètre"),
+]
+
+SFA_ETAPES = [
+    "À quelle catégorie appartient-il ? (outil, meuble, lieu, véhicule…)",
+    "À quoi sert-il ?",
+    "Où le trouve-t-on ?",
+    "À quoi cela te fait-il penser ?",
+]
+PCA_ETAPES = [
+    "Par quel son commence-t-il ?",
+    "Combien de syllabes a-t-il ?",
+    "Avec quel mot rime-t-il ?",
+    "Quel est son dernier son ?",
+]
+
+
+def _item_analyse(numero: int, palier: int, methode: str, definition: str, mot: str,
+                  prerequis: list[str]) -> dict:
+    """Item d'analyse du mot (SFA ou PCA) : l'utilisateur génère les attributs, puis nomme."""
+    if methode == "semantique":
+        consigne = ("Méthode SFA : analyse le mot avant de le dire. Décris-le par ses caractéristiques "
+                    "(catégorie, usage, lieu), puis retrouve-le.")
+        etapes, aide = SFA_ETAPES, "Dis à voix haute ce que tu as trouvé : sa catégorie, son usage, le lieu."
+    else:
+        consigne = ("Méthode PCA : analyse le mot par ses sons. Commence par son premier son, compte ses "
+                    "syllabes, cherche une rime, puis retrouve-le.")
+        etapes, aide = PCA_ETAPES, "Dis le mot à voix haute en détachant les syllabes."
+    return {
+        "id": f"ev-{palier}-analyse-{numero:02d}",
+        "type": "analyse-mot",
+        "module": "entrainement",
+        "theme": "evocation",
+        "fonctions_ciblees": ["acces-lexical", "recuperation"],
+        "palier": palier,
+        "prerequis": prerequis,
+        "cap_complexite": None,
+        "contenu": {
+            "consigne": consigne,
+            "methode": methode,
+            "definition": definition,
+            "etapes": list(etapes),
+            "enonce": "Quel est ce mot ?",
+            "aide": aide,
+        },
+        "reponse": {"valeur": mot},
+        "meta": meta(),
+    }
+
+
 def items_evocation() -> list[dict]:
     """Assemble les items du thème evocation (5 paliers de 10 items)."""
     items: list[dict] = []
@@ -244,6 +311,15 @@ def items_evocation() -> list[dict]:
             },
             "reponse": {"valeur": mot},
         })
+
+
+    # Palier 6 — SFA : analyse sémantique du mot (l'utilisateur génère les attributs).
+    for numero, (definition, mot) in enumerate(ANALYSE_SFA, start=1):
+        items.append(_item_analyse(numero, 6, "semantique", definition, mot, ["ev-palier-5"]))
+
+    # Palier 7 — PCA : analyse phonologique du mot.
+    for numero, (definition, mot) in enumerate(ANALYSE_PCA, start=1):
+        items.append(_item_analyse(numero, 7, "phonologique", definition, mot, ["ev-palier-6"]))
 
     return items
 
@@ -565,7 +641,7 @@ MISSIONS = [
 
 def ecrire_contenu(dry_run: bool = False) -> dict:
     """Écrit les paliers, les manifestes et les missions ; retourne les compteurs."""
-    paliers_evocation = 5
+    paliers_evocation = 7
     paliers_social = 4
     items_ev = items_evocation()
     items_so = items_social()
@@ -614,6 +690,8 @@ DESCRIPTION_PALIERS = {
         "Retrouver des notions plus abstraites, avec indices progressifs",
         "Retrouver le contexte d'une information (mémoire de la source)",
         "Alterner reconnaissance et rappel indicé",
+        "Analyse sémantique (SFA) : décrire le mot par ses caractéristiques, puis le nommer",
+        "Analyse phonologique (PCA) : décomposer le mot par ses sons, puis le nommer",
     ],
     "social": [
         "Reconnaître l'émotion ressentie dans une situation",

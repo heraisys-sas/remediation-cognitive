@@ -197,6 +197,9 @@ def corriger(theme: str, item: dict, reponse) -> bool:
         return _corriger_numerique(reponse, attendue)
     if theme == "deduction":
         return _corriger_grille(item, reponse)
+    if theme == "methodes":
+        # PQRST, GMT, auto-instruction : la réponse est la proposition choisie.
+        return _clef_texte(reponse) == _clef_texte(attendue)
     if theme == "quotidien":
         if item.get("type") == "prise-message":
             return _clef_quotidien(reponse) == _clef_quotidien(attendue)
