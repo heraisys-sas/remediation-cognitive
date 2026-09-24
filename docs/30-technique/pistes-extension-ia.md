@@ -23,3 +23,47 @@ C'est l'**étape 2**. Aujourd'hui, une réponse libre ne peut être jugée que p
 ## Ordre conseillé
 
 1 (lexical, tout de suite) → 2 (empreintes, le vrai saut) → 3 (voix) → 4 (contenu) → 5 (adaptatif, après un pilote réel).
+
+
+---
+
+## Où tourne le logiciel ? (local vs serveur, et capacités de l'OS)
+
+Le logiciel est **déjà local-first** : un service FastAPI sur la machine, une interface dans le navigateur, des données en fichiers JSON locaux, aucun appel réseau. C'est le bon point de départ, et cela décide de tout le reste.
+
+| | **Local** (aujourd'hui) | **Serveur distant** |
+|---|---|---|
+| Modèles (voix, empreintes) | tournent sur la machine, hors ligne, coût nul | à héberger : coût, latence, montée en charge |
+| Audio des exercices | **ne quitte jamais l'appareil** | doit être **téléversé** — consentement, données de santé |
+| Mise à jour | manuelle | centralisée |
+| Multi-appareils | un poste | partout |
+
+Pour un POC familial, sous le contrôle d'une spécialiste, **le local s'impose** : pas d'infrastructure, et l'audio ne sort pas de l'appareil.
+
+### Ce que les systèmes fournissent déjà (sans embarquer de modèle)
+
+| Capacité | macOS / iOS | Windows | Android | Navigateur |
+|---|---|---|---|---|
+| Reconnaissance vocale | `SFSpeechRecognizer` (**mode sur l'appareil** possible) | `Windows.Media.SpeechRecognition` | `SpeechRecognizer` (`EXTRA_PREFER_OFFLINE`) | `SpeechRecognition` |
+| Synthèse vocale | `AVSpeechSynthesizer`, `say` | `System.Speech.Synthesis` / SAPI | `TextToSpeech` | `speechSynthesis` |
+| **Empreintes de phrases** | `NaturalLanguage` → `NLEmbedding` (**intégré, hors ligne**) | à fournir (ONNX) | à fournir (TFLite) | à fournir (`transformers.js`) |
+| OCR / vision | `Vision` | `Windows.Media.Ocr` | ML Kit | limité |
+
+**Nuance importante** : « capacité du navigateur » ne veut pas dire « sur l'appareil ». Le `SpeechRecognition` de Chrome passe souvent par les serveurs de Google — donc **pas** local du point de vue de la vie privée. Le même nom d'API a un comportement différent selon le navigateur : Safari (Siri) est sur l'appareil, Chrome non. Pour un usage sensible, il faut soit l'API native avec le drapeau « sur l'appareil », soit **embarquer** un petit moteur (whisper.cpp, modèle quantifié) qui tourne partout en local.
+
+### Architecture conseillée : une couche de capacités, avec repli
+
+Une seule abstraction, et pour chaque capacité une priorité claire :
+
+1. **API native sur l'appareil** si elle existe et si le drapeau « sur l'appareil » est disponible ;
+2. sinon **petit moteur embarqué** (whisper.cpp pour la voix, MiniLM int8 via ONNX Runtime pour les empreintes — même code sur macOS, Windows et Linux) ;
+3. sinon **repli sur la saisie clavier**.
+
+Avantages : le cœur du logiciel reste identique partout ; on n'embarque un modèle **que** là où le système ne le fournit pas ; et la promesse de confidentialité tient sur toutes les plateformes.
+
+### Pour ce POC
+
+- **Rester local** (aucun changement aujourd'hui) ; le serveur ne se justifiera que pour du multi-utilisateur ou du suivi à distance.
+- **Voix** : commencer par l'API native avec drapeau « sur l'appareil » (Apple/Android), sinon whisper.cpp embarqué ; **éviter** le `SpeechRecognition` de Chrome pour un usage sensible.
+- **Empreintes (étape 2)** : sur macOS/iOS, `NLEmbedding` est **gratuit et hors ligne** — le vrai saut sémantique y coûte zéro ; ailleurs, MiniLM int8 (~25 Mo) avec ONNX Runtime.
+- **Tablette pour la personne** : le modèle « serveur local sur un ordinateur + navigateur » convient au foyer ; si le besoin devient un usage nomade, une enveloppe native (iOS/Android) permettrait d'utiliser directement les capacités de l'appareil.
