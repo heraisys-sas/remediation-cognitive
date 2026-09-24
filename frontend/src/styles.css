@@ -898,3 +898,25 @@ body {
   font-size: 0.98rem;
   font-style: italic;
 }
+
+/* Ligne d'audio : case « lecture automatique » + bouton « Écouter », groupés. */
+.ligne-audio {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 0.75rem;
+  margin-top: 0.6rem;
+}
+
+.lecture-auto {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4rem;
+  color: var(--texte-secondaire);
+  font-size: 0.95rem;
+  cursor: pointer;
+}
+
+.lecture-auto input { width: 1.05rem; height: 1.05rem; accent-color: var(--accent); }
+
+.ligne-audio .bouton { margin-top: 0; }

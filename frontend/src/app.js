@@ -35,6 +35,20 @@ const CAPACITES = (typeof Capacites !== "undefined")
   : { voixDisponible: () => false, syntheseDisponible: () => false,
       dicter: () => null, lire: () => false, arreter: () => {} };
 
+//: Lecture automatique : activée par défaut, désactivable, et gardée d'une séance à l'autre.
+const CLE_LECTURE_AUTO = "remediation.lectureAuto";
+function lectureAutoActivee() {
+  try { return window.localStorage.getItem(CLE_LECTURE_AUTO) !== "off"; }
+  catch { return true; }
+}
+function definirLectureAuto(active) {
+  try { window.localStorage.setItem(CLE_LECTURE_AUTO, active ? "on" : "off"); } catch { /* stockage indisponible */ }
+}
+/** Lit le texte seulement si la lecture automatique est active. */
+function lireSiLectureAuto(texte) {
+  if (texte && lectureAutoActivee() && CAPACITES.syntheseDisponible()) CAPACITES.lire(texte);
+}
+
 //: Blanc entre deux éléments d'une séquence (segmentation visuelle uniquement —
 //: ce n'est pas une pause d'attente : le rythme reste d'un élément par seconde).
 const BLANC_INTER_ITEM_MS = 120;
@@ -113,6 +127,8 @@ const refs = {
   boutonRetourReperes: $("bouton-retour-reperes"),
   boutonDicter: $("bouton-dicter"),
   boutonEcouter: $("bouton-ecouter"),
+  ligneAudio: $("ligne-audio"),
+  caseLectureAuto: $("case-lecture-auto"),
   rappelConsigne: $("rappel-consigne"),
 };
 
@@ -569,8 +585,9 @@ function afficherPhaseMemo(item) {
   refs.enonce.className = "enonce";
   // « Écouter » lit ce qui est affiché à ce stade : la consigne, pas la question.
   etat.enonceCourant = consigneAffichee;
-  refs.boutonEcouter.hidden = !CAPACITES.syntheseDisponible();
+  refs.ligneAudio.hidden = !CAPACITES.syntheseDisponible();
   refs.rappelConsigne.hidden = true;
+  lireSiLectureAuto(consigneAffichee);
   refs.zoneAide.hidden = true;
   refs.carteFeedback.hidden = true;
   refs.boutonSuivant.hidden = true;
@@ -612,8 +629,10 @@ function jouerAffichage(item) {
         ...affichage.elements.map((paragraphe) => creerElement("p", { texte: paragraphe }))
       )
     );
-    // Lecture à voix haute du texte affiché : on écoute ce qu'on lit.
-    if (CAPACITES.syntheseDisponible()) CAPACITES.lire(affichage.elements.join(". "));
+    // Le stimulus devient « ce qui est affiché » : le bouton Écouter le relit à la
+    // demande, et la lecture automatique le dit d'elle-même si elle est active.
+    etat.enonceCourant = affichage.elements.join(". ");
+    lireSiLectureAuto(etat.enonceCourant);
     etat.minuteriesMemo.push(
       setTimeout(() => jouerDelaiOuQuestion(item), affichage.duree_totale_ms)
     );
@@ -631,14 +650,11 @@ function jouerAffichage(item) {
       );
     }
     plateau.append(liste);
-    // Lecture à voix haute des éléments affichés (paires ou fiche).
-    if (CAPACITES.syntheseDisponible()) {
-      CAPACITES.lire(
-        affichage.elements
-          .map(([gauche, droite]) => (droite ? `${gauche} : ${droite}` : gauche))
-          .join(". ")
-      );
-    }
+    // Le stimulus (paires, fiche) devient « ce qui est affiché ».
+    etat.enonceCourant = affichage.elements
+      .map(([gauche, droite]) => (droite ? `${gauche} : ${droite}` : gauche))
+      .join(". ");
+    lireSiLectureAuto(etat.enonceCourant);
     etat.minuteriesMemo.push(
       setTimeout(() => jouerDelaiOuQuestion(item), affichage.duree_totale_ms)
     );
@@ -723,7 +739,7 @@ function afficherQuestion(item) {
   CAPACITES.arreter();
   refs.boutonDicter.hidden = true;
   refs.boutonDicter.textContent = "🎤 Répondre à voix haute";
-  refs.boutonEcouter.hidden = !CAPACITES.syntheseDisponible();
+  refs.ligneAudio.hidden = !CAPACITES.syntheseDisponible();
 
   // Énoncé : grand texte ; variante monospace pour la prédiction de sortie.
   refs.enonce.textContent = contenu.enonce ?? "";
@@ -732,6 +748,7 @@ function afficherQuestion(item) {
   // « Écouter » ne lit que la QUESTION : la consigne est un rappel de méthode, pas
   // une formule à répéter à chaque question (elle serait rébarbative à la longue).
   etat.enonceCourant = contenu.enonce ?? "";
+  lireSiLectureAuto(etat.enonceCourant);
 
   // Rappel de méthode : affiché une seule fois par type d'exercice dans la séance.
   // (Les items à stimulus le montrent déjà pendant la phase de mémorisation.)
@@ -1699,9 +1716,16 @@ function brancherEvenements() {
 
   // Capacités du poste : écouter la consigne, répondre à voix haute.
   refs.boutonEcouter.addEventListener("click", () => {
-    // On lit ce qui est AFFICHÉ : la consigne pendant la mémorisation, la
-    // consigne et la question ensuite — jamais la question avant son affichage.
+    // Lecture à la demande (indépendante du réglage automatique).
     CAPACITES.lire(etat.enonceCourant);
+  });
+  refs.caseLectureAuto.addEventListener("change", () => {
+    definirLectureAuto(refs.caseLectureAuto.checked);
+    if (refs.caseLectureAuto.checked) {
+      CAPACITES.lire(etat.enonceCourant);        // on entend tout de suite l'effet
+    } else {
+      CAPACITES.arreter();                       // coupée à tout moment
+    }
   });
   refs.boutonDicter.addEventListener("click", () => {
     if (!etat.session || etat.repondu) return;
@@ -1717,6 +1741,7 @@ function brancherEvenements() {
 }
 
 function init() {
+  if (refs.caseLectureAuto) refs.caseLectureAuto.checked = lectureAutoActivee();
   brancherEvenements();
   afficherVue("themes");
   chargerThemes();

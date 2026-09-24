@@ -36,3 +36,12 @@ Retour d'usage : la consigne de méthode répétée à chaque question est réba
 - **Écrit** : la consigne de méthode n'est **affichée qu'une fois par type d'exercice dans la séance** (un ensemble `etat.consignesVues` suit les types déjà vus ; remis à zéro à chaque séance). Ensuite, une phrase courte du style « Mémorise le contenu affiché. » suffit.
 
 Leçon : dans un entraînement répétitif, **la pédagogie doit décroître** — la première occurrence enseigne, les suivantes entraînent. Répéter une méthode à chaque item la transforme en bruit.
+
+## Suite (même jour) — lecture automatique par défaut
+
+- **Activée par défaut** : la consigne (mémorisation), le stimulus (à l'affichage) et la question se disent d'eux-mêmes.
+- **Case « Lecture automatique »** à côté du bouton « Écouter », en haut de la zone d'exercice : la décocher coupe la lecture immédiatement, la recocher la rétablit ; le réglage est conservé dans `localStorage` (clé `remediation.lectureAuto`).
+- Le bouton « Écouter » reste **indépendant** du réglage (lecture à la demande, pour relire).
+- Le stimulus devient « ce qui est affiché » pendant son affichage : le bouton « Écouter » le relit donc à la demande, même si l'automatique est coupé.
+
+Leçon : un défaut automatisé doit rester **réversible en un geste** et **persistant**, sinon l'utilisateur subit le réglage au lieu de le piloter.

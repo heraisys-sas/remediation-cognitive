@@ -2,6 +2,13 @@
 
 Format : [date] — [périmètre] — description. Les retours informels de l'orthophoniste sont journalisés ici, sans caution clinique.
 
+## 2026-09-25 · Lecture automatique par défaut, désactivable à tout moment
+
+- **Lecture par défaut** — tout ce qui s'affiche se dit : la consigne pendant la mémorisation, le stimulus (texte, liste, fiche) à l'affichage, puis la question.
+- **Case bien placée** — une case « Lecture automatique » accompagne le bouton « Écouter », en haut de la zone d'exercice (toujours au même endroit, sans défilement). La décocher coupe la lecture **immédiatement** ; la recocher la rétablit aussitôt.
+- **Le réglage est gardé** d'une séance à l'autre (`localStorage`) ; par défaut : activé. Le bouton « Écouter » reste disponible indépendamment du réglage.
+- **Contrôles** — 811 items / 0 erreur ; 140 tests.
+
 ## 2026-09-25 · Consignes : dites une fois, pas répétées à chaque question
 
 - **Constat** — la consigne de méthode (« focalise-toi sur le qui, quoi, comment »…) revenait à chaque question, à l'écrit comme à l'oral : rébarbatif, et cela noie la question elle-même.

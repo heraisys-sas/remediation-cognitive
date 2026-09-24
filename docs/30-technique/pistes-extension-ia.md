@@ -38,7 +38,8 @@ C'est l'**étape 2**. Aujourd'hui, une réponse libre ne peut être jugée que p
 - **Interface** : bouton « Répondre à voix haute » (masqué si le poste ne l'a pas) et
   « Écouter » — qui lit **ce qui est affiché** : la consigne pendant la mémorisation,
   puis la **question seule** (la consigne de méthode n'est dite qu'une fois par type de
-  séance — la répéter serait rébarbatif). Jamais la question avant son affichage (pas de
+  séance — la répéter serait rébarbatif). La lecture est **automatique par défaut**, avec une
+  case pour la désactiver à tout moment (le réglage est conservé). Jamais la question avant son affichage (pas de
   fuite d'indice). Le stimulus (texte, liste, fiche) se lit **automatiquement** au clic sur
   « Afficher ». Tout retombe proprement sur le clavier.
 - **Dépendance optionnelle** : sur macOS, `pyobjc-framework-NaturalLanguage` (installé ici)

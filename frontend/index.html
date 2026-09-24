@@ -80,7 +80,13 @@
         <p id="enonce" class="enonce"></p>
       <!-- Rappel de méthode : affiché UNE fois par type d'exercice dans la séance. -->
       <p id="rappel-consigne" class="rappel-consigne" hidden></p>
-      <button id="bouton-ecouter" type="button" class="bouton bouton-secondaire" hidden title="Lit ce qui est actuellement affiché">🔊 Écouter</button>
+      <!-- Lecture : automatique par défaut, désactivable à tout moment (le réglage est gardé). -->
+      <div id="ligne-audio" class="ligne-audio" hidden>
+        <label class="lecture-auto">
+          <input id="case-lecture-auto" type="checkbox" /> Lecture automatique
+        </label>
+        <button id="bouton-ecouter" type="button" class="bouton bouton-secondaire" title="Lit ce qui est actuellement affiché">🔊 Écouter</button>
+      </div>
         <!-- Aide optionnelle fournie par l'item (contenu.aide) — repliée par défaut. -->
         <details id="zone-aide" class="aide" hidden>
           <summary>Voir un coup de pouce</summary>
