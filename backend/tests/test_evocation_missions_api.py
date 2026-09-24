@@ -134,6 +134,20 @@ def test_evocation_indices_jamais_la_reponse_et_aide_enregistree(client, tmp_pat
     assert fin["resume"]["sans_aide"] == 1       # seul le premier a été retrouvé seul
 
 
+def test_evocation_variantes_acceptees(client, tmp_path):
+    """Une variante déclarée par l'item (« bicyclette » pour « vélo ») est acceptée."""
+    _forcer_palier(tmp_path, "evocation", 6)
+    payload = _demarrer(client, "evocation")
+    item = next(
+        i for i in payload["items"]
+        if CONTENU.item("evocation", i["id"])["reponse"].get("variantes")
+    )
+    variante = CONTENU.item("evocation", item["id"])["reponse"]["variantes"][0]
+    assert _repondre(
+        client, "evocation", payload["session_id"], item["id"], variante
+    ).json()["correcte"] is True
+
+
 def test_evocation_indice_utilise_hors_bornes(client, tmp_path):
     """Un nombre d'indices incohérent est refusé (422)."""
     _forcer_palier(tmp_path, "evocation", 2)

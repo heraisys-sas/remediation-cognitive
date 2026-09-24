@@ -150,6 +150,15 @@ ANALYSE_PCA = [
     ("Ce mot désigne un objet qui sert à mesurer une longueur.", "mètre"),
 ]
 
+#: Variantes acceptées pour un mot (synonymes, autre écriture) — capacités d'auteur.
+VARIANTES = {
+    "vélo": ["bicyclette"],
+    "réfrigérateur": ["frigo"],
+    "clé": ["clef"],
+    "crayon": ["stylo à papier"],
+}
+
+
 SFA_ETAPES = [
     "À quelle catégorie appartient-il ? (outil, meuble, lieu, véhicule…)",
     "À quoi sert-il ?",
@@ -192,7 +201,7 @@ def _item_analyse(numero: int, palier: int, methode: str, definition: str, mot: 
             "enonce": "Quel est ce mot ?",
             "aide": aide,
         },
-        "reponse": {"valeur": mot},
+        "reponse": {"valeur": mot, **({"variantes": VARIANTES[mot]} if mot in VARIANTES else {})},
         "meta": meta(),
     }
 

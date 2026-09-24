@@ -348,6 +348,18 @@ def erreurs_contenu(item: dict, prefixe: str) -> list[str]:
         elif isinstance(valeur, (int, float)) and not intervalle[0] <= valeur <= intervalle[1]:
             erreurs.append(prefixe + "estimation-temps : la valeur attendue doit être dans la fourchette")
 
+    # Variantes acceptées (facultatif) : liste de chaînes non vides, distinctes de la réponse.
+    variantes = (item.get("reponse") or {}).get("variantes") if isinstance(item.get("reponse"), dict) else None
+    if variantes is not None:
+        if not isinstance(variantes, list) or not all(
+            isinstance(v, str) and v.strip() for v in variantes
+        ):
+            erreurs.append(prefixe + "reponse.variantes doit être une liste de chaînes non vides")
+        elif isinstance(reponse, str) and any(
+            _normaliser_texte(v) == _normaliser_texte(reponse) for v in variantes
+        ):
+            erreurs.append(prefixe + "reponse.variantes répète la réponse attendue")
+
     # Analyse du mot (SFA/PCA) : méthode, définition, étapes de génération, mot cible.
     if type_item == "analyse-mot":
         if contenu.get("methode") not in ("semantique", "phonologique"):

@@ -2,6 +2,14 @@
 
 Format : [date] — [périmètre] — description. Les retours informels de l'orthophoniste sont journalisés ici, sans caution clinique.
 
+## 2026-09-25 · Reconnaissance des réponses : tolérance élargie
+
+- **Correctif** — « 15h » n'était pas accepté pour « 15 h » : la normalisation des heures exigeait des minutes. Elle couvre maintenant l'heure seule et l'heure pleine (« 15 h » = « 15h » = « 15:00 » = « 15h00 »), dans **toutes** les familles concernées (méthodes, vie quotidienne, accès au mot), et plus seulement la prise de message.
+- **Capacité d'auteur** — un item peut déclarer `reponse.variantes` (synonymes, autre écriture) : « bicyclette » est accepté pour « vélo », « frigo » pour « réfrigérateur ». Contrôlé par le validateur.
+- **Faute de frappe tolérée** (accès lexical) — une petite faute reste acceptée (distance 1, ou 2 pour un mot long) : l'exercice porte sur la mémoire, pas sur l'orthographe. Un pluriel passe (« marteaux » pour « marteau »).
+- **Pistes d'extension IA** — nouvelle note `docs/30-technique/pistes-extension-ia.md` : du moteur de tolérance (déjà là) aux empreintes sémantiques locales, à la voix et à la génération de contenu.
+- **Contrôles** — **811 items / 0 erreur** ; **134 tests**.
+
 ## 2026-09-24 · Retrait de la barrière de conformité (contexte POC / laboratoire)
 
 - **Contexte acté** — ce dépôt est un **POC de laboratoire** : pas de garde-fou bloquant, pas de barrière « matériel protégé ». La règle est notée en tête du guide du dépôt.

@@ -179,7 +179,10 @@
       "aide": "Dis à voix haute ce que tu as trouvé : sa catégorie, son usage, le lieu."
     },
     "reponse": {
-      "valeur": "clé"
+      "valeur": "clé",
+      "variantes": [
+        "clef"
+      ]
     },
     "meta": {
       "auteur": "redaction-assistee (tools/generer_evocation.py)",
@@ -217,7 +220,10 @@
       "aide": "Dis à voix haute ce que tu as trouvé : sa catégorie, son usage, le lieu."
     },
     "reponse": {
-      "valeur": "vélo"
+      "valeur": "vélo",
+      "variantes": [
+        "bicyclette"
+      ]
     },
     "meta": {
       "auteur": "redaction-assistee (tools/generer_evocation.py)",

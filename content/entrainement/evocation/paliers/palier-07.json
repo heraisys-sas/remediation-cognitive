@@ -27,7 +27,10 @@
       "aide": "Dis le mot à voix haute en détachant les syllabes."
     },
     "reponse": {
-      "valeur": "réfrigérateur"
+      "valeur": "réfrigérateur",
+      "variantes": [
+        "frigo"
+      ]
     },
     "meta": {
       "auteur": "redaction-assistee (tools/generer_evocation.py)",
@@ -65,7 +68,10 @@
       "aide": "Dis le mot à voix haute en détachant les syllabes."
     },
     "reponse": {
-      "valeur": "crayon"
+      "valeur": "crayon",
+      "variantes": [
+        "stylo à papier"
+      ]
     },
     "meta": {
       "auteur": "redaction-assistee (tools/generer_evocation.py)",

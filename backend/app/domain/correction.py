@@ -95,17 +95,58 @@ _NUMERAUX_QUOTIDIEN = {
 }
 
 
-def _clef_quotidien(valeur) -> str:
-    """Clé des réponses de la vie quotidienne : nombres et heures normalisés.
+def _clef_reponse(valeur) -> str:
+    """Clé d'une réponse texte : casse, accents, espaces, guillemets, heures et nombres.
 
-    - « 14 h 30 », « 14h30 » et « 14:30 » sont équivalents ;
+    - « 15 h », « 15h » et « 15:00 » sont équivalents (heure avec ou sans minutes) ;
     - « deux » et « 2 » sont équivalents (nombre en toutes lettres → chiffres).
     """
     texte = _clef_texte(valeur)
-    # Normalise le séparateur d'heure entre deux chiffres (h ou :), avec ou sans espaces.
-    texte = re.sub(r"(\d)\s*[:h]\s*(\d)", r"\1 h \2", texte)
+    # Séparateur d'heure (h ou :), avec ou sans minutes, avec ou sans espaces.
+    texte = re.sub(r"(\d)\s*[:h]\s*(\d*)", r"\1h\2", texte)
+    # « 15h00 » et « 15:00 » valent « 15h » (heure pleine).
+    texte = re.sub(r"(\d)h00\b", r"\1h", texte)
     jetons = [_NUMERAUX_QUOTIDIEN.get(jeton, jeton) for jeton in texte.split()]
     return " ".join(jetons)
+
+
+def _distance(a: str, b: str) -> int:
+    """Distance d'édition (Levenshtein) — tolérance aux fautes de frappe."""
+    if a == b:
+        return 0
+    precedent = list(range(len(b) + 1))
+    for i, ca in enumerate(a, 1):
+        courant = [i]
+        for j, cb in enumerate(b, 1):
+            courant.append(min(precedent[j] + 1, courant[j - 1] + 1,
+                               precedent[j - 1] + (1 if ca != cb else 0)))
+        precedent = courant
+    return precedent[-1]
+
+
+def _corriger_mot(reponse, item: dict) -> bool:
+    """Réponse d'un seul mot (accès lexical) : tolérance de saisie et petite faute.
+
+    - accents, casse et ponctuation ignorés ;
+    - variantes acceptées si l'item les déclare (``reponse.variantes`` : synonymes,
+      autre écriture) ;
+    - une faute de frappe mineure reste acceptée (distance 1, ou 2 pour un mot long) :
+      l'exercice porte sur la mémoire, pas sur l'orthographe.
+    """
+    bloc = item.get("reponse") or {}
+    cibles = [bloc.get("valeur"), *(bloc.get("variantes") or [])]
+    donnees = _clef_reponse(reponse)
+    for cible in cibles:
+        clef = _clef_reponse(cible)
+        if not clef:
+            continue
+        if donnees == clef:
+            return True
+        if " " not in clef and " " not in donnees:
+            tolerance = 1 if len(clef) < 7 else 2
+            if _distance(donnees, clef) <= tolerance:
+                return True
+    return False
 
 
 def _mots(texte) -> list[str]:
@@ -197,19 +238,20 @@ def corriger(theme: str, item: dict, reponse) -> bool:
     if theme == "deduction":
         return _corriger_grille(item, reponse)
     if theme == "methodes":
-        # PQRST, GMT, auto-instruction : la réponse est la proposition choisie.
-        return _clef_texte(reponse) == _clef_texte(attendue)
+        # PQRST, GMT, auto-instruction, plan à vérifier, repérage : proposition choisie.
+        return _clef_reponse(reponse) == _clef_reponse(attendue)
     if theme == "quotidien":
         if item.get("type") == "prise-message":
-            return _clef_quotidien(reponse) == _clef_quotidien(attendue)
+            return _clef_reponse(reponse) == _clef_reponse(attendue)
         if item.get("type") == "estimation-temps":
             return _corriger_estimation(item, reponse)
         # etape-suivante et les familles à choix : la proposition choisie, en clair.
-        return _clef_texte(reponse) == _clef_texte(attendue)
+        return _clef_reponse(reponse) == _clef_reponse(attendue)
     if theme == "rappel-series":
         return _corriger_rappel_libre(item, reponse)
     if theme == "evocation":
-        return _clef_texte(reponse) == _clef_texte(attendue)
+        # Accès lexical : mot retrouvé, avec variantes et petite tolérance de frappe.
+        return _corriger_mot(reponse, item)
     if theme in ("anglais", "memoire"):
         if theme == "memoire":
             if item.get("type") == "empan-mots":

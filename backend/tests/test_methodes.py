@@ -48,6 +48,17 @@ def test_pqrst_texte_et_question(client, tmp_path):
     assert _repondre(client, "methodes", payload["session_id"], item["id"], bonne).json()["correcte"] is True
 
 
+def test_heure_toleree_dans_les_methodes(client, tmp_path):
+    """Une heure écrite autrement est acceptée (« 15h », « 15:00 » pour « 15 h »)."""
+    _forcer_palier(tmp_path, "methodes", 1)
+    payload = _demarrer(client, "methodes")
+    item = next(i for i in payload["items"] if _attendue("methodes", i["id"]) == "15 h")
+    for variante in ("15h", "15 h", "15:00"):
+        assert _repondre(
+            client, "methodes", payload["session_id"], item["id"], variante
+        ).json()["correcte"] is True
+
+
 def test_gmt_plan_et_auto_instruction(client, tmp_path):
     """Palier 2 (plan d'étapes) et palier 3 (question à se poser) corrigent par choix."""
     for palier, type_attendu in ((2, "but-etapes"), (3, "auto-instruction")):
