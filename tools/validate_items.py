@@ -354,22 +354,33 @@ def erreurs_contenu(item: dict, prefixe: str) -> list[str]:
 #: Types d'indices admis dans une grille de déduction.
 TYPES_INDICE_GRILLE = {
     "case-couleur", "case-figure", "ligne", "colonne",
+    "coin-couleur", "coin-figure", "bord-couleur", "bord-figure",
     "pas-couleur", "pas-figure", "regle",
 }
 
 
 def _predicat_grille(indice: dict, fig: list[int], coul: list[int],
-                     index_figure: dict, index_couleur: dict) -> bool:
+                     index_figure: dict, index_couleur: dict, n: int) -> bool:
     """Un indice de grille est-il vrai pour la solution (fig/coul = listes d'indices) ?"""
     t = indice.get("type")
+    coins = {0, n - 1, n * (n - 1), n * n - 1}
+    bords = {i for i in range(n * n) if i // n in (0, n - 1) or i % n in (0, n - 1)}
     if t == "case-couleur":
         return coul[indice["case"]] == index_couleur[indice["couleur"]]
     if t == "case-figure":
         return fig[indice["case"]] == index_figure[indice["figure"]]
     if t == "ligne":
-        return index_figure[indice["figure"]] in (fig[indice["ligne"] * 3 + c] for c in range(3))
+        return index_figure[indice["figure"]] in (fig[indice["ligne"] * n + c] for c in range(n))
     if t == "colonne":
-        return index_couleur[indice["couleur"]] in (coul[r * 3 + indice["colonne"]] for r in range(3))
+        return index_couleur[indice["couleur"]] in (coul[r * n + indice["colonne"]] for r in range(n))
+    if t == "coin-couleur":
+        return any(coul[i] == index_couleur[indice["couleur"]] for i in coins)
+    if t == "coin-figure":
+        return any(fig[i] == index_figure[indice["figure"]] for i in coins)
+    if t == "bord-couleur":
+        return any(coul[i] == index_couleur[indice["couleur"]] for i in bords)
+    if t == "bord-figure":
+        return any(fig[i] == index_figure[indice["figure"]] for i in bords)
     if t == "pas-couleur":
         return coul[indice["case"]] != index_couleur[indice["couleur"]]
     if t == "pas-figure":
@@ -384,24 +395,25 @@ def _erreurs_grille_deduction(item: dict, prefixe: str, contenu: dict) -> list[s
     erreurs: list[str] = []
     figures = contenu.get("figures")
     couleurs = contenu.get("couleurs")
-    if not (isinstance(figures, list) and len(figures) == 3 and len(set(figures)) == 3):
-        erreurs.append(prefixe + "grille-deduction : contenu.figures doit être 3 figures distinctes")
+    if not (isinstance(figures, list) and len(figures) in (3, 4) and len(set(figures)) == len(figures)):
+        erreurs.append(prefixe + "grille-deduction : contenu.figures doit être 3 ou 4 figures distinctes")
         return erreurs
-    if not (isinstance(couleurs, list) and len(couleurs) == 3 and len(set(couleurs)) == 3):
-        erreurs.append(prefixe + "grille-deduction : contenu.couleurs doit être 3 couleurs distinctes")
+    if not (isinstance(couleurs, list) and len(couleurs) == len(figures) and len(set(couleurs)) == len(couleurs)):
+        erreurs.append(prefixe + "grille-deduction : contenu.couleurs doit avoir autant de couleurs distinctes que de figures")
         return erreurs
+    n = len(figures)
 
     enonces = contenu.get("enonces")
-    if not isinstance(enonces, list) or len(enonces) != 6 or not all(
+    if not isinstance(enonces, list) or len(enonces) < 4 or not all(
         isinstance(e, dict) and e.get("type") in TYPES_INDICE_GRILLE for e in enonces
     ):
-        erreurs.append(prefixe + "grille-deduction : 6 indices structurés attendus")
+        erreurs.append(prefixe + "grille-deduction : indices structurés attendus")
 
     reponse_bloc = item.get("reponse") if isinstance(item.get("reponse"), dict) else {}
     grille = reponse_bloc.get("grille")
     valeur = reponse_bloc.get("valeur")
-    if not isinstance(grille, list) or len(grille) != 9:
-        erreurs.append(prefixe + "grille-deduction : reponse.grille doit contenir 9 cases")
+    if not isinstance(grille, list) or len(grille) != n * n:
+        erreurs.append(prefixe + f"grille-deduction : reponse.grille doit contenir {n * n} cases")
         return erreurs
 
     cellules = []
@@ -413,28 +425,35 @@ def _erreurs_grille_deduction(item: dict, prefixe: str, contenu: dict) -> list[s
         cellules.append(case)
 
     # Carré latin : chaque figure et chaque couleur, une fois par ligne et par colonne.
-    for r in range(3):
-        ligne_f = sorted(cellules[r * 3 + c][0] for c in range(3))
-        ligne_c = sorted(cellules[r * 3 + c][1] for c in range(3))
+    for r in range(n):
+        ligne_f = sorted(cellules[r * n + c][0] for c in range(n))
+        ligne_c = sorted(cellules[r * n + c][1] for c in range(n))
         if ligne_f != sorted(figures) or ligne_c != sorted(couleurs):
             erreurs.append(prefixe + f"grille-deduction : la ligne {r + 1} ne contient pas chaque figure et couleur")
-    for c in range(3):
-        col_f = sorted(cellules[r * 3 + c][0] for r in range(3))
-        col_c = sorted(cellules[r * 3 + c][1] for r in range(3))
+    for c in range(n):
+        col_f = sorted(cellules[r * n + c][0] for r in range(n))
+        col_c = sorted(cellules[r * n + c][1] for r in range(n))
         if col_f != sorted(figures) or col_c != sorted(couleurs):
             erreurs.append(prefixe + f"grille-deduction : la colonne {c + 1} ne contient pas chaque figure et couleur")
 
     if valeur != ";".join(f"{f}:{c}" for f, c in cellules):
         erreurs.append(prefixe + "grille-deduction : reponse.valeur ne correspond pas à reponse.grille")
 
-    # Chaque indice est vrai pour la solution.
+    # Chaque indice (principal et de secours) est vrai pour la solution.
     index_figure = {f: i for i, f in enumerate(figures)}
     index_couleur = {c: i for i, c in enumerate(couleurs)}
     fig = [index_figure[f] for f, _ in cellules]
     coul = [index_couleur[c] for _, c in cellules]
     for position, indice in enumerate(enonces, start=1):
-        if isinstance(indice, dict) and not _predicat_grille(indice, fig, coul, index_figure, index_couleur):
+        if isinstance(indice, dict) and not _predicat_grille(indice, fig, coul, index_figure, index_couleur, n):
             erreurs.append(prefixe + f"grille-deduction : l'indice {position} contredit la solution")
+    secours = contenu.get("indices")
+    if isinstance(secours, list):
+        for position, indice in enumerate(secours, start=1):
+            if isinstance(indice, dict) and indice.get("type") not in TYPES_INDICE_GRILLE:
+                erreurs.append(prefixe + f"grille-deduction : indice de secours {position} de type inconnu")
+            elif isinstance(indice, dict) and not _predicat_grille(indice, fig, coul, index_figure, index_couleur, n):
+                erreurs.append(prefixe + f"grille-deduction : l'indice de secours {position} contredit la solution")
     return erreurs
 
 

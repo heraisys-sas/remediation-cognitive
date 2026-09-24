@@ -2,6 +2,15 @@
 
 Format : [date] — [périmètre] — description. Les retours informels de l'orthophoniste sont journalisés ici, sans caution clinique.
 
+## 2026-09-24 · Déduction — suite : grille 4×4, indices de secours, nouveaux types
+
+- **Grille 4×4** — nouveau palier 4 du thème « Déduction » : 4 figures (cercle, carré, triangle, losange) × 4 couleurs (rouge, bleu, vert, jaune), carré latin d'ordre 4, **12 indices** à recouper. Le solveur d'unicité travaille désormais **par dimension** (figures / couleurs), ce qui rend la 4×4 rapide et exacte.
+- **Indices de secours** — chaque grille porte 3 indices supplémentaires (`contenu.indices`), révélés un par un par le bouton « Un indice » de l'interface : aide progressive, jamais une punition.
+- **Nouveaux types d'indices** — « dans un coin » et « sur le bord » (coin/bord, figure et couleur), injectés quand ils apportent de l'information ; palier 2 enrichi d'indices de ligne/colonne.
+- **Interface** — grille et palette désormais à taille dynamique (3×3 ou 4×4), glyphe losange et couleur jaune ajoutés, feedback des cases justes/fausses adapté à la taille.
+- **Contrôles** — validateur généralisé à N (carré latin d'ordre 3 ou 4, indices principaux et de secours vrais) ; **779 items / 0 erreur** ; 124 tests au vert.
+- **À vérifier** — passage visuel de la grille 4×4 et du bouton « Un indice » dans le navigateur ; relecture orthophoniste.
+
 ## 2026-09-24 · Déduction — grille logique 3×3 (figures × couleurs)
 
 - **Nouvel exercice** — thème « Déduction » (12 grilles, 3 paliers) : grille 3×3 à remplir avec 3 figures et 3 couleurs, chaque figure et chaque couleur une fois par ligne et par colonne (carré latin), à résoudre en **recoupant six indices** (directs → ligne/colonne → négatifs). Sollicite raisonnement, mémoire de travail et fonctions exécutives.

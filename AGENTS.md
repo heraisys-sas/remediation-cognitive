@@ -16,11 +16,11 @@ Docs d'entrée : `docs/00-produit/vision.md`, `docs/00-produit/cadre-reglementai
 
 ## État courant — sprint 6 livré (2026-09-23)
 
-- **Jouable de bout en bout** : dix thèmes — calcul mental, mémoire, concentration, retrouver le mot, vie sociale, rappel de séries, au quotidien, **déduction** (grille logique 3×3), plus Python/anglais en section « Extra » ; et les écrans transverses (programme, missions & carnet, repères). Lancer `python3 -m uvicorn backend.app.main:app` puis ouvrir `/ui/`.
+- **Jouable de bout en bout** : dix thèmes — calcul mental, mémoire, concentration, retrouver le mot, vie sociale, rappel de séries, au quotidien, **déduction** (grilles logiques 3×3 et 4×4, indices de secours), plus Python/anglais en section « Extra » ; et les écrans transverses (programme, missions & carnet, repères). Lancer `python3 -m uvicorn backend.app.main:app` puis ouvrir `/ui/`.
 - **Principe clinique réaffirmé** : remédiation fonctionnelle plutôt qu'entraînement aux tests (ADR de fait : `docs/10-clinique/remediation.md`).
 
 - **Implémenté** : `engine/` (moteur inchangé) ; `backend/` — `/api/entrainement`, `/api/social`, `/api/programme` (correction par thème, essais assistés, rappel libre au seuil, estimation par fourchette, plan du jour) ; `frontend/` (SPA vanilla : phase de mémorisation temporisée, séries de mots, compte à rebours, propositions cliquables, indices progressifs).
-- **Contenu** : **775 items** + 8 missions + **programme de 8 semaines**, générés de façon déterministe (`tools/generer_memo_concentration.py`, `generer_evocation_social.py`, `generer_rappel_series.py`, `generer_quotidien.py`, `generer_deduction.py`, `generer_programme.py`).
+- **Contenu** : **779 items** + 8 missions + **programme de 8 semaines**, générés de façon déterministe (`tools/generer_memo_concentration.py`, `generer_evocation_social.py`, `generer_rappel_series.py`, `generer_quotidien.py`, `generer_deduction.py`, `generer_programme.py`).
 - **Tests** : 124 passed (`python3 -m pytest -q`). Contrôles : `tools/validate_items.py`, `tools/verifier_reponses.py`, `tools/verifier_interface.py`, `tools/verifier_clinique.py` (garde-fous cliniques automatisés).
 - **Contrat d'API figé** : `docs/30-technique/api-contract.md` — toute modification = ADR. Décisions : ADR-004 (aides progressives, options, périmètre social), ADR-005 (empan de mots, rappel libre, rythme), ADR-006 (programme, progression non contrainte).
 - **Garde-fou produit** : le programme propose un rythme — il ne mesure rien. Aucun taux d'observance ni de complétion ne doit être calculé (ADR-006).

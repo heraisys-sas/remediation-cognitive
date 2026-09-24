@@ -1337,45 +1337,69 @@ function nomTheme(identifiant) {
    Grille de déduction 3×3 : figures × couleurs, indices à recouper
    --------------------------------------------------------------------- */
 
-const GLYPHES = { cercle: "●", carre: "■", triangle: "▲" };
-const TEINTES = { rouge: "#e2574c", bleu: "#5b8dd9", vert: "#5aa469" };
-const NOMS_CASES = [
+const GLYPHES = { cercle: "●", carre: "■", triangle: "▲", losange: "◆" };
+const TEINTES = { rouge: "#e2574c", bleu: "#5b8dd9", vert: "#5aa469", jaune: "#d9b04a" };
+const NOMS_CASES_3 = [
   "en haut à gauche", "en haut au centre", "en haut à droite",
   "au milieu à gauche", "au centre", "au milieu à droite",
   "en bas à gauche", "en bas au centre", "en bas à droite",
 ];
-const NOMS_LIGNES = ["du haut", "du milieu", "du bas"];
-const NOMS_COLONNES = ["de gauche", "du centre", "de droite"];
+const NOMS_LIGNES_3 = ["du haut", "du milieu", "du bas"];
+const NOMS_COLONNES_3 = ["de gauche", "du centre", "de droite"];
+const NOMS_CASES_4 = [
+  "en haut à gauche", "en haut, deuxième", "en haut, troisième", "en haut à droite",
+  "deuxième ligne à gauche", "deuxième ligne, deuxième", "deuxième ligne, troisième", "deuxième ligne à droite",
+  "troisième ligne à gauche", "troisième ligne, deuxième", "troisième ligne, troisième", "troisième ligne à droite",
+  "en bas à gauche", "en bas, deuxième", "en bas, troisième", "en bas à droite",
+];
+const NOMS_LIGNES_4 = ["du haut", "de la deuxième", "de la troisième", "du bas"];
+const NOMS_COLONNES_4 = ["de gauche", "de la deuxième", "de la troisième", "de droite"];
 
-/** Formule un indice structuré en français lisible. */
-function formaterEnonce(indice) {
+function nomsPour(n) {
+  return {
+    cases: n === 4 ? NOMS_CASES_4 : NOMS_CASES_3,
+    lignes: n === 4 ? NOMS_LIGNES_4 : NOMS_LIGNES_3,
+    colonnes: n === 4 ? NOMS_COLONNES_4 : NOMS_COLONNES_3,
+  };
+}
+
+/** Formule un indice structuré en français lisible (n = taille de la grille). */
+function formaterEnonce(indice, n) {
+  const noms = nomsPour(n);
   switch (indice.type) {
-    case "case-couleur": return `La case ${NOMS_CASES[indice.case]} est ${indice.couleur}.`;
-    case "case-figure": return `La case ${NOMS_CASES[indice.case]} contient un ${indice.figure} ${GLYPHES[indice.figure]}.`;
-    case "ligne": return `Le ${indice.figure} ${GLYPHES[indice.figure]} est sur la ligne ${NOMS_LIGNES[indice.ligne]}.`;
-    case "colonne": return `Le ${indice.couleur} est dans la colonne ${NOMS_COLONNES[indice.colonne]}.`;
-    case "pas-couleur": return `La case ${NOMS_CASES[indice.case]} n'est pas ${indice.couleur}.`;
-    case "pas-figure": return `La case ${NOMS_CASES[indice.case]} ne contient pas de ${indice.figure}.`;
+    case "case-couleur": return `La case ${noms.cases[indice.case]} est ${indice.couleur}.`;
+    case "case-figure": return `La case ${noms.cases[indice.case]} contient un ${indice.figure} ${GLYPHES[indice.figure]}.`;
+    case "ligne": return `Le ${indice.figure} ${GLYPHES[indice.figure]} est sur la ligne ${noms.lignes[indice.ligne]}.`;
+    case "colonne": return `Le ${indice.couleur} est dans la colonne ${noms.colonnes[indice.colonne]}.`;
+    case "coin-couleur": return `Le ${indice.couleur} est dans un coin.`;
+    case "coin-figure": return `Le ${indice.figure} ${GLYPHES[indice.figure]} est dans un coin.`;
+    case "bord-couleur": return `Le ${indice.couleur} est sur le bord.`;
+    case "bord-figure": return `Le ${indice.figure} ${GLYPHES[indice.figure]} est sur le bord.`;
+    case "pas-couleur": return `La case ${noms.cases[indice.case]} n'est pas ${indice.couleur}.`;
+    case "pas-figure": return `La case ${noms.cases[indice.case]} ne contient pas de ${indice.figure}.`;
     case "regle":
       return indice.variante === 0
-        ? "Chaque ligne contient les trois couleurs."
-        : "Chaque colonne contient les trois figures.";
+        ? "Chaque ligne contient toutes les couleurs."
+        : "Chaque colonne contient toutes les figures.";
     default: return "";
   }
 }
 
-/** Affiche la grille, la palette de jetons et les indices d'une grille de déduction. */
+/** Affiche la grille, la palette de jetons, les indices et l'indice de secours. */
 function rendreGrille(item) {
   const contenu = item.contenu;
-  etat.grille = Array(9).fill(null);
+  const n = contenu.figures.length;
+  etat.grille = Array(n * n).fill(null);
   etat.jetonChoisi = null;
 
   const plateau = creerElement("div", { classe: "grille-3x3" });
+  plateau.style.gridTemplateColumns = `repeat(${n}, 3rem)`;
+  plateau.style.gridAutoRows = "3rem";
   const cellules = [];
-  for (let c = 0; c < 9; c++) {
+  for (let c = 0; c < n * n; c++) {
     const bouton = creerElement("button", {
       classe: "cellule",
-      attributs: { type: "button", "aria-label": NOMS_CASES[c] },
+      attributs: { type: "button", "aria-label": nomsPour(n).cases[c] },
     });
     bouton.addEventListener("click", () => placerCellule(c, bouton));
     plateau.append(bouton);
@@ -1383,6 +1407,8 @@ function rendreGrille(item) {
   }
 
   const palette = creerElement("div", { classe: "palette", attributs: { "aria-label": "Jetons disponibles" } });
+  palette.style.gridTemplateColumns = `repeat(${n}, 2.7rem)`;
+  palette.style.gridAutoRows = "2.7rem";
   const jetons = [];
   for (const couleur of contenu.couleurs) {
     for (const figure of contenu.figures) {
@@ -1412,7 +1438,7 @@ function rendreGrille(item) {
     attributs: { type: "button" },
   });
   boutonVider.addEventListener("click", () => {
-    etat.grille = Array(9).fill(null);
+    etat.grille = Array(n * n).fill(null);
     etat.jetonChoisi = null;
     for (const j of jetons) j.classList.remove("jeton-actif");
     for (const b of cellules) { b.textContent = ""; b.style.color = ""; }
@@ -1428,12 +1454,34 @@ function rendreGrille(item) {
   });
 
   const indices = creerElement("ul", { classe: "grille-indices" },
-    ...contenu.enonces.map((e) => creerElement("li", { texte: formaterEnonce(e) }))
+    ...contenu.enonces.map((e) => creerElement("li", { texte: formaterEnonce(e, n) }))
+  );
+
+  // Indices de secours : un bouton « Un indice » les révèle un à un.
+  let revele = 0;
+  const secours = Array.isArray(contenu.indices) ? contenu.indices : [];
+  const listeSecours = creerElement("ul", { classe: "grille-indices grille-secours" });
+  const boutonIndice = creerElement("button", {
+    classe: "bouton bouton-secondaire",
+    texte: "Un indice",
+    attributs: { type: "button" },
+  });
+  boutonIndice.addEventListener("click", () => {
+    if (revele < secours.length) {
+      listeSecours.append(creerElement("li", { texte: formaterEnonce(secours[revele], n) }));
+      revele += 1;
+      if (revele >= secours.length) boutonIndice.disabled = true;
+    }
+  });
+  const zoneIndices = creerElement("div", {},
+    indices,
+    listeSecours,
+    secours.length ? boutonIndice : null
   );
 
   refs.zoneGrille.replaceChildren(
     creerElement("div", { classe: "grille-corps" }, plateau, palette),
-    indices,
+    zoneIndices,
     creerElement("div", { classe: "grille-actions" }, boutonVider, boutonValider)
   );
   refs.zoneGrille.hidden = false;
@@ -1462,6 +1510,7 @@ async function soumettreGrille() {
 /** Feedback dédié : solution affichée, cases justes et fausses distinguées. */
 function rendreFeedbackGrille(resultat) {
   const solution = String(resultat.attendue || "").split(";");
+  const n = Math.round(Math.sqrt(solution.length)) || 3;
   refs.carteFeedback.replaceChildren();
   refs.carteFeedback.className =
     "carte-feedback " + (resultat.correcte ? "feedback-correct" : "feedback-incorrect");
@@ -1472,7 +1521,9 @@ function rendreFeedbackGrille(resultat) {
     })
   );
   const plateau = creerElement("div", { classe: "grille-3x3 grille-solution" });
-  for (let c = 0; c < 9; c++) {
+  plateau.style.gridTemplateColumns = `repeat(${n}, 2.6rem)`;
+  plateau.style.gridAutoRows = "2.6rem";
+  for (let c = 0; c < solution.length; c++) {
     const cellule = creerElement("div", { classe: "cellule-solution" });
     const [figure, couleur] = (solution[c] || ":").split(":");
     cellule.textContent = GLYPHES[figure] || "";

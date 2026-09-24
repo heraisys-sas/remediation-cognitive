@@ -41,30 +41,31 @@ def test_grille_deduction_structure_et_correction(client):
 
 def test_grille_deduction_indices_vrais_pour_la_solution():
     """Chaque indice est cohérent avec la solution (garde-fou de validité)."""
-    FIGURES = ["cercle", "carre", "triangle"]
-    COULEURS = ["rouge", "bleu", "vert"]
-
-    def vrai(indice, fig, coul):
+    def vrai(indice, fig, coul, n, ifig, icoul):
+        coins = {0, n - 1, n * (n - 1), n * n - 1}
+        bords = {i for i in range(n * n) if i // n in (0, n - 1) or i % n in (0, n - 1)}
         t = indice["type"]
-        if t == "case-couleur":
-            return coul[indice["case"]] == COULEURS.index(indice["couleur"])
-        if t == "case-figure":
-            return fig[indice["case"]] == FIGURES.index(indice["figure"])
-        if t == "ligne":
-            return FIGURES.index(indice["figure"]) in (fig[indice["ligne"] * 3 + c] for c in range(3))
-        if t == "colonne":
-            return COULEURS.index(indice["couleur"]) in (coul[r * 3 + indice["colonne"]] for r in range(3))
-        if t == "pas-couleur":
-            return coul[indice["case"]] != COULEURS.index(indice["couleur"])
-        if t == "pas-figure":
-            return fig[indice["case"]] != FIGURES.index(indice["figure"])
-        if t == "regle":
-            return True
+        if t == "case-couleur": return coul[indice["case"]] == icoul[indice["couleur"]]
+        if t == "case-figure": return fig[indice["case"]] == ifig[indice["figure"]]
+        if t == "ligne": return ifig[indice["figure"]] in (fig[indice["ligne"] * n + c] for c in range(n))
+        if t == "colonne": return icoul[indice["couleur"]] in (coul[r * n + indice["colonne"]] for r in range(n))
+        if t == "coin-couleur": return any(coul[i] == icoul[indice["couleur"]] for i in coins)
+        if t == "coin-figure": return any(fig[i] == ifig[indice["figure"]] for i in coins)
+        if t == "bord-couleur": return any(coul[i] == icoul[indice["couleur"]] for i in bords)
+        if t == "bord-figure": return any(fig[i] == ifig[indice["figure"]] for i in bords)
+        if t == "pas-couleur": return coul[indice["case"]] != icoul[indice["couleur"]]
+        if t == "pas-figure": return fig[indice["case"]] != ifig[indice["figure"]]
+        if t == "regle": return True
         return False
 
     for item in CONTENU.items("deduction"):
+        figures = item["contenu"]["figures"]
+        couleurs = item["contenu"]["couleurs"]
+        n = len(figures)
+        ifig = {f: i for i, f in enumerate(figures)}
+        icoul = {c: i for i, c in enumerate(couleurs)}
         cellules = item["reponse"]["grille"]
-        fig = [FIGURES.index(f) for f, _ in cellules]
-        coul = [COULEURS.index(c) for _, c in cellules]
-        for indice in item["contenu"]["enonces"]:
-            assert vrai(indice, fig, coul), f"{item['id']} : indice incohérent {indice}"
+        fig = [ifig[f] for f, _ in cellules]
+        coul = [icoul[c] for _, c in cellules]
+        for indice in item["contenu"]["enonces"] + item["contenu"].get("indices", []):
+            assert vrai(indice, fig, coul, n, ifig, icoul), f"{item['id']} : indice incohérent {indice}"

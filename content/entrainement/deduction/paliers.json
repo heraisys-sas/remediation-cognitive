@@ -19,11 +19,20 @@
     },
     {
       "id": "de-palier-3",
-      "description": "Indices négatifs : il faut éliminer pour déduire",
+      "description": "Indices négatifs : éliminer pour déduire",
       "prerequis": [
         "de-palier-2"
       ],
       "fichier": "paliers/palier-03.json",
+      "nb_items": 4
+    },
+    {
+      "id": "de-palier-4",
+      "description": "Grille 4×4 : plus de figures, de couleurs et d'indices",
+      "prerequis": [
+        "de-palier-3"
+      ],
+      "fichier": "paliers/palier-04.json",
       "nb_items": 4
     }
   ]
