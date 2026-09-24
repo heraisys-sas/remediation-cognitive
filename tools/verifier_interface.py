@@ -50,6 +50,34 @@ def corps_fonction(source: str, nom: str) -> str | None:
     return None
 
 
+def _routes_serveur() -> set[str]:
+    """Chemins déclarés par les routeurs du backend (préfixe + chemin)."""
+    routes: set[str] = set()
+    for routeur in (RACINE_DEPOT / "backend" / "app" / "api").rglob("router.py"):
+        texte = routeur.read_text(encoding="utf-8")
+        trouvé = re.search(r'prefix="([^"]*)"', texte)
+        prefixe = trouvé.group(1) if trouvé else ""
+        for correspondance in re.finditer(r'@router\.(?:get|post)\("([^"]*)"', texte):
+            routes.add(prefixe + correspondance.group(1))
+    return routes
+
+
+def _chemins_interface(source: str) -> list[tuple[str, str]]:
+    """(appel, chemin complet) utilisés par l'interface pour les périmètres annexes.
+
+    Chaque fonction d'appel (``fetchMissions``…) délègue à ``fetchJson(API_X, chemin)`` :
+    on en déduit la base pour reconstruire le chemin réellement appelé.
+    """
+    bases = dict(re.findall(r'const (API_\w+) = "([^"]+)";', source))
+    appels: list[tuple[str, str]] = []
+    for nom, base_const in re.findall(
+        r"function (\w+)\([^)]*\)\s*\{\s*return fetchJson\((API_\w+)", source
+    ):
+        for correspondance in re.finditer(rf'{nom}\("([^"]*)"', source):
+            appels.append((nom, bases.get(base_const, "") + correspondance.group(1)))
+    return appels
+
+
 def main() -> int:
     source = SCRIPT.read_text(encoding="utf-8")
     page = PAGE.read_text(encoding="utf-8")
@@ -67,6 +95,18 @@ def main() -> int:
         erreurs += len(manquants)
     else:
         print("Cohérence des identifiants : OK")
+
+    # Chemins d'API appelés par l'interface ↔ routes déclarées par le serveur.
+    routes = _routes_serveur()
+    appels = _chemins_interface(source)
+    inconnus = [(nom, chemin) for nom, chemin in appels if chemin not in routes]
+    print(f"Chemins d'API appelés : {len(appels)} | routes serveur : {len(routes)}")
+    if inconnus:
+        for nom, chemin in inconnus:
+            print(f"ERREUR : {nom} appelle {chemin!r} — route inexistante côté serveur")
+        erreurs += len(inconnus)
+    else:
+        print("Correspondance interface ↔ routes : OK")
 
     # Réinitialisation du champ de saisie entre deux questions.
     for fonction, attendu in FONCTIONS_A_REINITIALISER.items():

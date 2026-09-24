@@ -1065,7 +1065,7 @@ async function ouvrirMissions() {
   );
   afficherVue("missions");
   try {
-    const donnees = await fetchMissions("/missions");
+    const donnees = await fetchMissions("");
     etat.missions = donnees.missions || [];
     rendreMissions(etat.missions, donnees.ressentis || []);
     masquerBandeau();
