@@ -84,6 +84,31 @@ def _clef_texte(valeur) -> str:
     return " ".join(sans_accents.replace("«", " ").replace("»", " ").split())
 
 
+#: Nombres écrits en lettres → chiffres (tolérance de saisie des réponses de la
+#: vie quotidienne : « deux » vaut « 2 », « dix » vaut « 10 »…).
+_NUMERAUX_QUOTIDIEN = {
+    "zero": "0", "un": "1", "une": "1", "deux": "2", "trois": "3",
+    "quatre": "4", "cinq": "5", "six": "6", "sept": "7", "huit": "8",
+    "neuf": "9", "dix": "10", "onze": "11", "douze": "12", "treize": "13",
+    "quatorze": "14", "quinze": "15", "seize": "16", "vingt": "20",
+    "trente": "30", "quarante": "40", "cinquante": "50", "soixante": "60",
+    "cent": "100", "mille": "1000",
+}
+
+
+def _clef_quotidien(valeur) -> str:
+    """Clé des réponses de la vie quotidienne : nombres et heures normalisés.
+
+    - « 14 h 30 », « 14h30 » et « 14:30 » sont équivalents ;
+    - « deux » et « 2 » sont équivalents (nombre en toutes lettres → chiffres).
+    """
+    texte = _clef_texte(valeur)
+    # Normalise le séparateur d'heure entre deux chiffres (h ou :), avec ou sans espaces.
+    texte = re.sub(r"(\d)\s*[:h]\s*(\d)", r"\1 h \2", texte)
+    jetons = [_NUMERAUX_QUOTIDIEN.get(jeton, jeton) for jeton in texte.split()]
+    return " ".join(jetons)
+
+
 def _mots(texte) -> list[str]:
     """Découpe un texte en mots normalisés (accents, casse et ponctuation ignorés)."""
     return [
@@ -173,9 +198,11 @@ def corriger(theme: str, item: dict, reponse) -> bool:
     if theme == "deduction":
         return _corriger_grille(item, reponse)
     if theme == "quotidien":
+        if item.get("type") == "prise-message":
+            return _clef_quotidien(reponse) == _clef_quotidien(attendue)
         if item.get("type") == "estimation-temps":
             return _corriger_estimation(item, reponse)
-        # prise-message et etape-suivante : texte tolérant (accents, casse, espaces).
+        # etape-suivante et les familles à choix : la proposition choisie, en clair.
         return _clef_texte(reponse) == _clef_texte(attendue)
     if theme == "rappel-series":
         return _corriger_rappel_libre(item, reponse)

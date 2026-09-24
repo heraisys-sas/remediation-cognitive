@@ -37,6 +37,22 @@ def _attendue(theme, item_id):
     return CONTENU.item(theme, item_id)["reponse"]["valeur"]
 
 
+def test_prise_message_tolerances_formats(client):
+    """Le fond compte, pas la forme : « deux » = « 2 », « 14 h 30 » = « 14h30 » = « 14:30 »."""
+    payload = _demarrer(client, "quotidien")
+    items = {item["id"]: item for item in payload["items"]}
+
+    # « Combien de bouteilles ? » → « deux » : le chiffre 2 est accepté.
+    deux = items["qo-1-message-02"]
+    assert _repondre(client, "quotidien", payload["session_id"], deux["id"], "2").json()["correcte"] is True
+    assert _repondre(client, "quotidien", payload["session_id"], deux["id"], "deux").json()["correcte"] is True
+
+    # « À quelle heure ? » → « 14 h 30 » : variantes d'écriture acceptées.
+    heure = items["qo-1-message-01"]
+    for variante in ("14h30", "14:30", "14 h 30"):
+        assert _repondre(client, "quotidien", payload["session_id"], heure["id"], variante).json()["correcte"] is True
+
+
 def test_prise_message_memoire_de_travail(client):
     """Le message est affiché, le fait demandé en fait partie, et se rappelle."""
     payload = _demarrer(client, "quotidien")
