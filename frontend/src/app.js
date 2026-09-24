@@ -1416,10 +1416,15 @@ function formaterEnonce(indice, n) {
     case "colonne": return `Le ${fc} est dans la colonne ${noms.colonnes[indice.colonne]}.`;
     case "pas-coin": return `Le ${fc} n'est pas dans un coin.`;
     case "pas-bord": return `Le ${fc} n'est pas sur le bord.`;
+    case "ni-ni": return `Le ${fc} n'est ni dans un coin ni sur le bord.`;
     case "voisin-gauche": return `Le ${fc} est juste à gauche du ${fc2}.`;
     case "voisin-droite": return `Le ${fc} est juste à droite du ${fc2}.`;
     case "voisin-dessus": return `Le ${fc} est juste au-dessus du ${fc2}.`;
     case "voisin-dessous": return `Le ${fc} est juste en dessous du ${fc2}.`;
+    case "autre-ligne": return `Le ${fc} n'est pas sur la même ligne que le ${fc2}.`;
+    case "autre-colonne": return `Le ${fc} n'est pas dans la même colonne que le ${fc2}.`;
+    case "comparaison": return `Le ${fc} est à gauche du ${fc2}, sur la même ligne.`;
+    case "si-alors": return `Si le ${fc} est dans un coin, alors le ${fc2} est sur le bord.`;
     case "regle":
       return indice.variante === 0
         ? "Chaque figure colorée apparaît une seule fois dans la grille."

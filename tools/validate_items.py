@@ -374,8 +374,9 @@ def erreurs_contenu(item: dict, prefixe: str) -> list[str]:
 
 #: Types d'indices admis dans une grille de déduction.
 TYPES_INDICE_GRILLE = {
-    "case", "ligne", "colonne", "pas-coin", "pas-bord",
-    "voisin-gauche", "voisin-droite", "voisin-dessus", "voisin-dessous", "regle",
+    "case", "ligne", "colonne", "pas-coin", "pas-bord", "ni-ni",
+    "voisin-gauche", "voisin-droite", "voisin-dessus", "voisin-dessous",
+    "autre-ligne", "autre-colonne", "comparaison", "si-alors", "regle",
 }
 
 
@@ -410,20 +411,28 @@ def _predicat_grille(indice: dict, fig: list[int], coul: list[int],
         return case not in coins
     if t == "pas-bord":
         return case not in bords
-    if t.startswith("voisin-"):
-        if indice.get("figure2") not in index_figure or indice.get("couleur2") not in index_couleur:
-            return False
+    if t == "ni-ni":
+        return case not in coins and case not in bords
+    if indice.get("figure2") in index_figure and indice.get("couleur2") in index_couleur:
         autre = _cellule_grille(fig, coul, index_figure[indice["figure2"]], index_couleur[indice["couleur2"]])
         if autre < 0:
             return False
-        if t == "voisin-droite":
-            return autre == case + 1 and case % n != n - 1
         if t == "voisin-gauche":
+            return autre == case + 1 and case % n != n - 1
+        if t == "voisin-droite":
             return autre == case - 1 and case % n != 0
         if t == "voisin-dessous":
             return autre == case + n
         if t == "voisin-dessus":
             return autre == case - n
+        if t == "autre-ligne":
+            return case // n != autre // n
+        if t == "autre-colonne":
+            return case % n != autre % n
+        if t == "comparaison":
+            return case // n == autre // n and case < autre
+        if t == "si-alors":
+            return case not in coins or autre in bords
     return False
 
 

@@ -10,7 +10,7 @@
     },
     {
       "id": "de-palier-2",
-      "description": "Indices de ligne et de colonne à recouper",
+      "description": "Indices relationnels : voisinage, à gauche de, pas sur la même ligne",
       "prerequis": [
         "de-palier-1"
       ],
@@ -19,7 +19,7 @@
     },
     {
       "id": "de-palier-3",
-      "description": "Indices de voisinage : deux figures colorées reliées entre elles",
+      "description": "Indices négatifs et conditionnels : éliminer et enchaîner (« si… alors »)",
       "prerequis": [
         "de-palier-2"
       ],
@@ -28,7 +28,7 @@
     },
     {
       "id": "de-palier-4",
-      "description": "Grille 4×4 : plus de figures colorées et d'indices",
+      "description": "Grille 4×4 : plus de figures colorées, indices variés",
       "prerequis": [
         "de-palier-3"
       ],

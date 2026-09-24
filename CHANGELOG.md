@@ -2,6 +2,15 @@
 
 Format : [date] — [périmètre] — description. Les retours informels de l'orthophoniste sont journalisés ici, sans caution clinique.
 
+## 2026-09-24 · Déduction — méthode des logic grids (taxonomie complète, aucun indice décoratif)
+
+- **Recherche** — les puzzles de logique classiques suivent une taxonomie d'indices (*true/false*, *multi-elimination*, *neither/nor*, *either/or*, *greater/lesser*) et deux règles de qualité : **chaque combinaison est unique** et **aucune référence n'est répétée inutilement** dans les indices.
+- **Taxonomie implémentée** — directs (`case`), ligne/colonne, relationnels (`voisin-*`, `comparaison`, `autre-ligne`, `autre-colonne`), négatifs (`pas-coin`, `pas-bord`, `ni-ni`) et **conditionnels** (`si-alors`). Chacun porte deux informations.
+- **Plus d'indice décoratif** — le générateur ne complète plus avec des « règles » répétées : les indices sont ceux qui lèvent réellement une ambiguïté (4 à 9 par grille selon les cas). La règle générale reste dans la consigne.
+- **Méthode de résolution enseignée** — la consigne porte la stratégie : noter les certitudes, barrer les impossibilités, recouper les indices reliant deux figures.
+- **Bug corrigé** — les indices `voisin-gauche`/`voisin-droite` étaient inversés entre la construction et le test, et le solveur ne vérifiait pas que la solution survivante était bien celle visée : des indices pouvaient contredire la solution stockée. Les deux sont corrigés (le second est désormais vérifié).
+- **Contrôles** — **851 items / 0 erreur** ; **135 tests**.
+
 ## 2026-09-24 · Déduction — indices à deux informations (retour d'usage)
 
 - **Règle clarifiée** — chaque **figure colorée** (un carré bleu, un cercle rouge…) apparaît **une seule fois** dans la grille. La solution est un couple de carrés latins **orthogonaux** : c'est cette unicité qui rend les indices non ambigus.

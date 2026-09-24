@@ -24,7 +24,7 @@ def test_grille_deduction_structure_et_correction(client):
     assert item["type"] == "grille-deduction"
     assert len(item["contenu"]["figures"]) == 3
     assert len(item["contenu"]["couleurs"]) == 3
-    assert len(item["contenu"]["enonces"]) == 6
+    assert 4 <= len(item["contenu"]["enonces"]) <= 9   # aucun indice décoratif
     assert "reponse" not in item                    # la solution ne fuit jamais
 
     solution = CONTENU.item("deduction", item["id"])["reponse"]["valeur"]
@@ -61,12 +61,17 @@ def test_grille_deduction_indices_vrais_pour_la_solution():
         if t == "colonne": return case % n == indice["colonne"]
         if t == "pas-coin": return case not in coins
         if t == "pas-bord": return case not in bords
-        if t.startswith("voisin-"):
+        if t == "ni-ni": return case not in coins and case not in bords
+        if "figure2" in indice:
             autre = cellule(fig, coul, ifig[indice["figure2"]], icoul[indice["couleur2"]])
-            if t == "voisin-droite": return autre == case + 1 and case % n != n - 1
-            if t == "voisin-gauche": return autre == case - 1 and case % n != 0
+            if t == "voisin-gauche": return autre == case + 1 and case % n != n - 1
+            if t == "voisin-droite": return autre == case - 1 and case % n != 0
             if t == "voisin-dessous": return autre == case + n
             if t == "voisin-dessus": return autre == case - n
+            if t == "autre-ligne": return case // n != autre // n
+            if t == "autre-colonne": return case % n != autre % n
+            if t == "comparaison": return case // n == autre // n and case < autre
+            if t == "si-alors": return case not in coins or autre in bords
         return False
 
     for item in CONTENU.items("deduction"):
