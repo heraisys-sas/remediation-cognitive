@@ -45,3 +45,13 @@ Leçon : dans un entraînement répétitif, **la pédagogie doit décroître** �
 - Le stimulus devient « ce qui est affiché » pendant son affichage : le bouton « Écouter » le relit donc à la demande, même si l'automatique est coupé.
 
 Leçon : un défaut automatisé doit rester **réversible en un geste** et **persistant**, sinon l'utilisateur subit le réglage au lieu de le piloter.
+
+## Suite (même jour) — dictée affichée au fur et à mesure
+
+Demande : voir la réponse orale se former à l'écran.
+
+- `capacites.js` demande maintenant les **résultats provisoires** (`interimResults = true`) et expose `onPartiel(texte)` (pendant la parole) en plus de `onResultat(texte)` (phrase définitive).
+- `app.js` écrit la transcription **dans le champ de réponse** au fil de l'eau, en conservant ce qui était déjà saisi, et signale l'écoute par un liseré sur le champ.
+- Effet : la personne voit ce qui a été compris **avant** de valider, et peut corriger au clavier.
+
+Rappel consigné : selon le navigateur, la reconnaissance est **sur l'appareil** (Safari) ou **distante** (Chrome → serveurs Google). Pour de la voix sensible, préférer le mode « sur l'appareil ».

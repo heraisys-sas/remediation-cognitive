@@ -2,6 +2,14 @@
 
 Format : [date] — [périmètre] — description. Les retours informels de l'orthophoniste sont journalisés ici, sans caution clinique.
 
+## 2026-09-25 · Dictée : la réponse s'écrit en direct
+
+- **Transcription au fur et à mesure** — pendant la dictée, ce qui est entendu s'affiche **dans le champ de réponse** au fil de la parole (résultats provisoires), puis le texte définitif remplace le provisoire. On voit donc ce qui a été compris **avant** de valider.
+- **Rien n'est écrasé** — le texte déjà saisi avant la dictée est conservé et complété.
+- **Repère visuel** — le champ s'entoure d'un liseré pendant l'écoute.
+- **Rappel de confidentialité** — selon le navigateur, la reconnaissance peut être **sur l'appareil** (Safari/Siri) ou passer par un service distant (Chrome utilise souvent les serveurs de Google). Pour un usage sensible, préférer un navigateur en mode « sur l'appareil », comme indiqué dans `docs/30-technique/pistes-extension-ia.md`.
+- **Contrôles** — 811 items / 0 erreur ; 143 tests.
+
 ## 2026-09-25 · Réponses dictées : les nombres en lettres sont compris
 
 - **Bug corrigé** — une réponse donnée à voix haute dans un exercice de calcul (« six ») était refusée alors que 6 était attendu. La comparaison numérique n'acceptait que les chiffres ; elle comprend désormais les **nombres en toutes lettres** (« six » = 6, « quarante-deux » = 42, « quatre-vingt-dix-sept » = 97, « deux cent trente » = 230), y compris avec la ponctuation finale qu'ajoute la dictée (« six. »).

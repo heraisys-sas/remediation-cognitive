@@ -920,3 +920,9 @@ body {
 .lecture-auto input { width: 1.05rem; height: 1.05rem; accent-color: var(--accent); }
 
 .ligne-audio .bouton { margin-top: 0; }
+
+/* Champ en cours de dictée : on voit que la transcription est vivante. */
+.champ-dictee {
+  border-color: var(--accent);
+  box-shadow: 0 0 0 2px color-mix(in oklch, var(--accent) 25%, transparent);
+}

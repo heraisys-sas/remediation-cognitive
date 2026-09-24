@@ -15,16 +15,27 @@ const Capacites = (() => {
   const syntheseDisponible = () => typeof window.speechSynthesis !== "undefined"
     && typeof window.SpeechSynthesisUtterance !== "undefined";
 
-  /** Écoute le micro et appelle `onResultat(texte)` à la fin de la phrase. */
-  function dicter({ onResultat, onDebut, onFin, onErreur } = {}) {
+  /** Écoute le micro et transcrit au fur et à mesure.
+   *  `onPartiel(texte)` est appelé pendant la parole (texte provisoire),
+   *  `onResultat(texte)` à la fin de la phrase (texte définitif). */
+  function dicter({ onPartiel, onResultat, onDebut, onFin, onErreur } = {}) {
     if (!Reconnaissance) return null;
     const ecoute = new Reconnaissance();
     ecoute.lang = "fr-FR";
-    ecoute.interimResults = false;
+    ecoute.interimResults = true;   // transcription au fur et à mesure
+    ecoute.continuous = false;
     ecoute.maxAlternatives = 1;
+    let definitif = "";
     ecoute.onresult = (evenement) => {
-      const texte = evenement.results?.[0]?.[0]?.transcript || "";
-      if (texte && onResultat) onResultat(texte.trim());
+      let provisoire = "";
+      for (let i = evenement.resultIndex; i < evenement.results.length; i++) {
+        const morceau = evenement.results[i][0]?.transcript || "";
+        if (evenement.results[i].isFinal) definitif += morceau;
+        else provisoire += morceau;
+      }
+      const texte = (definitif + provisoire).trim();
+      if (provisoire && onPartiel) onPartiel(texte);
+      if (definitif.trim() && onResultat) onResultat(definitif.trim());
     };
     ecoute.onerror = (evenement) => { if (onErreur) onErreur(evenement.error || "erreur"); };
     ecoute.onend = () => { if (onFin) onFin(); };

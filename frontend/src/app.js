@@ -1729,11 +1729,26 @@ function brancherEvenements() {
   });
   refs.boutonDicter.addEventListener("click", () => {
     if (!etat.session || etat.repondu) return;
+    const prefixe = refs.champReponse.value.trim();   // ne pas écraser ce qui est déjà saisi
+    const afficher = (texte) => {
+      refs.champReponse.value = [prefixe, texte].filter(Boolean).join(" ");
+    };
     CAPACITES.dicter({
-      onDebut: () => { refs.boutonDicter.textContent = "🎙️ Je t'écoute…"; },
-      onResultat: (texte) => { refs.champReponse.value = texte; },
-      onFin: () => { refs.boutonDicter.textContent = "🎤 Répondre à voix haute"; },
-      onErreur: () => { refs.boutonDicter.textContent = "🎤 Répondre à voix haute"; },
+      onDebut: () => {
+        refs.boutonDicter.textContent = "🎙️ Je t'écoute…";
+        refs.champReponse.classList.add("champ-dictee");
+      },
+      // Transcription au fur et à mesure : la réponse s'écrit en direct.
+      onPartiel: afficher,
+      onResultat: (texte) => { afficher(texte); refs.champReponse.focus(); },
+      onFin: () => {
+        refs.boutonDicter.textContent = "🎤 Répondre à voix haute";
+        refs.champReponse.classList.remove("champ-dictee");
+      },
+      onErreur: () => {
+        refs.boutonDicter.textContent = "🎤 Répondre à voix haute";
+        refs.champReponse.classList.remove("champ-dictee");
+      },
     });
   });
   refs.boutonRetourJournal.addEventListener("click", revenirAuxThemes);
