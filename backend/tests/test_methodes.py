@@ -64,6 +64,35 @@ def test_gmt_plan_et_auto_instruction(client, tmp_path):
 # -- Analyse du mot : SFA / PCA ------------------------------------------------
 
 
+# -- Vérification de plan et repérage d'information -----------------------------
+
+
+def test_plan_a_verifier(client, tmp_path):
+    """Palier 4 : le plan est affiché, l'étape mal placée est à identifier."""
+    _forcer_palier(tmp_path, "methodes", 4)
+    payload = _demarrer(client, "methodes")
+    item = payload["items"][0]
+    assert item["type"] == "plan-a-verifier"
+    assert len(item["contenu"]["plan"]) == 3
+    bonne = _attendue("methodes", item["id"])
+    assert bonne in item["contenu"]["options"]
+    assert _repondre(client, "methodes", payload["session_id"], item["id"], bonne).json()["correcte"] is True
+    mauvaise = next(o for o in item["contenu"]["options"] if o != bonne)
+    assert _repondre(client, "methodes", payload["session_id"], item["id"], mauvaise).json()["correcte"] is False
+
+
+def test_reperer_info_dans_un_document(client, tmp_path):
+    """Palier 5 : le document est affiché temporisé, l'information est à retrouver."""
+    _forcer_palier(tmp_path, "methodes", 5)
+    payload = _demarrer(client, "methodes")
+    item = payload["items"][0]
+    assert item["type"] == "reperer-info"
+    assert item["contenu"]["affichage"]["mode"] == "texte"
+    assert _repondre(
+        client, "methodes", payload["session_id"], item["id"], _attendue("methodes", item["id"])
+    ).json()["correcte"] is True
+
+
 def test_analyse_mot_sfa_et_pca(client, tmp_path):
     """SFA (palier 6) et PCA (palier 7) : l'utilisateur génère des attributs puis nomme."""
     for palier, methode in ((6, "semantique"), (7, "phonologique")):

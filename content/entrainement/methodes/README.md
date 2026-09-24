@@ -4,11 +4,13 @@
 
 | Palier | Méthode | Ce qui est entraîné |
 |---|---|---|
-| 1 | **PQRST** — Parcourir, Question, Lire, énoncer, Tester | mémoire de textes : lire avec une intention et se tester |
-| 2 | **Goal Management Training** — but, étapes, vérification | planification : choisir le but puis le plan cohérent |
-| 3 | **Auto-instruction** (Meichenbaum) — « qu'est-ce que je dois faire ? comment ? vérifie » | autorégulation : se poser la bonne question avant d'agir |
+| 1 | **PQRST** — Parcourir, Question, Lire, énoncer, Tester | mémoire de textes : **deux questions de mémoire par texte** |
+| 2 | **Goal Management Training** — but, étapes, vérification | planification : choisir le plan d'étapes cohérent |
+| 3 | **Auto-instruction** (Meichenbaum) — « qu'est-ce que je dois faire ? comment ? vérifie » | autorégulation : la question à se poser avant d'agir |
+| 4 | **Vérification de plan** — le « V » de GMT | relire un plan ordonné et repérer l'étape mal placée |
+| 5 | **Repérer l'information** — attention sélective | trouver l'information utile dans un courrier, une notice, une affichette |
 
-6 items au palier 1, 8 aux paliers 2 et 3, soit **22 items**.
+12 items au palier 1, 8 aux autres, soit **44 items**.
 
 ## Comment c'est entraîné
 
@@ -16,7 +18,7 @@
 - **GMT** : la situation est donnée, la bonne réponse est le **plan d'étapes cohérent** (et non une étape isolée) ; la consigne invite à vérifier son plan.
 - **Auto-instruction** : la bonne réponse est la **première question à se poser** (portant sur le but et le moyen), pas sur le résultat attendu.
 
-Toutes les réponses sont à choix, pour une correction objective. La méthode elle-même est un **fil conducteur** : elle revient dans les consignes d'autres familles (planification, méthodes).
+Toutes les réponses sont à choix, pour une correction objective. La méthode elle-même est un **fil conducteur** : un panneau « Méthode — avant de répondre » (les trois questions d'auto-instruction) est disponible à tout moment pendant les séances, toutes familles confondues.
 
 ## Génération
 

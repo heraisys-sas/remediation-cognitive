@@ -1,0 +1,338 @@
+[
+  {
+    "id": "mt-5-reperer-01",
+    "type": "reperer-info",
+    "module": "entrainement",
+    "theme": "methodes",
+    "fonctions_ciblees": [
+      "attention-selective",
+      "recuperation"
+    ],
+    "palier": 5,
+    "prerequis": [
+      "mt-palier-4"
+    ],
+    "cap_complexite": null,
+    "contenu": {
+      "consigne": "Stratégie de lecture : avant de chercher, repère ce que la question demande, puis cherche seulement cette information dans le document.",
+      "enonce": "À quelle date est le rendez-vous reporté ?",
+      "options": [
+        "le 19 mars",
+        "le 14 mars",
+        "le 12 mars"
+      ],
+      "aide": "Cherche le mot de la question (date, heure, lieu) dans le document.",
+      "affichage": {
+        "mode": "texte",
+        "duree_totale_ms": 20000,
+        "elements": [
+          "Votre rendez-vous du 12 mars est reporté au 19 mars à 14 h."
+        ]
+      }
+    },
+    "reponse": {
+      "valeur": "le 19 mars"
+    },
+    "meta": {
+      "auteur": "redaction-assistee (tools/generer_methodes.py)",
+      "date_creation": "2026-09-24",
+      "relecture_ortho": {
+        "statut": "a_revoir"
+      }
+    }
+  },
+  {
+    "id": "mt-5-reperer-02",
+    "type": "reperer-info",
+    "module": "entrainement",
+    "theme": "methodes",
+    "fonctions_ciblees": [
+      "attention-selective",
+      "recuperation"
+    ],
+    "palier": 5,
+    "prerequis": [
+      "mt-palier-4"
+    ],
+    "cap_complexite": null,
+    "contenu": {
+      "consigne": "Stratégie de lecture : avant de chercher, repère ce que la question demande, puis cherche seulement cette information dans le document.",
+      "enonce": "Que ne faut-il pas faire ?",
+      "options": [
+        "le laisser allumé",
+        "l'utiliser près de l'eau",
+        "le poser par terre"
+      ],
+      "aide": "Cherche le mot de la question (date, heure, lieu) dans le document.",
+      "affichage": {
+        "mode": "texte",
+        "duree_totale_ms": 20000,
+        "elements": [
+          "Ne pas utiliser cet appareil près d'une source d'eau."
+        ]
+      }
+    },
+    "reponse": {
+      "valeur": "l'utiliser près de l'eau"
+    },
+    "meta": {
+      "auteur": "redaction-assistee (tools/generer_methodes.py)",
+      "date_creation": "2026-09-24",
+      "relecture_ortho": {
+        "statut": "a_revoir"
+      }
+    }
+  },
+  {
+    "id": "mt-5-reperer-03",
+    "type": "reperer-info",
+    "module": "entrainement",
+    "theme": "methodes",
+    "fonctions_ciblees": [
+      "attention-selective",
+      "recuperation"
+    ],
+    "palier": 5,
+    "prerequis": [
+      "mt-palier-4"
+    ],
+    "cap_complexite": null,
+    "contenu": {
+      "consigne": "Stratégie de lecture : avant de chercher, repère ce que la question demande, puis cherche seulement cette information dans le document.",
+      "enonce": "Pourquoi la piscine est-elle fermée ?",
+      "options": [
+        "pour les vacances",
+        "pour nettoyage",
+        "pour travaux"
+      ],
+      "aide": "Cherche le mot de la question (date, heure, lieu) dans le document.",
+      "affichage": {
+        "mode": "texte",
+        "duree_totale_ms": 20000,
+        "elements": [
+          "Piscine fermée du 1er au 15 août pour travaux."
+        ]
+      }
+    },
+    "reponse": {
+      "valeur": "pour travaux"
+    },
+    "meta": {
+      "auteur": "redaction-assistee (tools/generer_methodes.py)",
+      "date_creation": "2026-09-24",
+      "relecture_ortho": {
+        "statut": "a_revoir"
+      }
+    }
+  },
+  {
+    "id": "mt-5-reperer-04",
+    "type": "reperer-info",
+    "module": "entrainement",
+    "theme": "methodes",
+    "fonctions_ciblees": [
+      "attention-selective",
+      "recuperation"
+    ],
+    "palier": 5,
+    "prerequis": [
+      "mt-palier-4"
+    ],
+    "cap_complexite": null,
+    "contenu": {
+      "consigne": "Stratégie de lecture : avant de chercher, repère ce que la question demande, puis cherche seulement cette information dans le document.",
+      "enonce": "Où se retrouve-t-on ?",
+      "options": [
+        "devant la gare",
+        "devant la pharmacie",
+        "à la maison"
+      ],
+      "aide": "Cherche le mot de la question (date, heure, lieu) dans le document.",
+      "affichage": {
+        "mode": "texte",
+        "duree_totale_ms": 20000,
+        "elements": [
+          "Je passe te prendre à 18 h devant la pharmacie."
+        ]
+      }
+    },
+    "reponse": {
+      "valeur": "devant la pharmacie"
+    },
+    "meta": {
+      "auteur": "redaction-assistee (tools/generer_methodes.py)",
+      "date_creation": "2026-09-24",
+      "relecture_ortho": {
+        "statut": "a_revoir"
+      }
+    }
+  },
+  {
+    "id": "mt-5-reperer-05",
+    "type": "reperer-info",
+    "module": "entrainement",
+    "theme": "methodes",
+    "fonctions_ciblees": [
+      "attention-selective",
+      "recuperation"
+    ],
+    "palier": 5,
+    "prerequis": [
+      "mt-palier-4"
+    ],
+    "cap_complexite": null,
+    "contenu": {
+      "consigne": "Stratégie de lecture : avant de chercher, repère ce que la question demande, puis cherche seulement cette information dans le document.",
+      "enonce": "Quand a lieu la collecte ?",
+      "options": [
+        "tous les mardis",
+        "le premier lundi du mois",
+        "le premier mardi du mois"
+      ],
+      "aide": "Cherche le mot de la question (date, heure, lieu) dans le document.",
+      "affichage": {
+        "mode": "texte",
+        "duree_totale_ms": 20000,
+        "elements": [
+          "La collecte des encombrants a lieu le premier mardi du mois."
+        ]
+      }
+    },
+    "reponse": {
+      "valeur": "le premier mardi du mois"
+    },
+    "meta": {
+      "auteur": "redaction-assistee (tools/generer_methodes.py)",
+      "date_creation": "2026-09-24",
+      "relecture_ortho": {
+        "statut": "a_revoir"
+      }
+    }
+  },
+  {
+    "id": "mt-5-reperer-06",
+    "type": "reperer-info",
+    "module": "entrainement",
+    "theme": "methodes",
+    "fonctions_ciblees": [
+      "attention-selective",
+      "recuperation"
+    ],
+    "palier": 5,
+    "prerequis": [
+      "mt-palier-4"
+    ],
+    "cap_complexite": null,
+    "contenu": {
+      "consigne": "Stratégie de lecture : avant de chercher, repère ce que la question demande, puis cherche seulement cette information dans le document.",
+      "enonce": "Combien de comprimés le soir ?",
+      "options": [
+        "trois",
+        "un",
+        "deux"
+      ],
+      "aide": "Cherche le mot de la question (date, heure, lieu) dans le document.",
+      "affichage": {
+        "mode": "texte",
+        "duree_totale_ms": 20000,
+        "elements": [
+          "Prendre un comprimé le matin, deux le soir."
+        ]
+      }
+    },
+    "reponse": {
+      "valeur": "deux"
+    },
+    "meta": {
+      "auteur": "redaction-assistee (tools/generer_methodes.py)",
+      "date_creation": "2026-09-24",
+      "relecture_ortho": {
+        "statut": "a_revoir"
+      }
+    }
+  },
+  {
+    "id": "mt-5-reperer-07",
+    "type": "reperer-info",
+    "module": "entrainement",
+    "theme": "methodes",
+    "fonctions_ciblees": [
+      "attention-selective",
+      "recuperation"
+    ],
+    "palier": 5,
+    "prerequis": [
+      "mt-palier-4"
+    ],
+    "cap_complexite": null,
+    "contenu": {
+      "consigne": "Stratégie de lecture : avant de chercher, repère ce que la question demande, puis cherche seulement cette information dans le document.",
+      "enonce": "Quels moyens de paiement sont acceptés ?",
+      "options": [
+        "espèces uniquement",
+        "carte bancaire uniquement",
+        "virement ou chèque"
+      ],
+      "aide": "Cherche le mot de la question (date, heure, lieu) dans le document.",
+      "affichage": {
+        "mode": "texte",
+        "duree_totale_ms": 20000,
+        "elements": [
+          "Facture à régler avant le 30, par virement ou par chèque."
+        ]
+      }
+    },
+    "reponse": {
+      "valeur": "virement ou chèque"
+    },
+    "meta": {
+      "auteur": "redaction-assistee (tools/generer_methodes.py)",
+      "date_creation": "2026-09-24",
+      "relecture_ortho": {
+        "statut": "a_revoir"
+      }
+    }
+  },
+  {
+    "id": "mt-5-reperer-08",
+    "type": "reperer-info",
+    "module": "entrainement",
+    "theme": "methodes",
+    "fonctions_ciblees": [
+      "attention-selective",
+      "recuperation"
+    ],
+    "palier": 5,
+    "prerequis": [
+      "mt-palier-4"
+    ],
+    "cap_complexite": null,
+    "contenu": {
+      "consigne": "Stratégie de lecture : avant de chercher, repère ce que la question demande, puis cherche seulement cette information dans le document.",
+      "enonce": "À quelle heure le magasin ferme-t-il aujourd'hui ?",
+      "options": [
+        "16 h",
+        "18 h",
+        "19 h"
+      ],
+      "aide": "Cherche le mot de la question (date, heure, lieu) dans le document.",
+      "affichage": {
+        "mode": "texte",
+        "duree_totale_ms": 20000,
+        "elements": [
+          "Le magasin ferme exceptionnellement à 16 h aujourd'hui."
+        ]
+      }
+    },
+    "reponse": {
+      "valeur": "16 h"
+    },
+    "meta": {
+      "auteur": "redaction-assistee (tools/generer_methodes.py)",
+      "date_creation": "2026-09-24",
+      "relecture_ortho": {
+        "statut": "a_revoir"
+      }
+    }
+  }
+]

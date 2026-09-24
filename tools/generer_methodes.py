@@ -1,17 +1,19 @@
 #!/usr/bin/env python3
 """Génère le thème « methodes » — méthodes et stratégies (remédiation).
 
-Trois méthodes orthophoniques / neuropsychologiques, appliquées à des tâches :
+Cinq familles, chacune appliquant une méthode établie :
 
-- ``pqrst`` — mémoire de textes : on lit un court texte avec une méthode
-  (Parcourir, Question, Lire, énoncer, Tester) puis on répond à une question ;
-- ``but-etapes`` — Goal Management Training : choisir le but, puis le plan
-  d'étapes correct (et « vérifier » son plan) ;
-- ``auto-instruction`` — auto-instruction (Meichenbaum) : quelle question se
-  poser d'abord, puis quelle action en découle.
+- ``pqrst`` — mémoire de textes : lire avec une intention (Parcourir, Question,
+  Lire, énoncer, Tester), puis répondre **deux fois** de mémoire au même texte ;
+- ``but-etapes`` — Goal Management Training : choisir le plan d'étapes cohérent ;
+- ``auto-instruction`` — auto-instruction (Meichenbaum) : la question à se poser
+  avant d'agir ;
+- ``plan-a-verifier`` — le « Vérifier » de GMT : repérer l'étape mal placée d'un plan ;
+- ``reperer-info`` — attention sélective : retrouver l'information utile dans un
+  document court (courrier, notice, affichette).
 
-Toutes les questions sont à choix, pour une correction objective ; la méthode
-est rappelée dans la consigne (c'est elle qui est entraînée).
+Les questions sont à choix (correction objective) ; la méthode est rappelée dans
+la consigne — c'est elle qui est entraînée.
 
 Usage :
 
@@ -41,37 +43,50 @@ def melanger(famille: str, options: list) -> None:
     rng.shuffle(options)
 
 
-# --- PQRST : mémoire de textes ------------------------------------------------
-#: (titre, texte, question, réponse, deux leurres)
+def _meta() -> dict:
+    return {
+        "auteur": AUTEUR,
+        "date_creation": DATE_CREATION,
+        "relecture_ortho": {"statut": "a_revoir"},
+    }
+
+
+# --- PQRST : un texte, deux questions de mémoire -------------------------------
+#: (titre, texte, [(question, bonne, [leurres]), …])
 TEXTES_PQRST = [
     ("Le rendez-vous chez le dentiste",
      "Le rendez-vous est fixé au mardi 12 mars à 15 h. Le cabinet se trouve au deuxième étage, "
      "sans ascenseur. Il faut apporter la carte de mutuelle et arriver dix minutes avant.",
-     "À quelle heure est le rendez-vous ?", "15 h", ["12 h", "16 h"]),
+     [("À quelle heure est le rendez-vous ?", "15 h", ["12 h", "16 h"]),
+      ("Que faut-il apporter ?", "la carte de mutuelle", ["le carnet de santé", "une ordonnance"])]),
     ("La sortie au marché",
      "Le marché a lieu le samedi matin, place de l'église. Les producteurs arrivent vers 7 h et "
      "repartent à 13 h. Le stationnement est gratuit jusqu'à 11 h.",
-     "Quand les producteurs repartent-ils ?", "à 13 h", ["à 7 h", "à 11 h"]),
+     [("Quel jour a lieu le marché ?", "le samedi", ["le dimanche", "le vendredi"]),
+      ("Jusqu'à quelle heure le stationnement est-il gratuit ?", "11 h", ["13 h", "7 h"])]),
     ("La réparation de la chaudière",
      "Le technicien passera jeudi entre 9 h et 11 h. Il faut dégager l'accès au sous-sol et "
      "laisser le portail ouvert. Le devis est de 180 euros.",
-     "Que faut-il laisser ouvert ?", "le portail", ["la fenêtre", "la cave"]),
+     [("Quel jour passe le technicien ?", "jeudi", ["mardi", "vendredi"]),
+      ("Quel est le montant du devis ?", "180 euros", ["80 euros", "280 euros"])]),
     ("Le covoiturage",
      "Le départ est prévu à 8 h 15 devant la gare. La voiture est bleue et il reste deux places. "
      "Le trajet dure environ une heure.",
-     "Combien de places restent ?", "deux", ["trois", "une"]),
+     [("Où est le point de départ ?", "devant la gare", ["devant la mairie", "sur le parking de l'école"]),
+      ("Combien de places restent ?", "deux", ["trois", "une"])]),
     ("L'inscription à la piscine",
      "L'inscription se fait le mercredi après-midi, au guichet du premier étage. Il faut un "
      "certificat médical et une photo. Les cours commencent la semaine suivante.",
-     "Où se fait l'inscription ?", "au guichet du premier étage", ["à l'accueil du rez-de-chaussée", "au bord du bassin"]),
+     [("Quand se fait l'inscription ?", "le mercredi après-midi", ["le lundi matin", "le samedi"]) ,
+      ("Quels documents faut-il ?", "un certificat médical et une photo", ["une pièce d'identité", "une attestation d'assurance"])]),
     ("Le colis en attente",
      "Le colis est arrivé lundi et sera gardé sept jours au point relais. Il se trouve au "
      "tabac de la place. Il faut présenter une pièce d'identité.",
-     "Combien de temps le colis est-il gardé ?", "sept jours", ["trois jours", "un mois"]),
+     [("Où se trouve le colis ?", "au tabac de la place", ["à la poste", "chez le gardien"]),
+      ("Combien de temps le colis est-il gardé ?", "sept jours", ["trois jours", "un mois"])]),
 ]
 
-# --- GMT : but, étapes, vérification -----------------------------------------
-#: (situation, plan correct, deux plans incorrects)
+# --- GMT : but et plan d'étapes ------------------------------------------------
 PLANS_GMT = [
     ("Tu veux inviter des amis à dîner samedi soir.",
      "Choisir le menu, vérifier les ingrédients, faire les courses, puis cuisiner",
@@ -99,8 +114,20 @@ PLANS_GMT = [
      ["Acheter tout l'équipement avant de choisir l'activité", "Attendre d'être motivé"]),
 ]
 
-# --- Auto-instruction (Meichenbaum) ------------------------------------------
-#: (tâche, première question à se poser, deux questions moins utiles)
+# --- Plan à vérifier : repérer l'étape mal placée -------------------------------
+#: (plan proposé (ordre erroné), étape mal placée, deux autres étapes)
+PLANS_A_VERIFIER = [
+    (["Protéger les meubles", "Peindre le mur", "Acheter la peinture"], "Acheter la peinture"),
+    (["Emballer les affaires", "Réserver le camion", "Transporter les cartons"], "Réserver le camion"),
+    (["Remplir le formulaire", "Lire la liste des pièces", "Joindre les documents"], "Lire la liste des pièces"),
+    (["Verser l'eau", "Faire bouillir l'eau", "Ajouter les pâtes"], "Faire bouillir l'eau"),
+    (["Éteindre le four", "Préchauffer le four", "Enfourner le gâteau"], "Préchauffer le four"),
+    (["Signer le courrier", "Écrire l'adresse", "Mettre le timbre"], "Écrire l'adresse"),
+    (["Prendre le médicament", "Lire la posologie", "Ouvrir la boîte"], "Lire la posologie"),
+    (["Déposer le colis", "Fermer le colis", "Écrire l'adresse"], "Fermer le colis"),
+]
+
+# --- Auto-instruction : la question à se poser d'abord --------------------------
 AUTO_INSTRUCTION = [
     ("Tu ouvres une boîte de médicaments avec une notice.",
      "Qu'est-ce que je dois faire exactement, et dans quel ordre ?",
@@ -128,19 +155,34 @@ AUTO_INSTRUCTION = [
      ["Est-ce que je vais retenir ?", "Ai-je tout lu ?"]),
 ]
 
+# --- Repérer l'information utile dans un document -------------------------------
+#: (document court, question, bonne réponse, deux leurres)
+REPERER_INFO = [
+    ("Votre rendez-vous du 12 mars est reporté au 19 mars à 14 h.",
+     "À quelle date est le rendez-vous reporté ?", "le 19 mars", ["le 12 mars", "le 14 mars"]),
+    ("Ne pas utiliser cet appareil près d'une source d'eau.",
+     "Que ne faut-il pas faire ?", "l'utiliser près de l'eau", ["le laisser allumé", "le poser par terre"]),
+    ("Piscine fermée du 1er au 15 août pour travaux.",
+     "Pourquoi la piscine est-elle fermée ?", "pour travaux", ["pour les vacances", "pour nettoyage"]),
+    ("Je passe te prendre à 18 h devant la pharmacie.",
+     "Où se retrouve-t-on ?", "devant la pharmacie", ["devant la gare", "à la maison"]),
+    ("La collecte des encombrants a lieu le premier mardi du mois.",
+     "Quand a lieu la collecte ?", "le premier mardi du mois", ["le premier lundi du mois", "tous les mardis"]),
+    ("Prendre un comprimé le matin, deux le soir.",
+     "Combien de comprimés le soir ?", "deux", ["un", "trois"]),
+    ("Facture à régler avant le 30, par virement ou par chèque.",
+     "Quels moyens de paiement sont acceptés ?", "virement ou chèque", ["espèces uniquement", "carte bancaire uniquement"]),
+    ("Le magasin ferme exceptionnellement à 16 h aujourd'hui.",
+     "À quelle heure le magasin ferme-t-il aujourd'hui ?", "16 h", ["18 h", "19 h"]),
+]
 
-def _item_choix(famille: str, palier: int, numero: int, type_item: str,
-                prerequis: list[str], bonne: str, leurres: list[str],
-                consigne: str, enonce: str, aide: str,
-                fonctions: list[str], extra: dict | None = None) -> dict:
+
+def _item(famille: str, palier: int, numero: int, type_item: str, prerequis: list[str],
+          bonne: str, leurres: list[str], consigne: str, enonce: str, aide: str,
+          fonctions: list[str], extra: dict | None = None) -> dict:
     options = [bonne] + list(leurres)
     melanger(famille, options)
-    contenu = {
-        "consigne": consigne,
-        "enonce": enonce,
-        "options": options,
-        "aide": aide,
-    }
+    contenu = {"consigne": consigne, "enonce": enonce, "options": options, "aide": aide}
     if extra:
         contenu.update(extra)
     return {
@@ -154,57 +196,80 @@ def _item_choix(famille: str, palier: int, numero: int, type_item: str,
         "cap_complexite": None,
         "contenu": contenu,
         "reponse": {"valeur": bonne},
-        "meta": {
-            "auteur": AUTEUR,
-            "date_creation": DATE_CREATION,
-            "relecture_ortho": {"statut": "a_revoir"},
-        },
+        "meta": _meta(),
     }
 
 
 def construire_paliers() -> list[list[dict]]:
     paliers: list[list[dict]] = []
+    methode_pqrst = ("Méthode PQRST : Parcours le texte, pose-toi une question, Lis-le, reformule-le, "
+                     "puis Teste-toi de mémoire (le texte sera caché).")
 
-    # Palier 1 — PQRST : lire avec une méthode, puis répondre de mémoire.
+    # Palier 1 — PQRST : deux questions de mémoire par texte.
     items = []
-    for numero, (titre, texte, question, bonne, leurres) in enumerate(TEXTES_PQRST, start=1):
-        items.append(_item_choix(
-            "pqrst", 1, numero, "pqrst", [],
-            bonne, leurres,
-            "Méthode PQRST : Parcours le texte, pose-toi une question, Lis-le, reformule-le pour toi, "
-            "puis Teste-toi en répondant de mémoire (le texte est caché).",
-            question,
-            "Reformule le texte en une phrase avant de répondre.",
-            ["memorisation-longue", "recuperation"],
-            extra={"affichage": {"mode": "texte", "duree_totale_ms": 25000, "elements": [texte]}} ,
-        ))
+    numero = 0
+    for titre, texte, questions in TEXTES_PQRST:
+        for question, bonne, leurres in questions:
+            numero += 1
+            items.append(_item(
+                "pqrst", 1, numero, "pqrst", [], bonne, leurres,
+                methode_pqrst, question,
+                "Reformule le texte en une phrase avant de répondre.",
+                ["memorisation-longue", "recuperation"],
+                extra={"affichage": {"mode": "texte", "duree_totale_ms": 25000, "elements": [texte]},
+                       "titre_texte": titre},
+            ))
     paliers.append(items)
 
-    # Palier 2 — Goal Management Training : le but, puis le plan.
-    items = []
-    for numero, (situation, bonne, leurres) in enumerate(PLANS_GMT, start=1):
-        items.append(_item_choix(
-            "gmt", 2, numero, "but-etapes", ["mt-palier-1"],
-            bonne, leurres,
-            "Goal Management Training : pose d'abord ton but, puis choisis le plan d'étapes cohérent, "
-            "et vérifie-le avant de te lancer.",
-            situation,
-            "Un bon plan met d'abord ce qui rend la suite possible.",
-            ["planification", "fonctions-executives"],
-        ))
+    # Palier 2 — GMT : le but, puis le plan.
+    items = [
+        _item("gmt", 2, numero, "but-etapes", ["mt-palier-1"], bonne, leurres,
+              "Goal Management Training : pose d'abord ton but, puis choisis le plan d'étapes cohérent, "
+              "et vérifie-le avant de te lancer.", situation,
+              "Un bon plan met d'abord ce qui rend la suite possible.",
+              ["planification", "fonctions-executives"])
+        for numero, (situation, bonne, leurres) in enumerate(PLANS_GMT, start=1)
+    ]
     paliers.append(items)
 
     # Palier 3 — Auto-instruction : la question à se poser d'abord.
+    items = [
+        _item("autoinstruction", 3, numero, "auto-instruction", ["mt-palier-2"], bonne, leurres,
+              "Auto-instruction : avant d'agir, mets-toi une consigne à voix basse — "
+              "« qu'est-ce que je dois faire ? » puis « comment ? » puis « vérifie ».",
+              tache,
+              "La première question porte sur le but et le moyen, pas sur le résultat attendu.",
+              ["fonctions-executives", "planification"])
+        for numero, (tache, bonne, leurres) in enumerate(AUTO_INSTRUCTION, start=1)
+    ]
+    paliers.append(items)
+
+    # Palier 4 — Plan à vérifier : le « Vérifier » de GMT.
     items = []
-    for numero, (tache, bonne, leurres) in enumerate(AUTO_INSTRUCTION, start=1):
-        items.append(_item_choix(
-            "autoinstruction", 3, numero, "auto-instruction", ["mt-palier-2"],
-            bonne, leurres,
-            "Auto-instruction : avant d'agir, mets-toi une consigne à voix basse — "
-            "« qu'est-ce que je dois faire ? » puis « comment ? » puis « vérifie ».",
-            tache,
-            "La première question porte sur le but et le moyen, pas sur le résultat attendu.",
-            ["fonctions-executives", "planification"],
+    for numero, (plan, fautive) in enumerate(PLANS_A_VERIFIER, start=1):
+        leurres = [etape for etape in plan if etape != fautive]
+        items.append(_item(
+            "verif", 4, numero, "plan-a-verifier", ["mt-palier-3"], fautive, leurres,
+            "Goal Management Training — étape « Vérifier » : relis le plan dans l'ordre et repère "
+            "l'étape qui n'est pas à sa place.",
+            "Ce plan est mal ordonné. Quelle étape n'est pas à sa place ?",
+            "Demande-toi ce qui doit forcément venir avant le reste.",
+            ["planification", "fonctions-executives"],
+            extra={"plan": plan},
+        ))
+    paliers.append(items)
+
+    # Palier 5 — Repérer l'information utile.
+    items = []
+    for numero, (document, question, bonne, leurres) in enumerate(REPERER_INFO, start=1):
+        items.append(_item(
+            "reperer", 5, numero, "reperer-info", ["mt-palier-4"], bonne, leurres,
+            "Stratégie de lecture : avant de chercher, repère ce que la question demande, "
+            "puis cherche seulement cette information dans le document.",
+            question,
+            "Cherche le mot de la question (date, heure, lieu) dans le document.",
+            ["attention-selective", "recuperation"],
+            extra={"affichage": {"mode": "texte", "duree_totale_ms": 20000, "elements": [document]}},
         ))
     paliers.append(items)
 
@@ -213,9 +278,11 @@ def construire_paliers() -> list[list[dict]]:
 
 def _manifest(paliers: list[list[dict]]) -> dict:
     descriptions = [
-        "PQRST : lire un texte avec une méthode, puis répondre de mémoire",
+        "PQRST : deux questions de mémoire par texte",
         "Goal Management Training : choisir le but et le plan d'étapes",
         "Auto-instruction : quelle question se poser avant d'agir",
+        "Vérification d'un plan : repérer l'étape mal placée",
+        "Repérer l'information utile dans un document",
     ]
     return {
         "theme": "methodes",

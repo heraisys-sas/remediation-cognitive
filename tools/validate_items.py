@@ -65,6 +65,8 @@ TYPES_A_CHOIX = {
     "pqrst",
     "but-etapes",
     "auto-instruction",
+    "plan-a-verifier",
+    "reperer-info",
 }
 
 #: Types dont le contenu porte une hiérarchie d'indices (``contenu.indices``).

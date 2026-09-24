@@ -733,7 +733,7 @@ function afficherQuestion(item) {
   refs.zoneChoix.hidden = !avecChoix;
   refs.zoneIndices.replaceChildren();
   refs.zoneIndices.hidden = true;
-  if (avecChoix) rendreOptions(options);
+  if (avecChoix) rendreOptions(options, item);
   refs.formulaire.hidden = avecChoix;
 
   // Indices progressifs (accès au mot) : proposés, jamais imposés.
@@ -754,8 +754,15 @@ function afficherQuestion(item) {
 }
 
 /** Propositions cliquables : un clic vaut réponse soumise (pas de saisie). */
-function rendreOptions(options) {
+function rendreOptions(options, item) {
   const bac = creerElement("div", { classe: "grille-options" });
+  // Certains items à choix (plan à vérifier) présentent d'abord un plan ordonné.
+  const plan = item && item.contenu ? item.contenu.plan : null;
+  if (Array.isArray(plan) && plan.length) {
+    bac.append(creerElement("ol", { classe: "plan-propose" },
+      ...plan.map((etape) => creerElement("li", { texte: etape }))
+    ));
+  }
   for (const option of options) {
     const bouton = creerElement("button", {
       classe: "bouton bouton-option",

@@ -860,3 +860,30 @@ body {
 .generation-etape label { color: var(--texte-secondaire); font-size: 0.95rem; }
 
 .generation-note { margin: 0; font-size: 0.9rem; color: var(--texte-secondaire); font-style: italic; }
+
+/* Plan proposé (items « plan à vérifier ») : liste ordonnée, lisible. */
+.plan-propose {
+  margin: 0 0 0.9rem;
+  padding-left: 1.4rem;
+  display: grid;
+  gap: 0.35rem;
+}
+
+/* Panneau « Méthode » (auto-instruction) : rappel discret, toujours disponible. */
+.methode-panneau {
+  margin: 1rem 0 0;
+  padding: 0.75rem 1rem;
+  border: 1px solid var(--bordure);
+  border-radius: 12px;
+  background: var(--surface);
+  color: var(--texte-secondaire);
+}
+
+.methode-panneau summary { cursor: pointer; }
+
+.methode-panneau ol {
+  margin: 0.5rem 0 0;
+  padding-left: 1.3rem;
+  display: grid;
+  gap: 0.25rem;
+}

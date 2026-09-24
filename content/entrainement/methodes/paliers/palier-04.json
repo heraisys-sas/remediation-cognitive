@@ -1,0 +1,322 @@
+[
+  {
+    "id": "mt-4-verif-01",
+    "type": "plan-a-verifier",
+    "module": "entrainement",
+    "theme": "methodes",
+    "fonctions_ciblees": [
+      "planification",
+      "fonctions-executives"
+    ],
+    "palier": 4,
+    "prerequis": [
+      "mt-palier-3"
+    ],
+    "cap_complexite": null,
+    "contenu": {
+      "consigne": "Goal Management Training — étape « Vérifier » : relis le plan dans l'ordre et repère l'étape qui n'est pas à sa place.",
+      "enonce": "Ce plan est mal ordonné. Quelle étape n'est pas à sa place ?",
+      "options": [
+        "Acheter la peinture",
+        "Protéger les meubles",
+        "Peindre le mur"
+      ],
+      "aide": "Demande-toi ce qui doit forcément venir avant le reste.",
+      "plan": [
+        "Protéger les meubles",
+        "Peindre le mur",
+        "Acheter la peinture"
+      ]
+    },
+    "reponse": {
+      "valeur": "Acheter la peinture"
+    },
+    "meta": {
+      "auteur": "redaction-assistee (tools/generer_methodes.py)",
+      "date_creation": "2026-09-24",
+      "relecture_ortho": {
+        "statut": "a_revoir"
+      }
+    }
+  },
+  {
+    "id": "mt-4-verif-02",
+    "type": "plan-a-verifier",
+    "module": "entrainement",
+    "theme": "methodes",
+    "fonctions_ciblees": [
+      "planification",
+      "fonctions-executives"
+    ],
+    "palier": 4,
+    "prerequis": [
+      "mt-palier-3"
+    ],
+    "cap_complexite": null,
+    "contenu": {
+      "consigne": "Goal Management Training — étape « Vérifier » : relis le plan dans l'ordre et repère l'étape qui n'est pas à sa place.",
+      "enonce": "Ce plan est mal ordonné. Quelle étape n'est pas à sa place ?",
+      "options": [
+        "Emballer les affaires",
+        "Réserver le camion",
+        "Transporter les cartons"
+      ],
+      "aide": "Demande-toi ce qui doit forcément venir avant le reste.",
+      "plan": [
+        "Emballer les affaires",
+        "Réserver le camion",
+        "Transporter les cartons"
+      ]
+    },
+    "reponse": {
+      "valeur": "Réserver le camion"
+    },
+    "meta": {
+      "auteur": "redaction-assistee (tools/generer_methodes.py)",
+      "date_creation": "2026-09-24",
+      "relecture_ortho": {
+        "statut": "a_revoir"
+      }
+    }
+  },
+  {
+    "id": "mt-4-verif-03",
+    "type": "plan-a-verifier",
+    "module": "entrainement",
+    "theme": "methodes",
+    "fonctions_ciblees": [
+      "planification",
+      "fonctions-executives"
+    ],
+    "palier": 4,
+    "prerequis": [
+      "mt-palier-3"
+    ],
+    "cap_complexite": null,
+    "contenu": {
+      "consigne": "Goal Management Training — étape « Vérifier » : relis le plan dans l'ordre et repère l'étape qui n'est pas à sa place.",
+      "enonce": "Ce plan est mal ordonné. Quelle étape n'est pas à sa place ?",
+      "options": [
+        "Joindre les documents",
+        "Lire la liste des pièces",
+        "Remplir le formulaire"
+      ],
+      "aide": "Demande-toi ce qui doit forcément venir avant le reste.",
+      "plan": [
+        "Remplir le formulaire",
+        "Lire la liste des pièces",
+        "Joindre les documents"
+      ]
+    },
+    "reponse": {
+      "valeur": "Lire la liste des pièces"
+    },
+    "meta": {
+      "auteur": "redaction-assistee (tools/generer_methodes.py)",
+      "date_creation": "2026-09-24",
+      "relecture_ortho": {
+        "statut": "a_revoir"
+      }
+    }
+  },
+  {
+    "id": "mt-4-verif-04",
+    "type": "plan-a-verifier",
+    "module": "entrainement",
+    "theme": "methodes",
+    "fonctions_ciblees": [
+      "planification",
+      "fonctions-executives"
+    ],
+    "palier": 4,
+    "prerequis": [
+      "mt-palier-3"
+    ],
+    "cap_complexite": null,
+    "contenu": {
+      "consigne": "Goal Management Training — étape « Vérifier » : relis le plan dans l'ordre et repère l'étape qui n'est pas à sa place.",
+      "enonce": "Ce plan est mal ordonné. Quelle étape n'est pas à sa place ?",
+      "options": [
+        "Faire bouillir l'eau",
+        "Ajouter les pâtes",
+        "Verser l'eau"
+      ],
+      "aide": "Demande-toi ce qui doit forcément venir avant le reste.",
+      "plan": [
+        "Verser l'eau",
+        "Faire bouillir l'eau",
+        "Ajouter les pâtes"
+      ]
+    },
+    "reponse": {
+      "valeur": "Faire bouillir l'eau"
+    },
+    "meta": {
+      "auteur": "redaction-assistee (tools/generer_methodes.py)",
+      "date_creation": "2026-09-24",
+      "relecture_ortho": {
+        "statut": "a_revoir"
+      }
+    }
+  },
+  {
+    "id": "mt-4-verif-05",
+    "type": "plan-a-verifier",
+    "module": "entrainement",
+    "theme": "methodes",
+    "fonctions_ciblees": [
+      "planification",
+      "fonctions-executives"
+    ],
+    "palier": 4,
+    "prerequis": [
+      "mt-palier-3"
+    ],
+    "cap_complexite": null,
+    "contenu": {
+      "consigne": "Goal Management Training — étape « Vérifier » : relis le plan dans l'ordre et repère l'étape qui n'est pas à sa place.",
+      "enonce": "Ce plan est mal ordonné. Quelle étape n'est pas à sa place ?",
+      "options": [
+        "Enfourner le gâteau",
+        "Éteindre le four",
+        "Préchauffer le four"
+      ],
+      "aide": "Demande-toi ce qui doit forcément venir avant le reste.",
+      "plan": [
+        "Éteindre le four",
+        "Préchauffer le four",
+        "Enfourner le gâteau"
+      ]
+    },
+    "reponse": {
+      "valeur": "Préchauffer le four"
+    },
+    "meta": {
+      "auteur": "redaction-assistee (tools/generer_methodes.py)",
+      "date_creation": "2026-09-24",
+      "relecture_ortho": {
+        "statut": "a_revoir"
+      }
+    }
+  },
+  {
+    "id": "mt-4-verif-06",
+    "type": "plan-a-verifier",
+    "module": "entrainement",
+    "theme": "methodes",
+    "fonctions_ciblees": [
+      "planification",
+      "fonctions-executives"
+    ],
+    "palier": 4,
+    "prerequis": [
+      "mt-palier-3"
+    ],
+    "cap_complexite": null,
+    "contenu": {
+      "consigne": "Goal Management Training — étape « Vérifier » : relis le plan dans l'ordre et repère l'étape qui n'est pas à sa place.",
+      "enonce": "Ce plan est mal ordonné. Quelle étape n'est pas à sa place ?",
+      "options": [
+        "Signer le courrier",
+        "Écrire l'adresse",
+        "Mettre le timbre"
+      ],
+      "aide": "Demande-toi ce qui doit forcément venir avant le reste.",
+      "plan": [
+        "Signer le courrier",
+        "Écrire l'adresse",
+        "Mettre le timbre"
+      ]
+    },
+    "reponse": {
+      "valeur": "Écrire l'adresse"
+    },
+    "meta": {
+      "auteur": "redaction-assistee (tools/generer_methodes.py)",
+      "date_creation": "2026-09-24",
+      "relecture_ortho": {
+        "statut": "a_revoir"
+      }
+    }
+  },
+  {
+    "id": "mt-4-verif-07",
+    "type": "plan-a-verifier",
+    "module": "entrainement",
+    "theme": "methodes",
+    "fonctions_ciblees": [
+      "planification",
+      "fonctions-executives"
+    ],
+    "palier": 4,
+    "prerequis": [
+      "mt-palier-3"
+    ],
+    "cap_complexite": null,
+    "contenu": {
+      "consigne": "Goal Management Training — étape « Vérifier » : relis le plan dans l'ordre et repère l'étape qui n'est pas à sa place.",
+      "enonce": "Ce plan est mal ordonné. Quelle étape n'est pas à sa place ?",
+      "options": [
+        "Ouvrir la boîte",
+        "Prendre le médicament",
+        "Lire la posologie"
+      ],
+      "aide": "Demande-toi ce qui doit forcément venir avant le reste.",
+      "plan": [
+        "Prendre le médicament",
+        "Lire la posologie",
+        "Ouvrir la boîte"
+      ]
+    },
+    "reponse": {
+      "valeur": "Lire la posologie"
+    },
+    "meta": {
+      "auteur": "redaction-assistee (tools/generer_methodes.py)",
+      "date_creation": "2026-09-24",
+      "relecture_ortho": {
+        "statut": "a_revoir"
+      }
+    }
+  },
+  {
+    "id": "mt-4-verif-08",
+    "type": "plan-a-verifier",
+    "module": "entrainement",
+    "theme": "methodes",
+    "fonctions_ciblees": [
+      "planification",
+      "fonctions-executives"
+    ],
+    "palier": 4,
+    "prerequis": [
+      "mt-palier-3"
+    ],
+    "cap_complexite": null,
+    "contenu": {
+      "consigne": "Goal Management Training — étape « Vérifier » : relis le plan dans l'ordre et repère l'étape qui n'est pas à sa place.",
+      "enonce": "Ce plan est mal ordonné. Quelle étape n'est pas à sa place ?",
+      "options": [
+        "Déposer le colis",
+        "Écrire l'adresse",
+        "Fermer le colis"
+      ],
+      "aide": "Demande-toi ce qui doit forcément venir avant le reste.",
+      "plan": [
+        "Déposer le colis",
+        "Fermer le colis",
+        "Écrire l'adresse"
+      ]
+    },
+    "reponse": {
+      "valeur": "Fermer le colis"
+    },
+    "meta": {
+      "auteur": "redaction-assistee (tools/generer_methodes.py)",
+      "date_creation": "2026-09-24",
+      "relecture_ortho": {
+        "statut": "a_revoir"
+      }
+    }
+  }
+]

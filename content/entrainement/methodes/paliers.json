@@ -3,10 +3,10 @@
   "paliers": [
     {
       "id": "mt-palier-1",
-      "description": "PQRST : lire un texte avec une méthode, puis répondre de mémoire",
+      "description": "PQRST : deux questions de mémoire par texte",
       "prerequis": [],
       "fichier": "paliers/palier-01.json",
-      "nb_items": 6
+      "nb_items": 12
     },
     {
       "id": "mt-palier-2",
@@ -24,6 +24,24 @@
         "mt-palier-2"
       ],
       "fichier": "paliers/palier-03.json",
+      "nb_items": 8
+    },
+    {
+      "id": "mt-palier-4",
+      "description": "Vérification d'un plan : repérer l'étape mal placée",
+      "prerequis": [
+        "mt-palier-3"
+      ],
+      "fichier": "paliers/palier-04.json",
+      "nb_items": 8
+    },
+    {
+      "id": "mt-palier-5",
+      "description": "Repérer l'information utile dans un document",
+      "prerequis": [
+        "mt-palier-4"
+      ],
+      "fichier": "paliers/palier-05.json",
       "nb_items": 8
     }
   ]

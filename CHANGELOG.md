@@ -2,6 +2,14 @@
 
 Format : [date] — [périmètre] — description. Les retours informels de l'orthophoniste sont journalisés ici, sans caution clinique.
 
+## 2026-09-24 · Méthodes — approfondissement (PQRST ×2, vérification de plan, repérage d'info)
+
+- **PQRST** — chaque texte est désormais testé par **deux questions de mémoire** (12 items au lieu de 6) : on ne peut pas réussir en retenant une seule information.
+- **Vérification de plan** (nouveau, palier 4) — le « Vérifier » de GMT : un plan mal ordonné est affiché et l'utilisateur doit **repérer l'étape mal placée**. C'est la composante de vérification qui manquait.
+- **Repérer l'information** (nouveau, palier 5) — attention sélective en situation : un court document (courrier, notice, affichette) s'affiche temporisé, et l'utilisateur cherche l'information demandée. Stratégie enseignée : repérer d'abord ce que la question demande.
+- **Auto-instruction transversale** — un panneau « Méthode — avant de répondre » (trois questions) est disponible à tout moment pendant les séances, toutes familles confondues : la méthode cesse d'être un exercice isolé.
+- **Contrôles** — **835 items / 0 erreur** ; **134 tests** (PQRST double, plan à vérifier, repérage d'information).
+
 ## 2026-09-24 · Évaluation vs entraînement + quatre méthodes de remédiation
 
 - **Section « Évaluation »** — les thèmes sont catégorisés : les mesures (mémoire, concentration, rappel de séries) sont sorties de l'entraînement et regroupées dans une section dédiée, plafonnée à **une séance par jour** (répéter une mesure la fausse). L'entraînement de remédiation garde son dosage (3 séances/jour). API : chaque thème expose sa `categorie`.
