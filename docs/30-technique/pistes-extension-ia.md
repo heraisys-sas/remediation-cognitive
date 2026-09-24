@@ -36,7 +36,10 @@ C'est l'**étape 2**. Aujourd'hui, une réponse libre ne peut être jugée que p
 - **Utilisée dans la correction** : un **synonyme** est accepté pour l'accès lexical, et une
   **formulation proche** pour une prise de message — la réponse est jugée sur le sens, pas sur la forme.
 - **Interface** : bouton « Répondre à voix haute » (masqué si le poste ne l'a pas) et
-  « Écouter la consigne » ; tout retombe proprement sur le clavier.
+  « Écouter » — qui lit **ce qui est affiché** : la consigne pendant la mémorisation,
+  puis la consigne et la question ; jamais la question avant son affichage (pas de fuite
+  d'indice). Le stimulus (texte, liste, fiche) se lit **automatiquement** au clic sur
+  « Afficher ». Tout retombe proprement sur le clavier.
 - **Dépendance optionnelle** : sur macOS, `pyobjc-framework-NaturalLanguage` (installé ici)
   active les empreintes ; ailleurs, le repli lexical fonctionne sans rien installer, et
   l'ajout d'un moteur embarqué (ONNX Runtime + mini-modèle) est la branche à écrire.

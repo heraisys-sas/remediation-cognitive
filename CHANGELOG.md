@@ -2,6 +2,13 @@
 
 Format : [date] — [périmètre] — description. Les retours informels de l'orthophoniste sont journalisés ici, sans caution clinique.
 
+## 2026-09-25 · Écoute : plus de fuite d'indice, et ergonomie de la mémorisation
+
+- **Bug corrigé** — « Écouter » lisait la **question** pendant la phase de mémorisation : la réponse était donc suggérée avant même d'avoir vu le stimulus (signalé sur « au quotidien », mais le défaut concernait toutes les familles à stimulus). Le bouton lit désormais **ce qui est affiché** : la consigne pendant la mémorisation, puis la consigne et la question une fois affichées.
+- **Ergonomie** — le stimulus (texte PQRST, liste de paires, fiche à retenir) se **lit automatiquement** au clic sur « Afficher » : on écoute ce qu'on lit. Les séquences (empans, double tâche) restent visuelles — leur rythme est trop précis pour être doublé par une voix.
+- **Libellé** — le bouton s'appelle simplement « 🔊 Écouter », avec une infobulle qui dit ce qu'il lit.
+- **Contrôles** — **811 items / 0 erreur** ; **140 tests**.
+
 ## 2026-09-25 · Couche de capacités du poste (local) — sens, voix, écoute
 
 - **Similarité sémantique hors ligne** — `backend/app/domain/capacites.py` utilise les **empreintes de phrases d'Apple** (`NLEmbedding`) quand elles existent, sinon une comparaison lexicale (sans aucune dépendance). Seuil **0,78**, calibré sur cas réels (paraphrases 0,80–0,90 ; distracteurs 0,42–0,68).

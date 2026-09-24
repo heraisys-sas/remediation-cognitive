@@ -138,6 +138,7 @@ const etat = {
   themesParId: new Map(),  // thèmes indexés par identifiant (écran programme)
   grille: null,            // grille de déduction : 9 cases (jeton « figure:couleur » ou null)
   jetonChoisi: null,       // jeton de la palette actuellement sélectionné
+  enonceCourant: "",       // ce qui est affiché à l'écran (pour « Écouter »)
 };
 
 /* ---------------------------------------------------------------------
@@ -555,6 +556,9 @@ function afficherPhaseMemo(item) {
   // de l'utilisateur (set attentionnel : on sait quoi chercher avant de voir).
   refs.enonce.textContent = contenu.consigne ?? "Mémorise le contenu affiché.";
   refs.enonce.className = "enonce";
+  // « Écouter » lit la consigne à ce stade : la question n'est pas encore posée.
+  etat.enonceCourant = contenu.consigne ?? "";
+  refs.boutonEcouter.hidden = !CAPACITES.syntheseDisponible();
   refs.zoneAide.hidden = true;
   refs.carteFeedback.hidden = true;
   refs.boutonSuivant.hidden = true;
@@ -596,6 +600,8 @@ function jouerAffichage(item) {
         ...affichage.elements.map((paragraphe) => creerElement("p", { texte: paragraphe }))
       )
     );
+    // Lecture à voix haute du texte affiché : on écoute ce qu'on lit.
+    if (CAPACITES.syntheseDisponible()) CAPACITES.lire(affichage.elements.join(". "));
     etat.minuteriesMemo.push(
       setTimeout(() => jouerDelaiOuQuestion(item), affichage.duree_totale_ms)
     );
@@ -613,6 +619,14 @@ function jouerAffichage(item) {
       );
     }
     plateau.append(liste);
+    // Lecture à voix haute des éléments affichés (paires ou fiche).
+    if (CAPACITES.syntheseDisponible()) {
+      CAPACITES.lire(
+        affichage.elements
+          .map(([gauche, droite]) => (droite ? `${gauche} : ${droite}` : gauche))
+          .join(". ")
+      );
+    }
     etat.minuteriesMemo.push(
       setTimeout(() => jouerDelaiOuQuestion(item), affichage.duree_totale_ms)
     );
@@ -703,6 +717,8 @@ function afficherQuestion(item) {
   refs.enonce.textContent = contenu.enonce ?? "";
   refs.enonce.className =
     "enonce" + (item.type === "prediction-sortie" ? " enonce-code" : "");
+  // « Écouter » lit désormais la consigne ET la question (toutes deux affichées).
+  etat.enonceCourant = [contenu.consigne, contenu.enonce].filter(Boolean).join(". ");
 
   // Aide optionnelle (contenu.aide) : repliée par défaut.
   if (contenu.aide) {
@@ -1660,10 +1676,9 @@ function brancherEvenements() {
 
   // Capacités du poste : écouter la consigne, répondre à voix haute.
   refs.boutonEcouter.addEventListener("click", () => {
-    const item = etat.session && etat.session.items[etat.indexItem];
-    if (!item) return;
-    const texte = [item.contenu.consigne, item.contenu.enonce].filter(Boolean).join(". ");
-    CAPACITES.lire(texte);
+    // On lit ce qui est AFFICHÉ : la consigne pendant la mémorisation, la
+    // consigne et la question ensuite — jamais la question avant son affichage.
+    CAPACITES.lire(etat.enonceCourant);
   });
   refs.boutonDicter.addEventListener("click", () => {
     if (!etat.session || etat.repondu) return;
