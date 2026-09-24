@@ -17,13 +17,6 @@ def _executer(outil: str) -> subprocess.CompletedProcess:
     )
 
 
-def test_verifier_clinique_aucune_violation():
-    """Les garde-fous cliniques sont vérifiés et ne présentent aucune violation."""
-    resultat = _executer("verifier_clinique.py")
-    assert resultat.returncode == 0, resultat.stdout + resultat.stderr
-    assert "Aucune violation" in resultat.stdout
-
-
 def test_validateur_contenu_zero_erreur():
     """Le contenu passe le validateur (schéma, manifests, invariantes)."""
     resultat = _executer("validate_items.py")

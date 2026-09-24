@@ -1,7 +1,7 @@
 #!/usr/bin/env python3
 """Génère le thème « rappel-series » — rappel libre de séries de mots.
 
-Paradigme visé (implémentation originale, aucun matériel protégé reproduit) :
+Paradigme visé :
 plusieurs courtes séries de mots sont présentées l'une après l'autre, puis
 l'utilisateur doit **rappeler librement** ce dont il se souvient — tous mots
 confondus, ou seulement ceux de la première série. Deux variantes s'y ajoutent :

@@ -40,7 +40,7 @@ Détail : [feuille de route](docs/00-produit/feuille-de-route.md).
 
 ## Licence
 
-BSD-3-Clause — voir [LICENSE](LICENSE). S'applique au code et au contenu original ; matériel protégé tiers strictement exclu (cf. [cadre réglementaire](docs/00-produit/cadre-reglementaire.md)).
+BSD-3-Clause — voir [LICENSE](LICENSE). S'applique au code et au contenu du dépôt.
 
 ## Décisions ouvertes
 

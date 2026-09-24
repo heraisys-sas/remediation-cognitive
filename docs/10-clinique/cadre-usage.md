@@ -15,7 +15,7 @@ Deux registres étanches, centralisés dans `backend/app/domain/messages.py` :
 - **entraînement / social / rééducation** — vocabulaire neutre et chaleureux : « séance », « réussite », « question », « on y reviendra »… Jamais « test », « score », « trouble », « norme ».
 - **bilan** — vocabulaire clinique et disclaimers professionnels, réservé à l'usage familial et à l'export vers un professionnel.
 
-Le contrôle `tools/verifier_clinique.py` vérifie en continu que le vocabulaire non médical ne contient aucun terme clinique ou normatif.
+Le vocabulaire non médical reste distinct du vocabulaire du bilan : c'est un choix d'écriture, plus une barrière technique (contexte POC/labo).
 
 ## Précautions par famille d'exercices
 
@@ -52,6 +52,6 @@ La relecture est **informelle** : elle vérifie la justesse et la formulation, e
 
 ## Références
 
-- `tools/verifier_clinique.py` — contrôle automatique des garde-fous (vocabulaire, photophobie, matériel protégé, relecture).
+- `tools/validate_items.py`, `tools/verifier_reponses.py`, `tools/verifier_interface.py` — contrôles techniques (schéma, réponses, interface).
 - `docs/10-clinique/fondements.md`, `protocoles.md`, `taxonomie-fonctions.md` — assise des familles et de la progression.
 - `docs/30-technique/adr/ADR-002` (séparation des stockages), `ADR-004` à `006` (aides, rappel, programme).

@@ -13,8 +13,7 @@ Note : le thème d'entraînement « vie sociale » (vignettes d'émotion, répon
 adaptées, intentions) a été RETIRÉ — jugé trop simple à l'usage. Les missions
 sont conservées : c'est l'exposition réelle qui agit, pas l'exercice à l'écran.
 
-Les mots, définitions et situations sont originaux ; aucun matériel protégé
-n'est reproduit. Les indices ne doivent jamais contenir la réponse — la
+Les mots, définitions et situations sont originaux. Les indices ne doivent jamais contenir la réponse — la
 révélation complète est un mode d'interface, pas un indice de contenu.
 
 Usage :

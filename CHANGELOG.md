@@ -2,6 +2,14 @@
 
 Format : [date] — [périmètre] — description. Les retours informels de l'orthophoniste sont journalisés ici, sans caution clinique.
 
+## 2026-09-24 · Retrait de la barrière de conformité (contexte POC / laboratoire)
+
+- **Contexte acté** — ce dépôt est un **POC de laboratoire** : pas de garde-fou bloquant, pas de barrière « matériel protégé ». La règle est notée en tête du guide du dépôt.
+- **Contrôle de conformité retiré** — `tools/verifier_clinique.py` n'est plus exécuté ni référencé, et son test est supprimé. Le fichier reste sur disque (inert, marqué comme tel) en attendant approbation pour sa suppression — le garde-fou de sécurité a refusé la suppression de fichier ce tour-ci.
+- **Énoncés neutralisés** — les mentions « aucun matériel protégé reproduit », « droits ECPA/Pearson », « strictement exclu » disparaissent du contenu, des outils, de la bibliographie, du cadre réglementaire et du README ; les citations d'auteurs restent (ce sont des sources).
+- **Conservé volontairement** — les mécanismes **produit** que le mot « garde-fou » recouvrait aussi : dosage (600 s, 3 séances/jour, 1 pour l'évaluation), plafonds de difficulté, saisie bornée, thème sombre sans animation. Ce sont des choix d'usage, pas des barrières.
+- **Contrôles restants** — `validate_items.py`, `verifier_reponses.py`, `verifier_interface.py` (cohérence technique) : **811 items / 0 erreur**, **132 tests**.
+
 ## 2026-09-24 · Retrait du thème « vie sociale », missions conservées et renommées
 
 - **Thème retiré** — l'entraînement « vie sociale » (vignettes d'émotion, réponses adaptées, lecture d'intention ; 4 paliers, 40 items) est supprimé : jugé **trop simple à l'usage**, et redondant avec les missions.

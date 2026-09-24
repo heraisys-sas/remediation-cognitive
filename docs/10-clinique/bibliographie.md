@@ -4,7 +4,7 @@
 
 - Iverson, McCrory et al. — Consensus de Berlin sur les commotions cérébrales dans le sport (profil symptomatique SPC).
 - Miyake et al. — taxonomie des fonctions exécutives (inhibition, flexibilité, updating).
-- Sohlberg & Mateer — hiérarchie attentionnelle et programme APT (source d'inspiration, matériel protégé : ne pas copier).
+- Sohlberg & Mateer — hiérarchie attentionnelle et programme APT (source d'inspiration).
 - Posner — réseaux attentionnels (alerte, orientation, contrôle exécutif).
 - Baddeley & Wilson — errorless learning.
 
@@ -20,7 +20,7 @@
 ## Outils et algorithmes
 
 - FSRS — algorithme open-source de répétition espacée, successeur de SM-2.
-- Outils francophones de calibration (leur **logique psychométrique**, pas leurs items) : GREFEX, TEA-Ch, BCEFA — droits ECPA/Pearson, matériel protégé.
+- Outils francophones de calibration (leur **logique psychométrique**) : GREFEX, TEA-Ch, BCEFA.
 - PACE — approche orthophonique adaptable aux troubles pragmatiques légers.
 
 ## Réglementaire

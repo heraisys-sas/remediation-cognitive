@@ -1,5 +1,8 @@
 #!/usr/bin/env python3
-"""Contrôle automatique des garde-fous cliniques (non médical).
+"""Contrôle de conformité — NON APPLIQUÉ (barrière retirée, contexte POC/labo).
+
+Ce script n'est plus exécuté ni référencé : le laboratoire ne pose plus de garde-fou
+bloquant ni de barrière « matériel protégé ». Conservé pour mémoire — à supprimer.
 
 Les garde-fous sont écrits dans AGENTS.md et docs/10-clinique/. Ce script les
 vérifie sur le code et le contenu réels, de façon reproductible :

@@ -1,6 +1,6 @@
 # Module Mémoire (Entraînement — hors MDR)
 
-**Principe** : entraîner la mémoire de travail et la mémorisation par les familles classiques des techniques d'entraînement cognitif — empan, apprentissage par paires, sonde n-back. Implémentations 100 % originales : la logique des paradigmes est assimilée, **aucun matériel protégé n'est copié** (droits ECPA/Pearson).
+**Principe** : entraîner la mémoire de travail et la mémorisation par les familles classiques des techniques d'entraînement cognitif — empan, apprentissage par paires, sonde n-back. Implémentations originales : la logique des paradigmes est assimilée.
 
 ## Familles
 

@@ -25,7 +25,7 @@ Vocabulaire neutre, ludique modéré. Même moteur que la rééducation ; aucune
 ## Mémoire (sprint 2)
 
 Thème dédié à la mémorisation, fondé sur les techniques classiques d'entraînement
-cognitif (implémentations originales — aucun matériel protégé copié) :
+cognitif (implémentations originales) :
 
 - **Empan de chiffres** (endroit puis envers) : longueur 3 → 6 chiffres par palier ;
   l'envers ajoute la manipulation en mémoire de travail.

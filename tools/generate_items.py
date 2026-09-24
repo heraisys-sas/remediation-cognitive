@@ -24,7 +24,7 @@ Usage :
 
 La date de création est fixée par défaut (régénération déterministe, contenu
 versionné) ; ``--date`` permet de la changer. Contenu généré procéduralement :
-100 % original, aucun item issu de matériel protégé (ECPA/Pearson, GREFEX,
+100 % original,
 TEA-Ch).
 """
 

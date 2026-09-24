@@ -1,3 +1,3 @@
 # Outils internes
 
-Import d'items, validation du schéma, audits de garde-fous.
+Import d'items, validation du schéma, vérification des réponses et de l'interface.
