@@ -114,3 +114,21 @@ Symptôme signalé : « Le triangle vert est dans la colonne du centre et . ».
   Il a validé les 700 phrases après correction.
 - Leçon : après un changement de format de contenu, le rendu doit être vérifié par un
   contrôle automatique exécutant le code réel — pas relu à l'œil.
+
+## 2026-09-25 (soir) — relations de voisinage inversées
+
+Signalement : « la solution inverse le haut et le bas par rapport aux phrases ».
+
+- Les quatre types de voisinage étaient **inversés** : « voisin-dessus » était vrai quand la
+  cible était au-dessus du sujet, alors que la phrase dit « le sujet est au-dessus de la
+  cible ». Les paliers 1, 2 et 4 étaient donc insolubles (le palier 3, sans voisinage, passait).
+- Cause de fond : le solveur et le générateur **partageaient la même fonction de prédicat**,
+  donc toute erreur de convention était invisible ; seul le sens des phrases françaises
+  pouvait la révéler — et rien ne le vérifiait.
+- Ajout de `_sens_contredit` dans le validateur : **contrôle indépendant**, écrit d'après le
+  sens français (« juste au-dessus » = une ligne en moins). Il a signalé les 540 phrases
+  fautives du contenu précédent, puis 0 après régénération.
+- Ajout côté interface : le vérificateur de phrases refuse qu'un type s'écrive autre chose
+  que ce qu'il annonce (test négatif réalisé : 298 anomalies détectées en inversant le rendu).
+- Leçon : quand deux composants partagent une convention, la vérifier par une **seconde
+  lecture indépendante** (ici le français), jamais par le même code.

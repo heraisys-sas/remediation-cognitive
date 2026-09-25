@@ -2,6 +2,17 @@
 
 Format : [date] — [périmètre] — description. Les retours informels de l'orthophoniste sont journalisés ici, sans caution clinique.
 
+## 2026-09-25 · Déduction : relations de voisinage inversées (grilles insolubles)
+
+Signalement : « la solution inverse le haut et le bas par rapport à ce que décrivent les phrases ».
+
+- **Cause** : les quatre relations de voisinage étaient inversées entre le nom de l'indice et sa signification — « voisin-dessus » exigeait que la figure citée soit **au-dessus** du sujet, donc la phrase disait le contraire de la solution. Les grilles des paliers 1, 2 et 4 étaient **insolubles** ; le palier 3 était épargné (il n'utilise pas le voisinage).
+- **Corrigé** : convention unique et documentée dans le moteur — « Le carré bleu est juste à gauche du cercle rouge » se vérifie par « le cercle rouge est une colonne à droite du carré bleu » (idem dessus/dessous).
+- **Nouveau contrôle de sens** dans le validateur : chaque phrase est relue **selon son sens français**, indépendamment du solveur. Il a immédiatement signalé les 540 phrases contradictoires du contenu fautif, puis 0 après régénération.
+- **Garde-fou d'interface** : le vérificateur de phrases contrôle que chaque type de relation s'écrit bien ce qu'il annonce (« voisin-dessus » ne peut pas produire « en dessous »).
+- **Remplacement de contenu (thème `deduction`)** — les 80 grilles sont régénérées avec la convention corrigée.
+- **Contrôles** — 875 items / 0 erreur ; 147 tests.
+
 ## 2026-09-25 · Interface : URL de script versionnée (fin des scripts périmés)
 
 Le script restait en cache du navigateur malgré la correction : le serveur en cours d'exécution datait d'avant les en-têtes anti-cache.

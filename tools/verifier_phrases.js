@@ -68,8 +68,31 @@ const morceaux = [
 const fabrique = new Function(`${morceaux.join("\n")}\nreturn { formaterEnonce };`);
 const { formaterEnonce } = fabrique();
 
+//: Expressions attendues pour chaque type de relation : une inversion entre le nom de
+//: l'indice et la phrase affichée (« voisin-dessus » écrit « en dessous ») rendait la
+//: grille insoluble. Ces garde-fous verrouillent la convention côté interface.
+const ATTENDUS = {
+  "voisin-gauche": { contient: ["juste à gauche"], exclut: ["droite", "dessus", "dessous"] },
+  "voisin-droite": { contient: ["juste à droite"], exclut: ["gauche", "dessus", "dessous"] },
+  "voisin-dessus": { contient: ["juste au-dessus"], exclut: ["dessous", "gauche", "droite"] },
+  "voisin-dessous": { contient: ["juste en dessous"], exclut: ["au-dessus", "gauche", "droite"] },
+  "comparaison": { contient: ["même ligne", "à sa gauche"], exclut: ["plus bas"] },
+  "a-droite-de": { contient: ["plus à droite"], exclut: ["plus à gauche"] },
+  "a-gauche-de": { contient: ["plus à gauche"], exclut: ["plus à droite"] },
+  "au-dessus-de": { contient: ["plus haut"], exclut: ["plus bas"] },
+  "en-dessous-de": { contient: ["plus bas"], exclut: ["plus haut"] },
+  "autre-ligne": { contient: ["n'est pas sur la même ligne"], exclut: [] },
+  "autre-colonne": { contient: ["n'est pas dans la même colonne"], exclut: [] },
+  "pas-ligne": { contient: ["n'est pas sur la ligne"], exclut: [] },
+  "pas-colonne": { contient: ["n'est pas dans la colonne"], exclut: [] },
+  "pas-coin": { contient: ["n'est pas dans un coin"], exclut: [] },
+  "pas-bord": { contient: ["n'est pas sur le bord"], exclut: [] },
+  "ni-ni": { contient: ["n'est ni"], exclut: [] },
+};
+
 const dossier = path.join(racine, "content", "entrainement", "deduction", "paliers");
 let phrases = 0;
+let atomes = 0;
 const anomalies = [];
 
 for (const fichier of fs.readdirSync(dossier).filter((f) => f.endsWith(".json"))) {
@@ -82,17 +105,33 @@ for (const fichier of fs.readdirSync(dossier).filter((f) => f.endsWith(".json"))
       if (/undefined/.test(rendu)) fautes.push("undefined");
       if (/\bet\s*\./.test(rendu) || /,\s*\./.test(rendu)) fautes.push("prédicat vide");
       if (!/\best\b|\bn'est\b/.test(rendu)) fautes.push("aucun verbe");
-      if (/[a-zà-ÿ]\s+[a-zà-ÿ]+\s+[a-zà-ÿ]+\s+(sur la ligne|dans la colonne)/.test(rendu) && !/\bn'est pas|\best sur|\best dans/.test(rendu)) {
-        fautes.push("verbe manquant");
-      }
       if (fautes.length) anomalies.push(`${item.id} phrase ${rang + 1} — ${fautes.join(", ")} → « ${rendu} »`);
+
+      // Chaque information, rendue seule, doit dire ce que son nom annonce.
+      for (const atome of [phrase, ...(phrase.et || [])]) {
+        const attendu = ATTENDUS[atome.type];
+        if (!attendu) continue;
+        atomes += 1;
+        const seul = formaterEnonce({ ...atome, figure: atome.figure || phrase.figure,
+                                      couleur: atome.couleur || phrase.couleur }, n);
+        for (const marque of attendu.contient) {
+          if (!seul.includes(marque)) {
+            anomalies.push(`${item.id} : « ${atome.type} » devrait dire « ${marque} » → « ${seul} »`);
+          }
+        }
+        for (const marque of attendu.exclut) {
+          if (seul.includes(marque) && !attendu.contient.some((m) => m.includes(marque))) {
+            anomalies.push(`${item.id} : « ${atome.type} » ne doit pas dire « ${marque} » → « ${seul} »`);
+          }
+        }
+      }
     }
   }
 }
 
 if (anomalies.length) {
-  console.error(`✗ ${anomalies.length} phrase(s) mal formée(s) :`);
-  for (const ligne of anomalies) console.error("   " + ligne);
+  console.error(`✗ ${anomalies.length} anomalie(s) de rendu :`);
+  for (const ligne of anomalies.slice(0, 20)) console.error("   " + ligne);
   process.exit(1);
 }
-console.log(`✓ ${phrases} phrases rendues sans anomalie`);
+console.log(`✓ ${phrases} phrases et ${atomes} informations rendues sans anomalie`);

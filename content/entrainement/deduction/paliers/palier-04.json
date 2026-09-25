@@ -37,7 +37,7 @@
             {
               "figure": "carre",
               "couleur": "bleu",
-              "type": "voisin-dessous",
+              "type": "voisin-dessus",
               "figure2": "cercle",
               "couleur2": "rouge"
             }
@@ -52,7 +52,7 @@
             {
               "figure": "cercle",
               "couleur": "rouge",
-              "type": "voisin-dessus",
+              "type": "voisin-dessous",
               "figure2": "carre",
               "couleur2": "bleu"
             }
@@ -67,7 +67,7 @@
             {
               "figure": "carre",
               "couleur": "rouge",
-              "type": "voisin-dessus",
+              "type": "voisin-dessous",
               "figure2": "cercle",
               "couleur2": "rouge"
             }
@@ -82,7 +82,7 @@
             {
               "figure": "triangle",
               "couleur": "jaune",
-              "type": "voisin-gauche",
+              "type": "voisin-droite",
               "figure2": "carre",
               "couleur2": "bleu"
             }
@@ -97,7 +97,7 @@
             {
               "figure": "cercle",
               "couleur": "vert",
-              "type": "voisin-gauche",
+              "type": "voisin-droite",
               "figure2": "carre",
               "couleur2": "rouge"
             }
@@ -112,7 +112,7 @@
             {
               "figure": "losange",
               "couleur": "bleu",
-              "type": "voisin-dessus",
+              "type": "voisin-dessous",
               "figure2": "cercle",
               "couleur2": "vert"
             }
@@ -126,7 +126,7 @@
             {
               "figure": "losange",
               "couleur": "jaune",
-              "type": "voisin-dessous",
+              "type": "voisin-dessus",
               "figure2": "cercle",
               "couleur2": "vert"
             }
@@ -140,7 +140,7 @@
             {
               "figure": "cercle",
               "couleur": "bleu",
-              "type": "voisin-gauche",
+              "type": "voisin-droite",
               "figure2": "losange",
               "couleur2": "jaune"
             }
@@ -154,7 +154,7 @@
             {
               "figure": "cercle",
               "couleur": "jaune",
-              "type": "voisin-dessous",
+              "type": "voisin-dessus",
               "figure2": "carre",
               "couleur2": "vert"
             }
@@ -169,7 +169,7 @@
             {
               "figure": "carre",
               "couleur": "vert",
-              "type": "voisin-gauche",
+              "type": "voisin-droite",
               "figure2": "losange",
               "couleur2": "bleu"
             }
@@ -184,7 +184,7 @@
             {
               "figure": "losange",
               "couleur": "vert",
-              "type": "voisin-gauche",
+              "type": "voisin-droite",
               "figure2": "carre",
               "couleur2": "vert"
             }
@@ -199,7 +199,7 @@
             {
               "figure": "triangle",
               "couleur": "vert",
-              "type": "voisin-dessous",
+              "type": "voisin-dessus",
               "figure2": "triangle",
               "couleur2": "rouge"
             }
@@ -214,7 +214,7 @@
             {
               "figure": "losange",
               "couleur": "rouge",
-              "type": "voisin-gauche",
+              "type": "voisin-droite",
               "figure2": "carre",
               "couleur2": "jaune"
             }
@@ -229,7 +229,7 @@
             {
               "figure": "carre",
               "couleur": "jaune",
-              "type": "voisin-gauche",
+              "type": "voisin-droite",
               "figure2": "triangle",
               "couleur2": "jaune"
             }
@@ -244,7 +244,7 @@
             {
               "figure": "triangle",
               "couleur": "rouge",
-              "type": "voisin-gauche",
+              "type": "voisin-droite",
               "figure2": "cercle",
               "couleur2": "jaune"
             }
@@ -388,7 +388,7 @@
             {
               "figure": "triangle",
               "couleur": "vert",
-              "type": "voisin-gauche",
+              "type": "voisin-droite",
               "figure2": "cercle",
               "couleur2": "vert"
             }
@@ -403,7 +403,7 @@
             {
               "figure": "carre",
               "couleur": "jaune",
-              "type": "voisin-gauche",
+              "type": "voisin-droite",
               "figure2": "triangle",
               "couleur2": "vert"
             }
@@ -417,7 +417,7 @@
             {
               "figure": "carre",
               "couleur": "rouge",
-              "type": "voisin-dessus",
+              "type": "voisin-dessous",
               "figure2": "carre",
               "couleur2": "jaune"
             }
@@ -432,7 +432,7 @@
             {
               "figure": "losange",
               "couleur": "bleu",
-              "type": "voisin-gauche",
+              "type": "voisin-droite",
               "figure2": "carre",
               "couleur2": "jaune"
             }
@@ -447,7 +447,7 @@
             {
               "figure": "carre",
               "couleur": "vert",
-              "type": "voisin-droite",
+              "type": "voisin-gauche",
               "figure2": "carre",
               "couleur2": "rouge"
             }
@@ -462,7 +462,7 @@
             {
               "figure": "cercle",
               "couleur": "jaune",
-              "type": "voisin-dessus",
+              "type": "voisin-dessous",
               "figure2": "carre",
               "couleur2": "vert"
             }
@@ -477,7 +477,7 @@
             {
               "figure": "carre",
               "couleur": "bleu",
-              "type": "voisin-gauche",
+              "type": "voisin-droite",
               "figure2": "cercle",
               "couleur2": "jaune"
             }
@@ -492,7 +492,7 @@
             {
               "figure": "triangle",
               "couleur": "jaune",
-              "type": "voisin-dessus",
+              "type": "voisin-dessous",
               "figure2": "cercle",
               "couleur2": "vert"
             }
@@ -507,7 +507,7 @@
             {
               "figure": "losange",
               "couleur": "rouge",
-              "type": "voisin-dessous",
+              "type": "voisin-dessus",
               "figure2": "losange",
               "couleur2": "jaune"
             }
@@ -522,7 +522,7 @@
             {
               "figure": "cercle",
               "couleur": "vert",
-              "type": "voisin-dessous",
+              "type": "voisin-dessus",
               "figure2": "triangle",
               "couleur2": "jaune"
             }
@@ -537,7 +537,7 @@
             {
               "figure": "cercle",
               "couleur": "rouge",
-              "type": "voisin-dessous",
+              "type": "voisin-dessus",
               "figure2": "triangle",
               "couleur2": "bleu"
             }
@@ -552,7 +552,7 @@
             {
               "figure": "triangle",
               "couleur": "bleu",
-              "type": "voisin-dessus",
+              "type": "voisin-dessous",
               "figure2": "cercle",
               "couleur2": "rouge"
             }
@@ -567,7 +567,7 @@
             {
               "figure": "cercle",
               "couleur": "bleu",
-              "type": "voisin-dessous",
+              "type": "voisin-dessus",
               "figure2": "cercle",
               "couleur2": "rouge"
             }
@@ -582,7 +582,7 @@
             {
               "figure": "losange",
               "couleur": "jaune",
-              "type": "voisin-dessus",
+              "type": "voisin-dessous",
               "figure2": "losange",
               "couleur2": "rouge"
             }
@@ -597,7 +597,7 @@
             {
               "figure": "triangle",
               "couleur": "rouge",
-              "type": "voisin-gauche",
+              "type": "voisin-droite",
               "figure2": "losange",
               "couleur2": "vert"
             }
@@ -741,7 +741,7 @@
             {
               "figure": "cercle",
               "couleur": "rouge",
-              "type": "voisin-dessous",
+              "type": "voisin-dessus",
               "figure2": "losange",
               "couleur2": "jaune"
             }
@@ -756,7 +756,7 @@
             {
               "figure": "losange",
               "couleur": "jaune",
-              "type": "voisin-dessus",
+              "type": "voisin-dessous",
               "figure2": "cercle",
               "couleur2": "rouge"
             }
@@ -771,7 +771,7 @@
             {
               "figure": "cercle",
               "couleur": "vert",
-              "type": "voisin-dessous",
+              "type": "voisin-dessus",
               "figure2": "carre",
               "couleur2": "rouge"
             }
@@ -785,7 +785,7 @@
             {
               "figure": "losange",
               "couleur": "rouge",
-              "type": "voisin-droite",
+              "type": "voisin-gauche",
               "figure2": "cercle",
               "couleur2": "rouge"
             }
@@ -799,7 +799,7 @@
             {
               "figure": "carre",
               "couleur": "jaune",
-              "type": "voisin-dessus",
+              "type": "voisin-dessous",
               "figure2": "triangle",
               "couleur2": "jaune"
             }
@@ -814,7 +814,7 @@
             {
               "figure": "cercle",
               "couleur": "jaune",
-              "type": "voisin-droite",
+              "type": "voisin-gauche",
               "figure2": "carre",
               "couleur2": "jaune"
             }
@@ -829,7 +829,7 @@
             {
               "figure": "losange",
               "couleur": "bleu",
-              "type": "voisin-dessus",
+              "type": "voisin-dessous",
               "figure2": "losange",
               "couleur2": "rouge"
             }
@@ -843,7 +843,7 @@
             {
               "figure": "carre",
               "couleur": "rouge",
-              "type": "voisin-droite",
+              "type": "voisin-gauche",
               "figure2": "triangle",
               "couleur2": "vert"
             }
@@ -858,7 +858,7 @@
             {
               "figure": "cercle",
               "couleur": "bleu",
-              "type": "voisin-droite",
+              "type": "voisin-gauche",
               "figure2": "losange",
               "couleur2": "rouge"
             }
@@ -873,7 +873,7 @@
             {
               "figure": "triangle",
               "couleur": "jaune",
-              "type": "voisin-gauche",
+              "type": "voisin-droite",
               "figure2": "carre",
               "couleur2": "bleu"
             }
@@ -888,7 +888,7 @@
             {
               "figure": "carre",
               "couleur": "bleu",
-              "type": "voisin-droite",
+              "type": "voisin-gauche",
               "figure2": "triangle",
               "couleur2": "jaune"
             }
@@ -903,7 +903,7 @@
             {
               "figure": "carre",
               "couleur": "vert",
-              "type": "voisin-dessus",
+              "type": "voisin-dessous",
               "figure2": "triangle",
               "couleur2": "vert"
             }
@@ -918,7 +918,7 @@
             {
               "figure": "triangle",
               "couleur": "vert",
-              "type": "voisin-dessous",
+              "type": "voisin-dessus",
               "figure2": "carre",
               "couleur2": "vert"
             }
@@ -933,7 +933,7 @@
             {
               "figure": "losange",
               "couleur": "vert",
-              "type": "voisin-dessus",
+              "type": "voisin-dessous",
               "figure2": "cercle",
               "couleur2": "bleu"
             }
@@ -948,7 +948,7 @@
             {
               "figure": "triangle",
               "couleur": "bleu",
-              "type": "voisin-gauche",
+              "type": "voisin-droite",
               "figure2": "cercle",
               "couleur2": "vert"
             }
@@ -1092,7 +1092,7 @@
             {
               "figure": "losange",
               "couleur": "jaune",
-              "type": "voisin-gauche",
+              "type": "voisin-droite",
               "figure2": "triangle",
               "couleur2": "jaune"
             }
@@ -1107,7 +1107,7 @@
             {
               "figure": "losange",
               "couleur": "rouge",
-              "type": "voisin-gauche",
+              "type": "voisin-droite",
               "figure2": "losange",
               "couleur2": "jaune"
             }
@@ -1122,7 +1122,7 @@
             {
               "figure": "carre",
               "couleur": "bleu",
-              "type": "voisin-dessus",
+              "type": "voisin-dessous",
               "figure2": "losange",
               "couleur2": "rouge"
             }
@@ -1136,7 +1136,7 @@
             {
               "figure": "cercle",
               "couleur": "bleu",
-              "type": "voisin-droite",
+              "type": "voisin-gauche",
               "figure2": "carre",
               "couleur2": "bleu"
             }
@@ -1151,7 +1151,7 @@
             {
               "figure": "triangle",
               "couleur": "vert",
-              "type": "voisin-dessus",
+              "type": "voisin-dessous",
               "figure2": "cercle",
               "couleur2": "bleu"
             }
@@ -1165,7 +1165,7 @@
             {
               "figure": "carre",
               "couleur": "rouge",
-              "type": "voisin-gauche",
+              "type": "voisin-droite",
               "figure2": "triangle",
               "couleur2": "vert"
             }
@@ -1180,7 +1180,7 @@
             {
               "figure": "triangle",
               "couleur": "rouge",
-              "type": "voisin-gauche",
+              "type": "voisin-droite",
               "figure2": "losange",
               "couleur2": "vert"
             }
@@ -1195,7 +1195,7 @@
             {
               "figure": "carre",
               "couleur": "vert",
-              "type": "voisin-gauche",
+              "type": "voisin-droite",
               "figure2": "losange",
               "couleur2": "bleu"
             }
@@ -1210,7 +1210,7 @@
             {
               "figure": "losange",
               "couleur": "bleu",
-              "type": "voisin-droite",
+              "type": "voisin-gauche",
               "figure2": "carre",
               "couleur2": "vert"
             }
@@ -1225,7 +1225,7 @@
             {
               "figure": "cercle",
               "couleur": "jaune",
-              "type": "voisin-droite",
+              "type": "voisin-gauche",
               "figure2": "triangle",
               "couleur2": "vert"
             }
@@ -1240,7 +1240,7 @@
             {
               "figure": "cercle",
               "couleur": "rouge",
-              "type": "voisin-droite",
+              "type": "voisin-gauche",
               "figure2": "cercle",
               "couleur2": "bleu"
             }
@@ -1255,7 +1255,7 @@
             {
               "figure": "losange",
               "couleur": "vert",
-              "type": "voisin-dessus",
+              "type": "voisin-dessous",
               "figure2": "carre",
               "couleur2": "rouge"
             }
@@ -1270,7 +1270,7 @@
             {
               "figure": "triangle",
               "couleur": "bleu",
-              "type": "voisin-gauche",
+              "type": "voisin-droite",
               "figure2": "losange",
               "couleur2": "rouge"
             }
@@ -1285,7 +1285,7 @@
             {
               "figure": "carre",
               "couleur": "jaune",
-              "type": "voisin-dessus",
+              "type": "voisin-dessous",
               "figure2": "triangle",
               "couleur2": "bleu"
             }
@@ -1300,7 +1300,7 @@
             {
               "figure": "triangle",
               "couleur": "jaune",
-              "type": "voisin-droite",
+              "type": "voisin-gauche",
               "figure2": "losange",
               "couleur2": "jaune"
             }
@@ -1444,7 +1444,7 @@
             {
               "figure": "cercle",
               "couleur": "vert",
-              "type": "voisin-dessous",
+              "type": "voisin-dessus",
               "figure2": "cercle",
               "couleur2": "rouge"
             }
@@ -1458,7 +1458,7 @@
             {
               "figure": "carre",
               "couleur": "vert",
-              "type": "voisin-dessous",
+              "type": "voisin-dessus",
               "figure2": "cercle",
               "couleur2": "vert"
             }
@@ -1473,7 +1473,7 @@
             {
               "figure": "triangle",
               "couleur": "bleu",
-              "type": "voisin-gauche",
+              "type": "voisin-droite",
               "figure2": "triangle",
               "couleur2": "rouge"
             }
@@ -1488,7 +1488,7 @@
             {
               "figure": "losange",
               "couleur": "bleu",
-              "type": "voisin-gauche",
+              "type": "voisin-droite",
               "figure2": "cercle",
               "couleur2": "vert"
             }
@@ -1503,7 +1503,7 @@
             {
               "figure": "losange",
               "couleur": "jaune",
-              "type": "voisin-dessous",
+              "type": "voisin-dessus",
               "figure2": "carre",
               "couleur2": "jaune"
             }
@@ -1518,7 +1518,7 @@
             {
               "figure": "cercle",
               "couleur": "rouge",
-              "type": "voisin-droite",
+              "type": "voisin-gauche",
               "figure2": "triangle",
               "couleur2": "jaune"
             }
@@ -1533,7 +1533,7 @@
             {
               "figure": "triangle",
               "couleur": "jaune",
-              "type": "voisin-gauche",
+              "type": "voisin-droite",
               "figure2": "cercle",
               "couleur2": "rouge"
             }
@@ -1548,7 +1548,7 @@
             {
               "figure": "cercle",
               "couleur": "jaune",
-              "type": "voisin-dessous",
+              "type": "voisin-dessus",
               "figure2": "triangle",
               "couleur2": "rouge"
             }
@@ -1563,7 +1563,7 @@
             {
               "figure": "triangle",
               "couleur": "rouge",
-              "type": "voisin-dessus",
+              "type": "voisin-dessous",
               "figure2": "cercle",
               "couleur2": "jaune"
             }
@@ -1578,7 +1578,7 @@
             {
               "figure": "losange",
               "couleur": "rouge",
-              "type": "voisin-gauche",
+              "type": "voisin-droite",
               "figure2": "cercle",
               "couleur2": "bleu"
             }
@@ -1593,7 +1593,7 @@
             {
               "figure": "carre",
               "couleur": "jaune",
-              "type": "voisin-dessus",
+              "type": "voisin-dessous",
               "figure2": "losange",
               "couleur2": "jaune"
             }
@@ -1608,7 +1608,7 @@
             {
               "figure": "carre",
               "couleur": "rouge",
-              "type": "voisin-droite",
+              "type": "voisin-gauche",
               "figure2": "cercle",
               "couleur2": "vert"
             }
@@ -1623,7 +1623,7 @@
             {
               "figure": "triangle",
               "couleur": "vert",
-              "type": "voisin-gauche",
+              "type": "voisin-droite",
               "figure2": "carre",
               "couleur2": "bleu"
             }
@@ -1638,7 +1638,7 @@
             {
               "figure": "losange",
               "couleur": "vert",
-              "type": "voisin-droite",
+              "type": "voisin-gauche",
               "figure2": "carre",
               "couleur2": "rouge"
             }
@@ -1653,7 +1653,7 @@
             {
               "figure": "carre",
               "couleur": "bleu",
-              "type": "voisin-droite",
+              "type": "voisin-gauche",
               "figure2": "triangle",
               "couleur2": "vert"
             }
@@ -1797,7 +1797,7 @@
             {
               "figure": "carre",
               "couleur": "jaune",
-              "type": "voisin-dessus",
+              "type": "voisin-dessous",
               "figure2": "losange",
               "couleur2": "jaune"
             }
@@ -1811,7 +1811,7 @@
             {
               "figure": "losange",
               "couleur": "vert",
-              "type": "voisin-dessus",
+              "type": "voisin-dessous",
               "figure2": "carre",
               "couleur2": "jaune"
             }
@@ -1826,7 +1826,7 @@
             {
               "figure": "carre",
               "couleur": "bleu",
-              "type": "voisin-gauche",
+              "type": "voisin-droite",
               "figure2": "triangle",
               "couleur2": "jaune"
             }
@@ -1840,7 +1840,7 @@
             {
               "figure": "carre",
               "couleur": "vert",
-              "type": "voisin-droite",
+              "type": "voisin-gauche",
               "figure2": "carre",
               "couleur2": "rouge"
             }
@@ -1854,7 +1854,7 @@
             {
               "figure": "triangle",
               "couleur": "jaune",
-              "type": "voisin-dessus",
+              "type": "voisin-dessous",
               "figure2": "carre",
               "couleur2": "vert"
             }
@@ -1869,7 +1869,7 @@
             {
               "figure": "carre",
               "couleur": "rouge",
-              "type": "voisin-dessus",
+              "type": "voisin-dessous",
               "figure2": "losange",
               "couleur2": "bleu"
             }
@@ -1884,7 +1884,7 @@
             {
               "figure": "triangle",
               "couleur": "vert",
-              "type": "voisin-dessous",
+              "type": "voisin-dessus",
               "figure2": "cercle",
               "couleur2": "jaune"
             }
@@ -1899,7 +1899,7 @@
             {
               "figure": "triangle",
               "couleur": "rouge",
-              "type": "voisin-dessous",
+              "type": "voisin-dessus",
               "figure2": "carre",
               "couleur2": "vert"
             }
@@ -1914,7 +1914,7 @@
             {
               "figure": "cercle",
               "couleur": "vert",
-              "type": "voisin-gauche",
+              "type": "voisin-droite",
               "figure2": "losange",
               "couleur2": "rouge"
             }
@@ -1929,7 +1929,7 @@
             {
               "figure": "cercle",
               "couleur": "jaune",
-              "type": "voisin-dessous",
+              "type": "voisin-dessus",
               "figure2": "cercle",
               "couleur2": "bleu"
             }
@@ -1944,7 +1944,7 @@
             {
               "figure": "losange",
               "couleur": "jaune",
-              "type": "voisin-gauche",
+              "type": "voisin-droite",
               "figure2": "triangle",
               "couleur2": "vert"
             }
@@ -1959,7 +1959,7 @@
             {
               "figure": "triangle",
               "couleur": "bleu",
-              "type": "voisin-dessus",
+              "type": "voisin-dessous",
               "figure2": "carre",
               "couleur2": "bleu"
             }
@@ -1974,7 +1974,7 @@
             {
               "figure": "losange",
               "couleur": "rouge",
-              "type": "voisin-dessus",
+              "type": "voisin-dessous",
               "figure2": "cercle",
               "couleur2": "bleu"
             }
@@ -1989,7 +1989,7 @@
             {
               "figure": "cercle",
               "couleur": "rouge",
-              "type": "voisin-gauche",
+              "type": "voisin-droite",
               "figure2": "cercle",
               "couleur2": "vert"
             }
@@ -2004,7 +2004,7 @@
             {
               "figure": "losange",
               "couleur": "bleu",
-              "type": "voisin-gauche",
+              "type": "voisin-droite",
               "figure2": "triangle",
               "couleur2": "rouge"
             }
@@ -2148,7 +2148,7 @@
             {
               "figure": "cercle",
               "couleur": "rouge",
-              "type": "voisin-dessous",
+              "type": "voisin-dessus",
               "figure2": "losange",
               "couleur2": "jaune"
             }
@@ -2163,7 +2163,7 @@
             {
               "figure": "losange",
               "couleur": "jaune",
-              "type": "voisin-dessus",
+              "type": "voisin-dessous",
               "figure2": "cercle",
               "couleur2": "rouge"
             }
@@ -2178,7 +2178,7 @@
             {
               "figure": "cercle",
               "couleur": "vert",
-              "type": "voisin-droite",
+              "type": "voisin-gauche",
               "figure2": "losange",
               "couleur2": "jaune"
             }
@@ -2193,7 +2193,7 @@
             {
               "figure": "triangle",
               "couleur": "vert",
-              "type": "voisin-droite",
+              "type": "voisin-gauche",
               "figure2": "carre",
               "couleur2": "vert"
             }
@@ -2208,7 +2208,7 @@
             {
               "figure": "losange",
               "couleur": "rouge",
-              "type": "voisin-dessous",
+              "type": "voisin-dessus",
               "figure2": "triangle",
               "couleur2": "rouge"
             }
@@ -2223,7 +2223,7 @@
             {
               "figure": "triangle",
               "couleur": "bleu",
-              "type": "voisin-dessus",
+              "type": "voisin-dessous",
               "figure2": "cercle",
               "couleur2": "bleu"
             }
@@ -2238,7 +2238,7 @@
             {
               "figure": "triangle",
               "couleur": "jaune",
-              "type": "voisin-droite",
+              "type": "voisin-gauche",
               "figure2": "cercle",
               "couleur2": "jaune"
             }
@@ -2253,7 +2253,7 @@
             {
               "figure": "losange",
               "couleur": "bleu",
-              "type": "voisin-droite",
+              "type": "voisin-gauche",
               "figure2": "triangle",
               "couleur2": "jaune"
             }
@@ -2268,7 +2268,7 @@
             {
               "figure": "losange",
               "couleur": "vert",
-              "type": "voisin-droite",
+              "type": "voisin-gauche",
               "figure2": "triangle",
               "couleur2": "rouge"
             }
@@ -2283,7 +2283,7 @@
             {
               "figure": "cercle",
               "couleur": "jaune",
-              "type": "voisin-gauche",
+              "type": "voisin-droite",
               "figure2": "triangle",
               "couleur2": "jaune"
             }
@@ -2298,7 +2298,7 @@
             {
               "figure": "cercle",
               "couleur": "bleu",
-              "type": "voisin-dessus",
+              "type": "voisin-dessous",
               "figure2": "carre",
               "couleur2": "vert"
             }
@@ -2313,7 +2313,7 @@
             {
               "figure": "carre",
               "couleur": "rouge",
-              "type": "voisin-dessous",
+              "type": "voisin-dessus",
               "figure2": "cercle",
               "couleur2": "vert"
             }
@@ -2328,7 +2328,7 @@
             {
               "figure": "triangle",
               "couleur": "rouge",
-              "type": "voisin-droite",
+              "type": "voisin-gauche",
               "figure2": "triangle",
               "couleur2": "bleu"
             }
@@ -2343,7 +2343,7 @@
             {
               "figure": "carre",
               "couleur": "vert",
-              "type": "voisin-dessous",
+              "type": "voisin-dessus",
               "figure2": "cercle",
               "couleur2": "bleu"
             }
@@ -2358,7 +2358,7 @@
             {
               "figure": "carre",
               "couleur": "jaune",
-              "type": "voisin-dessus",
+              "type": "voisin-dessous",
               "figure2": "cercle",
               "couleur2": "vert"
             }
@@ -2502,7 +2502,7 @@
             {
               "figure": "carre",
               "couleur": "vert",
-              "type": "voisin-dessus",
+              "type": "voisin-dessous",
               "figure2": "triangle",
               "couleur2": "vert"
             }
@@ -2517,7 +2517,7 @@
             {
               "figure": "triangle",
               "couleur": "vert",
-              "type": "voisin-dessous",
+              "type": "voisin-dessus",
               "figure2": "carre",
               "couleur2": "vert"
             }
@@ -2532,7 +2532,7 @@
             {
               "figure": "carre",
               "couleur": "rouge",
-              "type": "voisin-droite",
+              "type": "voisin-gauche",
               "figure2": "losange",
               "couleur2": "jaune"
             }
@@ -2547,7 +2547,7 @@
             {
               "figure": "losange",
               "couleur": "rouge",
-              "type": "voisin-dessous",
+              "type": "voisin-dessus",
               "figure2": "triangle",
               "couleur2": "vert"
             }
@@ -2561,7 +2561,7 @@
             {
               "figure": "triangle",
               "couleur": "bleu",
-              "type": "voisin-gauche",
+              "type": "voisin-droite",
               "figure2": "triangle",
               "couleur2": "vert"
             }
@@ -2576,7 +2576,7 @@
             {
               "figure": "losange",
               "couleur": "vert",
-              "type": "voisin-dessous",
+              "type": "voisin-dessus",
               "figure2": "triangle",
               "couleur2": "bleu"
             }
@@ -2591,7 +2591,7 @@
             {
               "figure": "cercle",
               "couleur": "rouge",
-              "type": "voisin-gauche",
+              "type": "voisin-droite",
               "figure2": "carre",
               "couleur2": "jaune"
             }
@@ -2606,7 +2606,7 @@
             {
               "figure": "carre",
               "couleur": "jaune",
-              "type": "voisin-droite",
+              "type": "voisin-gauche",
               "figure2": "cercle",
               "couleur2": "rouge"
             }
@@ -2621,7 +2621,7 @@
             {
               "figure": "carre",
               "couleur": "bleu",
-              "type": "voisin-droite",
+              "type": "voisin-gauche",
               "figure2": "triangle",
               "couleur2": "vert"
             }
@@ -2636,7 +2636,7 @@
             {
               "figure": "triangle",
               "couleur": "jaune",
-              "type": "voisin-dessous",
+              "type": "voisin-dessus",
               "figure2": "cercle",
               "couleur2": "vert"
             }
@@ -2651,7 +2651,7 @@
             {
               "figure": "cercle",
               "couleur": "jaune",
-              "type": "voisin-gauche",
+              "type": "voisin-droite",
               "figure2": "cercle",
               "couleur2": "rouge"
             }
@@ -2666,7 +2666,7 @@
             {
               "figure": "losange",
               "couleur": "bleu",
-              "type": "voisin-dessous",
+              "type": "voisin-dessus",
               "figure2": "triangle",
               "couleur2": "rouge"
             }
@@ -2681,7 +2681,7 @@
             {
               "figure": "triangle",
               "couleur": "rouge",
-              "type": "voisin-dessous",
+              "type": "voisin-dessus",
               "figure2": "losange",
               "couleur2": "jaune"
             }
@@ -2696,7 +2696,7 @@
             {
               "figure": "losange",
               "couleur": "jaune",
-              "type": "voisin-dessus",
+              "type": "voisin-dessous",
               "figure2": "triangle",
               "couleur2": "rouge"
             }
@@ -2711,7 +2711,7 @@
             {
               "figure": "cercle",
               "couleur": "vert",
-              "type": "voisin-droite",
+              "type": "voisin-gauche",
               "figure2": "carre",
               "couleur2": "jaune"
             }
@@ -2855,7 +2855,7 @@
             {
               "figure": "losange",
               "couleur": "rouge",
-              "type": "voisin-gauche",
+              "type": "voisin-droite",
               "figure2": "losange",
               "couleur2": "bleu"
             }
@@ -2870,7 +2870,7 @@
             {
               "figure": "losange",
               "couleur": "bleu",
-              "type": "voisin-droite",
+              "type": "voisin-gauche",
               "figure2": "losange",
               "couleur2": "rouge"
             }
@@ -2885,7 +2885,7 @@
             {
               "figure": "carre",
               "couleur": "vert",
-              "type": "voisin-dessus",
+              "type": "voisin-dessous",
               "figure2": "losange",
               "couleur2": "bleu"
             }
@@ -2900,7 +2900,7 @@
             {
               "figure": "losange",
               "couleur": "jaune",
-              "type": "voisin-gauche",
+              "type": "voisin-droite",
               "figure2": "cercle",
               "couleur2": "rouge"
             }
@@ -2914,7 +2914,7 @@
             {
               "figure": "triangle",
               "couleur": "bleu",
-              "type": "voisin-dessous",
+              "type": "voisin-dessus",
               "figure2": "losange",
               "couleur2": "jaune"
             }
@@ -2929,7 +2929,7 @@
             {
               "figure": "triangle",
               "couleur": "rouge",
-              "type": "voisin-dessous",
+              "type": "voisin-dessus",
               "figure2": "cercle",
               "couleur2": "jaune"
             }
@@ -2944,7 +2944,7 @@
             {
               "figure": "cercle",
               "couleur": "jaune",
-              "type": "voisin-dessous",
+              "type": "voisin-dessus",
               "figure2": "cercle",
               "couleur2": "rouge"
             }
@@ -2958,7 +2958,7 @@
             {
               "figure": "carre",
               "couleur": "bleu",
-              "type": "voisin-gauche",
+              "type": "voisin-droite",
               "figure2": "triangle",
               "couleur2": "rouge"
             }
@@ -2973,7 +2973,7 @@
             {
               "figure": "triangle",
               "couleur": "jaune",
-              "type": "voisin-gauche",
+              "type": "voisin-droite",
               "figure2": "carre",
               "couleur2": "bleu"
             }
@@ -2988,7 +2988,7 @@
             {
               "figure": "cercle",
               "couleur": "vert",
-              "type": "voisin-dessus",
+              "type": "voisin-dessous",
               "figure2": "carre",
               "couleur2": "rouge"
             }
@@ -3003,7 +3003,7 @@
             {
               "figure": "triangle",
               "couleur": "vert",
-              "type": "voisin-droite",
+              "type": "voisin-gauche",
               "figure2": "carre",
               "couleur2": "rouge"
             }
@@ -3018,7 +3018,7 @@
             {
               "figure": "carre",
               "couleur": "jaune",
-              "type": "voisin-droite",
+              "type": "voisin-gauche",
               "figure2": "cercle",
               "couleur2": "bleu"
             }
@@ -3033,7 +3033,7 @@
             {
               "figure": "cercle",
               "couleur": "bleu",
-              "type": "voisin-dessous",
+              "type": "voisin-dessus",
               "figure2": "carre",
               "couleur2": "bleu"
             }
@@ -3048,7 +3048,7 @@
             {
               "figure": "cercle",
               "couleur": "rouge",
-              "type": "voisin-dessus",
+              "type": "voisin-dessous",
               "figure2": "cercle",
               "couleur2": "jaune"
             }
@@ -3063,7 +3063,7 @@
             {
               "figure": "losange",
               "couleur": "vert",
-              "type": "voisin-gauche",
+              "type": "voisin-droite",
               "figure2": "carre",
               "couleur2": "vert"
             }
@@ -3207,7 +3207,7 @@
             {
               "figure": "triangle",
               "couleur": "rouge",
-              "type": "voisin-dessus",
+              "type": "voisin-dessous",
               "figure2": "carre",
               "couleur2": "rouge"
             }
@@ -3222,7 +3222,7 @@
             {
               "figure": "carre",
               "couleur": "rouge",
-              "type": "voisin-dessous",
+              "type": "voisin-dessus",
               "figure2": "triangle",
               "couleur2": "rouge"
             }
@@ -3236,7 +3236,7 @@
             {
               "figure": "losange",
               "couleur": "jaune",
-              "type": "voisin-gauche",
+              "type": "voisin-droite",
               "figure2": "carre",
               "couleur2": "rouge"
             }
@@ -3251,7 +3251,7 @@
             {
               "figure": "triangle",
               "couleur": "bleu",
-              "type": "voisin-droite",
+              "type": "voisin-gauche",
               "figure2": "triangle",
               "couleur2": "rouge"
             }
@@ -3266,7 +3266,7 @@
             {
               "figure": "carre",
               "couleur": "jaune",
-              "type": "voisin-droite",
+              "type": "voisin-gauche",
               "figure2": "carre",
               "couleur2": "rouge"
             }
@@ -3281,7 +3281,7 @@
             {
               "figure": "losange",
               "couleur": "vert",
-              "type": "voisin-gauche",
+              "type": "voisin-droite",
               "figure2": "losange",
               "couleur2": "jaune"
             }
@@ -3296,7 +3296,7 @@
             {
               "figure": "carre",
               "couleur": "bleu",
-              "type": "voisin-dessus",
+              "type": "voisin-dessous",
               "figure2": "cercle",
               "couleur2": "vert"
             }
@@ -3311,7 +3311,7 @@
             {
               "figure": "cercle",
               "couleur": "jaune",
-              "type": "voisin-droite",
+              "type": "voisin-gauche",
               "figure2": "carre",
               "couleur2": "bleu"
             }
@@ -3326,7 +3326,7 @@
             {
               "figure": "losange",
               "couleur": "bleu",
-              "type": "voisin-dessous",
+              "type": "voisin-dessus",
               "figure2": "cercle",
               "couleur2": "jaune"
             }
@@ -3341,7 +3341,7 @@
             {
               "figure": "triangle",
               "couleur": "vert",
-              "type": "voisin-gauche",
+              "type": "voisin-droite",
               "figure2": "cercle",
               "couleur2": "rouge"
             }
@@ -3356,7 +3356,7 @@
             {
               "figure": "cercle",
               "couleur": "bleu",
-              "type": "voisin-dessous",
+              "type": "voisin-dessus",
               "figure2": "triangle",
               "couleur2": "vert"
             }
@@ -3371,7 +3371,7 @@
             {
               "figure": "cercle",
               "couleur": "vert",
-              "type": "voisin-gauche",
+              "type": "voisin-droite",
               "figure2": "losange",
               "couleur2": "bleu"
             }
@@ -3386,7 +3386,7 @@
             {
               "figure": "losange",
               "couleur": "rouge",
-              "type": "voisin-droite",
+              "type": "voisin-gauche",
               "figure2": "cercle",
               "couleur2": "bleu"
             }
@@ -3401,7 +3401,7 @@
             {
               "figure": "triangle",
               "couleur": "jaune",
-              "type": "voisin-gauche",
+              "type": "voisin-droite",
               "figure2": "triangle",
               "couleur2": "rouge"
             }
@@ -3416,7 +3416,7 @@
             {
               "figure": "carre",
               "couleur": "vert",
-              "type": "voisin-gauche",
+              "type": "voisin-droite",
               "figure2": "triangle",
               "couleur2": "jaune"
             }
@@ -3560,7 +3560,7 @@
             {
               "figure": "cercle",
               "couleur": "bleu",
-              "type": "voisin-dessus",
+              "type": "voisin-dessous",
               "figure2": "cercle",
               "couleur2": "rouge"
             }
@@ -3575,7 +3575,7 @@
             {
               "figure": "cercle",
               "couleur": "rouge",
-              "type": "voisin-dessous",
+              "type": "voisin-dessus",
               "figure2": "cercle",
               "couleur2": "bleu"
             }
@@ -3589,7 +3589,7 @@
             {
               "figure": "triangle",
               "couleur": "jaune",
-              "type": "voisin-gauche",
+              "type": "voisin-droite",
               "figure2": "cercle",
               "couleur2": "bleu"
             }
@@ -3603,7 +3603,7 @@
             {
               "figure": "losange",
               "couleur": "bleu",
-              "type": "voisin-dessous",
+              "type": "voisin-dessus",
               "figure2": "triangle",
               "couleur2": "jaune"
             }
@@ -3618,7 +3618,7 @@
             {
               "figure": "carre",
               "couleur": "vert",
-              "type": "voisin-dessous",
+              "type": "voisin-dessus",
               "figure2": "cercle",
               "couleur2": "rouge"
             }
@@ -3633,7 +3633,7 @@
             {
               "figure": "cercle",
               "couleur": "jaune",
-              "type": "voisin-droite",
+              "type": "voisin-gauche",
               "figure2": "losange",
               "couleur2": "jaune"
             }
@@ -3648,7 +3648,7 @@
             {
               "figure": "triangle",
               "couleur": "rouge",
-              "type": "voisin-gauche",
+              "type": "voisin-droite",
               "figure2": "carre",
               "couleur2": "vert"
             }
@@ -3663,7 +3663,7 @@
             {
               "figure": "carre",
               "couleur": "jaune",
-              "type": "voisin-gauche",
+              "type": "voisin-droite",
               "figure2": "losange",
               "couleur2": "jaune"
             }
@@ -3678,7 +3678,7 @@
             {
               "figure": "losange",
               "couleur": "jaune",
-              "type": "voisin-droite",
+              "type": "voisin-gauche",
               "figure2": "carre",
               "couleur2": "jaune"
             }
@@ -3693,7 +3693,7 @@
             {
               "figure": "losange",
               "couleur": "vert",
-              "type": "voisin-gauche",
+              "type": "voisin-droite",
               "figure2": "carre",
               "couleur2": "jaune"
             }
@@ -3708,7 +3708,7 @@
             {
               "figure": "carre",
               "couleur": "bleu",
-              "type": "voisin-dessous",
+              "type": "voisin-dessus",
               "figure2": "cercle",
               "couleur2": "jaune"
             }
@@ -3723,7 +3723,7 @@
             {
               "figure": "losange",
               "couleur": "rouge",
-              "type": "voisin-dessous",
+              "type": "voisin-dessus",
               "figure2": "triangle",
               "couleur2": "bleu"
             }
@@ -3738,7 +3738,7 @@
             {
               "figure": "carre",
               "couleur": "rouge",
-              "type": "voisin-dessus",
+              "type": "voisin-dessous",
               "figure2": "triangle",
               "couleur2": "vert"
             }
@@ -3753,7 +3753,7 @@
             {
               "figure": "triangle",
               "couleur": "bleu",
-              "type": "voisin-dessous",
+              "type": "voisin-dessus",
               "figure2": "losange",
               "couleur2": "vert"
             }
@@ -3768,7 +3768,7 @@
             {
               "figure": "triangle",
               "couleur": "vert",
-              "type": "voisin-droite",
+              "type": "voisin-gauche",
               "figure2": "carre",
               "couleur2": "vert"
             }
@@ -3912,7 +3912,7 @@
             {
               "figure": "triangle",
               "couleur": "vert",
-              "type": "voisin-droite",
+              "type": "voisin-gauche",
               "figure2": "losange",
               "couleur2": "rouge"
             }
@@ -3927,7 +3927,7 @@
             {
               "figure": "losange",
               "couleur": "rouge",
-              "type": "voisin-gauche",
+              "type": "voisin-droite",
               "figure2": "triangle",
               "couleur2": "vert"
             }
@@ -3942,7 +3942,7 @@
             {
               "figure": "triangle",
               "couleur": "rouge",
-              "type": "voisin-dessus",
+              "type": "voisin-dessous",
               "figure2": "triangle",
               "couleur2": "vert"
             }
@@ -3957,7 +3957,7 @@
             {
               "figure": "triangle",
               "couleur": "jaune",
-              "type": "voisin-dessus",
+              "type": "voisin-dessous",
               "figure2": "losange",
               "couleur2": "rouge"
             }
@@ -3972,7 +3972,7 @@
             {
               "figure": "cercle",
               "couleur": "vert",
-              "type": "voisin-dessus",
+              "type": "voisin-dessous",
               "figure2": "carre",
               "couleur2": "bleu"
             }
@@ -3987,7 +3987,7 @@
             {
               "figure": "carre",
               "couleur": "bleu",
-              "type": "voisin-dessous",
+              "type": "voisin-dessus",
               "figure2": "cercle",
               "couleur2": "vert"
             }
@@ -4002,7 +4002,7 @@
             {
               "figure": "cercle",
               "couleur": "rouge",
-              "type": "voisin-gauche",
+              "type": "voisin-droite",
               "figure2": "carre",
               "couleur2": "rouge"
             }
@@ -4017,7 +4017,7 @@
             {
               "figure": "triangle",
               "couleur": "bleu",
-              "type": "voisin-dessus",
+              "type": "voisin-dessous",
               "figure2": "losange",
               "couleur2": "bleu"
             }
@@ -4031,7 +4031,7 @@
             {
               "figure": "carre",
               "couleur": "rouge",
-              "type": "voisin-gauche",
+              "type": "voisin-droite",
               "figure2": "triangle",
               "couleur2": "jaune"
             }
@@ -4045,7 +4045,7 @@
             {
               "figure": "cercle",
               "couleur": "jaune",
-              "type": "voisin-dessous",
+              "type": "voisin-dessus",
               "figure2": "losange",
               "couleur2": "vert"
             }
@@ -4060,7 +4060,7 @@
             {
               "figure": "losange",
               "couleur": "jaune",
-              "type": "voisin-droite",
+              "type": "voisin-gauche",
               "figure2": "carre",
               "couleur2": "vert"
             }
@@ -4075,7 +4075,7 @@
             {
               "figure": "losange",
               "couleur": "bleu",
-              "type": "voisin-dessous",
+              "type": "voisin-dessus",
               "figure2": "triangle",
               "couleur2": "bleu"
             }
@@ -4090,7 +4090,7 @@
             {
               "figure": "cercle",
               "couleur": "bleu",
-              "type": "voisin-dessus",
+              "type": "voisin-dessous",
               "figure2": "carre",
               "couleur2": "jaune"
             }
@@ -4105,7 +4105,7 @@
             {
               "figure": "losange",
               "couleur": "vert",
-              "type": "voisin-gauche",
+              "type": "voisin-droite",
               "figure2": "cercle",
               "couleur2": "vert"
             }
@@ -4120,7 +4120,7 @@
             {
               "figure": "carre",
               "couleur": "jaune",
-              "type": "voisin-droite",
+              "type": "voisin-gauche",
               "figure2": "carre",
               "couleur2": "bleu"
             }
@@ -4264,7 +4264,7 @@
             {
               "figure": "triangle",
               "couleur": "jaune",
-              "type": "voisin-gauche",
+              "type": "voisin-droite",
               "figure2": "losange",
               "couleur2": "jaune"
             }
@@ -4279,7 +4279,7 @@
             {
               "figure": "losange",
               "couleur": "jaune",
-              "type": "voisin-droite",
+              "type": "voisin-gauche",
               "figure2": "triangle",
               "couleur2": "jaune"
             }
@@ -4293,7 +4293,7 @@
             {
               "figure": "triangle",
               "couleur": "bleu",
-              "type": "voisin-dessus",
+              "type": "voisin-dessous",
               "figure2": "losange",
               "couleur2": "jaune"
             }
@@ -4307,7 +4307,7 @@
             {
               "figure": "carre",
               "couleur": "rouge",
-              "type": "voisin-dessus",
+              "type": "voisin-dessous",
               "figure2": "cercle",
               "couleur2": "jaune"
             }
@@ -4321,7 +4321,7 @@
             {
               "figure": "cercle",
               "couleur": "jaune",
-              "type": "voisin-droite",
+              "type": "voisin-gauche",
               "figure2": "triangle",
               "couleur2": "rouge"
             }
@@ -4336,7 +4336,7 @@
             {
               "figure": "losange",
               "couleur": "rouge",
-              "type": "voisin-gauche",
+              "type": "voisin-droite",
               "figure2": "cercle",
               "couleur2": "vert"
             }
@@ -4351,7 +4351,7 @@
             {
               "figure": "losange",
               "couleur": "bleu",
-              "type": "voisin-dessus",
+              "type": "voisin-dessous",
               "figure2": "triangle",
               "couleur2": "vert"
             }
@@ -4365,7 +4365,7 @@
             {
               "figure": "triangle",
               "couleur": "vert",
-              "type": "voisin-droite",
+              "type": "voisin-gauche",
               "figure2": "carre",
               "couleur2": "rouge"
             }
@@ -4380,7 +4380,7 @@
             {
               "figure": "cercle",
               "couleur": "bleu",
-              "type": "voisin-dessus",
+              "type": "voisin-dessous",
               "figure2": "carre",
               "couleur2": "bleu"
             }
@@ -4395,7 +4395,7 @@
             {
               "figure": "cercle",
               "couleur": "vert",
-              "type": "voisin-gauche",
+              "type": "voisin-droite",
               "figure2": "losange",
               "couleur2": "bleu"
             }
@@ -4410,7 +4410,7 @@
             {
               "figure": "cercle",
               "couleur": "rouge",
-              "type": "voisin-droite",
+              "type": "voisin-gauche",
               "figure2": "losange",
               "couleur2": "jaune"
             }
@@ -4425,7 +4425,7 @@
             {
               "figure": "carre",
               "couleur": "jaune",
-              "type": "voisin-gauche",
+              "type": "voisin-droite",
               "figure2": "carre",
               "couleur2": "rouge"
             }
@@ -4440,7 +4440,7 @@
             {
               "figure": "triangle",
               "couleur": "rouge",
-              "type": "voisin-dessous",
+              "type": "voisin-dessus",
               "figure2": "carre",
               "couleur2": "jaune"
             }
@@ -4455,7 +4455,7 @@
             {
               "figure": "carre",
               "couleur": "vert",
-              "type": "voisin-dessus",
+              "type": "voisin-dessous",
               "figure2": "cercle",
               "couleur2": "rouge"
             }
@@ -4470,7 +4470,7 @@
             {
               "figure": "losange",
               "couleur": "vert",
-              "type": "voisin-dessous",
+              "type": "voisin-dessus",
               "figure2": "triangle",
               "couleur2": "rouge"
             }
@@ -4614,7 +4614,7 @@
             {
               "figure": "losange",
               "couleur": "bleu",
-              "type": "voisin-dessus",
+              "type": "voisin-dessous",
               "figure2": "cercle",
               "couleur2": "bleu"
             }
@@ -4629,7 +4629,7 @@
             {
               "figure": "cercle",
               "couleur": "bleu",
-              "type": "voisin-dessous",
+              "type": "voisin-dessus",
               "figure2": "losange",
               "couleur2": "bleu"
             }
@@ -4644,7 +4644,7 @@
             {
               "figure": "carre",
               "couleur": "vert",
-              "type": "voisin-gauche",
+              "type": "voisin-droite",
               "figure2": "cercle",
               "couleur2": "bleu"
             }
@@ -4659,7 +4659,7 @@
             {
               "figure": "cercle",
               "couleur": "jaune",
-              "type": "voisin-dessus",
+              "type": "voisin-dessous",
               "figure2": "carre",
               "couleur2": "bleu"
             }
@@ -4674,7 +4674,7 @@
             {
               "figure": "triangle",
               "couleur": "bleu",
-              "type": "voisin-droite",
+              "type": "voisin-gauche",
               "figure2": "cercle",
               "couleur2": "jaune"
             }
@@ -4689,7 +4689,7 @@
             {
               "figure": "carre",
               "couleur": "bleu",
-              "type": "voisin-gauche",
+              "type": "voisin-droite",
               "figure2": "losange",
               "couleur2": "bleu"
             }
@@ -4704,7 +4704,7 @@
             {
               "figure": "triangle",
               "couleur": "vert",
-              "type": "voisin-gauche",
+              "type": "voisin-droite",
               "figure2": "carre",
               "couleur2": "bleu"
             }
@@ -4719,7 +4719,7 @@
             {
               "figure": "losange",
               "couleur": "jaune",
-              "type": "voisin-dessus",
+              "type": "voisin-dessous",
               "figure2": "triangle",
               "couleur2": "vert"
             }
@@ -4734,7 +4734,7 @@
             {
               "figure": "losange",
               "couleur": "vert",
-              "type": "voisin-droite",
+              "type": "voisin-gauche",
               "figure2": "cercle",
               "couleur2": "vert"
             }
@@ -4749,7 +4749,7 @@
             {
               "figure": "triangle",
               "couleur": "rouge",
-              "type": "voisin-droite",
+              "type": "voisin-gauche",
               "figure2": "losange",
               "couleur2": "vert"
             }
@@ -4764,7 +4764,7 @@
             {
               "figure": "cercle",
               "couleur": "vert",
-              "type": "voisin-dessous",
+              "type": "voisin-dessus",
               "figure2": "cercle",
               "couleur2": "rouge"
             }
@@ -4779,7 +4779,7 @@
             {
               "figure": "cercle",
               "couleur": "rouge",
-              "type": "voisin-droite",
+              "type": "voisin-gauche",
               "figure2": "losange",
               "couleur2": "rouge"
             }
@@ -4794,7 +4794,7 @@
             {
               "figure": "carre",
               "couleur": "jaune",
-              "type": "voisin-gauche",
+              "type": "voisin-droite",
               "figure2": "triangle",
               "couleur2": "vert"
             }
@@ -4809,7 +4809,7 @@
             {
               "figure": "triangle",
               "couleur": "jaune",
-              "type": "voisin-gauche",
+              "type": "voisin-droite",
               "figure2": "cercle",
               "couleur2": "vert"
             }
@@ -4824,7 +4824,7 @@
             {
               "figure": "losange",
               "couleur": "rouge",
-              "type": "voisin-dessus",
+              "type": "voisin-dessous",
               "figure2": "triangle",
               "couleur2": "jaune"
             }
@@ -4968,7 +4968,7 @@
             {
               "figure": "losange",
               "couleur": "vert",
-              "type": "voisin-droite",
+              "type": "voisin-gauche",
               "figure2": "carre",
               "couleur2": "bleu"
             }
@@ -4983,7 +4983,7 @@
             {
               "figure": "carre",
               "couleur": "bleu",
-              "type": "voisin-gauche",
+              "type": "voisin-droite",
               "figure2": "losange",
               "couleur2": "vert"
             }
@@ -4998,7 +4998,7 @@
             {
               "figure": "triangle",
               "couleur": "vert",
-              "type": "voisin-dessus",
+              "type": "voisin-dessous",
               "figure2": "carre",
               "couleur2": "bleu"
             }
@@ -5013,7 +5013,7 @@
             {
               "figure": "cercle",
               "couleur": "jaune",
-              "type": "voisin-dessus",
+              "type": "voisin-dessous",
               "figure2": "losange",
               "couleur2": "vert"
             }
@@ -5027,7 +5027,7 @@
             {
               "figure": "cercle",
               "couleur": "rouge",
-              "type": "voisin-gauche",
+              "type": "voisin-droite",
               "figure2": "triangle",
               "couleur2": "vert"
             }
@@ -5041,7 +5041,7 @@
             {
               "figure": "losange",
               "couleur": "rouge",
-              "type": "voisin-droite",
+              "type": "voisin-gauche",
               "figure2": "losange",
               "couleur2": "jaune"
             }
@@ -5056,7 +5056,7 @@
             {
               "figure": "losange",
               "couleur": "jaune",
-              "type": "voisin-dessus",
+              "type": "voisin-dessous",
               "figure2": "triangle",
               "couleur2": "jaune"
             }
@@ -5071,7 +5071,7 @@
             {
               "figure": "triangle",
               "couleur": "bleu",
-              "type": "voisin-dessus",
+              "type": "voisin-dessous",
               "figure2": "cercle",
               "couleur2": "jaune"
             }
@@ -5086,7 +5086,7 @@
             {
               "figure": "cercle",
               "couleur": "vert",
-              "type": "voisin-gauche",
+              "type": "voisin-droite",
               "figure2": "triangle",
               "couleur2": "bleu"
             }
@@ -5101,7 +5101,7 @@
             {
               "figure": "triangle",
               "couleur": "rouge",
-              "type": "voisin-gauche",
+              "type": "voisin-droite",
               "figure2": "losange",
               "couleur2": "bleu"
             }
@@ -5116,7 +5116,7 @@
             {
               "figure": "triangle",
               "couleur": "jaune",
-              "type": "voisin-gauche",
+              "type": "voisin-droite",
               "figure2": "triangle",
               "couleur2": "rouge"
             }
@@ -5131,7 +5131,7 @@
             {
               "figure": "cercle",
               "couleur": "bleu",
-              "type": "voisin-gauche",
+              "type": "voisin-droite",
               "figure2": "carre",
               "couleur2": "rouge"
             }
@@ -5146,7 +5146,7 @@
             {
               "figure": "losange",
               "couleur": "bleu",
-              "type": "voisin-droite",
+              "type": "voisin-gauche",
               "figure2": "triangle",
               "couleur2": "rouge"
             }
@@ -5161,7 +5161,7 @@
             {
               "figure": "carre",
               "couleur": "rouge",
-              "type": "voisin-gauche",
+              "type": "voisin-droite",
               "figure2": "cercle",
               "couleur2": "vert"
             }
@@ -5176,7 +5176,7 @@
             {
               "figure": "carre",
               "couleur": "vert",
-              "type": "voisin-droite",
+              "type": "voisin-gauche",
               "figure2": "losange",
               "couleur2": "bleu"
             }
@@ -5320,7 +5320,7 @@
             {
               "figure": "triangle",
               "couleur": "rouge",
-              "type": "voisin-dessus",
+              "type": "voisin-dessous",
               "figure2": "carre",
               "couleur2": "rouge"
             }
@@ -5335,7 +5335,7 @@
             {
               "figure": "carre",
               "couleur": "rouge",
-              "type": "voisin-dessous",
+              "type": "voisin-dessus",
               "figure2": "triangle",
               "couleur2": "rouge"
             }
@@ -5350,7 +5350,7 @@
             {
               "figure": "carre",
               "couleur": "bleu",
-              "type": "voisin-droite",
+              "type": "voisin-gauche",
               "figure2": "carre",
               "couleur2": "rouge"
             }
@@ -5365,7 +5365,7 @@
             {
               "figure": "triangle",
               "couleur": "jaune",
-              "type": "voisin-dessous",
+              "type": "voisin-dessus",
               "figure2": "carre",
               "couleur2": "rouge"
             }
@@ -5380,7 +5380,7 @@
             {
               "figure": "losange",
               "couleur": "jaune",
-              "type": "voisin-gauche",
+              "type": "voisin-droite",
               "figure2": "triangle",
               "couleur2": "jaune"
             }
@@ -5395,7 +5395,7 @@
             {
               "figure": "losange",
               "couleur": "rouge",
-              "type": "voisin-gauche",
+              "type": "voisin-droite",
               "figure2": "losange",
               "couleur2": "jaune"
             }
@@ -5410,7 +5410,7 @@
             {
               "figure": "triangle",
               "couleur": "vert",
-              "type": "voisin-droite",
+              "type": "voisin-gauche",
               "figure2": "triangle",
               "couleur2": "rouge"
             }
@@ -5425,7 +5425,7 @@
             {
               "figure": "carre",
               "couleur": "vert",
-              "type": "voisin-dessus",
+              "type": "voisin-dessous",
               "figure2": "triangle",
               "couleur2": "vert"
             }
@@ -5439,7 +5439,7 @@
             {
               "figure": "losange",
               "couleur": "bleu",
-              "type": "voisin-gauche",
+              "type": "voisin-droite",
               "figure2": "triangle",
               "couleur2": "rouge"
             }
@@ -5454,7 +5454,7 @@
             {
               "figure": "triangle",
               "couleur": "bleu",
-              "type": "voisin-dessus",
+              "type": "voisin-dessous",
               "figure2": "cercle",
               "couleur2": "bleu"
             }
@@ -5468,7 +5468,7 @@
             {
               "figure": "cercle",
               "couleur": "rouge",
-              "type": "voisin-dessus",
+              "type": "voisin-dessous",
               "figure2": "losange",
               "couleur2": "jaune"
             }
@@ -5483,7 +5483,7 @@
             {
               "figure": "cercle",
               "couleur": "jaune",
-              "type": "voisin-droite",
+              "type": "voisin-gauche",
               "figure2": "cercle",
               "couleur2": "vert"
             }
@@ -5498,7 +5498,7 @@
             {
               "figure": "losange",
               "couleur": "vert",
-              "type": "voisin-droite",
+              "type": "voisin-gauche",
               "figure2": "cercle",
               "couleur2": "jaune"
             }
@@ -5513,7 +5513,7 @@
             {
               "figure": "cercle",
               "couleur": "bleu",
-              "type": "voisin-gauche",
+              "type": "voisin-droite",
               "figure2": "cercle",
               "couleur2": "rouge"
             }
@@ -5528,7 +5528,7 @@
             {
               "figure": "cercle",
               "couleur": "vert",
-              "type": "voisin-gauche",
+              "type": "voisin-droite",
               "figure2": "cercle",
               "couleur2": "jaune"
             }
@@ -5672,7 +5672,7 @@
             {
               "figure": "losange",
               "couleur": "vert",
-              "type": "voisin-dessus",
+              "type": "voisin-dessous",
               "figure2": "cercle",
               "couleur2": "bleu"
             }
@@ -5686,7 +5686,7 @@
             {
               "figure": "triangle",
               "couleur": "jaune",
-              "type": "voisin-dessus",
+              "type": "voisin-dessous",
               "figure2": "losange",
               "couleur2": "vert"
             }
@@ -5701,7 +5701,7 @@
             {
               "figure": "triangle",
               "couleur": "rouge",
-              "type": "voisin-gauche",
+              "type": "voisin-droite",
               "figure2": "losange",
               "couleur2": "vert"
             }
@@ -5716,7 +5716,7 @@
             {
               "figure": "losange",
               "couleur": "bleu",
-              "type": "voisin-dessus",
+              "type": "voisin-dessous",
               "figure2": "triangle",
               "couleur2": "jaune"
             }
@@ -5731,7 +5731,7 @@
             {
               "figure": "cercle",
               "couleur": "bleu",
-              "type": "voisin-droite",
+              "type": "voisin-gauche",
               "figure2": "triangle",
               "couleur2": "bleu"
             }
@@ -5746,7 +5746,7 @@
             {
               "figure": "carre",
               "couleur": "bleu",
-              "type": "voisin-droite",
+              "type": "voisin-gauche",
               "figure2": "losange",
               "couleur2": "vert"
             }
@@ -5761,7 +5761,7 @@
             {
               "figure": "triangle",
               "couleur": "vert",
-              "type": "voisin-dessous",
+              "type": "voisin-dessus",
               "figure2": "losange",
               "couleur2": "jaune"
             }
@@ -5776,7 +5776,7 @@
             {
               "figure": "losange",
               "couleur": "jaune",
-              "type": "voisin-dessous",
+              "type": "voisin-dessus",
               "figure2": "cercle",
               "couleur2": "jaune"
             }
@@ -5790,7 +5790,7 @@
             {
               "figure": "carre",
               "couleur": "rouge",
-              "type": "voisin-dessus",
+              "type": "voisin-dessous",
               "figure2": "carre",
               "couleur2": "bleu"
             }
@@ -5805,7 +5805,7 @@
             {
               "figure": "cercle",
               "couleur": "jaune",
-              "type": "voisin-dessus",
+              "type": "voisin-dessous",
               "figure2": "losange",
               "couleur2": "jaune"
             }
@@ -5820,7 +5820,7 @@
             {
               "figure": "carre",
               "couleur": "jaune",
-              "type": "voisin-dessus",
+              "type": "voisin-dessous",
               "figure2": "cercle",
               "couleur2": "vert"
             }
@@ -5835,7 +5835,7 @@
             {
               "figure": "carre",
               "couleur": "vert",
-              "type": "voisin-gauche",
+              "type": "voisin-droite",
               "figure2": "cercle",
               "couleur2": "jaune"
             }
@@ -5850,7 +5850,7 @@
             {
               "figure": "cercle",
               "couleur": "rouge",
-              "type": "voisin-dessous",
+              "type": "voisin-dessus",
               "figure2": "triangle",
               "couleur2": "vert"
             }
@@ -5865,7 +5865,7 @@
             {
               "figure": "cercle",
               "couleur": "vert",
-              "type": "voisin-gauche",
+              "type": "voisin-droite",
               "figure2": "triangle",
               "couleur2": "jaune"
             }
@@ -5880,7 +5880,7 @@
             {
               "figure": "losange",
               "couleur": "rouge",
-              "type": "voisin-dessous",
+              "type": "voisin-dessus",
               "figure2": "carre",
               "couleur2": "bleu"
             }
@@ -6024,7 +6024,7 @@
             {
               "figure": "cercle",
               "couleur": "rouge",
-              "type": "voisin-gauche",
+              "type": "voisin-droite",
               "figure2": "cercle",
               "couleur2": "bleu"
             }
@@ -6039,7 +6039,7 @@
             {
               "figure": "cercle",
               "couleur": "bleu",
-              "type": "voisin-droite",
+              "type": "voisin-gauche",
               "figure2": "cercle",
               "couleur2": "rouge"
             }
@@ -6054,7 +6054,7 @@
             {
               "figure": "losange",
               "couleur": "jaune",
-              "type": "voisin-dessus",
+              "type": "voisin-dessous",
               "figure2": "cercle",
               "couleur2": "bleu"
             }
@@ -6069,7 +6069,7 @@
             {
               "figure": "carre",
               "couleur": "vert",
-              "type": "voisin-dessous",
+              "type": "voisin-dessus",
               "figure2": "cercle",
               "couleur2": "bleu"
             }
@@ -6084,7 +6084,7 @@
             {
               "figure": "carre",
               "couleur": "jaune",
-              "type": "voisin-dessous",
+              "type": "voisin-dessus",
               "figure2": "cercle",
               "couleur2": "rouge"
             }
@@ -6099,7 +6099,7 @@
             {
               "figure": "triangle",
               "couleur": "vert",
-              "type": "voisin-droite",
+              "type": "voisin-gauche",
               "figure2": "losange",
               "couleur2": "jaune"
             }
@@ -6113,7 +6113,7 @@
             {
               "figure": "losange",
               "couleur": "vert",
-              "type": "voisin-dessus",
+              "type": "voisin-dessous",
               "figure2": "carre",
               "couleur2": "rouge"
             }
@@ -6128,7 +6128,7 @@
             {
               "figure": "carre",
               "couleur": "rouge",
-              "type": "voisin-dessous",
+              "type": "voisin-dessus",
               "figure2": "losange",
               "couleur2": "vert"
             }
@@ -6143,7 +6143,7 @@
             {
               "figure": "carre",
               "couleur": "bleu",
-              "type": "voisin-droite",
+              "type": "voisin-gauche",
               "figure2": "carre",
               "couleur2": "rouge"
             }
@@ -6158,7 +6158,7 @@
             {
               "figure": "losange",
               "couleur": "rouge",
-              "type": "voisin-droite",
+              "type": "voisin-gauche",
               "figure2": "triangle",
               "couleur2": "bleu"
             }
@@ -6173,7 +6173,7 @@
             {
               "figure": "triangle",
               "couleur": "bleu",
-              "type": "voisin-droite",
+              "type": "voisin-gauche",
               "figure2": "triangle",
               "couleur2": "jaune"
             }
@@ -6188,7 +6188,7 @@
             {
               "figure": "cercle",
               "couleur": "jaune",
-              "type": "voisin-droite",
+              "type": "voisin-gauche",
               "figure2": "losange",
               "couleur2": "vert"
             }
@@ -6203,7 +6203,7 @@
             {
               "figure": "triangle",
               "couleur": "rouge",
-              "type": "voisin-droite",
+              "type": "voisin-gauche",
               "figure2": "losange",
               "couleur2": "rouge"
             }
@@ -6218,7 +6218,7 @@
             {
               "figure": "losange",
               "couleur": "bleu",
-              "type": "voisin-dessous",
+              "type": "voisin-dessus",
               "figure2": "triangle",
               "couleur2": "rouge"
             }
@@ -6233,7 +6233,7 @@
             {
               "figure": "triangle",
               "couleur": "jaune",
-              "type": "voisin-gauche",
+              "type": "voisin-droite",
               "figure2": "triangle",
               "couleur2": "bleu"
             }
@@ -6377,7 +6377,7 @@
             {
               "figure": "losange",
               "couleur": "bleu",
-              "type": "voisin-gauche",
+              "type": "voisin-droite",
               "figure2": "triangle",
               "couleur2": "vert"
             }
@@ -6392,7 +6392,7 @@
             {
               "figure": "losange",
               "couleur": "vert",
-              "type": "voisin-gauche",
+              "type": "voisin-droite",
               "figure2": "losange",
               "couleur2": "bleu"
             }
@@ -6407,7 +6407,7 @@
             {
               "figure": "cercle",
               "couleur": "bleu",
-              "type": "voisin-dessus",
+              "type": "voisin-dessous",
               "figure2": "losange",
               "couleur2": "bleu"
             }
@@ -6422,7 +6422,7 @@
             {
               "figure": "carre",
               "couleur": "bleu",
-              "type": "voisin-gauche",
+              "type": "voisin-droite",
               "figure2": "cercle",
               "couleur2": "bleu"
             }
@@ -6437,7 +6437,7 @@
             {
               "figure": "triangle",
               "couleur": "bleu",
-              "type": "voisin-gauche",
+              "type": "voisin-droite",
               "figure2": "losange",
               "couleur2": "vert"
             }
@@ -6452,7 +6452,7 @@
             {
               "figure": "triangle",
               "couleur": "rouge",
-              "type": "voisin-dessous",
+              "type": "voisin-dessus",
               "figure2": "triangle",
               "couleur2": "bleu"
             }
@@ -6466,7 +6466,7 @@
             {
               "figure": "cercle",
               "couleur": "jaune",
-              "type": "voisin-droite",
+              "type": "voisin-gauche",
               "figure2": "triangle",
               "couleur2": "rouge"
             }
@@ -6481,7 +6481,7 @@
             {
               "figure": "cercle",
               "couleur": "vert",
-              "type": "voisin-dessous",
+              "type": "voisin-dessus",
               "figure2": "cercle",
               "couleur2": "jaune"
             }
@@ -6495,7 +6495,7 @@
             {
               "figure": "carre",
               "couleur": "jaune",
-              "type": "voisin-gauche",
+              "type": "voisin-droite",
               "figure2": "cercle",
               "couleur2": "rouge"
             }
@@ -6510,7 +6510,7 @@
             {
               "figure": "carre",
               "couleur": "vert",
-              "type": "voisin-dessous",
+              "type": "voisin-dessus",
               "figure2": "carre",
               "couleur2": "jaune"
             }
@@ -6525,7 +6525,7 @@
             {
               "figure": "cercle",
               "couleur": "rouge",
-              "type": "voisin-droite",
+              "type": "voisin-gauche",
               "figure2": "carre",
               "couleur2": "jaune"
             }
@@ -6540,7 +6540,7 @@
             {
               "figure": "triangle",
               "couleur": "vert",
-              "type": "voisin-droite",
+              "type": "voisin-gauche",
               "figure2": "losange",
               "couleur2": "bleu"
             }
@@ -6555,7 +6555,7 @@
             {
               "figure": "losange",
               "couleur": "jaune",
-              "type": "voisin-dessous",
+              "type": "voisin-dessus",
               "figure2": "cercle",
               "couleur2": "rouge"
             }
@@ -6570,7 +6570,7 @@
             {
               "figure": "losange",
               "couleur": "rouge",
-              "type": "voisin-gauche",
+              "type": "voisin-droite",
               "figure2": "carre",
               "couleur2": "bleu"
             }
@@ -6585,7 +6585,7 @@
             {
               "figure": "carre",
               "couleur": "rouge",
-              "type": "voisin-dessus",
+              "type": "voisin-dessous",
               "figure2": "triangle",
               "couleur2": "vert"
             }
@@ -6729,7 +6729,7 @@
             {
               "figure": "cercle",
               "couleur": "jaune",
-              "type": "voisin-dessous",
+              "type": "voisin-dessus",
               "figure2": "losange",
               "couleur2": "jaune"
             }
@@ -6744,7 +6744,7 @@
             {
               "figure": "losange",
               "couleur": "jaune",
-              "type": "voisin-dessus",
+              "type": "voisin-dessous",
               "figure2": "cercle",
               "couleur2": "jaune"
             }
@@ -6758,7 +6758,7 @@
             {
               "figure": "losange",
               "couleur": "rouge",
-              "type": "voisin-droite",
+              "type": "voisin-gauche",
               "figure2": "losange",
               "couleur2": "jaune"
             }
@@ -6772,7 +6772,7 @@
             {
               "figure": "carre",
               "couleur": "bleu",
-              "type": "voisin-dessus",
+              "type": "voisin-dessous",
               "figure2": "losange",
               "couleur2": "rouge"
             }
@@ -6787,7 +6787,7 @@
             {
               "figure": "losange",
               "couleur": "vert",
-              "type": "voisin-gauche",
+              "type": "voisin-droite",
               "figure2": "triangle",
               "couleur2": "rouge"
             }
@@ -6802,7 +6802,7 @@
             {
               "figure": "cercle",
               "couleur": "rouge",
-              "type": "voisin-gauche",
+              "type": "voisin-droite",
               "figure2": "carre",
               "couleur2": "bleu"
             }
@@ -6817,7 +6817,7 @@
             {
               "figure": "cercle",
               "couleur": "bleu",
-              "type": "voisin-dessus",
+              "type": "voisin-dessous",
               "figure2": "losange",
               "couleur2": "vert"
             }
@@ -6832,7 +6832,7 @@
             {
               "figure": "carre",
               "couleur": "jaune",
-              "type": "voisin-droite",
+              "type": "voisin-gauche",
               "figure2": "carre",
               "couleur2": "rouge"
             }
@@ -6847,7 +6847,7 @@
             {
               "figure": "triangle",
               "couleur": "bleu",
-              "type": "voisin-dessous",
+              "type": "voisin-dessus",
               "figure2": "losange",
               "couleur2": "vert"
             }
@@ -6862,7 +6862,7 @@
             {
               "figure": "losange",
               "couleur": "bleu",
-              "type": "voisin-dessus",
+              "type": "voisin-dessous",
               "figure2": "carre",
               "couleur2": "vert"
             }
@@ -6877,7 +6877,7 @@
             {
               "figure": "cercle",
               "couleur": "vert",
-              "type": "voisin-droite",
+              "type": "voisin-gauche",
               "figure2": "cercle",
               "couleur2": "bleu"
             }
@@ -6892,7 +6892,7 @@
             {
               "figure": "triangle",
               "couleur": "rouge",
-              "type": "voisin-dessus",
+              "type": "voisin-dessous",
               "figure2": "losange",
               "couleur2": "bleu"
             }
@@ -6907,7 +6907,7 @@
             {
               "figure": "carre",
               "couleur": "vert",
-              "type": "voisin-droite",
+              "type": "voisin-gauche",
               "figure2": "triangle",
               "couleur2": "vert"
             }
@@ -6922,7 +6922,7 @@
             {
               "figure": "triangle",
               "couleur": "jaune",
-              "type": "voisin-dessous",
+              "type": "voisin-dessus",
               "figure2": "losange",
               "couleur2": "rouge"
             }
@@ -6937,7 +6937,7 @@
             {
               "figure": "triangle",
               "couleur": "vert",
-              "type": "voisin-gauche",
+              "type": "voisin-droite",
               "figure2": "carre",
               "couleur2": "vert"
             }

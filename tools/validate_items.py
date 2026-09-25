@@ -426,6 +426,74 @@ def _predicat_grille(indice: dict, fig: list[int], coul: list[int],
     return pred_indice(indice, (tuple(fig), tuple(coul)), n, noms_f, noms_c)
 
 
+def _sens_contredit(indice: dict, fig: list[int], coul: list[int],
+                    index_figure: dict, index_couleur: dict, n: int) -> str | None:
+    """Contradiction entre le **sens français** de la phrase et la solution.
+
+    Contrôle écrit indépendamment du solveur, à partir de la signification des
+    phrases : « Le carré bleu est juste à gauche du cercle rouge » exige que le
+    carré bleu soit dans la colonne immédiatement à gauche. C'est ce contrôle qui
+    manquait quand une paire droite/gauche ou dessus/dessous a été inversée —
+    l'inversion rendait la grille insoluble sans qu'aucun outil ne s'en aperçoive.
+    """
+    def case_de(nom_f: str, nom_c: str) -> int:
+        return _cellule_grille(fig, coul, index_figure[nom_f], index_couleur[nom_c])
+
+    coins_n = {0, n - 1, n * (n - 1), n * n - 1}
+    bords_n = {i for i in range(n * n) if i // n in (0, n - 1) or i % n in (0, n - 1)}
+    for atome in [indice] + list(indice.get("et") or []):
+        if not isinstance(atome, dict):
+            continue
+        nom_f = atome.get("figure", indice.get("figure"))
+        nom_c = atome.get("couleur", indice.get("couleur"))
+        if nom_f not in index_figure or nom_c not in index_couleur:
+            continue
+        ligne, colonne = divmod(case_de(nom_f, nom_c), n)
+        type_indice = atome.get("type")
+        if type_indice == "ligne" and ligne != atome["ligne"]:
+            return "la phrase annonce une autre ligne"
+        if type_indice == "colonne" and colonne != atome["colonne"]:
+            return "la phrase annonce une autre colonne"
+        if type_indice == "pas-ligne" and ligne == atome["ligne"]:
+            return "la phrase exclut la ligne où se trouve la figure"
+        if type_indice == "pas-colonne" and colonne == atome["colonne"]:
+            return "la phrase exclut la colonne où se trouve la figure"
+        if type_indice == "pas-coin" and case_de(nom_f, nom_c) in coins_n:
+            return "la figure est dans un coin alors que la phrase l'exclut"
+        if type_indice == "pas-bord" and case_de(nom_f, nom_c) in bords_n:
+            return "la figure est sur le bord alors que la phrase l'exclut"
+        if type_indice == "ni-ni" and (case_de(nom_f, nom_c) in coins_n or case_de(nom_f, nom_c) in bords_n):
+            return "la figure est dans un coin ou sur le bord alors que la phrase l'exclut"
+        if type_indice in ("voisin-gauche", "voisin-droite", "voisin-dessus", "voisin-dessous",
+                           "comparaison", "a-droite-de", "a-gauche-de", "au-dessus-de",
+                           "en-dessous-de", "autre-ligne", "autre-colonne"):
+            l2, c2 = divmod(case_de(atome["figure2"], atome["couleur2"]), n)
+            attendu = {
+                "voisin-gauche": (l2, c2 - 1),      # juste à gauche : une colonne avant
+                "voisin-droite": (l2, c2 + 1),
+                "voisin-dessus": (l2 - 1, c2),       # juste au-dessus : une ligne avant
+                "voisin-dessous": (l2 + 1, c2),
+            }.get(type_indice)
+            if attendu and (ligne, colonne) != attendu:
+                return (f"« {type_indice} » place la figure en ({ligne}, {colonne}) "
+                        f"alors que la solution la donne en ({l2}, {c2})")
+            if type_indice == "a-droite-de" and colonne <= c2:
+                return "la phrase dit « plus à droite » sans que ce soit vrai"
+            if type_indice == "a-gauche-de" and colonne >= c2:
+                return "la phrase dit « plus à gauche » sans que ce soit vrai"
+            if type_indice == "au-dessus-de" and ligne >= l2:
+                return "la phrase dit « plus haut » sans que ce soit vrai"
+            if type_indice == "en-dessous-de" and ligne <= l2:
+                return "la phrase dit « plus bas » sans que ce soit vrai"
+            if type_indice == "autre-ligne" and ligne == l2:
+                return "la phrase dit « pas la même ligne » alors que c'est la même"
+            if type_indice == "autre-colonne" and colonne == c2:
+                return "la phrase dit « pas la même colonne » alors que c'est la même"
+            if type_indice == "comparaison" and (ligne != l2 or colonne >= c2):
+                return "la phrase dit « sur la même ligne, à gauche » sans que ce soit vrai"
+    return None
+
+
 def _erreurs_grille_deduction(item: dict, prefixe: str, contenu: dict) -> list[str]:
     """Vérifie une grille de déduction : structure, carré latin, indices vrais."""
     erreurs: list[str] = []
@@ -485,6 +553,14 @@ def _erreurs_grille_deduction(item: dict, prefixe: str, contenu: dict) -> list[s
             erreurs.append(prefixe + f"grille-deduction : information {position} de type inconnu")
         elif not _predicat_grille(indice, fig, coul, index_figure, index_couleur, n):
             erreurs.append(prefixe + f"grille-deduction : l'indice {position} contredit la solution")
+
+    # Sens des phrases : contrôle INDÉPENDANT du solveur.
+    for position, indice in enumerate(enonces, start=1):
+        if not isinstance(indice, dict):
+            continue
+        souci = _sens_contredit(indice, fig, coul, index_figure, index_couleur, n)
+        if souci:
+            erreurs.append(prefixe + f"grille-deduction : phrase {position} contredit la solution ({souci})")
 
     # Pédagogie verrouillée : les phrases doivent contenir la résolution.
     palier = item.get("palier")

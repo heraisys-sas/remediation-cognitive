@@ -99,15 +99,20 @@ def _vrai_unaire(atome: dict, case: int, n: int) -> bool:
 
 
 def _vrai_binaire(indice: dict, i1: int, i2: int, n: int) -> bool:
-    """Cette relation entre deux figures colorées est-elle compatible avec ces cases ?"""
+    """Cette relation entre deux figures colorées est-elle compatible avec ces cases ?
+
+    Convention (celle des phrases) : ``i1`` est la case de la figure **sujet** de la
+    phrase, ``i2`` celle de la figure citée ensuite. « Le carré bleu est juste à
+    gauche du cercle rouge » se vérifie donc par ``i2 == i1 + 1``.
+    """
     t = indice["type"]
-    if t == "voisin-droite":
+    if t == "voisin-gauche":       # « … est juste à gauche de … » : la cible est à droite
         return i2 == i1 + 1 and i1 % n != n - 1
-    if t == "voisin-gauche":
+    if t == "voisin-droite":       # « … est juste à droite de … » : la cible est à gauche
         return i2 == i1 - 1 and i1 % n != 0
-    if t == "voisin-dessous":
+    if t == "voisin-dessus":       # « … est juste au-dessus de … » : la cible est en dessous
         return i2 == i1 + n
-    if t == "voisin-dessus":
+    if t == "voisin-dessous":      # « … est juste en dessous de … » : la cible est au-dessus
         return i2 == i1 - n
     if t == "autre-ligne":
         return i1 // n != i2 // n

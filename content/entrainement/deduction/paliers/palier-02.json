@@ -35,7 +35,7 @@
             {
               "figure": "carre",
               "couleur": "vert",
-              "type": "voisin-gauche",
+              "type": "voisin-droite",
               "figure2": "carre",
               "couleur2": "bleu"
             }
@@ -50,7 +50,7 @@
             {
               "figure": "carre",
               "couleur": "bleu",
-              "type": "voisin-droite",
+              "type": "voisin-gauche",
               "figure2": "carre",
               "couleur2": "vert"
             }
@@ -65,7 +65,7 @@
             {
               "figure": "cercle",
               "couleur": "vert",
-              "type": "voisin-dessous",
+              "type": "voisin-dessus",
               "figure2": "cercle",
               "couleur2": "bleu"
             }
@@ -80,7 +80,7 @@
             {
               "figure": "cercle",
               "couleur": "rouge",
-              "type": "voisin-dessous",
+              "type": "voisin-dessus",
               "figure2": "cercle",
               "couleur2": "vert"
             }
@@ -95,7 +95,7 @@
             {
               "figure": "carre",
               "couleur": "rouge",
-              "type": "voisin-dessous",
+              "type": "voisin-dessus",
               "figure2": "carre",
               "couleur2": "bleu"
             }
@@ -110,7 +110,7 @@
             {
               "figure": "triangle",
               "couleur": "bleu",
-              "type": "voisin-dessous",
+              "type": "voisin-dessus",
               "figure2": "carre",
               "couleur2": "vert"
             }
@@ -125,7 +125,7 @@
             {
               "figure": "triangle",
               "couleur": "vert",
-              "type": "voisin-dessous",
+              "type": "voisin-dessus",
               "figure2": "carre",
               "couleur2": "rouge"
             }
@@ -140,7 +140,7 @@
             {
               "figure": "triangle",
               "couleur": "rouge",
-              "type": "voisin-dessous",
+              "type": "voisin-dessus",
               "figure2": "triangle",
               "couleur2": "bleu"
             }
@@ -254,7 +254,7 @@
             {
               "figure": "triangle",
               "couleur": "rouge",
-              "type": "voisin-droite",
+              "type": "voisin-gauche",
               "figure2": "carre",
               "couleur2": "bleu"
             }
@@ -269,7 +269,7 @@
             {
               "figure": "carre",
               "couleur": "bleu",
-              "type": "voisin-droite",
+              "type": "voisin-gauche",
               "figure2": "triangle",
               "couleur2": "bleu"
             }
@@ -284,7 +284,7 @@
             {
               "figure": "triangle",
               "couleur": "bleu",
-              "type": "voisin-gauche",
+              "type": "voisin-droite",
               "figure2": "carre",
               "couleur2": "bleu"
             }
@@ -299,7 +299,7 @@
             {
               "figure": "carre",
               "couleur": "vert",
-              "type": "voisin-dessus",
+              "type": "voisin-dessous",
               "figure2": "triangle",
               "couleur2": "bleu"
             }
@@ -314,7 +314,7 @@
             {
               "figure": "cercle",
               "couleur": "rouge",
-              "type": "voisin-dessous",
+              "type": "voisin-dessus",
               "figure2": "cercle",
               "couleur2": "bleu"
             }
@@ -329,7 +329,7 @@
             {
               "figure": "triangle",
               "couleur": "vert",
-              "type": "voisin-dessus",
+              "type": "voisin-dessous",
               "figure2": "carre",
               "couleur2": "vert"
             }
@@ -344,7 +344,7 @@
             {
               "figure": "cercle",
               "couleur": "bleu",
-              "type": "voisin-droite",
+              "type": "voisin-gauche",
               "figure2": "carre",
               "couleur2": "rouge"
             }
@@ -359,7 +359,7 @@
             {
               "figure": "cercle",
               "couleur": "vert",
-              "type": "voisin-droite",
+              "type": "voisin-gauche",
               "figure2": "carre",
               "couleur2": "vert"
             }
@@ -473,7 +473,7 @@
             {
               "figure": "cercle",
               "couleur": "bleu",
-              "type": "voisin-droite",
+              "type": "voisin-gauche",
               "figure2": "carre",
               "couleur2": "vert"
             }
@@ -488,7 +488,7 @@
             {
               "figure": "carre",
               "couleur": "vert",
-              "type": "voisin-gauche",
+              "type": "voisin-droite",
               "figure2": "cercle",
               "couleur2": "bleu"
             }
@@ -503,7 +503,7 @@
             {
               "figure": "triangle",
               "couleur": "vert",
-              "type": "voisin-dessous",
+              "type": "voisin-dessus",
               "figure2": "carre",
               "couleur2": "bleu"
             }
@@ -518,7 +518,7 @@
             {
               "figure": "carre",
               "couleur": "bleu",
-              "type": "voisin-gauche",
+              "type": "voisin-droite",
               "figure2": "cercle",
               "couleur2": "vert"
             }
@@ -533,7 +533,7 @@
             {
               "figure": "carre",
               "couleur": "rouge",
-              "type": "voisin-dessous",
+              "type": "voisin-dessus",
               "figure2": "triangle",
               "couleur2": "rouge"
             }
@@ -548,7 +548,7 @@
             {
               "figure": "triangle",
               "couleur": "rouge",
-              "type": "voisin-dessous",
+              "type": "voisin-dessus",
               "figure2": "triangle",
               "couleur2": "bleu"
             }
@@ -563,7 +563,7 @@
             {
               "figure": "cercle",
               "couleur": "rouge",
-              "type": "voisin-dessous",
+              "type": "voisin-dessus",
               "figure2": "cercle",
               "couleur2": "vert"
             }
@@ -578,7 +578,7 @@
             {
               "figure": "triangle",
               "couleur": "bleu",
-              "type": "voisin-dessus",
+              "type": "voisin-dessous",
               "figure2": "triangle",
               "couleur2": "rouge"
             }
@@ -692,7 +692,7 @@
             {
               "figure": "triangle",
               "couleur": "vert",
-              "type": "voisin-dessous",
+              "type": "voisin-dessus",
               "figure2": "carre",
               "couleur2": "bleu"
             }
@@ -707,7 +707,7 @@
             {
               "figure": "triangle",
               "couleur": "bleu",
-              "type": "voisin-dessous",
+              "type": "voisin-dessus",
               "figure2": "triangle",
               "couleur2": "vert"
             }
@@ -722,7 +722,7 @@
             {
               "figure": "cercle",
               "couleur": "vert",
-              "type": "voisin-gauche",
+              "type": "voisin-droite",
               "figure2": "triangle",
               "couleur2": "vert"
             }
@@ -737,7 +737,7 @@
             {
               "figure": "carre",
               "couleur": "rouge",
-              "type": "voisin-dessus",
+              "type": "voisin-dessous",
               "figure2": "carre",
               "couleur2": "vert"
             }
@@ -752,7 +752,7 @@
             {
               "figure": "carre",
               "couleur": "bleu",
-              "type": "voisin-gauche",
+              "type": "voisin-droite",
               "figure2": "cercle",
               "couleur2": "rouge"
             }
@@ -767,7 +767,7 @@
             {
               "figure": "triangle",
               "couleur": "rouge",
-              "type": "voisin-gauche",
+              "type": "voisin-droite",
               "figure2": "triangle",
               "couleur2": "bleu"
             }
@@ -782,7 +782,7 @@
             {
               "figure": "carre",
               "couleur": "vert",
-              "type": "voisin-dessous",
+              "type": "voisin-dessus",
               "figure2": "carre",
               "couleur2": "rouge"
             }
@@ -797,7 +797,7 @@
             {
               "figure": "cercle",
               "couleur": "rouge",
-              "type": "voisin-droite",
+              "type": "voisin-gauche",
               "figure2": "carre",
               "couleur2": "bleu"
             }
@@ -911,7 +911,7 @@
             {
               "figure": "carre",
               "couleur": "rouge",
-              "type": "voisin-gauche",
+              "type": "voisin-droite",
               "figure2": "triangle",
               "couleur2": "bleu"
             }
@@ -926,7 +926,7 @@
             {
               "figure": "triangle",
               "couleur": "bleu",
-              "type": "voisin-droite",
+              "type": "voisin-gauche",
               "figure2": "carre",
               "couleur2": "rouge"
             }
@@ -941,7 +941,7 @@
             {
               "figure": "cercle",
               "couleur": "rouge",
-              "type": "voisin-dessus",
+              "type": "voisin-dessous",
               "figure2": "carre",
               "couleur2": "rouge"
             }
@@ -956,7 +956,7 @@
             {
               "figure": "cercle",
               "couleur": "bleu",
-              "type": "voisin-dessous",
+              "type": "voisin-dessus",
               "figure2": "carre",
               "couleur2": "rouge"
             }
@@ -971,7 +971,7 @@
             {
               "figure": "triangle",
               "couleur": "vert",
-              "type": "voisin-droite",
+              "type": "voisin-gauche",
               "figure2": "triangle",
               "couleur2": "bleu"
             }
@@ -986,7 +986,7 @@
             {
               "figure": "carre",
               "couleur": "vert",
-              "type": "voisin-droite",
+              "type": "voisin-gauche",
               "figure2": "cercle",
               "couleur2": "rouge"
             }
@@ -1001,7 +1001,7 @@
             {
               "figure": "carre",
               "couleur": "bleu",
-              "type": "voisin-gauche",
+              "type": "voisin-droite",
               "figure2": "triangle",
               "couleur2": "rouge"
             }
@@ -1016,7 +1016,7 @@
             {
               "figure": "cercle",
               "couleur": "vert",
-              "type": "voisin-droite",
+              "type": "voisin-gauche",
               "figure2": "carre",
               "couleur2": "vert"
             }
@@ -1130,7 +1130,7 @@
             {
               "figure": "cercle",
               "couleur": "rouge",
-              "type": "voisin-dessus",
+              "type": "voisin-dessous",
               "figure2": "cercle",
               "couleur2": "bleu"
             }
@@ -1145,7 +1145,7 @@
             {
               "figure": "carre",
               "couleur": "rouge",
-              "type": "voisin-dessus",
+              "type": "voisin-dessous",
               "figure2": "cercle",
               "couleur2": "rouge"
             }
@@ -1160,7 +1160,7 @@
             {
               "figure": "triangle",
               "couleur": "vert",
-              "type": "voisin-gauche",
+              "type": "voisin-droite",
               "figure2": "cercle",
               "couleur2": "rouge"
             }
@@ -1175,7 +1175,7 @@
             {
               "figure": "carre",
               "couleur": "bleu",
-              "type": "voisin-droite",
+              "type": "voisin-gauche",
               "figure2": "cercle",
               "couleur2": "rouge"
             }
@@ -1190,7 +1190,7 @@
             {
               "figure": "triangle",
               "couleur": "bleu",
-              "type": "voisin-gauche",
+              "type": "voisin-droite",
               "figure2": "carre",
               "couleur2": "rouge"
             }
@@ -1205,7 +1205,7 @@
             {
               "figure": "cercle",
               "couleur": "bleu",
-              "type": "voisin-droite",
+              "type": "voisin-gauche",
               "figure2": "cercle",
               "couleur2": "vert"
             }
@@ -1220,7 +1220,7 @@
             {
               "figure": "cercle",
               "couleur": "vert",
-              "type": "voisin-gauche",
+              "type": "voisin-droite",
               "figure2": "cercle",
               "couleur2": "bleu"
             }
@@ -1235,7 +1235,7 @@
             {
               "figure": "triangle",
               "couleur": "rouge",
-              "type": "voisin-dessus",
+              "type": "voisin-dessous",
               "figure2": "carre",
               "couleur2": "bleu"
             }
@@ -1349,7 +1349,7 @@
             {
               "figure": "triangle",
               "couleur": "bleu",
-              "type": "voisin-gauche",
+              "type": "voisin-droite",
               "figure2": "triangle",
               "couleur2": "vert"
             }
@@ -1364,7 +1364,7 @@
             {
               "figure": "triangle",
               "couleur": "vert",
-              "type": "voisin-gauche",
+              "type": "voisin-droite",
               "figure2": "carre",
               "couleur2": "bleu"
             }
@@ -1379,7 +1379,7 @@
             {
               "figure": "carre",
               "couleur": "rouge",
-              "type": "voisin-dessous",
+              "type": "voisin-dessus",
               "figure2": "triangle",
               "couleur2": "vert"
             }
@@ -1394,7 +1394,7 @@
             {
               "figure": "cercle",
               "couleur": "vert",
-              "type": "voisin-droite",
+              "type": "voisin-gauche",
               "figure2": "carre",
               "couleur2": "vert"
             }
@@ -1409,7 +1409,7 @@
             {
               "figure": "cercle",
               "couleur": "rouge",
-              "type": "voisin-droite",
+              "type": "voisin-gauche",
               "figure2": "cercle",
               "couleur2": "vert"
             }
@@ -1424,7 +1424,7 @@
             {
               "figure": "carre",
               "couleur": "bleu",
-              "type": "voisin-dessous",
+              "type": "voisin-dessus",
               "figure2": "cercle",
               "couleur2": "rouge"
             }
@@ -1439,7 +1439,7 @@
             {
               "figure": "cercle",
               "couleur": "bleu",
-              "type": "voisin-gauche",
+              "type": "voisin-droite",
               "figure2": "carre",
               "couleur2": "rouge"
             }
@@ -1454,7 +1454,7 @@
             {
               "figure": "carre",
               "couleur": "vert",
-              "type": "voisin-dessus",
+              "type": "voisin-dessous",
               "figure2": "triangle",
               "couleur2": "bleu"
             }
@@ -1568,7 +1568,7 @@
             {
               "figure": "carre",
               "couleur": "rouge",
-              "type": "voisin-gauche",
+              "type": "voisin-droite",
               "figure2": "carre",
               "couleur2": "bleu"
             }
@@ -1583,7 +1583,7 @@
             {
               "figure": "carre",
               "couleur": "bleu",
-              "type": "voisin-gauche",
+              "type": "voisin-droite",
               "figure2": "cercle",
               "couleur2": "bleu"
             }
@@ -1598,7 +1598,7 @@
             {
               "figure": "cercle",
               "couleur": "bleu",
-              "type": "voisin-dessus",
+              "type": "voisin-dessous",
               "figure2": "triangle",
               "couleur2": "bleu"
             }
@@ -1613,7 +1613,7 @@
             {
               "figure": "carre",
               "couleur": "vert",
-              "type": "voisin-dessous",
+              "type": "voisin-dessus",
               "figure2": "carre",
               "couleur2": "rouge"
             }
@@ -1628,7 +1628,7 @@
             {
               "figure": "triangle",
               "couleur": "rouge",
-              "type": "voisin-droite",
+              "type": "voisin-gauche",
               "figure2": "carre",
               "couleur2": "vert"
             }
@@ -1643,7 +1643,7 @@
             {
               "figure": "cercle",
               "couleur": "vert",
-              "type": "voisin-dessous",
+              "type": "voisin-dessus",
               "figure2": "triangle",
               "couleur2": "bleu"
             }
@@ -1658,7 +1658,7 @@
             {
               "figure": "triangle",
               "couleur": "bleu",
-              "type": "voisin-droite",
+              "type": "voisin-gauche",
               "figure2": "triangle",
               "couleur2": "rouge"
             }
@@ -1673,7 +1673,7 @@
             {
               "figure": "cercle",
               "couleur": "rouge",
-              "type": "voisin-dessous",
+              "type": "voisin-dessus",
               "figure2": "carre",
               "couleur2": "vert"
             }
@@ -1787,7 +1787,7 @@
             {
               "figure": "triangle",
               "couleur": "bleu",
-              "type": "voisin-dessus",
+              "type": "voisin-dessous",
               "figure2": "cercle",
               "couleur2": "bleu"
             }
@@ -1802,7 +1802,7 @@
             {
               "figure": "cercle",
               "couleur": "bleu",
-              "type": "voisin-dessus",
+              "type": "voisin-dessous",
               "figure2": "carre",
               "couleur2": "bleu"
             }
@@ -1817,7 +1817,7 @@
             {
               "figure": "carre",
               "couleur": "rouge",
-              "type": "voisin-gauche",
+              "type": "voisin-droite",
               "figure2": "triangle",
               "couleur2": "bleu"
             }
@@ -1832,7 +1832,7 @@
             {
               "figure": "triangle",
               "couleur": "rouge",
-              "type": "voisin-dessus",
+              "type": "voisin-dessous",
               "figure2": "triangle",
               "couleur2": "vert"
             }
@@ -1847,7 +1847,7 @@
             {
               "figure": "triangle",
               "couleur": "vert",
-              "type": "voisin-dessous",
+              "type": "voisin-dessus",
               "figure2": "triangle",
               "couleur2": "rouge"
             }
@@ -1862,7 +1862,7 @@
             {
               "figure": "cercle",
               "couleur": "rouge",
-              "type": "voisin-gauche",
+              "type": "voisin-droite",
               "figure2": "triangle",
               "couleur2": "vert"
             }
@@ -1877,7 +1877,7 @@
             {
               "figure": "carre",
               "couleur": "vert",
-              "type": "voisin-dessus",
+              "type": "voisin-dessous",
               "figure2": "cercle",
               "couleur2": "rouge"
             }
@@ -1892,7 +1892,7 @@
             {
               "figure": "carre",
               "couleur": "bleu",
-              "type": "voisin-dessous",
+              "type": "voisin-dessus",
               "figure2": "cercle",
               "couleur2": "bleu"
             }
@@ -2006,7 +2006,7 @@
             {
               "figure": "cercle",
               "couleur": "vert",
-              "type": "voisin-gauche",
+              "type": "voisin-droite",
               "figure2": "carre",
               "couleur2": "bleu"
             }
@@ -2021,7 +2021,7 @@
             {
               "figure": "carre",
               "couleur": "bleu",
-              "type": "voisin-gauche",
+              "type": "voisin-droite",
               "figure2": "carre",
               "couleur2": "vert"
             }
@@ -2036,7 +2036,7 @@
             {
               "figure": "carre",
               "couleur": "rouge",
-              "type": "voisin-dessus",
+              "type": "voisin-dessous",
               "figure2": "carre",
               "couleur2": "bleu"
             }
@@ -2051,7 +2051,7 @@
             {
               "figure": "triangle",
               "couleur": "vert",
-              "type": "voisin-gauche",
+              "type": "voisin-droite",
               "figure2": "carre",
               "couleur2": "rouge"
             }
@@ -2066,7 +2066,7 @@
             {
               "figure": "cercle",
               "couleur": "bleu",
-              "type": "voisin-droite",
+              "type": "voisin-gauche",
               "figure2": "carre",
               "couleur2": "rouge"
             }
@@ -2081,7 +2081,7 @@
             {
               "figure": "triangle",
               "couleur": "bleu",
-              "type": "voisin-droite",
+              "type": "voisin-gauche",
               "figure2": "cercle",
               "couleur2": "rouge"
             }
@@ -2096,7 +2096,7 @@
             {
               "figure": "cercle",
               "couleur": "rouge",
-              "type": "voisin-gauche",
+              "type": "voisin-droite",
               "figure2": "triangle",
               "couleur2": "bleu"
             }
@@ -2111,7 +2111,7 @@
             {
               "figure": "carre",
               "couleur": "vert",
-              "type": "voisin-dessous",
+              "type": "voisin-dessus",
               "figure2": "cercle",
               "couleur2": "bleu"
             }
@@ -2225,7 +2225,7 @@
             {
               "figure": "cercle",
               "couleur": "vert",
-              "type": "voisin-dessus",
+              "type": "voisin-dessous",
               "figure2": "carre",
               "couleur2": "vert"
             }
@@ -2240,7 +2240,7 @@
             {
               "figure": "carre",
               "couleur": "vert",
-              "type": "voisin-dessous",
+              "type": "voisin-dessus",
               "figure2": "cercle",
               "couleur2": "vert"
             }
@@ -2255,7 +2255,7 @@
             {
               "figure": "triangle",
               "couleur": "vert",
-              "type": "voisin-droite",
+              "type": "voisin-gauche",
               "figure2": "carre",
               "couleur2": "bleu"
             }
@@ -2270,7 +2270,7 @@
             {
               "figure": "carre",
               "couleur": "bleu",
-              "type": "voisin-droite",
+              "type": "voisin-gauche",
               "figure2": "cercle",
               "couleur2": "vert"
             }
@@ -2285,7 +2285,7 @@
             {
               "figure": "carre",
               "couleur": "rouge",
-              "type": "voisin-gauche",
+              "type": "voisin-droite",
               "figure2": "triangle",
               "couleur2": "rouge"
             }
@@ -2300,7 +2300,7 @@
             {
               "figure": "triangle",
               "couleur": "bleu",
-              "type": "voisin-droite",
+              "type": "voisin-gauche",
               "figure2": "triangle",
               "couleur2": "rouge"
             }
@@ -2315,7 +2315,7 @@
             {
               "figure": "cercle",
               "couleur": "rouge",
-              "type": "voisin-gauche",
+              "type": "voisin-droite",
               "figure2": "cercle",
               "couleur2": "bleu"
             }
@@ -2330,7 +2330,7 @@
             {
               "figure": "cercle",
               "couleur": "bleu",
-              "type": "voisin-droite",
+              "type": "voisin-gauche",
               "figure2": "cercle",
               "couleur2": "rouge"
             }
@@ -2444,7 +2444,7 @@
             {
               "figure": "carre",
               "couleur": "bleu",
-              "type": "voisin-dessus",
+              "type": "voisin-dessous",
               "figure2": "triangle",
               "couleur2": "bleu"
             }
@@ -2459,7 +2459,7 @@
             {
               "figure": "triangle",
               "couleur": "bleu",
-              "type": "voisin-dessous",
+              "type": "voisin-dessus",
               "figure2": "carre",
               "couleur2": "bleu"
             }
@@ -2474,7 +2474,7 @@
             {
               "figure": "carre",
               "couleur": "vert",
-              "type": "voisin-gauche",
+              "type": "voisin-droite",
               "figure2": "cercle",
               "couleur2": "vert"
             }
@@ -2489,7 +2489,7 @@
             {
               "figure": "cercle",
               "couleur": "bleu",
-              "type": "voisin-dessus",
+              "type": "voisin-dessous",
               "figure2": "cercle",
               "couleur2": "vert"
             }
@@ -2504,7 +2504,7 @@
             {
               "figure": "cercle",
               "couleur": "vert",
-              "type": "voisin-dessus",
+              "type": "voisin-dessous",
               "figure2": "carre",
               "couleur2": "rouge"
             }
@@ -2519,7 +2519,7 @@
             {
               "figure": "triangle",
               "couleur": "rouge",
-              "type": "voisin-droite",
+              "type": "voisin-gauche",
               "figure2": "cercle",
               "couleur2": "rouge"
             }
@@ -2534,7 +2534,7 @@
             {
               "figure": "cercle",
               "couleur": "rouge",
-              "type": "voisin-gauche",
+              "type": "voisin-droite",
               "figure2": "triangle",
               "couleur2": "rouge"
             }
@@ -2549,7 +2549,7 @@
             {
               "figure": "triangle",
               "couleur": "vert",
-              "type": "voisin-droite",
+              "type": "voisin-gauche",
               "figure2": "triangle",
               "couleur2": "bleu"
             }
@@ -2663,7 +2663,7 @@
             {
               "figure": "cercle",
               "couleur": "vert",
-              "type": "voisin-dessus",
+              "type": "voisin-dessous",
               "figure2": "triangle",
               "couleur2": "bleu"
             }
@@ -2678,7 +2678,7 @@
             {
               "figure": "triangle",
               "couleur": "bleu",
-              "type": "voisin-dessous",
+              "type": "voisin-dessus",
               "figure2": "cercle",
               "couleur2": "vert"
             }
@@ -2693,7 +2693,7 @@
             {
               "figure": "triangle",
               "couleur": "rouge",
-              "type": "voisin-droite",
+              "type": "voisin-gauche",
               "figure2": "cercle",
               "couleur2": "vert"
             }
@@ -2708,7 +2708,7 @@
             {
               "figure": "carre",
               "couleur": "vert",
-              "type": "voisin-dessous",
+              "type": "voisin-dessus",
               "figure2": "carre",
               "couleur2": "bleu"
             }
@@ -2723,7 +2723,7 @@
             {
               "figure": "triangle",
               "couleur": "vert",
-              "type": "voisin-dessus",
+              "type": "voisin-dessous",
               "figure2": "carre",
               "couleur2": "bleu"
             }
@@ -2738,7 +2738,7 @@
             {
               "figure": "carre",
               "couleur": "rouge",
-              "type": "voisin-droite",
+              "type": "voisin-gauche",
               "figure2": "triangle",
               "couleur2": "bleu"
             }
@@ -2753,7 +2753,7 @@
             {
               "figure": "cercle",
               "couleur": "bleu",
-              "type": "voisin-gauche",
+              "type": "voisin-droite",
               "figure2": "cercle",
               "couleur2": "rouge"
             }
@@ -2768,7 +2768,7 @@
             {
               "figure": "cercle",
               "couleur": "rouge",
-              "type": "voisin-droite",
+              "type": "voisin-gauche",
               "figure2": "cercle",
               "couleur2": "bleu"
             }
@@ -2882,7 +2882,7 @@
             {
               "figure": "cercle",
               "couleur": "vert",
-              "type": "voisin-dessous",
+              "type": "voisin-dessus",
               "figure2": "carre",
               "couleur2": "vert"
             }
@@ -2897,7 +2897,7 @@
             {
               "figure": "carre",
               "couleur": "vert",
-              "type": "voisin-dessous",
+              "type": "voisin-dessus",
               "figure2": "carre",
               "couleur2": "rouge"
             }
@@ -2912,7 +2912,7 @@
             {
               "figure": "triangle",
               "couleur": "bleu",
-              "type": "voisin-droite",
+              "type": "voisin-gauche",
               "figure2": "cercle",
               "couleur2": "rouge"
             }
@@ -2927,7 +2927,7 @@
             {
               "figure": "cercle",
               "couleur": "rouge",
-              "type": "voisin-gauche",
+              "type": "voisin-droite",
               "figure2": "triangle",
               "couleur2": "bleu"
             }
@@ -2942,7 +2942,7 @@
             {
               "figure": "triangle",
               "couleur": "vert",
-              "type": "voisin-dessous",
+              "type": "voisin-dessus",
               "figure2": "cercle",
               "couleur2": "bleu"
             }
@@ -2957,7 +2957,7 @@
             {
               "figure": "cercle",
               "couleur": "bleu",
-              "type": "voisin-dessus",
+              "type": "voisin-dessous",
               "figure2": "triangle",
               "couleur2": "vert"
             }
@@ -2972,7 +2972,7 @@
             {
               "figure": "carre",
               "couleur": "bleu",
-              "type": "voisin-gauche",
+              "type": "voisin-droite",
               "figure2": "carre",
               "couleur2": "vert"
             }
@@ -2987,7 +2987,7 @@
             {
               "figure": "triangle",
               "couleur": "rouge",
-              "type": "voisin-droite",
+              "type": "voisin-gauche",
               "figure2": "cercle",
               "couleur2": "bleu"
             }
@@ -3101,7 +3101,7 @@
             {
               "figure": "triangle",
               "couleur": "bleu",
-              "type": "voisin-dessous",
+              "type": "voisin-dessus",
               "figure2": "carre",
               "couleur2": "vert"
             }
@@ -3116,7 +3116,7 @@
             {
               "figure": "triangle",
               "couleur": "rouge",
-              "type": "voisin-dessous",
+              "type": "voisin-dessus",
               "figure2": "triangle",
               "couleur2": "bleu"
             }
@@ -3131,7 +3131,7 @@
             {
               "figure": "cercle",
               "couleur": "vert",
-              "type": "voisin-droite",
+              "type": "voisin-gauche",
               "figure2": "triangle",
               "couleur2": "rouge"
             }
@@ -3146,7 +3146,7 @@
             {
               "figure": "carre",
               "couleur": "rouge",
-              "type": "voisin-dessous",
+              "type": "voisin-dessus",
               "figure2": "triangle",
               "couleur2": "vert"
             }
@@ -3161,7 +3161,7 @@
             {
               "figure": "carre",
               "couleur": "bleu",
-              "type": "voisin-dessus",
+              "type": "voisin-dessous",
               "figure2": "triangle",
               "couleur2": "vert"
             }
@@ -3176,7 +3176,7 @@
             {
               "figure": "triangle",
               "couleur": "vert",
-              "type": "voisin-dessous",
+              "type": "voisin-dessus",
               "figure2": "carre",
               "couleur2": "bleu"
             }
@@ -3191,7 +3191,7 @@
             {
               "figure": "cercle",
               "couleur": "rouge",
-              "type": "voisin-droite",
+              "type": "voisin-gauche",
               "figure2": "carre",
               "couleur2": "vert"
             }
@@ -3206,7 +3206,7 @@
             {
               "figure": "cercle",
               "couleur": "bleu",
-              "type": "voisin-droite",
+              "type": "voisin-gauche",
               "figure2": "triangle",
               "couleur2": "bleu"
             }
@@ -3320,7 +3320,7 @@
             {
               "figure": "cercle",
               "couleur": "vert",
-              "type": "voisin-dessous",
+              "type": "voisin-dessus",
               "figure2": "triangle",
               "couleur2": "bleu"
             }
@@ -3335,7 +3335,7 @@
             {
               "figure": "cercle",
               "couleur": "rouge",
-              "type": "voisin-dessous",
+              "type": "voisin-dessus",
               "figure2": "cercle",
               "couleur2": "vert"
             }
@@ -3350,7 +3350,7 @@
             {
               "figure": "carre",
               "couleur": "vert",
-              "type": "voisin-gauche",
+              "type": "voisin-droite",
               "figure2": "cercle",
               "couleur2": "rouge"
             }
@@ -3365,7 +3365,7 @@
             {
               "figure": "triangle",
               "couleur": "rouge",
-              "type": "voisin-dessus",
+              "type": "voisin-dessous",
               "figure2": "carre",
               "couleur2": "vert"
             }
@@ -3380,7 +3380,7 @@
             {
               "figure": "triangle",
               "couleur": "vert",
-              "type": "voisin-gauche",
+              "type": "voisin-droite",
               "figure2": "carre",
               "couleur2": "bleu"
             }
@@ -3395,7 +3395,7 @@
             {
               "figure": "carre",
               "couleur": "bleu",
-              "type": "voisin-droite",
+              "type": "voisin-gauche",
               "figure2": "triangle",
               "couleur2": "vert"
             }
@@ -3410,7 +3410,7 @@
             {
               "figure": "cercle",
               "couleur": "bleu",
-              "type": "voisin-dessus",
+              "type": "voisin-dessous",
               "figure2": "carre",
               "couleur2": "rouge"
             }
@@ -3425,7 +3425,7 @@
             {
               "figure": "triangle",
               "couleur": "bleu",
-              "type": "voisin-droite",
+              "type": "voisin-gauche",
               "figure2": "carre",
               "couleur2": "bleu"
             }
@@ -3539,7 +3539,7 @@
             {
               "figure": "cercle",
               "couleur": "bleu",
-              "type": "voisin-gauche",
+              "type": "voisin-droite",
               "figure2": "carre",
               "couleur2": "bleu"
             }
@@ -3554,7 +3554,7 @@
             {
               "figure": "carre",
               "couleur": "bleu",
-              "type": "voisin-droite",
+              "type": "voisin-gauche",
               "figure2": "cercle",
               "couleur2": "bleu"
             }
@@ -3569,7 +3569,7 @@
             {
               "figure": "cercle",
               "couleur": "vert",
-              "type": "voisin-dessous",
+              "type": "voisin-dessus",
               "figure2": "cercle",
               "couleur2": "bleu"
             }
@@ -3584,7 +3584,7 @@
             {
               "figure": "cercle",
               "couleur": "rouge",
-              "type": "voisin-gauche",
+              "type": "voisin-droite",
               "figure2": "cercle",
               "couleur2": "vert"
             }
@@ -3599,7 +3599,7 @@
             {
               "figure": "carre",
               "couleur": "vert",
-              "type": "voisin-droite",
+              "type": "voisin-gauche",
               "figure2": "cercle",
               "couleur2": "vert"
             }
@@ -3614,7 +3614,7 @@
             {
               "figure": "triangle",
               "couleur": "vert",
-              "type": "voisin-dessous",
+              "type": "voisin-dessus",
               "figure2": "cercle",
               "couleur2": "vert"
             }
@@ -3629,7 +3629,7 @@
             {
               "figure": "triangle",
               "couleur": "bleu",
-              "type": "voisin-droite",
+              "type": "voisin-gauche",
               "figure2": "triangle",
               "couleur2": "vert"
             }
@@ -3644,7 +3644,7 @@
             {
               "figure": "carre",
               "couleur": "rouge",
-              "type": "voisin-gauche",
+              "type": "voisin-droite",
               "figure2": "triangle",
               "couleur2": "vert"
             }
@@ -3758,7 +3758,7 @@
             {
               "figure": "cercle",
               "couleur": "bleu",
-              "type": "voisin-dessus",
+              "type": "voisin-dessous",
               "figure2": "carre",
               "couleur2": "bleu"
             }
@@ -3773,7 +3773,7 @@
             {
               "figure": "cercle",
               "couleur": "rouge",
-              "type": "voisin-dessus",
+              "type": "voisin-dessous",
               "figure2": "cercle",
               "couleur2": "bleu"
             }
@@ -3788,7 +3788,7 @@
             {
               "figure": "triangle",
               "couleur": "bleu",
-              "type": "voisin-gauche",
+              "type": "voisin-droite",
               "figure2": "cercle",
               "couleur2": "rouge"
             }
@@ -3803,7 +3803,7 @@
             {
               "figure": "carre",
               "couleur": "bleu",
-              "type": "voisin-dessous",
+              "type": "voisin-dessus",
               "figure2": "cercle",
               "couleur2": "bleu"
             }
@@ -3818,7 +3818,7 @@
             {
               "figure": "triangle",
               "couleur": "rouge",
-              "type": "voisin-gauche",
+              "type": "voisin-droite",
               "figure2": "carre",
               "couleur2": "bleu"
             }
@@ -3833,7 +3833,7 @@
             {
               "figure": "triangle",
               "couleur": "vert",
-              "type": "voisin-dessous",
+              "type": "voisin-dessus",
               "figure2": "carre",
               "couleur2": "rouge"
             }
@@ -3848,7 +3848,7 @@
             {
               "figure": "carre",
               "couleur": "rouge",
-              "type": "voisin-dessus",
+              "type": "voisin-dessous",
               "figure2": "triangle",
               "couleur2": "vert"
             }
@@ -3863,7 +3863,7 @@
             {
               "figure": "cercle",
               "couleur": "vert",
-              "type": "voisin-gauche",
+              "type": "voisin-droite",
               "figure2": "triangle",
               "couleur2": "bleu"
             }
@@ -3977,82 +3977,82 @@
             {
               "figure": "carre",
               "couleur": "bleu",
-              "type": "voisin-dessus",
-              "figure2": "triangle",
-              "couleur2": "rouge"
-            }
-          ]
-        },
-        {
-          "type": "ligne",
-          "ligne": 2,
-          "figure": "carre",
-          "couleur": "rouge",
-          "et": [
-            {
-              "figure": "carre",
-              "couleur": "rouge",
-              "type": "voisin-dessus",
-              "figure2": "carre",
-              "couleur2": "bleu"
-            }
-          ]
-        },
-        {
-          "type": "colonne",
-          "colonne": 1,
-          "figure": "triangle",
-          "couleur": "bleu",
-          "et": [
-            {
-              "figure": "triangle",
-              "couleur": "bleu",
-              "type": "voisin-droite",
-              "figure2": "triangle",
-              "couleur2": "rouge"
-            }
-          ]
-        },
-        {
-          "type": "colonne",
-          "colonne": 1,
-          "figure": "cercle",
-          "couleur": "vert",
-          "et": [
-            {
-              "figure": "cercle",
-              "couleur": "vert",
-              "type": "voisin-dessus",
-              "figure2": "triangle",
-              "couleur2": "bleu"
-            }
-          ]
-        },
-        {
-          "type": "colonne",
-          "colonne": 0,
-          "figure": "cercle",
-          "couleur": "rouge",
-          "et": [
-            {
-              "figure": "cercle",
-              "couleur": "rouge",
-              "type": "voisin-droite",
-              "figure2": "cercle",
-              "couleur2": "vert"
-            }
-          ]
-        },
-        {
-          "type": "colonne",
-          "colonne": 0,
-          "figure": "cercle",
-          "couleur": "bleu",
-          "et": [
-            {
-              "figure": "cercle",
-              "couleur": "bleu",
               "type": "voisin-dessous",
+              "figure2": "triangle",
+              "couleur2": "rouge"
+            }
+          ]
+        },
+        {
+          "type": "ligne",
+          "ligne": 2,
+          "figure": "carre",
+          "couleur": "rouge",
+          "et": [
+            {
+              "figure": "carre",
+              "couleur": "rouge",
+              "type": "voisin-dessous",
+              "figure2": "carre",
+              "couleur2": "bleu"
+            }
+          ]
+        },
+        {
+          "type": "colonne",
+          "colonne": 1,
+          "figure": "triangle",
+          "couleur": "bleu",
+          "et": [
+            {
+              "figure": "triangle",
+              "couleur": "bleu",
+              "type": "voisin-gauche",
+              "figure2": "triangle",
+              "couleur2": "rouge"
+            }
+          ]
+        },
+        {
+          "type": "colonne",
+          "colonne": 1,
+          "figure": "cercle",
+          "couleur": "vert",
+          "et": [
+            {
+              "figure": "cercle",
+              "couleur": "vert",
+              "type": "voisin-dessous",
+              "figure2": "triangle",
+              "couleur2": "bleu"
+            }
+          ]
+        },
+        {
+          "type": "colonne",
+          "colonne": 0,
+          "figure": "cercle",
+          "couleur": "rouge",
+          "et": [
+            {
+              "figure": "cercle",
+              "couleur": "rouge",
+              "type": "voisin-gauche",
+              "figure2": "cercle",
+              "couleur2": "vert"
+            }
+          ]
+        },
+        {
+          "type": "colonne",
+          "colonne": 0,
+          "figure": "cercle",
+          "couleur": "bleu",
+          "et": [
+            {
+              "figure": "cercle",
+              "couleur": "bleu",
+              "type": "voisin-dessus",
               "figure2": "cercle",
               "couleur2": "rouge"
             }
@@ -4066,23 +4066,23 @@
           "et": [
             {
               "figure": "triangle",
-              "couleur": "vert",
-              "type": "voisin-droite",
-              "figure2": "carre",
-              "couleur2": "vert"
-            }
-          ]
-        },
-        {
-          "type": "colonne",
-          "colonne": 1,
-          "figure": "carre",
-          "couleur": "vert",
-          "et": [
-            {
-              "figure": "carre",
               "couleur": "vert",
               "type": "voisin-gauche",
+              "figure2": "carre",
+              "couleur2": "vert"
+            }
+          ]
+        },
+        {
+          "type": "colonne",
+          "colonne": 1,
+          "figure": "carre",
+          "couleur": "vert",
+          "et": [
+            {
+              "figure": "carre",
+              "couleur": "vert",
+              "type": "voisin-droite",
               "figure2": "triangle",
               "couleur2": "vert"
             }
@@ -4196,7 +4196,7 @@
             {
               "figure": "carre",
               "couleur": "rouge",
-              "type": "voisin-dessus",
+              "type": "voisin-dessous",
               "figure2": "carre",
               "couleur2": "bleu"
             }
@@ -4211,7 +4211,7 @@
             {
               "figure": "carre",
               "couleur": "bleu",
-              "type": "voisin-dessus",
+              "type": "voisin-dessous",
               "figure2": "triangle",
               "couleur2": "rouge"
             }
@@ -4226,7 +4226,7 @@
             {
               "figure": "cercle",
               "couleur": "rouge",
-              "type": "voisin-droite",
+              "type": "voisin-gauche",
               "figure2": "carre",
               "couleur2": "bleu"
             }
@@ -4241,7 +4241,7 @@
             {
               "figure": "triangle",
               "couleur": "bleu",
-              "type": "voisin-dessous",
+              "type": "voisin-dessus",
               "figure2": "triangle",
               "couleur2": "vert"
             }
@@ -4256,7 +4256,7 @@
             {
               "figure": "cercle",
               "couleur": "vert",
-              "type": "voisin-dessus",
+              "type": "voisin-dessous",
               "figure2": "triangle",
               "couleur2": "vert"
             }
@@ -4271,7 +4271,7 @@
             {
               "figure": "triangle",
               "couleur": "vert",
-              "type": "voisin-dessous",
+              "type": "voisin-dessus",
               "figure2": "cercle",
               "couleur2": "vert"
             }
@@ -4286,7 +4286,7 @@
             {
               "figure": "carre",
               "couleur": "vert",
-              "type": "voisin-gauche",
+              "type": "voisin-droite",
               "figure2": "cercle",
               "couleur2": "vert"
             }
@@ -4301,7 +4301,7 @@
             {
               "figure": "cercle",
               "couleur": "bleu",
-              "type": "voisin-gauche",
+              "type": "voisin-droite",
               "figure2": "triangle",
               "couleur2": "bleu"
             }
