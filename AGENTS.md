@@ -68,6 +68,7 @@ python3 tools/generer_rappel_series.py --dry-run        # régénère rappel-ser
 python3 tools/generer_programme.py --dry-run             # régénère le programme de 8 semaines
 python3 tools/generer_quotidien.py --dry-run             # régénère le thème « au quotidien »
 python3 tools/generer_deduction.py --dry-run            # régénère le thème « déduction »
+python3 tools/reinitialiser_seances.py deduction        # rouvre la journée (essai : compteur de séances)
 python3 tools/generer_methodes.py --dry-run             # régénère le thème « méthodes »
 ```
 
