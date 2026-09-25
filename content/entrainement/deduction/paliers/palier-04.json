@@ -12,9 +12,9 @@
     "prerequis": [
       "de-palier-3"
     ],
-    "cap_complexite": null,
+    "cap_complexite": "une phrase = deux informations croisées, jamais de placement direct à recopier",
     "contenu": {
-      "consigne": "Place les figures colorées. Chaque figure colorée (un carré bleu, un cercle rouge…) apparaît une seule fois dans la grille. Méthode : note d'abord ce qui est certain, barre ce qui devient impossible, puis recoupe les indices qui relient deux figures.",
+      "consigne": "Place les seize figures colorées. Règles : chaque ligne contient chaque figure une seule fois et chaque couleur une seule fois ; chaque colonne aussi — donc chaque figure colorée n'apparaît qu'une fois dans la grille. Méthode : chaque phrase donne deux informations ; retiens ce qui est certain, barre ce qui devient impossible, puis recoupe les phrases.",
       "figures": [
         "cercle",
         "carre",
@@ -29,133 +29,172 @@
       ],
       "enonces": [
         {
-          "type": "case",
+          "type": "ligne",
           "figure": "triangle",
           "couleur": "bleu",
-          "case": 0
+          "ligne": 1,
+          "et": {
+            "type": "pas-bord"
+          }
         },
         {
-          "type": "case",
-          "figure": "triangle",
-          "couleur": "rouge",
-          "case": 14
-        },
-        {
-          "type": "case",
-          "figure": "cercle",
-          "couleur": "rouge",
-          "case": 4
-        },
-        {
-          "type": "case",
-          "figure": "triangle",
-          "couleur": "vert",
-          "case": 7
+          "type": "ligne",
+          "figure": "carre",
+          "couleur": "jaune",
+          "ligne": 2,
+          "et": {
+            "type": "pas-bord"
+          }
         },
         {
           "type": "case",
           "figure": "carre",
-          "couleur": "bleu",
-          "case": 15
-        },
-        {
-          "type": "case",
-          "figure": "losange",
           "couleur": "jaune",
-          "case": 12
-        },
-        {
-          "type": "case",
-          "figure": "cercle",
-          "couleur": "bleu",
           "case": 10
         },
         {
           "type": "case",
+          "figure": "triangle",
+          "couleur": "rouge",
+          "case": 15
+        },
+        {
+          "type": "case",
           "figure": "carre",
           "couleur": "vert",
-          "case": 8
-        },
-        {
-          "type": "case",
-          "figure": "triangle",
-          "couleur": "jaune",
-          "case": 9
-        },
-        {
-          "type": "case",
-          "figure": "cercle",
-          "couleur": "jaune",
           "case": 3
         },
         {
-          "type": "case",
+          "type": "voisin-dessus",
           "figure": "losange",
-          "couleur": "vert",
-          "case": 2
+          "couleur": "jaune",
+          "figure2": "triangle",
+          "couleur2": "vert"
         },
         {
-          "type": "case",
-          "figure": "cercle",
+          "type": "voisin-dessus",
+          "figure": "losange",
           "couleur": "vert",
-          "case": 13
+          "figure2": "triangle",
+          "couleur2": "jaune"
+        },
+        {
+          "type": "voisin-droite",
+          "figure": "cercle",
+          "couleur": "bleu",
+          "figure2": "losange",
+          "couleur2": "rouge"
+        },
+        {
+          "type": "voisin-droite",
+          "figure": "carre",
+          "couleur": "rouge",
+          "figure2": "triangle",
+          "couleur2": "bleu"
+        },
+        {
+          "type": "voisin-droite",
+          "figure": "triangle",
+          "couleur": "jaune",
+          "figure2": "cercle",
+          "couleur2": "bleu"
+        },
+        {
+          "type": "voisin-droite",
+          "figure": "triangle",
+          "couleur": "vert",
+          "figure2": "carre",
+          "couleur2": "jaune"
+        },
+        {
+          "type": "voisin-dessous",
+          "figure": "carre",
+          "couleur": "rouge",
+          "figure2": "triangle",
+          "couleur2": "vert"
+        },
+        {
+          "type": "voisin-droite",
+          "figure": "losange",
+          "couleur": "vert",
+          "figure2": "carre",
+          "couleur2": "rouge"
+        },
+        {
+          "type": "voisin-gauche",
+          "figure": "losange",
+          "couleur": "bleu",
+          "figure2": "carre",
+          "couleur2": "jaune"
+        },
+        {
+          "type": "voisin-dessus",
+          "figure": "carre",
+          "couleur": "bleu",
+          "figure2": "cercle",
+          "couleur2": "rouge"
         }
       ],
       "indices": [
         {
-          "type": "autre-colonne",
-          "figure": "carre",
-          "couleur": "bleu",
-          "figure2": "losange",
-          "couleur2": "bleu"
-        },
-        {
-          "type": "autre-ligne",
+          "type": "colonne",
           "figure": "triangle",
-          "couleur": "rouge",
-          "figure2": "cercle",
-          "couleur2": "jaune"
+          "couleur": "vert",
+          "colonne": 1
         },
         {
-          "type": "autre-colonne",
-          "figure": "cercle",
-          "couleur": "vert",
-          "figure2": "cercle",
-          "couleur2": "jaune"
+          "type": "case",
+          "figure": "losange",
+          "couleur": "jaune",
+          "case": 13
+        },
+        {
+          "type": "colonne",
+          "figure": "triangle",
+          "couleur": "bleu",
+          "colonne": 2
         }
       ],
-      "aide": "Les indices suffisent : en les recoupant, chaque case se déduit. Commence par ceux qui désignent une case précise."
+      "aide": "Chaque phrase donne deux informations. Marque ce qui est certain, barre ce qui devient impossible, puis recoupe avec les autres phrases."
     },
     "reponse": {
-      "valeur": "triangle:bleu;carre:rouge;losange:vert;cercle:jaune;cercle:rouge;losange:bleu;carre:jaune;triangle:vert;carre:vert;triangle:jaune;cercle:bleu;losange:rouge;losange:jaune;cercle:vert;triangle:rouge;carre:bleu",
+      "valeur": "triangle:jaune;cercle:bleu;losange:rouge;carre:vert;losange:vert;carre:rouge;triangle:bleu;cercle:jaune;cercle:rouge;triangle:vert;carre:jaune;losange:bleu;carre:bleu;losange:jaune;cercle:vert;triangle:rouge",
       "grille": [
         [
           "triangle",
+          "jaune"
+        ],
+        [
+          "cercle",
           "bleu"
         ],
         [
-          "carre",
+          "losange",
           "rouge"
+        ],
+        [
+          "carre",
+          "vert"
         ],
         [
           "losange",
           "vert"
         ],
         [
+          "carre",
+          "rouge"
+        ],
+        [
+          "triangle",
+          "bleu"
+        ],
+        [
           "cercle",
           "jaune"
         ],
         [
           "cercle",
           "rouge"
-        ],
-        [
-          "losange",
-          "bleu"
-        ],
-        [
-          "carre",
-          "jaune"
         ],
         [
           "triangle",
@@ -163,35 +202,27 @@
         ],
         [
           "carre",
-          "vert"
-        ],
-        [
-          "triangle",
           "jaune"
         ],
         [
-          "cercle",
+          "losange",
           "bleu"
-        ],
-        [
-          "losange",
-          "rouge"
-        ],
-        [
-          "losange",
-          "jaune"
-        ],
-        [
-          "cercle",
-          "vert"
-        ],
-        [
-          "triangle",
-          "rouge"
         ],
         [
           "carre",
           "bleu"
+        ],
+        [
+          "losange",
+          "jaune"
+        ],
+        [
+          "cercle",
+          "vert"
+        ],
+        [
+          "triangle",
+          "rouge"
         ]
       ]
     },
@@ -216,9 +247,9 @@
     "prerequis": [
       "de-palier-3"
     ],
-    "cap_complexite": null,
+    "cap_complexite": "une phrase = deux informations croisées, jamais de placement direct à recopier",
     "contenu": {
-      "consigne": "Place les figures colorées. Chaque figure colorée (un carré bleu, un cercle rouge…) apparaît une seule fois dans la grille. Méthode : note d'abord ce qui est certain, barre ce qui devient impossible, puis recoupe les indices qui relient deux figures.",
+      "consigne": "Place les seize figures colorées. Règles : chaque ligne contient chaque figure une seule fois et chaque couleur une seule fois ; chaque colonne aussi — donc chaque figure colorée n'apparaît qu'une fois dans la grille. Méthode : chaque phrase donne deux informations ; retiens ce qui est certain, barre ce qui devient impossible, puis recoupe les phrases.",
       "figures": [
         "cercle",
         "carre",
@@ -233,10 +264,132 @@
       ],
       "enonces": [
         {
-          "type": "case",
+          "type": "ligne",
           "figure": "triangle",
-          "couleur": "jaune",
+          "couleur": "vert",
+          "ligne": 3,
+          "et": {
+            "type": "pas-coin"
+          }
+        },
+        {
+          "type": "ligne",
+          "figure": "cercle",
+          "couleur": "rouge",
+          "ligne": 2,
+          "et": {
+            "type": "ni-ni"
+          }
+        },
+        {
+          "type": "case",
+          "figure": "losange",
+          "couleur": "bleu",
           "case": 6
+        },
+        {
+          "type": "case",
+          "figure": "losange",
+          "couleur": "vert",
+          "case": 1
+        },
+        {
+          "type": "case",
+          "figure": "cercle",
+          "couleur": "jaune",
+          "case": 13
+        },
+        {
+          "type": "voisin-dessous",
+          "figure": "carre",
+          "couleur": "vert",
+          "figure2": "losange",
+          "couleur2": "rouge"
+        },
+        {
+          "type": "voisin-dessus",
+          "figure": "triangle",
+          "couleur": "vert",
+          "figure2": "cercle",
+          "couleur2": "rouge"
+        },
+        {
+          "type": "voisin-gauche",
+          "figure": "losange",
+          "couleur": "vert",
+          "figure2": "triangle",
+          "couleur2": "rouge"
+        },
+        {
+          "type": "voisin-droite",
+          "figure": "cercle",
+          "couleur": "vert",
+          "figure2": "carre",
+          "couleur2": "rouge"
+        },
+        {
+          "type": "voisin-dessous",
+          "figure": "triangle",
+          "couleur": "bleu",
+          "figure2": "cercle",
+          "couleur2": "jaune"
+        },
+        {
+          "type": "voisin-droite",
+          "figure": "triangle",
+          "couleur": "rouge",
+          "figure2": "losange",
+          "couleur2": "vert"
+        },
+        {
+          "type": "voisin-gauche",
+          "figure": "carre",
+          "couleur": "jaune",
+          "figure2": "losange",
+          "couleur2": "vert"
+        },
+        {
+          "type": "voisin-droite",
+          "figure": "cercle",
+          "couleur": "rouge",
+          "figure2": "carre",
+          "couleur2": "vert"
+        },
+        {
+          "type": "voisin-dessous",
+          "figure": "triangle",
+          "couleur": "rouge",
+          "figure2": "cercle",
+          "couleur2": "vert"
+        },
+        {
+          "type": "voisin-gauche",
+          "figure": "losange",
+          "couleur": "rouge",
+          "figure2": "triangle",
+          "couleur2": "vert"
+        },
+        {
+          "type": "voisin-droite",
+          "figure": "losange",
+          "couleur": "jaune",
+          "figure2": "triangle",
+          "couleur2": "bleu"
+        },
+        {
+          "type": "voisin-gauche",
+          "figure": "carre",
+          "couleur": "rouge",
+          "figure2": "cercle",
+          "couleur2": "vert"
+        }
+      ],
+      "indices": [
+        {
+          "type": "ligne",
+          "figure": "triangle",
+          "couleur": "vert",
+          "ligne": 3
         },
         {
           "type": "case",
@@ -246,159 +399,30 @@
         },
         {
           "type": "case",
-          "figure": "carre",
-          "couleur": "rouge",
-          "case": 5
-        },
-        {
-          "type": "case",
-          "figure": "cercle",
-          "couleur": "bleu",
-          "case": 4
-        },
-        {
-          "type": "case",
-          "figure": "carre",
-          "couleur": "bleu",
-          "case": 10
-        },
-        {
-          "type": "case",
           "figure": "triangle",
           "couleur": "rouge",
-          "case": 12
-        },
-        {
-          "type": "case",
-          "figure": "cercle",
-          "couleur": "rouge",
-          "case": 11
-        },
-        {
-          "type": "case",
-          "figure": "triangle",
-          "couleur": "vert",
-          "case": 9
-        },
-        {
-          "type": "case",
-          "figure": "cercle",
-          "couleur": "vert",
-          "case": 14
-        },
-        {
-          "type": "case",
-          "figure": "losange",
-          "couleur": "rouge",
-          "case": 2
-        },
-        {
-          "type": "case",
-          "figure": "losange",
-          "couleur": "vert",
-          "case": 7
-        },
-        {
-          "type": "case",
-          "figure": "carre",
-          "couleur": "jaune",
-          "case": 15
-        },
-        {
-          "type": "case",
-          "figure": "triangle",
-          "couleur": "bleu",
-          "case": 3
-        },
-        {
-          "type": "case",
-          "figure": "cercle",
-          "couleur": "jaune",
-          "case": 1
+          "case": 0
         }
       ],
-      "indices": [
-        {
-          "type": "autre-colonne",
-          "figure": "cercle",
-          "couleur": "bleu",
-          "figure2": "carre",
-          "couleur2": "rouge"
-        },
-        {
-          "type": "autre-colonne",
-          "figure": "carre",
-          "couleur": "rouge",
-          "figure2": "losange",
-          "couleur2": "vert"
-        },
-        {
-          "type": "autre-colonne",
-          "figure": "losange",
-          "couleur": "bleu",
-          "figure2": "cercle",
-          "couleur2": "vert"
-        }
-      ],
-      "aide": "Les indices suffisent : en les recoupant, chaque case se déduit. Commence par ceux qui désignent une case précise."
+      "aide": "Chaque phrase donne deux informations. Marque ce qui est certain, barre ce qui devient impossible, puis recoupe avec les autres phrases."
     },
     "reponse": {
-      "valeur": "carre:vert;cercle:jaune;losange:rouge;triangle:bleu;cercle:bleu;carre:rouge;triangle:jaune;losange:vert;losange:jaune;triangle:vert;carre:bleu;cercle:rouge;triangle:rouge;losange:bleu;cercle:vert;carre:jaune",
+      "valeur": "triangle:rouge;losange:vert;carre:jaune;cercle:bleu;cercle:vert;carre:rouge;losange:bleu;triangle:jaune;losange:jaune;triangle:bleu;cercle:rouge;carre:vert;carre:bleu;cercle:jaune;triangle:vert;losange:rouge",
       "grille": [
         [
-          "carre",
-          "vert"
-        ],
-        [
-          "cercle",
-          "jaune"
-        ],
-        [
-          "losange",
-          "rouge"
-        ],
-        [
           "triangle",
-          "bleu"
-        ],
-        [
-          "cercle",
-          "bleu"
-        ],
-        [
-          "carre",
           "rouge"
-        ],
-        [
-          "triangle",
-          "jaune"
         ],
         [
           "losange",
           "vert"
         ],
         [
-          "losange",
+          "carre",
           "jaune"
         ],
         [
-          "triangle",
-          "vert"
-        ],
-        [
-          "carre",
-          "bleu"
-        ],
-        [
           "cercle",
-          "rouge"
-        ],
-        [
-          "triangle",
-          "rouge"
-        ],
-        [
-          "losange",
           "bleu"
         ],
         [
@@ -407,7 +431,47 @@
         ],
         [
           "carre",
+          "rouge"
+        ],
+        [
+          "losange",
+          "bleu"
+        ],
+        [
+          "triangle",
           "jaune"
+        ],
+        [
+          "losange",
+          "jaune"
+        ],
+        [
+          "triangle",
+          "bleu"
+        ],
+        [
+          "cercle",
+          "rouge"
+        ],
+        [
+          "carre",
+          "vert"
+        ],
+        [
+          "carre",
+          "bleu"
+        ],
+        [
+          "cercle",
+          "jaune"
+        ],
+        [
+          "triangle",
+          "vert"
+        ],
+        [
+          "losange",
+          "rouge"
         ]
       ]
     },
@@ -432,9 +496,9 @@
     "prerequis": [
       "de-palier-3"
     ],
-    "cap_complexite": null,
+    "cap_complexite": "une phrase = deux informations croisées, jamais de placement direct à recopier",
     "contenu": {
-      "consigne": "Place les figures colorées. Chaque figure colorée (un carré bleu, un cercle rouge…) apparaît une seule fois dans la grille. Méthode : note d'abord ce qui est certain, barre ce qui devient impossible, puis recoupe les indices qui relient deux figures.",
+      "consigne": "Place les seize figures colorées. Règles : chaque ligne contient chaque figure une seule fois et chaque couleur une seule fois ; chaque colonne aussi — donc chaque figure colorée n'apparaît qu'une fois dans la grille. Méthode : chaque phrase donne deux informations ; retiens ce qui est certain, barre ce qui devient impossible, puis recoupe les phrases.",
       "figures": [
         "cercle",
         "carre",
@@ -449,46 +513,34 @@
       ],
       "enonces": [
         {
-          "type": "case",
-          "figure": "losange",
-          "couleur": "vert",
-          "case": 13
+          "type": "colonne",
+          "figure": "triangle",
+          "couleur": "bleu",
+          "colonne": 1,
+          "et": {
+            "type": "pas-bord"
+          }
+        },
+        {
+          "type": "ligne",
+          "figure": "carre",
+          "couleur": "jaune",
+          "ligne": 3,
+          "et": {
+            "type": "pas-coin"
+          }
         },
         {
           "type": "case",
           "figure": "carre",
-          "couleur": "bleu",
-          "case": 14
-        },
-        {
-          "type": "case",
-          "figure": "triangle",
-          "couleur": "vert",
+          "couleur": "rouge",
           "case": 8
         },
         {
           "type": "case",
-          "figure": "carre",
-          "couleur": "rouge",
-          "case": 9
-        },
-        {
-          "type": "case",
-          "figure": "cercle",
+          "figure": "losange",
           "couleur": "vert",
-          "case": 6
-        },
-        {
-          "type": "case",
-          "figure": "cercle",
-          "couleur": "jaune",
-          "case": 1
-        },
-        {
-          "type": "case",
-          "figure": "cercle",
-          "couleur": "rouge",
-          "case": 12
+          "case": 9
         },
         {
           "type": "case",
@@ -497,67 +549,116 @@
           "case": 11
         },
         {
-          "type": "case",
-          "figure": "losange",
-          "couleur": "rouge",
-          "case": 7
-        },
-        {
-          "type": "case",
-          "figure": "carre",
+          "type": "voisin-droite",
+          "figure": "cercle",
           "couleur": "jaune",
-          "case": 4
-        },
-        {
-          "type": "case",
-          "figure": "losange",
-          "couleur": "bleu",
-          "case": 0
-        },
-        {
-          "type": "case",
-          "figure": "triangle",
-          "couleur": "jaune",
-          "case": 15
-        },
-        {
-          "type": "case",
-          "figure": "losange",
-          "couleur": "jaune",
-          "case": 10
-        }
-      ],
-      "indices": [
-        {
-          "type": "autre-ligne",
-          "figure": "triangle",
-          "couleur": "bleu",
-          "figure2": "carre",
+          "figure2": "triangle",
           "couleur2": "bleu"
         },
         {
-          "type": "autre-ligne",
-          "figure": "carre",
+          "type": "voisin-dessous",
+          "figure": "triangle",
           "couleur": "jaune",
+          "figure2": "cercle",
+          "couleur2": "vert"
+        },
+        {
+          "type": "voisin-dessous",
+          "figure": "cercle",
+          "couleur": "bleu",
+          "figure2": "triangle",
+          "couleur2": "rouge"
+        },
+        {
+          "type": "voisin-droite",
+          "figure": "triangle",
+          "couleur": "bleu",
+          "figure2": "losange",
+          "couleur2": "rouge"
+        },
+        {
+          "type": "voisin-dessus",
+          "figure": "cercle",
+          "couleur": "vert",
+          "figure2": "triangle",
+          "couleur2": "jaune"
+        },
+        {
+          "type": "voisin-droite",
+          "figure": "triangle",
+          "couleur": "jaune",
+          "figure2": "cercle",
+          "couleur2": "bleu"
+        },
+        {
+          "type": "voisin-dessous",
+          "figure": "cercle",
+          "couleur": "rouge",
+          "figure2": "triangle",
+          "couleur2": "bleu"
+        },
+        {
+          "type": "voisin-dessus",
+          "figure": "carre",
+          "couleur": "vert",
           "figure2": "losange",
           "couleur2": "jaune"
         },
         {
-          "type": "autre-ligne",
-          "figure": "cercle",
-          "couleur": "rouge",
-          "figure2": "losange",
-          "couleur2": "bleu"
+          "type": "voisin-droite",
+          "figure": "triangle",
+          "couleur": "vert",
+          "figure2": "cercle",
+          "couleur2": "rouge"
+        },
+        {
+          "type": "voisin-dessous",
+          "figure": "losange",
+          "couleur": "jaune",
+          "figure2": "carre",
+          "couleur2": "vert"
         }
       ],
-      "aide": "Les indices suffisent : en les recoupant, chaque case se déduit. Commence par ceux qui désignent une case précise."
+      "indices": [
+        {
+          "type": "colonne",
+          "figure": "carre",
+          "couleur": "rouge",
+          "colonne": 0
+        },
+        {
+          "type": "case",
+          "figure": "cercle",
+          "couleur": "bleu",
+          "case": 11
+        },
+        {
+          "type": "ligne",
+          "figure": "carre",
+          "couleur": "vert",
+          "ligne": 1
+        }
+      ],
+      "aide": "Chaque phrase donne deux informations. Marque ce qui est certain, barre ce qui devient impossible, puis recoupe avec les autres phrases."
     },
     "reponse": {
-      "valeur": "losange:bleu;cercle:jaune;triangle:rouge;carre:vert;carre:jaune;triangle:bleu;cercle:vert;losange:rouge;triangle:vert;carre:rouge;losange:jaune;cercle:bleu;cercle:rouge;losange:vert;carre:bleu;triangle:jaune",
+      "valeur": "triangle:vert;cercle:rouge;carre:bleu;losange:jaune;cercle:jaune;triangle:bleu;losange:rouge;carre:vert;carre:rouge;losange:vert;triangle:jaune;cercle:bleu;losange:bleu;carre:jaune;cercle:vert;triangle:rouge",
       "grille": [
         [
-          "losange",
+          "triangle",
+          "vert"
+        ],
+        [
+          "cercle",
+          "rouge"
+        ],
+        [
+          "carre",
           "bleu"
+        ],
+        [
+          "losange",
+          "jaune"
         ],
         [
           "cercle",
@@ -565,6 +666,10 @@
         ],
         [
           "triangle",
+          "bleu"
+        ],
+        [
+          "losange",
           "rouge"
         ],
         [
@@ -573,51 +678,35 @@
         ],
         [
           "carre",
-          "jaune"
-        ],
-        [
-          "triangle",
-          "bleu"
-        ],
-        [
-          "cercle",
-          "vert"
-        ],
-        [
-          "losange",
           "rouge"
         ],
         [
-          "triangle",
+          "losange",
           "vert"
+        ],
+        [
+          "triangle",
+          "jaune"
+        ],
+        [
+          "cercle",
+          "bleu"
+        ],
+        [
+          "losange",
+          "bleu"
         ],
         [
           "carre",
-          "rouge"
-        ],
-        [
-          "losange",
           "jaune"
         ],
         [
           "cercle",
-          "bleu"
-        ],
-        [
-          "cercle",
-          "rouge"
-        ],
-        [
-          "losange",
           "vert"
         ],
         [
-          "carre",
-          "bleu"
-        ],
-        [
           "triangle",
-          "jaune"
+          "rouge"
         ]
       ]
     },
@@ -642,9 +731,9 @@
     "prerequis": [
       "de-palier-3"
     ],
-    "cap_complexite": null,
+    "cap_complexite": "une phrase = deux informations croisées, jamais de placement direct à recopier",
     "contenu": {
-      "consigne": "Place les figures colorées. Chaque figure colorée (un carré bleu, un cercle rouge…) apparaît une seule fois dans la grille. Méthode : note d'abord ce qui est certain, barre ce qui devient impossible, puis recoupe les indices qui relient deux figures.",
+      "consigne": "Place les seize figures colorées. Règles : chaque ligne contient chaque figure une seule fois et chaque couleur une seule fois ; chaque colonne aussi — donc chaque figure colorée n'apparaît qu'une fois dans la grille. Méthode : chaque phrase donne deux informations ; retiens ce qui est certain, barre ce qui devient impossible, puis recoupe les phrases.",
       "figures": [
         "cercle",
         "carre",
@@ -659,64 +748,34 @@
       ],
       "enonces": [
         {
-          "type": "case",
-          "figure": "triangle",
+          "type": "colonne",
+          "figure": "losange",
           "couleur": "rouge",
-          "case": 10
+          "colonne": 1,
+          "et": {
+            "type": "pas-bord"
+          }
         },
         {
-          "type": "case",
+          "type": "colonne",
           "figure": "carre",
           "couleur": "jaune",
-          "case": 14
+          "colonne": 3,
+          "et": {
+            "type": "pas-coin"
+          }
         },
         {
           "type": "case",
-          "figure": "carre",
-          "couleur": "vert",
-          "case": 11
-        },
-        {
-          "type": "case",
-          "figure": "carre",
+          "figure": "losange",
           "couleur": "bleu",
-          "case": 0
-        },
-        {
-          "type": "case",
-          "figure": "cercle",
-          "couleur": "jaune",
           "case": 7
         },
         {
           "type": "case",
-          "figure": "losange",
-          "couleur": "rouge",
-          "case": 3
-        },
-        {
-          "type": "case",
-          "figure": "cercle",
-          "couleur": "rouge",
-          "case": 12
-        },
-        {
-          "type": "case",
-          "figure": "triangle",
-          "couleur": "vert",
-          "case": 4
-        },
-        {
-          "type": "case",
           "figure": "cercle",
           "couleur": "vert",
-          "case": 2
-        },
-        {
-          "type": "case",
-          "figure": "losange",
-          "couleur": "vert",
-          "case": 13
+          "case": 10
         },
         {
           "type": "case",
@@ -725,68 +784,141 @@
           "case": 1
         },
         {
-          "type": "case",
-          "figure": "cercle",
-          "couleur": "bleu",
-          "case": 9
+          "type": "voisin-dessus",
+          "figure": "carre",
+          "couleur": "jaune",
+          "figure2": "losange",
+          "couleur2": "bleu"
         },
         {
-          "type": "case",
-          "figure": "carre",
-          "couleur": "rouge",
-          "case": 5
-        }
-      ],
-      "indices": [
-        {
-          "type": "comparaison",
+          "type": "voisin-gauche",
           "figure": "carre",
           "couleur": "bleu",
           "figure2": "triangle",
           "couleur2": "jaune"
         },
         {
-          "type": "autre-ligne",
+          "type": "voisin-dessus",
+          "figure": "losange",
+          "couleur": "bleu",
+          "figure2": "cercle",
+          "couleur2": "rouge"
+        },
+        {
+          "type": "voisin-gauche",
+          "figure": "cercle",
+          "couleur": "vert",
+          "figure2": "losange",
+          "couleur2": "rouge"
+        },
+        {
+          "type": "voisin-dessus",
           "figure": "carre",
           "couleur": "rouge",
-          "figure2": "cercle",
+          "figure2": "triangle",
           "couleur2": "bleu"
         },
         {
-          "type": "autre-colonne",
-          "figure": "cercle",
+          "type": "voisin-dessus",
+          "figure": "losange",
+          "couleur": "jaune",
+          "figure2": "cercle",
+          "couleur2": "vert"
+        },
+        {
+          "type": "voisin-droite",
+          "figure": "triangle",
           "couleur": "bleu",
           "figure2": "losange",
+          "couleur2": "rouge"
+        },
+        {
+          "type": "voisin-dessous",
+          "figure": "cercle",
+          "couleur": "rouge",
+          "figure2": "losange",
+          "couleur2": "bleu"
+        },
+        {
+          "type": "voisin-dessous",
+          "figure": "losange",
+          "couleur": "vert",
+          "figure2": "cercle",
           "couleur2": "jaune"
+        },
+        {
+          "type": "voisin-droite",
+          "figure": "cercle",
+          "couleur": "jaune",
+          "figure2": "carre",
+          "couleur2": "vert"
+        },
+        {
+          "type": "voisin-dessous",
+          "figure": "losange",
+          "couleur": "bleu",
+          "figure2": "carre",
+          "couleur2": "jaune"
+        },
+        {
+          "type": "voisin-dessous",
+          "figure": "carre",
+          "couleur": "vert",
+          "figure2": "losange",
+          "couleur2": "rouge"
         }
       ],
-      "aide": "Les indices suffisent : en les recoupant, chaque case se déduit. Commence par ceux qui désignent une case précise."
+      "indices": [
+        {
+          "type": "ligne",
+          "figure": "carre",
+          "couleur": "rouge",
+          "ligne": 3
+        },
+        {
+          "type": "colonne",
+          "figure": "losange",
+          "couleur": "jaune",
+          "colonne": 2
+        },
+        {
+          "type": "case",
+          "figure": "cercle",
+          "couleur": "bleu",
+          "case": 13
+        }
+      ],
+      "aide": "Chaque phrase donne deux informations. Marque ce qui est certain, barre ce qui devient impossible, puis recoupe avec les autres phrases."
     },
     "reponse": {
-      "valeur": "carre:bleu;triangle:jaune;cercle:vert;losange:rouge;triangle:vert;carre:rouge;losange:bleu;cercle:jaune;losange:jaune;cercle:bleu;triangle:rouge;carre:vert;cercle:rouge;losange:vert;carre:jaune;triangle:bleu",
+      "valeur": "losange:vert;triangle:jaune;carre:bleu;cercle:rouge;cercle:jaune;carre:vert;triangle:rouge;losange:bleu;triangle:bleu;losange:rouge;cercle:vert;carre:jaune;carre:rouge;cercle:bleu;losange:jaune;triangle:vert",
       "grille": [
         [
-          "carre",
-          "bleu"
+          "losange",
+          "vert"
         ],
         [
           "triangle",
           "jaune"
         ],
         [
-          "cercle",
-          "vert"
+          "carre",
+          "bleu"
         ],
         [
-          "losange",
+          "cercle",
           "rouge"
         ],
         [
-          "triangle",
-          "vert"
+          "cercle",
+          "jaune"
         ],
         [
           "carre",
+          "vert"
+        ],
+        [
+          "triangle",
           "rouge"
         ],
         [
@@ -794,31 +926,15 @@
           "bleu"
         ],
         [
-          "cercle",
-          "jaune"
-        ],
-        [
-          "losange",
-          "jaune"
-        ],
-        [
-          "cercle",
+          "triangle",
           "bleu"
         ],
         [
-          "triangle",
+          "losange",
           "rouge"
-        ],
-        [
-          "carre",
-          "vert"
         ],
         [
           "cercle",
-          "rouge"
-        ],
-        [
-          "losange",
           "vert"
         ],
         [
@@ -826,8 +942,20 @@
           "jaune"
         ],
         [
-          "triangle",
+          "carre",
+          "rouge"
+        ],
+        [
+          "cercle",
           "bleu"
+        ],
+        [
+          "losange",
+          "jaune"
+        ],
+        [
+          "triangle",
+          "vert"
         ]
       ]
     },
@@ -852,9 +980,9 @@
     "prerequis": [
       "de-palier-3"
     ],
-    "cap_complexite": null,
+    "cap_complexite": "une phrase = deux informations croisées, jamais de placement direct à recopier",
     "contenu": {
-      "consigne": "Place les figures colorées. Chaque figure colorée (un carré bleu, un cercle rouge…) apparaît une seule fois dans la grille. Méthode : note d'abord ce qui est certain, barre ce qui devient impossible, puis recoupe les indices qui relient deux figures.",
+      "consigne": "Place les seize figures colorées. Règles : chaque ligne contient chaque figure une seule fois et chaque couleur une seule fois ; chaque colonne aussi — donc chaque figure colorée n'apparaît qu'une fois dans la grille. Méthode : chaque phrase donne deux informations ; retiens ce qui est certain, barre ce qui devient impossible, puis recoupe les phrases.",
       "figures": [
         "cercle",
         "carre",
@@ -869,138 +997,161 @@
       ],
       "enonces": [
         {
-          "type": "case",
-          "figure": "cercle",
-          "couleur": "bleu",
-          "case": 5
+          "type": "colonne",
+          "figure": "losange",
+          "couleur": "vert",
+          "colonne": 0,
+          "et": {
+            "type": "pas-coin"
+          }
+        },
+        {
+          "type": "colonne",
+          "figure": "carre",
+          "couleur": "jaune",
+          "colonne": 2,
+          "et": {
+            "type": "ni-ni"
+          }
         },
         {
           "type": "case",
           "figure": "losange",
           "couleur": "bleu",
-          "case": 0
+          "case": 14
         },
         {
           "type": "case",
           "figure": "triangle",
-          "couleur": "rouge",
-          "case": 4
-        },
-        {
-          "type": "case",
-          "figure": "cercle",
-          "couleur": "jaune",
-          "case": 2
-        },
-        {
-          "type": "case",
-          "figure": "carre",
           "couleur": "jaune",
           "case": 12
         },
         {
           "type": "case",
-          "figure": "carre",
-          "couleur": "rouge",
-          "case": 1
-        },
-        {
-          "type": "case",
-          "figure": "losange",
-          "couleur": "jaune",
-          "case": 7
-        },
-        {
-          "type": "case",
           "figure": "triangle",
-          "couleur": "jaune",
-          "case": 9
-        },
-        {
-          "type": "case",
-          "figure": "cercle",
-          "couleur": "rouge",
-          "case": 15
-        },
-        {
-          "type": "case",
-          "figure": "carre",
-          "couleur": "vert",
-          "case": 6
-        },
-        {
-          "type": "case",
-          "figure": "cercle",
-          "couleur": "vert",
-          "case": 8
-        },
-        {
-          "type": "case",
-          "figure": "losange",
-          "couleur": "vert",
-          "case": 13
-        },
-        {
-          "type": "case",
-          "figure": "triangle",
-          "couleur": "vert",
+          "couleur": "bleu",
           "case": 3
+        },
+        {
+          "type": "voisin-droite",
+          "figure": "triangle",
+          "couleur": "jaune",
+          "figure2": "cercle",
+          "couleur2": "rouge"
+        },
+        {
+          "type": "voisin-dessous",
+          "figure": "cercle",
+          "couleur": "jaune",
+          "figure2": "losange",
+          "couleur2": "rouge"
+        },
+        {
+          "type": "voisin-dessus",
+          "figure": "cercle",
+          "couleur": "jaune",
+          "figure2": "triangle",
+          "couleur2": "bleu"
+        },
+        {
+          "type": "voisin-gauche",
+          "figure": "carre",
+          "couleur": "vert",
+          "figure2": "losange",
+          "couleur2": "bleu"
+        },
+        {
+          "type": "voisin-droite",
+          "figure": "cercle",
+          "couleur": "rouge",
+          "figure2": "losange",
+          "couleur2": "bleu"
+        },
+        {
+          "type": "voisin-droite",
+          "figure": "carre",
+          "couleur": "bleu",
+          "figure2": "triangle",
+          "couleur2": "rouge"
+        },
+        {
+          "type": "voisin-gauche",
+          "figure": "carre",
+          "couleur": "bleu",
+          "figure2": "losange",
+          "couleur2": "vert"
+        },
+        {
+          "type": "voisin-dessous",
+          "figure": "cercle",
+          "couleur": "vert",
+          "figure2": "triangle",
+          "couleur2": "rouge"
+        },
+        {
+          "type": "voisin-dessous",
+          "figure": "triangle",
+          "couleur": "bleu",
+          "figure2": "cercle",
+          "couleur2": "jaune"
+        },
+        {
+          "type": "voisin-dessus",
+          "figure": "carre",
+          "couleur": "bleu",
+          "figure2": "losange",
+          "couleur2": "jaune"
+        },
+        {
+          "type": "voisin-dessous",
+          "figure": "losange",
+          "couleur": "vert",
+          "figure2": "cercle",
+          "couleur2": "bleu"
+        },
+        {
+          "type": "voisin-dessous",
+          "figure": "carre",
+          "couleur": "rouge",
+          "figure2": "losange",
+          "couleur2": "vert"
+        },
+        {
+          "type": "voisin-dessous",
+          "figure": "cercle",
+          "couleur": "bleu",
+          "figure2": "triangle",
+          "couleur2": "jaune"
         }
       ],
       "indices": [
         {
-          "type": "colonne",
-          "figure": "carre",
-          "couleur": "vert",
-          "colonne": 2
+          "type": "ligne",
+          "figure": "triangle",
+          "couleur": "jaune",
+          "ligne": 3
         },
         {
-          "type": "autre-colonne",
+          "type": "ligne",
           "figure": "losange",
-          "couleur": "bleu",
-          "figure2": "carre",
-          "couleur2": "rouge"
+          "couleur": "vert",
+          "ligne": 1
         },
         {
-          "type": "autre-ligne",
-          "figure": "cercle",
-          "couleur": "rouge",
-          "figure2": "triangle",
-          "couleur2": "vert"
+          "type": "case",
+          "figure": "carre",
+          "couleur": "jaune",
+          "case": 10
         }
       ],
-      "aide": "Les indices suffisent : en les recoupant, chaque case se déduit. Commence par ceux qui désignent une case précise."
+      "aide": "Chaque phrase donne deux informations. Marque ce qui est certain, barre ce qui devient impossible, puis recoupe avec les autres phrases."
     },
     "reponse": {
-      "valeur": "losange:bleu;carre:rouge;cercle:jaune;triangle:vert;triangle:rouge;cercle:bleu;carre:vert;losange:jaune;cercle:vert;triangle:jaune;losange:rouge;carre:bleu;carre:jaune;losange:vert;triangle:bleu;cercle:rouge",
+      "valeur": "carre:rouge;losange:jaune;cercle:vert;triangle:bleu;losange:vert;carre:bleu;triangle:rouge;cercle:jaune;cercle:bleu;triangle:vert;carre:jaune;losange:rouge;triangle:jaune;cercle:rouge;losange:bleu;carre:vert",
       "grille": [
         [
-          "losange",
-          "bleu"
-        ],
-        [
           "carre",
           "rouge"
-        ],
-        [
-          "cercle",
-          "jaune"
-        ],
-        [
-          "triangle",
-          "vert"
-        ],
-        [
-          "triangle",
-          "rouge"
-        ],
-        [
-          "cercle",
-          "bleu"
-        ],
-        [
-          "carre",
-          "vert"
         ],
         [
           "losange",
@@ -1012,31 +1163,55 @@
         ],
         [
           "triangle",
-          "jaune"
-        ],
-        [
-          "losange",
-          "rouge"
-        ],
-        [
-          "carre",
           "bleu"
-        ],
-        [
-          "carre",
-          "jaune"
         ],
         [
           "losange",
           "vert"
         ],
         [
-          "triangle",
+          "carre",
           "bleu"
+        ],
+        [
+          "triangle",
+          "rouge"
+        ],
+        [
+          "cercle",
+          "jaune"
+        ],
+        [
+          "cercle",
+          "bleu"
+        ],
+        [
+          "triangle",
+          "vert"
+        ],
+        [
+          "carre",
+          "jaune"
+        ],
+        [
+          "losange",
+          "rouge"
+        ],
+        [
+          "triangle",
+          "jaune"
         ],
         [
           "cercle",
           "rouge"
+        ],
+        [
+          "losange",
+          "bleu"
+        ],
+        [
+          "carre",
+          "vert"
         ]
       ]
     },
@@ -1061,9 +1236,9 @@
     "prerequis": [
       "de-palier-3"
     ],
-    "cap_complexite": null,
+    "cap_complexite": "une phrase = deux informations croisées, jamais de placement direct à recopier",
     "contenu": {
-      "consigne": "Place les figures colorées. Chaque figure colorée (un carré bleu, un cercle rouge…) apparaît une seule fois dans la grille. Méthode : note d'abord ce qui est certain, barre ce qui devient impossible, puis recoupe les indices qui relient deux figures.",
+      "consigne": "Place les seize figures colorées. Règles : chaque ligne contient chaque figure une seule fois et chaque couleur une seule fois ; chaque colonne aussi — donc chaque figure colorée n'apparaît qu'une fois dans la grille. Méthode : chaque phrase donne deux informations ; retiens ce qui est certain, barre ce qui devient impossible, puis recoupe les phrases.",
       "figures": [
         "cercle",
         "carre",
@@ -1078,46 +1253,22 @@
       ],
       "enonces": [
         {
-          "type": "case",
-          "figure": "losange",
-          "couleur": "bleu",
-          "case": 1
-        },
-        {
-          "type": "case",
-          "figure": "losange",
-          "couleur": "jaune",
-          "case": 6
-        },
-        {
-          "type": "case",
-          "figure": "cercle",
-          "couleur": "jaune",
-          "case": 0
-        },
-        {
-          "type": "case",
-          "figure": "triangle",
-          "couleur": "bleu",
-          "case": 12
-        },
-        {
-          "type": "case",
+          "type": "colonne",
           "figure": "carre",
-          "couleur": "bleu",
-          "case": 10
+          "couleur": "jaune",
+          "colonne": 1,
+          "et": {
+            "type": "pas-bord"
+          }
         },
         {
-          "type": "case",
-          "figure": "losange",
-          "couleur": "vert",
-          "case": 8
-        },
-        {
-          "type": "case",
+          "type": "colonne",
           "figure": "cercle",
           "couleur": "bleu",
-          "case": 7
+          "colonne": 0,
+          "et": {
+            "type": "pas-coin"
+          }
         },
         {
           "type": "case",
@@ -1127,64 +1278,100 @@
         },
         {
           "type": "case",
-          "figure": "triangle",
-          "couleur": "rouge",
-          "case": 2
-        },
-        {
-          "type": "case",
-          "figure": "triangle",
-          "couleur": "vert",
-          "case": 5
-        },
-        {
-          "type": "case",
-          "figure": "carre",
-          "couleur": "rouge",
-          "case": 4
-        },
-        {
-          "type": "case",
-          "figure": "cercle",
-          "couleur": "vert",
+          "figure": "losange",
+          "couleur": "jaune",
           "case": 14
         },
         {
           "type": "case",
           "figure": "losange",
           "couleur": "rouge",
-          "case": 15
+          "case": 11
+        },
+        {
+          "type": "voisin-droite",
+          "figure": "losange",
+          "couleur": "vert",
+          "figure2": "triangle",
+          "couleur2": "rouge"
+        },
+        {
+          "type": "voisin-droite",
+          "figure": "triangle",
+          "couleur": "jaune",
+          "figure2": "losange",
+          "couleur2": "bleu"
+        },
+        {
+          "type": "voisin-gauche",
+          "figure": "cercle",
+          "couleur": "jaune",
+          "figure2": "carre",
+          "couleur2": "bleu"
+        },
+        {
+          "type": "voisin-dessus",
+          "figure": "cercle",
+          "couleur": "jaune",
+          "figure2": "carre",
+          "couleur2": "vert"
+        },
+        {
+          "type": "voisin-dessus",
+          "figure": "cercle",
+          "couleur": "vert",
+          "figure2": "carre",
+          "couleur2": "jaune"
+        },
+        {
+          "type": "voisin-dessus",
+          "figure": "losange",
+          "couleur": "rouge",
+          "figure2": "cercle",
+          "couleur2": "jaune"
+        },
+        {
+          "type": "voisin-droite",
+          "figure": "triangle",
+          "couleur": "vert",
+          "figure2": "losange",
+          "couleur2": "rouge"
+        },
+        {
+          "type": "voisin-droite",
+          "figure": "cercle",
+          "couleur": "rouge",
+          "figure2": "carre",
+          "couleur2": "vert"
         }
       ],
       "indices": [
         {
-          "type": "autre-ligne",
+          "type": "case",
+          "figure": "carre",
+          "couleur": "jaune",
+          "case": 9
+        },
+        {
+          "type": "ligne",
           "figure": "cercle",
           "couleur": "rouge",
-          "figure2": "cercle",
-          "couleur2": "bleu"
+          "ligne": 0
         },
         {
-          "type": "autre-ligne",
-          "figure": "losange",
-          "couleur": "vert",
-          "figure2": "losange",
-          "couleur2": "jaune"
-        },
-        {
-          "type": "colonne",
-          "figure": "triangle",
+          "type": "ligne",
+          "figure": "cercle",
           "couleur": "bleu",
-          "colonne": 0
+          "ligne": 2
         }
       ],
-      "aide": "Les indices suffisent : en les recoupant, chaque case se déduit. Commence par ceux qui désignent une case précise."
+      "aide": "Chaque phrase donne deux informations. Marque ce qui est certain, barre ce qui devient impossible, puis recoupe avec les autres phrases."
     },
     "reponse": {
-      "valeur": "cercle:jaune;losange:bleu;triangle:rouge;carre:vert;carre:rouge;triangle:vert;losange:jaune;cercle:bleu;losange:vert;cercle:rouge;carre:bleu;triangle:jaune;triangle:bleu;carre:jaune;cercle:vert;losange:rouge",
+      "valeur": "triangle:jaune;losange:bleu;cercle:rouge;carre:vert;losange:vert;triangle:rouge;carre:bleu;cercle:jaune;cercle:bleu;carre:jaune;triangle:vert;losange:rouge;carre:rouge;cercle:vert;losange:jaune;triangle:bleu",
       "grille": [
         [
-          "cercle",
+          "triangle",
           "jaune"
         ],
         [
@@ -1192,7 +1379,7 @@
           "bleu"
         ],
         [
-          "triangle",
+          "cercle",
           "rouge"
         ],
         [
@@ -1200,27 +1387,11 @@
           "vert"
         ],
         [
-          "carre",
-          "rouge"
+          "losange",
+          "vert"
         ],
         [
           "triangle",
-          "vert"
-        ],
-        [
-          "losange",
-          "jaune"
-        ],
-        [
-          "cercle",
-          "bleu"
-        ],
-        [
-          "losange",
-          "vert"
-        ],
-        [
-          "cercle",
           "rouge"
         ],
         [
@@ -1228,11 +1399,11 @@
           "bleu"
         ],
         [
-          "triangle",
+          "cercle",
           "jaune"
         ],
         [
-          "triangle",
+          "cercle",
           "bleu"
         ],
         [
@@ -1240,12 +1411,28 @@
           "jaune"
         ],
         [
-          "cercle",
+          "triangle",
           "vert"
         ],
         [
           "losange",
           "rouge"
+        ],
+        [
+          "carre",
+          "rouge"
+        ],
+        [
+          "cercle",
+          "vert"
+        ],
+        [
+          "losange",
+          "jaune"
+        ],
+        [
+          "triangle",
+          "bleu"
         ]
       ]
     },
@@ -1270,9 +1457,9 @@
     "prerequis": [
       "de-palier-3"
     ],
-    "cap_complexite": null,
+    "cap_complexite": "une phrase = deux informations croisées, jamais de placement direct à recopier",
     "contenu": {
-      "consigne": "Place les figures colorées. Chaque figure colorée (un carré bleu, un cercle rouge…) apparaît une seule fois dans la grille. Méthode : note d'abord ce qui est certain, barre ce qui devient impossible, puis recoupe les indices qui relient deux figures.",
+      "consigne": "Place les seize figures colorées. Règles : chaque ligne contient chaque figure une seule fois et chaque couleur une seule fois ; chaque colonne aussi — donc chaque figure colorée n'apparaît qu'une fois dans la grille. Méthode : chaque phrase donne deux informations ; retiens ce qui est certain, barre ce qui devient impossible, puis recoupe les phrases.",
       "figures": [
         "cercle",
         "carre",
@@ -1287,113 +1474,150 @@
       ],
       "enonces": [
         {
+          "type": "ligne",
+          "figure": "carre",
+          "couleur": "rouge",
+          "ligne": 2,
+          "et": {
+            "type": "pas-bord"
+          }
+        },
+        {
+          "type": "ligne",
+          "figure": "losange",
+          "couleur": "vert",
+          "ligne": 2,
+          "et": {
+            "type": "ni-ni"
+          }
+        },
+        {
           "type": "case",
           "figure": "triangle",
-          "couleur": "rouge",
-          "case": 7
-        },
-        {
-          "type": "case",
-          "figure": "cercle",
-          "couleur": "bleu",
-          "case": 3
-        },
-        {
-          "type": "case",
-          "figure": "carre",
-          "couleur": "rouge",
-          "case": 8
-        },
-        {
-          "type": "case",
-          "figure": "cercle",
-          "couleur": "vert",
-          "case": 9
-        },
-        {
-          "type": "case",
-          "figure": "carre",
-          "couleur": "jaune",
-          "case": 2
-        },
-        {
-          "type": "case",
-          "figure": "losange",
-          "couleur": "rouge",
-          "case": 1
-        },
-        {
-          "type": "case",
-          "figure": "cercle",
-          "couleur": "rouge",
-          "case": 14
-        },
-        {
-          "type": "case",
-          "figure": "losange",
-          "couleur": "bleu",
-          "case": 12
-        },
-        {
-          "type": "case",
-          "figure": "cercle",
-          "couleur": "jaune",
-          "case": 4
-        },
-        {
-          "type": "case",
-          "figure": "losange",
           "couleur": "vert",
           "case": 6
         },
         {
           "type": "case",
+          "figure": "carre",
+          "couleur": "vert",
+          "case": 3
+        },
+        {
+          "type": "case",
           "figure": "losange",
+          "couleur": "vert",
+          "case": 9
+        },
+        {
+          "type": "voisin-droite",
+          "figure": "triangle",
+          "couleur": "bleu",
+          "figure2": "cercle",
+          "couleur2": "jaune"
+        },
+        {
+          "type": "voisin-dessus",
+          "figure": "carre",
+          "couleur": "bleu",
+          "figure2": "losange",
+          "couleur2": "rouge"
+        },
+        {
+          "type": "voisin-dessus",
+          "figure": "triangle",
           "couleur": "jaune",
-          "case": 11
+          "figure2": "carre",
+          "couleur2": "bleu"
+        },
+        {
+          "type": "voisin-gauche",
+          "figure": "carre",
+          "couleur": "jaune",
+          "figure2": "cercle",
+          "couleur2": "vert"
+        },
+        {
+          "type": "voisin-dessous",
+          "figure": "cercle",
+          "couleur": "bleu",
+          "figure2": "triangle",
+          "couleur2": "rouge"
+        },
+        {
+          "type": "voisin-droite",
+          "figure": "losange",
+          "couleur": "bleu",
+          "figure2": "triangle",
+          "couleur2": "rouge"
+        },
+        {
+          "type": "voisin-dessus",
+          "figure": "cercle",
+          "couleur": "bleu",
+          "figure2": "losange",
+          "couleur2": "jaune"
+        },
+        {
+          "type": "voisin-dessus",
+          "figure": "triangle",
+          "couleur": "rouge",
+          "figure2": "cercle",
+          "couleur2": "bleu"
+        },
+        {
+          "type": "voisin-gauche",
+          "figure": "losange",
+          "couleur": "vert",
+          "figure2": "triangle",
+          "couleur2": "jaune"
+        },
+        {
+          "type": "voisin-gauche",
+          "figure": "losange",
+          "couleur": "bleu",
+          "figure2": "carre",
+          "couleur2": "jaune"
+        },
+        {
+          "type": "voisin-droite",
+          "figure": "cercle",
+          "couleur": "jaune",
+          "figure2": "carre",
+          "couleur2": "vert"
         }
       ],
       "indices": [
         {
-          "type": "case",
+          "type": "ligne",
+          "figure": "cercle",
+          "couleur": "bleu",
+          "ligne": 2
+        },
+        {
+          "type": "colonne",
+          "figure": "carre",
+          "couleur": "bleu",
+          "colonne": 0
+        },
+        {
+          "type": "colonne",
           "figure": "losange",
           "couleur": "rouge",
-          "case": 1
-        },
-        {
-          "type": "autre-colonne",
-          "figure": "losange",
-          "couleur": "bleu",
-          "figure2": "carre",
-          "couleur2": "vert"
-        },
-        {
-          "type": "autre-colonne",
-          "figure": "carre",
-          "couleur": "jaune",
-          "figure2": "cercle",
-          "couleur2": "bleu"
+          "colonne": 0
         }
       ],
-      "aide": "Les indices suffisent : en les recoupant, chaque case se déduit. Commence par ceux qui désignent une case précise."
+      "aide": "Chaque phrase donne deux informations. Marque ce qui est certain, barre ce qui devient impossible, puis recoupe avec les autres phrases."
     },
     "reponse": {
-      "valeur": "triangle:vert;losange:rouge;carre:jaune;cercle:bleu;cercle:jaune;carre:bleu;losange:vert;triangle:rouge;carre:rouge;cercle:vert;triangle:bleu;losange:jaune;losange:bleu;triangle:jaune;cercle:rouge;carre:vert",
+      "valeur": "losange:rouge;triangle:bleu;cercle:jaune;carre:vert;carre:bleu;cercle:rouge;triangle:vert;losange:jaune;triangle:jaune;losange:vert;carre:rouge;cercle:bleu;cercle:vert;carre:jaune;losange:bleu;triangle:rouge",
       "grille": [
         [
-          "triangle",
-          "vert"
-        ],
-        [
           "losange",
           "rouge"
         ],
         [
-          "carre",
-          "jaune"
-        ],
-        [
-          "cercle",
+          "triangle",
           "bleu"
         ],
         [
@@ -1402,15 +1626,31 @@
         ],
         [
           "carre",
+          "vert"
+        ],
+        [
+          "carre",
           "bleu"
+        ],
+        [
+          "cercle",
+          "rouge"
+        ],
+        [
+          "triangle",
+          "vert"
+        ],
+        [
+          "losange",
+          "jaune"
+        ],
+        [
+          "triangle",
+          "jaune"
         ],
         [
           "losange",
           "vert"
-        ],
-        [
-          "triangle",
-          "rouge"
         ],
         [
           "carre",
@@ -1418,14 +1658,14 @@
         ],
         [
           "cercle",
-          "vert"
-        ],
-        [
-          "triangle",
           "bleu"
         ],
         [
-          "losange",
+          "cercle",
+          "vert"
+        ],
+        [
+          "carre",
           "jaune"
         ],
         [
@@ -1434,15 +1674,7 @@
         ],
         [
           "triangle",
-          "jaune"
-        ],
-        [
-          "cercle",
           "rouge"
-        ],
-        [
-          "carre",
-          "vert"
         ]
       ]
     },
@@ -1467,9 +1699,9 @@
     "prerequis": [
       "de-palier-3"
     ],
-    "cap_complexite": null,
+    "cap_complexite": "une phrase = deux informations croisées, jamais de placement direct à recopier",
     "contenu": {
-      "consigne": "Place les figures colorées. Chaque figure colorée (un carré bleu, un cercle rouge…) apparaît une seule fois dans la grille. Méthode : note d'abord ce qui est certain, barre ce qui devient impossible, puis recoupe les indices qui relient deux figures.",
+      "consigne": "Place les seize figures colorées. Règles : chaque ligne contient chaque figure une seule fois et chaque couleur une seule fois ; chaque colonne aussi — donc chaque figure colorée n'apparaît qu'une fois dans la grille. Méthode : chaque phrase donne deux informations ; retiens ce qui est certain, barre ce qui devient impossible, puis recoupe les phrases.",
       "figures": [
         "cercle",
         "carre",
@@ -1484,135 +1716,147 @@
       ],
       "enonces": [
         {
-          "type": "case",
+          "type": "colonne",
           "figure": "cercle",
-          "couleur": "bleu",
-          "case": 11
+          "couleur": "rouge",
+          "colonne": 2,
+          "et": {
+            "type": "ni-ni"
+          }
         },
         {
-          "type": "case",
-          "figure": "carre",
-          "couleur": "bleu",
-          "case": 2
+          "type": "colonne",
+          "figure": "triangle",
+          "couleur": "jaune",
+          "colonne": 2,
+          "et": {
+            "type": "ni-ni"
+          }
         },
         {
           "type": "case",
           "figure": "carre",
           "couleur": "rouge",
-          "case": 15
-        },
-        {
-          "type": "case",
-          "figure": "cercle",
-          "couleur": "vert",
-          "case": 0
-        },
-        {
-          "type": "case",
-          "figure": "losange",
-          "couleur": "vert",
-          "case": 14
-        },
-        {
-          "type": "case",
-          "figure": "triangle",
-          "couleur": "rouge",
-          "case": 1
-        },
-        {
-          "type": "case",
-          "figure": "triangle",
-          "couleur": "bleu",
-          "case": 12
-        },
-        {
-          "type": "case",
-          "figure": "losange",
-          "couleur": "bleu",
           "case": 5
         },
         {
           "type": "case",
           "figure": "carre",
-          "couleur": "vert",
-          "case": 9
-        },
-        {
-          "type": "case",
-          "figure": "cercle",
-          "couleur": "rouge",
-          "case": 6
-        },
-        {
-          "type": "case",
-          "figure": "cercle",
           "couleur": "jaune",
-          "case": 13
+          "case": 15
         },
         {
           "type": "case",
+          "figure": "triangle",
+          "couleur": "vert",
+          "case": 11
+        },
+        {
+          "type": "voisin-dessous",
+          "figure": "triangle",
+          "couleur": "bleu",
+          "figure2": "carre",
+          "couleur2": "rouge"
+        },
+        {
+          "type": "voisin-dessus",
+          "figure": "triangle",
+          "couleur": "rouge",
+          "figure2": "carre",
+          "couleur2": "bleu"
+        },
+        {
+          "type": "voisin-dessus",
+          "figure": "losange",
+          "couleur": "bleu",
+          "figure2": "cercle",
+          "couleur2": "rouge"
+        },
+        {
+          "type": "voisin-droite",
+          "figure": "losange",
+          "couleur": "bleu",
+          "figure2": "carre",
+          "couleur2": "jaune"
+        },
+        {
+          "type": "voisin-gauche",
+          "figure": "cercle",
+          "couleur": "vert",
+          "figure2": "triangle",
+          "couleur2": "rouge"
+        },
+        {
+          "type": "voisin-dessus",
+          "figure": "carre",
+          "couleur": "bleu",
+          "figure2": "losange",
+          "couleur2": "vert"
+        },
+        {
+          "type": "voisin-gauche",
           "figure": "losange",
           "couleur": "rouge",
-          "case": 8
+          "figure2": "carre",
+          "couleur2": "vert"
+        },
+        {
+          "type": "voisin-dessous",
+          "figure": "carre",
+          "couleur": "bleu",
+          "figure2": "triangle",
+          "couleur2": "rouge"
+        },
+        {
+          "type": "voisin-droite",
+          "figure": "cercle",
+          "couleur": "vert",
+          "figure2": "losange",
+          "couleur2": "bleu"
+        },
+        {
+          "type": "voisin-gauche",
+          "figure": "carre",
+          "couleur": "vert",
+          "figure2": "triangle",
+          "couleur2": "bleu"
         }
       ],
       "indices": [
         {
-          "type": "autre-colonne",
+          "type": "colonne",
           "figure": "carre",
-          "couleur": "vert",
-          "figure2": "cercle",
-          "couleur2": "vert"
+          "couleur": "rouge",
+          "colonne": 1
+        },
+        {
+          "type": "colonne",
+          "figure": "cercle",
+          "couleur": "jaune",
+          "colonne": 0
         },
         {
           "type": "case",
-          "figure": "carre",
-          "couleur": "bleu",
-          "case": 2
-        },
-        {
-          "type": "autre-colonne",
-          "figure": "losange",
+          "figure": "cercle",
           "couleur": "rouge",
-          "figure2": "losange",
-          "couleur2": "bleu"
+          "case": 10
         }
       ],
-      "aide": "Les indices suffisent : en les recoupant, chaque case se déduit. Commence par ceux qui désignent une case précise."
+      "aide": "Chaque phrase donne deux informations. Marque ce qui est certain, barre ce qui devient impossible, puis recoupe avec les autres phrases."
     },
     "reponse": {
-      "valeur": "cercle:vert;triangle:rouge;carre:bleu;losange:jaune;carre:jaune;losange:bleu;cercle:rouge;triangle:vert;losange:rouge;carre:vert;triangle:jaune;cercle:bleu;triangle:bleu;cercle:jaune;losange:vert;carre:rouge",
+      "valeur": "cercle:jaune;triangle:bleu;carre:vert;losange:rouge;losange:vert;carre:rouge;triangle:jaune;cercle:bleu;carre:bleu;losange:jaune;cercle:rouge;triangle:vert;triangle:rouge;cercle:vert;losange:bleu;carre:jaune",
       "grille": [
         [
           "cercle",
-          "vert"
-        ],
-        [
-          "triangle",
-          "rouge"
-        ],
-        [
-          "carre",
-          "bleu"
-        ],
-        [
-          "losange",
           "jaune"
         ],
         [
-          "carre",
-          "jaune"
-        ],
-        [
-          "losange",
+          "triangle",
           "bleu"
         ],
         [
-          "cercle",
-          "rouge"
-        ],
-        [
-          "triangle",
+          "carre",
           "vert"
         ],
         [
@@ -1620,8 +1864,12 @@
           "rouge"
         ],
         [
-          "carre",
+          "losange",
           "vert"
+        ],
+        [
+          "carre",
+          "rouge"
         ],
         [
           "triangle",
@@ -1632,20 +1880,36 @@
           "bleu"
         ],
         [
-          "triangle",
+          "carre",
           "bleu"
         ],
         [
-          "cercle",
+          "losange",
           "jaune"
         ],
         [
-          "losange",
+          "cercle",
+          "rouge"
+        ],
+        [
+          "triangle",
           "vert"
         ],
         [
-          "carre",
+          "triangle",
           "rouge"
+        ],
+        [
+          "cercle",
+          "vert"
+        ],
+        [
+          "losange",
+          "bleu"
+        ],
+        [
+          "carre",
+          "jaune"
         ]
       ]
     },
@@ -1670,9 +1934,9 @@
     "prerequis": [
       "de-palier-3"
     ],
-    "cap_complexite": null,
+    "cap_complexite": "une phrase = deux informations croisées, jamais de placement direct à recopier",
     "contenu": {
-      "consigne": "Place les figures colorées. Chaque figure colorée (un carré bleu, un cercle rouge…) apparaît une seule fois dans la grille. Méthode : note d'abord ce qui est certain, barre ce qui devient impossible, puis recoupe les indices qui relient deux figures.",
+      "consigne": "Place les seize figures colorées. Règles : chaque ligne contient chaque figure une seule fois et chaque couleur une seule fois ; chaque colonne aussi — donc chaque figure colorée n'apparaît qu'une fois dans la grille. Méthode : chaque phrase donne deux informations ; retiens ce qui est certain, barre ce qui devient impossible, puis recoupe les phrases.",
       "figures": [
         "cercle",
         "carre",
@@ -1687,132 +1951,176 @@
       ],
       "enonces": [
         {
-          "type": "case",
+          "type": "ligne",
+          "figure": "triangle",
+          "couleur": "vert",
+          "ligne": 2,
+          "et": {
+            "type": "pas-bord"
+          }
+        },
+        {
+          "type": "ligne",
           "figure": "cercle",
           "couleur": "rouge",
-          "case": 13
-        },
-        {
-          "type": "case",
-          "figure": "carre",
-          "couleur": "vert",
-          "case": 11
-        },
-        {
-          "type": "case",
-          "figure": "triangle",
-          "couleur": "vert",
-          "case": 1
-        },
-        {
-          "type": "case",
-          "figure": "triangle",
-          "couleur": "bleu",
-          "case": 15
-        },
-        {
-          "type": "case",
-          "figure": "cercle",
-          "couleur": "jaune",
-          "case": 3
-        },
-        {
-          "type": "case",
-          "figure": "triangle",
-          "couleur": "jaune",
-          "case": 6
-        },
-        {
-          "type": "case",
-          "figure": "losange",
-          "couleur": "bleu",
-          "case": 0
+          "ligne": 2,
+          "et": {
+            "type": "pas-bord"
+          }
         },
         {
           "type": "case",
           "figure": "carre",
           "couleur": "bleu",
-          "case": 5
-        },
-        {
-          "type": "case",
-          "figure": "cercle",
-          "couleur": "vert",
-          "case": 4
+          "case": 8
         },
         {
           "type": "case",
           "figure": "losange",
-          "couleur": "vert",
-          "case": 14
-        },
-        {
-          "type": "case",
-          "figure": "losange",
-          "couleur": "jaune",
-          "case": 9
-        },
-        {
-          "type": "case",
-          "figure": "cercle",
           "couleur": "bleu",
-          "case": 10
-        }
-      ],
-      "indices": [
+          "case": 2
+        },
         {
-          "type": "autre-colonne",
+          "type": "case",
+          "figure": "triangle",
+          "couleur": "bleu",
+          "case": 7
+        },
+        {
+          "type": "voisin-dessous",
+          "figure": "cercle",
+          "couleur": "vert",
+          "figure2": "triangle",
+          "couleur2": "bleu"
+        },
+        {
+          "type": "voisin-droite",
+          "figure": "losange",
+          "couleur": "rouge",
+          "figure2": "carre",
+          "couleur2": "vert"
+        },
+        {
+          "type": "voisin-gauche",
           "figure": "carre",
           "couleur": "rouge",
+          "figure2": "triangle",
+          "couleur2": "jaune"
+        },
+        {
+          "type": "voisin-dessus",
+          "figure": "cercle",
+          "couleur": "jaune",
+          "figure2": "triangle",
+          "couleur2": "rouge"
+        },
+        {
+          "type": "voisin-droite",
+          "figure": "cercle",
+          "couleur": "bleu",
+          "figure2": "triangle",
+          "couleur2": "jaune"
+        },
+        {
+          "type": "voisin-droite",
+          "figure": "triangle",
+          "couleur": "rouge",
+          "figure2": "carre",
+          "couleur2": "jaune"
+        },
+        {
+          "type": "voisin-dessous",
+          "figure": "carre",
+          "couleur": "bleu",
+          "figure2": "losange",
+          "couleur2": "vert"
+        },
+        {
+          "type": "voisin-dessus",
+          "figure": "losange",
+          "couleur": "rouge",
+          "figure2": "carre",
+          "couleur2": "jaune"
+        },
+        {
+          "type": "voisin-droite",
+          "figure": "cercle",
+          "couleur": "jaune",
           "figure2": "losange",
           "couleur2": "rouge"
         },
         {
-          "type": "autre-ligne",
+          "type": "voisin-gauche",
+          "figure": "carre",
+          "couleur": "jaune",
+          "figure2": "triangle",
+          "couleur2": "rouge"
+        },
+        {
+          "type": "voisin-droite",
+          "figure": "carre",
+          "couleur": "bleu",
+          "figure2": "triangle",
+          "couleur2": "vert"
+        },
+        {
+          "type": "voisin-gauche",
           "figure": "triangle",
           "couleur": "jaune",
           "figure2": "cercle",
-          "couleur2": "jaune"
+          "couleur2": "bleu"
         },
         {
-          "type": "autre-ligne",
-          "figure": "triangle",
-          "couleur": "vert",
-          "figure2": "cercle",
-          "couleur2": "rouge"
+          "type": "voisin-dessus",
+          "figure": "cercle",
+          "couleur": "bleu",
+          "figure2": "triangle",
+          "couleur2": "vert"
         }
       ],
-      "aide": "Les indices suffisent : en les recoupant, chaque case se déduit. Commence par ceux qui désignent une case précise."
+      "indices": [
+        {
+          "type": "case",
+          "figure": "triangle",
+          "couleur": "jaune",
+          "case": 14
+        },
+        {
+          "type": "case",
+          "figure": "cercle",
+          "couleur": "vert",
+          "case": 3
+        },
+        {
+          "type": "case",
+          "figure": "carre",
+          "couleur": "bleu",
+          "case": 8
+        }
+      ],
+      "aide": "Chaque phrase donne deux informations. Marque ce qui est certain, barre ce qui devient impossible, puis recoupe avec les autres phrases."
     },
     "reponse": {
-      "valeur": "losange:bleu;triangle:vert;carre:rouge;cercle:jaune;cercle:vert;carre:bleu;triangle:jaune;losange:rouge;triangle:rouge;losange:jaune;cercle:bleu;carre:vert;carre:jaune;cercle:rouge;losange:vert;triangle:bleu",
+      "valeur": "triangle:rouge;carre:jaune;losange:bleu;cercle:vert;cercle:jaune;losange:rouge;carre:vert;triangle:bleu;carre:bleu;triangle:vert;cercle:rouge;losange:jaune;losange:vert;cercle:bleu;triangle:jaune;carre:rouge",
       "grille": [
         [
+          "triangle",
+          "rouge"
+        ],
+        [
+          "carre",
+          "jaune"
+        ],
+        [
           "losange",
           "bleu"
         ],
         [
-          "triangle",
-          "vert"
-        ],
-        [
-          "carre",
-          "rouge"
-        ],
-        [
-          "cercle",
-          "jaune"
-        ],
-        [
           "cercle",
           "vert"
         ],
         [
-          "carre",
-          "bleu"
-        ],
-        [
-          "triangle",
+          "cercle",
           "jaune"
         ],
         [
@@ -1820,24 +2128,20 @@
           "rouge"
         ],
         [
-          "triangle",
-          "rouge"
-        ],
-        [
-          "losange",
-          "jaune"
-        ],
-        [
-          "cercle",
-          "bleu"
-        ],
-        [
           "carre",
           "vert"
         ],
         [
+          "triangle",
+          "bleu"
+        ],
+        [
           "carre",
-          "jaune"
+          "bleu"
+        ],
+        [
+          "triangle",
+          "vert"
         ],
         [
           "cercle",
@@ -1845,11 +2149,23 @@
         ],
         [
           "losange",
+          "jaune"
+        ],
+        [
+          "losange",
           "vert"
         ],
         [
-          "triangle",
+          "cercle",
           "bleu"
+        ],
+        [
+          "triangle",
+          "jaune"
+        ],
+        [
+          "carre",
+          "rouge"
         ]
       ]
     },
@@ -1874,9 +2190,9 @@
     "prerequis": [
       "de-palier-3"
     ],
-    "cap_complexite": null,
+    "cap_complexite": "une phrase = deux informations croisées, jamais de placement direct à recopier",
     "contenu": {
-      "consigne": "Place les figures colorées. Chaque figure colorée (un carré bleu, un cercle rouge…) apparaît une seule fois dans la grille. Méthode : note d'abord ce qui est certain, barre ce qui devient impossible, puis recoupe les indices qui relient deux figures.",
+      "consigne": "Place les seize figures colorées. Règles : chaque ligne contient chaque figure une seule fois et chaque couleur une seule fois ; chaque colonne aussi — donc chaque figure colorée n'apparaît qu'une fois dans la grille. Méthode : chaque phrase donne deux informations ; retiens ce qui est certain, barre ce qui devient impossible, puis recoupe les phrases.",
       "figures": [
         "cercle",
         "carre",
@@ -1891,139 +2207,173 @@
       ],
       "enonces": [
         {
-          "type": "case",
-          "figure": "losange",
-          "couleur": "vert",
-          "case": 9
-        },
-        {
-          "type": "case",
-          "figure": "cercle",
-          "couleur": "bleu",
-          "case": 13
-        },
-        {
-          "type": "case",
+          "type": "colonne",
           "figure": "carre",
           "couleur": "vert",
-          "case": 7
+          "colonne": 0,
+          "et": {
+            "type": "pas-coin"
+          }
+        },
+        {
+          "type": "colonne",
+          "figure": "carre",
+          "couleur": "bleu",
+          "colonne": 1,
+          "et": {
+            "type": "ni-ni"
+          }
         },
         {
           "type": "case",
           "figure": "carre",
           "couleur": "rouge",
-          "case": 1
+          "case": 14
         },
         {
           "type": "case",
-          "figure": "carre",
+          "figure": "cercle",
           "couleur": "bleu",
-          "case": 10
-        },
-        {
-          "type": "case",
-          "figure": "cercle",
-          "couleur": "jaune",
-          "case": 11
-        },
-        {
-          "type": "case",
-          "figure": "triangle",
-          "couleur": "jaune",
-          "case": 5
-        },
-        {
-          "type": "case",
-          "figure": "carre",
-          "couleur": "jaune",
-          "case": 12
-        },
-        {
-          "type": "case",
-          "figure": "cercle",
-          "couleur": "vert",
-          "case": 0
-        },
-        {
-          "type": "case",
-          "figure": "losange",
-          "couleur": "bleu",
-          "case": 4
-        },
-        {
-          "type": "case",
-          "figure": "losange",
-          "couleur": "rouge",
-          "case": 15
-        },
-        {
-          "type": "case",
-          "figure": "cercle",
-          "couleur": "rouge",
           "case": 6
         },
         {
           "type": "case",
           "figure": "triangle",
-          "couleur": "bleu",
-          "case": 3
-        }
-      ],
-      "indices": [
+          "couleur": "vert",
+          "case": 2
+        },
         {
-          "type": "autre-ligne",
+          "type": "voisin-dessous",
+          "figure": "cercle",
+          "couleur": "vert",
+          "figure2": "triangle",
+          "couleur2": "bleu"
+        },
+        {
+          "type": "voisin-dessus",
+          "figure": "cercle",
+          "couleur": "bleu",
+          "figure2": "triangle",
+          "couleur2": "vert"
+        },
+        {
+          "type": "voisin-dessus",
           "figure": "triangle",
+          "couleur": "bleu",
+          "figure2": "cercle",
+          "couleur2": "vert"
+        },
+        {
+          "type": "voisin-dessous",
+          "figure": "carre",
+          "couleur": "jaune",
+          "figure2": "losange",
+          "couleur2": "rouge"
+        },
+        {
+          "type": "voisin-dessus",
+          "figure": "carre",
+          "couleur": "vert",
+          "figure2": "losange",
+          "couleur2": "bleu"
+        },
+        {
+          "type": "voisin-droite",
+          "figure": "triangle",
+          "couleur": "jaune",
+          "figure2": "cercle",
+          "couleur2": "bleu"
+        },
+        {
+          "type": "voisin-dessous",
+          "figure": "losange",
+          "couleur": "rouge",
+          "figure2": "cercle",
+          "couleur2": "vert"
+        },
+        {
+          "type": "voisin-droite",
+          "figure": "cercle",
+          "couleur": "rouge",
+          "figure2": "triangle",
+          "couleur2": "vert"
+        },
+        {
+          "type": "voisin-gauche",
+          "figure": "losange",
+          "couleur": "vert",
+          "figure2": "cercle",
+          "couleur2": "jaune"
+        },
+        {
+          "type": "voisin-gauche",
+          "figure": "triangle",
+          "couleur": "jaune",
+          "figure2": "carre",
+          "couleur2": "vert"
+        },
+        {
+          "type": "voisin-gauche",
+          "figure": "carre",
+          "couleur": "rouge",
+          "figure2": "losange",
+          "couleur2": "vert"
+        },
+        {
+          "type": "voisin-gauche",
+          "figure": "cercle",
           "couleur": "vert",
           "figure2": "losange",
           "couleur2": "jaune"
         },
         {
-          "type": "autre-ligne",
-          "figure": "triangle",
-          "couleur": "vert",
-          "figure2": "triangle",
-          "couleur2": "rouge"
-        },
-        {
-          "type": "autre-colonne",
-          "figure": "losange",
-          "couleur": "vert",
-          "figure2": "carre",
+          "type": "voisin-droite",
+          "figure": "cercle",
+          "couleur": "jaune",
+          "figure2": "losange",
           "couleur2": "vert"
         }
       ],
-      "aide": "Les indices suffisent : en les recoupant, chaque case se déduit. Commence par ceux qui désignent une case précise."
+      "indices": [
+        {
+          "type": "ligne",
+          "figure": "cercle",
+          "couleur": "jaune",
+          "ligne": 3
+        },
+        {
+          "type": "colonne",
+          "figure": "carre",
+          "couleur": "vert",
+          "colonne": 0
+        },
+        {
+          "type": "case",
+          "figure": "losange",
+          "couleur": "jaune",
+          "case": 10
+        }
+      ],
+      "aide": "Chaque phrase donne deux informations. Marque ce qui est certain, barre ce qui devient impossible, puis recoupe avec les autres phrases."
     },
     "reponse": {
-      "valeur": "cercle:vert;carre:rouge;losange:jaune;triangle:bleu;losange:bleu;triangle:jaune;cercle:rouge;carre:vert;triangle:rouge;losange:vert;carre:bleu;cercle:jaune;carre:jaune;cercle:bleu;triangle:vert;losange:rouge",
+      "valeur": "losange:bleu;cercle:rouge;triangle:vert;carre:jaune;carre:vert;triangle:jaune;cercle:bleu;losange:rouge;triangle:rouge;carre:bleu;losange:jaune;cercle:vert;cercle:jaune;losange:vert;carre:rouge;triangle:bleu",
       "grille": [
         [
+          "losange",
+          "bleu"
+        ],
+        [
           "cercle",
+          "rouge"
+        ],
+        [
+          "triangle",
           "vert"
         ],
         [
           "carre",
-          "rouge"
-        ],
-        [
-          "losange",
           "jaune"
-        ],
-        [
-          "triangle",
-          "bleu"
-        ],
-        [
-          "losange",
-          "bleu"
-        ],
-        [
-          "triangle",
-          "jaune"
-        ],
-        [
-          "cercle",
-          "rouge"
         ],
         [
           "carre",
@@ -2031,35 +2381,47 @@
         ],
         [
           "triangle",
-          "rouge"
+          "jaune"
+        ],
+        [
+          "cercle",
+          "bleu"
         ],
         [
           "losange",
-          "vert"
-        ],
-        [
-          "carre",
-          "bleu"
-        ],
-        [
-          "cercle",
-          "jaune"
-        ],
-        [
-          "carre",
-          "jaune"
-        ],
-        [
-          "cercle",
-          "bleu"
+          "rouge"
         ],
         [
           "triangle",
-          "vert"
+          "rouge"
+        ],
+        [
+          "carre",
+          "bleu"
         ],
         [
           "losange",
+          "jaune"
+        ],
+        [
+          "cercle",
+          "vert"
+        ],
+        [
+          "cercle",
+          "jaune"
+        ],
+        [
+          "losange",
+          "vert"
+        ],
+        [
+          "carre",
           "rouge"
+        ],
+        [
+          "triangle",
+          "bleu"
         ]
       ]
     },
@@ -2084,9 +2446,9 @@
     "prerequis": [
       "de-palier-3"
     ],
-    "cap_complexite": null,
+    "cap_complexite": "une phrase = deux informations croisées, jamais de placement direct à recopier",
     "contenu": {
-      "consigne": "Place les figures colorées. Chaque figure colorée (un carré bleu, un cercle rouge…) apparaît une seule fois dans la grille. Méthode : note d'abord ce qui est certain, barre ce qui devient impossible, puis recoupe les indices qui relient deux figures.",
+      "consigne": "Place les seize figures colorées. Règles : chaque ligne contient chaque figure une seule fois et chaque couleur une seule fois ; chaque colonne aussi — donc chaque figure colorée n'apparaît qu'une fois dans la grille. Méthode : chaque phrase donne deux informations ; retiens ce qui est certain, barre ce qui devient impossible, puis recoupe les phrases.",
       "figures": [
         "cercle",
         "carre",
@@ -2101,155 +2463,165 @@
       ],
       "enonces": [
         {
-          "type": "case",
-          "figure": "triangle",
-          "couleur": "jaune",
-          "case": 1
-        },
-        {
-          "type": "case",
-          "figure": "cercle",
-          "couleur": "jaune",
-          "case": 8
-        },
-        {
-          "type": "case",
-          "figure": "cercle",
-          "couleur": "vert",
-          "case": 13
-        },
-        {
-          "type": "case",
-          "figure": "triangle",
-          "couleur": "rouge",
-          "case": 11
-        },
-        {
-          "type": "case",
+          "type": "ligne",
           "figure": "carre",
-          "couleur": "rouge",
-          "case": 12
-        },
-        {
-          "type": "case",
-          "figure": "losange",
-          "couleur": "rouge",
-          "case": 5
-        },
-        {
-          "type": "case",
-          "figure": "losange",
           "couleur": "jaune",
-          "case": 15
+          "ligne": 1,
+          "et": {
+            "type": "ni-ni"
+          }
+        },
+        {
+          "type": "ligne",
+          "figure": "carre",
+          "couleur": "jaune",
+          "ligne": 1,
+          "et": {
+            "type": "pas-bord"
+          }
         },
         {
           "type": "case",
-          "figure": "losange",
-          "couleur": "bleu",
-          "case": 0
-        },
-        {
-          "type": "case",
-          "figure": "triangle",
+          "figure": "cercle",
           "couleur": "bleu",
           "case": 14
         },
         {
           "type": "case",
           "figure": "carre",
-          "couleur": "jaune",
-          "case": 6
-        },
-        {
-          "type": "case",
-          "figure": "cercle",
           "couleur": "bleu",
-          "case": 7
-        },
-        {
-          "type": "case",
-          "figure": "carre",
-          "couleur": "vert",
           "case": 3
         },
         {
           "type": "case",
-          "figure": "cercle",
-          "couleur": "rouge",
-          "case": 2
-        }
-      ],
-      "indices": [
+          "figure": "triangle",
+          "couleur": "bleu",
+          "case": 9
+        },
         {
-          "type": "autre-colonne",
-          "figure": "losange",
+          "type": "voisin-dessus",
+          "figure": "triangle",
           "couleur": "vert",
           "figure2": "carre",
           "couleur2": "bleu"
         },
         {
-          "type": "autre-colonne",
-          "figure": "triangle",
-          "couleur": "jaune",
+          "type": "voisin-dessus",
+          "figure": "cercle",
+          "couleur": "rouge",
           "figure2": "losange",
           "couleur2": "jaune"
         },
         {
-          "type": "autre-ligne",
-          "figure": "losange",
+          "type": "voisin-gauche",
+          "figure": "cercle",
+          "couleur": "bleu",
+          "figure2": "carre",
+          "couleur2": "vert"
+        },
+        {
+          "type": "voisin-droite",
+          "figure": "carre",
           "couleur": "rouge",
           "figure2": "triangle",
           "couleur2": "bleu"
+        },
+        {
+          "type": "voisin-droite",
+          "figure": "cercle",
+          "couleur": "bleu",
+          "figure2": "losange",
+          "couleur2": "rouge"
+        },
+        {
+          "type": "voisin-dessous",
+          "figure": "losange",
+          "couleur": "vert",
+          "figure2": "cercle",
+          "couleur2": "bleu"
+        },
+        {
+          "type": "voisin-gauche",
+          "figure": "losange",
+          "couleur": "jaune",
+          "figure2": "cercle",
+          "couleur2": "vert"
+        },
+        {
+          "type": "voisin-droite",
+          "figure": "losange",
+          "couleur": "jaune",
+          "figure2": "triangle",
+          "couleur2": "rouge"
+        },
+        {
+          "type": "voisin-dessus",
+          "figure": "triangle",
+          "couleur": "jaune",
+          "figure2": "carre",
+          "couleur2": "rouge"
+        },
+        {
+          "type": "voisin-dessous",
+          "figure": "cercle",
+          "couleur": "jaune",
+          "figure2": "losange",
+          "couleur2": "rouge"
+        },
+        {
+          "type": "voisin-droite",
+          "figure": "losange",
+          "couleur": "bleu",
+          "figure2": "cercle",
+          "couleur2": "rouge"
+        },
+        {
+          "type": "voisin-gauche",
+          "figure": "losange",
+          "couleur": "vert",
+          "figure2": "triangle",
+          "couleur2": "bleu"
+        },
+        {
+          "type": "voisin-droite",
+          "figure": "triangle",
+          "couleur": "rouge",
+          "figure2": "carre",
+          "couleur2": "bleu"
         }
       ],
-      "aide": "Les indices suffisent : en les recoupant, chaque case se déduit. Commence par ceux qui désignent une case précise."
+      "indices": [
+        {
+          "type": "ligne",
+          "figure": "losange",
+          "couleur": "vert",
+          "ligne": 2
+        },
+        {
+          "type": "case",
+          "figure": "triangle",
+          "couleur": "bleu",
+          "case": 9
+        },
+        {
+          "type": "colonne",
+          "figure": "losange",
+          "couleur": "rouge",
+          "colonne": 3
+        }
+      ],
+      "aide": "Chaque phrase donne deux informations. Marque ce qui est certain, barre ce qui devient impossible, puis recoupe avec les autres phrases."
     },
     "reponse": {
-      "valeur": "losange:bleu;triangle:jaune;cercle:rouge;carre:vert;triangle:vert;losange:rouge;carre:jaune;cercle:bleu;cercle:jaune;carre:bleu;losange:vert;triangle:rouge;carre:rouge;cercle:vert;triangle:bleu;losange:jaune",
+      "valeur": "cercle:vert;losange:jaune;triangle:rouge;carre:bleu;losange:bleu;cercle:rouge;carre:jaune;triangle:vert;carre:rouge;triangle:bleu;losange:vert;cercle:jaune;triangle:jaune;carre:vert;cercle:bleu;losange:rouge",
       "grille": [
         [
-          "losange",
-          "bleu"
-        ],
-        [
-          "triangle",
-          "jaune"
-        ],
-        [
           "cercle",
-          "rouge"
-        ],
-        [
-          "carre",
-          "vert"
-        ],
-        [
-          "triangle",
           "vert"
         ],
         [
           "losange",
-          "rouge"
-        ],
-        [
-          "carre",
           "jaune"
-        ],
-        [
-          "cercle",
-          "bleu"
-        ],
-        [
-          "cercle",
-          "jaune"
-        ],
-        [
-          "carre",
-          "bleu"
-        ],
-        [
-          "losange",
-          "vert"
         ],
         [
           "triangle",
@@ -2257,11 +2629,27 @@
         ],
         [
           "carre",
-          "rouge"
+          "bleu"
+        ],
+        [
+          "losange",
+          "bleu"
         ],
         [
           "cercle",
+          "rouge"
+        ],
+        [
+          "carre",
+          "jaune"
+        ],
+        [
+          "triangle",
           "vert"
+        ],
+        [
+          "carre",
+          "rouge"
         ],
         [
           "triangle",
@@ -2269,7 +2657,27 @@
         ],
         [
           "losange",
+          "vert"
+        ],
+        [
+          "cercle",
           "jaune"
+        ],
+        [
+          "triangle",
+          "jaune"
+        ],
+        [
+          "carre",
+          "vert"
+        ],
+        [
+          "cercle",
+          "bleu"
+        ],
+        [
+          "losange",
+          "rouge"
         ]
       ]
     },
@@ -2294,9 +2702,9 @@
     "prerequis": [
       "de-palier-3"
     ],
-    "cap_complexite": null,
+    "cap_complexite": "une phrase = deux informations croisées, jamais de placement direct à recopier",
     "contenu": {
-      "consigne": "Place les figures colorées. Chaque figure colorée (un carré bleu, un cercle rouge…) apparaît une seule fois dans la grille. Méthode : note d'abord ce qui est certain, barre ce qui devient impossible, puis recoupe les indices qui relient deux figures.",
+      "consigne": "Place les seize figures colorées. Règles : chaque ligne contient chaque figure une seule fois et chaque couleur une seule fois ; chaque colonne aussi — donc chaque figure colorée n'apparaît qu'une fois dans la grille. Méthode : chaque phrase donne deux informations ; retiens ce qui est certain, barre ce qui devient impossible, puis recoupe les phrases.",
       "figures": [
         "cercle",
         "carre",
@@ -2311,168 +2719,157 @@
       ],
       "enonces": [
         {
-          "type": "case",
-          "figure": "carre",
-          "couleur": "bleu",
-          "case": 15
-        },
-        {
-          "type": "case",
-          "figure": "carre",
-          "couleur": "vert",
-          "case": 5
-        },
-        {
-          "type": "case",
-          "figure": "losange",
-          "couleur": "jaune",
-          "case": 9
-        },
-        {
-          "type": "case",
+          "type": "ligne",
           "figure": "triangle",
           "couleur": "bleu",
-          "case": 8
+          "ligne": 2,
+          "et": {
+            "type": "pas-bord"
+          }
         },
         {
-          "type": "case",
-          "figure": "losange",
-          "couleur": "bleu",
-          "case": 6
-        },
-        {
-          "type": "case",
-          "figure": "carre",
-          "couleur": "jaune",
-          "case": 0
+          "type": "ligne",
+          "figure": "triangle",
+          "couleur": "rouge",
+          "ligne": 0,
+          "et": {
+            "type": "pas-coin"
+          }
         },
         {
           "type": "case",
           "figure": "losange",
           "couleur": "rouge",
-          "case": 3
+          "case": 5
         },
         {
           "type": "case",
-          "figure": "losange",
-          "couleur": "vert",
+          "figure": "carre",
+          "couleur": "rouge",
           "case": 12
         },
         {
           "type": "case",
           "figure": "triangle",
-          "couleur": "vert",
-          "case": 2
+          "couleur": "bleu",
+          "case": 9
         },
         {
-          "type": "case",
+          "type": "voisin-dessous",
           "figure": "cercle",
           "couleur": "vert",
-          "case": 11
+          "figure2": "carre",
+          "couleur2": "jaune"
         },
         {
-          "type": "case",
+          "type": "voisin-gauche",
           "figure": "cercle",
           "couleur": "rouge",
-          "case": 4
+          "figure2": "carre",
+          "couleur2": "jaune"
         },
         {
-          "type": "case",
-          "figure": "cercle",
-          "couleur": "jaune",
-          "case": 14
-        },
-        {
-          "type": "case",
-          "figure": "triangle",
-          "couleur": "rouge",
-          "case": 13
-        },
-        {
-          "type": "case",
+          "type": "voisin-droite",
           "figure": "carre",
-          "couleur": "rouge",
-          "case": 10
-        }
-      ],
-      "indices": [
+          "couleur": "vert",
+          "figure2": "triangle",
+          "couleur2": "rouge"
+        },
         {
-          "type": "comparaison",
-          "figure": "cercle",
+          "type": "voisin-droite",
+          "figure": "triangle",
+          "couleur": "jaune",
+          "figure2": "losange",
+          "couleur2": "rouge"
+        },
+        {
+          "type": "voisin-gauche",
+          "figure": "triangle",
+          "couleur": "vert",
+          "figure2": "losange",
+          "couleur2": "bleu"
+        },
+        {
+          "type": "voisin-gauche",
+          "figure": "losange",
+          "couleur": "jaune",
+          "figure2": "triangle",
+          "couleur2": "rouge"
+        },
+        {
+          "type": "voisin-dessus",
+          "figure": "losange",
+          "couleur": "rouge",
+          "figure2": "carre",
+          "couleur2": "vert"
+        },
+        {
+          "type": "voisin-gauche",
+          "figure": "carre",
+          "couleur": "vert",
+          "figure2": "cercle",
+          "couleur2": "bleu"
+        },
+        {
+          "type": "voisin-dessus",
+          "figure": "triangle",
           "couleur": "bleu",
           "figure2": "losange",
           "couleur2": "rouge"
         },
         {
-          "type": "autre-colonne",
-          "figure": "triangle",
+          "type": "voisin-dessous",
+          "figure": "carre",
           "couleur": "vert",
           "figure2": "losange",
-          "couleur2": "vert"
+          "couleur2": "rouge"
         },
         {
-          "type": "autre-ligne",
-          "figure": "cercle",
+          "type": "voisin-gauche",
+          "figure": "losange",
+          "couleur": "bleu",
+          "figure2": "cercle",
+          "couleur2": "jaune"
+        },
+        {
+          "type": "voisin-dessus",
+          "figure": "losange",
           "couleur": "vert",
           "figure2": "triangle",
           "couleur2": "jaune"
         }
       ],
-      "aide": "Les indices suffisent : en les recoupant, chaque case se déduit. Commence par ceux qui désignent une case précise."
+      "indices": [
+        {
+          "type": "colonne",
+          "figure": "losange",
+          "couleur": "bleu",
+          "colonne": 2
+        },
+        {
+          "type": "colonne",
+          "figure": "carre",
+          "couleur": "jaune",
+          "colonne": 2
+        },
+        {
+          "type": "ligne",
+          "figure": "carre",
+          "couleur": "vert",
+          "ligne": 0
+        }
+      ],
+      "aide": "Chaque phrase donne deux informations. Marque ce qui est certain, barre ce qui devient impossible, puis recoupe avec les autres phrases."
     },
     "reponse": {
-      "valeur": "carre:jaune;cercle:bleu;triangle:vert;losange:rouge;cercle:rouge;carre:vert;losange:bleu;triangle:jaune;triangle:bleu;losange:jaune;carre:rouge;cercle:vert;losange:vert;triangle:rouge;cercle:jaune;carre:bleu",
+      "valeur": "cercle:bleu;carre:vert;triangle:rouge;losange:jaune;triangle:jaune;losange:rouge;cercle:vert;carre:bleu;losange:vert;triangle:bleu;carre:jaune;cercle:rouge;carre:rouge;cercle:jaune;losange:bleu;triangle:vert",
       "grille": [
         [
-          "carre",
-          "jaune"
-        ],
-        [
           "cercle",
           "bleu"
         ],
         [
-          "triangle",
-          "vert"
-        ],
-        [
-          "losange",
-          "rouge"
-        ],
-        [
-          "cercle",
-          "rouge"
-        ],
-        [
           "carre",
-          "vert"
-        ],
-        [
-          "losange",
-          "bleu"
-        ],
-        [
-          "triangle",
-          "jaune"
-        ],
-        [
-          "triangle",
-          "bleu"
-        ],
-        [
-          "losange",
-          "jaune"
-        ],
-        [
-          "carre",
-          "rouge"
-        ],
-        [
-          "cercle",
-          "vert"
-        ],
-        [
-          "losange",
           "vert"
         ],
         [
@@ -2480,12 +2877,56 @@
           "rouge"
         ],
         [
-          "cercle",
+          "losange",
           "jaune"
+        ],
+        [
+          "triangle",
+          "jaune"
+        ],
+        [
+          "losange",
+          "rouge"
+        ],
+        [
+          "cercle",
+          "vert"
         ],
         [
           "carre",
           "bleu"
+        ],
+        [
+          "losange",
+          "vert"
+        ],
+        [
+          "triangle",
+          "bleu"
+        ],
+        [
+          "carre",
+          "jaune"
+        ],
+        [
+          "cercle",
+          "rouge"
+        ],
+        [
+          "carre",
+          "rouge"
+        ],
+        [
+          "cercle",
+          "jaune"
+        ],
+        [
+          "losange",
+          "bleu"
+        ],
+        [
+          "triangle",
+          "vert"
         ]
       ]
     },
@@ -2510,9 +2951,9 @@
     "prerequis": [
       "de-palier-3"
     ],
-    "cap_complexite": null,
+    "cap_complexite": "une phrase = deux informations croisées, jamais de placement direct à recopier",
     "contenu": {
-      "consigne": "Place les figures colorées. Chaque figure colorée (un carré bleu, un cercle rouge…) apparaît une seule fois dans la grille. Méthode : note d'abord ce qui est certain, barre ce qui devient impossible, puis recoupe les indices qui relient deux figures.",
+      "consigne": "Place les seize figures colorées. Règles : chaque ligne contient chaque figure une seule fois et chaque couleur une seule fois ; chaque colonne aussi — donc chaque figure colorée n'apparaît qu'une fois dans la grille. Méthode : chaque phrase donne deux informations ; retiens ce qui est certain, barre ce qui devient impossible, puis recoupe les phrases.",
       "figures": [
         "cercle",
         "carre",
@@ -2527,52 +2968,34 @@
       ],
       "enonces": [
         {
-          "type": "case",
-          "figure": "losange",
+          "type": "ligne",
+          "figure": "carre",
+          "couleur": "jaune",
+          "ligne": 2,
+          "et": {
+            "type": "pas-bord"
+          }
+        },
+        {
+          "type": "colonne",
+          "figure": "carre",
           "couleur": "rouge",
+          "colonne": 3,
+          "et": {
+            "type": "pas-coin"
+          }
+        },
+        {
+          "type": "case",
+          "figure": "triangle",
+          "couleur": "vert",
           "case": 8
         },
         {
           "type": "case",
           "figure": "cercle",
-          "couleur": "bleu",
-          "case": 1
-        },
-        {
-          "type": "case",
-          "figure": "losange",
           "couleur": "vert",
-          "case": 3
-        },
-        {
-          "type": "case",
-          "figure": "cercle",
-          "couleur": "rouge",
           "case": 15
-        },
-        {
-          "type": "case",
-          "figure": "carre",
-          "couleur": "rouge",
-          "case": 2
-        },
-        {
-          "type": "case",
-          "figure": "losange",
-          "couleur": "bleu",
-          "case": 6
-        },
-        {
-          "type": "case",
-          "figure": "losange",
-          "couleur": "jaune",
-          "case": 13
-        },
-        {
-          "type": "case",
-          "figure": "triangle",
-          "couleur": "rouge",
-          "case": 5
         },
         {
           "type": "case",
@@ -2581,90 +3004,137 @@
           "case": 12
         },
         {
-          "type": "case",
+          "type": "voisin-droite",
           "figure": "cercle",
-          "couleur": "vert",
-          "case": 4
+          "couleur": "jaune",
+          "figure2": "triangle",
+          "couleur2": "bleu"
         },
         {
-          "type": "case",
+          "type": "voisin-dessous",
+          "figure": "triangle",
+          "couleur": "vert",
+          "figure2": "carre",
+          "couleur2": "bleu"
+        },
+        {
+          "type": "voisin-dessous",
+          "figure": "cercle",
+          "couleur": "rouge",
+          "figure2": "losange",
+          "couleur2": "jaune"
+        },
+        {
+          "type": "voisin-gauche",
+          "figure": "cercle",
+          "couleur": "bleu",
+          "figure2": "carre",
+          "couleur2": "vert"
+        },
+        {
+          "type": "voisin-dessus",
+          "figure": "losange",
+          "couleur": "vert",
+          "figure2": "cercle",
+          "couleur2": "bleu"
+        },
+        {
+          "type": "voisin-dessous",
+          "figure": "losange",
+          "couleur": "bleu",
+          "figure2": "cercle",
+          "couleur2": "vert"
+        },
+        {
+          "type": "voisin-droite",
+          "figure": "losange",
+          "couleur": "jaune",
+          "figure2": "triangle",
+          "couleur2": "rouge"
+        },
+        {
+          "type": "voisin-gauche",
           "figure": "carre",
-          "couleur": "vert",
-          "case": 9
+          "couleur": "jaune",
+          "figure2": "cercle",
+          "couleur2": "rouge"
         },
         {
-          "type": "case",
+          "type": "voisin-dessus",
+          "figure": "losange",
+          "couleur": "jaune",
+          "figure2": "cercle",
+          "couleur2": "rouge"
+        },
+        {
+          "type": "voisin-dessous",
           "figure": "triangle",
           "couleur": "bleu",
-          "case": 11
+          "figure2": "cercle",
+          "couleur2": "rouge"
+        },
+        {
+          "type": "voisin-dessous",
+          "figure": "carre",
+          "couleur": "jaune",
+          "figure2": "triangle",
+          "couleur2": "rouge"
+        },
+        {
+          "type": "voisin-dessous",
+          "figure": "triangle",
+          "couleur": "jaune",
+          "figure2": "carre",
+          "couleur2": "rouge"
+        },
+        {
+          "type": "voisin-droite",
+          "figure": "triangle",
+          "couleur": "rouge",
+          "figure2": "cercle",
+          "couleur2": "vert"
         }
       ],
       "indices": [
         {
-          "type": "autre-ligne",
-          "figure": "cercle",
-          "couleur": "rouge",
-          "figure2": "losange",
-          "couleur2": "vert"
-        },
-        {
           "type": "colonne",
-          "figure": "carre",
-          "couleur": "rouge",
+          "figure": "losange",
+          "couleur": "vert",
           "colonne": 2
         },
         {
-          "type": "autre-ligne",
+          "type": "ligne",
+          "figure": "carre",
+          "couleur": "jaune",
+          "ligne": 2
+        },
+        {
+          "type": "colonne",
           "figure": "cercle",
           "couleur": "jaune",
-          "figure2": "triangle",
-          "couleur2": "vert"
+          "colonne": 0
         }
       ],
-      "aide": "Les indices suffisent : en les recoupant, chaque case se déduit. Commence par ceux qui désignent une case précise."
+      "aide": "Chaque phrase donne deux informations. Marque ce qui est certain, barre ce qui devient impossible, puis recoupe avec les autres phrases."
     },
     "reponse": {
-      "valeur": "triangle:jaune;cercle:bleu;carre:rouge;losange:vert;cercle:vert;triangle:rouge;losange:bleu;carre:jaune;losange:rouge;carre:vert;cercle:jaune;triangle:bleu;carre:bleu;losange:jaune;triangle:vert;cercle:rouge",
+      "valeur": "losange:rouge;carre:vert;cercle:bleu;triangle:jaune;cercle:jaune;triangle:bleu;losange:vert;carre:rouge;triangle:vert;cercle:rouge;carre:jaune;losange:bleu;carre:bleu;losange:jaune;triangle:rouge;cercle:vert",
       "grille": [
         [
-          "triangle",
-          "jaune"
+          "losange",
+          "rouge"
+        ],
+        [
+          "carre",
+          "vert"
         ],
         [
           "cercle",
           "bleu"
         ],
         [
-          "carre",
-          "rouge"
-        ],
-        [
-          "losange",
-          "vert"
-        ],
-        [
-          "cercle",
-          "vert"
-        ],
-        [
           "triangle",
-          "rouge"
-        ],
-        [
-          "losange",
-          "bleu"
-        ],
-        [
-          "carre",
           "jaune"
-        ],
-        [
-          "losange",
-          "rouge"
-        ],
-        [
-          "carre",
-          "vert"
         ],
         [
           "cercle",
@@ -2675,6 +3145,30 @@
           "bleu"
         ],
         [
+          "losange",
+          "vert"
+        ],
+        [
+          "carre",
+          "rouge"
+        ],
+        [
+          "triangle",
+          "vert"
+        ],
+        [
+          "cercle",
+          "rouge"
+        ],
+        [
+          "carre",
+          "jaune"
+        ],
+        [
+          "losange",
+          "bleu"
+        ],
+        [
           "carre",
           "bleu"
         ],
@@ -2684,11 +3178,11 @@
         ],
         [
           "triangle",
-          "vert"
+          "rouge"
         ],
         [
           "cercle",
-          "rouge"
+          "vert"
         ]
       ]
     },
@@ -2713,9 +3207,9 @@
     "prerequis": [
       "de-palier-3"
     ],
-    "cap_complexite": null,
+    "cap_complexite": "une phrase = deux informations croisées, jamais de placement direct à recopier",
     "contenu": {
-      "consigne": "Place les figures colorées. Chaque figure colorée (un carré bleu, un cercle rouge…) apparaît une seule fois dans la grille. Méthode : note d'abord ce qui est certain, barre ce qui devient impossible, puis recoupe les indices qui relient deux figures.",
+      "consigne": "Place les seize figures colorées. Règles : chaque ligne contient chaque figure une seule fois et chaque couleur une seule fois ; chaque colonne aussi — donc chaque figure colorée n'apparaît qu'une fois dans la grille. Méthode : chaque phrase donne deux informations ; retiens ce qui est certain, barre ce qui devient impossible, puis recoupe les phrases.",
       "figures": [
         "cercle",
         "carre",
@@ -2730,125 +3224,168 @@
       ],
       "enonces": [
         {
-          "type": "case",
-          "figure": "triangle",
-          "couleur": "vert",
-          "case": 8
-        },
-        {
-          "type": "case",
-          "figure": "triangle",
-          "couleur": "rouge",
-          "case": 13
-        },
-        {
-          "type": "case",
-          "figure": "cercle",
-          "couleur": "rouge",
-          "case": 2
-        },
-        {
-          "type": "case",
+          "type": "ligne",
           "figure": "carre",
-          "couleur": "vert",
-          "case": 14
+          "couleur": "rouge",
+          "ligne": 2,
+          "et": {
+            "type": "pas-bord"
+          }
         },
         {
-          "type": "case",
+          "type": "colonne",
           "figure": "cercle",
-          "couleur": "jaune",
-          "case": 9
-        },
-        {
-          "type": "case",
-          "figure": "losange",
           "couleur": "vert",
-          "case": 1
+          "colonne": 1,
+          "et": {
+            "type": "pas-bord"
+          }
         },
         {
           "type": "case",
           "figure": "losange",
-          "couleur": "bleu",
-          "case": 10
-        },
-        {
-          "type": "case",
-          "figure": "triangle",
-          "couleur": "bleu",
+          "couleur": "rouge",
           "case": 3
         },
         {
           "type": "case",
-          "figure": "carre",
-          "couleur": "bleu",
-          "case": 5
-        },
-        {
-          "type": "case",
-          "figure": "carre",
-          "couleur": "jaune",
-          "case": 0
-        },
-        {
-          "type": "case",
-          "figure": "triangle",
-          "couleur": "jaune",
-          "case": 6
+          "figure": "cercle",
+          "couleur": "rouge",
+          "case": 12
         },
         {
           "type": "case",
           "figure": "carre",
           "couleur": "rouge",
-          "case": 11
+          "case": 10
         },
         {
-          "type": "case",
+          "type": "voisin-dessus",
           "figure": "losange",
           "couleur": "jaune",
-          "case": 15
+          "figure2": "carre",
+          "couleur2": "bleu"
+        },
+        {
+          "type": "voisin-droite",
+          "figure": "triangle",
+          "couleur": "vert",
+          "figure2": "carre",
+          "couleur2": "jaune"
+        },
+        {
+          "type": "voisin-droite",
+          "figure": "carre",
+          "couleur": "jaune",
+          "figure2": "cercle",
+          "couleur2": "bleu"
+        },
+        {
+          "type": "voisin-dessus",
+          "figure": "cercle",
+          "couleur": "vert",
+          "figure2": "triangle",
+          "couleur2": "rouge"
+        },
+        {
+          "type": "voisin-dessous",
+          "figure": "carre",
+          "couleur": "bleu",
+          "figure2": "losange",
+          "couleur2": "jaune"
+        },
+        {
+          "type": "voisin-gauche",
+          "figure": "cercle",
+          "couleur": "vert",
+          "figure2": "losange",
+          "couleur2": "jaune"
+        },
+        {
+          "type": "voisin-gauche",
+          "figure": "triangle",
+          "couleur": "jaune",
+          "figure2": "losange",
+          "couleur2": "bleu"
+        },
+        {
+          "type": "voisin-dessous",
+          "figure": "carre",
+          "couleur": "rouge",
+          "figure2": "triangle",
+          "couleur2": "jaune"
+        },
+        {
+          "type": "voisin-gauche",
+          "figure": "carre",
+          "couleur": "vert",
+          "figure2": "triangle",
+          "couleur2": "jaune"
+        },
+        {
+          "type": "voisin-dessus",
+          "figure": "losange",
+          "couleur": "vert",
+          "figure2": "cercle",
+          "couleur2": "bleu"
+        },
+        {
+          "type": "voisin-dessous",
+          "figure": "cercle",
+          "couleur": "jaune",
+          "figure2": "triangle",
+          "couleur2": "bleu"
+        },
+        {
+          "type": "voisin-dessous",
+          "figure": "cercle",
+          "couleur": "bleu",
+          "figure2": "losange",
+          "couleur2": "vert"
+        },
+        {
+          "type": "voisin-dessus",
+          "figure": "triangle",
+          "couleur": "rouge",
+          "figure2": "carre",
+          "couleur2": "jaune"
         }
       ],
       "indices": [
         {
           "type": "ligne",
           "figure": "cercle",
-          "couleur": "rouge",
+          "couleur": "bleu",
           "ligne": 0
         },
         {
-          "type": "autre-colonne",
-          "figure": "carre",
-          "couleur": "rouge",
-          "figure2": "cercle",
-          "couleur2": "bleu"
+          "type": "case",
+          "figure": "triangle",
+          "couleur": "vert",
+          "case": 0
         },
         {
-          "type": "autre-colonne",
-          "figure": "triangle",
-          "couleur": "bleu",
-          "figure2": "cercle",
-          "couleur2": "rouge"
+          "type": "case",
+          "figure": "carre",
+          "couleur": "rouge",
+          "case": 10
         }
       ],
-      "aide": "Les indices suffisent : en les recoupant, chaque case se déduit. Commence par ceux qui désignent une case précise."
+      "aide": "Chaque phrase donne deux informations. Marque ce qui est certain, barre ce qui devient impossible, puis recoupe avec les autres phrases."
     },
     "reponse": {
-      "valeur": "carre:jaune;losange:vert;cercle:rouge;triangle:bleu;losange:rouge;carre:bleu;triangle:jaune;cercle:vert;triangle:vert;cercle:jaune;losange:bleu;carre:rouge;cercle:bleu;triangle:rouge;carre:vert;losange:jaune",
+      "valeur": "triangle:vert;carre:jaune;cercle:bleu;losange:rouge;carre:bleu;triangle:rouge;losange:vert;cercle:jaune;losange:jaune;cercle:vert;carre:rouge;triangle:bleu;cercle:rouge;losange:bleu;triangle:jaune;carre:vert",
       "grille": [
         [
+          "triangle",
+          "vert"
+        ],
+        [
           "carre",
           "jaune"
         ],
         [
-          "losange",
-          "vert"
-        ],
-        [
           "cercle",
-          "rouge"
-        ],
-        [
-          "triangle",
           "bleu"
         ],
         [
@@ -2861,14 +3398,10 @@
         ],
         [
           "triangle",
-          "jaune"
+          "rouge"
         ],
         [
-          "cercle",
-          "vert"
-        ],
-        [
-          "triangle",
+          "losange",
           "vert"
         ],
         [
@@ -2877,27 +3410,35 @@
         ],
         [
           "losange",
-          "bleu"
+          "jaune"
+        ],
+        [
+          "cercle",
+          "vert"
         ],
         [
           "carre",
           "rouge"
         ],
         [
+          "triangle",
+          "bleu"
+        ],
+        [
           "cercle",
+          "rouge"
+        ],
+        [
+          "losange",
           "bleu"
         ],
         [
           "triangle",
-          "rouge"
+          "jaune"
         ],
         [
           "carre",
           "vert"
-        ],
-        [
-          "losange",
-          "jaune"
         ]
       ]
     },
@@ -2922,9 +3463,9 @@
     "prerequis": [
       "de-palier-3"
     ],
-    "cap_complexite": null,
+    "cap_complexite": "une phrase = deux informations croisées, jamais de placement direct à recopier",
     "contenu": {
-      "consigne": "Place les figures colorées. Chaque figure colorée (un carré bleu, un cercle rouge…) apparaît une seule fois dans la grille. Méthode : note d'abord ce qui est certain, barre ce qui devient impossible, puis recoupe les indices qui relient deux figures.",
+      "consigne": "Place les seize figures colorées. Règles : chaque ligne contient chaque figure une seule fois et chaque couleur une seule fois ; chaque colonne aussi — donc chaque figure colorée n'apparaît qu'une fois dans la grille. Méthode : chaque phrase donne deux informations ; retiens ce qui est certain, barre ce qui devient impossible, puis recoupe les phrases.",
       "figures": [
         "cercle",
         "carre",
@@ -2939,158 +3480,141 @@
       ],
       "enonces": [
         {
-          "type": "case",
-          "figure": "losange",
-          "couleur": "rouge",
-          "case": 6
-        },
-        {
-          "type": "case",
-          "figure": "triangle",
-          "couleur": "vert",
-          "case": 7
-        },
-        {
-          "type": "case",
+          "type": "ligne",
           "figure": "carre",
-          "couleur": "vert",
-          "case": 2
+          "couleur": "bleu",
+          "ligne": 2,
+          "et": {
+            "type": "pas-bord"
+          }
         },
         {
-          "type": "case",
-          "figure": "triangle",
-          "couleur": "jaune",
-          "case": 0
+          "type": "colonne",
+          "figure": "cercle",
+          "couleur": "bleu",
+          "colonne": 0,
+          "et": {
+            "type": "pas-coin"
+          }
         },
         {
           "type": "case",
           "figure": "cercle",
           "couleur": "rouge",
-          "case": 3
-        },
-        {
-          "type": "case",
-          "figure": "triangle",
-          "couleur": "bleu",
-          "case": 14
-        },
-        {
-          "type": "case",
-          "figure": "losange",
-          "couleur": "bleu",
-          "case": 1
-        },
-        {
-          "type": "case",
-          "figure": "losange",
-          "couleur": "jaune",
-          "case": 15
-        },
-        {
-          "type": "case",
-          "figure": "triangle",
-          "couleur": "rouge",
-          "case": 9
-        },
-        {
-          "type": "case",
-          "figure": "cercle",
-          "couleur": "bleu",
-          "case": 4
-        },
-        {
-          "type": "case",
-          "figure": "carre",
-          "couleur": "bleu",
           "case": 11
         },
         {
           "type": "case",
           "figure": "carre",
           "couleur": "jaune",
-          "case": 5
+          "case": 3
         },
         {
           "type": "case",
+          "figure": "losange",
+          "couleur": "rouge",
+          "case": 0
+        },
+        {
+          "type": "voisin-droite",
+          "figure": "cercle",
+          "couleur": "vert",
+          "figure2": "carre",
+          "couleur2": "jaune"
+        },
+        {
+          "type": "voisin-dessus",
+          "figure": "carre",
+          "couleur": "vert",
+          "figure2": "triangle",
+          "couleur2": "jaune"
+        },
+        {
+          "type": "voisin-droite",
+          "figure": "triangle",
+          "couleur": "rouge",
+          "figure2": "losange",
+          "couleur2": "bleu"
+        },
+        {
+          "type": "voisin-dessus",
+          "figure": "carre",
+          "couleur": "rouge",
+          "figure2": "triangle",
+          "couleur2": "bleu"
+        },
+        {
+          "type": "voisin-dessus",
+          "figure": "cercle",
+          "couleur": "bleu",
+          "figure2": "losange",
+          "couleur2": "rouge"
+        },
+        {
+          "type": "voisin-dessous",
+          "figure": "carre",
+          "couleur": "rouge",
+          "figure2": "losange",
+          "couleur2": "vert"
+        },
+        {
+          "type": "voisin-gauche",
+          "figure": "losange",
+          "couleur": "vert",
+          "figure2": "triangle",
+          "couleur2": "jaune"
+        },
+        {
+          "type": "voisin-dessus",
           "figure": "cercle",
           "couleur": "jaune",
-          "case": 10
+          "figure2": "losange",
+          "couleur2": "vert"
         }
       ],
       "indices": [
         {
-          "type": "autre-ligne",
-          "figure": "losange",
-          "couleur": "jaune",
-          "figure2": "carre",
-          "couleur2": "vert"
-        },
-        {
-          "type": "autre-colonne",
+          "type": "colonne",
           "figure": "carre",
           "couleur": "jaune",
-          "figure2": "cercle",
-          "couleur2": "rouge"
+          "colonne": 3
         },
         {
-          "type": "autre-ligne",
-          "figure": "triangle",
-          "couleur": "bleu",
-          "figure2": "cercle",
-          "couleur2": "jaune"
+          "type": "ligne",
+          "figure": "carre",
+          "couleur": "rouge",
+          "ligne": 1
+        },
+        {
+          "type": "case",
+          "figure": "carre",
+          "couleur": "vert",
+          "case": 12
         }
       ],
-      "aide": "Les indices suffisent : en les recoupant, chaque case se déduit. Commence par ceux qui désignent une case précise."
+      "aide": "Chaque phrase donne deux informations. Marque ce qui est certain, barre ce qui devient impossible, puis recoupe avec les autres phrases."
     },
     "reponse": {
-      "valeur": "triangle:jaune;losange:bleu;carre:vert;cercle:rouge;cercle:bleu;carre:jaune;losange:rouge;triangle:vert;losange:vert;triangle:rouge;cercle:jaune;carre:bleu;carre:rouge;cercle:vert;triangle:bleu;losange:jaune",
+      "valeur": "losange:rouge;triangle:bleu;cercle:vert;carre:jaune;cercle:bleu;carre:rouge;losange:jaune;triangle:vert;triangle:jaune;losange:vert;carre:bleu;cercle:rouge;carre:vert;cercle:jaune;triangle:rouge;losange:bleu",
       "grille": [
         [
-          "triangle",
-          "jaune"
+          "losange",
+          "rouge"
         ],
         [
-          "losange",
+          "triangle",
           "bleu"
         ],
         [
-          "carre",
+          "cercle",
           "vert"
-        ],
-        [
-          "cercle",
-          "rouge"
-        ],
-        [
-          "cercle",
-          "bleu"
         ],
         [
           "carre",
           "jaune"
         ],
         [
-          "losange",
-          "rouge"
-        ],
-        [
-          "triangle",
-          "vert"
-        ],
-        [
-          "losange",
-          "vert"
-        ],
-        [
-          "triangle",
-          "rouge"
-        ],
-        [
           "cercle",
-          "jaune"
-        ],
-        [
-          "carre",
           "bleu"
         ],
         [
@@ -3098,16 +3622,44 @@
           "rouge"
         ],
         [
-          "cercle",
+          "losange",
+          "jaune"
+        ],
+        [
+          "triangle",
           "vert"
         ],
         [
           "triangle",
-          "bleu"
+          "jaune"
         ],
         [
           "losange",
+          "vert"
+        ],
+        [
+          "carre",
+          "bleu"
+        ],
+        [
+          "cercle",
+          "rouge"
+        ],
+        [
+          "carre",
+          "vert"
+        ],
+        [
+          "cercle",
           "jaune"
+        ],
+        [
+          "triangle",
+          "rouge"
+        ],
+        [
+          "losange",
+          "bleu"
         ]
       ]
     },
@@ -3132,9 +3684,9 @@
     "prerequis": [
       "de-palier-3"
     ],
-    "cap_complexite": null,
+    "cap_complexite": "une phrase = deux informations croisées, jamais de placement direct à recopier",
     "contenu": {
-      "consigne": "Place les figures colorées. Chaque figure colorée (un carré bleu, un cercle rouge…) apparaît une seule fois dans la grille. Méthode : note d'abord ce qui est certain, barre ce qui devient impossible, puis recoupe les indices qui relient deux figures.",
+      "consigne": "Place les seize figures colorées. Règles : chaque ligne contient chaque figure une seule fois et chaque couleur une seule fois ; chaque colonne aussi — donc chaque figure colorée n'apparaît qu'une fois dans la grille. Méthode : chaque phrase donne deux informations ; retiens ce qui est certain, barre ce qui devient impossible, puis recoupe les phrases.",
       "figures": [
         "cercle",
         "carre",
@@ -3149,145 +3701,152 @@
       ],
       "enonces": [
         {
-          "type": "case",
-          "figure": "triangle",
-          "couleur": "bleu",
-          "case": 3
-        },
-        {
-          "type": "case",
-          "figure": "triangle",
-          "couleur": "jaune",
-          "case": 12
-        },
-        {
-          "type": "case",
+          "type": "colonne",
           "figure": "carre",
-          "couleur": "vert",
-          "case": 13
+          "couleur": "jaune",
+          "colonne": 0,
+          "et": {
+            "type": "pas-coin"
+          }
         },
         {
-          "type": "case",
+          "type": "colonne",
           "figure": "cercle",
           "couleur": "jaune",
-          "case": 10
-        },
-        {
-          "type": "case",
-          "figure": "triangle",
-          "couleur": "vert",
-          "case": 6
-        },
-        {
-          "type": "case",
-          "figure": "cercle",
-          "couleur": "vert",
-          "case": 0
+          "colonne": 2,
+          "et": {
+            "type": "pas-bord"
+          }
         },
         {
           "type": "case",
           "figure": "carre",
-          "couleur": "rouge",
-          "case": 2
-        },
-        {
-          "type": "case",
-          "figure": "losange",
           "couleur": "vert",
-          "case": 11
-        },
-        {
-          "type": "case",
-          "figure": "losange",
-          "couleur": "jaune",
-          "case": 1
-        },
-        {
-          "type": "case",
-          "figure": "carre",
-          "couleur": "jaune",
           "case": 7
         },
         {
           "type": "case",
+          "figure": "cercle",
+          "couleur": "rouge",
+          "case": 3
+        },
+        {
+          "type": "case",
+          "figure": "carre",
+          "couleur": "rouge",
+          "case": 13
+        },
+        {
+          "type": "voisin-droite",
+          "figure": "triangle",
+          "couleur": "vert",
+          "figure2": "losange",
+          "couleur2": "jaune"
+        },
+        {
+          "type": "voisin-dessous",
+          "figure": "cercle",
+          "couleur": "jaune",
+          "figure2": "losange",
+          "couleur2": "rouge"
+        },
+        {
+          "type": "voisin-dessous",
+          "figure": "losange",
+          "couleur": "vert",
+          "figure2": "triangle",
+          "couleur2": "rouge"
+        },
+        {
+          "type": "voisin-dessus",
+          "figure": "cercle",
+          "couleur": "bleu",
+          "figure2": "carre",
+          "couleur2": "jaune"
+        },
+        {
+          "type": "voisin-gauche",
+          "figure": "carre",
+          "couleur": "rouge",
+          "figure2": "cercle",
+          "couleur2": "bleu"
+        },
+        {
+          "type": "voisin-dessous",
           "figure": "carre",
           "couleur": "bleu",
-          "case": 8
+          "figure2": "cercle",
+          "couleur2": "jaune"
+        },
+        {
+          "type": "voisin-dessus",
+          "figure": "cercle",
+          "couleur": "jaune",
+          "figure2": "carre",
+          "couleur2": "bleu"
+        },
+        {
+          "type": "voisin-gauche",
+          "figure": "cercle",
+          "couleur": "jaune",
+          "figure2": "losange",
+          "couleur2": "bleu"
+        },
+        {
+          "type": "voisin-dessus",
+          "figure": "carre",
+          "couleur": "rouge",
+          "figure2": "cercle",
+          "couleur2": "vert"
+        },
+        {
+          "type": "voisin-droite",
+          "figure": "losange",
+          "couleur": "vert",
+          "figure2": "triangle",
+          "couleur2": "jaune"
+        },
+        {
+          "type": "voisin-dessus",
+          "figure": "losange",
+          "couleur": "jaune",
+          "figure2": "triangle",
+          "couleur2": "bleu"
+        },
+        {
+          "type": "voisin-dessous",
+          "figure": "cercle",
+          "couleur": "vert",
+          "figure2": "carre",
+          "couleur2": "rouge"
         }
       ],
       "indices": [
         {
-          "type": "voisin-dessous",
-          "figure": "losange",
-          "couleur": "rouge",
-          "figure2": "carre",
-          "couleur2": "bleu"
+          "type": "colonne",
+          "figure": "carre",
+          "couleur": "jaune",
+          "colonne": 0
         },
         {
-          "type": "autre-ligne",
+          "type": "ligne",
+          "figure": "cercle",
+          "couleur": "bleu",
+          "ligne": 3
+        },
+        {
+          "type": "ligne",
           "figure": "triangle",
-          "couleur": "bleu",
-          "figure2": "carre",
-          "couleur2": "bleu"
-        },
-        {
-          "type": "autre-ligne",
-          "figure": "losange",
-          "couleur": "bleu",
-          "figure2": "carre",
-          "couleur2": "bleu"
+          "couleur": "vert",
+          "ligne": 3
         }
       ],
-      "aide": "Les indices suffisent : en les recoupant, chaque case se déduit. Commence par ceux qui désignent une case précise."
+      "aide": "Chaque phrase donne deux informations. Marque ce qui est certain, barre ce qui devient impossible, puis recoupe avec les autres phrases."
     },
     "reponse": {
-      "valeur": "cercle:vert;losange:jaune;carre:rouge;triangle:bleu;losange:rouge;cercle:bleu;triangle:vert;carre:jaune;carre:bleu;triangle:rouge;cercle:jaune;losange:vert;triangle:jaune;carre:vert;losange:bleu;cercle:rouge",
+      "valeur": "losange:vert;triangle:jaune;carre:bleu;cercle:rouge;triangle:rouge;losange:bleu;cercle:jaune;carre:vert;carre:jaune;cercle:vert;losange:rouge;triangle:bleu;cercle:bleu;carre:rouge;triangle:vert;losange:jaune",
       "grille": [
         [
-          "cercle",
-          "vert"
-        ],
-        [
-          "losange",
-          "jaune"
-        ],
-        [
-          "carre",
-          "rouge"
-        ],
-        [
-          "triangle",
-          "bleu"
-        ],
-        [
-          "losange",
-          "rouge"
-        ],
-        [
-          "cercle",
-          "bleu"
-        ],
-        [
-          "triangle",
-          "vert"
-        ],
-        [
-          "carre",
-          "jaune"
-        ],
-        [
-          "carre",
-          "bleu"
-        ],
-        [
-          "triangle",
-          "rouge"
-        ],
-        [
-          "cercle",
-          "jaune"
-        ],
-        [
           "losange",
           "vert"
         ],
@@ -3297,7 +3856,15 @@
         ],
         [
           "carre",
-          "vert"
+          "bleu"
+        ],
+        [
+          "cercle",
+          "rouge"
+        ],
+        [
+          "triangle",
+          "rouge"
         ],
         [
           "losange",
@@ -3305,7 +3872,43 @@
         ],
         [
           "cercle",
+          "jaune"
+        ],
+        [
+          "carre",
+          "vert"
+        ],
+        [
+          "carre",
+          "jaune"
+        ],
+        [
+          "cercle",
+          "vert"
+        ],
+        [
+          "losange",
           "rouge"
+        ],
+        [
+          "triangle",
+          "bleu"
+        ],
+        [
+          "cercle",
+          "bleu"
+        ],
+        [
+          "carre",
+          "rouge"
+        ],
+        [
+          "triangle",
+          "vert"
+        ],
+        [
+          "losange",
+          "jaune"
         ]
       ]
     },
@@ -3330,9 +3933,9 @@
     "prerequis": [
       "de-palier-3"
     ],
-    "cap_complexite": null,
+    "cap_complexite": "une phrase = deux informations croisées, jamais de placement direct à recopier",
     "contenu": {
-      "consigne": "Place les figures colorées. Chaque figure colorée (un carré bleu, un cercle rouge…) apparaît une seule fois dans la grille. Méthode : note d'abord ce qui est certain, barre ce qui devient impossible, puis recoupe les indices qui relient deux figures.",
+      "consigne": "Place les seize figures colorées. Règles : chaque ligne contient chaque figure une seule fois et chaque couleur une seule fois ; chaque colonne aussi — donc chaque figure colorée n'apparaît qu'une fois dans la grille. Méthode : chaque phrase donne deux informations ; retiens ce qui est certain, barre ce qui devient impossible, puis recoupe les phrases.",
       "figures": [
         "cercle",
         "carre",
@@ -3347,121 +3950,140 @@
       ],
       "enonces": [
         {
-          "type": "case",
-          "figure": "carre",
-          "couleur": "bleu",
-          "case": 1
-        },
-        {
-          "type": "case",
-          "figure": "cercle",
-          "couleur": "rouge",
-          "case": 2
-        },
-        {
-          "type": "case",
-          "figure": "triangle",
-          "couleur": "bleu",
-          "case": 14
-        },
-        {
-          "type": "case",
+          "type": "ligne",
           "figure": "losange",
-          "couleur": "bleu",
-          "case": 7
+          "couleur": "rouge",
+          "ligne": 2,
+          "et": {
+            "type": "pas-bord"
+          }
+        },
+        {
+          "type": "colonne",
+          "figure": "triangle",
+          "couleur": "jaune",
+          "colonne": 1,
+          "et": {
+            "type": "ni-ni"
+          }
         },
         {
           "type": "case",
           "figure": "carre",
           "couleur": "vert",
-          "case": 6
-        },
-        {
-          "type": "case",
-          "figure": "losange",
-          "couleur": "vert",
-          "case": 0
-        },
-        {
-          "type": "case",
-          "figure": "carre",
-          "couleur": "rouge",
-          "case": 11
-        },
-        {
-          "type": "case",
-          "figure": "triangle",
-          "couleur": "rouge",
           "case": 4
         },
         {
           "type": "case",
-          "figure": "carre",
-          "couleur": "jaune",
-          "case": 12
-        },
-        {
-          "type": "case",
-          "figure": "losange",
-          "couleur": "jaune",
-          "case": 10
-        },
-        {
-          "type": "case",
           "figure": "cercle",
-          "couleur": "vert",
-          "case": 15
+          "couleur": "rouge",
+          "case": 7
         },
         {
           "type": "case",
           "figure": "triangle",
-          "couleur": "jaune",
-          "case": 3
+          "couleur": "rouge",
+          "case": 0
         },
         {
-          "type": "case",
+          "type": "voisin-dessus",
+          "figure": "triangle",
+          "couleur": "bleu",
+          "figure2": "carre",
+          "couleur2": "jaune"
+        },
+        {
+          "type": "voisin-gauche",
+          "figure": "carre",
+          "couleur": "rouge",
+          "figure2": "cercle",
+          "couleur2": "vert"
+        },
+        {
+          "type": "voisin-dessus",
           "figure": "cercle",
           "couleur": "bleu",
-          "case": 8
+          "figure2": "carre",
+          "couleur2": "vert"
         },
         {
-          "type": "case",
-          "figure": "triangle",
-          "couleur": "vert",
-          "case": 9
-        }
-      ],
-      "indices": [
-        {
-          "type": "autre-colonne",
-          "figure": "cercle",
+          "type": "voisin-dessus",
+          "figure": "carre",
           "couleur": "jaune",
           "figure2": "cercle",
           "couleur2": "rouge"
         },
         {
-          "type": "autre-ligne",
-          "figure": "losange",
-          "couleur": "rouge",
-          "figure2": "cercle",
+          "type": "voisin-droite",
+          "figure": "triangle",
+          "couleur": "vert",
+          "figure2": "carre",
           "couleur2": "jaune"
         },
         {
-          "type": "autre-ligne",
+          "type": "voisin-dessus",
+          "figure": "losange",
+          "couleur": "jaune",
+          "figure2": "cercle",
+          "couleur2": "bleu"
+        },
+        {
+          "type": "voisin-dessous",
           "figure": "triangle",
           "couleur": "vert",
+          "figure2": "carre",
+          "couleur2": "rouge"
+        },
+        {
+          "type": "voisin-droite",
+          "figure": "carre",
+          "couleur": "rouge",
           "figure2": "triangle",
-          "couleur2": "jaune"
+          "couleur2": "bleu"
+        },
+        {
+          "type": "voisin-dessus",
+          "figure": "carre",
+          "couleur": "vert",
+          "figure2": "triangle",
+          "couleur2": "rouge"
+        },
+        {
+          "type": "voisin-gauche",
+          "figure": "cercle",
+          "couleur": "jaune",
+          "figure2": "carre",
+          "couleur2": "bleu"
         }
       ],
-      "aide": "Les indices suffisent : en les recoupant, chaque case se déduit. Commence par ceux qui désignent une case précise."
+      "indices": [
+        {
+          "type": "ligne",
+          "figure": "cercle",
+          "couleur": "jaune",
+          "ligne": 0
+        },
+        {
+          "type": "colonne",
+          "figure": "cercle",
+          "couleur": "vert",
+          "colonne": 1
+        },
+        {
+          "type": "ligne",
+          "figure": "losange",
+          "couleur": "vert",
+          "ligne": 0
+        }
+      ],
+      "aide": "Chaque phrase donne deux informations. Marque ce qui est certain, barre ce qui devient impossible, puis recoupe avec les autres phrases."
     },
     "reponse": {
-      "valeur": "losange:vert;carre:bleu;cercle:rouge;triangle:jaune;triangle:rouge;cercle:jaune;carre:vert;losange:bleu;cercle:bleu;triangle:vert;losange:jaune;carre:rouge;carre:jaune;losange:rouge;triangle:bleu;cercle:vert",
+      "valeur": "triangle:rouge;carre:bleu;cercle:jaune;losange:vert;carre:vert;triangle:jaune;losange:bleu;cercle:rouge;cercle:bleu;losange:rouge;triangle:vert;carre:jaune;losange:jaune;cercle:vert;carre:rouge;triangle:bleu",
       "grille": [
         [
-          "losange",
-          "vert"
+          "triangle",
+          "rouge"
         ],
         [
           "carre",
@@ -3469,23 +4091,19 @@
         ],
         [
           "cercle",
-          "rouge"
-        ],
-        [
-          "triangle",
           "jaune"
         ],
         [
-          "triangle",
-          "rouge"
-        ],
-        [
-          "cercle",
-          "jaune"
+          "losange",
+          "vert"
         ],
         [
           "carre",
           "vert"
+        ],
+        [
+          "triangle",
+          "jaune"
         ],
         [
           "losange",
@@ -3493,35 +4111,39 @@
         ],
         [
           "cercle",
+          "rouge"
+        ],
+        [
+          "cercle",
           "bleu"
+        ],
+        [
+          "losange",
+          "rouge"
         ],
         [
           "triangle",
           "vert"
         ],
         [
-          "losange",
-          "jaune"
-        ],
-        [
-          "carre",
-          "rouge"
-        ],
-        [
           "carre",
           "jaune"
         ],
         [
           "losange",
-          "rouge"
-        ],
-        [
-          "triangle",
-          "bleu"
+          "jaune"
         ],
         [
           "cercle",
           "vert"
+        ],
+        [
+          "carre",
+          "rouge"
+        ],
+        [
+          "triangle",
+          "bleu"
         ]
       ]
     },
@@ -3546,9 +4168,9 @@
     "prerequis": [
       "de-palier-3"
     ],
-    "cap_complexite": null,
+    "cap_complexite": "une phrase = deux informations croisées, jamais de placement direct à recopier",
     "contenu": {
-      "consigne": "Place les figures colorées. Chaque figure colorée (un carré bleu, un cercle rouge…) apparaît une seule fois dans la grille. Méthode : note d'abord ce qui est certain, barre ce qui devient impossible, puis recoupe les indices qui relient deux figures.",
+      "consigne": "Place les seize figures colorées. Règles : chaque ligne contient chaque figure une seule fois et chaque couleur une seule fois ; chaque colonne aussi — donc chaque figure colorée n'apparaît qu'une fois dans la grille. Méthode : chaque phrase donne deux informations ; retiens ce qui est certain, barre ce qui devient impossible, puis recoupe les phrases.",
       "figures": [
         "cercle",
         "carre",
@@ -3563,16 +4185,22 @@
       ],
       "enonces": [
         {
-          "type": "case",
-          "figure": "triangle",
+          "type": "colonne",
+          "figure": "losange",
           "couleur": "bleu",
-          "case": 3
+          "colonne": 1,
+          "et": {
+            "type": "ni-ni"
+          }
         },
         {
-          "type": "case",
+          "type": "colonne",
           "figure": "cercle",
-          "couleur": "vert",
-          "case": 11
+          "couleur": "jaune",
+          "colonne": 1,
+          "et": {
+            "type": "ni-ni"
+          }
         },
         {
           "type": "case",
@@ -3582,57 +4210,92 @@
         },
         {
           "type": "case",
-          "figure": "carre",
-          "couleur": "vert",
-          "case": 2
-        },
-        {
-          "type": "case",
           "figure": "losange",
-          "couleur": "vert",
-          "case": 5
-        },
-        {
-          "type": "case",
-          "figure": "triangle",
-          "couleur": "jaune",
+          "couleur": "bleu",
           "case": 9
         },
         {
           "type": "case",
-          "figure": "cercle",
-          "couleur": "jaune",
-          "case": 14
-        },
-        {
-          "type": "case",
-          "figure": "cercle",
-          "couleur": "bleu",
-          "case": 4
-        },
-        {
-          "type": "case",
-          "figure": "cercle",
-          "couleur": "rouge",
-          "case": 1
-        },
-        {
-          "type": "case",
           "figure": "triangle",
-          "couleur": "vert",
-          "case": 12
+          "couleur": "jaune",
+          "case": 11
         },
         {
-          "type": "case",
+          "type": "voisin-gauche",
+          "figure": "losange",
+          "couleur": "rouge",
+          "figure2": "carre",
+          "couleur2": "jaune"
+        },
+        {
+          "type": "voisin-gauche",
+          "figure": "losange",
+          "couleur": "vert",
+          "figure2": "cercle",
+          "couleur2": "jaune"
+        },
+        {
+          "type": "voisin-gauche",
           "figure": "losange",
           "couleur": "bleu",
-          "case": 10
+          "figure2": "carre",
+          "couleur2": "vert"
         },
         {
-          "type": "case",
-          "figure": "carre",
+          "type": "voisin-droite",
+          "figure": "cercle",
+          "couleur": "rouge",
+          "figure2": "triangle",
+          "couleur2": "jaune"
+        },
+        {
+          "type": "voisin-dessous",
+          "figure": "triangle",
+          "couleur": "rouge",
+          "figure2": "carre",
+          "couleur2": "vert"
+        },
+        {
+          "type": "voisin-dessous",
+          "figure": "triangle",
           "couleur": "bleu",
-          "case": 13
+          "figure2": "losange",
+          "couleur2": "vert"
+        },
+        {
+          "type": "voisin-dessous",
+          "figure": "carre",
+          "couleur": "rouge",
+          "figure2": "cercle",
+          "couleur2": "jaune"
+        },
+        {
+          "type": "voisin-droite",
+          "figure": "carre",
+          "couleur": "vert",
+          "figure2": "losange",
+          "couleur2": "bleu"
+        },
+        {
+          "type": "voisin-dessous",
+          "figure": "losange",
+          "couleur": "jaune",
+          "figure2": "triangle",
+          "couleur2": "rouge"
+        },
+        {
+          "type": "voisin-droite",
+          "figure": "triangle",
+          "couleur": "rouge",
+          "figure2": "cercle",
+          "couleur2": "jaune"
+        },
+        {
+          "type": "voisin-dessus",
+          "figure": "triangle",
+          "couleur": "vert",
+          "figure2": "losange",
+          "couleur2": "bleu"
         }
       ],
       "indices": [
@@ -3640,39 +4303,33 @@
           "type": "colonne",
           "figure": "triangle",
           "couleur": "vert",
-          "colonne": 0
+          "colonne": 1
         },
         {
-          "type": "autre-colonne",
+          "type": "ligne",
+          "figure": "losange",
+          "couleur": "bleu",
+          "ligne": 2
+        },
+        {
+          "type": "colonne",
           "figure": "carre",
           "couleur": "jaune",
-          "figure2": "losange",
-          "couleur2": "jaune"
-        },
-        {
-          "type": "autre-colonne",
-          "figure": "triangle",
-          "couleur": "jaune",
-          "figure2": "triangle",
-          "couleur2": "rouge"
+          "colonne": 2
         }
       ],
-      "aide": "Les indices suffisent : en les recoupant, chaque case se déduit. Commence par ceux qui désignent une case précise."
+      "aide": "Chaque phrase donne deux informations. Marque ce qui est certain, barre ce qui devient impossible, puis recoupe avec les autres phrases."
     },
     "reponse": {
-      "valeur": "losange:jaune;cercle:rouge;carre:vert;triangle:bleu;cercle:bleu;losange:vert;triangle:rouge;carre:jaune;carre:rouge;triangle:jaune;losange:bleu;cercle:vert;triangle:vert;carre:bleu;cercle:jaune;losange:rouge",
+      "valeur": "losange:jaune;carre:rouge;triangle:bleu;cercle:vert;triangle:rouge;cercle:jaune;losange:vert;carre:bleu;carre:vert;losange:bleu;cercle:rouge;triangle:jaune;cercle:bleu;triangle:vert;carre:jaune;losange:rouge",
       "grille": [
         [
           "losange",
           "jaune"
         ],
         [
-          "cercle",
-          "rouge"
-        ],
-        [
           "carre",
-          "vert"
+          "rouge"
         ],
         [
           "triangle",
@@ -3680,27 +4337,27 @@
         ],
         [
           "cercle",
-          "bleu"
+          "vert"
+        ],
+        [
+          "triangle",
+          "rouge"
+        ],
+        [
+          "cercle",
+          "jaune"
         ],
         [
           "losange",
           "vert"
         ],
         [
-          "triangle",
-          "rouge"
+          "carre",
+          "bleu"
         ],
         [
           "carre",
-          "jaune"
-        ],
-        [
-          "carre",
-          "rouge"
-        ],
-        [
-          "triangle",
-          "jaune"
+          "vert"
         ],
         [
           "losange",
@@ -3708,7 +4365,15 @@
         ],
         [
           "cercle",
-          "vert"
+          "rouge"
+        ],
+        [
+          "triangle",
+          "jaune"
+        ],
+        [
+          "cercle",
+          "bleu"
         ],
         [
           "triangle",
@@ -3716,10 +4381,6 @@
         ],
         [
           "carre",
-          "bleu"
-        ],
-        [
-          "cercle",
           "jaune"
         ],
         [
@@ -3749,9 +4410,9 @@
     "prerequis": [
       "de-palier-3"
     ],
-    "cap_complexite": null,
+    "cap_complexite": "une phrase = deux informations croisées, jamais de placement direct à recopier",
     "contenu": {
-      "consigne": "Place les figures colorées. Chaque figure colorée (un carré bleu, un cercle rouge…) apparaît une seule fois dans la grille. Méthode : note d'abord ce qui est certain, barre ce qui devient impossible, puis recoupe les indices qui relient deux figures.",
+      "consigne": "Place les seize figures colorées. Règles : chaque ligne contient chaque figure une seule fois et chaque couleur une seule fois ; chaque colonne aussi — donc chaque figure colorée n'apparaît qu'une fois dans la grille. Méthode : chaque phrase donne deux informations ; retiens ce qui est certain, barre ce qui devient impossible, puis recoupe les phrases.",
       "figures": [
         "cercle",
         "carre",
@@ -3766,114 +4427,143 @@
       ],
       "enonces": [
         {
-          "type": "case",
-          "figure": "losange",
-          "couleur": "vert",
-          "case": 1
-        },
-        {
-          "type": "case",
-          "figure": "triangle",
+          "type": "ligne",
+          "figure": "carre",
           "couleur": "rouge",
-          "case": 5
+          "ligne": 1,
+          "et": {
+            "type": "pas-bord"
+          }
         },
         {
-          "type": "case",
-          "figure": "cercle",
-          "couleur": "vert",
-          "case": 4
-        },
-        {
-          "type": "case",
-          "figure": "cercle",
-          "couleur": "jaune",
-          "case": 9
-        },
-        {
-          "type": "case",
-          "figure": "cercle",
-          "couleur": "rouge",
-          "case": 14
-        },
-        {
-          "type": "case",
+          "type": "colonne",
           "figure": "carre",
           "couleur": "jaune",
-          "case": 7
-        },
-        {
-          "type": "case",
-          "figure": "cercle",
-          "couleur": "bleu",
-          "case": 3
+          "colonne": 1,
+          "et": {
+            "type": "pas-bord"
+          }
         },
         {
           "type": "case",
           "figure": "losange",
-          "couleur": "rouge",
-          "case": 11
-        },
-        {
-          "type": "case",
-          "figure": "triangle",
-          "couleur": "bleu",
-          "case": 8
-        },
-        {
-          "type": "case",
-          "figure": "triangle",
-          "couleur": "jaune",
+          "couleur": "vert",
           "case": 2
         },
         {
           "type": "case",
-          "figure": "carre",
-          "couleur": "bleu",
-          "case": 13
-        },
-        {
-          "type": "case",
-          "figure": "triangle",
-          "couleur": "vert",
-          "case": 15
-        },
-        {
-          "type": "case",
-          "figure": "carre",
-          "couleur": "vert",
-          "case": 10
-        }
-      ],
-      "indices": [
-        {
-          "type": "autre-ligne",
           "figure": "cercle",
-          "couleur": "vert",
+          "couleur": "rouge",
+          "case": 12
+        },
+        {
+          "type": "case",
+          "figure": "cercle",
+          "couleur": "jaune",
+          "case": 3
+        },
+        {
+          "type": "voisin-dessus",
+          "figure": "losange",
+          "couleur": "jaune",
+          "figure2": "carre",
+          "couleur2": "bleu"
+        },
+        {
+          "type": "voisin-gauche",
+          "figure": "cercle",
+          "couleur": "bleu",
+          "figure2": "carre",
+          "couleur2": "jaune"
+        },
+        {
+          "type": "voisin-droite",
+          "figure": "triangle",
+          "couleur": "rouge",
+          "figure2": "losange",
+          "couleur2": "vert"
+        },
+        {
+          "type": "voisin-dessous",
+          "figure": "triangle",
+          "couleur": "bleu",
+          "figure2": "losange",
+          "couleur2": "rouge"
+        },
+        {
+          "type": "voisin-gauche",
+          "figure": "losange",
+          "couleur": "rouge",
+          "figure2": "cercle",
+          "couleur2": "bleu"
+        },
+        {
+          "type": "voisin-gauche",
+          "figure": "triangle",
+          "couleur": "rouge",
+          "figure2": "carre",
+          "couleur2": "bleu"
+        },
+        {
+          "type": "voisin-gauche",
+          "figure": "carre",
+          "couleur": "jaune",
           "figure2": "triangle",
           "couleur2": "vert"
         },
         {
-          "type": "autre-ligne",
-          "figure": "triangle",
+          "type": "voisin-gauche",
+          "figure": "carre",
           "couleur": "vert",
           "figure2": "triangle",
           "couleur2": "jaune"
         },
         {
-          "type": "autre-ligne",
+          "type": "voisin-dessus",
+          "figure": "cercle",
+          "couleur": "vert",
+          "figure2": "triangle",
+          "couleur2": "rouge"
+        },
+        {
+          "type": "voisin-dessous",
           "figure": "triangle",
-          "couleur": "jaune",
-          "figure2": "losange",
-          "couleur2": "jaune"
+          "couleur": "vert",
+          "figure2": "cercle",
+          "couleur2": "rouge"
         }
       ],
-      "aide": "Les indices suffisent : en les recoupant, chaque case se déduit. Commence par ceux qui désignent une case précise."
+      "indices": [
+        {
+          "type": "ligne",
+          "figure": "carre",
+          "couleur": "rouge",
+          "ligne": 1
+        },
+        {
+          "type": "case",
+          "figure": "cercle",
+          "couleur": "rouge",
+          "case": 12
+        },
+        {
+          "type": "colonne",
+          "figure": "triangle",
+          "couleur": "vert",
+          "colonne": 0
+        }
+      ],
+      "aide": "Chaque phrase donne deux informations. Marque ce qui est certain, barre ce qui devient impossible, puis recoupe avec les autres phrases."
     },
     "reponse": {
-      "valeur": "carre:rouge;losange:vert;triangle:jaune;cercle:bleu;cercle:vert;triangle:rouge;losange:bleu;carre:jaune;triangle:bleu;cercle:jaune;carre:vert;losange:rouge;losange:jaune;carre:bleu;cercle:rouge;triangle:vert",
+      "valeur": "carre:bleu;triangle:rouge;losange:vert;cercle:jaune;losange:jaune;cercle:vert;carre:rouge;triangle:bleu;triangle:vert;carre:jaune;cercle:bleu;losange:rouge;cercle:rouge;losange:bleu;triangle:jaune;carre:vert",
       "grille": [
         [
           "carre",
+          "bleu"
+        ],
+        [
+          "triangle",
           "rouge"
         ],
         [
@@ -3881,59 +4571,55 @@
           "vert"
         ],
         [
-          "triangle",
+          "cercle",
           "jaune"
         ],
         [
-          "cercle",
-          "bleu"
+          "losange",
+          "jaune"
         ],
         [
           "cercle",
           "vert"
         ],
         [
-          "triangle",
+          "carre",
           "rouge"
         ],
         [
-          "losange",
-          "bleu"
-        ],
-        [
-          "carre",
-          "jaune"
-        ],
-        [
           "triangle",
           "bleu"
         ],
         [
-          "cercle",
-          "jaune"
-        ],
-        [
-          "carre",
+          "triangle",
           "vert"
         ],
         [
-          "losange",
-          "rouge"
-        ],
-        [
-          "losange",
+          "carre",
           "jaune"
         ],
         [
-          "carre",
+          "cercle",
           "bleu"
+        ],
+        [
+          "losange",
+          "rouge"
         ],
         [
           "cercle",
           "rouge"
         ],
         [
+          "losange",
+          "bleu"
+        ],
+        [
           "triangle",
+          "jaune"
+        ],
+        [
+          "carre",
           "vert"
         ]
       ]
@@ -3959,9 +4645,9 @@
     "prerequis": [
       "de-palier-3"
     ],
-    "cap_complexite": null,
+    "cap_complexite": "une phrase = deux informations croisées, jamais de placement direct à recopier",
     "contenu": {
-      "consigne": "Place les figures colorées. Chaque figure colorée (un carré bleu, un cercle rouge…) apparaît une seule fois dans la grille. Méthode : note d'abord ce qui est certain, barre ce qui devient impossible, puis recoupe les indices qui relient deux figures.",
+      "consigne": "Place les seize figures colorées. Règles : chaque ligne contient chaque figure une seule fois et chaque couleur une seule fois ; chaque colonne aussi — donc chaque figure colorée n'apparaît qu'une fois dans la grille. Méthode : chaque phrase donne deux informations ; retiens ce qui est certain, barre ce qui devient impossible, puis recoupe les phrases.",
       "figures": [
         "cercle",
         "carre",
@@ -3976,149 +4662,161 @@
       ],
       "enonces": [
         {
-          "type": "case",
-          "figure": "losange",
-          "couleur": "jaune",
-          "case": 12
-        },
-        {
-          "type": "case",
-          "figure": "losange",
-          "couleur": "bleu",
-          "case": 9
-        },
-        {
-          "type": "case",
-          "figure": "triangle",
-          "couleur": "jaune",
-          "case": 6
-        },
-        {
-          "type": "case",
-          "figure": "cercle",
-          "couleur": "bleu",
-          "case": 14
-        },
-        {
-          "type": "case",
-          "figure": "losange",
-          "couleur": "rouge",
-          "case": 2
-        },
-        {
-          "type": "case",
-          "figure": "carre",
-          "couleur": "jaune",
-          "case": 1
-        },
-        {
-          "type": "case",
+          "type": "ligne",
           "figure": "carre",
           "couleur": "vert",
-          "case": 10
+          "ligne": 3,
+          "et": {
+            "type": "pas-coin"
+          }
+        },
+        {
+          "type": "ligne",
+          "figure": "cercle",
+          "couleur": "bleu",
+          "ligne": 1,
+          "et": {
+            "type": "ni-ni"
+          }
         },
         {
           "type": "case",
           "figure": "triangle",
           "couleur": "vert",
-          "case": 13
-        },
-        {
-          "type": "case",
-          "figure": "carre",
-          "couleur": "rouge",
-          "case": 15
+          "case": 4
         },
         {
           "type": "case",
           "figure": "cercle",
-          "couleur": "rouge",
+          "couleur": "bleu",
           "case": 5
         },
         {
           "type": "case",
-          "figure": "cercle",
-          "couleur": "vert",
-          "case": 0
-        },
-        {
-          "type": "case",
-          "figure": "triangle",
-          "couleur": "bleu",
-          "case": 3
-        },
-        {
-          "type": "case",
-          "figure": "cercle",
-          "couleur": "jaune",
-          "case": 11
-        },
-        {
-          "type": "case",
-          "figure": "triangle",
-          "couleur": "rouge",
-          "case": 8
-        }
-      ],
-      "indices": [
-        {
-          "type": "autre-colonne",
-          "figure": "triangle",
-          "couleur": "rouge",
-          "figure2": "triangle",
-          "couleur2": "bleu"
-        },
-        {
-          "type": "autre-ligne",
           "figure": "carre",
           "couleur": "jaune",
+          "case": 6
+        },
+        {
+          "type": "voisin-droite",
+          "figure": "cercle",
+          "couleur": "rouge",
+          "figure2": "triangle",
+          "couleur2": "jaune"
+        },
+        {
+          "type": "voisin-droite",
+          "figure": "triangle",
+          "couleur": "bleu",
+          "figure2": "cercle",
+          "couleur2": "vert"
+        },
+        {
+          "type": "voisin-gauche",
+          "figure": "triangle",
+          "couleur": "rouge",
+          "figure2": "cercle",
+          "couleur2": "jaune"
+        },
+        {
+          "type": "voisin-dessus",
+          "figure": "triangle",
+          "couleur": "bleu",
+          "figure2": "carre",
+          "couleur2": "jaune"
+        },
+        {
+          "type": "voisin-gauche",
+          "figure": "cercle",
+          "couleur": "bleu",
+          "figure2": "triangle",
+          "couleur2": "vert"
+        },
+        {
+          "type": "voisin-dessous",
+          "figure": "triangle",
+          "couleur": "vert",
+          "figure2": "carre",
+          "couleur2": "rouge"
+        },
+        {
+          "type": "voisin-gauche",
+          "figure": "carre",
+          "couleur": "bleu",
           "figure2": "losange",
           "couleur2": "vert"
         },
         {
-          "type": "autre-ligne",
+          "type": "voisin-dessous",
           "figure": "cercle",
+          "couleur": "jaune",
+          "figure2": "triangle",
+          "couleur2": "vert"
+        },
+        {
+          "type": "voisin-gauche",
+          "figure": "losange",
           "couleur": "rouge",
           "figure2": "carre",
-          "couleur2": "rouge"
+          "couleur2": "jaune"
+        },
+        {
+          "type": "voisin-droite",
+          "figure": "losange",
+          "couleur": "jaune",
+          "figure2": "triangle",
+          "couleur2": "bleu"
+        },
+        {
+          "type": "voisin-droite",
+          "figure": "carre",
+          "couleur": "rouge",
+          "figure2": "losange",
+          "couleur2": "jaune"
+        },
+        {
+          "type": "voisin-gauche",
+          "figure": "triangle",
+          "couleur": "bleu",
+          "figure2": "losange",
+          "couleur2": "jaune"
+        },
+        {
+          "type": "voisin-dessus",
+          "figure": "triangle",
+          "couleur": "jaune",
+          "figure2": "cercle",
+          "couleur2": "vert"
         }
       ],
-      "aide": "Les indices suffisent : en les recoupant, chaque case se déduit. Commence par ceux qui désignent une case précise."
+      "indices": [
+        {
+          "type": "colonne",
+          "figure": "losange",
+          "couleur": "rouge",
+          "colonne": 3
+        },
+        {
+          "type": "case",
+          "figure": "carre",
+          "couleur": "vert",
+          "case": 13
+        },
+        {
+          "type": "colonne",
+          "figure": "cercle",
+          "couleur": "vert",
+          "colonne": 3
+        }
+      ],
+      "aide": "Chaque phrase donne deux informations. Marque ce qui est certain, barre ce qui devient impossible, puis recoupe avec les autres phrases."
     },
     "reponse": {
-      "valeur": "cercle:vert;carre:jaune;losange:rouge;triangle:bleu;carre:bleu;cercle:rouge;triangle:jaune;losange:vert;triangle:rouge;losange:bleu;carre:vert;cercle:jaune;losange:jaune;triangle:vert;cercle:bleu;carre:rouge",
+      "valeur": "cercle:jaune;triangle:rouge;losange:vert;carre:bleu;triangle:vert;cercle:bleu;carre:jaune;losange:rouge;carre:rouge;losange:jaune;triangle:bleu;cercle:vert;losange:bleu;carre:vert;cercle:rouge;triangle:jaune",
       "grille": [
         [
           "cercle",
-          "vert"
-        ],
-        [
-          "carre",
           "jaune"
-        ],
-        [
-          "losange",
-          "rouge"
-        ],
-        [
-          "triangle",
-          "bleu"
-        ],
-        [
-          "carre",
-          "bleu"
-        ],
-        [
-          "cercle",
-          "rouge"
-        ],
-        [
-          "triangle",
-          "jaune"
-        ],
-        [
-          "losange",
-          "vert"
         ],
         [
           "triangle",
@@ -4126,19 +4824,11 @@
         ],
         [
           "losange",
-          "bleu"
-        ],
-        [
-          "carre",
           "vert"
         ],
         [
-          "cercle",
-          "jaune"
-        ],
-        [
-          "losange",
-          "jaune"
+          "carre",
+          "bleu"
         ],
         [
           "triangle",
@@ -4150,7 +4840,43 @@
         ],
         [
           "carre",
+          "jaune"
+        ],
+        [
+          "losange",
           "rouge"
+        ],
+        [
+          "carre",
+          "rouge"
+        ],
+        [
+          "losange",
+          "jaune"
+        ],
+        [
+          "triangle",
+          "bleu"
+        ],
+        [
+          "cercle",
+          "vert"
+        ],
+        [
+          "losange",
+          "bleu"
+        ],
+        [
+          "carre",
+          "vert"
+        ],
+        [
+          "cercle",
+          "rouge"
+        ],
+        [
+          "triangle",
+          "jaune"
         ]
       ]
     },

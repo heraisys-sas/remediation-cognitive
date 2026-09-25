@@ -926,3 +926,23 @@ body {
   border-color: var(--accent);
   box-shadow: 0 0 0 2px color-mix(in oklch, var(--accent) 25%, transparent);
 }
+
+/* Tableau de déduction : le brouillon du logigramme, à cocher en cours de raisonnement. */
+.tableau-enveloppe { overflow-x: auto; margin-top: 0.5rem; }
+.tableau-deduction { border-collapse: collapse; font-size: 0.78rem; }
+.tableau-deduction th,
+.tableau-deduction td {
+  border: 1px solid var(--bordure);
+  padding: 0.12rem 0.28rem;
+  text-align: center;
+  min-width: 1.8rem;
+  white-space: nowrap;
+}
+.tableau-deduction thead th { color: var(--texte-secondaire); font-weight: 500; }
+.tableau-deduction td { cursor: pointer; color: var(--texte-secondaire); }
+.tableau-deduction td:hover { background: var(--surface-haute); }
+.tableau-deduction td[data-etat="✗"] { color: var(--imprecision); font-weight: 700; }
+.tableau-deduction td[data-etat="✓"] { color: var(--succes); font-weight: 700; }
+.tableau-deduction .tableau-jeton { text-align: left; }
+.tableau-deduction .tableau-nom { font-size: 0.72rem; opacity: 0.85; }
+.tableau-legende { font-size: 0.78rem; color: var(--texte-secondaire); margin: 0.4rem 0 0; }

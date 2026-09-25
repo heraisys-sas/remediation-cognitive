@@ -1478,14 +1478,46 @@ function nomsPour(n) {
 /** Formule un indice structuré en français lisible (n = taille de la grille).
  *  Chaque indice porte deux informations : une figure colorée et sa place
  *  (ou sa relation à une autre figure colorée). */
+/** Contrainte élémentaire d'une phrase : fragment de prédicat + forme négative. */
+function predicatAtome(atome, n) {
+  const noms = nomsPour(n);
+  switch (atome.type) {
+    case "case": return { texte: `est ${noms.cases[atome.case]}`, negation: null };
+    case "ligne": return { texte: `est sur la ligne ${noms.lignes[atome.ligne]}`, negation: null };
+    case "colonne": return { texte: `est dans la colonne ${noms.colonnes[atome.colonne]}`, negation: null };
+    case "pas-ligne": return { texte: `sur la ligne ${noms.lignes[atome.ligne]}`, negation: "pas" };
+    case "pas-colonne": return { texte: `dans la colonne ${noms.colonnes[atome.colonne]}`, negation: "pas" };
+    case "pas-coin": return { texte: "dans un coin", negation: "pas" };
+    case "pas-bord": return { texte: "sur le bord", negation: "pas" };
+    case "ni-ni": return { texte: "dans un coin ni sur le bord", negation: "ni" };
+    default: return { texte: "", negation: null };
+  }
+}
+
+/** Formule un indice structuré en français lisible (n = taille de la grille).
+ *  Chaque phrase porte **deux informations** : soit deux contraintes croisées sur la
+ *  même figure, soit une relation entre deux figures colorées. */
 function formaterEnonce(indice, n) {
   const noms = nomsPour(n);
   const fc = `${libelleFigure(indice.figure)} ${indice.couleur}`;
+
+  // Phrase composée : deux informations croisées sur la même figure.
+  if (indice.et) {
+    const p1 = predicatAtome(indice, n);
+    const p2 = predicatAtome(indice.et, n);
+    if (p1.negation === null && p2.negation === null) return `Le ${fc} ${p1.texte} et ${p2.texte}.`;
+    if (p1.negation === null && p2.negation === "pas") return `Le ${fc} ${p1.texte}, mais n'est pas ${p2.texte}.`;
+    if (p1.negation === null && p2.negation === "ni") return `Le ${fc} ${p1.texte}, mais n'est ni ${p2.texte}.`;
+    return `Le ${fc} n'est ni ${p1.texte}, ni ${p2.texte}.`;
+  }
+
   const fc2 = `${libelleFigure(indice.figure2)} ${indice.couleur2}`;
   switch (indice.type) {
     case "case": return `Le ${fc} est ${noms.cases[indice.case]}.`;
     case "ligne": return `Le ${fc} est sur la ligne ${noms.lignes[indice.ligne]}.`;
     case "colonne": return `Le ${fc} est dans la colonne ${noms.colonnes[indice.colonne]}.`;
+    case "pas-ligne": return `Le ${fc} n'est pas sur la ligne ${noms.lignes[indice.ligne]}.`;
+    case "pas-colonne": return `Le ${fc} n'est pas dans la colonne ${noms.colonnes[indice.colonne]}.`;
     case "pas-coin": return `Le ${fc} n'est pas dans un coin.`;
     case "pas-bord": return `Le ${fc} n'est pas sur le bord.`;
     case "ni-ni": return `Le ${fc} n'est ni dans un coin ni sur le bord.`;
@@ -1496,6 +1528,10 @@ function formaterEnonce(indice, n) {
     case "autre-ligne": return `Le ${fc} n'est pas sur la même ligne que le ${fc2}.`;
     case "autre-colonne": return `Le ${fc} n'est pas dans la même colonne que le ${fc2}.`;
     case "comparaison": return `Le ${fc} est à gauche du ${fc2}, sur la même ligne.`;
+    case "a-droite-de": return `Le ${fc} est plus à droite que le ${fc2}.`;
+    case "a-gauche-de": return `Le ${fc} est plus à gauche que le ${fc2}.`;
+    case "au-dessus-de": return `Le ${fc} est plus haut que le ${fc2}.`;
+    case "en-dessous-de": return `Le ${fc} est plus bas que le ${fc2}.`;
     case "si-alors": return `Si le ${fc} est dans un coin, alors le ${fc2} est sur le bord.`;
     case "regle":
       return indice.variante === 0
@@ -1503,6 +1539,70 @@ function formaterEnonce(indice, n) {
         : "Chaque ligne contient toutes les figures, une fois chacune.";
     default: return "";
   }
+}
+
+/** Étiquettes courtes des cases, pour le tableau de déduction. */
+function nomsCourtsCases(n) {
+  if (n === 4) {
+    const noms = [];
+    for (let ligne = 1; ligne <= 4; ligne += 1) {
+      for (let colonne = 1; colonne <= 4; colonne += 1) noms.push(`L${ligne}C${colonne}`);
+    }
+    return noms;
+  }
+  return ["H·G", "H·C", "H·D", "M·G", "M·C", "M·D", "B·G", "B·C", "B·D"];
+}
+
+/** Tableau de déduction : le brouillon papier de l'orthophoniste, en version cliquable.
+ *  Une ligne par figure colorée, une colonne par case : ✗ exclu, ✓ certain. */
+function rendreTableauDeduction(contenu) {
+  const n = contenu.figures.length;
+  const courts = nomsCourtsCases(n);
+  const entete = creerElement("tr", {}, creerElement("th", { attributs: { scope: "col" } }),
+    ...courts.map((nom) => creerElement("th", { texte: nom, attributs: { scope: "col" } })));
+  const corps = creerElement("tbody");
+  for (const couleur of contenu.couleurs) {
+    for (const figure of contenu.figures) {
+      const ligne = creerElement("tr");
+      const titre = creerElement("th", { classe: "tableau-jeton", attributs: { scope: "row" } });
+      titre.append(creerElement("span", { texte: GLYPHES[figure], attributs: { "aria-hidden": "true" } }));
+      titre.append(creerElement("span", { texte: ` ${couleur}`, classe: "tableau-nom" }));
+      titre.style.color = TEINTES[couleur];
+      ligne.append(titre);
+      for (let c = 0; c < n * n; c += 1) {
+        const cellule = creerElement("td", {
+          texte: "",
+          attributs: {
+            role: "button", tabindex: "0",
+            "aria-label": `${libelleFigure(figure)} ${couleur} — case ${courts[c]}`,
+          },
+        });
+        const basculer = () => {
+          cellule.textContent = cellule.textContent === "" ? "✗" : cellule.textContent === "✗" ? "✓" : "";
+          cellule.dataset.etat = cellule.textContent;
+        };
+        cellule.addEventListener("click", basculer);
+        cellule.addEventListener("keydown", (evenement) => {
+          if (evenement.key === "Enter" || evenement.key === " ") {
+            evenement.preventDefault();
+            basculer();
+          }
+        });
+        ligne.append(cellule);
+      }
+      corps.append(ligne);
+    }
+  }
+  const legende = n === 4
+    ? "L = ligne (1 = haut), C = colonne (1 = gauche)."
+    : "H = haut, M = milieu, B = bas · G = gauche, C = centre, D = droite.";
+  return creerElement("details", { classe: "methode-panneau" },
+    creerElement("summary", { texte: "Tableau de déduction (brouillon)" }),
+    creerElement("p", { classe: "tableau-legende",
+      texte: `${legende} Cliquez une case pour la marquer : ✗ impossible, ✓ certain.` }),
+    creerElement("div", { classe: "tableau-enveloppe" },
+      creerElement("table", { classe: "tableau-deduction" }, creerElement("thead", {}, entete), corps))
+  );
 }
 
 /** Affiche la grille, la palette de jetons, les indices et l'indice de secours. */
@@ -1602,6 +1702,7 @@ function rendreGrille(item) {
   refs.zoneGrille.replaceChildren(
     creerElement("div", { classe: "grille-corps" }, plateau, palette),
     zoneIndices,
+    rendreTableauDeduction(contenu),
     creerElement("div", { classe: "grille-actions" }, boutonVider, boutonValider)
   );
   refs.zoneGrille.hidden = false;

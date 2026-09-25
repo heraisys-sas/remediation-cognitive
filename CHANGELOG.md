@@ -2,6 +2,17 @@
 
 Format : [date] — [périmètre] — description. Les retours informels de l'orthophoniste sont journalisés ici, sans caution clinique.
 
+## 2026-09-25 · Déduction : phrases à deux informations, règles énoncées, brouillon cliquable
+
+Retour d'usage : « les indices sont insuffisants pour reconstruire l'ensemble du tableau, il n'y a pas plusieurs indices par phrase, aucune déduction n'est provoquée ». Trois causes, trois corrections.
+
+- **Règles enfin énoncées** — la consigne dit maintenant ce que le puzzle exige vraiment : chaque figure une fois par ligne **et** par colonne, chaque couleur aussi, donc chaque figure colorée une seule fois. Sans ces règles, les dernières cases étaient réellement ambiguës : c'était la cause de l'impression d'insuffisance.
+- **Chaque phrase porte deux informations** — les placements directs à recopier disparaissent (sauf trois ancres de départ en 4×4). Les phrases croisent désormais deux contraintes sur la même figure (« sur la ligne du haut, mais pas dans la colonne de gauche ») ou relient deux figures (« juste à gauche de », « plus à droite que », « pas sur la même ligne que »). Nouveaux types : `pas-ligne`, `pas-colonne`, `a-droite-de`, `a-gauche-de`, `au-dessus-de`, `en-dessous-de`, et le champ `et` qui compose deux informations.
+- **Le tableau de déduction** — le brouillon papier du logigramme devient un outil cliquable sous la grille : une ligne par figure colorée, une colonne par case, un clic pour marquer ✗ (impossible) ou ✓ (certain). C'est la mémoire de travail externalisée, comme le veut la pratique orthophonique.
+- **Remplacement de contenu (thème `deduction`)** — les 80 grilles sont régénérées avec la nouvelle grammaire ; identifiants, paliers et solutions restent distincts (80 solutions différentes).
+- **Difficulté croissante** — palier 1 : croisements ligne × colonne ; palier 2 : relations entre figures ; palier 3 : négations et conditionnel ; palier 4 : 4×4 avec ancres de départ.
+- **Contrôles** — 875 items / 0 erreur ; 145 tests.
+
 ## 2026-09-25 · Déduction : toujours résoluble, et un stock pour trois mois
 
 - **Grilles garanties déductibles** — un solveur de déduction (propagation de contraintes, sans hypothèse) juge chaque puzzle à la génération : les indices sont ajoutés **jusqu'à ce que le solveur termine**. Une grille qu'on ne peut pas reconstruire par raisonnement pur n'est plus livrable — le générateur l'écarte, le validateur la refuse, un test rejoue le solveur sur chaque grille du dépôt.

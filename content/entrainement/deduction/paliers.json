@@ -3,14 +3,14 @@
   "paliers": [
     {
       "id": "de-palier-1",
-      "description": "Indices de position : la grille se déduit case par case",
+      "description": "Phrases à deux informations : croiser ligne et colonne pour placer",
       "prerequis": [],
       "fichier": "paliers/palier-01.json",
       "nb_items": 20
     },
     {
       "id": "de-palier-2",
-      "description": "Indices relationnels (voisinage, à gauche de, pas sur la même ligne)",
+      "description": "Phrases reliant deux figures : voisinage, à droite de, pas sur la même ligne",
       "prerequis": [
         "de-palier-1"
       ],
@@ -19,7 +19,7 @@
     },
     {
       "id": "de-palier-3",
-      "description": "Indices négatifs et conditionnels : éliminer pour déduire",
+      "description": "Négations et conditionnel : éliminer pour déduire",
       "prerequis": [
         "de-palier-2"
       ],
@@ -28,7 +28,7 @@
     },
     {
       "id": "de-palier-4",
-      "description": "Grille 4×4 : plus de figures colorées, indices variés",
+      "description": "Grille 4×4 : plus de figures colorées, phrases variées",
       "prerequis": [
         "de-palier-3"
       ],

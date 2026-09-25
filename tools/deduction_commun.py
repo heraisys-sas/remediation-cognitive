@@ -1,17 +1,21 @@
 #!/usr/bin/env python3
 """Cœur commun du thème « déduction » : univers des grilles et solveur de déduction.
 
-Règles du puzzle (celles annoncées dans la consigne) :
-- une grille N×N contient N figures et N couleurs ;
-- chaque figure apparaît une fois par ligne et par colonne (carré latin) ;
-- chaque couleur aussi (donc **chaque figure colorée** apparaît une seule fois).
+Règles du puzzle (celles énoncées dans la consigne) :
+- chaque figure apparaît une fois par ligne et une fois par colonne ;
+- chaque couleur aussi ;
+- chaque figure colorée (« carré bleu ») n'apparaît qu'une seule fois dans la grille.
 
 Le module fournit :
 
 - ``grilles_valides(n)`` — l'univers des grilles respectant les règles ;
-- ``pred_indice(...)`` — vérité d'un indice pour une grille ;
-- ``resoudre_par_deduction(indices, n, ...)`` — **le contrôle qui compte** : le puzzle
-  est-il entièrement résoluble par propagation de contraintes (aucune hypothèse) ?
+- ``pred_indice(...)`` — vérité d'un indice (et de ses deux informations) pour une grille ;
+- ``resoudre_par_deduction(...)`` — **le contrôle qui compte** : le puzzle est-il
+  entièrement résoluble par propagation de contraintes (aucune hypothèse) ?
+
+Un indice peut être **composé** : le champ ``et`` porte une seconde contrainte sur la
+même figure colorée (« sur la ligne du haut, mais pas dans la colonne de gauche »).
+C'est la marque du logigramme : une phrase, deux informations.
 
 Le solveur est *sound* mais volontairement incomplet : il ne retire un jeton que
 lorsqu'aucun placement ne peut le justifier. S'il termine avec toutes les cases
@@ -24,10 +28,13 @@ from __future__ import annotations
 import itertools
 
 #: Types d'indices portant sur la position d'un seul jeton (contraintes unaires).
-TYPES_UNAIRES = {"case", "ligne", "colonne", "pas-coin", "pas-bord", "ni-ni"}
-#: Types d'indices reliant deux jetons (contraintes binaires).
+TYPES_UNAIRES = {"case", "ligne", "colonne", "pas-ligne", "pas-colonne",
+                 "pas-coin", "pas-bord", "ni-ni"}
+#: Types d'indices reliant deux jetons (contraints binaires).
 TYPES_BINAIRES = {"voisin-gauche", "voisin-droite", "voisin-dessus", "voisin-dessous",
-                  "autre-ligne", "autre-colonne", "comparaison", "si-alors"}
+                  "autre-ligne", "autre-colonne", "comparaison",
+                  "a-droite-de", "a-gauche-de", "au-dessus-de", "en-dessous-de",
+                  "si-alors"}
 
 
 def carres_latins(n: int) -> list[tuple[int, ...]]:
@@ -62,62 +69,27 @@ def cellule(fig: tuple, coul: tuple, f: int, c: int) -> int:
     return -1
 
 
-def pred_indice(indice: dict, paire, n: int, noms_f: list[str], noms_c: list[str]) -> bool:
-    """Un indice est-il vrai pour cette grille ?"""
-    fig, coul = paire
-    t = indice["type"]
-    if t == "regle":
-        return True
-    if indice.get("figure") not in noms_f or indice.get("couleur") not in noms_c:
-        return False
-    case = cellule(fig, coul, noms_f.index(indice["figure"]), noms_c.index(indice["couleur"]))
-    if case < 0:
-        return False
-    if t == "case":
-        return case == indice["case"]
-    if t == "ligne":
-        return case // n == indice["ligne"]
-    if t == "colonne":
-        return case % n == indice["colonne"]
-    if t == "pas-coin":
-        return case not in coins(n)
-    if t == "pas-bord":
-        return case not in bords(n)
-    if t == "ni-ni":
-        return case not in coins(n) and case not in bords(n)
-    if indice.get("figure2") not in noms_f or indice.get("couleur2") not in noms_c:
-        return False
-    autre = cellule(fig, coul, noms_f.index(indice["figure2"]), noms_c.index(indice["couleur2"]))
-    if autre < 0:
-        return False
-    if t == "voisin-droite":
-        return autre == case + 1 and case % n != n - 1
-    if t == "voisin-gauche":
-        return autre == case - 1 and case % n != 0
-    if t == "voisin-dessous":
-        return autre == case + n
-    if t == "voisin-dessus":
-        return autre == case - n
-    if t == "autre-ligne":
-        return case // n != autre // n
-    if t == "autre-colonne":
-        return case % n != autre % n
-    if t == "comparaison":
-        return case // n == autre // n and case < autre
-    if t == "si-alors":
-        return case not in coins(n) or autre in bords(n)
-    return False
+def _atomiques(indice: dict) -> list[dict]:
+    """Un indice composé (« et ») se décompose en contraintes élémentaires."""
+    parts = [indice]
+    if isinstance(indice.get("et"), dict):
+        parts.append(indice["et"])
+    return parts
 
 
-def _position_possible(indice: dict, case: int, n: int) -> bool:
-    """Pour une contrainte unaire : le jeton peut-il occuper cette case ?"""
-    t = indice["type"]
+def _vrai_unaire(atome: dict, case: int, n: int) -> bool:
+    """Contrainte unaire : le jeton peut-il occuper cette case ?"""
+    t = atome.get("type")
     if t == "case":
-        return case == indice["case"]
+        return case == atome["case"]
     if t == "ligne":
-        return case // n == indice["ligne"]
+        return case // n == atome["ligne"]
     if t == "colonne":
-        return case % n == indice["colonne"]
+        return case % n == atome["colonne"]
+    if t == "pas-ligne":
+        return case // n != atome["ligne"]
+    if t == "pas-colonne":
+        return case % n != atome["colonne"]
     if t == "pas-coin":
         return case not in coins(n)
     if t == "pas-bord":
@@ -127,8 +99,8 @@ def _position_possible(indice: dict, case: int, n: int) -> bool:
     return True
 
 
-def _contrainte_binaire(indice: dict, i1: int, i2: int, n: int) -> bool:
-    """Pour une contrainte binaire : les deux jetons peuvent-ils occuper i1 et i2 ?"""
+def _vrai_binaire(indice: dict, i1: int, i2: int, n: int) -> bool:
+    """Contrainte binaire : les deux jetons peuvent-ils occuper i1 et i2 ?"""
     t = indice["type"]
     if t == "voisin-droite":
         return i2 == i1 + 1 and i1 % n != n - 1
@@ -144,8 +116,36 @@ def _contrainte_binaire(indice: dict, i1: int, i2: int, n: int) -> bool:
         return i1 % n != i2 % n
     if t == "comparaison":
         return i1 // n == i2 // n and i1 < i2
+    if t == "a-droite-de":
+        return i1 % n > i2 % n
+    if t == "a-gauche-de":
+        return i1 % n < i2 % n
+    if t == "au-dessus-de":
+        return i1 // n < i2 // n
+    if t == "en-dessous-de":
+        return i1 // n > i2 // n
     if t == "si-alors":
         return i1 not in coins(n) or i2 in bords(n)
+    return True
+
+
+def pred_indice(indice: dict, paire, n: int, noms_f: list[str], noms_c: list[str]) -> bool:
+    """Un indice est-il vrai pour cette grille ? (toutes ses informations, « et » compris)."""
+    fig, coul = paire
+    if indice.get("figure") not in noms_f or indice.get("couleur") not in noms_c:
+        return False
+    case = cellule(fig, coul, noms_f.index(indice["figure"]), noms_c.index(indice["couleur"]))
+    if case < 0:
+        return False
+    for atome in _atomiques(indice):
+        if atome.get("type") in TYPES_UNAIRES and not _vrai_unaire(atome, case, n):
+            return False
+    if indice["type"] in TYPES_BINAIRES:
+        if indice.get("figure2") not in noms_f or indice.get("couleur2") not in noms_c:
+            return False
+        autre = cellule(fig, coul, noms_f.index(indice["figure2"]), noms_c.index(indice["couleur2"]))
+        if autre < 0 or not _vrai_binaire(indice, case, autre, n):
+            return False
     return True
 
 
@@ -168,27 +168,30 @@ def resoudre_par_deduction(indices: list[dict], n: int,
             return True
         return False
 
-    unaires, binaires = [], []
+    unaires: list[tuple[dict, tuple[int, int]]] = []
+    binaires: list[tuple[dict, tuple[int, int], tuple[int, int]]] = []
     for indice in indices:
-        if indice["type"] == "regle":
+        if indice.get("figure") not in noms_f or indice.get("couleur") not in noms_c:
             continue
-        if indice["type"] in TYPES_UNAIRES:
-            unaires.append((indice, (noms_f.index(indice["figure"]), noms_c.index(indice["couleur"]))))
-        elif indice["type"] in TYPES_BINAIRES:
-            binaires.append((
-                indice,
-                (noms_f.index(indice["figure"]), noms_c.index(indice["couleur"])),
-                (noms_f.index(indice["figure2"]), noms_c.index(indice["couleur2"])),
-            ))
+        jeton = (noms_f.index(indice["figure"]), noms_c.index(indice["couleur"]))
+        if indice["type"] in TYPES_BINAIRES:
+            if indice.get("figure2") not in noms_f or indice.get("couleur2") not in noms_c:
+                continue
+            autre = (noms_f.index(indice["figure2"]), noms_c.index(indice["couleur2"]))
+            binaires.append((indice, jeton, autre))
+        else:
+            for atome in _atomiques(indice):
+                if atome.get("type") in TYPES_UNAIRES:
+                    unaires.append((atome, jeton))
 
     change, tours = True, 0
     while change and tours < limite_tours:
         change, tours = False, tours + 1
 
-        # 1. Contraintes unaires (position d'un jeton).
-        for indice, jeton in unaires:
+        # 1. Contraintes unaires (position d'un jeton), « et » compris.
+        for atome, jeton in unaires:
             for case in range(n * n):
-                if jeton in domaines[case] and not _position_possible(indice, case, n):
+                if jeton in domaines[case] and not _vrai_unaire(atome, case, n):
                     change |= retirer(case, jeton)
 
         # 2. « Toutes différentes » : figures et couleurs, par ligne et par colonne.
@@ -230,7 +233,7 @@ def resoudre_par_deduction(indices: list[dict], n: int,
             places2 = {c for c in range(n * n) if jeton2 in domaines[c]}
             for case in range(n * n):
                 if jeton1 in domaines[case] and not any(
-                    _contrainte_binaire(indice, case, autre, n) for autre in places2
+                    _vrai_binaire(indice, case, autre, n) for autre in places2
                 ):
                     change |= retirer(case, jeton1)
 

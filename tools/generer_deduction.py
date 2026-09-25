@@ -3,17 +3,20 @@
 
 Méthode (ce qui la rend fiable) :
 1. l'univers des solutions est fini et connu (72 grilles 3×3, 6 912 en 4×4) ;
-2. pour chaque solution encore libre, on ajoute des indices **un par un**, les plus
-   informatifs d'abord, en rejouant le **solveur de déduction** (`deduction_commun`) ;
-3. on s'arrête dès que le puzzle est résoluble **par propagation, sans hypothèse**, puis on
-   complète jusqu'au plancher du palier ; au-delà du plafond, la solution est écartée ;
+2. pour chaque solution encore libre, on ajoute des **phrases à deux informations**
+   une par une — en privilégiant les figures encore peu citées — en rejouant à chaque
+   fois le **solveur de déduction** (`deduction_commun`) ;
+3. on s'arrête dès que le puzzle est résoluble **par propagation, sans hypothèse**, puis
+   on complète jusqu'au plancher du palier ; au-delà du plafond, la solution est écartée ;
 4. une même solution n'est jamais resservie deux fois dans le thème.
 
-Aucun puzzle n'est donc « à deviner » : le solveur est le juge, pas l'intuition.
-
-Difficulté croissante : palier 1 = indices directs uniquement ; palier 2 = relationnels
-(voisinage, comparaison, pas la même ligne/colonne) ; palier 3 = négatifs et conditionnels ;
-palier 4 = grille 4×4.
+Ce qui fait qu'une phrase **provoque une déduction** :
+- palier 1 : chaque phrase croise deux contraintes de la même figure (« sur la ligne du
+  haut, mais pas dans la colonne de gauche ») — jamais de placement direct à recopier ;
+- palier 2 : phrases reliant deux figures (« juste à gauche de », « quelque part à
+  droite de », « pas sur la même ligne que ») ;
+- palier 3 : négations globales et conditionnel (« si … alors ») ;
+- palier 4 : grille 4×4.
 
 Usage :
 
@@ -33,6 +36,8 @@ from pathlib import Path
 sys.path.insert(0, str(Path(__file__).resolve().parent))
 from deduction_commun import (  # noqa: E402
     TYPES_BINAIRES,
+    _vrai_binaire,
+    _vrai_unaire,
     bords,
     cellule,
     coins,
@@ -51,36 +56,90 @@ PAR_PALIER_DEFAUT: int = 20
 FIGURES = ["cercle", "carre", "triangle", "losange"]
 COULEURS = ["rouge", "bleu", "vert", "jaune"]
 
-DIRECTS = {"case", "ligne", "colonne"}
-RELATIONNELS = {"voisin-gauche", "voisin-droite", "voisin-dessus", "voisin-dessous",
-                "comparaison", "autre-ligne", "autre-colonne"}
-NEGATIFS = {"pas-coin", "pas-bord", "ni-ni", "si-alors"}
+#: Formes de phrases composées : deux contraintes croisées sur la même figure.
+FORMES_COMPOSES = [
+    ("ligne", "pas-colonne"),
+    ("colonne", "pas-ligne"),
+    ("ligne", "pas-coin"),
+    ("colonne", "pas-coin"),
+    ("ligne", "pas-bord"),
+    ("colonne", "pas-bord"),
+    ("ligne", "ni-ni"),
+    ("colonne", "ni-ni"),
+    ("pas-ligne", "pas-colonne"),
+]
+
+#: Types d'indices relationnels (deux figures par phrase), sans le conditionnel.
+BINAIRES_FORTS = {"voisin-gauche", "voisin-droite", "voisin-dessus", "voisin-dessous",
+                  "comparaison", "autre-ligne", "autre-colonne",
+                  "a-droite-de", "a-gauche-de", "au-dessus-de", "en-dessous-de"}
 
 #: Types d'indices autorisés par palier (difficulté croissante).
 TYPES_PAR_PALIER = {
-    1: DIRECTS,
-    2: DIRECTS | RELATIONNELS,
-    3: DIRECTS | RELATIONNELS | NEGATIFS,
-    4: DIRECTS | RELATIONNELS | NEGATIFS,
+    1: {"compose"},
+    2: {"compose"} | BINAIRES_FORTS,
+    3: {"compose"} | BINAIRES_FORTS | {"si-alors"},
+    4: {"compose", "ancre"} | BINAIRES_FORTS | {"si-alors"},
 }
-#: Plancher et plafond du nombre d'indices, par palier.
-MIN_INDICES = {1: 6, 2: 6, 3: 5, 4: 8}
-MAX_INDICES = {1: 12, 2: 12, 3: 12, 4: 18}
+#: Nombre minimal de phrases composées (deux contraintes croisées sur une figure)
+#: par palier : c'est la forme qui oblige à recouper, elle ne doit pas disparaître.
+QUOTA_COMPOSE = {1: 99, 2: 2, 3: 3, 4: 2}
 
-#: Force relative des types d'indices (0 = le plus discriminant).
-FORCE_TYPE = {
-    "case": 0, "ligne": 1, "colonne": 1,
-    "voisin-gauche": 2, "voisin-droite": 2, "voisin-dessus": 2, "voisin-dessous": 2,
-    "comparaison": 3, "autre-ligne": 4, "autre-colonne": 4,
-    "pas-coin": 5, "pas-bord": 5, "ni-ni": 6, "si-alors": 6,
-}
+#: Plancher et plafond du nombre de phrases, par palier.
+MIN_INDICES = {1: 6, 2: 6, 3: 7, 4: 10}
+MAX_INDICES = {1: 9, 2: 11, 3: 14, 4: 18}
+#: Nombre maximal de placements directs (ancres) — réservés à la grille 4×4 :
+#: une grille 4×4 ne se referme pas par déduction pure sans point de départ.
+MAX_ANCRAGES = {1: 0, 2: 0, 3: 0, 4: 3}
 
 DESCRIPTIONS = [
-    "Indices de position : la grille se déduit case par case",
-    "Indices relationnels (voisinage, à gauche de, pas sur la même ligne)",
-    "Indices négatifs et conditionnels : éliminer pour déduire",
-    "Grille 4×4 : plus de figures colorées, indices variés",
+    "Phrases à deux informations : croiser ligne et colonne pour placer",
+    "Phrases reliant deux figures : voisinage, à droite de, pas sur la même ligne",
+    "Négations et conditionnel : éliminer pour déduire",
+    "Grille 4×4 : plus de figures colorées, phrases variées",
 ]
+
+CONSIGNE_3 = ("Place les neuf figures colorées. Règles : chaque ligne contient chaque figure "
+              "une seule fois et chaque couleur une seule fois ; chaque colonne aussi — donc "
+              "chaque figure colorée (un carré bleu, un cercle rouge…) n'apparaît qu'une fois "
+              "dans la grille. Méthode : chaque phrase donne deux informations ; retiens ce qui "
+              "est certain, barre ce qui devient impossible, puis recoupe les phrases.")
+CONSIGNE_4 = ("Place les seize figures colorées. Règles : chaque ligne contient chaque figure "
+              "une seule fois et chaque couleur une seule fois ; chaque colonne aussi — donc "
+              "chaque figure colorée n'apparaît qu'une fois dans la grille. Méthode : chaque "
+              "phrase donne deux informations ; retiens ce qui est certain, barre ce qui "
+              "devient impossible, puis recoupe les phrases.")
+
+
+def _atome(type_atome: str, case: int, n: int) -> dict | None:
+    """Contrainte élémentaire positive vraie pour la figure assise à cette case."""
+    ligne, colonne = divmod(case, n)
+    if type_atome == "ligne":
+        return {"type": "ligne", "ligne": ligne}
+    if type_atome == "colonne":
+        return {"type": "colonne", "colonne": colonne}
+    if type_atome in ("pas-coin", "pas-bord", "ni-ni"):
+        return {"type": type_atome}
+    return None
+
+
+def _variantes_atome(type_atome: str, case: int, n: int) -> list[dict]:
+    """Toutes les contraintes élémentaires de ce type **vraies** pour cette case.
+
+    Une négation « pas sur la ligne X » n'a de sens que si X n'est PAS la vraie
+    ligne de la figure — sinon la phrase serait fausse.
+    """
+    ligne, colonne = divmod(case, n)
+    if type_atome == "pas-ligne":
+        return [{"type": "pas-ligne", "ligne": x} for x in range(n) if x != ligne]
+    if type_atome == "pas-colonne":
+        return [{"type": "pas-colonne", "colonne": x} for x in range(n) if x != colonne]
+    atome = _atome(type_atome, case, n)
+    return [atome] if atome and _vrai_unaire(atome, case, n) else []
+
+
+def _cases_atome(atome: dict, n: int) -> set[int]:
+    return {i for i in range(n * n) if _vrai_unaire(atome, i, n)}
 
 
 def _indice(type_indice: str, nom_f: str, nom_c: str, **extra) -> dict:
@@ -88,78 +147,113 @@ def _indice(type_indice: str, nom_f: str, nom_c: str, **extra) -> dict:
 
 
 def _pool(paire, n: int, noms_f: list[str], noms_c: list[str], types: set[str]) -> list[dict]:
-    """Tous les indices vrais (chacun porteur de deux informations) dont le type est autorisé."""
+    """Toutes les phrases vraies autorisées par le palier."""
     fig, coul = paire
     pool: list[dict] = []
-    for f, nom_f in enumerate(noms_f):
-        for c, nom_c in enumerate(noms_c):
-            case = cellule(fig, coul, f, c)
-            if "case" in types:
-                pool.append(_indice("case", nom_f, nom_c, case=case))
-            if "ligne" in types:
-                pool.append(_indice("ligne", nom_f, nom_c, ligne=case // n))
-            if "colonne" in types:
-                pool.append(_indice("colonne", nom_f, nom_c, colonne=case % n))
-            if "pas-coin" in types and case not in coins(n):
-                pool.append(_indice("pas-coin", nom_f, nom_c))
-            if "pas-bord" in types and case not in bords(n):
-                pool.append(_indice("pas-bord", nom_f, nom_c))
-            if "ni-ni" in types and case not in coins(n) and case not in bords(n):
-                pool.append(_indice("ni-ni", nom_f, nom_c))
+
+    # Phrases composées : deux contraintes croisées sur la même figure.
+    if "compose" in types:
+        for f, nom_f in enumerate(noms_f):
+            for c, nom_c in enumerate(noms_c):
+                case = cellule(fig, coul, f, c)
+                for t1, t2 in FORMES_COMPOSES:
+                    a1 = _atome(t1, case, n)
+                    if not a1 or not _vrai_unaire(a1, case, n):
+                        continue
+                    c1 = _cases_atome(a1, n)
+                    for a2 in _variantes_atome(t2, case, n):
+                        c2 = _cases_atome(a2, n)
+                        commun = c1 & c2
+                        # La seconde information doit réellement retirer des cases.
+                        if not (len(commun) < len(c1) and len(commun) < len(c2)):
+                            continue
+                        second = {k: v for k, v in a2.items() if k != "type"} | {"type": a2["type"]}
+                        pool.append(_indice(t1, nom_f, nom_c,
+                                            **{k: v for k, v in a1.items() if k != "type"},
+                                            et=second))
+
+    # Ancres : placement direct d'une figure (palier 4 uniquement, en petit nombre).
+    if "ancre" in types:
+        for f, nom_f in enumerate(noms_f):
+            for c, nom_c in enumerate(noms_c):
+                pool.append(_indice("case", nom_f, nom_c, case=cellule(fig, coul, f, c)))
+
+    # Phrases reliant deux figures.
     types_paires = types & TYPES_BINAIRES
     if types_paires:
         for f1, nom_f1 in enumerate(noms_f):
             for c1, nom_c1 in enumerate(noms_c):
                 case1 = cellule(fig, coul, f1, c1)
-                r1, col1 = divmod(case1, n)
                 for f2, nom_f2 in enumerate(noms_f):
                     for c2, nom_c2 in enumerate(noms_c):
                         if (f1, c1) == (f2, c2):
                             continue
                         case2 = cellule(fig, coul, f2, c2)
-                        r2, col2 = divmod(case2, n)
                         base = dict(figure2=nom_f2, couleur2=nom_c2)
-                        if "voisin-gauche" in types and case2 == case1 + 1 and col1 != n - 1:
-                            pool.append(_indice("voisin-gauche", nom_f1, nom_c1, **base))
-                        if "voisin-droite" in types and case2 == case1 - 1 and col1 != 0:
-                            pool.append(_indice("voisin-droite", nom_f1, nom_c1, **base))
-                        if "voisin-dessous" in types and case2 == case1 + n:
-                            pool.append(_indice("voisin-dessous", nom_f1, nom_c1, **base))
-                        if "voisin-dessus" in types and case2 == case1 - n:
-                            pool.append(_indice("voisin-dessus", nom_f1, nom_c1, **base))
-                        if "autre-ligne" in types and r1 != r2:
-                            pool.append(_indice("autre-ligne", nom_f1, nom_c1, **base))
-                        if "autre-colonne" in types and col1 != col2:
-                            pool.append(_indice("autre-colonne", nom_f1, nom_c1, **base))
-                        if "comparaison" in types and r1 == r2 and case1 < case2:
-                            pool.append(_indice("comparaison", nom_f1, nom_c1, **base))
-                        if "si-alors" in types and (case1 not in coins(n) or case2 in bords(n)):
-                            pool.append(_indice("si-alors", nom_f1, nom_c1, **base))
+                        for t in types_paires:
+                            if _vrai_binaire({"type": t}, case1, case2, n):
+                                pool.append(_indice(t, nom_f1, nom_c1, **base))
     return pool
 
 
-def _ordre(pool: list[dict], rng: random.Random) -> list[dict]:
-    """Indices du plus discriminant au moins discriminant (aléa entre forces voisines)."""
-    groupes: dict[int, list[dict]] = {}
-    for indice in pool:
-        groupes.setdefault(FORCE_TYPE.get(indice["type"], 9), []).append(indice)
-    ordre: list[dict] = []
-    for rang in sorted(groupes):
-        rng.shuffle(groupes[rang])
-        ordre.extend(groupes[rang])
-    return ordre
+def _jeton_principal(indice: dict) -> tuple[str, str]:
+    return (indice["figure"], indice["couleur"])
+
+
+def _score_binaire(type_indice: str, n: int) -> float:
+    """Fraction de l'espace des paires (i1, i2) que la contrainte laisse possible."""
+    paires = n ** 4
+    if type_indice in ("voisin-gauche", "voisin-droite", "voisin-dessus", "voisin-dessous"):
+        return n * (n - 1) / paires
+    if type_indice == "comparaison":
+        return n * (n * (n - 1) // 2) / paires
+    if type_indice in ("a-droite-de", "a-gauche-de", "au-dessus-de", "en-dessous-de"):
+        return (n * (n - 1) // 2) * n * n / paires
+    if type_indice in ("autre-ligne", "autre-colonne"):
+        return n ** 3 * (n - 1) / paires
+    if type_indice == "si-alors":
+        return (paires - len(coins(n)) * (n * n - len(bords(n)))) / paires
+    return 1.0
+
+
+def _score(indice: dict, n: int) -> float:
+    """Puissance d'une phrase : plus le score est petit, plus elle élimine."""
+    if indice["type"] == "case":
+        return 0.0
+    if indice["type"] in TYPES_BINAIRES:
+        return _score_binaire(indice["type"], n)
+    atome1 = {k: v for k, v in indice.items() if k not in ("figure", "couleur", "et")}
+    atome2 = indice["et"]
+    commun = _cases_atome(atome1, n) & _cases_atome(atome2, n)
+    return len(commun) / (n * n)
+
+
+def _melange(liste: list[dict], n: int, rng: random.Random) -> list[dict]:
+    """Du plus puissant au moins puissant (égalités départagées au hasard)."""
+    return sorted(liste, key=lambda ind: (_score(ind, n), rng.random()))
 
 
 def _selection(paire, n: int, noms_f: list[str], noms_c: list[str], palier: int,
                rng: random.Random) -> list[dict] | None:
-    """Indices suffisants pour une résolution par déduction, avec le dosage du palier."""
+    """Phrases suffisantes pour une résolution par déduction, avec le dosage du palier."""
     pool = _pool(paire, n, noms_f, noms_c, TYPES_PAR_PALIER[palier])
     if not pool:
         return None
+    composes = _melange([ind for ind in pool if "et" in ind], n, rng)
+    autres = _melange([ind for ind in pool if "et" not in ind], n, rng)
+    # Quelques phrases composées d'abord : elles portent la part de recoupement.
+    quota = min(QUOTA_COMPOSE[palier], len(composes))
+    ordre = composes[:quota] + _melange(composes[quota:] + autres, n, rng)
+
     choisis: list[dict] = []
-    for indice in _ordre(pool, rng):
+    ancrages = 0
+    for indice in ordre:
         if len(choisis) >= MAX_INDICES[palier]:
-            return None
+            break
+        if indice["type"] == "case":
+            if ancrages >= MAX_ANCRAGES[palier]:
+                continue
+            ancrages += 1
         choisis.append(indice)
         if len(choisis) >= MIN_INDICES[palier] and resoudre_par_deduction(choisis, n, noms_f, noms_c):
             return choisis
@@ -168,10 +262,21 @@ def _selection(paire, n: int, noms_f: list[str], noms_c: list[str], palier: int,
 
 def _secours(paire, n: int, noms_f: list[str], noms_c: list[str],
              rng: random.Random) -> list[dict]:
-    """Trois indices de secours vrais (aide progressive de l'interface)."""
-    pool = _pool(paire, n, noms_f, noms_c, DIRECTS | RELATIONNELS)
-    rng.shuffle(pool)
-    return pool[:3]
+    """Trois phrases de secours directes (aide progressive de l'interface)."""
+    fig, coul = paire
+    jetons = [(f, c) for f in range(n) for c in range(n)]
+    rng.shuffle(jetons)
+    secours = []
+    for f, c in jetons[:3]:
+        case = cellule(fig, coul, f, c)
+        forme = rng.choice(["case", "ligne", "colonne"])
+        if forme == "case":
+            secours.append(_indice("case", noms_f[f], noms_c[c], case=case))
+        else:
+            atome = _atome(forme, case, n)
+            secours.append(_indice(forme, noms_f[f], noms_c[c],
+                                   **{k: v for k, v in atome.items() if k != "type"}))
+    return secours
 
 
 def _item(palier: int, rang: int, paire, indices: list[dict], secours: list[dict],
@@ -186,17 +291,15 @@ def _item(palier: int, rang: int, paire, indices: list[dict], secours: list[dict
         "fonctions_ciblees": ["fonctions-executives", "memoire-travail"],
         "palier": palier,
         "prerequis": [] if palier == 1 else ["de-palier-%d" % (palier - 1)],
-        "cap_complexite": None,
+        "cap_complexite": "une phrase = deux informations croisées, jamais de placement direct à recopier",
         "contenu": {
-            "consigne": ("Place les figures colorées. Chaque figure colorée (un carré bleu, un cercle rouge…) "
-                         "apparaît une seule fois dans la grille. Méthode : note d'abord ce qui est certain, "
-                         "barre ce qui devient impossible, puis recoupe les indices qui relient deux figures."),
+            "consigne": CONSIGNE_3 if n == 3 else CONSIGNE_4,
             "figures": figures,
             "couleurs": couleurs,
             "enonces": indices,
             "indices": secours,
-            "aide": ("Les indices suffisent : en les recoupant, chaque case se déduit. "
-                     "Commence par ceux qui désignent une case précise."),
+            "aide": ("Chaque phrase donne deux informations. Marque ce qui est certain, "
+                     "barre ce qui devient impossible, puis recoupe avec les autres phrases."),
         },
         "reponse": {
             "valeur": ";".join("%s:%s" % (c[0], c[1]) for c in grille),
@@ -226,7 +329,7 @@ def generer_palier(palier: int, rng: random.Random, nombre: int,
         paire = univers[rang_grille]
         if paire in deja_vus:
             continue
-        for _ in range(8):
+        for _ in range(10):
             indices = _selection(paire, n, figures, couleurs, palier, rng)
             if indices:
                 deja_vus.add(paire)
@@ -281,7 +384,7 @@ def main() -> int:
     total = sum(len(p) for p in paliers)
     indices = [len(i["contenu"]["enonces"]) for p in paliers for i in p]
     print("Total : %d grilles, %d paliers, solutions distinctes : %d." % (total, len(paliers), len(deja_vus)))
-    print("Indices par grille : min %d, max %d, moyenne %.1f." %
+    print("Phrases par grille : min %d, max %d, moyenne %.1f." %
           (min(indices), max(indices), sum(indices) / len(indices)))
     return 0
 

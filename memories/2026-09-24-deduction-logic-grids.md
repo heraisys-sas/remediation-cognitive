@@ -40,3 +40,33 @@ Suite au retour « pas assez de phrases pour reconstruire la grille » :
 - stock étendu 16 → **80 grilles** (20/palier), **solutions toutes distinctes** (60/72 de l'univers 3×3, 20/6912 en 4×4). Le générateur prend `--par-palier` et échoue proprement si l'univers est épuisé.
 - le solveur est *sound* mais incomplet : un `False` invite à ajouter des indices (prudent), un `True` prouve la déductibilité. C'est la marge de sécurité voulue.
 - leçon : l'**unicité** ne suffit pas pour l'entraînement — un puzzle unique peut exiger des hypothèses (essayage) et devenir infaisable en rééducation. Toujours valider par un solveur qui raisonne comme la personne.
+
+## 2026-09-25 (suite) — « aucune déduction n'est provoquée » : refonte des phrases
+
+Retour utilisateur en trois points, tous fondés :
+
+1. **Les règles n'étaient pas énoncées.** La consigne ne disait que « chaque figure colorée
+   apparaît une seule fois », alors que le solveur et les grilles reposent sur les règles
+   latines (chaque figure et chaque couleur une fois par ligne et par colonne). Avec les six
+   placements directs de la première grille, les trois dernières cases restaient **ambiguës** :
+   impossible de reconstruire. Leçon : les règles utilisées par le solveur doivent être
+   exactement celles énoncées à la personne.
+2. **Les phrases de palier 1 étaient des placements directs** — recopiage, zéro déduction.
+   Corrigé : plus aucun placement direct (sauf 3 ancres en 4×4) ; chaque phrase porte
+   **deux informations** qui se croisent (champ `et` : ligne + pas-colonne, colonne + pas-coin…)
+   ou relie deux figures (relational, dont les nouvelles formes faibles `a-droite-de`,
+   `au-dessus-de` qui obligent à combiner).
+3. **L'outil manquait** : le logigramme papier se résout avec une grille d'élimination.
+   Ajouté dans l'interface : tableau de déduction cliquable (✗ / ✓) sous la grille —
+   mémoire de travail externalisée, comme en orthophonie.
+
+Autres décisions techniques :
+
+- sélection des phrases **par puissance** (fraction de l'espace éliminée) puis quota de
+  phrases composées par palier — sans le quota, les phrases relationnelles (plus fortes)
+  écrasaient toutes les composées ;
+- le solveur est le juge : 80/80 grilles déductibles après refonte ;
+- palier 4 : la grille 4×4 ne se referme pas par déduction pure sans point de départ →
+  3 ancres maximum, phrases 13-18 ; paliers 1-3 : zéro ancre ;
+- le validateur verrouille la pédagogie (aucun placement direct au palier 1, minimum de
+  phrases composées) en plus de la déductibilité.

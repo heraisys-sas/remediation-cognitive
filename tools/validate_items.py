@@ -42,7 +42,7 @@ from pathlib import Path
 # Le solveur de déduction sert de juge : un puzzle de grille qui n'est pas
 # entièrement résoluble par propagation (sans hypothèse) est refusé.
 sys.path.insert(0, str(Path(__file__).resolve().parent))
-from deduction_commun import resoudre_par_deduction  # noqa: E402
+from deduction_commun import pred_indice, resoudre_par_deduction  # noqa: E402
 
 #: Racine du dépôt (parent du dossier tools/) et dossiers de référence.
 RACINE_DEPOT = Path(__file__).resolve().parent.parent
@@ -388,10 +388,18 @@ def erreurs_contenu(item: dict, prefixe: str) -> list[str]:
 
 #: Types d'indices admis dans une grille de déduction.
 TYPES_INDICE_GRILLE = {
-    "case", "ligne", "colonne", "pas-coin", "pas-bord", "ni-ni",
+    "case", "ligne", "colonne", "pas-ligne", "pas-colonne",
+    "pas-coin", "pas-bord", "ni-ni",
     "voisin-gauche", "voisin-droite", "voisin-dessus", "voisin-dessous",
-    "autre-ligne", "autre-colonne", "comparaison", "si-alors", "regle",
+    "autre-ligne", "autre-colonne", "comparaison",
+    "a-droite-de", "a-gauche-de", "au-dessus-de", "en-dessous-de",
+    "si-alors", "regle",
 }
+
+#: Nombre minimal de phrases composées (deux informations croisées) par palier :
+#: c'est ce qui garantit qu'une phrase provoque un recoupement. Le palier 1
+#: n'utilise que cette forme, et **aucun placement direct à recopier**.
+QUOTA_MIN_COMPOSE = {1: 4, 2: 2, 3: 2, 4: 1}
 
 
 def _cellule_grille(fig: list[int], coul: list[int], i_f: int, i_c: int) -> int:
@@ -404,50 +412,16 @@ def _cellule_grille(fig: list[int], coul: list[int], i_f: int, i_c: int) -> int:
 
 def _predicat_grille(indice: dict, fig: list[int], coul: list[int],
                      index_figure: dict, index_couleur: dict, n: int) -> bool:
-    """Un indice (à deux informations) est-il vrai pour la solution ?"""
-    t = indice.get("type")
-    if t == "regle":
+    """Un indice (et ses **deux informations**) est-il vrai pour la solution ?
+
+    Le contrôle passe par le solveur commun : une seule définition de la vérité
+    des phrases, partagée par le générateur, le dépôt et les tests.
+    """
+    if indice.get("type") == "regle":
         return True
-    if indice.get("figure") not in index_figure or indice.get("couleur") not in index_couleur:
-        return False
-    case = _cellule_grille(fig, coul, index_figure[indice["figure"]], index_couleur[indice["couleur"]])
-    if case < 0:
-        return False
-    coins = {0, n - 1, n * (n - 1), n * n - 1}
-    bords = {i for i in range(n * n) if i // n in (0, n - 1) or i % n in (0, n - 1)}
-    if t == "case":
-        return case == indice["case"]
-    if t == "ligne":
-        return case // n == indice["ligne"]
-    if t == "colonne":
-        return case % n == indice["colonne"]
-    if t == "pas-coin":
-        return case not in coins
-    if t == "pas-bord":
-        return case not in bords
-    if t == "ni-ni":
-        return case not in coins and case not in bords
-    if indice.get("figure2") in index_figure and indice.get("couleur2") in index_couleur:
-        autre = _cellule_grille(fig, coul, index_figure[indice["figure2"]], index_couleur[indice["couleur2"]])
-        if autre < 0:
-            return False
-        if t == "voisin-gauche":
-            return autre == case + 1 and case % n != n - 1
-        if t == "voisin-droite":
-            return autre == case - 1 and case % n != 0
-        if t == "voisin-dessous":
-            return autre == case + n
-        if t == "voisin-dessus":
-            return autre == case - n
-        if t == "autre-ligne":
-            return case // n != autre // n
-        if t == "autre-colonne":
-            return case % n != autre % n
-        if t == "comparaison":
-            return case // n == autre // n and case < autre
-        if t == "si-alors":
-            return case not in coins or autre in bords
-    return False
+    noms_f = [nom for nom, _ in sorted(index_figure.items(), key=lambda kv: kv[1])]
+    noms_c = [nom for nom, _ in sorted(index_couleur.items(), key=lambda kv: kv[1])]
+    return pred_indice(indice, (tuple(fig), tuple(coul)), n, noms_f, noms_c)
 
 
 def _erreurs_grille_deduction(item: dict, prefixe: str, contenu: dict) -> list[str]:
@@ -509,8 +483,24 @@ def _erreurs_grille_deduction(item: dict, prefixe: str, contenu: dict) -> list[s
     fig = [index_figure[f] for f, _ in cellules]
     coul = [index_couleur[c] for _, c in cellules]
     for position, indice in enumerate(enonces, start=1):
-        if isinstance(indice, dict) and not _predicat_grille(indice, fig, coul, index_figure, index_couleur, n):
+        if not isinstance(indice, dict):
+            continue
+        if indice.get("type") not in TYPES_INDICE_GRILLE:
+            erreurs.append(prefixe + f"grille-deduction : indice {position} de type inconnu")
+        elif isinstance(indice.get("et"), dict) and indice["et"].get("type") not in TYPES_INDICE_GRILLE:
+            erreurs.append(prefixe + f"grille-deduction : seconde information {position} de type inconnu")
+        elif not _predicat_grille(indice, fig, coul, index_figure, index_couleur, n):
             erreurs.append(prefixe + f"grille-deduction : l'indice {position} contredit la solution")
+
+    # Pédagogie verrouillée : chaque phrase doit provoquer un recoupement.
+    palier = item.get("palier")
+    composes = sum(1 for i in enonces if isinstance(i, dict) and isinstance(i.get("et"), dict))
+    minimum = QUOTA_MIN_COMPOSE.get(palier, 0)
+    if composes < minimum:
+        erreurs.append(prefixe + f"grille-deduction : {composes} phrase(s) composée(s) seulement "
+                                f"(minimum {minimum} au palier {palier})")
+    if palier == 1 and any(isinstance(i, dict) and i.get("type") == "case" for i in enonces):
+        erreurs.append(prefixe + "grille-deduction : le palier 1 ne doit contenir aucun placement direct")
     secours = contenu.get("indices")
     if isinstance(secours, list):
         for position, indice in enumerate(secours, start=1):
