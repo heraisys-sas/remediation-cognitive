@@ -30,7 +30,7 @@ def test_grille_deduction_structure_et_correction(client):
     assert item["type"] == "grille-deduction"
     assert len(item["contenu"]["figures"]) == 3
     assert len(item["contenu"]["couleurs"]) == 3
-    assert 5 <= len(item["contenu"]["enonces"]) <= 20   # assez de phrases pour déduire, pas de remplissage
+    assert 4 <= len(item["contenu"]["enonces"]) <= 20   # assez de phrases pour déduire, pas de remplissage
     assert "reponse" not in item                    # la solution ne fuit jamais
 
     solution = CONTENU.item("deduction", item["id"])["reponse"]["valeur"]
@@ -66,20 +66,24 @@ def test_grille_deduction_indices_vrais_pour_la_solution():
 
 
 def test_grille_deduction_provoque_une_deduction():
-    """Le cœur du thème : chaque phrase porte deux informations qui se croisent,
-    et aucune grille ne se remplit en recopiant des placements directs."""
+    """Le cœur du thème : chaque phrase enchaîne plusieurs informations et relie deux
+    figures ; aucun placement direct, aucune règle cachée — les phrases suffisent."""
+    binaires = {"voisin-gauche", "voisin-droite", "voisin-dessus", "voisin-dessous",
+                "comparaison", "a-droite-de", "a-gauche-de", "au-dessus-de",
+                "en-dessous-de", "autre-ligne", "autre-colonne"}
     for item in CONTENU.items("deduction"):
-        contenu = item["contenu"]
-        enonces = contenu["enonces"]
-        composes = [e for e in enonces if isinstance(e, dict) and isinstance(e.get("et"), dict)]
-        assert len(composes) >= 1, f"{item['id']} : aucune phrase à deux informations croisées"
+        enonces = item["contenu"]["enonces"]
+        for position, phrase in enumerate(enonces, start=1):
+            atomes = [phrase] + list(phrase.get("et") or [])
+            assert len(atomes) >= 2, \
+                f"{item['id']} phrase {position} : une seule information"
+            assert not any(a.get("type") == "case" for a in atomes), \
+                f"{item['id']} phrase {position} : placement direct interdit"
+            assert any(a.get("type") in binaires for a in atomes), \
+                f"{item['id']} phrase {position} : ne relie aucune figure"
         if item["palier"] == 1:
-            assert not any(isinstance(e, dict) and e.get("type") == "case" for e in enonces), \
-                f"{item['id']} : placement direct au palier 1 (aucune déduction provoquée)"
-            assert len(composes) >= 4, f"{item['id']} : palier 1 trop pauvre en recoupements"
-        for indice in enonces:
-            if isinstance(indice, dict) and indice["type"] in ("ligne", "colonne"):
-                assert indice["et"]["type"] != indice["type"], f"{item['id']} : indice redondant"
+            assert all(len([p] + list(p.get("et") or [])) >= 3 for p in enonces), \
+                f"{item['id']} : le palier 1 commence par des phrases denses (trois informations)"
 
 
 def test_grilles_solubles_par_deduction_et_solutions_distinctes():

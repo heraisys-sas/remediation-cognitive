@@ -42,7 +42,7 @@ from pathlib import Path
 # Le solveur de déduction sert de juge : un puzzle de grille qui n'est pas
 # entièrement résoluble par propagation (sans hypothèse) est refusé.
 sys.path.insert(0, str(Path(__file__).resolve().parent))
-from deduction_commun import pred_indice, resoudre_par_deduction  # noqa: E402
+from deduction_commun import TYPES_BINAIRES as TYPES_BINAIRES_DEDUCTION, pred_indice, resoudre_par_deduction  # noqa: E402
 
 #: Racine du dépôt (parent du dossier tools/) et dossiers de référence.
 RACINE_DEPOT = Path(__file__).resolve().parent.parent
@@ -396,10 +396,12 @@ TYPES_INDICE_GRILLE = {
     "si-alors", "regle",
 }
 
-#: Nombre minimal de phrases composées (deux informations croisées) par palier :
-#: c'est ce qui garantit qu'une phrase provoque un recoupement. Le palier 1
-#: n'utilise que cette forme, et **aucun placement direct à recopier**.
-QUOTA_MIN_COMPOSE = {1: 4, 2: 2, 3: 2, 4: 1}
+#: Nombre minimal d'informations par phrase, par palier : au début, les phrases sont
+#: **denses** (chaîne d'une ancre et de deux relations) pour raccourcir l'exercice ;
+#: ensuite elles se resserrent à deux informations et il faut recouper davantage.
+QUOTA_MIN_COMPOSE = {1: 3, 2: 2, 3: 2, 4: 2}
+
+#: Types d'indices admis dans une grille de déduction.
 
 
 def _cellule_grille(fig: list[int], coul: list[int], i_f: int, i_c: int) -> int:
@@ -458,18 +460,9 @@ def _erreurs_grille_deduction(item: dict, prefixe: str, contenu: dict) -> list[s
             return erreurs
         cellules.append(case)
 
-    # Chaque figure une fois par ligne et par colonne (carré latin)…
-    for r in range(n):
-        ligne_f = sorted(cellules[r * n + c][0] for c in range(n))
-        ligne_c = sorted(cellules[r * n + c][1] for c in range(n))
-        if ligne_f != sorted(figures) or ligne_c != sorted(couleurs):
-            erreurs.append(prefixe + f"grille-deduction : la ligne {r + 1} ne contient pas chaque figure et couleur")
-    for c in range(n):
-        col_f = sorted(cellules[r * n + c][0] for r in range(n))
-        col_c = sorted(cellules[r * n + c][1] for r in range(n))
-        if col_f != sorted(figures) or col_c != sorted(couleurs):
-            erreurs.append(prefixe + f"grille-deduction : la colonne {c + 1} ne contient pas chaque figure et couleur")
-    # …et CHAQUE figure colorée une seule fois dans toute la grille.
+    # Chaque figure colorée (figure × couleur) est posée une seule fois : aucune
+    # combinaison ne se répète. C'est la SEULE règle du puzzle — aucune contrainte
+    # de ligne ou de colonne n'est supposée : tout doit venir des phrases.
     combinaisons = [(f, c) for f, c in cellules]
     if len(set(combinaisons)) != n * n:
         erreurs.append(prefixe + "grille-deduction : une figure colorée apparaît plusieurs fois (chaque combinaison doit être unique)")
@@ -487,20 +480,28 @@ def _erreurs_grille_deduction(item: dict, prefixe: str, contenu: dict) -> list[s
             continue
         if indice.get("type") not in TYPES_INDICE_GRILLE:
             erreurs.append(prefixe + f"grille-deduction : indice {position} de type inconnu")
-        elif isinstance(indice.get("et"), dict) and indice["et"].get("type") not in TYPES_INDICE_GRILLE:
-            erreurs.append(prefixe + f"grille-deduction : seconde information {position} de type inconnu")
+        elif any(isinstance(a, dict) and a.get("type") not in TYPES_INDICE_GRILLE
+                 for a in (indice.get("et") or [])):
+            erreurs.append(prefixe + f"grille-deduction : information {position} de type inconnu")
         elif not _predicat_grille(indice, fig, coul, index_figure, index_couleur, n):
             erreurs.append(prefixe + f"grille-deduction : l'indice {position} contredit la solution")
 
-    # Pédagogie verrouillée : chaque phrase doit provoquer un recoupement.
+    # Pédagogie verrouillée : les phrases doivent contenir la résolution.
     palier = item.get("palier")
-    composes = sum(1 for i in enonces if isinstance(i, dict) and isinstance(i.get("et"), dict))
-    minimum = QUOTA_MIN_COMPOSE.get(palier, 0)
-    if composes < minimum:
-        erreurs.append(prefixe + f"grille-deduction : {composes} phrase(s) composée(s) seulement "
-                                f"(minimum {minimum} au palier {palier})")
-    if palier == 1 and any(isinstance(i, dict) and i.get("type") == "case" for i in enonces):
-        erreurs.append(prefixe + "grille-deduction : le palier 1 ne doit contenir aucun placement direct")
+    minimum = QUOTA_MIN_COMPOSE.get(palier, 2)
+    if any(isinstance(i, dict) and i.get("type") == "case" for i in enonces):
+        erreurs.append(prefixe + "grille-deduction : placement direct interdit "
+                                "(toute la résolution doit venir des phrases)")
+    for position, indice in enumerate(enonces, start=1):
+        if not isinstance(indice, dict):
+            continue
+        informations = 1 + len(indice.get("et") or [])
+        if informations < minimum:
+            erreurs.append(prefixe + f"grille-deduction : phrase {position} à {informations} information(s) "
+                                    f"(minimum {minimum} au palier {palier})")
+        if not any(a.get("type") in TYPES_BINAIRES_DEDUCTION for a in [indice] + list(indice.get("et") or [])):
+            erreurs.append(prefixe + f"grille-deduction : phrase {position} ne relie aucune figure "
+                                    "(aucune déduction provoquée)")
     secours = contenu.get("indices")
     if isinstance(secours, list):
         for position, indice in enumerate(secours, start=1):

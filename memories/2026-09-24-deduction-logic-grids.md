@@ -70,3 +70,28 @@ Autres décisions techniques :
   3 ancres maximum, phrases 13-18 ; paliers 1-3 : zéro ancre ;
 - le validateur verrouille la pédagogie (aucun placement direct au palier 1, minimum de
   phrases composées) en plus de la déductibilité.
+
+## 2026-09-25 (soir) — la règle latine était une invention : refonte en chaînes
+
+Retour décisif de l'utilisateur : « ça n'est pas une règle générale ; les phrases d'indices
+doivent contenir tous les éléments de la résolution du problème ».
+
+- J'avais introduit les règles latines (figure et couleur une fois par ligne et par colonne)
+  pour qu'un petit nombre de phrases suffise. C'était un raccourci de conception : la grille
+  n'était alors pas reconstructible à partir des seules phrases. **Une règle non énoncée
+  n'existe pas.**
+- Nouveau socle : **une seule règle**, évidente — chaque figure colorée posée une fois, une
+  figure par case. Le solveur n'utilise que ça (propagation de domaines + consistance d'arc
+  sur les relations, plus « case déterminée » et « figure à une seule case possible »).
+- **Phrases en chaîne** : un repère, puis des relations d'une figure à la suivante
+  (« …, qui est juste au-dessus de … »). Trois informations et plus par phrase, donc peu de
+  phrases : 4 au palier 1, 8 aux paliers 2-3, 15 en 4×4. Les phrases sont le seul support.
+- Le tri par « force » ne suffisait pas : la sélection est maintenant **gloutonne pilotée par
+  le solveur** (chaque étape prend la phrase qui minimise le nombre de cases encore ouvertes).
+  C'est ce qui donne l'ensemble le plus court qui détermine la grille.
+- Conséquence heureuse : l'univers des placements passe à 9! (et 16! en 4×4) — le stock long
+  terme n'est plus contraint par les 72 grilles latines.
+- Paliers différenciés par la **nature** des relations et des repères (voisinage → relations
+  variées → repères négatifs + relations lâches → 4×4), sinon les paliers 2 et 3 se ressemblaient.
+- Leçon générale à garder : ne jamais introduire une règle implicite pour simplifier la
+  génération. Si la résolution dépend d'autre chose que de l'énoncé, l'exercice est faux.

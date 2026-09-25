@@ -1,74 +1,60 @@
 # Module « Déduction » (logigramme 3×3 et 4×4 — hors MDR)
 
-**Principe** : un puzzle de raisonnement déductif — la famille des *logigrammes*, appliquée à un **placement spatial**. Une grille N×N contient N figures et N couleurs, et chaque figure colorée (« carré bleu », « cercle rouge »…) apparaît une seule fois.
+**Principe** : un puzzle de raisonnement déductif. Une grille N×N, N figures et N couleurs, et **une seule règle** : chaque figure colorée (« carré bleu », « cercle rouge »…) se pose une fois, dans une case, et une case ne contient qu'une figure.
 
-## Les règles, énoncées dans la consigne
+Tout le reste doit venir des **phrases**. Aucune règle cachée, aucun tirage implicite : si une phrase n'est pas écrite, elle ne sert pas.
 
-Elles sont écrites noir sur blanc au début de chaque grille, parce qu'elles sont **nécessaires pour reconstruire le tableau** :
+## Les phrases sont des chaînes
 
-1. chaque ligne contient chaque figure une seule fois et chaque couleur une seule fois ;
-2. chaque colonne aussi ;
-3. donc chaque figure colorée n'apparaît qu'une seule fois dans la grille.
+Une phrase part d'un **repère** sur une figure, puis **suit les relations** d'une figure à la suivante. Elle porte donc trois informations ou plus, ce qui **raccourcit l'exercice** — surtout au début :
 
-Sans ces trois règles, les dernières cases resteraient ambiguës : la personne ne pourrait pas terminer l'exercice. Elles sont rappelées avant chaque grille, pas seulement la première fois.
+> « Le carré rouge est sur la ligne du bas, **est juste à droite du cercle vert, qui est juste au-dessus du cercle rouge**. »
 
-## Une phrase = deux informations qui se croisent
-
-C'est le cœur du logigramme, et la correction principale du module : **aucune phrase ne donne un placement à recopier**.
-
-| Forme | Exemple | Ce que ça oblige à faire |
-|---|---|---|
-| Deux contraintes sur la même figure | « Le carré vert est sur la ligne du bas, **mais** pas dans la colonne du milieu. » | croiser les deux informations pour situer la figure |
-| Relation entre deux figures | « Le cercle bleu est juste en dessous du triangle rouge. » | reporter une certitude d'une figure sur l'autre |
-| Comparaison faible | « Le losange jaune est plus à droite que le carré bleu. » | combiner avec les autres phrases pour trancher |
-| Négation | « Le triangle bleu n'est ni dans un coin ni sur le bord. » | éliminer |
-| Conditionnel | « Si le cercle vert est dans un coin, alors le cercle bleu est sur le bord. » | raisonner par cas |
-
-La **méthode** enseignée dans la consigne est celle du logigramme : noter ce qui est **certain**, barrer ce qui devient **impossible**, puis **recouper** les phrases qui relient deux figures.
-
-## Le tableau de déduction (brouillon cliquable)
-
-Sous la grille, un tableau dépliable : **une ligne par figure colorée, une colonne par case**. Un clic marque une case ✗ (impossible) ou ✓ (certain). C'est le brouillon papier de l'orthophoniste, en version numérique : la mémoire de travail est externalisée, la personne n'a plus à « tenir » toutes les hypothèses de tête.
+Trois informations, trois figures situées les unes par rapport aux autres : la résolution se fait en suivant la chaîne, puis en croisant les chaînes entre elles (la même figure apparaît dans plusieurs phrases).
 
 ## Paliers
 
 | Palier | Grille | Phrases |
 |---|---|---|
-| 1 | 3×3 | croisements ligne × colonne (aucun placement direct) |
-| 2 | 3×3 | + relations entre figures (voisinage, à droite de, pas sur la même ligne) |
-| 3 | 3×3 | + négations et conditionnel |
-| 4 | 4×4 | 4 figures × 4 couleurs, phrases variées, **3 ancres de départ** |
+| 1 | 3×3 | chaînes longues : un repère sûr, puis deux relations de voisinage |
+| 2 | 3×3 | repères sûrs et relations variées (voisinage, à droite de, plus haut que) |
+| 3 | 3×3 | repères **négatifs** (« n'est pas dans un coin ») et relations lâches : éliminer pour déduire |
+| 4 | 4×4 | 4 figures × 4 couleurs |
 
-**20 grilles par palier, soit 80 grilles** — et 3 phrases de secours par grille (bouton « Un indice »), qui n'apparaissent que si on les demande.
+**20 grilles par palier, soit 80 grilles**, et 3 phrases de secours par grille (bouton « Un indice »), qui n'apparaissent que si on les demande.
 
-La grille 4×4 reçoit trois ancres (placement direct) : sans point de départ, elle ne se referme pas par déduction pure. Les paliers 1 à 3 n'en contiennent **aucune**.
+Dosage mesuré : **4 phrases** au palier 1 (12 informations), 8 aux paliers 2 et 3 (16 informations), 15 en 4×4 (30 informations).
 
 ## La garantie : le solveur est le juge
 
-Un puzzle peut être unique et rester infaisable si sa reconstruction exige des hypothèses. Le thème ne laisse rien à l'intuition :
+`tools/deduction_commun.py` raisonne comme la personne, **avec la seule règle énoncée** :
 
-- un **solveur de déduction** (`tools/deduction_commun.py`) raisonne comme la personne : chaque case part avec toutes les figures colorées possibles, le moteur retire ce qui devient impossible (règles du jeu + chaque phrase), et recommence jusqu'à point fixe ;
-- la génération est **constructive** : on part de la solution et on ajoute des phrases **jusqu'à ce que le solveur termine** — toutes les cases déterminées par propagation, sans aucune hypothèse ;
-- un puzzle que le solveur ne résout pas n'est **jamais livré** : le générateur l'écarte, le validateur le refuse, et un test rejoue le solveur sur chaque grille du dépôt ;
-- le validateur verrouille aussi la **pédagogie** : aucun placement direct au palier 1, minimum de phrases composées par palier.
+- chaque case part avec toutes les figures colorées possibles ;
+- chaque phrase retire ce qui devient impossible (positions, relations entre figures) ;
+- une case déterminée fixe sa figure ; une figure qui n'a plus qu'une case possible s'y place ;
+- le moteur recommence jusqu'à ce que plus rien ne bouge.
 
-## Stock long terme (3 mois)
+Si toutes les cases sont déterminées, la grille est **déductible des seules phrases** — sans hypothèse, sans règle ajoutée. La génération est constructive : on ajoute les phrases qui **déterminent le plus de cases**, jusqu'à ce que le solveur termine.
 
-- l'univers des solutions est **fini** : 72 grilles 3×3, 6 912 grilles 4×4 ;
-- une même **solution** n'est jamais resservie dans le thème : toutes les grilles ont une solution différente ;
+Le contrôle est triple : à la génération, au dépôt (le validateur refuse une grille non déductible ou une phrase à une seule information), et par un test rejoué sur chaque grille du dépôt.
+
+## Stock long terme
+
+- l'univers des placements est **immense** : 9! = 362 880 placements en 3×3, plus de 2×10¹³ en 4×4 ;
+- une même **solution** n'est jamais resservie dans le thème ;
 - à la cadence du programme (environ une séance de déduction par semaine), le stock couvre **plus de trois mois sans jamais revoir la même grille** ;
-- pour prolonger : `--par-palier` au générateur (jusqu'à 24 en 3×3), ou l'ajout d'une cinquième figure et d'une cinquième couleur (univers 5×5) — changement à faire d'un seul tenant (consigne, interface, générateur, validateur).
+- pour prolonger : `--par-palier` au générateur, ou une cinquième figure et une cinquième couleur.
+
+## Tableau de déduction (brouillon cliquable)
+
+Sous la grille, un tableau dépliable : **une ligne par figure colorée, une colonne par case**. Un clic marque une case ✗ (impossible) ou ✓ (certain) : c'est le brouillon papier du logigramme, en version numérique — la mémoire de travail est externalisée.
 
 ## Interaction
 
-Palette de jetons (figure × couleur), placement par clic, « Vider la grille », « Un indice », validation, correction cases justes/fausses, et le tableau de déduction. La solution ne fuit jamais avant validation.
-
-Un jeton déjà posé est **grisé et non sélectionnable** : il redevient disponible dès qu'on le retire de sa case (clic sur la case occupée, ou « Vider la grille »). Poser un jeton sur une case occupée remplace l'ancien et libère le premier. Après chaque pose, la sélection se vide — impossible de placer deux fois la même figure colorée.
+Palette de jetons (figure × couleur), placement par clic, « Vider la grille », « Un indice », validation, correction cases justes/fausses, tableau de déduction. Un jeton déjà posé est **grisé et non sélectionnable** ; il redevient disponible dès qu'on le retire de sa case. La solution ne fuit jamais avant validation.
 
 ## Génération
 
-`tools/generer_deduction.py` — déterministe (graine fixe), piloté par le solveur de déduction, solutions uniques sur tout le thème :
-
     python3 tools/generer_deduction.py --par-palier 20
 
-Relecture orthophoniste à faire.
+Déterministe (graine fixe), piloté par le solveur, placements tous distincts. Relecture orthophoniste à faire.

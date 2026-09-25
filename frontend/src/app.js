@@ -1478,7 +1478,7 @@ function nomsPour(n) {
 /** Formule un indice structuré en français lisible (n = taille de la grille).
  *  Chaque indice porte deux informations : une figure colorée et sa place
  *  (ou sa relation à une autre figure colorée). */
-/** Contrainte élémentaire d'une phrase : fragment de prédicat + forme négative. */
+/** Contrainte élémentaire de position : fragment de prédicat + forme négative. */
 function predicatAtome(atome, n) {
   const noms = nomsPour(n);
   switch (atome.type) {
@@ -1494,51 +1494,64 @@ function predicatAtome(atome, n) {
   }
 }
 
-/** Formule un indice structuré en français lisible (n = taille de la grille).
- *  Chaque phrase porte **deux informations** : soit deux contraintes croisées sur la
- *  même figure, soit une relation entre deux figures colorées. */
-function formaterEnonce(indice, n) {
-  const noms = nomsPour(n);
-  const fc = `${libelleFigure(indice.figure)} ${indice.couleur}`;
-
-  // Phrase composée : deux informations croisées sur la même figure.
-  if (indice.et) {
-    const p1 = predicatAtome(indice, n);
-    const p2 = predicatAtome(indice.et, n);
-    if (p1.negation === null && p2.negation === null) return `Le ${fc} ${p1.texte} et ${p2.texte}.`;
-    if (p1.negation === null && p2.negation === "pas") return `Le ${fc} ${p1.texte}, mais n'est pas ${p2.texte}.`;
-    if (p1.negation === null && p2.negation === "ni") return `Le ${fc} ${p1.texte}, mais n'est ni ${p2.texte}.`;
-    return `Le ${fc} n'est ni ${p1.texte}, ni ${p2.texte}.`;
-  }
-
-  const fc2 = `${libelleFigure(indice.figure2)} ${indice.couleur2}`;
-  switch (indice.type) {
-    case "case": return `Le ${fc} est ${noms.cases[indice.case]}.`;
-    case "ligne": return `Le ${fc} est sur la ligne ${noms.lignes[indice.ligne]}.`;
-    case "colonne": return `Le ${fc} est dans la colonne ${noms.colonnes[indice.colonne]}.`;
-    case "pas-ligne": return `Le ${fc} n'est pas sur la ligne ${noms.lignes[indice.ligne]}.`;
-    case "pas-colonne": return `Le ${fc} n'est pas dans la colonne ${noms.colonnes[indice.colonne]}.`;
-    case "pas-coin": return `Le ${fc} n'est pas dans un coin.`;
-    case "pas-bord": return `Le ${fc} n'est pas sur le bord.`;
-    case "ni-ni": return `Le ${fc} n'est ni dans un coin ni sur le bord.`;
-    case "voisin-gauche": return `Le ${fc} est juste à gauche du ${fc2}.`;
-    case "voisin-droite": return `Le ${fc} est juste à droite du ${fc2}.`;
-    case "voisin-dessus": return `Le ${fc} est juste au-dessus du ${fc2}.`;
-    case "voisin-dessous": return `Le ${fc} est juste en dessous du ${fc2}.`;
-    case "autre-ligne": return `Le ${fc} n'est pas sur la même ligne que le ${fc2}.`;
-    case "autre-colonne": return `Le ${fc} n'est pas dans la même colonne que le ${fc2}.`;
-    case "comparaison": return `Le ${fc} est à gauche du ${fc2}, sur la même ligne.`;
-    case "a-droite-de": return `Le ${fc} est plus à droite que le ${fc2}.`;
-    case "a-gauche-de": return `Le ${fc} est plus à gauche que le ${fc2}.`;
-    case "au-dessus-de": return `Le ${fc} est plus haut que le ${fc2}.`;
-    case "en-dessous-de": return `Le ${fc} est plus bas que le ${fc2}.`;
-    case "si-alors": return `Si le ${fc} est dans un coin, alors le ${fc2} est sur le bord.`;
-    case "regle":
-      return indice.variante === 0
-        ? "Chaque figure colorée apparaît une seule fois dans la grille."
-        : "Chaque ligne contient toutes les figures, une fois chacune.";
+/** Relation entre deux figures colorées, formulée depuis la première. */
+function relationAtome(atome, n) {
+  const cible = `${libelleFigure(atome.figure2)} ${atome.couleur2}`;
+  switch (atome.type) {
+    case "voisin-gauche": return `est juste à gauche du ${cible}`;
+    case "voisin-droite": return `est juste à droite du ${cible}`;
+    case "voisin-dessus": return `est juste au-dessus du ${cible}`;
+    case "voisin-dessous": return `est juste en dessous du ${cible}`;
+    case "comparaison": return `est à gauche du ${cible}, sur la même ligne`;
+    case "a-droite-de": return `est plus à droite que le ${cible}`;
+    case "a-gauche-de": return `est plus à gauche que le ${cible}`;
+    case "au-dessus-de": return `est plus haut que le ${cible}`;
+    case "en-dessous-de": return `est plus bas que le ${cible}`;
+    case "autre-ligne": return `n'est pas sur la même ligne que le ${cible}`;
+    case "autre-colonne": return `n'est pas dans la même colonne que le ${cible}`;
+    case "si-alors": return `si le ${cible} est dans un coin, alors lui aussi est sur le bord`;
     default: return "";
   }
+}
+
+/** Retire le « est » de tête quand la phrase enchaîne deux prédicats. */
+function sansEst(texte) {
+  return texte.startsWith("est ") ? texte.slice(4) : texte;
+}
+
+function predicatDe(atome, n) {
+  const position = predicatAtome(atome, n);
+  if (position.texte) return position.texte;
+  return relationAtome(atome, n);
+}
+
+/** Formule une phrase en français lisible (n = taille de la grille).
+ *  Une phrase est une **chaîne** : un repère sur une figure, puis des relations
+ *  d'une figure à la suivante (« …, qui est juste au-dessus du … »). */
+function formaterEnonce(indice, n) {
+  const atomes = [indice, ...(Array.isArray(indice.et) ? indice.et : [])];
+  const nomDe = (atome) =>
+    `${libelleFigure(atome.figure || indice.figure)} ${atome.couleur || indice.couleur}`;
+
+  let texte = "";
+  let sujet = null;
+  let cible = null;
+  atomes.forEach((atome, rang) => {
+    const ceSujet = `${atome.figure || indice.figure}:${atome.couleur || indice.couleur}`;
+    const predicat = predicatDe(atome, n);
+    if (rang === 0) {
+      texte += `Le ${nomDe(atome)} ${predicat}`;
+    } else if (ceSujet === sujet) {
+      texte += ` et ${sansEst(predicat)}`;
+    } else if (ceSujet === cible) {
+      texte += `, qui ${predicat}`;
+    } else {
+      texte += `, et le ${nomDe(atome)} ${predicat}`;
+    }
+    sujet = ceSujet;
+    if (atome.figure2) cible = `${atome.figure2}:${atome.couleur2}`;
+  });
+  return texte + ".";
 }
 
 /** Étiquettes courtes des cases, pour le tableau de déduction. */

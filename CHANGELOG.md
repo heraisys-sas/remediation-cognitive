@@ -2,6 +2,18 @@
 
 Format : [date] — [périmètre] — description. Les retours informels de l'orthophoniste sont journalisés ici, sans caution clinique.
 
+## 2026-09-25 · Déduction : les phrases contiennent la résolution (fin de la règle inventée)
+
+Retour de conception : la règle « chaque figure et chaque couleur une fois par ligne et par colonne » n'est **pas** une règle de l'exercice. Elle avait été ajoutée pour que peu de phrases suffisent, et elle rendait la grille impossible à reconstruire honnêtement. Corrigé en profondeur.
+
+- **Une seule règle désormais** : chaque figure colorée se pose une fois, une case ne contient qu'une figure. Tout le reste vient des phrases ; la consigne le dit ainsi.
+- **Phrases en chaîne** — un repère, puis des relations d'une figure à la suivante : « Le carré rouge est sur la ligne du bas, est juste à droite du cercle vert, qui est juste au-dessus du cercle rouge. » Trois informations et plus par phrase, donc **moins de phrases** (4 au palier 1, 8 aux paliers 2-3, 15 en 4×4).
+- **Le solveur juge avec la seule règle énoncée** : la déductibilité est prouvée sans aucune règle ajoutée. Sélection gloutonne pilotée par le solveur (la phrase qui détermine le plus de cases).
+- **Paliers différenciés** : 1 chaînes longues de voisinage ; 2 relations variées ; 3 repères négatifs et relations lâches (élimination) ; 4 grille 4×4.
+- **Remplacement de contenu (thème `deduction`)** — les 80 grilles sont régénérées ; placements tous distincts. L'univers passe de 72 solutions 3×3 à 9! = 362 880 : le stock n'est plus limité.
+- **Validateur** : plus de contrôle de ligne/colonne ; refus d'un placement direct, d'une phrase à une seule information ou d'une phrase sans relation.
+- **Contrôles** — 875 items / 0 erreur ; 145 tests.
+
 ## 2026-09-25 · Déduction : palette qui se grise
 
 - **Les figures déjà posées sont grisées** dans la palette et ne sont plus sélectionnables : on ne peut pas placer deux fois la même figure colorée. Elles redeviennent disponibles dès qu'on les retire de la grille (clic sur la case occupée, ou « Vider la grille »).
