@@ -559,7 +559,19 @@ function montrerItem() {
 }
 
 /** Phase de mémorisation : la consigne est posée, le stimulus attend le signal. */
+/** Vide toutes les zones de réponse : aucune trace du test précédent ne doit
+ *  rester visible, pas même pendant la phase de mémorisation où l'on ne répond
+ *  pas encore. Régression constatée : en changeant de rubrique, les propositions
+ *  du test précédent restaient affichées sous le nouveau test. */
+function viderZonesReponse() {
+  for (const zone of [refs.zoneChoix, refs.zoneIndices, refs.zoneGeneration, refs.zoneGrille]) {
+    zone.replaceChildren();
+    zone.hidden = true;
+  }
+}
+
 function afficherPhaseMemo(item) {
+  viderZonesReponse();
   const contenu = item.contenu || {};
   const affichage = contenu.affichage;
   const estSequence = affichage.mode === "sequence";
@@ -730,10 +742,7 @@ function jouerDelaiOuQuestion(item) {
 function afficherQuestion(item) {
   annulerMemo();
   const contenu = item.contenu || {};
-  refs.zoneGrille.hidden = true;
-  refs.zoneGrille.replaceChildren();
-  refs.zoneGeneration.hidden = true;
-  refs.zoneGeneration.replaceChildren();
+  viderZonesReponse();
   // Capacités du poste : réinitialisées pour chaque question (la dictée ne
   // s'affiche que pour une réponse à saisir ; l'écoute suit la disponibilité).
   CAPACITES.arreter();

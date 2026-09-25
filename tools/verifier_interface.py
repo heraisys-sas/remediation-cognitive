@@ -30,6 +30,18 @@ FONCTIONS_A_REINITIALISER = {
     "montrerItem": 'annulerMemo()',
 }
 
+#: Fonctions qui ouvrent une nouvelle étape de l'exercice : elles doivent vider
+#: les zones de réponse (régression constatée : en changeant de rubrique, les
+#: propositions du test précédent restaient affichées, y compris pendant la
+#: phase de mémorisation du test suivant).
+FONCTIONS_A_VIDER = {
+    "afficherPhaseMemo": "viderZonesReponse()",
+    "afficherQuestion": "viderZonesReponse()",
+}
+
+#: Zones de réponse que le vidage doit couvrir.
+ZONES_REPONSE = ("refs.zoneChoix", "refs.zoneIndices", "refs.zoneGeneration", "refs.zoneGrille")
+
 
 def corps_fonction(source: str, nom: str) -> str | None:
     """Extrait le corps d'une fonction (accolades équilibrées) ou None."""
@@ -119,6 +131,26 @@ def main() -> int:
             erreurs += 1
         else:
             print(f"Réinitialisation dans {fonction} : OK")
+
+    # Vidage des zones de réponse à chaque nouvelle étape.
+    corps_vidage = corps_fonction(source, "viderZonesReponse")
+    if corps_vidage is None:
+        print("ERREUR : fonction viderZonesReponse introuvable")
+        erreurs += 1
+    else:
+        manquantes = [zone for zone in ZONES_REPONSE if zone not in corps_vidage]
+        if manquantes or "replaceChildren" not in corps_vidage:
+            print(f"ERREUR : viderZonesReponse ne vide pas {', '.join(manquantes) or 'les zones'}")
+            erreurs += 1
+        else:
+            print(f"Vidage des zones de réponse : OK ({len(ZONES_REPONSE)} zones)")
+    for fonction, attendu in FONCTIONS_A_VIDER.items():
+        corps = corps_fonction(source, fonction)
+        if corps is None or attendu not in corps:
+            print(f"ERREUR : {fonction} ne vide pas les zones de réponse")
+            erreurs += 1
+        else:
+            print(f"Zones vidées dans {fonction} : OK")
 
     return 1 if erreurs else 0
 

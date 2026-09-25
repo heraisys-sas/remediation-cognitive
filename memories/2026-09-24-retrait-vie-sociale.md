@@ -24,3 +24,16 @@
 
 - Passage visuel de la section renommée.
 - Relecture orthophoniste (dont le README des missions et son argumentaire).
+
+## 2026-09-25 — fuite d'affichage entre rubriques (phase de mémorisation)
+
+Symptôme : en changeant de rubrique, les propositions du test précédent restaient affichées.
+
+- Cause : `afficherPhaseMemo` masquait `refs.formulaire` mais ne vidait **aucune** zone de
+  réponse. Le contenu du test quitté (propositions, invites d'analyse de mot, grille) survivait
+  jusqu'à la première question suivante.
+- Correctif : `viderZonesReponse()` (choix, indices, génération, grille) appelée au début de
+  la mémorisation **et** de la question.
+- Leçon : tout conteneur partagé entre exercices doit être vidé à l'entrée de **chaque** phase,
+  pas seulement quand on le remplit. Le contrôle d'interface vérifie maintenant cette règle
+  (quatre zones, deux phases) — test négatif concluant.

@@ -2,6 +2,15 @@
 
 Format : [date] — [périmètre] — description. Les retours informels de l'orthophoniste sont journalisés ici, sans caution clinique.
 
+## 2026-09-25 · Changement de rubrique : les propositions du test précédent restaient affichées
+
+Signalement : en passant de « Retrouver le mot » à « Méthodes » (et inversement), les propositions du test quitté restaient visibles sous le nouveau test.
+
+- **Cause** : la phase de mémorisation masquait le formulaire mais ne vidait pas les **zones de réponse**. Les propositions du test précédent — et, plus largement, une grille de déduction ou les invites d'analyse de mot — restaient affichées jusqu'à la première question du test suivant.
+- **Corrigé** : une fonction unique `viderZonesReponse()` vide les quatre zones concernées (choix, indices, génération, grille) ; elle est appelée à **chaque nouvelle étape** (mémorisation et question).
+- **Garde-fou** : le contrôle d'interface vérifie désormais que le vidage couvre les quatre zones et qu'il est bien appelé dans les deux phases. Test négatif réalisé : en retirant l'appel, le contrôle échoue.
+- **Contrôles** — 875 items / 0 erreur ; 147 tests.
+
 ## 2026-09-25 · Déduction : diagonales, coins, « à l'opposé de », et zéro phrase redondante
 
 Demande : enrichir le vocabulaire des phrases et supprimer les indications redondantes.
