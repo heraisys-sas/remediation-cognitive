@@ -86,6 +86,13 @@ const ATTENDUS = {
   "pas-ligne": { contient: ["n'est pas sur la ligne"], exclut: [] },
   "pas-colonne": { contient: ["n'est pas dans la colonne"], exclut: [] },
   "pas-coin": { contient: ["n'est pas dans un coin"], exclut: [] },
+  "coin": { contient: ["est dans un coin"], exclut: ["n'est pas"] },
+  "diagonale": { contient: ["diagonale descendante"], exclut: ["n'est pas"] },
+  "diagonale-inverse": { contient: ["diagonale montante"], exclut: ["descendante", "n'est pas"] },
+  "pas-diagonale": { contient: ["n'est pas sur la diagonale descendante"], exclut: [] },
+  "pas-diagonale-inverse": { contient: ["n'est pas sur la diagonale montante"], exclut: ["descendante"] },
+  "voisin-diagonale": { contient: ["en diagonale"], exclut: ["juste à gauche", "juste au-dessus", "juste en dessous"] },
+  "oppose": { contient: ["à l'opposé"], exclut: ["juste"] },
   "pas-bord": { contient: ["n'est pas sur le bord"], exclut: [] },
   "ni-ni": { contient: ["n'est ni"], exclut: [] },
 };

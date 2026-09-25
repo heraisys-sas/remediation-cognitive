@@ -132,3 +132,18 @@ Signalement : « la solution inverse le haut et le bas par rapport aux phrases �
   que ce qu'il annonce (test négatif réalisé : 298 anomalies détectées en inversant le rendu).
 - Leçon : quand deux composants partagent une convention, la vérifier par une **seconde
   lecture indépendante** (ici le français), jamais par le même code.
+
+## 2026-09-25 (soir) — vocabulaire enrichi et chasse aux redondances
+
+Demande : utiliser diagonales, coins, « à l'opposé de » ; éviter les indications redondantes.
+
+- Ajout de types : `coin` (positif), `diagonale` / `diagonale-inverse` (+ négations),
+  `voisin-diagonale`, `oppose` (symétrie par le centre). Le vocabulaire se décline par palier.
+- Constat : la gloutonne pilotée par le solveur **sacrifiait le vocabulaire rare** au profit de
+  chaînes plus longues (`oppose` présent 60 fois dans le vivier, jamais retenu). D'où
+  `VOCABULAIRE_REQUIS` : une phrase au moins de chaque forme demandée, protégée du nettoyage.
+- **Minimalisation** : après la sélection, toute phrase retirable sans perdre la déductibilité
+  est supprimée — aucune indication redondante. Contrôle indépendant : retirer une phrase
+  quelconque casse la déductibilité.
+- Le test des relations énumérait les types à la main : il a raté les deux nouveaux. Corrigé en
+  important `TYPES_BINAIRES` (source unique) plutôt qu'en recopiant la liste.

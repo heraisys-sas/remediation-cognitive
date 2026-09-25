@@ -66,20 +66,24 @@ COULEURS = ["rouge", "bleu", "vert", "jaune"]
 RELATIONS_PAR_PALIER = {
     1: {"voisin-gauche", "voisin-droite", "voisin-dessus", "voisin-dessous"},
     2: {"voisin-gauche", "voisin-droite", "voisin-dessus", "voisin-dessous",
-        "comparaison", "a-droite-de", "a-gauche-de", "au-dessus-de", "en-dessous-de"},
-    3: {"comparaison", "a-droite-de", "a-gauche-de", "au-dessus-de", "en-dessous-de",
-        "autre-ligne", "autre-colonne"},
+        "voisin-diagonale", "comparaison", "a-droite-de", "a-gauche-de",
+        "au-dessus-de", "en-dessous-de"},
+    3: {"voisin-diagonale", "comparaison", "a-droite-de", "a-gauche-de",
+        "au-dessus-de", "en-dessous-de", "autre-ligne", "autre-colonne"},
     4: {"voisin-gauche", "voisin-droite", "voisin-dessus", "voisin-dessous",
-        "comparaison", "a-droite-de", "a-gauche-de", "au-dessus-de", "en-dessous-de",
-        "autre-ligne", "autre-colonne"},
+        "voisin-diagonale", "oppose", "comparaison", "a-droite-de", "a-gauche-de",
+        "au-dessus-de", "en-dessous-de", "autre-ligne", "autre-colonne"},
 }
 #: Repères autorisés pour l'ancre d'une chaîne, par palier.
 #: Les paliers 3 et 4 n'acceptent que des repères **négatifs** : il faut éliminer.
 ANCRES_PAR_PALIER = {
-    1: {"ligne", "colonne"},
-    2: {"ligne", "colonne"},
-    3: {"pas-ligne", "pas-colonne", "pas-coin", "pas-bord", "ni-ni"},
-    4: {"ligne", "colonne", "pas-ligne", "pas-colonne", "pas-coin", "pas-bord", "ni-ni"},
+    1: {"ligne", "colonne", "coin"},
+    2: {"ligne", "colonne", "coin", "diagonale", "diagonale-inverse"},
+    3: {"pas-ligne", "pas-colonne", "pas-coin", "pas-bord", "ni-ni",
+        "pas-diagonale", "pas-diagonale-inverse"},
+    4: {"ligne", "colonne", "coin", "diagonale", "diagonale-inverse",
+        "pas-ligne", "pas-colonne", "pas-coin", "pas-bord", "ni-ni",
+        "pas-diagonale", "pas-diagonale-inverse"},
 }
 #: Longueur maximale d'une chaîne (nombre de relations après l'ancre).
 LONGUEUR_CHAINE = {1: 2, 2: 1, 3: 1, 4: 1}
@@ -90,6 +94,16 @@ MIN_PHRASES = {1: 4, 2: 5, 3: 6, 4: 8}
 MAX_PHRASES = {1: 9, 2: 12, 3: 14, 4: 20}
 #: Nombre maximal d'ancres par grille (une ancre = un point de départ).
 MAX_ANCRES = {1: 3, 2: 4, 3: 5, 4: 8}
+#: Vocabulaire à faire apparaître dans chaque palier : au moins une phrase qui
+#: l'utilise (le choix libre sacrifiait le vocabulaire rare au profit de chaînes
+#: plus longues). Ces phrases-là sont protégées du nettoyage des redondances.
+VOCABULAIRE_REQUIS = {
+    1: {"coin"},
+    2: {"diagonale", "diagonale-inverse", "voisin-diagonale"},
+    3: {"pas-diagonale", "pas-diagonale-inverse", "voisin-diagonale"},
+    4: {"oppose", "coin", "diagonale"},
+}
+
 #: Largeur de faisceau : on ne garde que les meilleures chaînes partielles.
 FAISCEAU = 60
 #: Nombre de phrases conservées dans le vivier.
@@ -112,12 +126,17 @@ def _atomes_position(case: int, n: int) -> list[dict]:
             atomes.append({"type": "pas-ligne", "ligne": x})
         if x != colonne:
             atomes.append({"type": "pas-colonne", "colonne": x})
-    if case not in coins(n):
+    if case in coins(n):
+        atomes.append({"type": "coin"})
+    else:
         atomes.append({"type": "pas-coin"})
     if case not in bords(n):
         atomes.append({"type": "pas-bord"})
     if case not in coins(n) and case not in bords(n):
         atomes.append({"type": "ni-ni"})
+    atomes.append({"type": "diagonale" if ligne == colonne else "pas-diagonale"})
+    atomes.append({"type": "diagonale-inverse" if ligne + colonne == n - 1
+                   else "pas-diagonale-inverse"})
     return atomes
 
 
@@ -130,6 +149,10 @@ def _force_binaire(type_indice: str, n: int) -> float:
     paires = n ** 4
     if type_indice in ("voisin-gauche", "voisin-droite", "voisin-dessus", "voisin-dessous"):
         return n * (n - 1) / paires
+    if type_indice == "voisin-diagonale":
+        return 4 * (n - 1) ** 2 / paires
+    if type_indice == "oppose":
+        return n * n / paires
     if type_indice == "comparaison":
         return n * (n * (n - 1) // 2) / paires
     if type_indice in ("a-droite-de", "a-gauche-de", "au-dessus-de", "en-dessous-de"):
@@ -245,6 +268,33 @@ def _nombre_ancres(phrases: list[dict]) -> int:
     return sum(1 for p in phrases if p.get("type") not in TYPES_BINAIRES)
 
 
+def _minimaliser(phrases: list[dict], n: int, noms_f: list[str], noms_c: list[str],
+                 plancher: int = 3, preserver: frozenset = frozenset()) -> list[dict]:
+    """Retire les phrases devenues inutiles : aucune indication redondante.
+
+    Une phrase est redondante quand la grille reste entièrement déterminée sans elle
+    — la figure est déjà située par les autres phrases. Les phrases ``preserver``
+    (vocabulaire demandé) ne sont jamais retirées.
+    """
+    resultat = list(phrases)
+    change = True
+    while change and len(resultat) > plancher:
+        change = False
+        for rang in range(len(resultat) - 1, -1, -1):
+            if id(resultat[rang]) in preserver:
+                continue
+            essai = resultat[:rang] + resultat[rang + 1:]
+            if len(essai) >= plancher and resoudre_par_deduction(essai, n, noms_f, noms_c):
+                resultat = essai
+                change = True
+                break
+    return resultat
+
+
+def _types_de(phrase: dict) -> set[str]:
+    return {atome.get("type") for atome in [phrase] + list(phrase.get("et") or [])}
+
+
 def _selection(paire, n: int, noms_f: list[str], noms_c: list[str], palier: int,
                rng: random.Random) -> list[dict] | None:
     """Phrases suffisantes pour une résolution par déduction, avec le dosage du palier.
@@ -257,8 +307,17 @@ def _selection(paire, n: int, noms_f: list[str], noms_c: list[str], palier: int,
     if not vivier:
         return None
     phrases = [phrase for _, phrase in vivier]
-    restants = list(range(len(phrases)))
-    choisis: list[dict] = []
+    # Vocabulaire demandé : on retient d'abord une phrase par type requis.
+    obligatoires: list[dict] = []
+    for type_requis in sorted(VOCABULAIRE_REQUIS[palier]):
+        for phrase in phrases:
+            if type_requis in _types_de(phrase) and phrase not in obligatoires:
+                obligatoires.append(phrase)
+                break
+    protegees = frozenset(id(phrase) for phrase in obligatoires)
+
+    restants = [rang for rang, phrase in enumerate(phrases) if phrase not in obligatoires]
+    choisis: list[dict] = list(obligatoires)
     while restants and len(choisis) < MAX_PHRASES[palier]:
         gagnant, meilleur = None, None
         for rang in restants:
@@ -273,9 +332,9 @@ def _selection(paire, n: int, noms_f: list[str], noms_c: list[str], palier: int,
         choisis.append(phrases[gagnant])
         restants.remove(gagnant)
         if meilleur == n * n and len(choisis) >= MIN_PHRASES[palier]:
-            return choisis
+            return _minimaliser(choisis, n, noms_f, noms_c, preserver=protegees)
     if len(choisis) >= MIN_PHRASES[palier] and resoudre_par_deduction(choisis, n, noms_f, noms_c):
-        return choisis
+        return _minimaliser(choisis, n, noms_f, noms_c, preserver=protegees)
     return None
 
 

@@ -389,8 +389,10 @@ def erreurs_contenu(item: dict, prefixe: str) -> list[str]:
 #: Types d'indices admis dans une grille de déduction.
 TYPES_INDICE_GRILLE = {
     "case", "ligne", "colonne", "pas-ligne", "pas-colonne",
-    "pas-coin", "pas-bord", "ni-ni",
-    "voisin-gauche", "voisin-droite", "voisin-dessus", "voisin-dessous",
+    "coin", "pas-coin", "pas-bord", "ni-ni",
+    "diagonale", "diagonale-inverse", "pas-diagonale", "pas-diagonale-inverse",
+    "voisin-gauche", "voisin-droite", "voisin-dessus", "voisin-dessous", "voisin-diagonale",
+    "oppose",
     "autre-ligne", "autre-colonne", "comparaison",
     "a-droite-de", "a-gauche-de", "au-dessus-de", "en-dessous-de",
     "si-alors", "regle",
@@ -460,11 +462,22 @@ def _sens_contredit(indice: dict, fig: list[int], coul: list[int],
             return "la phrase exclut la colonne où se trouve la figure"
         if type_indice == "pas-coin" and case_de(nom_f, nom_c) in coins_n:
             return "la figure est dans un coin alors que la phrase l'exclut"
+        if type_indice == "coin" and case_de(nom_f, nom_c) not in coins_n:
+            return "la phrase annonce un coin, la figure n'y est pas"
+        if type_indice == "diagonale" and ligne != colonne:
+            return "la phrase annonce la diagonale descendante, la figure n'y est pas"
+        if type_indice == "diagonale-inverse" and ligne + colonne != n - 1:
+            return "la phrase annonce la diagonale montante, la figure n'y est pas"
+        if type_indice == "pas-diagonale" and ligne == colonne:
+            return "la phrase exclut la diagonale descendante où se trouve la figure"
+        if type_indice == "pas-diagonale-inverse" and ligne + colonne == n - 1:
+            return "la phrase exclut la diagonale montante où se trouve la figure"
         if type_indice == "pas-bord" and case_de(nom_f, nom_c) in bords_n:
             return "la figure est sur le bord alors que la phrase l'exclut"
         if type_indice == "ni-ni" and (case_de(nom_f, nom_c) in coins_n or case_de(nom_f, nom_c) in bords_n):
             return "la figure est dans un coin ou sur le bord alors que la phrase l'exclut"
         if type_indice in ("voisin-gauche", "voisin-droite", "voisin-dessus", "voisin-dessous",
+                           "voisin-diagonale", "oppose",
                            "comparaison", "a-droite-de", "a-gauche-de", "au-dessus-de",
                            "en-dessous-de", "autre-ligne", "autre-colonne"):
             l2, c2 = divmod(case_de(atome["figure2"], atome["couleur2"]), n)
@@ -491,6 +504,10 @@ def _sens_contredit(indice: dict, fig: list[int], coul: list[int],
                 return "la phrase dit « pas la même colonne » alors que c'est la même"
             if type_indice == "comparaison" and (ligne != l2 or colonne >= c2):
                 return "la phrase dit « sur la même ligne, à gauche » sans que ce soit vrai"
+            if type_indice == "voisin-diagonale" and not (abs(ligne - l2) == 1 and abs(colonne - c2) == 1):
+                return "la phrase dit que les deux figures se touchent en diagonale sans que ce soit vrai"
+            if type_indice == "oppose" and case_de(nom_f, nom_c) != n * n - 1 - case_de(atome["figure2"], atome["couleur2"]):
+                return "la phrase dit « à l'opposé » sans que les deux figures soient symétriques par le centre"
     return None
 
 

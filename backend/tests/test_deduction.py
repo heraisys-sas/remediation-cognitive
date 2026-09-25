@@ -4,7 +4,7 @@ import sys
 from pathlib import Path
 
 sys.path.insert(0, str(Path(__file__).resolve().parents[2] / "tools"))
-from deduction_commun import pred_indice, resoudre_par_deduction  # noqa: E402
+from deduction_commun import TYPES_BINAIRES, pred_indice, resoudre_par_deduction  # noqa: E402
 
 from backend.app.domain.contenu import ChargeurContenu  # noqa: E402
 
@@ -67,10 +67,9 @@ def test_grille_deduction_indices_vrais_pour_la_solution():
 
 def test_grille_deduction_provoque_une_deduction():
     """Le cœur du thème : chaque phrase enchaîne plusieurs informations et relie deux
-    figures ; aucun placement direct, aucune règle cachée — les phrases suffisent."""
-    binaires = {"voisin-gauche", "voisin-droite", "voisin-dessus", "voisin-dessous",
-                "comparaison", "a-droite-de", "a-gauche-de", "au-dessus-de",
-                "en-dessous-de", "autre-ligne", "autre-colonne"}
+    figures ; aucun placement direct, aucune règle cachée — les phrases suffisent.
+    """
+    binaires = TYPES_BINAIRES
     for item in CONTENU.items("deduction"):
         enonces = item["contenu"]["enonces"]
         for position, phrase in enumerate(enonces, start=1):

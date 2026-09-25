@@ -27,9 +27,11 @@ import random
 
 #: Types d'indices portant sur la position d'un seul jeton (contraintes unaires).
 TYPES_UNAIRES = {"case", "ligne", "colonne", "pas-ligne", "pas-colonne",
-                 "pas-coin", "pas-bord", "ni-ni"}
+                 "coin", "pas-coin", "pas-bord", "ni-ni",
+                 "diagonale", "diagonale-inverse", "pas-diagonale", "pas-diagonale-inverse"}
 #: Types d'indices reliant deux jetons (contraintes binaires).
 TYPES_BINAIRES = {"voisin-gauche", "voisin-droite", "voisin-dessus", "voisin-dessous",
+                  "voisin-diagonale", "oppose",
                   "autre-ligne", "autre-colonne", "comparaison",
                   "a-droite-de", "a-gauche-de", "au-dessus-de", "en-dessous-de",
                   "si-alors"}
@@ -79,22 +81,33 @@ def sujet(indice: dict, atome: dict) -> tuple[str, str]:
 def _vrai_unaire(atome: dict, case: int, n: int) -> bool:
     """Cette information de position est-elle compatible avec cette case ?"""
     t = atome.get("type")
+    ligne, colonne = divmod(case, n)
     if t == "case":
         return case == atome["case"]
     if t == "ligne":
-        return case // n == atome["ligne"]
+        return ligne == atome["ligne"]
     if t == "colonne":
-        return case % n == atome["colonne"]
+        return colonne == atome["colonne"]
     if t == "pas-ligne":
-        return case // n != atome["ligne"]
+        return ligne != atome["ligne"]
     if t == "pas-colonne":
-        return case % n != atome["colonne"]
+        return colonne != atome["colonne"]
+    if t == "coin":
+        return case in coins(n)
     if t == "pas-coin":
         return case not in coins(n)
     if t == "pas-bord":
         return case not in bords(n)
     if t == "ni-ni":
         return case not in coins(n) and case not in bords(n)
+    if t == "diagonale":
+        return ligne == colonne
+    if t == "diagonale-inverse":
+        return ligne + colonne == n - 1
+    if t == "pas-diagonale":
+        return ligne != colonne
+    if t == "pas-diagonale-inverse":
+        return ligne + colonne != n - 1
     return True
 
 
@@ -114,6 +127,10 @@ def _vrai_binaire(indice: dict, i1: int, i2: int, n: int) -> bool:
         return i2 == i1 + n
     if t == "voisin-dessous":      # « … est juste en dessous de … » : la cible est au-dessus
         return i2 == i1 - n
+    if t == "voisin-diagonale":    # « … touche … en diagonale » : un cran dans les deux sens
+        return abs(i1 // n - i2 // n) == 1 and abs(i1 % n - i2 % n) == 1
+    if t == "oppose":              # « … est à l'opposé de … » : symétrique par le centre
+        return i1 == n * n - 1 - i2
     if t == "autre-ligne":
         return i1 // n != i2 // n
     if t == "autre-colonne":

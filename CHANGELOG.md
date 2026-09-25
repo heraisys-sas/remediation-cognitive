@@ -2,6 +2,17 @@
 
 Format : [date] — [périmètre] — description. Les retours informels de l'orthophoniste sont journalisés ici, sans caution clinique.
 
+## 2026-09-25 · Déduction : diagonales, coins, « à l'opposé de », et zéro phrase redondante
+
+Demande : enrichir le vocabulaire des phrases et supprimer les indications redondantes.
+
+- **Nouveau vocabulaire** — `coin` (positif), `diagonale` (descendante) et `diagonale-inverse` (montante) avec leurs formes négatives, `voisin-diagonale` (« touche … en diagonale »), et `oppose` (« à l'opposé de … », case symétrique par rapport au centre).
+- **Présence garantie** — le choix laissé libre sacrifiait ce vocabulaire rare au profit de chaînes plus longues : chaque palier doit désormais contenir au moins une phrase de chaque forme demandée (coin au palier 1, diagonales en 2, négations diagonales en 3, « à l'opposé » en 4), et ces phrases sont protégées du nettoyage.
+- **Zéro phrase redondante** — passe de minimalisation : toute phrase retirable sans perdre la solution est supprimée. Vérifié indépendamment : retirer n'importe quelle phrase casse la déductibilité.
+- **Contrôles de sens étendus** aux nouveaux types (coin, diagonales, opposé, voisinage diagonal), côté validateur comme côté interface.
+- **Remplacement de contenu (thème `deduction`)** — les 80 grilles sont régénérées.
+- **Contrôles** — 875 items / 0 erreur ; 719 phrases / 1135 informations rendues sans anomalie ; 147 tests.
+
 ## 2026-09-25 · Déduction : relations de voisinage inversées (grilles insolubles)
 
 Signalement : « la solution inverse le haut et le bas par rapport à ce que décrivent les phrases ».

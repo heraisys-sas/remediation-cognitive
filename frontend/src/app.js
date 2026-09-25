@@ -1487,6 +1487,11 @@ function predicatAtome(atome, n) {
     case "colonne": return { texte: `dans la colonne ${noms.colonnes[atome.colonne]}`, negation: null };
     case "pas-ligne": return { texte: `sur la ligne ${noms.lignes[atome.ligne]}`, negation: "pas" };
     case "pas-colonne": return { texte: `dans la colonne ${noms.colonnes[atome.colonne]}`, negation: "pas" };
+    case "coin": return { texte: "dans un coin", negation: null };
+    case "diagonale": return { texte: "sur la diagonale descendante (du coin haut gauche au coin bas droit)", negation: null };
+    case "diagonale-inverse": return { texte: "sur la diagonale montante (du coin haut droit au coin bas gauche)", negation: null };
+    case "pas-diagonale": return { texte: "sur la diagonale descendante", negation: "pas" };
+    case "pas-diagonale-inverse": return { texte: "sur la diagonale montante", negation: "pas" };
     case "pas-coin": return { texte: "dans un coin", negation: "pas" };
     case "pas-bord": return { texte: "sur le bord", negation: "pas" };
     case "ni-ni": return { texte: "dans un coin ni sur le bord", negation: "ni" };
@@ -1502,6 +1507,8 @@ function relationAtome(atome, n) {
     case "voisin-droite": return `est juste à droite du ${cible}`;
     case "voisin-dessus": return `est juste au-dessus du ${cible}`;
     case "voisin-dessous": return `est juste en dessous du ${cible}`;
+    case "voisin-diagonale": return `touche le ${cible} en diagonale`;
+    case "oppose": return `est à l'opposé du ${cible}, de l'autre côté du centre`;
     case "comparaison": return `est sur la même ligne que le ${cible}, à sa gauche`;
     case "a-droite-de": return `est plus à droite que le ${cible}`;
     case "a-gauche-de": return `est plus à gauche que le ${cible}`;
