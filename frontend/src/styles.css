@@ -807,6 +807,15 @@ body {
   outline-offset: 1px;
 }
 
+/* Jeton déjà posé dans la grille : on le grise, il n'est plus sélectionnable.
+   Il redevient disponible dès qu'on le retire de sa case. */
+.jeton:disabled,
+.jeton-place {
+  opacity: 0.3;
+  filter: grayscale(0.8);
+  cursor: not-allowed;
+}
+
 .grille-indices { margin: 0; padding-left: 1.2rem; display: grid; gap: 0.4rem; }
 
 .grille-actions { display: grid; gap: 0.6rem; }

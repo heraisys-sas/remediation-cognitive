@@ -63,6 +63,8 @@ Un puzzle peut être unique et rester infaisable si sa reconstruction exige des 
 
 Palette de jetons (figure × couleur), placement par clic, « Vider la grille », « Un indice », validation, correction cases justes/fausses, et le tableau de déduction. La solution ne fuit jamais avant validation.
 
+Un jeton déjà posé est **grisé et non sélectionnable** : il redevient disponible dès qu'on le retire de sa case (clic sur la case occupée, ou « Vider la grille »). Poser un jeton sur une case occupée remplace l'ancien et libère le premier. Après chaque pose, la sélection se vide — impossible de placer deux fois la même figure colorée.
+
 ## Génération
 
 `tools/generer_deduction.py` — déterministe (graine fixe), piloté par le solveur de déduction, solutions uniques sur tout le thème :

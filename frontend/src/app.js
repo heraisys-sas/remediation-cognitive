@@ -1639,6 +1639,7 @@ function rendreGrille(item) {
           type: "button",
           "aria-label": `${libelleFigure(figure)} ${couleur}`,
           "data-jeton": `${figure}:${couleur}`,
+          "data-nom": `${libelleFigure(figure)} ${couleur}`,
         },
       });
       jeton.style.color = TEINTES[couleur];
@@ -1652,6 +1653,26 @@ function rendreGrille(item) {
     }
   }
 
+  /** Grise les figures déjà posées : un jeton posé n'est plus sélectionnable.
+   *  Il redevient disponible dès qu'il est retiré de la grille (clic sur sa case,
+   *  ou « Vider la grille »). */
+  function rafraichirPalette() {
+    const places = new Set(etat.grille.filter(Boolean));
+    for (const bouton of jetons) {
+      const jeton = bouton.dataset.jeton;
+      const pris = places.has(jeton);
+      bouton.disabled = pris;
+      bouton.classList.toggle("jeton-place", pris);
+      bouton.setAttribute("aria-label", pris
+        ? `${bouton.dataset.nom} — déjà placé dans la grille`
+        : bouton.dataset.nom);
+      if (pris) {
+        bouton.classList.remove("jeton-actif");
+        if (etat.jetonChoisi === jeton) etat.jetonChoisi = null;
+      }
+    }
+  }
+
   const boutonVider = creerElement("button", {
     classe: "bouton bouton-secondaire",
     texte: "Vider la grille",
@@ -1662,6 +1683,7 @@ function rendreGrille(item) {
     etat.jetonChoisi = null;
     for (const j of jetons) j.classList.remove("jeton-actif");
     for (const b of cellules) { b.textContent = ""; b.style.color = ""; }
+    rafraichirPalette();
   });
 
   const boutonValider = creerElement("button", {
@@ -1707,18 +1729,25 @@ function rendreGrille(item) {
   );
   refs.zoneGrille.hidden = false;
 
+  rafraichirPalette();
+
+  /** Pose, retire ou remplace un jeton :
+   *  - un jeton est sélectionné → on le pose (ou il remplace celui de la case) ;
+   *  - aucun jeton sélectionné → un clic sur une case occupée la vide. */
   function placerCellule(c, bouton) {
-    if (!etat.jetonChoisi) return;
-    if (etat.grille[c] === etat.jetonChoisi) {
-      etat.grille[c] = null;
-      bouton.textContent = "";
-      bouton.style.color = "";
-    } else {
-      etat.grille[c] = etat.jetonChoisi;
-      const [figure, couleur] = etat.jetonChoisi.split(":");
+    const actuel = etat.grille[c];
+    if (!etat.jetonChoisi && !actuel) return;
+    const jeton = actuel === etat.jetonChoisi ? null : (etat.jetonChoisi || null);
+    etat.grille[c] = jeton;
+    if (jeton) {
+      const [figure, couleur] = jeton.split(":");
       bouton.textContent = GLYPHES[figure];
       bouton.style.color = TEINTES[couleur];
+    } else {
+      bouton.textContent = "";
+      bouton.style.color = "";
     }
+    rafraichirPalette();
   }
 }
 

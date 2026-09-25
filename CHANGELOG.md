@@ -2,6 +2,11 @@
 
 Format : [date] — [périmètre] — description. Les retours informels de l'orthophoniste sont journalisés ici, sans caution clinique.
 
+## 2026-09-25 · Déduction : palette qui se grise
+
+- **Les figures déjà posées sont grisées** dans la palette et ne sont plus sélectionnables : on ne peut pas placer deux fois la même figure colorée. Elles redeviennent disponibles dès qu'on les retire de la grille (clic sur la case occupée, ou « Vider la grille »).
+- **Poser sur une case occupée** remplace le jeton et libère l'ancien ; après chaque pose, la sélection se vide.
+
 ## 2026-09-25 · Outil d'essai : rouvrir la journée
 
 - **`tools/reinitialiser_seances.py`** — remet à zéro le compteur de séances du jour, pour un thème ou pour tous (`--dry-run` disponible). Le dosage clinique (3 séances/jour en entraînement, 1 en évaluation) n'est pas modifié : l'outil sert à poursuivre les essais sans attendre le lendemain, et ne touche ni aux cartes de révision, ni aux courbes de maîtrise, ni au journal.
