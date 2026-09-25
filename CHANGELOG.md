@@ -2,6 +2,16 @@
 
 Format : [date] — [périmètre] — description. Les retours informels de l'orthophoniste sont journalisés ici, sans caution clinique.
 
+## 2026-09-25 · Déduction : phrases tronquées (script périmé en cache) + négations perdues
+
+Signalement : « Le triangle vert est dans la colonne du centre et . » — phrase incomplète, tableau impossible à remplir.
+
+- **Cause première** : le navigateur exécutait une **version périmée du script** avec le **contenu courant**. L'ancien formateur ne connaissait pas le nouveau format de phrase (`et` devenu liste) et produisait « … et . ». Correctif de fond : l'interface est servie **sans mise en cache** (`Cache-Control: no-store`) — un script périmé ne peut plus se mélanger au contenu. Deux tests verrouillent les en-têtes.
+- **Bug réel trouvé en vérifiant** : le nouveau formateur de phrases **perdait les négations** il aurait écrit « Le carré rouge dans un coin » au lieu de « n'est pas dans un coin ». Corrigé, avec les compléments de prédicat et le verbe assemblés au même endroit.
+- **Langue** : en 4×4, « sur la ligne de la deuxième » devient « sur la ligne 2 » ; la relation de comparaison se dit « sur la même ligne que le carré vert, à sa gauche ».
+- **Nouveau contrôle** : `tools/verifier_phrases.js` rend **toutes les phrases du contenu** avec le vrai code de l'interface et refuse une phrase vide, sans verbe ou avec `undefined`. 700 phrases vérifiées.
+- **Contrôles** — 875 items / 0 erreur ; 147 tests.
+
 ## 2026-09-25 · Déduction : les phrases contiennent la résolution (fin de la règle inventée)
 
 Retour de conception : la règle « chaque figure et chaque couleur une fois par ligne et par colonne » n'est **pas** une règle de l'exercice. Elle avait été ajoutée pour que peu de phrases suffisent, et elle rendait la grille impossible à reconstruire honnêtement. Corrigé en profondeur.

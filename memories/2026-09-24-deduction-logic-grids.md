@@ -95,3 +95,22 @@ doivent contenir tous les éléments de la résolution du problème ».
   variées → repères négatifs + relations lâches → 4×4), sinon les paliers 2 et 3 se ressemblaient.
 - Leçon générale à garder : ne jamais introduire une règle implicite pour simplifier la
   génération. Si la résolution dépend d'autre chose que de l'énoncé, l'exercice est faux.
+
+## 2026-09-25 (nuit) — phrase tronquée : script périmé en cache
+
+Symptôme signalé : « Le triangle vert est dans la colonne du centre et . ».
+
+- Signature typique : **ancien script + nouveau contenu**. Le navigateur gardait `app.js`
+  en cache ; l'ancien formateur (qui attendait `et` sous forme d'objet) recevait une liste
+  et produisait un prédicat vide. Diagnostic confirmé en reproduisant la chaîne exacte.
+- Correctif de fond : servir l'interface avec `Cache-Control: no-store` (sous-classe de
+  `StaticFiles`) + deux tests sur les en-têtes. Ne jamais supposer que la page ouverte
+  exécute le code publié.
+- Bug réel trouvé au passage : mon nouveau formateur de chaînes **perdait les négations**
+  (« Le carré rouge dans un coin » au lieu de « n'est pas dans un coin »). Corrigé en
+  assemblant complément + négation + verbe en un seul endroit.
+- Nouveau garde-fou : `tools/verifier_phrases.js` exécute le **vrai** code de rendu sur
+  tout le contenu et refuse une phrase vide, sans verbe ou contenant « undefined ».
+  Il a validé les 700 phrases après correction.
+- Leçon : après un changement de format de contenu, le rendu doit être vérifié par un
+  contrôle automatique exécutant le code réel — pas relu à l'œil.

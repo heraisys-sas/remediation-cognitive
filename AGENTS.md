@@ -69,6 +69,7 @@ python3 tools/generer_programme.py --dry-run             # régénère le progra
 python3 tools/generer_quotidien.py --dry-run             # régénère le thème « au quotidien »
 python3 tools/generer_deduction.py --dry-run            # régénère le thème « déduction »
 python3 tools/reinitialiser_seances.py deduction        # rouvre la journée (essai : compteur de séances)
+node tools/verifier_phrases.js                          # vérifie le rendu des phrases (déduction)
 python3 tools/generer_methodes.py --dry-run             # régénère le thème « méthodes »
 ```
 

@@ -1464,8 +1464,8 @@ const NOMS_CASES_4 = [
   "troisième ligne à gauche", "troisième ligne, deuxième", "troisième ligne, troisième", "troisième ligne à droite",
   "en bas à gauche", "en bas, deuxième", "en bas, troisième", "en bas à droite",
 ];
-const NOMS_LIGNES_4 = ["du haut", "de la deuxième", "de la troisième", "du bas"];
-const NOMS_COLONNES_4 = ["de gauche", "de la deuxième", "de la troisième", "de droite"];
+const NOMS_LIGNES_4 = ["1", "2", "3", "4"];
+const NOMS_COLONNES_4 = ["1", "2", "3", "4"];
 
 function nomsPour(n) {
   return {
@@ -1478,13 +1478,13 @@ function nomsPour(n) {
 /** Formule un indice structuré en français lisible (n = taille de la grille).
  *  Chaque indice porte deux informations : une figure colorée et sa place
  *  (ou sa relation à une autre figure colorée). */
-/** Contrainte élémentaire de position : fragment de prédicat + forme négative. */
+/** Contrainte élémentaire de position : complément + forme négative. */
 function predicatAtome(atome, n) {
   const noms = nomsPour(n);
   switch (atome.type) {
-    case "case": return { texte: `est ${noms.cases[atome.case]}`, negation: null };
-    case "ligne": return { texte: `est sur la ligne ${noms.lignes[atome.ligne]}`, negation: null };
-    case "colonne": return { texte: `est dans la colonne ${noms.colonnes[atome.colonne]}`, negation: null };
+    case "case": return { texte: `${noms.cases[atome.case]}`, negation: null };
+    case "ligne": return { texte: `sur la ligne ${noms.lignes[atome.ligne]}`, negation: null };
+    case "colonne": return { texte: `dans la colonne ${noms.colonnes[atome.colonne]}`, negation: null };
     case "pas-ligne": return { texte: `sur la ligne ${noms.lignes[atome.ligne]}`, negation: "pas" };
     case "pas-colonne": return { texte: `dans la colonne ${noms.colonnes[atome.colonne]}`, negation: "pas" };
     case "pas-coin": return { texte: "dans un coin", negation: "pas" };
@@ -1502,7 +1502,7 @@ function relationAtome(atome, n) {
     case "voisin-droite": return `est juste à droite du ${cible}`;
     case "voisin-dessus": return `est juste au-dessus du ${cible}`;
     case "voisin-dessous": return `est juste en dessous du ${cible}`;
-    case "comparaison": return `est à gauche du ${cible}, sur la même ligne`;
+    case "comparaison": return `est sur la même ligne que le ${cible}, à sa gauche`;
     case "a-droite-de": return `est plus à droite que le ${cible}`;
     case "a-gauche-de": return `est plus à gauche que le ${cible}`;
     case "au-dessus-de": return `est plus haut que le ${cible}`;
@@ -1514,15 +1514,18 @@ function relationAtome(atome, n) {
   }
 }
 
+/** Prédicat complet d'une information, verbe compris. */
+function phraseAtome(atome, n) {
+  const position = predicatAtome(atome, n);
+  if (!position.texte) return relationAtome(atome, n);
+  if (position.negation === "pas") return `n'est pas ${position.texte}`;
+  if (position.negation === "ni") return `n'est ni ${position.texte}`;
+  return `est ${position.texte}`;
+}
+
 /** Retire le « est » de tête quand la phrase enchaîne deux prédicats. */
 function sansEst(texte) {
   return texte.startsWith("est ") ? texte.slice(4) : texte;
-}
-
-function predicatDe(atome, n) {
-  const position = predicatAtome(atome, n);
-  if (position.texte) return position.texte;
-  return relationAtome(atome, n);
 }
 
 /** Formule une phrase en français lisible (n = taille de la grille).
@@ -1538,7 +1541,7 @@ function formaterEnonce(indice, n) {
   let cible = null;
   atomes.forEach((atome, rang) => {
     const ceSujet = `${atome.figure || indice.figure}:${atome.couleur || indice.couleur}`;
-    const predicat = predicatDe(atome, n);
+    const predicat = phraseAtome(atome, n);
     if (rang === 0) {
       texte += `Le ${nomDe(atome)} ${predicat}`;
     } else if (ceSujet === sujet) {

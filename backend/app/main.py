@@ -18,6 +18,22 @@ from pathlib import Path
 from fastapi import FastAPI
 from fastapi.staticfiles import StaticFiles
 
+
+class InterfaceStatique(StaticFiles):
+    """Sert l'interface **sans mise en cache**.
+
+    Sans ces en-têtes, le navigateur gardait une version périmée du script et la
+    mélangeait au contenu courant : des phrases s'affichaient tronquées. En local,
+    recharger à chaque fois ne coûte rien.
+    """
+
+    async def get_response(self, path, scope):
+        reponse = await super().get_response(path, scope)
+        reponse.headers["Cache-Control"] = "no-cache, no-store, must-revalidate"
+        reponse.headers["Pragma"] = "no-cache"
+        reponse.headers["Expires"] = "0"
+        return reponse
+
 from .api.entrainement import router as router_entrainement
 from .api.entrainement.service import GestionnaireSessions
 from .api.capacites import router as router_capacites
@@ -84,7 +100,7 @@ def creer_app(
     frontend = Path(dossier_frontend) if dossier_frontend else RACINE_PROJET / "frontend"
     if frontend.is_dir():
         application.mount(
-            "/ui", StaticFiles(directory=frontend, html=True), name="interface"
+            "/ui", InterfaceStatique(directory=frontend, html=True), name="interface"
         )
     return application
 
