@@ -2,6 +2,14 @@
 
 Format : [date] — [périmètre] — description. Les retours informels de l'orthophoniste sont journalisés ici, sans caution clinique.
 
+## 2026-09-25 · Déduction : toujours résoluble, et un stock pour trois mois
+
+- **Grilles garanties déductibles** — un solveur de déduction (propagation de contraintes, sans hypothèse) juge chaque puzzle à la génération : les indices sont ajoutés **jusqu'à ce que le solveur termine**. Une grille qu'on ne peut pas reconstruire par raisonnement pur n'est plus livrable — le générateur l'écarte, le validateur la refuse, un test rejoue le solveur sur chaque grille du dépôt.
+- **Remplacement de contenu (thème `deduction` uniquement)** — les 16 grilles précédentes sont remplacées par **80 grilles** (20 par palier), régénérées avec la même graine et le même schéma ; les identifiants (`de-p-00`) et les paliers sont inchangés, les jeux d'indices sont plus complets (5-7 phrases en 3×3, 11-14 en 4×4).
+- **Aucune solution resservie** — l'univers des solutions est fini (72 grilles 3×3, 6 912 en 4×4) ; une même solution n'apparaît jamais deux fois dans le thème (60/72 utilisées en 3×3).
+- **Difficulté croissante** — palier 1 : indices de position ; palier 2 : relationnels ; palier 3 : négatifs et conditionnels ; palier 4 : grille 4×4.
+- **Contrôles** — 875 items / 0 erreur ; 144 tests.
+
 ## 2026-09-25 · Dictée : la réponse s'écrit en direct
 
 - **Transcription au fur et à mesure** — pendant la dictée, ce qui est entendu s'affiche **dans le champ de réponse** au fil de la parole (résultats provisoires), puis le texte définitif remplace le provisoire. On voit donc ce qui a été compris **avant** de valider.

@@ -30,3 +30,13 @@ Corrigé deux fois : la sémantique des voisinages est cohérente, et le solveur
 - Passage visuel (grille, indices conditionnels, bouton « Un indice »).
 - Relecture orthophoniste.
 - Piste : une **grille de possibilités** (marquer les cases encore possibles) comme aide de résolution, à l'image du tableau qu'on utilise sur papier.
+
+
+## 2026-09-25 — déductibilité garantie + stock 3 mois
+
+Suite au retour « pas assez de phrases pour reconstruire la grille » :
+
+- la **déductibilité** (résoluble par propagation, sans hypothèse) remplace la simple unicité comme critère de livraison. Solveur : `tools/deduction_commun.py` (domaines par case + règles + AC sur les indices binaires). Génération constructive : on ajoute des indices jusqu'à ce que le solveur termine ; le validateur refuse un puzzle non déductible ; un test rejoue le solveur sur tout le thème.
+- stock étendu 16 → **80 grilles** (20/palier), **solutions toutes distinctes** (60/72 de l'univers 3×3, 20/6912 en 4×4). Le générateur prend `--par-palier` et échoue proprement si l'univers est épuisé.
+- le solveur est *sound* mais incomplet : un `False` invite à ajouter des indices (prudent), un `True` prouve la déductibilité. C'est la marge de sécurité voulue.
+- leçon : l'**unicité** ne suffit pas pour l'entraînement — un puzzle unique peut exiger des hypothèses (essayage) et devenir infaisable en rééducation. Toujours valider par un solveur qui raisonne comme la personne.

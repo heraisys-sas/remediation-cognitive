@@ -27,70 +27,85 @@
       ],
       "enonces": [
         {
-          "type": "ligne",
+          "type": "case",
+          "figure": "cercle",
+          "couleur": "vert",
+          "case": 5
+        },
+        {
+          "type": "case",
+          "figure": "triangle",
+          "couleur": "rouge",
+          "case": 4
+        },
+        {
+          "type": "case",
+          "figure": "carre",
+          "couleur": "bleu",
+          "case": 3
+        },
+        {
+          "type": "case",
           "figure": "triangle",
           "couleur": "bleu",
-          "ligne": 2
+          "case": 2
         },
-        {
-          "type": "pas-coin",
-          "figure": "carre",
-          "couleur": "rouge"
-        },
-        {
-          "type": "colonne",
-          "figure": "carre",
-          "couleur": "bleu",
-          "colonne": 2
-        },
-        {
-          "type": "autre-ligne",
-          "figure": "cercle",
-          "couleur": "vert",
-          "figure2": "triangle",
-          "couleur2": "bleu"
-        },
-        {
-          "type": "si-alors",
-          "figure": "cercle",
-          "couleur": "vert",
-          "figure2": "cercle",
-          "couleur2": "bleu"
-        },
-        {
-          "type": "si-alors",
-          "figure": "carre",
-          "couleur": "vert",
-          "figure2": "cercle",
-          "couleur2": "vert"
-        }
-      ],
-      "indices": [
         {
           "type": "case",
           "figure": "cercle",
           "couleur": "rouge",
-          "case": 8
+          "case": 0
+        },
+        {
+          "type": "case",
+          "figure": "cercle",
+          "couleur": "bleu",
+          "case": 7
+        }
+      ],
+      "indices": [
+        {
+          "type": "ligne",
+          "figure": "carre",
+          "couleur": "vert",
+          "ligne": 0
+        },
+        {
+          "type": "autre-colonne",
+          "figure": "carre",
+          "couleur": "rouge",
+          "figure2": "triangle",
+          "couleur2": "rouge"
         },
         {
           "type": "ligne",
-          "figure": "cercle",
-          "couleur": "rouge",
+          "figure": "triangle",
+          "couleur": "vert",
           "ligne": 2
-        },
-        {
-          "type": "colonne",
-          "figure": "cercle",
-          "couleur": "rouge",
-          "colonne": 2
         }
       ],
-      "aide": "Commence par les indices les plus précis (ceux qui nomment une case), puis déduis le reste."
+      "aide": "Les indices suffisent : en les recoupant, chaque case se déduit. Commence par ceux qui désignent une case précise."
     },
     "reponse": {
-      "valeur": "triangle:rouge;cercle:vert;carre:bleu;cercle:bleu;carre:rouge;triangle:vert;carre:vert;triangle:bleu;cercle:rouge",
+      "valeur": "cercle:rouge;carre:vert;triangle:bleu;carre:bleu;triangle:rouge;cercle:vert;triangle:vert;cercle:bleu;carre:rouge",
       "grille": [
         [
+          "cercle",
+          "rouge"
+        ],
+        [
+          "carre",
+          "vert"
+        ],
+        [
+          "triangle",
+          "bleu"
+        ],
+        [
+          "carre",
+          "bleu"
+        ],
+        [
           "triangle",
           "rouge"
         ],
@@ -99,8 +114,8 @@
           "vert"
         ],
         [
-          "carre",
-          "bleu"
+          "triangle",
+          "vert"
         ],
         [
           "cercle",
@@ -108,29 +123,13 @@
         ],
         [
           "carre",
-          "rouge"
-        ],
-        [
-          "triangle",
-          "vert"
-        ],
-        [
-          "carre",
-          "vert"
-        ],
-        [
-          "triangle",
-          "bleu"
-        ],
-        [
-          "cercle",
           "rouge"
         ]
       ]
     },
     "meta": {
       "auteur": "generation-automatique (tools/generer_deduction.py)",
-      "date_creation": "2026-09-24",
+      "date_creation": "2026-09-25",
       "relecture_ortho": {
         "statut": "a_revoir"
       }
@@ -164,41 +163,317 @@
       ],
       "enonces": [
         {
-          "type": "autre-colonne",
-          "figure": "carre",
-          "couleur": "vert",
-          "figure2": "cercle",
-          "couleur2": "rouge"
-        },
-        {
-          "type": "voisin-dessous",
-          "figure": "carre",
-          "couleur": "vert",
-          "figure2": "triangle",
-          "couleur2": "rouge"
-        },
-        {
-          "type": "si-alors",
-          "figure": "cercle",
-          "couleur": "bleu",
-          "figure2": "cercle",
-          "couleur2": "rouge"
-        },
-        {
-          "type": "comparaison",
-          "figure": "carre",
+          "type": "case",
+          "figure": "triangle",
           "couleur": "rouge",
-          "figure2": "triangle",
-          "couleur2": "vert"
+          "case": 3
+        },
+        {
+          "type": "case",
+          "figure": "cercle",
+          "couleur": "vert",
+          "case": 6
+        },
+        {
+          "type": "case",
+          "figure": "carre",
+          "couleur": "vert",
+          "case": 4
         },
         {
           "type": "case",
           "figure": "triangle",
           "couleur": "bleu",
-          "case": 3
+          "case": 7
+        },
+        {
+          "type": "case",
+          "figure": "cercle",
+          "couleur": "bleu",
+          "case": 5
+        },
+        {
+          "type": "case",
+          "figure": "carre",
+          "couleur": "bleu",
+          "case": 0
+        },
+        {
+          "type": "case",
+          "figure": "carre",
+          "couleur": "rouge",
+          "case": 8
         }
       ],
       "indices": [
+        {
+          "type": "autre-colonne",
+          "figure": "carre",
+          "couleur": "bleu",
+          "figure2": "triangle",
+          "couleur2": "bleu"
+        },
+        {
+          "type": "autre-ligne",
+          "figure": "carre",
+          "couleur": "vert",
+          "figure2": "cercle",
+          "couleur2": "vert"
+        },
+        {
+          "type": "autre-colonne",
+          "figure": "triangle",
+          "couleur": "vert",
+          "figure2": "cercle",
+          "couleur2": "rouge"
+        }
+      ],
+      "aide": "Les indices suffisent : en les recoupant, chaque case se déduit. Commence par ceux qui désignent une case précise."
+    },
+    "reponse": {
+      "valeur": "carre:bleu;cercle:rouge;triangle:vert;triangle:rouge;carre:vert;cercle:bleu;cercle:vert;triangle:bleu;carre:rouge",
+      "grille": [
+        [
+          "carre",
+          "bleu"
+        ],
+        [
+          "cercle",
+          "rouge"
+        ],
+        [
+          "triangle",
+          "vert"
+        ],
+        [
+          "triangle",
+          "rouge"
+        ],
+        [
+          "carre",
+          "vert"
+        ],
+        [
+          "cercle",
+          "bleu"
+        ],
+        [
+          "cercle",
+          "vert"
+        ],
+        [
+          "triangle",
+          "bleu"
+        ],
+        [
+          "carre",
+          "rouge"
+        ]
+      ]
+    },
+    "meta": {
+      "auteur": "generation-automatique (tools/generer_deduction.py)",
+      "date_creation": "2026-09-25",
+      "relecture_ortho": {
+        "statut": "a_revoir"
+      }
+    }
+  },
+  {
+    "id": "de-3-03",
+    "type": "grille-deduction",
+    "module": "entrainement",
+    "theme": "deduction",
+    "fonctions_ciblees": [
+      "fonctions-executives",
+      "memoire-travail"
+    ],
+    "palier": 3,
+    "prerequis": [
+      "de-palier-2"
+    ],
+    "cap_complexite": null,
+    "contenu": {
+      "consigne": "Place les figures colorées. Chaque figure colorée (un carré bleu, un cercle rouge…) apparaît une seule fois dans la grille. Méthode : note d'abord ce qui est certain, barre ce qui devient impossible, puis recoupe les indices qui relient deux figures.",
+      "figures": [
+        "cercle",
+        "carre",
+        "triangle"
+      ],
+      "couleurs": [
+        "rouge",
+        "bleu",
+        "vert"
+      ],
+      "enonces": [
+        {
+          "type": "case",
+          "figure": "carre",
+          "couleur": "rouge",
+          "case": 2
+        },
+        {
+          "type": "case",
+          "figure": "carre",
+          "couleur": "vert",
+          "case": 4
+        },
+        {
+          "type": "case",
+          "figure": "cercle",
+          "couleur": "vert",
+          "case": 8
+        },
+        {
+          "type": "case",
+          "figure": "carre",
+          "couleur": "bleu",
+          "case": 6
+        },
+        {
+          "type": "case",
+          "figure": "cercle",
+          "couleur": "rouge",
+          "case": 3
+        },
+        {
+          "type": "case",
+          "figure": "cercle",
+          "couleur": "bleu",
+          "case": 1
+        }
+      ],
+      "indices": [
+        {
+          "type": "autre-ligne",
+          "figure": "triangle",
+          "couleur": "bleu",
+          "figure2": "cercle",
+          "couleur2": "vert"
+        },
+        {
+          "type": "autre-colonne",
+          "figure": "cercle",
+          "couleur": "vert",
+          "figure2": "carre",
+          "couleur2": "vert"
+        },
+        {
+          "type": "autre-ligne",
+          "figure": "triangle",
+          "couleur": "vert",
+          "figure2": "cercle",
+          "couleur2": "rouge"
+        }
+      ],
+      "aide": "Les indices suffisent : en les recoupant, chaque case se déduit. Commence par ceux qui désignent une case précise."
+    },
+    "reponse": {
+      "valeur": "triangle:vert;cercle:bleu;carre:rouge;cercle:rouge;carre:vert;triangle:bleu;carre:bleu;triangle:rouge;cercle:vert",
+      "grille": [
+        [
+          "triangle",
+          "vert"
+        ],
+        [
+          "cercle",
+          "bleu"
+        ],
+        [
+          "carre",
+          "rouge"
+        ],
+        [
+          "cercle",
+          "rouge"
+        ],
+        [
+          "carre",
+          "vert"
+        ],
+        [
+          "triangle",
+          "bleu"
+        ],
+        [
+          "carre",
+          "bleu"
+        ],
+        [
+          "triangle",
+          "rouge"
+        ],
+        [
+          "cercle",
+          "vert"
+        ]
+      ]
+    },
+    "meta": {
+      "auteur": "generation-automatique (tools/generer_deduction.py)",
+      "date_creation": "2026-09-25",
+      "relecture_ortho": {
+        "statut": "a_revoir"
+      }
+    }
+  },
+  {
+    "id": "de-3-04",
+    "type": "grille-deduction",
+    "module": "entrainement",
+    "theme": "deduction",
+    "fonctions_ciblees": [
+      "fonctions-executives",
+      "memoire-travail"
+    ],
+    "palier": 3,
+    "prerequis": [
+      "de-palier-2"
+    ],
+    "cap_complexite": null,
+    "contenu": {
+      "consigne": "Place les figures colorées. Chaque figure colorée (un carré bleu, un cercle rouge…) apparaît une seule fois dans la grille. Méthode : note d'abord ce qui est certain, barre ce qui devient impossible, puis recoupe les indices qui relient deux figures.",
+      "figures": [
+        "cercle",
+        "carre",
+        "triangle"
+      ],
+      "couleurs": [
+        "rouge",
+        "bleu",
+        "vert"
+      ],
+      "enonces": [
+        {
+          "type": "case",
+          "figure": "cercle",
+          "couleur": "bleu",
+          "case": 6
+        },
+        {
+          "type": "case",
+          "figure": "triangle",
+          "couleur": "rouge",
+          "case": 0
+        },
+        {
+          "type": "case",
+          "figure": "carre",
+          "couleur": "rouge",
+          "case": 7
+        },
+        {
+          "type": "case",
+          "figure": "triangle",
+          "couleur": "vert",
+          "case": 8
+        },
+        {
+          "type": "case",
+          "figure": "carre",
+          "couleur": "bleu",
+          "case": 2
+        },
         {
           "type": "case",
           "figure": "cercle",
@@ -206,19 +481,448 @@
           "case": 5
         },
         {
-          "type": "ligne",
-          "figure": "cercle",
-          "couleur": "rouge",
-          "ligne": 1
-        },
-        {
-          "type": "colonne",
-          "figure": "cercle",
-          "couleur": "rouge",
-          "colonne": 2
+          "type": "case",
+          "figure": "carre",
+          "couleur": "vert",
+          "case": 3
         }
       ],
-      "aide": "Commence par les indices les plus précis (ceux qui nomment une case), puis déduis le reste."
+      "indices": [
+        {
+          "type": "ligne",
+          "figure": "cercle",
+          "couleur": "bleu",
+          "ligne": 2
+        },
+        {
+          "type": "voisin-dessous",
+          "figure": "carre",
+          "couleur": "bleu",
+          "figure2": "cercle",
+          "couleur2": "rouge"
+        },
+        {
+          "type": "autre-ligne",
+          "figure": "cercle",
+          "couleur": "vert",
+          "figure2": "carre",
+          "couleur2": "vert"
+        }
+      ],
+      "aide": "Les indices suffisent : en les recoupant, chaque case se déduit. Commence par ceux qui désignent une case précise."
+    },
+    "reponse": {
+      "valeur": "triangle:rouge;cercle:vert;carre:bleu;carre:vert;triangle:bleu;cercle:rouge;cercle:bleu;carre:rouge;triangle:vert",
+      "grille": [
+        [
+          "triangle",
+          "rouge"
+        ],
+        [
+          "cercle",
+          "vert"
+        ],
+        [
+          "carre",
+          "bleu"
+        ],
+        [
+          "carre",
+          "vert"
+        ],
+        [
+          "triangle",
+          "bleu"
+        ],
+        [
+          "cercle",
+          "rouge"
+        ],
+        [
+          "cercle",
+          "bleu"
+        ],
+        [
+          "carre",
+          "rouge"
+        ],
+        [
+          "triangle",
+          "vert"
+        ]
+      ]
+    },
+    "meta": {
+      "auteur": "generation-automatique (tools/generer_deduction.py)",
+      "date_creation": "2026-09-25",
+      "relecture_ortho": {
+        "statut": "a_revoir"
+      }
+    }
+  },
+  {
+    "id": "de-3-05",
+    "type": "grille-deduction",
+    "module": "entrainement",
+    "theme": "deduction",
+    "fonctions_ciblees": [
+      "fonctions-executives",
+      "memoire-travail"
+    ],
+    "palier": 3,
+    "prerequis": [
+      "de-palier-2"
+    ],
+    "cap_complexite": null,
+    "contenu": {
+      "consigne": "Place les figures colorées. Chaque figure colorée (un carré bleu, un cercle rouge…) apparaît une seule fois dans la grille. Méthode : note d'abord ce qui est certain, barre ce qui devient impossible, puis recoupe les indices qui relient deux figures.",
+      "figures": [
+        "cercle",
+        "carre",
+        "triangle"
+      ],
+      "couleurs": [
+        "rouge",
+        "bleu",
+        "vert"
+      ],
+      "enonces": [
+        {
+          "type": "case",
+          "figure": "cercle",
+          "couleur": "vert",
+          "case": 7
+        },
+        {
+          "type": "case",
+          "figure": "cercle",
+          "couleur": "bleu",
+          "case": 5
+        },
+        {
+          "type": "case",
+          "figure": "cercle",
+          "couleur": "rouge",
+          "case": 0
+        },
+        {
+          "type": "case",
+          "figure": "triangle",
+          "couleur": "vert",
+          "case": 3
+        },
+        {
+          "type": "case",
+          "figure": "triangle",
+          "couleur": "bleu",
+          "case": 1
+        },
+        {
+          "type": "case",
+          "figure": "triangle",
+          "couleur": "rouge",
+          "case": 8
+        }
+      ],
+      "indices": [
+        {
+          "type": "autre-colonne",
+          "figure": "cercle",
+          "couleur": "bleu",
+          "figure2": "carre",
+          "couleur2": "bleu"
+        },
+        {
+          "type": "autre-ligne",
+          "figure": "triangle",
+          "couleur": "bleu",
+          "figure2": "triangle",
+          "couleur2": "rouge"
+        },
+        {
+          "type": "autre-colonne",
+          "figure": "carre",
+          "couleur": "rouge",
+          "figure2": "carre",
+          "couleur2": "vert"
+        }
+      ],
+      "aide": "Les indices suffisent : en les recoupant, chaque case se déduit. Commence par ceux qui désignent une case précise."
+    },
+    "reponse": {
+      "valeur": "cercle:rouge;triangle:bleu;carre:vert;triangle:vert;carre:rouge;cercle:bleu;carre:bleu;cercle:vert;triangle:rouge",
+      "grille": [
+        [
+          "cercle",
+          "rouge"
+        ],
+        [
+          "triangle",
+          "bleu"
+        ],
+        [
+          "carre",
+          "vert"
+        ],
+        [
+          "triangle",
+          "vert"
+        ],
+        [
+          "carre",
+          "rouge"
+        ],
+        [
+          "cercle",
+          "bleu"
+        ],
+        [
+          "carre",
+          "bleu"
+        ],
+        [
+          "cercle",
+          "vert"
+        ],
+        [
+          "triangle",
+          "rouge"
+        ]
+      ]
+    },
+    "meta": {
+      "auteur": "generation-automatique (tools/generer_deduction.py)",
+      "date_creation": "2026-09-25",
+      "relecture_ortho": {
+        "statut": "a_revoir"
+      }
+    }
+  },
+  {
+    "id": "de-3-06",
+    "type": "grille-deduction",
+    "module": "entrainement",
+    "theme": "deduction",
+    "fonctions_ciblees": [
+      "fonctions-executives",
+      "memoire-travail"
+    ],
+    "palier": 3,
+    "prerequis": [
+      "de-palier-2"
+    ],
+    "cap_complexite": null,
+    "contenu": {
+      "consigne": "Place les figures colorées. Chaque figure colorée (un carré bleu, un cercle rouge…) apparaît une seule fois dans la grille. Méthode : note d'abord ce qui est certain, barre ce qui devient impossible, puis recoupe les indices qui relient deux figures.",
+      "figures": [
+        "cercle",
+        "carre",
+        "triangle"
+      ],
+      "couleurs": [
+        "rouge",
+        "bleu",
+        "vert"
+      ],
+      "enonces": [
+        {
+          "type": "case",
+          "figure": "cercle",
+          "couleur": "bleu",
+          "case": 1
+        },
+        {
+          "type": "case",
+          "figure": "triangle",
+          "couleur": "bleu",
+          "case": 5
+        },
+        {
+          "type": "case",
+          "figure": "carre",
+          "couleur": "bleu",
+          "case": 6
+        },
+        {
+          "type": "case",
+          "figure": "cercle",
+          "couleur": "rouge",
+          "case": 8
+        },
+        {
+          "type": "case",
+          "figure": "cercle",
+          "couleur": "vert",
+          "case": 3
+        }
+      ],
+      "indices": [
+        {
+          "type": "autre-colonne",
+          "figure": "cercle",
+          "couleur": "bleu",
+          "figure2": "carre",
+          "couleur2": "bleu"
+        },
+        {
+          "type": "comparaison",
+          "figure": "cercle",
+          "couleur": "vert",
+          "figure2": "carre",
+          "couleur2": "rouge"
+        },
+        {
+          "type": "autre-colonne",
+          "figure": "carre",
+          "couleur": "bleu",
+          "figure2": "triangle",
+          "couleur2": "bleu"
+        }
+      ],
+      "aide": "Les indices suffisent : en les recoupant, chaque case se déduit. Commence par ceux qui désignent une case précise."
+    },
+    "reponse": {
+      "valeur": "triangle:rouge;cercle:bleu;carre:vert;cercle:vert;carre:rouge;triangle:bleu;carre:bleu;triangle:vert;cercle:rouge",
+      "grille": [
+        [
+          "triangle",
+          "rouge"
+        ],
+        [
+          "cercle",
+          "bleu"
+        ],
+        [
+          "carre",
+          "vert"
+        ],
+        [
+          "cercle",
+          "vert"
+        ],
+        [
+          "carre",
+          "rouge"
+        ],
+        [
+          "triangle",
+          "bleu"
+        ],
+        [
+          "carre",
+          "bleu"
+        ],
+        [
+          "triangle",
+          "vert"
+        ],
+        [
+          "cercle",
+          "rouge"
+        ]
+      ]
+    },
+    "meta": {
+      "auteur": "generation-automatique (tools/generer_deduction.py)",
+      "date_creation": "2026-09-25",
+      "relecture_ortho": {
+        "statut": "a_revoir"
+      }
+    }
+  },
+  {
+    "id": "de-3-07",
+    "type": "grille-deduction",
+    "module": "entrainement",
+    "theme": "deduction",
+    "fonctions_ciblees": [
+      "fonctions-executives",
+      "memoire-travail"
+    ],
+    "palier": 3,
+    "prerequis": [
+      "de-palier-2"
+    ],
+    "cap_complexite": null,
+    "contenu": {
+      "consigne": "Place les figures colorées. Chaque figure colorée (un carré bleu, un cercle rouge…) apparaît une seule fois dans la grille. Méthode : note d'abord ce qui est certain, barre ce qui devient impossible, puis recoupe les indices qui relient deux figures.",
+      "figures": [
+        "cercle",
+        "carre",
+        "triangle"
+      ],
+      "couleurs": [
+        "rouge",
+        "bleu",
+        "vert"
+      ],
+      "enonces": [
+        {
+          "type": "case",
+          "figure": "triangle",
+          "couleur": "bleu",
+          "case": 3
+        },
+        {
+          "type": "case",
+          "figure": "cercle",
+          "couleur": "vert",
+          "case": 6
+        },
+        {
+          "type": "case",
+          "figure": "triangle",
+          "couleur": "rouge",
+          "case": 7
+        },
+        {
+          "type": "case",
+          "figure": "carre",
+          "couleur": "bleu",
+          "case": 8
+        },
+        {
+          "type": "case",
+          "figure": "cercle",
+          "couleur": "bleu",
+          "case": 1
+        },
+        {
+          "type": "case",
+          "figure": "carre",
+          "couleur": "vert",
+          "case": 4
+        },
+        {
+          "type": "case",
+          "figure": "triangle",
+          "couleur": "vert",
+          "case": 2
+        }
+      ],
+      "indices": [
+        {
+          "type": "autre-colonne",
+          "figure": "cercle",
+          "couleur": "vert",
+          "figure2": "cercle",
+          "couleur2": "rouge"
+        },
+        {
+          "type": "autre-ligne",
+          "figure": "cercle",
+          "couleur": "vert",
+          "figure2": "carre",
+          "couleur2": "vert"
+        },
+        {
+          "type": "case",
+          "figure": "triangle",
+          "couleur": "vert",
+          "case": 2
+        }
+      ],
+      "aide": "Les indices suffisent : en les recoupant, chaque case se déduit. Commence par ceux qui désignent une case précise."
     },
     "reponse": {
       "valeur": "carre:rouge;cercle:bleu;triangle:vert;triangle:bleu;carre:vert;cercle:rouge;cercle:vert;triangle:rouge;carre:bleu",
@@ -263,14 +967,14 @@
     },
     "meta": {
       "auteur": "generation-automatique (tools/generer_deduction.py)",
-      "date_creation": "2026-09-24",
+      "date_creation": "2026-09-25",
       "relecture_ortho": {
         "statut": "a_revoir"
       }
     }
   },
   {
-    "id": "de-3-03",
+    "id": "de-3-08",
     "type": "grille-deduction",
     "module": "entrainement",
     "theme": "deduction",
@@ -297,108 +1001,393 @@
       ],
       "enonces": [
         {
-          "type": "autre-colonne",
+          "type": "case",
           "figure": "carre",
-          "couleur": "vert",
-          "figure2": "triangle",
-          "couleur2": "rouge"
+          "couleur": "rouge",
+          "case": 8
         },
         {
-          "type": "si-alors",
+          "type": "case",
           "figure": "cercle",
           "couleur": "vert",
-          "figure2": "cercle",
-          "couleur2": "rouge"
+          "case": 2
         },
         {
-          "type": "si-alors",
+          "type": "case",
+          "figure": "triangle",
+          "couleur": "rouge",
+          "case": 0
+        },
+        {
+          "type": "case",
           "figure": "triangle",
           "couleur": "bleu",
+          "case": 5
+        },
+        {
+          "type": "case",
+          "figure": "cercle",
+          "couleur": "rouge",
+          "case": 4
+        },
+        {
+          "type": "case",
+          "figure": "carre",
+          "couleur": "bleu",
+          "case": 1
+        },
+        {
+          "type": "case",
+          "figure": "cercle",
+          "couleur": "bleu",
+          "case": 6
+        }
+      ],
+      "indices": [
+        {
+          "type": "autre-ligne",
+          "figure": "triangle",
+          "couleur": "rouge",
           "figure2": "cercle",
           "couleur2": "bleu"
         },
         {
-          "type": "colonne",
-          "figure": "carre",
-          "couleur": "bleu",
-          "colonne": 2
-        },
-        {
-          "type": "voisin-dessus",
-          "figure": "cercle",
-          "couleur": "bleu",
-          "figure2": "carre",
+          "type": "autre-colonne",
+          "figure": "triangle",
+          "couleur": "rouge",
+          "figure2": "cercle",
           "couleur2": "rouge"
         },
         {
-          "type": "ligne",
+          "type": "autre-colonne",
           "figure": "carre",
-          "couleur": "vert",
-          "ligne": 2
+          "couleur": "bleu",
+          "figure2": "triangle",
+          "couleur2": "rouge"
+        }
+      ],
+      "aide": "Les indices suffisent : en les recoupant, chaque case se déduit. Commence par ceux qui désignent une case précise."
+    },
+    "reponse": {
+      "valeur": "triangle:rouge;carre:bleu;cercle:vert;carre:vert;cercle:rouge;triangle:bleu;cercle:bleu;triangle:vert;carre:rouge",
+      "grille": [
+        [
+          "triangle",
+          "rouge"
+        ],
+        [
+          "carre",
+          "bleu"
+        ],
+        [
+          "cercle",
+          "vert"
+        ],
+        [
+          "carre",
+          "vert"
+        ],
+        [
+          "cercle",
+          "rouge"
+        ],
+        [
+          "triangle",
+          "bleu"
+        ],
+        [
+          "cercle",
+          "bleu"
+        ],
+        [
+          "triangle",
+          "vert"
+        ],
+        [
+          "carre",
+          "rouge"
+        ]
+      ]
+    },
+    "meta": {
+      "auteur": "generation-automatique (tools/generer_deduction.py)",
+      "date_creation": "2026-09-25",
+      "relecture_ortho": {
+        "statut": "a_revoir"
+      }
+    }
+  },
+  {
+    "id": "de-3-09",
+    "type": "grille-deduction",
+    "module": "entrainement",
+    "theme": "deduction",
+    "fonctions_ciblees": [
+      "fonctions-executives",
+      "memoire-travail"
+    ],
+    "palier": 3,
+    "prerequis": [
+      "de-palier-2"
+    ],
+    "cap_complexite": null,
+    "contenu": {
+      "consigne": "Place les figures colorées. Chaque figure colorée (un carré bleu, un cercle rouge…) apparaît une seule fois dans la grille. Méthode : note d'abord ce qui est certain, barre ce qui devient impossible, puis recoupe les indices qui relient deux figures.",
+      "figures": [
+        "cercle",
+        "carre",
+        "triangle"
+      ],
+      "couleurs": [
+        "rouge",
+        "bleu",
+        "vert"
+      ],
+      "enonces": [
+        {
+          "type": "case",
+          "figure": "cercle",
+          "couleur": "bleu",
+          "case": 4
         },
         {
-          "type": "colonne",
+          "type": "case",
+          "figure": "carre",
+          "couleur": "rouge",
+          "case": 1
+        },
+        {
+          "type": "case",
+          "figure": "cercle",
+          "couleur": "vert",
+          "case": 2
+        },
+        {
+          "type": "case",
+          "figure": "carre",
+          "couleur": "bleu",
+          "case": 8
+        },
+        {
+          "type": "case",
+          "figure": "triangle",
+          "couleur": "vert",
+          "case": 7
+        },
+        {
+          "type": "case",
+          "figure": "triangle",
+          "couleur": "bleu",
+          "case": 0
+        },
+        {
+          "type": "case",
           "figure": "carre",
           "couleur": "vert",
-          "colonne": 0
+          "case": 3
+        }
+      ],
+      "indices": [
+        {
+          "type": "autre-colonne",
+          "figure": "cercle",
+          "couleur": "vert",
+          "figure2": "triangle",
+          "couleur2": "vert"
+        },
+        {
+          "type": "case",
+          "figure": "triangle",
+          "couleur": "vert",
+          "case": 7
+        },
+        {
+          "type": "autre-colonne",
+          "figure": "cercle",
+          "couleur": "vert",
+          "figure2": "cercle",
+          "couleur2": "rouge"
+        }
+      ],
+      "aide": "Les indices suffisent : en les recoupant, chaque case se déduit. Commence par ceux qui désignent une case précise."
+    },
+    "reponse": {
+      "valeur": "triangle:bleu;carre:rouge;cercle:vert;carre:vert;cercle:bleu;triangle:rouge;cercle:rouge;triangle:vert;carre:bleu",
+      "grille": [
+        [
+          "triangle",
+          "bleu"
+        ],
+        [
+          "carre",
+          "rouge"
+        ],
+        [
+          "cercle",
+          "vert"
+        ],
+        [
+          "carre",
+          "vert"
+        ],
+        [
+          "cercle",
+          "bleu"
+        ],
+        [
+          "triangle",
+          "rouge"
+        ],
+        [
+          "cercle",
+          "rouge"
+        ],
+        [
+          "triangle",
+          "vert"
+        ],
+        [
+          "carre",
+          "bleu"
+        ]
+      ]
+    },
+    "meta": {
+      "auteur": "generation-automatique (tools/generer_deduction.py)",
+      "date_creation": "2026-09-25",
+      "relecture_ortho": {
+        "statut": "a_revoir"
+      }
+    }
+  },
+  {
+    "id": "de-3-10",
+    "type": "grille-deduction",
+    "module": "entrainement",
+    "theme": "deduction",
+    "fonctions_ciblees": [
+      "fonctions-executives",
+      "memoire-travail"
+    ],
+    "palier": 3,
+    "prerequis": [
+      "de-palier-2"
+    ],
+    "cap_complexite": null,
+    "contenu": {
+      "consigne": "Place les figures colorées. Chaque figure colorée (un carré bleu, un cercle rouge…) apparaît une seule fois dans la grille. Méthode : note d'abord ce qui est certain, barre ce qui devient impossible, puis recoupe les indices qui relient deux figures.",
+      "figures": [
+        "cercle",
+        "carre",
+        "triangle"
+      ],
+      "couleurs": [
+        "rouge",
+        "bleu",
+        "vert"
+      ],
+      "enonces": [
+        {
+          "type": "case",
+          "figure": "cercle",
+          "couleur": "rouge",
+          "case": 4
+        },
+        {
+          "type": "case",
+          "figure": "triangle",
+          "couleur": "bleu",
+          "case": 1
+        },
+        {
+          "type": "case",
+          "figure": "carre",
+          "couleur": "rouge",
+          "case": 0
+        },
+        {
+          "type": "case",
+          "figure": "cercle",
+          "couleur": "vert",
+          "case": 2
+        },
+        {
+          "type": "case",
+          "figure": "carre",
+          "couleur": "bleu",
+          "case": 5
+        },
+        {
+          "type": "case",
+          "figure": "carre",
+          "couleur": "vert",
+          "case": 7
+        },
+        {
+          "type": "case",
+          "figure": "triangle",
+          "couleur": "rouge",
+          "case": 8
         }
       ],
       "indices": [
         {
           "type": "case",
           "figure": "cercle",
-          "couleur": "rouge",
-          "case": 0
+          "couleur": "bleu",
+          "case": 6
         },
         {
-          "type": "ligne",
-          "figure": "cercle",
-          "couleur": "rouge",
-          "ligne": 0
+          "type": "autre-colonne",
+          "figure": "carre",
+          "couleur": "bleu",
+          "figure2": "cercle",
+          "couleur2": "bleu"
         },
         {
-          "type": "colonne",
+          "type": "autre-ligne",
           "figure": "cercle",
-          "couleur": "rouge",
-          "colonne": 0
+          "couleur": "vert",
+          "figure2": "cercle",
+          "couleur2": "bleu"
         }
       ],
-      "aide": "Commence par les indices les plus précis (ceux qui nomment une case), puis déduis le reste."
+      "aide": "Les indices suffisent : en les recoupant, chaque case se déduit. Commence par ceux qui désignent une case précise."
     },
     "reponse": {
-      "valeur": "cercle:rouge;triangle:vert;carre:bleu;triangle:bleu;carre:rouge;cercle:vert;carre:vert;cercle:bleu;triangle:rouge",
+      "valeur": "carre:rouge;triangle:bleu;cercle:vert;triangle:vert;cercle:rouge;carre:bleu;cercle:bleu;carre:vert;triangle:rouge",
       "grille": [
         [
-          "cercle",
-          "rouge"
-        ],
-        [
-          "triangle",
-          "vert"
-        ],
-        [
           "carre",
-          "bleu"
+          "rouge"
         ],
         [
           "triangle",
           "bleu"
         ],
         [
-          "carre",
-          "rouge"
-        ],
-        [
           "cercle",
           "vert"
         ],
         [
-          "carre",
+          "triangle",
           "vert"
+        ],
+        [
+          "cercle",
+          "rouge"
+        ],
+        [
+          "carre",
+          "bleu"
         ],
         [
           "cercle",
           "bleu"
+        ],
+        [
+          "carre",
+          "vert"
         ],
         [
           "triangle",
@@ -408,14 +1397,14 @@
     },
     "meta": {
       "auteur": "generation-automatique (tools/generer_deduction.py)",
-      "date_creation": "2026-09-24",
+      "date_creation": "2026-09-25",
       "relecture_ortho": {
         "statut": "a_revoir"
       }
     }
   },
   {
-    "id": "de-3-04",
+    "id": "de-3-11",
     "type": "grille-deduction",
     "module": "entrainement",
     "theme": "deduction",
@@ -442,39 +1431,40 @@
       ],
       "enonces": [
         {
-          "type": "si-alors",
+          "type": "case",
+          "figure": "cercle",
+          "couleur": "rouge",
+          "case": 1
+        },
+        {
+          "type": "case",
+          "figure": "triangle",
+          "couleur": "rouge",
+          "case": 3
+        },
+        {
+          "type": "case",
           "figure": "cercle",
           "couleur": "bleu",
-          "figure2": "cercle",
-          "couleur2": "rouge"
+          "case": 6
         },
         {
-          "type": "si-alors",
-          "figure": "cercle",
-          "couleur": "vert",
-          "figure2": "carre",
-          "couleur2": "vert"
-        },
-        {
-          "type": "si-alors",
-          "figure": "cercle",
-          "couleur": "vert",
-          "figure2": "triangle",
-          "couleur2": "vert"
-        },
-        {
-          "type": "autre-ligne",
-          "figure": "triangle",
-          "couleur": "vert",
-          "figure2": "carre",
-          "couleur2": "bleu"
-        },
-        {
-          "type": "voisin-dessous",
+          "type": "case",
           "figure": "carre",
           "couleur": "vert",
-          "figure2": "cercle",
-          "couleur2": "bleu"
+          "case": 0
+        },
+        {
+          "type": "case",
+          "figure": "triangle",
+          "couleur": "vert",
+          "case": 7
+        },
+        {
+          "type": "case",
+          "figure": "carre",
+          "couleur": "bleu",
+          "case": 4
         },
         {
           "type": "case",
@@ -485,40 +1475,873 @@
       ],
       "indices": [
         {
+          "type": "autre-colonne",
+          "figure": "cercle",
+          "couleur": "vert",
+          "figure2": "carre",
+          "couleur2": "bleu"
+        },
+        {
+          "type": "ligne",
+          "figure": "carre",
+          "couleur": "rouge",
+          "ligne": 2
+        },
+        {
+          "type": "autre-ligne",
+          "figure": "triangle",
+          "couleur": "vert",
+          "figure2": "cercle",
+          "couleur2": "rouge"
+        }
+      ],
+      "aide": "Les indices suffisent : en les recoupant, chaque case se déduit. Commence par ceux qui désignent une case précise."
+    },
+    "reponse": {
+      "valeur": "carre:vert;cercle:rouge;triangle:bleu;triangle:rouge;carre:bleu;cercle:vert;cercle:bleu;triangle:vert;carre:rouge",
+      "grille": [
+        [
+          "carre",
+          "vert"
+        ],
+        [
+          "cercle",
+          "rouge"
+        ],
+        [
+          "triangle",
+          "bleu"
+        ],
+        [
+          "triangle",
+          "rouge"
+        ],
+        [
+          "carre",
+          "bleu"
+        ],
+        [
+          "cercle",
+          "vert"
+        ],
+        [
+          "cercle",
+          "bleu"
+        ],
+        [
+          "triangle",
+          "vert"
+        ],
+        [
+          "carre",
+          "rouge"
+        ]
+      ]
+    },
+    "meta": {
+      "auteur": "generation-automatique (tools/generer_deduction.py)",
+      "date_creation": "2026-09-25",
+      "relecture_ortho": {
+        "statut": "a_revoir"
+      }
+    }
+  },
+  {
+    "id": "de-3-12",
+    "type": "grille-deduction",
+    "module": "entrainement",
+    "theme": "deduction",
+    "fonctions_ciblees": [
+      "fonctions-executives",
+      "memoire-travail"
+    ],
+    "palier": 3,
+    "prerequis": [
+      "de-palier-2"
+    ],
+    "cap_complexite": null,
+    "contenu": {
+      "consigne": "Place les figures colorées. Chaque figure colorée (un carré bleu, un cercle rouge…) apparaît une seule fois dans la grille. Méthode : note d'abord ce qui est certain, barre ce qui devient impossible, puis recoupe les indices qui relient deux figures.",
+      "figures": [
+        "cercle",
+        "carre",
+        "triangle"
+      ],
+      "couleurs": [
+        "rouge",
+        "bleu",
+        "vert"
+      ],
+      "enonces": [
+        {
           "type": "case",
           "figure": "cercle",
           "couleur": "rouge",
+          "case": 2
+        },
+        {
+          "type": "case",
+          "figure": "triangle",
+          "couleur": "rouge",
+          "case": 4
+        },
+        {
+          "type": "case",
+          "figure": "carre",
+          "couleur": "bleu",
+          "case": 1
+        },
+        {
+          "type": "case",
+          "figure": "cercle",
+          "couleur": "bleu",
+          "case": 3
+        },
+        {
+          "type": "case",
+          "figure": "carre",
+          "couleur": "rouge",
+          "case": 6
+        },
+        {
+          "type": "case",
+          "figure": "carre",
+          "couleur": "vert",
+          "case": 5
+        }
+      ],
+      "indices": [
+        {
+          "type": "autre-ligne",
+          "figure": "triangle",
+          "couleur": "bleu",
+          "figure2": "cercle",
+          "couleur2": "bleu"
+        },
+        {
+          "type": "autre-ligne",
+          "figure": "triangle",
+          "couleur": "vert",
+          "figure2": "carre",
+          "couleur2": "rouge"
+        },
+        {
+          "type": "autre-ligne",
+          "figure": "cercle",
+          "couleur": "bleu",
+          "figure2": "carre",
+          "couleur2": "bleu"
+        }
+      ],
+      "aide": "Les indices suffisent : en les recoupant, chaque case se déduit. Commence par ceux qui désignent une case précise."
+    },
+    "reponse": {
+      "valeur": "triangle:vert;carre:bleu;cercle:rouge;cercle:bleu;triangle:rouge;carre:vert;carre:rouge;cercle:vert;triangle:bleu",
+      "grille": [
+        [
+          "triangle",
+          "vert"
+        ],
+        [
+          "carre",
+          "bleu"
+        ],
+        [
+          "cercle",
+          "rouge"
+        ],
+        [
+          "cercle",
+          "bleu"
+        ],
+        [
+          "triangle",
+          "rouge"
+        ],
+        [
+          "carre",
+          "vert"
+        ],
+        [
+          "carre",
+          "rouge"
+        ],
+        [
+          "cercle",
+          "vert"
+        ],
+        [
+          "triangle",
+          "bleu"
+        ]
+      ]
+    },
+    "meta": {
+      "auteur": "generation-automatique (tools/generer_deduction.py)",
+      "date_creation": "2026-09-25",
+      "relecture_ortho": {
+        "statut": "a_revoir"
+      }
+    }
+  },
+  {
+    "id": "de-3-13",
+    "type": "grille-deduction",
+    "module": "entrainement",
+    "theme": "deduction",
+    "fonctions_ciblees": [
+      "fonctions-executives",
+      "memoire-travail"
+    ],
+    "palier": 3,
+    "prerequis": [
+      "de-palier-2"
+    ],
+    "cap_complexite": null,
+    "contenu": {
+      "consigne": "Place les figures colorées. Chaque figure colorée (un carré bleu, un cercle rouge…) apparaît une seule fois dans la grille. Méthode : note d'abord ce qui est certain, barre ce qui devient impossible, puis recoupe les indices qui relient deux figures.",
+      "figures": [
+        "cercle",
+        "carre",
+        "triangle"
+      ],
+      "couleurs": [
+        "rouge",
+        "bleu",
+        "vert"
+      ],
+      "enonces": [
+        {
+          "type": "case",
+          "figure": "triangle",
+          "couleur": "vert",
+          "case": 5
+        },
+        {
+          "type": "case",
+          "figure": "carre",
+          "couleur": "rouge",
+          "case": 8
+        },
+        {
+          "type": "case",
+          "figure": "cercle",
+          "couleur": "rouge",
+          "case": 4
+        },
+        {
+          "type": "case",
+          "figure": "triangle",
+          "couleur": "bleu",
+          "case": 7
+        },
+        {
+          "type": "case",
+          "figure": "triangle",
+          "couleur": "rouge",
           "case": 0
+        }
+      ],
+      "indices": [
+        {
+          "type": "voisin-droite",
+          "figure": "carre",
+          "couleur": "rouge",
+          "figure2": "triangle",
+          "couleur2": "bleu"
+        },
+        {
+          "type": "autre-ligne",
+          "figure": "carre",
+          "couleur": "vert",
+          "figure2": "cercle",
+          "couleur2": "rouge"
+        },
+        {
+          "type": "autre-colonne",
+          "figure": "cercle",
+          "couleur": "rouge",
+          "figure2": "triangle",
+          "couleur2": "rouge"
+        }
+      ],
+      "aide": "Les indices suffisent : en les recoupant, chaque case se déduit. Commence par ceux qui désignent une case précise."
+    },
+    "reponse": {
+      "valeur": "triangle:rouge;carre:vert;cercle:bleu;carre:bleu;cercle:rouge;triangle:vert;cercle:vert;triangle:bleu;carre:rouge",
+      "grille": [
+        [
+          "triangle",
+          "rouge"
+        ],
+        [
+          "carre",
+          "vert"
+        ],
+        [
+          "cercle",
+          "bleu"
+        ],
+        [
+          "carre",
+          "bleu"
+        ],
+        [
+          "cercle",
+          "rouge"
+        ],
+        [
+          "triangle",
+          "vert"
+        ],
+        [
+          "cercle",
+          "vert"
+        ],
+        [
+          "triangle",
+          "bleu"
+        ],
+        [
+          "carre",
+          "rouge"
+        ]
+      ]
+    },
+    "meta": {
+      "auteur": "generation-automatique (tools/generer_deduction.py)",
+      "date_creation": "2026-09-25",
+      "relecture_ortho": {
+        "statut": "a_revoir"
+      }
+    }
+  },
+  {
+    "id": "de-3-14",
+    "type": "grille-deduction",
+    "module": "entrainement",
+    "theme": "deduction",
+    "fonctions_ciblees": [
+      "fonctions-executives",
+      "memoire-travail"
+    ],
+    "palier": 3,
+    "prerequis": [
+      "de-palier-2"
+    ],
+    "cap_complexite": null,
+    "contenu": {
+      "consigne": "Place les figures colorées. Chaque figure colorée (un carré bleu, un cercle rouge…) apparaît une seule fois dans la grille. Méthode : note d'abord ce qui est certain, barre ce qui devient impossible, puis recoupe les indices qui relient deux figures.",
+      "figures": [
+        "cercle",
+        "carre",
+        "triangle"
+      ],
+      "couleurs": [
+        "rouge",
+        "bleu",
+        "vert"
+      ],
+      "enonces": [
+        {
+          "type": "case",
+          "figure": "cercle",
+          "couleur": "bleu",
+          "case": 4
+        },
+        {
+          "type": "case",
+          "figure": "triangle",
+          "couleur": "bleu",
+          "case": 8
+        },
+        {
+          "type": "case",
+          "figure": "cercle",
+          "couleur": "rouge",
+          "case": 6
+        },
+        {
+          "type": "case",
+          "figure": "triangle",
+          "couleur": "rouge",
+          "case": 1
+        },
+        {
+          "type": "case",
+          "figure": "carre",
+          "couleur": "vert",
+          "case": 7
+        },
+        {
+          "type": "case",
+          "figure": "carre",
+          "couleur": "rouge",
+          "case": 5
+        },
+        {
+          "type": "case",
+          "figure": "carre",
+          "couleur": "bleu",
+          "case": 0
+        }
+      ],
+      "indices": [
+        {
+          "type": "autre-ligne",
+          "figure": "cercle",
+          "couleur": "bleu",
+          "figure2": "carre",
+          "couleur2": "vert"
+        },
+        {
+          "type": "autre-colonne",
+          "figure": "triangle",
+          "couleur": "bleu",
+          "figure2": "carre",
+          "couleur2": "vert"
+        },
+        {
+          "type": "autre-ligne",
+          "figure": "carre",
+          "couleur": "vert",
+          "figure2": "triangle",
+          "couleur2": "rouge"
+        }
+      ],
+      "aide": "Les indices suffisent : en les recoupant, chaque case se déduit. Commence par ceux qui désignent une case précise."
+    },
+    "reponse": {
+      "valeur": "carre:bleu;triangle:rouge;cercle:vert;triangle:vert;cercle:bleu;carre:rouge;cercle:rouge;carre:vert;triangle:bleu",
+      "grille": [
+        [
+          "carre",
+          "bleu"
+        ],
+        [
+          "triangle",
+          "rouge"
+        ],
+        [
+          "cercle",
+          "vert"
+        ],
+        [
+          "triangle",
+          "vert"
+        ],
+        [
+          "cercle",
+          "bleu"
+        ],
+        [
+          "carre",
+          "rouge"
+        ],
+        [
+          "cercle",
+          "rouge"
+        ],
+        [
+          "carre",
+          "vert"
+        ],
+        [
+          "triangle",
+          "bleu"
+        ]
+      ]
+    },
+    "meta": {
+      "auteur": "generation-automatique (tools/generer_deduction.py)",
+      "date_creation": "2026-09-25",
+      "relecture_ortho": {
+        "statut": "a_revoir"
+      }
+    }
+  },
+  {
+    "id": "de-3-15",
+    "type": "grille-deduction",
+    "module": "entrainement",
+    "theme": "deduction",
+    "fonctions_ciblees": [
+      "fonctions-executives",
+      "memoire-travail"
+    ],
+    "palier": 3,
+    "prerequis": [
+      "de-palier-2"
+    ],
+    "cap_complexite": null,
+    "contenu": {
+      "consigne": "Place les figures colorées. Chaque figure colorée (un carré bleu, un cercle rouge…) apparaît une seule fois dans la grille. Méthode : note d'abord ce qui est certain, barre ce qui devient impossible, puis recoupe les indices qui relient deux figures.",
+      "figures": [
+        "cercle",
+        "carre",
+        "triangle"
+      ],
+      "couleurs": [
+        "rouge",
+        "bleu",
+        "vert"
+      ],
+      "enonces": [
+        {
+          "type": "case",
+          "figure": "carre",
+          "couleur": "bleu",
+          "case": 0
+        },
+        {
+          "type": "case",
+          "figure": "carre",
+          "couleur": "rouge",
+          "case": 8
+        },
+        {
+          "type": "case",
+          "figure": "cercle",
+          "couleur": "bleu",
+          "case": 7
+        },
+        {
+          "type": "case",
+          "figure": "triangle",
+          "couleur": "bleu",
+          "case": 5
+        },
+        {
+          "type": "case",
+          "figure": "cercle",
+          "couleur": "rouge",
+          "case": 3
+        },
+        {
+          "type": "case",
+          "figure": "triangle",
+          "couleur": "rouge",
+          "case": 1
+        }
+      ],
+      "indices": [
+        {
+          "type": "autre-colonne",
+          "figure": "cercle",
+          "couleur": "rouge",
+          "figure2": "triangle",
+          "couleur2": "bleu"
+        },
+        {
+          "type": "voisin-gauche",
+          "figure": "cercle",
+          "couleur": "rouge",
+          "figure2": "carre",
+          "couleur2": "vert"
+        },
+        {
+          "type": "autre-ligne",
+          "figure": "carre",
+          "couleur": "bleu",
+          "figure2": "triangle",
+          "couleur2": "bleu"
+        }
+      ],
+      "aide": "Les indices suffisent : en les recoupant, chaque case se déduit. Commence par ceux qui désignent une case précise."
+    },
+    "reponse": {
+      "valeur": "carre:bleu;triangle:rouge;cercle:vert;cercle:rouge;carre:vert;triangle:bleu;triangle:vert;cercle:bleu;carre:rouge",
+      "grille": [
+        [
+          "carre",
+          "bleu"
+        ],
+        [
+          "triangle",
+          "rouge"
+        ],
+        [
+          "cercle",
+          "vert"
+        ],
+        [
+          "cercle",
+          "rouge"
+        ],
+        [
+          "carre",
+          "vert"
+        ],
+        [
+          "triangle",
+          "bleu"
+        ],
+        [
+          "triangle",
+          "vert"
+        ],
+        [
+          "cercle",
+          "bleu"
+        ],
+        [
+          "carre",
+          "rouge"
+        ]
+      ]
+    },
+    "meta": {
+      "auteur": "generation-automatique (tools/generer_deduction.py)",
+      "date_creation": "2026-09-25",
+      "relecture_ortho": {
+        "statut": "a_revoir"
+      }
+    }
+  },
+  {
+    "id": "de-3-16",
+    "type": "grille-deduction",
+    "module": "entrainement",
+    "theme": "deduction",
+    "fonctions_ciblees": [
+      "fonctions-executives",
+      "memoire-travail"
+    ],
+    "palier": 3,
+    "prerequis": [
+      "de-palier-2"
+    ],
+    "cap_complexite": null,
+    "contenu": {
+      "consigne": "Place les figures colorées. Chaque figure colorée (un carré bleu, un cercle rouge…) apparaît une seule fois dans la grille. Méthode : note d'abord ce qui est certain, barre ce qui devient impossible, puis recoupe les indices qui relient deux figures.",
+      "figures": [
+        "cercle",
+        "carre",
+        "triangle"
+      ],
+      "couleurs": [
+        "rouge",
+        "bleu",
+        "vert"
+      ],
+      "enonces": [
+        {
+          "type": "case",
+          "figure": "carre",
+          "couleur": "bleu",
+          "case": 7
+        },
+        {
+          "type": "case",
+          "figure": "cercle",
+          "couleur": "bleu",
+          "case": 3
+        },
+        {
+          "type": "case",
+          "figure": "triangle",
+          "couleur": "vert",
+          "case": 6
+        },
+        {
+          "type": "case",
+          "figure": "triangle",
+          "couleur": "bleu",
+          "case": 2
+        },
+        {
+          "type": "case",
+          "figure": "cercle",
+          "couleur": "rouge",
+          "case": 8
+        },
+        {
+          "type": "case",
+          "figure": "triangle",
+          "couleur": "rouge",
+          "case": 4
+        }
+      ],
+      "indices": [
+        {
+          "type": "autre-ligne",
+          "figure": "carre",
+          "couleur": "bleu",
+          "figure2": "triangle",
+          "couleur2": "rouge"
+        },
+        {
+          "type": "autre-colonne",
+          "figure": "cercle",
+          "couleur": "vert",
+          "figure2": "carre",
+          "couleur2": "vert"
+        },
+        {
+          "type": "autre-colonne",
+          "figure": "carre",
+          "couleur": "bleu",
+          "figure2": "carre",
+          "couleur2": "vert"
+        }
+      ],
+      "aide": "Les indices suffisent : en les recoupant, chaque case se déduit. Commence par ceux qui désignent une case précise."
+    },
+    "reponse": {
+      "valeur": "carre:rouge;cercle:vert;triangle:bleu;cercle:bleu;triangle:rouge;carre:vert;triangle:vert;carre:bleu;cercle:rouge",
+      "grille": [
+        [
+          "carre",
+          "rouge"
+        ],
+        [
+          "cercle",
+          "vert"
+        ],
+        [
+          "triangle",
+          "bleu"
+        ],
+        [
+          "cercle",
+          "bleu"
+        ],
+        [
+          "triangle",
+          "rouge"
+        ],
+        [
+          "carre",
+          "vert"
+        ],
+        [
+          "triangle",
+          "vert"
+        ],
+        [
+          "carre",
+          "bleu"
+        ],
+        [
+          "cercle",
+          "rouge"
+        ]
+      ]
+    },
+    "meta": {
+      "auteur": "generation-automatique (tools/generer_deduction.py)",
+      "date_creation": "2026-09-25",
+      "relecture_ortho": {
+        "statut": "a_revoir"
+      }
+    }
+  },
+  {
+    "id": "de-3-17",
+    "type": "grille-deduction",
+    "module": "entrainement",
+    "theme": "deduction",
+    "fonctions_ciblees": [
+      "fonctions-executives",
+      "memoire-travail"
+    ],
+    "palier": 3,
+    "prerequis": [
+      "de-palier-2"
+    ],
+    "cap_complexite": null,
+    "contenu": {
+      "consigne": "Place les figures colorées. Chaque figure colorée (un carré bleu, un cercle rouge…) apparaît une seule fois dans la grille. Méthode : note d'abord ce qui est certain, barre ce qui devient impossible, puis recoupe les indices qui relient deux figures.",
+      "figures": [
+        "cercle",
+        "carre",
+        "triangle"
+      ],
+      "couleurs": [
+        "rouge",
+        "bleu",
+        "vert"
+      ],
+      "enonces": [
+        {
+          "type": "case",
+          "figure": "cercle",
+          "couleur": "vert",
+          "case": 0
+        },
+        {
+          "type": "case",
+          "figure": "carre",
+          "couleur": "vert",
+          "case": 8
+        },
+        {
+          "type": "case",
+          "figure": "triangle",
+          "couleur": "vert",
+          "case": 4
+        },
+        {
+          "type": "case",
+          "figure": "carre",
+          "couleur": "rouge",
+          "case": 3
+        },
+        {
+          "type": "case",
+          "figure": "triangle",
+          "couleur": "rouge",
+          "case": 2
+        },
+        {
+          "type": "case",
+          "figure": "cercle",
+          "couleur": "rouge",
+          "case": 7
+        }
+      ],
+      "indices": [
+        {
+          "type": "autre-ligne",
+          "figure": "cercle",
+          "couleur": "vert",
+          "figure2": "triangle",
+          "couleur2": "vert"
+        },
+        {
+          "type": "autre-colonne",
+          "figure": "cercle",
+          "couleur": "bleu",
+          "figure2": "cercle",
+          "couleur2": "vert"
         },
         {
           "type": "ligne",
           "figure": "cercle",
           "couleur": "rouge",
-          "ligne": 0
-        },
-        {
-          "type": "colonne",
-          "figure": "cercle",
-          "couleur": "rouge",
-          "colonne": 0
+          "ligne": 2
         }
       ],
-      "aide": "Commence par les indices les plus précis (ceux qui nomment une case), puis déduis le reste."
+      "aide": "Les indices suffisent : en les recoupant, chaque case se déduit. Commence par ceux qui désignent une case précise."
     },
     "reponse": {
-      "valeur": "cercle:rouge;carre:vert;triangle:bleu;triangle:vert;cercle:bleu;carre:rouge;carre:bleu;triangle:rouge;cercle:vert",
+      "valeur": "cercle:vert;carre:bleu;triangle:rouge;carre:rouge;triangle:vert;cercle:bleu;triangle:bleu;cercle:rouge;carre:vert",
       "grille": [
         [
           "cercle",
+          "vert"
+        ],
+        [
+          "carre",
+          "bleu"
+        ],
+        [
+          "triangle",
           "rouge"
         ],
         [
           "carre",
-          "vert"
-        ],
-        [
-          "triangle",
-          "bleu"
+          "rouge"
         ],
         [
           "triangle",
@@ -529,26 +2352,441 @@
           "bleu"
         ],
         [
-          "carre",
-          "rouge"
-        ],
-        [
-          "carre",
+          "triangle",
           "bleu"
         ],
         [
-          "triangle",
+          "cercle",
           "rouge"
         ],
         [
-          "cercle",
+          "carre",
           "vert"
         ]
       ]
     },
     "meta": {
       "auteur": "generation-automatique (tools/generer_deduction.py)",
-      "date_creation": "2026-09-24",
+      "date_creation": "2026-09-25",
+      "relecture_ortho": {
+        "statut": "a_revoir"
+      }
+    }
+  },
+  {
+    "id": "de-3-18",
+    "type": "grille-deduction",
+    "module": "entrainement",
+    "theme": "deduction",
+    "fonctions_ciblees": [
+      "fonctions-executives",
+      "memoire-travail"
+    ],
+    "palier": 3,
+    "prerequis": [
+      "de-palier-2"
+    ],
+    "cap_complexite": null,
+    "contenu": {
+      "consigne": "Place les figures colorées. Chaque figure colorée (un carré bleu, un cercle rouge…) apparaît une seule fois dans la grille. Méthode : note d'abord ce qui est certain, barre ce qui devient impossible, puis recoupe les indices qui relient deux figures.",
+      "figures": [
+        "cercle",
+        "carre",
+        "triangle"
+      ],
+      "couleurs": [
+        "rouge",
+        "bleu",
+        "vert"
+      ],
+      "enonces": [
+        {
+          "type": "case",
+          "figure": "carre",
+          "couleur": "vert",
+          "case": 0
+        },
+        {
+          "type": "case",
+          "figure": "cercle",
+          "couleur": "rouge",
+          "case": 6
+        },
+        {
+          "type": "case",
+          "figure": "cercle",
+          "couleur": "vert",
+          "case": 5
+        },
+        {
+          "type": "case",
+          "figure": "triangle",
+          "couleur": "vert",
+          "case": 7
+        },
+        {
+          "type": "case",
+          "figure": "cercle",
+          "couleur": "bleu",
+          "case": 1
+        }
+      ],
+      "indices": [
+        {
+          "type": "comparaison",
+          "figure": "carre",
+          "couleur": "vert",
+          "figure2": "triangle",
+          "couleur2": "rouge"
+        },
+        {
+          "type": "autre-ligne",
+          "figure": "cercle",
+          "couleur": "bleu",
+          "figure2": "cercle",
+          "couleur2": "rouge"
+        },
+        {
+          "type": "ligne",
+          "figure": "triangle",
+          "couleur": "bleu",
+          "ligne": 1
+        }
+      ],
+      "aide": "Les indices suffisent : en les recoupant, chaque case se déduit. Commence par ceux qui désignent une case précise."
+    },
+    "reponse": {
+      "valeur": "carre:vert;cercle:bleu;triangle:rouge;triangle:bleu;carre:rouge;cercle:vert;cercle:rouge;triangle:vert;carre:bleu",
+      "grille": [
+        [
+          "carre",
+          "vert"
+        ],
+        [
+          "cercle",
+          "bleu"
+        ],
+        [
+          "triangle",
+          "rouge"
+        ],
+        [
+          "triangle",
+          "bleu"
+        ],
+        [
+          "carre",
+          "rouge"
+        ],
+        [
+          "cercle",
+          "vert"
+        ],
+        [
+          "cercle",
+          "rouge"
+        ],
+        [
+          "triangle",
+          "vert"
+        ],
+        [
+          "carre",
+          "bleu"
+        ]
+      ]
+    },
+    "meta": {
+      "auteur": "generation-automatique (tools/generer_deduction.py)",
+      "date_creation": "2026-09-25",
+      "relecture_ortho": {
+        "statut": "a_revoir"
+      }
+    }
+  },
+  {
+    "id": "de-3-19",
+    "type": "grille-deduction",
+    "module": "entrainement",
+    "theme": "deduction",
+    "fonctions_ciblees": [
+      "fonctions-executives",
+      "memoire-travail"
+    ],
+    "palier": 3,
+    "prerequis": [
+      "de-palier-2"
+    ],
+    "cap_complexite": null,
+    "contenu": {
+      "consigne": "Place les figures colorées. Chaque figure colorée (un carré bleu, un cercle rouge…) apparaît une seule fois dans la grille. Méthode : note d'abord ce qui est certain, barre ce qui devient impossible, puis recoupe les indices qui relient deux figures.",
+      "figures": [
+        "cercle",
+        "carre",
+        "triangle"
+      ],
+      "couleurs": [
+        "rouge",
+        "bleu",
+        "vert"
+      ],
+      "enonces": [
+        {
+          "type": "case",
+          "figure": "cercle",
+          "couleur": "rouge",
+          "case": 6
+        },
+        {
+          "type": "case",
+          "figure": "cercle",
+          "couleur": "bleu",
+          "case": 5
+        },
+        {
+          "type": "case",
+          "figure": "triangle",
+          "couleur": "bleu",
+          "case": 0
+        },
+        {
+          "type": "case",
+          "figure": "triangle",
+          "couleur": "vert",
+          "case": 8
+        },
+        {
+          "type": "case",
+          "figure": "carre",
+          "couleur": "rouge",
+          "case": 2
+        },
+        {
+          "type": "case",
+          "figure": "carre",
+          "couleur": "bleu",
+          "case": 7
+        },
+        {
+          "type": "case",
+          "figure": "triangle",
+          "couleur": "rouge",
+          "case": 4
+        }
+      ],
+      "indices": [
+        {
+          "type": "voisin-gauche",
+          "figure": "carre",
+          "couleur": "vert",
+          "figure2": "triangle",
+          "couleur2": "rouge"
+        },
+        {
+          "type": "autre-colonne",
+          "figure": "cercle",
+          "couleur": "rouge",
+          "figure2": "cercle",
+          "couleur2": "bleu"
+        },
+        {
+          "type": "autre-ligne",
+          "figure": "cercle",
+          "couleur": "bleu",
+          "figure2": "cercle",
+          "couleur2": "vert"
+        }
+      ],
+      "aide": "Les indices suffisent : en les recoupant, chaque case se déduit. Commence par ceux qui désignent une case précise."
+    },
+    "reponse": {
+      "valeur": "triangle:bleu;cercle:vert;carre:rouge;carre:vert;triangle:rouge;cercle:bleu;cercle:rouge;carre:bleu;triangle:vert",
+      "grille": [
+        [
+          "triangle",
+          "bleu"
+        ],
+        [
+          "cercle",
+          "vert"
+        ],
+        [
+          "carre",
+          "rouge"
+        ],
+        [
+          "carre",
+          "vert"
+        ],
+        [
+          "triangle",
+          "rouge"
+        ],
+        [
+          "cercle",
+          "bleu"
+        ],
+        [
+          "cercle",
+          "rouge"
+        ],
+        [
+          "carre",
+          "bleu"
+        ],
+        [
+          "triangle",
+          "vert"
+        ]
+      ]
+    },
+    "meta": {
+      "auteur": "generation-automatique (tools/generer_deduction.py)",
+      "date_creation": "2026-09-25",
+      "relecture_ortho": {
+        "statut": "a_revoir"
+      }
+    }
+  },
+  {
+    "id": "de-3-20",
+    "type": "grille-deduction",
+    "module": "entrainement",
+    "theme": "deduction",
+    "fonctions_ciblees": [
+      "fonctions-executives",
+      "memoire-travail"
+    ],
+    "palier": 3,
+    "prerequis": [
+      "de-palier-2"
+    ],
+    "cap_complexite": null,
+    "contenu": {
+      "consigne": "Place les figures colorées. Chaque figure colorée (un carré bleu, un cercle rouge…) apparaît une seule fois dans la grille. Méthode : note d'abord ce qui est certain, barre ce qui devient impossible, puis recoupe les indices qui relient deux figures.",
+      "figures": [
+        "cercle",
+        "carre",
+        "triangle"
+      ],
+      "couleurs": [
+        "rouge",
+        "bleu",
+        "vert"
+      ],
+      "enonces": [
+        {
+          "type": "case",
+          "figure": "carre",
+          "couleur": "bleu",
+          "case": 2
+        },
+        {
+          "type": "case",
+          "figure": "carre",
+          "couleur": "rouge",
+          "case": 3
+        },
+        {
+          "type": "case",
+          "figure": "cercle",
+          "couleur": "rouge",
+          "case": 1
+        },
+        {
+          "type": "case",
+          "figure": "triangle",
+          "couleur": "bleu",
+          "case": 4
+        },
+        {
+          "type": "case",
+          "figure": "cercle",
+          "couleur": "vert",
+          "case": 5
+        },
+        {
+          "type": "case",
+          "figure": "triangle",
+          "couleur": "vert",
+          "case": 0
+        },
+        {
+          "type": "case",
+          "figure": "triangle",
+          "couleur": "rouge",
+          "case": 8
+        }
+      ],
+      "indices": [
+        {
+          "type": "autre-colonne",
+          "figure": "cercle",
+          "couleur": "bleu",
+          "figure2": "carre",
+          "couleur2": "bleu"
+        },
+        {
+          "type": "autre-colonne",
+          "figure": "carre",
+          "couleur": "vert",
+          "figure2": "triangle",
+          "couleur2": "rouge"
+        },
+        {
+          "type": "autre-colonne",
+          "figure": "cercle",
+          "couleur": "bleu",
+          "figure2": "cercle",
+          "couleur2": "rouge"
+        }
+      ],
+      "aide": "Les indices suffisent : en les recoupant, chaque case se déduit. Commence par ceux qui désignent une case précise."
+    },
+    "reponse": {
+      "valeur": "triangle:vert;cercle:rouge;carre:bleu;carre:rouge;triangle:bleu;cercle:vert;cercle:bleu;carre:vert;triangle:rouge",
+      "grille": [
+        [
+          "triangle",
+          "vert"
+        ],
+        [
+          "cercle",
+          "rouge"
+        ],
+        [
+          "carre",
+          "bleu"
+        ],
+        [
+          "carre",
+          "rouge"
+        ],
+        [
+          "triangle",
+          "bleu"
+        ],
+        [
+          "cercle",
+          "vert"
+        ],
+        [
+          "cercle",
+          "bleu"
+        ],
+        [
+          "carre",
+          "vert"
+        ],
+        [
+          "triangle",
+          "rouge"
+        ]
+      ]
+    },
+    "meta": {
+      "auteur": "generation-automatique (tools/generer_deduction.py)",
+      "date_creation": "2026-09-25",
       "relecture_ortho": {
         "statut": "a_revoir"
       }

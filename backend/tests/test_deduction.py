@@ -24,7 +24,7 @@ def test_grille_deduction_structure_et_correction(client):
     assert item["type"] == "grille-deduction"
     assert len(item["contenu"]["figures"]) == 3
     assert len(item["contenu"]["couleurs"]) == 3
-    assert 4 <= len(item["contenu"]["enonces"]) <= 9   # aucun indice décoratif
+    assert 5 <= len(item["contenu"]["enonces"]) <= 14   # assez d'indices pour déduire, pas de remplissage
     assert "reponse" not in item                    # la solution ne fuit jamais
 
     solution = CONTENU.item("deduction", item["id"])["reponse"]["valeur"]
@@ -87,3 +87,27 @@ def test_grille_deduction_indices_vrais_pour_la_solution():
         coul = [icoul[c] for _, c in cellules]
         for indice in item["contenu"]["enonces"] + item["contenu"].get("indices", []):
             assert vrai(indice, fig, coul, n, ifig, icoul), f"{item['id']} : indice incohérent {indice}"
+
+
+def test_grilles_solubles_par_deduction_et_solutions_distinctes():
+    """La garantie du thème : chaque grille se reconstruit par raisonnement pur
+    (propagation des indices, aucune hypothèse), et une même solution n'est
+    jamais resservie — le stock tient l'entraînement long terme."""
+    import sys
+    from pathlib import Path
+
+    sys.path.insert(0, str(Path(__file__).resolve().parents[2] / "tools"))
+    from deduction_commun import resoudre_par_deduction
+
+    solutions = set()
+    items = list(CONTENU.items("deduction"))
+    for item in items:
+        contenu = item["contenu"]
+        n = len(contenu["figures"])
+        assert resoudre_par_deduction(
+            contenu["enonces"], n, contenu["figures"], contenu["couleurs"]
+        ), f"{item['id']} : grille non résoluble par déduction"
+        solutions.add(item["reponse"]["valeur"])
+
+    assert len(solutions) == len(items), "deux grilles partagent la même solution"
+    assert len(items) >= 80, "stock insuffisant pour un entraînement de trois mois"

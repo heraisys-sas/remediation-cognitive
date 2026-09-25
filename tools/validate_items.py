@@ -39,6 +39,11 @@ import sys
 from datetime import date
 from pathlib import Path
 
+# Le solveur de déduction sert de juge : un puzzle de grille qui n'est pas
+# entièrement résoluble par propagation (sans hypothèse) est refusé.
+sys.path.insert(0, str(Path(__file__).resolve().parent))
+from deduction_commun import resoudre_par_deduction  # noqa: E402
+
 #: Racine du dépôt (parent du dossier tools/) et dossiers de référence.
 RACINE_DEPOT = Path(__file__).resolve().parent.parent
 DOSSIER_CONTENU = RACINE_DEPOT / "content"
@@ -513,6 +518,13 @@ def _erreurs_grille_deduction(item: dict, prefixe: str, contenu: dict) -> list[s
                 erreurs.append(prefixe + f"grille-deduction : indice de secours {position} de type inconnu")
             elif isinstance(indice, dict) and not _predicat_grille(indice, fig, coul, index_figure, index_couleur, n):
                 erreurs.append(prefixe + f"grille-deduction : l'indice de secours {position} contredit la solution")
+
+    # Les indices doivent suffire : la grille se reconstruit par déduction, sans deviner.
+    if (isinstance(enonces, list) and enonces
+            and all(isinstance(i, dict) for i in enonces)
+            and not resoudre_par_deduction(enonces, n, figures, couleurs)):
+        erreurs.append(prefixe + "grille-deduction : puzzle non résoluble par déduction "
+                                "(ajouter des indices jusqu'à ce que le solveur termine)")
     return erreurs
 
 

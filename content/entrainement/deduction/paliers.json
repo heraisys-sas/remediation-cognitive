@@ -3,28 +3,28 @@
   "paliers": [
     {
       "id": "de-palier-1",
-      "description": "Indices de position (chaque phrase donne la figure colorée et sa case)",
+      "description": "Indices de position : la grille se déduit case par case",
       "prerequis": [],
       "fichier": "paliers/palier-01.json",
-      "nb_items": 4
+      "nb_items": 20
     },
     {
       "id": "de-palier-2",
-      "description": "Indices relationnels : voisinage, à gauche de, pas sur la même ligne",
+      "description": "Indices relationnels (voisinage, à gauche de, pas sur la même ligne)",
       "prerequis": [
         "de-palier-1"
       ],
       "fichier": "paliers/palier-02.json",
-      "nb_items": 4
+      "nb_items": 20
     },
     {
       "id": "de-palier-3",
-      "description": "Indices négatifs et conditionnels : éliminer et enchaîner (« si… alors »)",
+      "description": "Indices négatifs et conditionnels : éliminer pour déduire",
       "prerequis": [
         "de-palier-2"
       ],
       "fichier": "paliers/palier-03.json",
-      "nb_items": 4
+      "nb_items": 20
     },
     {
       "id": "de-palier-4",
@@ -33,7 +33,7 @@
         "de-palier-3"
       ],
       "fichier": "paliers/palier-04.json",
-      "nb_items": 4
+      "nb_items": 20
     }
   ]
 }
