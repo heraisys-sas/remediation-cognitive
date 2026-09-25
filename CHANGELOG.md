@@ -2,6 +2,14 @@
 
 Format : [date] — [périmètre] — description. Les retours informels de l'orthophoniste sont journalisés ici, sans caution clinique.
 
+## 2026-09-25 · Interface : URL de script versionnée (fin des scripts périmés)
+
+Le script restait en cache du navigateur malgré la correction : le serveur en cours d'exécution datait d'avant les en-têtes anti-cache.
+
+- **URL versionnée** dans `index.html` (`src/app.js?v=…`, à incrémenter après toute modification) : le navigateur ne peut plus réutiliser un ancien script, même sans redémarrer le serveur.
+- Contrôlé sur une instance neuve : `index.html` annonce la version, et `src/app.js` part avec `Cache-Control: no-cache, no-store, must-revalidate`.
+- Rappel d'exploitation : après une modification de `frontend/src/`, relancer le serveur puis recharger la page (Cmd + Option + R).
+
 ## 2026-09-25 · Déduction : phrases tronquées (script périmé en cache) + négations perdues
 
 Signalement : « Le triangle vert est dans la colonne du centre et . » — phrase incomplète, tableau impossible à remplir.

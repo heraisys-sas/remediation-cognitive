@@ -8,7 +8,7 @@
   <meta name="color-scheme" content="dark" />
   <meta name="theme-color" content="#14161b" />
   <title>Entraînement — séances courtes</title>
-  <link rel="stylesheet" href="src/styles.css" />
+  <link rel="stylesheet" href="src/styles.css?v=20260925c" />
 </head>
 <body>
   <!-- Lien d'évitement : première tabulation, pour sauter directement au contenu. -->
@@ -239,7 +239,10 @@
     <p class="noscript">Cette page a besoin de JavaScript pour afficher les séances.</p>
   </noscript>
 
-  <script src="src/capacites.js" defer></script>
-  <script src="src/app.js" defer></script>
+  <!-- Le numéro de version change l'URL : le navigateur ne peut pas servir un ancien
+       script resté en cache (un script périmé mélangé au contenu courant affichait
+       des phrases tronquées). À incrémenter après toute modification de src/. -->
+  <script src="src/capacites.js?v=20260925c" defer></script>
+  <script src="src/app.js?v=20260925c" defer></script>
 </body>
 </html>
