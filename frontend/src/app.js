@@ -157,6 +157,7 @@ const etat = {
   jetonChoisi: null,       // jeton de la palette actuellement sélectionné
   enonceCourant: "",       // ce qui est affiché à l'écran (pour « Écouter »)
   consignesVues: new Set(), // rappels de méthode déjà affichés (une fois par type)
+  seanceTerminee: false,   // séance clôturée par la durée maximale (aller au résumé)
 };
 
 /* ---------------------------------------------------------------------
@@ -486,6 +487,7 @@ async function demarrerSession(theme) {
 
     etat.theme = theme;
     etat.session = donnees;
+    etat.seanceTerminee = false;
     etat.indexItem = 0;
     etat.repondu = false;
     reinitialiserConfirmationFin();
@@ -948,7 +950,15 @@ async function soumettreValeur(brut, indiceUtilise) {
     refs.formulaire.hidden = true;
 
     const dernier = etat.indexItem === etat.session.items.length - 1;
-    refs.boutonSuivant.textContent = dernier ? "Voir le résumé" : "Suivant";
+    if (resultat.seance_terminee === true) {
+      // Durée maximale atteinte : la réponse est conservée et la séance s'arrête ici.
+      etat.seanceTerminee = true;
+      refs.carteFeedback.append(creerElement("p", {
+        classe: "feedback-note-duree",
+        texte: "Séance terminée : la durée maximale est atteinte. Ta réponse est enregistrée.",
+      }));
+    }
+    refs.boutonSuivant.textContent = dernier || etat.seanceTerminee ? "Voir le résumé" : "Suivant";
     refs.boutonSuivant.hidden = false;
     // Rendre la main AVANT de déplacer le focus : un bouton désactivé
     // ne peut pas le recevoir.
@@ -1047,7 +1057,9 @@ function rendreFeedback(resultat) {
 /** « Suivant » / « Voir le résumé » : avance ou clôture la séance. */
 function itemSuivant() {
   if (!etat.session || !etat.repondu) return;
-  if (etat.indexItem < etat.session.items.length - 1) {
+  // La séance peut s'être clôturée d'elle-même (durée maximale atteinte) : dans
+  // ce cas, on va au résumé même s'il reste des items livrés.
+  if (!etat.seanceTerminee && etat.indexItem < etat.session.items.length - 1) {
     etat.indexItem += 1;
     montrerItem();
   } else {

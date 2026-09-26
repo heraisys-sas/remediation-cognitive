@@ -178,8 +178,12 @@ def test_cycle_complet_avec_resume_coherent(client, tmp_path):
     assert fin["motif_arret"] is None
     assert fin["sessions_restantes_aujourdhui"] == 2
 
-    # Double fin → 409 ; réponse après fin → 409.
-    assert _finir(client, "calcul-mental", payload["session_id"]).status_code == 409
+    # Fin idempotente : un second appel renvoie le MÊME résumé, sans conflit
+    # (l'interface doit pouvoir afficher le résumé après une clôture déjà faite).
+    second = _finir(client, "calcul-mental", payload["session_id"])
+    assert second.status_code == 200
+    assert second.json() == fin
+    # En revanche, une réponse après la fin reste refusée (409).
     reponse = _repondre(client, "calcul-mental", payload["session_id"], items[0]["id"], bonne)
     assert reponse.status_code == 409
     assert reponse.json()["erreur"] == "session_terminee"
@@ -533,13 +537,13 @@ def test_interface_statique_sert_index_html(tmp_path):
 
 
 def test_duree_max_appliquee_serveur(tmp_path):
-    """Régression (revue conformité) : la durée max 600 s est appliquée.
+    """Régression : au-delà de la durée maximale, la séance s'arrête **sans jeter
+    la réponse en cours**.
 
-    Le backend livre les 12 items d'un bloc au démarrage : sans contrôle
-    du temps, le garde-fou moteur de durée était neutralisé. Désormais,
-    au-delà de 600 s, la séance est clôturée automatiquement (dosage —
-    pas la fatigue) et les réponses suivantes reçoivent 409 ; les
-    réponses déjà enregistrées restent persistées.
+    Le backend livre les 12 items d'un bloc : sans contrôle du temps, le garde-fou
+    de durée serait neutralisé. Désormais, la réponse arrivée après la limite est
+    **enregistrée** (la personne a travaillé), puis la séance se clôt et le client
+    est prévenu pour proposer le résumé. Une réponse *suivante* reçoit 409.
     """
     horloge = {"now": datetime.now(timezone.utc)}
     application = creer_app(
@@ -557,18 +561,30 @@ def test_duree_max_appliquee_serveur(tmp_path):
         _valeur_attendue("calcul-mental", items[0]["id"]), temps_ms=900,
     )
     assert reponse.status_code == 200
+    assert "seance_terminee" not in reponse.json()
 
-    # L'horloge saute au-delà de la durée max : la séance est clôturée.
+    # L'horloge saute au-delà de la durée max : la réponse est gardée, la séance s'arrête.
     horloge["now"] = horloge["now"] + timedelta(seconds=601)
     reponse = _repondre(
         client, "calcul-mental", payload["session_id"], items[1]["id"],
         _valeur_attendue("calcul-mental", items[1]["id"]), temps_ms=900,
     )
-    assert reponse.status_code == 409
-    assert reponse.json()["erreur"] == "session_terminee"
+    assert reponse.status_code == 200, reponse.text
+    assert reponse.json()["seance_terminee"] is True
+    assert reponse.json()["motif"] == "duree"
 
-    # Fin explicite après auto-clôture → 409 (séance déjà terminée).
-    assert _finir(client, "calcul-mental", payload["session_id"]).status_code == 409
+    # La réponse suivante est refusée (la séance est close).
+    suivante = _repondre(
+        client, "calcul-mental", payload["session_id"], items[2]["id"],
+        _valeur_attendue("calcul-mental", items[2]["id"]), temps_ms=900,
+    )
+    assert suivante.status_code == 409
+    assert suivante.json()["erreur"] == "session_terminee"
+
+    # La fin explicite reste possible et renvoie le résumé (idempotent).
+    fin = _finir(client, "calcul-mental", payload["session_id"])
+    assert fin.status_code == 200
+    assert fin.json()["resume"]["items"] == 2
 
     # Les données de la séance clôturée sont persistées (FSRS + maîtrise).
     racine = _racine_donnees(client)

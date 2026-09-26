@@ -119,6 +119,8 @@ class SessionEnCours:
     temps_reference: list[float] = field(default_factory=list)
     # Indices consultés par item (0 = sans aide) — mesure de l'aide nécessaire.
     indices_utilises: dict[str, int] = field(default_factory=dict)
+    # Payload de fin conservé pour rendre la clôture idempotente.
+    resume_cloture: dict | None = None
     # Essais clos en affichant la réponse : aucune erreur commise par
     # l'utilisateur, mais pas de récupération réussie non plus.
     assistees: set[str] = field(default_factory=set)
@@ -271,13 +273,14 @@ class GestionnaireSessions:
         item = session.items_par_id.get(item_id)
         if item is None:
             raise ItemHorsSeance()
-        if (self.horloge() - session.depart).total_seconds() >= session.runner.duree_max_s:
-            # Garde-fou de dosage (revue conformité) : au-delà de la durée
-            # max, la séance est clôturée automatiquement et les réponses
-            # suivantes reçoivent 409. Ce n'est PAS une interruption par la
-            # fatigue — celle-ci reste une simple proposition.
-            self._cloturer(session, self.horloge())
-            raise SessionDejaTerminee()
+        # Garde-fou de dosage : au-delà de la durée maximale, la séance s'arrête —
+        # mais la réponse en cours est **conservée**. Une personne qui a travaillé
+        # ne doit pas voir son travail refusé parce que la limite est tombée
+        # pendant qu'elle répondait ; le client est prévenu pour proposer le résumé.
+        duree_depassee = (
+            (self.horloge() - session.depart).total_seconds()
+            >= session.runner.duree_max_s
+        )
         nb_indices = len((item.get("contenu") or {}).get("indices") or [])
         if indice_utilise is None:
             indice_utilise = 0
@@ -308,26 +311,51 @@ class GestionnaireSessions:
             cle = "feedback_assiste"
         else:
             cle = "feedback_correcte" if correcte else "feedback_incorrecte"
-        return {
+        resultat = {
             "correcte": correcte,
             "assistee": assistee,
             "attendue": item["reponse"]["valeur"],
             "feedback": messages.texte("entrainement", cle),
         }
+        if duree_depassee:
+            # La séance se clôt **après** avoir enregistré la réponse, et le résumé
+            # est conservé : un appel ultérieur à /fin renverra le même résumé.
+            resume_moteur, nb_repondu, nb_correctes, taux = self._cloturer(
+                session, self.horloge()
+            )
+            session.resume_cloture = self._payload_fin(
+                theme, session, resume_moteur, nb_repondu, nb_correctes, taux
+            )
+            resultat["seance_terminee"] = True
+            resultat["motif"] = "duree"
+        return resultat
 
     # -- fin de séance ---------------------------------------------------------
 
     def terminer(self, theme: str, session_id: str) -> dict:
         """Clôture la séance : FSRS + maîtrise + persistance, payload 200 du contrat.
 
-        Lève ``SessionInconnue`` (404) ou ``SessionDejaTerminee`` (409).
+        **Idempotent** : un second appel (double clic, ou reprise après la clôture
+        automatique par la durée maximale) renvoie le même résumé au lieu d'un
+        conflit — le client doit pouvoir afficher le résumé dans tous les cas.
+        Lève ``SessionInconnue`` (404) seulement.
         """
         session = self._session(theme, session_id)
         if session.terminee:
+            if session.resume_cloture is not None:
+                return session.resume_cloture
             raise SessionDejaTerminee()
         resume_moteur, nb_repondu, nb_correctes, taux = self._cloturer(
             session, self.horloge()
         )
+        retour = self._payload_fin(theme, session, resume_moteur,
+                                   nb_repondu, nb_correctes, taux)
+        session.resume_cloture = retour
+        return retour
+
+    def _payload_fin(self, theme: str, session: SessionEnCours, resume_moteur: dict,
+                     nb_repondu: int, nb_correctes: int, taux: float) -> dict:
+        """Payload de fin de séance (résumé, arrêt proposé, quota du jour)."""
         restantes = max(
             0,
             self._limite_sessions(theme)

@@ -2,6 +2,15 @@
 
 Format : [date] — [périmètre] — description. Les retours informels de l'orthophoniste sont journalisés ici, sans caution clinique.
 
+## 2026-09-26 · Déduction : impossible de valider au 4ᵉ test (409 en cours de séance)
+
+Signalement : au 4ᵉ exercice d'une séance de déduction, « la séance n'est plus disponible » et un 409 côté serveur.
+
+- **Cause** : le garde-fou de durée (10 minutes, dosage clinique) **rejetait la réponse en cours** au lieu de clore la séance. Les grilles de déduction étant longues, la limite tombait au milieu d'un exercice : la personne voyait son travail refusé.
+- **Corrigé** : la réponse arrivée après la limite est **enregistrée** (FSRS, maîtrise, baseline) *puis* la séance se clôt ; la réponse porte `seance_terminee: true` et l'interface affiche « Séance terminée : la durée maximale est atteinte. Ta réponse est enregistrée. » puis propose le résumé. Une réponse *suivante* reçoit 409 — la séance est bien close.
+- **Fin de séance idempotente** : `POST …/fin` sur une séance déjà close renvoie **le même résumé** (200) au lieu d'un conflit. L'interface peut donc toujours afficher le résumé, y compris après une clôture automatique. Contrat d'API mis à jour.
+- **Contrôles** — deux tests adaptés à la nouvelle règle (réponse après la limite conservée, fin idempotente) ; 151 tests, 875 items, 0 erreur.
+
 ## 2026-09-26 · Réponses : toutes les façons de dire l'heure
 
 Signalement : « 15 heures » refusé pour un item attendant « 15 h » (thème méthodes).

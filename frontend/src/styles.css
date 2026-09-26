@@ -955,3 +955,10 @@ body {
 .tableau-deduction .tableau-jeton { text-align: left; }
 .tableau-deduction .tableau-nom { font-size: 0.72rem; opacity: 0.85; }
 .tableau-legende { font-size: 0.78rem; color: var(--texte-secondaire); margin: 0.4rem 0 0; }
+
+/* Note de fin de séance : la durée maximale est atteinte, la réponse est gardée. */
+.feedback-note-duree {
+  margin: 0.6rem 0 0;
+  font-size: 0.85rem;
+  color: var(--texte-secondaire);
+}

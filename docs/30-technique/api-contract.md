@@ -23,9 +23,11 @@ Corps : `{"item_id": str, "reponse": str|number, "temps_ms": int}`
 - `404` session inconnue · `409` session déjà terminée · `404` item hors séance
 
 ### POST /api/entrainement/{theme}/sessions/{sid}/fin
+
+*Idempotent* : si la séance est déjà terminée (double clic, ou clôture automatique par la durée maximale), l'appel renvoie `200` avec **le même résumé** — le client doit pouvoir afficher le résumé dans tous les cas.
 Clôture la séance, applique FSRS + maîtrise, persiste.
 - `200` → `{"resume": {"items": int, "correctes": int, "duree_s": int, "taux_reussite": float}, "arret_propose": bool, "motif_arret": null|"fatigue", "sessions_restantes_aujourdhui": int}`
-- `409` si déjà terminée
+- `409` seulement si la séance est close sans résumé conservé (cas devenu théorique)
 
 ## Règles serveur (garde-fous, non contournables)
 
@@ -35,7 +37,7 @@ Clôture la séance, applique FSRS + maîtrise, persiste.
 4. **Aucune norme populationnelle** dans les réponses API.
 5. **Périmètre** : aucun endpoint `/api/bilan` ce sprint ; aucune donnée de bilan stockée.
 6. **Stockage** : fichiers JSON sous `backend/data/entrainement/` (hors dépôt, `.gitignore`) — decks FSRS, maîtrise par palier, compteur séances/jour.
-7. **Durée max** : au-delà de 600 s, la séance est clôturée automatiquement côté serveur (garde-fou de dosage — ce n'est pas une interruption par la fatigue) ; toute réponse suivante reçoit 409 `session_terminee`, les réponses déjà enregistrées restent persistées.
+7. **Durée max** : au-delà de 600 s, la séance est clôturée côté serveur (garde-fou de dosage — ce n'est pas une interruption par la fatigue). La réponse **en cours est conservée** : la personne a travaillé, on ne la refuse pas ; la réponse renvoie `seance_terminee: true` et le client propose le résumé. Une réponse *suivante* reçoit 409 `session_terminee`.
 
 ## Forme d'un item (conforme à content/schema-item.json)
 

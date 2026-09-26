@@ -29,3 +29,17 @@ Le cadrage précédent confondait **mesurer** et **remédier**. Les « familles 
 - Relecture orthophoniste du nouveau contenu (et du document de cadrage).
 - Construire les familles fonctionnelles restantes.
 - Déplacer les épreuves vers « évaluation » quand le module bilan existera.
+
+## 2026-09-26 — le garde-fou de durée jetait la réponse en cours
+
+Signalement : au 4ᵉ test d'une séance de déduction, « la séance n'est plus disponible » (409).
+
+- Cause : au-delà de 600 s, le serveur refusait la réponse **en cours** (409) au lieu de clore
+  la séance. Les grilles de déduction sont longues : la limite tombait au milieu d'un exercice.
+- Règle corrigée : **on ne jette jamais le travail fait**. La réponse est enregistrée, puis la
+  séance se clôt ; le client est prévenu (`seance_terminee: true`) et propose le résumé. Une
+  réponse *suivante* reçoit 409.
+- Corollaire : `POST …/fin` devient **idempotent** (renvoie le même résumé) — sinon l'interface
+  ne pouvait pas afficher le résumé après une clôture automatique (409). Contrat d'API mis à jour.
+- Principe à garder : un garde-fou de dosage doit arrêter la **proposition** d'exercices, jamais
+  invalider un exercice déjà commencé.
