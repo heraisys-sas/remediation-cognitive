@@ -191,6 +191,42 @@ def _normaliser_horaires(texte: str) -> str:
     return texte
 
 
+#: Unités qu'une dictée écrit en chiffres ou en lettres (« cent quatre-vingts euros »).
+#: Les heures ne sont pas ici : elles ont leur propre normalisation.
+_UNITES_QUANTITE = ("euros", "euro", "centimes", "centime", "litres", "litre", "kilos",
+                    "kilo", "grammes", "gramme", "metres", "metre", "kilometres",
+                    "kilometre", "minutes", "minute", "jours", "jour", "mois", "ans",
+                    "personnes", "fois")
+
+#: Mots qui peuvent former un nombre en toutes lettres (« cent quatre-vingt-dix »).
+_MOTIF_NOMBRE_LETTRES = "|".join(sorted(
+    {*_UNITES_MOTS, *_DIZAINES_MOTS, "cent", "mille", "quatre", "vingt", "et",
+     "quatrevingt", "quatrevingtdix"}, key=len, reverse=True))
+
+
+def _normaliser_quantites(texte: str) -> str:
+    """Montants et quantités : « 180 € », « 180 eur » et « cent quatre-vingts euros ».
+
+    Une réponse dictée arrive souvent écrite autrement que la réponse attendue : le
+    symbole au lieu du mot, ou le montant en toutes lettres. L'exercice porte sur le
+    raisonnement (ou la mémoire), pas sur la façon d'écrire un montant.
+    """
+    texte = re.sub(r"(?<=\d)\s*€", " euros", texte)          # « 180 € » -> « 180 euros »
+    texte = re.sub(r"€\s*(?=\d)", "", texte)                 # « € 180 » -> « 180 euros »
+    texte = re.sub(r"\b(?:euros?|eur\.?)\b", "euros", texte)  # « 180 eur » -> « 180 euros »
+
+    def en_chiffres(correspondance):
+        valeur = _nombre_en_chiffres(correspondance.group(1))
+        if valeur is None:
+            return correspondance.group(0)
+        entier = int(valeur) if float(valeur).is_integer() else valeur
+        return f"{entier} {correspondance.group(2)}"
+
+    motif = (rf"((?:{_MOTIF_NOMBRE_LETTRES})s?(?:[\s-]+(?:{_MOTIF_NOMBRE_LETTRES})s?)*)"
+             rf"\s+({'|'.join(_UNITES_QUANTITE)}s?)")
+    return re.sub(motif, en_chiffres, texte)
+
+
 def _clef_reponse(valeur) -> str:
     """Clé d'une réponse texte : casse, accents, espaces, horaires et nombres.
 
@@ -199,9 +235,13 @@ def _clef_reponse(valeur) -> str:
     - « deux » et « 2 » sont équivalents (nombre en toutes lettres → chiffres).
     """
     texte = _clef_texte(valeur)
-    # Nombres en toutes lettres d'abord : « quinze heures » -> « 15 heures ».
+    # 1. Montants et quantités en toutes lettres : « cent quatre-vingts euros » -> « 180 euros »
+    #    (avant la conversion mot à mot, qui casserait les nombres composés).
+    texte = _normaliser_quantites(texte)
+    # 2. Nombres en toutes lettres isolés : « quinze heures » -> « 15 heures ».
     jetons = [_NUMERAUX_QUOTIDIEN.get(jeton, jeton) for jeton in texte.split()]
     texte = " ".join(jetons)
+    # 3. Heures : « 15 h », « 15 heures », « 3 heures et demie », « midi »…
     texte = _normaliser_horaires(texte)
     # Séparateur d'heure restant (« 15:30 »), avec ou sans minutes.
     texte = re.sub(r"(\d{1,2})\s*[:h]\s*(\d*)", r"\1h\2", texte)

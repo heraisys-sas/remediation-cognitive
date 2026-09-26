@@ -67,3 +67,17 @@ Signalement : « vendredi soir » accepté pour « jeudi soir » (au quotidien).
   est cantonnée aux réponses sans jalon (« la cave » pour « la porte de la cave »).
 - Leçon : un moteur de similarité est un outil **statistique** — il doit toujours être borné
   par une règle explicite (ici : les jalons), jamais laissé seul juge.
+
+## 2026-09-26 (nuit) — montants dictés (« 180 € » pour « 180 euros »)
+
+Signalement : la dictée écrit le symbole ou le nombre en toutes lettres ; la réponse était refusée.
+
+- Deux défauts : le symbole « € »/« eur » n'était pas rapproché de « euros » ; et la
+  conversion mot à mot cassait les nombres composés (« cent quatre-vingts » -> « 100 quatre-vingts »).
+- Correctif : `_normaliser_quantites()` **avant** la conversion mot à mot — symbole, abréviation,
+  nombres en toutes lettres, pour les euros et les unités courantes (litres, kilos, jours…).
+  « 280 € » reste distinct de « 180 euros ».
+- Clarification utile à retenir : dans « méthodes », toutes les réponses sont des **propositions
+  à choisir** — le moteur sémantique n'y a pas sa place (leurres proches). Pour une **valeur**
+  (montant, heure, nombre), la bonne réponse est une **équivalence déterministe** ; le moteur
+  statistique ne sert qu'aux formulations libres, et seulement hors jalons de sens.

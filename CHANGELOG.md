@@ -2,6 +2,15 @@
 
 Format : [date] — [périmètre] — description. Les retours informels de l'orthophoniste sont journalisés ici, sans caution clinique.
 
+## 2026-09-26 · Montants : « 180 € » reconnu pour « 180 euros »
+
+Signalement : au thème méthodes, une réponse dictée « 180 € » n'était pas reconnue pour l'attente « 180 euros » (et la dictée peut aussi rendre « cent quatre-vingts euros »).
+
+- **Cause** : le symbole « € » et l'abréviation « eur » n'étaient pas rapprochés du mot « euros » ; et les nombres composés en toutes lettres (« cent quatre-vingts ») étaient convertis mot à mot, donc cassés (« 100 quatre-vingts »).
+- **Corrigé** : normalisation **déterministe** des montants et quantités — symbole, abréviation, nombre en toutes lettres (« cent quatre-vingts euros » = « 180 euros »), pour les euros comme pour les unités courantes (litres, kilos, jours…). « 280 € » reste différent de « 180 euros ».
+- **Précision sur le moteur sémantique** : dans « méthodes », les réponses sont des **propositions à choisir** — le filet sémantique y est volontairement écarté (ADR-008), car les autres propositions sont des leurres proches. Pour une valeur (montant, heure, nombre), c'est l'équivalence déterministe qui doit juger, pas un moteur statistique.
+- **Contrôles** — 12 cas d'équivalence et de différence, dont l'item réellement signalé ; 162 tests, 875 items, 0 erreur.
+
 ## 2026-09-26 · Réponse fausse acceptée : « vendredi soir » pour « jeudi soir »
 
 Signalement : au quotidien, une réponse avec le **mauvais jour** a été acceptée.

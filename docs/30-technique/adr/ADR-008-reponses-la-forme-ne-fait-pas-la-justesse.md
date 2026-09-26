@@ -2,6 +2,8 @@
 
 **Statut** : accepté (2026-09-26)
 
+*Suivi (2026-09-26)* : **les montants et les quantités relèvent d'une équivalence déterministe**, jamais du moteur statistique — « 180 € », « 180€ », « 180 eur » et « cent quatre-vingts euros » valent « 180 euros » ; « 280 € » ne vaut pas « 180 euros ». Cas signalé en usage réel : une réponse dictée écrit volontiers le symbole ou le nombre en toutes lettres.
+
 *Suivi (2026-09-26)* : **le filet sémantique ne traverse jamais un jalon de sens** — jours, mois, moments de la journée, nombres (chiffres ou lettres, sauf « un/une », le plus souvent articles). Mesuré en usage réel : « vendredi soir » était accepté pour « jeudi soir » (proximité 0,85), « jeudi matin » pour « jeudi soir » (0,81) et « 14 h 30 » pour « 15 h 30 » (**0,999**). Accepter une réponse fausse est plus grave que refuser une réponse juste : dès que les jalons diffèrent, seul l'écrit compte, et une variante acceptable se **déclare dans l'item** (`reponse.variantes`).
 
 ## Contexte
