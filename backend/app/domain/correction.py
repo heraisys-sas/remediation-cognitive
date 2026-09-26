@@ -156,19 +156,72 @@ _NUMERAUX_QUOTIDIEN = {
 }
 
 
-def _clef_reponse(valeur) -> str:
-    """Clé d'une réponse texte : casse, accents, espaces, guillemets, heures et nombres.
+#: Façons d'écrire « heure » après un nombre (« 15 h », « 15 heures », « 15hrs »).
+_MOTS_HEURE = r"(?:h\b|heures?\b|hrs?\b)"
 
-    - « 15 h », « 15h » et « 15:00 » sont équivalents (heure avec ou sans minutes) ;
+
+def _normaliser_horaires(texte: str) -> str:
+    """Ramène les façons françaises de dire l'heure à la forme « 15h » / « 15h30 ».
+
+    « 15 h », « 15 heures », « quinze heures », « 15:30 », « 15 heures 30 »,
+    « trois heures et demie », « 15 heures moins le quart », « midi », « 8 heures
+    du soir » : tout cela désigne la même heure. L'exercice porte sur le raisonnement,
+    pas sur la façon d'écrire l'heure.
+    """
+    texte = re.sub(r"\bmidi\b", "12h", texte)
+    texte = re.sub(r"\bminuit\b", "0h", texte)
+
+    def avec_periode(correspondance):
+        heure = int(correspondance.group(1))
+        minutes = correspondance.group(2) or ""
+        periode = correspondance.group(3) or ""
+        if heure < 12 and periode.startswith(("du soir", "de l'apres-midi")):
+            heure += 12
+        return f"{heure}h{minutes}"
+
+    texte = re.sub(
+        rf"(\d{{1,2}})\s*{_MOTS_HEURE}(?:\s*(\d{{1,2}}))?(?:\s*(du soir|de l'apres-midi|du matin))?",
+        avec_periode, texte)
+    texte = re.sub(r"(\d{1,2})h\s*et\s*quart\b", lambda m: f"{m.group(1)}h15", texte)
+    texte = re.sub(r"(\d{1,2})h\s*et\s*demie?\b", lambda m: f"{m.group(1)}h30", texte)
+    texte = re.sub(r"(\d{1,2})h\s*moins\s*le\s*quart\b",
+                   lambda m: f"{int(m.group(1)) - 1}h45", texte)
+    # Minutes sur un seul chiffre : « 15h5 » vaut « 15h05 ».
+    texte = re.sub(r"h(\d)\b", lambda m: f"h0{m.group(1)}", texte)
+    return texte
+
+
+def _clef_reponse(valeur) -> str:
+    """Clé d'une réponse texte : casse, accents, espaces, horaires et nombres.
+
+    - « 15 h », « 15h », « 15:00 » et « 15 heures » sont équivalents ;
+    - « 15 heures 30 » vaut « 15h30 », « trois heures et demie » vaut « 3h30 » ;
     - « deux » et « 2 » sont équivalents (nombre en toutes lettres → chiffres).
     """
     texte = _clef_texte(valeur)
-    # Séparateur d'heure (h ou :), avec ou sans minutes, avec ou sans espaces.
-    texte = re.sub(r"(\d)\s*[:h]\s*(\d*)", r"\1h\2", texte)
-    # « 15h00 » et « 15:00 » valent « 15h » (heure pleine).
+    # Nombres en toutes lettres d'abord : « quinze heures » -> « 15 heures ».
+    jetons = [_NUMERAUX_QUOTIDIEN.get(jeton, jeton) for jeton in texte.split()]
+    texte = " ".join(jetons)
+    texte = _normaliser_horaires(texte)
+    # Séparateur d'heure restant (« 15:30 »), avec ou sans minutes.
+    texte = re.sub(r"(\d{1,2})\s*[:h]\s*(\d*)", r"\1h\2", texte)
+    # « 15h00 » vaut « 15h » (heure pleine).
     texte = re.sub(r"(\d)h00\b", r"\1h", texte)
     jetons = [_NUMERAUX_QUOTIDIEN.get(jeton, jeton) for jeton in texte.split()]
     return " ".join(jetons)
+
+
+def _est_reponse_libre(attendue) -> bool:
+    """La réponse attendue est-elle une **phrase** (et non une valeur courte) ?
+
+    Pour une heure, un nombre ou un code, seule la comparaison normalisée compte :
+    comparer le « sens » n'aurait pas de sens. Pour une phrase, la comparaison
+    sémantique du poste (embeddings Apple, repli lexical) tolère une reformulation.
+    """
+    texte = str(attendue or "").strip()
+    if len(texte.split()) < 3:
+        return False
+    return not re.fullmatch(r"[\d\s:h.,;/+-]+", texte)
 
 
 def _distance(a: str, b: str) -> int:
@@ -295,7 +348,17 @@ def corriger(theme: str, item: dict, reponse) -> bool:
         return _corriger_grille(item, reponse)
     if theme == "methodes":
         # PQRST, GMT, auto-instruction, plan à vérifier, repérage : proposition choisie.
-        return _clef_reponse(reponse) == _clef_reponse(attendue)
+        if _clef_reponse(reponse) == _clef_reponse(attendue):
+            return True
+        # Sur un choix multiple, le filet sémantique est écarté : les autres
+        # propositions sont des leurres proches par construction.
+        if (item.get("contenu") or {}).get("options"):
+            return False
+        # Réponse libre formulée autrement (formulée en phrase) : le poste sait
+        # comparer le sens (« je consulte le docteur » pour « je vais chez le médecin »).
+        if _est_reponse_libre(attendue):
+            return capacites.proche(str(reponse or ""), [str(attendue)])
+        return False
     if theme == "quotidien":
         if item.get("type") == "prise-message":
             if _clef_reponse(reponse) == _clef_reponse(attendue):

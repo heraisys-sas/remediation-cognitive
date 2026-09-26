@@ -2,6 +2,15 @@
 
 Format : [date] — [périmètre] — description. Les retours informels de l'orthophoniste sont journalisés ici, sans caution clinique.
 
+## 2026-09-26 · Réponses : toutes les façons de dire l'heure
+
+Signalement : « 15 heures » refusé pour un item attendant « 15 h » (thème méthodes).
+
+- **Cause** : le normalisateur d'heures coupait le mot « heures » en deux (« 15 heures » devenait « 15heures »). Seules les écritures « 15h », « 15 h » et « 15:00 » passaient.
+- **Corrigé** : toutes les façons françaises de dire l'heure sont ramenées à la même forme — « 15 heures », « quinze heures », « 15 heures 30 », « 3 heures et demie », « 15 heures moins le quart », « midi », « midi et demi », « 8 heures du soir » (20 h), « 15 heures du matin ». L'exercice porte sur le raisonnement, pas sur l'écriture de l'heure.
+- **Moteur sémantique du poste** branché sur les réponses **libres** de « méthodes » (reformulations acceptées via les empreintes Apple). Il est volontairement **écarté des choix multiples** : les autres propositions sont des leurres proches par construction.
+- **Tests** — 4 nouveaux cas (équivalences, différences, item réel, garde-fou des choix).
+
 ## 2026-09-25 · Changement de rubrique : les propositions du test précédent restaient affichées
 
 Signalement : en passant de « Retrouver le mot » à « Méthodes » (et inversement), les propositions du test quitté restaient visibles sous le nouveau test.

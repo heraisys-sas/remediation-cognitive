@@ -34,3 +34,20 @@ Cause : `_corriger_numerique` n'acceptait que les chiffres ; la conversion lettr
 Correctif : un convertisseur français complet (unités, dizaines, irréguliers « soixante-dix » / « quatre-vingt-dix », « cent », « mille », traits d'union, « et », ponctuation finale de la dictée) branché sur **toutes** les comparaisons numériques — calcul mental, concentration, estimation.
 
 À retenir : la **similarité sémantique ne sert pas aux nombres** (« deux » et « 2 » ne sont proches qu'à 0,33 pour le modèle). Deux outils distincts, chacun sur son terrain : le sens pour le texte, une conversion exacte pour les nombres.
+
+## 2026-09-26 — horaires en toutes lettres + filet sémantique encadré
+
+Signalement : « 15 heures » refusé pour « 15 h » (thème méthodes).
+
+- Cause : le motif d'heure coupait « heures » en deux (« 15heures »). Corrigé par
+  `_normaliser_horaires` : heures, minutes, « et quart », « et demie », « moins le quart »,
+  « midi »/« minuit », périodes (« du soir » → +12 h si < 12 h).
+- Règle retenue : **écrire l'heure n'est pas l'exercice**. Toutes les formes françaises
+  équivalentes sont acceptées, et verrouillées par des tests.
+- Le moteur sémantique du poste (`capacites.proche`, empreintes Apple, seuil 0,78) est
+  désormais branché sur les réponses **libres** de « méthodes », mais **pas sur les choix
+  multiples** : là, les leurres sont proches par construction et la tolérance de sens
+  accepterait une mauvaise proposition.
+- Mesures du jour sur ce poste : « le toubib » ≈ « le médecin » 0,858 (accepté),
+  « je consulte le docteur » ≈ « je vais chez le médecin » 0,771 (juste sous le seuil),
+  « la migraine » ≈ « le mal de tête » 0,536 (refusé) — le seuil de 0,78 est prudent.
