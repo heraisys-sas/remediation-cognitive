@@ -295,6 +295,19 @@ def _types_de(phrase: dict) -> set[str]:
     return {atome.get("type") for atome in [phrase] + list(phrase.get("et") or [])}
 
 
+def _presenter(phrases: list[dict], rng: random.Random) -> list[dict]:
+    """Ordre de présentation des phrases, tiré au sort pour chaque grille.
+
+    Les phrases du vocabulaire obligatoire sont choisies **en premier** ; si on les
+    laissait à cette place, **toutes** les grilles commenceraient par le même type de
+    phrase (« coin », puis « diagonale »…) — une régularité visible qui met sur la
+    piste sans raison. L'ordre ne porte aucune information : on le mélange.
+    """
+    melangees = list(phrases)
+    rng.shuffle(melangees)
+    return melangees
+
+
 def _selection(paire, n: int, noms_f: list[str], noms_c: list[str], palier: int,
                rng: random.Random) -> list[dict] | None:
     """Phrases suffisantes pour une résolution par déduction, avec le dosage du palier.
@@ -315,7 +328,6 @@ def _selection(paire, n: int, noms_f: list[str], noms_c: list[str], palier: int,
                 obligatoires.append(phrase)
                 break
     protegees = frozenset(id(phrase) for phrase in obligatoires)
-
     restants = [rang for rang, phrase in enumerate(phrases) if phrase not in obligatoires]
     choisis: list[dict] = list(obligatoires)
     while restants and len(choisis) < MAX_PHRASES[palier]:
@@ -332,9 +344,9 @@ def _selection(paire, n: int, noms_f: list[str], noms_c: list[str], palier: int,
         choisis.append(phrases[gagnant])
         restants.remove(gagnant)
         if meilleur == n * n and len(choisis) >= MIN_PHRASES[palier]:
-            return _minimaliser(choisis, n, noms_f, noms_c, preserver=protegees)
+            return _presenter(_minimaliser(choisis, n, noms_f, noms_c, preserver=protegees), rng)
     if len(choisis) >= MIN_PHRASES[palier] and resoudre_par_deduction(choisis, n, noms_f, noms_c):
-        return _minimaliser(choisis, n, noms_f, noms_c, preserver=protegees)
+        return _presenter(_minimaliser(choisis, n, noms_f, noms_c, preserver=protegees), rng)
     return None
 
 

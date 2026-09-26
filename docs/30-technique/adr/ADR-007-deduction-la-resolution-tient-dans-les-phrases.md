@@ -20,6 +20,8 @@ Trois versions successives du logigramme ont été refusées pour la même raiso
 
 **3. Aucune phrase redondante.** Toute phrase retirable sans perdre la solution est supprimée automatiquement. Le vocabulaire explicitement demandé est protégé de ce nettoyage, sinon le générateur le sacrifie aux chaînes les plus longues.
 
+**3 bis. L'ordre des phrases est tiré au sort** (et vérifié : aucune position figée, aucun type de phrase systématiquement en tête). Les phrases du vocabulaire obligatoire étaient placées en premier : toutes les grilles d'un palier commençaient donc par le même type de phrase — une régularité visible qui met sur la piste sans rien dire de la solution.
+
 **4. Le solveur est le juge.** Une grille n'est livrée que si **toutes** ses cases sont déterminées par propagation, sans hypothèse, avec la seule règle énoncée. Vérifié à trois endroits : à la génération, au dépôt (le validateur refuse), et par un test rejoué sur tout le contenu du dépôt.
 
 **5. Deux contrôles indépendants du solveur** — parce qu'un contrôle qui partage le code du générateur ne peut pas voir une convention fausse :

@@ -2,6 +2,16 @@
 
 Format : [date] — [périmètre] — description. Les retours informels de l'orthophoniste sont journalisés ici, sans caution clinique.
 
+## 2026-09-26 · Déduction : plus aucune régularité dans l'ordre des phrases
+
+Signalement : la phrase qui parle de « coin » arrivait toujours en premier, avec le doute légitime que d'autres régularités du même genre subsistent plus loin.
+
+- **Constat, plus large que signalé** : dans **chaque** palier, les 20 grilles commençaient par le même type de phrase (coin au palier 1, diagonale au 2, pas-diagonale au 3, coin au 4) — les phrases du vocabulaire obligatoire étaient placées en premier par le générateur.
+- **Corrigé** : l'ordre des phrases est **tiré au sort** pour chaque grille. Vérifié après régénération : le type en tête varie, et **aucune position n'est figée** (auparavant la position 1 était toujours « coin », etc.).
+- **Contrôle ajouté** : le validateur refuse désormais un palier dont plus de 60 % des grilles commencent par le même type de phrase, ou qui n'offre pas au moins trois types en tête. Test négatif fait : le contrôle échoue si l'on rétablit l'ancien ordre.
+- **Remplacement de contenu (thème `deduction`)** — les 80 grilles sont régénérées (mêmes placements distincts).
+- **Contrôles** — 875 items / 0 erreur ; 153 tests ; phrases rendues sans anomalie.
+
 ## 2026-09-26 · Durée maximale proposée partout (ADR-010)
 
 Demande : « même souplesse partout ».

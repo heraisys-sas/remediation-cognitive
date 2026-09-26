@@ -27,51 +27,8 @@
       ],
       "enonces": [
         {
-          "type": "diagonale",
-          "figure": "cercle",
-          "couleur": "rouge",
-          "et": [
-            {
-              "figure": "cercle",
-              "couleur": "rouge",
-              "type": "voisin-droite",
-              "figure2": "cercle",
-              "couleur2": "vert"
-            }
-          ]
-        },
-        {
-          "type": "diagonale-inverse",
-          "figure": "cercle",
-          "couleur": "bleu",
-          "et": [
-            {
-              "figure": "cercle",
-              "couleur": "bleu",
-              "type": "voisin-dessous",
-              "figure2": "cercle",
-              "couleur2": "vert"
-            }
-          ]
-        },
-        {
           "type": "colonne",
-          "colonne": 0,
-          "figure": "triangle",
-          "couleur": "bleu",
-          "et": [
-            {
-              "figure": "triangle",
-              "couleur": "bleu",
-              "type": "voisin-diagonale",
-              "figure2": "cercle",
-              "couleur2": "rouge"
-            }
-          ]
-        },
-        {
-          "type": "colonne",
-          "colonne": 1,
+          "colonne": 2,
           "figure": "triangle",
           "couleur": "vert",
           "et": [
@@ -79,52 +36,7 @@
               "figure": "triangle",
               "couleur": "vert",
               "type": "voisin-droite",
-              "figure2": "cercle",
-              "couleur2": "bleu"
-            }
-          ]
-        },
-        {
-          "type": "colonne",
-          "colonne": 2,
-          "figure": "carre",
-          "couleur": "vert",
-          "et": [
-            {
-              "figure": "carre",
-              "couleur": "vert",
-              "type": "voisin-droite",
-              "figure2": "cercle",
-              "couleur2": "rouge"
-            }
-          ]
-        },
-        {
-          "type": "colonne",
-          "colonne": 2,
-          "figure": "carre",
-          "couleur": "bleu",
-          "et": [
-            {
-              "figure": "carre",
-              "couleur": "bleu",
-              "type": "voisin-droite",
-              "figure2": "triangle",
-              "couleur2": "vert"
-            }
-          ]
-        },
-        {
-          "type": "colonne",
-          "colonne": 1,
-          "figure": "triangle",
-          "couleur": "rouge",
-          "et": [
-            {
-              "figure": "triangle",
-              "couleur": "rouge",
-              "type": "voisin-droite",
-              "figure2": "triangle",
+              "figure2": "carre",
               "couleur2": "bleu"
             }
           ]
@@ -138,64 +50,158 @@
             {
               "figure": "cercle",
               "couleur": "vert",
+              "type": "voisin-diagonale",
+              "figure2": "triangle",
+              "couleur2": "rouge"
+            }
+          ]
+        },
+        {
+          "type": "colonne",
+          "colonne": 2,
+          "figure": "carre",
+          "couleur": "vert",
+          "et": [
+            {
+              "figure": "carre",
+              "couleur": "vert",
+              "type": "voisin-dessous",
+              "figure2": "triangle",
+              "couleur2": "vert"
+            }
+          ]
+        },
+        {
+          "type": "diagonale-inverse",
+          "figure": "carre",
+          "couleur": "bleu",
+          "et": [
+            {
+              "figure": "carre",
+              "couleur": "bleu",
+              "type": "voisin-dessous",
+              "figure2": "triangle",
+              "couleur2": "rouge"
+            }
+          ]
+        },
+        {
+          "type": "diagonale",
+          "figure": "carre",
+          "couleur": "bleu",
+          "et": [
+            {
+              "figure": "carre",
+              "couleur": "bleu",
+              "type": "voisin-dessous",
+              "figure2": "triangle",
+              "couleur2": "rouge"
+            }
+          ]
+        },
+        {
+          "type": "colonne",
+          "colonne": 1,
+          "figure": "triangle",
+          "couleur": "rouge",
+          "et": [
+            {
+              "figure": "triangle",
+              "couleur": "rouge",
+              "type": "voisin-dessus",
+              "figure2": "carre",
+              "couleur2": "bleu"
+            }
+          ]
+        },
+        {
+          "type": "ligne",
+          "ligne": 2,
+          "figure": "cercle",
+          "couleur": "bleu",
+          "et": [
+            {
+              "figure": "cercle",
+              "couleur": "bleu",
+              "type": "voisin-droite",
+              "figure2": "carre",
+              "couleur2": "rouge"
+            }
+          ]
+        },
+        {
+          "type": "diagonale",
+          "figure": "cercle",
+          "couleur": "rouge",
+          "et": [
+            {
+              "figure": "cercle",
+              "couleur": "rouge",
               "type": "voisin-dessus",
               "figure2": "cercle",
-              "couleur2": "bleu"
+              "couleur2": "vert"
+            }
+          ]
+        },
+        {
+          "type": "colonne",
+          "colonne": 0,
+          "figure": "carre",
+          "couleur": "rouge",
+          "et": [
+            {
+              "figure": "carre",
+              "couleur": "rouge",
+              "type": "voisin-dessous",
+              "figure2": "cercle",
+              "couleur2": "vert"
             }
           ]
         }
       ],
       "indices": [
         {
+          "type": "colonne",
+          "figure": "cercle",
+          "couleur": "bleu",
+          "colonne": 1
+        },
+        {
           "type": "case",
+          "figure": "carre",
+          "couleur": "vert",
+          "case": 8
+        },
+        {
+          "type": "ligne",
           "figure": "triangle",
           "couleur": "rouge",
-          "case": 1
-        },
-        {
-          "type": "ligne",
-          "figure": "carre",
-          "couleur": "rouge",
           "ligne": 0
-        },
-        {
-          "type": "ligne",
-          "figure": "cercle",
-          "couleur": "vert",
-          "ligne": 1
         }
       ],
       "aide": "Chaque phrase enchaîne plusieurs informations : commence par la figure dont la phrase donne la position, puis suis les relations."
     },
     "reponse": {
-      "valeur": "triangle:bleu;triangle:rouge;carre:rouge;cercle:vert;cercle:rouge;carre:vert;cercle:bleu;triangle:vert;carre:bleu",
+      "valeur": "cercle:rouge;triangle:rouge;triangle:bleu;cercle:vert;carre:bleu;triangle:vert;carre:rouge;cercle:bleu;carre:vert",
       "grille": [
         [
+          "cercle",
+          "rouge"
+        ],
+        [
+          "triangle",
+          "rouge"
+        ],
+        [
           "triangle",
           "bleu"
         ],
         [
-          "triangle",
-          "rouge"
-        ],
-        [
-          "carre",
-          "rouge"
-        ],
-        [
           "cercle",
           "vert"
         ],
         [
-          "cercle",
-          "rouge"
-        ],
-        [
           "carre",
-          "vert"
-        ],
-        [
-          "cercle",
           "bleu"
         ],
         [
@@ -204,7 +210,15 @@
         ],
         [
           "carre",
+          "rouge"
+        ],
+        [
+          "cercle",
           "bleu"
+        ],
+        [
+          "carre",
+          "vert"
         ]
       ]
     },
@@ -244,13 +258,28 @@
       ],
       "enonces": [
         {
-          "type": "diagonale",
+          "type": "ligne",
+          "ligne": 1,
           "figure": "triangle",
-          "couleur": "vert",
+          "couleur": "rouge",
           "et": [
             {
               "figure": "triangle",
-              "couleur": "vert",
+              "couleur": "rouge",
+              "type": "voisin-dessous",
+              "figure2": "triangle",
+              "couleur2": "vert"
+            }
+          ]
+        },
+        {
+          "type": "diagonale",
+          "figure": "carre",
+          "couleur": "bleu",
+          "et": [
+            {
+              "figure": "carre",
+              "couleur": "bleu",
               "type": "voisin-dessus",
               "figure2": "carre",
               "couleur2": "rouge"
@@ -258,15 +287,16 @@
           ]
         },
         {
-          "type": "diagonale-inverse",
-          "figure": "carre",
+          "type": "ligne",
+          "ligne": 2,
+          "figure": "cercle",
           "couleur": "vert",
           "et": [
             {
-              "figure": "carre",
+              "figure": "cercle",
               "couleur": "vert",
-              "type": "voisin-droite",
-              "figure2": "triangle",
+              "type": "voisin-dessous",
+              "figure2": "carre",
               "couleur2": "rouge"
             }
           ]
@@ -275,12 +305,12 @@
           "type": "ligne",
           "ligne": 2,
           "figure": "cercle",
-          "couleur": "rouge",
+          "couleur": "bleu",
           "et": [
             {
               "figure": "cercle",
-              "couleur": "rouge",
-              "type": "voisin-diagonale",
+              "couleur": "bleu",
+              "type": "voisin-dessous",
               "figure2": "triangle",
               "couleur2": "bleu"
             }
@@ -288,58 +318,28 @@
         },
         {
           "type": "diagonale",
-          "figure": "triangle",
-          "couleur": "bleu",
-          "et": [
-            {
-              "figure": "triangle",
-              "couleur": "bleu",
-              "type": "voisin-diagonale",
-              "figure2": "cercle",
-              "couleur2": "rouge"
-            }
-          ]
-        },
-        {
-          "type": "diagonale-inverse",
           "figure": "carre",
-          "couleur": "bleu",
+          "couleur": "vert",
           "et": [
             {
               "figure": "carre",
-              "couleur": "bleu",
-              "type": "voisin-gauche",
+              "couleur": "vert",
+              "type": "voisin-droite",
               "figure2": "cercle",
               "couleur2": "bleu"
             }
           ]
         },
         {
-          "type": "ligne",
-          "ligne": 0,
+          "type": "diagonale-inverse",
           "figure": "triangle",
-          "couleur": "rouge",
-          "et": [
-            {
-              "figure": "triangle",
-              "couleur": "rouge",
-              "type": "voisin-droite",
-              "figure2": "triangle",
-              "couleur2": "vert"
-            }
-          ]
-        },
-        {
-          "type": "ligne",
-          "ligne": 2,
-          "figure": "cercle",
           "couleur": "bleu",
           "et": [
             {
-              "figure": "cercle",
+              "figure": "triangle",
               "couleur": "bleu",
               "type": "voisin-gauche",
-              "figure2": "cercle",
+              "figure2": "triangle",
               "couleur2": "rouge"
             }
           ]
@@ -358,43 +358,73 @@
               "couleur2": "bleu"
             }
           ]
+        },
+        {
+          "type": "colonne",
+          "colonne": 1,
+          "figure": "triangle",
+          "couleur": "bleu",
+          "et": [
+            {
+              "figure": "triangle",
+              "couleur": "bleu",
+              "type": "voisin-diagonale",
+              "figure2": "triangle",
+              "couleur2": "vert"
+            }
+          ]
+        },
+        {
+          "type": "ligne",
+          "ligne": 0,
+          "figure": "cercle",
+          "couleur": "rouge",
+          "et": [
+            {
+              "figure": "cercle",
+              "couleur": "rouge",
+              "type": "voisin-dessus",
+              "figure2": "triangle",
+              "couleur2": "bleu"
+            }
+          ]
         }
       ],
       "indices": [
         {
-          "type": "case",
+          "type": "ligne",
           "figure": "triangle",
-          "couleur": "rouge",
-          "case": 1
+          "couleur": "bleu",
+          "ligne": 1
         },
         {
           "type": "case",
           "figure": "carre",
-          "couleur": "bleu",
-          "case": 6
+          "couleur": "rouge",
+          "case": 3
         },
         {
-          "type": "colonne",
-          "figure": "triangle",
-          "couleur": "bleu",
-          "colonne": 1
+          "type": "case",
+          "figure": "carre",
+          "couleur": "vert",
+          "case": 8
         }
       ],
       "aide": "Chaque phrase enchaîne plusieurs informations : commence par la figure dont la phrase donne la position, puis suis les relations."
     },
     "reponse": {
-      "valeur": "triangle:vert;triangle:rouge;carre:vert;carre:rouge;triangle:bleu;cercle:vert;carre:bleu;cercle:bleu;cercle:rouge",
+      "valeur": "carre:bleu;cercle:rouge;triangle:vert;carre:rouge;triangle:bleu;triangle:rouge;cercle:vert;cercle:bleu;carre:vert",
       "grille": [
         [
-          "triangle",
-          "vert"
+          "carre",
+          "bleu"
         ],
         [
-          "triangle",
+          "cercle",
           "rouge"
         ],
         [
-          "carre",
+          "triangle",
           "vert"
         ],
         [
@@ -406,20 +436,20 @@
           "bleu"
         ],
         [
+          "triangle",
+          "rouge"
+        ],
+        [
           "cercle",
           "vert"
         ],
         [
+          "cercle",
+          "bleu"
+        ],
+        [
           "carre",
-          "bleu"
-        ],
-        [
-          "cercle",
-          "bleu"
-        ],
-        [
-          "cercle",
-          "rouge"
+          "vert"
         ]
       ]
     },
@@ -459,12 +489,70 @@
       ],
       "enonces": [
         {
-          "type": "diagonale",
+          "type": "colonne",
+          "colonne": 1,
           "figure": "triangle",
-          "couleur": "vert",
+          "couleur": "bleu",
           "et": [
             {
               "figure": "triangle",
+              "couleur": "bleu",
+              "type": "voisin-droite",
+              "figure2": "cercle",
+              "couleur2": "vert"
+            }
+          ]
+        },
+        {
+          "type": "colonne",
+          "colonne": 0,
+          "figure": "cercle",
+          "couleur": "rouge",
+          "et": [
+            {
+              "figure": "cercle",
+              "couleur": "rouge",
+              "type": "voisin-dessous",
+              "figure2": "triangle",
+              "couleur2": "rouge"
+            }
+          ]
+        },
+        {
+          "type": "diagonale",
+          "figure": "cercle",
+          "couleur": "bleu",
+          "et": [
+            {
+              "figure": "cercle",
+              "couleur": "bleu",
+              "type": "voisin-dessous",
+              "figure2": "carre",
+              "couleur2": "rouge"
+            }
+          ]
+        },
+        {
+          "type": "diagonale-inverse",
+          "figure": "carre",
+          "couleur": "bleu",
+          "et": [
+            {
+              "figure": "carre",
+              "couleur": "bleu",
+              "type": "voisin-dessus",
+              "figure2": "carre",
+              "couleur2": "rouge"
+            }
+          ]
+        },
+        {
+          "type": "diagonale",
+          "figure": "carre",
+          "couleur": "vert",
+          "et": [
+            {
+              "figure": "carre",
               "couleur": "vert",
               "type": "voisin-gauche",
               "figure2": "carre",
@@ -474,6 +562,21 @@
         },
         {
           "type": "diagonale-inverse",
+          "figure": "carre",
+          "couleur": "vert",
+          "et": [
+            {
+              "figure": "carre",
+              "couleur": "vert",
+              "type": "voisin-droite",
+              "figure2": "cercle",
+              "couleur2": "rouge"
+            }
+          ]
+        },
+        {
+          "type": "ligne",
+          "ligne": 0,
           "figure": "triangle",
           "couleur": "vert",
           "et": [
@@ -481,13 +584,28 @@
               "figure": "triangle",
               "couleur": "vert",
               "type": "voisin-dessus",
+              "figure2": "carre",
+              "couleur2": "vert"
+            }
+          ]
+        },
+        {
+          "type": "diagonale-inverse",
+          "figure": "cercle",
+          "couleur": "vert",
+          "et": [
+            {
+              "figure": "cercle",
+              "couleur": "vert",
+              "type": "voisin-gauche",
               "figure2": "triangle",
               "couleur2": "bleu"
             }
           ]
         },
         {
-          "type": "diagonale",
+          "type": "colonne",
+          "colonne": 0,
           "figure": "triangle",
           "couleur": "rouge",
           "et": [
@@ -495,144 +613,55 @@
               "figure": "triangle",
               "couleur": "rouge",
               "type": "voisin-diagonale",
-              "figure2": "triangle",
-              "couleur2": "vert"
-            }
-          ]
-        },
-        {
-          "type": "diagonale",
-          "figure": "cercle",
-          "couleur": "rouge",
-          "et": [
-            {
-              "figure": "cercle",
-              "couleur": "rouge",
-              "type": "voisin-dessous",
               "figure2": "carre",
-              "couleur2": "rouge"
-            }
-          ]
-        },
-        {
-          "type": "colonne",
-          "colonne": 2,
-          "figure": "carre",
-          "couleur": "rouge",
-          "et": [
-            {
-              "figure": "carre",
-              "couleur": "rouge",
-              "type": "voisin-dessous",
-              "figure2": "cercle",
               "couleur2": "vert"
-            }
-          ]
-        },
-        {
-          "type": "ligne",
-          "ligne": 0,
-          "figure": "cercle",
-          "couleur": "vert",
-          "et": [
-            {
-              "figure": "cercle",
-              "couleur": "vert",
-              "type": "voisin-droite",
-              "figure2": "cercle",
-              "couleur2": "bleu"
-            }
-          ]
-        },
-        {
-          "type": "ligne",
-          "ligne": 0,
-          "figure": "cercle",
-          "couleur": "bleu",
-          "et": [
-            {
-              "figure": "cercle",
-              "couleur": "bleu",
-              "type": "voisin-gauche",
-              "figure2": "cercle",
-              "couleur2": "vert"
-            }
-          ]
-        },
-        {
-          "type": "colonne",
-          "colonne": 1,
-          "figure": "triangle",
-          "couleur": "bleu",
-          "et": [
-            {
-              "figure": "triangle",
-              "couleur": "bleu",
-              "type": "voisin-dessous",
-              "figure2": "triangle",
-              "couleur2": "vert"
-            }
-          ]
-        },
-        {
-          "type": "ligne",
-          "ligne": 1,
-          "figure": "carre",
-          "couleur": "vert",
-          "et": [
-            {
-              "figure": "carre",
-              "couleur": "vert",
-              "type": "voisin-dessous",
-              "figure2": "triangle",
-              "couleur2": "rouge"
             }
           ]
         }
       ],
       "indices": [
         {
-          "type": "case",
-          "figure": "triangle",
-          "couleur": "vert",
-          "case": 4
+          "type": "ligne",
+          "figure": "cercle",
+          "couleur": "bleu",
+          "ligne": 2
         },
         {
           "type": "colonne",
-          "figure": "cercle",
-          "couleur": "rouge",
-          "colonne": 2
+          "figure": "carre",
+          "couleur": "vert",
+          "colonne": 1
         },
         {
-          "type": "ligne",
-          "figure": "cercle",
-          "couleur": "vert",
-          "ligne": 0
+          "type": "case",
+          "figure": "triangle",
+          "couleur": "rouge",
+          "case": 0
         }
       ],
       "aide": "Chaque phrase enchaîne plusieurs informations : commence par la figure dont la phrase donne la position, puis suis les relations."
     },
     "reponse": {
-      "valeur": "triangle:rouge;cercle:bleu;cercle:vert;carre:vert;triangle:vert;carre:rouge;carre:bleu;triangle:bleu;cercle:rouge",
+      "valeur": "triangle:rouge;triangle:vert;carre:bleu;cercle:rouge;carre:vert;carre:rouge;cercle:vert;triangle:bleu;cercle:bleu",
       "grille": [
         [
           "triangle",
           "rouge"
         ],
         [
-          "cercle",
-          "bleu"
-        ],
-        [
-          "cercle",
+          "triangle",
           "vert"
         ],
         [
           "carre",
-          "vert"
+          "bleu"
         ],
         [
-          "triangle",
+          "cercle",
+          "rouge"
+        ],
+        [
+          "carre",
           "vert"
         ],
         [
@@ -640,8 +669,8 @@
           "rouge"
         ],
         [
-          "carre",
-          "bleu"
+          "cercle",
+          "vert"
         ],
         [
           "triangle",
@@ -649,7 +678,7 @@
         ],
         [
           "cercle",
-          "rouge"
+          "bleu"
         ]
       ]
     },
@@ -690,35 +719,21 @@
       "enonces": [
         {
           "type": "diagonale",
-          "figure": "carre",
+          "figure": "triangle",
           "couleur": "vert",
           "et": [
             {
-              "figure": "carre",
-              "couleur": "vert",
-              "type": "voisin-droite",
-              "figure2": "carre",
-              "couleur2": "bleu"
-            }
-          ]
-        },
-        {
-          "type": "diagonale-inverse",
-          "figure": "carre",
-          "couleur": "vert",
-          "et": [
-            {
-              "figure": "carre",
+              "figure": "triangle",
               "couleur": "vert",
               "type": "voisin-dessus",
-              "figure2": "cercle",
-              "couleur2": "bleu"
+              "figure2": "carre",
+              "couleur2": "rouge"
             }
           ]
         },
         {
           "type": "colonne",
-          "colonne": 1,
+          "colonne": 2,
           "figure": "carre",
           "couleur": "vert",
           "et": [
@@ -727,12 +742,42 @@
               "couleur": "vert",
               "type": "voisin-diagonale",
               "figure2": "cercle",
-              "couleur2": "rouge"
+              "couleur2": "bleu"
             }
           ]
         },
         {
           "type": "diagonale-inverse",
+          "figure": "triangle",
+          "couleur": "bleu",
+          "et": [
+            {
+              "figure": "triangle",
+              "couleur": "bleu",
+              "type": "voisin-dessus",
+              "figure2": "carre",
+              "couleur2": "bleu"
+            }
+          ]
+        },
+        {
+          "type": "ligne",
+          "ligne": 1,
+          "figure": "carre",
+          "couleur": "rouge",
+          "et": [
+            {
+              "figure": "carre",
+              "couleur": "rouge",
+              "type": "voisin-dessous",
+              "figure2": "triangle",
+              "couleur2": "vert"
+            }
+          ]
+        },
+        {
+          "type": "colonne",
+          "colonne": 1,
           "figure": "cercle",
           "couleur": "vert",
           "et": [
@@ -740,6 +785,35 @@
               "figure": "cercle",
               "couleur": "vert",
               "type": "voisin-dessous",
+              "figure2": "cercle",
+              "couleur2": "bleu"
+            }
+          ]
+        },
+        {
+          "type": "ligne",
+          "ligne": 0,
+          "figure": "triangle",
+          "couleur": "rouge",
+          "et": [
+            {
+              "figure": "triangle",
+              "couleur": "rouge",
+              "type": "voisin-dessus",
+              "figure2": "cercle",
+              "couleur2": "bleu"
+            }
+          ]
+        },
+        {
+          "type": "diagonale-inverse",
+          "figure": "cercle",
+          "couleur": "bleu",
+          "et": [
+            {
+              "figure": "cercle",
+              "couleur": "bleu",
+              "type": "voisin-gauche",
               "figure2": "carre",
               "couleur2": "bleu"
             }
@@ -748,90 +822,15 @@
         {
           "type": "colonne",
           "colonne": 0,
-          "figure": "carre",
-          "couleur": "bleu",
-          "et": [
-            {
-              "figure": "carre",
-              "couleur": "bleu",
-              "type": "voisin-dessus",
-              "figure2": "cercle",
-              "couleur2": "vert"
-            }
-          ]
-        },
-        {
-          "type": "ligne",
-          "ligne": 2,
-          "figure": "triangle",
-          "couleur": "vert",
-          "et": [
-            {
-              "figure": "triangle",
-              "couleur": "vert",
-              "type": "voisin-droite",
-              "figure2": "cercle",
-              "couleur2": "bleu"
-            }
-          ]
-        },
-        {
-          "type": "colonne",
-          "colonne": 2,
-          "figure": "carre",
+          "figure": "cercle",
           "couleur": "rouge",
           "et": [
             {
-              "figure": "carre",
+              "figure": "cercle",
               "couleur": "rouge",
               "type": "voisin-dessous",
-              "figure2": "triangle",
-              "couleur2": "rouge"
-            }
-          ]
-        },
-        {
-          "type": "colonne",
-          "colonne": 2,
-          "figure": "triangle",
-          "couleur": "rouge",
-          "et": [
-            {
-              "figure": "triangle",
-              "couleur": "rouge",
-              "type": "voisin-droite",
-              "figure2": "triangle",
-              "couleur2": "bleu"
-            }
-          ]
-        },
-        {
-          "type": "ligne",
-          "ligne": 2,
-          "figure": "cercle",
-          "couleur": "bleu",
-          "et": [
-            {
-              "figure": "cercle",
-              "couleur": "bleu",
-              "type": "voisin-gauche",
-              "figure2": "triangle",
-              "couleur2": "vert"
-            }
-          ]
-        },
-        {
-          "type": "ligne",
-          "ligne": 0,
-          "figure": "cercle",
-          "couleur": "rouge",
-          "et": [
-            {
-              "figure": "cercle",
-              "couleur": "rouge",
-              "type": "voisin-dessus",
               "figure2": "carre",
-              "couleur2": "bleu"
+              "couleur2": "rouge"
             }
           ]
         }
@@ -839,62 +838,62 @@
       "indices": [
         {
           "type": "colonne",
-          "figure": "carre",
-          "couleur": "vert",
+          "figure": "cercle",
+          "couleur": "bleu",
           "colonne": 1
         },
         {
           "type": "ligne",
-          "figure": "cercle",
+          "figure": "carre",
           "couleur": "vert",
           "ligne": 2
         },
         {
           "type": "case",
-          "figure": "cercle",
-          "couleur": "bleu",
-          "case": 7
+          "figure": "carre",
+          "couleur": "rouge",
+          "case": 3
         }
       ],
       "aide": "Chaque phrase enchaîne plusieurs informations : commence par la figure dont la phrase donne la position, puis suis les relations."
     },
     "reponse": {
-      "valeur": "cercle:rouge;triangle:bleu;triangle:rouge;carre:bleu;carre:vert;carre:rouge;cercle:vert;cercle:bleu;triangle:vert",
+      "valeur": "triangle:vert;triangle:rouge;triangle:bleu;carre:rouge;cercle:bleu;carre:bleu;cercle:rouge;cercle:vert;carre:vert",
       "grille": [
         [
+          "triangle",
+          "vert"
+        ],
+        [
+          "triangle",
+          "rouge"
+        ],
+        [
+          "triangle",
+          "bleu"
+        ],
+        [
+          "carre",
+          "rouge"
+        ],
+        [
+          "cercle",
+          "bleu"
+        ],
+        [
+          "carre",
+          "bleu"
+        ],
+        [
           "cercle",
           "rouge"
         ],
         [
-          "triangle",
-          "bleu"
-        ],
-        [
-          "triangle",
-          "rouge"
-        ],
-        [
-          "carre",
-          "bleu"
-        ],
-        [
-          "carre",
+          "cercle",
           "vert"
         ],
         [
           "carre",
-          "rouge"
-        ],
-        [
-          "cercle",
-          "vert"
-        ],
-        [
-          "cercle",
-          "bleu"
-        ],
-        [
-          "triangle",
           "vert"
         ]
       ]
@@ -935,14 +934,89 @@
       ],
       "enonces": [
         {
-          "type": "diagonale",
+          "type": "ligne",
+          "ligne": 2,
+          "figure": "cercle",
+          "couleur": "rouge",
+          "et": [
+            {
+              "figure": "cercle",
+              "couleur": "rouge",
+              "type": "voisin-droite",
+              "figure2": "triangle",
+              "couleur2": "rouge"
+            }
+          ]
+        },
+        {
+          "type": "colonne",
+          "colonne": 1,
           "figure": "cercle",
           "couleur": "bleu",
           "et": [
             {
               "figure": "cercle",
               "couleur": "bleu",
-              "type": "voisin-droite",
+              "type": "voisin-gauche",
+              "figure2": "carre",
+              "couleur2": "rouge"
+            }
+          ]
+        },
+        {
+          "type": "diagonale",
+          "figure": "triangle",
+          "couleur": "vert",
+          "et": [
+            {
+              "figure": "triangle",
+              "couleur": "vert",
+              "type": "voisin-dessus",
+              "figure2": "triangle",
+              "couleur2": "rouge"
+            }
+          ]
+        },
+        {
+          "type": "ligne",
+          "ligne": 0,
+          "figure": "carre",
+          "couleur": "bleu",
+          "et": [
+            {
+              "figure": "carre",
+              "couleur": "bleu",
+              "type": "voisin-dessus",
+              "figure2": "cercle",
+              "couleur2": "vert"
+            }
+          ]
+        },
+        {
+          "type": "ligne",
+          "ligne": 1,
+          "figure": "cercle",
+          "couleur": "vert",
+          "et": [
+            {
+              "figure": "cercle",
+              "couleur": "vert",
+              "type": "voisin-gauche",
+              "figure2": "triangle",
+              "couleur2": "vert"
+            }
+          ]
+        },
+        {
+          "type": "ligne",
+          "ligne": 0,
+          "figure": "carre",
+          "couleur": "rouge",
+          "et": [
+            {
+              "figure": "carre",
+              "couleur": "rouge",
+              "type": "voisin-dessus",
               "figure2": "triangle",
               "couleur2": "bleu"
             }
@@ -965,159 +1039,77 @@
         {
           "type": "ligne",
           "ligne": 2,
-          "figure": "cercle",
-          "couleur": "bleu",
-          "et": [
-            {
-              "figure": "cercle",
-              "couleur": "bleu",
-              "type": "voisin-diagonale",
-              "figure2": "carre",
-              "couleur2": "bleu"
-            }
-          ]
-        },
-        {
-          "type": "diagonale",
           "figure": "carre",
-          "couleur": "bleu",
+          "couleur": "vert",
           "et": [
             {
               "figure": "carre",
-              "couleur": "bleu",
-              "type": "voisin-droite",
-              "figure2": "carre",
-              "couleur2": "rouge"
-            }
-          ]
-        },
-        {
-          "type": "colonne",
-          "colonne": 0,
-          "figure": "carre",
-          "couleur": "rouge",
-          "et": [
-            {
-              "figure": "carre",
-              "couleur": "rouge",
+              "couleur": "vert",
               "type": "voisin-gauche",
-              "figure2": "carre",
-              "couleur2": "bleu"
-            }
-          ]
-        },
-        {
-          "type": "ligne",
-          "ligne": 0,
-          "figure": "cercle",
-          "couleur": "rouge",
-          "et": [
-            {
-              "figure": "cercle",
-              "couleur": "rouge",
-              "type": "voisin-dessus",
-              "figure2": "carre",
-              "couleur2": "bleu"
-            }
-          ]
-        },
-        {
-          "type": "colonne",
-          "colonne": 2,
-          "figure": "triangle",
-          "couleur": "rouge",
-          "et": [
-            {
-              "figure": "triangle",
-              "couleur": "rouge",
-              "type": "voisin-dessus",
-              "figure2": "cercle",
-              "couleur2": "bleu"
+              "figure2": "triangle",
+              "couleur2": "rouge"
             }
           ]
         },
         {
           "type": "ligne",
           "ligne": 2,
-          "figure": "cercle",
-          "couleur": "vert",
+          "figure": "triangle",
+          "couleur": "rouge",
           "et": [
             {
-              "figure": "cercle",
-              "couleur": "vert",
-              "type": "voisin-dessous",
-              "figure2": "carre",
-              "couleur2": "rouge"
-            }
-          ]
-        },
-        {
-          "type": "ligne",
-          "ligne": 0,
-          "figure": "carre",
-          "couleur": "vert",
-          "et": [
-            {
-              "figure": "carre",
-              "couleur": "vert",
-              "type": "voisin-dessus",
-              "figure2": "carre",
-              "couleur2": "rouge"
+              "figure": "triangle",
+              "couleur": "rouge",
+              "type": "voisin-diagonale",
+              "figure2": "cercle",
+              "couleur2": "vert"
             }
           ]
         }
       ],
       "indices": [
         {
-          "type": "ligne",
+          "type": "case",
           "figure": "triangle",
-          "couleur": "bleu",
-          "ligne": 2
+          "couleur": "vert",
+          "case": 4
         },
         {
           "type": "case",
-          "figure": "cercle",
-          "couleur": "bleu",
-          "case": 8
+          "figure": "carre",
+          "couleur": "vert",
+          "case": 6
         },
         {
-          "type": "colonne",
-          "figure": "cercle",
-          "couleur": "vert",
-          "colonne": 0
+          "type": "ligne",
+          "figure": "triangle",
+          "couleur": "bleu",
+          "ligne": 1
         }
       ],
       "aide": "Chaque phrase enchaîne plusieurs informations : commence par la figure dont la phrase donne la position, puis suis les relations."
     },
     "reponse": {
-      "valeur": "carre:vert;cercle:rouge;triangle:vert;carre:rouge;carre:bleu;triangle:rouge;cercle:vert;triangle:bleu;cercle:bleu",
+      "valeur": "carre:bleu;cercle:bleu;carre:rouge;cercle:vert;triangle:vert;triangle:bleu;carre:vert;triangle:rouge;cercle:rouge",
       "grille": [
         [
           "carre",
-          "vert"
+          "bleu"
         ],
         [
           "cercle",
-          "rouge"
-        ],
-        [
-          "triangle",
-          "vert"
+          "bleu"
         ],
         [
           "carre",
           "rouge"
         ],
         [
-          "carre",
-          "bleu"
+          "cercle",
+          "vert"
         ],
         [
           "triangle",
-          "rouge"
-        ],
-        [
-          "cercle",
           "vert"
         ],
         [
@@ -1125,8 +1117,16 @@
           "bleu"
         ],
         [
+          "carre",
+          "vert"
+        ],
+        [
+          "triangle",
+          "rouge"
+        ],
+        [
           "cercle",
-          "bleu"
+          "rouge"
         ]
       ]
     },
@@ -1166,15 +1166,105 @@
       ],
       "enonces": [
         {
-          "type": "diagonale",
+          "type": "ligne",
+          "ligne": 1,
           "figure": "cercle",
-          "couleur": "bleu",
+          "couleur": "rouge",
           "et": [
             {
               "figure": "cercle",
+              "couleur": "rouge",
+              "type": "voisin-diagonale",
+              "figure2": "cercle",
+              "couleur2": "vert"
+            }
+          ]
+        },
+        {
+          "type": "ligne",
+          "ligne": 2,
+          "figure": "triangle",
+          "couleur": "rouge",
+          "et": [
+            {
+              "figure": "triangle",
+              "couleur": "rouge",
+              "type": "voisin-dessous",
+              "figure2": "cercle",
+              "couleur2": "bleu"
+            }
+          ]
+        },
+        {
+          "type": "colonne",
+          "colonne": 0,
+          "figure": "triangle",
+          "couleur": "bleu",
+          "et": [
+            {
+              "figure": "triangle",
               "couleur": "bleu",
               "type": "voisin-dessus",
+              "figure2": "cercle",
+              "couleur2": "bleu"
+            }
+          ]
+        },
+        {
+          "type": "ligne",
+          "ligne": 1,
+          "figure": "triangle",
+          "couleur": "vert",
+          "et": [
+            {
+              "figure": "triangle",
+              "couleur": "vert",
+              "type": "voisin-droite",
+              "figure2": "cercle",
+              "couleur2": "rouge"
+            }
+          ]
+        },
+        {
+          "type": "diagonale",
+          "figure": "cercle",
+          "couleur": "rouge",
+          "et": [
+            {
+              "figure": "cercle",
+              "couleur": "rouge",
+              "type": "voisin-gauche",
+              "figure2": "triangle",
+              "couleur2": "vert"
+            }
+          ]
+        },
+        {
+          "type": "colonne",
+          "colonne": 2,
+          "figure": "cercle",
+          "couleur": "vert",
+          "et": [
+            {
+              "figure": "cercle",
+              "couleur": "vert",
+              "type": "voisin-droite",
               "figure2": "carre",
+              "couleur2": "rouge"
+            }
+          ]
+        },
+        {
+          "type": "ligne",
+          "ligne": 2,
+          "figure": "carre",
+          "couleur": "rouge",
+          "et": [
+            {
+              "figure": "carre",
+              "couleur": "rouge",
+              "type": "voisin-dessous",
+              "figure2": "cercle",
               "couleur2": "rouge"
             }
           ]
@@ -1187,9 +1277,24 @@
             {
               "figure": "cercle",
               "couleur": "rouge",
-              "type": "voisin-dessus",
+              "type": "voisin-droite",
               "figure2": "cercle",
-              "couleur2": "vert"
+              "couleur2": "bleu"
+            }
+          ]
+        },
+        {
+          "type": "ligne",
+          "ligne": 1,
+          "figure": "cercle",
+          "couleur": "bleu",
+          "et": [
+            {
+              "figure": "cercle",
+              "couleur": "bleu",
+              "type": "voisin-gauche",
+              "figure2": "cercle",
+              "couleur2": "rouge"
             }
           ]
         },
@@ -1197,88 +1302,13 @@
           "type": "ligne",
           "ligne": 0,
           "figure": "carre",
-          "couleur": "vert",
-          "et": [
-            {
-              "figure": "carre",
-              "couleur": "vert",
-              "type": "voisin-diagonale",
-              "figure2": "cercle",
-              "couleur2": "rouge"
-            }
-          ]
-        },
-        {
-          "type": "ligne",
-          "ligne": 1,
-          "figure": "carre",
-          "couleur": "rouge",
-          "et": [
-            {
-              "figure": "carre",
-              "couleur": "rouge",
-              "type": "voisin-dessous",
-              "figure2": "cercle",
-              "couleur2": "bleu"
-            }
-          ]
-        },
-        {
-          "type": "colonne",
-          "colonne": 1,
-          "figure": "triangle",
-          "couleur": "vert",
-          "et": [
-            {
-              "figure": "triangle",
-              "couleur": "vert",
-              "type": "voisin-gauche",
-              "figure2": "carre",
-              "couleur2": "vert"
-            }
-          ]
-        },
-        {
-          "type": "ligne",
-          "ligne": 2,
-          "figure": "triangle",
-          "couleur": "bleu",
-          "et": [
-            {
-              "figure": "triangle",
-              "couleur": "bleu",
-              "type": "voisin-dessous",
-              "figure2": "carre",
-              "couleur2": "rouge"
-            }
-          ]
-        },
-        {
-          "type": "ligne",
-          "ligne": 2,
-          "figure": "carre",
           "couleur": "bleu",
           "et": [
             {
               "figure": "carre",
               "couleur": "bleu",
               "type": "voisin-droite",
-              "figure2": "cercle",
-              "couleur2": "vert"
-            }
-          ]
-        },
-        {
-          "type": "ligne",
-          "ligne": 2,
-          "figure": "cercle",
-          "couleur": "vert",
-          "et": [
-            {
-              "figure": "cercle",
-              "couleur": "vert",
-              "type": "voisin-gauche",
-              "figure2": "carre",
+              "figure2": "triangle",
               "couleur2": "bleu"
             }
           ]
@@ -1289,37 +1319,53 @@
           "type": "ligne",
           "figure": "carre",
           "couleur": "rouge",
-          "ligne": 1
+          "ligne": 2
         },
         {
-          "type": "ligne",
-          "figure": "triangle",
-          "couleur": "vert",
-          "ligne": 0
-        },
-        {
-          "type": "ligne",
+          "type": "colonne",
           "figure": "carre",
           "couleur": "bleu",
-          "ligne": 2
+          "colonne": 1
+        },
+        {
+          "type": "case",
+          "figure": "carre",
+          "couleur": "vert",
+          "case": 2
         }
       ],
       "aide": "Chaque phrase enchaîne plusieurs informations : commence par la figure dont la phrase donne la position, puis suis les relations."
     },
     "reponse": {
-      "valeur": "cercle:bleu;triangle:vert;carre:vert;carre:rouge;cercle:rouge;triangle:rouge;triangle:bleu;cercle:vert;carre:bleu",
+      "valeur": "triangle:bleu;carre:bleu;carre:vert;cercle:bleu;cercle:rouge;triangle:vert;triangle:rouge;carre:rouge;cercle:vert",
       "grille": [
         [
+          "triangle",
+          "bleu"
+        ],
+        [
+          "carre",
+          "bleu"
+        ],
+        [
+          "carre",
+          "vert"
+        ],
+        [
           "cercle",
           "bleu"
+        ],
+        [
+          "cercle",
+          "rouge"
         ],
         [
           "triangle",
           "vert"
         ],
         [
-          "carre",
-          "vert"
+          "triangle",
+          "rouge"
         ],
         [
           "carre",
@@ -1327,23 +1373,7 @@
         ],
         [
           "cercle",
-          "rouge"
-        ],
-        [
-          "triangle",
-          "rouge"
-        ],
-        [
-          "triangle",
-          "bleu"
-        ],
-        [
-          "cercle",
           "vert"
-        ],
-        [
-          "carre",
-          "bleu"
         ]
       ]
     },
@@ -1383,7 +1413,23 @@
       ],
       "enonces": [
         {
-          "type": "diagonale",
+          "type": "ligne",
+          "ligne": 0,
+          "figure": "triangle",
+          "couleur": "bleu",
+          "et": [
+            {
+              "figure": "triangle",
+              "couleur": "bleu",
+              "type": "voisin-gauche",
+              "figure2": "cercle",
+              "couleur2": "vert"
+            }
+          ]
+        },
+        {
+          "type": "ligne",
+          "ligne": 2,
           "figure": "carre",
           "couleur": "rouge",
           "et": [
@@ -1391,6 +1437,35 @@
               "figure": "carre",
               "couleur": "rouge",
               "type": "voisin-droite",
+              "figure2": "triangle",
+              "couleur2": "rouge"
+            }
+          ]
+        },
+        {
+          "type": "ligne",
+          "ligne": 1,
+          "figure": "triangle",
+          "couleur": "vert",
+          "et": [
+            {
+              "figure": "triangle",
+              "couleur": "vert",
+              "type": "voisin-dessous",
+              "figure2": "cercle",
+              "couleur2": "bleu"
+            }
+          ]
+        },
+        {
+          "type": "diagonale",
+          "figure": "carre",
+          "couleur": "vert",
+          "et": [
+            {
+              "figure": "carre",
+              "couleur": "vert",
+              "type": "voisin-dessous",
               "figure2": "carre",
               "couleur2": "bleu"
             }
@@ -1404,22 +1479,7 @@
             {
               "figure": "cercle",
               "couleur": "rouge",
-              "type": "voisin-dessous",
-              "figure2": "triangle",
-              "couleur2": "rouge"
-            }
-          ]
-        },
-        {
-          "type": "colonne",
-          "colonne": 2,
-          "figure": "carre",
-          "couleur": "vert",
-          "et": [
-            {
-              "figure": "carre",
-              "couleur": "vert",
-              "type": "voisin-diagonale",
+              "type": "voisin-gauche",
               "figure2": "carre",
               "couleur2": "bleu"
             }
@@ -1427,31 +1487,16 @@
         },
         {
           "type": "colonne",
-          "colonne": 0,
-          "figure": "triangle",
-          "couleur": "bleu",
-          "et": [
-            {
-              "figure": "triangle",
-              "couleur": "bleu",
-              "type": "voisin-gauche",
-              "figure2": "cercle",
-              "couleur2": "rouge"
-            }
-          ]
-        },
-        {
-          "type": "ligne",
-          "ligne": 2,
+          "colonne": 2,
           "figure": "carre",
           "couleur": "bleu",
           "et": [
             {
               "figure": "carre",
               "couleur": "bleu",
-              "type": "voisin-droite",
-              "figure2": "triangle",
-              "couleur2": "vert"
+              "type": "voisin-diagonale",
+              "figure2": "carre",
+              "couleur2": "rouge"
             }
           ]
         },
@@ -1465,65 +1510,49 @@
               "couleur": "bleu",
               "type": "voisin-gauche",
               "figure2": "triangle",
-              "couleur2": "rouge"
-            }
-          ]
-        },
-        {
-          "type": "colonne",
-          "colonne": 0,
-          "figure": "triangle",
-          "couleur": "vert",
-          "et": [
-            {
-              "figure": "triangle",
-              "couleur": "vert",
-              "type": "voisin-gauche",
-              "figure2": "carre",
               "couleur2": "bleu"
             }
           ]
         },
         {
-          "type": "ligne",
-          "ligne": 0,
+          "type": "diagonale-inverse",
           "figure": "triangle",
           "couleur": "rouge",
           "et": [
             {
               "figure": "triangle",
               "couleur": "rouge",
-              "type": "voisin-droite",
-              "figure2": "cercle",
-              "couleur2": "bleu"
+              "type": "voisin-dessous",
+              "figure2": "triangle",
+              "couleur2": "vert"
             }
           ]
         }
       ],
       "indices": [
         {
-          "type": "case",
-          "figure": "carre",
-          "couleur": "vert",
-          "case": 5
+          "type": "ligne",
+          "figure": "triangle",
+          "couleur": "rouge",
+          "ligne": 2
         },
         {
-          "type": "colonne",
-          "figure": "triangle",
-          "couleur": "vert",
-          "colonne": 0
+          "type": "case",
+          "figure": "carre",
+          "couleur": "rouge",
+          "case": 7
         },
         {
           "type": "ligne",
-          "figure": "carre",
-          "couleur": "rouge",
-          "ligne": 2
+          "figure": "cercle",
+          "couleur": "bleu",
+          "ligne": 0
         }
       ],
       "aide": "Chaque phrase enchaîne plusieurs informations : commence par la figure dont la phrase donne la position, puis suis les relations."
     },
     "reponse": {
-      "valeur": "cercle:bleu;triangle:rouge;cercle:vert;triangle:bleu;cercle:rouge;carre:vert;triangle:vert;carre:bleu;carre:rouge",
+      "valeur": "cercle:bleu;triangle:bleu;cercle:vert;triangle:vert;cercle:rouge;carre:bleu;triangle:rouge;carre:rouge;carre:vert",
       "grille": [
         [
           "cercle",
@@ -1531,7 +1560,7 @@
         ],
         [
           "triangle",
-          "rouge"
+          "bleu"
         ],
         [
           "cercle",
@@ -1539,7 +1568,7 @@
         ],
         [
           "triangle",
-          "bleu"
+          "vert"
         ],
         [
           "cercle",
@@ -1547,19 +1576,19 @@
         ],
         [
           "carre",
-          "vert"
+          "bleu"
         ],
         [
           "triangle",
-          "vert"
-        ],
-        [
-          "carre",
-          "bleu"
+          "rouge"
         ],
         [
           "carre",
           "rouge"
+        ],
+        [
+          "carre",
+          "vert"
         ]
       ]
     },
@@ -1599,30 +1628,46 @@
       ],
       "enonces": [
         {
-          "type": "diagonale",
+          "type": "colonne",
+          "colonne": 2,
           "figure": "cercle",
-          "couleur": "rouge",
+          "couleur": "bleu",
           "et": [
             {
               "figure": "cercle",
+              "couleur": "bleu",
+              "type": "voisin-dessus",
+              "figure2": "triangle",
+              "couleur2": "vert"
+            }
+          ]
+        },
+        {
+          "type": "diagonale",
+          "figure": "carre",
+          "couleur": "rouge",
+          "et": [
+            {
+              "figure": "carre",
               "couleur": "rouge",
-              "type": "voisin-gauche",
-              "figure2": "carre",
+              "type": "voisin-dessous",
+              "figure2": "triangle",
               "couleur2": "rouge"
             }
           ]
         },
         {
-          "type": "diagonale-inverse",
-          "figure": "cercle",
-          "couleur": "vert",
+          "type": "ligne",
+          "ligne": 0,
+          "figure": "triangle",
+          "couleur": "rouge",
           "et": [
             {
-              "figure": "cercle",
-              "couleur": "vert",
-              "type": "voisin-gauche",
-              "figure2": "triangle",
-              "couleur2": "bleu"
+              "figure": "triangle",
+              "couleur": "rouge",
+              "type": "voisin-dessus",
+              "figure2": "carre",
+              "couleur2": "rouge"
             }
           ]
         },
@@ -1635,15 +1680,15 @@
             {
               "figure": "cercle",
               "couleur": "rouge",
-              "type": "voisin-diagonale",
-              "figure2": "cercle",
-              "couleur2": "bleu"
+              "type": "voisin-gauche",
+              "figure2": "triangle",
+              "couleur2": "vert"
             }
           ]
         },
         {
-          "type": "ligne",
-          "ligne": 2,
+          "type": "colonne",
+          "colonne": 2,
           "figure": "carre",
           "couleur": "bleu",
           "et": [
@@ -1652,34 +1697,33 @@
               "couleur": "bleu",
               "type": "voisin-droite",
               "figure2": "triangle",
-              "couleur2": "bleu"
+              "couleur2": "rouge"
             }
           ]
         },
         {
-          "type": "colonne",
-          "colonne": 1,
-          "figure": "triangle",
-          "couleur": "rouge",
-          "et": [
-            {
-              "figure": "triangle",
-              "couleur": "rouge",
-              "type": "voisin-gauche",
-              "figure2": "cercle",
-              "couleur2": "bleu"
-            }
-          ]
-        },
-        {
-          "type": "colonne",
-          "colonne": 0,
+          "type": "diagonale-inverse",
           "figure": "carre",
           "couleur": "vert",
           "et": [
             {
               "figure": "carre",
               "couleur": "vert",
+              "type": "voisin-gauche",
+              "figure2": "cercle",
+              "couleur2": "rouge"
+            }
+          ]
+        },
+        {
+          "type": "colonne",
+          "colonne": 0,
+          "figure": "triangle",
+          "couleur": "bleu",
+          "et": [
+            {
+              "figure": "triangle",
+              "couleur": "bleu",
               "type": "voisin-dessus",
               "figure2": "cercle",
               "couleur2": "vert"
@@ -1687,46 +1731,16 @@
           ]
         },
         {
-          "type": "ligne",
-          "ligne": 1,
-          "figure": "carre",
-          "couleur": "rouge",
-          "et": [
-            {
-              "figure": "carre",
-              "couleur": "rouge",
-              "type": "voisin-droite",
-              "figure2": "cercle",
-              "couleur2": "rouge"
-            }
-          ]
-        },
-        {
-          "type": "ligne",
-          "ligne": 2,
-          "figure": "triangle",
-          "couleur": "bleu",
-          "et": [
-            {
-              "figure": "triangle",
-              "couleur": "bleu",
-              "type": "voisin-gauche",
-              "figure2": "carre",
-              "couleur2": "bleu"
-            }
-          ]
-        },
-        {
-          "type": "ligne",
-          "ligne": 0,
+          "type": "colonne",
+          "colonne": 0,
           "figure": "cercle",
-          "couleur": "bleu",
+          "couleur": "vert",
           "et": [
             {
               "figure": "cercle",
-              "couleur": "bleu",
-              "type": "voisin-droite",
-              "figure2": "triangle",
+              "couleur": "vert",
+              "type": "voisin-diagonale",
+              "figure2": "cercle",
               "couleur2": "rouge"
             }
           ]
@@ -1734,38 +1748,50 @@
       ],
       "indices": [
         {
+          "type": "case",
+          "figure": "carre",
+          "couleur": "vert",
+          "case": 6
+        },
+        {
           "type": "ligne",
           "figure": "cercle",
-          "couleur": "rouge",
+          "couleur": "vert",
           "ligne": 1
         },
         {
-          "type": "case",
+          "type": "ligne",
           "figure": "triangle",
-          "couleur": "rouge",
-          "case": 1
-        },
-        {
-          "type": "case",
-          "figure": "carre",
-          "couleur": "rouge",
-          "case": 5
+          "couleur": "vert",
+          "ligne": 2
         }
       ],
       "aide": "Chaque phrase enchaîne plusieurs informations : commence par la figure dont la phrase donne la position, puis suis les relations."
     },
     "reponse": {
-      "valeur": "triangle:vert;triangle:rouge;cercle:bleu;carre:vert;cercle:rouge;carre:rouge;cercle:vert;triangle:bleu;carre:bleu",
+      "valeur": "triangle:bleu;triangle:rouge;carre:bleu;cercle:vert;carre:rouge;cercle:bleu;carre:vert;cercle:rouge;triangle:vert",
       "grille": [
         [
           "triangle",
-          "vert"
+          "bleu"
         ],
         [
           "triangle",
           "rouge"
         ],
         [
+          "carre",
+          "bleu"
+        ],
+        [
+          "cercle",
+          "vert"
+        ],
+        [
+          "carre",
+          "rouge"
+        ],
+        [
           "cercle",
           "bleu"
         ],
@@ -1776,22 +1802,10 @@
         [
           "cercle",
           "rouge"
-        ],
-        [
-          "carre",
-          "rouge"
-        ],
-        [
-          "cercle",
-          "vert"
         ],
         [
           "triangle",
-          "bleu"
-        ],
-        [
-          "carre",
-          "bleu"
+          "vert"
         ]
       ]
     },
@@ -1833,11 +1847,11 @@
         {
           "type": "diagonale",
           "figure": "cercle",
-          "couleur": "vert",
+          "couleur": "rouge",
           "et": [
             {
               "figure": "cercle",
-              "couleur": "vert",
+              "couleur": "rouge",
               "type": "voisin-dessous",
               "figure2": "triangle",
               "couleur2": "rouge"
@@ -1845,119 +1859,104 @@
           ]
         },
         {
-          "type": "diagonale-inverse",
-          "figure": "triangle",
-          "couleur": "vert",
-          "et": [
-            {
-              "figure": "triangle",
-              "couleur": "vert",
-              "type": "voisin-dessous",
-              "figure2": "cercle",
-              "couleur2": "bleu"
-            }
-          ]
-        },
-        {
-          "type": "ligne",
-          "ligne": 2,
-          "figure": "triangle",
-          "couleur": "vert",
-          "et": [
-            {
-              "figure": "triangle",
-              "couleur": "vert",
-              "type": "voisin-diagonale",
-              "figure2": "carre",
-              "couleur2": "vert"
-            }
-          ]
-        },
-        {
-          "type": "colonne",
-          "colonne": 2,
-          "figure": "triangle",
-          "couleur": "rouge",
-          "et": [
-            {
-              "figure": "triangle",
-              "couleur": "rouge",
-              "type": "voisin-dessous",
-              "figure2": "carre",
-              "couleur2": "rouge"
-            }
-          ]
-        },
-        {
-          "type": "colonne",
-          "colonne": 2,
-          "figure": "carre",
-          "couleur": "rouge",
-          "et": [
-            {
-              "figure": "carre",
-              "couleur": "rouge",
-              "type": "voisin-droite",
-              "figure2": "cercle",
-              "couleur2": "rouge"
-            }
-          ]
-        },
-        {
-          "type": "ligne",
-          "ligne": 2,
-          "figure": "carre",
-          "couleur": "bleu",
-          "et": [
-            {
-              "figure": "carre",
-              "couleur": "bleu",
-              "type": "voisin-gauche",
-              "figure2": "cercle",
-              "couleur2": "vert"
-            }
-          ]
-        },
-        {
-          "type": "colonne",
-          "colonne": 1,
-          "figure": "cercle",
-          "couleur": "rouge",
-          "et": [
-            {
-              "figure": "cercle",
-              "couleur": "rouge",
-              "type": "voisin-gauche",
-              "figure2": "carre",
-              "couleur2": "rouge"
-            }
-          ]
-        },
-        {
-          "type": "colonne",
-          "colonne": 1,
-          "figure": "carre",
-          "couleur": "vert",
-          "et": [
-            {
-              "figure": "carre",
-              "couleur": "vert",
-              "type": "voisin-droite",
-              "figure2": "cercle",
-              "couleur2": "bleu"
-            }
-          ]
-        },
-        {
           "type": "ligne",
           "ligne": 1,
+          "figure": "triangle",
+          "couleur": "rouge",
+          "et": [
+            {
+              "figure": "triangle",
+              "couleur": "rouge",
+              "type": "voisin-dessus",
+              "figure2": "cercle",
+              "couleur2": "rouge"
+            }
+          ]
+        },
+        {
+          "type": "colonne",
+          "colonne": 0,
           "figure": "cercle",
           "couleur": "bleu",
           "et": [
             {
               "figure": "cercle",
               "couleur": "bleu",
-              "type": "voisin-gauche",
+              "type": "voisin-diagonale",
+              "figure2": "triangle",
+              "couleur2": "bleu"
+            }
+          ]
+        },
+        {
+          "type": "colonne",
+          "colonne": 1,
+          "figure": "triangle",
+          "couleur": "vert",
+          "et": [
+            {
+              "figure": "triangle",
+              "couleur": "vert",
+              "type": "voisin-droite",
+              "figure2": "cercle",
+              "couleur2": "vert"
+            }
+          ]
+        },
+        {
+          "type": "diagonale-inverse",
+          "figure": "carre",
+          "couleur": "vert",
+          "et": [
+            {
+              "figure": "carre",
+              "couleur": "vert",
+              "type": "voisin-droite",
+              "figure2": "cercle",
+              "couleur2": "bleu"
+            }
+          ]
+        },
+        {
+          "type": "ligne",
+          "ligne": 0,
+          "figure": "carre",
+          "couleur": "rouge",
+          "et": [
+            {
+              "figure": "carre",
+              "couleur": "rouge",
+              "type": "voisin-droite",
+              "figure2": "triangle",
+              "couleur2": "vert"
+            }
+          ]
+        },
+        {
+          "type": "ligne",
+          "ligne": 2,
+          "figure": "carre",
+          "couleur": "bleu",
+          "et": [
+            {
+              "figure": "carre",
+              "couleur": "bleu",
+              "type": "voisin-dessous",
+              "figure2": "cercle",
+              "couleur2": "bleu"
+            }
+          ]
+        },
+        {
+          "type": "colonne",
+          "colonne": 1,
+          "figure": "triangle",
+          "couleur": "bleu",
+          "et": [
+            {
+              "figure": "triangle",
+              "couleur": "bleu",
+              "type": "voisin-dessous",
               "figure2": "carre",
               "couleur2": "vert"
             }
@@ -1966,36 +1965,36 @@
       ],
       "indices": [
         {
-          "type": "ligne",
-          "figure": "triangle",
-          "couleur": "bleu",
-          "ligne": 0
-        },
-        {
           "type": "case",
           "figure": "cercle",
-          "couleur": "vert",
+          "couleur": "rouge",
           "case": 8
         },
         {
-          "type": "ligne",
+          "type": "case",
+          "figure": "triangle",
+          "couleur": "vert",
+          "case": 1
+        },
+        {
+          "type": "case",
           "figure": "carre",
-          "couleur": "rouge",
-          "ligne": 0
+          "couleur": "bleu",
+          "case": 6
         }
       ],
       "aide": "Chaque phrase enchaîne plusieurs informations : commence par la figure dont la phrase donne la position, puis suis les relations."
     },
     "reponse": {
-      "valeur": "triangle:bleu;cercle:rouge;carre:rouge;cercle:bleu;carre:vert;triangle:rouge;triangle:vert;carre:bleu;cercle:vert",
+      "valeur": "cercle:vert;triangle:vert;carre:rouge;cercle:bleu;carre:vert;triangle:rouge;carre:bleu;triangle:bleu;cercle:rouge",
       "grille": [
         [
-          "triangle",
-          "bleu"
+          "cercle",
+          "vert"
         ],
         [
-          "cercle",
-          "rouge"
+          "triangle",
+          "vert"
         ],
         [
           "carre",
@@ -2014,16 +2013,16 @@
           "rouge"
         ],
         [
-          "triangle",
-          "vert"
-        ],
-        [
           "carre",
           "bleu"
         ],
         [
+          "triangle",
+          "bleu"
+        ],
+        [
           "cercle",
-          "vert"
+          "rouge"
         ]
       ]
     },
@@ -2063,7 +2062,23 @@
       ],
       "enonces": [
         {
-          "type": "diagonale",
+          "type": "ligne",
+          "ligne": 0,
+          "figure": "cercle",
+          "couleur": "vert",
+          "et": [
+            {
+              "figure": "cercle",
+              "couleur": "vert",
+              "type": "voisin-gauche",
+              "figure2": "carre",
+              "couleur2": "rouge"
+            }
+          ]
+        },
+        {
+          "type": "ligne",
+          "ligne": 1,
           "figure": "cercle",
           "couleur": "bleu",
           "et": [
@@ -2077,28 +2092,42 @@
           ]
         },
         {
-          "type": "diagonale-inverse",
+          "type": "colonne",
+          "colonne": 2,
           "figure": "carre",
-          "couleur": "vert",
+          "couleur": "rouge",
           "et": [
             {
               "figure": "carre",
-              "couleur": "vert",
+              "couleur": "rouge",
               "type": "voisin-dessus",
-              "figure2": "carre",
+              "figure2": "cercle",
               "couleur2": "rouge"
             }
           ]
         },
         {
-          "type": "ligne",
-          "ligne": 1,
+          "type": "diagonale-inverse",
           "figure": "triangle",
-          "couleur": "vert",
+          "couleur": "rouge",
           "et": [
             {
               "figure": "triangle",
-              "couleur": "vert",
+              "couleur": "rouge",
+              "type": "voisin-gauche",
+              "figure2": "cercle",
+              "couleur2": "rouge"
+            }
+          ]
+        },
+        {
+          "type": "diagonale-inverse",
+          "figure": "triangle",
+          "couleur": "rouge",
+          "et": [
+            {
+              "figure": "triangle",
+              "couleur": "rouge",
               "type": "voisin-diagonale",
               "figure2": "triangle",
               "couleur2": "bleu"
@@ -2106,76 +2135,59 @@
           ]
         },
         {
-          "type": "ligne",
-          "ligne": 1,
-          "figure": "carre",
+          "type": "colonne",
+          "colonne": 2,
+          "figure": "cercle",
           "couleur": "rouge",
           "et": [
             {
-              "figure": "carre",
+              "figure": "cercle",
               "couleur": "rouge",
               "type": "voisin-dessous",
               "figure2": "carre",
-              "couleur2": "vert"
-            }
-          ]
-        },
-        {
-          "type": "colonne",
-          "colonne": 1,
-          "figure": "triangle",
-          "couleur": "bleu",
-          "et": [
-            {
-              "figure": "triangle",
-              "couleur": "bleu",
-              "type": "voisin-gauche",
-              "figure2": "carre",
-              "couleur2": "bleu"
+              "couleur2": "rouge"
             }
           ]
         },
         {
           "type": "ligne",
           "ligne": 2,
-          "figure": "cercle",
-          "couleur": "rouge",
+          "figure": "triangle",
+          "couleur": "vert",
           "et": [
             {
-              "figure": "cercle",
-              "couleur": "rouge",
-              "type": "voisin-gauche",
-              "figure2": "triangle",
+              "figure": "triangle",
+              "couleur": "vert",
+              "type": "voisin-droite",
+              "figure2": "carre",
               "couleur2": "bleu"
             }
           ]
         },
         {
-          "type": "ligne",
-          "ligne": 0,
+          "type": "diagonale",
           "figure": "triangle",
-          "couleur": "rouge",
+          "couleur": "bleu",
           "et": [
             {
               "figure": "triangle",
-              "couleur": "rouge",
-              "type": "voisin-droite",
+              "couleur": "bleu",
+              "type": "voisin-dessus",
               "figure2": "cercle",
               "couleur2": "bleu"
             }
           ]
         },
         {
-          "type": "ligne",
-          "ligne": 1,
-          "figure": "cercle",
+          "type": "diagonale",
+          "figure": "carre",
           "couleur": "vert",
           "et": [
             {
-              "figure": "cercle",
+              "figure": "carre",
               "couleur": "vert",
-              "type": "voisin-gauche",
-              "figure2": "carre",
+              "type": "voisin-dessous",
+              "figure2": "cercle",
               "couleur2": "rouge"
             }
           ]
@@ -2183,44 +2195,32 @@
       ],
       "indices": [
         {
+          "type": "ligne",
+          "figure": "carre",
+          "couleur": "vert",
+          "ligne": 2
+        },
+        {
+          "type": "case",
+          "figure": "cercle",
+          "couleur": "rouge",
+          "case": 5
+        },
+        {
           "type": "colonne",
           "figure": "carre",
-          "couleur": "bleu",
+          "couleur": "rouge",
           "colonne": 2
-        },
-        {
-          "type": "colonne",
-          "figure": "triangle",
-          "couleur": "bleu",
-          "colonne": 1
-        },
-        {
-          "type": "colonne",
-          "figure": "triangle",
-          "couleur": "vert",
-          "colonne": 0
         }
       ],
       "aide": "Chaque phrase enchaîne plusieurs informations : commence par la figure dont la phrase donne la position, puis suis les relations."
     },
     "reponse": {
-      "valeur": "cercle:bleu;triangle:rouge;carre:vert;triangle:vert;cercle:vert;carre:rouge;cercle:rouge;triangle:bleu;carre:bleu",
+      "valeur": "triangle:bleu;cercle:vert;carre:rouge;cercle:bleu;triangle:rouge;cercle:rouge;carre:bleu;triangle:vert;carre:vert",
       "grille": [
         [
-          "cercle",
+          "triangle",
           "bleu"
-        ],
-        [
-          "triangle",
-          "rouge"
-        ],
-        [
-          "carre",
-          "vert"
-        ],
-        [
-          "triangle",
-          "vert"
         ],
         [
           "cercle",
@@ -2232,15 +2232,27 @@
         ],
         [
           "cercle",
-          "rouge"
+          "bleu"
         ],
         [
           "triangle",
-          "bleu"
+          "rouge"
+        ],
+        [
+          "cercle",
+          "rouge"
         ],
         [
           "carre",
           "bleu"
+        ],
+        [
+          "triangle",
+          "vert"
+        ],
+        [
+          "carre",
+          "vert"
         ]
       ]
     },
@@ -2280,51 +2292,8 @@
       ],
       "enonces": [
         {
-          "type": "diagonale",
-          "figure": "cercle",
-          "couleur": "bleu",
-          "et": [
-            {
-              "figure": "cercle",
-              "couleur": "bleu",
-              "type": "voisin-gauche",
-              "figure2": "carre",
-              "couleur2": "bleu"
-            }
-          ]
-        },
-        {
-          "type": "diagonale-inverse",
-          "figure": "triangle",
-          "couleur": "vert",
-          "et": [
-            {
-              "figure": "triangle",
-              "couleur": "vert",
-              "type": "voisin-dessus",
-              "figure2": "triangle",
-              "couleur2": "bleu"
-            }
-          ]
-        },
-        {
-          "type": "colonne",
-          "colonne": 1,
-          "figure": "cercle",
-          "couleur": "vert",
-          "et": [
-            {
-              "figure": "cercle",
-              "couleur": "vert",
-              "type": "voisin-diagonale",
-              "figure2": "cercle",
-              "couleur2": "rouge"
-            }
-          ]
-        },
-        {
           "type": "ligne",
-          "ligne": 1,
+          "ligne": 0,
           "figure": "carre",
           "couleur": "vert",
           "et": [
@@ -2332,8 +2301,81 @@
               "figure": "carre",
               "couleur": "vert",
               "type": "voisin-dessus",
-              "figure2": "cercle",
+              "figure2": "triangle",
               "couleur2": "vert"
+            }
+          ]
+        },
+        {
+          "type": "ligne",
+          "ligne": 1,
+          "figure": "triangle",
+          "couleur": "vert",
+          "et": [
+            {
+              "figure": "triangle",
+              "couleur": "vert",
+              "type": "voisin-diagonale",
+              "figure2": "carre",
+              "couleur2": "bleu"
+            }
+          ]
+        },
+        {
+          "type": "ligne",
+          "ligne": 1,
+          "figure": "cercle",
+          "couleur": "rouge",
+          "et": [
+            {
+              "figure": "cercle",
+              "couleur": "rouge",
+              "type": "voisin-dessus",
+              "figure2": "cercle",
+              "couleur2": "bleu"
+            }
+          ]
+        },
+        {
+          "type": "diagonale",
+          "figure": "cercle",
+          "couleur": "vert",
+          "et": [
+            {
+              "figure": "cercle",
+              "couleur": "vert",
+              "type": "voisin-dessous",
+              "figure2": "carre",
+              "couleur2": "bleu"
+            }
+          ]
+        },
+        {
+          "type": "diagonale-inverse",
+          "figure": "cercle",
+          "couleur": "bleu",
+          "et": [
+            {
+              "figure": "cercle",
+              "couleur": "bleu",
+              "type": "voisin-dessous",
+              "figure2": "cercle",
+              "couleur2": "rouge"
+            }
+          ]
+        },
+        {
+          "type": "ligne",
+          "ligne": 0,
+          "figure": "triangle",
+          "couleur": "bleu",
+          "et": [
+            {
+              "figure": "triangle",
+              "couleur": "bleu",
+              "type": "voisin-dessus",
+              "figure2": "cercle",
+              "couleur2": "rouge"
             }
           ]
         },
@@ -2347,23 +2389,8 @@
               "figure": "carre",
               "couleur": "bleu",
               "type": "voisin-dessus",
-              "figure2": "carre",
+              "figure2": "cercle",
               "couleur2": "vert"
-            }
-          ]
-        },
-        {
-          "type": "colonne",
-          "colonne": 2,
-          "figure": "triangle",
-          "couleur": "bleu",
-          "et": [
-            {
-              "figure": "triangle",
-              "couleur": "bleu",
-              "type": "voisin-dessus",
-              "figure2": "triangle",
-              "couleur2": "rouge"
             }
           ]
         },
@@ -2376,55 +2403,40 @@
             {
               "figure": "carre",
               "couleur": "rouge",
-              "type": "voisin-gauche",
-              "figure2": "cercle",
-              "couleur2": "vert"
-            }
-          ]
-        },
-        {
-          "type": "colonne",
-          "colonne": 2,
-          "figure": "triangle",
-          "couleur": "rouge",
-          "et": [
-            {
-              "figure": "triangle",
-              "couleur": "rouge",
               "type": "voisin-droite",
               "figure2": "cercle",
-              "couleur2": "vert"
+              "couleur2": "bleu"
             }
           ]
         }
       ],
       "indices": [
         {
-          "type": "colonne",
-          "figure": "cercle",
-          "couleur": "bleu",
-          "colonne": 0
+          "type": "case",
+          "figure": "carre",
+          "couleur": "rouge",
+          "case": 7
         },
         {
           "type": "ligne",
-          "figure": "cercle",
-          "couleur": "vert",
+          "figure": "triangle",
+          "couleur": "rouge",
           "ligne": 2
         },
         {
-          "type": "colonne",
+          "type": "case",
           "figure": "carre",
-          "couleur": "bleu",
-          "colonne": 1
+          "couleur": "vert",
+          "case": 2
         }
       ],
       "aide": "Chaque phrase enchaîne plusieurs informations : commence par la figure dont la phrase donne la position, puis suis les relations."
     },
     "reponse": {
-      "valeur": "cercle:bleu;carre:bleu;triangle:vert;cercle:rouge;carre:vert;triangle:bleu;carre:rouge;cercle:vert;triangle:rouge",
+      "valeur": "triangle:bleu;carre:bleu;carre:vert;cercle:rouge;cercle:vert;triangle:vert;cercle:bleu;carre:rouge;triangle:rouge",
       "grille": [
         [
-          "cercle",
+          "triangle",
           "bleu"
         ],
         [
@@ -2432,7 +2444,7 @@
           "bleu"
         ],
         [
-          "triangle",
+          "carre",
           "vert"
         ],
         [
@@ -2440,20 +2452,20 @@
           "rouge"
         ],
         [
-          "carre",
+          "cercle",
           "vert"
         ],
         [
           "triangle",
+          "vert"
+        ],
+        [
+          "cercle",
           "bleu"
         ],
         [
           "carre",
           "rouge"
-        ],
-        [
-          "cercle",
-          "vert"
         ],
         [
           "triangle",
@@ -2497,117 +2509,45 @@
       ],
       "enonces": [
         {
-          "type": "diagonale",
-          "figure": "carre",
-          "couleur": "rouge",
-          "et": [
-            {
-              "figure": "carre",
-              "couleur": "rouge",
-              "type": "voisin-gauche",
-              "figure2": "triangle",
-              "couleur2": "bleu"
-            }
-          ]
-        },
-        {
-          "type": "diagonale-inverse",
-          "figure": "triangle",
-          "couleur": "vert",
-          "et": [
-            {
-              "figure": "triangle",
-              "couleur": "vert",
-              "type": "voisin-dessus",
-              "figure2": "cercle",
-              "couleur2": "bleu"
-            }
-          ]
-        },
-        {
-          "type": "colonne",
-          "colonne": 2,
-          "figure": "triangle",
-          "couleur": "vert",
-          "et": [
-            {
-              "figure": "triangle",
-              "couleur": "vert",
-              "type": "voisin-diagonale",
-              "figure2": "carre",
-              "couleur2": "bleu"
-            }
-          ]
-        },
-        {
-          "type": "colonne",
-          "colonne": 2,
-          "figure": "cercle",
-          "couleur": "bleu",
-          "et": [
-            {
-              "figure": "cercle",
-              "couleur": "bleu",
-              "type": "voisin-dessus",
-              "figure2": "triangle",
-              "couleur2": "rouge"
-            }
-          ]
-        },
-        {
-          "type": "colonne",
-          "colonne": 1,
-          "figure": "carre",
-          "couleur": "vert",
-          "et": [
-            {
-              "figure": "carre",
-              "couleur": "vert",
-              "type": "voisin-gauche",
-              "figure2": "triangle",
-              "couleur2": "rouge"
-            }
-          ]
-        },
-        {
-          "type": "colonne",
-          "colonne": 1,
-          "figure": "triangle",
-          "couleur": "bleu",
-          "et": [
-            {
-              "figure": "triangle",
-              "couleur": "bleu",
-              "type": "voisin-dessus",
-              "figure2": "carre",
-              "couleur2": "bleu"
-            }
-          ]
-        },
-        {
           "type": "ligne",
           "ligne": 1,
           "figure": "carre",
+          "couleur": "vert",
+          "et": [
+            {
+              "figure": "carre",
+              "couleur": "vert",
+              "type": "voisin-dessus",
+              "figure2": "triangle",
+              "couleur2": "vert"
+            }
+          ]
+        },
+        {
+          "type": "colonne",
+          "colonne": 1,
+          "figure": "carre",
           "couleur": "bleu",
           "et": [
             {
               "figure": "carre",
               "couleur": "bleu",
-              "type": "voisin-gauche",
-              "figure2": "cercle",
-              "couleur2": "bleu"
+              "type": "voisin-diagonale",
+              "figure2": "carre",
+              "couleur2": "vert"
             }
           ]
         },
         {
-          "type": "diagonale",
+          "type": "colonne",
+          "colonne": 2,
           "figure": "triangle",
           "couleur": "rouge",
           "et": [
             {
               "figure": "triangle",
               "couleur": "rouge",
-              "type": "voisin-droite",
+              "type": "voisin-dessus",
               "figure2": "carre",
               "couleur2": "vert"
             }
@@ -2615,16 +2555,74 @@
         },
         {
           "type": "ligne",
-          "ligne": 1,
+          "ligne": 0,
+          "figure": "triangle",
+          "couleur": "bleu",
+          "et": [
+            {
+              "figure": "triangle",
+              "couleur": "bleu",
+              "type": "voisin-dessus",
+              "figure2": "cercle",
+              "couleur2": "vert"
+            }
+          ]
+        },
+        {
+          "type": "diagonale",
           "figure": "cercle",
           "couleur": "rouge",
           "et": [
             {
               "figure": "cercle",
               "couleur": "rouge",
-              "type": "voisin-gauche",
+              "type": "voisin-droite",
+              "figure2": "cercle",
+              "couleur2": "vert"
+            }
+          ]
+        },
+        {
+          "type": "colonne",
+          "colonne": 0,
+          "figure": "cercle",
+          "couleur": "vert",
+          "et": [
+            {
+              "figure": "cercle",
+              "couleur": "vert",
+              "type": "voisin-dessus",
               "figure2": "carre",
+              "couleur2": "rouge"
+            }
+          ]
+        },
+        {
+          "type": "diagonale-inverse",
+          "figure": "carre",
+          "couleur": "rouge",
+          "et": [
+            {
+              "figure": "carre",
+              "couleur": "rouge",
+              "type": "voisin-gauche",
+              "figure2": "cercle",
               "couleur2": "bleu"
+            }
+          ]
+        },
+        {
+          "type": "ligne",
+          "ligne": 2,
+          "figure": "cercle",
+          "couleur": "bleu",
+          "et": [
+            {
+              "figure": "cercle",
+              "couleur": "bleu",
+              "type": "voisin-dessous",
+              "figure2": "cercle",
+              "couleur2": "rouge"
             }
           ]
         }
@@ -2632,38 +2630,42 @@
       "indices": [
         {
           "type": "case",
-          "figure": "triangle",
-          "couleur": "bleu",
-          "case": 1
+          "figure": "cercle",
+          "couleur": "rouge",
+          "case": 4
         },
         {
           "type": "ligne",
-          "figure": "cercle",
-          "couleur": "vert",
-          "ligne": 2
+          "figure": "triangle",
+          "couleur": "rouge",
+          "ligne": 0
         },
         {
           "type": "case",
           "figure": "carre",
           "couleur": "rouge",
-          "case": 0
+          "case": 6
         }
       ],
       "aide": "Chaque phrase enchaîne plusieurs informations : commence par la figure dont la phrase donne la position, puis suis les relations."
     },
     "reponse": {
-      "valeur": "carre:rouge;triangle:bleu;triangle:vert;cercle:rouge;carre:bleu;cercle:bleu;cercle:vert;carre:vert;triangle:rouge",
+      "valeur": "triangle:bleu;carre:bleu;triangle:rouge;cercle:vert;cercle:rouge;carre:vert;carre:rouge;cercle:bleu;triangle:vert",
       "grille": [
         [
-          "carre",
-          "rouge"
-        ],
-        [
           "triangle",
           "bleu"
         ],
         [
+          "carre",
+          "bleu"
+        ],
+        [
           "triangle",
+          "rouge"
+        ],
+        [
+          "cercle",
           "vert"
         ],
         [
@@ -2672,23 +2674,19 @@
         ],
         [
           "carre",
-          "bleu"
-        ],
-        [
-          "cercle",
-          "bleu"
-        ],
-        [
-          "cercle",
           "vert"
         ],
         [
           "carre",
-          "vert"
+          "rouge"
+        ],
+        [
+          "cercle",
+          "bleu"
         ],
         [
           "triangle",
-          "rouge"
+          "vert"
         ]
       ]
     },
@@ -2728,14 +2726,29 @@
       ],
       "enonces": [
         {
-          "type": "diagonale",
-          "figure": "carre",
-          "couleur": "bleu",
+          "type": "diagonale-inverse",
+          "figure": "triangle",
+          "couleur": "rouge",
           "et": [
             {
-              "figure": "carre",
-              "couleur": "bleu",
+              "figure": "triangle",
+              "couleur": "rouge",
               "type": "voisin-dessous",
+              "figure2": "carre",
+              "couleur2": "vert"
+            }
+          ]
+        },
+        {
+          "type": "colonne",
+          "colonne": 2,
+          "figure": "cercle",
+          "couleur": "vert",
+          "et": [
+            {
+              "figure": "cercle",
+              "couleur": "vert",
+              "type": "voisin-droite",
               "figure2": "carre",
               "couleur2": "rouge"
             }
@@ -2744,42 +2757,12 @@
         {
           "type": "diagonale-inverse",
           "figure": "carre",
-          "couleur": "vert",
-          "et": [
-            {
-              "figure": "carre",
-              "couleur": "vert",
-              "type": "voisin-gauche",
-              "figure2": "carre",
-              "couleur2": "rouge"
-            }
-          ]
-        },
-        {
-          "type": "colonne",
-          "colonne": 1,
-          "figure": "carre",
-          "couleur": "vert",
-          "et": [
-            {
-              "figure": "carre",
-              "couleur": "vert",
-              "type": "voisin-diagonale",
-              "figure2": "cercle",
-              "couleur2": "vert"
-            }
-          ]
-        },
-        {
-          "type": "ligne",
-          "ligne": 2,
-          "figure": "triangle",
           "couleur": "rouge",
           "et": [
             {
-              "figure": "triangle",
+              "figure": "carre",
               "couleur": "rouge",
-              "type": "voisin-gauche",
+              "type": "voisin-diagonale",
               "figure2": "triangle",
               "couleur2": "bleu"
             }
@@ -2788,21 +2771,65 @@
         {
           "type": "colonne",
           "colonne": 1,
-          "figure": "cercle",
+          "figure": "carre",
           "couleur": "bleu",
           "et": [
             {
-              "figure": "cercle",
+              "figure": "carre",
               "couleur": "bleu",
-              "type": "voisin-gauche",
-              "figure2": "cercle",
+              "type": "voisin-droite",
+              "figure2": "triangle",
               "couleur2": "vert"
             }
           ]
         },
         {
+          "type": "ligne",
+          "ligne": 0,
+          "figure": "triangle",
+          "couleur": "bleu",
+          "et": [
+            {
+              "figure": "triangle",
+              "couleur": "bleu",
+              "type": "voisin-droite",
+              "figure2": "carre",
+              "couleur2": "bleu"
+            }
+          ]
+        },
+        {
           "type": "colonne",
-          "colonne": 2,
+          "colonne": 0,
+          "figure": "carre",
+          "couleur": "vert",
+          "et": [
+            {
+              "figure": "carre",
+              "couleur": "vert",
+              "type": "voisin-dessus",
+              "figure2": "triangle",
+              "couleur2": "rouge"
+            }
+          ]
+        },
+        {
+          "type": "ligne",
+          "ligne": 2,
+          "figure": "cercle",
+          "couleur": "rouge",
+          "et": [
+            {
+              "figure": "cercle",
+              "couleur": "rouge",
+              "type": "voisin-droite",
+              "figure2": "triangle",
+              "couleur2": "rouge"
+            }
+          ]
+        },
+        {
+          "type": "diagonale",
           "figure": "carre",
           "couleur": "rouge",
           "et": [
@@ -2816,103 +2843,53 @@
           ]
         },
         {
-          "type": "colonne",
-          "colonne": 0,
-          "figure": "triangle",
-          "couleur": "vert",
-          "et": [
-            {
-              "figure": "triangle",
-              "couleur": "vert",
-              "type": "voisin-gauche",
-              "figure2": "carre",
-              "couleur2": "vert"
-            }
-          ]
-        },
-        {
-          "type": "ligne",
-          "ligne": 0,
-          "figure": "cercle",
-          "couleur": "rouge",
-          "et": [
-            {
-              "figure": "cercle",
-              "couleur": "rouge",
-              "type": "voisin-dessus",
-              "figure2": "triangle",
-              "couleur2": "vert"
-            }
-          ]
-        },
-        {
           "type": "ligne",
           "ligne": 2,
-          "figure": "triangle",
+          "figure": "cercle",
           "couleur": "bleu",
           "et": [
             {
-              "figure": "triangle",
+              "figure": "cercle",
               "couleur": "bleu",
-              "type": "voisin-gauche",
-              "figure2": "carre",
-              "couleur2": "bleu"
+              "type": "voisin-droite",
+              "figure2": "cercle",
+              "couleur2": "rouge"
             }
           ]
         }
       ],
       "indices": [
         {
-          "type": "case",
-          "figure": "carre",
+          "type": "ligne",
+          "figure": "cercle",
           "couleur": "vert",
-          "case": 4
-        },
-        {
-          "type": "colonne",
-          "figure": "triangle",
-          "couleur": "bleu",
-          "colonne": 1
+          "ligne": 1
         },
         {
           "type": "case",
           "figure": "cercle",
           "couleur": "bleu",
-          "case": 1
+          "case": 8
+        },
+        {
+          "type": "ligne",
+          "figure": "triangle",
+          "couleur": "bleu",
+          "ligne": 0
         }
       ],
       "aide": "Chaque phrase enchaîne plusieurs informations : commence par la figure dont la phrase donne la position, puis suis les relations."
     },
     "reponse": {
-      "valeur": "cercle:rouge;cercle:bleu;cercle:vert;triangle:vert;carre:vert;carre:rouge;triangle:rouge;triangle:bleu;carre:bleu",
+      "valeur": "triangle:vert;carre:bleu;triangle:bleu;carre:vert;carre:rouge;cercle:vert;triangle:rouge;cercle:rouge;cercle:bleu",
       "grille": [
         [
-          "cercle",
-          "rouge"
+          "triangle",
+          "vert"
         ],
         [
-          "cercle",
+          "carre",
           "bleu"
-        ],
-        [
-          "cercle",
-          "vert"
-        ],
-        [
-          "triangle",
-          "vert"
-        ],
-        [
-          "carre",
-          "vert"
-        ],
-        [
-          "carre",
-          "rouge"
-        ],
-        [
-          "triangle",
-          "rouge"
         ],
         [
           "triangle",
@@ -2920,6 +2897,26 @@
         ],
         [
           "carre",
+          "vert"
+        ],
+        [
+          "carre",
+          "rouge"
+        ],
+        [
+          "cercle",
+          "vert"
+        ],
+        [
+          "triangle",
+          "rouge"
+        ],
+        [
+          "cercle",
+          "rouge"
+        ],
+        [
+          "cercle",
           "bleu"
         ]
       ]
@@ -2962,42 +2959,14 @@
         {
           "type": "diagonale",
           "figure": "carre",
-          "couleur": "vert",
-          "et": [
-            {
-              "figure": "carre",
-              "couleur": "vert",
-              "type": "voisin-droite",
-              "figure2": "carre",
-              "couleur2": "bleu"
-            }
-          ]
-        },
-        {
-          "type": "diagonale-inverse",
-          "figure": "carre",
           "couleur": "rouge",
           "et": [
             {
               "figure": "carre",
               "couleur": "rouge",
               "type": "voisin-gauche",
-              "figure2": "carre",
-              "couleur2": "bleu"
-            }
-          ]
-        },
-        {
-          "type": "diagonale-inverse",
-          "figure": "triangle",
-          "couleur": "rouge",
-          "et": [
-            {
-              "figure": "triangle",
-              "couleur": "rouge",
-              "type": "voisin-diagonale",
               "figure2": "cercle",
-              "couleur2": "bleu"
+              "couleur2": "vert"
             }
           ]
         },
@@ -3005,59 +2974,43 @@
           "type": "colonne",
           "colonne": 1,
           "figure": "cercle",
-          "couleur": "bleu",
-          "et": [
-            {
-              "figure": "cercle",
-              "couleur": "bleu",
-              "type": "voisin-diagonale",
-              "figure2": "carre",
-              "couleur2": "vert"
-            }
-          ]
-        },
-        {
-          "type": "ligne",
-          "ligne": 1,
-          "figure": "cercle",
-          "couleur": "rouge",
-          "et": [
-            {
-              "figure": "cercle",
-              "couleur": "rouge",
-              "type": "voisin-dessous",
-              "figure2": "triangle",
-              "couleur2": "rouge"
-            }
-          ]
-        },
-        {
-          "type": "ligne",
-          "ligne": 0,
-          "figure": "triangle",
-          "couleur": "bleu",
-          "et": [
-            {
-              "figure": "triangle",
-              "couleur": "bleu",
-              "type": "voisin-gauche",
-              "figure2": "cercle",
-              "couleur2": "vert"
-            }
-          ]
-        },
-        {
-          "type": "ligne",
-          "ligne": 0,
-          "figure": "cercle",
           "couleur": "vert",
           "et": [
             {
               "figure": "cercle",
               "couleur": "vert",
-              "type": "voisin-droite",
+              "type": "voisin-dessus",
               "figure2": "triangle",
               "couleur2": "bleu"
+            }
+          ]
+        },
+        {
+          "type": "ligne",
+          "ligne": 2,
+          "figure": "carre",
+          "couleur": "vert",
+          "et": [
+            {
+              "figure": "carre",
+              "couleur": "vert",
+              "type": "voisin-droite",
+              "figure2": "cercle",
+              "couleur2": "bleu"
+            }
+          ]
+        },
+        {
+          "type": "diagonale",
+          "figure": "triangle",
+          "couleur": "rouge",
+          "et": [
+            {
+              "figure": "triangle",
+              "couleur": "rouge",
+              "type": "voisin-droite",
+              "figure2": "carre",
+              "couleur2": "vert"
             }
           ]
         },
@@ -3070,9 +3023,52 @@
             {
               "figure": "triangle",
               "couleur": "vert",
-              "type": "voisin-dessus",
+              "type": "voisin-gauche",
+              "figure2": "triangle",
+              "couleur2": "bleu"
+            }
+          ]
+        },
+        {
+          "type": "diagonale-inverse",
+          "figure": "cercle",
+          "couleur": "rouge",
+          "et": [
+            {
+              "figure": "cercle",
+              "couleur": "rouge",
+              "type": "voisin-droite",
+              "figure2": "cercle",
+              "couleur2": "vert"
+            }
+          ]
+        },
+        {
+          "type": "colonne",
+          "colonne": 2,
+          "figure": "carre",
+          "couleur": "bleu",
+          "et": [
+            {
+              "figure": "carre",
+              "couleur": "bleu",
+              "type": "voisin-diagonale",
               "figure2": "carre",
-              "couleur2": "rouge"
+              "couleur2": "vert"
+            }
+          ]
+        },
+        {
+          "type": "diagonale",
+          "figure": "triangle",
+          "couleur": "bleu",
+          "et": [
+            {
+              "figure": "triangle",
+              "couleur": "bleu",
+              "type": "voisin-gauche",
+              "figure2": "carre",
+              "couleur2": "bleu"
             }
           ]
         }
@@ -3081,37 +3077,37 @@
         {
           "type": "ligne",
           "figure": "cercle",
-          "couleur": "vert",
-          "ligne": 0
-        },
-        {
-          "type": "ligne",
-          "figure": "triangle",
-          "couleur": "rouge",
-          "ligne": 0
-        },
-        {
-          "type": "ligne",
-          "figure": "carre",
-          "couleur": "rouge",
+          "couleur": "bleu",
           "ligne": 2
+        },
+        {
+          "type": "case",
+          "figure": "triangle",
+          "couleur": "bleu",
+          "case": 4
+        },
+        {
+          "type": "colonne",
+          "figure": "carre",
+          "couleur": "vert",
+          "colonne": 1
         }
       ],
       "aide": "Chaque phrase enchaîne plusieurs informations : commence par la figure dont la phrase donne la position, puis suis les relations."
     },
     "reponse": {
-      "valeur": "triangle:bleu;cercle:vert;triangle:rouge;triangle:vert;cercle:bleu;cercle:rouge;carre:rouge;carre:bleu;carre:vert",
+      "valeur": "carre:rouge;cercle:vert;cercle:rouge;triangle:vert;triangle:bleu;carre:bleu;cercle:bleu;carre:vert;triangle:rouge",
       "grille": [
         [
-          "triangle",
-          "bleu"
+          "carre",
+          "rouge"
         ],
         [
           "cercle",
           "vert"
         ],
         [
-          "triangle",
+          "cercle",
           "rouge"
         ],
         [
@@ -3119,24 +3115,24 @@
           "vert"
         ],
         [
-          "cercle",
+          "triangle",
+          "bleu"
+        ],
+        [
+          "carre",
           "bleu"
         ],
         [
           "cercle",
-          "rouge"
-        ],
-        [
-          "carre",
-          "rouge"
-        ],
-        [
-          "carre",
           "bleu"
         ],
         [
           "carre",
           "vert"
+        ],
+        [
+          "triangle",
+          "rouge"
         ]
       ]
     },
@@ -3176,12 +3172,13 @@
       ],
       "enonces": [
         {
-          "type": "diagonale",
-          "figure": "cercle",
+          "type": "ligne",
+          "ligne": 2,
+          "figure": "carre",
           "couleur": "bleu",
           "et": [
             {
-              "figure": "cercle",
+              "figure": "carre",
               "couleur": "bleu",
               "type": "voisin-gauche",
               "figure2": "triangle",
@@ -3190,88 +3187,30 @@
           ]
         },
         {
-          "type": "diagonale-inverse",
+          "type": "colonne",
+          "colonne": 1,
           "figure": "triangle",
-          "couleur": "vert",
+          "couleur": "bleu",
           "et": [
             {
               "figure": "triangle",
-              "couleur": "vert",
-              "type": "voisin-droite",
-              "figure2": "triangle",
-              "couleur2": "bleu"
-            }
-          ]
-        },
-        {
-          "type": "diagonale-inverse",
-          "figure": "triangle",
-          "couleur": "vert",
-          "et": [
-            {
-              "figure": "triangle",
-              "couleur": "vert",
-              "type": "voisin-diagonale",
-              "figure2": "carre",
+              "couleur": "bleu",
+              "type": "voisin-gauche",
+              "figure2": "cercle",
               "couleur2": "rouge"
             }
           ]
         },
         {
-          "type": "ligne",
-          "ligne": 0,
-          "figure": "triangle",
-          "couleur": "bleu",
-          "et": [
-            {
-              "figure": "triangle",
-              "couleur": "bleu",
-              "type": "voisin-droite",
-              "figure2": "cercle",
-              "couleur2": "bleu"
-            }
-          ]
-        },
-        {
-          "type": "colonne",
-          "colonne": 2,
-          "figure": "triangle",
-          "couleur": "rouge",
-          "et": [
-            {
-              "figure": "triangle",
-              "couleur": "rouge",
-              "type": "voisin-dessus",
-              "figure2": "carre",
-              "couleur2": "vert"
-            }
-          ]
-        },
-        {
           "type": "diagonale-inverse",
-          "figure": "carre",
-          "couleur": "rouge",
-          "et": [
-            {
-              "figure": "carre",
-              "couleur": "rouge",
-              "type": "voisin-dessus",
-              "figure2": "carre",
-              "couleur2": "bleu"
-            }
-          ]
-        },
-        {
-          "type": "colonne",
-          "colonne": 0,
-          "figure": "cercle",
+          "figure": "triangle",
           "couleur": "vert",
           "et": [
             {
-              "figure": "cercle",
+              "figure": "triangle",
               "couleur": "vert",
-              "type": "voisin-gauche",
-              "figure2": "carre",
+              "type": "voisin-dessus",
+              "figure2": "cercle",
               "couleur2": "bleu"
             }
           ]
@@ -3280,28 +3219,87 @@
           "type": "colonne",
           "colonne": 1,
           "figure": "carre",
-          "couleur": "bleu",
+          "couleur": "vert",
           "et": [
             {
               "figure": "carre",
-              "couleur": "bleu",
-              "type": "voisin-dessous",
+              "couleur": "vert",
+              "type": "voisin-droite",
               "figure2": "carre",
               "couleur2": "rouge"
             }
           ]
         },
         {
-          "type": "colonne",
-          "colonne": 2,
-          "figure": "carre",
+          "type": "diagonale",
+          "figure": "cercle",
+          "couleur": "rouge",
+          "et": [
+            {
+              "figure": "cercle",
+              "couleur": "rouge",
+              "type": "voisin-droite",
+              "figure2": "triangle",
+              "couleur2": "bleu"
+            }
+          ]
+        },
+        {
+          "type": "ligne",
+          "ligne": 0,
+          "figure": "triangle",
           "couleur": "vert",
           "et": [
             {
-              "figure": "carre",
+              "figure": "triangle",
+              "couleur": "vert",
+              "type": "voisin-diagonale",
+              "figure2": "triangle",
+              "couleur2": "rouge"
+            }
+          ]
+        },
+        {
+          "type": "ligne",
+          "ligne": 1,
+          "figure": "triangle",
+          "couleur": "rouge",
+          "et": [
+            {
+              "figure": "triangle",
+              "couleur": "rouge",
+              "type": "voisin-dessus",
+              "figure2": "triangle",
+              "couleur2": "bleu"
+            }
+          ]
+        },
+        {
+          "type": "ligne",
+          "ligne": 1,
+          "figure": "cercle",
+          "couleur": "bleu",
+          "et": [
+            {
+              "figure": "cercle",
+              "couleur": "bleu",
+              "type": "voisin-droite",
+              "figure2": "triangle",
+              "couleur2": "rouge"
+            }
+          ]
+        },
+        {
+          "type": "ligne",
+          "ligne": 1,
+          "figure": "cercle",
+          "couleur": "vert",
+          "et": [
+            {
+              "figure": "cercle",
               "couleur": "vert",
               "type": "voisin-dessous",
-              "figure2": "triangle",
+              "figure2": "carre",
               "couleur2": "rouge"
             }
           ]
@@ -3311,34 +3309,34 @@
         {
           "type": "case",
           "figure": "carre",
-          "couleur": "bleu",
-          "case": 7
+          "couleur": "vert",
+          "case": 1
         },
         {
           "type": "case",
           "figure": "triangle",
-          "couleur": "rouge",
-          "case": 5
+          "couleur": "vert",
+          "case": 2
         },
         {
-          "type": "ligne",
-          "figure": "triangle",
+          "type": "colonne",
+          "figure": "carre",
           "couleur": "bleu",
-          "ligne": 0
+          "colonne": 0
         }
       ],
       "aide": "Chaque phrase enchaîne plusieurs informations : commence par la figure dont la phrase donne la position, puis suis les relations."
     },
     "reponse": {
-      "valeur": "cercle:bleu;triangle:bleu;triangle:vert;cercle:rouge;carre:rouge;triangle:rouge;cercle:vert;carre:bleu;carre:vert",
+      "valeur": "carre:rouge;carre:vert;triangle:vert;cercle:vert;triangle:rouge;cercle:bleu;carre:bleu;triangle:bleu;cercle:rouge",
       "grille": [
         [
-          "cercle",
-          "bleu"
+          "carre",
+          "rouge"
         ],
         [
-          "triangle",
-          "bleu"
+          "carre",
+          "vert"
         ],
         [
           "triangle",
@@ -3346,11 +3344,7 @@
         ],
         [
           "cercle",
-          "rouge"
-        ],
-        [
-          "carre",
-          "rouge"
+          "vert"
         ],
         [
           "triangle",
@@ -3358,15 +3352,19 @@
         ],
         [
           "cercle",
-          "vert"
+          "bleu"
         ],
         [
           "carre",
           "bleu"
         ],
         [
-          "carre",
-          "vert"
+          "triangle",
+          "bleu"
+        ],
+        [
+          "cercle",
+          "rouge"
         ]
       ]
     },
@@ -3406,16 +3404,32 @@
       ],
       "enonces": [
         {
-          "type": "diagonale",
-          "figure": "cercle",
+          "type": "ligne",
+          "ligne": 2,
+          "figure": "carre",
           "couleur": "rouge",
           "et": [
             {
-              "figure": "cercle",
+              "figure": "carre",
               "couleur": "rouge",
-              "type": "voisin-gauche",
-              "figure2": "triangle",
-              "couleur2": "bleu"
+              "type": "voisin-dessous",
+              "figure2": "cercle",
+              "couleur2": "rouge"
+            }
+          ]
+        },
+        {
+          "type": "colonne",
+          "colonne": 0,
+          "figure": "cercle",
+          "couleur": "vert",
+          "et": [
+            {
+              "figure": "cercle",
+              "couleur": "vert",
+              "type": "voisin-dessus",
+              "figure2": "carre",
+              "couleur2": "vert"
             }
           ]
         },
@@ -3428,7 +3442,66 @@
               "figure": "cercle",
               "couleur": "rouge",
               "type": "voisin-dessus",
-              "figure2": "cercle",
+              "figure2": "carre",
+              "couleur2": "rouge"
+            }
+          ]
+        },
+        {
+          "type": "colonne",
+          "colonne": 0,
+          "figure": "carre",
+          "couleur": "vert",
+          "et": [
+            {
+              "figure": "carre",
+              "couleur": "vert",
+              "type": "voisin-gauche",
+              "figure2": "carre",
+              "couleur2": "rouge"
+            }
+          ]
+        },
+        {
+          "type": "ligne",
+          "ligne": 1,
+          "figure": "cercle",
+          "couleur": "rouge",
+          "et": [
+            {
+              "figure": "cercle",
+              "couleur": "rouge",
+              "type": "voisin-diagonale",
+              "figure2": "triangle",
+              "couleur2": "vert"
+            }
+          ]
+        },
+        {
+          "type": "ligne",
+          "ligne": 0,
+          "figure": "cercle",
+          "couleur": "bleu",
+          "et": [
+            {
+              "figure": "cercle",
+              "couleur": "bleu",
+              "type": "voisin-droite",
+              "figure2": "carre",
+              "couleur2": "bleu"
+            }
+          ]
+        },
+        {
+          "type": "diagonale",
+          "figure": "triangle",
+          "couleur": "vert",
+          "et": [
+            {
+              "figure": "triangle",
+              "couleur": "vert",
+              "type": "voisin-dessous",
+              "figure2": "triangle",
               "couleur2": "bleu"
             }
           ]
@@ -3436,125 +3509,50 @@
         {
           "type": "ligne",
           "ligne": 1,
-          "figure": "carre",
-          "couleur": "bleu",
-          "et": [
-            {
-              "figure": "carre",
-              "couleur": "bleu",
-              "type": "voisin-diagonale",
-              "figure2": "cercle",
-              "couleur2": "bleu"
-            }
-          ]
-        },
-        {
-          "type": "colonne",
-          "colonne": 2,
           "figure": "triangle",
           "couleur": "bleu",
           "et": [
             {
               "figure": "triangle",
               "couleur": "bleu",
-              "type": "voisin-droite",
-              "figure2": "cercle",
-              "couleur2": "rouge"
-            }
-          ]
-        },
-        {
-          "type": "colonne",
-          "colonne": 1,
-          "figure": "triangle",
-          "couleur": "vert",
-          "et": [
-            {
-              "figure": "triangle",
-              "couleur": "vert",
               "type": "voisin-dessus",
-              "figure2": "cercle",
-              "couleur2": "rouge"
-            }
-          ]
-        },
-        {
-          "type": "colonne",
-          "colonne": 2,
-          "figure": "cercle",
-          "couleur": "vert",
-          "et": [
-            {
-              "figure": "cercle",
-              "couleur": "vert",
-              "type": "voisin-dessous",
-              "figure2": "triangle",
-              "couleur2": "bleu"
-            }
-          ]
-        },
-        {
-          "type": "colonne",
-          "colonne": 2,
-          "figure": "carre",
-          "couleur": "rouge",
-          "et": [
-            {
-              "figure": "carre",
-              "couleur": "rouge",
-              "type": "voisin-droite",
               "figure2": "triangle",
               "couleur2": "vert"
             }
           ]
         },
         {
-          "type": "colonne",
-          "colonne": 1,
-          "figure": "cercle",
-          "couleur": "bleu",
-          "et": [
-            {
-              "figure": "cercle",
-              "couleur": "bleu",
-              "type": "voisin-dessous",
-              "figure2": "cercle",
-              "couleur2": "rouge"
-            }
-          ]
-        },
-        {
           "type": "ligne",
-          "ligne": 2,
-          "figure": "carre",
-          "couleur": "vert",
+          "ligne": 0,
+          "figure": "triangle",
+          "couleur": "rouge",
           "et": [
             {
-              "figure": "carre",
-              "couleur": "vert",
-              "type": "voisin-dessous",
-              "figure2": "carre",
-              "couleur2": "bleu"
+              "figure": "triangle",
+              "couleur": "rouge",
+              "type": "voisin-dessus",
+              "figure2": "cercle",
+              "couleur2": "vert"
             }
           ]
         }
       ],
       "indices": [
         {
-          "type": "case",
+          "type": "ligne",
           "figure": "triangle",
           "couleur": "bleu",
-          "case": 5
-        },
-        {
-          "type": "colonne",
-          "figure": "carre",
-          "couleur": "vert",
-          "colonne": 0
+          "ligne": 1
         },
         {
           "type": "ligne",
           "figure": "carre",
+          "couleur": "rouge",
+          "ligne": 2
+        },
+        {
+          "type": "ligne",
+          "figure": "triangle",
           "couleur": "rouge",
           "ligne": 0
         }
@@ -3562,14 +3560,34 @@
       "aide": "Chaque phrase enchaîne plusieurs informations : commence par la figure dont la phrase donne la position, puis suis les relations."
     },
     "reponse": {
-      "valeur": "triangle:rouge;triangle:vert;carre:rouge;carre:bleu;cercle:rouge;triangle:bleu;carre:vert;cercle:bleu;cercle:vert",
+      "valeur": "triangle:rouge;carre:bleu;cercle:bleu;cercle:vert;cercle:rouge;triangle:bleu;carre:vert;carre:rouge;triangle:vert",
       "grille": [
         [
           "triangle",
           "rouge"
         ],
         [
+          "carre",
+          "bleu"
+        ],
+        [
+          "cercle",
+          "bleu"
+        ],
+        [
+          "cercle",
+          "vert"
+        ],
+        [
+          "cercle",
+          "rouge"
+        ],
+        [
           "triangle",
+          "bleu"
+        ],
+        [
+          "carre",
           "vert"
         ],
         [
@@ -3577,27 +3595,7 @@
           "rouge"
         ],
         [
-          "carre",
-          "bleu"
-        ],
-        [
-          "cercle",
-          "rouge"
-        ],
-        [
           "triangle",
-          "bleu"
-        ],
-        [
-          "carre",
-          "vert"
-        ],
-        [
-          "cercle",
-          "bleu"
-        ],
-        [
-          "cercle",
           "vert"
         ]
       ]
@@ -3639,56 +3637,70 @@
       "enonces": [
         {
           "type": "diagonale",
-          "figure": "cercle",
-          "couleur": "bleu",
-          "et": [
-            {
-              "figure": "cercle",
-              "couleur": "bleu",
-              "type": "voisin-dessous",
-              "figure2": "cercle",
-              "couleur2": "vert"
-            }
-          ]
-        },
-        {
-          "type": "diagonale-inverse",
-          "figure": "triangle",
-          "couleur": "bleu",
-          "et": [
-            {
-              "figure": "triangle",
-              "couleur": "bleu",
-              "type": "voisin-gauche",
-              "figure2": "triangle",
-              "couleur2": "vert"
-            }
-          ]
-        },
-        {
-          "type": "colonne",
-          "colonne": 1,
-          "figure": "triangle",
+          "figure": "carre",
           "couleur": "vert",
           "et": [
             {
-              "figure": "triangle",
+              "figure": "carre",
               "couleur": "vert",
-              "type": "voisin-diagonale",
+              "type": "voisin-dessous",
               "figure2": "triangle",
               "couleur2": "rouge"
             }
           ]
         },
         {
-          "type": "diagonale-inverse",
+          "type": "diagonale",
           "figure": "carre",
           "couleur": "bleu",
           "et": [
             {
               "figure": "carre",
               "couleur": "bleu",
-              "type": "voisin-gauche",
+              "type": "voisin-dessus",
+              "figure2": "cercle",
+              "couleur2": "bleu"
+            }
+          ]
+        },
+        {
+          "type": "colonne",
+          "colonne": 2,
+          "figure": "triangle",
+          "couleur": "vert",
+          "et": [
+            {
+              "figure": "triangle",
+              "couleur": "vert",
+              "type": "voisin-droite",
+              "figure2": "cercle",
+              "couleur2": "rouge"
+            }
+          ]
+        },
+        {
+          "type": "diagonale-inverse",
+          "figure": "triangle",
+          "couleur": "bleu",
+          "et": [
+            {
+              "figure": "triangle",
+              "couleur": "bleu",
+              "type": "voisin-dessous",
+              "figure2": "cercle",
+              "couleur2": "rouge"
+            }
+          ]
+        },
+        {
+          "type": "diagonale",
+          "figure": "triangle",
+          "couleur": "bleu",
+          "et": [
+            {
+              "figure": "triangle",
+              "couleur": "bleu",
+              "type": "voisin-dessus",
               "figure2": "cercle",
               "couleur2": "vert"
             }
@@ -3696,52 +3708,52 @@
         },
         {
           "type": "colonne",
-          "colonne": 1,
-          "figure": "carre",
+          "colonne": 2,
+          "figure": "triangle",
           "couleur": "rouge",
           "et": [
             {
-              "figure": "carre",
+              "figure": "triangle",
               "couleur": "rouge",
+              "type": "voisin-dessous",
+              "figure2": "triangle",
+              "couleur2": "vert"
+            }
+          ]
+        },
+        {
+          "type": "colonne",
+          "colonne": 0,
+          "figure": "cercle",
+          "couleur": "bleu",
+          "et": [
+            {
+              "figure": "cercle",
+              "couleur": "bleu",
               "type": "voisin-dessus",
               "figure2": "carre",
-              "couleur2": "bleu"
+              "couleur2": "rouge"
             }
           ]
         },
         {
           "type": "ligne",
           "ligne": 0,
-          "figure": "carre",
-          "couleur": "vert",
-          "et": [
-            {
-              "figure": "carre",
-              "couleur": "vert",
-              "type": "voisin-droite",
-              "figure2": "carre",
-              "couleur2": "rouge"
-            }
-          ]
-        },
-        {
-          "type": "ligne",
-          "ligne": 1,
-          "figure": "triangle",
+          "figure": "cercle",
           "couleur": "rouge",
           "et": [
             {
-              "figure": "triangle",
+              "figure": "cercle",
               "couleur": "rouge",
-              "type": "voisin-dessous",
-              "figure2": "cercle",
-              "couleur2": "rouge"
+              "type": "voisin-gauche",
+              "figure2": "triangle",
+              "couleur2": "vert"
             }
           ]
         },
         {
           "type": "ligne",
-          "ligne": 1,
+          "ligne": 2,
           "figure": "cercle",
           "couleur": "vert",
           "et": [
@@ -3750,7 +3762,21 @@
               "couleur": "vert",
               "type": "voisin-droite",
               "figure2": "carre",
-              "couleur2": "bleu"
+              "couleur2": "rouge"
+            }
+          ]
+        },
+        {
+          "type": "diagonale-inverse",
+          "figure": "triangle",
+          "couleur": "bleu",
+          "et": [
+            {
+              "figure": "triangle",
+              "couleur": "bleu",
+              "type": "voisin-diagonale",
+              "figure2": "carre",
+              "couleur2": "vert"
             }
           ]
         }
@@ -3758,55 +3784,35 @@
       "indices": [
         {
           "type": "case",
+          "figure": "cercle",
+          "couleur": "vert",
+          "case": 7
+        },
+        {
+          "type": "case",
           "figure": "triangle",
-          "couleur": "rouge",
-          "case": 3
+          "couleur": "bleu",
+          "case": 4
         },
         {
           "type": "case",
           "figure": "carre",
           "couleur": "rouge",
-          "case": 1
-        },
-        {
-          "type": "ligne",
-          "figure": "cercle",
-          "couleur": "bleu",
-          "ligne": 2
+          "case": 6
         }
       ],
       "aide": "Chaque phrase enchaîne plusieurs informations : commence par la figure dont la phrase donne la position, puis suis les relations."
     },
     "reponse": {
-      "valeur": "cercle:rouge;carre:rouge;carre:vert;triangle:rouge;carre:bleu;cercle:vert;triangle:bleu;triangle:vert;cercle:bleu",
+      "valeur": "carre:bleu;cercle:rouge;triangle:vert;cercle:bleu;triangle:bleu;triangle:rouge;carre:rouge;cercle:vert;carre:vert",
       "grille": [
         [
-          "cercle",
-          "rouge"
-        ],
-        [
-          "carre",
-          "rouge"
-        ],
-        [
-          "carre",
-          "vert"
-        ],
-        [
-          "triangle",
-          "rouge"
-        ],
-        [
           "carre",
           "bleu"
         ],
         [
           "cercle",
-          "vert"
-        ],
-        [
-          "triangle",
-          "bleu"
+          "rouge"
         ],
         [
           "triangle",
@@ -3815,6 +3821,26 @@
         [
           "cercle",
           "bleu"
+        ],
+        [
+          "triangle",
+          "bleu"
+        ],
+        [
+          "triangle",
+          "rouge"
+        ],
+        [
+          "carre",
+          "rouge"
+        ],
+        [
+          "cercle",
+          "vert"
+        ],
+        [
+          "carre",
+          "vert"
         ]
       ]
     },
@@ -3854,66 +3880,23 @@
       ],
       "enonces": [
         {
-          "type": "diagonale",
+          "type": "colonne",
+          "colonne": 0,
           "figure": "triangle",
           "couleur": "bleu",
           "et": [
             {
               "figure": "triangle",
               "couleur": "bleu",
-              "type": "voisin-droite",
-              "figure2": "triangle",
-              "couleur2": "rouge"
-            }
-          ]
-        },
-        {
-          "type": "diagonale-inverse",
-          "figure": "triangle",
-          "couleur": "vert",
-          "et": [
-            {
-              "figure": "triangle",
-              "couleur": "vert",
-              "type": "voisin-droite",
+              "type": "voisin-diagonale",
               "figure2": "cercle",
-              "couleur2": "vert"
+              "couleur2": "rouge"
             }
           ]
         },
         {
           "type": "ligne",
           "ligne": 1,
-          "figure": "triangle",
-          "couleur": "rouge",
-          "et": [
-            {
-              "figure": "triangle",
-              "couleur": "rouge",
-              "type": "voisin-diagonale",
-              "figure2": "cercle",
-              "couleur2": "bleu"
-            }
-          ]
-        },
-        {
-          "type": "colonne",
-          "colonne": 2,
-          "figure": "cercle",
-          "couleur": "rouge",
-          "et": [
-            {
-              "figure": "cercle",
-              "couleur": "rouge",
-              "type": "voisin-dessous",
-              "figure2": "triangle",
-              "couleur2": "vert"
-            }
-          ]
-        },
-        {
-          "type": "colonne",
-          "colonne": 1,
           "figure": "cercle",
           "couleur": "vert",
           "et": [
@@ -3921,29 +3904,87 @@
               "figure": "cercle",
               "couleur": "vert",
               "type": "voisin-dessus",
-              "figure2": "triangle",
-              "couleur2": "bleu"
+              "figure2": "carre",
+              "couleur2": "vert"
+            }
+          ]
+        },
+        {
+          "type": "diagonale-inverse",
+          "figure": "carre",
+          "couleur": "rouge",
+          "et": [
+            {
+              "figure": "carre",
+              "couleur": "rouge",
+              "type": "voisin-dessus",
+              "figure2": "cercle",
+              "couleur2": "vert"
             }
           ]
         },
         {
           "type": "colonne",
           "colonne": 0,
+          "figure": "triangle",
+          "couleur": "vert",
+          "et": [
+            {
+              "figure": "triangle",
+              "couleur": "vert",
+              "type": "voisin-dessus",
+              "figure2": "carre",
+              "couleur2": "bleu"
+            }
+          ]
+        },
+        {
+          "type": "colonne",
+          "colonne": 2,
+          "figure": "carre",
+          "couleur": "vert",
+          "et": [
+            {
+              "figure": "carre",
+              "couleur": "vert",
+              "type": "voisin-droite",
+              "figure2": "triangle",
+              "couleur2": "rouge"
+            }
+          ]
+        },
+        {
+          "type": "ligne",
+          "ligne": 1,
           "figure": "carre",
           "couleur": "bleu",
           "et": [
             {
               "figure": "carre",
               "couleur": "bleu",
-              "type": "voisin-gauche",
-              "figure2": "cercle",
+              "type": "voisin-dessus",
+              "figure2": "triangle",
               "couleur2": "bleu"
             }
           ]
         },
         {
-          "type": "ligne",
-          "ligne": 2,
+          "type": "diagonale",
+          "figure": "cercle",
+          "couleur": "rouge",
+          "et": [
+            {
+              "figure": "cercle",
+              "couleur": "rouge",
+              "type": "voisin-droite",
+              "figure2": "carre",
+              "couleur2": "bleu"
+            }
+          ]
+        },
+        {
+          "type": "colonne",
+          "colonne": 1,
           "figure": "cercle",
           "couleur": "bleu",
           "et": [
@@ -3952,22 +3993,7 @@
               "couleur": "bleu",
               "type": "voisin-gauche",
               "figure2": "carre",
-              "couleur2": "vert"
-            }
-          ]
-        },
-        {
-          "type": "colonne",
-          "colonne": 0,
-          "figure": "carre",
-          "couleur": "rouge",
-          "et": [
-            {
-              "figure": "carre",
-              "couleur": "rouge",
-              "type": "voisin-gauche",
-              "figure2": "cercle",
-              "couleur2": "vert"
+              "couleur2": "rouge"
             }
           ]
         }
@@ -3976,49 +4002,37 @@
         {
           "type": "case",
           "figure": "carre",
-          "couleur": "rouge",
-          "case": 0
+          "couleur": "bleu",
+          "case": 3
         },
         {
           "type": "colonne",
-          "figure": "cercle",
-          "couleur": "rouge",
+          "figure": "carre",
+          "couleur": "vert",
           "colonne": 2
         },
         {
           "type": "colonne",
-          "figure": "triangle",
+          "figure": "carre",
           "couleur": "rouge",
-          "colonne": 0
+          "colonne": 2
         }
       ],
       "aide": "Chaque phrase enchaîne plusieurs informations : commence par la figure dont la phrase donne la position, puis suis les relations."
     },
     "reponse": {
-      "valeur": "carre:rouge;cercle:vert;triangle:vert;triangle:rouge;triangle:bleu;cercle:rouge;carre:bleu;cercle:bleu;carre:vert",
+      "valeur": "triangle:vert;cercle:bleu;carre:rouge;carre:bleu;cercle:rouge;cercle:vert;triangle:bleu;triangle:rouge;carre:vert",
       "grille": [
         [
-          "carre",
-          "rouge"
+          "triangle",
+          "vert"
         ],
         [
           "cercle",
-          "vert"
-        ],
-        [
-          "triangle",
-          "vert"
-        ],
-        [
-          "triangle",
-          "rouge"
-        ],
-        [
-          "triangle",
           "bleu"
         ],
         [
-          "cercle",
+          "carre",
           "rouge"
         ],
         [
@@ -4027,7 +4041,19 @@
         ],
         [
           "cercle",
+          "rouge"
+        ],
+        [
+          "cercle",
+          "vert"
+        ],
+        [
+          "triangle",
           "bleu"
+        ],
+        [
+          "triangle",
+          "rouge"
         ],
         [
           "carre",
@@ -4071,119 +4097,119 @@
       ],
       "enonces": [
         {
-          "type": "diagonale",
+          "type": "colonne",
+          "colonne": 1,
           "figure": "triangle",
-          "couleur": "bleu",
+          "couleur": "vert",
           "et": [
             {
               "figure": "triangle",
-              "couleur": "bleu",
-              "type": "voisin-gauche",
-              "figure2": "carre",
-              "couleur2": "rouge"
+              "couleur": "vert",
+              "type": "voisin-diagonale",
+              "figure2": "triangle",
+              "couleur2": "bleu"
             }
           ]
         },
         {
           "type": "diagonale-inverse",
-          "figure": "carre",
-          "couleur": "bleu",
-          "et": [
-            {
-              "figure": "carre",
-              "couleur": "bleu",
-              "type": "voisin-droite",
-              "figure2": "carre",
-              "couleur2": "rouge"
-            }
-          ]
-        },
-        {
-          "type": "colonne",
-          "colonne": 1,
-          "figure": "carre",
+          "figure": "triangle",
           "couleur": "rouge",
           "et": [
             {
-              "figure": "carre",
+              "figure": "triangle",
               "couleur": "rouge",
-              "type": "voisin-diagonale",
+              "type": "voisin-droite",
               "figure2": "carre",
-              "couleur2": "vert"
+              "couleur2": "rouge"
             }
           ]
         },
         {
           "type": "diagonale",
-          "figure": "triangle",
+          "figure": "cercle",
+          "couleur": "vert",
+          "et": [
+            {
+              "figure": "cercle",
+              "couleur": "vert",
+              "type": "voisin-droite",
+              "figure2": "triangle",
+              "couleur2": "bleu"
+            }
+          ]
+        },
+        {
+          "type": "diagonale-inverse",
+          "figure": "cercle",
           "couleur": "rouge",
           "et": [
             {
-              "figure": "triangle",
+              "figure": "cercle",
               "couleur": "rouge",
               "type": "voisin-gauche",
-              "figure2": "cercle",
+              "figure2": "triangle",
+              "couleur2": "vert"
+            }
+          ]
+        },
+        {
+          "type": "colonne",
+          "colonne": 0,
+          "figure": "carre",
+          "couleur": "vert",
+          "et": [
+            {
+              "figure": "carre",
+              "couleur": "vert",
+              "type": "voisin-dessus",
+              "figure2": "triangle",
               "couleur2": "bleu"
+            }
+          ]
+        },
+        {
+          "type": "ligne",
+          "ligne": 1,
+          "figure": "triangle",
+          "couleur": "bleu",
+          "et": [
+            {
+              "figure": "triangle",
+              "couleur": "bleu",
+              "type": "voisin-gauche",
+              "figure2": "cercle",
+              "couleur2": "vert"
             }
           ]
         },
         {
           "type": "colonne",
           "colonne": 1,
-          "figure": "cercle",
-          "couleur": "vert",
-          "et": [
-            {
-              "figure": "cercle",
-              "couleur": "vert",
-              "type": "voisin-droite",
-              "figure2": "triangle",
-              "couleur2": "vert"
-            }
-          ]
-        },
-        {
-          "type": "colonne",
-          "colonne": 2,
-          "figure": "cercle",
-          "couleur": "bleu",
-          "et": [
-            {
-              "figure": "cercle",
-              "couleur": "bleu",
-              "type": "voisin-droite",
-              "figure2": "triangle",
-              "couleur2": "rouge"
-            }
-          ]
-        },
-        {
-          "type": "ligne",
-          "ligne": 2,
-          "figure": "cercle",
+          "figure": "carre",
           "couleur": "rouge",
           "et": [
             {
-              "figure": "cercle",
+              "figure": "carre",
               "couleur": "rouge",
-              "type": "voisin-dessous",
-              "figure2": "cercle",
-              "couleur2": "bleu"
+              "type": "voisin-droite",
+              "figure2": "carre",
+              "couleur2": "vert"
             }
           ]
         },
         {
           "type": "ligne",
-          "ligne": 2,
-          "figure": "triangle",
-          "couleur": "vert",
+          "ligne": 1,
+          "figure": "carre",
+          "couleur": "bleu",
           "et": [
             {
-              "figure": "triangle",
-              "couleur": "vert",
-              "type": "voisin-gauche",
-              "figure2": "cercle",
-              "couleur2": "vert"
+              "figure": "carre",
+              "couleur": "bleu",
+              "type": "voisin-dessous",
+              "figure2": "triangle",
+              "couleur2": "rouge"
             }
           ]
         }
@@ -4192,50 +4218,54 @@
         {
           "type": "case",
           "figure": "cercle",
-          "couleur": "rouge",
+          "couleur": "bleu",
           "case": 8
-        },
-        {
-          "type": "case",
-          "figure": "carre",
-          "couleur": "rouge",
-          "case": 1
         },
         {
           "type": "colonne",
           "figure": "carre",
           "couleur": "vert",
           "colonne": 0
+        },
+        {
+          "type": "case",
+          "figure": "cercle",
+          "couleur": "rouge",
+          "case": 6
         }
       ],
       "aide": "Chaque phrase enchaîne plusieurs informations : commence par la figure dont la phrase donne la position, puis suis les relations."
     },
     "reponse": {
-      "valeur": "triangle:bleu;carre:rouge;carre:bleu;carre:vert;triangle:rouge;cercle:bleu;triangle:vert;cercle:vert;cercle:rouge",
+      "valeur": "carre:vert;carre:rouge;triangle:rouge;triangle:bleu;cercle:vert;carre:bleu;cercle:rouge;triangle:vert;cercle:bleu",
       "grille": [
         [
-          "triangle",
-          "bleu"
+          "carre",
+          "vert"
         ],
         [
           "carre",
           "rouge"
         ],
         [
-          "carre",
-          "bleu"
-        ],
-        [
-          "carre",
-          "vert"
-        ],
-        [
           "triangle",
           "rouge"
         ],
         [
-          "cercle",
+          "triangle",
           "bleu"
+        ],
+        [
+          "cercle",
+          "vert"
+        ],
+        [
+          "carre",
+          "bleu"
+        ],
+        [
+          "cercle",
+          "rouge"
         ],
         [
           "triangle",
@@ -4243,11 +4273,7 @@
         ],
         [
           "cercle",
-          "vert"
-        ],
-        [
-          "cercle",
-          "rouge"
+          "bleu"
         ]
       ]
     },
@@ -4287,108 +4313,6 @@
       ],
       "enonces": [
         {
-          "type": "diagonale",
-          "figure": "carre",
-          "couleur": "bleu",
-          "et": [
-            {
-              "figure": "carre",
-              "couleur": "bleu",
-              "type": "voisin-dessous",
-              "figure2": "carre",
-              "couleur2": "rouge"
-            }
-          ]
-        },
-        {
-          "type": "diagonale-inverse",
-          "figure": "carre",
-          "couleur": "vert",
-          "et": [
-            {
-              "figure": "carre",
-              "couleur": "vert",
-              "type": "voisin-droite",
-              "figure2": "triangle",
-              "couleur2": "vert"
-            }
-          ]
-        },
-        {
-          "type": "ligne",
-          "ligne": 0,
-          "figure": "triangle",
-          "couleur": "vert",
-          "et": [
-            {
-              "figure": "triangle",
-              "couleur": "vert",
-              "type": "voisin-diagonale",
-              "figure2": "cercle",
-              "couleur2": "bleu"
-            }
-          ]
-        },
-        {
-          "type": "diagonale",
-          "figure": "triangle",
-          "couleur": "rouge",
-          "et": [
-            {
-              "figure": "triangle",
-              "couleur": "rouge",
-              "type": "voisin-dessous",
-              "figure2": "triangle",
-              "couleur2": "vert"
-            }
-          ]
-        },
-        {
-          "type": "colonne",
-          "colonne": 1,
-          "figure": "cercle",
-          "couleur": "vert",
-          "et": [
-            {
-              "figure": "cercle",
-              "couleur": "vert",
-              "type": "voisin-dessous",
-              "figure2": "triangle",
-              "couleur2": "rouge"
-            }
-          ]
-        },
-        {
-          "type": "ligne",
-          "ligne": 2,
-          "figure": "cercle",
-          "couleur": "rouge",
-          "et": [
-            {
-              "figure": "cercle",
-              "couleur": "rouge",
-              "type": "voisin-gauche",
-              "figure2": "cercle",
-              "couleur2": "vert"
-            }
-          ]
-        },
-        {
-          "type": "colonne",
-          "colonne": 0,
-          "figure": "triangle",
-          "couleur": "bleu",
-          "et": [
-            {
-              "figure": "triangle",
-              "couleur": "bleu",
-              "type": "voisin-dessus",
-              "figure2": "cercle",
-              "couleur2": "bleu"
-            }
-          ]
-        },
-        {
           "type": "colonne",
           "colonne": 2,
           "figure": "carre",
@@ -4397,9 +4321,111 @@
             {
               "figure": "carre",
               "couleur": "rouge",
+              "type": "voisin-dessous",
+              "figure2": "triangle",
+              "couleur2": "vert"
+            }
+          ]
+        },
+        {
+          "type": "ligne",
+          "ligne": 2,
+          "figure": "triangle",
+          "couleur": "bleu",
+          "et": [
+            {
+              "figure": "triangle",
+              "couleur": "bleu",
+              "type": "voisin-droite",
+              "figure2": "cercle",
+              "couleur2": "vert"
+            }
+          ]
+        },
+        {
+          "type": "ligne",
+          "ligne": 0,
+          "figure": "carre",
+          "couleur": "vert",
+          "et": [
+            {
+              "figure": "carre",
+              "couleur": "vert",
+              "type": "voisin-dessus",
+              "figure2": "carre",
+              "couleur2": "bleu"
+            }
+          ]
+        },
+        {
+          "type": "diagonale-inverse",
+          "figure": "triangle",
+          "couleur": "vert",
+          "et": [
+            {
+              "figure": "triangle",
+              "couleur": "vert",
+              "type": "voisin-droite",
+              "figure2": "cercle",
+              "couleur2": "rouge"
+            }
+          ]
+        },
+        {
+          "type": "diagonale",
+          "figure": "triangle",
+          "couleur": "rouge",
+          "et": [
+            {
+              "figure": "triangle",
+              "couleur": "rouge",
               "type": "voisin-droite",
               "figure2": "triangle",
-              "couleur2": "rouge"
+              "couleur2": "bleu"
+            }
+          ]
+        },
+        {
+          "type": "ligne",
+          "ligne": 2,
+          "figure": "cercle",
+          "couleur": "vert",
+          "et": [
+            {
+              "figure": "cercle",
+              "couleur": "vert",
+              "type": "voisin-dessous",
+              "figure2": "carre",
+              "couleur2": "bleu"
+            }
+          ]
+        },
+        {
+          "type": "ligne",
+          "ligne": 0,
+          "figure": "cercle",
+          "couleur": "rouge",
+          "et": [
+            {
+              "figure": "cercle",
+              "couleur": "rouge",
+              "type": "voisin-gauche",
+              "figure2": "triangle",
+              "couleur2": "vert"
+            }
+          ]
+        },
+        {
+          "type": "diagonale-inverse",
+          "figure": "cercle",
+          "couleur": "bleu",
+          "et": [
+            {
+              "figure": "cercle",
+              "couleur": "bleu",
+              "type": "voisin-diagonale",
+              "figure2": "carre",
+              "couleur2": "vert"
             }
           ]
         }
@@ -4407,31 +4433,35 @@
       "indices": [
         {
           "type": "colonne",
-          "figure": "triangle",
+          "figure": "carre",
           "couleur": "rouge",
-          "colonne": 1
+          "colonne": 2
+        },
+        {
+          "type": "ligne",
+          "figure": "cercle",
+          "couleur": "rouge",
+          "ligne": 0
         },
         {
           "type": "colonne",
           "figure": "cercle",
           "couleur": "vert",
-          "colonne": 1
-        },
-        {
-          "type": "case",
-          "figure": "carre",
-          "couleur": "vert",
-          "case": 2
+          "colonne": 0
         }
       ],
       "aide": "Chaque phrase enchaîne plusieurs informations : commence par la figure dont la phrase donne la position, puis suis les relations."
     },
     "reponse": {
-      "valeur": "triangle:bleu;triangle:vert;carre:vert;cercle:bleu;triangle:rouge;carre:rouge;cercle:rouge;cercle:vert;carre:bleu",
+      "valeur": "carre:vert;cercle:rouge;triangle:vert;carre:bleu;cercle:bleu;carre:rouge;cercle:vert;triangle:bleu;triangle:rouge",
       "grille": [
         [
-          "triangle",
-          "bleu"
+          "carre",
+          "vert"
+        ],
+        [
+          "cercle",
+          "rouge"
         ],
         [
           "triangle",
@@ -4439,31 +4469,27 @@
         ],
         [
           "carre",
-          "vert"
+          "bleu"
         ],
         [
           "cercle",
+          "bleu"
+        ],
+        [
+          "carre",
+          "rouge"
+        ],
+        [
+          "cercle",
+          "vert"
+        ],
+        [
+          "triangle",
           "bleu"
         ],
         [
           "triangle",
           "rouge"
-        ],
-        [
-          "carre",
-          "rouge"
-        ],
-        [
-          "cercle",
-          "rouge"
-        ],
-        [
-          "cercle",
-          "vert"
-        ],
-        [
-          "carre",
-          "bleu"
         ]
       ]
     },

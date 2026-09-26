@@ -36,6 +36,7 @@ from __future__ import annotations
 import json
 import re
 import sys
+from collections import Counter
 from datetime import date
 from pathlib import Path
 
@@ -952,6 +953,32 @@ def erreurs_missions(donnees: object, chemin: Path) -> list[str]:
 # --- Orchestration ------------------------------------------------------------
 
 
+def erreurs_regularite(chemin: Path, items: list) -> list[str]:
+    """Contrôle d'ensemble : un fichier ne doit pas présenter de motif systématique.
+
+    Régression constatée : toutes les grilles d'un palier commençaient par le même type
+    de phrase (« coin » en tête des 20 grilles du palier 1), parce que les phrases du
+    vocabulaire obligatoire étaient placées en premier. Un tel motif met sur la piste
+    sans rien dire de la solution.
+    """
+    grilles = [
+        item for item in items
+        if isinstance(item, dict) and item.get("type") == "grille-deduction"
+        and (item.get("contenu") or {}).get("enonces")
+    ]
+    if len(grilles) < 5:
+        return []
+    premiers = Counter(grille["contenu"]["enonces"][0].get("type") for grille in grilles)
+    type_dominant, nombre = premiers.most_common(1)[0]
+    if nombre > len(grilles) * 0.6:
+        return [f"{chemin.parent.name}/{chemin.name} : {nombre}/{len(grilles)} grilles commencent "
+                f"par le même type de phrase (« {type_dominant} ») — varier l'ordre des phrases"]
+    if len(premiers) < 3:
+        return [f"{chemin.parent.name}/{chemin.name} : {len(premiers)} type(s) de phrase en tête "
+                f"seulement sur {len(grilles)} grilles — varier l'ordre des phrases"]
+    return []
+
+
 def main() -> int:
     """Point d'entrée : valide tout le contenu et affiche un bilan.
 
@@ -1009,6 +1036,7 @@ def main() -> int:
             messages.extend(
                 erreurs_item(item, chemin, regles, ids_vus, themes_manifests, ids_paliers_connus)
             )
+        messages.extend(erreurs_regularite(chemin, items))
         total_items += len(items)
         erreurs_items[chemin] = messages
 

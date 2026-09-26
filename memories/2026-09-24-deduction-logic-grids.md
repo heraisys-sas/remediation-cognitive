@@ -162,3 +162,18 @@ règle du jeu, le sens des phrases et le moment du jugement n'étaient pas écri
 
 Règle générale retenue pour la suite : toute décision qui a provoqué un aller-retour s'écrit dans un
 ADR le jour même, avec la phrase qui lève l'ambiguïté (« une règle non énoncée n'existe pas »).
+
+## 2026-09-26 — régularité de l'ordre des phrases
+
+Signalement : « coin » toujours en première phrase — et doute, justifié, sur d'autres régularités.
+
+- Constat mesuré : **toutes** les grilles d'un palier commençaient par le même type de phrase
+  (coin / diagonale / pas-diagonale / coin). Cause : `VOCABULAIRE_REQUIS` place les phrases
+  obligatoires en tête du choix, donc en tête de la liste affichée.
+- Correctif : `_presenter()` mélange l'ordre des phrases (tirage déterministe par grille).
+  L'ordre ne porte aucune information : autant qu'il n'en suggère aucune.
+- Contrôle d'ensemble ajouté au validateur : plus de 60 % des grilles commençant par le même
+  type → erreur ; moins de trois types en tête → erreur. Test négatif concluant.
+- Leçon : **une garantie de contenu peut créer une régularité**. Chaque fois qu'on impose la
+  présence d'un élément (vocabulaire requis, phrase protégée), vérifier aussi ce que sa
+  *position* raconte.
