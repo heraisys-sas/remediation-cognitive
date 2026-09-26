@@ -2,6 +2,8 @@
 
 **Statut** : accepté (2026-09-26)
 
+*Suivi (2026-09-26)* : deux **séries complémentaires** ont été ajoutées, pour travailler ces difficultés autrement que par le calcul direct — *Suites et erreurs* (continuer une suite, repérer le nombre qui ne suit pas : attention soutenue et inhibition) et *Faits à l'envers* (« 42 = 6 × ? », le fait cherché par l'autre bout). Et une règle d'outillage : **un contrôle doit mesurer sa propre couverture**. Le contrôle par recalcul d'ADR-011 était devenu silencieusement inopérant pour plusieurs familles (un « ? » non échappé dans un motif) : le validateur mesure désormais la part d'items réellement recalculés (92 % du thème ; seule la famille « vie quotidienne » échappe au calcul automatique) et un test vérifie chaque forme d'énoncé.
+
 ## Contexte
 
 ADR-011 a refondu le calcul mental autour des besoins d'un adulte (faits de base, stratégies, mémoire de travail, numératie du quotidien). Trois publics supplémentaires doivent être servis par la même exigence :

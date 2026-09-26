@@ -68,3 +68,20 @@ lacunes sur certaines multiplications.
 - **Contrôle indépendant étendu** (mêmes principes qu'ADR-011) : le validateur recalcule les
   séries de gauche à droite et les familles du sens du nombre. Test négatif : un total faussé
   est refusé.
+
+## 2026-09-26 (soir) — autres séries + un contrôle qui mesurait dans le vide
+
+Demande : « éventuellement via d'autres séries de test ».
+
+- **Suites et erreurs** (palier 12) : continuer une suite, compter à rebours, repérer le nombre
+  faux — attention soutenue et inhibition.
+- **Faits à l'envers** (palier 13) : « 42 = 6 × ? », le fait cherché par l'autre bout.
+- **Incident** : en étendant le contrôle par recalcul, je me suis aperçu que **plusieurs familles
+  n'étaient pas vérifiées du tout** — un « ? » non échappé dans un motif de regex agit comme un
+  quantificateur, le motif ne correspond jamais, et `_reponse_calculee` renvoyait None : le
+  contrôle passait sans rien contrôler. Rien ne le signalait.
+- Correctifs : motifs échappés ; **mesure de couverture** dans le validateur (part d'items
+  réellement recalculés, seuil sur le thème — 92 % aujourd'hui, la famille « vie quotidienne »
+  étant non calculable par nature) ; **test par forme d'énoncé** (`test_controle_calcul.py`).
+- Leçon à garder : un contrôle doit **prouver qu'il a vérifié quelque chose** (couverture,
+  compteur, test de la forme). Un silence n'est pas une validation.

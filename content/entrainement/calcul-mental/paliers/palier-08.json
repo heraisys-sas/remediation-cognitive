@@ -14,7 +14,7 @@
     ],
     "cap_complexite": null,
     "contenu": {
-      "enonce": "Deux articles à 1,50 € — combien en tout ?",
+      "enonce": "2 articles à 1,50 € — combien en tout ?",
       "aide": "Rends la monnaie : ce qu'on te donne moins ce que ça coûte."
     },
     "reponse": {
@@ -420,7 +420,7 @@
     ],
     "cap_complexite": null,
     "contenu": {
-      "enonce": "Deux articles à 12,50 € — combien en tout ?",
+      "enonce": "2 articles à 12,50 € — combien en tout ?",
       "aide": "Rends la monnaie : ce qu'on te donne moins ce que ça coûte."
     },
     "reponse": {

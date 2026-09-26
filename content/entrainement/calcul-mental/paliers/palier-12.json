@@ -1,0 +1,542 @@
+[
+  {
+    "id": "cm2-12-01",
+    "type": "production",
+    "module": "entrainement",
+    "theme": "calcul-mental",
+    "fonctions_ciblees": [
+      "attention-soutenue",
+      "flexibilite",
+      "inhibition"
+    ],
+    "palier": 12,
+    "prerequis": [
+      "cm-palier-11"
+    ],
+    "cap_complexite": "une seule suite à la fois, cinq nombres au maximum",
+    "contenu": {
+      "enonce": "Continue la suite : 40, 50, 60, 70, ?",
+      "aide": "Trouve le pas de la suite sur les deux premiers nombres, puis vérifie chaque nombre."
+    },
+    "reponse": {
+      "valeur": 80
+    },
+    "meta": {
+      "auteur": "generation-automatique (tools/generate_items.py)",
+      "date_creation": "2026-09-26",
+      "relecture_ortho": {
+        "statut": "a_revoir"
+      }
+    }
+  },
+  {
+    "id": "cm2-12-02",
+    "type": "production",
+    "module": "entrainement",
+    "theme": "calcul-mental",
+    "fonctions_ciblees": [
+      "attention-soutenue",
+      "flexibilite",
+      "inhibition"
+    ],
+    "palier": 12,
+    "prerequis": [
+      "cm-palier-11"
+    ],
+    "cap_complexite": "une seule suite à la fois, cinq nombres au maximum",
+    "contenu": {
+      "enonce": "Compte à rebours : 24, 20, 16, 12, ?",
+      "aide": "Trouve le pas de la suite sur les deux premiers nombres, puis vérifie chaque nombre."
+    },
+    "reponse": {
+      "valeur": 8
+    },
+    "meta": {
+      "auteur": "generation-automatique (tools/generate_items.py)",
+      "date_creation": "2026-09-26",
+      "relecture_ortho": {
+        "statut": "a_revoir"
+      }
+    }
+  },
+  {
+    "id": "cm2-12-03",
+    "type": "production",
+    "module": "entrainement",
+    "theme": "calcul-mental",
+    "fonctions_ciblees": [
+      "attention-soutenue",
+      "flexibilite",
+      "inhibition"
+    ],
+    "palier": 12,
+    "prerequis": [
+      "cm-palier-11"
+    ],
+    "cap_complexite": "une seule suite à la fois, cinq nombres au maximum",
+    "contenu": {
+      "enonce": "4, 8, 18, 16, 20 — quel nombre est faux ?",
+      "aide": "Trouve le pas de la suite sur les deux premiers nombres, puis vérifie chaque nombre."
+    },
+    "reponse": {
+      "valeur": 18
+    },
+    "meta": {
+      "auteur": "generation-automatique (tools/generate_items.py)",
+      "date_creation": "2026-09-26",
+      "relecture_ortho": {
+        "statut": "a_revoir"
+      }
+    }
+  },
+  {
+    "id": "cm2-12-04",
+    "type": "production",
+    "module": "entrainement",
+    "theme": "calcul-mental",
+    "fonctions_ciblees": [
+      "attention-soutenue",
+      "flexibilite",
+      "inhibition"
+    ],
+    "palier": 12,
+    "prerequis": [
+      "cm-palier-11"
+    ],
+    "cap_complexite": "une seule suite à la fois, cinq nombres au maximum",
+    "contenu": {
+      "enonce": "Continue la suite : 60, 75, 90, 105, ?",
+      "aide": "Trouve le pas de la suite sur les deux premiers nombres, puis vérifie chaque nombre."
+    },
+    "reponse": {
+      "valeur": 120
+    },
+    "meta": {
+      "auteur": "generation-automatique (tools/generate_items.py)",
+      "date_creation": "2026-09-26",
+      "relecture_ortho": {
+        "statut": "a_revoir"
+      }
+    }
+  },
+  {
+    "id": "cm2-12-05",
+    "type": "production",
+    "module": "entrainement",
+    "theme": "calcul-mental",
+    "fonctions_ciblees": [
+      "attention-soutenue",
+      "flexibilite",
+      "inhibition"
+    ],
+    "palier": 12,
+    "prerequis": [
+      "cm-palier-11"
+    ],
+    "cap_complexite": "une seule suite à la fois, cinq nombres au maximum",
+    "contenu": {
+      "enonce": "Compte à rebours : 100, 90, 80, 70, ?",
+      "aide": "Trouve le pas de la suite sur les deux premiers nombres, puis vérifie chaque nombre."
+    },
+    "reponse": {
+      "valeur": 60
+    },
+    "meta": {
+      "auteur": "generation-automatique (tools/generate_items.py)",
+      "date_creation": "2026-09-26",
+      "relecture_ortho": {
+        "statut": "a_revoir"
+      }
+    }
+  },
+  {
+    "id": "cm2-12-06",
+    "type": "production",
+    "module": "entrainement",
+    "theme": "calcul-mental",
+    "fonctions_ciblees": [
+      "attention-soutenue",
+      "flexibilite",
+      "inhibition"
+    ],
+    "palier": 12,
+    "prerequis": [
+      "cm-palier-11"
+    ],
+    "cap_complexite": "une seule suite à la fois, cinq nombres au maximum",
+    "contenu": {
+      "enonce": "Continue la suite : 8, 12, 16, 20, ?",
+      "aide": "Trouve le pas de la suite sur les deux premiers nombres, puis vérifie chaque nombre."
+    },
+    "reponse": {
+      "valeur": 24
+    },
+    "meta": {
+      "auteur": "generation-automatique (tools/generate_items.py)",
+      "date_creation": "2026-09-26",
+      "relecture_ortho": {
+        "statut": "a_revoir"
+      }
+    }
+  },
+  {
+    "id": "cm2-12-07",
+    "type": "production",
+    "module": "entrainement",
+    "theme": "calcul-mental",
+    "fonctions_ciblees": [
+      "attention-soutenue",
+      "flexibilite",
+      "inhibition"
+    ],
+    "palier": 12,
+    "prerequis": [
+      "cm-palier-11"
+    ],
+    "cap_complexite": "une seule suite à la fois, cinq nombres au maximum",
+    "contenu": {
+      "enonce": "Compte à rebours : 30, 27, 24, 21, ?",
+      "aide": "Trouve le pas de la suite sur les deux premiers nombres, puis vérifie chaque nombre."
+    },
+    "reponse": {
+      "valeur": 18
+    },
+    "meta": {
+      "auteur": "generation-automatique (tools/generate_items.py)",
+      "date_creation": "2026-09-26",
+      "relecture_ortho": {
+        "statut": "a_revoir"
+      }
+    }
+  },
+  {
+    "id": "cm2-12-08",
+    "type": "production",
+    "module": "entrainement",
+    "theme": "calcul-mental",
+    "fonctions_ciblees": [
+      "attention-soutenue",
+      "flexibilite",
+      "inhibition"
+    ],
+    "palier": 12,
+    "prerequis": [
+      "cm-palier-11"
+    ],
+    "cap_complexite": "une seule suite à la fois, cinq nombres au maximum",
+    "contenu": {
+      "enonce": "100, 90, 92, 70, 60 — quel nombre est faux ?",
+      "aide": "Trouve le pas de la suite sur les deux premiers nombres, puis vérifie chaque nombre."
+    },
+    "reponse": {
+      "valeur": 92
+    },
+    "meta": {
+      "auteur": "generation-automatique (tools/generate_items.py)",
+      "date_creation": "2026-09-26",
+      "relecture_ortho": {
+        "statut": "a_revoir"
+      }
+    }
+  },
+  {
+    "id": "cm2-12-09",
+    "type": "production",
+    "module": "entrainement",
+    "theme": "calcul-mental",
+    "fonctions_ciblees": [
+      "attention-soutenue",
+      "flexibilite",
+      "inhibition"
+    ],
+    "palier": 12,
+    "prerequis": [
+      "cm-palier-11"
+    ],
+    "cap_complexite": "une seule suite à la fois, cinq nombres au maximum",
+    "contenu": {
+      "enonce": "6, 12, 26, 24, 30 — quel nombre est faux ?",
+      "aide": "Trouve le pas de la suite sur les deux premiers nombres, puis vérifie chaque nombre."
+    },
+    "reponse": {
+      "valeur": 26
+    },
+    "meta": {
+      "auteur": "generation-automatique (tools/generate_items.py)",
+      "date_creation": "2026-09-26",
+      "relecture_ortho": {
+        "statut": "a_revoir"
+      }
+    }
+  },
+  {
+    "id": "cm2-12-10",
+    "type": "production",
+    "module": "entrainement",
+    "theme": "calcul-mental",
+    "fonctions_ciblees": [
+      "attention-soutenue",
+      "flexibilite",
+      "inhibition"
+    ],
+    "palier": 12,
+    "prerequis": [
+      "cm-palier-11"
+    ],
+    "cap_complexite": "une seule suite à la fois, cinq nombres au maximum",
+    "contenu": {
+      "enonce": "Continue la suite : 90, 120, 150, 180, ?",
+      "aide": "Trouve le pas de la suite sur les deux premiers nombres, puis vérifie chaque nombre."
+    },
+    "reponse": {
+      "valeur": 210
+    },
+    "meta": {
+      "auteur": "generation-automatique (tools/generate_items.py)",
+      "date_creation": "2026-09-26",
+      "relecture_ortho": {
+        "statut": "a_revoir"
+      }
+    }
+  },
+  {
+    "id": "cm2-12-11",
+    "type": "production",
+    "module": "entrainement",
+    "theme": "calcul-mental",
+    "fonctions_ciblees": [
+      "attention-soutenue",
+      "flexibilite",
+      "inhibition"
+    ],
+    "palier": 12,
+    "prerequis": [
+      "cm-palier-11"
+    ],
+    "cap_complexite": "une seule suite à la fois, cinq nombres au maximum",
+    "contenu": {
+      "enonce": "Continue la suite : 3, 6, 9, 12, ?",
+      "aide": "Trouve le pas de la suite sur les deux premiers nombres, puis vérifie chaque nombre."
+    },
+    "reponse": {
+      "valeur": 15
+    },
+    "meta": {
+      "auteur": "generation-automatique (tools/generate_items.py)",
+      "date_creation": "2026-09-26",
+      "relecture_ortho": {
+        "statut": "a_revoir"
+      }
+    }
+  },
+  {
+    "id": "cm2-12-12",
+    "type": "production",
+    "module": "entrainement",
+    "theme": "calcul-mental",
+    "fonctions_ciblees": [
+      "attention-soutenue",
+      "flexibilite",
+      "inhibition"
+    ],
+    "palier": 12,
+    "prerequis": [
+      "cm-palier-11"
+    ],
+    "cap_complexite": "une seule suite à la fois, cinq nombres au maximum",
+    "contenu": {
+      "enonce": "Compte à rebours : 40, 35, 30, 25, ?",
+      "aide": "Trouve le pas de la suite sur les deux premiers nombres, puis vérifie chaque nombre."
+    },
+    "reponse": {
+      "valeur": 20
+    },
+    "meta": {
+      "auteur": "generation-automatique (tools/generate_items.py)",
+      "date_creation": "2026-09-26",
+      "relecture_ortho": {
+        "statut": "a_revoir"
+      }
+    }
+  },
+  {
+    "id": "cm2-12-13",
+    "type": "production",
+    "module": "entrainement",
+    "theme": "calcul-mental",
+    "fonctions_ciblees": [
+      "attention-soutenue",
+      "flexibilite",
+      "inhibition"
+    ],
+    "palier": 12,
+    "prerequis": [
+      "cm-palier-11"
+    ],
+    "cap_complexite": "une seule suite à la fois, cinq nombres au maximum",
+    "contenu": {
+      "enonce": "Continue la suite : 15, 18, 21, 24, ?",
+      "aide": "Trouve le pas de la suite sur les deux premiers nombres, puis vérifie chaque nombre."
+    },
+    "reponse": {
+      "valeur": 27
+    },
+    "meta": {
+      "auteur": "generation-automatique (tools/generate_items.py)",
+      "date_creation": "2026-09-26",
+      "relecture_ortho": {
+        "statut": "a_revoir"
+      }
+    }
+  },
+  {
+    "id": "cm2-12-14",
+    "type": "production",
+    "module": "entrainement",
+    "theme": "calcul-mental",
+    "fonctions_ciblees": [
+      "attention-soutenue",
+      "flexibilite",
+      "inhibition"
+    ],
+    "palier": 12,
+    "prerequis": [
+      "cm-palier-11"
+    ],
+    "cap_complexite": "une seule suite à la fois, cinq nombres au maximum",
+    "contenu": {
+      "enonce": "5, 10, 15, 27, 25 — quel nombre est faux ?",
+      "aide": "Trouve le pas de la suite sur les deux premiers nombres, puis vérifie chaque nombre."
+    },
+    "reponse": {
+      "valeur": 27
+    },
+    "meta": {
+      "auteur": "generation-automatique (tools/generate_items.py)",
+      "date_creation": "2026-09-26",
+      "relecture_ortho": {
+        "statut": "a_revoir"
+      }
+    }
+  },
+  {
+    "id": "cm2-12-15",
+    "type": "production",
+    "module": "entrainement",
+    "theme": "calcul-mental",
+    "fonctions_ciblees": [
+      "attention-soutenue",
+      "flexibilite",
+      "inhibition"
+    ],
+    "palier": 12,
+    "prerequis": [
+      "cm-palier-11"
+    ],
+    "cap_complexite": "une seule suite à la fois, cinq nombres au maximum",
+    "contenu": {
+      "enonce": "50, 45, 47, 35, 30 — quel nombre est faux ?",
+      "aide": "Trouve le pas de la suite sur les deux premiers nombres, puis vérifie chaque nombre."
+    },
+    "reponse": {
+      "valeur": 47
+    },
+    "meta": {
+      "auteur": "generation-automatique (tools/generate_items.py)",
+      "date_creation": "2026-09-26",
+      "relecture_ortho": {
+        "statut": "a_revoir"
+      }
+    }
+  },
+  {
+    "id": "cm2-12-16",
+    "type": "production",
+    "module": "entrainement",
+    "theme": "calcul-mental",
+    "fonctions_ciblees": [
+      "attention-soutenue",
+      "flexibilite",
+      "inhibition"
+    ],
+    "palier": 12,
+    "prerequis": [
+      "cm-palier-11"
+    ],
+    "cap_complexite": "une seule suite à la fois, cinq nombres au maximum",
+    "contenu": {
+      "enonce": "Continue la suite : 100, 125, 150, 175, ?",
+      "aide": "Trouve le pas de la suite sur les deux premiers nombres, puis vérifie chaque nombre."
+    },
+    "reponse": {
+      "valeur": 200
+    },
+    "meta": {
+      "auteur": "generation-automatique (tools/generate_items.py)",
+      "date_creation": "2026-09-26",
+      "relecture_ortho": {
+        "statut": "a_revoir"
+      }
+    }
+  },
+  {
+    "id": "cm2-12-17",
+    "type": "production",
+    "module": "entrainement",
+    "theme": "calcul-mental",
+    "fonctions_ciblees": [
+      "attention-soutenue",
+      "flexibilite",
+      "inhibition"
+    ],
+    "palier": 12,
+    "prerequis": [
+      "cm-palier-11"
+    ],
+    "cap_complexite": "une seule suite à la fois, cinq nombres au maximum",
+    "contenu": {
+      "enonce": "Continue la suite : 12, 18, 24, 30, ?",
+      "aide": "Trouve le pas de la suite sur les deux premiers nombres, puis vérifie chaque nombre."
+    },
+    "reponse": {
+      "valeur": 36
+    },
+    "meta": {
+      "auteur": "generation-automatique (tools/generate_items.py)",
+      "date_creation": "2026-09-26",
+      "relecture_ortho": {
+        "statut": "a_revoir"
+      }
+    }
+  },
+  {
+    "id": "cm2-12-18",
+    "type": "production",
+    "module": "entrainement",
+    "theme": "calcul-mental",
+    "fonctions_ciblees": [
+      "attention-soutenue",
+      "flexibilite",
+      "inhibition"
+    ],
+    "palier": 12,
+    "prerequis": [
+      "cm-palier-11"
+    ],
+    "cap_complexite": "une seule suite à la fois, cinq nombres au maximum",
+    "contenu": {
+      "enonce": "Compte à rebours : 80, 60, 40, 20, ?",
+      "aide": "Trouve le pas de la suite sur les deux premiers nombres, puis vérifie chaque nombre."
+    },
+    "reponse": {
+      "valeur": 0
+    },
+    "meta": {
+      "auteur": "generation-automatique (tools/generate_items.py)",
+      "date_creation": "2026-09-26",
+      "relecture_ortho": {
+        "statut": "a_revoir"
+      }
+    }
+  }
+]

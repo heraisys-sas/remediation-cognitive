@@ -2,6 +2,16 @@
 
 Format : [date] — [périmètre] — description. Les retours informels de l'orthophoniste sont journalisés ici, sans caution clinique.
 
+## 2026-09-26 · Calcul mental : d'autres séries, et un contrôle qui vérifie sa couverture
+
+Suite au principe « éventuellement via d'autres séries de test » : deux familles ajoutées, et une leçon d'outillage.
+
+- **Suites et erreurs (palier 12)** — continuer une suite, compter à rebours, et **repérer le nombre qui ne suit pas** : attention soutenue et inhibition appliquées aux nombres.
+- **Faits à l'envers (palier 13)** — « 42 = 6 × ? » : le fait cherché par l'autre bout, souvent plus révélateur d'une lacune que le produit direct.
+- **Incident d'outillage, corrigé** : le contrôle par recalcul était devenu **silencieusement inopérant** pour plusieurs familles (un « ? » non échappé dans mes motifs). Un contrôle qui ne contrôle rien est plus dangereux que pas de contrôle. Le validateur **mesure désormais sa couverture** (92 % des items du thème sont recalculés ; seule la famille « vie quotidienne » échappe au calcul automatique) et un **test vérifie chaque forme d'énoncé**.
+- Programme mis à jour (13 paliers) ; README et ADR-012 à jour.
+- **Contrôles** — 934 items / 0 erreur ; 164 tests.
+
 ## 2026-09-26 · Calcul mental : dyscalculie, attention soutenue, lacunes ciblées
 
 Demande : appliquer la même approche à la **dyscalculie**, aux problèmes de **maintien de l'attention** et aux **lacunes sur certaines multiplications**.

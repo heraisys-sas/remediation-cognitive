@@ -62,6 +62,8 @@ DESCRIPTIONS: list[str] = [
     "Au quotidien : quantités et durées (proportions, totaux)",
     "Faits difficiles (× 6 à × 9) : combler les lacunes, avec une stratégie",
     "Sens du nombre : comparer, situer, décomposer (dyscalculie)",
+    "Suites et erreurs : tenir le pas, repérer ce qui ne suit pas",
+    "Faits à l'envers : retrouver le facteur manquant",
 ]
 
 #: Fonctions ciblées par palier (au-delà de l'automatisation de base).
@@ -77,6 +79,8 @@ FONCTIONS_PAR_PALIER: list[list[str]] = [
     ["memoire-travail", "fonctions-executives"],
     ["automatisation", "flexibilite"],
     ["automatisation", "flexibilite", "inhibition"],
+    ["attention-soutenue", "flexibilite", "inhibition"],
+    ["automatisation", "flexibilite", "memoire-travail"],
 ]
 
 #: Aide (repliée) et consigne (une fois par séance) par palier, quand elles servent.
@@ -92,11 +96,15 @@ AIDES: dict[int, str] = {
     9: "Pour le double de personnes, il faut le double de quantité.",
     10: "Appuie-toi sur ce que tu sais déjà : × 9 = × 10 − le nombre ; × 8 = double de × 4 ; × 6 = × 5 + le nombre.",
     11: "Compare les dizaines avant les unités ; pour situer, compte de dix en dix.",
+    12: "Trouve le pas de la suite sur les deux premiers nombres, puis vérifie chaque nombre.",
+    13: "Cherche dans la table du facteur connu : 42 = 6 × ? — compte 6, 12, 18…",
 }
 CAPS: dict[int, str] = {
     7: "deux opérations au maximum (charge de mémoire de travail bornée)",
     9: "une seule transformation (double ou total), sans pourcentage",
     11: "une seule question à la fois : comparer, situer ou décomposer",
+    12: "une seule suite à la fois, cinq nombres au maximum",
+    13: "aucune division posée : on cherche dans la table du facteur connu",
 }
 
 
@@ -223,7 +231,7 @@ def _argent(rng: random.Random) -> list[tuple[str, int]]:
         couples.append((f"Un article à {prix} €, payé avec 20 € — combien te rend-on ?", 20 - prix))
     # Prix décimal dont le double reste entier (utilisé dans la vie courante).
     for prix in ("2,50", "4,50", "12,50", "1,50"):
-        couples.append((f"Deux articles à {prix} € — combien en tout ?", int(float(prix.replace(",", ".")) * 2)))
+        couples.append((f"2 articles à {prix} € — combien en tout ?", int(float(prix.replace(",", ".")) * 2)))
     rng.shuffle(couples)
     return couples
 
@@ -295,6 +303,52 @@ def _sens_du_nombre(rng: random.Random) -> list[tuple[str, int]]:
     return couples
 
 
+def _suites_et_erreurs(rng: random.Random) -> list[tuple[str, int]]:
+    """Autre série : continuer une suite, ou repérer le nombre qui ne suit pas la règle.
+
+    C'est l'exercice du **maintien de l'attention** appliqué aux nombres : il faut tenir
+    le pas de la suite (ou la règle) sur toute la ligne, et résister à la première
+    impression. Le contrôle de dépôt vérifie qu'il y a bien une seule erreur et que
+    c'est bien celle-là.
+    """
+    couples = []
+    for depart, pas in [(25, 5), (3, 3), (8, 4), (40, 10), (12, 6), (60, 15), (100, 25),
+                        (15, 3), (90, 30)]:
+        suite = [depart + pas * rang for rang in range(4)]
+        couples.append((f"Continue la suite : {', '.join(map(str, suite))}, ?", depart + pas * 4))
+    for depart, pas in [(40, -5), (100, -10), (30, -3), (50, -5), (80, -20), (24, -4)]:
+        suite = [depart + pas * rang for rang in range(4)]
+        couples.append((f"Compte à rebours : {', '.join(map(str, suite))}, ?", depart + pas * 4))
+    # Repérer l'erreur : on abîme un élément **du milieu**, jamais le dernier.
+    for depart, pas in [(5, 5), (6, 6), (50, -5), (100, -10), (4, 4), (70, -7)]:
+        suite = [depart + pas * rang for rang in range(5)]
+        rang = rng.choice([2, 3])
+        faussé = list(suite)
+        faussé[rang] = suite[rang] + (pas if pas > 0 else -pas) + 2
+        couples.append((
+            f"{', '.join(map(str, faussé))} — quel nombre est faux ?", faussé[rang]))
+    rng.shuffle(couples)
+    return couples
+
+
+def _faits_a_l_envers(rng: random.Random) -> list[tuple[str, int]]:
+    """Autre série pour les lacunes : le fait cherché par l'autre bout.
+
+    « 42 = 6 × ? » oblige à parcourir la table dans l'autre sens — un exercice différent
+    du calcul direct, et souvent plus révélateur d'un fait non su.
+    """
+    couples = []
+    for a, b in [(6, 6), (6, 7), (6, 8), (6, 9), (7, 7), (7, 8), (7, 9), (8, 8), (8, 9),
+                 (9, 9), (4, 7), (4, 8), (4, 9), (5, 7), (5, 8), (5, 9), (3, 8), (3, 9)]:
+        produit = a * b
+        if rng.random() < 0.5:
+            couples.append((f"{produit} = {a} × ?", b))
+        else:
+            couples.append((f"{produit} = ? × {b}", a))
+    rng.shuffle(couples)
+    return couples
+
+
 #: Une famille d'items par palier : (génératrice, nombre d'items).
 FAMILLES: list[tuple] = [
     (_complements_dans_10, 18),
@@ -308,6 +362,8 @@ FAMILLES: list[tuple] = [
     (_quantites, 18),
     (_faits_difficiles, 19),
     (_sens_du_nombre, 18),
+    (_suites_et_erreurs, 18),
+    (_faits_a_l_envers, 18),
 ]
 
 

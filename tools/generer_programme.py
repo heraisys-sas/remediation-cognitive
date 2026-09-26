@@ -44,7 +44,7 @@ THEMES_EXTRA = ["anglais", "python"]
 
 #: Nombre de paliers disponibles par thème (bornes des plafonds hebdomadaires).
 PALIERS_DISPONIBLES = {
-    "calcul-mental": 11,
+    "calcul-mental": 13,
     "memoire": 12,
     "concentration": 9,
     "evocation": 7,

@@ -57,16 +57,22 @@ MOTIF_REF_PALIER = re.compile(r"^[a-z]+-palier-\d+$")
 #: Motif d'un identifiant d'item de calcul mental : cm-<table>-<a>x<b>.
 MOTIF_ID_CALCUL = re.compile(r"^cm2-(\d+)-(\d+)$")
 MOTIF_CALCUL_ARITHMETIQUE = re.compile(r"Combien font (\d+) ([+−×]) (\d+)((?: [+−] \d+)?) ?\?")
-MOTIF_COMPLEMENT = re.compile(r"Combien manque-t-il à (\d+) pour faire (\d+) ?")
-MOTIF_TOTAL_ARTICLES = re.compile(r"(\d+) articles à ([\d,]+) € — combien en tout ?")
-MOTIF_RENDU = re.compile(r"Un article à (\d+) €, payé avec (\d+) € — combien te rend-on ?")
+MOTIF_COMPLEMENT = re.compile(r"Combien manque-t-il à (\d+) pour faire (\d+) \?")
+MOTIF_TOTAL_ARTICLES = re.compile(r"(\d+) articles à ([\d,]+) € — combien en tout \?")
+MOTIF_RENDU = re.compile(r"Un article à (\d+) €, payé avec (\d+) € — combien te rend-on \?")
 #: Sens du nombre (dyscalculie) : comparer, situer, décomposer.
-MOTIF_PLUS_GRAND = re.compile(r"Quel nombre est le plus grand : (\d+) ou (\d+) ?")
-MOTIF_DIZAINES = re.compile(r"Combien de dizaines dans (\d+) ?")
-MOTIF_DECOMPOSITION = re.compile(r"(\d+) = (\d+) \+ ?")
-MOTIF_SUIVANT = re.compile(r"Quel nombre vient juste après (\d+) ?")
-MOTIF_MI_CHEMIN = re.compile(r"À mi-chemin entre (\d+) et (\d+) ?")
-MOTIF_DOUBLE = re.compile(r"Quel est le double de (\d+) ?")
+MOTIF_PLUS_GRAND = re.compile(r"Quel nombre est le plus grand : (\d+) ou (\d+) \?")
+MOTIF_DIZAINES = re.compile(r"Combien de dizaines dans (\d+) \?")
+MOTIF_DECOMPOSITION = re.compile(r"(\d+) = (\d+) \+ \?")
+MOTIF_SUIVANT = re.compile(r"Quel nombre vient juste après (\d+) \?")
+MOTIF_MI_CHEMIN = re.compile(r"À mi-chemin entre (\d+) et (\d+) \?")
+MOTIF_DOUBLE = re.compile(r"Quel est le double de (\d+) \?")
+#: Suites et faits à l'envers : d'autres séries pour l'attention et les lacunes.
+MOTIF_SUITE_CONTINUE = re.compile(r"(?:Continue la suite|Compte à rebours) : ([\d, ]+), \s*\?")
+MOTIF_SUITE_ERREUR = re.compile(r"([\d, ]+) — quel nombre est faux \?")
+MOTIF_FAIT_INVERSE_GAUCHE = re.compile(r"(\d+) = (\d+) × \?")
+MOTIF_FAIT_INVERSE_DROITE = re.compile(r"(\d+) = \? × (\d+)")
+
 #: Séries de calcul (attention soutenue) : « 75 − 9 − 9 − 9 », « 8 + 4 − 3 ».
 MOTIF_CHAINE = re.compile(r"^\d+(?: [+−] \d+)+$")
 
@@ -770,6 +776,32 @@ def _reponse_calculee(enonce: str) -> int | None:
             operateur, valeur = jetons[rang], int(jetons[rang + 1])
             total = total + valeur if operateur == "+" else total - valeur
         return total
+
+    # Suite à continuer : le pas se lit sur les deux premiers nombres.
+    correspondance = MOTIF_SUITE_CONTINUE.fullmatch(enonce.strip())
+    if correspondance:
+        nombres = [int(n) for n in correspondance.group(1).split(",")]
+        pas = nombres[1] - nombres[0]
+        return nombres[-1] + pas
+
+    # Repérer l'erreur : le pas se lit sur les deux premiers nombres.
+    correspondance = MOTIF_SUITE_ERREUR.fullmatch(enonce.strip())
+    if correspondance:
+        nombres = [int(n) for n in correspondance.group(1).split(",")]
+        pas = nombres[1] - nombres[0]
+        attendus = [nombres[0] + pas * rang for rang in range(len(nombres))]
+        fautifs = [reel for reel, attendu in zip(nombres, attendus) if reel != attendu]
+        return fautifs[0] if len(fautifs) == 1 else None
+
+    # Fait cherché par l'autre bout : « 42 = 6 × ? ».
+    correspondance = MOTIF_FAIT_INVERSE_GAUCHE.fullmatch(enonce.strip())
+    if correspondance:
+        produit, facteur = int(correspondance.group(1)), int(correspondance.group(2))
+        return produit // facteur if facteur and produit % facteur == 0 else None
+    correspondance = MOTIF_FAIT_INVERSE_DROITE.fullmatch(enonce.strip())
+    if correspondance:
+        produit, facteur = int(correspondance.group(1)), int(correspondance.group(2))
+        return produit // facteur if facteur and produit % facteur == 0 else None
     return None
 
 
@@ -1066,6 +1098,21 @@ def erreurs_regularite(chemin: Path, items: list) -> list[str]:
     return []
 
 
+def couverture_calcul(items: list) -> tuple[int, int]:
+    """Nombre d'items de calcul mental recalculables, et total.
+
+    Mesure de **couverture** : si un motif de contrôle se casse (un point d'interrogation
+    non échappé, par exemple), une famille entière cesse d'être vérifiée sans que rien ne
+    le signale. Un contrôle qui ne contrôle rien est plus dangereux que pas de contrôle :
+    la couverture du thème est donc mesurée et seuilée.
+    """
+    calcul = [item for item in items if isinstance(item, dict)
+              and item.get("theme") == "calcul-mental"]
+    verifiables = sum(1 for item in calcul
+                      if _reponse_calculee(str((item.get("contenu") or {}).get("enonce") or "")) is not None)
+    return verifiables, len(calcul)
+
+
 def main() -> int:
     """Point d'entrée : valide tout le contenu et affiche un bilan.
 
@@ -1105,6 +1152,8 @@ def main() -> int:
     ids_vus: dict[str, Path] = {}
     erreurs_items: dict[Path, list[str]] = {}
     total_items = 0
+    # Couverture du contrôle indépendant du calcul mental : [vérifiables, total].
+    couverts: list[int] = [0, 0]
     for chemin, donnees in donnees_par_fichier.items():
         if est_manifest(donnees):
             continue
@@ -1124,6 +1173,8 @@ def main() -> int:
                 erreurs_item(item, chemin, regles, ids_vus, themes_manifests, ids_paliers_connus)
             )
         messages.extend(erreurs_regularite(chemin, items))
+        couverts[0] += couverture_calcul(items)[0]
+        couverts[1] += couverture_calcul(items)[1]
         total_items += len(items)
         erreurs_items[chemin] = messages
 
@@ -1131,6 +1182,12 @@ def main() -> int:
     print(f"Validation du contenu : {len(fichiers)} fichier(s) JSON sous content/")
     print(f"Schéma de référence : {FICHIER_SCHEMA.relative_to(RACINE_DEPOT)}")
     total_erreurs = len(erreurs_parse)
+    # Le contrôle du calcul mental doit réellement porter sur le contenu : un motif cassé
+    # le rendait silencieusement inopérant (régression constatée).
+    if couverts[1] >= 20 and couverts[0] / couverts[1] < 0.6:
+        total_erreurs += 1
+        print(f"[ERREUR] couverture du contrôle calcul mental : {couverts[0]}/{couverts[1]} items "
+              "recalculables — un motif de contrôle est probablement cassé")
     for chemin in fichiers:
         if chemin in erreurs_parse:
             print(f"[ERREUR] {erreurs_parse[chemin]}")
