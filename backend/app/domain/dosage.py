@@ -22,21 +22,17 @@ DUREE_MAX_SEANCE_S = 600
 #: Paramètres de séance par thème, quand la **nature de l'exercice** le justifie.
 #:
 #: Le cadre clinique reste « séance courte, ≤ 10 min » (docs/10-clinique/cadre-usage.md)
-#: et « 5-10 min » (protocoles.md) : on ajuste donc le **nombre d'exercices**, jamais
-#: la durée — la durée maximale reste le garde-fou de sur-sollicitation.
-#:
-#: Déduction : chaque grille demande une chaîne de raisonnement complète (mémoire de
-#: travail + fonctions exécutives, « charge soutenue ») et dure bien plus longtemps
-#: qu'un item de calcul mental. Douze grilles ne tiennent pas dans une séance : on en
-#: propose six, ce qui laisse la séance se terminer par son contenu et non par le
-#: minuteur.
+#: et « 5-10 min » (protocoles.md). Ce qu'on ajuste par thème, c'est le **nombre
+#: d'exercices** : une grille de déduction demande une chaîne de raisonnement complète
+#: (mémoire de travail + fonctions exécutives) et dure bien plus longtemps qu'un item
+#: de calcul mental — douze grilles ne tiendraient pas dans une séance.
 PARAMETRES_THEME: dict[str, dict[str, int | bool]] = {
-    "deduction": {"max_items": 6, "duree_max_s": 600, "duree_proposee": True},
+    "deduction": {"max_items": 6},
 }
 PARAMETRES_SEANCE_DEFAUT: dict[str, int | bool] = {
     "max_items": MAX_ITEMS_PAR_SEANCE,
     "duree_max_s": DUREE_MAX_SEANCE_S,
-    "duree_proposee": False,
+    "duree_proposee": True,
 }
 
 
@@ -48,10 +44,11 @@ def parametres_seance(theme: str) -> dict[str, int | bool]:
 def duree_proposee(theme: str) -> bool:
     """La durée maximale est-elle une **proposition** pour ce thème ?
 
-    Pour la déduction, oui : une grille demande plusieurs minutes de raisonnement,
-    et s'arrêter au milieu serait brutal. Au-delà de la durée, la séance **propose**
-    l'arrêt — elle ne se ferme pas d'elle-même, la personne décide de continuer ou
-    non. Ailleurs, la durée reste le garde-fou de sur-sollicitation.
+    Oui, partout (ADR-010) : au-delà de la durée, la séance **propose** l'arrêt — elle ne
+    se ferme pas d'elle-même, la personne décide de continuer ou non. Le garde-fou de
+    sur-sollicitation reste : la limite de séances par jour, et le nombre d'exercices
+    par séance. Le paramètre subsiste pour qu'un thème puisse un jour demander une limite
+    ferme (le code de clôture existe toujours).
     """
     return bool(parametres_seance(theme)["duree_proposee"])
 

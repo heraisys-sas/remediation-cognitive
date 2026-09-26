@@ -2,6 +2,16 @@
 
 Format : [date] — [périmètre] — description. Les retours informels de l'orthophoniste sont journalisés ici, sans caution clinique.
 
+## 2026-09-26 · Durée maximale proposée partout (ADR-010)
+
+Demande : « même souplesse partout ».
+
+- Au-delà de dix minutes, **tous les thèmes** proposent l'arrêt au lieu de fermer la séance : la proposition est envoyée une seule fois, la séance reste ouverte, la personne décide (bouton « Terminer la séance »). La réponse en cours est toujours conservée.
+- Le garde-fou de sur-sollicitation reste la **limite de séances par jour** (3 en entraînement) et le **nombre d'exercices par séance** (12, 6 pour la déduction).
+- Le code de clôture automatique subsiste, pour un thème qui demanderait un jour une limite ferme.
+- **ADR-010** ajouté ; ADR-007 annoté (la partie « durée proposée » n'est plus propre à la déduction) ; protocoles et contrat d'API mis à jour.
+- **Contrôles** — test de durée réécrit (proposition, poursuite possible, fin rejouable, réponse après fin en 409) ; 153 tests, 875 items, 0 erreur.
+
 ## 2026-09-26 · Décisions écrites : ADR-007, ADR-008, ADR-009
 
 Les quiproquos de la journée sont figés noir sur blanc, pour qu'ils ne se rejouent pas.

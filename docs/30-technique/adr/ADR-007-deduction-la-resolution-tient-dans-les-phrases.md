@@ -2,6 +2,8 @@
 
 **Statut** : accepté (2026-09-26)
 
+*Suivi (2026-09-26)* : le point 6 « dix minutes **proposées** » n'est plus propre à la déduction — la durée maximale est une proposition pour **tous** les thèmes (ADR-010). Le dosage de six grilles reste, lui, spécifique au thème.
+
 ## Contexte
 
 Trois versions successives du logigramme ont été refusées pour la même raison de fond : la grille ne se reconstruisait pas à partir de ce qui était **écrit**.

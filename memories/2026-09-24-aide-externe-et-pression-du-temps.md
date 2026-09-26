@@ -49,3 +49,15 @@ Précision de l'utilisateur : « dix minutes pour déduction mais proposées, et
   devient une propriété du thème, à côté du nombre d'exercices et de la durée.
 - Traduction UI : note dans le retour de la question, ton neutre, et le bouton « Terminer la
   séance » reste à disposition : aucune fenêtre, aucune confirmation supplémentaire.
+
+## 2026-09-26 (suite) — la durée proposée devient la règle générale
+
+Décision : « même souplesse partout ».
+
+- `PARAMETRES_SEANCE_DEFAUT["duree_proposee"] = True` → tous les thèmes proposent l'arrêt
+  au-delà de dix minutes (proposition unique, séance ouverte, arrêt explicite possible).
+- Le garde-fou reste la limite de séances/jour et le nombre d'exercices par séance ; le code
+  de clôture ferme subsiste pour un thème qui l'exigerait un jour.
+- Conséquence de méthode : ADR-007 contenait une décision devenue générale → **on annote l'ADR**
+  (note de suivi datée) au lieu de le réécrire, et la règle générale part dans un ADR dédié
+  (ADR-010). Les ADR racontent l'histoire, ils ne se réécrivent pas.

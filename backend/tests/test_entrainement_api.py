@@ -537,13 +537,12 @@ def test_interface_statique_sert_index_html(tmp_path):
 
 
 def test_duree_max_appliquee_serveur(tmp_path):
-    """Régression : au-delà de la durée maximale, la séance s'arrête **sans jeter
-    la réponse en cours**.
+    """Régression : au-delà de la durée maximale, la séance **propose** l'arrêt.
 
-    Le backend livre les 12 items d'un bloc : sans contrôle du temps, le garde-fou
-    de durée serait neutralisé. Désormais, la réponse arrivée après la limite est
-    **enregistrée** (la personne a travaillé), puis la séance se clôt et le client
-    est prévenu pour proposer le résumé. Une réponse *suivante* reçoit 409.
+    Le backend livre les 12 items d'un bloc : sans contrôle du temps, le garde-fou de
+    durée serait neutralisé. Désormais, au-delà de la limite, la réponse est enregistrée
+    et la séance **propose** de s'arrêter (une fois) — elle ne se ferme pas d'elle-même,
+    la personne décide (ADR-010). Le garde-fou reste la limite de séances du jour.
     """
     horloge = {"now": datetime.now(timezone.utc)}
     application = creer_app(
@@ -555,36 +554,46 @@ def test_duree_max_appliquee_serveur(tmp_path):
 
     payload = _demarrer(client, "calcul-mental")
     items = payload["items"]
-    # Une première réponse dans les temps : acceptée.
+    # Une première réponse dans les temps : acceptée, sans proposition d'arrêt.
     reponse = _repondre(
         client, "calcul-mental", payload["session_id"], items[0]["id"],
         _valeur_attendue("calcul-mental", items[0]["id"]), temps_ms=900,
     )
     assert reponse.status_code == 200
     assert "seance_terminee" not in reponse.json()
+    assert "arret_propose" not in reponse.json()
 
-    # L'horloge saute au-delà de la durée max : la réponse est gardée, la séance s'arrête.
+    # L'horloge saute au-delà de la durée max : la réponse est gardée, l'arrêt est proposé.
     horloge["now"] = horloge["now"] + timedelta(seconds=601)
     reponse = _repondre(
         client, "calcul-mental", payload["session_id"], items[1]["id"],
         _valeur_attendue("calcul-mental", items[1]["id"]), temps_ms=900,
     )
     assert reponse.status_code == 200, reponse.text
-    assert reponse.json()["seance_terminee"] is True
-    assert reponse.json()["motif"] == "duree"
+    assert reponse.json()["arret_propose"] is True
+    assert reponse.json()["motif_arret"] == "duree"
+    assert "seance_terminee" not in reponse.json()
 
-    # La réponse suivante est refusée (la séance est close).
+    # On peut continuer : la réponse suivante passe, sans redite de la proposition.
     suivante = _repondre(
         client, "calcul-mental", payload["session_id"], items[2]["id"],
         _valeur_attendue("calcul-mental", items[2]["id"]), temps_ms=900,
     )
-    assert suivante.status_code == 409
-    assert suivante.json()["erreur"] == "session_terminee"
+    assert suivante.status_code == 200, suivante.text
+    assert "arret_propose" not in suivante.json()
 
-    # La fin explicite reste possible et renvoie le résumé (idempotent).
+    # La séance se termine quand la personne le décide — et la fin est rejouable.
     fin = _finir(client, "calcul-mental", payload["session_id"])
     assert fin.status_code == 200
-    assert fin.json()["resume"]["items"] == 2
+    assert fin.json()["resume"]["items"] == 3
+    assert _finir(client, "calcul-mental", payload["session_id"]).json() == fin.json()
+
+    # Une réponse après la fin reste refusée (409).
+    apres = _repondre(
+        client, "calcul-mental", payload["session_id"], items[3]["id"],
+        _valeur_attendue("calcul-mental", items[3]["id"]), temps_ms=900,
+    )
+    assert apres.status_code == 409
 
     # Les données de la séance clôturée sont persistées (FSRS + maîtrise).
     racine = _racine_donnees(client)

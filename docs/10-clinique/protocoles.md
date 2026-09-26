@@ -13,14 +13,15 @@ le **coût d'un exercice** : on ajuste donc le *nombre* d'exercices, jamais la d
 
 | Thème | Exercices par séance | Durée maximale | Pourquoi |
 |---|---|---|---|
-| Général (calcul mental, mémoire, évocation, quotidien…) | 12 | 10 min | items courts, enchaînables |
+| Général (calcul mental, mémoire, évocation, quotidien…) | 12 | 10 min **proposées** | items courts, enchaînables |
 | **Déduction** | **6** | 10 min **proposées** | chaque grille demande une chaîne de raisonnement complète (mémoire de travail + fonctions exécutives) : une grille dure plusieurs minutes, douze ne tiendraient pas dans une séance |
 
 Trois choses ne bougent pas, quel que soit le thème :
 
-- la **durée maximale** reste le garde-fou de sur-sollicitation (anti-syndrome du patient qui
-  veut « prouver » qu'il va bien). Pour la déduction, elle est **proposée** et non imposée :
-  s'arrêter au milieu d'une grille serait brutal, et la personne décide de continuer ou non ;
+- la **durée maximale** (dix minutes) est **une proposition**, partout (ADR-010) : au-delà, la
+  séance invite à s'arrêter — elle ne se ferme pas d'elle-même, la personne décide. Le garde-fou
+  de sur-sollicitation reste la **limite de séances par jour** et le nombre d'exercices par séance
+  (anti-syndrome du patient qui veut « prouver » qu'il va bien) ;
 - la **fatigue** reste une **proposition** d'arrêt, jamais une interruption ;
 - une séance qui atteint sa limite **termine proprement** : la réponse en cours est conservée,
   le résumé est proposé (voir `docs/30-technique/api-contract.md`).
