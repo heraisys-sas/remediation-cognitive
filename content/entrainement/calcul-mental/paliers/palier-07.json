@@ -1,531 +1,539 @@
 [
   {
-    "id": "cm-7-7x1",
+    "id": "cm2-7-01",
     "type": "production",
     "module": "entrainement",
     "theme": "calcul-mental",
     "fonctions_ciblees": [
-      "automatisation"
+      "memoire-travail",
+      "fonctions-executives"
     ],
     "palier": 7,
     "prerequis": [
       "cm-palier-6"
     ],
-    "cap_complexite": null,
+    "cap_complexite": "deux opérations au maximum (charge de mémoire de travail bornée)",
     "contenu": {
-      "enonce": "7 × 1",
-      "aide": null
+      "enonce": "Combien font 8 + 7 − 2 ?",
+      "aide": "Garde le premier résultat en tête, puis enchaîne la seconde opération.",
+      "consigne": "Calcule par étapes, sans rien écrire : d'abord la première opération, puis la seconde."
     },
     "reponse": {
-      "valeur": 7
+      "valeur": 13
     },
     "meta": {
       "auteur": "generation-automatique (tools/generate_items.py)",
-      "date_creation": "2026-09-03",
+      "date_creation": "2026-09-26",
       "relecture_ortho": {
         "statut": "a_revoir"
       }
     }
   },
   {
-    "id": "cm-7-1x7",
+    "id": "cm2-7-02",
     "type": "production",
     "module": "entrainement",
     "theme": "calcul-mental",
     "fonctions_ciblees": [
-      "automatisation"
+      "memoire-travail",
+      "fonctions-executives"
     ],
     "palier": 7,
     "prerequis": [
       "cm-palier-6"
     ],
-    "cap_complexite": null,
+    "cap_complexite": "deux opérations au maximum (charge de mémoire de travail bornée)",
     "contenu": {
-      "enonce": "1 × 7",
-      "aide": null
+      "enonce": "Combien font 9 + 5 − 6 ?",
+      "aide": "Garde le premier résultat en tête, puis enchaîne la seconde opération.",
+      "consigne": "Calcule par étapes, sans rien écrire : d'abord la première opération, puis la seconde."
     },
     "reponse": {
-      "valeur": 7
+      "valeur": 8
     },
     "meta": {
       "auteur": "generation-automatique (tools/generate_items.py)",
-      "date_creation": "2026-09-03",
+      "date_creation": "2026-09-26",
       "relecture_ortho": {
         "statut": "a_revoir"
       }
     }
   },
   {
-    "id": "cm-7-7x2",
+    "id": "cm2-7-03",
     "type": "production",
     "module": "entrainement",
     "theme": "calcul-mental",
     "fonctions_ciblees": [
-      "automatisation"
+      "memoire-travail",
+      "fonctions-executives"
     ],
     "palier": 7,
     "prerequis": [
       "cm-palier-6"
     ],
-    "cap_complexite": null,
+    "cap_complexite": "deux opérations au maximum (charge de mémoire de travail bornée)",
     "contenu": {
-      "enonce": "7 × 2",
-      "aide": null
+      "enonce": "Combien font 3 × 6 + 4 ?",
+      "aide": "Garde le premier résultat en tête, puis enchaîne la seconde opération.",
+      "consigne": "Calcule par étapes, sans rien écrire : d'abord la première opération, puis la seconde."
     },
     "reponse": {
-      "valeur": 14
+      "valeur": 22
     },
     "meta": {
       "auteur": "generation-automatique (tools/generate_items.py)",
-      "date_creation": "2026-09-03",
+      "date_creation": "2026-09-26",
       "relecture_ortho": {
         "statut": "a_revoir"
       }
     }
   },
   {
-    "id": "cm-7-2x7",
+    "id": "cm2-7-04",
     "type": "production",
     "module": "entrainement",
     "theme": "calcul-mental",
     "fonctions_ciblees": [
-      "automatisation"
+      "memoire-travail",
+      "fonctions-executives"
     ],
     "palier": 7,
     "prerequis": [
       "cm-palier-6"
     ],
-    "cap_complexite": null,
+    "cap_complexite": "deux opérations au maximum (charge de mémoire de travail bornée)",
     "contenu": {
-      "enonce": "2 × 7",
-      "aide": null
+      "enonce": "Combien font 6 + 4 − 2 ?",
+      "aide": "Garde le premier résultat en tête, puis enchaîne la seconde opération.",
+      "consigne": "Calcule par étapes, sans rien écrire : d'abord la première opération, puis la seconde."
     },
     "reponse": {
-      "valeur": 14
+      "valeur": 8
     },
     "meta": {
       "auteur": "generation-automatique (tools/generate_items.py)",
-      "date_creation": "2026-09-03",
+      "date_creation": "2026-09-26",
       "relecture_ortho": {
         "statut": "a_revoir"
       }
     }
   },
   {
-    "id": "cm-7-7x3",
+    "id": "cm2-7-05",
     "type": "production",
     "module": "entrainement",
     "theme": "calcul-mental",
     "fonctions_ciblees": [
-      "automatisation"
+      "memoire-travail",
+      "fonctions-executives"
     ],
     "palier": 7,
     "prerequis": [
       "cm-palier-6"
     ],
-    "cap_complexite": null,
+    "cap_complexite": "deux opérations au maximum (charge de mémoire de travail bornée)",
     "contenu": {
-      "enonce": "7 × 3",
-      "aide": null
+      "enonce": "Combien font 4 × 4 + 5 ?",
+      "aide": "Garde le premier résultat en tête, puis enchaîne la seconde opération.",
+      "consigne": "Calcule par étapes, sans rien écrire : d'abord la première opération, puis la seconde."
     },
     "reponse": {
       "valeur": 21
     },
     "meta": {
       "auteur": "generation-automatique (tools/generate_items.py)",
-      "date_creation": "2026-09-03",
+      "date_creation": "2026-09-26",
       "relecture_ortho": {
         "statut": "a_revoir"
       }
     }
   },
   {
-    "id": "cm-7-3x7",
+    "id": "cm2-7-06",
     "type": "production",
     "module": "entrainement",
     "theme": "calcul-mental",
     "fonctions_ciblees": [
-      "automatisation"
+      "memoire-travail",
+      "fonctions-executives"
     ],
     "palier": 7,
     "prerequis": [
       "cm-palier-6"
     ],
-    "cap_complexite": null,
+    "cap_complexite": "deux opérations au maximum (charge de mémoire de travail bornée)",
     "contenu": {
-      "enonce": "3 × 7",
-      "aide": null
+      "enonce": "Combien font 4 × 7 + 5 ?",
+      "aide": "Garde le premier résultat en tête, puis enchaîne la seconde opération.",
+      "consigne": "Calcule par étapes, sans rien écrire : d'abord la première opération, puis la seconde."
     },
     "reponse": {
-      "valeur": 21
+      "valeur": 33
     },
     "meta": {
       "auteur": "generation-automatique (tools/generate_items.py)",
-      "date_creation": "2026-09-03",
+      "date_creation": "2026-09-26",
       "relecture_ortho": {
         "statut": "a_revoir"
       }
     }
   },
   {
-    "id": "cm-7-7x4",
+    "id": "cm2-7-07",
     "type": "production",
     "module": "entrainement",
     "theme": "calcul-mental",
     "fonctions_ciblees": [
-      "automatisation"
+      "memoire-travail",
+      "fonctions-executives"
     ],
     "palier": 7,
     "prerequis": [
       "cm-palier-6"
     ],
-    "cap_complexite": null,
+    "cap_complexite": "deux opérations au maximum (charge de mémoire de travail bornée)",
     "contenu": {
-      "enonce": "7 × 4",
-      "aide": null
+      "enonce": "Combien font 5 + 5 − 2 ?",
+      "aide": "Garde le premier résultat en tête, puis enchaîne la seconde opération.",
+      "consigne": "Calcule par étapes, sans rien écrire : d'abord la première opération, puis la seconde."
     },
     "reponse": {
-      "valeur": 28
+      "valeur": 8
     },
     "meta": {
       "auteur": "generation-automatique (tools/generate_items.py)",
-      "date_creation": "2026-09-03",
+      "date_creation": "2026-09-26",
       "relecture_ortho": {
         "statut": "a_revoir"
       }
     }
   },
   {
-    "id": "cm-7-4x7",
+    "id": "cm2-7-08",
     "type": "production",
     "module": "entrainement",
     "theme": "calcul-mental",
     "fonctions_ciblees": [
-      "automatisation"
+      "memoire-travail",
+      "fonctions-executives"
     ],
     "palier": 7,
     "prerequis": [
       "cm-palier-6"
     ],
-    "cap_complexite": null,
+    "cap_complexite": "deux opérations au maximum (charge de mémoire de travail bornée)",
     "contenu": {
-      "enonce": "4 × 7",
-      "aide": null
+      "enonce": "Combien font 4 + 6 − 2 ?",
+      "aide": "Garde le premier résultat en tête, puis enchaîne la seconde opération.",
+      "consigne": "Calcule par étapes, sans rien écrire : d'abord la première opération, puis la seconde."
     },
     "reponse": {
-      "valeur": 28
+      "valeur": 8
     },
     "meta": {
       "auteur": "generation-automatique (tools/generate_items.py)",
-      "date_creation": "2026-09-03",
+      "date_creation": "2026-09-26",
       "relecture_ortho": {
         "statut": "a_revoir"
       }
     }
   },
   {
-    "id": "cm-7-7x5",
+    "id": "cm2-7-09",
     "type": "production",
     "module": "entrainement",
     "theme": "calcul-mental",
     "fonctions_ciblees": [
-      "automatisation"
+      "memoire-travail",
+      "fonctions-executives"
     ],
     "palier": 7,
     "prerequis": [
       "cm-palier-6"
     ],
-    "cap_complexite": null,
+    "cap_complexite": "deux opérations au maximum (charge de mémoire de travail bornée)",
     "contenu": {
-      "enonce": "7 × 5",
-      "aide": null
+      "enonce": "Combien font 5 + 7 − 4 ?",
+      "aide": "Garde le premier résultat en tête, puis enchaîne la seconde opération.",
+      "consigne": "Calcule par étapes, sans rien écrire : d'abord la première opération, puis la seconde."
     },
     "reponse": {
-      "valeur": 35
+      "valeur": 8
     },
     "meta": {
       "auteur": "generation-automatique (tools/generate_items.py)",
-      "date_creation": "2026-09-03",
+      "date_creation": "2026-09-26",
       "relecture_ortho": {
         "statut": "a_revoir"
       }
     }
   },
   {
-    "id": "cm-7-5x7",
+    "id": "cm2-7-10",
     "type": "production",
     "module": "entrainement",
     "theme": "calcul-mental",
     "fonctions_ciblees": [
-      "automatisation"
+      "memoire-travail",
+      "fonctions-executives"
     ],
     "palier": 7,
     "prerequis": [
       "cm-palier-6"
     ],
-    "cap_complexite": null,
+    "cap_complexite": "deux opérations au maximum (charge de mémoire de travail bornée)",
     "contenu": {
-      "enonce": "5 × 7",
-      "aide": null
+      "enonce": "Combien font 7 + 5 − 4 ?",
+      "aide": "Garde le premier résultat en tête, puis enchaîne la seconde opération.",
+      "consigne": "Calcule par étapes, sans rien écrire : d'abord la première opération, puis la seconde."
     },
     "reponse": {
-      "valeur": 35
+      "valeur": 8
     },
     "meta": {
       "auteur": "generation-automatique (tools/generate_items.py)",
-      "date_creation": "2026-09-03",
+      "date_creation": "2026-09-26",
       "relecture_ortho": {
         "statut": "a_revoir"
       }
     }
   },
   {
-    "id": "cm-7-7x6",
+    "id": "cm2-7-11",
     "type": "production",
     "module": "entrainement",
     "theme": "calcul-mental",
     "fonctions_ciblees": [
-      "automatisation"
+      "memoire-travail",
+      "fonctions-executives"
     ],
     "palier": 7,
     "prerequis": [
       "cm-palier-6"
     ],
-    "cap_complexite": null,
+    "cap_complexite": "deux opérations au maximum (charge de mémoire de travail bornée)",
     "contenu": {
-      "enonce": "7 × 6",
-      "aide": null
+      "enonce": "Combien font 2 × 7 + 3 ?",
+      "aide": "Garde le premier résultat en tête, puis enchaîne la seconde opération.",
+      "consigne": "Calcule par étapes, sans rien écrire : d'abord la première opération, puis la seconde."
     },
     "reponse": {
-      "valeur": 42
+      "valeur": 17
     },
     "meta": {
       "auteur": "generation-automatique (tools/generate_items.py)",
-      "date_creation": "2026-09-03",
+      "date_creation": "2026-09-26",
       "relecture_ortho": {
         "statut": "a_revoir"
       }
     }
   },
   {
-    "id": "cm-7-6x7",
+    "id": "cm2-7-12",
     "type": "production",
     "module": "entrainement",
     "theme": "calcul-mental",
     "fonctions_ciblees": [
-      "automatisation"
+      "memoire-travail",
+      "fonctions-executives"
     ],
     "palier": 7,
     "prerequis": [
       "cm-palier-6"
     ],
-    "cap_complexite": null,
+    "cap_complexite": "deux opérations au maximum (charge de mémoire de travail bornée)",
     "contenu": {
-      "enonce": "6 × 7",
-      "aide": null
+      "enonce": "Combien font 7 + 3 − 2 ?",
+      "aide": "Garde le premier résultat en tête, puis enchaîne la seconde opération.",
+      "consigne": "Calcule par étapes, sans rien écrire : d'abord la première opération, puis la seconde."
     },
     "reponse": {
-      "valeur": 42
+      "valeur": 8
     },
     "meta": {
       "auteur": "generation-automatique (tools/generate_items.py)",
-      "date_creation": "2026-09-03",
+      "date_creation": "2026-09-26",
       "relecture_ortho": {
         "statut": "a_revoir"
       }
     }
   },
   {
-    "id": "cm-7-7x7",
+    "id": "cm2-7-13",
     "type": "production",
     "module": "entrainement",
     "theme": "calcul-mental",
     "fonctions_ciblees": [
-      "automatisation"
+      "memoire-travail",
+      "fonctions-executives"
     ],
     "palier": 7,
     "prerequis": [
       "cm-palier-6"
     ],
-    "cap_complexite": null,
+    "cap_complexite": "deux opérations au maximum (charge de mémoire de travail bornée)",
     "contenu": {
-      "enonce": "7 × 7",
-      "aide": null
+      "enonce": "Combien font 4 × 6 + 5 ?",
+      "aide": "Garde le premier résultat en tête, puis enchaîne la seconde opération.",
+      "consigne": "Calcule par étapes, sans rien écrire : d'abord la première opération, puis la seconde."
     },
     "reponse": {
-      "valeur": 49
+      "valeur": 29
     },
     "meta": {
       "auteur": "generation-automatique (tools/generate_items.py)",
-      "date_creation": "2026-09-03",
+      "date_creation": "2026-09-26",
       "relecture_ortho": {
         "statut": "a_revoir"
       }
     }
   },
   {
-    "id": "cm-7-7x8",
+    "id": "cm2-7-14",
     "type": "production",
     "module": "entrainement",
     "theme": "calcul-mental",
     "fonctions_ciblees": [
-      "automatisation"
+      "memoire-travail",
+      "fonctions-executives"
     ],
     "palier": 7,
     "prerequis": [
       "cm-palier-6"
     ],
-    "cap_complexite": null,
+    "cap_complexite": "deux opérations au maximum (charge de mémoire de travail bornée)",
     "contenu": {
-      "enonce": "7 × 8",
-      "aide": null
+      "enonce": "Combien font 3 × 4 + 4 ?",
+      "aide": "Garde le premier résultat en tête, puis enchaîne la seconde opération.",
+      "consigne": "Calcule par étapes, sans rien écrire : d'abord la première opération, puis la seconde."
     },
     "reponse": {
-      "valeur": 56
+      "valeur": 16
     },
     "meta": {
       "auteur": "generation-automatique (tools/generate_items.py)",
-      "date_creation": "2026-09-03",
+      "date_creation": "2026-09-26",
       "relecture_ortho": {
         "statut": "a_revoir"
       }
     }
   },
   {
-    "id": "cm-7-8x7",
+    "id": "cm2-7-15",
     "type": "production",
     "module": "entrainement",
     "theme": "calcul-mental",
     "fonctions_ciblees": [
-      "automatisation"
+      "memoire-travail",
+      "fonctions-executives"
     ],
     "palier": 7,
     "prerequis": [
       "cm-palier-6"
     ],
-    "cap_complexite": null,
+    "cap_complexite": "deux opérations au maximum (charge de mémoire de travail bornée)",
     "contenu": {
-      "enonce": "8 × 7",
-      "aide": null
+      "enonce": "Combien font 6 + 9 − 2 ?",
+      "aide": "Garde le premier résultat en tête, puis enchaîne la seconde opération.",
+      "consigne": "Calcule par étapes, sans rien écrire : d'abord la première opération, puis la seconde."
     },
     "reponse": {
-      "valeur": 56
+      "valeur": 13
     },
     "meta": {
       "auteur": "generation-automatique (tools/generate_items.py)",
-      "date_creation": "2026-09-03",
+      "date_creation": "2026-09-26",
       "relecture_ortho": {
         "statut": "a_revoir"
       }
     }
   },
   {
-    "id": "cm-7-7x9",
+    "id": "cm2-7-16",
     "type": "production",
     "module": "entrainement",
     "theme": "calcul-mental",
     "fonctions_ciblees": [
-      "automatisation"
+      "memoire-travail",
+      "fonctions-executives"
     ],
     "palier": 7,
     "prerequis": [
       "cm-palier-6"
     ],
-    "cap_complexite": null,
+    "cap_complexite": "deux opérations au maximum (charge de mémoire de travail bornée)",
     "contenu": {
-      "enonce": "7 × 9",
-      "aide": null
+      "enonce": "Combien font 2 × 3 + 3 ?",
+      "aide": "Garde le premier résultat en tête, puis enchaîne la seconde opération.",
+      "consigne": "Calcule par étapes, sans rien écrire : d'abord la première opération, puis la seconde."
     },
     "reponse": {
-      "valeur": 63
+      "valeur": 9
     },
     "meta": {
       "auteur": "generation-automatique (tools/generate_items.py)",
-      "date_creation": "2026-09-03",
+      "date_creation": "2026-09-26",
       "relecture_ortho": {
         "statut": "a_revoir"
       }
     }
   },
   {
-    "id": "cm-7-9x7",
+    "id": "cm2-7-17",
     "type": "production",
     "module": "entrainement",
     "theme": "calcul-mental",
     "fonctions_ciblees": [
-      "automatisation"
+      "memoire-travail",
+      "fonctions-executives"
     ],
     "palier": 7,
     "prerequis": [
       "cm-palier-6"
     ],
-    "cap_complexite": null,
+    "cap_complexite": "deux opérations au maximum (charge de mémoire de travail bornée)",
     "contenu": {
-      "enonce": "9 × 7",
-      "aide": null
+      "enonce": "Combien font 9 + 8 − 4 ?",
+      "aide": "Garde le premier résultat en tête, puis enchaîne la seconde opération.",
+      "consigne": "Calcule par étapes, sans rien écrire : d'abord la première opération, puis la seconde."
     },
     "reponse": {
-      "valeur": 63
+      "valeur": 13
     },
     "meta": {
       "auteur": "generation-automatique (tools/generate_items.py)",
-      "date_creation": "2026-09-03",
+      "date_creation": "2026-09-26",
       "relecture_ortho": {
         "statut": "a_revoir"
       }
     }
   },
   {
-    "id": "cm-7-7x10",
+    "id": "cm2-7-18",
     "type": "production",
     "module": "entrainement",
     "theme": "calcul-mental",
     "fonctions_ciblees": [
-      "automatisation"
+      "memoire-travail",
+      "fonctions-executives"
     ],
     "palier": 7,
     "prerequis": [
       "cm-palier-6"
     ],
-    "cap_complexite": null,
+    "cap_complexite": "deux opérations au maximum (charge de mémoire de travail bornée)",
     "contenu": {
-      "enonce": "7 × 10",
-      "aide": null
+      "enonce": "Combien font 5 + 4 − 6 ?",
+      "aide": "Garde le premier résultat en tête, puis enchaîne la seconde opération.",
+      "consigne": "Calcule par étapes, sans rien écrire : d'abord la première opération, puis la seconde."
     },
     "reponse": {
-      "valeur": 70
+      "valeur": 3
     },
     "meta": {
       "auteur": "generation-automatique (tools/generate_items.py)",
-      "date_creation": "2026-09-03",
-      "relecture_ortho": {
-        "statut": "a_revoir"
-      }
-    }
-  },
-  {
-    "id": "cm-7-10x7",
-    "type": "production",
-    "module": "entrainement",
-    "theme": "calcul-mental",
-    "fonctions_ciblees": [
-      "automatisation"
-    ],
-    "palier": 7,
-    "prerequis": [
-      "cm-palier-6"
-    ],
-    "cap_complexite": null,
-    "contenu": {
-      "enonce": "10 × 7",
-      "aide": null
-    },
-    "reponse": {
-      "valeur": 70
-    },
-    "meta": {
-      "auteur": "generation-automatique (tools/generate_items.py)",
-      "date_creation": "2026-09-03",
+      "date_creation": "2026-09-26",
       "relecture_ortho": {
         "statut": "a_revoir"
       }

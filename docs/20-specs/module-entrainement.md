@@ -2,9 +2,9 @@
 
 Vocabulaire neutre, ludique modéré. Même moteur que la rééducation ; aucune revendication clinique ; diffusable librement dès maintenant.
 
-## Calcul mental / tables
+## Calcul mental — automatismes utiles et numératie du quotidien
 
-- Paliers très fins (Kumon), répétition espacée FSRS, feedback immédiat.
+- Paliers fins par famille (faits de base, stratégies, mémoire de travail, argent, quantités), répétition espacée FSRS, feedback immédiat. Décision : ADR-011.
 - Représentation **soroban virtuel optionnelle** — sollicite l'imagerie visuo-spatiale plutôt que le rappel pur ; synergie utile avec la rééducation attentionnelle.
 - Contenu : `content/entrainement/calcul-mental/`.
 

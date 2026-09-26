@@ -1,11 +1,12 @@
 [
   {
-    "id": "cm-8-8x1",
+    "id": "cm2-8-01",
     "type": "production",
     "module": "entrainement",
     "theme": "calcul-mental",
     "fonctions_ciblees": [
-      "automatisation"
+      "automatisation",
+      "memoire-travail"
     ],
     "palier": 8,
     "prerequis": [
@@ -13,27 +14,115 @@
     ],
     "cap_complexite": null,
     "contenu": {
-      "enonce": "8 × 1",
-      "aide": null
+      "enonce": "Deux articles à 1,50 € — combien en tout ?",
+      "aide": "Rends la monnaie : ce qu'on te donne moins ce que ça coûte."
+    },
+    "reponse": {
+      "valeur": 3
+    },
+    "meta": {
+      "auteur": "generation-automatique (tools/generate_items.py)",
+      "date_creation": "2026-09-26",
+      "relecture_ortho": {
+        "statut": "a_revoir"
+      }
+    }
+  },
+  {
+    "id": "cm2-8-02",
+    "type": "production",
+    "module": "entrainement",
+    "theme": "calcul-mental",
+    "fonctions_ciblees": [
+      "automatisation",
+      "memoire-travail"
+    ],
+    "palier": 8,
+    "prerequis": [
+      "cm-palier-7"
+    ],
+    "cap_complexite": null,
+    "contenu": {
+      "enonce": "Un article à 7 €, payé avec 10 € — combien te rend-on ?",
+      "aide": "Rends la monnaie : ce qu'on te donne moins ce que ça coûte."
+    },
+    "reponse": {
+      "valeur": 3
+    },
+    "meta": {
+      "auteur": "generation-automatique (tools/generate_items.py)",
+      "date_creation": "2026-09-26",
+      "relecture_ortho": {
+        "statut": "a_revoir"
+      }
+    }
+  },
+  {
+    "id": "cm2-8-03",
+    "type": "production",
+    "module": "entrainement",
+    "theme": "calcul-mental",
+    "fonctions_ciblees": [
+      "automatisation",
+      "memoire-travail"
+    ],
+    "palier": 8,
+    "prerequis": [
+      "cm-palier-7"
+    ],
+    "cap_complexite": null,
+    "contenu": {
+      "enonce": "2 articles à 6 € — combien en tout ?",
+      "aide": "Rends la monnaie : ce qu'on te donne moins ce que ça coûte."
+    },
+    "reponse": {
+      "valeur": 12
+    },
+    "meta": {
+      "auteur": "generation-automatique (tools/generate_items.py)",
+      "date_creation": "2026-09-26",
+      "relecture_ortho": {
+        "statut": "a_revoir"
+      }
+    }
+  },
+  {
+    "id": "cm2-8-04",
+    "type": "production",
+    "module": "entrainement",
+    "theme": "calcul-mental",
+    "fonctions_ciblees": [
+      "automatisation",
+      "memoire-travail"
+    ],
+    "palier": 8,
+    "prerequis": [
+      "cm-palier-7"
+    ],
+    "cap_complexite": null,
+    "contenu": {
+      "enonce": "Un article à 2 €, payé avec 10 € — combien te rend-on ?",
+      "aide": "Rends la monnaie : ce qu'on te donne moins ce que ça coûte."
     },
     "reponse": {
       "valeur": 8
     },
     "meta": {
       "auteur": "generation-automatique (tools/generate_items.py)",
-      "date_creation": "2026-09-03",
+      "date_creation": "2026-09-26",
       "relecture_ortho": {
         "statut": "a_revoir"
       }
     }
   },
   {
-    "id": "cm-8-1x8",
+    "id": "cm2-8-05",
     "type": "production",
     "module": "entrainement",
     "theme": "calcul-mental",
     "fonctions_ciblees": [
-      "automatisation"
+      "automatisation",
+      "memoire-travail"
     ],
     "palier": 8,
     "prerequis": [
@@ -41,27 +130,144 @@
     ],
     "cap_complexite": null,
     "contenu": {
-      "enonce": "1 × 8",
-      "aide": null
+      "enonce": "2 articles à 3 € — combien en tout ?",
+      "aide": "Rends la monnaie : ce qu'on te donne moins ce que ça coûte."
+    },
+    "reponse": {
+      "valeur": 6
+    },
+    "meta": {
+      "auteur": "generation-automatique (tools/generate_items.py)",
+      "date_creation": "2026-09-26",
+      "relecture_ortho": {
+        "statut": "a_revoir"
+      }
+    }
+  },
+  {
+    "id": "cm2-8-06",
+    "type": "production",
+    "module": "entrainement",
+    "theme": "calcul-mental",
+    "fonctions_ciblees": [
+      "automatisation",
+      "memoire-travail"
+    ],
+    "palier": 8,
+    "prerequis": [
+      "cm-palier-7"
+    ],
+    "cap_complexite": null,
+    "contenu": {
+      "enonce": "3 articles à 7 € — combien en tout ?",
+      "aide": "Rends la monnaie : ce qu'on te donne moins ce que ça coûte."
+    },
+    "reponse": {
+      "valeur": 21
+    },
+    "meta": {
+      "auteur": "generation-automatique (tools/generate_items.py)",
+      "date_creation": "2026-09-26",
+      "relecture_ortho": {
+        "statut": "a_revoir"
+      }
+    }
+  },
+  {
+    "id": "cm2-8-07",
+    "type": "production",
+    "module": "entrainement",
+    "theme": "calcul-mental",
+    "fonctions_ciblees": [
+      "automatisation",
+      "memoire-travail"
+    ],
+    "palier": 8,
+    "prerequis": [
+      "cm-palier-7"
+    ],
+    "cap_complexite": null,
+    "contenu": {
+      "enonce": "Un article à 16 €, payé avec 20 € — combien te rend-on ?",
+      "aide": "Rends la monnaie : ce qu'on te donne moins ce que ça coûte."
+    },
+    "reponse": {
+      "valeur": 4
+    },
+    "meta": {
+      "auteur": "generation-automatique (tools/generate_items.py)",
+      "date_creation": "2026-09-26",
+      "relecture_ortho": {
+        "statut": "a_revoir"
+      }
+    }
+  },
+  {
+    "id": "cm2-8-08",
+    "type": "production",
+    "module": "entrainement",
+    "theme": "calcul-mental",
+    "fonctions_ciblees": [
+      "automatisation",
+      "memoire-travail"
+    ],
+    "palier": 8,
+    "prerequis": [
+      "cm-palier-7"
+    ],
+    "cap_complexite": null,
+    "contenu": {
+      "enonce": "3 articles à 2 € — combien en tout ?",
+      "aide": "Rends la monnaie : ce qu'on te donne moins ce que ça coûte."
+    },
+    "reponse": {
+      "valeur": 6
+    },
+    "meta": {
+      "auteur": "generation-automatique (tools/generate_items.py)",
+      "date_creation": "2026-09-26",
+      "relecture_ortho": {
+        "statut": "a_revoir"
+      }
+    }
+  },
+  {
+    "id": "cm2-8-09",
+    "type": "production",
+    "module": "entrainement",
+    "theme": "calcul-mental",
+    "fonctions_ciblees": [
+      "automatisation",
+      "memoire-travail"
+    ],
+    "palier": 8,
+    "prerequis": [
+      "cm-palier-7"
+    ],
+    "cap_complexite": null,
+    "contenu": {
+      "enonce": "Un article à 12 €, payé avec 20 € — combien te rend-on ?",
+      "aide": "Rends la monnaie : ce qu'on te donne moins ce que ça coûte."
     },
     "reponse": {
       "valeur": 8
     },
     "meta": {
       "auteur": "generation-automatique (tools/generate_items.py)",
-      "date_creation": "2026-09-03",
+      "date_creation": "2026-09-26",
       "relecture_ortho": {
         "statut": "a_revoir"
       }
     }
   },
   {
-    "id": "cm-8-8x2",
+    "id": "cm2-8-10",
     "type": "production",
     "module": "entrainement",
     "theme": "calcul-mental",
     "fonctions_ciblees": [
-      "automatisation"
+      "automatisation",
+      "memoire-travail"
     ],
     "palier": 8,
     "prerequis": [
@@ -69,27 +275,28 @@
     ],
     "cap_complexite": null,
     "contenu": {
-      "enonce": "8 × 2",
-      "aide": null
+      "enonce": "Un article à 8 €, payé avec 10 € — combien te rend-on ?",
+      "aide": "Rends la monnaie : ce qu'on te donne moins ce que ça coûte."
     },
     "reponse": {
-      "valeur": 16
+      "valeur": 2
     },
     "meta": {
       "auteur": "generation-automatique (tools/generate_items.py)",
-      "date_creation": "2026-09-03",
+      "date_creation": "2026-09-26",
       "relecture_ortho": {
         "statut": "a_revoir"
       }
     }
   },
   {
-    "id": "cm-8-2x8",
+    "id": "cm2-8-11",
     "type": "production",
     "module": "entrainement",
     "theme": "calcul-mental",
     "fonctions_ciblees": [
-      "automatisation"
+      "automatisation",
+      "memoire-travail"
     ],
     "palier": 8,
     "prerequis": [
@@ -97,27 +304,28 @@
     ],
     "cap_complexite": null,
     "contenu": {
-      "enonce": "2 × 8",
-      "aide": null
+      "enonce": "Un article à 6 €, payé avec 10 € — combien te rend-on ?",
+      "aide": "Rends la monnaie : ce qu'on te donne moins ce que ça coûte."
     },
     "reponse": {
-      "valeur": 16
+      "valeur": 4
     },
     "meta": {
       "auteur": "generation-automatique (tools/generate_items.py)",
-      "date_creation": "2026-09-03",
+      "date_creation": "2026-09-26",
       "relecture_ortho": {
         "statut": "a_revoir"
       }
     }
   },
   {
-    "id": "cm-8-8x3",
+    "id": "cm2-8-12",
     "type": "production",
     "module": "entrainement",
     "theme": "calcul-mental",
     "fonctions_ciblees": [
-      "automatisation"
+      "automatisation",
+      "memoire-travail"
     ],
     "palier": 8,
     "prerequis": [
@@ -125,27 +333,28 @@
     ],
     "cap_complexite": null,
     "contenu": {
-      "enonce": "8 × 3",
-      "aide": null
+      "enonce": "Un article à 4 €, payé avec 10 € — combien te rend-on ?",
+      "aide": "Rends la monnaie : ce qu'on te donne moins ce que ça coûte."
     },
     "reponse": {
-      "valeur": 24
+      "valeur": 6
     },
     "meta": {
       "auteur": "generation-automatique (tools/generate_items.py)",
-      "date_creation": "2026-09-03",
+      "date_creation": "2026-09-26",
       "relecture_ortho": {
         "statut": "a_revoir"
       }
     }
   },
   {
-    "id": "cm-8-3x8",
+    "id": "cm2-8-13",
     "type": "production",
     "module": "entrainement",
     "theme": "calcul-mental",
     "fonctions_ciblees": [
-      "automatisation"
+      "automatisation",
+      "memoire-travail"
     ],
     "palier": 8,
     "prerequis": [
@@ -153,27 +362,28 @@
     ],
     "cap_complexite": null,
     "contenu": {
-      "enonce": "3 × 8",
-      "aide": null
+      "enonce": "Un article à 18 €, payé avec 20 € — combien te rend-on ?",
+      "aide": "Rends la monnaie : ce qu'on te donne moins ce que ça coûte."
     },
     "reponse": {
-      "valeur": 24
+      "valeur": 2
     },
     "meta": {
       "auteur": "generation-automatique (tools/generate_items.py)",
-      "date_creation": "2026-09-03",
+      "date_creation": "2026-09-26",
       "relecture_ortho": {
         "statut": "a_revoir"
       }
     }
   },
   {
-    "id": "cm-8-8x4",
+    "id": "cm2-8-14",
     "type": "production",
     "module": "entrainement",
     "theme": "calcul-mental",
     "fonctions_ciblees": [
-      "automatisation"
+      "automatisation",
+      "memoire-travail"
     ],
     "palier": 8,
     "prerequis": [
@@ -181,27 +391,28 @@
     ],
     "cap_complexite": null,
     "contenu": {
-      "enonce": "8 × 4",
-      "aide": null
+      "enonce": "Un article à 15 €, payé avec 20 € — combien te rend-on ?",
+      "aide": "Rends la monnaie : ce qu'on te donne moins ce que ça coûte."
     },
     "reponse": {
-      "valeur": 32
+      "valeur": 5
     },
     "meta": {
       "auteur": "generation-automatique (tools/generate_items.py)",
-      "date_creation": "2026-09-03",
+      "date_creation": "2026-09-26",
       "relecture_ortho": {
         "statut": "a_revoir"
       }
     }
   },
   {
-    "id": "cm-8-4x8",
+    "id": "cm2-8-15",
     "type": "production",
     "module": "entrainement",
     "theme": "calcul-mental",
     "fonctions_ciblees": [
-      "automatisation"
+      "automatisation",
+      "memoire-travail"
     ],
     "palier": 8,
     "prerequis": [
@@ -209,27 +420,28 @@
     ],
     "cap_complexite": null,
     "contenu": {
-      "enonce": "4 × 8",
-      "aide": null
+      "enonce": "Deux articles à 12,50 € — combien en tout ?",
+      "aide": "Rends la monnaie : ce qu'on te donne moins ce que ça coûte."
     },
     "reponse": {
-      "valeur": 32
+      "valeur": 25
     },
     "meta": {
       "auteur": "generation-automatique (tools/generate_items.py)",
-      "date_creation": "2026-09-03",
+      "date_creation": "2026-09-26",
       "relecture_ortho": {
         "statut": "a_revoir"
       }
     }
   },
   {
-    "id": "cm-8-8x5",
+    "id": "cm2-8-16",
     "type": "production",
     "module": "entrainement",
     "theme": "calcul-mental",
     "fonctions_ciblees": [
-      "automatisation"
+      "automatisation",
+      "memoire-travail"
     ],
     "palier": 8,
     "prerequis": [
@@ -237,27 +449,28 @@
     ],
     "cap_complexite": null,
     "contenu": {
-      "enonce": "8 × 5",
-      "aide": null
+      "enonce": "2 articles à 4 € — combien en tout ?",
+      "aide": "Rends la monnaie : ce qu'on te donne moins ce que ça coûte."
     },
     "reponse": {
-      "valeur": 40
+      "valeur": 8
     },
     "meta": {
       "auteur": "generation-automatique (tools/generate_items.py)",
-      "date_creation": "2026-09-03",
+      "date_creation": "2026-09-26",
       "relecture_ortho": {
         "statut": "a_revoir"
       }
     }
   },
   {
-    "id": "cm-8-5x8",
+    "id": "cm2-8-17",
     "type": "production",
     "module": "entrainement",
     "theme": "calcul-mental",
     "fonctions_ciblees": [
-      "automatisation"
+      "automatisation",
+      "memoire-travail"
     ],
     "palier": 8,
     "prerequis": [
@@ -265,27 +478,28 @@
     ],
     "cap_complexite": null,
     "contenu": {
-      "enonce": "5 × 8",
-      "aide": null
+      "enonce": "Un article à 19 €, payé avec 20 € — combien te rend-on ?",
+      "aide": "Rends la monnaie : ce qu'on te donne moins ce que ça coûte."
     },
     "reponse": {
-      "valeur": 40
+      "valeur": 1
     },
     "meta": {
       "auteur": "generation-automatique (tools/generate_items.py)",
-      "date_creation": "2026-09-03",
+      "date_creation": "2026-09-26",
       "relecture_ortho": {
         "statut": "a_revoir"
       }
     }
   },
   {
-    "id": "cm-8-8x6",
+    "id": "cm2-8-18",
     "type": "production",
     "module": "entrainement",
     "theme": "calcul-mental",
     "fonctions_ciblees": [
-      "automatisation"
+      "automatisation",
+      "memoire-travail"
     ],
     "palier": 8,
     "prerequis": [
@@ -293,239 +507,15 @@
     ],
     "cap_complexite": null,
     "contenu": {
-      "enonce": "8 × 6",
-      "aide": null
+      "enonce": "Un article à 3 €, payé avec 10 € — combien te rend-on ?",
+      "aide": "Rends la monnaie : ce qu'on te donne moins ce que ça coûte."
     },
     "reponse": {
-      "valeur": 48
+      "valeur": 7
     },
     "meta": {
       "auteur": "generation-automatique (tools/generate_items.py)",
-      "date_creation": "2026-09-03",
-      "relecture_ortho": {
-        "statut": "a_revoir"
-      }
-    }
-  },
-  {
-    "id": "cm-8-6x8",
-    "type": "production",
-    "module": "entrainement",
-    "theme": "calcul-mental",
-    "fonctions_ciblees": [
-      "automatisation"
-    ],
-    "palier": 8,
-    "prerequis": [
-      "cm-palier-7"
-    ],
-    "cap_complexite": null,
-    "contenu": {
-      "enonce": "6 × 8",
-      "aide": null
-    },
-    "reponse": {
-      "valeur": 48
-    },
-    "meta": {
-      "auteur": "generation-automatique (tools/generate_items.py)",
-      "date_creation": "2026-09-03",
-      "relecture_ortho": {
-        "statut": "a_revoir"
-      }
-    }
-  },
-  {
-    "id": "cm-8-8x7",
-    "type": "production",
-    "module": "entrainement",
-    "theme": "calcul-mental",
-    "fonctions_ciblees": [
-      "automatisation"
-    ],
-    "palier": 8,
-    "prerequis": [
-      "cm-palier-7"
-    ],
-    "cap_complexite": null,
-    "contenu": {
-      "enonce": "8 × 7",
-      "aide": null
-    },
-    "reponse": {
-      "valeur": 56
-    },
-    "meta": {
-      "auteur": "generation-automatique (tools/generate_items.py)",
-      "date_creation": "2026-09-03",
-      "relecture_ortho": {
-        "statut": "a_revoir"
-      }
-    }
-  },
-  {
-    "id": "cm-8-7x8",
-    "type": "production",
-    "module": "entrainement",
-    "theme": "calcul-mental",
-    "fonctions_ciblees": [
-      "automatisation"
-    ],
-    "palier": 8,
-    "prerequis": [
-      "cm-palier-7"
-    ],
-    "cap_complexite": null,
-    "contenu": {
-      "enonce": "7 × 8",
-      "aide": null
-    },
-    "reponse": {
-      "valeur": 56
-    },
-    "meta": {
-      "auteur": "generation-automatique (tools/generate_items.py)",
-      "date_creation": "2026-09-03",
-      "relecture_ortho": {
-        "statut": "a_revoir"
-      }
-    }
-  },
-  {
-    "id": "cm-8-8x8",
-    "type": "production",
-    "module": "entrainement",
-    "theme": "calcul-mental",
-    "fonctions_ciblees": [
-      "automatisation"
-    ],
-    "palier": 8,
-    "prerequis": [
-      "cm-palier-7"
-    ],
-    "cap_complexite": null,
-    "contenu": {
-      "enonce": "8 × 8",
-      "aide": null
-    },
-    "reponse": {
-      "valeur": 64
-    },
-    "meta": {
-      "auteur": "generation-automatique (tools/generate_items.py)",
-      "date_creation": "2026-09-03",
-      "relecture_ortho": {
-        "statut": "a_revoir"
-      }
-    }
-  },
-  {
-    "id": "cm-8-8x9",
-    "type": "production",
-    "module": "entrainement",
-    "theme": "calcul-mental",
-    "fonctions_ciblees": [
-      "automatisation"
-    ],
-    "palier": 8,
-    "prerequis": [
-      "cm-palier-7"
-    ],
-    "cap_complexite": null,
-    "contenu": {
-      "enonce": "8 × 9",
-      "aide": null
-    },
-    "reponse": {
-      "valeur": 72
-    },
-    "meta": {
-      "auteur": "generation-automatique (tools/generate_items.py)",
-      "date_creation": "2026-09-03",
-      "relecture_ortho": {
-        "statut": "a_revoir"
-      }
-    }
-  },
-  {
-    "id": "cm-8-9x8",
-    "type": "production",
-    "module": "entrainement",
-    "theme": "calcul-mental",
-    "fonctions_ciblees": [
-      "automatisation"
-    ],
-    "palier": 8,
-    "prerequis": [
-      "cm-palier-7"
-    ],
-    "cap_complexite": null,
-    "contenu": {
-      "enonce": "9 × 8",
-      "aide": null
-    },
-    "reponse": {
-      "valeur": 72
-    },
-    "meta": {
-      "auteur": "generation-automatique (tools/generate_items.py)",
-      "date_creation": "2026-09-03",
-      "relecture_ortho": {
-        "statut": "a_revoir"
-      }
-    }
-  },
-  {
-    "id": "cm-8-8x10",
-    "type": "production",
-    "module": "entrainement",
-    "theme": "calcul-mental",
-    "fonctions_ciblees": [
-      "automatisation"
-    ],
-    "palier": 8,
-    "prerequis": [
-      "cm-palier-7"
-    ],
-    "cap_complexite": null,
-    "contenu": {
-      "enonce": "8 × 10",
-      "aide": null
-    },
-    "reponse": {
-      "valeur": 80
-    },
-    "meta": {
-      "auteur": "generation-automatique (tools/generate_items.py)",
-      "date_creation": "2026-09-03",
-      "relecture_ortho": {
-        "statut": "a_revoir"
-      }
-    }
-  },
-  {
-    "id": "cm-8-10x8",
-    "type": "production",
-    "module": "entrainement",
-    "theme": "calcul-mental",
-    "fonctions_ciblees": [
-      "automatisation"
-    ],
-    "palier": 8,
-    "prerequis": [
-      "cm-palier-7"
-    ],
-    "cap_complexite": null,
-    "contenu": {
-      "enonce": "10 × 8",
-      "aide": null
-    },
-    "reponse": {
-      "valeur": 80
-    },
-    "meta": {
-      "auteur": "generation-automatique (tools/generate_items.py)",
-      "date_creation": "2026-09-03",
+      "date_creation": "2026-09-26",
       "relecture_ortho": {
         "statut": "a_revoir"
       }

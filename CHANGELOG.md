@@ -2,6 +2,18 @@
 
 Format : [date] — [périmètre] — description. Les retours informels de l'orthophoniste sont journalisés ici, sans caution clinique.
 
+## 2026-09-26 · Calcul mental : progression refondue (plus de tables de 1 ni de 10)
+
+Demande : « inutile de faire la table des 10 et des 1 — réfléchis à une approche plus pédagogique ou clinique ».
+
+- **Pourquoi c'était inutile** : × 1 et × 10 ne sont pas des faits à automatiser mais des **règles** ; les paliers couvraient en outre chaque table dans les deux sens (doublons commutatifs) et posaient un produit nu (« 2 × 1 »), forme scolaire peu utile à un adulte.
+- **Nouvelle progression (9 paliers, 157 items)** : compléments dans 10 → doubles et presque-doubles → additions puis soustractions dans 20 → compléments à 100 → multiplications utiles (× 2 à × 5) → deux opérations enchaînées → argent (totaux, rendu) → quantités et durées. Les énoncés sont des questions naturelles.
+- **Stratégies enseignées** : aide repliée sur les paliers concernés (le moyen, jamais le résultat) et consigne de méthode au palier des deux opérations.
+- **Contrôle indépendant** : le validateur relit chaque énoncé et **recalcule la réponse** (opérations, compléments, montants) — il a immédiatement attrapé une erreur de génération réelle (« un article à 12 €, payé avec 10 € » → −2).
+- **Identifiants neufs (`cm2-`)** : le contenu revu n'hérite pas des états de révision de l'ancien.
+- **ADR-011** écrit ; protocoles, spec du module et README du thème mis à jour.
+- **Contrôles** — 861 items / 0 erreur ; 162 tests.
+
 ## 2026-09-26 · Montants : « 180 € » reconnu pour « 180 euros »
 
 Signalement : au thème méthodes, une réponse dictée « 180 € » n'était pas reconnue pour l'attente « 180 euros » (et la dictée peut aussi rendre « cent quatre-vingts euros »).

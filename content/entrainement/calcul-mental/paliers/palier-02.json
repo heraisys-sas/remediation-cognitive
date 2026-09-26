@@ -1,11 +1,12 @@
 [
   {
-    "id": "cm-5-5x1",
+    "id": "cm2-2-01",
     "type": "production",
     "module": "entrainement",
     "theme": "calcul-mental",
     "fonctions_ciblees": [
-      "automatisation"
+      "automatisation",
+      "flexibilite"
     ],
     "palier": 2,
     "prerequis": [
@@ -13,27 +14,28 @@
     ],
     "cap_complexite": null,
     "contenu": {
-      "enonce": "5 × 1",
-      "aide": null
+      "enonce": "Combien font 5 + 6 ?",
+      "aide": "Un presque-double, c'est le double plus un : 7 + 8 = 7 + 7 + 1."
     },
     "reponse": {
-      "valeur": 5
+      "valeur": 11
     },
     "meta": {
       "auteur": "generation-automatique (tools/generate_items.py)",
-      "date_creation": "2026-09-03",
+      "date_creation": "2026-09-26",
       "relecture_ortho": {
         "statut": "a_revoir"
       }
     }
   },
   {
-    "id": "cm-5-1x5",
+    "id": "cm2-2-02",
     "type": "production",
     "module": "entrainement",
     "theme": "calcul-mental",
     "fonctions_ciblees": [
-      "automatisation"
+      "automatisation",
+      "flexibilite"
     ],
     "palier": 2,
     "prerequis": [
@@ -41,27 +43,28 @@
     ],
     "cap_complexite": null,
     "contenu": {
-      "enonce": "1 × 5",
-      "aide": null
+      "enonce": "Combien font 6 + 7 ?",
+      "aide": "Un presque-double, c'est le double plus un : 7 + 8 = 7 + 7 + 1."
     },
     "reponse": {
-      "valeur": 5
+      "valeur": 13
     },
     "meta": {
       "auteur": "generation-automatique (tools/generate_items.py)",
-      "date_creation": "2026-09-03",
+      "date_creation": "2026-09-26",
       "relecture_ortho": {
         "statut": "a_revoir"
       }
     }
   },
   {
-    "id": "cm-5-5x2",
+    "id": "cm2-2-03",
     "type": "production",
     "module": "entrainement",
     "theme": "calcul-mental",
     "fonctions_ciblees": [
-      "automatisation"
+      "automatisation",
+      "flexibilite"
     ],
     "palier": 2,
     "prerequis": [
@@ -69,27 +72,28 @@
     ],
     "cap_complexite": null,
     "contenu": {
-      "enonce": "5 × 2",
-      "aide": null
+      "enonce": "Combien font 5 + 5 ?",
+      "aide": "Un presque-double, c'est le double plus un : 7 + 8 = 7 + 7 + 1."
     },
     "reponse": {
       "valeur": 10
     },
     "meta": {
       "auteur": "generation-automatique (tools/generate_items.py)",
-      "date_creation": "2026-09-03",
+      "date_creation": "2026-09-26",
       "relecture_ortho": {
         "statut": "a_revoir"
       }
     }
   },
   {
-    "id": "cm-5-2x5",
+    "id": "cm2-2-04",
     "type": "production",
     "module": "entrainement",
     "theme": "calcul-mental",
     "fonctions_ciblees": [
-      "automatisation"
+      "automatisation",
+      "flexibilite"
     ],
     "palier": 2,
     "prerequis": [
@@ -97,27 +101,28 @@
     ],
     "cap_complexite": null,
     "contenu": {
-      "enonce": "2 × 5",
-      "aide": null
+      "enonce": "Combien font 8 + 9 ?",
+      "aide": "Un presque-double, c'est le double plus un : 7 + 8 = 7 + 7 + 1."
     },
     "reponse": {
-      "valeur": 10
+      "valeur": 17
     },
     "meta": {
       "auteur": "generation-automatique (tools/generate_items.py)",
-      "date_creation": "2026-09-03",
+      "date_creation": "2026-09-26",
       "relecture_ortho": {
         "statut": "a_revoir"
       }
     }
   },
   {
-    "id": "cm-5-5x3",
+    "id": "cm2-2-05",
     "type": "production",
     "module": "entrainement",
     "theme": "calcul-mental",
     "fonctions_ciblees": [
-      "automatisation"
+      "automatisation",
+      "flexibilite"
     ],
     "palier": 2,
     "prerequis": [
@@ -125,407 +130,276 @@
     ],
     "cap_complexite": null,
     "contenu": {
-      "enonce": "5 × 3",
-      "aide": null
+      "enonce": "Combien font 9 + 9 ?",
+      "aide": "Un presque-double, c'est le double plus un : 7 + 8 = 7 + 7 + 1."
+    },
+    "reponse": {
+      "valeur": 18
+    },
+    "meta": {
+      "auteur": "generation-automatique (tools/generate_items.py)",
+      "date_creation": "2026-09-26",
+      "relecture_ortho": {
+        "statut": "a_revoir"
+      }
+    }
+  },
+  {
+    "id": "cm2-2-06",
+    "type": "production",
+    "module": "entrainement",
+    "theme": "calcul-mental",
+    "fonctions_ciblees": [
+      "automatisation",
+      "flexibilite"
+    ],
+    "palier": 2,
+    "prerequis": [
+      "cm-palier-1"
+    ],
+    "cap_complexite": null,
+    "contenu": {
+      "enonce": "Combien font 4 + 4 ?",
+      "aide": "Un presque-double, c'est le double plus un : 7 + 8 = 7 + 7 + 1."
+    },
+    "reponse": {
+      "valeur": 8
+    },
+    "meta": {
+      "auteur": "generation-automatique (tools/generate_items.py)",
+      "date_creation": "2026-09-26",
+      "relecture_ortho": {
+        "statut": "a_revoir"
+      }
+    }
+  },
+  {
+    "id": "cm2-2-07",
+    "type": "production",
+    "module": "entrainement",
+    "theme": "calcul-mental",
+    "fonctions_ciblees": [
+      "automatisation",
+      "flexibilite"
+    ],
+    "palier": 2,
+    "prerequis": [
+      "cm-palier-1"
+    ],
+    "cap_complexite": null,
+    "contenu": {
+      "enonce": "Combien font 8 + 8 ?",
+      "aide": "Un presque-double, c'est le double plus un : 7 + 8 = 7 + 7 + 1."
+    },
+    "reponse": {
+      "valeur": 16
+    },
+    "meta": {
+      "auteur": "generation-automatique (tools/generate_items.py)",
+      "date_creation": "2026-09-26",
+      "relecture_ortho": {
+        "statut": "a_revoir"
+      }
+    }
+  },
+  {
+    "id": "cm2-2-08",
+    "type": "production",
+    "module": "entrainement",
+    "theme": "calcul-mental",
+    "fonctions_ciblees": [
+      "automatisation",
+      "flexibilite"
+    ],
+    "palier": 2,
+    "prerequis": [
+      "cm-palier-1"
+    ],
+    "cap_complexite": null,
+    "contenu": {
+      "enonce": "Combien font 3 + 4 ?",
+      "aide": "Un presque-double, c'est le double plus un : 7 + 8 = 7 + 7 + 1."
+    },
+    "reponse": {
+      "valeur": 7
+    },
+    "meta": {
+      "auteur": "generation-automatique (tools/generate_items.py)",
+      "date_creation": "2026-09-26",
+      "relecture_ortho": {
+        "statut": "a_revoir"
+      }
+    }
+  },
+  {
+    "id": "cm2-2-09",
+    "type": "production",
+    "module": "entrainement",
+    "theme": "calcul-mental",
+    "fonctions_ciblees": [
+      "automatisation",
+      "flexibilite"
+    ],
+    "palier": 2,
+    "prerequis": [
+      "cm-palier-1"
+    ],
+    "cap_complexite": null,
+    "contenu": {
+      "enonce": "Combien font 6 + 6 ?",
+      "aide": "Un presque-double, c'est le double plus un : 7 + 8 = 7 + 7 + 1."
+    },
+    "reponse": {
+      "valeur": 12
+    },
+    "meta": {
+      "auteur": "generation-automatique (tools/generate_items.py)",
+      "date_creation": "2026-09-26",
+      "relecture_ortho": {
+        "statut": "a_revoir"
+      }
+    }
+  },
+  {
+    "id": "cm2-2-10",
+    "type": "production",
+    "module": "entrainement",
+    "theme": "calcul-mental",
+    "fonctions_ciblees": [
+      "automatisation",
+      "flexibilite"
+    ],
+    "palier": 2,
+    "prerequis": [
+      "cm-palier-1"
+    ],
+    "cap_complexite": null,
+    "contenu": {
+      "enonce": "Combien font 4 + 5 ?",
+      "aide": "Un presque-double, c'est le double plus un : 7 + 8 = 7 + 7 + 1."
+    },
+    "reponse": {
+      "valeur": 9
+    },
+    "meta": {
+      "auteur": "generation-automatique (tools/generate_items.py)",
+      "date_creation": "2026-09-26",
+      "relecture_ortho": {
+        "statut": "a_revoir"
+      }
+    }
+  },
+  {
+    "id": "cm2-2-11",
+    "type": "production",
+    "module": "entrainement",
+    "theme": "calcul-mental",
+    "fonctions_ciblees": [
+      "automatisation",
+      "flexibilite"
+    ],
+    "palier": 2,
+    "prerequis": [
+      "cm-palier-1"
+    ],
+    "cap_complexite": null,
+    "contenu": {
+      "enonce": "Combien font 7 + 7 ?",
+      "aide": "Un presque-double, c'est le double plus un : 7 + 8 = 7 + 7 + 1."
+    },
+    "reponse": {
+      "valeur": 14
+    },
+    "meta": {
+      "auteur": "generation-automatique (tools/generate_items.py)",
+      "date_creation": "2026-09-26",
+      "relecture_ortho": {
+        "statut": "a_revoir"
+      }
+    }
+  },
+  {
+    "id": "cm2-2-12",
+    "type": "production",
+    "module": "entrainement",
+    "theme": "calcul-mental",
+    "fonctions_ciblees": [
+      "automatisation",
+      "flexibilite"
+    ],
+    "palier": 2,
+    "prerequis": [
+      "cm-palier-1"
+    ],
+    "cap_complexite": null,
+    "contenu": {
+      "enonce": "Combien font 9 + 10 ?",
+      "aide": "Un presque-double, c'est le double plus un : 7 + 8 = 7 + 7 + 1."
+    },
+    "reponse": {
+      "valeur": 19
+    },
+    "meta": {
+      "auteur": "generation-automatique (tools/generate_items.py)",
+      "date_creation": "2026-09-26",
+      "relecture_ortho": {
+        "statut": "a_revoir"
+      }
+    }
+  },
+  {
+    "id": "cm2-2-13",
+    "type": "production",
+    "module": "entrainement",
+    "theme": "calcul-mental",
+    "fonctions_ciblees": [
+      "automatisation",
+      "flexibilite"
+    ],
+    "palier": 2,
+    "prerequis": [
+      "cm-palier-1"
+    ],
+    "cap_complexite": null,
+    "contenu": {
+      "enonce": "Combien font 3 + 3 ?",
+      "aide": "Un presque-double, c'est le double plus un : 7 + 8 = 7 + 7 + 1."
+    },
+    "reponse": {
+      "valeur": 6
+    },
+    "meta": {
+      "auteur": "generation-automatique (tools/generate_items.py)",
+      "date_creation": "2026-09-26",
+      "relecture_ortho": {
+        "statut": "a_revoir"
+      }
+    }
+  },
+  {
+    "id": "cm2-2-14",
+    "type": "production",
+    "module": "entrainement",
+    "theme": "calcul-mental",
+    "fonctions_ciblees": [
+      "automatisation",
+      "flexibilite"
+    ],
+    "palier": 2,
+    "prerequis": [
+      "cm-palier-1"
+    ],
+    "cap_complexite": null,
+    "contenu": {
+      "enonce": "Combien font 7 + 8 ?",
+      "aide": "Un presque-double, c'est le double plus un : 7 + 8 = 7 + 7 + 1."
     },
     "reponse": {
       "valeur": 15
     },
     "meta": {
       "auteur": "generation-automatique (tools/generate_items.py)",
-      "date_creation": "2026-09-03",
-      "relecture_ortho": {
-        "statut": "a_revoir"
-      }
-    }
-  },
-  {
-    "id": "cm-5-3x5",
-    "type": "production",
-    "module": "entrainement",
-    "theme": "calcul-mental",
-    "fonctions_ciblees": [
-      "automatisation"
-    ],
-    "palier": 2,
-    "prerequis": [
-      "cm-palier-1"
-    ],
-    "cap_complexite": null,
-    "contenu": {
-      "enonce": "3 × 5",
-      "aide": null
-    },
-    "reponse": {
-      "valeur": 15
-    },
-    "meta": {
-      "auteur": "generation-automatique (tools/generate_items.py)",
-      "date_creation": "2026-09-03",
-      "relecture_ortho": {
-        "statut": "a_revoir"
-      }
-    }
-  },
-  {
-    "id": "cm-5-5x4",
-    "type": "production",
-    "module": "entrainement",
-    "theme": "calcul-mental",
-    "fonctions_ciblees": [
-      "automatisation"
-    ],
-    "palier": 2,
-    "prerequis": [
-      "cm-palier-1"
-    ],
-    "cap_complexite": null,
-    "contenu": {
-      "enonce": "5 × 4",
-      "aide": null
-    },
-    "reponse": {
-      "valeur": 20
-    },
-    "meta": {
-      "auteur": "generation-automatique (tools/generate_items.py)",
-      "date_creation": "2026-09-03",
-      "relecture_ortho": {
-        "statut": "a_revoir"
-      }
-    }
-  },
-  {
-    "id": "cm-5-4x5",
-    "type": "production",
-    "module": "entrainement",
-    "theme": "calcul-mental",
-    "fonctions_ciblees": [
-      "automatisation"
-    ],
-    "palier": 2,
-    "prerequis": [
-      "cm-palier-1"
-    ],
-    "cap_complexite": null,
-    "contenu": {
-      "enonce": "4 × 5",
-      "aide": null
-    },
-    "reponse": {
-      "valeur": 20
-    },
-    "meta": {
-      "auteur": "generation-automatique (tools/generate_items.py)",
-      "date_creation": "2026-09-03",
-      "relecture_ortho": {
-        "statut": "a_revoir"
-      }
-    }
-  },
-  {
-    "id": "cm-5-5x5",
-    "type": "production",
-    "module": "entrainement",
-    "theme": "calcul-mental",
-    "fonctions_ciblees": [
-      "automatisation"
-    ],
-    "palier": 2,
-    "prerequis": [
-      "cm-palier-1"
-    ],
-    "cap_complexite": null,
-    "contenu": {
-      "enonce": "5 × 5",
-      "aide": null
-    },
-    "reponse": {
-      "valeur": 25
-    },
-    "meta": {
-      "auteur": "generation-automatique (tools/generate_items.py)",
-      "date_creation": "2026-09-03",
-      "relecture_ortho": {
-        "statut": "a_revoir"
-      }
-    }
-  },
-  {
-    "id": "cm-5-5x6",
-    "type": "production",
-    "module": "entrainement",
-    "theme": "calcul-mental",
-    "fonctions_ciblees": [
-      "automatisation"
-    ],
-    "palier": 2,
-    "prerequis": [
-      "cm-palier-1"
-    ],
-    "cap_complexite": null,
-    "contenu": {
-      "enonce": "5 × 6",
-      "aide": null
-    },
-    "reponse": {
-      "valeur": 30
-    },
-    "meta": {
-      "auteur": "generation-automatique (tools/generate_items.py)",
-      "date_creation": "2026-09-03",
-      "relecture_ortho": {
-        "statut": "a_revoir"
-      }
-    }
-  },
-  {
-    "id": "cm-5-6x5",
-    "type": "production",
-    "module": "entrainement",
-    "theme": "calcul-mental",
-    "fonctions_ciblees": [
-      "automatisation"
-    ],
-    "palier": 2,
-    "prerequis": [
-      "cm-palier-1"
-    ],
-    "cap_complexite": null,
-    "contenu": {
-      "enonce": "6 × 5",
-      "aide": null
-    },
-    "reponse": {
-      "valeur": 30
-    },
-    "meta": {
-      "auteur": "generation-automatique (tools/generate_items.py)",
-      "date_creation": "2026-09-03",
-      "relecture_ortho": {
-        "statut": "a_revoir"
-      }
-    }
-  },
-  {
-    "id": "cm-5-5x7",
-    "type": "production",
-    "module": "entrainement",
-    "theme": "calcul-mental",
-    "fonctions_ciblees": [
-      "automatisation"
-    ],
-    "palier": 2,
-    "prerequis": [
-      "cm-palier-1"
-    ],
-    "cap_complexite": null,
-    "contenu": {
-      "enonce": "5 × 7",
-      "aide": null
-    },
-    "reponse": {
-      "valeur": 35
-    },
-    "meta": {
-      "auteur": "generation-automatique (tools/generate_items.py)",
-      "date_creation": "2026-09-03",
-      "relecture_ortho": {
-        "statut": "a_revoir"
-      }
-    }
-  },
-  {
-    "id": "cm-5-7x5",
-    "type": "production",
-    "module": "entrainement",
-    "theme": "calcul-mental",
-    "fonctions_ciblees": [
-      "automatisation"
-    ],
-    "palier": 2,
-    "prerequis": [
-      "cm-palier-1"
-    ],
-    "cap_complexite": null,
-    "contenu": {
-      "enonce": "7 × 5",
-      "aide": null
-    },
-    "reponse": {
-      "valeur": 35
-    },
-    "meta": {
-      "auteur": "generation-automatique (tools/generate_items.py)",
-      "date_creation": "2026-09-03",
-      "relecture_ortho": {
-        "statut": "a_revoir"
-      }
-    }
-  },
-  {
-    "id": "cm-5-5x8",
-    "type": "production",
-    "module": "entrainement",
-    "theme": "calcul-mental",
-    "fonctions_ciblees": [
-      "automatisation"
-    ],
-    "palier": 2,
-    "prerequis": [
-      "cm-palier-1"
-    ],
-    "cap_complexite": null,
-    "contenu": {
-      "enonce": "5 × 8",
-      "aide": null
-    },
-    "reponse": {
-      "valeur": 40
-    },
-    "meta": {
-      "auteur": "generation-automatique (tools/generate_items.py)",
-      "date_creation": "2026-09-03",
-      "relecture_ortho": {
-        "statut": "a_revoir"
-      }
-    }
-  },
-  {
-    "id": "cm-5-8x5",
-    "type": "production",
-    "module": "entrainement",
-    "theme": "calcul-mental",
-    "fonctions_ciblees": [
-      "automatisation"
-    ],
-    "palier": 2,
-    "prerequis": [
-      "cm-palier-1"
-    ],
-    "cap_complexite": null,
-    "contenu": {
-      "enonce": "8 × 5",
-      "aide": null
-    },
-    "reponse": {
-      "valeur": 40
-    },
-    "meta": {
-      "auteur": "generation-automatique (tools/generate_items.py)",
-      "date_creation": "2026-09-03",
-      "relecture_ortho": {
-        "statut": "a_revoir"
-      }
-    }
-  },
-  {
-    "id": "cm-5-5x9",
-    "type": "production",
-    "module": "entrainement",
-    "theme": "calcul-mental",
-    "fonctions_ciblees": [
-      "automatisation"
-    ],
-    "palier": 2,
-    "prerequis": [
-      "cm-palier-1"
-    ],
-    "cap_complexite": null,
-    "contenu": {
-      "enonce": "5 × 9",
-      "aide": null
-    },
-    "reponse": {
-      "valeur": 45
-    },
-    "meta": {
-      "auteur": "generation-automatique (tools/generate_items.py)",
-      "date_creation": "2026-09-03",
-      "relecture_ortho": {
-        "statut": "a_revoir"
-      }
-    }
-  },
-  {
-    "id": "cm-5-9x5",
-    "type": "production",
-    "module": "entrainement",
-    "theme": "calcul-mental",
-    "fonctions_ciblees": [
-      "automatisation"
-    ],
-    "palier": 2,
-    "prerequis": [
-      "cm-palier-1"
-    ],
-    "cap_complexite": null,
-    "contenu": {
-      "enonce": "9 × 5",
-      "aide": null
-    },
-    "reponse": {
-      "valeur": 45
-    },
-    "meta": {
-      "auteur": "generation-automatique (tools/generate_items.py)",
-      "date_creation": "2026-09-03",
-      "relecture_ortho": {
-        "statut": "a_revoir"
-      }
-    }
-  },
-  {
-    "id": "cm-5-5x10",
-    "type": "production",
-    "module": "entrainement",
-    "theme": "calcul-mental",
-    "fonctions_ciblees": [
-      "automatisation"
-    ],
-    "palier": 2,
-    "prerequis": [
-      "cm-palier-1"
-    ],
-    "cap_complexite": null,
-    "contenu": {
-      "enonce": "5 × 10",
-      "aide": null
-    },
-    "reponse": {
-      "valeur": 50
-    },
-    "meta": {
-      "auteur": "generation-automatique (tools/generate_items.py)",
-      "date_creation": "2026-09-03",
-      "relecture_ortho": {
-        "statut": "a_revoir"
-      }
-    }
-  },
-  {
-    "id": "cm-5-10x5",
-    "type": "production",
-    "module": "entrainement",
-    "theme": "calcul-mental",
-    "fonctions_ciblees": [
-      "automatisation"
-    ],
-    "palier": 2,
-    "prerequis": [
-      "cm-palier-1"
-    ],
-    "cap_complexite": null,
-    "contenu": {
-      "enonce": "10 × 5",
-      "aide": null
-    },
-    "reponse": {
-      "valeur": 50
-    },
-    "meta": {
-      "auteur": "generation-automatique (tools/generate_items.py)",
-      "date_creation": "2026-09-03",
+      "date_creation": "2026-09-26",
       "relecture_ortho": {
         "statut": "a_revoir"
       }

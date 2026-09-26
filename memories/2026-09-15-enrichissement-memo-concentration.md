@@ -32,3 +32,22 @@ Améliorer le logiciel avec des entraînements issus des techniques établies �
 - **Vérification indépendante des réponses** : `tools/verifier_reponses.py` (nouveau) recalcule la réponse de chaque item depuis son énoncé — 497 items, 0 anomalie (séries à solution unique, bornes respectées, identifiants uniques). Contrôle à relancer après toute régénération de contenu.
 - **Délégation indisponible** : les envois d'agents acceptés en début de session ont tous échoué à l'exécution (réponse 403 du fournisseur, 0 jeton produit) ; les lots livrés ont donc été relus et complétés à la main, et la vérification des réponses a été faite directement par script.
 - **Demandes produit ouvertes** : exercices de récupération indicée (rappel d'un souvenir présent mais inaccessible) et exercices de remise en lien social après isolement prolongé — note d'orientation dans `DELIVERY/` (hors dépôt).
+
+## 2026-09-26 — calcul mental : refonte de la progression
+
+Demande : « inutile de faire la table des 10 et des 1 ; réfléchis à une approche plus
+pédagogique ou clinique ».
+
+- Constat : 9 paliers = 9 tables, chacune dans les deux sens (doublons commutatifs), énoncé
+  réduit à un produit nu (« 2 × 1 »). Ni × 1 ni × 10 ne sont des faits à automatiser : ce sont
+  des règles ; les driller ne construit rien.
+- Nouvelle progression par familles : faits de base (compléments dans 10, doubles, +/- dans 20)
+  → repères (compléments à 100, × 2 à × 5) → mémoire de travail (deux opérations) → numératie
+  du quotidien (argent, quantités, durées). Énoncés en questions naturelles, aides de stratégie
+  repliées, consigne de méthode au palier des deux opérations.
+- Identifiants neufs (`cm2-`) pour ne pas hériter des états FSRS de l'ancien contenu (règle de
+  versionnage). 157 items, 9 paliers.
+- Ajout d'un **contrôle par recalcul** dans le validateur : il relit l'énoncé et refait le calcul.
+  Il a attrapé une erreur réelle dès la première exécution (« article à 12 €, payé avec 10 € »
+  → −2). Leçon confirmée : un contrôle qui ne partage pas le code du générateur trouve ce que
+  l'auteur ne voit pas.

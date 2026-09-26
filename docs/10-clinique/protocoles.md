@@ -29,7 +29,7 @@ Trois choses ne bougent pas, quel que soit le thème :
 *À revoir avec l'orthophoniste : si des séances de déduction plus longues sont utiles pour
 certains profils, c'est une exception à documenter ici explicitement (durée, profil, justification).*
 
-## Progression (Kumon-like)
+## Progression par paliers fins
 
 - Critère de maîtrise par défaut : **90 % de réussite sur 3 sessions consécutives** (paramétrable).
 - Entrée de palier en **mode errorless** ; bascule vers l'essai-erreur guidé une fois la fatigabilité réduite (paramètre modifiable avec garde-fou).

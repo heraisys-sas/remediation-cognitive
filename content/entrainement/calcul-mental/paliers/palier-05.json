@@ -1,11 +1,12 @@
 [
   {
-    "id": "cm-4-4x1",
+    "id": "cm2-5-01",
     "type": "production",
     "module": "entrainement",
     "theme": "calcul-mental",
     "fonctions_ciblees": [
-      "automatisation"
+      "automatisation",
+      "memoire-travail"
     ],
     "palier": 5,
     "prerequis": [
@@ -13,27 +14,28 @@
     ],
     "cap_complexite": null,
     "contenu": {
-      "enonce": "4 × 1",
-      "aide": null
+      "enonce": "Combien manque-t-il à 25 pour faire 100 ?",
+      "aide": "Pour aller à 100, complète d'abord à la dizaine suivante."
     },
     "reponse": {
-      "valeur": 4
+      "valeur": 75
     },
     "meta": {
       "auteur": "generation-automatique (tools/generate_items.py)",
-      "date_creation": "2026-09-03",
+      "date_creation": "2026-09-26",
       "relecture_ortho": {
         "statut": "a_revoir"
       }
     }
   },
   {
-    "id": "cm-4-1x4",
+    "id": "cm2-5-02",
     "type": "production",
     "module": "entrainement",
     "theme": "calcul-mental",
     "fonctions_ciblees": [
-      "automatisation"
+      "automatisation",
+      "memoire-travail"
     ],
     "palier": 5,
     "prerequis": [
@@ -41,27 +43,28 @@
     ],
     "cap_complexite": null,
     "contenu": {
-      "enonce": "1 × 4",
-      "aide": null
+      "enonce": "Combien manque-t-il à 85 pour faire 100 ?",
+      "aide": "Pour aller à 100, complète d'abord à la dizaine suivante."
     },
     "reponse": {
-      "valeur": 4
+      "valeur": 15
     },
     "meta": {
       "auteur": "generation-automatique (tools/generate_items.py)",
-      "date_creation": "2026-09-03",
+      "date_creation": "2026-09-26",
       "relecture_ortho": {
         "statut": "a_revoir"
       }
     }
   },
   {
-    "id": "cm-4-4x2",
+    "id": "cm2-5-03",
     "type": "production",
     "module": "entrainement",
     "theme": "calcul-mental",
     "fonctions_ciblees": [
-      "automatisation"
+      "automatisation",
+      "memoire-travail"
     ],
     "palier": 5,
     "prerequis": [
@@ -69,27 +72,28 @@
     ],
     "cap_complexite": null,
     "contenu": {
-      "enonce": "4 × 2",
-      "aide": null
+      "enonce": "Combien manque-t-il à 15 pour faire 100 ?",
+      "aide": "Pour aller à 100, complète d'abord à la dizaine suivante."
     },
     "reponse": {
-      "valeur": 8
+      "valeur": 85
     },
     "meta": {
       "auteur": "generation-automatique (tools/generate_items.py)",
-      "date_creation": "2026-09-03",
+      "date_creation": "2026-09-26",
       "relecture_ortho": {
         "statut": "a_revoir"
       }
     }
   },
   {
-    "id": "cm-4-2x4",
+    "id": "cm2-5-04",
     "type": "production",
     "module": "entrainement",
     "theme": "calcul-mental",
     "fonctions_ciblees": [
-      "automatisation"
+      "automatisation",
+      "memoire-travail"
     ],
     "palier": 5,
     "prerequis": [
@@ -97,27 +101,28 @@
     ],
     "cap_complexite": null,
     "contenu": {
-      "enonce": "2 × 4",
-      "aide": null
+      "enonce": "Combien manque-t-il à 40 pour faire 100 ?",
+      "aide": "Pour aller à 100, complète d'abord à la dizaine suivante."
     },
     "reponse": {
-      "valeur": 8
+      "valeur": 60
     },
     "meta": {
       "auteur": "generation-automatique (tools/generate_items.py)",
-      "date_creation": "2026-09-03",
+      "date_creation": "2026-09-26",
       "relecture_ortho": {
         "statut": "a_revoir"
       }
     }
   },
   {
-    "id": "cm-4-4x3",
+    "id": "cm2-5-05",
     "type": "production",
     "module": "entrainement",
     "theme": "calcul-mental",
     "fonctions_ciblees": [
-      "automatisation"
+      "automatisation",
+      "memoire-travail"
     ],
     "palier": 5,
     "prerequis": [
@@ -125,27 +130,28 @@
     ],
     "cap_complexite": null,
     "contenu": {
-      "enonce": "4 × 3",
-      "aide": null
+      "enonce": "Combien manque-t-il à 10 pour faire 100 ?",
+      "aide": "Pour aller à 100, complète d'abord à la dizaine suivante."
     },
     "reponse": {
-      "valeur": 12
+      "valeur": 90
     },
     "meta": {
       "auteur": "generation-automatique (tools/generate_items.py)",
-      "date_creation": "2026-09-03",
+      "date_creation": "2026-09-26",
       "relecture_ortho": {
         "statut": "a_revoir"
       }
     }
   },
   {
-    "id": "cm-4-3x4",
+    "id": "cm2-5-06",
     "type": "production",
     "module": "entrainement",
     "theme": "calcul-mental",
     "fonctions_ciblees": [
-      "automatisation"
+      "automatisation",
+      "memoire-travail"
     ],
     "palier": 5,
     "prerequis": [
@@ -153,27 +159,28 @@
     ],
     "cap_complexite": null,
     "contenu": {
-      "enonce": "3 × 4",
-      "aide": null
+      "enonce": "Combien manque-t-il à 30 pour faire 100 ?",
+      "aide": "Pour aller à 100, complète d'abord à la dizaine suivante."
     },
     "reponse": {
-      "valeur": 12
+      "valeur": 70
     },
     "meta": {
       "auteur": "generation-automatique (tools/generate_items.py)",
-      "date_creation": "2026-09-03",
+      "date_creation": "2026-09-26",
       "relecture_ortho": {
         "statut": "a_revoir"
       }
     }
   },
   {
-    "id": "cm-4-4x4",
+    "id": "cm2-5-07",
     "type": "production",
     "module": "entrainement",
     "theme": "calcul-mental",
     "fonctions_ciblees": [
-      "automatisation"
+      "automatisation",
+      "memoire-travail"
     ],
     "palier": 5,
     "prerequis": [
@@ -181,55 +188,28 @@
     ],
     "cap_complexite": null,
     "contenu": {
-      "enonce": "4 × 4",
-      "aide": null
-    },
-    "reponse": {
-      "valeur": 16
-    },
-    "meta": {
-      "auteur": "generation-automatique (tools/generate_items.py)",
-      "date_creation": "2026-09-03",
-      "relecture_ortho": {
-        "statut": "a_revoir"
-      }
-    }
-  },
-  {
-    "id": "cm-4-4x5",
-    "type": "production",
-    "module": "entrainement",
-    "theme": "calcul-mental",
-    "fonctions_ciblees": [
-      "automatisation"
-    ],
-    "palier": 5,
-    "prerequis": [
-      "cm-palier-4"
-    ],
-    "cap_complexite": null,
-    "contenu": {
-      "enonce": "4 × 5",
-      "aide": null
+      "enonce": "Combien manque-t-il à 80 pour faire 100 ?",
+      "aide": "Pour aller à 100, complète d'abord à la dizaine suivante."
     },
     "reponse": {
       "valeur": 20
     },
     "meta": {
       "auteur": "generation-automatique (tools/generate_items.py)",
-      "date_creation": "2026-09-03",
+      "date_creation": "2026-09-26",
       "relecture_ortho": {
         "statut": "a_revoir"
       }
     }
   },
   {
-    "id": "cm-4-5x4",
+    "id": "cm2-5-08",
     "type": "production",
     "module": "entrainement",
     "theme": "calcul-mental",
     "fonctions_ciblees": [
-      "automatisation"
+      "automatisation",
+      "memoire-travail"
     ],
     "palier": 5,
     "prerequis": [
@@ -237,27 +217,28 @@
     ],
     "cap_complexite": null,
     "contenu": {
-      "enonce": "5 × 4",
-      "aide": null
+      "enonce": "Combien manque-t-il à 70 pour faire 100 ?",
+      "aide": "Pour aller à 100, complète d'abord à la dizaine suivante."
     },
     "reponse": {
-      "valeur": 20
+      "valeur": 30
     },
     "meta": {
       "auteur": "generation-automatique (tools/generate_items.py)",
-      "date_creation": "2026-09-03",
+      "date_creation": "2026-09-26",
       "relecture_ortho": {
         "statut": "a_revoir"
       }
     }
   },
   {
-    "id": "cm-4-4x6",
+    "id": "cm2-5-09",
     "type": "production",
     "module": "entrainement",
     "theme": "calcul-mental",
     "fonctions_ciblees": [
-      "automatisation"
+      "automatisation",
+      "memoire-travail"
     ],
     "palier": 5,
     "prerequis": [
@@ -265,27 +246,28 @@
     ],
     "cap_complexite": null,
     "contenu": {
-      "enonce": "4 × 6",
-      "aide": null
+      "enonce": "Combien manque-t-il à 50 pour faire 100 ?",
+      "aide": "Pour aller à 100, complète d'abord à la dizaine suivante."
     },
     "reponse": {
-      "valeur": 24
+      "valeur": 50
     },
     "meta": {
       "auteur": "generation-automatique (tools/generate_items.py)",
-      "date_creation": "2026-09-03",
+      "date_creation": "2026-09-26",
       "relecture_ortho": {
         "statut": "a_revoir"
       }
     }
   },
   {
-    "id": "cm-4-6x4",
+    "id": "cm2-5-10",
     "type": "production",
     "module": "entrainement",
     "theme": "calcul-mental",
     "fonctions_ciblees": [
-      "automatisation"
+      "automatisation",
+      "memoire-travail"
     ],
     "palier": 5,
     "prerequis": [
@@ -293,27 +275,28 @@
     ],
     "cap_complexite": null,
     "contenu": {
-      "enonce": "6 × 4",
-      "aide": null
+      "enonce": "Combien manque-t-il à 45 pour faire 100 ?",
+      "aide": "Pour aller à 100, complète d'abord à la dizaine suivante."
     },
     "reponse": {
-      "valeur": 24
+      "valeur": 55
     },
     "meta": {
       "auteur": "generation-automatique (tools/generate_items.py)",
-      "date_creation": "2026-09-03",
+      "date_creation": "2026-09-26",
       "relecture_ortho": {
         "statut": "a_revoir"
       }
     }
   },
   {
-    "id": "cm-4-4x7",
+    "id": "cm2-5-11",
     "type": "production",
     "module": "entrainement",
     "theme": "calcul-mental",
     "fonctions_ciblees": [
-      "automatisation"
+      "automatisation",
+      "memoire-travail"
     ],
     "palier": 5,
     "prerequis": [
@@ -321,27 +304,28 @@
     ],
     "cap_complexite": null,
     "contenu": {
-      "enonce": "4 × 7",
-      "aide": null
+      "enonce": "Combien manque-t-il à 90 pour faire 100 ?",
+      "aide": "Pour aller à 100, complète d'abord à la dizaine suivante."
     },
     "reponse": {
-      "valeur": 28
+      "valeur": 10
     },
     "meta": {
       "auteur": "generation-automatique (tools/generate_items.py)",
-      "date_creation": "2026-09-03",
+      "date_creation": "2026-09-26",
       "relecture_ortho": {
         "statut": "a_revoir"
       }
     }
   },
   {
-    "id": "cm-4-7x4",
+    "id": "cm2-5-12",
     "type": "production",
     "module": "entrainement",
     "theme": "calcul-mental",
     "fonctions_ciblees": [
-      "automatisation"
+      "automatisation",
+      "memoire-travail"
     ],
     "palier": 5,
     "prerequis": [
@@ -349,27 +333,28 @@
     ],
     "cap_complexite": null,
     "contenu": {
-      "enonce": "7 × 4",
-      "aide": null
+      "enonce": "Combien manque-t-il à 35 pour faire 100 ?",
+      "aide": "Pour aller à 100, complète d'abord à la dizaine suivante."
     },
     "reponse": {
-      "valeur": 28
+      "valeur": 65
     },
     "meta": {
       "auteur": "generation-automatique (tools/generate_items.py)",
-      "date_creation": "2026-09-03",
+      "date_creation": "2026-09-26",
       "relecture_ortho": {
         "statut": "a_revoir"
       }
     }
   },
   {
-    "id": "cm-4-4x8",
+    "id": "cm2-5-13",
     "type": "production",
     "module": "entrainement",
     "theme": "calcul-mental",
     "fonctions_ciblees": [
-      "automatisation"
+      "automatisation",
+      "memoire-travail"
     ],
     "palier": 5,
     "prerequis": [
@@ -377,27 +362,28 @@
     ],
     "cap_complexite": null,
     "contenu": {
-      "enonce": "4 × 8",
-      "aide": null
+      "enonce": "Combien manque-t-il à 95 pour faire 100 ?",
+      "aide": "Pour aller à 100, complète d'abord à la dizaine suivante."
     },
     "reponse": {
-      "valeur": 32
+      "valeur": 5
     },
     "meta": {
       "auteur": "generation-automatique (tools/generate_items.py)",
-      "date_creation": "2026-09-03",
+      "date_creation": "2026-09-26",
       "relecture_ortho": {
         "statut": "a_revoir"
       }
     }
   },
   {
-    "id": "cm-4-8x4",
+    "id": "cm2-5-14",
     "type": "production",
     "module": "entrainement",
     "theme": "calcul-mental",
     "fonctions_ciblees": [
-      "automatisation"
+      "automatisation",
+      "memoire-travail"
     ],
     "palier": 5,
     "prerequis": [
@@ -405,27 +391,28 @@
     ],
     "cap_complexite": null,
     "contenu": {
-      "enonce": "8 × 4",
-      "aide": null
+      "enonce": "Combien manque-t-il à 65 pour faire 100 ?",
+      "aide": "Pour aller à 100, complète d'abord à la dizaine suivante."
     },
     "reponse": {
-      "valeur": 32
+      "valeur": 35
     },
     "meta": {
       "auteur": "generation-automatique (tools/generate_items.py)",
-      "date_creation": "2026-09-03",
+      "date_creation": "2026-09-26",
       "relecture_ortho": {
         "statut": "a_revoir"
       }
     }
   },
   {
-    "id": "cm-4-4x9",
+    "id": "cm2-5-15",
     "type": "production",
     "module": "entrainement",
     "theme": "calcul-mental",
     "fonctions_ciblees": [
-      "automatisation"
+      "automatisation",
+      "memoire-travail"
     ],
     "palier": 5,
     "prerequis": [
@@ -433,83 +420,28 @@
     ],
     "cap_complexite": null,
     "contenu": {
-      "enonce": "4 × 9",
-      "aide": null
-    },
-    "reponse": {
-      "valeur": 36
-    },
-    "meta": {
-      "auteur": "generation-automatique (tools/generate_items.py)",
-      "date_creation": "2026-09-03",
-      "relecture_ortho": {
-        "statut": "a_revoir"
-      }
-    }
-  },
-  {
-    "id": "cm-4-9x4",
-    "type": "production",
-    "module": "entrainement",
-    "theme": "calcul-mental",
-    "fonctions_ciblees": [
-      "automatisation"
-    ],
-    "palier": 5,
-    "prerequis": [
-      "cm-palier-4"
-    ],
-    "cap_complexite": null,
-    "contenu": {
-      "enonce": "9 × 4",
-      "aide": null
-    },
-    "reponse": {
-      "valeur": 36
-    },
-    "meta": {
-      "auteur": "generation-automatique (tools/generate_items.py)",
-      "date_creation": "2026-09-03",
-      "relecture_ortho": {
-        "statut": "a_revoir"
-      }
-    }
-  },
-  {
-    "id": "cm-4-4x10",
-    "type": "production",
-    "module": "entrainement",
-    "theme": "calcul-mental",
-    "fonctions_ciblees": [
-      "automatisation"
-    ],
-    "palier": 5,
-    "prerequis": [
-      "cm-palier-4"
-    ],
-    "cap_complexite": null,
-    "contenu": {
-      "enonce": "4 × 10",
-      "aide": null
+      "enonce": "Combien manque-t-il à 60 pour faire 100 ?",
+      "aide": "Pour aller à 100, complète d'abord à la dizaine suivante."
     },
     "reponse": {
       "valeur": 40
     },
     "meta": {
       "auteur": "generation-automatique (tools/generate_items.py)",
-      "date_creation": "2026-09-03",
+      "date_creation": "2026-09-26",
       "relecture_ortho": {
         "statut": "a_revoir"
       }
     }
   },
   {
-    "id": "cm-4-10x4",
+    "id": "cm2-5-16",
     "type": "production",
     "module": "entrainement",
     "theme": "calcul-mental",
     "fonctions_ciblees": [
-      "automatisation"
+      "automatisation",
+      "memoire-travail"
     ],
     "palier": 5,
     "prerequis": [
@@ -517,15 +449,44 @@
     ],
     "cap_complexite": null,
     "contenu": {
-      "enonce": "10 × 4",
-      "aide": null
+      "enonce": "Combien manque-t-il à 55 pour faire 100 ?",
+      "aide": "Pour aller à 100, complète d'abord à la dizaine suivante."
     },
     "reponse": {
-      "valeur": 40
+      "valeur": 45
     },
     "meta": {
       "auteur": "generation-automatique (tools/generate_items.py)",
-      "date_creation": "2026-09-03",
+      "date_creation": "2026-09-26",
+      "relecture_ortho": {
+        "statut": "a_revoir"
+      }
+    }
+  },
+  {
+    "id": "cm2-5-17",
+    "type": "production",
+    "module": "entrainement",
+    "theme": "calcul-mental",
+    "fonctions_ciblees": [
+      "automatisation",
+      "memoire-travail"
+    ],
+    "palier": 5,
+    "prerequis": [
+      "cm-palier-4"
+    ],
+    "cap_complexite": null,
+    "contenu": {
+      "enonce": "Combien manque-t-il à 20 pour faire 100 ?",
+      "aide": "Pour aller à 100, complète d'abord à la dizaine suivante."
+    },
+    "reponse": {
+      "valeur": 80
+    },
+    "meta": {
+      "auteur": "generation-automatique (tools/generate_items.py)",
+      "date_creation": "2026-09-26",
       "relecture_ortho": {
         "statut": "a_revoir"
       }

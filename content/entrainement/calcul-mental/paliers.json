@@ -3,82 +3,82 @@
   "paliers": [
     {
       "id": "cm-palier-1",
-      "table": 2,
+      "description": "Compléments et retraits dans 10 : les faits de base",
       "prerequis": [],
       "fichier": "paliers/palier-01.json",
-      "nb_items": 19
+      "nb_items": 18
     },
     {
       "id": "cm-palier-2",
-      "table": 5,
+      "description": "Doubles et presque-doubles : une stratégie avant le calcul",
       "prerequis": [
         "cm-palier-1"
       ],
       "fichier": "paliers/palier-02.json",
-      "nb_items": 19
+      "nb_items": 14
     },
     {
       "id": "cm-palier-3",
-      "table": 10,
+      "description": "Additions dans 20 : récupération automatique",
       "prerequis": [
         "cm-palier-2"
       ],
       "fichier": "paliers/palier-03.json",
-      "nb_items": 19
+      "nb_items": 18
     },
     {
       "id": "cm-palier-4",
-      "table": 3,
+      "description": "Soustractions dans 20 : récupération automatique",
       "prerequis": [
         "cm-palier-3"
       ],
       "fichier": "paliers/palier-04.json",
-      "nb_items": 19
+      "nb_items": 18
     },
     {
       "id": "cm-palier-5",
-      "table": 4,
+      "description": "Compléments à 100 : les repères d'argent et de quantités",
       "prerequis": [
         "cm-palier-4"
       ],
       "fichier": "paliers/palier-05.json",
-      "nb_items": 19
+      "nb_items": 17
     },
     {
       "id": "cm-palier-6",
-      "table": 6,
+      "description": "Multiplications utiles (× 2 à × 5) : doubler, tripler, partager",
       "prerequis": [
         "cm-palier-5"
       ],
       "fichier": "paliers/palier-06.json",
-      "nb_items": 19
+      "nb_items": 18
     },
     {
       "id": "cm-palier-7",
-      "table": 7,
+      "description": "Deux opérations enchaînées : mémoire de travail",
       "prerequis": [
         "cm-palier-6"
       ],
       "fichier": "paliers/palier-07.json",
-      "nb_items": 19
+      "nb_items": 18
     },
     {
       "id": "cm-palier-8",
-      "table": 8,
+      "description": "Au quotidien : l'argent (total, rendu de monnaie)",
       "prerequis": [
         "cm-palier-7"
       ],
       "fichier": "paliers/palier-08.json",
-      "nb_items": 19
+      "nb_items": 18
     },
     {
       "id": "cm-palier-9",
-      "table": 9,
+      "description": "Au quotidien : quantités et durées (proportions, totaux)",
       "prerequis": [
         "cm-palier-8"
       ],
       "fichier": "paliers/palier-09.json",
-      "nb_items": 19
+      "nb_items": 18
     }
   ]
 }

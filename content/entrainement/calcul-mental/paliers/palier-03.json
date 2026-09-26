@@ -1,6 +1,6 @@
 [
   {
-    "id": "cm-10-10x1",
+    "id": "cm2-3-01",
     "type": "production",
     "module": "entrainement",
     "theme": "calcul-mental",
@@ -13,7 +13,287 @@
     ],
     "cap_complexite": null,
     "contenu": {
-      "enonce": "10 × 1",
+      "enonce": "Combien font 7 + 9 ?",
+      "aide": null
+    },
+    "reponse": {
+      "valeur": 16
+    },
+    "meta": {
+      "auteur": "generation-automatique (tools/generate_items.py)",
+      "date_creation": "2026-09-26",
+      "relecture_ortho": {
+        "statut": "a_revoir"
+      }
+    }
+  },
+  {
+    "id": "cm2-3-02",
+    "type": "production",
+    "module": "entrainement",
+    "theme": "calcul-mental",
+    "fonctions_ciblees": [
+      "automatisation"
+    ],
+    "palier": 3,
+    "prerequis": [
+      "cm-palier-2"
+    ],
+    "cap_complexite": null,
+    "contenu": {
+      "enonce": "Combien font 6 + 6 ?",
+      "aide": null
+    },
+    "reponse": {
+      "valeur": 12
+    },
+    "meta": {
+      "auteur": "generation-automatique (tools/generate_items.py)",
+      "date_creation": "2026-09-26",
+      "relecture_ortho": {
+        "statut": "a_revoir"
+      }
+    }
+  },
+  {
+    "id": "cm2-3-03",
+    "type": "production",
+    "module": "entrainement",
+    "theme": "calcul-mental",
+    "fonctions_ciblees": [
+      "automatisation"
+    ],
+    "palier": 3,
+    "prerequis": [
+      "cm-palier-2"
+    ],
+    "cap_complexite": null,
+    "contenu": {
+      "enonce": "Combien font 8 + 8 ?",
+      "aide": null
+    },
+    "reponse": {
+      "valeur": 16
+    },
+    "meta": {
+      "auteur": "generation-automatique (tools/generate_items.py)",
+      "date_creation": "2026-09-26",
+      "relecture_ortho": {
+        "statut": "a_revoir"
+      }
+    }
+  },
+  {
+    "id": "cm2-3-04",
+    "type": "production",
+    "module": "entrainement",
+    "theme": "calcul-mental",
+    "fonctions_ciblees": [
+      "automatisation"
+    ],
+    "palier": 3,
+    "prerequis": [
+      "cm-palier-2"
+    ],
+    "cap_complexite": null,
+    "contenu": {
+      "enonce": "Combien font 3 + 5 ?",
+      "aide": null
+    },
+    "reponse": {
+      "valeur": 8
+    },
+    "meta": {
+      "auteur": "generation-automatique (tools/generate_items.py)",
+      "date_creation": "2026-09-26",
+      "relecture_ortho": {
+        "statut": "a_revoir"
+      }
+    }
+  },
+  {
+    "id": "cm2-3-05",
+    "type": "production",
+    "module": "entrainement",
+    "theme": "calcul-mental",
+    "fonctions_ciblees": [
+      "automatisation"
+    ],
+    "palier": 3,
+    "prerequis": [
+      "cm-palier-2"
+    ],
+    "cap_complexite": null,
+    "contenu": {
+      "enonce": "Combien font 5 + 8 ?",
+      "aide": null
+    },
+    "reponse": {
+      "valeur": 13
+    },
+    "meta": {
+      "auteur": "generation-automatique (tools/generate_items.py)",
+      "date_creation": "2026-09-26",
+      "relecture_ortho": {
+        "statut": "a_revoir"
+      }
+    }
+  },
+  {
+    "id": "cm2-3-06",
+    "type": "production",
+    "module": "entrainement",
+    "theme": "calcul-mental",
+    "fonctions_ciblees": [
+      "automatisation"
+    ],
+    "palier": 3,
+    "prerequis": [
+      "cm-palier-2"
+    ],
+    "cap_complexite": null,
+    "contenu": {
+      "enonce": "Combien font 4 + 4 ?",
+      "aide": null
+    },
+    "reponse": {
+      "valeur": 8
+    },
+    "meta": {
+      "auteur": "generation-automatique (tools/generate_items.py)",
+      "date_creation": "2026-09-26",
+      "relecture_ortho": {
+        "statut": "a_revoir"
+      }
+    }
+  },
+  {
+    "id": "cm2-3-07",
+    "type": "production",
+    "module": "entrainement",
+    "theme": "calcul-mental",
+    "fonctions_ciblees": [
+      "automatisation"
+    ],
+    "palier": 3,
+    "prerequis": [
+      "cm-palier-2"
+    ],
+    "cap_complexite": null,
+    "contenu": {
+      "enonce": "Combien font 2 + 9 ?",
+      "aide": null
+    },
+    "reponse": {
+      "valeur": 11
+    },
+    "meta": {
+      "auteur": "generation-automatique (tools/generate_items.py)",
+      "date_creation": "2026-09-26",
+      "relecture_ortho": {
+        "statut": "a_revoir"
+      }
+    }
+  },
+  {
+    "id": "cm2-3-08",
+    "type": "production",
+    "module": "entrainement",
+    "theme": "calcul-mental",
+    "fonctions_ciblees": [
+      "automatisation"
+    ],
+    "palier": 3,
+    "prerequis": [
+      "cm-palier-2"
+    ],
+    "cap_complexite": null,
+    "contenu": {
+      "enonce": "Combien font 4 + 9 ?",
+      "aide": null
+    },
+    "reponse": {
+      "valeur": 13
+    },
+    "meta": {
+      "auteur": "generation-automatique (tools/generate_items.py)",
+      "date_creation": "2026-09-26",
+      "relecture_ortho": {
+        "statut": "a_revoir"
+      }
+    }
+  },
+  {
+    "id": "cm2-3-09",
+    "type": "production",
+    "module": "entrainement",
+    "theme": "calcul-mental",
+    "fonctions_ciblees": [
+      "automatisation"
+    ],
+    "palier": 3,
+    "prerequis": [
+      "cm-palier-2"
+    ],
+    "cap_complexite": null,
+    "contenu": {
+      "enonce": "Combien font 6 + 7 ?",
+      "aide": null
+    },
+    "reponse": {
+      "valeur": 13
+    },
+    "meta": {
+      "auteur": "generation-automatique (tools/generate_items.py)",
+      "date_creation": "2026-09-26",
+      "relecture_ortho": {
+        "statut": "a_revoir"
+      }
+    }
+  },
+  {
+    "id": "cm2-3-10",
+    "type": "production",
+    "module": "entrainement",
+    "theme": "calcul-mental",
+    "fonctions_ciblees": [
+      "automatisation"
+    ],
+    "palier": 3,
+    "prerequis": [
+      "cm-palier-2"
+    ],
+    "cap_complexite": null,
+    "contenu": {
+      "enonce": "Combien font 2 + 7 ?",
+      "aide": null
+    },
+    "reponse": {
+      "valeur": 9
+    },
+    "meta": {
+      "auteur": "generation-automatique (tools/generate_items.py)",
+      "date_creation": "2026-09-26",
+      "relecture_ortho": {
+        "statut": "a_revoir"
+      }
+    }
+  },
+  {
+    "id": "cm2-3-11",
+    "type": "production",
+    "module": "entrainement",
+    "theme": "calcul-mental",
+    "fonctions_ciblees": [
+      "automatisation"
+    ],
+    "palier": 3,
+    "prerequis": [
+      "cm-palier-2"
+    ],
+    "cap_complexite": null,
+    "contenu": {
+      "enonce": "Combien font 3 + 7 ?",
       "aide": null
     },
     "reponse": {
@@ -21,14 +301,14 @@
     },
     "meta": {
       "auteur": "generation-automatique (tools/generate_items.py)",
-      "date_creation": "2026-09-03",
+      "date_creation": "2026-09-26",
       "relecture_ortho": {
         "statut": "a_revoir"
       }
     }
   },
   {
-    "id": "cm-10-1x10",
+    "id": "cm2-3-12",
     "type": "production",
     "module": "entrainement",
     "theme": "calcul-mental",
@@ -41,7 +321,119 @@
     ],
     "cap_complexite": null,
     "contenu": {
-      "enonce": "1 × 10",
+      "enonce": "Combien font 5 + 9 ?",
+      "aide": null
+    },
+    "reponse": {
+      "valeur": 14
+    },
+    "meta": {
+      "auteur": "generation-automatique (tools/generate_items.py)",
+      "date_creation": "2026-09-26",
+      "relecture_ortho": {
+        "statut": "a_revoir"
+      }
+    }
+  },
+  {
+    "id": "cm2-3-13",
+    "type": "production",
+    "module": "entrainement",
+    "theme": "calcul-mental",
+    "fonctions_ciblees": [
+      "automatisation"
+    ],
+    "palier": 3,
+    "prerequis": [
+      "cm-palier-2"
+    ],
+    "cap_complexite": null,
+    "contenu": {
+      "enonce": "Combien font 7 + 7 ?",
+      "aide": null
+    },
+    "reponse": {
+      "valeur": 14
+    },
+    "meta": {
+      "auteur": "generation-automatique (tools/generate_items.py)",
+      "date_creation": "2026-09-26",
+      "relecture_ortho": {
+        "statut": "a_revoir"
+      }
+    }
+  },
+  {
+    "id": "cm2-3-14",
+    "type": "production",
+    "module": "entrainement",
+    "theme": "calcul-mental",
+    "fonctions_ciblees": [
+      "automatisation"
+    ],
+    "palier": 3,
+    "prerequis": [
+      "cm-palier-2"
+    ],
+    "cap_complexite": null,
+    "contenu": {
+      "enonce": "Combien font 5 + 6 ?",
+      "aide": null
+    },
+    "reponse": {
+      "valeur": 11
+    },
+    "meta": {
+      "auteur": "generation-automatique (tools/generate_items.py)",
+      "date_creation": "2026-09-26",
+      "relecture_ortho": {
+        "statut": "a_revoir"
+      }
+    }
+  },
+  {
+    "id": "cm2-3-15",
+    "type": "production",
+    "module": "entrainement",
+    "theme": "calcul-mental",
+    "fonctions_ciblees": [
+      "automatisation"
+    ],
+    "palier": 3,
+    "prerequis": [
+      "cm-palier-2"
+    ],
+    "cap_complexite": null,
+    "contenu": {
+      "enonce": "Combien font 6 + 9 ?",
+      "aide": null
+    },
+    "reponse": {
+      "valeur": 15
+    },
+    "meta": {
+      "auteur": "generation-automatique (tools/generate_items.py)",
+      "date_creation": "2026-09-26",
+      "relecture_ortho": {
+        "statut": "a_revoir"
+      }
+    }
+  },
+  {
+    "id": "cm2-3-16",
+    "type": "production",
+    "module": "entrainement",
+    "theme": "calcul-mental",
+    "fonctions_ciblees": [
+      "automatisation"
+    ],
+    "palier": 3,
+    "prerequis": [
+      "cm-palier-2"
+    ],
+    "cap_complexite": null,
+    "contenu": {
+      "enonce": "Combien font 5 + 5 ?",
       "aide": null
     },
     "reponse": {
@@ -49,14 +441,14 @@
     },
     "meta": {
       "auteur": "generation-automatique (tools/generate_items.py)",
-      "date_creation": "2026-09-03",
+      "date_creation": "2026-09-26",
       "relecture_ortho": {
         "statut": "a_revoir"
       }
     }
   },
   {
-    "id": "cm-10-10x2",
+    "id": "cm2-3-17",
     "type": "production",
     "module": "entrainement",
     "theme": "calcul-mental",
@@ -69,22 +461,22 @@
     ],
     "cap_complexite": null,
     "contenu": {
-      "enonce": "10 × 2",
+      "enonce": "Combien font 4 + 7 ?",
       "aide": null
     },
     "reponse": {
-      "valeur": 20
+      "valeur": 11
     },
     "meta": {
       "auteur": "generation-automatique (tools/generate_items.py)",
-      "date_creation": "2026-09-03",
+      "date_creation": "2026-09-26",
       "relecture_ortho": {
         "statut": "a_revoir"
       }
     }
   },
   {
-    "id": "cm-10-2x10",
+    "id": "cm2-3-18",
     "type": "production",
     "module": "entrainement",
     "theme": "calcul-mental",
@@ -97,435 +489,15 @@
     ],
     "cap_complexite": null,
     "contenu": {
-      "enonce": "2 × 10",
+      "enonce": "Combien font 6 + 8 ?",
       "aide": null
     },
     "reponse": {
-      "valeur": 20
+      "valeur": 14
     },
     "meta": {
       "auteur": "generation-automatique (tools/generate_items.py)",
-      "date_creation": "2026-09-03",
-      "relecture_ortho": {
-        "statut": "a_revoir"
-      }
-    }
-  },
-  {
-    "id": "cm-10-10x3",
-    "type": "production",
-    "module": "entrainement",
-    "theme": "calcul-mental",
-    "fonctions_ciblees": [
-      "automatisation"
-    ],
-    "palier": 3,
-    "prerequis": [
-      "cm-palier-2"
-    ],
-    "cap_complexite": null,
-    "contenu": {
-      "enonce": "10 × 3",
-      "aide": null
-    },
-    "reponse": {
-      "valeur": 30
-    },
-    "meta": {
-      "auteur": "generation-automatique (tools/generate_items.py)",
-      "date_creation": "2026-09-03",
-      "relecture_ortho": {
-        "statut": "a_revoir"
-      }
-    }
-  },
-  {
-    "id": "cm-10-3x10",
-    "type": "production",
-    "module": "entrainement",
-    "theme": "calcul-mental",
-    "fonctions_ciblees": [
-      "automatisation"
-    ],
-    "palier": 3,
-    "prerequis": [
-      "cm-palier-2"
-    ],
-    "cap_complexite": null,
-    "contenu": {
-      "enonce": "3 × 10",
-      "aide": null
-    },
-    "reponse": {
-      "valeur": 30
-    },
-    "meta": {
-      "auteur": "generation-automatique (tools/generate_items.py)",
-      "date_creation": "2026-09-03",
-      "relecture_ortho": {
-        "statut": "a_revoir"
-      }
-    }
-  },
-  {
-    "id": "cm-10-10x4",
-    "type": "production",
-    "module": "entrainement",
-    "theme": "calcul-mental",
-    "fonctions_ciblees": [
-      "automatisation"
-    ],
-    "palier": 3,
-    "prerequis": [
-      "cm-palier-2"
-    ],
-    "cap_complexite": null,
-    "contenu": {
-      "enonce": "10 × 4",
-      "aide": null
-    },
-    "reponse": {
-      "valeur": 40
-    },
-    "meta": {
-      "auteur": "generation-automatique (tools/generate_items.py)",
-      "date_creation": "2026-09-03",
-      "relecture_ortho": {
-        "statut": "a_revoir"
-      }
-    }
-  },
-  {
-    "id": "cm-10-4x10",
-    "type": "production",
-    "module": "entrainement",
-    "theme": "calcul-mental",
-    "fonctions_ciblees": [
-      "automatisation"
-    ],
-    "palier": 3,
-    "prerequis": [
-      "cm-palier-2"
-    ],
-    "cap_complexite": null,
-    "contenu": {
-      "enonce": "4 × 10",
-      "aide": null
-    },
-    "reponse": {
-      "valeur": 40
-    },
-    "meta": {
-      "auteur": "generation-automatique (tools/generate_items.py)",
-      "date_creation": "2026-09-03",
-      "relecture_ortho": {
-        "statut": "a_revoir"
-      }
-    }
-  },
-  {
-    "id": "cm-10-10x5",
-    "type": "production",
-    "module": "entrainement",
-    "theme": "calcul-mental",
-    "fonctions_ciblees": [
-      "automatisation"
-    ],
-    "palier": 3,
-    "prerequis": [
-      "cm-palier-2"
-    ],
-    "cap_complexite": null,
-    "contenu": {
-      "enonce": "10 × 5",
-      "aide": null
-    },
-    "reponse": {
-      "valeur": 50
-    },
-    "meta": {
-      "auteur": "generation-automatique (tools/generate_items.py)",
-      "date_creation": "2026-09-03",
-      "relecture_ortho": {
-        "statut": "a_revoir"
-      }
-    }
-  },
-  {
-    "id": "cm-10-5x10",
-    "type": "production",
-    "module": "entrainement",
-    "theme": "calcul-mental",
-    "fonctions_ciblees": [
-      "automatisation"
-    ],
-    "palier": 3,
-    "prerequis": [
-      "cm-palier-2"
-    ],
-    "cap_complexite": null,
-    "contenu": {
-      "enonce": "5 × 10",
-      "aide": null
-    },
-    "reponse": {
-      "valeur": 50
-    },
-    "meta": {
-      "auteur": "generation-automatique (tools/generate_items.py)",
-      "date_creation": "2026-09-03",
-      "relecture_ortho": {
-        "statut": "a_revoir"
-      }
-    }
-  },
-  {
-    "id": "cm-10-10x6",
-    "type": "production",
-    "module": "entrainement",
-    "theme": "calcul-mental",
-    "fonctions_ciblees": [
-      "automatisation"
-    ],
-    "palier": 3,
-    "prerequis": [
-      "cm-palier-2"
-    ],
-    "cap_complexite": null,
-    "contenu": {
-      "enonce": "10 × 6",
-      "aide": null
-    },
-    "reponse": {
-      "valeur": 60
-    },
-    "meta": {
-      "auteur": "generation-automatique (tools/generate_items.py)",
-      "date_creation": "2026-09-03",
-      "relecture_ortho": {
-        "statut": "a_revoir"
-      }
-    }
-  },
-  {
-    "id": "cm-10-6x10",
-    "type": "production",
-    "module": "entrainement",
-    "theme": "calcul-mental",
-    "fonctions_ciblees": [
-      "automatisation"
-    ],
-    "palier": 3,
-    "prerequis": [
-      "cm-palier-2"
-    ],
-    "cap_complexite": null,
-    "contenu": {
-      "enonce": "6 × 10",
-      "aide": null
-    },
-    "reponse": {
-      "valeur": 60
-    },
-    "meta": {
-      "auteur": "generation-automatique (tools/generate_items.py)",
-      "date_creation": "2026-09-03",
-      "relecture_ortho": {
-        "statut": "a_revoir"
-      }
-    }
-  },
-  {
-    "id": "cm-10-10x7",
-    "type": "production",
-    "module": "entrainement",
-    "theme": "calcul-mental",
-    "fonctions_ciblees": [
-      "automatisation"
-    ],
-    "palier": 3,
-    "prerequis": [
-      "cm-palier-2"
-    ],
-    "cap_complexite": null,
-    "contenu": {
-      "enonce": "10 × 7",
-      "aide": null
-    },
-    "reponse": {
-      "valeur": 70
-    },
-    "meta": {
-      "auteur": "generation-automatique (tools/generate_items.py)",
-      "date_creation": "2026-09-03",
-      "relecture_ortho": {
-        "statut": "a_revoir"
-      }
-    }
-  },
-  {
-    "id": "cm-10-7x10",
-    "type": "production",
-    "module": "entrainement",
-    "theme": "calcul-mental",
-    "fonctions_ciblees": [
-      "automatisation"
-    ],
-    "palier": 3,
-    "prerequis": [
-      "cm-palier-2"
-    ],
-    "cap_complexite": null,
-    "contenu": {
-      "enonce": "7 × 10",
-      "aide": null
-    },
-    "reponse": {
-      "valeur": 70
-    },
-    "meta": {
-      "auteur": "generation-automatique (tools/generate_items.py)",
-      "date_creation": "2026-09-03",
-      "relecture_ortho": {
-        "statut": "a_revoir"
-      }
-    }
-  },
-  {
-    "id": "cm-10-10x8",
-    "type": "production",
-    "module": "entrainement",
-    "theme": "calcul-mental",
-    "fonctions_ciblees": [
-      "automatisation"
-    ],
-    "palier": 3,
-    "prerequis": [
-      "cm-palier-2"
-    ],
-    "cap_complexite": null,
-    "contenu": {
-      "enonce": "10 × 8",
-      "aide": null
-    },
-    "reponse": {
-      "valeur": 80
-    },
-    "meta": {
-      "auteur": "generation-automatique (tools/generate_items.py)",
-      "date_creation": "2026-09-03",
-      "relecture_ortho": {
-        "statut": "a_revoir"
-      }
-    }
-  },
-  {
-    "id": "cm-10-8x10",
-    "type": "production",
-    "module": "entrainement",
-    "theme": "calcul-mental",
-    "fonctions_ciblees": [
-      "automatisation"
-    ],
-    "palier": 3,
-    "prerequis": [
-      "cm-palier-2"
-    ],
-    "cap_complexite": null,
-    "contenu": {
-      "enonce": "8 × 10",
-      "aide": null
-    },
-    "reponse": {
-      "valeur": 80
-    },
-    "meta": {
-      "auteur": "generation-automatique (tools/generate_items.py)",
-      "date_creation": "2026-09-03",
-      "relecture_ortho": {
-        "statut": "a_revoir"
-      }
-    }
-  },
-  {
-    "id": "cm-10-10x9",
-    "type": "production",
-    "module": "entrainement",
-    "theme": "calcul-mental",
-    "fonctions_ciblees": [
-      "automatisation"
-    ],
-    "palier": 3,
-    "prerequis": [
-      "cm-palier-2"
-    ],
-    "cap_complexite": null,
-    "contenu": {
-      "enonce": "10 × 9",
-      "aide": null
-    },
-    "reponse": {
-      "valeur": 90
-    },
-    "meta": {
-      "auteur": "generation-automatique (tools/generate_items.py)",
-      "date_creation": "2026-09-03",
-      "relecture_ortho": {
-        "statut": "a_revoir"
-      }
-    }
-  },
-  {
-    "id": "cm-10-9x10",
-    "type": "production",
-    "module": "entrainement",
-    "theme": "calcul-mental",
-    "fonctions_ciblees": [
-      "automatisation"
-    ],
-    "palier": 3,
-    "prerequis": [
-      "cm-palier-2"
-    ],
-    "cap_complexite": null,
-    "contenu": {
-      "enonce": "9 × 10",
-      "aide": null
-    },
-    "reponse": {
-      "valeur": 90
-    },
-    "meta": {
-      "auteur": "generation-automatique (tools/generate_items.py)",
-      "date_creation": "2026-09-03",
-      "relecture_ortho": {
-        "statut": "a_revoir"
-      }
-    }
-  },
-  {
-    "id": "cm-10-10x10",
-    "type": "production",
-    "module": "entrainement",
-    "theme": "calcul-mental",
-    "fonctions_ciblees": [
-      "automatisation"
-    ],
-    "palier": 3,
-    "prerequis": [
-      "cm-palier-2"
-    ],
-    "cap_complexite": null,
-    "contenu": {
-      "enonce": "10 × 10",
-      "aide": null
-    },
-    "reponse": {
-      "valeur": 100
-    },
-    "meta": {
-      "auteur": "generation-automatique (tools/generate_items.py)",
-      "date_creation": "2026-09-03",
+      "date_creation": "2026-09-26",
       "relecture_ortho": {
         "statut": "a_revoir"
       }

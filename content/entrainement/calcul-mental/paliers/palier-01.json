@@ -1,6 +1,6 @@
 [
   {
-    "id": "cm-2-2x1",
+    "id": "cm2-1-01",
     "type": "production",
     "module": "entrainement",
     "theme": "calcul-mental",
@@ -11,7 +11,111 @@
     "prerequis": [],
     "cap_complexite": null,
     "contenu": {
-      "enonce": "2 × 1",
+      "enonce": "Combien font 10 − 7 ?",
+      "aide": null
+    },
+    "reponse": {
+      "valeur": 3
+    },
+    "meta": {
+      "auteur": "generation-automatique (tools/generate_items.py)",
+      "date_creation": "2026-09-26",
+      "relecture_ortho": {
+        "statut": "a_revoir"
+      }
+    }
+  },
+  {
+    "id": "cm2-1-02",
+    "type": "production",
+    "module": "entrainement",
+    "theme": "calcul-mental",
+    "fonctions_ciblees": [
+      "automatisation"
+    ],
+    "palier": 1,
+    "prerequis": [],
+    "cap_complexite": null,
+    "contenu": {
+      "enonce": "Combien manque-t-il à 7 pour faire 10 ?",
+      "aide": null
+    },
+    "reponse": {
+      "valeur": 3
+    },
+    "meta": {
+      "auteur": "generation-automatique (tools/generate_items.py)",
+      "date_creation": "2026-09-26",
+      "relecture_ortho": {
+        "statut": "a_revoir"
+      }
+    }
+  },
+  {
+    "id": "cm2-1-03",
+    "type": "production",
+    "module": "entrainement",
+    "theme": "calcul-mental",
+    "fonctions_ciblees": [
+      "automatisation"
+    ],
+    "palier": 1,
+    "prerequis": [],
+    "cap_complexite": null,
+    "contenu": {
+      "enonce": "Combien font 10 − 4 ?",
+      "aide": null
+    },
+    "reponse": {
+      "valeur": 6
+    },
+    "meta": {
+      "auteur": "generation-automatique (tools/generate_items.py)",
+      "date_creation": "2026-09-26",
+      "relecture_ortho": {
+        "statut": "a_revoir"
+      }
+    }
+  },
+  {
+    "id": "cm2-1-04",
+    "type": "production",
+    "module": "entrainement",
+    "theme": "calcul-mental",
+    "fonctions_ciblees": [
+      "automatisation"
+    ],
+    "palier": 1,
+    "prerequis": [],
+    "cap_complexite": null,
+    "contenu": {
+      "enonce": "Combien manque-t-il à 5 pour faire 10 ?",
+      "aide": null
+    },
+    "reponse": {
+      "valeur": 5
+    },
+    "meta": {
+      "auteur": "generation-automatique (tools/generate_items.py)",
+      "date_creation": "2026-09-26",
+      "relecture_ortho": {
+        "statut": "a_revoir"
+      }
+    }
+  },
+  {
+    "id": "cm2-1-05",
+    "type": "production",
+    "module": "entrainement",
+    "theme": "calcul-mental",
+    "fonctions_ciblees": [
+      "automatisation"
+    ],
+    "palier": 1,
+    "prerequis": [],
+    "cap_complexite": null,
+    "contenu": {
+      "enonce": "Combien manque-t-il à 8 pour faire 10 ?",
       "aide": null
     },
     "reponse": {
@@ -19,14 +123,14 @@
     },
     "meta": {
       "auteur": "generation-automatique (tools/generate_items.py)",
-      "date_creation": "2026-09-03",
+      "date_creation": "2026-09-26",
       "relecture_ortho": {
         "statut": "a_revoir"
       }
     }
   },
   {
-    "id": "cm-2-1x2",
+    "id": "cm2-1-06",
     "type": "production",
     "module": "entrainement",
     "theme": "calcul-mental",
@@ -37,22 +141,22 @@
     "prerequis": [],
     "cap_complexite": null,
     "contenu": {
-      "enonce": "1 × 2",
+      "enonce": "Combien font 10 − 5 ?",
       "aide": null
     },
     "reponse": {
-      "valeur": 2
+      "valeur": 5
     },
     "meta": {
       "auteur": "generation-automatique (tools/generate_items.py)",
-      "date_creation": "2026-09-03",
+      "date_creation": "2026-09-26",
       "relecture_ortho": {
         "statut": "a_revoir"
       }
     }
   },
   {
-    "id": "cm-2-2x2",
+    "id": "cm2-1-07",
     "type": "production",
     "module": "entrainement",
     "theme": "calcul-mental",
@@ -63,7 +167,7 @@
     "prerequis": [],
     "cap_complexite": null,
     "contenu": {
-      "enonce": "2 × 2",
+      "enonce": "Combien font 10 − 6 ?",
       "aide": null
     },
     "reponse": {
@@ -71,14 +175,14 @@
     },
     "meta": {
       "auteur": "generation-automatique (tools/generate_items.py)",
-      "date_creation": "2026-09-03",
+      "date_creation": "2026-09-26",
       "relecture_ortho": {
         "statut": "a_revoir"
       }
     }
   },
   {
-    "id": "cm-2-2x3",
+    "id": "cm2-1-08",
     "type": "production",
     "module": "entrainement",
     "theme": "calcul-mental",
@@ -89,7 +193,163 @@
     "prerequis": [],
     "cap_complexite": null,
     "contenu": {
-      "enonce": "2 × 3",
+      "enonce": "Combien manque-t-il à 6 pour faire 10 ?",
+      "aide": null
+    },
+    "reponse": {
+      "valeur": 4
+    },
+    "meta": {
+      "auteur": "generation-automatique (tools/generate_items.py)",
+      "date_creation": "2026-09-26",
+      "relecture_ortho": {
+        "statut": "a_revoir"
+      }
+    }
+  },
+  {
+    "id": "cm2-1-09",
+    "type": "production",
+    "module": "entrainement",
+    "theme": "calcul-mental",
+    "fonctions_ciblees": [
+      "automatisation"
+    ],
+    "palier": 1,
+    "prerequis": [],
+    "cap_complexite": null,
+    "contenu": {
+      "enonce": "Combien font 10 − 9 ?",
+      "aide": null
+    },
+    "reponse": {
+      "valeur": 1
+    },
+    "meta": {
+      "auteur": "generation-automatique (tools/generate_items.py)",
+      "date_creation": "2026-09-26",
+      "relecture_ortho": {
+        "statut": "a_revoir"
+      }
+    }
+  },
+  {
+    "id": "cm2-1-10",
+    "type": "production",
+    "module": "entrainement",
+    "theme": "calcul-mental",
+    "fonctions_ciblees": [
+      "automatisation"
+    ],
+    "palier": 1,
+    "prerequis": [],
+    "cap_complexite": null,
+    "contenu": {
+      "enonce": "Combien font 10 − 8 ?",
+      "aide": null
+    },
+    "reponse": {
+      "valeur": 2
+    },
+    "meta": {
+      "auteur": "generation-automatique (tools/generate_items.py)",
+      "date_creation": "2026-09-26",
+      "relecture_ortho": {
+        "statut": "a_revoir"
+      }
+    }
+  },
+  {
+    "id": "cm2-1-11",
+    "type": "production",
+    "module": "entrainement",
+    "theme": "calcul-mental",
+    "fonctions_ciblees": [
+      "automatisation"
+    ],
+    "palier": 1,
+    "prerequis": [],
+    "cap_complexite": null,
+    "contenu": {
+      "enonce": "Combien font 10 − 3 ?",
+      "aide": null
+    },
+    "reponse": {
+      "valeur": 7
+    },
+    "meta": {
+      "auteur": "generation-automatique (tools/generate_items.py)",
+      "date_creation": "2026-09-26",
+      "relecture_ortho": {
+        "statut": "a_revoir"
+      }
+    }
+  },
+  {
+    "id": "cm2-1-12",
+    "type": "production",
+    "module": "entrainement",
+    "theme": "calcul-mental",
+    "fonctions_ciblees": [
+      "automatisation"
+    ],
+    "palier": 1,
+    "prerequis": [],
+    "cap_complexite": null,
+    "contenu": {
+      "enonce": "Combien font 10 − 10 ?",
+      "aide": null
+    },
+    "reponse": {
+      "valeur": 0
+    },
+    "meta": {
+      "auteur": "generation-automatique (tools/generate_items.py)",
+      "date_creation": "2026-09-26",
+      "relecture_ortho": {
+        "statut": "a_revoir"
+      }
+    }
+  },
+  {
+    "id": "cm2-1-13",
+    "type": "production",
+    "module": "entrainement",
+    "theme": "calcul-mental",
+    "fonctions_ciblees": [
+      "automatisation"
+    ],
+    "palier": 1,
+    "prerequis": [],
+    "cap_complexite": null,
+    "contenu": {
+      "enonce": "Combien manque-t-il à 9 pour faire 10 ?",
+      "aide": null
+    },
+    "reponse": {
+      "valeur": 1
+    },
+    "meta": {
+      "auteur": "generation-automatique (tools/generate_items.py)",
+      "date_creation": "2026-09-26",
+      "relecture_ortho": {
+        "statut": "a_revoir"
+      }
+    }
+  },
+  {
+    "id": "cm2-1-14",
+    "type": "production",
+    "module": "entrainement",
+    "theme": "calcul-mental",
+    "fonctions_ciblees": [
+      "automatisation"
+    ],
+    "palier": 1,
+    "prerequis": [],
+    "cap_complexite": null,
+    "contenu": {
+      "enonce": "Combien manque-t-il à 4 pour faire 10 ?",
       "aide": null
     },
     "reponse": {
@@ -97,14 +357,14 @@
     },
     "meta": {
       "auteur": "generation-automatique (tools/generate_items.py)",
-      "date_creation": "2026-09-03",
+      "date_creation": "2026-09-26",
       "relecture_ortho": {
         "statut": "a_revoir"
       }
     }
   },
   {
-    "id": "cm-2-3x2",
+    "id": "cm2-1-15",
     "type": "production",
     "module": "entrainement",
     "theme": "calcul-mental",
@@ -115,33 +375,7 @@
     "prerequis": [],
     "cap_complexite": null,
     "contenu": {
-      "enonce": "3 × 2",
-      "aide": null
-    },
-    "reponse": {
-      "valeur": 6
-    },
-    "meta": {
-      "auteur": "generation-automatique (tools/generate_items.py)",
-      "date_creation": "2026-09-03",
-      "relecture_ortho": {
-        "statut": "a_revoir"
-      }
-    }
-  },
-  {
-    "id": "cm-2-2x4",
-    "type": "production",
-    "module": "entrainement",
-    "theme": "calcul-mental",
-    "fonctions_ciblees": [
-      "automatisation"
-    ],
-    "palier": 1,
-    "prerequis": [],
-    "cap_complexite": null,
-    "contenu": {
-      "enonce": "2 × 4",
+      "enonce": "Combien font 10 − 2 ?",
       "aide": null
     },
     "reponse": {
@@ -149,14 +383,14 @@
     },
     "meta": {
       "auteur": "generation-automatique (tools/generate_items.py)",
-      "date_creation": "2026-09-03",
+      "date_creation": "2026-09-26",
       "relecture_ortho": {
         "statut": "a_revoir"
       }
     }
   },
   {
-    "id": "cm-2-4x2",
+    "id": "cm2-1-16",
     "type": "production",
     "module": "entrainement",
     "theme": "calcul-mental",
@@ -167,7 +401,33 @@
     "prerequis": [],
     "cap_complexite": null,
     "contenu": {
-      "enonce": "4 × 2",
+      "enonce": "Combien manque-t-il à 1 pour faire 10 ?",
+      "aide": null
+    },
+    "reponse": {
+      "valeur": 9
+    },
+    "meta": {
+      "auteur": "generation-automatique (tools/generate_items.py)",
+      "date_creation": "2026-09-26",
+      "relecture_ortho": {
+        "statut": "a_revoir"
+      }
+    }
+  },
+  {
+    "id": "cm2-1-17",
+    "type": "production",
+    "module": "entrainement",
+    "theme": "calcul-mental",
+    "fonctions_ciblees": [
+      "automatisation"
+    ],
+    "palier": 1,
+    "prerequis": [],
+    "cap_complexite": null,
+    "contenu": {
+      "enonce": "Combien manque-t-il à 2 pour faire 10 ?",
       "aide": null
     },
     "reponse": {
@@ -175,14 +435,14 @@
     },
     "meta": {
       "auteur": "generation-automatique (tools/generate_items.py)",
-      "date_creation": "2026-09-03",
+      "date_creation": "2026-09-26",
       "relecture_ortho": {
         "statut": "a_revoir"
       }
     }
   },
   {
-    "id": "cm-2-2x5",
+    "id": "cm2-1-18",
     "type": "production",
     "module": "entrainement",
     "theme": "calcul-mental",
@@ -193,301 +453,15 @@
     "prerequis": [],
     "cap_complexite": null,
     "contenu": {
-      "enonce": "2 × 5",
+      "enonce": "Combien manque-t-il à 3 pour faire 10 ?",
       "aide": null
     },
     "reponse": {
-      "valeur": 10
+      "valeur": 7
     },
     "meta": {
       "auteur": "generation-automatique (tools/generate_items.py)",
-      "date_creation": "2026-09-03",
-      "relecture_ortho": {
-        "statut": "a_revoir"
-      }
-    }
-  },
-  {
-    "id": "cm-2-5x2",
-    "type": "production",
-    "module": "entrainement",
-    "theme": "calcul-mental",
-    "fonctions_ciblees": [
-      "automatisation"
-    ],
-    "palier": 1,
-    "prerequis": [],
-    "cap_complexite": null,
-    "contenu": {
-      "enonce": "5 × 2",
-      "aide": null
-    },
-    "reponse": {
-      "valeur": 10
-    },
-    "meta": {
-      "auteur": "generation-automatique (tools/generate_items.py)",
-      "date_creation": "2026-09-03",
-      "relecture_ortho": {
-        "statut": "a_revoir"
-      }
-    }
-  },
-  {
-    "id": "cm-2-2x6",
-    "type": "production",
-    "module": "entrainement",
-    "theme": "calcul-mental",
-    "fonctions_ciblees": [
-      "automatisation"
-    ],
-    "palier": 1,
-    "prerequis": [],
-    "cap_complexite": null,
-    "contenu": {
-      "enonce": "2 × 6",
-      "aide": null
-    },
-    "reponse": {
-      "valeur": 12
-    },
-    "meta": {
-      "auteur": "generation-automatique (tools/generate_items.py)",
-      "date_creation": "2026-09-03",
-      "relecture_ortho": {
-        "statut": "a_revoir"
-      }
-    }
-  },
-  {
-    "id": "cm-2-6x2",
-    "type": "production",
-    "module": "entrainement",
-    "theme": "calcul-mental",
-    "fonctions_ciblees": [
-      "automatisation"
-    ],
-    "palier": 1,
-    "prerequis": [],
-    "cap_complexite": null,
-    "contenu": {
-      "enonce": "6 × 2",
-      "aide": null
-    },
-    "reponse": {
-      "valeur": 12
-    },
-    "meta": {
-      "auteur": "generation-automatique (tools/generate_items.py)",
-      "date_creation": "2026-09-03",
-      "relecture_ortho": {
-        "statut": "a_revoir"
-      }
-    }
-  },
-  {
-    "id": "cm-2-2x7",
-    "type": "production",
-    "module": "entrainement",
-    "theme": "calcul-mental",
-    "fonctions_ciblees": [
-      "automatisation"
-    ],
-    "palier": 1,
-    "prerequis": [],
-    "cap_complexite": null,
-    "contenu": {
-      "enonce": "2 × 7",
-      "aide": null
-    },
-    "reponse": {
-      "valeur": 14
-    },
-    "meta": {
-      "auteur": "generation-automatique (tools/generate_items.py)",
-      "date_creation": "2026-09-03",
-      "relecture_ortho": {
-        "statut": "a_revoir"
-      }
-    }
-  },
-  {
-    "id": "cm-2-7x2",
-    "type": "production",
-    "module": "entrainement",
-    "theme": "calcul-mental",
-    "fonctions_ciblees": [
-      "automatisation"
-    ],
-    "palier": 1,
-    "prerequis": [],
-    "cap_complexite": null,
-    "contenu": {
-      "enonce": "7 × 2",
-      "aide": null
-    },
-    "reponse": {
-      "valeur": 14
-    },
-    "meta": {
-      "auteur": "generation-automatique (tools/generate_items.py)",
-      "date_creation": "2026-09-03",
-      "relecture_ortho": {
-        "statut": "a_revoir"
-      }
-    }
-  },
-  {
-    "id": "cm-2-2x8",
-    "type": "production",
-    "module": "entrainement",
-    "theme": "calcul-mental",
-    "fonctions_ciblees": [
-      "automatisation"
-    ],
-    "palier": 1,
-    "prerequis": [],
-    "cap_complexite": null,
-    "contenu": {
-      "enonce": "2 × 8",
-      "aide": null
-    },
-    "reponse": {
-      "valeur": 16
-    },
-    "meta": {
-      "auteur": "generation-automatique (tools/generate_items.py)",
-      "date_creation": "2026-09-03",
-      "relecture_ortho": {
-        "statut": "a_revoir"
-      }
-    }
-  },
-  {
-    "id": "cm-2-8x2",
-    "type": "production",
-    "module": "entrainement",
-    "theme": "calcul-mental",
-    "fonctions_ciblees": [
-      "automatisation"
-    ],
-    "palier": 1,
-    "prerequis": [],
-    "cap_complexite": null,
-    "contenu": {
-      "enonce": "8 × 2",
-      "aide": null
-    },
-    "reponse": {
-      "valeur": 16
-    },
-    "meta": {
-      "auteur": "generation-automatique (tools/generate_items.py)",
-      "date_creation": "2026-09-03",
-      "relecture_ortho": {
-        "statut": "a_revoir"
-      }
-    }
-  },
-  {
-    "id": "cm-2-2x9",
-    "type": "production",
-    "module": "entrainement",
-    "theme": "calcul-mental",
-    "fonctions_ciblees": [
-      "automatisation"
-    ],
-    "palier": 1,
-    "prerequis": [],
-    "cap_complexite": null,
-    "contenu": {
-      "enonce": "2 × 9",
-      "aide": null
-    },
-    "reponse": {
-      "valeur": 18
-    },
-    "meta": {
-      "auteur": "generation-automatique (tools/generate_items.py)",
-      "date_creation": "2026-09-03",
-      "relecture_ortho": {
-        "statut": "a_revoir"
-      }
-    }
-  },
-  {
-    "id": "cm-2-9x2",
-    "type": "production",
-    "module": "entrainement",
-    "theme": "calcul-mental",
-    "fonctions_ciblees": [
-      "automatisation"
-    ],
-    "palier": 1,
-    "prerequis": [],
-    "cap_complexite": null,
-    "contenu": {
-      "enonce": "9 × 2",
-      "aide": null
-    },
-    "reponse": {
-      "valeur": 18
-    },
-    "meta": {
-      "auteur": "generation-automatique (tools/generate_items.py)",
-      "date_creation": "2026-09-03",
-      "relecture_ortho": {
-        "statut": "a_revoir"
-      }
-    }
-  },
-  {
-    "id": "cm-2-2x10",
-    "type": "production",
-    "module": "entrainement",
-    "theme": "calcul-mental",
-    "fonctions_ciblees": [
-      "automatisation"
-    ],
-    "palier": 1,
-    "prerequis": [],
-    "cap_complexite": null,
-    "contenu": {
-      "enonce": "2 × 10",
-      "aide": null
-    },
-    "reponse": {
-      "valeur": 20
-    },
-    "meta": {
-      "auteur": "generation-automatique (tools/generate_items.py)",
-      "date_creation": "2026-09-03",
-      "relecture_ortho": {
-        "statut": "a_revoir"
-      }
-    }
-  },
-  {
-    "id": "cm-2-10x2",
-    "type": "production",
-    "module": "entrainement",
-    "theme": "calcul-mental",
-    "fonctions_ciblees": [
-      "automatisation"
-    ],
-    "palier": 1,
-    "prerequis": [],
-    "cap_complexite": null,
-    "contenu": {
-      "enonce": "10 × 2",
-      "aide": null
-    },
-    "reponse": {
-      "valeur": 20
-    },
-    "meta": {
-      "auteur": "generation-automatique (tools/generate_items.py)",
-      "date_creation": "2026-09-03",
+      "date_creation": "2026-09-26",
       "relecture_ortho": {
         "statut": "a_revoir"
       }

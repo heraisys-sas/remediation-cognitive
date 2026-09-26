@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""Validateur minimal des items de contenu — sans dépendance externe.
+"""Validateur minimal des items de contenu - sans dépendance externe.
 
 Parcourt tous les fichiers JSON de ``content/`` (sauf ``schema-item.json``) et
 vérifie, pour chaque item :
@@ -7,7 +7,7 @@ vérifie, pour chaque item :
 - présence des champs requis et absence de champs inconnus
   (``additionalProperties: false`` du schéma) ;
 - enums : ``module``, ``type``, valeurs de ``fonctions_ciblees`` et statut de
-  ``relecture_ortho`` — lus directement dans ``content/schema-item.json`` ;
+  ``relecture_ortho`` - lus directement dans ``content/schema-item.json`` ;
 - ``id`` : conforme au motif du schéma et unique sur tout ``content/`` ;
 - ``palier`` : entier ≥ 1 ; ``prerequis`` : tableau de chaînes ;
 - ``cap_complexite`` : chaîne ou null ; ``contenu`` / ``reponse`` : objets ;
@@ -20,7 +20,7 @@ motif ``cm-<table>-<a>x<b>`` avec la table déclarée par le manifest, un des
 deux facteurs doit valoir la table et la réponse doit valoir ``a × b``. Les
 références ``cm-palier-N`` placées dans ``prerequis`` doivent pointer vers un
 palier existant du manifest. Multi-thèmes : chaque manifest déclare son thème
-(calcul-mental, memoire, concentration…) ; le contrôle de cohérence spécifique
+(calcul-mental, memoire, concentration...) ; le contrôle de cohérence spécifique
 (tables, produits) ne s'applique qu'au calcul-mental, les autres thèmes ayant
 des identifiants à structure libre.
 
@@ -51,11 +51,15 @@ DOSSIER_CONTENU = RACINE_DEPOT / "content"
 FICHIER_SCHEMA = DOSSIER_CONTENU / "schema-item.json"
 
 #: Références de paliers attendues dans les prerequis (convention multi-thèmes :
-# cm-palier-N, me-palier-N, co-palier-N…).
+# cm-palier-N, me-palier-N, co-palier-N...).
 MOTIF_REF_PALIER = re.compile(r"^[a-z]+-palier-\d+$")
 
 #: Motif d'un identifiant d'item de calcul mental : cm-<table>-<a>x<b>.
-MOTIF_ID_CALCUL = re.compile(r"^cm-(\d+)-(\d+)x(\d+)$")
+MOTIF_ID_CALCUL = re.compile(r"^cm2-(\d+)-(\d+)$")
+MOTIF_CALCUL_ARITHMETIQUE = re.compile(r"Combien font (\d+) ([+−×]) (\d+)((?: [+−] \d+)?) ?\?")
+MOTIF_COMPLEMENT = re.compile(r"Combien manque-t-il à (\d+) pour faire (\d+) ?")
+MOTIF_TOTAL_ARTICLES = re.compile(r"(\d+) articles à ([\d,]+) € — combien en tout ?")
+MOTIF_RENDU = re.compile(r"Un article à (\d+) €, payé avec (\d+) € — combien te rend-on ?")
 
 #: Types dont la réponse est choisie parmi ``contenu.options``.
 TYPES_A_CHOIX = {
@@ -89,7 +93,7 @@ TYPES_INDICE = {"semantique", "phonologique", "orthographique", "contextuel"}
 
 
 def _normaliser_texte(valeur: str) -> str:
-    """Minuscules sans accents ni espaces — comparaison indice ↔ réponse."""
+    """Minuscules sans accents ni espaces - comparaison indice ↔ réponse."""
     import unicodedata
 
     decompose = unicodedata.normalize("NFD", valeur.casefold())
@@ -285,7 +289,7 @@ def erreurs_contenu(item: dict, prefixe: str) -> list[str]:
                     continue
                 if isinstance(reponse, str) and _normaliser_texte(reponse) in _normaliser_texte(texte):
                     erreurs.append(
-                        prefixe + f"indice {position} contient la réponse — un indice ne doit pas la donner"
+                        prefixe + f"indice {position} contient la réponse - un indice ne doit pas la donner"
                     )
 
     # Affichage temporisé : mode connu et rythme d'un élément plausible.
@@ -327,7 +331,7 @@ def erreurs_contenu(item: dict, prefixe: str) -> list[str]:
         erreurs.extend(erreurs_rappel_libre(item, prefixe, contenu, affichage))
 
     # Prise de message (mémoire de travail fonctionnelle) : le fait demandé
-    # doit être présent dans le message affiché — sinon la question serait
+    # doit être présent dans le message affiché - sinon la question serait
     # introuvable depuis le stimulus (exercice mal formé).
     if type_item == "prise-message":
         elements = (affichage or {}).get("elements") if isinstance(affichage, dict) else None
@@ -436,7 +440,7 @@ def _sens_contredit(indice: dict, fig: list[int], coul: list[int],
     Contrôle écrit indépendamment du solveur, à partir de la signification des
     phrases : « Le carré bleu est juste à gauche du cercle rouge » exige que le
     carré bleu soit dans la colonne immédiatement à gauche. C'est ce contrôle qui
-    manquait quand une paire droite/gauche ou dessus/dessous a été inversée —
+    manquait quand une paire droite/gauche ou dessus/dessous a été inversée -
     l'inversion rendait la grille insoluble sans qu'aucun outil ne s'en aperçoive.
     """
     def case_de(nom_f: str, nom_c: str) -> int:
@@ -547,7 +551,7 @@ def _erreurs_grille_deduction(item: dict, prefixe: str, contenu: dict) -> list[s
         cellules.append(case)
 
     # Chaque figure colorée (figure × couleur) est posée une seule fois : aucune
-    # combinaison ne se répète. C'est la SEULE règle du puzzle — aucune contrainte
+    # combinaison ne se répète. C'est la SEULE règle du puzzle - aucune contrainte
     # de ligne ou de colonne n'est supposée : tout doit venir des phrases.
     combinaisons = [(f, c) for f, c in cellules]
     if len(set(combinaisons)) != n * n:
@@ -624,15 +628,15 @@ def erreurs_rappel_libre(item: dict, prefixe: str, contenu: dict, affichage: obj
     mots: list[str] = []
     for position, serie in enumerate(series, start=1):
         if not isinstance(serie, list) or len(serie) < 3:
-            erreurs.append(prefixe + f"rappel-libre : série {position} — au moins 3 mots attendus")
+            erreurs.append(prefixe + f"rappel-libre : série {position} - au moins 3 mots attendus")
             continue
         if not all(isinstance(mot, str) and mot.strip() for mot in serie):
-            erreurs.append(prefixe + f"rappel-libre : série {position} — mots attendus comme chaînes non vides")
+            erreurs.append(prefixe + f"rappel-libre : série {position} - mots attendus comme chaînes non vides")
             continue
         mots.extend(_normaliser_texte(mot) for mot in serie)
     if len(set(mots)) != len(mots):
         erreurs.append(
-            prefixe + "rappel-libre : un mot revient dans plusieurs séries — le comptage serait ambigu"
+            prefixe + "rappel-libre : un mot revient dans plusieurs séries - le comptage serait ambigu"
         )
 
     portee = contenu.get("portee")
@@ -692,39 +696,70 @@ def erreurs_meta(meta: object, prefixe: str, regles: dict) -> list[str]:
     return erreurs
 
 
+def _reponse_calculee(enonce: str) -> int | None:
+    """Recalcule la réponse d'un énoncé de calcul mental — ou None si non calculable.
+
+    Contrôle **indépendant du générateur** : on relit la question telle qu'elle sera
+    lue, et on refait le calcul. Une erreur de contenu (mauvais résultat associé à une
+    question) est ainsi détectée mécaniquement. Les énoncés de la vie quotidienne
+    (quantités, durées) ne sont pas calculables automatiquement : on n'invente rien,
+    ils sont contrôlés en forme seulement.
+    """
+    correspondance = MOTIF_CALCUL_ARITHMETIQUE.fullmatch(enonce.strip())
+    if correspondance:
+        a, operateur, b, suite = (
+            int(correspondance.group(1)), correspondance.group(2),
+            int(correspondance.group(3)), correspondance.group(4),
+        )
+        resultat = a + b if operateur == "+" else a - b if operateur == "−" else a * b
+        if suite:
+            reste = suite.strip()
+            operateur2, nombre2 = reste[0], reste[1:].strip()
+            resultat = resultat + int(nombre2) if operateur2 == "+" else resultat - int(nombre2)
+        return resultat
+
+    correspondance = MOTIF_COMPLEMENT.fullmatch(enonce.strip())
+    if correspondance:
+        return int(correspondance.group(2)) - int(correspondance.group(1))
+
+    correspondance = MOTIF_TOTAL_ARTICLES.fullmatch(enonce.strip())
+    if correspondance:
+        prix = float(correspondance.group(2).replace(",", "."))
+        return int(round(int(correspondance.group(1)) * prix))
+
+    correspondance = MOTIF_RENDU.fullmatch(enonce.strip())
+    if correspondance:
+        return int(correspondance.group(2)) - int(correspondance.group(1))
+    return None
+
+
 def erreurs_coherence_calcul(item: dict, prefixe: str,
                              manifest_par_theme: dict[str, dict[int, dict]]) -> list[str]:
-    """Vérifie la cohérence item ↔ manifest pour le thème « calcul-mental ».
+    """Vérifie un item de calcul mental d'après son **énoncé**, pas d'après son rang.
 
-    Contrôles : le palier existe dans le manifest du thème ; l'identifiant suit
-    ``cm-<table>-<a>x<b>`` avec la table du manifest ; un des deux facteurs
-    vaut la table ; la réponse vaut bien ``a × b``.
+    Contrôles : le palier existe dans le manifest ; la réponse est un entier positif ;
+    et — quand l'énoncé est calculable — la réponse recalculée correspond. C'est ce
+    dernier contrôle qui attrape une question associée au mauvais résultat.
     """
     theme = item.get("theme")
     if theme not in manifest_par_theme:
         return []
-    paliers = manifest_par_theme[theme]
     palier = item.get("palier")
-    if not est_entier(palier) or palier not in paliers:
+    if not est_entier(palier) or palier not in manifest_par_theme[theme]:
         return [prefixe + f"palier {palier!r} absent du manifest du thème {theme!r}"]
 
-    table = paliers[palier]["table"]
     identifiant = item.get("id", "")
-    correspondence = MOTIF_ID_CALCUL.fullmatch(identifiant)
-    if not correspondence:
-        return [prefixe + f"id non conforme au motif cm-<table>-<a>x<b> : {identifiant!r}"]
-    table_id, a, b = (int(groupe) for groupe in correspondence.groups())
-    erreurs = []
-    if table_id != table:
-        erreurs.append(prefixe + f"table de l'id ({table_id}) ≠ table du manifest ({table})")
-    if not (1 <= a <= 10 and 1 <= b <= 10):
-        erreurs.append(prefixe + f"facteurs hors 1..10 dans l'id : {identifiant!r}")
-    if a != table and b != table:
-        erreurs.append(prefixe + f"aucun facteur ne vaut la table du palier : {identifiant!r}")
-    reponse = item.get("reponse", {}).get("valeur")
-    if reponse != a * b:
-        erreurs.append(prefixe + f"reponse {reponse!r} ≠ {a} × {b} = {a * b}")
-    return erreurs
+    if not MOTIF_ID_CALCUL.fullmatch(identifiant):
+        return [prefixe + f"id non conforme au motif cm2-<palier>-<rang> : {identifiant!r}"]
+
+    enonce = str((item.get("contenu") or {}).get("enonce") or "")
+    reponse = (item.get("reponse") or {}).get("valeur")
+    if isinstance(reponse, bool) or not isinstance(reponse, int) or reponse < 0:
+        return [prefixe + f"réponse entière positive attendue, reçue {reponse!r}"]
+    attendue = _reponse_calculee(enonce)
+    if attendue is not None and attendue != reponse:
+        return [prefixe + f"« {enonce} » vaut {attendue}, pas {reponse}"]
+    return []
 
 
 # --- Validation d'un manifest -------------------------------------------------
@@ -773,16 +808,12 @@ def erreurs_manifest(manifest: object, chemin: Path, donnees_par_fichier: dict[P
             ids_vus_manifest.add(identifiant)
             ids_paliers_connus.add(identifiant)
 
-        if theme == "calcul-mental":
-            if not est_entier(entree.get("table")) or not 1 <= entree.get("table", 0) <= 10:
-                erreurs.append(prefixe + f"palier {position} : table doit être un entier 1..10")
-        else:
-            # Thèmes à familles multiples (memoire, concentration…) : une
-            # description remplace la table ; le champ table n'est pas attendu.
-            if "table" in entree:
-                erreurs.append(prefixe + f"palier {position} : champ table hors thème calcul-mental")
-            if "description" in entree and not isinstance(entree["description"], str):
-                erreurs.append(prefixe + f"palier {position} : description doit être une chaîne")
+        # Tous les thèmes décrivent leurs paliers ; le calcul mental suit désormais
+        # une progression par familles (comme les autres), plus par table.
+        if "table" in entree:
+            erreurs.append(prefixe + f"palier {position} : champ table obsolète (description attendue)")
+        if "description" in entree and not isinstance(entree["description"], str):
+            erreurs.append(prefixe + f"palier {position} : description doit être une chaîne")
 
         prerequis = entree.get("prerequis", [])
         if not isinstance(prerequis, list) or not all(isinstance(p, str) for p in prerequis):
@@ -972,10 +1003,10 @@ def erreurs_regularite(chemin: Path, items: list) -> list[str]:
     type_dominant, nombre = premiers.most_common(1)[0]
     if nombre > len(grilles) * 0.6:
         return [f"{chemin.parent.name}/{chemin.name} : {nombre}/{len(grilles)} grilles commencent "
-                f"par le même type de phrase (« {type_dominant} ») — varier l'ordre des phrases"]
+                f"par le même type de phrase (« {type_dominant} ») - varier l'ordre des phrases"]
     if len(premiers) < 3:
         return [f"{chemin.parent.name}/{chemin.name} : {len(premiers)} type(s) de phrase en tête "
-                f"seulement sur {len(grilles)} grilles — varier l'ordre des phrases"]
+                f"seulement sur {len(grilles)} grilles - varier l'ordre des phrases"]
     return []
 
 

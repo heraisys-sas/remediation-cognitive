@@ -1,531 +1,521 @@
 [
   {
-    "id": "cm-9-9x1",
+    "id": "cm2-9-01",
     "type": "production",
     "module": "entrainement",
     "theme": "calcul-mental",
     "fonctions_ciblees": [
-      "automatisation"
+      "memoire-travail",
+      "fonctions-executives"
     ],
     "palier": 9,
     "prerequis": [
       "cm-palier-8"
     ],
-    "cap_complexite": null,
+    "cap_complexite": "une seule transformation (double ou total), sans pourcentage",
     "contenu": {
-      "enonce": "9 × 1",
-      "aide": null
+      "enonce": "Trois rendez-vous d'une heure trente ? (en minutes)",
+      "aide": "Pour le double de personnes, il faut le double de quantité."
+    },
+    "reponse": {
+      "valeur": 270
+    },
+    "meta": {
+      "auteur": "generation-automatique (tools/generate_items.py)",
+      "date_creation": "2026-09-26",
+      "relecture_ortho": {
+        "statut": "a_revoir"
+      }
+    }
+  },
+  {
+    "id": "cm2-9-02",
+    "type": "production",
+    "module": "entrainement",
+    "theme": "calcul-mental",
+    "fonctions_ciblees": [
+      "memoire-travail",
+      "fonctions-executives"
+    ],
+    "palier": 9,
+    "prerequis": [
+      "cm-palier-8"
+    ],
+    "cap_complexite": "une seule transformation (double ou total), sans pourcentage",
+    "contenu": {
+      "enonce": "Un film de 90 minutes, plus 15 minutes de pause ?",
+      "aide": "Pour le double de personnes, il faut le double de quantité."
+    },
+    "reponse": {
+      "valeur": 105
+    },
+    "meta": {
+      "auteur": "generation-automatique (tools/generate_items.py)",
+      "date_creation": "2026-09-26",
+      "relecture_ortho": {
+        "statut": "a_revoir"
+      }
+    }
+  },
+  {
+    "id": "cm2-9-03",
+    "type": "production",
+    "module": "entrainement",
+    "theme": "calcul-mental",
+    "fonctions_ciblees": [
+      "memoire-travail",
+      "fonctions-executives"
+    ],
+    "palier": 9,
+    "prerequis": [
+      "cm-palier-8"
+    ],
+    "cap_complexite": "une seule transformation (double ou total), sans pourcentage",
+    "contenu": {
+      "enonce": "Un trajet dure 15 minutes. Quatre trajets ?",
+      "aide": "Pour le double de personnes, il faut le double de quantité."
+    },
+    "reponse": {
+      "valeur": 60
+    },
+    "meta": {
+      "auteur": "generation-automatique (tools/generate_items.py)",
+      "date_creation": "2026-09-26",
+      "relecture_ortho": {
+        "statut": "a_revoir"
+      }
+    }
+  },
+  {
+    "id": "cm2-9-04",
+    "type": "production",
+    "module": "entrainement",
+    "theme": "calcul-mental",
+    "fonctions_ciblees": [
+      "memoire-travail",
+      "fonctions-executives"
+    ],
+    "palier": 9,
+    "prerequis": [
+      "cm-palier-8"
+    ],
+    "cap_complexite": "une seule transformation (double ou total), sans pourcentage",
+    "contenu": {
+      "enonce": "Une séance dure 20 minutes. Trois séances ?",
+      "aide": "Pour le double de personnes, il faut le double de quantité."
+    },
+    "reponse": {
+      "valeur": 60
+    },
+    "meta": {
+      "auteur": "generation-automatique (tools/generate_items.py)",
+      "date_creation": "2026-09-26",
+      "relecture_ortho": {
+        "statut": "a_revoir"
+      }
+    }
+  },
+  {
+    "id": "cm2-9-05",
+    "type": "production",
+    "module": "entrainement",
+    "theme": "calcul-mental",
+    "fonctions_ciblees": [
+      "memoire-travail",
+      "fonctions-executives"
+    ],
+    "palier": 9,
+    "prerequis": [
+      "cm-palier-8"
+    ],
+    "cap_complexite": "une seule transformation (double ou total), sans pourcentage",
+    "contenu": {
+      "enonce": "Une recette pour 4 personnes demande 200 g de sucre. Pour 12 personnes ?",
+      "aide": "Pour le double de personnes, il faut le double de quantité."
+    },
+    "reponse": {
+      "valeur": 600
+    },
+    "meta": {
+      "auteur": "generation-automatique (tools/generate_items.py)",
+      "date_creation": "2026-09-26",
+      "relecture_ortho": {
+        "statut": "a_revoir"
+      }
+    }
+  },
+  {
+    "id": "cm2-9-06",
+    "type": "production",
+    "module": "entrainement",
+    "theme": "calcul-mental",
+    "fonctions_ciblees": [
+      "memoire-travail",
+      "fonctions-executives"
+    ],
+    "palier": 9,
+    "prerequis": [
+      "cm-palier-8"
+    ],
+    "cap_complexite": "une seule transformation (double ou total), sans pourcentage",
+    "contenu": {
+      "enonce": "Un exercice prend 8 minutes. Cinq exercices ?",
+      "aide": "Pour le double de personnes, il faut le double de quantité."
+    },
+    "reponse": {
+      "valeur": 40
+    },
+    "meta": {
+      "auteur": "generation-automatique (tools/generate_items.py)",
+      "date_creation": "2026-09-26",
+      "relecture_ortho": {
+        "statut": "a_revoir"
+      }
+    }
+  },
+  {
+    "id": "cm2-9-07",
+    "type": "production",
+    "module": "entrainement",
+    "theme": "calcul-mental",
+    "fonctions_ciblees": [
+      "memoire-travail",
+      "fonctions-executives"
+    ],
+    "palier": 9,
+    "prerequis": [
+      "cm-palier-8"
+    ],
+    "cap_complexite": "une seule transformation (double ou total), sans pourcentage",
+    "contenu": {
+      "enonce": "Une boîte de 30 comprimés, 3 par jour pendant 5 jours : combien en reste-t-il ?",
+      "aide": "Pour le double de personnes, il faut le double de quantité."
+    },
+    "reponse": {
+      "valeur": 15
+    },
+    "meta": {
+      "auteur": "generation-automatique (tools/generate_items.py)",
+      "date_creation": "2026-09-26",
+      "relecture_ortho": {
+        "statut": "a_revoir"
+      }
+    }
+  },
+  {
+    "id": "cm2-9-08",
+    "type": "production",
+    "module": "entrainement",
+    "theme": "calcul-mental",
+    "fonctions_ciblees": [
+      "memoire-travail",
+      "fonctions-executives"
+    ],
+    "palier": 9,
+    "prerequis": [
+      "cm-palier-8"
+    ],
+    "cap_complexite": "une seule transformation (double ou total), sans pourcentage",
+    "contenu": {
+      "enonce": "Pour 4 personnes, il faut 250 g de farine. Pour 8 personnes ?",
+      "aide": "Pour le double de personnes, il faut le double de quantité."
+    },
+    "reponse": {
+      "valeur": 500
+    },
+    "meta": {
+      "auteur": "generation-automatique (tools/generate_items.py)",
+      "date_creation": "2026-09-26",
+      "relecture_ortho": {
+        "statut": "a_revoir"
+      }
+    }
+  },
+  {
+    "id": "cm2-9-09",
+    "type": "production",
+    "module": "entrainement",
+    "theme": "calcul-mental",
+    "fonctions_ciblees": [
+      "memoire-travail",
+      "fonctions-executives"
+    ],
+    "palier": 9,
+    "prerequis": [
+      "cm-palier-8"
+    ],
+    "cap_complexite": "une seule transformation (double ou total), sans pourcentage",
+    "contenu": {
+      "enonce": "Un paquet contient 12 biscuits. Deux paquets ?",
+      "aide": "Pour le double de personnes, il faut le double de quantité."
+    },
+    "reponse": {
+      "valeur": 24
+    },
+    "meta": {
+      "auteur": "generation-automatique (tools/generate_items.py)",
+      "date_creation": "2026-09-26",
+      "relecture_ortho": {
+        "statut": "a_revoir"
+      }
+    }
+  },
+  {
+    "id": "cm2-9-10",
+    "type": "production",
+    "module": "entrainement",
+    "theme": "calcul-mental",
+    "fonctions_ciblees": [
+      "memoire-travail",
+      "fonctions-executives"
+    ],
+    "palier": 9,
+    "prerequis": [
+      "cm-palier-8"
+    ],
+    "cap_complexite": "une seule transformation (double ou total), sans pourcentage",
+    "contenu": {
+      "enonce": "Une recette pour 2 personnes demande 3 œufs. Pour 6 personnes ?",
+      "aide": "Pour le double de personnes, il faut le double de quantité."
     },
     "reponse": {
       "valeur": 9
     },
     "meta": {
       "auteur": "generation-automatique (tools/generate_items.py)",
-      "date_creation": "2026-09-03",
+      "date_creation": "2026-09-26",
       "relecture_ortho": {
         "statut": "a_revoir"
       }
     }
   },
   {
-    "id": "cm-9-1x9",
+    "id": "cm2-9-11",
     "type": "production",
     "module": "entrainement",
     "theme": "calcul-mental",
     "fonctions_ciblees": [
-      "automatisation"
+      "memoire-travail",
+      "fonctions-executives"
     ],
     "palier": 9,
     "prerequis": [
       "cm-palier-8"
     ],
-    "cap_complexite": null,
+    "cap_complexite": "une seule transformation (double ou total), sans pourcentage",
     "contenu": {
-      "enonce": "1 × 9",
-      "aide": null
+      "enonce": "Quinze cartons rangés par piles de 5 : combien de piles ?",
+      "aide": "Pour le double de personnes, il faut le double de quantité."
     },
     "reponse": {
-      "valeur": 9
+      "valeur": 3
     },
     "meta": {
       "auteur": "generation-automatique (tools/generate_items.py)",
-      "date_creation": "2026-09-03",
+      "date_creation": "2026-09-26",
       "relecture_ortho": {
         "statut": "a_revoir"
       }
     }
   },
   {
-    "id": "cm-9-9x2",
+    "id": "cm2-9-12",
     "type": "production",
     "module": "entrainement",
     "theme": "calcul-mental",
     "fonctions_ciblees": [
-      "automatisation"
+      "memoire-travail",
+      "fonctions-executives"
     ],
     "palier": 9,
     "prerequis": [
       "cm-palier-8"
     ],
-    "cap_complexite": null,
+    "cap_complexite": "une seule transformation (double ou total), sans pourcentage",
     "contenu": {
-      "enonce": "9 × 2",
-      "aide": null
+      "enonce": "Une séance dure 25 minutes. Deux séances ?",
+      "aide": "Pour le double de personnes, il faut le double de quantité."
     },
     "reponse": {
-      "valeur": 18
+      "valeur": 50
     },
     "meta": {
       "auteur": "generation-automatique (tools/generate_items.py)",
-      "date_creation": "2026-09-03",
+      "date_creation": "2026-09-26",
       "relecture_ortho": {
         "statut": "a_revoir"
       }
     }
   },
   {
-    "id": "cm-9-2x9",
+    "id": "cm2-9-13",
     "type": "production",
     "module": "entrainement",
     "theme": "calcul-mental",
     "fonctions_ciblees": [
-      "automatisation"
+      "memoire-travail",
+      "fonctions-executives"
     ],
     "palier": 9,
     "prerequis": [
       "cm-palier-8"
     ],
-    "cap_complexite": null,
+    "cap_complexite": "une seule transformation (double ou total), sans pourcentage",
     "contenu": {
-      "enonce": "2 × 9",
-      "aide": null
+      "enonce": "Un pot de peinture couvre 5 m². Pour 20 m², combien de pots ?",
+      "aide": "Pour le double de personnes, il faut le double de quantité."
     },
     "reponse": {
-      "valeur": 18
+      "valeur": 4
     },
     "meta": {
       "auteur": "generation-automatique (tools/generate_items.py)",
-      "date_creation": "2026-09-03",
+      "date_creation": "2026-09-26",
       "relecture_ortho": {
         "statut": "a_revoir"
       }
     }
   },
   {
-    "id": "cm-9-9x3",
+    "id": "cm2-9-14",
     "type": "production",
     "module": "entrainement",
     "theme": "calcul-mental",
     "fonctions_ciblees": [
-      "automatisation"
+      "memoire-travail",
+      "fonctions-executives"
     ],
     "palier": 9,
     "prerequis": [
       "cm-palier-8"
     ],
-    "cap_complexite": null,
+    "cap_complexite": "une seule transformation (double ou total), sans pourcentage",
     "contenu": {
-      "enonce": "9 × 3",
-      "aide": null
+      "enonce": "Pour 4 personnes, il faut 150 g de riz. Pour 8 personnes ?",
+      "aide": "Pour le double de personnes, il faut le double de quantité."
     },
     "reponse": {
-      "valeur": 27
+      "valeur": 300
     },
     "meta": {
       "auteur": "generation-automatique (tools/generate_items.py)",
-      "date_creation": "2026-09-03",
+      "date_creation": "2026-09-26",
       "relecture_ortho": {
         "statut": "a_revoir"
       }
     }
   },
   {
-    "id": "cm-9-3x9",
+    "id": "cm2-9-15",
     "type": "production",
     "module": "entrainement",
     "theme": "calcul-mental",
     "fonctions_ciblees": [
-      "automatisation"
+      "memoire-travail",
+      "fonctions-executives"
     ],
     "palier": 9,
     "prerequis": [
       "cm-palier-8"
     ],
-    "cap_complexite": null,
+    "cap_complexite": "une seule transformation (double ou total), sans pourcentage",
     "contenu": {
-      "enonce": "3 × 9",
-      "aide": null
+      "enonce": "Un paquet contient 10 serviettes. Il en reste 4 : combien ont été prises ?",
+      "aide": "Pour le double de personnes, il faut le double de quantité."
     },
     "reponse": {
-      "valeur": 27
+      "valeur": 6
     },
     "meta": {
       "auteur": "generation-automatique (tools/generate_items.py)",
-      "date_creation": "2026-09-03",
+      "date_creation": "2026-09-26",
       "relecture_ortho": {
         "statut": "a_revoir"
       }
     }
   },
   {
-    "id": "cm-9-9x4",
+    "id": "cm2-9-16",
     "type": "production",
     "module": "entrainement",
     "theme": "calcul-mental",
     "fonctions_ciblees": [
-      "automatisation"
+      "memoire-travail",
+      "fonctions-executives"
     ],
     "palier": 9,
     "prerequis": [
       "cm-palier-8"
     ],
-    "cap_complexite": null,
+    "cap_complexite": "une seule transformation (double ou total), sans pourcentage",
     "contenu": {
-      "enonce": "9 × 4",
-      "aide": null
+      "enonce": "Deux litres et demi d'eau, plus trois litres et demi ?",
+      "aide": "Pour le double de personnes, il faut le double de quantité."
     },
     "reponse": {
-      "valeur": 36
+      "valeur": 6
     },
     "meta": {
       "auteur": "generation-automatique (tools/generate_items.py)",
-      "date_creation": "2026-09-03",
+      "date_creation": "2026-09-26",
       "relecture_ortho": {
         "statut": "a_revoir"
       }
     }
   },
   {
-    "id": "cm-9-4x9",
+    "id": "cm2-9-17",
     "type": "production",
     "module": "entrainement",
     "theme": "calcul-mental",
     "fonctions_ciblees": [
-      "automatisation"
+      "memoire-travail",
+      "fonctions-executives"
     ],
     "palier": 9,
     "prerequis": [
       "cm-palier-8"
     ],
-    "cap_complexite": null,
+    "cap_complexite": "une seule transformation (double ou total), sans pourcentage",
     "contenu": {
-      "enonce": "4 × 9",
-      "aide": null
+      "enonce": "20 tablettes de chocolat partagées en 4 sachets — combien par sachet ?",
+      "aide": "Pour le double de personnes, il faut le double de quantité."
     },
     "reponse": {
-      "valeur": 36
+      "valeur": 5
     },
     "meta": {
       "auteur": "generation-automatique (tools/generate_items.py)",
-      "date_creation": "2026-09-03",
+      "date_creation": "2026-09-26",
       "relecture_ortho": {
         "statut": "a_revoir"
       }
     }
   },
   {
-    "id": "cm-9-9x5",
+    "id": "cm2-9-18",
     "type": "production",
     "module": "entrainement",
     "theme": "calcul-mental",
     "fonctions_ciblees": [
-      "automatisation"
+      "memoire-travail",
+      "fonctions-executives"
     ],
     "palier": 9,
     "prerequis": [
       "cm-palier-8"
     ],
-    "cap_complexite": null,
+    "cap_complexite": "une seule transformation (double ou total), sans pourcentage",
     "contenu": {
-      "enonce": "9 × 5",
-      "aide": null
+      "enonce": "Quatre séries de 7 répétitions ?",
+      "aide": "Pour le double de personnes, il faut le double de quantité."
     },
     "reponse": {
-      "valeur": 45
+      "valeur": 28
     },
     "meta": {
       "auteur": "generation-automatique (tools/generate_items.py)",
-      "date_creation": "2026-09-03",
-      "relecture_ortho": {
-        "statut": "a_revoir"
-      }
-    }
-  },
-  {
-    "id": "cm-9-5x9",
-    "type": "production",
-    "module": "entrainement",
-    "theme": "calcul-mental",
-    "fonctions_ciblees": [
-      "automatisation"
-    ],
-    "palier": 9,
-    "prerequis": [
-      "cm-palier-8"
-    ],
-    "cap_complexite": null,
-    "contenu": {
-      "enonce": "5 × 9",
-      "aide": null
-    },
-    "reponse": {
-      "valeur": 45
-    },
-    "meta": {
-      "auteur": "generation-automatique (tools/generate_items.py)",
-      "date_creation": "2026-09-03",
-      "relecture_ortho": {
-        "statut": "a_revoir"
-      }
-    }
-  },
-  {
-    "id": "cm-9-9x6",
-    "type": "production",
-    "module": "entrainement",
-    "theme": "calcul-mental",
-    "fonctions_ciblees": [
-      "automatisation"
-    ],
-    "palier": 9,
-    "prerequis": [
-      "cm-palier-8"
-    ],
-    "cap_complexite": null,
-    "contenu": {
-      "enonce": "9 × 6",
-      "aide": null
-    },
-    "reponse": {
-      "valeur": 54
-    },
-    "meta": {
-      "auteur": "generation-automatique (tools/generate_items.py)",
-      "date_creation": "2026-09-03",
-      "relecture_ortho": {
-        "statut": "a_revoir"
-      }
-    }
-  },
-  {
-    "id": "cm-9-6x9",
-    "type": "production",
-    "module": "entrainement",
-    "theme": "calcul-mental",
-    "fonctions_ciblees": [
-      "automatisation"
-    ],
-    "palier": 9,
-    "prerequis": [
-      "cm-palier-8"
-    ],
-    "cap_complexite": null,
-    "contenu": {
-      "enonce": "6 × 9",
-      "aide": null
-    },
-    "reponse": {
-      "valeur": 54
-    },
-    "meta": {
-      "auteur": "generation-automatique (tools/generate_items.py)",
-      "date_creation": "2026-09-03",
-      "relecture_ortho": {
-        "statut": "a_revoir"
-      }
-    }
-  },
-  {
-    "id": "cm-9-9x7",
-    "type": "production",
-    "module": "entrainement",
-    "theme": "calcul-mental",
-    "fonctions_ciblees": [
-      "automatisation"
-    ],
-    "palier": 9,
-    "prerequis": [
-      "cm-palier-8"
-    ],
-    "cap_complexite": null,
-    "contenu": {
-      "enonce": "9 × 7",
-      "aide": null
-    },
-    "reponse": {
-      "valeur": 63
-    },
-    "meta": {
-      "auteur": "generation-automatique (tools/generate_items.py)",
-      "date_creation": "2026-09-03",
-      "relecture_ortho": {
-        "statut": "a_revoir"
-      }
-    }
-  },
-  {
-    "id": "cm-9-7x9",
-    "type": "production",
-    "module": "entrainement",
-    "theme": "calcul-mental",
-    "fonctions_ciblees": [
-      "automatisation"
-    ],
-    "palier": 9,
-    "prerequis": [
-      "cm-palier-8"
-    ],
-    "cap_complexite": null,
-    "contenu": {
-      "enonce": "7 × 9",
-      "aide": null
-    },
-    "reponse": {
-      "valeur": 63
-    },
-    "meta": {
-      "auteur": "generation-automatique (tools/generate_items.py)",
-      "date_creation": "2026-09-03",
-      "relecture_ortho": {
-        "statut": "a_revoir"
-      }
-    }
-  },
-  {
-    "id": "cm-9-9x8",
-    "type": "production",
-    "module": "entrainement",
-    "theme": "calcul-mental",
-    "fonctions_ciblees": [
-      "automatisation"
-    ],
-    "palier": 9,
-    "prerequis": [
-      "cm-palier-8"
-    ],
-    "cap_complexite": null,
-    "contenu": {
-      "enonce": "9 × 8",
-      "aide": null
-    },
-    "reponse": {
-      "valeur": 72
-    },
-    "meta": {
-      "auteur": "generation-automatique (tools/generate_items.py)",
-      "date_creation": "2026-09-03",
-      "relecture_ortho": {
-        "statut": "a_revoir"
-      }
-    }
-  },
-  {
-    "id": "cm-9-8x9",
-    "type": "production",
-    "module": "entrainement",
-    "theme": "calcul-mental",
-    "fonctions_ciblees": [
-      "automatisation"
-    ],
-    "palier": 9,
-    "prerequis": [
-      "cm-palier-8"
-    ],
-    "cap_complexite": null,
-    "contenu": {
-      "enonce": "8 × 9",
-      "aide": null
-    },
-    "reponse": {
-      "valeur": 72
-    },
-    "meta": {
-      "auteur": "generation-automatique (tools/generate_items.py)",
-      "date_creation": "2026-09-03",
-      "relecture_ortho": {
-        "statut": "a_revoir"
-      }
-    }
-  },
-  {
-    "id": "cm-9-9x9",
-    "type": "production",
-    "module": "entrainement",
-    "theme": "calcul-mental",
-    "fonctions_ciblees": [
-      "automatisation"
-    ],
-    "palier": 9,
-    "prerequis": [
-      "cm-palier-8"
-    ],
-    "cap_complexite": null,
-    "contenu": {
-      "enonce": "9 × 9",
-      "aide": null
-    },
-    "reponse": {
-      "valeur": 81
-    },
-    "meta": {
-      "auteur": "generation-automatique (tools/generate_items.py)",
-      "date_creation": "2026-09-03",
-      "relecture_ortho": {
-        "statut": "a_revoir"
-      }
-    }
-  },
-  {
-    "id": "cm-9-9x10",
-    "type": "production",
-    "module": "entrainement",
-    "theme": "calcul-mental",
-    "fonctions_ciblees": [
-      "automatisation"
-    ],
-    "palier": 9,
-    "prerequis": [
-      "cm-palier-8"
-    ],
-    "cap_complexite": null,
-    "contenu": {
-      "enonce": "9 × 10",
-      "aide": null
-    },
-    "reponse": {
-      "valeur": 90
-    },
-    "meta": {
-      "auteur": "generation-automatique (tools/generate_items.py)",
-      "date_creation": "2026-09-03",
-      "relecture_ortho": {
-        "statut": "a_revoir"
-      }
-    }
-  },
-  {
-    "id": "cm-9-10x9",
-    "type": "production",
-    "module": "entrainement",
-    "theme": "calcul-mental",
-    "fonctions_ciblees": [
-      "automatisation"
-    ],
-    "palier": 9,
-    "prerequis": [
-      "cm-palier-8"
-    ],
-    "cap_complexite": null,
-    "contenu": {
-      "enonce": "10 × 9",
-      "aide": null
-    },
-    "reponse": {
-      "valeur": 90
-    },
-    "meta": {
-      "auteur": "generation-automatique (tools/generate_items.py)",
-      "date_creation": "2026-09-03",
+      "date_creation": "2026-09-26",
       "relecture_ortho": {
         "statut": "a_revoir"
       }
