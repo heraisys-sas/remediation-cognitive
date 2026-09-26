@@ -130,6 +130,7 @@ const refs = {
   ligneAudio: $("ligne-audio"),
   caseLectureAuto: $("case-lecture-auto"),
   rappelConsigne: $("rappel-consigne"),
+  noteReprise: $("note-reprise"),
 };
 
 /* ---------------------------------------------------------------------
@@ -158,6 +159,8 @@ const etat = {
   enonceCourant: "",       // ce qui est affiché à l'écran (pour « Écouter »)
   consignesVues: new Set(), // rappels de méthode déjà affichés (une fois par type)
   seanceTerminee: false,   // séance clôturée par la durée maximale (aller au résumé)
+  reprisesAfficher: new Set(), // exercices qui reviennent en reprise (réponse à montrer)
+  reponsesAttendues: {},   // réponse attendue par item, retenue du retour serveur
 };
 
 /* ---------------------------------------------------------------------
@@ -488,6 +491,8 @@ async function demarrerSession(theme) {
     etat.theme = theme;
     etat.session = donnees;
     etat.seanceTerminee = false;
+    etat.reprisesAfficher = new Set();
+    etat.reponsesAttendues = {};
     etat.indexItem = 0;
     etat.repondu = false;
     reinitialiserConfirmationFin();
@@ -543,6 +548,7 @@ function montrerItem() {
   etat.optionChoisie = null;
   if (etat.indexItem === 0) etat.consignesVues = new Set();  // rappels par séance
   refs.rappelConsigne.hidden = true;
+  refs.noteReprise.hidden = true;
   annulerMemo();
 
   // Progression discrète : « Question n sur max » + fine barre.
@@ -552,6 +558,16 @@ function montrerItem() {
   refs.barreRemplie.style.width = `${((etat.indexItem + 1) / total) * 100}%`;
 
   const contenu = item.contenu || {};
+  // Reprise errorless : l'exercice revient une fois, la réponse est fournie avant le
+  // nouvel essai (on ré-encode la bonne réponse, on ne ré-encode pas l'erreur).
+  if (etat.reprisesAfficher.has(item.id)) {
+    etat.reprisesAfficher.delete(item.id);
+    const attendue = etat.reponsesAttendues[item.id];
+    refs.noteReprise.textContent = attendue
+      ? `Reprise — la réponse est « ${attendue} ». Il s'agit de la réancrer, pas de la deviner.`
+      : "Reprise — cet exercice revient une fois, avec la réponse.";
+    refs.noteReprise.hidden = false;
+  }
   if (contenu.affichage) {
     // Exercices de mémorisation : consigne → stimulus temporisé → question.
     afficherPhaseMemo(item);
@@ -948,6 +964,16 @@ async function soumettreValeur(brut, indiceUtilise) {
 
     // Feedback : statut + réponse attendue (après coup) + commentaire serveur.
     rendreFeedback(resultat);
+    etat.reponsesAttendues[item.id] = resultat.attendue;
+    if (resultat.reprise === true && etat.session) {
+      // Reprise errorless : l'exercice revient une fois, en fin de séance.
+      etat.session.items.push(item);
+      etat.reprisesAfficher.add(item.id);
+      refs.carteFeedback.append(creerElement("p", {
+        classe: "feedback-note-reprise",
+        texte: "Cet exercice reviendra une fois en fin de séance, avec la réponse.",
+      }));
+    }
 
     // On masque la saisie pour laisser toute la place au retour.
     refs.formulaire.hidden = true;

@@ -34,6 +34,7 @@ from ...domain.correction import corriger
 from ...domain.dosage import (
     LIMITES_SESSIONS_JOUR,
     LIMITE_SESSIONS_JOUR,
+    MAX_REPRISES_PAR_SEANCE,
     duree_proposee,
     parametres_seance,
 )
@@ -119,6 +120,8 @@ class SessionEnCours:
     temps_reference: list[float] = field(default_factory=list)
     # Indices consultés par item (0 = sans aide) — mesure de l'aide nécessaire.
     indices_utilises: dict[str, int] = field(default_factory=dict)
+    # Exercices déjà repris en fin de séance (un échec = au plus une reprise).
+    reprises: set[str] = field(default_factory=set)
     # Payload de fin conservé pour rendre la clôture idempotente.
     resume_cloture: dict | None = None
     # Arrêt déjà proposé pour cause de durée (proposition envoyée une seule fois).
@@ -325,6 +328,14 @@ class GestionnaireSessions:
             "attendue": item["reponse"]["valeur"],
             "feedback": messages.texte("entrainement", cle),
         }
+        # Reprise errorless : un exercice manqué (et non assisté) revient **une fois**, en
+        # fin de séance, avec la réponse fournie avant le nouvel essai. On ne ré-encode pas
+        # une erreur ; le plafond évite de doubler la durée de la séance.
+        if (not correcte and not assistee and premiere_reponse
+                and item_id not in session.reprises
+                and len(session.reprises) < MAX_REPRISES_PAR_SEANCE):
+            session.reprises.add(item_id)
+            resultat["reprise"] = True
         if duree_depassee:
             if duree_proposee(theme):
                 # Ce thème traite la durée comme une **proposition** : la séance ne se

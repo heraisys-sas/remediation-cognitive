@@ -52,6 +52,12 @@ def duree_proposee(theme: str) -> bool:
     """
     return bool(parametres_seance(theme)["duree_proposee"])
 
+#: Nombre maximal de reprises par séance : un exercice manqué revient **une fois**, en fin
+#: de séance, avec la réponse fournie avant le nouvel essai (errorless learning : ré-encoder
+#: une erreur la renforce). Plafonné pour ne pas doubler la durée de la séance — au-delà, les
+#: exercices manqués reviennent à la séance suivante, par la répétition espacée.
+MAX_REPRISES_PAR_SEANCE = 4
+
 #: Limite de séances par jour selon la CATÉGORIE du thème.
 #: L'évaluation est volontairement limitée à une séance par jour : répéter une
 #: mesure la fausse (effet d'apprentissage), alors que l'entraînement de

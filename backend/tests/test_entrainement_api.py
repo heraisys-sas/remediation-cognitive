@@ -432,7 +432,9 @@ def test_arret_propose_jamais_force(client):
             temps_ms=9000,
         )
         assert reponse.status_code == 200
-        assert set(reponse.json()) == {"correcte", "assistee", "attendue", "feedback"}
+        assert {"correcte", "assistee", "attendue", "feedback"} <= set(reponse.json())
+
+        assert set(reponse.json()) <= {"correcte", "assistee", "attendue", "feedback", "reprise"}
 
     reponse = _finir(client, "calcul-mental", payload["session_id"])
     assert reponse.status_code == 200  # la séance va à son terme normalement
@@ -710,3 +712,47 @@ def test_seance_vide_ne_consomme_pas_le_quota(tmp_path):
     assert seconde["items"] == []
     compteur = json.loads((racine / "methodes" / "compteur-seances.json").read_text())
     assert compteur["nb_sessions"] == 1, "une séance vide ne doit pas consommer le quota"
+
+
+def test_reprise_errorless_des_exercices_manques(tmp_path):
+    """Un exercice manqué revient **une fois**, en fin de séance, avec sa réponse.
+
+    Errorless learning : ré-encoder une erreur la renforce (Baddeley & Wilson). La reprise
+    est donc plafonnée (elle ne doit pas doubler la séance) et n'a pas lieu pour un essai
+    déjà assisté, où la réponse a été fournie par les indices.
+    """
+    application = creer_app(
+        racine_donnees=tmp_path / "data",
+        dossier_frontend=tmp_path / "front",
+    )
+    client = TestClient(application)
+
+    payload = _demarrer(client, "calcul-mental")
+    items = payload["items"]
+    session_id = payload["session_id"]
+
+    # Réponse juste : aucune reprise.
+    juste = _repondre(client, "calcul-mental", session_id, items[0]["id"],
+                      _valeur_attendue("calcul-mental", items[0]["id"]), temps_ms=900)
+    assert juste.status_code == 200
+    assert "reprise" not in juste.json()
+
+    # Réponse fausse : l'exercice est marqué pour une reprise unique.
+    fausse = _repondre(client, "calcul-mental", session_id, items[1]["id"], "999999", temps_ms=900)
+    assert fausse.status_code == 200
+    assert fausse.json()["reprise"] is True
+
+    # La reprise elle-même est acceptée (nouvel essai sur un item déjà servi).
+    reprise = _repondre(client, "calcul-mental", session_id, items[1]["id"],
+                        _valeur_attendue("calcul-mental", items[1]["id"]), temps_ms=900)
+    assert reprise.status_code == 200
+    # Un second échec sur le même exercice ne reprogramme pas de reprise.
+    assert "reprise" not in reprise.json()
+
+    # Plafond : au plus quatre reprises par séance, même si tout est manqué.
+    manques = 0
+    for item in items[2:]:
+        resultat = _repondre(client, "calcul-mental", session_id, item["id"], "999999", temps_ms=900)
+        if resultat.json().get("reprise"):
+            manques += 1
+    assert manques == 3, "le plafond de reprises par séance doit borner la séance"

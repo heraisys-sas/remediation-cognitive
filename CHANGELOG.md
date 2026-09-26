@@ -2,6 +2,16 @@
 
 Format : [date] — [périmètre] — description. Les retours informels de l'orthophoniste sont journalisés ici, sans caution clinique.
 
+## 2026-09-26 · Reprise errorless : un exercice manqué revient une fois, avec sa réponse
+
+Demande validée : « ok pour la 2 » — et question du lieu du signalement.
+
+- **Ce qui se passe** : un exercice manqué (et non assisté) est réinséré **en fin de séance**, avec la **réponse fournie avant le nouvel essai** — c'est le complément d'errorless learning (ré-encoder une erreur la renforce). Une reprise par exercice, **quatre au maximum par séance** : la séance ne double pas, et au-delà la répétition espacée ramène le reste le lendemain.
+- **Où c'est signalé — dans le fil de l'exercice, pas sur l'accueil** : après une erreur, le retour annonce « Cet exercice reviendra une fois en fin de séance, avec la réponse » ; à la reprise, une note affiche la réponse (« il s'agit de la réancrer, pas de la deviner »). Un avis général sur l'accueil serait abstrait ; l'information utile est celle qui accompagne l'erreur.
+- **La note FSRS et le taux de réussite ne changent pas** : c'est la première réponse qui fait foi ; la reprise est un essai supplémentaire.
+- **ADR-013** mis à jour (décision 3 et 3 bis) ; version des scripts incrémentée.
+- **Contrôles** — 193 tests, dont un garde-fou sur le plafond de reprises.
+
 ## 2026-09-26 · Répétition espacée : vérification clinique du choix
 
 Question posée : le passage à une échelle quotidienne est-il pertinent cliniquement ?

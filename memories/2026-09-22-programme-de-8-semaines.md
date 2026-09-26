@@ -65,3 +65,19 @@ Question : « au niveau clinique est-ce pertinent ? vérifie les sources ».
   À instruire par l'orthophoniste — je ne l'ai pas implémenté sans son avis.
 - Méthode : ne pas répondre de mémoire. Chercher, citer ce qu'on a réellement trouvé, et dire
   clairement ce que la recherche n'a pas couvert (ici : la fréquence des séances).
+
+## 2026-09-26 (fin) — reprise errorless implémentée
+
+Décision de l'utilisateur : « ok pour la 2 » (reprise en fin de séance), avec la question du
+lieu du signalement.
+
+- Implémenté : un échec non assisté est réinséré **en fin de séance** avec la réponse fournie
+  avant le nouvel essai (errorless learning). Bornes : une reprise par exercice, quatre par
+  séance maximum ; pas de reprise pour un essai assisté (les indices ont déjà donné la réponse).
+- La note FSRS et le taux de réussite ne bougent pas : la **première** réponse fait foi.
+- **Signalement dans le fil** (et non sur l'accueil) : après l'erreur, le retour annonce la
+  reprise ; à la reprise, la réponse est affichée avec une phrase qui dit l'intention
+  (« réancrer, pas deviner »). Raison : une consigne générale sur l'accueil serait abstraite ;
+  l'information utile est celle qui accompagne l'erreur.
+- Côté interface : nouvel élément `#note-reprise` (distinct de la consigne, pour ne pas être
+  masqué par la logique des consignes vues une fois par séance).

@@ -962,3 +962,15 @@ body {
   font-size: 0.85rem;
   color: var(--texte-secondaire);
 }
+
+/* Reprise errorless : l'exercice manqué revient avec sa réponse. */
+.note-reprise {
+  border-left: 3px solid var(--accent);
+  padding-left: 0.6rem;
+}
+
+.feedback-note-reprise {
+  margin: 0.6rem 0 0;
+  font-size: 0.85rem;
+  color: var(--texte-secondaire);
+}
