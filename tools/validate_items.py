@@ -60,6 +60,15 @@ MOTIF_CALCUL_ARITHMETIQUE = re.compile(r"Combien font (\d+) ([+−×]) (\d+)((?:
 MOTIF_COMPLEMENT = re.compile(r"Combien manque-t-il à (\d+) pour faire (\d+) ?")
 MOTIF_TOTAL_ARTICLES = re.compile(r"(\d+) articles à ([\d,]+) € — combien en tout ?")
 MOTIF_RENDU = re.compile(r"Un article à (\d+) €, payé avec (\d+) € — combien te rend-on ?")
+#: Sens du nombre (dyscalculie) : comparer, situer, décomposer.
+MOTIF_PLUS_GRAND = re.compile(r"Quel nombre est le plus grand : (\d+) ou (\d+) ?")
+MOTIF_DIZAINES = re.compile(r"Combien de dizaines dans (\d+) ?")
+MOTIF_DECOMPOSITION = re.compile(r"(\d+) = (\d+) \+ ?")
+MOTIF_SUIVANT = re.compile(r"Quel nombre vient juste après (\d+) ?")
+MOTIF_MI_CHEMIN = re.compile(r"À mi-chemin entre (\d+) et (\d+) ?")
+MOTIF_DOUBLE = re.compile(r"Quel est le double de (\d+) ?")
+#: Séries de calcul (attention soutenue) : « 75 − 9 − 9 − 9 », « 8 + 4 − 3 ».
+MOTIF_CHAINE = re.compile(r"^\d+(?: [+−] \d+)+$")
 
 #: Types dont la réponse est choisie parmi ``contenu.options``.
 TYPES_A_CHOIX = {
@@ -238,6 +247,8 @@ def erreurs_item(item: object, chemin: Path, regles: dict, ids_vus: dict[str, Pa
         erreurs.extend(
             erreurs_coherence_calcul(item, prefixe, manifest_par_theme)
         )
+    if item.get("theme") == "concentration":
+        erreurs.extend(erreurs_coherence_chaine(item, prefixe))
     return erreurs
 
 
@@ -730,7 +741,52 @@ def _reponse_calculee(enonce: str) -> int | None:
     correspondance = MOTIF_RENDU.fullmatch(enonce.strip())
     if correspondance:
         return int(correspondance.group(2)) - int(correspondance.group(1))
+
+    # Sens du nombre (dyscalculie) : aucune opération, la représentation seule.
+    correspondance = MOTIF_PLUS_GRAND.fullmatch(enonce.strip())
+    if correspondance:
+        return max(int(correspondance.group(1)), int(correspondance.group(2)))
+    correspondance = MOTIF_DIZAINES.fullmatch(enonce.strip())
+    if correspondance:
+        return int(correspondance.group(1)) // 10
+    correspondance = MOTIF_DECOMPOSITION.fullmatch(enonce.strip())
+    if correspondance:
+        return int(correspondance.group(1)) - int(correspondance.group(2))
+    correspondance = MOTIF_SUIVANT.fullmatch(enonce.strip())
+    if correspondance:
+        return int(correspondance.group(1)) + 1
+    correspondance = MOTIF_MI_CHEMIN.fullmatch(enonce.strip())
+    if correspondance:
+        return (int(correspondance.group(1)) + int(correspondance.group(2))) // 2
+    correspondance = MOTIF_DOUBLE.fullmatch(enonce.strip())
+    if correspondance:
+        return 2 * int(correspondance.group(1))
+
+    # Série de calcul : évaluation de gauche à droite, comme la personne la fait.
+    if MOTIF_CHAINE.match(enonce.strip()):
+        jetons = enonce.split()
+        total = int(jetons[0])
+        for rang in range(1, len(jetons) - 1, 2):
+            operateur, valeur = jetons[rang], int(jetons[rang + 1])
+            total = total + valeur if operateur == "+" else total - valeur
+        return total
     return None
+
+
+def erreurs_coherence_chaine(item: dict, prefixe: str) -> list[str]:
+    """Série de calcul (attention soutenue) : on refait le calcul de gauche à droite.
+
+    Contrôle indépendant du générateur : une série associée à un mauvais total — ou dont
+    le total change selon l'ordre des opérations — est refusée au dépôt.
+    """
+    enonce = str((item.get("contenu") or {}).get("enonce") or "")
+    if not MOTIF_CHAINE.match(enonce.strip()):
+        return []
+    reponse = (item.get("reponse") or {}).get("valeur")
+    attendue = _reponse_calculee(enonce)
+    if attendue is None or attendue == reponse:
+        return []
+    return [prefixe + f"série « {enonce} » : total {attendue}, pas {reponse}"]
 
 
 def erreurs_coherence_calcul(item: dict, prefixe: str,

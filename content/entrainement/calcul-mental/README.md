@@ -24,8 +24,10 @@ Un adulte n'a rien à automatiser sur la table de 1 ni sur celle de 10 : ce ne s
 | 7 | Deux opérations enchaînées (mémoire de travail) | « Combien font 8 + 7 − 2 ? » |
 | 8 | Au quotidien : l'argent | « Un article à 7 €, payé avec 10 € — combien te rend-on ? » |
 | 9 | Au quotidien : quantités et durées | « Pour 4 personnes, 250 g ; pour 8 personnes ? » |
+| 10 | **Faits difficiles (× 6 à × 9)** | « Combien font 7 × 8 ? » (aide : × 8 = double de × 4) |
+| 11 | **Sens du nombre (dyscalculie)** | « Combien de dizaines dans 47 ? », « À mi-chemin entre 40 et 50 ? » |
 
-9 paliers, **157 items**, aucun doublon d'énoncé dans un palier. Les énoncés sont des questions courtes et naturelles : on s'adresse à un adulte, pas à un enfant qui apprend ses tables.
+11 paliers, **194 items**, aucun doublon d'énoncé dans un palier. Les énoncés sont des questions courtes et naturelles : on s'adresse à un adulte, pas à un enfant qui apprend ses tables.
 
 Les paliers 2, 5, 6, 7, 8 et 9 portent une **aide** repliée (la stratégie, jamais le résultat) ; le palier 7 porte une **consigne** de méthode, affichée une fois par séance.
 
@@ -38,6 +40,12 @@ Les paliers 2, 5, 6, 7, 8 et 9 portent une **aide** repliée (la stratégie, jam
     python3 tools/generate_items.py [--dry-run]
 
 Déterministe (graine fixe). Les identifiants portent un suffixe de génération (`cm2-`) : le contenu ayant été entièrement revu, il ne doit pas hériter des états de révision de l'ancien (règle de versionnage du contenu).
+
+## Les trois publics servis (ADR-012)
+
+- **Dyscalculie** — le palier 11 travaille le **sens du nombre** : comparer, situer, décomposer, sans opération. C'est le socle sans lequel les faits ne s'organisent pas.
+- **Maintien de l'attention** — travaillé au thème *concentration* (séries de 3 à 7 opérations, aide de méthode, contrôle du total au dépôt) : ce qui progresse est la **longueur tenue**, jamais la vitesse.
+- **Lacunes ciblées** — le palier 10 isole les faits qui résistent (7 × 8, 8 × 9, 9 × 9…) et les travaille par stratégie ; la répétition espacée resservira d'abord ceux qui sont manqués.
 
 ## Pistes
 

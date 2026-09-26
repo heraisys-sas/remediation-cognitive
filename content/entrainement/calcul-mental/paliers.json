@@ -79,6 +79,24 @@
       ],
       "fichier": "paliers/palier-09.json",
       "nb_items": 18
+    },
+    {
+      "id": "cm-palier-10",
+      "description": "Faits difficiles (× 6 à × 9) : combler les lacunes, avec une stratégie",
+      "prerequis": [
+        "cm-palier-9"
+      ],
+      "fichier": "paliers/palier-10.json",
+      "nb_items": 19
+    },
+    {
+      "id": "cm-palier-11",
+      "description": "Sens du nombre : comparer, situer, décomposer (dyscalculie)",
+      "prerequis": [
+        "cm-palier-10"
+      ],
+      "fichier": "paliers/palier-11.json",
+      "nb_items": 18
     }
   ]
 }

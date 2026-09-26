@@ -1,0 +1,542 @@
+[
+  {
+    "id": "cm2-11-01",
+    "type": "production",
+    "module": "entrainement",
+    "theme": "calcul-mental",
+    "fonctions_ciblees": [
+      "automatisation",
+      "flexibilite",
+      "inhibition"
+    ],
+    "palier": 11,
+    "prerequis": [
+      "cm-palier-10"
+    ],
+    "cap_complexite": "une seule question à la fois : comparer, situer ou décomposer",
+    "contenu": {
+      "enonce": "À mi-chemin entre 100 et 120 ?",
+      "aide": "Compare les dizaines avant les unités ; pour situer, compte de dix en dix."
+    },
+    "reponse": {
+      "valeur": 110
+    },
+    "meta": {
+      "auteur": "generation-automatique (tools/generate_items.py)",
+      "date_creation": "2026-09-26",
+      "relecture_ortho": {
+        "statut": "a_revoir"
+      }
+    }
+  },
+  {
+    "id": "cm2-11-02",
+    "type": "production",
+    "module": "entrainement",
+    "theme": "calcul-mental",
+    "fonctions_ciblees": [
+      "automatisation",
+      "flexibilite",
+      "inhibition"
+    ],
+    "palier": 11,
+    "prerequis": [
+      "cm-palier-10"
+    ],
+    "cap_complexite": "une seule question à la fois : comparer, situer ou décomposer",
+    "contenu": {
+      "enonce": "À mi-chemin entre 60 et 70 ?",
+      "aide": "Compare les dizaines avant les unités ; pour situer, compte de dix en dix."
+    },
+    "reponse": {
+      "valeur": 65
+    },
+    "meta": {
+      "auteur": "generation-automatique (tools/generate_items.py)",
+      "date_creation": "2026-09-26",
+      "relecture_ortho": {
+        "statut": "a_revoir"
+      }
+    }
+  },
+  {
+    "id": "cm2-11-03",
+    "type": "production",
+    "module": "entrainement",
+    "theme": "calcul-mental",
+    "fonctions_ciblees": [
+      "automatisation",
+      "flexibilite",
+      "inhibition"
+    ],
+    "palier": 11,
+    "prerequis": [
+      "cm-palier-10"
+    ],
+    "cap_complexite": "une seule question à la fois : comparer, situer ou décomposer",
+    "contenu": {
+      "enonce": "À mi-chemin entre 40 et 50 ?",
+      "aide": "Compare les dizaines avant les unités ; pour situer, compte de dix en dix."
+    },
+    "reponse": {
+      "valeur": 45
+    },
+    "meta": {
+      "auteur": "generation-automatique (tools/generate_items.py)",
+      "date_creation": "2026-09-26",
+      "relecture_ortho": {
+        "statut": "a_revoir"
+      }
+    }
+  },
+  {
+    "id": "cm2-11-04",
+    "type": "production",
+    "module": "entrainement",
+    "theme": "calcul-mental",
+    "fonctions_ciblees": [
+      "automatisation",
+      "flexibilite",
+      "inhibition"
+    ],
+    "palier": 11,
+    "prerequis": [
+      "cm-palier-10"
+    ],
+    "cap_complexite": "une seule question à la fois : comparer, situer ou décomposer",
+    "contenu": {
+      "enonce": "Quel nombre vient juste après 99 ?",
+      "aide": "Compare les dizaines avant les unités ; pour situer, compte de dix en dix."
+    },
+    "reponse": {
+      "valeur": 100
+    },
+    "meta": {
+      "auteur": "generation-automatique (tools/generate_items.py)",
+      "date_creation": "2026-09-26",
+      "relecture_ortho": {
+        "statut": "a_revoir"
+      }
+    }
+  },
+  {
+    "id": "cm2-11-05",
+    "type": "production",
+    "module": "entrainement",
+    "theme": "calcul-mental",
+    "fonctions_ciblees": [
+      "automatisation",
+      "flexibilite",
+      "inhibition"
+    ],
+    "palier": 11,
+    "prerequis": [
+      "cm-palier-10"
+    ],
+    "cap_complexite": "une seule question à la fois : comparer, situer ou décomposer",
+    "contenu": {
+      "enonce": "85 = 80 + ?",
+      "aide": "Compare les dizaines avant les unités ; pour situer, compte de dix en dix."
+    },
+    "reponse": {
+      "valeur": 5
+    },
+    "meta": {
+      "auteur": "generation-automatique (tools/generate_items.py)",
+      "date_creation": "2026-09-26",
+      "relecture_ortho": {
+        "statut": "a_revoir"
+      }
+    }
+  },
+  {
+    "id": "cm2-11-06",
+    "type": "production",
+    "module": "entrainement",
+    "theme": "calcul-mental",
+    "fonctions_ciblees": [
+      "automatisation",
+      "flexibilite",
+      "inhibition"
+    ],
+    "palier": 11,
+    "prerequis": [
+      "cm-palier-10"
+    ],
+    "cap_complexite": "une seule question à la fois : comparer, situer ou décomposer",
+    "contenu": {
+      "enonce": "Quel nombre est le plus grand : 55 ou 505 ?",
+      "aide": "Compare les dizaines avant les unités ; pour situer, compte de dix en dix."
+    },
+    "reponse": {
+      "valeur": 505
+    },
+    "meta": {
+      "auteur": "generation-automatique (tools/generate_items.py)",
+      "date_creation": "2026-09-26",
+      "relecture_ortho": {
+        "statut": "a_revoir"
+      }
+    }
+  },
+  {
+    "id": "cm2-11-07",
+    "type": "production",
+    "module": "entrainement",
+    "theme": "calcul-mental",
+    "fonctions_ciblees": [
+      "automatisation",
+      "flexibilite",
+      "inhibition"
+    ],
+    "palier": 11,
+    "prerequis": [
+      "cm-palier-10"
+    ],
+    "cap_complexite": "une seule question à la fois : comparer, situer ou décomposer",
+    "contenu": {
+      "enonce": "67 = 60 + ?",
+      "aide": "Compare les dizaines avant les unités ; pour situer, compte de dix en dix."
+    },
+    "reponse": {
+      "valeur": 7
+    },
+    "meta": {
+      "auteur": "generation-automatique (tools/generate_items.py)",
+      "date_creation": "2026-09-26",
+      "relecture_ortho": {
+        "statut": "a_revoir"
+      }
+    }
+  },
+  {
+    "id": "cm2-11-08",
+    "type": "production",
+    "module": "entrainement",
+    "theme": "calcul-mental",
+    "fonctions_ciblees": [
+      "automatisation",
+      "flexibilite",
+      "inhibition"
+    ],
+    "palier": 11,
+    "prerequis": [
+      "cm-palier-10"
+    ],
+    "cap_complexite": "une seule question à la fois : comparer, situer ou décomposer",
+    "contenu": {
+      "enonce": "Quel nombre vient juste après 109 ?",
+      "aide": "Compare les dizaines avant les unités ; pour situer, compte de dix en dix."
+    },
+    "reponse": {
+      "valeur": 110
+    },
+    "meta": {
+      "auteur": "generation-automatique (tools/generate_items.py)",
+      "date_creation": "2026-09-26",
+      "relecture_ortho": {
+        "statut": "a_revoir"
+      }
+    }
+  },
+  {
+    "id": "cm2-11-09",
+    "type": "production",
+    "module": "entrainement",
+    "theme": "calcul-mental",
+    "fonctions_ciblees": [
+      "automatisation",
+      "flexibilite",
+      "inhibition"
+    ],
+    "palier": 11,
+    "prerequis": [
+      "cm-palier-10"
+    ],
+    "cap_complexite": "une seule question à la fois : comparer, situer ou décomposer",
+    "contenu": {
+      "enonce": "Quel est le double de 35 ?",
+      "aide": "Compare les dizaines avant les unités ; pour situer, compte de dix en dix."
+    },
+    "reponse": {
+      "valeur": 70
+    },
+    "meta": {
+      "auteur": "generation-automatique (tools/generate_items.py)",
+      "date_creation": "2026-09-26",
+      "relecture_ortho": {
+        "statut": "a_revoir"
+      }
+    }
+  },
+  {
+    "id": "cm2-11-10",
+    "type": "production",
+    "module": "entrainement",
+    "theme": "calcul-mental",
+    "fonctions_ciblees": [
+      "automatisation",
+      "flexibilite",
+      "inhibition"
+    ],
+    "palier": 11,
+    "prerequis": [
+      "cm-palier-10"
+    ],
+    "cap_complexite": "une seule question à la fois : comparer, situer ou décomposer",
+    "contenu": {
+      "enonce": "Combien de dizaines dans 106 ?",
+      "aide": "Compare les dizaines avant les unités ; pour situer, compte de dix en dix."
+    },
+    "reponse": {
+      "valeur": 10
+    },
+    "meta": {
+      "auteur": "generation-automatique (tools/generate_items.py)",
+      "date_creation": "2026-09-26",
+      "relecture_ortho": {
+        "statut": "a_revoir"
+      }
+    }
+  },
+  {
+    "id": "cm2-11-11",
+    "type": "production",
+    "module": "entrainement",
+    "theme": "calcul-mental",
+    "fonctions_ciblees": [
+      "automatisation",
+      "flexibilite",
+      "inhibition"
+    ],
+    "palier": 11,
+    "prerequis": [
+      "cm-palier-10"
+    ],
+    "cap_complexite": "une seule question à la fois : comparer, situer ou décomposer",
+    "contenu": {
+      "enonce": "Quel nombre est le plus grand : 36 ou 63 ?",
+      "aide": "Compare les dizaines avant les unités ; pour situer, compte de dix en dix."
+    },
+    "reponse": {
+      "valeur": 63
+    },
+    "meta": {
+      "auteur": "generation-automatique (tools/generate_items.py)",
+      "date_creation": "2026-09-26",
+      "relecture_ortho": {
+        "statut": "a_revoir"
+      }
+    }
+  },
+  {
+    "id": "cm2-11-12",
+    "type": "production",
+    "module": "entrainement",
+    "theme": "calcul-mental",
+    "fonctions_ciblees": [
+      "automatisation",
+      "flexibilite",
+      "inhibition"
+    ],
+    "palier": 11,
+    "prerequis": [
+      "cm-palier-10"
+    ],
+    "cap_complexite": "une seule question à la fois : comparer, situer ou décomposer",
+    "contenu": {
+      "enonce": "Quel est le double de 250 ?",
+      "aide": "Compare les dizaines avant les unités ; pour situer, compte de dix en dix."
+    },
+    "reponse": {
+      "valeur": 500
+    },
+    "meta": {
+      "auteur": "generation-automatique (tools/generate_items.py)",
+      "date_creation": "2026-09-26",
+      "relecture_ortho": {
+        "statut": "a_revoir"
+      }
+    }
+  },
+  {
+    "id": "cm2-11-13",
+    "type": "production",
+    "module": "entrainement",
+    "theme": "calcul-mental",
+    "fonctions_ciblees": [
+      "automatisation",
+      "flexibilite",
+      "inhibition"
+    ],
+    "palier": 11,
+    "prerequis": [
+      "cm-palier-10"
+    ],
+    "cap_complexite": "une seule question à la fois : comparer, situer ou décomposer",
+    "contenu": {
+      "enonce": "Combien de dizaines dans 63 ?",
+      "aide": "Compare les dizaines avant les unités ; pour situer, compte de dix en dix."
+    },
+    "reponse": {
+      "valeur": 6
+    },
+    "meta": {
+      "auteur": "generation-automatique (tools/generate_items.py)",
+      "date_creation": "2026-09-26",
+      "relecture_ortho": {
+        "statut": "a_revoir"
+      }
+    }
+  },
+  {
+    "id": "cm2-11-14",
+    "type": "production",
+    "module": "entrainement",
+    "theme": "calcul-mental",
+    "fonctions_ciblees": [
+      "automatisation",
+      "flexibilite",
+      "inhibition"
+    ],
+    "palier": 11,
+    "prerequis": [
+      "cm-palier-10"
+    ],
+    "cap_complexite": "une seule question à la fois : comparer, situer ou décomposer",
+    "contenu": {
+      "enonce": "43 = 40 + ?",
+      "aide": "Compare les dizaines avant les unités ; pour situer, compte de dix en dix."
+    },
+    "reponse": {
+      "valeur": 3
+    },
+    "meta": {
+      "auteur": "generation-automatique (tools/generate_items.py)",
+      "date_creation": "2026-09-26",
+      "relecture_ortho": {
+        "statut": "a_revoir"
+      }
+    }
+  },
+  {
+    "id": "cm2-11-15",
+    "type": "production",
+    "module": "entrainement",
+    "theme": "calcul-mental",
+    "fonctions_ciblees": [
+      "automatisation",
+      "flexibilite",
+      "inhibition"
+    ],
+    "palier": 11,
+    "prerequis": [
+      "cm-palier-10"
+    ],
+    "cap_complexite": "une seule question à la fois : comparer, situer ou décomposer",
+    "contenu": {
+      "enonce": "À mi-chemin entre 20 et 30 ?",
+      "aide": "Compare les dizaines avant les unités ; pour situer, compte de dix en dix."
+    },
+    "reponse": {
+      "valeur": 25
+    },
+    "meta": {
+      "auteur": "generation-automatique (tools/generate_items.py)",
+      "date_creation": "2026-09-26",
+      "relecture_ortho": {
+        "statut": "a_revoir"
+      }
+    }
+  },
+  {
+    "id": "cm2-11-16",
+    "type": "production",
+    "module": "entrainement",
+    "theme": "calcul-mental",
+    "fonctions_ciblees": [
+      "automatisation",
+      "flexibilite",
+      "inhibition"
+    ],
+    "palier": 11,
+    "prerequis": [
+      "cm-palier-10"
+    ],
+    "cap_complexite": "une seule question à la fois : comparer, situer ou décomposer",
+    "contenu": {
+      "enonce": "Quel nombre est le plus grand : 47 ou 74 ?",
+      "aide": "Compare les dizaines avant les unités ; pour situer, compte de dix en dix."
+    },
+    "reponse": {
+      "valeur": 74
+    },
+    "meta": {
+      "auteur": "generation-automatique (tools/generate_items.py)",
+      "date_creation": "2026-09-26",
+      "relecture_ortho": {
+        "statut": "a_revoir"
+      }
+    }
+  },
+  {
+    "id": "cm2-11-17",
+    "type": "production",
+    "module": "entrainement",
+    "theme": "calcul-mental",
+    "fonctions_ciblees": [
+      "automatisation",
+      "flexibilite",
+      "inhibition"
+    ],
+    "palier": 11,
+    "prerequis": [
+      "cm-palier-10"
+    ],
+    "cap_complexite": "une seule question à la fois : comparer, situer ou décomposer",
+    "contenu": {
+      "enonce": "Quel nombre vient juste après 248 ?",
+      "aide": "Compare les dizaines avant les unités ; pour situer, compte de dix en dix."
+    },
+    "reponse": {
+      "valeur": 249
+    },
+    "meta": {
+      "auteur": "generation-automatique (tools/generate_items.py)",
+      "date_creation": "2026-09-26",
+      "relecture_ortho": {
+        "statut": "a_revoir"
+      }
+    }
+  },
+  {
+    "id": "cm2-11-18",
+    "type": "production",
+    "module": "entrainement",
+    "theme": "calcul-mental",
+    "fonctions_ciblees": [
+      "automatisation",
+      "flexibilite",
+      "inhibition"
+    ],
+    "palier": 11,
+    "prerequis": [
+      "cm-palier-10"
+    ],
+    "cap_complexite": "une seule question à la fois : comparer, situer ou décomposer",
+    "contenu": {
+      "enonce": "Quel est le double de 45 ?",
+      "aide": "Compare les dizaines avant les unités ; pour situer, compte de dix en dix."
+    },
+    "reponse": {
+      "valeur": 90
+    },
+    "meta": {
+      "auteur": "generation-automatique (tools/generate_items.py)",
+      "date_creation": "2026-09-26",
+      "relecture_ortho": {
+        "statut": "a_revoir"
+      }
+    }
+  }
+]

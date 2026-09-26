@@ -60,6 +60,8 @@ DESCRIPTIONS: list[str] = [
     "Deux opérations enchaînées : mémoire de travail",
     "Au quotidien : l'argent (total, rendu de monnaie)",
     "Au quotidien : quantités et durées (proportions, totaux)",
+    "Faits difficiles (× 6 à × 9) : combler les lacunes, avec une stratégie",
+    "Sens du nombre : comparer, situer, décomposer (dyscalculie)",
 ]
 
 #: Fonctions ciblées par palier (au-delà de l'automatisation de base).
@@ -73,6 +75,8 @@ FONCTIONS_PAR_PALIER: list[list[str]] = [
     ["memoire-travail", "fonctions-executives"],
     ["automatisation", "memoire-travail"],
     ["memoire-travail", "fonctions-executives"],
+    ["automatisation", "flexibilite"],
+    ["automatisation", "flexibilite", "inhibition"],
 ]
 
 #: Aide (repliée) et consigne (une fois par séance) par palier, quand elles servent.
@@ -86,10 +90,13 @@ AIDES: dict[int, str] = {
     7: "Garde le premier résultat en tête, puis enchaîne la seconde opération.",
     8: "Rends la monnaie : ce qu'on te donne moins ce que ça coûte.",
     9: "Pour le double de personnes, il faut le double de quantité.",
+    10: "Appuie-toi sur ce que tu sais déjà : × 9 = × 10 − le nombre ; × 8 = double de × 4 ; × 6 = × 5 + le nombre.",
+    11: "Compare les dizaines avant les unités ; pour situer, compte de dix en dix.",
 }
 CAPS: dict[int, str] = {
     7: "deux opérations au maximum (charge de mémoire de travail bornée)",
     9: "une seule transformation (double ou total), sans pourcentage",
+    11: "une seule question à la fois : comparer, situer ou décomposer",
 }
 
 
@@ -247,6 +254,47 @@ def _quantites(rng: random.Random) -> list[tuple[str, int]]:
     return couples
 
 
+def _faits_difficiles(rng: random.Random) -> list[tuple[str, int]]:
+    """Les faits qui manquent le plus souvent : × 6 à × 9, carrés compris.
+
+    C'est le palier des **lacunes** : plutôt qu'une table à réciter, on isole les faits
+    qui résistent (7 × 8, 8 × 9, 9 × 9…) et on les travaille par stratégie, en s'appuyant
+    sur des faits connus. La répétition espacée fait le reste : ce sont les faits
+    effectivement manqués qui reviennent le plus.
+    """
+    couples = []
+    for a, b in [(6, 6), (6, 7), (6, 8), (6, 9), (7, 7), (7, 8), (7, 9), (8, 8), (8, 9),
+                 (9, 9), (3, 7), (3, 8), (3, 9), (4, 7), (4, 8), (4, 9), (5, 7), (5, 8),
+                 (5, 9)]:
+        couples.append((f"Combien font {a} × {b} ?", a * b))
+    rng.shuffle(couples)
+    return couples
+
+
+def _sens_du_nombre(rng: random.Random) -> list[tuple[str, int]]:
+    """Sens du nombre (dyscalculie) : comparer, situer, décomposer avant de calculer.
+
+    Ces tâches ne demandent aucune opération : elles portent sur la représentation du
+    nombre — grandeur, position, valeur de position, décomposition. C'est le socle sans
+    lequel les faits arithmétiques ne peuvent pas s'organiser.
+    """
+    couples = []
+    for a, b in [(63, 59), (47, 74), (102, 98), (36, 63), (80, 78), (55, 505)]:
+        couples.append((f"Quel nombre est le plus grand : {a} ou {b} ?", max(a, b)))
+    for n in (47, 63, 85, 92, 106, 230):
+        couples.append((f"Combien de dizaines dans {n} ?", n // 10))
+    for n in (43, 67, 85, 129):
+        couples.append((f"{n} = {n // 10 * 10} + ?", n % 10))
+    for n in (69, 99, 109, 248):
+        couples.append((f"Quel nombre vient juste après {n} ?", n + 1))
+    for a, b in [(20, 30), (40, 50), (60, 70), (100, 120)]:
+        couples.append((f"À mi-chemin entre {a} et {b} ?", (a + b) // 2))
+    for n in (35, 45, 250):
+        couples.append((f"Quel est le double de {n} ?", 2 * n))
+    rng.shuffle(couples)
+    return couples
+
+
 #: Une famille d'items par palier : (génératrice, nombre d'items).
 FAMILLES: list[tuple] = [
     (_complements_dans_10, 18),
@@ -258,6 +306,8 @@ FAMILLES: list[tuple] = [
     (_deux_etapes, 18),
     (_argent, 18),
     (_quantites, 18),
+    (_faits_difficiles, 19),
+    (_sens_du_nombre, 18),
 ]
 
 

@@ -2,6 +2,17 @@
 
 Format : [date] — [périmètre] — description. Les retours informels de l'orthophoniste sont journalisés ici, sans caution clinique.
 
+## 2026-09-26 · Calcul mental : dyscalculie, attention soutenue, lacunes ciblées
+
+Demande : appliquer la même approche à la **dyscalculie**, aux problèmes de **maintien de l'attention** et aux **lacunes sur certaines multiplications**.
+
+- **Dyscalculie — palier « Sens du nombre »** (nouveau) : comparer deux nombres, situer sur la ligne numérique, lire la valeur de position, décomposer, doubler. Aucune opération : c'est le socle de la représentation du nombre, qui manque avant les faits.
+- **Lacunes ciblées — palier « Faits difficiles (× 6 à × 9) »** (nouveau) : les faits qui résistent (7 × 8, 8 × 9, 9 × 9, carrés), travaillés par **stratégie** et non par récitation (« × 9 = × 10 − le nombre », « × 8 = double de × 4 »). La sélection par répétition espacée resservira d'abord ce qui est manqué.
+- **Maintien de l'attention** — thème *concentration* : les séries vont de 3 à 7 opérations avec aide de méthode ; ce qui progresse est la **longueur tenue**, jamais la vitesse.
+- **Contrôle indépendant étendu** : le validateur recalcule désormais aussi les **séries** (évaluation de gauche à droite) et les familles du sens du nombre. Test négatif concluant (un total faussé est refusé).
+- Programme mis à jour (11 paliers de calcul mental) ; **ADR-012** écrit ; README du thème et `AGENTS.md` à jour.
+- **Contrôles** — 898 items / 0 erreur ; 162 tests.
+
 ## 2026-09-26 · Calcul mental : progression refondue (plus de tables de 1 ni de 10)
 
 Demande : « inutile de faire la table des 10 et des 1 — réfléchis à une approche plus pédagogique ou clinique ».

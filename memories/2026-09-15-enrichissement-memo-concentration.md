@@ -51,3 +51,20 @@ pédagogique ou clinique ».
   Il a attrapé une erreur réelle dès la première exécution (« article à 12 €, payé avec 10 € »
   → −2). Leçon confirmée : un contrôle qui ne partage pas le code du générateur trouve ce que
   l'auteur ne voit pas.
+
+## 2026-09-26 (suite) — trois publics : dyscalculie, attention, lacunes
+
+Demande : la même exigence doit servir la dyscalculie, le maintien de l'attention et les
+lacunes sur certaines multiplications.
+
+- **Dyscalculie** : palier « Sens du nombre » (comparer, situer, valeur de position,
+  décomposer, doubler) — aucune opération : le socle de la représentation du nombre.
+- **Lacunes** : palier « Faits difficiles (× 6 à × 9) » — les faits qui résistent, travaillés
+  par stratégie (× 9 = × 10 − le nombre) ; la répétition espacée resservira ce qui est manqué.
+  Noter le renversement : « × 10 », d'abord refusé comme table à driller, redevient utile
+  comme **outil** pour calculer × 9.
+- **Attention soutenue** : côté concentration, les séries vont de 3 à 7 opérations ; ce qui
+  progresse est la longueur tenue, jamais la vitesse.
+- **Contrôle indépendant étendu** (mêmes principes qu'ADR-011) : le validateur recalcule les
+  séries de gauche à droite et les familles du sens du nombre. Test négatif : un total faussé
+  est refusé.
