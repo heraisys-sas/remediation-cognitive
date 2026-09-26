@@ -21,3 +21,17 @@ Pour la vitesse de traitement, je n'ai **pas** implémenté d'épreuve chronomé
 
 - Passage visuel des écrans ; relecture orthophoniste.
 - Piste : un « carnet de stratégies » consultable (résumé des aides vues), qui donnerait une trace écrite des méthodes — à discuter avec la spécialiste.
+
+## 2026-09-26 — dosage de la déduction : six grilles, même durée
+
+Demande : 6 exercices au lieu de 12 par séance, et 15 minutes au lieu de 10.
+
+- Vérification faite dans `docs/10-clinique/` : le cadre dit **séance courte ≤ 10 min** et
+  « 5-10 min » ; la fatigue reste une proposition. Étendre à 15 minutes serait une exception
+  au cadre, qui doit être documentée explicitement — je ne l'ai donc pas prise seul.
+- Décision appliquée : **on ajuste le nombre d'exercices, pas la durée** → 6 grilles pour la
+  déduction, 10 minutes inchangées. Douze grilles de raisonnement ne tenaient de toute façon
+  pas dans une séance (cause du mur de durée signalé juste avant).
+- Mécanisme : `dosage.parametres_seance(theme)` (table `PARAMETRES_THEME`) → le dosage devient
+  une propriété du thème, pas une constante globale. Toute future adaptation passe par là,
+  avec sa justification dans les protocoles.

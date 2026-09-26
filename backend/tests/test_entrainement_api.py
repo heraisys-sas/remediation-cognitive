@@ -592,3 +592,27 @@ def test_duree_max_appliquee_serveur(tmp_path):
     assert items[0]["id"] in cartes["cartes"]
     maitrise = json.loads((racine / "calcul-mental" / "maitrise.json").read_text())
     assert maitrise["historique"] == [[1, 1.0]]
+
+
+def test_deduction_seance_plus_courte(tmp_path):
+    """Déduction : six exercices par séance, durée maximale inchangée (10 min).
+
+    Chaque grille demande une chaîne de raisonnement complète : douze grilles ne
+    tiendraient pas dans une séance. Le cadre clinique reste « séance courte,
+    ≤ 10 min » (docs/10-clinique) — on ajuste le NOMBRE d'exercices, pas la durée.
+    """
+    application = creer_app(
+        racine_donnees=tmp_path / "data",
+        dossier_frontend=tmp_path / "front",
+    )
+    client = TestClient(application)
+
+    deduction = _demarrer(client, "deduction")
+    assert deduction["regles"] == {"max_items": 6, "duree_max_s": 600}
+    assert len(deduction["items"]) == 6
+    assert all(item["type"] == "grille-deduction" for item in deduction["items"])
+
+    # Les autres thèmes conservent le dosage général.
+    calcul = _demarrer(client, "calcul-mental")
+    assert calcul["regles"] == {"max_items": 12, "duree_max_s": 600}
+    assert len(calcul["items"]) == 12

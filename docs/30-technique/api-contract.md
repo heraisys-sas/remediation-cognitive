@@ -12,7 +12,7 @@ Base : `/api/entrainement` — périmètre **hors médical**. Format JSON. Pas d
 
 ### POST /api/entrainement/{theme}/sessions
 Démarre une séance. Sélection serveur : items dus (FSRS) d'abord, puis nouveaux du palier courant.
-- `201` → `{"session_id": str, "items": [{"id": str, "type": str, "palier": int, "contenu": {...}}], "regles": {"max_items": 12, "duree_max_s": 600}}`
+- `201` → `{"session_id": str, "items": [{"id": str, "type": str, "palier": int, "contenu": {...}}], "regles": {"max_items": 12, "duree_max_s": 600}} — les valeurs dépendent du thème (déduction : 6 exercices)}`
 - `429` → `{"erreur": "limite_sessions_atteinte", "sessions_restantes_aujourdhui": 0}`
 
 **Le payload `items` ne contient jamais `reponse`.**
@@ -31,7 +31,7 @@ Clôture la séance, applique FSRS + maîtrise, persiste.
 
 ## Règles serveur (garde-fous, non contournables)
 
-1. **Dosage** : max 12 items/séance ; durée max 600 s ; **3 séances/jour** (paramétrable dans `backend/app/domain/dosage.py`).
+1. **Dosage** : max 12 items/séance (6 pour la déduction, voir `dosage.parametres_seance`) ; durée max 600 s ; **3 séances/jour** (paramétrable dans `backend/app/domain/dosage.py`).
 2. **Fatigue** : `arret_propose = true` si RT moyen glissant > 1,25 × baseline **ou** taux d'erreur ≥ 0,40 — **proposition uniquement, jamais d'interruption forcée**.
 3. **Vocabulaire** : neutre, ludique modéré — centralisé dans `backend/app/domain/messages.py` ; aucun terme clinique.
 4. **Aucune norme populationnelle** dans les réponses API.

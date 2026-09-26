@@ -6,6 +6,27 @@
 - **Alerte de fatigue** si le temps de réaction se dégrade ou que le taux d'erreur grimpe en cours de session → proposition d'arrêt, **jamais forcée**, mise en avant dans l'UI.
 - **Journal de charge perçue** en fin de session : 1 item auto-rapporté (type NASA-TLX simplifié) pour corréler subjectif/objectif et ajuster le dosage.
 
+## Dosage par thème : même durée, moins d'exercices
+
+Le cadre reste **une séance courte (5-10 min)**. Ce qui change d'un thème à l'autre, c'est
+le **coût d'un exercice** : on ajuste donc le *nombre* d'exercices, jamais la durée.
+
+| Thème | Exercices par séance | Durée maximale | Pourquoi |
+|---|---|---|---|
+| Général (calcul mental, mémoire, évocation, quotidien…) | 12 | 10 min | items courts, enchaînables |
+| **Déduction** | **6** | 10 min | chaque grille demande une chaîne de raisonnement complète (mémoire de travail + fonctions exécutives) : une grille dure plusieurs minutes, douze ne tiendraient pas dans une séance |
+
+Trois choses ne bougent pas, quel que soit le thème :
+
+- la **durée maximale** reste le garde-fou de sur-sollicitation (anti-syndrome du patient qui
+  veut « prouver » qu'il va bien) ;
+- la **fatigue** reste une **proposition** d'arrêt, jamais une interruption ;
+- une séance qui atteint sa limite **termine proprement** : la réponse en cours est conservée,
+  le résumé est proposé (voir `docs/30-technique/api-contract.md`).
+
+*À revoir avec l'orthophoniste : si des séances de déduction plus longues sont utiles pour
+certains profils, c'est une exception à documenter ici explicitement (durée, profil, justification).*
+
 ## Progression (Kumon-like)
 
 - Critère de maîtrise par défaut : **90 % de réussite sur 3 sessions consécutives** (paramétrable).

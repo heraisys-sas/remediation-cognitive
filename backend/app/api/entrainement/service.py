@@ -32,10 +32,9 @@ from ...domain import messages
 from ...domain.contenu import ChargeurContenu
 from ...domain.correction import corriger
 from ...domain.dosage import (
-    DUREE_MAX_SEANCE_S,
     LIMITES_SESSIONS_JOUR,
     LIMITE_SESSIONS_JOUR,
-    MAX_ITEMS_PAR_SEANCE,
+    parametres_seance,
 )
 from ...domain.selection import selectionner_items
 from ...storage.store import StockageJSON
@@ -177,17 +176,20 @@ class GestionnaireSessions:
             etat_maitrise = self.stockage.lire_maitrise(theme)
             palier = self._palier_courant(theme, etat_maitrise["palier_courant"])
             cartes = self.stockage.lire_cartes(theme)
+            # Dosage propre au thème : une grille de déduction n'a pas le coût
+            # d'un item de calcul mental (voir domain/dosage.parametres_seance).
+            reglages = parametres_seance(theme)
             selection = selectionner_items(
                 self.contenu.items(theme),
                 cartes,
                 palier,
                 maintenant,
-                MAX_ITEMS_PAR_SEANCE,
+                reglages["max_items"],
             )
             runner = SessionRunner(
                 items=[ItemMoteur(item) for item in selection],
-                max_items=MAX_ITEMS_PAR_SEANCE,
-                duree_max_s=DUREE_MAX_SEANCE_S,
+                max_items=reglages["max_items"],
+                duree_max_s=reglages["duree_max_s"],
                 baseline_rt_ms=self._baseline_rt(theme),
                 depart=maintenant,
             )
@@ -210,8 +212,8 @@ class GestionnaireSessions:
             "session_id": session_id,
             "items": [_item_sans_reponse(item) for item in selection],
             "regles": {
-                "max_items": MAX_ITEMS_PAR_SEANCE,
-                "duree_max_s": DUREE_MAX_SEANCE_S,
+                "max_items": reglages["max_items"],
+                "duree_max_s": reglages["duree_max_s"],
             },
         }
 

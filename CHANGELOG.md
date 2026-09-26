@@ -2,6 +2,16 @@
 
 Format : [date] — [périmètre] — description. Les retours informels de l'orthophoniste sont journalisés ici, sans caution clinique.
 
+## 2026-09-26 · Déduction : six grilles par séance (même durée de 10 min)
+
+Demande : moins de tests par séance pour la déduction, et une durée allongée.
+
+- **Ce que dit la documentation clinique** : séance courte **≤ 10 min** (cadre d'usage), 5-10 min (protocoles), arrêt proposé jamais imposé. Douze grilles de raisonnement ne tiennent pas dans dix minutes.
+- **Décision** : on ajuste le **nombre d'exercices**, pas la durée — **six grilles par séance** pour la déduction, durée maximale inchangée à 10 minutes (le garde-fou anti sur-sollicitation reste). Allonger à 15 minutes serait une exception au cadre clinique : à documenter explicitement si tu la veux.
+- **Mécanisme** : paramètres de séance par thème (`dosage.parametres_seance`), les autres thèmes gardent 12 exercices / 10 minutes. Une séance de déduction se termine donc par son contenu, et non par le minuteur.
+- **Documentation** : protocoles cliniques (tableau de dosage par thème), contrat d'API, README du thème.
+- **Contrôles** — nouveau test (6 items, 600 s, les autres thèmes inchangés) ; 152 tests, 875 items, 0 erreur.
+
 ## 2026-09-26 · Déduction : impossible de valider au 4ᵉ test (409 en cours de séance)
 
 Signalement : au 4ᵉ exercice d'une séance de déduction, « la séance n'est plus disponible » et un 409 côté serveur.

@@ -34,7 +34,9 @@ Une phrase part d'un **repère** sur une figure, puis **suit les relations** d'u
 
 **20 grilles par palier, soit 80 grilles**, et 3 phrases de secours par grille (bouton « Un indice »), qui n'apparaissent que si on les demande.
 
-Dosage : **4 phrases** au palier 1, 8 à 10 aux paliers 2 et 3, 15 à 17 en 4×4. Le vocabulaire demandé (diagonales, coins, « à l'opposé ») est garanti présent dans chaque palier concerné.
+Dosage : **4 phrases** au palier 1, 8 à 10 aux paliers 2 et 3, 15 à 17 en 4×4.
+
+**Séance** : **six grilles** au maximum (et 10 minutes, comme partout) — chaque grille demande une chaîne de raisonnement complète, douze ne tiendraient pas dans une séance courte. Le vocabulaire demandé (diagonales, coins, « à l'opposé ») est garanti présent dans chaque palier concerné.
 
 ## Aucune phrase redondante
 
