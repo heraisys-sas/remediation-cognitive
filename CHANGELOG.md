@@ -2,6 +2,16 @@
 
 Format : [date] — [périmètre] — description. Les retours informels de l'orthophoniste sont journalisés ici, sans caution clinique.
 
+## 2026-09-26 · Audit de la dictée : du sens partout, sans excès
+
+Demande : vérifier que **tous** les champs libres avec reconnaissance vocale bénéficient d'une reconnaissance de sens, mais pas trop permissive.
+
+- **Deux manques trouvés et corrigés** : les **séquences de chiffres dictées en mots** (« cinq quatre neuf » pour « 549 », « zéro sept un » pour « 071 ») étaient refusées — la dictée écrit volontiers en mots ; et la **dictée était proposée pour le thème Python**, où elle n'a pas de sens (le code vit de son indentation et de ses symboles).
+- **Tolérance conservée, bornée** : valeurs (chiffres ↔ mots, symboles d'unité), heures, mots et accents, variantes déclarées, faute de frappe, et reconnaissance de sens (empreintes locales) pour les formulations libres — jamais à travers un jour, un moment ou un nombre, et **jamais sur un choix multiple**.
+- **Bornes vérifiées** : un chiffre, un jour, un moment, un montant ou un ordre erroné restent refusés.
+- **Audit documenté** dans ADR-008 (tableau champ par champ) et **batterie de tests** `test_reconnaissance_vocale.py` : pour chaque champ, une forme dictée acceptée **et** une réponse fausse refusée.
+- **Contrôles** — 916 items / 0 erreur ; 190 tests.
+
 ## 2026-09-26 · Périmètre corrigé : la dyscalculie sort du champ du POC
 
 Correction de périmètre, faite le jour même : la dyscalculie (trouble **développemental** du sens du nombre) n'est **pas** dans le périmètre de ce POC, qui vise des troubles cognitifs **acquis** chez l'adulte (post-commotionnels).

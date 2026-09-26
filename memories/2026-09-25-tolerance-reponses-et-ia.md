@@ -81,3 +81,18 @@ Signalement : la dictée écrit le symbole ou le nombre en toutes lettres ; la r
   à choisir** — le moteur sémantique n'y a pas sa place (leurres proches). Pour une **valeur**
   (montant, heure, nombre), la bonne réponse est une **équivalence déterministe** ; le moteur
   statistique ne sert qu'aux formulations libres, et seulement hors jalons de sens.
+
+## 2026-09-26 (fin) — audit de la dictée, champ par champ
+
+Demande : « vérifie que tous les champs libres avec reconnaissance vocale bénéficient d'une
+reconnaissance de sens mais pas trop permissive ».
+
+- Cartographie faite de **tous** les champs libres (donc dictables) : valeurs numériques, empans
+  chiffrés, empan de mots, mot retrouvé, prise de message, rappel libre, choix multiples, code.
+- Deux manques corrigés : séquences chiffrées **dictées en mots** (« cinq quatre neuf » = 549,
+  « zéro sept un » = 071) refusées ; et dictée proposée pour **Python** (retirée : le code est
+  fait d'indentation et de symboles).
+- Bornes confirmées par tests : chiffre, jour, moment, montant, ordre → refusés. Le moteur
+  sémantique ne sert qu'aux formulations libres, jamais aux valeurs ni aux choix multiples.
+- Livrable durable : le tableau d'audit dans ADR-008 + `test_reconnaissance_vocale.py`
+  (une forme acceptée **et** une réponse fausse refusée, par champ).

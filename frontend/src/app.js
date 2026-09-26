@@ -816,8 +816,11 @@ function afficherQuestion(item) {
   refs.zoneIndices.hidden = true;
   if (avecChoix) rendreOptions(options, item);
   refs.formulaire.hidden = avecChoix;
-  // Réponse à dicter possible seulement quand on attend un texte libre.
-  refs.boutonDicter.hidden = !(CAPACITES.voixDisponible() && !avecChoix);
+  // Réponse à dicter possible seulement quand on attend un texte libre — et jamais
+  // pour du code (une dictée ne restitue ni indentation ni symboles).
+  const dicteePossible = CAPACITES.voixDisponible() && !avecChoix
+    && !THEMES_SANS_DICTEE.has(etat.theme.id);
+  refs.boutonDicter.hidden = !dicteePossible;
 
   // Indices progressifs (accès au mot) : proposés, jamais imposés.
   if (Array.isArray(contenu.indices) && contenu.indices.length) rendreIndices(item);
@@ -1474,6 +1477,8 @@ function nomTheme(identifiant) {
    --------------------------------------------------------------------- */
 
 const GLYPHES = { cercle: "●", carre: "■", triangle: "▲", losange: "◆" };
+//: Thèmes où la dictée n'a pas de sens : la réponse est du code (indentation, symboles).
+const THEMES_SANS_DICTEE = new Set(["python"]);
 //: Libellés affichés des figures (les identifiants de contenu sont sans accent).
 const LIBELLES_FIGURES = { cercle: "cercle", carre: "carré", triangle: "triangle", losange: "losange" };
 const libelleFigure = (figure) => LIBELLES_FIGURES[figure] || figure;

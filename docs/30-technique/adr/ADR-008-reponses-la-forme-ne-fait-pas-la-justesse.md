@@ -30,6 +30,21 @@ Le risque inverse est réel : une tolérance trop large accepterait une réponse
 
 **5. Un ajout de tolérance se prouve par un test.** Chaque équivalence acceptée et chaque refus attendu sont verrouillés par des tests (heures, nombres, variantes, garde-fou des choix multiples).
 
+*Audit du 2026-09-26 — tous les champs à réponse libre (ceux où la dictée est proposée) :*
+
+| Champ libre (dictée) | Tolérance de forme | Tolérance de sens | Borne |
+|---|---|---|---|
+| Calcul mental, concentration (valeurs) | chiffres ↔ mots, symboles d'unité (`180 €`) | — | valeur exacte |
+| Mémoire — séquences chiffrées (empans, nombre associé) | espaces, **mots** (« zéro sept un »), casse | — | ordre strict |
+| Mémoire — empan de mots | accents, casse, ponctuation | non (l'ordre **est** la tâche) | séquence exacte |
+| Évocation (mot retrouvé) | accents, casse, variantes déclarées, faute de frappe | oui (empreintes locales) | jamais à travers un jalon |
+| Quotidien — prise de message | heures et montants sous toutes leurs formes | oui (« la cave » pour « la porte de la cave ») | jour, moment, nombre **stricts** |
+| Rappel libre (séries, mémoire) | accents, casse, pluriel simple | non (mots-clés) | seuil déclaré par l'item |
+| Méthodes et familles à choix | casse, accents | **non : jamais sur un choix multiple** | leurres proches par construction |
+| Python (code) | aucune (le code est exact) | non | **dictée retirée** : une dictée ne restitue ni indentation ni symboles |
+
+Deux manques corrigés par cet audit : les **séquences chiffrées dictées en mots** (« cinq quatre neuf » pour « 549 ») étaient refusées, et la **dictée était proposée pour du code Python**. La batterie de tests `test_reconnaissance_vocale.py` verrouille, pour chaque champ, une forme dictée **acceptée** et une réponse fausse **refusée**.
+
 ## Conséquences
 
 - (+) Une réponse juste n'est plus refusée à cause de sa forme : c'est la première cause de frustration constatée en usage.

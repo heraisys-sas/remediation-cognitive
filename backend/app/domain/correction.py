@@ -123,13 +123,24 @@ def _corriger_numerique(reponse, attendue) -> bool:
 
 
 def _corriger_sans_espaces(reponse, attendue) -> bool:
-    """Compare deux textes en ignorant TOUT espace et la casse (thème memoire).
+    """Séquence ou valeur courte (empans, n-back, paires) : la saisie est normalisée.
 
-    Les empans tapés avec des espaces (``"5 8 2 9 4"``) restent équivalents
-    à la séquence collée (``"58294"``) ; la casse est ignorée pour le n-back.
+    - espaces, casse, accents et ponctuation ignorés ;
+    - **nombres en toutes lettres convertis** : une réponse dictée arrive souvent en mots
+      (« zéro sept un » pour « 071 », « soixante-treize » pour « 73 ») ;
+    - l'ORDRE reste strict : c'est la tâche.
     """
-    nettoyer = lambda valeur: "".join(str(valeur or "").split()).lower()
-    return nettoyer(reponse) == nettoyer(attendue)
+    def clef(valeur) -> str:
+        jetons = []
+        for jeton in _clef_texte(valeur).split():
+            nombre = _en_nombre(jeton)
+            if nombre is not None and float(nombre).is_integer():
+                jetons.append(str(int(nombre)))
+            else:
+                jetons.append(jeton)
+        return "".join(jetons)
+
+    return clef(reponse) == clef(attendue)
 
 
 def _clef_texte(valeur) -> str:
