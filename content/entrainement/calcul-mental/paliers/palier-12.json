@@ -5,21 +5,21 @@
     "module": "entrainement",
     "theme": "calcul-mental",
     "fonctions_ciblees": [
-      "attention-soutenue",
+      "automatisation",
       "flexibilite",
-      "inhibition"
+      "memoire-travail"
     ],
     "palier": 12,
     "prerequis": [
       "cm-palier-11"
     ],
-    "cap_complexite": "une seule suite à la fois, cinq nombres au maximum",
+    "cap_complexite": "aucune division posée : on cherche dans la table du facteur connu",
     "contenu": {
-      "enonce": "Continue la suite : 40, 50, 60, 70, ?",
-      "aide": "Trouve le pas de la suite sur les deux premiers nombres, puis vérifie chaque nombre."
+      "enonce": "42 = ? × 7",
+      "aide": "Cherche dans la table du facteur connu : 42 = 6 × ? — compte 6, 12, 18…"
     },
     "reponse": {
-      "valeur": 80
+      "valeur": 6
     },
     "meta": {
       "auteur": "generation-automatique (tools/generate_items.py)",
@@ -35,21 +35,21 @@
     "module": "entrainement",
     "theme": "calcul-mental",
     "fonctions_ciblees": [
-      "attention-soutenue",
+      "automatisation",
       "flexibilite",
-      "inhibition"
+      "memoire-travail"
     ],
     "palier": 12,
     "prerequis": [
       "cm-palier-11"
     ],
-    "cap_complexite": "une seule suite à la fois, cinq nombres au maximum",
+    "cap_complexite": "aucune division posée : on cherche dans la table du facteur connu",
     "contenu": {
-      "enonce": "Compte à rebours : 24, 20, 16, 12, ?",
-      "aide": "Trouve le pas de la suite sur les deux premiers nombres, puis vérifie chaque nombre."
+      "enonce": "24 = ? × 8",
+      "aide": "Cherche dans la table du facteur connu : 42 = 6 × ? — compte 6, 12, 18…"
     },
     "reponse": {
-      "valeur": 8
+      "valeur": 3
     },
     "meta": {
       "auteur": "generation-automatique (tools/generate_items.py)",
@@ -65,21 +65,21 @@
     "module": "entrainement",
     "theme": "calcul-mental",
     "fonctions_ciblees": [
-      "attention-soutenue",
+      "automatisation",
       "flexibilite",
-      "inhibition"
+      "memoire-travail"
     ],
     "palier": 12,
     "prerequis": [
       "cm-palier-11"
     ],
-    "cap_complexite": "une seule suite à la fois, cinq nombres au maximum",
+    "cap_complexite": "aucune division posée : on cherche dans la table du facteur connu",
     "contenu": {
-      "enonce": "4, 8, 18, 16, 20 — quel nombre est faux ?",
-      "aide": "Trouve le pas de la suite sur les deux premiers nombres, puis vérifie chaque nombre."
+      "enonce": "63 = 7 × ?",
+      "aide": "Cherche dans la table du facteur connu : 42 = 6 × ? — compte 6, 12, 18…"
     },
     "reponse": {
-      "valeur": 18
+      "valeur": 9
     },
     "meta": {
       "auteur": "generation-automatique (tools/generate_items.py)",
@@ -95,21 +95,21 @@
     "module": "entrainement",
     "theme": "calcul-mental",
     "fonctions_ciblees": [
-      "attention-soutenue",
+      "automatisation",
       "flexibilite",
-      "inhibition"
+      "memoire-travail"
     ],
     "palier": 12,
     "prerequis": [
       "cm-palier-11"
     ],
-    "cap_complexite": "une seule suite à la fois, cinq nombres au maximum",
+    "cap_complexite": "aucune division posée : on cherche dans la table du facteur connu",
     "contenu": {
-      "enonce": "Continue la suite : 60, 75, 90, 105, ?",
-      "aide": "Trouve le pas de la suite sur les deux premiers nombres, puis vérifie chaque nombre."
+      "enonce": "28 = 4 × ?",
+      "aide": "Cherche dans la table du facteur connu : 42 = 6 × ? — compte 6, 12, 18…"
     },
     "reponse": {
-      "valeur": 120
+      "valeur": 7
     },
     "meta": {
       "auteur": "generation-automatique (tools/generate_items.py)",
@@ -125,21 +125,21 @@
     "module": "entrainement",
     "theme": "calcul-mental",
     "fonctions_ciblees": [
-      "attention-soutenue",
+      "automatisation",
       "flexibilite",
-      "inhibition"
+      "memoire-travail"
     ],
     "palier": 12,
     "prerequis": [
       "cm-palier-11"
     ],
-    "cap_complexite": "une seule suite à la fois, cinq nombres au maximum",
+    "cap_complexite": "aucune division posée : on cherche dans la table du facteur connu",
     "contenu": {
-      "enonce": "Compte à rebours : 100, 90, 80, 70, ?",
-      "aide": "Trouve le pas de la suite sur les deux premiers nombres, puis vérifie chaque nombre."
+      "enonce": "27 = 3 × ?",
+      "aide": "Cherche dans la table du facteur connu : 42 = 6 × ? — compte 6, 12, 18…"
     },
     "reponse": {
-      "valeur": 60
+      "valeur": 9
     },
     "meta": {
       "auteur": "generation-automatique (tools/generate_items.py)",
@@ -155,21 +155,21 @@
     "module": "entrainement",
     "theme": "calcul-mental",
     "fonctions_ciblees": [
-      "attention-soutenue",
+      "automatisation",
       "flexibilite",
-      "inhibition"
+      "memoire-travail"
     ],
     "palier": 12,
     "prerequis": [
       "cm-palier-11"
     ],
-    "cap_complexite": "une seule suite à la fois, cinq nombres au maximum",
+    "cap_complexite": "aucune division posée : on cherche dans la table du facteur connu",
     "contenu": {
-      "enonce": "Continue la suite : 8, 12, 16, 20, ?",
-      "aide": "Trouve le pas de la suite sur les deux premiers nombres, puis vérifie chaque nombre."
+      "enonce": "36 = ? × 6",
+      "aide": "Cherche dans la table du facteur connu : 42 = 6 × ? — compte 6, 12, 18…"
     },
     "reponse": {
-      "valeur": 24
+      "valeur": 6
     },
     "meta": {
       "auteur": "generation-automatique (tools/generate_items.py)",
@@ -185,21 +185,21 @@
     "module": "entrainement",
     "theme": "calcul-mental",
     "fonctions_ciblees": [
-      "attention-soutenue",
+      "automatisation",
       "flexibilite",
-      "inhibition"
+      "memoire-travail"
     ],
     "palier": 12,
     "prerequis": [
       "cm-palier-11"
     ],
-    "cap_complexite": "une seule suite à la fois, cinq nombres au maximum",
+    "cap_complexite": "aucune division posée : on cherche dans la table du facteur connu",
     "contenu": {
-      "enonce": "Compte à rebours : 30, 27, 24, 21, ?",
-      "aide": "Trouve le pas de la suite sur les deux premiers nombres, puis vérifie chaque nombre."
+      "enonce": "48 = 6 × ?",
+      "aide": "Cherche dans la table du facteur connu : 42 = 6 × ? — compte 6, 12, 18…"
     },
     "reponse": {
-      "valeur": 18
+      "valeur": 8
     },
     "meta": {
       "auteur": "generation-automatique (tools/generate_items.py)",
@@ -215,21 +215,21 @@
     "module": "entrainement",
     "theme": "calcul-mental",
     "fonctions_ciblees": [
-      "attention-soutenue",
+      "automatisation",
       "flexibilite",
-      "inhibition"
+      "memoire-travail"
     ],
     "palier": 12,
     "prerequis": [
       "cm-palier-11"
     ],
-    "cap_complexite": "une seule suite à la fois, cinq nombres au maximum",
+    "cap_complexite": "aucune division posée : on cherche dans la table du facteur connu",
     "contenu": {
-      "enonce": "100, 90, 92, 70, 60 — quel nombre est faux ?",
-      "aide": "Trouve le pas de la suite sur les deux premiers nombres, puis vérifie chaque nombre."
+      "enonce": "45 = ? × 9",
+      "aide": "Cherche dans la table du facteur connu : 42 = 6 × ? — compte 6, 12, 18…"
     },
     "reponse": {
-      "valeur": 92
+      "valeur": 5
     },
     "meta": {
       "auteur": "generation-automatique (tools/generate_items.py)",
@@ -245,21 +245,21 @@
     "module": "entrainement",
     "theme": "calcul-mental",
     "fonctions_ciblees": [
-      "attention-soutenue",
+      "automatisation",
       "flexibilite",
-      "inhibition"
+      "memoire-travail"
     ],
     "palier": 12,
     "prerequis": [
       "cm-palier-11"
     ],
-    "cap_complexite": "une seule suite à la fois, cinq nombres au maximum",
+    "cap_complexite": "aucune division posée : on cherche dans la table du facteur connu",
     "contenu": {
-      "enonce": "6, 12, 26, 24, 30 — quel nombre est faux ?",
-      "aide": "Trouve le pas de la suite sur les deux premiers nombres, puis vérifie chaque nombre."
+      "enonce": "56 = ? × 8",
+      "aide": "Cherche dans la table du facteur connu : 42 = 6 × ? — compte 6, 12, 18…"
     },
     "reponse": {
-      "valeur": 26
+      "valeur": 7
     },
     "meta": {
       "auteur": "generation-automatique (tools/generate_items.py)",
@@ -275,21 +275,21 @@
     "module": "entrainement",
     "theme": "calcul-mental",
     "fonctions_ciblees": [
-      "attention-soutenue",
+      "automatisation",
       "flexibilite",
-      "inhibition"
+      "memoire-travail"
     ],
     "palier": 12,
     "prerequis": [
       "cm-palier-11"
     ],
-    "cap_complexite": "une seule suite à la fois, cinq nombres au maximum",
+    "cap_complexite": "aucune division posée : on cherche dans la table du facteur connu",
     "contenu": {
-      "enonce": "Continue la suite : 90, 120, 150, 180, ?",
-      "aide": "Trouve le pas de la suite sur les deux premiers nombres, puis vérifie chaque nombre."
+      "enonce": "32 = ? × 8",
+      "aide": "Cherche dans la table du facteur connu : 42 = 6 × ? — compte 6, 12, 18…"
     },
     "reponse": {
-      "valeur": 210
+      "valeur": 4
     },
     "meta": {
       "auteur": "generation-automatique (tools/generate_items.py)",
@@ -305,21 +305,21 @@
     "module": "entrainement",
     "theme": "calcul-mental",
     "fonctions_ciblees": [
-      "attention-soutenue",
+      "automatisation",
       "flexibilite",
-      "inhibition"
+      "memoire-travail"
     ],
     "palier": 12,
     "prerequis": [
       "cm-palier-11"
     ],
-    "cap_complexite": "une seule suite à la fois, cinq nombres au maximum",
+    "cap_complexite": "aucune division posée : on cherche dans la table du facteur connu",
     "contenu": {
-      "enonce": "Continue la suite : 3, 6, 9, 12, ?",
-      "aide": "Trouve le pas de la suite sur les deux premiers nombres, puis vérifie chaque nombre."
+      "enonce": "64 = ? × 8",
+      "aide": "Cherche dans la table du facteur connu : 42 = 6 × ? — compte 6, 12, 18…"
     },
     "reponse": {
-      "valeur": 15
+      "valeur": 8
     },
     "meta": {
       "auteur": "generation-automatique (tools/generate_items.py)",
@@ -335,21 +335,21 @@
     "module": "entrainement",
     "theme": "calcul-mental",
     "fonctions_ciblees": [
-      "attention-soutenue",
+      "automatisation",
       "flexibilite",
-      "inhibition"
+      "memoire-travail"
     ],
     "palier": 12,
     "prerequis": [
       "cm-palier-11"
     ],
-    "cap_complexite": "une seule suite à la fois, cinq nombres au maximum",
+    "cap_complexite": "aucune division posée : on cherche dans la table du facteur connu",
     "contenu": {
-      "enonce": "Compte à rebours : 40, 35, 30, 25, ?",
-      "aide": "Trouve le pas de la suite sur les deux premiers nombres, puis vérifie chaque nombre."
+      "enonce": "81 = ? × 9",
+      "aide": "Cherche dans la table du facteur connu : 42 = 6 × ? — compte 6, 12, 18…"
     },
     "reponse": {
-      "valeur": 20
+      "valeur": 9
     },
     "meta": {
       "auteur": "generation-automatique (tools/generate_items.py)",
@@ -365,21 +365,21 @@
     "module": "entrainement",
     "theme": "calcul-mental",
     "fonctions_ciblees": [
-      "attention-soutenue",
+      "automatisation",
       "flexibilite",
-      "inhibition"
+      "memoire-travail"
     ],
     "palier": 12,
     "prerequis": [
       "cm-palier-11"
     ],
-    "cap_complexite": "une seule suite à la fois, cinq nombres au maximum",
+    "cap_complexite": "aucune division posée : on cherche dans la table du facteur connu",
     "contenu": {
-      "enonce": "Continue la suite : 15, 18, 21, 24, ?",
-      "aide": "Trouve le pas de la suite sur les deux premiers nombres, puis vérifie chaque nombre."
+      "enonce": "49 = 7 × ?",
+      "aide": "Cherche dans la table du facteur connu : 42 = 6 × ? — compte 6, 12, 18…"
     },
     "reponse": {
-      "valeur": 27
+      "valeur": 7
     },
     "meta": {
       "auteur": "generation-automatique (tools/generate_items.py)",
@@ -395,21 +395,21 @@
     "module": "entrainement",
     "theme": "calcul-mental",
     "fonctions_ciblees": [
-      "attention-soutenue",
+      "automatisation",
       "flexibilite",
-      "inhibition"
+      "memoire-travail"
     ],
     "palier": 12,
     "prerequis": [
       "cm-palier-11"
     ],
-    "cap_complexite": "une seule suite à la fois, cinq nombres au maximum",
+    "cap_complexite": "aucune division posée : on cherche dans la table du facteur connu",
     "contenu": {
-      "enonce": "5, 10, 15, 27, 25 — quel nombre est faux ?",
-      "aide": "Trouve le pas de la suite sur les deux premiers nombres, puis vérifie chaque nombre."
+      "enonce": "36 = ? × 9",
+      "aide": "Cherche dans la table du facteur connu : 42 = 6 × ? — compte 6, 12, 18…"
     },
     "reponse": {
-      "valeur": 27
+      "valeur": 4
     },
     "meta": {
       "auteur": "generation-automatique (tools/generate_items.py)",
@@ -425,21 +425,21 @@
     "module": "entrainement",
     "theme": "calcul-mental",
     "fonctions_ciblees": [
-      "attention-soutenue",
+      "automatisation",
       "flexibilite",
-      "inhibition"
+      "memoire-travail"
     ],
     "palier": 12,
     "prerequis": [
       "cm-palier-11"
     ],
-    "cap_complexite": "une seule suite à la fois, cinq nombres au maximum",
+    "cap_complexite": "aucune division posée : on cherche dans la table du facteur connu",
     "contenu": {
-      "enonce": "50, 45, 47, 35, 30 — quel nombre est faux ?",
-      "aide": "Trouve le pas de la suite sur les deux premiers nombres, puis vérifie chaque nombre."
+      "enonce": "72 = ? × 9",
+      "aide": "Cherche dans la table du facteur connu : 42 = 6 × ? — compte 6, 12, 18…"
     },
     "reponse": {
-      "valeur": 47
+      "valeur": 8
     },
     "meta": {
       "auteur": "generation-automatique (tools/generate_items.py)",
@@ -455,21 +455,21 @@
     "module": "entrainement",
     "theme": "calcul-mental",
     "fonctions_ciblees": [
-      "attention-soutenue",
+      "automatisation",
       "flexibilite",
-      "inhibition"
+      "memoire-travail"
     ],
     "palier": 12,
     "prerequis": [
       "cm-palier-11"
     ],
-    "cap_complexite": "une seule suite à la fois, cinq nombres au maximum",
+    "cap_complexite": "aucune division posée : on cherche dans la table du facteur connu",
     "contenu": {
-      "enonce": "Continue la suite : 100, 125, 150, 175, ?",
-      "aide": "Trouve le pas de la suite sur les deux premiers nombres, puis vérifie chaque nombre."
+      "enonce": "54 = ? × 9",
+      "aide": "Cherche dans la table du facteur connu : 42 = 6 × ? — compte 6, 12, 18…"
     },
     "reponse": {
-      "valeur": 200
+      "valeur": 6
     },
     "meta": {
       "auteur": "generation-automatique (tools/generate_items.py)",
@@ -485,21 +485,21 @@
     "module": "entrainement",
     "theme": "calcul-mental",
     "fonctions_ciblees": [
-      "attention-soutenue",
+      "automatisation",
       "flexibilite",
-      "inhibition"
+      "memoire-travail"
     ],
     "palier": 12,
     "prerequis": [
       "cm-palier-11"
     ],
-    "cap_complexite": "une seule suite à la fois, cinq nombres au maximum",
+    "cap_complexite": "aucune division posée : on cherche dans la table du facteur connu",
     "contenu": {
-      "enonce": "Continue la suite : 12, 18, 24, 30, ?",
-      "aide": "Trouve le pas de la suite sur les deux premiers nombres, puis vérifie chaque nombre."
+      "enonce": "40 = ? × 8",
+      "aide": "Cherche dans la table du facteur connu : 42 = 6 × ? — compte 6, 12, 18…"
     },
     "reponse": {
-      "valeur": 36
+      "valeur": 5
     },
     "meta": {
       "auteur": "generation-automatique (tools/generate_items.py)",
@@ -515,21 +515,21 @@
     "module": "entrainement",
     "theme": "calcul-mental",
     "fonctions_ciblees": [
-      "attention-soutenue",
+      "automatisation",
       "flexibilite",
-      "inhibition"
+      "memoire-travail"
     ],
     "palier": 12,
     "prerequis": [
       "cm-palier-11"
     ],
-    "cap_complexite": "une seule suite à la fois, cinq nombres au maximum",
+    "cap_complexite": "aucune division posée : on cherche dans la table du facteur connu",
     "contenu": {
-      "enonce": "Compte à rebours : 80, 60, 40, 20, ?",
-      "aide": "Trouve le pas de la suite sur les deux premiers nombres, puis vérifie chaque nombre."
+      "enonce": "35 = 5 × ?",
+      "aide": "Cherche dans la table du facteur connu : 42 = 6 × ? — compte 6, 12, 18…"
     },
     "reponse": {
-      "valeur": 0
+      "valeur": 7
     },
     "meta": {
       "auteur": "generation-automatique (tools/generate_items.py)",

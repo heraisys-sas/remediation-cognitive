@@ -2,6 +2,15 @@
 
 Format : [date] — [périmètre] — description. Les retours informels de l'orthophoniste sont journalisés ici, sans caution clinique.
 
+## 2026-09-26 · Périmètre corrigé : la dyscalculie sort du champ du POC
+
+Correction de périmètre, faite le jour même : la dyscalculie (trouble **développemental** du sens du nombre) n'est **pas** dans le périmètre de ce POC, qui vise des troubles cognitifs **acquis** chez l'adulte (post-commotionnels).
+
+- **Palier retiré** : « Sens du nombre » (comparer, situer, décomposer) et ses contrôles, ajoutés quelques minutes plus tôt sur une interprétation erronée. Les paliers suivants sont renumérotés (11 = *Suites et erreurs*, 12 = *Faits à l'envers*).
+- **Ce qui reste, et pourquoi** : faits difficiles (× 6 à × 9), suites et erreurs, faits à l'envers — les deux dernières servant la **mémoire de travail**, l'**attention soutenue** et les **lacunes ciblées**, qui sont dans le champ du projet.
+- **ADR-012 renommé et annoté** : le périmètre corrigé figure en tête, avec la mention du retrait. Le cadrage « dyscalculie » est explicitement écarté dans le README du thème, pour éviter une nouvelle confusion.
+- **Contrôles** — 916 items / 0 erreur ; 164 tests.
+
 ## 2026-09-26 · Calcul mental : d'autres séries, et un contrôle qui vérifie sa couverture
 
 Suite au principe « éventuellement via d'autres séries de test » : deux familles ajoutées, et une leçon d'outillage.

@@ -91,7 +91,7 @@
     },
     {
       "id": "cm-palier-11",
-      "description": "Sens du nombre : comparer, situer, décomposer (dyscalculie)",
+      "description": "Suites et erreurs : tenir le pas, repérer ce qui ne suit pas",
       "prerequis": [
         "cm-palier-10"
       ],
@@ -100,20 +100,11 @@
     },
     {
       "id": "cm-palier-12",
-      "description": "Suites et erreurs : tenir le pas, repérer ce qui ne suit pas",
+      "description": "Faits à l'envers : retrouver le facteur manquant",
       "prerequis": [
         "cm-palier-11"
       ],
       "fichier": "paliers/palier-12.json",
-      "nb_items": 18
-    },
-    {
-      "id": "cm-palier-13",
-      "description": "Faits à l'envers : retrouver le facteur manquant",
-      "prerequis": [
-        "cm-palier-12"
-      ],
-      "fichier": "paliers/palier-13.json",
       "nb_items": 18
     }
   ]

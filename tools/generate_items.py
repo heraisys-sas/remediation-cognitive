@@ -61,7 +61,6 @@ DESCRIPTIONS: list[str] = [
     "Au quotidien : l'argent (total, rendu de monnaie)",
     "Au quotidien : quantités et durées (proportions, totaux)",
     "Faits difficiles (× 6 à × 9) : combler les lacunes, avec une stratégie",
-    "Sens du nombre : comparer, situer, décomposer (dyscalculie)",
     "Suites et erreurs : tenir le pas, repérer ce qui ne suit pas",
     "Faits à l'envers : retrouver le facteur manquant",
 ]
@@ -78,7 +77,6 @@ FONCTIONS_PAR_PALIER: list[list[str]] = [
     ["automatisation", "memoire-travail"],
     ["memoire-travail", "fonctions-executives"],
     ["automatisation", "flexibilite"],
-    ["automatisation", "flexibilite", "inhibition"],
     ["attention-soutenue", "flexibilite", "inhibition"],
     ["automatisation", "flexibilite", "memoire-travail"],
 ]
@@ -95,16 +93,14 @@ AIDES: dict[int, str] = {
     8: "Rends la monnaie : ce qu'on te donne moins ce que ça coûte.",
     9: "Pour le double de personnes, il faut le double de quantité.",
     10: "Appuie-toi sur ce que tu sais déjà : × 9 = × 10 − le nombre ; × 8 = double de × 4 ; × 6 = × 5 + le nombre.",
-    11: "Compare les dizaines avant les unités ; pour situer, compte de dix en dix.",
-    12: "Trouve le pas de la suite sur les deux premiers nombres, puis vérifie chaque nombre.",
-    13: "Cherche dans la table du facteur connu : 42 = 6 × ? — compte 6, 12, 18…",
+    11: "Trouve le pas de la suite sur les deux premiers nombres, puis vérifie chaque nombre.",
+    12: "Cherche dans la table du facteur connu : 42 = 6 × ? — compte 6, 12, 18…",
 }
 CAPS: dict[int, str] = {
     7: "deux opérations au maximum (charge de mémoire de travail bornée)",
     9: "une seule transformation (double ou total), sans pourcentage",
-    11: "une seule question à la fois : comparer, situer ou décomposer",
-    12: "une seule suite à la fois, cinq nombres au maximum",
-    13: "aucune division posée : on cherche dans la table du facteur connu",
+    11: "une seule suite à la fois, cinq nombres au maximum",
+    12: "aucune division posée : on cherche dans la table du facteur connu",
 }
 
 
@@ -279,30 +275,6 @@ def _faits_difficiles(rng: random.Random) -> list[tuple[str, int]]:
     return couples
 
 
-def _sens_du_nombre(rng: random.Random) -> list[tuple[str, int]]:
-    """Sens du nombre (dyscalculie) : comparer, situer, décomposer avant de calculer.
-
-    Ces tâches ne demandent aucune opération : elles portent sur la représentation du
-    nombre — grandeur, position, valeur de position, décomposition. C'est le socle sans
-    lequel les faits arithmétiques ne peuvent pas s'organiser.
-    """
-    couples = []
-    for a, b in [(63, 59), (47, 74), (102, 98), (36, 63), (80, 78), (55, 505)]:
-        couples.append((f"Quel nombre est le plus grand : {a} ou {b} ?", max(a, b)))
-    for n in (47, 63, 85, 92, 106, 230):
-        couples.append((f"Combien de dizaines dans {n} ?", n // 10))
-    for n in (43, 67, 85, 129):
-        couples.append((f"{n} = {n // 10 * 10} + ?", n % 10))
-    for n in (69, 99, 109, 248):
-        couples.append((f"Quel nombre vient juste après {n} ?", n + 1))
-    for a, b in [(20, 30), (40, 50), (60, 70), (100, 120)]:
-        couples.append((f"À mi-chemin entre {a} et {b} ?", (a + b) // 2))
-    for n in (35, 45, 250):
-        couples.append((f"Quel est le double de {n} ?", 2 * n))
-    rng.shuffle(couples)
-    return couples
-
-
 def _suites_et_erreurs(rng: random.Random) -> list[tuple[str, int]]:
     """Autre série : continuer une suite, ou repérer le nombre qui ne suit pas la règle.
 
@@ -361,7 +333,6 @@ FAMILLES: list[tuple] = [
     (_argent, 18),
     (_quantites, 18),
     (_faits_difficiles, 19),
-    (_sens_du_nombre, 18),
     (_suites_et_erreurs, 18),
     (_faits_a_l_envers, 18),
 ]

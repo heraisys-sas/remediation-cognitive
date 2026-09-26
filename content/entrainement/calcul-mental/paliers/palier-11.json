@@ -5,7 +5,7 @@
     "module": "entrainement",
     "theme": "calcul-mental",
     "fonctions_ciblees": [
-      "automatisation",
+      "attention-soutenue",
       "flexibilite",
       "inhibition"
     ],
@@ -13,13 +13,13 @@
     "prerequis": [
       "cm-palier-10"
     ],
-    "cap_complexite": "une seule question à la fois : comparer, situer ou décomposer",
+    "cap_complexite": "une seule suite à la fois, cinq nombres au maximum",
     "contenu": {
-      "enonce": "À mi-chemin entre 100 et 120 ?",
-      "aide": "Compare les dizaines avant les unités ; pour situer, compte de dix en dix."
+      "enonce": "Compte à rebours : 30, 27, 24, 21, ?",
+      "aide": "Trouve le pas de la suite sur les deux premiers nombres, puis vérifie chaque nombre."
     },
     "reponse": {
-      "valeur": 110
+      "valeur": 18
     },
     "meta": {
       "auteur": "generation-automatique (tools/generate_items.py)",
@@ -35,7 +35,7 @@
     "module": "entrainement",
     "theme": "calcul-mental",
     "fonctions_ciblees": [
-      "automatisation",
+      "attention-soutenue",
       "flexibilite",
       "inhibition"
     ],
@@ -43,13 +43,13 @@
     "prerequis": [
       "cm-palier-10"
     ],
-    "cap_complexite": "une seule question à la fois : comparer, situer ou décomposer",
+    "cap_complexite": "une seule suite à la fois, cinq nombres au maximum",
     "contenu": {
-      "enonce": "À mi-chemin entre 60 et 70 ?",
-      "aide": "Compare les dizaines avant les unités ; pour situer, compte de dix en dix."
+      "enonce": "100, 90, 80, 82, 60 — quel nombre est faux ?",
+      "aide": "Trouve le pas de la suite sur les deux premiers nombres, puis vérifie chaque nombre."
     },
     "reponse": {
-      "valeur": 65
+      "valeur": 82
     },
     "meta": {
       "auteur": "generation-automatique (tools/generate_items.py)",
@@ -65,7 +65,7 @@
     "module": "entrainement",
     "theme": "calcul-mental",
     "fonctions_ciblees": [
-      "automatisation",
+      "attention-soutenue",
       "flexibilite",
       "inhibition"
     ],
@@ -73,13 +73,13 @@
     "prerequis": [
       "cm-palier-10"
     ],
-    "cap_complexite": "une seule question à la fois : comparer, situer ou décomposer",
+    "cap_complexite": "une seule suite à la fois, cinq nombres au maximum",
     "contenu": {
-      "enonce": "À mi-chemin entre 40 et 50 ?",
-      "aide": "Compare les dizaines avant les unités ; pour situer, compte de dix en dix."
+      "enonce": "50, 45, 47, 35, 30 — quel nombre est faux ?",
+      "aide": "Trouve le pas de la suite sur les deux premiers nombres, puis vérifie chaque nombre."
     },
     "reponse": {
-      "valeur": 45
+      "valeur": 47
     },
     "meta": {
       "auteur": "generation-automatique (tools/generate_items.py)",
@@ -95,7 +95,7 @@
     "module": "entrainement",
     "theme": "calcul-mental",
     "fonctions_ciblees": [
-      "automatisation",
+      "attention-soutenue",
       "flexibilite",
       "inhibition"
     ],
@@ -103,13 +103,13 @@
     "prerequis": [
       "cm-palier-10"
     ],
-    "cap_complexite": "une seule question à la fois : comparer, situer ou décomposer",
+    "cap_complexite": "une seule suite à la fois, cinq nombres au maximum",
     "contenu": {
-      "enonce": "Quel nombre vient juste après 99 ?",
-      "aide": "Compare les dizaines avant les unités ; pour situer, compte de dix en dix."
+      "enonce": "Compte à rebours : 40, 35, 30, 25, ?",
+      "aide": "Trouve le pas de la suite sur les deux premiers nombres, puis vérifie chaque nombre."
     },
     "reponse": {
-      "valeur": 100
+      "valeur": 20
     },
     "meta": {
       "auteur": "generation-automatique (tools/generate_items.py)",
@@ -125,7 +125,7 @@
     "module": "entrainement",
     "theme": "calcul-mental",
     "fonctions_ciblees": [
-      "automatisation",
+      "attention-soutenue",
       "flexibilite",
       "inhibition"
     ],
@@ -133,13 +133,13 @@
     "prerequis": [
       "cm-palier-10"
     ],
-    "cap_complexite": "une seule question à la fois : comparer, situer ou décomposer",
+    "cap_complexite": "une seule suite à la fois, cinq nombres au maximum",
     "contenu": {
-      "enonce": "85 = 80 + ?",
-      "aide": "Compare les dizaines avant les unités ; pour situer, compte de dix en dix."
+      "enonce": "Continue la suite : 90, 120, 150, 180, ?",
+      "aide": "Trouve le pas de la suite sur les deux premiers nombres, puis vérifie chaque nombre."
     },
     "reponse": {
-      "valeur": 5
+      "valeur": 210
     },
     "meta": {
       "auteur": "generation-automatique (tools/generate_items.py)",
@@ -155,7 +155,7 @@
     "module": "entrainement",
     "theme": "calcul-mental",
     "fonctions_ciblees": [
-      "automatisation",
+      "attention-soutenue",
       "flexibilite",
       "inhibition"
     ],
@@ -163,13 +163,13 @@
     "prerequis": [
       "cm-palier-10"
     ],
-    "cap_complexite": "une seule question à la fois : comparer, situer ou décomposer",
+    "cap_complexite": "une seule suite à la fois, cinq nombres au maximum",
     "contenu": {
-      "enonce": "Quel nombre est le plus grand : 55 ou 505 ?",
-      "aide": "Compare les dizaines avant les unités ; pour situer, compte de dix en dix."
+      "enonce": "Continue la suite : 15, 18, 21, 24, ?",
+      "aide": "Trouve le pas de la suite sur les deux premiers nombres, puis vérifie chaque nombre."
     },
     "reponse": {
-      "valeur": 505
+      "valeur": 27
     },
     "meta": {
       "auteur": "generation-automatique (tools/generate_items.py)",
@@ -185,7 +185,7 @@
     "module": "entrainement",
     "theme": "calcul-mental",
     "fonctions_ciblees": [
-      "automatisation",
+      "attention-soutenue",
       "flexibilite",
       "inhibition"
     ],
@@ -193,13 +193,13 @@
     "prerequis": [
       "cm-palier-10"
     ],
-    "cap_complexite": "une seule question à la fois : comparer, situer ou décomposer",
+    "cap_complexite": "une seule suite à la fois, cinq nombres au maximum",
     "contenu": {
-      "enonce": "67 = 60 + ?",
-      "aide": "Compare les dizaines avant les unités ; pour situer, compte de dix en dix."
+      "enonce": "Continue la suite : 60, 75, 90, 105, ?",
+      "aide": "Trouve le pas de la suite sur les deux premiers nombres, puis vérifie chaque nombre."
     },
     "reponse": {
-      "valeur": 7
+      "valeur": 120
     },
     "meta": {
       "auteur": "generation-automatique (tools/generate_items.py)",
@@ -215,7 +215,7 @@
     "module": "entrainement",
     "theme": "calcul-mental",
     "fonctions_ciblees": [
-      "automatisation",
+      "attention-soutenue",
       "flexibilite",
       "inhibition"
     ],
@@ -223,13 +223,13 @@
     "prerequis": [
       "cm-palier-10"
     ],
-    "cap_complexite": "une seule question à la fois : comparer, situer ou décomposer",
+    "cap_complexite": "une seule suite à la fois, cinq nombres au maximum",
     "contenu": {
-      "enonce": "Quel nombre vient juste après 109 ?",
-      "aide": "Compare les dizaines avant les unités ; pour situer, compte de dix en dix."
+      "enonce": "5, 10, 15, 27, 25 — quel nombre est faux ?",
+      "aide": "Trouve le pas de la suite sur les deux premiers nombres, puis vérifie chaque nombre."
     },
     "reponse": {
-      "valeur": 110
+      "valeur": 27
     },
     "meta": {
       "auteur": "generation-automatique (tools/generate_items.py)",
@@ -245,7 +245,7 @@
     "module": "entrainement",
     "theme": "calcul-mental",
     "fonctions_ciblees": [
-      "automatisation",
+      "attention-soutenue",
       "flexibilite",
       "inhibition"
     ],
@@ -253,13 +253,13 @@
     "prerequis": [
       "cm-palier-10"
     ],
-    "cap_complexite": "une seule question à la fois : comparer, situer ou décomposer",
+    "cap_complexite": "une seule suite à la fois, cinq nombres au maximum",
     "contenu": {
-      "enonce": "Quel est le double de 35 ?",
-      "aide": "Compare les dizaines avant les unités ; pour situer, compte de dix en dix."
+      "enonce": "4, 8, 12, 22, 20 — quel nombre est faux ?",
+      "aide": "Trouve le pas de la suite sur les deux premiers nombres, puis vérifie chaque nombre."
     },
     "reponse": {
-      "valeur": 70
+      "valeur": 22
     },
     "meta": {
       "auteur": "generation-automatique (tools/generate_items.py)",
@@ -275,7 +275,7 @@
     "module": "entrainement",
     "theme": "calcul-mental",
     "fonctions_ciblees": [
-      "automatisation",
+      "attention-soutenue",
       "flexibilite",
       "inhibition"
     ],
@@ -283,13 +283,13 @@
     "prerequis": [
       "cm-palier-10"
     ],
-    "cap_complexite": "une seule question à la fois : comparer, situer ou décomposer",
+    "cap_complexite": "une seule suite à la fois, cinq nombres au maximum",
     "contenu": {
-      "enonce": "Combien de dizaines dans 106 ?",
-      "aide": "Compare les dizaines avant les unités ; pour situer, compte de dix en dix."
+      "enonce": "Continue la suite : 12, 18, 24, 30, ?",
+      "aide": "Trouve le pas de la suite sur les deux premiers nombres, puis vérifie chaque nombre."
     },
     "reponse": {
-      "valeur": 10
+      "valeur": 36
     },
     "meta": {
       "auteur": "generation-automatique (tools/generate_items.py)",
@@ -305,7 +305,7 @@
     "module": "entrainement",
     "theme": "calcul-mental",
     "fonctions_ciblees": [
-      "automatisation",
+      "attention-soutenue",
       "flexibilite",
       "inhibition"
     ],
@@ -313,13 +313,13 @@
     "prerequis": [
       "cm-palier-10"
     ],
-    "cap_complexite": "une seule question à la fois : comparer, situer ou décomposer",
+    "cap_complexite": "une seule suite à la fois, cinq nombres au maximum",
     "contenu": {
-      "enonce": "Quel nombre est le plus grand : 36 ou 63 ?",
-      "aide": "Compare les dizaines avant les unités ; pour situer, compte de dix en dix."
+      "enonce": "Compte à rebours : 50, 45, 40, 35, ?",
+      "aide": "Trouve le pas de la suite sur les deux premiers nombres, puis vérifie chaque nombre."
     },
     "reponse": {
-      "valeur": 63
+      "valeur": 30
     },
     "meta": {
       "auteur": "generation-automatique (tools/generate_items.py)",
@@ -335,7 +335,7 @@
     "module": "entrainement",
     "theme": "calcul-mental",
     "fonctions_ciblees": [
-      "automatisation",
+      "attention-soutenue",
       "flexibilite",
       "inhibition"
     ],
@@ -343,13 +343,13 @@
     "prerequis": [
       "cm-palier-10"
     ],
-    "cap_complexite": "une seule question à la fois : comparer, situer ou décomposer",
+    "cap_complexite": "une seule suite à la fois, cinq nombres au maximum",
     "contenu": {
-      "enonce": "Quel est le double de 250 ?",
-      "aide": "Compare les dizaines avant les unités ; pour situer, compte de dix en dix."
+      "enonce": "Compte à rebours : 80, 60, 40, 20, ?",
+      "aide": "Trouve le pas de la suite sur les deux premiers nombres, puis vérifie chaque nombre."
     },
     "reponse": {
-      "valeur": 500
+      "valeur": 0
     },
     "meta": {
       "auteur": "generation-automatique (tools/generate_items.py)",
@@ -365,7 +365,7 @@
     "module": "entrainement",
     "theme": "calcul-mental",
     "fonctions_ciblees": [
-      "automatisation",
+      "attention-soutenue",
       "flexibilite",
       "inhibition"
     ],
@@ -373,13 +373,13 @@
     "prerequis": [
       "cm-palier-10"
     ],
-    "cap_complexite": "une seule question à la fois : comparer, situer ou décomposer",
+    "cap_complexite": "une seule suite à la fois, cinq nombres au maximum",
     "contenu": {
-      "enonce": "Combien de dizaines dans 63 ?",
-      "aide": "Compare les dizaines avant les unités ; pour situer, compte de dix en dix."
+      "enonce": "Compte à rebours : 100, 90, 80, 70, ?",
+      "aide": "Trouve le pas de la suite sur les deux premiers nombres, puis vérifie chaque nombre."
     },
     "reponse": {
-      "valeur": 6
+      "valeur": 60
     },
     "meta": {
       "auteur": "generation-automatique (tools/generate_items.py)",
@@ -395,7 +395,7 @@
     "module": "entrainement",
     "theme": "calcul-mental",
     "fonctions_ciblees": [
-      "automatisation",
+      "attention-soutenue",
       "flexibilite",
       "inhibition"
     ],
@@ -403,13 +403,13 @@
     "prerequis": [
       "cm-palier-10"
     ],
-    "cap_complexite": "une seule question à la fois : comparer, situer ou décomposer",
+    "cap_complexite": "une seule suite à la fois, cinq nombres au maximum",
     "contenu": {
-      "enonce": "43 = 40 + ?",
-      "aide": "Compare les dizaines avant les unités ; pour situer, compte de dix en dix."
+      "enonce": "Continue la suite : 40, 50, 60, 70, ?",
+      "aide": "Trouve le pas de la suite sur les deux premiers nombres, puis vérifie chaque nombre."
     },
     "reponse": {
-      "valeur": 3
+      "valeur": 80
     },
     "meta": {
       "auteur": "generation-automatique (tools/generate_items.py)",
@@ -425,7 +425,7 @@
     "module": "entrainement",
     "theme": "calcul-mental",
     "fonctions_ciblees": [
-      "automatisation",
+      "attention-soutenue",
       "flexibilite",
       "inhibition"
     ],
@@ -433,13 +433,13 @@
     "prerequis": [
       "cm-palier-10"
     ],
-    "cap_complexite": "une seule question à la fois : comparer, situer ou décomposer",
+    "cap_complexite": "une seule suite à la fois, cinq nombres au maximum",
     "contenu": {
-      "enonce": "À mi-chemin entre 20 et 30 ?",
-      "aide": "Compare les dizaines avant les unités ; pour situer, compte de dix en dix."
+      "enonce": "6, 12, 26, 24, 30 — quel nombre est faux ?",
+      "aide": "Trouve le pas de la suite sur les deux premiers nombres, puis vérifie chaque nombre."
     },
     "reponse": {
-      "valeur": 25
+      "valeur": 26
     },
     "meta": {
       "auteur": "generation-automatique (tools/generate_items.py)",
@@ -455,7 +455,7 @@
     "module": "entrainement",
     "theme": "calcul-mental",
     "fonctions_ciblees": [
-      "automatisation",
+      "attention-soutenue",
       "flexibilite",
       "inhibition"
     ],
@@ -463,13 +463,13 @@
     "prerequis": [
       "cm-palier-10"
     ],
-    "cap_complexite": "une seule question à la fois : comparer, situer ou décomposer",
+    "cap_complexite": "une seule suite à la fois, cinq nombres au maximum",
     "contenu": {
-      "enonce": "Quel nombre est le plus grand : 47 ou 74 ?",
-      "aide": "Compare les dizaines avant les unités ; pour situer, compte de dix en dix."
+      "enonce": "Compte à rebours : 24, 20, 16, 12, ?",
+      "aide": "Trouve le pas de la suite sur les deux premiers nombres, puis vérifie chaque nombre."
     },
     "reponse": {
-      "valeur": 74
+      "valeur": 8
     },
     "meta": {
       "auteur": "generation-automatique (tools/generate_items.py)",
@@ -485,7 +485,7 @@
     "module": "entrainement",
     "theme": "calcul-mental",
     "fonctions_ciblees": [
-      "automatisation",
+      "attention-soutenue",
       "flexibilite",
       "inhibition"
     ],
@@ -493,13 +493,13 @@
     "prerequis": [
       "cm-palier-10"
     ],
-    "cap_complexite": "une seule question à la fois : comparer, situer ou décomposer",
+    "cap_complexite": "une seule suite à la fois, cinq nombres au maximum",
     "contenu": {
-      "enonce": "Quel nombre vient juste après 248 ?",
-      "aide": "Compare les dizaines avant les unités ; pour situer, compte de dix en dix."
+      "enonce": "Continue la suite : 3, 6, 9, 12, ?",
+      "aide": "Trouve le pas de la suite sur les deux premiers nombres, puis vérifie chaque nombre."
     },
     "reponse": {
-      "valeur": 249
+      "valeur": 15
     },
     "meta": {
       "auteur": "generation-automatique (tools/generate_items.py)",
@@ -515,7 +515,7 @@
     "module": "entrainement",
     "theme": "calcul-mental",
     "fonctions_ciblees": [
-      "automatisation",
+      "attention-soutenue",
       "flexibilite",
       "inhibition"
     ],
@@ -523,13 +523,13 @@
     "prerequis": [
       "cm-palier-10"
     ],
-    "cap_complexite": "une seule question à la fois : comparer, situer ou décomposer",
+    "cap_complexite": "une seule suite à la fois, cinq nombres au maximum",
     "contenu": {
-      "enonce": "Quel est le double de 45 ?",
-      "aide": "Compare les dizaines avant les unités ; pour situer, compte de dix en dix."
+      "enonce": "70, 63, 56, 58, 42 — quel nombre est faux ?",
+      "aide": "Trouve le pas de la suite sur les deux premiers nombres, puis vérifie chaque nombre."
     },
     "reponse": {
-      "valeur": 90
+      "valeur": 58
     },
     "meta": {
       "auteur": "generation-automatique (tools/generate_items.py)",

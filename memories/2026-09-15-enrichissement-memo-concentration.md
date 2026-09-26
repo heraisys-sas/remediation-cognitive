@@ -85,3 +85,19 @@ Demande : « éventuellement via d'autres séries de test ».
   étant non calculable par nature) ; **test par forme d'énoncé** (`test_controle_calcul.py`).
 - Leçon à garder : un contrôle doit **prouver qu'il a vérifié quelque chose** (couverture,
   compteur, test de la forme). Un silence n'est pas une validation.
+
+## 2026-09-26 (nuit) — périmètre : la dyscalculie n'entre pas dans le POC
+
+Correction de l'utilisateur : « j'ai mal interprété le sens de dyscalculie — ça n'est pas dans
+le périmètre de ce poc ».
+
+- Retiré : le palier « Sens du nombre » (comparer, situer, décomposer) et ses motifs de
+  contrôle, ainsi que le cadrage « dyscalculie » du README et de l'ADR.
+- Rétabli/renuméroté : 11 = suites et erreurs, 12 = faits à l'envers.
+- Conservé, car dans le champ : faits difficiles (lacunes), séries (attention soutenue,
+  mémoire de travail).
+- Distinction à garder : **dyscalculie** = trouble développemental du sens du nombre ;
+  le projet vise des troubles **acquis** chez l'adulte. Le mot ne doit plus apparaître comme
+  une cible, seulement comme une exclusion explicite.
+- Méthode : un ADR ne se réécrit pas — il est **annoté** (« périmètre corrigé le jour même »),
+  et le fichier est renommé pour ne plus porter un titre trompeur.

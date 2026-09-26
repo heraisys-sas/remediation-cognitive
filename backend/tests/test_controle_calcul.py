@@ -27,13 +27,6 @@ FORMES = [
     ("2 articles à 7 € — combien en tout ?", 14),
     ("2 articles à 12,50 € — combien en tout ?", 25),
     ("Un article à 7 €, payé avec 10 € — combien te rend-on ?", 3),
-    # Sens du nombre (dyscalculie)
-    ("Quel nombre est le plus grand : 63 ou 59 ?", 63),
-    ("Combien de dizaines dans 47 ?", 4),
-    ("43 = 40 + ?", 3),
-    ("Quel nombre vient juste après 69 ?", 70),
-    ("À mi-chemin entre 40 et 50 ?", 45),
-    ("Quel est le double de 35 ?", 70),
     # Suites et erreurs
     ("Continue la suite : 40, 50, 60, 70, ?", 80),
     ("Compte à rebours : 24, 20, 16, 12, ?", 8),

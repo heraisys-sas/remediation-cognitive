@@ -25,11 +25,10 @@ Un adulte n'a rien à automatiser sur la table de 1 ni sur celle de 10 : ce ne s
 | 8 | Au quotidien : l'argent | « Un article à 7 €, payé avec 10 € — combien te rend-on ? » |
 | 9 | Au quotidien : quantités et durées | « Pour 4 personnes, 250 g ; pour 8 personnes ? » |
 | 10 | **Faits difficiles (× 6 à × 9)** | « Combien font 7 × 8 ? » (aide : × 8 = double de × 4) |
-| 11 | **Sens du nombre (dyscalculie)** | « Combien de dizaines dans 47 ? », « À mi-chemin entre 40 et 50 ? » |
-| 12 | **Suites et erreurs** | « Continue la suite : 40, 50, 60, ? » · « 4, 8, 18, 16, 20 — quel nombre est faux ? » |
-| 13 | **Faits à l'envers** | « 42 = 6 × ? » (le fait cherché par l'autre bout) |
+| 11 | **Suites et erreurs** | « Continue la suite : 40, 50, 60, ? » · « 4, 8, 18, 16, 20 — quel nombre est faux ? » |
+| 12 | **Faits à l'envers** | « 42 = 6 × ? » (le fait cherché par l'autre bout) |
 
-13 paliers, **230 items**, aucun doublon d'énoncé dans un palier. Les énoncés sont des questions courtes et naturelles : on s'adresse à un adulte, pas à un enfant qui apprend ses tables.
+12 paliers, **212 items**, aucun doublon d'énoncé dans un palier. Les énoncés sont des questions courtes et naturelles : on s'adresse à un adulte, pas à un enfant qui apprend ses tables.
 
 Les paliers 2, 5, 6, 7, 8 et 9 portent une **aide** repliée (la stratégie, jamais le résultat) ; le palier 7 porte une **consigne** de méthode, affichée une fois par séance.
 
@@ -43,19 +42,19 @@ Les paliers 2, 5, 6, 7, 8 et 9 portent une **aide** repliée (la stratégie, jam
 
 Déterministe (graine fixe). Les identifiants portent un suffixe de génération (`cm2-`) : le contenu ayant été entièrement revu, il ne doit pas hériter des états de révision de l'ancien (règle de versionnage du contenu).
 
-## Les trois publics servis (ADR-012)
+## Deux difficultés servies par d'autres séries (ADR-012)
 
-- **Dyscalculie** — le palier 11 travaille le **sens du nombre** : comparer, situer, décomposer, sans opération. C'est le socle sans lequel les faits ne s'organisent pas.
-- **Maintien de l'attention** — travaillé au thème *concentration* (séries de 3 à 7 opérations, aide de méthode, contrôle du total au dépôt) : ce qui progresse est la **longueur tenue**, jamais la vitesse.
-- **Lacunes ciblées** — le palier 10 isole les faits qui résistent (7 × 8, 8 × 9, 9 × 9…) et les travaille par stratégie ; la répétition espacée resservira d'abord ceux qui sont manqués.
+- **Maintien de l'attention** — travaillé ici par les *suites et erreurs* (tenir le pas, repérer le nombre qui ne suit pas) et, au thème *concentration*, par les séries de 3 à 7 opérations : ce qui progresse est la **longueur tenue**, jamais la vitesse.
+- **Lacunes ciblées** — le palier 10 isole les faits qui résistent (7 × 8, 8 × 9, 9 × 9…) et les travaille par stratégie ; le palier 12 les cherche par l'autre bout (« 42 = 6 × ? ») ; la répétition espacée resservira d'abord ce qui est manqué.
+
+*Hors périmètre : la dyscalculie (trouble développemental du sens du nombre) — le projet vise des difficultés **acquises** chez l'adulte.*
 
 ## D'autres séries pour les mêmes difficultés
 
 Trois familles ont été ajoutées pour travailler autrement ce que le calcul direct ne suffit pas à entraîner :
 
-- **Tenir le pas** (palier 12) — continuer une suite, compter à rebours, et surtout **repérer le nombre qui ne suit pas** : l'attention soutenue et l'inhibition, appliquées aux nombres.
-- **Chercher le fait par l'autre bout** (palier 13) — « 42 = 6 × ? » : souvent plus révélateur d'un fait non su que le produit direct.
-- **Le sens du nombre avant l'opération** (palier 11) — comparer, situer, décomposer, sans jamais calculer.
+- **Tenir le pas** (palier 11) — continuer une suite, compter à rebours, et surtout **repérer le nombre qui ne suit pas** : l'attention soutenue et l'inhibition, appliquées aux nombres.
+- **Chercher le fait par l'autre bout** (palier 12) — « 42 = 6 × ? » : souvent plus révélateur d'un fait non su que le produit direct.
 
 ## Pistes
 
