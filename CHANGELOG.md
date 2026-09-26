@@ -2,6 +2,16 @@
 
 Format : [date] — [périmètre] — description. Les retours informels de l'orthophoniste sont journalisés ici, sans caution clinique.
 
+## 2026-09-26 · Répétition espacée : vérification clinique du choix
+
+Question posée : le passage à une échelle quotidienne est-il pertinent cliniquement ?
+
+- **Oui, et c'est documenté** : la répétition espacée (Ebbinghaus, déjà au socle du projet) et le **Spaced Retrieval** — rappel à intervalles croissants, technique développée en gériatrie et étendue à l'aphasie et au traumatisme crânien (ASHA, 2019) — placent la répétition **dans le temps**, pas dans la minute. Revoir tout un palier dix minutes plus tard était de la pratique massée, l'inverse de ce que ces approches prescrivent.
+- **Errorless learning (Baddeley & Wilson ; Evans et al., 2000)** : pour un déficit mnésique, ré-encoder une erreur la renforce — d'où le principe « guider jusqu'à la réussite », déjà appliqué par les indices progressifs.
+- **Un point ouvert, noté dans ADR-013** : la littérature d'errorless learning demande qu'une **erreur soit reprise rapidement**, avec la réponse fournie avant le nouvel essai. Le logiciel ne le fait pas encore (la reprise a lieu à la séance suivante). À instruire par l'orthophoniste.
+- **Limite honnête** : la fréquence des séances (5-10 min, jusqu'à 3/jour) n'a pas été instruite par ces recherches ; elle reste le cadre propre du projet.
+- Documentation : ADR-013 doté d'une section « Base clinique », bibliographie complétée.
+
 ## 2026-09-26 · Répétition espacée : fin des mêmes séries qui reviennent le même jour
 
 Signalement : « l'impression de retrouver plusieurs fois la même série dans méthodes et ailleurs ».

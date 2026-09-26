@@ -6,7 +6,8 @@
 - Miyake et al. — taxonomie des fonctions exécutives (inhibition, flexibilité, updating).
 - Sohlberg & Mateer — hiérarchie attentionnelle et programme APT (source d'inspiration).
 - Posner — réseaux attentionnels (alerte, orientation, contrôle exécutif).
-- Baddeley & Wilson — errorless learning.
+- Baddeley & Wilson — errorless learning ; Evans et al. (2000), *Neuropsychological Rehabilitation* — comparaison errorless / essai-erreur chez des patients amnésiques.
+- Spaced Retrieval (SR) — rappel à intervalles croissants, développé en gériatrie et étendu à l'aphasie et au traumatisme crânien (« Spaced Retrieval Using Static and Dynamic Images », *ASHA*, 2019).
 
 ## Sciences éducatives
 

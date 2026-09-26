@@ -26,10 +26,21 @@ Rien n'est dû dans l'heure ni dans la même journée. La répétition espacée 
 
 **3. Une séance qui ne propose rien ne coûte rien** : si aucun item n'est dû et qu'il n'y a rien de nouveau, la séance est vide — elle **ne consomme pas** le quota des trois séances quotidiennes, et une séance sans réponse n'est pas historisée (elle ne peut donc pas faire reculer un palier).
 
+## Base clinique (vérifiée le 2026-09-26)
+
+La décision a été confrontée aux sources disponibles. La recherche en ligne est pauvre sur ce point précis ; les appuis solides sont :
+
+- **Ebbinghaus (courbe d'oubli) et la répétition espacée** — déjà au socle du projet (`docs/10-clinique/bibliographie.md`) : une information se retient mieux revue à **intervalles croissants** que répétée en bloc. Revoir le même palier dix minutes plus tard est de la **pratique massée**, c'est-à-dire l'inverse de ce que la répétition espacée prescrit.
+- **Spaced Retrieval (SR)** — rappel d'une information à des **intervalles de plus en plus longs**, technique développée en gériatrie et **étendue à l'aphasie et au traumatisme crânien** (« Spaced Retrieval Using Static and Dynamic Images », *ASHA*, 2019) : la littérature orthophonique place bien la répétition dans le temps, pas dans la minute.
+- **Errorless learning (Baddeley & Wilson, au socle du projet ; Evans et al., *Neuropsychological Rehabilitation* 10(1), 2000)** — pour un déficit mnésique, ré-encoder une erreur la renforce : il faut **guider jusqu'à la réussite**. Ces méthodes ont leur « plus grand avantage là où la personne ne peut pas corriger elle-même ses erreurs » (Ptak et al., revue sur les troubles de la mémoire épisodique).
+
+**Conséquence clinique retenue** : l'échelle du jour est la bonne pour l'**espacement**. Mais la littérature d'errorless learning demande, elle, qu'une **erreur ne reste pas sans reprise rapprochée** — d'où un point restant, ci-dessous.
+
 ## Conséquences
 
 - (+) Une séance ne ressert plus la même série : le contenu vu aujourd'hui revient quand il doit revenir, pas dix minutes plus tard.
 - (+) Le rythme du logiciel et le rythme de la mémoire s'accordent : les intervalles se comptent en jours, comme les séances.
 - (+) Les données existantes se réparent d'elles-mêmes : les cartes portent encore leurs anciennes échéances (toutes passées) ; elles seront servies une dernière fois, puis reprogrammées à l'échelle du jour.
 - (−) Après une séance, une deuxième séance du même thème dans la même journée peut n'avoir **rien à proposer** : l'interface l'annonce calmement (« Rien à réviser pour l'instant — ta prochaine séance arrive au bon moment »). C'est le comportement voulu, mais il doit rester expliqué à l'écran.
-- (−) Un échec ne revient plus dans la même séance : il revient le lendemain. Le renforcement immédiat reste assuré par la correction et l'aide progressive pendant l'exercice, pas par la répétition de l'item.
+- (−) Un échec ne revient plus dans la même séance : il revient le lendemain. Le renforcement immédiat reste assuré par la correction et l'aide progressive — **mais c'est un point ouvert** : l'errorless learning demande qu'une erreur soit reprise **vite**, avec la réponse fournie avant le nouvel essai (reprise en fin de séance, marquée comme telle). À faire si l'orthophoniste le juge utile.
+- (−) La **fréquence** des séances (5-10 min, jusqu'à 3 par jour) n'a pas été instruite par ces recherches : elle reste le cadre propre du projet (`docs/10-clinique/protocoles.md`), pas une donnée de la littérature retrouvée ici.

@@ -49,3 +49,19 @@ Signalement : « impression de retrouver plusieurs fois la même série ».
   application quotidienne, l'effet inverse de celui recherché : de l'entassement.
 - Méthode qui a payé : lire les données réelles (cartes, échéances) plutôt que raisonner sur
   le code seul — l'anomalie était visible en trois lignes.
+
+## 2026-09-26 (suite) — vérification clinique de l'échelle quotidienne
+
+Question : « au niveau clinique est-ce pertinent ? vérifie les sources ».
+
+- Recherche en ligne pauvre sur la question de la fréquence ; trois appuis retrouvés, solides :
+  Ebbinghaus (intervalles croissants), **Spaced Retrieval** (rappel à intervalles croissants,
+  gériatrie → aphasie et TC ; ASHA 2019), **errorless learning** (Baddeley & Wilson ; Evans
+  et al. 2000). Le projet citait déjà les deux premiers principes.
+- Verdict : l'échelle du jour est **cliniquement juste** ; la répétition à dix minutes était de
+  la pratique massée, contraire au principe.
+- Point ouvert consigné : l'errorless learning demande une **reprise rapide de l'erreur**,
+  réponse fournie avant le nouvel essai. Le logiciel ne la propose pas (reprise au lendemain).
+  À instruire par l'orthophoniste — je ne l'ai pas implémenté sans son avis.
+- Méthode : ne pas répondre de mémoire. Chercher, citer ce qu'on a réellement trouvé, et dire
+  clairement ce que la recherche n'a pas couvert (ici : la fréquence des séances).
