@@ -2,6 +2,15 @@
 
 Format : [date] — [périmètre] — description. Les retours informels de l'orthophoniste sont journalisés ici, sans caution clinique.
 
+## 2026-09-26 · Décisions écrites : ADR-007, ADR-008, ADR-009
+
+Les quiproquos de la journée sont figés noir sur blanc, pour qu'ils ne se rejouent pas.
+
+- **ADR-007 — Déduction : la résolution tient dans les phrases.** Une seule règle énoncée (chaque figure colorée posée une fois, une case = une figure), les phrases portent la résolution (chaînes, plusieurs informations), aucune phrase redondante, le solveur juge la déductibilité, deux contrôles indépendants (sens français, rendu), dosage propre au thème (6 grilles, 10 minutes proposées).
+- **ADR-008 — Réponses : la forme ne fait pas la justesse.** Équivalences (heures, nombres, variantes, faute de frappe), moteur sémantique local (empreintes Apple, repli lexical) **jamais** appliqué aux choix multiples, aucune validation par modèle à l'exécution, chaque tolérance verrouillée par un test.
+- **ADR-009 — Interface : ce qui s'exécute = ce qui est livré.** Fichiers sans cache et scripts versionnés, zones de réponse vidées à chaque étape, ces règles vérifiées automatiquement, et le rendu du contenu contrôlé par le **vrai** code de l'interface.
+- Aucun code modifié ; `AGENTS.md` référence les trois nouvelles décisions.
+
 ## 2026-09-26 · Déduction : dix minutes proposées, six grilles par séance
 
 Précision demandée : garder dix minutes **proposées**, et moins d'exercices par séquence.

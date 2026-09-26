@@ -147,3 +147,18 @@ Demande : utiliser diagonales, coins, « à l'opposé de » ; éviter les indica
   quelconque casse la déductibilité.
 - Le test des relations énumérait les types à la main : il a raté les deux nouveaux. Corrigé en
   important `TYPES_BINAIRES` (source unique) plutôt qu'en recopiant la liste.
+
+## 2026-09-26 — décisions figées (ADR-007/008/009)
+
+Les trois refontes de la journée viennent d'un même défaut de **communication de conception** : la
+règle du jeu, le sens des phrases et le moment du jugement n'étaient pas écrits. D'où trois ADR :
+
+- **ADR-007** : une seule règle énoncée ; les phrases portent la résolution ; le solveur juge ;
+  deux contrôles indépendants (sens français + rendu) ; dosage du thème (6 grilles, 10 min proposées).
+- **ADR-008** : la forme ne fait pas la justesse (équivalences, moteur local, jamais sur les choix
+  multiples, jamais de modèle à l'exécution).
+- **ADR-009** : ce que le navigateur exécute doit être ce qui est livré (no-store + version des
+  scripts, zones vidées à chaque étape, contrôles automatiques, rendu vérifié par le vrai code).
+
+Règle générale retenue pour la suite : toute décision qui a provoqué un aller-retour s'écrit dans un
+ADR le jour même, avec la phrase qui lève l'ambiguïté (« une règle non énoncée n'existe pas »).
