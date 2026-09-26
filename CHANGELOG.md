@@ -2,6 +2,16 @@
 
 Format : [date] — [périmètre] — description. Les retours informels de l'orthophoniste sont journalisés ici, sans caution clinique.
 
+## 2026-09-26 · Réponse fausse acceptée : « vendredi soir » pour « jeudi soir »
+
+Signalement : au quotidien, une réponse avec le **mauvais jour** a été acceptée.
+
+- **Cause** : le filet sémantique (empreintes du poste) compare le **sens** — et « vendredi soir » ressemble à « jeudi soir » (proximité 0,85). Le défaut était plus large : « jeudi matin » passait pour « jeudi soir » (0,81) et « 14 h 30 » pour « 15 h 30 » (**0,999**).
+- **Corrigé** : le filet ne **traverse jamais un jalon de sens** — jours, mois, moments de la journée, nombres (chiffres ou en toutes lettres ; « un/une » exclu, ce sont le plus souvent des articles). Dès que les jalons diffèrent, seule la comparaison normalisée compte.
+- La tolérance de sens reste utile là où elle a du sens : « la cave » pour « la porte de la cave » (aucun jalon).
+- Une variante acceptable se **déclare dans l'item** (`reponse.variantes`), plutôt que d'être devinée.
+- **Contrôles** — 5 nouveaux tests (jalons différents refusés, jalons détectés, reformulation sans jalon acceptée, item réel du quotidien, heures distinctes) ; 158 tests, 875 items, 0 erreur.
+
 ## 2026-09-26 · Déduction : plus aucune régularité dans l'ordre des phrases
 
 Signalement : la phrase qui parle de « coin » arrivait toujours en premier, avec le doute légitime que d'autres régularités du même genre subsistent plus loin.

@@ -51,3 +51,19 @@ Signalement : « 15 heures » refusé pour « 15 h » (thème méthodes).
 - Mesures du jour sur ce poste : « le toubib » ≈ « le médecin » 0,858 (accepté),
   « je consulte le docteur » ≈ « je vais chez le médecin » 0,771 (juste sous le seuil),
   « la migraine » ≈ « le mal de tête » 0,536 (refusé) — le seuil de 0,78 est prudent.
+
+## 2026-09-26 (soir) — le filet sémantique acceptait une réponse fausse
+
+Signalement : « vendredi soir » accepté pour « jeudi soir » (au quotidien).
+
+- Cause : `capacites.proche` compare le SENS ; mesuré sur ce poste — « vendredi soir » ≈
+  « jeudi soir » 0,85, « jeudi matin » ≈ « jeudi soir » 0,81, « 14 h 30 » ≈ « 15 h 30 »
+  **0,999**. Trois faux positifs, dont un dangereux (des heures différentes).
+- Correctif : `_sens_proche()` — le filet ne traverse **jamais un jalon de sens** (jours,
+  mois, moments, nombres en chiffres ou en lettres ; « un/une » exclus car articles).
+  Jalons différents → seule la comparaison normalisée décide.
+- Principe : **accepter une réponse fausse est plus grave que refuser une réponse juste.**
+  La tolérance de forme reste (heures, nombres, variantes déclarées) ; la tolérance de sens
+  est cantonnée aux réponses sans jalon (« la cave » pour « la porte de la cave »).
+- Leçon : un moteur de similarité est un outil **statistique** — il doit toujours être borné
+  par une règle explicite (ici : les jalons), jamais laissé seul juge.

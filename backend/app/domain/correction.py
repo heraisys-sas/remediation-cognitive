@@ -211,6 +211,48 @@ def _clef_reponse(valeur) -> str:
     return " ".join(jetons)
 
 
+#: Jalons qui changent le sens d'une réponse : un jour, un moment ou un nombre n'est
+#: jamais « à peu près » le même. Le filet sémantique ne doit jamais les traverser.
+_JOURS = {"lundi", "mardi", "mercredi", "jeudi", "vendredi", "samedi", "dimanche"}
+_MOIS = {"janvier", "fevrier", "mars", "avril", "mai", "juin", "juillet", "aout",
+         "septembre", "octobre", "novembre", "decembre"}
+_MOMENTS = {"matin", "midi", "apres-midi", "soir", "minuit", "nuit"}
+#: Nombres en toutes lettres — sauf « un » et « une », qui sont le plus souvent des
+#: articles (« une cave » n'est pas un jalon, « deux jours » en est un).
+_MOTS_NOMBRES = (set(_UNITES_MOTS) | set(_DIZAINES_MOTS) | {"cent", "mille"}) - {"un", "une"}
+
+
+def _jetons_critiques(texte) -> frozenset[str]:
+    """Jalons de sens d'une réponse : jours, mois, moments, nombres (chiffres ou lettres)."""
+    jalons = set()
+    for jeton in _clef_texte(texte).split():
+        if (jeton in _JOURS or jeton in _MOIS or jeton in _MOMENTS
+                or (jeton in _MOTS_NOMBRES and len(jeton) > 2)
+                or any(caractere.isdigit() for caractere in jeton)):
+            jalons.add(jeton)
+    return frozenset(jalons)
+
+
+def _sens_proche(reponse, attendues) -> bool:
+    """Le poste reconnaît-il la réponse comme le même **sens** (dernier recours) ?
+
+    Encadré : on ne traverse jamais un jalon de sens. Mesuré sur ce poste — « vendredi
+    soir » ≈ « jeudi soir » 0,85, « jeudi matin » ≈ « jeudi soir » 0,81, « 14 h 30 » ≈
+    « 15 h 30 » 0,999. Ces écarts-là sont des erreurs, pas des façons de dire : dès que
+    les jalons diffèrent, la proximité de sens ne s'applique pas. Les variantes
+    acceptables (réponse plus courte, synonyme) se déclarent dans l'item.
+    """
+    jalons = _jetons_critiques(reponse)
+    for cible in attendues:
+        if not cible:
+            continue
+        if _jetons_critiques(cible) != jalons:
+            continue
+        if capacites.proche(str(reponse or ""), [str(cible)]):
+            return True
+    return False
+
+
 def _est_reponse_libre(attendue) -> bool:
     """La réponse attendue est-elle une **phrase** (et non une valeur courte) ?
 
@@ -261,7 +303,7 @@ def _corriger_mot(reponse, item: dict) -> bool:
             if _distance(donnees, clef) <= tolerance:
                 return True
     # Dernier recours : le poste sait-il comparer le SENS (synonymes) ?
-    return capacites.proche(str(reponse or ""), [str(c) for c in cibles if c])
+    return _sens_proche(reponse, [cible for cible in cibles if cible])
 
 
 def _mots(texte) -> list[str]:
@@ -357,14 +399,15 @@ def corriger(theme: str, item: dict, reponse) -> bool:
         # Réponse libre formulée autrement (formulée en phrase) : le poste sait
         # comparer le sens (« je consulte le docteur » pour « je vais chez le médecin »).
         if _est_reponse_libre(attendue):
-            return capacites.proche(str(reponse or ""), [str(attendue)])
+            return _sens_proche(reponse, [attendue])
         return False
     if theme == "quotidien":
         if item.get("type") == "prise-message":
             if _clef_reponse(reponse) == _clef_reponse(attendue):
                 return True
-            # Formulation proche (« la cave » pour « la porte de la cave »).
-            return capacites.proche(str(reponse or ""), [str(attendue)])
+            # Formulation proche (« la cave » pour « la porte de la cave ») — mais
+            # jamais à travers un jour, un moment ou un nombre (voir _sens_proche).
+            return _sens_proche(reponse, [attendue])
         if item.get("type") == "estimation-temps":
             return _corriger_estimation(item, reponse)
         # etape-suivante et les familles à choix : la proposition choisie, en clair.

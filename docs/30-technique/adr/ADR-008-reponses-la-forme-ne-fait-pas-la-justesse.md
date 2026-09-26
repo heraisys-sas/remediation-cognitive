@@ -2,6 +2,8 @@
 
 **Statut** : accepté (2026-09-26)
 
+*Suivi (2026-09-26)* : **le filet sémantique ne traverse jamais un jalon de sens** — jours, mois, moments de la journée, nombres (chiffres ou lettres, sauf « un/une », le plus souvent articles). Mesuré en usage réel : « vendredi soir » était accepté pour « jeudi soir » (proximité 0,85), « jeudi matin » pour « jeudi soir » (0,81) et « 14 h 30 » pour « 15 h 30 » (**0,999**). Accepter une réponse fausse est plus grave que refuser une réponse juste : dès que les jalons diffèrent, seul l'écrit compte, et une variante acceptable se **déclare dans l'item** (`reponse.variantes`).
+
 ## Contexte
 
 Trois refus en apparence anodins, tous signalés en usage réel :
