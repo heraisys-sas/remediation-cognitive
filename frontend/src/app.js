@@ -957,6 +957,12 @@ async function soumettreValeur(brut, indiceUtilise) {
         classe: "feedback-note-duree",
         texte: "Séance terminée : la durée maximale est atteinte. Ta réponse est enregistrée.",
       }));
+    } else if (resultat.arret_propose === true && resultat.motif_arret === "duree") {
+      // Durée **proposée** (déduction) : on invite à s'arrêter, la personne décide.
+      refs.carteFeedback.append(creerElement("p", {
+        classe: "feedback-note-duree",
+        texte: "La séance dure depuis dix minutes. Tu peux t'arrêter là (bouton « Terminer la séance ») ou continuer — c'est toi qui vois.",
+      }));
     }
     refs.boutonSuivant.textContent = dernier || etat.seanceTerminee ? "Voir le résumé" : "Suivant";
     refs.boutonSuivant.hidden = false;

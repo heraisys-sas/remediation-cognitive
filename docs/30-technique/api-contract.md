@@ -37,7 +37,7 @@ Clôture la séance, applique FSRS + maîtrise, persiste.
 4. **Aucune norme populationnelle** dans les réponses API.
 5. **Périmètre** : aucun endpoint `/api/bilan` ce sprint ; aucune donnée de bilan stockée.
 6. **Stockage** : fichiers JSON sous `backend/data/entrainement/` (hors dépôt, `.gitignore`) — decks FSRS, maîtrise par palier, compteur séances/jour.
-7. **Durée max** : au-delà de 600 s, la séance est clôturée côté serveur (garde-fou de dosage — ce n'est pas une interruption par la fatigue). La réponse **en cours est conservée** : la personne a travaillé, on ne la refuse pas ; la réponse renvoie `seance_terminee: true` et le client propose le résumé. Une réponse *suivante* reçoit 409 `session_terminee`.
+7. **Durée max (600 s)** : la réponse **en cours est toujours conservée** — on ne refuse jamais le travail fait. Ensuite, selon le thème : par défaut la séance se clôt (`seance_terminee: true`, une réponse suivante reçoit 409) ; pour la **déduction**, la durée est **proposée** (`arret_propose: true`, `motif_arret: "duree"`, une seule fois) et la séance reste ouverte — la personne décide de continuer ou de terminer.
 
 ## Forme d'un item (conforme à content/schema-item.json)
 

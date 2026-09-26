@@ -616,3 +616,55 @@ def test_deduction_seance_plus_courte(tmp_path):
     calcul = _demarrer(client, "calcul-mental")
     assert calcul["regles"] == {"max_items": 12, "duree_max_s": 600}
     assert len(calcul["items"]) == 12
+
+
+def test_deduction_duree_proposee_pas_imposee(tmp_path):
+    """Déduction : au-delà de dix minutes, la séance **propose** l'arrêt.
+
+    Une grille demande plusieurs minutes de raisonnement : fermer la séance d'office
+    serait brutal. La proposition est faite une seule fois, la personne décide de
+    continuer ou de terminer.
+    """
+    horloge = {"now": datetime.now(timezone.utc)}
+    application = creer_app(
+        racine_donnees=tmp_path / "data",
+        dossier_frontend=tmp_path / "front",
+        horloge=lambda: horloge["now"],
+    )
+    client = TestClient(application)
+
+    payload = _demarrer(client, "deduction")
+    items = payload["items"]
+    assert len(items) == 6
+
+    reponse = _repondre(
+        client, "deduction", payload["session_id"], items[0]["id"],
+        _valeur_attendue("deduction", items[0]["id"]), temps_ms=900,
+    )
+    assert reponse.status_code == 200
+    assert "arret_propose" not in reponse.json()
+
+    # On dépasse la durée maximale : proposition d'arrêt, séance toujours ouverte.
+    horloge["now"] = horloge["now"] + timedelta(seconds=601)
+    reponse = _repondre(
+        client, "deduction", payload["session_id"], items[1]["id"],
+        _valeur_attendue("deduction", items[1]["id"]), temps_ms=900,
+    )
+    assert reponse.status_code == 200, reponse.text
+    assert reponse.json()["arret_propose"] is True
+    assert reponse.json()["motif_arret"] == "duree"
+    assert "seance_terminee" not in reponse.json()
+
+    # La personne choisit de continuer : la réponse suivante passe, sans redite.
+    suivante = _repondre(
+        client, "deduction", payload["session_id"], items[2]["id"],
+        _valeur_attendue("deduction", items[2]["id"]), temps_ms=900,
+    )
+    assert suivante.status_code == 200, suivante.text
+    assert "arret_propose" not in suivante.json()
+    assert "seance_terminee" not in suivante.json()
+
+    # Et la séance se termine normalement quand elle le souhaite.
+    fin = _finir(client, "deduction", payload["session_id"])
+    assert fin.status_code == 200
+    assert fin.json()["resume"]["items"] == 3

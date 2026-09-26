@@ -2,6 +2,15 @@
 
 Format : [date] — [périmètre] — description. Les retours informels de l'orthophoniste sont journalisés ici, sans caution clinique.
 
+## 2026-09-26 · Déduction : dix minutes proposées, six grilles par séance
+
+Précision demandée : garder dix minutes **proposées**, et moins d'exercices par séquence.
+
+- **Durée proposée** : pour la déduction, la séance ne se ferme plus d'elle-même au bout de dix minutes — elle **propose** l'arrêt, une seule fois, et la personne décide (« tu peux t'arrêter là (bouton « Terminer la séance ») ou continuer »). S'arrêter au milieu d'une grille serait brutal, et le cadre clinique veut que l'arrêt soit proposé, jamais imposé.
+- **Six grilles par séance** pour la déduction (déjà en place), durée maximale inchangée à dix minutes ; les autres thèmes gardent le garde-fou de durée ferme et douze exercices.
+- La réponse en cours reste **toujours** conservée, dans tous les cas.
+- **Contrôles** — nouveau test (proposition renvoyée une seule fois, séance encore ouverte, arrêt explicite possible) ; 153 tests, 875 items, 0 erreur.
+
 ## 2026-09-26 · Déduction : six grilles par séance (même durée de 10 min)
 
 Demande : moins de tests par séance pour la déduction, et une durée allongée.

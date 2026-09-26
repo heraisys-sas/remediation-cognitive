@@ -30,18 +30,30 @@ DUREE_MAX_SEANCE_S = 600
 #: qu'un item de calcul mental. Douze grilles ne tiennent pas dans une séance : on en
 #: propose six, ce qui laisse la séance se terminer par son contenu et non par le
 #: minuteur.
-PARAMETRES_THEME: dict[str, dict[str, int]] = {
-    "deduction": {"max_items": 6, "duree_max_s": 600},
+PARAMETRES_THEME: dict[str, dict[str, int | bool]] = {
+    "deduction": {"max_items": 6, "duree_max_s": 600, "duree_proposee": True},
 }
-PARAMETRES_SEANCE_DEFAUT: dict[str, int] = {
+PARAMETRES_SEANCE_DEFAUT: dict[str, int | bool] = {
     "max_items": MAX_ITEMS_PAR_SEANCE,
     "duree_max_s": DUREE_MAX_SEANCE_S,
+    "duree_proposee": False,
 }
 
 
-def parametres_seance(theme: str) -> dict[str, int]:
-    """Nombre d'exercices et durée maximale d'une séance, pour ce thème."""
+def parametres_seance(theme: str) -> dict[str, int | bool]:
+    """Nombre d'exercices, durée maximale et nature de cette durée, pour ce thème."""
     return {**PARAMETRES_SEANCE_DEFAUT, **PARAMETRES_THEME.get(theme, {})}
+
+
+def duree_proposee(theme: str) -> bool:
+    """La durée maximale est-elle une **proposition** pour ce thème ?
+
+    Pour la déduction, oui : une grille demande plusieurs minutes de raisonnement,
+    et s'arrêter au milieu serait brutal. Au-delà de la durée, la séance **propose**
+    l'arrêt — elle ne se ferme pas d'elle-même, la personne décide de continuer ou
+    non. Ailleurs, la durée reste le garde-fou de sur-sollicitation.
+    """
+    return bool(parametres_seance(theme)["duree_proposee"])
 
 #: Limite de séances par jour selon la CATÉGORIE du thème.
 #: L'évaluation est volontairement limitée à une séance par jour : répéter une

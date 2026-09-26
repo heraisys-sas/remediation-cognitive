@@ -35,3 +35,17 @@ Demande : 6 exercices au lieu de 12 par séance, et 15 minutes au lieu de 10.
 - Mécanisme : `dosage.parametres_seance(theme)` (table `PARAMETRES_THEME`) → le dosage devient
   une propriété du thème, pas une constante globale. Toute future adaptation passe par là,
   avec sa justification dans les protocoles.
+
+## 2026-09-26 (suite) — la durée devient une proposition pour la déduction
+
+Précision de l'utilisateur : « dix minutes pour déduction mais proposées, et moins de tests ».
+
+- Pour la déduction : au-delà de dix minutes, `repondre` renvoie `arret_propose: true` +
+  `motif_arret: "duree"` **une seule fois** (drapeau sur la session) et **ne ferme pas** la
+  séance — la personne continue ou termine à sa guise (bouton « Terminer la séance »).
+- Ailleurs, la durée reste un garde-fou ferme (la réponse en cours étant de toute façon
+  conservée, puis clôture).
+- Paramétrage : `dosage.PARAMETRES_THEME[theme]["duree_proposee"]` — la *nature* de la limite
+  devient une propriété du thème, à côté du nombre d'exercices et de la durée.
+- Traduction UI : note dans le retour de la question, ton neutre, et le bouton « Terminer la
+  séance » reste à disposition : aucune fenêtre, aucune confirmation supplémentaire.

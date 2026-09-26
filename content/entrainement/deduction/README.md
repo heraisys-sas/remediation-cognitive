@@ -36,7 +36,7 @@ Une phrase part d'un **repère** sur une figure, puis **suit les relations** d'u
 
 Dosage : **4 phrases** au palier 1, 8 à 10 aux paliers 2 et 3, 15 à 17 en 4×4.
 
-**Séance** : **six grilles** au maximum (et 10 minutes, comme partout) — chaque grille demande une chaîne de raisonnement complète, douze ne tiendraient pas dans une séance courte. Le vocabulaire demandé (diagonales, coins, « à l'opposé ») est garanti présent dans chaque palier concerné.
+**Séance** : **six grilles** au maximum — chaque grille demande une chaîne de raisonnement complète, douze ne tiendraient pas dans une séance courte. Au bout de **dix minutes**, la séance ne se ferme pas d'elle-même : elle **propose** de s'arrêter (« tu peux t'arrêter là ou continuer — c'est toi qui vois »). Le vocabulaire demandé (diagonales, coins, « à l'opposé ») est garanti présent dans chaque palier concerné.
 
 ## Aucune phrase redondante
 

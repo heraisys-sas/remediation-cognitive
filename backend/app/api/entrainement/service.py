@@ -34,6 +34,7 @@ from ...domain.correction import corriger
 from ...domain.dosage import (
     LIMITES_SESSIONS_JOUR,
     LIMITE_SESSIONS_JOUR,
+    duree_proposee,
     parametres_seance,
 )
 from ...domain.selection import selectionner_items
@@ -120,6 +121,8 @@ class SessionEnCours:
     indices_utilises: dict[str, int] = field(default_factory=dict)
     # Payload de fin conservé pour rendre la clôture idempotente.
     resume_cloture: dict | None = None
+    # Arrêt déjà proposé pour cause de durée (proposition envoyée une seule fois).
+    arret_propose_envoye: bool = False
     # Essais clos en affichant la réponse : aucune erreur commise par
     # l'utilisateur, mais pas de récupération réussie non plus.
     assistees: set[str] = field(default_factory=set)
@@ -320,16 +323,24 @@ class GestionnaireSessions:
             "feedback": messages.texte("entrainement", cle),
         }
         if duree_depassee:
-            # La séance se clôt **après** avoir enregistré la réponse, et le résumé
-            # est conservé : un appel ultérieur à /fin renverra le même résumé.
-            resume_moteur, nb_repondu, nb_correctes, taux = self._cloturer(
-                session, self.horloge()
-            )
-            session.resume_cloture = self._payload_fin(
-                theme, session, resume_moteur, nb_repondu, nb_correctes, taux
-            )
-            resultat["seance_terminee"] = True
-            resultat["motif"] = "duree"
+            if duree_proposee(theme):
+                # Ce thème traite la durée comme une **proposition** : la séance ne se
+                # ferme pas, elle invite à s'arrêter — une seule fois, la personne décide.
+                if not session.arret_propose_envoye:
+                    session.arret_propose_envoye = True
+                    resultat["arret_propose"] = True
+                    resultat["motif_arret"] = "duree"
+            else:
+                # Ailleurs, la durée reste le garde-fou : on enregistre la réponse
+                # (**on ne jette jamais le travail fait**) puis la séance se clôt.
+                resume_moteur, nb_repondu, nb_correctes, taux = self._cloturer(
+                    session, self.horloge()
+                )
+                session.resume_cloture = self._payload_fin(
+                    theme, session, resume_moteur, nb_repondu, nb_correctes, taux
+                )
+                resultat["seance_terminee"] = True
+                resultat["motif"] = "duree"
         return resultat
 
     # -- fin de séance ---------------------------------------------------------
