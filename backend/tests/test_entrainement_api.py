@@ -677,3 +677,36 @@ def test_deduction_duree_proposee_pas_imposee(tmp_path):
     fin = _finir(client, "deduction", payload["session_id"])
     assert fin.status_code == 200
     assert fin.json()["resume"]["items"] == 3
+
+
+def test_seance_vide_ne_consomme_pas_le_quota(tmp_path):
+    """Rien de dû, rien de nouveau : la séance n'a rien proposé, elle ne coûte rien.
+
+    Régression liée au rythme de révision : avec des échéances à l'échelle du jour,
+    une deuxième séance du même thème dans la même journée peut ne rien avoir à servir.
+    Elle ne doit pas consommer une des trois séances quotidiennes.
+    """
+    horloge = {"now": datetime.now(timezone.utc)}
+    application = creer_app(
+        racine_donnees=tmp_path / "data",
+        dossier_frontend=tmp_path / "front",
+        horloge=lambda: horloge["now"],
+    )
+    client = TestClient(application)
+
+    # Première séance : on répond à tout le palier 1 de méthodes (12 items).
+    payload = _demarrer(client, "methodes")
+    for item in payload["items"]:
+        _repondre(client, "methodes", payload["session_id"], item["id"],
+                  _valeur_attendue("methodes", item["id"]), temps_ms=900)
+    assert _finir(client, "methodes", payload["session_id"]).status_code == 200
+
+    racine = _racine_donnees(client)
+    compteur = json.loads((racine / "methodes" / "compteur-seances.json").read_text())
+    assert compteur["nb_sessions"] == 1
+
+    # Deuxième séance le même jour : plus rien n'est dû (échéances au jour) ni nouveau.
+    seconde = _demarrer(client, "methodes")
+    assert seconde["items"] == []
+    compteur = json.loads((racine / "methodes" / "compteur-seances.json").read_text())
+    assert compteur["nb_sessions"] == 1, "une séance vide ne doit pas consommer le quota"

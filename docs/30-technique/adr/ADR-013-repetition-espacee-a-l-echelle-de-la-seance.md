@@ -1,0 +1,35 @@
+# ADR-013 — Répétition espacée : l'unité est la séance quotidienne, pas la minute
+
+**Statut** : accepté (2026-09-26)
+
+## Contexte
+
+Signalement : « j'ai eu l'impression de retrouver plusieurs fois la même série dans *méthodes* et ailleurs ».
+
+Vérification faite sur les données réelles : dans *méthodes*, **les 12 cartes du palier 1 étaient toutes dues en même temps**, chacune avec une échéance située **dix minutes après sa révision**. Or le palier 1 compte exactement 12 items et une séance en sert 12 : chaque séance de la journée resservait donc **tout le palier**, à l'identique.
+
+Cause : le planificateur FSRS utilisait ses **pas d'apprentissage par défaut — 1 minute et 10 minutes**. Ces pas viennent des applications de révision continue (Anki), où l'on revoit une carte plusieurs fois dans l'heure. Ici, le logiciel se pratique en **séances quotidiennes** (1 à 3 par jour) : une échéance à dix minutes signifie « due tout de suite, toute la journée ».
+
+## Décision
+
+**1. Les pas d'apprentissage et de réapprentissage sont à l'échelle du jour** (`timedelta(days=1)`). Conséquences mesurées sur ce poste :
+
+| Réponse | Échéance |
+|---|---|
+| Bon | 2 jours |
+| Encore (échec) | le lendemain |
+| Facile | 8 jours |
+
+Rien n'est dû dans l'heure ni dans la même journée. La répétition espacée retrouve son rôle : elle **étale** dans le temps, elle n'entasse pas dans la journée.
+
+**2. Le rythme est donné par le programme, pas par le minuteur.** C'est le programme de 8 semaines qui propose chaque thème environ deux fois par semaine ; les cartes redeviennent dues quand le thème revient. Le seuil de maîtrise reste clinique (90 % sur 3 séances au même palier).
+
+**3. Une séance qui ne propose rien ne coûte rien** : si aucun item n'est dû et qu'il n'y a rien de nouveau, la séance est vide — elle **ne consomme pas** le quota des trois séances quotidiennes, et une séance sans réponse n'est pas historisée (elle ne peut donc pas faire reculer un palier).
+
+## Conséquences
+
+- (+) Une séance ne ressert plus la même série : le contenu vu aujourd'hui revient quand il doit revenir, pas dix minutes plus tard.
+- (+) Le rythme du logiciel et le rythme de la mémoire s'accordent : les intervalles se comptent en jours, comme les séances.
+- (+) Les données existantes se réparent d'elles-mêmes : les cartes portent encore leurs anciennes échéances (toutes passées) ; elles seront servies une dernière fois, puis reprogrammées à l'échelle du jour.
+- (−) Après une séance, une deuxième séance du même thème dans la même journée peut n'avoir **rien à proposer** : l'interface l'annonce calmement (« Rien à réviser pour l'instant — ta prochaine séance arrive au bon moment »). C'est le comportement voulu, mais il doit rester expliqué à l'écran.
+- (−) Un échec ne revient plus dans la même séance : il revient le lendemain. Le renforcement immédiat reste assuré par la correction et l'aide progressive pendant l'exercice, pas par la répétition de l'item.

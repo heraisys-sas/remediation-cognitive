@@ -2,6 +2,17 @@
 
 Format : [date] — [périmètre] — description. Les retours informels de l'orthophoniste sont journalisés ici, sans caution clinique.
 
+## 2026-09-26 · Répétition espacée : fin des mêmes séries qui reviennent le même jour
+
+Signalement : « l'impression de retrouver plusieurs fois la même série dans méthodes et ailleurs ».
+
+- **Diagnostic par les données** : dans *méthodes*, les 12 cartes du palier étaient toutes dues en même temps, avec des échéances à **dix minutes** de leur révision — et le palier compte exactement 12 items pour 12 servis par séance. Chaque séance resservait donc tout le palier.
+- **Cause** : les pas d'apprentissage par défaut de FSRS (1 min / 10 min) viennent des applications de révision continue ; ici, le logiciel se pratique en séances quotidiennes.
+- **Corrigé** : pas d'apprentissage et de réapprentissage à l'échelle du **jour** — bon → 2 jours, échec → le lendemain, facile → 8 jours ; plus rien n'est dû dans la même journée.
+- **Deux garde-fous** : une séance qui n'a rien à proposer ne consomme pas le quota quotidien ; une séance sans réponse n'est pas historisée (aucun recul de palier possible).
+- **ADR-013** écrit. Les cartes existantes se réparent d'elles-mêmes (dernière reprise, puis rythme quotidien).
+- **Contrôles** — 192 tests, dont un garde-fou « une carte revue aujourd'hui n'est pas due aujourd'hui ».
+
 ## 2026-09-26 · Audit de la dictée : du sens partout, sans excès
 
 Demande : vérifier que **tous** les champs libres avec reconnaissance vocale bénéficient d'une reconnaissance de sens, mais pas trop permissive.

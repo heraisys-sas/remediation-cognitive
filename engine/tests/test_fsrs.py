@@ -60,14 +60,30 @@ def test_echeance_croit_apres_rappel_reussi():
 
 def test_echeance_retombe_apres_echec():
     carte = CarteFSRS("t3b")
-    carte, e1 = planifier(carte, 3, T0)  # pas d'apprentissage : 10 min
-    carte, e2 = planifier(carte, 3, e1)  # graduation : ordre du jour
+    carte, e1 = planifier(carte, 3, T0)   # pas d'apprentissage : un jour
+    carte, e2 = planifier(carte, 3, e1)   # graduation : plusieurs jours
     intervalle_avant = e2 - e1
-    carte, e3 = planifier(carte, 1, e2)  # échec à l'échéance
+    carte, e3 = planifier(carte, 1, e2)   # échec à l'échéance
     intervalle_apres = e3 - e2
-    assert intervalle_apres < intervalle_avant  # régression nette
-    assert intervalle_apres <= timedelta(minutes=15)  # retour en (ré)apprentissage
+    assert intervalle_apres < intervalle_avant      # régression nette
+    assert intervalle_apres <= timedelta(days=1)    # retour dès la séance suivante
     assert carte.etat == "reapprentissage"
+
+
+def test_une_carte_revue_aujourdhui_n_est_pas_due_aujourd_hui():
+    """L'unité de ce logiciel est la séance quotidienne, pas la minute.
+
+    Régression constatée : les pas d'apprentissage par défaut de FSRS (1 min, 10 min)
+    faisaient revenir tout un palier à chaque séance de la journée.
+    """
+    for note in (1, 3, 4):
+        carte, echeance = planifier(CarteFSRS("t4"), note, T0)
+        assert not est_due(carte, T0 + timedelta(hours=2)), note
+        assert not est_due(carte, T0 + timedelta(hours=12)), note
+        assert echeance >= T0 + timedelta(days=1) - timedelta(seconds=1), note
+    # Un échec revient à la séance suivante, pas dans l'heure.
+    carte, _ = planifier(CarteFSRS("t4b"), 1, T0)
+    assert est_due(carte, T0 + timedelta(days=1) + timedelta(minutes=1))
 
 
 def test_note_facile_allonge_plus_que_bon():

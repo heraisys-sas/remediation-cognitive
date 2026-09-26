@@ -8,6 +8,7 @@ from backend.app.domain.selection import selectionner_items
 
 T0 = datetime(2026, 9, 3, 12, 0, 0, tzinfo=timezone.utc)
 T0_MINUS_1H = datetime(2026, 9, 3, 11, 0, 0, tzinfo=timezone.utc)
+T0_MINUS_3J = datetime(2026, 8, 31, 12, 0, 0, tzinfo=timezone.utc)
 
 
 def _item(theme: str, type_item: str, valeur, palier: int = 1, item_id: str = "x") -> dict:
@@ -119,8 +120,8 @@ def test_selection_items_dus_puis_nouveaux():
     from engine.srs.fsrs import CarteFSRS, planifier
 
     items = _items_paliers()
-    # Carte revue il y a une heure (échéance dépassée) → servie en premier.
-    pas_due_recemment, _ = planifier(CarteFSRS("p1-7"), 3, T0_MINUS_1H)
+    # Carte revue il y a trois jours avec échec : échéance dépassée → servie en premier.
+    pas_due_recemment, _ = planifier(CarteFSRS("p1-7"), 1, T0_MINUS_3J)
     cartes = {"p1-7": pas_due_recemment}
     selection = selectionner_items(items, cartes, palier_courant=1, maintenant=T0, max_items=12)
     assert selection[0]["id"] == "p1-7"

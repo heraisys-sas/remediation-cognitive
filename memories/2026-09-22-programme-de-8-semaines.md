@@ -33,3 +33,19 @@ Deux mois d'entraînement ne demandent pas 1 500 items de plus : le contenu exis
 
 - Relecture orthophoniste du programme (formulations, rythme, plafonds) — c'est le seul contenu « de cadrage » à faire valider tel quel.
 - Ne jamais exposer de taux d'observance, même si la tentation est forte côté produit.
+
+## 2026-09-26 — la répétition espacée revoyait tout le même jour
+
+Signalement : « impression de retrouver plusieurs fois la même série ».
+
+- Diagnostic par les données : dans méthodes, les 12 cartes du palier étaient **toutes dues**
+  avec des échéances à **10 minutes** — et le palier compte 12 items pour 12 servis par séance.
+- Cause : pas d'apprentissage FSRS par défaut (1 min / 10 min), hérités des applications de
+  révision continue. Ici, l'unité est la **séance quotidienne**.
+- Correctif : pas à l'échelle du jour (bon → 2 j, échec → lendemain, facile → 8 j) ; une séance
+  vide ne consomme pas le quota et n'est pas historisée (pas de recul de palier).
+- Leçon : un moteur de répétition espacée doit être réglé sur **le rythme réel d'usage** du
+  logiciel. Des pas par défaut pensés pour une révision continue produisent, dans une
+  application quotidienne, l'effet inverse de celui recherché : de l'entassement.
+- Méthode qui a payé : lire les données réelles (cartes, échéances) plutôt que raisonner sur
+  le code seul — l'anomalie était visible en trois lignes.

@@ -21,14 +21,33 @@ pas été nécessaire.
 
 from __future__ import annotations
 
-from datetime import datetime, timezone
+from datetime import datetime, timedelta, timezone
 
 from fsrs import Card, Rating, Scheduler, State
+
+#: Pas d'apprentissage et de réapprentissage, à l'échelle de CE logiciel.
+#:
+#: Les pas par défaut de FSRS (1 minute, 10 minutes) viennent des applications de
+#: révision continue (Anki) : ils font revenir une carte plusieurs fois dans la même
+#: heure. Ici, l'unité est la **séance quotidienne** — une carte revue aujourd'hui n'a
+#: pas à revenir aujourd'hui, sinon chaque séance ressert la même série (constaté en
+#: usage : tout un palier revenait à chaque séance, les cartes restant en phase
+#: d'apprentissage avec une échéance de dix minutes).
+#:
+#: Un pas d'un jour laisse la main au programme, qui propose chaque thème environ deux
+#: fois par semaine : les cartes redeviennent dues quand le thème revient, et une séance
+#: ne ressert plus ce qui vient d'être vu.
+_PAS_APPRENTISSAGE = (timedelta(days=1),)
+_PAS_REAPPRENTISSAGE = (timedelta(days=1),)
 
 # Planificateur partagé, déterministe (fuzzing désactivé).
 # desired_retention reste au défaut FSRS (0.9) : l'ajustement clinique
 # éventuel se fera via un ADR dédié, pas en silice ici.
-_PLANIFICATEUR = Scheduler(enable_fuzzing=False)
+_PLANIFICATEUR = Scheduler(
+    learning_steps=_PAS_APPRENTISSAGE,
+    relearning_steps=_PAS_REAPPRENTISSAGE,
+    enable_fuzzing=False,
+)
 
 # Note utilisateur (1..4) -> évaluation FSRS.
 # 1 = encore (Again), 2 = difficile (Hard), 3 = bon (Good), 4 = facile (Easy).

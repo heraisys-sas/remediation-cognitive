@@ -210,7 +210,10 @@ class GestionnaireSessions:
                 items_par_id={item["id"]: item for item in selection},
                 depart=maintenant,
             )
-            self.stockage.ecrire_compteur(theme, aujourd_hui, nb_sessions + 1)
+            # Une séance **vide** (rien de dû, rien de nouveau) ne consomme pas le quota
+            # du jour : elle n'a rien proposé, elle ne doit rien coûter.
+            if selection:
+                self.stockage.ecrire_compteur(theme, aujourd_hui, nb_sessions + 1)
         return {
             "session_id": session_id,
             "items": [_item_sans_reponse(item) for item in selection],
