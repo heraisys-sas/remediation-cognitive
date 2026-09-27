@@ -25,6 +25,9 @@ Toutes les réponses sont à choix, pour une correction objective. La méthode e
 `tools/generer_methodes.py` (déterministe, mélange isolé par famille). Relecture orthophoniste à faire.
 
 
+## PQRST mis en œuvre (palier 6, ADR-015)
+
+Un item = **une séquence guidée** sur un texte de quatre phrases : Parcours (jugé), **Question à écrire** (non notée, modèle affiché), Lecture (sans chronomètre), **Reformulation** (jugée à **4 idées-clés sur 5**, résumé modèle montré), Test (2 questions de mémoire). Les deux productions — sa question, sa reformulation — sont ce que le palier entraîne. La **fiche méthode** (5 lignes) est reprise au résumé de séance.
+
 ## Proposition en attente
 
-- **Palier « PQRST mis en œuvre »** : aujourd'hui le palier PQRST *teste* le résultat de la méthode (texte masqué, questions de mémoire) sans la faire appliquer. La proposition — séquence guidée en 5 étapes, deux productions par texte — est dans `docs/20-specs/proposition-palier-pqrst-mis-en-oeuvre.md`, à valider par l'orthophoniste.

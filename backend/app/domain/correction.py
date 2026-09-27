@@ -122,6 +122,112 @@ def _corriger_numerique(reponse, attendue) -> bool:
     return abs(valeur - cible) <= TOLERANCE_NUMERIQUE
 
 
+#: Étapes **jugées** d'une séquence « PQRST mis en œuvre » (la lecture ne se juge pas).
+ETAPES_JUGEES_SEQUENCE = (1, 4, 5)
+
+
+def _mots_sequence(valeur) -> set[str]:
+    """Jetons d'une réponse libre, découpés sur tout ce qui n'est pas alphanumérique.
+
+    L'apostrophe et le trait d'union séparent : « d'identité » donne `identite`, sinon une
+    idée-clé écrite sans apostrophe ne serait jamais retrouvée (dictée, réponse tapée vite).
+    """
+    return {jeton for jeton in re.split(r"[^0-9a-z]+", _clef_texte(valeur)) if jeton}
+
+
+def _idee_retrouvee(idee: str, jetons: set[str], minimum: int = 4) -> bool:
+    """Une idée-clé est retrouvée si un jeton la porte — égal ou préfixe.
+
+    Le préfixe évite d'exiger la forme exacte : « remboursement » doit valoir l'idée
+    « rembourse », « identité » valoir « identite ».
+    """
+    clef = _clef_texte(idee)
+    if not clef:
+        return False
+    if clef in jetons or f"{clef}s" in jetons:
+        return True
+    if len(clef) < minimum:
+        return False
+    return any(jeton.startswith(clef) for jeton in jetons)
+
+
+def corriger_sequence(item: dict, reponse) -> tuple[bool, dict]:
+    """Juge une séquence « PQRST mis en œuvre » (ADR-015) : (réussi, détail par étape).
+
+    - **étape 1 — Parcours** : le sujet du texte (choix) ;
+    - **étape 2 — Question** : **non notée** ; on vérifie seulement qu'une question a été
+      écrite, et le **modèle** est renvoyé — c'est la production qui travaille, pas sa note ;
+    - **étape 4 — Reformulation** : idées-clés retrouvées, seuil déclaré par l'item
+      (4 sur 5) ; les idées manquées sont renvoyées pour le retour ;
+    - **étape 5 — Test** : les deux questions de mémoire, réussies ensemble.
+
+    La lecture (étape 3) ne se juge pas : elle est guidée par la question écrite.
+    """
+    contenu = item.get("contenu") or {}
+    etapes = {etape.get("etape"): etape for etape in contenu.get("etapes") or []}
+    donnees = reponse if isinstance(reponse, dict) else {}
+
+    def fournie(numero: int):
+        return donnees.get(str(numero), donnees.get(numero))
+
+    detail: dict[str, dict] = {}
+    verdicts: list[bool] = []
+
+    # 1 — Parcours
+    parcours = etapes.get(1) or {}
+    reussi_1 = _clef_reponse(fournie(1)) == _clef_reponse(parcours.get("bonne"))
+    detail["1"] = {"correcte": reussi_1, "attendue": parcours.get("bonne")}
+    verdicts.append(reussi_1)
+
+    # 2 — Question écrite (non notée : une production vide est simplement signalée)
+    question = etapes.get(2) or {}
+    texte_question = str(fournie(2) or "").strip()
+    detail["2"] = {
+        "correcte": bool(texte_question),
+        "modele": question.get("modele"),
+        "non_notee": True,
+    }
+
+    # 4 — Reformulation : part d'idées-clés retrouvées, seuil de l'item
+    reformulation = etapes.get(4) or {}
+    idees = [str(idee) for idee in reformulation.get("idees_cles") or []]
+    seuil = float((item.get("reponse") or {}).get("seuil") or reformulation.get("seuil") or 1.0)
+    jetons = _mots_sequence(fournie(4))
+    trouvees = [idee for idee in idees if _idee_retrouvee(idee, jetons)]
+    manquantes = [idee for idee in idees if idee not in trouvees]
+    reussi_4 = bool(idees) and (len(trouvees) / len(idees)) >= seuil
+    detail["4"] = {
+        "correcte": reussi_4,
+        "trouvees": trouvees,
+        "manquantes": manquantes,
+        "seuil": seuil,
+        "modele": reformulation.get("modele"),
+    }
+    verdicts.append(reussi_4)
+
+    # 5 — Test : les deux questions de mémoire
+    test = etapes.get(5) or {}
+    questions = test.get("questions") or []
+    reponses_test = fournie(5)
+    if not isinstance(reponses_test, list):
+        reponses_test = [reponses_test]
+    verdicts_questions = []
+    for rang, question_test in enumerate(questions):
+        donnee = reponses_test[rang] if rang < len(reponses_test) else None
+        verdicts_questions.append(
+            _clef_reponse(donnee) == _clef_reponse(question_test.get("bonne"))
+        )
+    reussi_5 = bool(verdicts_questions) and all(verdicts_questions)
+    detail["5"] = {
+        "correcte": reussi_5,
+        "questions": [q.get("bonne") for q in questions],
+        "reussies": verdicts_questions,
+    }
+    verdicts.append(reussi_5)
+
+    return all(verdicts), detail
+
+
 def _corriger_sans_espaces(reponse, attendue) -> bool:
     """Séquence ou valeur courte (empans, n-back, paires) : la saisie est normalisée.
 

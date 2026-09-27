@@ -22,7 +22,7 @@
     "concentration": 9,
     "evocation": 7,
     "quotidien": 8,
-    "methodes": 5,
+    "methodes": 6,
     "deduction": 4,
     "rappel-series": 4
   },
@@ -340,7 +340,7 @@
         "concentration": 6,
         "evocation": 6,
         "quotidien": 6,
-        "methodes": 5,
+        "methodes": 6,
         "deduction": 4,
         "rappel-series": 4
       },
@@ -414,7 +414,7 @@
         "concentration": 7,
         "evocation": 7,
         "quotidien": 7,
-        "methodes": 5,
+        "methodes": 6,
         "deduction": 4,
         "rappel-series": 4
       },
@@ -488,7 +488,7 @@
         "concentration": 8,
         "evocation": 7,
         "quotidien": 8,
-        "methodes": 5,
+        "methodes": 6,
         "deduction": 4,
         "rappel-series": 4
       },
@@ -562,7 +562,7 @@
         "concentration": 9,
         "evocation": 7,
         "quotidien": 8,
-        "methodes": 5,
+        "methodes": 6,
         "deduction": 4,
         "rappel-series": 4
       },

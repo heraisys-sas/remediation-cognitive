@@ -985,3 +985,42 @@ body {
   font-size: 0.9rem;
   color: var(--accent);
 }
+
+/* Séquence guidée « PQRST mis en œuvre » : les cinq étapes, lisibles d'un coup d'œil. */
+.zone-sequence { margin-top: 1rem; }
+.sequence-titre { font-weight: 600; margin: 0 0 0.5rem; }
+.sequence-etape { font-size: 0.95rem; margin: 1rem 0 0.4rem; }
+.sequence-texte {
+  background: var(--surface-haute);
+  border-radius: 0.5rem;
+  padding: 0.7rem 0.9rem;
+  line-height: 1.6;
+}
+.sequence-question { margin: 0.7rem 0 0.3rem; font-weight: 500; }
+.sequence-choix { display: flex; flex-wrap: wrap; gap: 0.5rem; }
+.sequence-option {
+  border: 1px solid var(--bordure);
+  border-radius: 0.5rem;
+  padding: 0.45rem 0.7rem;
+  background: var(--surface);
+  color: inherit;
+  cursor: pointer;
+}
+.sequence-option-active { border-color: var(--accent); outline: 2px solid var(--accent); }
+.sequence-champ {
+  width: 100%;
+  padding: 0.5rem 0.7rem;
+  border: 1px solid var(--bordure);
+  border-radius: 0.5rem;
+  background: var(--surface);
+  color: inherit;
+}
+.sequence-actions { margin-top: 1rem; }
+.feedback-sequence-ligne { margin: 0.4rem 0 0; font-size: 0.9rem; }
+.fiche-methode {
+  margin-top: 1.25rem;
+  border-left: 3px solid var(--accent);
+  padding-left: 0.8rem;
+}
+.fiche-methode h3 { font-size: 1rem; margin: 0 0 0.4rem; }
+.fiche-methode li { margin: 0.2rem 0; }

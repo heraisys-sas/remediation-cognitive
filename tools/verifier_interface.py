@@ -40,7 +40,8 @@ FONCTIONS_A_VIDER = {
 }
 
 #: Zones de réponse que le vidage doit couvrir.
-ZONES_REPONSE = ("refs.zoneChoix", "refs.zoneIndices", "refs.zoneGeneration", "refs.zoneGrille")
+ZONES_REPONSE = ("refs.zoneChoix", "refs.zoneIndices", "refs.zoneGeneration", "refs.zoneGrille",
+                 "refs.zoneSequence")
 
 
 def corps_fonction(source: str, nom: str) -> str | None:

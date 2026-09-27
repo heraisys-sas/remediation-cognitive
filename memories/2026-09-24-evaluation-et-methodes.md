@@ -69,3 +69,19 @@ Demande : préparer la proposition de palier.
   choix, 5 ou 3 étapes, longueur des textes, fiche méthode hors écran). Rien n'est implémenté.
 - Note de méthode : proposer, chiffrer, et **ne pas coder** tant que l'orthophoniste n'a pas
   tranché les points qui relèvent de la clinique.
+
+## 2026-09-27 — palier « PQRST mis en œuvre » implémenté
+
+Arbitrages : 4 idées-clés sur 5, question en champ libre, 5 étapes, textes de 4 phrases du
+quotidien, fiche récapitulative. Implémenté :
+
+- type `pqrst-mise-en-oeuvre` (un item = une séquence guidée de 5 étapes) ; palier 6 du thème
+  méthodes, identifiants neufs `mt-6-…` ; interface de séquence + retour par étape + fiche
+  méthode au résumé.
+- Correction serveur : parcours jugé, **question écrite non notée** (modèle affiché),
+  reformulation jugée sur idées-clés (seuil 0,8 = 4/5), test jugé d'ensemble.
+- Deux défauts réels attrapés par le contrôle de faisabilité : les apostrophes cassaient les
+  idées-clés (« d'identité » ne donnait pas « identite ») → découpage sur tout caractère non
+  alphanumérique ; et deux résumés modèles ne portaient pas toutes leurs idées → l'exercice
+  aurait été infaisable. **Un contrôle qui vérifie la faisabilité est plus utile qu'un contrôle
+  de forme.**

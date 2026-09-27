@@ -43,6 +43,15 @@
       ],
       "fichier": "paliers/palier-05.json",
       "nb_items": 8
+    },
+    {
+      "id": "mt-palier-6",
+      "description": "PQRST mis en œuvre : appliquer la méthode pas à pas sur un texte",
+      "prerequis": [
+        "mt-palier-5"
+      ],
+      "fichier": "paliers/palier-06.json",
+      "nb_items": 4
     }
   ]
 }

@@ -30,7 +30,7 @@ from engine.srs.fsrs import CarteFSRS, planifier
 
 from ...domain import messages
 from ...domain.contenu import ChargeurContenu
-from ...domain.correction import corriger
+from ...domain.correction import corriger, corriger_sequence
 from ...domain.feedback import essai_supplementaire
 from ...domain.dosage import (
     LIMITES_SESSIONS_JOUR,
@@ -306,7 +306,13 @@ class GestionnaireSessions:
         ):
             raise ReponseInvalide("indice_utilise hors bornes")
         assistee = nb_indices > 0 and indice_utilise > nb_indices
-        correcte = False if assistee else corriger(theme, item, reponse)
+        detail_sequence: dict | None = None
+        if item.get("type") == "pqrst-mise-en-oeuvre":
+            # Séquence guidée (ADR-015) : une seule réception, jugée étape par étape.
+            # La question écrite n'est pas notée ; seules les étapes 1, 4 et 5 décident.
+            correcte, detail_sequence = corriger_sequence(item, reponse)
+        else:
+            correcte = False if assistee else corriger(theme, item, reponse)
 
         # Second essai (exercices où la réponse se **raisonne**, ADR-014) : sur une
         # première erreur, on ne révèle rien et on n'enregistre rien — le premier essai
@@ -348,6 +354,11 @@ class GestionnaireSessions:
             "attendue": item["reponse"]["valeur"],
             "feedback": messages.texte("entrainement", cle),
         }
+        if detail_sequence is not None:
+            # Le détail par étape remplace la réponse attendue : la séquence se corrige
+            # étape par étape (parcours, question modèle, idées-clés, test).
+            resultat["attendue"] = None
+            resultat["sequence"] = detail_sequence
         # Reprise errorless : un exercice manqué (et non assisté) revient **une fois**, en
         # fin de séance, avec la réponse fournie avant le nouvel essai. On ne ré-encode pas
         # une erreur ; le plafond évite de doubler la durée de la séance.

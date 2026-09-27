@@ -2,6 +2,17 @@
 
 Format : [date] — [périmètre] — description. Les retours informels de l'orthophoniste sont journalisés ici, sans caution clinique.
 
+## 2026-09-27 · Palier « PQRST mis en œuvre » : la méthode appliquée pas à pas
+
+Mise en œuvre des arbitrages validés (4 idées-clés sur 5, champ libre, 5 étapes, textes de 4 phrases du quotidien, fiche récapitulative).
+
+- **Nouveau type d'exercice** `pqrst-mise-en-oeuvre` : un item = **une séquence guidée** sur un texte de quatre phrases — Parcours (jugé), **Question à écrire** (non notée, modèle affiché), Lecture (sans chronomètre), **Reformulation** (jugée à **4 idées-clés sur 5**, résumé modèle), Test (2 questions de mémoire).
+- **Nouveau palier 6** du thème méthodes (4 séquences), en **identifiants neufs** (`mt-6-…`) ; programme mis à jour (6 paliers).
+- **Correction serveur** par étape : la question écrite n'est pas notée, les idées manquées sont signalées, le test est jugé d'ensemble.
+- **Interface** : zone de séquence (les cinq étapes en une page, valider d'un bloc), retour détaillé par étape, et **fiche méthode** reprise au résumé de séance.
+- **Contrôle de faisabilité** au dépôt : chaque idée-clé doit se trouver dans le résumé modèle — il a immédiatement attrapé deux résumés incomplets (l'exercice aurait été infaisable).
+- **ADR-015** ; README du thème mis à jour ; 920 items / 0 erreur ; 200 tests.
+
 ## 2026-09-27 · PQRST mis en œuvre : arbitrages rendus, mise en œuvre planifiée
 
 - **Décisions de l'orthophoniste** : reformulation à **4 idées-clés sur 5**, question personnelle en **champ libre** (modèle affiché ensuite), **5 étapes**, textes de **4 phrases** du quotidien, **fiche méthode récapitulative** en fin de séance.

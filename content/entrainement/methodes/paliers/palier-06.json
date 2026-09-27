@@ -1,0 +1,406 @@
+[
+  {
+    "id": "mt-6-pqrst-01",
+    "type": "pqrst-mise-en-oeuvre",
+    "module": "entrainement",
+    "theme": "methodes",
+    "fonctions_ciblees": [
+      "memorisation-longue",
+      "recuperation",
+      "fonctions-executives"
+    ],
+    "palier": 6,
+    "prerequis": [
+      "mt-palier-5"
+    ],
+    "cap_complexite": "un texte court et cinq étapes guidées, une seule fois",
+    "contenu": {
+      "consigne": "Méthode PQRST, appliquée pas à pas : Parcours le texte, écris la question que tu te poses, Lis-le, Reformule-le avec tes mots, puis Teste-toi de mémoire.",
+      "titre_texte": "Le colis à retirer",
+      "texte": "Le colis est arrivé au bureau de tabac de la place. Il faut le retirer avant jeudi, avec une pièce d'identité. Le bureau ferme à 18 h, sauf le samedi midi. Si le colis n'est pas retiré, il repart à l'expéditeur.",
+      "etapes": [
+        {
+          "etape": 1,
+          "nom": "Parcours",
+          "enonce": "De quoi parle ce texte ?",
+          "options": [
+            "de l'enlèvement d'un colis",
+            "d'une recette de cuisine",
+            "d'un voyage en train"
+          ],
+          "bonne": "de l'enlèvement d'un colis"
+        },
+        {
+          "etape": 2,
+          "nom": "Question",
+          "enonce": "Écris la question que tu te poses sur ce texte.",
+          "modele": "Que faut-il apporter pour retirer le colis ?"
+        },
+        {
+          "etape": 3,
+          "nom": "Lecture",
+          "enonce": "Lis le texte entier, en cherchant la réponse à ta question."
+        },
+        {
+          "etape": 4,
+          "nom": "Reformulation",
+          "enonce": "Redis le texte en une phrase, avec tes mots.",
+          "modele": "Le colis attend au bureau de tabac : il faut le retirer avant jeudi, avec une pièce d'identité, avant 18 h.",
+          "idees_cles": [
+            "colis",
+            "bureau",
+            "jeudi",
+            "identite",
+            "18"
+          ],
+          "seuil": 0.8
+        },
+        {
+          "etape": 5,
+          "nom": "Test",
+          "questions": [
+            {
+              "enonce": "Jusqu'à quand peut-on retirer le colis ?",
+              "options": [
+                "jusqu'à jeudi",
+                "jusqu'à samedi",
+                "jusqu'à la fin du mois"
+              ],
+              "bonne": "jusqu'à jeudi"
+            },
+            {
+              "enonce": "Que faut-il apporter ?",
+              "options": [
+                "une pièce d'identité",
+                "un bon de commande",
+                "la carte de fidélité"
+              ],
+              "bonne": "une pièce d'identité"
+            }
+          ]
+        }
+      ],
+      "fiche_methode": [
+        "Parcours : je regarde le titre et le début, je devine le sujet.",
+        "Question : j'écris la question que je me pose.",
+        "Lecture : je lis en cherchant la réponse à ma question.",
+        "Reformulation : je redis le texte en une phrase, avec mes mots.",
+        "Test : je me teste de mémoire, sans regarder."
+      ]
+    },
+    "reponse": {
+      "valeur": "l'enlèvement d'un colis, l'identité, le délai et les horaires",
+      "seuil": 0.8
+    },
+    "meta": {
+      "auteur": "redaction-assistee (tools/generer_methodes.py)",
+      "date_creation": "2026-09-27",
+      "relecture_ortho": {
+        "statut": "a_revoir"
+      }
+    }
+  },
+  {
+    "id": "mt-6-pqrst-02",
+    "type": "pqrst-mise-en-oeuvre",
+    "module": "entrainement",
+    "theme": "methodes",
+    "fonctions_ciblees": [
+      "memorisation-longue",
+      "recuperation",
+      "fonctions-executives"
+    ],
+    "palier": 6,
+    "prerequis": [
+      "mt-palier-5"
+    ],
+    "cap_complexite": "un texte court et cinq étapes guidées, une seule fois",
+    "contenu": {
+      "consigne": "Méthode PQRST, appliquée pas à pas : Parcours le texte, écris la question que tu te poses, Lis-le, Reformule-le avec tes mots, puis Teste-toi de mémoire.",
+      "titre_texte": "Le nouveau lave-linge",
+      "texte": "Avant la première lessive, ouvrir le robinet d'arrivée d'eau. Verser un verre de vinaigre blanc dans le tambour et lancer un cycle à vide à 60 degrés. Trier ensuite le linge par couleur et remplir le tambour sans le tasser. Nettoyer le filtre une fois par mois pour éviter les mauvaises odeurs.",
+      "etapes": [
+        {
+          "etape": 1,
+          "nom": "Parcours",
+          "enonce": "De quoi parle ce texte ?",
+          "options": [
+            "de la mise en route d'un lave-linge",
+            "du montage d'une étagère",
+            "de l'entretien d'un vélo"
+          ],
+          "bonne": "de la mise en route d'un lave-linge"
+        },
+        {
+          "etape": 2,
+          "nom": "Question",
+          "enonce": "Écris la question que tu te poses sur ce texte.",
+          "modele": "Que fait-on avant la première lessive ?"
+        },
+        {
+          "etape": 3,
+          "nom": "Lecture",
+          "enonce": "Lis le texte entier, en cherchant la réponse à ta question."
+        },
+        {
+          "etape": 4,
+          "nom": "Reformulation",
+          "enonce": "Redis le texte en une phrase, avec tes mots.",
+          "modele": "Avant la première lessive : ouvrir le robinet, lancer un cycle à vide à 60 degrés avec du vinaigre, puis trier le linge et nettoyer le filtre chaque mois.",
+          "idees_cles": [
+            "robinet",
+            "vinaigre",
+            "60",
+            "trier",
+            "filtre"
+          ],
+          "seuil": 0.8
+        },
+        {
+          "etape": 5,
+          "nom": "Test",
+          "questions": [
+            {
+              "enonce": "Quel cycle lancer avant la première lessive ?",
+              "options": [
+                "un cycle à vide à 60 degrés",
+                "un cycle court à froid",
+                "un cycle avec du linge blanc"
+              ],
+              "bonne": "un cycle à vide à 60 degrés"
+            },
+            {
+              "enonce": "Tous les combien nettoyer le filtre ?",
+              "options": [
+                "une fois par mois",
+                "une fois par semaine",
+                "une fois par an"
+              ],
+              "bonne": "une fois par mois"
+            }
+          ]
+        }
+      ],
+      "fiche_methode": [
+        "Parcours : je regarde le titre et le début, je devine le sujet.",
+        "Question : j'écris la question que je me pose.",
+        "Lecture : je lis en cherchant la réponse à ma question.",
+        "Reformulation : je redis le texte en une phrase, avec mes mots.",
+        "Test : je me teste de mémoire, sans regarder."
+      ]
+    },
+    "reponse": {
+      "valeur": "la préparation du lave-linge, le cycle à vide, le tri du linge, le filtre",
+      "seuil": 0.8
+    },
+    "meta": {
+      "auteur": "redaction-assistee (tools/generer_methodes.py)",
+      "date_creation": "2026-09-27",
+      "relecture_ortho": {
+        "statut": "a_revoir"
+      }
+    }
+  },
+  {
+    "id": "mt-6-pqrst-03",
+    "type": "pqrst-mise-en-oeuvre",
+    "module": "entrainement",
+    "theme": "methodes",
+    "fonctions_ciblees": [
+      "memorisation-longue",
+      "recuperation",
+      "fonctions-executives"
+    ],
+    "palier": 6,
+    "prerequis": [
+      "mt-palier-5"
+    ],
+    "cap_complexite": "un texte court et cinq étapes guidées, une seule fois",
+    "contenu": {
+      "consigne": "Méthode PQRST, appliquée pas à pas : Parcours le texte, écris la question que tu te poses, Lis-le, Reformule-le avec tes mots, puis Teste-toi de mémoire.",
+      "titre_texte": "Le courrier de la mutuelle",
+      "texte": "La mutuelle accuse réception du dossier envoyé le 4 septembre. Les pièces sont complètes, aucun justificatif supplémentaire n'est demandé. Le remboursement sera versé sous quinze jours sur le compte habituel. Pour toute question, utiliser le numéro indiqué en haut de la lettre, pas la messagerie.",
+      "etapes": [
+        {
+          "etape": 1,
+          "nom": "Parcours",
+          "enonce": "De quoi parle ce texte ?",
+          "options": [
+            "du suivi d'un dossier de remboursement",
+            "de la résiliation d'un contrat",
+            "d'une convocation à un contrôle"
+          ],
+          "bonne": "du suivi d'un dossier de remboursement"
+        },
+        {
+          "etape": 2,
+          "nom": "Question",
+          "enonce": "Écris la question que tu te poses sur ce texte.",
+          "modele": "Quand vais-je recevoir le remboursement ?"
+        },
+        {
+          "etape": 3,
+          "nom": "Lecture",
+          "enonce": "Lis le texte entier, en cherchant la réponse à ta question."
+        },
+        {
+          "etape": 4,
+          "nom": "Reformulation",
+          "enonce": "Redis le texte en une phrase, avec tes mots.",
+          "modele": "Le dossier est complet et sera remboursé sous quinze jours ; on peut appeler le numéro de la lettre pour toute question.",
+          "idees_cles": [
+            "dossier",
+            "complet",
+            "rembourse",
+            "quinze",
+            "numero"
+          ],
+          "seuil": 0.8
+        },
+        {
+          "etape": 5,
+          "nom": "Test",
+          "questions": [
+            {
+              "enonce": "Sous quel délai le remboursement sera-t-il versé ?",
+              "options": [
+                "sous quinze jours",
+                "sous deux mois",
+                "immédiatement"
+              ],
+              "bonne": "sous quinze jours"
+            },
+            {
+              "enonce": "Comment poser une question ?",
+              "options": [
+                "en appelant le numéro de la lettre",
+                "par la messagerie du site",
+                "en écrivant au tribunal"
+              ],
+              "bonne": "en appelant le numéro de la lettre"
+            }
+          ]
+        }
+      ],
+      "fiche_methode": [
+        "Parcours : je regarde le titre et le début, je devine le sujet.",
+        "Question : j'écris la question que je me pose.",
+        "Lecture : je lis en cherchant la réponse à ma question.",
+        "Reformulation : je redis le texte en une phrase, avec mes mots.",
+        "Test : je me teste de mémoire, sans regarder."
+      ]
+    },
+    "reponse": {
+      "valeur": "le accusé de réception, les pièces complètes, le délai de remboursement, le numéro",
+      "seuil": 0.8
+    },
+    "meta": {
+      "auteur": "redaction-assistee (tools/generer_methodes.py)",
+      "date_creation": "2026-09-27",
+      "relecture_ortho": {
+        "statut": "a_revoir"
+      }
+    }
+  },
+  {
+    "id": "mt-6-pqrst-04",
+    "type": "pqrst-mise-en-oeuvre",
+    "module": "entrainement",
+    "theme": "methodes",
+    "fonctions_ciblees": [
+      "memorisation-longue",
+      "recuperation",
+      "fonctions-executives"
+    ],
+    "palier": 6,
+    "prerequis": [
+      "mt-palier-5"
+    ],
+    "cap_complexite": "un texte court et cinq étapes guidées, une seule fois",
+    "contenu": {
+      "consigne": "Méthode PQRST, appliquée pas à pas : Parcours le texte, écris la question que tu te poses, Lis-le, Reformule-le avec tes mots, puis Teste-toi de mémoire.",
+      "titre_texte": "La séance à la piscine",
+      "texte": "La piscine propose des créneaux tranquilles le mardi et le jeudi matin. L'entrée coûte quatre euros, le carnet de dix entrées trente euros. Il faut un bonnet de bain et une pièce de un euro pour le casier. Les lignes 3 et 4 sont réservées aux nageurs lents.",
+      "etapes": [
+        {
+          "etape": 1,
+          "nom": "Parcours",
+          "enonce": "De quoi parle ce texte ?",
+          "options": [
+            "des conditions pour aller à la piscine",
+            "d'un match de natation",
+            "d'un cours de plongée"
+          ],
+          "bonne": "des conditions pour aller à la piscine"
+        },
+        {
+          "etape": 2,
+          "nom": "Question",
+          "enonce": "Écris la question que tu te poses sur ce texte.",
+          "modele": "Quels jours y a-t-il des créneaux tranquilles ?"
+        },
+        {
+          "etape": 3,
+          "nom": "Lecture",
+          "enonce": "Lis le texte entier, en cherchant la réponse à ta question."
+        },
+        {
+          "etape": 4,
+          "nom": "Reformulation",
+          "enonce": "Redis le texte en une phrase, avec tes mots.",
+          "modele": "La piscine a des créneaux tranquilles mardi et jeudi matin, avec un tarif simple, un bonnet obligatoire et des lignes réservées aux nageurs lents.",
+          "idees_cles": [
+            "mardi",
+            "jeudi",
+            "tarif",
+            "bonnet",
+            "ligne"
+          ],
+          "seuil": 0.8
+        },
+        {
+          "etape": 5,
+          "nom": "Test",
+          "questions": [
+            {
+              "enonce": "Quels jours sont tranquilles ?",
+              "options": [
+                "mardi et jeudi matin",
+                "samedi après-midi",
+                "tous les soirs"
+              ],
+              "bonne": "mardi et jeudi matin"
+            },
+            {
+              "enonce": "Que faut-il prévoir pour le casier ?",
+              "options": [
+                "une pièce de un euro",
+                "un cadenas personnel",
+                "rien du tout"
+              ],
+              "bonne": "une pièce de un euro"
+            }
+          ]
+        }
+      ],
+      "fiche_methode": [
+        "Parcours : je regarde le titre et le début, je devine le sujet.",
+        "Question : j'écris la question que je me pose.",
+        "Lecture : je lis en cherchant la réponse à ma question.",
+        "Reformulation : je redis le texte en une phrase, avec mes mots.",
+        "Test : je me teste de mémoire, sans regarder."
+      ]
+    },
+    "reponse": {
+      "valeur": "les créneaux tranquilles, les tarifs, le bonnet et le casier, les lignes lentes",
+      "seuil": 0.8
+    },
+    "meta": {
+      "auteur": "redaction-assistee (tools/generer_methodes.py)",
+      "date_creation": "2026-09-27",
+      "relecture_ortho": {
+        "statut": "a_revoir"
+      }
+    }
+  }
+]

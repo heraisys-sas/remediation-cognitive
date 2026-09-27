@@ -49,7 +49,7 @@ PALIERS_DISPONIBLES = {
     "concentration": 9,
     "evocation": 7,
     "quotidien": 8,
-    "methodes": 5,
+    "methodes": 6,
     "deduction": 4,
     "rappel-series": 4,
 }

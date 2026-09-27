@@ -120,3 +120,77 @@ def test_analyse_mot_sfa_et_pca(client, tmp_path):
         # La saisie est tolérante (casse, accents).
         variante = mot.upper()
         assert _repondre(client, "evocation", payload["session_id"], item["id"], variante).json()["correcte"] is True
+
+
+# --- Palier « PQRST mis en œuvre » (ADR-015) ---------------------------------
+
+from backend.app.domain.contenu import ChargeurContenu  # noqa: E402
+from backend.app.domain.correction import corriger_sequence  # noqa: E402
+
+CONTENU_PQRST = ChargeurContenu()
+
+
+def _sequence(item_id="mt-6-pqrst-01"):
+    return CONTENU_PQRST.item("methodes", item_id)
+
+
+def _reponses(item, question="Que faut-il savoir ?", reformulation=None, test=None):
+    etapes = {e["etape"]: e for e in item["contenu"]["etapes"]}
+    return {
+        "1": etapes[1]["bonne"],
+        "2": question,
+        "4": reformulation if reformulation is not None else etapes[4]["modele"],
+        "5": test if test is not None else [q["bonne"] for q in etapes[5]["questions"]],
+    }
+
+
+def test_sequence_reussie_quand_le_modele_est_suivi():
+    item = _sequence()
+    reussi, detail = corriger_sequence(item, _reponses(item))
+    assert reussi is True
+    assert detail["4"]["correcte"] is True
+    assert detail["4"]["trouvees"], "les idées-clés doivent être retrouvées"
+
+
+def test_sequence_exige_4_idees_sur_5():
+    """Seuil validé : 4 idées-clés sur 5 — une phrase vague ne suffit pas."""
+    item = _sequence()
+    etapes = {e["etape"]: e for e in item["contenu"]["etapes"]}
+    vague = " ".join(etapes[4]["idees_cles"][:3])
+    reussi, detail = corriger_sequence(item, _reponses(item, reformulation=vague))
+    assert detail["4"]["correcte"] is False
+    assert reussi is False
+    assert detail["4"]["manquantes"], "les idées manquées sont signalées"
+
+
+def test_question_ecrite_non_notee_mais_modele_fourni():
+    item = _sequence()
+    _, detail = corriger_sequence(item, _reponses(item, question="Quand ?"))
+    assert detail["2"]["non_notee"] is True
+    assert detail["2"]["modele"], "une question modèle est renvoyée"
+    # Une question vide est signalée sans invalider la séquence entière.
+    _, vide = corriger_sequence(item, _reponses(item, question=""))
+    assert vide["2"]["correcte"] is False
+
+
+def test_sequence_echoue_si_le_test_est_faux():
+    item = _sequence()
+    etapes = {e["etape"]: e for e in item["contenu"]["etapes"]}
+    faux = ["mauvaise réponse", etapes[5]["questions"][1]["bonne"]]
+    reussi, detail = corriger_sequence(item, _reponses(item, test=faux))
+    assert detail["5"]["correcte"] is False
+    assert detail["5"]["reussies"] == [False, True]
+    assert reussi is False
+
+
+def test_sequences_faisables_et_completes():
+    """Chaque séquence doit être jouable : 5 étapes, et le modèle porte ses idées-clés."""
+    for item in CONTENU_PQRST.items("methodes"):
+        if item["type"] != "pqrst-mise-en-oeuvre":
+            continue
+        numeros = [e["etape"] for e in item["contenu"]["etapes"]]
+        assert numeros == [1, 2, 3, 4, 5], item["id"]
+        assert len(item["contenu"]["fiche_methode"]) == 5, item["id"]
+        assert len(item["contenu"]["texte"].split(".")) - 1 == 4, item["id"]
+        reussi, _ = corriger_sequence(item, _reponses(item))
+        assert reussi is True, f"{item['id']} : suivre le modèle doit réussir"

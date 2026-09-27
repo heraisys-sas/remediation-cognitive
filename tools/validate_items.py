@@ -40,6 +40,13 @@ from collections import Counter
 from datetime import date
 from pathlib import Path
 
+# Comparateur de la correction (mêmes règles que le jugement réel de la séquence).
+sys.path.insert(0, str(Path(__file__).resolve().parent.parent / "backend"))
+from app.domain.correction import (  # noqa: E402
+    _idee_retrouvee as idee_retrouvee,
+    _mots_sequence as mots_sequence,
+)
+
 # Le solveur de déduction sert de juge : un puzzle de grille qui n'est pas
 # entièrement résoluble par propagation (sans hypothèse) est refusé.
 sys.path.insert(0, str(Path(__file__).resolve().parent))
@@ -398,6 +405,10 @@ def erreurs_contenu(item: dict, prefixe: str) -> list[str]:
     if type_item == "grille-deduction":
         erreurs.extend(_erreurs_grille_deduction(item, prefixe, contenu))
 
+    # Séquence « PQRST mis en œuvre » : cinq étapes, et faisabilité de la reformulation.
+    if type_item == "pqrst-mise-en-oeuvre":
+        erreurs.extend(erreurs_sequence_pqrst(item, prefixe, contenu))
+
     return erreurs
 
 
@@ -524,6 +535,68 @@ def _sens_contredit(indice: dict, fig: list[int], coul: list[int],
             if type_indice == "oppose" and case_de(nom_f, nom_c) != n * n - 1 - case_de(atome["figure2"], atome["couleur2"]):
                 return "la phrase dit « à l'opposé » sans que les deux figures soient symétriques par le centre"
     return None
+
+
+def erreurs_sequence_pqrst(item: dict, prefixe: str, contenu: dict) -> list[str]:
+    """Contrôle du palier « PQRST mis en œuvre » (ADR-015).
+
+    Vérifie la structure des cinq étapes et surtout la **faisabilité** : chaque idée-clé doit
+    se retrouver dans le résumé modèle, sinon une reformulation juste serait refusée. Le
+    contrôle réutilise volontairement le comparateur de la correction : c'est lui qui doit
+    pouvoir noter l'item.
+    """
+    erreurs: list[str] = []
+    etapes_liste = contenu.get("etapes")
+    if not isinstance(etapes_liste, list):
+        return [prefixe + "étapes attendues sous forme de liste"]
+    etapes = {etape.get("etape"): etape for etape in etapes_liste if isinstance(etape, dict)}
+    for numero in (1, 2, 3, 4, 5):
+        if numero not in etapes:
+            erreurs.append(prefixe + f"étape {numero} manquante")
+
+    parcours = etapes.get(1) or {}
+    if not isinstance(parcours.get("options"), list) or len(parcours["options"]) != 3:
+        erreurs.append(prefixe + "étape 1 : trois propositions attendues")
+    elif parcours.get("bonne") not in parcours["options"]:
+        erreurs.append(prefixe + "étape 1 : la bonne réponse doit figurer parmi les propositions")
+
+    question = etapes.get(2) or {}
+    if not str(question.get("modele") or "").strip():
+        erreurs.append(prefixe + "étape 2 : une question modèle est attendue")
+
+    lecture = etapes.get(3) or {}
+    if "options" in lecture or "questions" in lecture:
+        erreurs.append(prefixe + "étape 3 (lecture) : rien ne doit être demandé")
+
+    reformulation = etapes.get(4) or {}
+    idees = reformulation.get("idees_cles") or []
+    if len(idees) != 5:
+        erreurs.append(prefixe + f"étape 4 : 5 idées-clés attendues (reçu {len(idees)})")
+    seuil = (item.get("reponse") or {}).get("seuil")
+    if seuil != 0.8:
+        erreurs.append(prefixe + f"étape 4 : seuil attendu 0,8 — 4 idées sur 5 (reçu {seuil!r})")
+    modele = str(reformulation.get("modele") or "")
+    jetons = mots_sequence(modele)
+    absentes = [idee for idee in idees if not idee_retrouvee(idee, jetons)]
+    if absentes:
+        erreurs.append(prefixe + f"étape 4 : idées-clés introuvables dans le résumé modèle {absentes}")
+
+    test = etapes.get(5) or {}
+    questions = test.get("questions") or []
+    if len(questions) != 2:
+        erreurs.append(prefixe + f"étape 5 : 2 questions de mémoire attendues (reçu {len(questions)})")
+    for rang, question_test in enumerate(questions, start=1):
+        options = question_test.get("options") or []
+        if len(options) != 3 or question_test.get("bonne") not in options:
+            erreurs.append(prefixe + f"étape 5, question {rang} : trois propositions dont la bonne")
+
+    fiche = contenu.get("fiche_methode") or []
+    if len(fiche) != 5:
+        erreurs.append(prefixe + f"fiche méthode : 5 lignes attendues (reçu {len(fiche)})")
+    phrases = [phrase for phrase in str(contenu.get("texte") or "").split(".") if phrase.strip()]
+    if len(phrases) != 4:
+        erreurs.append(prefixe + f"texte : 4 phrases attendues (reçu {len(phrases)})")
+    return erreurs
 
 
 def _erreurs_grille_deduction(item: dict, prefixe: str, contenu: dict) -> list[str]:

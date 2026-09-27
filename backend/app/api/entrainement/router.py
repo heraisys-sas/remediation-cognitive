@@ -27,14 +27,17 @@ router = APIRouter(prefix="/api/entrainement", tags=["entrainement"])
 
 
 class ReponseUtilisateur(BaseModel):
-    """Corps de POST …/reponses (contrat : reponse str|number, temps_ms int).
+    """Corps de POST …/reponses (contrat : reponse str|number|objet, temps_ms int).
+
+    Un **objet** est attendu pour les séquences guidées (« PQRST mis en œuvre ») : ses clés
+    sont les numéros d'étape.
 
     ``indice_utilise`` (optionnel) : nombre d'indices consultés ; la valeur
     ``nb_indices + 1`` signale un essai clos par affichage de la réponse.
     """
 
     item_id: str
-    reponse: str | int | float
+    reponse: str | int | float | dict
     temps_ms: int
     indice_utilise: int | None = None
 

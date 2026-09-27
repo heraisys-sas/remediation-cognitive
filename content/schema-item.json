@@ -4,7 +4,14 @@
   "title": "Item d'exercice",
   "description": "Format normalisé d'un item de contenu. Validation obligatoire avant intégration ; relecture orthophoniste tracée dans meta.relecture_ortho.",
   "type": "object",
-  "required": ["id", "module", "theme", "type", "palier", "contenu"],
+  "required": [
+    "id",
+    "module",
+    "theme",
+    "type",
+    "palier",
+    "contenu"
+  ],
   "additionalProperties": false,
   "properties": {
     "id": {
@@ -13,7 +20,11 @@
       "description": "Identifiant stable de l'item, ex. 'py-cmd-enumerate-01'."
     },
     "module": {
-      "enum": ["entrainement", "reeducation", "bilan"]
+      "enum": [
+        "entrainement",
+        "reeducation",
+        "bilan"
+      ]
     },
     "theme": {
       "type": "string",
@@ -54,7 +65,8 @@
         "plan-a-verifier",
         "reperer-info",
         "aide-externe",
-        "gestion-du-temps"
+        "gestion-du-temps",
+        "pqrst-mise-en-oeuvre"
       ]
     },
     "fonctions_ciblees": {
@@ -87,11 +99,16 @@
     },
     "prerequis": {
       "type": "array",
-      "items": { "type": "string" },
+      "items": {
+        "type": "string"
+      },
       "description": "Identifiants des items ou concepts prérequis (alimente le graphe de connaissances)."
     },
     "cap_complexite": {
-      "type": ["string", "null"],
+      "type": [
+        "string",
+        "null"
+      ],
       "description": "Justification pédagogique du cap, ex. '2 niveaux d imbrication max (phase initiale)'."
     },
     "contenu": {
@@ -106,15 +123,31 @@
       "type": "object",
       "additionalProperties": false,
       "properties": {
-        "auteur": { "type": "string" },
-        "date_creation": { "type": "string", "format": "date" },
+        "auteur": {
+          "type": "string"
+        },
+        "date_creation": {
+          "type": "string",
+          "format": "date"
+        },
         "relecture_ortho": {
           "type": "object",
           "additionalProperties": false,
           "properties": {
-            "statut": { "enum": ["a_revoir", "relecture_en_cours", "valide_informel"] },
-            "date": { "type": "string", "format": "date" },
-            "commentaire": { "type": "string" }
+            "statut": {
+              "enum": [
+                "a_revoir",
+                "relecture_en_cours",
+                "valide_informel"
+              ]
+            },
+            "date": {
+              "type": "string",
+              "format": "date"
+            },
+            "commentaire": {
+              "type": "string"
+            }
           }
         }
       }
