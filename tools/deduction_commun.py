@@ -32,6 +32,9 @@ TYPES_UNAIRES = {"case", "ligne", "colonne", "pas-ligne", "pas-colonne",
 #: Types d'indices reliant deux jetons (contraintes binaires).
 TYPES_BINAIRES = {"voisin-gauche", "voisin-droite", "voisin-dessus", "voisin-dessous",
                   "voisin-diagonale", "oppose",
+                  "pas-voisin-gauche", "pas-voisin-droite", "pas-voisin-dessus",
+                  "pas-voisin-dessous", "pas-a-droite-de", "pas-a-gauche-de",
+                  "pas-au-dessus-de", "pas-en-dessous-de",
                   "autre-ligne", "autre-colonne", "comparaison",
                   "a-droite-de", "a-gauche-de", "au-dessus-de", "en-dessous-de",
                   "si-alors"}
@@ -147,6 +150,22 @@ def _vrai_binaire(indice: dict, i1: int, i2: int, n: int) -> bool:
         return i1 // n > i2 // n
     if t == "si-alors":
         return i1 not in coins(n) or i2 in bords(n)
+    if t == "pas-voisin-gauche":
+        return not (i2 == i1 + 1 and i1 % n != n - 1)
+    if t == "pas-voisin-droite":
+        return not (i2 == i1 - 1 and i1 % n != 0)
+    if t == "pas-voisin-dessus":
+        return not (i2 == i1 - n)
+    if t == "pas-voisin-dessous":
+        return not (i2 == i1 + n)
+    if t == "pas-a-droite-de":
+        return not (i1 % n > i2 % n)
+    if t == "pas-a-gauche-de":
+        return not (i1 % n < i2 % n)
+    if t == "pas-au-dessus-de":
+        return not (i1 // n < i2 // n)
+    if t == "pas-en-dessous-de":
+        return not (i1 // n > i2 // n)
     return True
 
 

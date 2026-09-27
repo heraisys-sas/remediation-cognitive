@@ -74,9 +74,11 @@ COULEURS = ["rouge", "bleu", "vert", "jaune"]
 #: P4 **complexe/désordonné** : tout mélangé, chaînes courtes, phrases en désordre.
 RELATIONS_PAR_PALIER = {
     1: {"voisin-gauche", "voisin-droite", "voisin-dessus", "voisin-dessous"},
-    2: {"autre-ligne", "autre-colonne"},
+    2: {"autre-ligne", "autre-colonne", "pas-voisin-gauche", "pas-voisin-droite",
+        "pas-voisin-dessus", "pas-voisin-dessous", "pas-a-droite-de", "pas-a-gauche-de",
+        "pas-au-dessus-de", "pas-en-dessous-de"},
     3: {"au-dessus-de", "en-dessous-de", "a-droite-de", "a-gauche-de", "oppose",
-        "comparaison"},
+        "comparaison", "pas-ligne", "pas-colonne", "pas-coin"},
     4: {"voisin-gauche", "voisin-droite", "voisin-dessus", "voisin-dessous",
         "voisin-diagonale", "oppose", "comparaison", "a-droite-de", "a-gauche-de",
         "au-dessus-de", "en-dessous-de", "autre-ligne", "autre-colonne"},
@@ -99,8 +101,9 @@ LONGUEUR_CHAINE = {1: 2, 2: 1, 3: 1, 4: 1}
 LONGUEUR_MIN = {1: 2, 2: 1, 3: 1, 4: 1}
 #: Plancher et plafond du nombre de phrases : le palier complexe en a **moins**
 #: (moins d'aide, phrases à informations multiples).
-MIN_PHRASES = {1: 6, 2: 6, 3: 6, 4: 5}
+MIN_PHRASES = {1: 6, 2: 5, 3: 6, 4: 5}
 MAX_PHRASES = {1: 10, 2: 11, 3: 10, 4: 8}
+ESSAIS_CHAINE = 3
 #: Nombre maximal d'ancres par grille (une ancre = un point de départ).
 MAX_ANCRES = {1: 3, 2: 4, 3: 2, 4: 3}
 #: Vocabulaire à faire apparaître dans chaque palier : au moins une phrase qui
