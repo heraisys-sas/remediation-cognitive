@@ -62,38 +62,47 @@ PAR_PALIER_DEFAUT: int = 20
 FIGURES = ["cercle", "carre", "triangle", "losange"]
 COULEURS = ["rouge", "bleu", "vert", "jaune"]
 
-#: Relations utilisées pour les chaînes, par palier (une information, deux figures).
+#: Relations utilisées pour les chaînes, par palier — **progression Logix**
+#: (« Élémentaire, mon cher… ») : séquentiel/positif → négatif → relatif → complexe.
+#:
+#: P1 **séquentiel/positif** : voisinage direct, phrases qui s'enchaînent dans l'ordre
+#: de résolution ;
+#: P2 **négatif** : éliminations (autre-ligne, autre-colonne) — plus aucune position
+#: positive ni voisinage ;
+#: P3 **relatif** : relations relatives sans ancrage précis (plus haut que, plus à droite
+#: que, opposé) — la position se déduit par mise en relation croisée ;
+#: P4 **complexe/désordonné** : tout mélangé, chaînes courtes, phrases en désordre.
 RELATIONS_PAR_PALIER = {
     1: {"voisin-gauche", "voisin-droite", "voisin-dessus", "voisin-dessous"},
-    2: {"voisin-gauche", "voisin-droite", "voisin-dessus", "voisin-dessous",
-        "voisin-diagonale", "comparaison", "a-droite-de", "a-gauche-de",
-        "au-dessus-de", "en-dessous-de"},
-    3: {"voisin-diagonale", "comparaison", "a-droite-de", "a-gauche-de",
-        "au-dessus-de", "en-dessous-de", "autre-ligne", "autre-colonne"},
+    2: {"autre-ligne", "autre-colonne"},
+    3: {"au-dessus-de", "en-dessous-de", "a-droite-de", "a-gauche-de", "oppose",
+        "comparaison"},
     4: {"voisin-gauche", "voisin-droite", "voisin-dessus", "voisin-dessous",
         "voisin-diagonale", "oppose", "comparaison", "a-droite-de", "a-gauche-de",
         "au-dessus-de", "en-dessous-de", "autre-ligne", "autre-colonne"},
 }
-#: Repères autorisés pour l'ancre d'une chaîne, par palier.
-#: Les paliers 3 et 4 n'acceptent que des repères **négatifs** : il faut éliminer.
+#: Repères autorisés pour l'ancre d'une chaîne, par palier — même progression :
+#: P1/P2 : repères positifs (ligne, colonne, coin) ; P3 : repères **négatifs** seulement
+#: (il faut éliminer) ; P4 : tout mélangé, chaînes courtes, phrases en désordre.
 ANCRES_PAR_PALIER = {
     1: {"ligne", "colonne", "coin"},
-    2: {"ligne", "colonne", "coin", "diagonale", "diagonale-inverse"},
-    3: {"pas-ligne", "pas-colonne", "pas-coin", "pas-bord", "ni-ni",
-        "pas-diagonale", "pas-diagonale-inverse"},
+    2: {"pas-ligne", "pas-colonne", "pas-coin", "ni-ni"},
+    3: {"coin", "diagonale", "diagonale-inverse"},
     4: {"ligne", "colonne", "coin", "diagonale", "diagonale-inverse",
         "pas-ligne", "pas-colonne", "pas-coin", "pas-bord", "ni-ni",
         "pas-diagonale", "pas-diagonale-inverse"},
 }
-#: Longueur maximale d'une chaîne (nombre de relations après l'ancre).
+#: Longueur d'une chaîne (nombre de relations après l'ancre) :
+#: P1 séquentiel (ancre + deux relations = trois informations enchaînées),
+#: P4 complexe/désordonné = chaînes courtes mélangées.
 LONGUEUR_CHAINE = {1: 2, 2: 1, 3: 1, 4: 1}
-#: Longueur minimale d'une chaîne : au début, on veut des phrases denses.
 LONGUEUR_MIN = {1: 2, 2: 1, 3: 1, 4: 1}
-#: Plancher et plafond du nombre de phrases, par palier.
-MIN_PHRASES = {1: 4, 2: 5, 3: 6, 4: 8}
-MAX_PHRASES = {1: 9, 2: 12, 3: 14, 4: 20}
+#: Plancher et plafond du nombre de phrases : le palier complexe en a **moins**
+#: (moins d'aide, phrases à informations multiples).
+MIN_PHRASES = {1: 6, 2: 6, 3: 6, 4: 5}
+MAX_PHRASES = {1: 10, 2: 11, 3: 10, 4: 8}
 #: Nombre maximal d'ancres par grille (une ancre = un point de départ).
-MAX_ANCRES = {1: 3, 2: 4, 3: 5, 4: 8}
+MAX_ANCRES = {1: 3, 2: 4, 3: 2, 4: 3}
 #: Vocabulaire à faire apparaître dans chaque palier : au moins une phrase qui
 #: l'utilise (le choix libre sacrifiait le vocabulaire rare au profit de chaînes
 #: plus longues). Ces phrases-là sont protégées du nettoyage des redondances.
@@ -110,10 +119,10 @@ FAISCEAU = 60
 TAILLE_VIVIER = 400
 
 DESCRIPTIONS = [
-    "Chaînes longues : un repère, puis deux relations en suivant les figures",
-    "Repères sûrs et relations variées : voisinage, à droite de, plus haut que",
-    "Repères négatifs et relations lâches : éliminer pour déduire",
-    "Grille 4×4 : plus de figures colorées",
+    "Séquentiel positif : phrases enchaînées de voisinage, dans l'ordre",
+    "Négatif : éliminer par la ligne et la colonne, sans position directe",
+    "Relatif : situer l'un par rapport à l'autre, sans repère précis",
+    "Complexe : tout mélangé, moins de phrases, chaines courtes",
 ]
 
 
