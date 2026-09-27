@@ -67,6 +67,7 @@ VOCABULAIRES = {
         "feedback_correcte": "Bien joué, réponse correcte !",
         "feedback_incorrecte": "Pas tout à fait — la réponse attendue s'affiche, on y reviendra.",
         "feedback_assiste": "Voici la réponse — on la reverra bientôt, sans indice cette fois.",
+        "feedback_essaie_encore": "Pas tout à fait. Reprends : tu peux demander un indice.",
         # Messages d'erreur (clés : erreur_<code machine du contrat>).
         "erreur_theme_inconnu": "Thème inconnu.",
         "erreur_session_inconnue": "Séance introuvable (elle n'existe plus en mémoire).",

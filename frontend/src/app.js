@@ -131,6 +131,7 @@ const refs = {
   caseLectureAuto: $("case-lecture-auto"),
   rappelConsigne: $("rappel-consigne"),
   noteReprise: $("note-reprise"),
+  methodeExercice: $("methode-exercice"),
 };
 
 /* ---------------------------------------------------------------------
@@ -549,6 +550,12 @@ function montrerItem() {
   if (etat.indexItem === 0) etat.consignesVues = new Set();  // rappels par séance
   refs.rappelConsigne.hidden = true;
   refs.noteReprise.hidden = true;
+  // La méthode de l'exercice en cours s'affiche dans le panneau « Méthode » : un exercice
+  // de stratégie se travaille avec sa stratégie sous les yeux, pas seulement dans une
+  // consigne lue une fois par séance (ADR-014).
+  const methode = (item.contenu || {}).consigne;
+  refs.methodeExercice.textContent = methode || "";
+  refs.methodeExercice.hidden = !methode;
   annulerMemo();
 
   // Progression discrète : « Question n sur max » + fine barre.
@@ -960,6 +967,13 @@ async function soumettreValeur(brut, indiceUtilise) {
       { method: "POST", body: JSON.stringify(corps) }
     );
     masquerBandeau();
+    // Second essai (exercices de stratégie) : on ne révèle rien, l'exercice reste actif.
+    if (resultat.essai_supplementaire === true) {
+      rendreFeedback(resultat);
+      etat.actionEnCours = false;
+      reglerEtatBoutons();
+      return;
+    }
     etat.repondu = true;
 
     // Feedback : statut + réponse attendue (après coup) + commentaire serveur.
@@ -1022,6 +1036,21 @@ async function soumettreValeur(brut, indiceUtilise) {
 function rendreFeedback(resultat) {
   if (etat.theme && etat.theme.id === "deduction") {
     rendreFeedbackGrille(resultat);
+    return;
+  }
+  // Second essai : on encourage à reprendre, sans donner la réponse (c'est l'essai qui
+  // fait apprendre — pratique de récupération, ADR-014).
+  if (resultat.essai_supplementaire === true) {
+    refs.carteFeedback.replaceChildren();
+    refs.carteFeedback.className = "carte-feedback feedback-essaie";
+    refs.carteFeedback.append(creerElement("p", {
+      classe: "feedback-titre",
+      texte: "↻ On reprend",
+    }));
+    refs.carteFeedback.append(creerElement("p", {
+      classe: "feedback-detail",
+      texte: resultat.feedback || "Reprends : tu peux demander un indice.",
+    }));
     return;
   }
   const correcte = Boolean(resultat.correcte);

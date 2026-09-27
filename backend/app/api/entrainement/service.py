@@ -31,6 +31,7 @@ from engine.srs.fsrs import CarteFSRS, planifier
 from ...domain import messages
 from ...domain.contenu import ChargeurContenu
 from ...domain.correction import corriger
+from ...domain.feedback import essai_supplementaire
 from ...domain.dosage import (
     LIMITES_SESSIONS_JOUR,
     LIMITE_SESSIONS_JOUR,
@@ -122,6 +123,8 @@ class SessionEnCours:
     indices_utilises: dict[str, int] = field(default_factory=dict)
     # Exercices déjà repris en fin de séance (un échec = au plus une reprise).
     reprises: set[str] = field(default_factory=set)
+    # Nombre d'essais par item : le second essai des exercices de stratégie en dépend.
+    essais: dict[str, int] = field(default_factory=dict)
     # Payload de fin conservé pour rendre la clôture idempotente.
     resume_cloture: dict | None = None
     # Arrêt déjà proposé pour cause de durée (proposition envoyée une seule fois).
@@ -304,6 +307,23 @@ class GestionnaireSessions:
             raise ReponseInvalide("indice_utilise hors bornes")
         assistee = nb_indices > 0 and indice_utilise > nb_indices
         correcte = False if assistee else corriger(theme, item, reponse)
+
+        # Second essai (exercices où la réponse se **raisonne**, ADR-014) : sur une
+        # première erreur, on ne révèle rien et on n'enregistre rien — le premier essai
+        # raté ne devient pas la réponse de l'exercice, et c'est l'essai lui-même qui
+        # fait apprendre (pratique de récupération).
+        tentatives = session.essais.get(item_id, 0) + 1
+        session.essais[item_id] = tentatives
+        if (tentatives == 1 and not correcte and not assistee
+                and essai_supplementaire(item.get("type", ""))):
+            return {
+                "correcte": False,
+                "assistee": False,
+                "attendue": None,
+                "essai_supplementaire": True,
+                "feedback": messages.texte("entrainement", "feedback_essaie_encore"),
+            }
+
         try:
             session.runner.enregistrer_reponse(item_id, correcte, temps_ms)
         except ValueError as exc:

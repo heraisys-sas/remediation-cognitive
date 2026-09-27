@@ -756,3 +756,62 @@ def test_reprise_errorless_des_exercices_manques(tmp_path):
         if resultat.json().get("reprise"):
             manques += 1
     assert manques == 3, "le plafond de reprises par séance doit borner la séance"
+
+
+def test_second_essai_avant_la_reponse_pour_les_exercices_de_strategie(tmp_path):
+    """Un exercice où la réponse se **raisonne** donne un second essai avant la réponse.
+
+    Pratique de récupération (Roediger & Karpicke) et hypothèse de guidage (Schmidt) :
+    c'est l'essai qui apprend ; révéler trop tôt améliore la séance mais dégrade la
+    rétention. Pour une information à **récupérer** au contraire, la réponse est donnée
+    tout de suite (errorless learning) : ne pas laisser ré-encoder l'erreur.
+    """
+    application = creer_app(
+        racine_donnees=tmp_path / "data",
+        dossier_frontend=tmp_path / "front",
+    )
+    client = TestClient(application)
+
+    # Exercice de stratégie : on force le palier « but et étapes » (Goal Management
+    # Training — choisir le plan). Le palier 1 de méthodes est PQRST, qui porte sur la
+    # mémoire d'un texte : c'est un exercice de récupération, pas de stratégie.
+    dossier = tmp_path / "data" / "methodes"
+    dossier.mkdir(parents=True, exist_ok=True)
+    (dossier / "maitrise.json").write_text(
+        json.dumps({"palier_courant": 2, "historique": []}), encoding="utf-8"
+    )
+    payload = _demarrer(client, "methodes")
+    items = payload["items"]
+    session_id = payload["session_id"]
+    assert items[0]["type"] in ("but-etapes", "auto-instruction", "plan-a-verifier")
+
+    premiere = _repondre(client, "methodes", session_id, items[0]["id"], "réponse fausse", temps_ms=900)
+    assert premiere.status_code == 200
+    corps = premiere.json()
+    assert corps["essai_supplementaire"] is True
+    assert corps["attendue"] is None, "la réponse ne doit pas être révélée au premier essai"
+    assert "reprise" not in corps, "la reprise se décide après le second essai"
+
+    seconde = _repondre(client, "methodes", session_id, items[0]["id"],
+                        _valeur_attendue("methodes", items[0]["id"]), temps_ms=900)
+    assert seconde.status_code == 200
+    assert seconde.json()["correcte"] is True
+    assert seconde.json()["attendue"] is not None
+    assert "essai_supplementaire" not in seconde.json()
+
+
+def test_reponse_immediate_pour_les_exercices_de_memoire(tmp_path):
+    """Un exercice de **récupération** garde la réponse immédiate (errorless learning)."""
+    application = creer_app(
+        racine_donnees=tmp_path / "data",
+        dossier_frontend=tmp_path / "front",
+    )
+    client = TestClient(application)
+    payload = _demarrer(client, "evocation")
+    item = payload["items"][0]
+    # Évocation au palier 1 : reconnaissance (choix) — un échec révèle la réponse.
+    reponse = _repondre(client, "evocation", payload["session_id"], item["id"], "réponse fausse")
+    assert reponse.status_code == 200
+    corps = reponse.json()
+    assert "essai_supplementaire" not in corps
+    assert corps["attendue"] is not None

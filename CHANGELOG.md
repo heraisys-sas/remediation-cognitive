@@ -2,6 +2,17 @@
 
 Format : [date] — [périmètre] — description. Les retours informels de l'orthophoniste sont journalisés ici, sans caution clinique.
 
+## 2026-09-27 · Quand révéler la réponse, et la stratégie visible pendant l'exercice
+
+Deux questions : réponse immédiate ou second essai ? et les exercices de méthode sollicitent-ils assez la stratégie ?
+
+- **Recherche** : errorless learning (Baddeley & Wilson ; Middleton & Schwartz 2012) demande la réponse **tout de suite** après une erreur, là où la personne ne peut pas se corriger seule. À l'inverse, la pratique de récupération (Roediger & Karpicke) et l'**hypothèse de guidage** (Schmidt 1991 ; Winstein & Schmidt 1990) montrent qu'un retour immédiat améliore la séance mais **dégrade la rétention**.
+- **Décision (ADR-014)** : jamais de réponse avant un essai ; **récupération → correction immédiate** ; **raisonnement → un second essai** avant la réponse (choisir un plan, formuler une auto-instruction, vérifier un plan). C'est le second essai qui compte comme réponse de l'exercice.
+- **Implémenté** : le serveur ouvre un second essai (`essai_supplementaire`) sans révéler la réponse ni rien enregistrer ; l'interface affiche « On reprend — tu peux demander un indice » et laisse l'exercice actif.
+- **Stratégie visible** : le panneau « Méthode » affiche désormais **la méthode de l'exercice en cours** (PQRST, GMT, auto-instruction, plan à vérifier, stratégie de lecture) pendant qu'on répond, au lieu d'une consigne lue une fois par séance.
+- **Constat confirmé côté contenu** : le palier 1 de « Méthodes » est **PQRST**, dont les questions portent sur la mémoire d'un texte — d'où l'impression justifiée d'un exercice de mémoire.
+- **Contrôles** — 195 tests (dont deux sur le régime de feedback).
+
 ## 2026-09-26 · Reprise errorless : un exercice manqué revient une fois, avec sa réponse
 
 Demande validée : « ok pour la 2 » — et question du lieu du signalement.

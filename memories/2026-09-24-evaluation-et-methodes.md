@@ -35,3 +35,21 @@ Le préfixe d'identifiants du nouveau thème (`me-`) **collisionnait** avec celu
 - Passage visuel des nouveaux écrans (section évaluation, texte PQRST, génération SFA/PCA).
 - Relecture orthophoniste du nouveau contenu.
 - Envisager des **questions de compréhension multiples** par texte PQRST (aujourd'hui une par texte).
+
+## 2026-09-27 — quand révéler la réponse (et la stratégie)
+
+Deux questions de l'utilisateur : réponse immédiate ou second essai ? et « les exercices de
+méthode sollicitent la mémoire plus que la stratégie — faut-il indiquer une stratégie de
+mémorisation ? ».
+
+- Recherche : **errorless learning** (réponse immédiate, quand la personne ne peut pas se
+  corriger) vs **pratique de récupération + hypothèse de guidage** (retour immédiat = meilleure
+  séance mais moins bonne rétention ; Schmidt 1991, Winstein & Schmidt 1990).
+- Décision (ADR-014) : jamais de réponse avant un essai ; récupération → immédiat ; raisonnement
+  → second essai. Implémenté (`domain/feedback.py`, `essai_supplementaire`, message dédié,
+  interface qui laisse l'exercice actif).
+- Vérifié dans le contenu : le palier 1 de méthodes est **PQRST** → mémoire d'un texte. Le
+  panneau « Méthode » affiche maintenant la méthode de l'exercice en cours (PQRST, GMT…) pendant
+  la réponse — la stratégie doit être **sous les yeux** pour être utilisable.
+- Reste ouvert (décision de contenu) : pour vraiment *entraîner* PQRST plutôt que le tester, il
+  faudrait des items demandant de **produire** une étape (poser sa question, reformuler).
