@@ -91,3 +91,29 @@ def test_le_code_ne_se_dicte_pas():
     """La dictée est retirée des thèmes dont la réponse est du code (indentation, symboles)."""
     source = (Path(__file__).resolve().parents[2] / "frontend" / "src" / "app.js").read_text()
     assert "THEMES_SANS_DICTEE" in source and "python" in source
+
+
+# --- Articles et réponses courtes écrites dans une phrase ---------------------
+
+def test_article_devant_le_mot_accepte():
+    """« un verre » doit valoir « verre » : l'article n'est pas la réponse."""
+    item = CONTENU.item("evocation", "ev-7-analyse-03")   # attendu « gare »
+    assert item["reponse"]["valeur"] == "gare"
+    for forme in ("gare", "la gare", "une gare", "des gares"):
+        assert corriger("evocation", item, forme) is True, forme
+    for fausse in ("villa", "garde", "arrêt"):
+        assert corriger("evocation", item, fausse) is False, fausse
+
+
+def test_mot_ecrit_dans_une_phrase_accepte():
+    """« on attend devant la gare » vaut « gare » : le mot est bien produit."""
+    item = CONTENU.item("evocation", "ev-7-analyse-03")
+    assert corriger("evocation", item, "on attend devant la gare") is True
+    assert corriger("evocation", item, "devant la gare") is True
+
+
+def test_la_contenance_ne_traverse_pas_un_jalon():
+    """La tolérance est bornée : un jour, un moment ou un nombre ne s'accepte pas « autour »."""
+    quotidien = CONTENU.item("quotidien", "qo-1-message-08")   # attendu « jeudi soir »
+    assert corriger("quotidien", quotidien, "jeudi soir, comme prévu") is True
+    assert corriger("quotidien", quotidien, "vendredi soir, comme prévu") is False

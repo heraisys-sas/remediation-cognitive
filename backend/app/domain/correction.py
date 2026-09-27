@@ -344,6 +344,66 @@ def _normaliser_quantites(texte: str) -> str:
     return re.sub(motif, en_chiffres, texte)
 
 
+#: Déterminants de tête, retirés avant comparaison : « un verre » doit valoir « verre ».
+_DETERMINANTS = {"un", "une", "1", "le", "la", "les", "des", "du", "de", "mon", "ma",
+                 "mes", "ton", "ta", "tes", "son", "sa", "ses", "ce", "cet", "cette",
+                 "ces", "l", "d"}
+
+
+def _sans_determinant(texte: str) -> str:
+    """Retire un déterminant de tête, s'il en reste quelque chose.
+
+    « un verre » vaut « verre », « la carte de mutuelle » vaut « carte de mutuelle ». Le
+    mot doit exister sans son déterminant : on ne vide pas une réponse qui serait
+    seulement « un ».
+    """
+    jetons = texte.split()
+    if len(jetons) > 1 and jetons[0] in _DETERMINANTS:
+        return " ".join(jetons[1:])
+    return texte
+
+
+def _meme_mot(clef_a: str, clef_b: str) -> bool:
+    """Deux clés désignent-elles le même mot ? Le **pluriel simple** est toléré.
+
+    « des gares » vaut « gare » : le pluriel est une forme légitime, pas une autre réponse.
+    La tolérance ne s'applique qu'à des mots d'au moins trois lettres, et jamais à une
+    différence interne (« gare » / « garde » restent deux mots distincts).
+    """
+    if clef_a == clef_b:
+        return True
+    if not clef_a or not clef_b:
+        return False
+    if clef_a.rstrip("s") == clef_b.rstrip("s"):
+        return min(len(clef_a), len(clef_b)) >= 3
+    return False
+
+
+def _contient_reponse(reponse, attendue) -> bool:
+    """La réponse attendue (courte) est-elle **écrite dans** la réponse donnée ?
+
+    « on attend devant la gare » vaut « la gare », « un verre d'eau » vaut « verre ».
+    Bornes, parce qu'accepter trop large est plus grave que refuser :
+
+    - la réponse attendue reste **courte** (trois mots au plus) ;
+    - aucun **jalon de sens** ne doit différer (jour, moment, nombre) : « vendredi soir »
+      ne vaut pas « jeudi soir », « 280 € » ne vaut pas « 180 euros » ;
+    - la correspondance se fait sur des **mots entiers** (pas au milieu d'un mot).
+    """
+    clef = _clef_reponse(attendue)
+    donnees = _clef_reponse(reponse)
+    if not clef or not donnees or len(clef.split()) > 3:
+        return False
+    if _jetons_critiques(reponse) != _jetons_critiques(attendue):
+        return False
+    if clef == donnees:
+        return True
+    for variante in (clef, f"{clef}s" if not clef.endswith("s") else clef[:-1]):
+        if re.search(rf"(?<![0-9a-z]){re.escape(variante)}(?![0-9a-z])", donnees):
+            return True
+    return False
+
+
 def _clef_reponse(valeur) -> str:
     """Clé d'une réponse texte : casse, accents, espaces, horaires et nombres.
 
@@ -352,6 +412,9 @@ def _clef_reponse(valeur) -> str:
     - « deux » et « 2 » sont équivalents (nombre en toutes lettres → chiffres).
     """
     texte = _clef_texte(valeur)
+    # Déterminant de tête retiré **avant** tout le reste : « un verre » doit devenir
+    # « verre », pas « 1 verre » (la conversion des nombres en lettres passe après).
+    texte = _sans_determinant(texte)
     # 1. Montants et quantités en toutes lettres : « cent quatre-vingts euros » -> « 180 euros »
     #    (avant la conversion mot à mot, qui casserait les nombres composés).
     texte = _normaliser_quantites(texte)
@@ -365,6 +428,7 @@ def _clef_reponse(valeur) -> str:
     # « 15h00 » vaut « 15h » (heure pleine).
     texte = re.sub(r"(\d)h00\b", r"\1h", texte)
     jetons = [_NUMERAUX_QUOTIDIEN.get(jeton, jeton) for jeton in texte.split()]
+    jetons = _sans_determinant(" ".join(jetons)).split()
     return " ".join(jetons)
 
 
@@ -380,9 +444,14 @@ _MOTS_NOMBRES = (set(_UNITES_MOTS) | set(_DIZAINES_MOTS) | {"cent", "mille"}) - 
 
 
 def _jetons_critiques(texte) -> frozenset[str]:
-    """Jalons de sens d'une réponse : jours, mois, moments, nombres (chiffres ou lettres)."""
+    """Jalons de sens d'une réponse : jours, mois, moments, nombres (chiffres ou lettres).
+
+    Le découpage se fait sur tout caractère non alphanumérique : sans cela, « jeudi soir,
+    comme prévu » ne contenait pas le jalon « soir » (le jeton était « soir, »), et la
+    comparaison des jalons refusait à tort une réponse correcte.
+    """
     jalons = set()
-    for jeton in _clef_texte(texte).split():
+    for jeton in re.split(r"[^0-9a-z]+", _clef_texte(texte)):
         if (jeton in _JOURS or jeton in _MOIS or jeton in _MOMENTS
                 or (jeton in _MOTS_NOMBRES and len(jeton) > 2)
                 or any(caractere.isdigit() for caractere in jeton)):
@@ -455,10 +524,19 @@ def _corriger_mot(reponse, item: dict) -> bool:
             continue
         if donnees == clef:
             return True
+        # Pluriel simple : « des gares » vaut « gare » (même mot, autre forme).
+        if _meme_mot(donnees, clef):
+            return True
         if " " not in clef and " " not in donnees:
-            tolerance = 1 if len(clef) < 7 else 2
-            if _distance(donnees, clef) <= tolerance:
+            # Faute de frappe tolérée seulement sur les mots assez longs : sur un mot court,
+            # une lettre change crée un AUTRE mot (« gare » / « garde »). Accepter une réponse
+            # fausse est plus grave que refuser une faute de frappe (ADR-008).
+            tolerance = 2 if len(clef) >= 10 else 1 if len(clef) >= 7 else 0
+            if tolerance and _distance(donnees, clef) <= tolerance:
                 return True
+        # Le mot attendu peut avoir été écrit dans une phrase (« un verre d'eau »).
+        if _contient_reponse(reponse, cible):
+            return True
     # Dernier recours : le poste sait-il comparer le SENS (synonymes) ?
     return _sens_proche(reponse, [cible for cible in cibles if cible])
 
@@ -554,17 +632,18 @@ def corriger(theme: str, item: dict, reponse) -> bool:
         if (item.get("contenu") or {}).get("options"):
             return False
         # Réponse libre formulée autrement (formulée en phrase) : le poste sait
-        # comparer le sens (« je consulte le docteur » pour « je vais chez le médecin »).
+        # comparer le sens (« je consulte le docteur » pour « je vais chez le médecin »),
+        # et une réponse courte peut être écrite dans une phrase (ADR-008).
         if _est_reponse_libre(attendue):
             return _sens_proche(reponse, [attendue])
-        return False
+        return _contient_reponse(reponse, attendue)
     if theme == "quotidien":
         if item.get("type") == "prise-message":
             if _clef_reponse(reponse) == _clef_reponse(attendue):
                 return True
             # Formulation proche (« la cave » pour « la porte de la cave ») — mais
             # jamais à travers un jour, un moment ou un nombre (voir _sens_proche).
-            return _sens_proche(reponse, [attendue])
+            return _sens_proche(reponse, [attendue]) or _contient_reponse(reponse, attendue)
         if item.get("type") == "estimation-temps":
             return _corriger_estimation(item, reponse)
         # etape-suivante et les familles à choix : la proposition choisie, en clair.

@@ -96,3 +96,21 @@ reconnaissance de sens mais pas trop permissive ».
   sémantique ne sert qu'aux formulations libres, jamais aux valeurs ni aux choix multiples.
 - Livrable durable : le tableau d'audit dans ADR-008 + `test_reconnaissance_vocale.py`
   (une forme acceptée **et** une réponse fausse refusée, par champ).
+
+## 2026-09-27 — articles, pluriel, réponse courte dans une phrase
+
+Demandes : « un verre » pour « verre » (trouve le mot) ; « devant la gare » / « on attend devant
+la gare » pour « la gare » (méthodes).
+
+- `_sans_determinant()` : déterminant de tête retiré avant tout le reste (sinon « un verre »
+  devenait « 1 verre » — la conversion des nombres passe après). Y compris « 1 », puisque « un »
+  est aussi le nombre.
+- `_meme_mot()` : pluriel simple toléré (« des gares » = « gare »), jamais une différence interne.
+- `_contient_reponse()` : la réponse courte peut être écrite dans une phrase, bornée par les
+  jalons de sens et par une longueur maximale (≤ 3 mots), correspondance sur mots entiers.
+- Tolérance de frappe resserrée : plus aucune sur les mots de moins de 7 lettres — « garde »
+  était accepté pour « gare » (vrai faux positif).
+- Bug attrapé : la ponctuation collait aux jetons, donc « jeudi soir, comme prévu » ne portait
+  pas le jalon « soir » et la contenance le refusait. Découpage corrigé.
+- Rappel utile : dans méthodes, l'item « la gare » est un **choix multiple** — la tolérance ne
+  s'applique pas (ADR-008), la réponse se choisit parmi les propositions.

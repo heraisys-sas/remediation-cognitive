@@ -2,6 +2,18 @@
 
 Format : [date] — [périmètre] — description. Les retours informels de l'orthophoniste sont journalisés ici, sans caution clinique.
 
+## 2026-09-27 · Réponses : articles, pluriel et réponses courtes dans une phrase
+
+Deux demandes d'usage : « un verre » accepté pour « verre » (trouve le mot) ; « devant la gare » ou « on attend devant la gare » acceptés pour « la gare ».
+
+- **Déterminant de tête retiré** avant comparaison : « un verre » = « verre », « la carte de mutuelle » = « carte de mutuelle » (y compris « 1 verre », puisque « un » est aussi le nombre).
+- **Pluriel simple toléré** : « des gares » = « gare » (même mot, autre forme) — jamais une différence interne.
+- **Réponse courte écrite dans une phrase** : « on attend devant la gare » = « gare » ; « jeudi soir, comme prévu » = « jeudi soir ». Borné : la réponse attendue reste courte (≤ 3 mots), aucun jalon de sens ne doit différer (jour, moment, nombre), et la correspondance se fait sur des mots entiers.
+- **Tolérance de frappe resserrée** : elle ne s'applique plus aux mots de moins de sept lettres. Sur un mot court, une lettre change crée un **autre mot** — « garde » pour « gare » était accepté ; il ne l'est plus.
+- Défaut corrigé au passage : la ponctuation collait aux jetons, si bien que « jeudi soir, comme prévu » ne contenait pas le jalon « soir » et était refusé à tort.
+- **Précision** : dans « méthodes », l'item qui parle de la gare est un **choix multiple** — la réponse se choisit parmi les propositions (ADR-008). La tolérance ci-dessus s'applique aux réponses **libres**.
+- **Contrôles** — 203 tests (3 nouveaux) ; 920 items / 0 erreur.
+
 ## 2026-09-27 · Palier « PQRST mis en œuvre » : la méthode appliquée pas à pas
 
 Mise en œuvre des arbitrages validés (4 idées-clés sur 5, champ libre, 5 étapes, textes de 4 phrases du quotidien, fiche récapitulative).
