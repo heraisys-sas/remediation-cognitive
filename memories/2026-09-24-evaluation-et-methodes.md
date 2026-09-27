@@ -53,3 +53,19 @@ mémorisation ? ».
   la réponse — la stratégie doit être **sous les yeux** pour être utilisable.
 - Reste ouvert (décision de contenu) : pour vraiment *entraîner* PQRST plutôt que le tester, il
   faudrait des items demandant de **produire** une étape (poser sa question, reformuler).
+
+## 2026-09-27 — proposition « PQRST mis en œuvre »
+
+Demande : préparer la proposition de palier.
+
+- Constat mesuré : le palier PQRST actuel teste le **résultat** (texte masqué → 2 questions) ; les
+  étapes Q (écrire sa question) et S (reformuler) — celles qui portent l'apprentissage — sont
+  absentes. La méthode est nommée, pas appliquée.
+- Proposition : `docs/20-specs/proposition-palier-pqrst-mis-en-oeuvre.md` — séquence guidée de
+  5 étapes dans un même item (Parcours jugé, Question libre non notée + modèle, Lecture sans
+  chronomètre, Reformulation jugée sur idées-clés + résumé modèle, Test jugé), 4 textes par
+  palier, nouveaux identifiants `mt2-`, placement **après** les paliers actuels.
+- Décision non prise : 5 points cliniques à trancher (seuil de reformulation, question libre vs
+  choix, 5 ou 3 étapes, longueur des textes, fiche méthode hors écran). Rien n'est implémenté.
+- Note de méthode : proposer, chiffrer, et **ne pas coder** tant que l'orthophoniste n'a pas
+  tranché les points qui relèvent de la clinique.

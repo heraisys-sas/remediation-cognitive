@@ -23,3 +23,8 @@ Toutes les réponses sont à choix, pour une correction objective. La méthode e
 ## Génération
 
 `tools/generer_methodes.py` (déterministe, mélange isolé par famille). Relecture orthophoniste à faire.
+
+
+## Proposition en attente
+
+- **Palier « PQRST mis en œuvre »** : aujourd'hui le palier PQRST *teste* le résultat de la méthode (texte masqué, questions de mémoire) sans la faire appliquer. La proposition — séquence guidée en 5 étapes, deux productions par texte — est dans `docs/20-specs/proposition-palier-pqrst-mis-en-oeuvre.md`, à valider par l'orthophoniste.

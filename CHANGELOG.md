@@ -2,6 +2,13 @@
 
 Format : [date] — [périmètre] — description. Les retours informels de l'orthophoniste sont journalisés ici, sans caution clinique.
 
+## 2026-09-27 · Proposition : palier « PQRST mis en œuvre »
+
+- **Constat** : le palier PQRST actuel teste le **résultat** de la méthode (texte masqué → questions de mémoire) sans la faire appliquer ; les deux étapes qui portent l'apprentissage — écrire sa question (Q) et reformuler (S) — sont absentes.
+- **Proposition écrite** (`docs/20-specs/proposition-palier-pqrst-mis-en-oeuvre.md`) : une séquence guidée en 5 étapes dans un même item, avec deux productions par texte, un jugement par étape (choix, production libre non notée, idées-clés) et aucun chronomètre sur la lecture.
+- **Rien n'est implémenté** : la proposition attend la validation de l'orthophoniste (5 points à trancher : seuil de reformulation, nature de la question personnelle, nombre d'étapes, longueur des textes, fiche méthode de fin de séance).
+- Pointeur ajouté dans le README du thème.
+
 ## 2026-09-27 · Quand révéler la réponse, et la stratégie visible pendant l'exercice
 
 Deux questions : réponse immédiate ou second essai ? et les exercices de méthode sollicitent-ils assez la stratégie ?
