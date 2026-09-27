@@ -81,3 +81,17 @@ lieu du signalement.
   l'information utile est celle qui accompagne l'erreur.
 - Côté interface : nouvel élément `#note-reprise` (distinct de la consigne, pour ne pas être
   masqué par la logique des consignes vues une fois par séance).
+
+## 2026-09-27 — sélecteur de palier (essai)
+
+Demande : choisir le palier pour la phase de test, après vérification des effets.
+
+- Analyse préalable : le palier est un paramètre de séance (les tests l'utilisaient déjà via
+  `maitrise.json`) ; `_appliquer_maitrise` ne fait qu'**avancer** (`max(palier, session.palier + 1)`)
+  — donc aucun recul possible. Effets : séance limitée au palier choisi, états de révision mis à
+  jour (exercices réels), quota du jour inchangé, cadence du programme contournée.
+- Implémenté : corps facultatif `{"palier": N}` sur POST /sessions (422 si inexistant), paliers
+  exposés dans GET /themes, sélecteur discret par carte de thème (« Palier : auto » par défaut).
+- Piège rencontré : un code d'erreur sans message dans le vocabulaire (`messages.texte` lève) →
+  500 au lieu de 422. **Tout code d'erreur ajouté doit avoir son message dans messages.py.**
+- Retrait prévu : supprimer le sélecteur de l'interface suffit ; le serveur tolère le paramètre.

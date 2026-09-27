@@ -10,13 +10,14 @@ from __future__ import annotations
 
 from fastapi import APIRouter, Request
 from fastapi.responses import JSONResponse
-from pydantic import BaseModel
+from pydantic import BaseModel, Field
 
 from ...domain import messages
 from .service import (
     GestionnaireSessions,
     ItemHorsSeance,
     LimiteSessionsAtteinte,
+    PalierInconnu,
     ReponseInvalide,
     SessionDejaTerminee,
     SessionInconnue,
@@ -24,6 +25,12 @@ from .service import (
 )
 
 router = APIRouter(prefix="/api/entrainement", tags=["entrainement"])
+
+
+class DemarrageOptionnel(BaseModel):
+    """Corps facultatif de POST …/sessions : palier d'essai."""
+
+    palier: int | None = Field(default=None, ge=1)
 
 
 class ReponseUtilisateur(BaseModel):
@@ -65,10 +72,16 @@ def lister_themes(request: Request) -> dict:
 
 
 @router.post("/{theme}/sessions", status_code=201)
-def demarrer_session(theme: str, request: Request):
-    """POST /api/entrainement/{theme}/sessions — 201 (items sans réponse) ou 429."""
+def demarrer_session(theme: str, request: Request, corps: DemarrageOptionnel | None = None):
+    """POST /api/entrainement/{theme}/sessions — 201 (items sans réponse) ou 429.
+
+    Corps facultatif ``{"palier": N}`` : essai sur un palier précis, sans effet sur la
+    progression (elle ne peut pas reculer).
+    """
     try:
-        return _gestionnaire(request).demarrer(theme)
+        return _gestionnaire(request).demarrer(theme, palier_force=corps.palier if corps else None)
+    except PalierInconnu:
+        return _erreur(422, "palier_inconnu")
     except ThemeInconnu:
         return _erreur(404, "theme_inconnu")
     except ReponseInvalide:

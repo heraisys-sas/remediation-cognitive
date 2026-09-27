@@ -79,6 +79,10 @@ class SessionDejaTerminee(Exception):
     """La séance a déjà été clôturée (409 du contrat)."""
 
 
+class PalierInconnu(Exception):
+    """Palier demandé absent du thème (essai)."""
+
+
 class ItemHorsSeance(Exception):
     """Item absent de la séance en cours (404 du contrat)."""
 
@@ -164,12 +168,19 @@ class GestionnaireSessions:
 
     # -- démarrage -----------------------------------------------------------
 
-    def demarrer(self, theme: str) -> dict:
+    def demarrer(self, theme: str, palier_force: int | None = None) -> dict:
         """Démarre une séance et retourne le payload 201 du contrat.
 
-        Lève ``ThemeInconnu`` (404) ou ``LimiteSessionsAtteinte`` (429).
-        Le compteur du jour est incrémenté dès le démarrage (une séance
-        entamée compte dans le dosage, qu'elle aille à son terme ou non).
+        ``palier_force`` (essai) : travaille un palier choisi au lieu du palier courant.
+        La **maîtrise n'est pas modifiée en mal** par ce choix : le critère de progression
+        n'avance que vers le haut (``max(palier, session.palier + 1)``), donc un palier
+        forcé ne peut pas faire reculer la progression — au mieux la fait-il avancer si la
+        personne réussit, ce qui est exact.
+
+        Lève ``ThemeInconnu`` (404), ``PalierInconnu`` (422) ou
+        ``LimiteSessionsAtteinte`` (429). Le compteur du jour est incrémenté dès le
+        démarrage (une séance entamée compte dans le dosage, qu'elle aille à son terme
+        ou non).
         """
         if not self.contenu.theme_existe(theme):
             raise ThemeInconnu(theme)
@@ -183,7 +194,12 @@ class GestionnaireSessions:
                     restantes=max(0, limite - nb_sessions)
                 )
             etat_maitrise = self.stockage.lire_maitrise(theme)
-            palier = self._palier_courant(theme, etat_maitrise["palier_courant"])
+            if palier_force is not None and palier_force not in self.contenu.paliers(theme):
+                raise PalierInconnu(palier_force)
+            palier = (
+                palier_force if palier_force is not None
+                else self._palier_courant(theme, etat_maitrise["palier_courant"])
+            )
             cartes = self.stockage.lire_cartes(theme)
             # Dosage propre au thème : une grille de déduction n'a pas le coût
             # d'un item de calcul mental (voir domain/dosage.parametres_seance).

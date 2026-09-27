@@ -113,6 +113,10 @@ class ChargeurContenu:
             {
                 "id": theme_id,
                 "categorie": self.categorie(theme_id),
+                # Paliers disponibles : sert au sélecteur d'essai de l'interface
+                # (« Palier : auto » suit la progression ; un palier forcé ne sert
+                # que pour les essais, il ne fait jamais reculer la maîtrise).
+                "paliers": self.paliers(theme_id),
                 **libelles[theme_id],
             }
             for theme_id in _SOURCES_PAR_THEME

@@ -1024,3 +1024,15 @@ body {
 }
 .fiche-methode h3 { font-size: 1rem; margin: 0 0 0.4rem; }
 .fiche-methode li { margin: 0.2rem 0; }
+
+/* Sélecteur de palier (outil d'essai) : discret, à côté du bouton de la carte. */
+.selecteur-palier {
+  display: block;
+  margin: 0 0 0.6rem;
+  padding: 0.3rem 0.5rem;
+  border: 1px solid var(--bordure);
+  border-radius: 0.4rem;
+  background: var(--surface);
+  color: var(--texte-secondaire);
+  font-size: 0.8rem;
+}

@@ -2,6 +2,17 @@
 
 Format : [date] — [périmètre] — description. Les retours informels de l'orthophoniste sont journalisés ici, sans caution clinique.
 
+## 2026-09-27 · Sélecteur de palier (outil d'essai)
+
+Demande : pouvoir choisir le palier pendant la phase de test.
+
+- **Interface** : chaque carte de thème propose un sélecteur « Palier : auto » (défaut) ou « Essai — palier N ». Le choix ne vaut que pour la séance lancée.
+- **Serveur** : `POST …/sessions` accepte un corps facultatif `{"palier": N}` ; un palier inexistant répond 422 `palier_inconnu`. Les paliers disponibles sont exposés dans `GET /themes`.
+- **Rien ne casse, et c'est vérifié** : le palier est un paramètre de séance (les tests s'en servaient déjà) ; la **progression ne peut pas reculer** — le critère de maîtrise n'avance que vers le haut (`max(palier, session.palier + 1)`) ; les paliers d'essai n'ont donc pas d'effet destructeur, et réussir trois séances d'essai à un palier supérieur fait avancer la progression, ce qui est exact.
+- **Effets connus** : la séance ne sert que le palier choisi ; les états de révision des exercices joués sont mis à jour (normal, ce sont de vrais exercices) ; le quota de séances du jour est inchangé ; la cadence du programme est contournée (c'est le but d'un outil d'essai).
+- **Retrait facile** : le sélecteur n'est qu'un contrôle d'interface ; le jour où l'essai est fini, le supprimer de la carte de thème suffit (le serveur accepte ou ignore le palier sans effet de bord).
+- **Contrôles** — 206 tests (2 nouveaux : palier forcé servi, progression jamais en recul).
+
 ## 2026-09-27 · Réponses : articles, pluriel et réponses courtes dans une phrase
 
 Deux demandes d'usage : « un verre » accepté pour « verre » (trouve le mot) ; « devant la gare » ou « on attend devant la gare » acceptés pour « la gare ».

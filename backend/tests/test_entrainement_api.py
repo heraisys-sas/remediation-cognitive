@@ -98,7 +98,7 @@ def test_themes(client):
     themes = reponse.json()["themes"]
     assert {t["id"] for t in themes} == THEMES_ATTENDUS
     for theme in themes:
-        assert set(theme) == {"id", "nom", "description", "categorie"}
+        assert set(theme) == {"id", "nom", "description", "categorie", "paliers"}
         assert theme["categorie"] in {"entrainement", "evaluation"}
         assert theme["nom"] and theme["description"]
 
@@ -815,3 +815,57 @@ def test_reponse_immediate_pour_les_exercices_de_memoire(tmp_path):
     corps = reponse.json()
     assert "essai_supplementaire" not in corps
     assert corps["attendue"] is not None
+
+
+def test_palier_force_pour_les_essais(tmp_path):
+    """Essai sur un palier précis : la séance sert ce palier, la progression ne recule pas.
+
+    Le palier forcé est un outil de mise au point : il change les exercices proposés, mais
+    le critère de maîtrise n'avance que vers le haut — impossible de faire reculer la
+    progression par ce biais.
+    """
+    application = creer_app(
+        racine_donnees=tmp_path / "data",
+        dossier_frontend=tmp_path / "front",
+    )
+    client = TestClient(application)
+
+    # Palier 3 de calcul mental (multiplications utiles) choisi d'emblée.
+    reponse = client.post("/api/entrainement/calcul-mental/sessions", json={"palier": 3})
+    assert reponse.status_code == 201, reponse.text
+    items = reponse.json()["items"]
+    assert items and all(item["palier"] == 3 for item in items)
+
+    # Palier inexistant : refusé proprement.
+    assert client.post("/api/entrainement/calcul-mental/sessions", json={"palier": 99}).status_code == 422
+    assert client.post("/api/entrainement/calcul-mental/sessions", json={"palier": 0}).status_code == 422
+
+
+def test_palier_force_ne_fait_pas_reculer_la_maitrise(tmp_path):
+    """Un essai sur un palier bas ne dégrade pas la progression acquise."""
+    import json as _json
+
+    application = creer_app(
+        racine_donnees=tmp_path / "data",
+        dossier_frontend=tmp_path / "front",
+    )
+    client = TestClient(application)
+    dossier = tmp_path / "data" / "calcul-mental"
+    dossier.mkdir(parents=True, exist_ok=True)
+    (dossier / "maitrise.json").write_text(
+        _json.dumps({"palier_courant": 5, "historique": []}), encoding="utf-8"
+    )
+
+    # Une séance d'essai au palier 1, répondue entièrement…
+    payload = client.post("/api/entrainement/calcul-mental/sessions", json={"palier": 1}).json()
+    for item in payload["items"]:
+        client.post(
+            f"/api/entrainement/calcul-mental/sessions/{payload['session_id']}/reponses",
+            json={"item_id": item["id"], "reponse": _valeur_attendue("calcul-mental", item["id"]),
+                  "temps_ms": 900},
+        )
+    fin = client.post(f"/api/entrainement/calcul-mental/sessions/{payload['session_id']}/fin")
+    assert fin.status_code == 200
+
+    maitrise = _json.loads((dossier / "maitrise.json").read_text())
+    assert maitrise["palier_courant"] >= 5, "la progression ne doit jamais reculer"

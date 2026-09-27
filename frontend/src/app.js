@@ -445,14 +445,38 @@ function rendreThemes(themes) {
 function carteTheme(theme) {
   const carte = creerElement("article", { classe: "carte-theme" },
     creerElement("h3", { texte: theme.nom }),
-    creerElement("p", { texte: theme.description || "" }),
-    creerElement("button", {
-      classe: "bouton bouton-primaire",
-      texte: "Commencer",
-      attributs: { type: "button" },
-    })
+    creerElement("p", { texte: theme.description || "" })
   );
-  carte.querySelector("button").addEventListener("click", () => demarrerSession(theme));
+
+  // Sélecteur de palier — **outil d'essai**. « auto » suit la progression : c'est le
+  // fonctionnement normal. Choisir un palier ne fait jamais reculer la progression.
+  const paliers = Array.isArray(theme.paliers) ? theme.paliers : [];
+  let choix = null;
+  if (paliers.length > 1) {
+    choix = creerElement("select", {
+      classe: "selecteur-palier",
+      attributs: { "aria-label": `Palier d'essai pour ${theme.nom}` },
+    });
+    choix.append(creerElement("option", {
+      texte: "Palier : auto", attributs: { value: "" },
+    }));
+    for (const palier of paliers) {
+      choix.append(creerElement("option", {
+        texte: `Essai — palier ${palier}`, attributs: { value: String(palier) },
+      }));
+    }
+    carte.append(choix);
+  }
+
+  const bouton = creerElement("button", {
+    classe: "bouton bouton-primaire",
+    texte: "Commencer",
+    attributs: { type: "button" },
+  });
+  bouton.addEventListener("click", () => demarrerSession(
+    theme, choix && choix.value ? Number(choix.value) : null
+  ));
+  carte.append(bouton);
   return carte;
 }
 
@@ -471,7 +495,7 @@ function revenirAuxThemes() {
    Démarrage de séance (POST /{theme}/sessions)
    --------------------------------------------------------------------- */
 
-async function demarrerSession(theme) {
+async function demarrerSession(theme, palier = null) {
   if (etat.actionEnCours) return;
   etat.actionEnCours = true;
   reglerEtatBoutons();
