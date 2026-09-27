@@ -1,6 +1,6 @@
 # Proposition — Palier « PQRST mis en œuvre »
 
-**Statut** : proposition à valider par l'orthophoniste. À transformer en ADR + contenu si elle est retenue.
+**Statut** : **arbitrages rendus le 2026-09-27** — mise en œuvre prévue. Les décisions ci-dessous remplacent les questions ouvertes.
 
 ## Le constat
 
@@ -35,7 +35,7 @@ Les deux étapes qui portent l'apprentissage (Q et S) sont **des productions**, 
 | 1. **Parcours** (≈ 10 s) | le titre + la première phrase seulement → « De quoi parle ce texte ? » (3 propositions) | **oui** (choix) |
 | 2. **Question** | « Écris la question que tu te poses sur ce texte. » → champ libre, puis affichage d'**une question possible** | **non** (production libre, modèle affiché) |
 | 3. **Lecture** | le texte entier, au rythme de la personne, **sans chronomètre**, sa question restant affichée | — |
-| 4. **Reformulation** | « Redis le texte en une phrase, avec tes mots. » → champ libre, jugé sur **idées-clés** (seuil généreux), puis **résumé modèle** | **oui**, avec seuil déclaré et tolérance (accents, variantes, dictée) |
+| 4. **Reformulation** | « Redis le texte en une phrase, avec tes mots. » → champ libre, jugé sur **4 idées-clés sur 5** (tolérance : accents, variantes, dictée), puis **résumé modèle** | **oui** |
 | 5. **Test** | 2 questions de mémoire, comme aujourd'hui | **oui** |
 
 ### Ce qui est jugé, ce qui ne l'est pas
@@ -57,13 +57,13 @@ Une séquence ≈ 2-3 minutes. **Quatre textes par palier** : une séance de ce 
 
 Nouveaux (`mt2-…`) : contenu entièrement neuf, il ne doit pas hériter des états de révision du PQRST actuel (règle de versionnage du contenu).
 
-## Ce qu'il reste à trancher (clinique)
+## Décisions retenues (2026-09-27)
 
-1. **Seuil de la reformulation** : combien d'idées-clés sur combien pour valider (proposition : 3 sur 5, seuil généreux) — et faut-il afficher le résumé modèle dans tous les cas ?
-2. **La question personnelle** : champ libre avec modèle (proposition), ou choix parmi des questions candidates (plus facile, mais on perd la génération) ?
-3. **Nombre d'étapes** : les 5 (PQRST complet) ou 3 (Parcours, Reformulation, Test) pour les profils les plus fragiles ?
-4. **Longueur des textes** : 3-4 phrases, thèmes du quotidien (rendez-vous, colis, consignes d'appareil) — ou textes plus longs dès le palier suivant ?
-5. **Faut-il montrer cette séquence aussi en fin de séance** sous forme de « fiche méthode » récapitulative (les 5 étapes en 5 lignes) que la personne garde hors écran ?
+1. **Seuil de la reformulation** : **4 idées-clés sur 5** — exigence soutenue, pas de validation à moitié. Le **résumé modèle** est montré dans tous les cas (réussi ou non).
+2. **La question personnelle** : **champ libre**, avec une question modèle affichée ensuite. La production n'est pas notée : c'est l'acte de produire qui travaille.
+3. **Nombre d'étapes** : **les 5** (PQRST complet), y compris pour les profils fragiles — la difficulté se règle par le contenu des textes, pas par la réduction de la méthode.
+4. **Textes** : **4 phrases**, thèmes du quotidien (rendez-vous, colis, consignes d'appareil, courrier administratif).
+5. **Récapitulatif** : en fin de séance, une **fiche méthode** de 5 lignes (les 5 étapes, formulées pour la vie réelle) que la personne garde hors écran.
 
 ## Coût et plan de mise en œuvre
 

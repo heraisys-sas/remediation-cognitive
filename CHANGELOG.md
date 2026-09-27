@@ -2,6 +2,11 @@
 
 Format : [date] — [périmètre] — description. Les retours informels de l'orthophoniste sont journalisés ici, sans caution clinique.
 
+## 2026-09-27 · PQRST mis en œuvre : arbitrages rendus, mise en œuvre planifiée
+
+- **Décisions de l'orthophoniste** : reformulation à **4 idées-clés sur 5**, question personnelle en **champ libre** (modèle affiché ensuite), **5 étapes**, textes de **4 phrases** du quotidien, **fiche méthode récapitulative** en fin de séance.
+- Proposition mise à jour (`docs/20-specs/proposition-palier-pqrst-mis-en-oeuvre.md`) ; mise en œuvre planifiée pour la fin de journée.
+
 ## 2026-09-27 · Proposition : palier « PQRST mis en œuvre »
 
 - **Constat** : le palier PQRST actuel teste le **résultat** de la méthode (texte masqué → questions de mémoire) sans la faire appliquer ; les deux étapes qui portent l'apprentissage — écrire sa question (Q) et reformuler (S) — sont absentes.
