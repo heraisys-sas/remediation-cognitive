@@ -9,6 +9,7 @@ Deux demandes d'usage : « un verre » accepté pour « verre » (trouve le mot)
 - **Déterminant de tête retiré** avant comparaison : « un verre » = « verre », « la carte de mutuelle » = « carte de mutuelle » (y compris « 1 verre », puisque « un » est aussi le nombre).
 - **Pluriel simple toléré** : « des gares » = « gare » (même mot, autre forme) — jamais une différence interne.
 - **Réponse courte écrite dans une phrase** : « on attend devant la gare » = « gare » ; « jeudi soir, comme prévu » = « jeudi soir ». Borné : la réponse attendue reste courte (≤ 3 mots), aucun jalon de sens ne doit différer (jour, moment, nombre), et la correspondance se fait sur des mots entiers.
+- **Phrase donnée bornée** : la réponse courte est acceptée dans une **petite phrase** (« on attend devant la gare » = « gare »), pas dans un texte entier (douze mots au plus) — le mot ne doit pas pouvoir s'y trouver par hasard.
 - **Tolérance de frappe resserrée** : elle ne s'applique plus aux mots de moins de sept lettres. Sur un mot court, une lettre change crée un **autre mot** — « garde » pour « gare » était accepté ; il ne l'est plus.
 - Défaut corrigé au passage : la ponctuation collait aux jetons, si bien que « jeudi soir, comme prévu » ne contenait pas le jalon « soir » et était refusé à tort.
 - **Précision** : dans « méthodes », l'item qui parle de la gare est un **choix multiple** — la réponse se choisit parmi les propositions (ADR-008). La tolérance ci-dessus s'applique aux réponses **libres**.

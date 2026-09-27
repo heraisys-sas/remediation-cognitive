@@ -379,20 +379,24 @@ def _meme_mot(clef_a: str, clef_b: str) -> bool:
     return False
 
 
-def _contient_reponse(reponse, attendue) -> bool:
-    """La réponse attendue (courte) est-elle **écrite dans** la réponse donnée ?
+def _contient_reponse(reponse, attendue, mots_max: int = 12) -> bool:
+    """La réponse attendue est-elle **écrite dans** une petite phrase de la personne ?
 
-    « on attend devant la gare » vaut « la gare », « un verre d'eau » vaut « verre ».
-    Bornes, parce qu'accepter trop large est plus grave que refuser :
+    « on attend devant la gare » vaut « la gare », « un verre d'eau » vaut « verre »,
+    « jeudi soir, comme prévu » vaut « jeudi soir ». Bornes, parce qu'accepter trop large
+    est plus grave que refuser :
 
     - la réponse attendue reste **courte** (trois mots au plus) ;
-    - aucun **jalon de sens** ne doit différer (jour, moment, nombre) : « vendredi soir »
-      ne vaut pas « jeudi soir », « 280 € » ne vaut pas « 180 euros » ;
-    - la correspondance se fait sur des **mots entiers** (pas au milieu d'un mot).
+    - la phrase donnée reste **courte** aussi (douze mots au plus) : au-delà, ce n'est plus
+      une réponse, et le mot pourrait s'y trouver par hasard ;
+    - aucun **jalon de sens** ne doit différer (jour, moment, nombre) ;
+    - la correspondance se fait sur des **mots entiers** (jamais au milieu d'un mot).
     """
     clef = _clef_reponse(attendue)
     donnees = _clef_reponse(reponse)
     if not clef or not donnees or len(clef.split()) > 3:
+        return False
+    if len(donnees.split()) > mots_max:
         return False
     if _jetons_critiques(reponse) != _jetons_critiques(attendue):
         return False

@@ -117,3 +117,18 @@ def test_la_contenance_ne_traverse_pas_un_jalon():
     quotidien = CONTENU.item("quotidien", "qo-1-message-08")   # attendu « jeudi soir »
     assert corriger("quotidien", quotidien, "jeudi soir, comme prévu") is True
     assert corriger("quotidien", quotidien, "vendredi soir, comme prévu") is False
+
+
+def test_le_mot_dans_une_petite_phrase_seulement():
+    """Le mot attendu est accepté dans une **petite** phrase, pas dans un texte entier.
+
+    Demande d'usage : « le mot dans une petite phrase qui reprend l'élément de réponse ».
+    Au-delà d'une douzaine de mots, ce n'est plus une réponse — et le mot pourrait s'y
+    trouver par hasard.
+    """
+    item = CONTENU.item("evocation", "ev-7-analyse-03")   # attendu « gare »
+    for petite in ("on attend devant la gare", "rendez-vous à la gare", "je vais à la gare"):
+        assert corriger("evocation", item, petite) is True, petite
+    longue = ("Hier, en revenant du marché où j'avais acheté des légumes pour la semaine, "
+              "je suis passée devant la gare avec ma sœur et nous avons parlé du voyage")
+    assert corriger("evocation", item, longue) is False, "une phrase trop longue n'est pas une réponse"

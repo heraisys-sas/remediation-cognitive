@@ -114,3 +114,14 @@ la gare » pour « la gare » (méthodes).
   pas le jalon « soir » et la contenance le refusait. Découpage corrigé.
 - Rappel utile : dans méthodes, l'item « la gare » est un **choix multiple** — la tolérance ne
   s'applique pas (ADR-008), la réponse se choisit parmi les propositions.
+
+## 2026-09-27 — précision : le mot dans une PETITE phrase
+
+Clarification de l'utilisateur : accepter « le mot dans une petite phrase qui reprend l'élément
+de réponse », mais pas un mot voisin (« garde » pour « gare »).
+
+- `_contient_reponse(..., mots_max=12)` : borne ajoutée sur la phrase **donnée** (douze mots) —
+  au-delà, ce n'est plus une réponse et le mot pourrait s'y trouver par hasard.
+- Le refus de « garde » est confirmé par ailleurs (pas de tolérance de frappe sous sept lettres).
+- Vérifié : « on attend devant la gare », « rendez-vous à la gare », « je vais à la gare » sont
+  acceptés ; une longue phrase d'une quarantaine de mots ne l'est pas.
