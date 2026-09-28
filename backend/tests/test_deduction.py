@@ -1,10 +1,19 @@
 """Tests du thème « Déduction » — grille logique 3×3 et 4×4 (figures × couleurs)."""
 
+import json
 import sys
 from pathlib import Path
 
 sys.path.insert(0, str(Path(__file__).resolve().parents[2] / "tools"))
-from deduction_commun import _vrai_binaire, TYPES_BINAIRES, pred_indice, resoudre_par_deduction  # noqa: E402
+from deduction_commun import (  # noqa: E402
+    PALIERS_RECOUPMENT_BLOQUANT,
+    _vrai_binaire,
+    phrases_qui_fixent_seules,
+    rang_premiere_certitude,
+    TYPES_BINAIRES,
+    pred_indice,
+    resoudre_par_deduction,
+)
 
 from backend.app.domain.contenu import ChargeurContenu  # noqa: E402
 
@@ -140,6 +149,64 @@ def test_grille_deduction_provoque_une_deduction():
         if item["palier"] == 1:
             assert all(len([p] + list(p.get("et") or [])) >= 3 for p in enonces), \
                 f"{item['id']} : le palier 1 commence par des phrases denses (trois informations)"
+
+
+def test_recoupement_paliers_avances():
+    """Critères de recoupement (défaut C) : aux paliers 2-4, aucune phrase prise
+    seule ne fixe de position, et la première certitude exige au moins deux
+    phrases. Au palier 1 (initiation séquentielle), l'exigence est mesurée sans
+    être bloquante (décision documentée) : on la signale seulement.
+    """
+    for item in CONTENU.items("deduction"):
+        contenu = item["contenu"]
+        n = len(contenu["figures"])
+        enonces = contenu["enonces"]
+        if item["palier"] in PALIERS_RECOUPMENT_BLOQUANT:
+            solos = phrases_qui_fixent_seules(enonces, n, contenu["figures"], contenu["couleurs"])
+            assert not solos, \
+                f"{item['id']} : phrase(s) {[(s + 1) for s in solos]} fixe(nt) seule(s) une position"
+            premiere = rang_premiere_certitude(enonces, n, contenu["figures"], contenu["couleurs"])
+            assert premiere != 1, \
+                f"{item['id']} : la première certitude vient d'une seule phrase"
+
+
+def test_validateur_refuse_phrase_solo_et_certitude_immediate():
+    """Le validateur du dépôt refuse une grille qui viole les critères C : une
+    phrase qui fixe seule une position (ni-ni sur 3×3 = centre) et une première
+    certitude obtenue avec une seule phrase. On construit deux grilles fautives
+    mais VERIDIQUES (chaque phrase reste vraie pour la solution) à partir d'une
+    grille valide de palier 3, puis on passe le validateur dessus.
+    """
+    import validate_items as vi
+
+    item = next(i for i in CONTENU.items("deduction") if i["palier"] == 3)
+    contenu = json.loads(json.dumps(item["contenu"]))  # copie profonde
+    n = len(contenu["figures"])
+    cellules = item["reponse"]["grille"]
+
+    # (1) Phrase solo véridique : « ni-ni » portée par la figure du CENTRE
+    # (3×3, case 4 : ni coin ni bord) — elle fixe seule une position.
+    centre_f, centre_c = cellules[4]
+    sauvegarde = contenu["enonces"][0]
+    contenu["enonces"][0] = {"type": "ni-ni", "figure": centre_f, "couleur": centre_c}
+    faux = dict(item)
+    faux["contenu"] = contenu
+    erreurs = vi._erreurs_grille_deduction(faux, "", contenu)
+    assert any("fixe seule" in e for e in erreurs), erreurs
+
+    # (2) Certitude immédiate véridique : ligne + colonne (dans une même phrase)
+    # de la case RÉELLE d'une figure — une seule phrase présentée suffit à fixer
+    # une position, ce que les critères C interdisent aux paliers avancés.
+    cible_f, cible_c = cellules[8]  # n'importe quelle figure : sa ligne+colonne la fixe
+    ligne = next(i for i, (f, _) in enumerate(cellules) if (f, _) == (cible_f, cible_c)) // n
+    colonne = next(i for i, (f, _) in enumerate(cellules) if (f, _) == (cible_f, cible_c)) % n
+    contenu["enonces"][0] = {
+        "type": "ligne", "ligne": ligne, "figure": cible_f, "couleur": cible_c,
+        "et": [{"figure": cible_f, "couleur": cible_c, "type": "colonne", "colonne": colonne}],
+    }
+    erreurs = vi._erreurs_grille_deduction(faux, "", contenu)
+    assert any("première certitude" in e for e in erreurs), erreurs
+    contenu["enonces"][0] = sauvegarde
 
 
 def test_grilles_solubles_par_deduction_et_solutions_distinctes():

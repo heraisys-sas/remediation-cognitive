@@ -275,3 +275,61 @@ def resoudre_par_deduction(indices: list[dict], n: int,
     """
     domaines = propager(indices, n, noms_f, noms_c, limite_tours)
     return bool(domaines) and all(len(domaine) == 1 for domaine in domaines)
+
+
+#: Paliers où l'exigence de recoupement est bloquante : le palier 1 est une
+#: initiation séquentielle (chaîne ordonnée) où une phrase d'ancrage peut
+#: déterminer une position — l'exigence est mesurée là, bloquée ailleurs.
+PALIERS_RECOUPMENT_BLOQUANT = frozenset({2, 3, 4})
+
+
+def phrases_qui_fixent_seules(indices: list[dict], n: int,
+                             noms_f: list[str], noms_c: list[str]) -> list[int]:
+    """Rangs des phrases qui, prises SEULES, déterminent au moins une position.
+
+    Une phrase « qui fixe seule » rend un domaine singleton après propagation
+    de cette phrase seule — un placement direct déguisé, même sans type `case` :
+    sur 3×3, « ni dans un coin ni sur le bord » ne laisse que le centre.
+    """
+    return [rang for rang, phrase in enumerate(indices)
+            if _une_phrase_fixe(phrase, n, noms_f, noms_c)]
+
+
+def _une_phrase_fixe(phrase: dict, n: int, noms_f: list[str], noms_c: list[str]) -> bool:
+    domaines = propager([phrase], n, noms_f, noms_c)
+    return bool(domaines) and any(len(domaine) == 1 for domaine in domaines)
+
+
+def rang_premiere_certitude(indices: list[dict], n: int,
+                            noms_f: list[str], noms_c: list[str]) -> int | None:
+    """Nombre de phrases nécessaires (ordre présenté) pour la 1re certitude.
+
+    On alimente le solveur phrase par phrase, dans l'ordre de présentation ;
+    on retourne le nombre de phrases accumulées quand un domaine devient
+    singleton pour la première fois. None si la propagation échoue avant.
+    """
+    cumul: list[dict] = []
+    for rang, phrase in enumerate(indices, start=1):
+        cumul.append(phrase)
+        domaines = propager(cumul, n, noms_f, noms_c)
+        if domaines is None:
+            return None
+        if any(len(domaine) == 1 for domaine in domaines):
+            return rang
+    return None
+
+
+def recoupement_suffisant(indices: list[dict], n: int, palier: int,
+                          noms_f: list[str], noms_c: list[str]) -> bool:
+    """Les chaînes de déductions se recoupent-elles assez ? (défaut C)
+
+    Aux paliers avancés (2, 3, 4) : aucune phrase seule ne fixe de position, et
+    la première certitude exige au moins deux phrases. Au palier 1 (initiation
+    séquentielle), les exigences sont mesurées sans être bloquantes.
+    """
+    if palier not in PALIERS_RECOUPMENT_BLOQUANT:
+        return True
+    if phrases_qui_fixent_seules(indices, n, noms_f, noms_c):
+        return False
+    premiere = rang_premiere_certitude(indices, n, noms_f, noms_c)
+    return premiere is not None and premiere >= 2

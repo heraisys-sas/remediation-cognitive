@@ -50,7 +50,14 @@ from app.domain.correction import (  # noqa: E402
 # Le solveur de déduction sert de juge : un puzzle de grille qui n'est pas
 # entièrement résoluble par propagation (sans hypothèse) est refusé.
 sys.path.insert(0, str(Path(__file__).resolve().parent))
-from deduction_commun import TYPES_BINAIRES as TYPES_BINAIRES_DEDUCTION, pred_indice, resoudre_par_deduction  # noqa: E402
+from deduction_commun import (  # noqa: E402
+    PALIERS_RECOUPMENT_BLOQUANT,
+    TYPES_BINAIRES as TYPES_BINAIRES_DEDUCTION,
+    phrases_qui_fixent_seules,
+    pred_indice,
+    rang_premiere_certitude,
+    resoudre_par_deduction,
+)
 
 #: Racine du dépôt (parent du dossier tools/) et dossiers de référence.
 RACINE_DEPOT = Path(__file__).resolve().parent.parent
@@ -421,6 +428,8 @@ TYPES_INDICE_GRILLE = {
     "oppose",
     "autre-ligne", "autre-colonne", "comparaison",
     "a-droite-de", "a-gauche-de", "au-dessus-de", "en-dessous-de",
+    "pas-voisin-gauche", "pas-voisin-droite", "pas-voisin-dessus", "pas-voisin-dessous",
+    "pas-a-droite-de", "pas-a-gauche-de", "pas-au-dessus-de", "pas-en-dessous-de",
     "si-alors", "regle",
 }
 
@@ -697,6 +706,24 @@ def _erreurs_grille_deduction(item: dict, prefixe: str, contenu: dict) -> list[s
             and not resoudre_par_deduction(enonces, n, figures, couleurs)):
         erreurs.append(prefixe + "grille-deduction : puzzle non résoluble par déduction "
                                 "(ajouter des indices jusqu'à ce que le solveur termine)")
+
+    # Recoupement des chaînes (paliers avancés) : aucune phrase seule ne fixe de
+    # position ; la première certitude exige au moins deux phrases, quel que soit
+    # l'ordre de présentation. Le diagnostic s'applique à TOUTE grille (même non
+    # déductible : c'est là qu'il parle le plus). Le palier 1 (initiation
+    # séquentielle) est mesuré sans être bloqué.
+    if (isinstance(enonces, list) and enonces
+            and all(isinstance(i, dict) for i in enonces)
+            and isinstance(palier, int)
+            and palier in PALIERS_RECOUPMENT_BLOQUANT):
+        solos = phrases_qui_fixent_seules(enonces, n, figures, couleurs)
+        for rang in solos:
+            erreurs.append(prefixe + f"grille-deduction : phrase {rang + 1} fixe seule une "
+                                    f"position (placement direct déguisé, palier {palier})")
+        premiere = rang_premiere_certitude(enonces, n, figures, couleurs)
+        if premiere == 1:
+            erreurs.append(prefixe + "grille-deduction : la première certitude vient d'une seule "
+                                    "phrase (au moins deux phrases doivent se recouper)")
     return erreurs
 
 

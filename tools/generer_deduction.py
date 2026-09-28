@@ -47,6 +47,8 @@ from deduction_commun import (  # noqa: E402
     cellule,
     coins,
     jetons,
+    phrases_qui_fixent_seules,
+    rang_premiere_certitude,
     propager,
     resoudre_par_deduction,
 )
@@ -54,8 +56,8 @@ from deduction_commun import (  # noqa: E402
 RACINE_DEPOT = Path(__file__).resolve().parent.parent
 BASE_SORTIE = RACINE_DEPOT / "content" / "entrainement" / "deduction"
 
-GRAINE: int = 20260925
-DATE_CREATION: str = "2026-09-25"
+GRAINE: int = 20260928
+DATE_CREATION: str = "2026-09-28"
 AUTEUR: str = "generation-automatique (tools/generer_deduction.py)"
 PAR_PALIER_DEFAUT: int = 20
 
@@ -84,26 +86,35 @@ RELATIONS_PAR_PALIER = {
         "voisin-diagonale", "oppose", "comparaison", "a-droite-de", "a-gauche-de",
         "au-dessus-de", "en-dessous-de", "autre-ligne", "autre-colonne"},
 }
+#: Chaînes du palier 3 : deux relations après l'ancre (trois informations).
+#: Chaînes courtes = échec structurel au palier 3 (0 grille sur 200 placements,
+#: diagnostic nuit du 28) : des relations relatives à deux informations ne
+#: recoupent jamais assez. Deux relations par chaîne (trois informations) rend
+#: la génération immédiate et nourrit le recoupement exigé par les critères C.
 #: Repères autorisés pour l'ancre d'une chaîne, par palier — même progression :
-#: P1/P2 : repères positifs (ligne, colonne, coin) ; P3 : repères **négatifs** seulement
-#: (il faut éliminer) ; P4 : tout mélangé, chaînes courtes, phrases en désordre.
+#: P1/P2 : repères positifs (ligne, colonne, coin) ; P3 : repères positifs ou
+#: négatifs ; P4 : tout mélangé, chaînes courtes, phrases en désordre.
 ANCRES_PAR_PALIER = {
     1: {"ligne", "colonne", "coin"},
     2: {"pas-ligne", "pas-colonne", "pas-coin", "ni-ni"},
-    3: {"coin", "diagonale", "diagonale-inverse"},
+    # Palier 3 : ajouter les repères négatifs simples : avec les chaînes à trois
+    # informations, ils densifient le recoupement sans réintroduire de solo
+    # (les critères C bannissent de toute façon les phrases qui fixent seules).
+    3: {"coin", "diagonale", "diagonale-inverse", "pas-coin"},
     4: {"ligne", "colonne", "coin", "diagonale", "diagonale-inverse",
         "pas-ligne", "pas-colonne", "pas-coin", "pas-bord", "ni-ni",
         "pas-diagonale", "pas-diagonale-inverse"},
 }
 #: Longueur d'une chaîne (nombre de relations après l'ancre) :
-#: P1 séquentiel (ancre + deux relations = trois informations enchaînées),
-#: P4 complexe/désordonné = chaînes courtes mélangées.
-LONGUEUR_CHAINE = {1: 2, 2: 1, 3: 1, 4: 1}
-LONGUEUR_MIN = {1: 2, 2: 1, 3: 1, 4: 1}
-#: Plancher et plafond du nombre de phrases : le palier complexe en a **moins**
-#: (moins d'aide, phrases à informations multiples).
-MIN_PHRASES = {1: 6, 2: 5, 3: 6, 4: 5}
-MAX_PHRASES = {1: 10, 2: 11, 3: 10, 4: 8}
+#: P1 séquentiel (ancre + deux relations), P3 relatif (ancre + deux relations,
+#: pour le recoupement), P2/P4 : une relation par chaîne.
+LONGUEUR_CHAINE = {1: 2, 2: 1, 3: 2, 4: 1}
+LONGUEUR_MIN = {1: 2, 2: 1, 3: 2, 4: 1}
+#: Plancher et plafond du nombre de phrases : le palier complexe (4×4, chaînes
+#: courtes) exige beaucoup plus de phrases qu'un 3×3 — l'ancien stock en avait
+#: 13 à 17 ; un plafond trop bas empêche la déductibilité d'être atteinte.
+MIN_PHRASES = {1: 6, 2: 5, 3: 6, 4: 6}
+MAX_PHRASES = {1: 10, 2: 11, 3: 10, 4: 18}
 ESSAIS_CHAINE = 3
 #: Nombre maximal d'ancres par grille (une ancre = un point de départ).
 MAX_ANCRES = {1: 3, 2: 4, 3: 2, 4: 3}
@@ -112,8 +123,11 @@ MAX_ANCRES = {1: 3, 2: 4, 3: 2, 4: 3}
 #: plus longues). Ces phrases-là sont protégées du nettoyage des redondances.
 VOCABULAIRE_REQUIS = {
     1: {"coin"},
-    2: {"diagonale", "diagonale-inverse", "voisin-diagonale"},
-    3: {"pas-diagonale", "pas-diagonale-inverse", "voisin-diagonale"},
+    # Paliers 2/3 : uniquement des types produits par la grammaire du palier
+    # (le requis précédent exigeait diagonale/voisin-diagonale au palier 2,
+    # introuvables dans son vivier — ignorés en silence).
+    2: {"autre-ligne", "autre-colonne"},
+    3: {"oppose", "comparaison"},
     4: {"oppose", "coin", "diagonale"},
 }
 
@@ -125,7 +139,7 @@ TAILLE_VIVIER = 400
 DESCRIPTIONS = [
     "Séquentiel positif : phrases enchaînées de voisinage, dans l'ordre",
     "Négatif : éliminer par la ligne et la colonne, sans position directe",
-    "Relatif : situer l'un par rapport à l'autre, sans repère précis",
+    "Relatif : chaînes à trois informations, situer l'un par rapport à l'autre",
     "Complexe : tout mélangé, moins de phrases, chaines courtes",
 ]
 
@@ -333,6 +347,13 @@ def _selection(paire, n: int, noms_f: list[str], noms_c: list[str], palier: int,
     if not vivier:
         return None
     phrases = [phrase for _, phrase in vivier]
+    # Critères de recoupement (défaut C) : aux paliers 2-4, une phrase qui fixe
+    # seule une position est un placement direct déguisé — elle est bannie du
+    # vivier AVANT la sélection (y compris pour le vocabulaire requis). Le palier
+    # 1 (initiation séquentielle) est mesuré au validateur sans être bloqué ici.
+    bannies = (set(phrases_qui_fixent_seules(phrases, n, noms_f, noms_c))
+               if palier != 1 else set())
+    phrases = [phrase for rang, phrase in enumerate(phrases) if rang not in bannies]
     # Vocabulaire demandé : on retient d'abord une phrase par type requis.
     obligatoires: list[dict] = []
     for type_requis in sorted(VOCABULAIRE_REQUIS[palier]):
@@ -363,6 +384,16 @@ def _selection(paire, n: int, noms_f: list[str], noms_c: list[str], palier: int,
     return None
 
 
+def _recoupement_apres_presentation(phrases: list[dict], n: int, palier: int,
+                                    noms_f: list[str], noms_c: list[str]) -> bool:
+    """Critères C sur l'ordre final (après mélange) : aux paliers avancés, la
+    première certitude ne doit jamais venir d'une seule phrase, quel que soit
+    l'ordre présenté. Au palier 1, exigence mesurée mais non bloquante."""
+    if palier == 1:
+        return True
+    return rang_premiere_certitude(phrases, n, noms_f, noms_c) != 1
+
+
 def _secours(paire, n: int, noms_f: list[str], noms_c: list[str],
              rng: random.Random) -> list[dict]:
     """Trois phrases de secours directes (aide progressive de l'interface)."""
@@ -387,7 +418,7 @@ def _item(palier: int, rang: int, paire, phrases: list[dict], secours: list[dict
     grille = [[figures[fig[i]], couleurs[coul[i]]] for i in range(n * n)]
     nombre = "neuf" if n == 3 else "seize"
     return {
-        "id": "de-%d-%02d" % (palier, rang),
+        "id": "df-%d-%02d" % (palier, rang),
         "type": "grille-deduction",
         "module": "entrainement",
         "theme": "deduction",
@@ -435,7 +466,7 @@ def generer_palier(palier: int, rng: random.Random, nombre: int, deja_vus: set) 
             continue
         for _ in range(6):
             phrases = _selection(paire, n, figures, couleurs, palier, rng)
-            if phrases:
+            if phrases and _recoupement_apres_presentation(phrases, n, palier, figures, couleurs):
                 deja_vus.add(paire)
                 items.append(_item(palier, len(items) + 1, paire, phrases,
                                    _secours(paire, n, figures, couleurs, rng),
@@ -460,28 +491,38 @@ def _manifest(paliers: list[list[dict]]) -> dict:
     }
 
 
+def _affiche_chemin(chemin: Path) -> Path:
+    """Chemin relatif au dépôt si possible, sinon tel quel (sortie externe)."""
+    try:
+        return chemin.relative_to(RACINE_DEPOT)
+    except ValueError:
+        return chemin
+
+
 def main() -> int:
     parseur = argparse.ArgumentParser(description="Génère le thème « deduction ».")
     parseur.add_argument("--par-palier", type=int, default=PAR_PALIER_DEFAUT)
     parseur.add_argument("--dry-run", action="store_true")
+    parseur.add_argument("--sortie", type=Path, default=BASE_SORTIE,
+                         help="répertoire de sortie (par défaut : contenu du thème)")
     options = parseur.parse_args()
 
     rng = random.Random(GRAINE)
     deja_vus: set = set()
     paliers = [generer_palier(p, rng, options.par_palier, deja_vus) for p in (1, 2, 3, 4)]
 
-    cibles = {BASE_SORTIE / "paliers.json": _manifest(paliers)}
+    cibles = {options.sortie / "paliers.json": _manifest(paliers)}
     for numero, items in enumerate(paliers, start=1):
-        cibles[BASE_SORTIE / "paliers" / ("palier-%02d.json" % numero)] = items
+        cibles[options.sortie / "paliers" / ("palier-%02d.json" % numero)] = items
 
     for chemin, donnees in cibles.items():
         nb = len(donnees["paliers"]) if isinstance(donnees, dict) else len(donnees)
         if options.dry_run:
-            print("[dry-run] %s (%s entrées)" % (chemin.relative_to(RACINE_DEPOT), nb))
+            print("[dry-run] %s (%s entrées)" % (_affiche_chemin(chemin), nb))
         else:
             chemin.parent.mkdir(parents=True, exist_ok=True)
             chemin.write_text(json.dumps(donnees, ensure_ascii=False, indent=2) + "\n", encoding="utf-8")
-            print("[écrit] %s (%s entrées)" % (chemin.relative_to(RACINE_DEPOT), nb))
+            print("[écrit] %s (%s entrées)" % (_affiche_chemin(chemin), nb))
 
     total = sum(len(p) for p in paliers)
     nombres = [len(i["contenu"]["enonces"]) for p in paliers for i in p]
