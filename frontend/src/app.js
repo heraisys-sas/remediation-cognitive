@@ -1797,6 +1797,14 @@ function relationAtome(atome, n) {
     case "voisin-droite": return `est juste à droite du ${cible}`;
     case "voisin-dessus": return `est juste au-dessus du ${cible}`;
     case "voisin-dessous": return `est juste en dessous du ${cible}`;
+    case "pas-voisin-gauche": return `n'est pas juste à gauche du ${cible}`;
+    case "pas-voisin-droite": return `n'est pas juste à droite du ${cible}`;
+    case "pas-voisin-dessus": return `n'est pas juste au-dessus du ${cible}`;
+    case "pas-voisin-dessous": return `n'est pas juste en dessous du ${cible}`;
+    case "pas-a-droite-de": return `n'est pas plus à droite que le ${cible}`;
+    case "pas-a-gauche-de": return `n'est pas plus à gauche que le ${cible}`;
+    case "pas-au-dessus-de": return `n'est pas plus haut que le ${cible}`;
+    case "pas-en-dessous-de": return `n'est pas plus bas que le ${cible}`;
     case "voisin-diagonale": return `touche le ${cible} en diagonale`;
     case "oppose": return `est à l'opposé du ${cible}, de l'autre côté du centre`;
     case "comparaison": return `est sur la même ligne que le ${cible}, à sa gauche`;

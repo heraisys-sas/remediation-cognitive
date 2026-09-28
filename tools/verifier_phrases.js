@@ -68,6 +68,41 @@ const morceaux = [
 const fabrique = new Function(`${morceaux.join("\n")}\nreturn { formaterEnonce };`);
 const { formaterEnonce } = fabrique();
 
+//: Phrases dorées : rendu EXACT attendu pour chaque type négatif (les huit types
+//: ajoutés avec les négations de voisinage et les relatives négatives). Un rendu
+//: vide, un « undefined » ou une formulation qui dit l'inverse échoue ici — même
+//: quand le contenu du dépôt ne contient pas encore ce type.
+const DOREES = [
+  [{ type: "pas-voisin-gauche", figure: "carre", couleur: "bleu", figure2: "cercle", couleur2: "rouge" },
+   "Le carré bleu n'est pas juste à gauche du cercle rouge."],
+  [{ type: "pas-voisin-droite", figure: "carre", couleur: "bleu", figure2: "cercle", couleur2: "rouge" },
+   "Le carré bleu n'est pas juste à droite du cercle rouge."],
+  [{ type: "pas-voisin-dessus", figure: "carre", couleur: "bleu", figure2: "cercle", couleur2: "rouge" },
+   "Le carré bleu n'est pas juste au-dessus du cercle rouge."],
+  [{ type: "pas-voisin-dessous", figure: "carre", couleur: "bleu", figure2: "cercle", couleur2: "rouge" },
+   "Le carré bleu n'est pas juste en dessous du cercle rouge."],
+  [{ type: "pas-a-droite-de", figure: "triangle", couleur: "vert", figure2: "losange", couleur2: "jaune" },
+   "Le triangle vert n'est pas plus à droite que le losange jaune."],
+  [{ type: "pas-a-gauche-de", figure: "triangle", couleur: "vert", figure2: "losange", couleur2: "jaune" },
+   "Le triangle vert n'est pas plus à gauche que le losange jaune."],
+  [{ type: "pas-au-dessus-de", figure: "triangle", couleur: "vert", figure2: "losange", couleur2: "jaune" },
+   "Le triangle vert n'est pas plus haut que le losange jaune."],
+  [{ type: "pas-en-dessous-de", figure: "triangle", couleur: "vert", figure2: "losange", couleur2: "jaune" },
+   "Le triangle vert n'est pas plus bas que le losange jaune."],
+];
+for (const [atome, attendu] of DOREES) {
+  const rendu = formaterEnonce(atome, 3);
+  if (rendu !== attendu) {
+    console.error(`✗ phrase dorée « ${atome.type} » : attendu « ${attendu} », rendu « ${rendu} »`);
+    process.exit(1);
+  }
+  if (/undefined/.test(rendu) || /\bet\s*\./.test(rendu)) {
+    console.error(`✗ phrase dorée « ${atome.type} » incomplète : « ${rendu} »`);
+    process.exit(1);
+  }
+}
+console.log(`✓ ${DOREES.length} phrases dorées (types négatifs) rendues à l'identique`);
+
 //: Expressions attendues pour chaque type de relation : une inversion entre le nom de
 //: l'indice et la phrase affichée (« voisin-dessus » écrit « en dessous ») rendait la
 //: grille insoluble. Ces garde-fous verrouillent la convention côté interface.
@@ -85,6 +120,14 @@ const ATTENDUS = {
   "autre-colonne": { contient: ["n'est pas dans la même colonne"], exclut: [] },
   "pas-ligne": { contient: ["n'est pas sur la ligne"], exclut: [] },
   "pas-colonne": { contient: ["n'est pas dans la colonne"], exclut: [] },
+  "pas-voisin-gauche": { contient: ["n'est pas juste à gauche"], exclut: ["juste à droite", "au-dessus", "en dessous"] },
+  "pas-voisin-droite": { contient: ["n'est pas juste à droite"], exclut: ["juste à gauche", "au-dessus", "en dessous"] },
+  "pas-voisin-dessus": { contient: ["n'est pas juste au-dessus"], exclut: ["en dessous", "juste à gauche", "juste à droite"] },
+  "pas-voisin-dessous": { contient: ["n'est pas juste en dessous"], exclut: ["au-dessus", "juste à gauche", "juste à droite"] },
+  "pas-a-droite-de": { contient: ["n'est pas plus à droite"], exclut: ["plus à gauche", "plus haut", "plus bas"] },
+  "pas-a-gauche-de": { contient: ["n'est pas plus à gauche"], exclut: ["plus à droite", "plus haut", "plus bas"] },
+  "pas-au-dessus-de": { contient: ["n'est pas plus haut"], exclut: ["plus bas", "plus à droite", "plus à gauche"] },
+  "pas-en-dessous-de": { contient: ["n'est pas plus bas"], exclut: ["plus haut", "plus à droite", "plus à gauche"] },
   "pas-coin": { contient: ["n'est pas dans un coin"], exclut: [] },
   "coin": { contient: ["est dans un coin"], exclut: ["n'est pas"] },
   "diagonale": { contient: ["diagonale descendante"], exclut: ["n'est pas"] },
