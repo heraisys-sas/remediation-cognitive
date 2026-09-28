@@ -3,14 +3,14 @@
   "paliers": [
     {
       "id": "de-palier-1",
-      "description": "Chaînes longues : un repère, puis deux relations en suivant les figures",
+      "description": "Séquentiel positif : phrases enchaînées de voisinage, dans l'ordre",
       "prerequis": [],
       "fichier": "paliers/palier-01.json",
       "nb_items": 20
     },
     {
       "id": "de-palier-2",
-      "description": "Repères sûrs et relations variées : voisinage, à droite de, plus haut que",
+      "description": "Négatif : éliminer par la ligne et la colonne, sans position directe",
       "prerequis": [
         "de-palier-1"
       ],
@@ -19,7 +19,7 @@
     },
     {
       "id": "de-palier-3",
-      "description": "Repères négatifs et relations lâches : éliminer pour déduire",
+      "description": "Relatif : chaînes à trois informations, situer l'un par rapport à l'autre",
       "prerequis": [
         "de-palier-2"
       ],
@@ -28,7 +28,7 @@
     },
     {
       "id": "de-palier-4",
-      "description": "Grille 4×4 : plus de figures colorées",
+      "description": "Complexe : tout mélangé, moins de phrases, chaines courtes",
       "prerequis": [
         "de-palier-3"
       ],
