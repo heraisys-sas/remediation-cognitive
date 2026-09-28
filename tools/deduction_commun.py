@@ -155,9 +155,9 @@ def _vrai_binaire(indice: dict, i1: int, i2: int, n: int) -> bool:
     if t == "pas-voisin-droite":
         return not (i2 == i1 - 1 and i1 % n != 0)
     if t == "pas-voisin-dessus":
-        return not (i2 == i1 - n)
-    if t == "pas-voisin-dessous":
         return not (i2 == i1 + n)
+    if t == "pas-voisin-dessous":
+        return not (i2 == i1 - n)
     if t == "pas-a-droite-de":
         return not (i1 % n > i2 % n)
     if t == "pas-a-gauche-de":

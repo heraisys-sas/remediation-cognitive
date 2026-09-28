@@ -4,7 +4,7 @@ import sys
 from pathlib import Path
 
 sys.path.insert(0, str(Path(__file__).resolve().parents[2] / "tools"))
-from deduction_commun import TYPES_BINAIRES, pred_indice, resoudre_par_deduction  # noqa: E402
+from deduction_commun import _vrai_binaire, TYPES_BINAIRES, pred_indice, resoudre_par_deduction  # noqa: E402
 
 from backend.app.domain.contenu import ChargeurContenu  # noqa: E402
 
@@ -22,6 +22,63 @@ def _repondre(client, session_id, item_id, reponse):
         f"/api/entrainement/deduction/sessions/{session_id}/reponses",
         json={"item_id": item_id, "reponse": reponse, "temps_ms": 1500},
     )
+
+
+PAIRES_POSITIVE_NEGATIVE = (
+    # Appariement déclaré explicitement : chaque type négatif est le complément
+    # exact de CE type positif-là — jamais déduit du libellé français.
+    (("voisin-gauche", "pas-voisin-gauche"),
+     "le sujet est immédiatement à gauche de la cible"),
+    (("voisin-droite", "pas-voisin-droite"),
+     "le sujet est immédiatement à droite de la cible"),
+    (("voisin-dessus", "pas-voisin-dessus"),
+     "le sujet est immédiatement au-dessus de la cible"),
+    (("voisin-dessous", "pas-voisin-dessous"),
+     "le sujet est immédiatement en dessous de la cible"),
+    (("a-droite-de", "pas-a-droite-de"),
+     "le sujet est plus à droite que la cible"),
+    (("a-gauche-de", "pas-a-gauche-de"),
+     "le sujet est plus à gauche que la cible"),
+    (("au-dessus-de", "pas-au-dessus-de"),
+     "le sujet est plus haut que la cible"),
+    (("en-dessous-de", "pas-en-dessous-de"),
+     "le sujet est plus bas que la cible"),
+)
+
+
+def test_negations_complements_exactes_des_positives():
+    """Chaque négation binaire est le complément EXACT de sa positive : pour toute
+    paire de cases distinctes, la négation vaut vrai si et seulement si la positive
+    vaut faux. Appariement déclaré explicitement (indépendant des libellés).
+    Régression : « pas-voisin-dessus/dessous » étaient croisées — chacune niait
+    l'autre, et une phrase pouvait être vraie et fausse en même temps.
+    """
+    for n in (3, 4):
+        for (positive, negative), sens in PAIRES_POSITIVE_NEGATIVE:
+            for i1 in range(n * n):
+                for i2 in range(n * n):
+                    if i1 == i2:
+                        continue
+                    v_pos = _vrai_binaire({"type": positive}, i1, i2, n)
+                    v_neg = _vrai_binaire({"type": negative}, i1, i2, n)
+                    assert v_neg == (not v_pos), (
+                        f"n={n} « {negative} » ({sens}) : cases {i1}->{i2} donne "
+                        f"positive={v_pos}, négative={v_neg} — la négation doit être "
+                        "le complément exact de sa positive"
+                    )
+
+
+def test_repro_pas_voisin_dessus_dessous_inverses():
+    """Cas de reproduction du défaut : n=3, sujet case 0, cible case 3 — la cible
+    est juste en dessous du sujet, donc « voisin-dessus » est vrai ET
+    « pas-voisin-dessus » doit être faux (avant correction : les deux vrais).
+    """
+    n = 3
+    assert _vrai_binaire({"type": "voisin-dessus"}, 0, 3, n) is True
+    assert _vrai_binaire({"type": "pas-voisin-dessus"}, 0, 3, n) is False
+    # Symétrique : sujet case 3, cible case 0 — la cible est juste au-dessus.
+    assert _vrai_binaire({"type": "voisin-dessous"}, 3, 0, n) is True
+    assert _vrai_binaire({"type": "pas-voisin-dessous"}, 3, 0, n) is False
 
 
 def test_grille_deduction_structure_et_correction(client):
