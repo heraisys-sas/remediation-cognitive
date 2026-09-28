@@ -355,12 +355,21 @@ def _selection(paire, n: int, noms_f: list[str], noms_c: list[str], palier: int,
                if palier != 1 else set())
     phrases = [phrase for rang, phrase in enumerate(phrases) if rang not in bannies]
     # Vocabulaire demandé : on retient d'abord une phrase par type requis.
+    # Garde-fou : un requis que la grammaire du palier ne produit pas doit
+    # échouer bruyamment (l'ancien comportement l'ignorait en silence).
     obligatoires: list[dict] = []
     for type_requis in sorted(VOCABULAIRE_REQUIS[palier]):
+        trouve = None
         for phrase in phrases:
             if type_requis in _types_de(phrase) and phrase not in obligatoires:
-                obligatoires.append(phrase)
+                trouve = phrase
                 break
+        if trouve is None and palier != 1:
+            raise SystemExit(
+                "palier %d : vocabulaire requis « %s » absent du vivier "
+                "(grammaire incompatible avec le requis)" % (palier, type_requis))
+        if trouve is not None:
+            obligatoires.append(trouve)
     protegees = frozenset(id(phrase) for phrase in obligatoires)
     restants = [rang for rang, phrase in enumerate(phrases) if phrase not in obligatoires]
     choisis: list[dict] = list(obligatoires)
@@ -459,8 +468,9 @@ def generer_palier(palier: int, rng: random.Random, nombre: int, deja_vus: set) 
     essais = 0
     while len(items) < nombre:
         essais += 1
-        if essais > 40000:
-            raise SystemExit("palier %d : %d grilles seulement (abandon)" % (palier, len(items)))
+        if essais > 2000:
+            raise SystemExit("palier %d : %d grilles seulement après 2000 placements "
+                             "(abandon rapide : grammaire non convergente)" % (palier, len(items)))
         paire = arrangement(rng, n)
         if paire in deja_vus:
             continue
