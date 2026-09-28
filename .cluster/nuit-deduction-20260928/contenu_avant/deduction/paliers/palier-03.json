@@ -1,0 +1,4335 @@
+[
+  {
+    "id": "de-3-01",
+    "type": "grille-deduction",
+    "module": "entrainement",
+    "theme": "deduction",
+    "fonctions_ciblees": [
+      "fonctions-executives",
+      "memoire-travail"
+    ],
+    "palier": 3,
+    "prerequis": [
+      "de-palier-2"
+    ],
+    "cap_complexite": "les phrases suffisent : aucune règle cachée, suivre les chaînes",
+    "contenu": {
+      "consigne": "Place les neuf figures colorées. Deux évidences seulement : chaque figure colorée (un carré bleu, un cercle rouge…) se pose une fois, et une case ne contient qu'une figure. Tout le reste est dans les phrases : suis les chaînes d'une figure à l'autre, note ce qui est certain, barre ce qui devient impossible.",
+      "figures": [
+        "cercle",
+        "carre",
+        "triangle"
+      ],
+      "couleurs": [
+        "rouge",
+        "bleu",
+        "vert"
+      ],
+      "enonces": [
+        {
+          "type": "pas-diagonale",
+          "figure": "triangle",
+          "couleur": "rouge",
+          "et": [
+            {
+              "figure": "triangle",
+              "couleur": "rouge",
+              "type": "comparaison",
+              "figure2": "carre",
+              "couleur2": "vert"
+            }
+          ]
+        },
+        {
+          "type": "pas-diagonale-inverse",
+          "figure": "triangle",
+          "couleur": "rouge",
+          "et": [
+            {
+              "figure": "triangle",
+              "couleur": "rouge",
+              "type": "comparaison",
+              "figure2": "carre",
+              "couleur2": "vert"
+            }
+          ]
+        },
+        {
+          "type": "pas-coin",
+          "figure": "cercle",
+          "couleur": "bleu",
+          "et": [
+            {
+              "figure": "cercle",
+              "couleur": "bleu",
+              "type": "voisin-diagonale",
+              "figure2": "triangle",
+              "couleur2": "bleu"
+            }
+          ]
+        },
+        {
+          "type": "pas-ligne",
+          "ligne": 0,
+          "figure": "triangle",
+          "couleur": "bleu",
+          "et": [
+            {
+              "figure": "triangle",
+              "couleur": "bleu",
+              "type": "voisin-diagonale",
+              "figure2": "cercle",
+              "couleur2": "vert"
+            }
+          ]
+        },
+        {
+          "type": "pas-colonne",
+          "colonne": 1,
+          "figure": "cercle",
+          "couleur": "rouge",
+          "et": [
+            {
+              "figure": "cercle",
+              "couleur": "rouge",
+              "type": "comparaison",
+              "figure2": "triangle",
+              "couleur2": "rouge"
+            }
+          ]
+        },
+        {
+          "type": "pas-diagonale-inverse",
+          "figure": "carre",
+          "couleur": "bleu",
+          "et": [
+            {
+              "figure": "carre",
+              "couleur": "bleu",
+              "type": "voisin-diagonale",
+              "figure2": "carre",
+              "couleur2": "rouge"
+            }
+          ]
+        },
+        {
+          "type": "pas-colonne",
+          "colonne": 1,
+          "figure": "triangle",
+          "couleur": "vert",
+          "et": [
+            {
+              "figure": "triangle",
+              "couleur": "vert",
+              "type": "comparaison",
+              "figure2": "carre",
+              "couleur2": "bleu"
+            }
+          ]
+        },
+        {
+          "type": "pas-coin",
+          "figure": "cercle",
+          "couleur": "vert",
+          "et": [
+            {
+              "figure": "cercle",
+              "couleur": "vert",
+              "type": "comparaison",
+              "figure2": "carre",
+              "couleur2": "rouge"
+            }
+          ]
+        },
+        {
+          "type": "pas-bord",
+          "figure": "carre",
+          "couleur": "rouge",
+          "et": [
+            {
+              "figure": "carre",
+              "couleur": "rouge",
+              "type": "voisin-diagonale",
+              "figure2": "cercle",
+              "couleur2": "rouge"
+            }
+          ]
+        }
+      ],
+      "indices": [
+        {
+          "type": "colonne",
+          "figure": "triangle",
+          "couleur": "vert",
+          "colonne": 0
+        },
+        {
+          "type": "colonne",
+          "figure": "cercle",
+          "couleur": "bleu",
+          "colonne": 2
+        },
+        {
+          "type": "colonne",
+          "figure": "carre",
+          "couleur": "bleu",
+          "colonne": 2
+        }
+      ],
+      "aide": "Chaque phrase enchaîne plusieurs informations : commence par la figure dont la phrase donne la position, puis suis les relations."
+    },
+    "reponse": {
+      "valeur": "cercle:rouge;triangle:rouge;carre:vert;cercle:vert;carre:rouge;cercle:bleu;triangle:vert;triangle:bleu;carre:bleu",
+      "grille": [
+        [
+          "cercle",
+          "rouge"
+        ],
+        [
+          "triangle",
+          "rouge"
+        ],
+        [
+          "carre",
+          "vert"
+        ],
+        [
+          "cercle",
+          "vert"
+        ],
+        [
+          "carre",
+          "rouge"
+        ],
+        [
+          "cercle",
+          "bleu"
+        ],
+        [
+          "triangle",
+          "vert"
+        ],
+        [
+          "triangle",
+          "bleu"
+        ],
+        [
+          "carre",
+          "bleu"
+        ]
+      ]
+    },
+    "meta": {
+      "auteur": "generation-automatique (tools/generer_deduction.py)",
+      "date_creation": "2026-09-25",
+      "relecture_ortho": {
+        "statut": "a_revoir"
+      }
+    }
+  },
+  {
+    "id": "de-3-02",
+    "type": "grille-deduction",
+    "module": "entrainement",
+    "theme": "deduction",
+    "fonctions_ciblees": [
+      "fonctions-executives",
+      "memoire-travail"
+    ],
+    "palier": 3,
+    "prerequis": [
+      "de-palier-2"
+    ],
+    "cap_complexite": "les phrases suffisent : aucune règle cachée, suivre les chaînes",
+    "contenu": {
+      "consigne": "Place les neuf figures colorées. Deux évidences seulement : chaque figure colorée (un carré bleu, un cercle rouge…) se pose une fois, et une case ne contient qu'une figure. Tout le reste est dans les phrases : suis les chaînes d'une figure à l'autre, note ce qui est certain, barre ce qui devient impossible.",
+      "figures": [
+        "cercle",
+        "carre",
+        "triangle"
+      ],
+      "couleurs": [
+        "rouge",
+        "bleu",
+        "vert"
+      ],
+      "enonces": [
+        {
+          "type": "pas-diagonale-inverse",
+          "figure": "cercle",
+          "couleur": "vert",
+          "et": [
+            {
+              "figure": "cercle",
+              "couleur": "vert",
+              "type": "voisin-diagonale",
+              "figure2": "triangle",
+              "couleur2": "bleu"
+            }
+          ]
+        },
+        {
+          "type": "pas-diagonale",
+          "figure": "carre",
+          "couleur": "rouge",
+          "et": [
+            {
+              "figure": "carre",
+              "couleur": "rouge",
+              "type": "comparaison",
+              "figure2": "cercle",
+              "couleur2": "bleu"
+            }
+          ]
+        },
+        {
+          "type": "pas-coin",
+          "figure": "cercle",
+          "couleur": "rouge",
+          "et": [
+            {
+              "figure": "cercle",
+              "couleur": "rouge",
+              "type": "comparaison",
+              "figure2": "cercle",
+              "couleur2": "vert"
+            }
+          ]
+        },
+        {
+          "type": "pas-colonne",
+          "colonne": 1,
+          "figure": "cercle",
+          "couleur": "bleu",
+          "et": [
+            {
+              "figure": "cercle",
+              "couleur": "bleu",
+              "type": "voisin-diagonale",
+              "figure2": "cercle",
+              "couleur2": "rouge"
+            }
+          ]
+        },
+        {
+          "type": "pas-ligne",
+          "ligne": 2,
+          "figure": "triangle",
+          "couleur": "rouge",
+          "et": [
+            {
+              "figure": "triangle",
+              "couleur": "rouge",
+              "type": "voisin-diagonale",
+              "figure2": "cercle",
+              "couleur2": "bleu"
+            }
+          ]
+        },
+        {
+          "type": "pas-colonne",
+          "colonne": 1,
+          "figure": "carre",
+          "couleur": "bleu",
+          "et": [
+            {
+              "figure": "carre",
+              "couleur": "bleu",
+              "type": "comparaison",
+              "figure2": "cercle",
+              "couleur2": "vert"
+            }
+          ]
+        },
+        {
+          "type": "pas-diagonale-inverse",
+          "figure": "triangle",
+          "couleur": "vert",
+          "et": [
+            {
+              "figure": "triangle",
+              "couleur": "vert",
+              "type": "comparaison",
+              "figure2": "carre",
+              "couleur2": "vert"
+            }
+          ]
+        },
+        {
+          "type": "ni-ni",
+          "figure": "triangle",
+          "couleur": "bleu",
+          "et": [
+            {
+              "figure": "triangle",
+              "couleur": "bleu",
+              "type": "voisin-diagonale",
+              "figure2": "cercle",
+              "couleur2": "vert"
+            }
+          ]
+        }
+      ],
+      "indices": [
+        {
+          "type": "case",
+          "figure": "cercle",
+          "couleur": "bleu",
+          "case": 5
+        },
+        {
+          "type": "ligne",
+          "figure": "cercle",
+          "couleur": "vert",
+          "ligne": 2
+        },
+        {
+          "type": "colonne",
+          "figure": "carre",
+          "couleur": "bleu",
+          "colonne": 0
+        }
+      ],
+      "aide": "Chaque phrase enchaîne plusieurs informations : commence par la figure dont la phrase donne la position, puis suis les relations."
+    },
+    "reponse": {
+      "valeur": "triangle:vert;triangle:rouge;carre:vert;carre:rouge;triangle:bleu;cercle:bleu;carre:bleu;cercle:rouge;cercle:vert",
+      "grille": [
+        [
+          "triangle",
+          "vert"
+        ],
+        [
+          "triangle",
+          "rouge"
+        ],
+        [
+          "carre",
+          "vert"
+        ],
+        [
+          "carre",
+          "rouge"
+        ],
+        [
+          "triangle",
+          "bleu"
+        ],
+        [
+          "cercle",
+          "bleu"
+        ],
+        [
+          "carre",
+          "bleu"
+        ],
+        [
+          "cercle",
+          "rouge"
+        ],
+        [
+          "cercle",
+          "vert"
+        ]
+      ]
+    },
+    "meta": {
+      "auteur": "generation-automatique (tools/generer_deduction.py)",
+      "date_creation": "2026-09-25",
+      "relecture_ortho": {
+        "statut": "a_revoir"
+      }
+    }
+  },
+  {
+    "id": "de-3-03",
+    "type": "grille-deduction",
+    "module": "entrainement",
+    "theme": "deduction",
+    "fonctions_ciblees": [
+      "fonctions-executives",
+      "memoire-travail"
+    ],
+    "palier": 3,
+    "prerequis": [
+      "de-palier-2"
+    ],
+    "cap_complexite": "les phrases suffisent : aucune règle cachée, suivre les chaînes",
+    "contenu": {
+      "consigne": "Place les neuf figures colorées. Deux évidences seulement : chaque figure colorée (un carré bleu, un cercle rouge…) se pose une fois, et une case ne contient qu'une figure. Tout le reste est dans les phrases : suis les chaînes d'une figure à l'autre, note ce qui est certain, barre ce qui devient impossible.",
+      "figures": [
+        "cercle",
+        "carre",
+        "triangle"
+      ],
+      "couleurs": [
+        "rouge",
+        "bleu",
+        "vert"
+      ],
+      "enonces": [
+        {
+          "type": "pas-ligne",
+          "ligne": 0,
+          "figure": "carre",
+          "couleur": "bleu",
+          "et": [
+            {
+              "figure": "carre",
+              "couleur": "bleu",
+              "type": "voisin-diagonale",
+              "figure2": "triangle",
+              "couleur2": "vert"
+            }
+          ]
+        },
+        {
+          "type": "pas-ligne",
+          "ligne": 0,
+          "figure": "cercle",
+          "couleur": "bleu",
+          "et": [
+            {
+              "figure": "cercle",
+              "couleur": "bleu",
+              "type": "voisin-diagonale",
+              "figure2": "triangle",
+              "couleur2": "rouge"
+            }
+          ]
+        },
+        {
+          "type": "ni-ni",
+          "figure": "triangle",
+          "couleur": "rouge",
+          "et": [
+            {
+              "figure": "triangle",
+              "couleur": "rouge",
+              "type": "voisin-diagonale",
+              "figure2": "triangle",
+              "couleur2": "bleu"
+            }
+          ]
+        },
+        {
+          "type": "pas-diagonale",
+          "figure": "carre",
+          "couleur": "rouge",
+          "et": [
+            {
+              "figure": "carre",
+              "couleur": "rouge",
+              "type": "comparaison",
+              "figure2": "triangle",
+              "couleur2": "bleu"
+            }
+          ]
+        },
+        {
+          "type": "pas-coin",
+          "figure": "cercle",
+          "couleur": "rouge",
+          "et": [
+            {
+              "figure": "cercle",
+              "couleur": "rouge",
+              "type": "voisin-diagonale",
+              "figure2": "carre",
+              "couleur2": "bleu"
+            }
+          ]
+        },
+        {
+          "type": "pas-diagonale-inverse",
+          "figure": "triangle",
+          "couleur": "vert",
+          "et": [
+            {
+              "figure": "triangle",
+              "couleur": "vert",
+              "type": "comparaison",
+              "figure2": "triangle",
+              "couleur2": "rouge"
+            }
+          ]
+        },
+        {
+          "type": "pas-ligne",
+          "ligne": 0,
+          "figure": "cercle",
+          "couleur": "vert",
+          "et": [
+            {
+              "figure": "cercle",
+              "couleur": "vert",
+              "type": "comparaison",
+              "figure2": "carre",
+              "couleur2": "bleu"
+            }
+          ]
+        },
+        {
+          "type": "pas-colonne",
+          "colonne": 1,
+          "figure": "carre",
+          "couleur": "vert",
+          "et": [
+            {
+              "figure": "carre",
+              "couleur": "vert",
+              "type": "comparaison",
+              "figure2": "carre",
+              "couleur2": "rouge"
+            }
+          ]
+        }
+      ],
+      "indices": [
+        {
+          "type": "ligne",
+          "figure": "triangle",
+          "couleur": "vert",
+          "ligne": 1
+        },
+        {
+          "type": "case",
+          "figure": "carre",
+          "couleur": "rouge",
+          "case": 1
+        },
+        {
+          "type": "colonne",
+          "figure": "triangle",
+          "couleur": "bleu",
+          "colonne": 2
+        }
+      ],
+      "aide": "Chaque phrase enchaîne plusieurs informations : commence par la figure dont la phrase donne la position, puis suis les relations."
+    },
+    "reponse": {
+      "valeur": "carre:vert;carre:rouge;triangle:bleu;triangle:vert;triangle:rouge;cercle:rouge;cercle:vert;carre:bleu;cercle:bleu",
+      "grille": [
+        [
+          "carre",
+          "vert"
+        ],
+        [
+          "carre",
+          "rouge"
+        ],
+        [
+          "triangle",
+          "bleu"
+        ],
+        [
+          "triangle",
+          "vert"
+        ],
+        [
+          "triangle",
+          "rouge"
+        ],
+        [
+          "cercle",
+          "rouge"
+        ],
+        [
+          "cercle",
+          "vert"
+        ],
+        [
+          "carre",
+          "bleu"
+        ],
+        [
+          "cercle",
+          "bleu"
+        ]
+      ]
+    },
+    "meta": {
+      "auteur": "generation-automatique (tools/generer_deduction.py)",
+      "date_creation": "2026-09-25",
+      "relecture_ortho": {
+        "statut": "a_revoir"
+      }
+    }
+  },
+  {
+    "id": "de-3-04",
+    "type": "grille-deduction",
+    "module": "entrainement",
+    "theme": "deduction",
+    "fonctions_ciblees": [
+      "fonctions-executives",
+      "memoire-travail"
+    ],
+    "palier": 3,
+    "prerequis": [
+      "de-palier-2"
+    ],
+    "cap_complexite": "les phrases suffisent : aucune règle cachée, suivre les chaînes",
+    "contenu": {
+      "consigne": "Place les neuf figures colorées. Deux évidences seulement : chaque figure colorée (un carré bleu, un cercle rouge…) se pose une fois, et une case ne contient qu'une figure. Tout le reste est dans les phrases : suis les chaînes d'une figure à l'autre, note ce qui est certain, barre ce qui devient impossible.",
+      "figures": [
+        "cercle",
+        "carre",
+        "triangle"
+      ],
+      "couleurs": [
+        "rouge",
+        "bleu",
+        "vert"
+      ],
+      "enonces": [
+        {
+          "type": "pas-ligne",
+          "ligne": 0,
+          "figure": "triangle",
+          "couleur": "vert",
+          "et": [
+            {
+              "figure": "triangle",
+              "couleur": "vert",
+              "type": "voisin-diagonale",
+              "figure2": "cercle",
+              "couleur2": "bleu"
+            }
+          ]
+        },
+        {
+          "type": "pas-diagonale",
+          "figure": "cercle",
+          "couleur": "bleu",
+          "et": [
+            {
+              "figure": "cercle",
+              "couleur": "bleu",
+              "type": "comparaison",
+              "figure2": "cercle",
+              "couleur2": "rouge"
+            }
+          ]
+        },
+        {
+          "type": "pas-coin",
+          "figure": "triangle",
+          "couleur": "rouge",
+          "et": [
+            {
+              "figure": "triangle",
+              "couleur": "rouge",
+              "type": "voisin-diagonale",
+              "figure2": "triangle",
+              "couleur2": "vert"
+            }
+          ]
+        },
+        {
+          "type": "pas-ligne",
+          "ligne": 0,
+          "figure": "carre",
+          "couleur": "vert",
+          "et": [
+            {
+              "figure": "carre",
+              "couleur": "vert",
+              "type": "voisin-diagonale",
+              "figure2": "cercle",
+              "couleur2": "rouge"
+            }
+          ]
+        },
+        {
+          "type": "pas-colonne",
+          "colonne": 1,
+          "figure": "triangle",
+          "couleur": "bleu",
+          "et": [
+            {
+              "figure": "triangle",
+              "couleur": "bleu",
+              "type": "comparaison",
+              "figure2": "carre",
+              "couleur2": "vert"
+            }
+          ]
+        },
+        {
+          "type": "pas-diagonale-inverse",
+          "figure": "carre",
+          "couleur": "rouge",
+          "et": [
+            {
+              "figure": "carre",
+              "couleur": "rouge",
+              "type": "comparaison",
+              "figure2": "cercle",
+              "couleur2": "vert"
+            }
+          ]
+        },
+        {
+          "type": "pas-diagonale-inverse",
+          "figure": "carre",
+          "couleur": "bleu",
+          "et": [
+            {
+              "figure": "carre",
+              "couleur": "bleu",
+              "type": "comparaison",
+              "figure2": "carre",
+              "couleur2": "rouge"
+            }
+          ]
+        },
+        {
+          "type": "ni-ni",
+          "figure": "cercle",
+          "couleur": "rouge",
+          "et": [
+            {
+              "figure": "cercle",
+              "couleur": "rouge",
+              "type": "voisin-diagonale",
+              "figure2": "carre",
+              "couleur2": "bleu"
+            }
+          ]
+        }
+      ],
+      "indices": [
+        {
+          "type": "case",
+          "figure": "cercle",
+          "couleur": "bleu",
+          "case": 3
+        },
+        {
+          "type": "case",
+          "figure": "triangle",
+          "couleur": "vert",
+          "case": 7
+        },
+        {
+          "type": "case",
+          "figure": "triangle",
+          "couleur": "rouge",
+          "case": 5
+        }
+      ],
+      "aide": "Chaque phrase enchaîne plusieurs informations : commence par la figure dont la phrase donne la position, puis suis les relations."
+    },
+    "reponse": {
+      "valeur": "carre:bleu;carre:rouge;cercle:vert;cercle:bleu;cercle:rouge;triangle:rouge;triangle:bleu;triangle:vert;carre:vert",
+      "grille": [
+        [
+          "carre",
+          "bleu"
+        ],
+        [
+          "carre",
+          "rouge"
+        ],
+        [
+          "cercle",
+          "vert"
+        ],
+        [
+          "cercle",
+          "bleu"
+        ],
+        [
+          "cercle",
+          "rouge"
+        ],
+        [
+          "triangle",
+          "rouge"
+        ],
+        [
+          "triangle",
+          "bleu"
+        ],
+        [
+          "triangle",
+          "vert"
+        ],
+        [
+          "carre",
+          "vert"
+        ]
+      ]
+    },
+    "meta": {
+      "auteur": "generation-automatique (tools/generer_deduction.py)",
+      "date_creation": "2026-09-25",
+      "relecture_ortho": {
+        "statut": "a_revoir"
+      }
+    }
+  },
+  {
+    "id": "de-3-05",
+    "type": "grille-deduction",
+    "module": "entrainement",
+    "theme": "deduction",
+    "fonctions_ciblees": [
+      "fonctions-executives",
+      "memoire-travail"
+    ],
+    "palier": 3,
+    "prerequis": [
+      "de-palier-2"
+    ],
+    "cap_complexite": "les phrases suffisent : aucune règle cachée, suivre les chaînes",
+    "contenu": {
+      "consigne": "Place les neuf figures colorées. Deux évidences seulement : chaque figure colorée (un carré bleu, un cercle rouge…) se pose une fois, et une case ne contient qu'une figure. Tout le reste est dans les phrases : suis les chaînes d'une figure à l'autre, note ce qui est certain, barre ce qui devient impossible.",
+      "figures": [
+        "cercle",
+        "carre",
+        "triangle"
+      ],
+      "couleurs": [
+        "rouge",
+        "bleu",
+        "vert"
+      ],
+      "enonces": [
+        {
+          "type": "pas-coin",
+          "figure": "carre",
+          "couleur": "bleu",
+          "et": [
+            {
+              "figure": "carre",
+              "couleur": "bleu",
+              "type": "comparaison",
+              "figure2": "triangle",
+              "couleur2": "vert"
+            }
+          ]
+        },
+        {
+          "type": "ni-ni",
+          "figure": "triangle",
+          "couleur": "vert",
+          "et": [
+            {
+              "figure": "triangle",
+              "couleur": "vert",
+              "type": "voisin-diagonale",
+              "figure2": "cercle",
+              "couleur2": "bleu"
+            }
+          ]
+        },
+        {
+          "type": "pas-diagonale-inverse",
+          "figure": "carre",
+          "couleur": "vert",
+          "et": [
+            {
+              "figure": "carre",
+              "couleur": "vert",
+              "type": "comparaison",
+              "figure2": "cercle",
+              "couleur2": "rouge"
+            }
+          ]
+        },
+        {
+          "type": "pas-ligne",
+          "ligne": 1,
+          "figure": "cercle",
+          "couleur": "vert",
+          "et": [
+            {
+              "figure": "cercle",
+              "couleur": "vert",
+              "type": "comparaison",
+              "figure2": "carre",
+              "couleur2": "vert"
+            }
+          ]
+        },
+        {
+          "type": "pas-diagonale",
+          "figure": "carre",
+          "couleur": "vert",
+          "et": [
+            {
+              "figure": "carre",
+              "couleur": "vert",
+              "type": "comparaison",
+              "figure2": "cercle",
+              "couleur2": "rouge"
+            }
+          ]
+        },
+        {
+          "type": "pas-colonne",
+          "colonne": 1,
+          "figure": "triangle",
+          "couleur": "rouge",
+          "et": [
+            {
+              "figure": "triangle",
+              "couleur": "rouge",
+              "type": "comparaison",
+              "figure2": "triangle",
+              "couleur2": "bleu"
+            }
+          ]
+        },
+        {
+          "type": "pas-diagonale-inverse",
+          "figure": "cercle",
+          "couleur": "rouge",
+          "et": [
+            {
+              "figure": "cercle",
+              "couleur": "rouge",
+              "type": "voisin-diagonale",
+              "figure2": "triangle",
+              "couleur2": "vert"
+            }
+          ]
+        },
+        {
+          "type": "pas-ligne",
+          "ligne": 2,
+          "figure": "triangle",
+          "couleur": "bleu",
+          "et": [
+            {
+              "figure": "triangle",
+              "couleur": "bleu",
+              "type": "voisin-diagonale",
+              "figure2": "carre",
+              "couleur2": "bleu"
+            }
+          ]
+        },
+        {
+          "type": "pas-coin",
+          "figure": "carre",
+          "couleur": "rouge",
+          "et": [
+            {
+              "figure": "carre",
+              "couleur": "rouge",
+              "type": "voisin-diagonale",
+              "figure2": "triangle",
+              "couleur2": "bleu"
+            }
+          ]
+        }
+      ],
+      "indices": [
+        {
+          "type": "ligne",
+          "figure": "triangle",
+          "couleur": "rouge",
+          "ligne": 0
+        },
+        {
+          "type": "case",
+          "figure": "carre",
+          "couleur": "rouge",
+          "case": 5
+        },
+        {
+          "type": "ligne",
+          "figure": "carre",
+          "couleur": "bleu",
+          "ligne": 1
+        }
+      ],
+      "aide": "Chaque phrase enchaîne plusieurs informations : commence par la figure dont la phrase donne la position, puis suis les relations."
+    },
+    "reponse": {
+      "valeur": "triangle:rouge;triangle:bleu;cercle:bleu;carre:bleu;triangle:vert;carre:rouge;cercle:vert;carre:vert;cercle:rouge",
+      "grille": [
+        [
+          "triangle",
+          "rouge"
+        ],
+        [
+          "triangle",
+          "bleu"
+        ],
+        [
+          "cercle",
+          "bleu"
+        ],
+        [
+          "carre",
+          "bleu"
+        ],
+        [
+          "triangle",
+          "vert"
+        ],
+        [
+          "carre",
+          "rouge"
+        ],
+        [
+          "cercle",
+          "vert"
+        ],
+        [
+          "carre",
+          "vert"
+        ],
+        [
+          "cercle",
+          "rouge"
+        ]
+      ]
+    },
+    "meta": {
+      "auteur": "generation-automatique (tools/generer_deduction.py)",
+      "date_creation": "2026-09-25",
+      "relecture_ortho": {
+        "statut": "a_revoir"
+      }
+    }
+  },
+  {
+    "id": "de-3-06",
+    "type": "grille-deduction",
+    "module": "entrainement",
+    "theme": "deduction",
+    "fonctions_ciblees": [
+      "fonctions-executives",
+      "memoire-travail"
+    ],
+    "palier": 3,
+    "prerequis": [
+      "de-palier-2"
+    ],
+    "cap_complexite": "les phrases suffisent : aucune règle cachée, suivre les chaînes",
+    "contenu": {
+      "consigne": "Place les neuf figures colorées. Deux évidences seulement : chaque figure colorée (un carré bleu, un cercle rouge…) se pose une fois, et une case ne contient qu'une figure. Tout le reste est dans les phrases : suis les chaînes d'une figure à l'autre, note ce qui est certain, barre ce qui devient impossible.",
+      "figures": [
+        "cercle",
+        "carre",
+        "triangle"
+      ],
+      "couleurs": [
+        "rouge",
+        "bleu",
+        "vert"
+      ],
+      "enonces": [
+        {
+          "type": "pas-coin",
+          "figure": "carre",
+          "couleur": "vert",
+          "et": [
+            {
+              "figure": "carre",
+              "couleur": "vert",
+              "type": "comparaison",
+              "figure2": "carre",
+              "couleur2": "rouge"
+            }
+          ]
+        },
+        {
+          "type": "pas-ligne",
+          "ligne": 2,
+          "figure": "triangle",
+          "couleur": "rouge",
+          "et": [
+            {
+              "figure": "triangle",
+              "couleur": "rouge",
+              "type": "voisin-diagonale",
+              "figure2": "triangle",
+              "couleur2": "vert"
+            }
+          ]
+        },
+        {
+          "type": "ni-ni",
+          "figure": "cercle",
+          "couleur": "bleu",
+          "et": [
+            {
+              "figure": "cercle",
+              "couleur": "bleu",
+              "type": "voisin-diagonale",
+              "figure2": "carre",
+              "couleur2": "bleu"
+            }
+          ]
+        },
+        {
+          "type": "pas-colonne",
+          "colonne": 1,
+          "figure": "triangle",
+          "couleur": "bleu",
+          "et": [
+            {
+              "figure": "triangle",
+              "couleur": "bleu",
+              "type": "voisin-diagonale",
+              "figure2": "triangle",
+              "couleur2": "rouge"
+            }
+          ]
+        },
+        {
+          "type": "pas-ligne",
+          "ligne": 0,
+          "figure": "carre",
+          "couleur": "rouge",
+          "et": [
+            {
+              "figure": "carre",
+              "couleur": "rouge",
+              "type": "voisin-diagonale",
+              "figure2": "cercle",
+              "couleur2": "bleu"
+            }
+          ]
+        },
+        {
+          "type": "pas-diagonale-inverse",
+          "figure": "triangle",
+          "couleur": "vert",
+          "et": [
+            {
+              "figure": "triangle",
+              "couleur": "vert",
+              "type": "comparaison",
+              "figure2": "triangle",
+              "couleur2": "bleu"
+            }
+          ]
+        },
+        {
+          "type": "pas-ligne",
+          "ligne": 1,
+          "figure": "carre",
+          "couleur": "bleu",
+          "et": [
+            {
+              "figure": "carre",
+              "couleur": "bleu",
+              "type": "comparaison",
+              "figure2": "triangle",
+              "couleur2": "rouge"
+            }
+          ]
+        },
+        {
+          "type": "pas-diagonale",
+          "figure": "cercle",
+          "couleur": "vert",
+          "et": [
+            {
+              "figure": "cercle",
+              "couleur": "vert",
+              "type": "comparaison",
+              "figure2": "carre",
+              "couleur2": "rouge"
+            }
+          ]
+        }
+      ],
+      "indices": [
+        {
+          "type": "case",
+          "figure": "carre",
+          "couleur": "vert",
+          "case": 7
+        },
+        {
+          "type": "case",
+          "figure": "carre",
+          "couleur": "bleu",
+          "case": 0
+        },
+        {
+          "type": "colonne",
+          "figure": "triangle",
+          "couleur": "rouge",
+          "colonne": 1
+        }
+      ],
+      "aide": "Chaque phrase enchaîne plusieurs informations : commence par la figure dont la phrase donne la position, puis suis les relations."
+    },
+    "reponse": {
+      "valeur": "carre:bleu;triangle:rouge;cercle:rouge;triangle:vert;cercle:bleu;triangle:bleu;cercle:vert;carre:vert;carre:rouge",
+      "grille": [
+        [
+          "carre",
+          "bleu"
+        ],
+        [
+          "triangle",
+          "rouge"
+        ],
+        [
+          "cercle",
+          "rouge"
+        ],
+        [
+          "triangle",
+          "vert"
+        ],
+        [
+          "cercle",
+          "bleu"
+        ],
+        [
+          "triangle",
+          "bleu"
+        ],
+        [
+          "cercle",
+          "vert"
+        ],
+        [
+          "carre",
+          "vert"
+        ],
+        [
+          "carre",
+          "rouge"
+        ]
+      ]
+    },
+    "meta": {
+      "auteur": "generation-automatique (tools/generer_deduction.py)",
+      "date_creation": "2026-09-25",
+      "relecture_ortho": {
+        "statut": "a_revoir"
+      }
+    }
+  },
+  {
+    "id": "de-3-07",
+    "type": "grille-deduction",
+    "module": "entrainement",
+    "theme": "deduction",
+    "fonctions_ciblees": [
+      "fonctions-executives",
+      "memoire-travail"
+    ],
+    "palier": 3,
+    "prerequis": [
+      "de-palier-2"
+    ],
+    "cap_complexite": "les phrases suffisent : aucune règle cachée, suivre les chaînes",
+    "contenu": {
+      "consigne": "Place les neuf figures colorées. Deux évidences seulement : chaque figure colorée (un carré bleu, un cercle rouge…) se pose une fois, et une case ne contient qu'une figure. Tout le reste est dans les phrases : suis les chaînes d'une figure à l'autre, note ce qui est certain, barre ce qui devient impossible.",
+      "figures": [
+        "cercle",
+        "carre",
+        "triangle"
+      ],
+      "couleurs": [
+        "rouge",
+        "bleu",
+        "vert"
+      ],
+      "enonces": [
+        {
+          "type": "pas-ligne",
+          "ligne": 0,
+          "figure": "triangle",
+          "couleur": "rouge",
+          "et": [
+            {
+              "figure": "triangle",
+              "couleur": "rouge",
+              "type": "comparaison",
+              "figure2": "carre",
+              "couleur2": "bleu"
+            }
+          ]
+        },
+        {
+          "type": "pas-diagonale-inverse",
+          "figure": "carre",
+          "couleur": "bleu",
+          "et": [
+            {
+              "figure": "carre",
+              "couleur": "bleu",
+              "type": "voisin-diagonale",
+              "figure2": "triangle",
+              "couleur2": "vert"
+            }
+          ]
+        },
+        {
+          "type": "pas-coin",
+          "figure": "cercle",
+          "couleur": "vert",
+          "et": [
+            {
+              "figure": "cercle",
+              "couleur": "vert",
+              "type": "comparaison",
+              "figure2": "cercle",
+              "couleur2": "bleu"
+            }
+          ]
+        },
+        {
+          "type": "pas-coin",
+          "figure": "triangle",
+          "couleur": "bleu",
+          "et": [
+            {
+              "figure": "triangle",
+              "couleur": "bleu",
+              "type": "voisin-diagonale",
+              "figure2": "cercle",
+              "couleur2": "vert"
+            }
+          ]
+        },
+        {
+          "type": "ni-ni",
+          "figure": "triangle",
+          "couleur": "vert",
+          "et": [
+            {
+              "figure": "triangle",
+              "couleur": "vert",
+              "type": "voisin-diagonale",
+              "figure2": "cercle",
+              "couleur2": "bleu"
+            }
+          ]
+        },
+        {
+          "type": "pas-diagonale",
+          "figure": "carre",
+          "couleur": "rouge",
+          "et": [
+            {
+              "figure": "carre",
+              "couleur": "rouge",
+              "type": "comparaison",
+              "figure2": "triangle",
+              "couleur2": "rouge"
+            }
+          ]
+        },
+        {
+          "type": "pas-colonne",
+          "colonne": 1,
+          "figure": "cercle",
+          "couleur": "rouge",
+          "et": [
+            {
+              "figure": "cercle",
+              "couleur": "rouge",
+              "type": "comparaison",
+              "figure2": "cercle",
+              "couleur2": "bleu"
+            }
+          ]
+        },
+        {
+          "type": "pas-diagonale-inverse",
+          "figure": "carre",
+          "couleur": "vert",
+          "et": [
+            {
+              "figure": "carre",
+              "couleur": "vert",
+              "type": "comparaison",
+              "figure2": "triangle",
+              "couleur2": "vert"
+            }
+          ]
+        }
+      ],
+      "indices": [
+        {
+          "type": "case",
+          "figure": "triangle",
+          "couleur": "vert",
+          "case": 4
+        },
+        {
+          "type": "colonne",
+          "figure": "cercle",
+          "couleur": "rouge",
+          "colonne": 0
+        },
+        {
+          "type": "case",
+          "figure": "cercle",
+          "couleur": "vert",
+          "case": 1
+        }
+      ],
+      "aide": "Chaque phrase enchaîne plusieurs informations : commence par la figure dont la phrase donne la position, puis suis les relations."
+    },
+    "reponse": {
+      "valeur": "cercle:rouge;cercle:vert;cercle:bleu;carre:vert;triangle:vert;triangle:bleu;carre:rouge;triangle:rouge;carre:bleu",
+      "grille": [
+        [
+          "cercle",
+          "rouge"
+        ],
+        [
+          "cercle",
+          "vert"
+        ],
+        [
+          "cercle",
+          "bleu"
+        ],
+        [
+          "carre",
+          "vert"
+        ],
+        [
+          "triangle",
+          "vert"
+        ],
+        [
+          "triangle",
+          "bleu"
+        ],
+        [
+          "carre",
+          "rouge"
+        ],
+        [
+          "triangle",
+          "rouge"
+        ],
+        [
+          "carre",
+          "bleu"
+        ]
+      ]
+    },
+    "meta": {
+      "auteur": "generation-automatique (tools/generer_deduction.py)",
+      "date_creation": "2026-09-25",
+      "relecture_ortho": {
+        "statut": "a_revoir"
+      }
+    }
+  },
+  {
+    "id": "de-3-08",
+    "type": "grille-deduction",
+    "module": "entrainement",
+    "theme": "deduction",
+    "fonctions_ciblees": [
+      "fonctions-executives",
+      "memoire-travail"
+    ],
+    "palier": 3,
+    "prerequis": [
+      "de-palier-2"
+    ],
+    "cap_complexite": "les phrases suffisent : aucune règle cachée, suivre les chaînes",
+    "contenu": {
+      "consigne": "Place les neuf figures colorées. Deux évidences seulement : chaque figure colorée (un carré bleu, un cercle rouge…) se pose une fois, et une case ne contient qu'une figure. Tout le reste est dans les phrases : suis les chaînes d'une figure à l'autre, note ce qui est certain, barre ce qui devient impossible.",
+      "figures": [
+        "cercle",
+        "carre",
+        "triangle"
+      ],
+      "couleurs": [
+        "rouge",
+        "bleu",
+        "vert"
+      ],
+      "enonces": [
+        {
+          "type": "pas-diagonale-inverse",
+          "figure": "triangle",
+          "couleur": "vert",
+          "et": [
+            {
+              "figure": "triangle",
+              "couleur": "vert",
+              "type": "comparaison",
+              "figure2": "cercle",
+              "couleur2": "bleu"
+            }
+          ]
+        },
+        {
+          "type": "pas-ligne",
+          "ligne": 0,
+          "figure": "cercle",
+          "couleur": "vert",
+          "et": [
+            {
+              "figure": "cercle",
+              "couleur": "vert",
+              "type": "comparaison",
+              "figure2": "triangle",
+              "couleur2": "bleu"
+            }
+          ]
+        },
+        {
+          "type": "pas-colonne",
+          "colonne": 1,
+          "figure": "cercle",
+          "couleur": "rouge",
+          "et": [
+            {
+              "figure": "cercle",
+              "couleur": "rouge",
+              "type": "voisin-diagonale",
+              "figure2": "triangle",
+              "couleur2": "vert"
+            }
+          ]
+        },
+        {
+          "type": "pas-coin",
+          "figure": "triangle",
+          "couleur": "bleu",
+          "et": [
+            {
+              "figure": "triangle",
+              "couleur": "bleu",
+              "type": "comparaison",
+              "figure2": "triangle",
+              "couleur2": "rouge"
+            }
+          ]
+        },
+        {
+          "type": "pas-ligne",
+          "ligne": 2,
+          "figure": "cercle",
+          "couleur": "bleu",
+          "et": [
+            {
+              "figure": "cercle",
+              "couleur": "bleu",
+              "type": "voisin-diagonale",
+              "figure2": "carre",
+              "couleur2": "bleu"
+            }
+          ]
+        },
+        {
+          "type": "pas-diagonale",
+          "figure": "carre",
+          "couleur": "rouge",
+          "et": [
+            {
+              "figure": "carre",
+              "couleur": "rouge",
+              "type": "comparaison",
+              "figure2": "cercle",
+              "couleur2": "rouge"
+            }
+          ]
+        },
+        {
+          "type": "pas-bord",
+          "figure": "carre",
+          "couleur": "bleu",
+          "et": [
+            {
+              "figure": "carre",
+              "couleur": "bleu",
+              "type": "voisin-diagonale",
+              "figure2": "cercle",
+              "couleur2": "vert"
+            }
+          ]
+        },
+        {
+          "type": "pas-ligne",
+          "ligne": 2,
+          "figure": "carre",
+          "couleur": "vert",
+          "et": [
+            {
+              "figure": "carre",
+              "couleur": "vert",
+              "type": "comparaison",
+              "figure2": "triangle",
+              "couleur2": "vert"
+            }
+          ]
+        }
+      ],
+      "indices": [
+        {
+          "type": "case",
+          "figure": "carre",
+          "couleur": "bleu",
+          "case": 4
+        },
+        {
+          "type": "case",
+          "figure": "carre",
+          "couleur": "rouge",
+          "case": 3
+        },
+        {
+          "type": "ligne",
+          "figure": "cercle",
+          "couleur": "rouge",
+          "ligne": 1
+        }
+      ],
+      "aide": "Chaque phrase enchaîne plusieurs informations : commence par la figure dont la phrase donne la position, puis suis les relations."
+    },
+    "reponse": {
+      "valeur": "carre:vert;triangle:vert;cercle:bleu;carre:rouge;carre:bleu;cercle:rouge;cercle:vert;triangle:bleu;triangle:rouge",
+      "grille": [
+        [
+          "carre",
+          "vert"
+        ],
+        [
+          "triangle",
+          "vert"
+        ],
+        [
+          "cercle",
+          "bleu"
+        ],
+        [
+          "carre",
+          "rouge"
+        ],
+        [
+          "carre",
+          "bleu"
+        ],
+        [
+          "cercle",
+          "rouge"
+        ],
+        [
+          "cercle",
+          "vert"
+        ],
+        [
+          "triangle",
+          "bleu"
+        ],
+        [
+          "triangle",
+          "rouge"
+        ]
+      ]
+    },
+    "meta": {
+      "auteur": "generation-automatique (tools/generer_deduction.py)",
+      "date_creation": "2026-09-25",
+      "relecture_ortho": {
+        "statut": "a_revoir"
+      }
+    }
+  },
+  {
+    "id": "de-3-09",
+    "type": "grille-deduction",
+    "module": "entrainement",
+    "theme": "deduction",
+    "fonctions_ciblees": [
+      "fonctions-executives",
+      "memoire-travail"
+    ],
+    "palier": 3,
+    "prerequis": [
+      "de-palier-2"
+    ],
+    "cap_complexite": "les phrases suffisent : aucune règle cachée, suivre les chaînes",
+    "contenu": {
+      "consigne": "Place les neuf figures colorées. Deux évidences seulement : chaque figure colorée (un carré bleu, un cercle rouge…) se pose une fois, et une case ne contient qu'une figure. Tout le reste est dans les phrases : suis les chaînes d'une figure à l'autre, note ce qui est certain, barre ce qui devient impossible.",
+      "figures": [
+        "cercle",
+        "carre",
+        "triangle"
+      ],
+      "couleurs": [
+        "rouge",
+        "bleu",
+        "vert"
+      ],
+      "enonces": [
+        {
+          "type": "pas-diagonale-inverse",
+          "figure": "carre",
+          "couleur": "vert",
+          "et": [
+            {
+              "figure": "carre",
+              "couleur": "vert",
+              "type": "comparaison",
+              "figure2": "triangle",
+              "couleur2": "rouge"
+            }
+          ]
+        },
+        {
+          "type": "pas-coin",
+          "figure": "cercle",
+          "couleur": "vert",
+          "et": [
+            {
+              "figure": "cercle",
+              "couleur": "vert",
+              "type": "voisin-diagonale",
+              "figure2": "carre",
+              "couleur2": "bleu"
+            }
+          ]
+        },
+        {
+          "type": "pas-ligne",
+          "ligne": 0,
+          "figure": "triangle",
+          "couleur": "bleu",
+          "et": [
+            {
+              "figure": "triangle",
+              "couleur": "bleu",
+              "type": "comparaison",
+              "figure2": "triangle",
+              "couleur2": "vert"
+            }
+          ]
+        },
+        {
+          "type": "pas-diagonale-inverse",
+          "figure": "triangle",
+          "couleur": "vert",
+          "et": [
+            {
+              "figure": "triangle",
+              "couleur": "vert",
+              "type": "voisin-diagonale",
+              "figure2": "triangle",
+              "couleur2": "rouge"
+            }
+          ]
+        },
+        {
+          "type": "pas-diagonale",
+          "figure": "cercle",
+          "couleur": "bleu",
+          "et": [
+            {
+              "figure": "cercle",
+              "couleur": "bleu",
+              "type": "comparaison",
+              "figure2": "triangle",
+              "couleur2": "bleu"
+            }
+          ]
+        },
+        {
+          "type": "pas-coin",
+          "figure": "carre",
+          "couleur": "bleu",
+          "et": [
+            {
+              "figure": "carre",
+              "couleur": "bleu",
+              "type": "comparaison",
+              "figure2": "carre",
+              "couleur2": "rouge"
+            }
+          ]
+        },
+        {
+          "type": "pas-bord",
+          "figure": "triangle",
+          "couleur": "rouge",
+          "et": [
+            {
+              "figure": "triangle",
+              "couleur": "rouge",
+              "type": "voisin-diagonale",
+              "figure2": "cercle",
+              "couleur2": "bleu"
+            }
+          ]
+        },
+        {
+          "type": "pas-colonne",
+          "colonne": 2,
+          "figure": "cercle",
+          "couleur": "rouge",
+          "et": [
+            {
+              "figure": "cercle",
+              "couleur": "rouge",
+              "type": "comparaison",
+              "figure2": "carre",
+              "couleur2": "bleu"
+            }
+          ]
+        }
+      ],
+      "indices": [
+        {
+          "type": "ligne",
+          "figure": "carre",
+          "couleur": "vert",
+          "ligne": 1
+        },
+        {
+          "type": "ligne",
+          "figure": "triangle",
+          "couleur": "rouge",
+          "ligne": 1
+        },
+        {
+          "type": "ligne",
+          "figure": "cercle",
+          "couleur": "bleu",
+          "ligne": 2
+        }
+      ],
+      "aide": "Chaque phrase enchaîne plusieurs informations : commence par la figure dont la phrase donne la position, puis suis les relations."
+    },
+    "reponse": {
+      "valeur": "cercle:rouge;carre:bleu;carre:rouge;carre:vert;triangle:rouge;cercle:vert;cercle:bleu;triangle:bleu;triangle:vert",
+      "grille": [
+        [
+          "cercle",
+          "rouge"
+        ],
+        [
+          "carre",
+          "bleu"
+        ],
+        [
+          "carre",
+          "rouge"
+        ],
+        [
+          "carre",
+          "vert"
+        ],
+        [
+          "triangle",
+          "rouge"
+        ],
+        [
+          "cercle",
+          "vert"
+        ],
+        [
+          "cercle",
+          "bleu"
+        ],
+        [
+          "triangle",
+          "bleu"
+        ],
+        [
+          "triangle",
+          "vert"
+        ]
+      ]
+    },
+    "meta": {
+      "auteur": "generation-automatique (tools/generer_deduction.py)",
+      "date_creation": "2026-09-25",
+      "relecture_ortho": {
+        "statut": "a_revoir"
+      }
+    }
+  },
+  {
+    "id": "de-3-10",
+    "type": "grille-deduction",
+    "module": "entrainement",
+    "theme": "deduction",
+    "fonctions_ciblees": [
+      "fonctions-executives",
+      "memoire-travail"
+    ],
+    "palier": 3,
+    "prerequis": [
+      "de-palier-2"
+    ],
+    "cap_complexite": "les phrases suffisent : aucune règle cachée, suivre les chaînes",
+    "contenu": {
+      "consigne": "Place les neuf figures colorées. Deux évidences seulement : chaque figure colorée (un carré bleu, un cercle rouge…) se pose une fois, et une case ne contient qu'une figure. Tout le reste est dans les phrases : suis les chaînes d'une figure à l'autre, note ce qui est certain, barre ce qui devient impossible.",
+      "figures": [
+        "cercle",
+        "carre",
+        "triangle"
+      ],
+      "couleurs": [
+        "rouge",
+        "bleu",
+        "vert"
+      ],
+      "enonces": [
+        {
+          "type": "pas-coin",
+          "figure": "carre",
+          "couleur": "bleu",
+          "et": [
+            {
+              "figure": "carre",
+              "couleur": "bleu",
+              "type": "voisin-diagonale",
+              "figure2": "cercle",
+              "couleur2": "rouge"
+            }
+          ]
+        },
+        {
+          "type": "ni-ni",
+          "figure": "cercle",
+          "couleur": "vert",
+          "et": [
+            {
+              "figure": "cercle",
+              "couleur": "vert",
+              "type": "voisin-diagonale",
+              "figure2": "triangle",
+              "couleur2": "bleu"
+            }
+          ]
+        },
+        {
+          "type": "pas-colonne",
+          "colonne": 2,
+          "figure": "carre",
+          "couleur": "rouge",
+          "et": [
+            {
+              "figure": "carre",
+              "couleur": "rouge",
+              "type": "comparaison",
+              "figure2": "triangle",
+              "couleur2": "bleu"
+            }
+          ]
+        },
+        {
+          "type": "pas-colonne",
+          "colonne": 1,
+          "figure": "triangle",
+          "couleur": "vert",
+          "et": [
+            {
+              "figure": "triangle",
+              "couleur": "vert",
+              "type": "comparaison",
+              "figure2": "cercle",
+              "couleur2": "rouge"
+            }
+          ]
+        },
+        {
+          "type": "pas-diagonale",
+          "figure": "triangle",
+          "couleur": "bleu",
+          "et": [
+            {
+              "figure": "triangle",
+              "couleur": "bleu",
+              "type": "voisin-diagonale",
+              "figure2": "cercle",
+              "couleur2": "vert"
+            }
+          ]
+        },
+        {
+          "type": "pas-ligne",
+          "ligne": 2,
+          "figure": "cercle",
+          "couleur": "bleu",
+          "et": [
+            {
+              "figure": "cercle",
+              "couleur": "bleu",
+              "type": "voisin-diagonale",
+              "figure2": "triangle",
+              "couleur2": "rouge"
+            }
+          ]
+        },
+        {
+          "type": "pas-coin",
+          "figure": "triangle",
+          "couleur": "rouge",
+          "et": [
+            {
+              "figure": "triangle",
+              "couleur": "rouge",
+              "type": "comparaison",
+              "figure2": "cercle",
+              "couleur2": "vert"
+            }
+          ]
+        },
+        {
+          "type": "pas-diagonale-inverse",
+          "figure": "cercle",
+          "couleur": "rouge",
+          "et": [
+            {
+              "figure": "cercle",
+              "couleur": "rouge",
+              "type": "comparaison",
+              "figure2": "carre",
+              "couleur2": "vert"
+            }
+          ]
+        },
+        {
+          "type": "pas-diagonale",
+          "figure": "cercle",
+          "couleur": "rouge",
+          "et": [
+            {
+              "figure": "cercle",
+              "couleur": "rouge",
+              "type": "comparaison",
+              "figure2": "carre",
+              "couleur2": "vert"
+            }
+          ]
+        }
+      ],
+      "indices": [
+        {
+          "type": "ligne",
+          "figure": "cercle",
+          "couleur": "rouge",
+          "ligne": 2
+        },
+        {
+          "type": "ligne",
+          "figure": "carre",
+          "couleur": "vert",
+          "ligne": 2
+        },
+        {
+          "type": "ligne",
+          "figure": "triangle",
+          "couleur": "rouge",
+          "ligne": 1
+        }
+      ],
+      "aide": "Chaque phrase enchaîne plusieurs informations : commence par la figure dont la phrase donne la position, puis suis les relations."
+    },
+    "reponse": {
+      "valeur": "carre:rouge;cercle:bleu;triangle:bleu;triangle:rouge;cercle:vert;carre:bleu;triangle:vert;cercle:rouge;carre:vert",
+      "grille": [
+        [
+          "carre",
+          "rouge"
+        ],
+        [
+          "cercle",
+          "bleu"
+        ],
+        [
+          "triangle",
+          "bleu"
+        ],
+        [
+          "triangle",
+          "rouge"
+        ],
+        [
+          "cercle",
+          "vert"
+        ],
+        [
+          "carre",
+          "bleu"
+        ],
+        [
+          "triangle",
+          "vert"
+        ],
+        [
+          "cercle",
+          "rouge"
+        ],
+        [
+          "carre",
+          "vert"
+        ]
+      ]
+    },
+    "meta": {
+      "auteur": "generation-automatique (tools/generer_deduction.py)",
+      "date_creation": "2026-09-25",
+      "relecture_ortho": {
+        "statut": "a_revoir"
+      }
+    }
+  },
+  {
+    "id": "de-3-11",
+    "type": "grille-deduction",
+    "module": "entrainement",
+    "theme": "deduction",
+    "fonctions_ciblees": [
+      "fonctions-executives",
+      "memoire-travail"
+    ],
+    "palier": 3,
+    "prerequis": [
+      "de-palier-2"
+    ],
+    "cap_complexite": "les phrases suffisent : aucune règle cachée, suivre les chaînes",
+    "contenu": {
+      "consigne": "Place les neuf figures colorées. Deux évidences seulement : chaque figure colorée (un carré bleu, un cercle rouge…) se pose une fois, et une case ne contient qu'une figure. Tout le reste est dans les phrases : suis les chaînes d'une figure à l'autre, note ce qui est certain, barre ce qui devient impossible.",
+      "figures": [
+        "cercle",
+        "carre",
+        "triangle"
+      ],
+      "couleurs": [
+        "rouge",
+        "bleu",
+        "vert"
+      ],
+      "enonces": [
+        {
+          "type": "pas-diagonale",
+          "figure": "carre",
+          "couleur": "bleu",
+          "et": [
+            {
+              "figure": "carre",
+              "couleur": "bleu",
+              "type": "comparaison",
+              "figure2": "triangle",
+              "couleur2": "bleu"
+            }
+          ]
+        },
+        {
+          "type": "pas-coin",
+          "figure": "cercle",
+          "couleur": "bleu",
+          "et": [
+            {
+              "figure": "cercle",
+              "couleur": "bleu",
+              "type": "voisin-diagonale",
+              "figure2": "triangle",
+              "couleur2": "rouge"
+            }
+          ]
+        },
+        {
+          "type": "pas-coin",
+          "figure": "triangle",
+          "couleur": "rouge",
+          "et": [
+            {
+              "figure": "triangle",
+              "couleur": "rouge",
+              "type": "comparaison",
+              "figure2": "carre",
+              "couleur2": "rouge"
+            }
+          ]
+        },
+        {
+          "type": "pas-diagonale",
+          "figure": "carre",
+          "couleur": "vert",
+          "et": [
+            {
+              "figure": "carre",
+              "couleur": "vert",
+              "type": "comparaison",
+              "figure2": "carre",
+              "couleur2": "bleu"
+            }
+          ]
+        },
+        {
+          "type": "pas-colonne",
+          "colonne": 2,
+          "figure": "cercle",
+          "couleur": "vert",
+          "et": [
+            {
+              "figure": "cercle",
+              "couleur": "vert",
+              "type": "comparaison",
+              "figure2": "carre",
+              "couleur2": "rouge"
+            }
+          ]
+        },
+        {
+          "type": "pas-diagonale-inverse",
+          "figure": "triangle",
+          "couleur": "vert",
+          "et": [
+            {
+              "figure": "triangle",
+              "couleur": "vert",
+              "type": "comparaison",
+              "figure2": "cercle",
+              "couleur2": "rouge"
+            }
+          ]
+        },
+        {
+          "type": "ni-ni",
+          "figure": "cercle",
+          "couleur": "rouge",
+          "et": [
+            {
+              "figure": "cercle",
+              "couleur": "rouge",
+              "type": "voisin-diagonale",
+              "figure2": "carre",
+              "couleur2": "vert"
+            }
+          ]
+        },
+        {
+          "type": "pas-ligne",
+          "ligne": 0,
+          "figure": "triangle",
+          "couleur": "bleu",
+          "et": [
+            {
+              "figure": "triangle",
+              "couleur": "bleu",
+              "type": "voisin-diagonale",
+              "figure2": "cercle",
+              "couleur2": "rouge"
+            }
+          ]
+        }
+      ],
+      "indices": [
+        {
+          "type": "colonne",
+          "figure": "cercle",
+          "couleur": "rouge",
+          "colonne": 1
+        },
+        {
+          "type": "case",
+          "figure": "cercle",
+          "couleur": "bleu",
+          "case": 5
+        },
+        {
+          "type": "case",
+          "figure": "carre",
+          "couleur": "vert",
+          "case": 6
+        }
+      ],
+      "aide": "Chaque phrase enchaîne plusieurs informations : commence par la figure dont la phrase donne la position, puis suis les relations."
+    },
+    "reponse": {
+      "valeur": "cercle:vert;triangle:rouge;carre:rouge;triangle:vert;cercle:rouge;cercle:bleu;carre:vert;carre:bleu;triangle:bleu",
+      "grille": [
+        [
+          "cercle",
+          "vert"
+        ],
+        [
+          "triangle",
+          "rouge"
+        ],
+        [
+          "carre",
+          "rouge"
+        ],
+        [
+          "triangle",
+          "vert"
+        ],
+        [
+          "cercle",
+          "rouge"
+        ],
+        [
+          "cercle",
+          "bleu"
+        ],
+        [
+          "carre",
+          "vert"
+        ],
+        [
+          "carre",
+          "bleu"
+        ],
+        [
+          "triangle",
+          "bleu"
+        ]
+      ]
+    },
+    "meta": {
+      "auteur": "generation-automatique (tools/generer_deduction.py)",
+      "date_creation": "2026-09-25",
+      "relecture_ortho": {
+        "statut": "a_revoir"
+      }
+    }
+  },
+  {
+    "id": "de-3-12",
+    "type": "grille-deduction",
+    "module": "entrainement",
+    "theme": "deduction",
+    "fonctions_ciblees": [
+      "fonctions-executives",
+      "memoire-travail"
+    ],
+    "palier": 3,
+    "prerequis": [
+      "de-palier-2"
+    ],
+    "cap_complexite": "les phrases suffisent : aucune règle cachée, suivre les chaînes",
+    "contenu": {
+      "consigne": "Place les neuf figures colorées. Deux évidences seulement : chaque figure colorée (un carré bleu, un cercle rouge…) se pose une fois, et une case ne contient qu'une figure. Tout le reste est dans les phrases : suis les chaînes d'une figure à l'autre, note ce qui est certain, barre ce qui devient impossible.",
+      "figures": [
+        "cercle",
+        "carre",
+        "triangle"
+      ],
+      "couleurs": [
+        "rouge",
+        "bleu",
+        "vert"
+      ],
+      "enonces": [
+        {
+          "type": "pas-ligne",
+          "ligne": 2,
+          "figure": "triangle",
+          "couleur": "rouge",
+          "et": [
+            {
+              "figure": "triangle",
+              "couleur": "rouge",
+              "type": "voisin-diagonale",
+              "figure2": "cercle",
+              "couleur2": "vert"
+            }
+          ]
+        },
+        {
+          "type": "pas-diagonale-inverse",
+          "figure": "triangle",
+          "couleur": "bleu",
+          "et": [
+            {
+              "figure": "triangle",
+              "couleur": "bleu",
+              "type": "comparaison",
+              "figure2": "cercle",
+              "couleur2": "rouge"
+            }
+          ]
+        },
+        {
+          "type": "pas-diagonale",
+          "figure": "cercle",
+          "couleur": "vert",
+          "et": [
+            {
+              "figure": "cercle",
+              "couleur": "vert",
+              "type": "comparaison",
+              "figure2": "carre",
+              "couleur2": "rouge"
+            }
+          ]
+        },
+        {
+          "type": "pas-colonne",
+          "colonne": 1,
+          "figure": "carre",
+          "couleur": "rouge",
+          "et": [
+            {
+              "figure": "carre",
+              "couleur": "rouge",
+              "type": "voisin-diagonale",
+              "figure2": "triangle",
+              "couleur2": "rouge"
+            }
+          ]
+        },
+        {
+          "type": "pas-ligne",
+          "ligne": 0,
+          "figure": "carre",
+          "couleur": "bleu",
+          "et": [
+            {
+              "figure": "carre",
+              "couleur": "bleu",
+              "type": "comparaison",
+              "figure2": "cercle",
+              "couleur2": "bleu"
+            }
+          ]
+        },
+        {
+          "type": "pas-ligne",
+          "ligne": 2,
+          "figure": "cercle",
+          "couleur": "rouge",
+          "et": [
+            {
+              "figure": "cercle",
+              "couleur": "rouge",
+              "type": "voisin-diagonale",
+              "figure2": "carre",
+              "couleur2": "vert"
+            }
+          ]
+        },
+        {
+          "type": "ni-ni",
+          "figure": "carre",
+          "couleur": "vert",
+          "et": [
+            {
+              "figure": "carre",
+              "couleur": "vert",
+              "type": "voisin-diagonale",
+              "figure2": "carre",
+              "couleur2": "bleu"
+            }
+          ]
+        },
+        {
+          "type": "pas-coin",
+          "figure": "triangle",
+          "couleur": "vert",
+          "et": [
+            {
+              "figure": "triangle",
+              "couleur": "vert",
+              "type": "comparaison",
+              "figure2": "cercle",
+              "couleur2": "bleu"
+            }
+          ]
+        }
+      ],
+      "indices": [
+        {
+          "type": "colonne",
+          "figure": "cercle",
+          "couleur": "rouge",
+          "colonne": 2
+        },
+        {
+          "type": "case",
+          "figure": "triangle",
+          "couleur": "bleu",
+          "case": 0
+        },
+        {
+          "type": "colonne",
+          "figure": "triangle",
+          "couleur": "vert",
+          "colonne": 1
+        }
+      ],
+      "aide": "Chaque phrase enchaîne plusieurs informations : commence par la figure dont la phrase donne la position, puis suis les relations."
+    },
+    "reponse": {
+      "valeur": "triangle:bleu;triangle:rouge;cercle:rouge;cercle:vert;carre:vert;carre:rouge;carre:bleu;triangle:vert;cercle:bleu",
+      "grille": [
+        [
+          "triangle",
+          "bleu"
+        ],
+        [
+          "triangle",
+          "rouge"
+        ],
+        [
+          "cercle",
+          "rouge"
+        ],
+        [
+          "cercle",
+          "vert"
+        ],
+        [
+          "carre",
+          "vert"
+        ],
+        [
+          "carre",
+          "rouge"
+        ],
+        [
+          "carre",
+          "bleu"
+        ],
+        [
+          "triangle",
+          "vert"
+        ],
+        [
+          "cercle",
+          "bleu"
+        ]
+      ]
+    },
+    "meta": {
+      "auteur": "generation-automatique (tools/generer_deduction.py)",
+      "date_creation": "2026-09-25",
+      "relecture_ortho": {
+        "statut": "a_revoir"
+      }
+    }
+  },
+  {
+    "id": "de-3-13",
+    "type": "grille-deduction",
+    "module": "entrainement",
+    "theme": "deduction",
+    "fonctions_ciblees": [
+      "fonctions-executives",
+      "memoire-travail"
+    ],
+    "palier": 3,
+    "prerequis": [
+      "de-palier-2"
+    ],
+    "cap_complexite": "les phrases suffisent : aucune règle cachée, suivre les chaînes",
+    "contenu": {
+      "consigne": "Place les neuf figures colorées. Deux évidences seulement : chaque figure colorée (un carré bleu, un cercle rouge…) se pose une fois, et une case ne contient qu'une figure. Tout le reste est dans les phrases : suis les chaînes d'une figure à l'autre, note ce qui est certain, barre ce qui devient impossible.",
+      "figures": [
+        "cercle",
+        "carre",
+        "triangle"
+      ],
+      "couleurs": [
+        "rouge",
+        "bleu",
+        "vert"
+      ],
+      "enonces": [
+        {
+          "type": "pas-coin",
+          "figure": "cercle",
+          "couleur": "bleu",
+          "et": [
+            {
+              "figure": "cercle",
+              "couleur": "bleu",
+              "type": "comparaison",
+              "figure2": "triangle",
+              "couleur2": "bleu"
+            }
+          ]
+        },
+        {
+          "type": "ni-ni",
+          "figure": "cercle",
+          "couleur": "vert",
+          "et": [
+            {
+              "figure": "cercle",
+              "couleur": "vert",
+              "type": "voisin-diagonale",
+              "figure2": "triangle",
+              "couleur2": "bleu"
+            }
+          ]
+        },
+        {
+          "type": "pas-coin",
+          "figure": "triangle",
+          "couleur": "rouge",
+          "et": [
+            {
+              "figure": "triangle",
+              "couleur": "rouge",
+              "type": "voisin-diagonale",
+              "figure2": "carre",
+              "couleur2": "rouge"
+            }
+          ]
+        },
+        {
+          "type": "pas-diagonale-inverse",
+          "figure": "carre",
+          "couleur": "bleu",
+          "et": [
+            {
+              "figure": "carre",
+              "couleur": "bleu",
+              "type": "comparaison",
+              "figure2": "carre",
+              "couleur2": "rouge"
+            }
+          ]
+        },
+        {
+          "type": "pas-coin",
+          "figure": "carre",
+          "couleur": "rouge",
+          "et": [
+            {
+              "figure": "carre",
+              "couleur": "rouge",
+              "type": "au-dessus-de",
+              "figure2": "cercle",
+              "couleur2": "vert"
+            }
+          ]
+        },
+        {
+          "type": "pas-coin",
+          "figure": "carre",
+          "couleur": "vert",
+          "et": [
+            {
+              "figure": "carre",
+              "couleur": "vert",
+              "type": "comparaison",
+              "figure2": "cercle",
+              "couleur2": "vert"
+            }
+          ]
+        },
+        {
+          "type": "pas-ligne",
+          "ligne": 2,
+          "figure": "cercle",
+          "couleur": "rouge",
+          "et": [
+            {
+              "figure": "cercle",
+              "couleur": "rouge",
+              "type": "voisin-diagonale",
+              "figure2": "cercle",
+              "couleur2": "vert"
+            }
+          ]
+        },
+        {
+          "type": "pas-diagonale",
+          "figure": "triangle",
+          "couleur": "vert",
+          "et": [
+            {
+              "figure": "triangle",
+              "couleur": "vert",
+              "type": "comparaison",
+              "figure2": "triangle",
+              "couleur2": "bleu"
+            }
+          ]
+        }
+      ],
+      "indices": [
+        {
+          "type": "colonne",
+          "figure": "carre",
+          "couleur": "bleu",
+          "colonne": 0
+        },
+        {
+          "type": "case",
+          "figure": "cercle",
+          "couleur": "bleu",
+          "case": 7
+        },
+        {
+          "type": "colonne",
+          "figure": "cercle",
+          "couleur": "vert",
+          "colonne": 1
+        }
+      ],
+      "aide": "Chaque phrase enchaîne plusieurs informations : commence par la figure dont la phrase donne la position, puis suis les relations."
+    },
+    "reponse": {
+      "valeur": "carre:bleu;carre:rouge;cercle:rouge;carre:vert;cercle:vert;triangle:rouge;triangle:vert;cercle:bleu;triangle:bleu",
+      "grille": [
+        [
+          "carre",
+          "bleu"
+        ],
+        [
+          "carre",
+          "rouge"
+        ],
+        [
+          "cercle",
+          "rouge"
+        ],
+        [
+          "carre",
+          "vert"
+        ],
+        [
+          "cercle",
+          "vert"
+        ],
+        [
+          "triangle",
+          "rouge"
+        ],
+        [
+          "triangle",
+          "vert"
+        ],
+        [
+          "cercle",
+          "bleu"
+        ],
+        [
+          "triangle",
+          "bleu"
+        ]
+      ]
+    },
+    "meta": {
+      "auteur": "generation-automatique (tools/generer_deduction.py)",
+      "date_creation": "2026-09-25",
+      "relecture_ortho": {
+        "statut": "a_revoir"
+      }
+    }
+  },
+  {
+    "id": "de-3-14",
+    "type": "grille-deduction",
+    "module": "entrainement",
+    "theme": "deduction",
+    "fonctions_ciblees": [
+      "fonctions-executives",
+      "memoire-travail"
+    ],
+    "palier": 3,
+    "prerequis": [
+      "de-palier-2"
+    ],
+    "cap_complexite": "les phrases suffisent : aucune règle cachée, suivre les chaînes",
+    "contenu": {
+      "consigne": "Place les neuf figures colorées. Deux évidences seulement : chaque figure colorée (un carré bleu, un cercle rouge…) se pose une fois, et une case ne contient qu'une figure. Tout le reste est dans les phrases : suis les chaînes d'une figure à l'autre, note ce qui est certain, barre ce qui devient impossible.",
+      "figures": [
+        "cercle",
+        "carre",
+        "triangle"
+      ],
+      "couleurs": [
+        "rouge",
+        "bleu",
+        "vert"
+      ],
+      "enonces": [
+        {
+          "type": "pas-colonne",
+          "colonne": 1,
+          "figure": "cercle",
+          "couleur": "vert",
+          "et": [
+            {
+              "figure": "cercle",
+              "couleur": "vert",
+              "type": "comparaison",
+              "figure2": "triangle",
+              "couleur2": "bleu"
+            }
+          ]
+        },
+        {
+          "type": "pas-bord",
+          "figure": "cercle",
+          "couleur": "rouge",
+          "et": [
+            {
+              "figure": "cercle",
+              "couleur": "rouge",
+              "type": "voisin-diagonale",
+              "figure2": "cercle",
+              "couleur2": "vert"
+            }
+          ]
+        },
+        {
+          "type": "pas-diagonale",
+          "figure": "carre",
+          "couleur": "bleu",
+          "et": [
+            {
+              "figure": "carre",
+              "couleur": "bleu",
+              "type": "comparaison",
+              "figure2": "cercle",
+              "couleur2": "bleu"
+            }
+          ]
+        },
+        {
+          "type": "pas-colonne",
+          "colonne": 2,
+          "figure": "carre",
+          "couleur": "rouge",
+          "et": [
+            {
+              "figure": "carre",
+              "couleur": "rouge",
+              "type": "comparaison",
+              "figure2": "carre",
+              "couleur2": "vert"
+            }
+          ]
+        },
+        {
+          "type": "pas-coin",
+          "figure": "triangle",
+          "couleur": "bleu",
+          "et": [
+            {
+              "figure": "triangle",
+              "couleur": "bleu",
+              "type": "comparaison",
+              "figure2": "triangle",
+              "couleur2": "vert"
+            }
+          ]
+        },
+        {
+          "type": "pas-diagonale-inverse",
+          "figure": "carre",
+          "couleur": "bleu",
+          "et": [
+            {
+              "figure": "carre",
+              "couleur": "bleu",
+              "type": "comparaison",
+              "figure2": "cercle",
+              "couleur2": "bleu"
+            }
+          ]
+        },
+        {
+          "type": "pas-ligne",
+          "ligne": 0,
+          "figure": "triangle",
+          "couleur": "vert",
+          "et": [
+            {
+              "figure": "triangle",
+              "couleur": "vert",
+              "type": "voisin-diagonale",
+              "figure2": "cercle",
+              "couleur2": "rouge"
+            }
+          ]
+        },
+        {
+          "type": "pas-ligne",
+          "ligne": 2,
+          "figure": "triangle",
+          "couleur": "rouge",
+          "et": [
+            {
+              "figure": "triangle",
+              "couleur": "rouge",
+              "type": "voisin-diagonale",
+              "figure2": "cercle",
+              "couleur2": "bleu"
+            }
+          ]
+        },
+        {
+          "type": "pas-colonne",
+          "colonne": 1,
+          "figure": "cercle",
+          "couleur": "bleu",
+          "et": [
+            {
+              "figure": "cercle",
+              "couleur": "bleu",
+              "type": "voisin-diagonale",
+              "figure2": "triangle",
+              "couleur2": "bleu"
+            }
+          ]
+        }
+      ],
+      "indices": [
+        {
+          "type": "ligne",
+          "figure": "cercle",
+          "couleur": "bleu",
+          "ligne": 1
+        },
+        {
+          "type": "case",
+          "figure": "triangle",
+          "couleur": "bleu",
+          "case": 7
+        },
+        {
+          "type": "ligne",
+          "figure": "carre",
+          "couleur": "vert",
+          "ligne": 0
+        }
+      ],
+      "aide": "Chaque phrase enchaîne plusieurs informations : commence par la figure dont la phrase donne la position, puis suis les relations."
+    },
+    "reponse": {
+      "valeur": "carre:rouge;triangle:rouge;carre:vert;carre:bleu;cercle:rouge;cercle:bleu;cercle:vert;triangle:bleu;triangle:vert",
+      "grille": [
+        [
+          "carre",
+          "rouge"
+        ],
+        [
+          "triangle",
+          "rouge"
+        ],
+        [
+          "carre",
+          "vert"
+        ],
+        [
+          "carre",
+          "bleu"
+        ],
+        [
+          "cercle",
+          "rouge"
+        ],
+        [
+          "cercle",
+          "bleu"
+        ],
+        [
+          "cercle",
+          "vert"
+        ],
+        [
+          "triangle",
+          "bleu"
+        ],
+        [
+          "triangle",
+          "vert"
+        ]
+      ]
+    },
+    "meta": {
+      "auteur": "generation-automatique (tools/generer_deduction.py)",
+      "date_creation": "2026-09-25",
+      "relecture_ortho": {
+        "statut": "a_revoir"
+      }
+    }
+  },
+  {
+    "id": "de-3-15",
+    "type": "grille-deduction",
+    "module": "entrainement",
+    "theme": "deduction",
+    "fonctions_ciblees": [
+      "fonctions-executives",
+      "memoire-travail"
+    ],
+    "palier": 3,
+    "prerequis": [
+      "de-palier-2"
+    ],
+    "cap_complexite": "les phrases suffisent : aucune règle cachée, suivre les chaînes",
+    "contenu": {
+      "consigne": "Place les neuf figures colorées. Deux évidences seulement : chaque figure colorée (un carré bleu, un cercle rouge…) se pose une fois, et une case ne contient qu'une figure. Tout le reste est dans les phrases : suis les chaînes d'une figure à l'autre, note ce qui est certain, barre ce qui devient impossible.",
+      "figures": [
+        "cercle",
+        "carre",
+        "triangle"
+      ],
+      "couleurs": [
+        "rouge",
+        "bleu",
+        "vert"
+      ],
+      "enonces": [
+        {
+          "type": "pas-diagonale",
+          "figure": "triangle",
+          "couleur": "bleu",
+          "et": [
+            {
+              "figure": "triangle",
+              "couleur": "bleu",
+              "type": "comparaison",
+              "figure2": "cercle",
+              "couleur2": "vert"
+            }
+          ]
+        },
+        {
+          "type": "pas-diagonale-inverse",
+          "figure": "cercle",
+          "couleur": "rouge",
+          "et": [
+            {
+              "figure": "cercle",
+              "couleur": "rouge",
+              "type": "comparaison",
+              "figure2": "carre",
+              "couleur2": "vert"
+            }
+          ]
+        },
+        {
+          "type": "pas-coin",
+          "figure": "cercle",
+          "couleur": "bleu",
+          "et": [
+            {
+              "figure": "cercle",
+              "couleur": "bleu",
+              "type": "voisin-diagonale",
+              "figure2": "cercle",
+              "couleur2": "vert"
+            }
+          ]
+        },
+        {
+          "type": "pas-colonne",
+          "colonne": 1,
+          "figure": "triangle",
+          "couleur": "vert",
+          "et": [
+            {
+              "figure": "triangle",
+              "couleur": "vert",
+              "type": "comparaison",
+              "figure2": "cercle",
+              "couleur2": "rouge"
+            }
+          ]
+        },
+        {
+          "type": "pas-coin",
+          "figure": "carre",
+          "couleur": "bleu",
+          "et": [
+            {
+              "figure": "carre",
+              "couleur": "bleu",
+              "type": "comparaison",
+              "figure2": "triangle",
+              "couleur2": "rouge"
+            }
+          ]
+        },
+        {
+          "type": "pas-bord",
+          "figure": "triangle",
+          "couleur": "rouge",
+          "et": [
+            {
+              "figure": "triangle",
+              "couleur": "rouge",
+              "type": "voisin-diagonale",
+              "figure2": "triangle",
+              "couleur2": "vert"
+            }
+          ]
+        },
+        {
+          "type": "pas-ligne",
+          "ligne": 2,
+          "figure": "carre",
+          "couleur": "vert",
+          "et": [
+            {
+              "figure": "carre",
+              "couleur": "vert",
+              "type": "voisin-diagonale",
+              "figure2": "triangle",
+              "couleur2": "rouge"
+            }
+          ]
+        },
+        {
+          "type": "pas-coin",
+          "figure": "cercle",
+          "couleur": "vert",
+          "et": [
+            {
+              "figure": "cercle",
+              "couleur": "vert",
+              "type": "en-dessous-de",
+              "figure2": "triangle",
+              "couleur2": "rouge"
+            }
+          ]
+        }
+      ],
+      "indices": [
+        {
+          "type": "case",
+          "figure": "cercle",
+          "couleur": "bleu",
+          "case": 5
+        },
+        {
+          "type": "case",
+          "figure": "carre",
+          "couleur": "vert",
+          "case": 2
+        },
+        {
+          "type": "ligne",
+          "figure": "carre",
+          "couleur": "bleu",
+          "ligne": 1
+        }
+      ],
+      "aide": "Chaque phrase enchaîne plusieurs informations : commence par la figure dont la phrase donne la position, puis suis les relations."
+    },
+    "reponse": {
+      "valeur": "triangle:vert;cercle:rouge;carre:vert;carre:bleu;triangle:rouge;cercle:bleu;triangle:bleu;cercle:vert;carre:rouge",
+      "grille": [
+        [
+          "triangle",
+          "vert"
+        ],
+        [
+          "cercle",
+          "rouge"
+        ],
+        [
+          "carre",
+          "vert"
+        ],
+        [
+          "carre",
+          "bleu"
+        ],
+        [
+          "triangle",
+          "rouge"
+        ],
+        [
+          "cercle",
+          "bleu"
+        ],
+        [
+          "triangle",
+          "bleu"
+        ],
+        [
+          "cercle",
+          "vert"
+        ],
+        [
+          "carre",
+          "rouge"
+        ]
+      ]
+    },
+    "meta": {
+      "auteur": "generation-automatique (tools/generer_deduction.py)",
+      "date_creation": "2026-09-25",
+      "relecture_ortho": {
+        "statut": "a_revoir"
+      }
+    }
+  },
+  {
+    "id": "de-3-16",
+    "type": "grille-deduction",
+    "module": "entrainement",
+    "theme": "deduction",
+    "fonctions_ciblees": [
+      "fonctions-executives",
+      "memoire-travail"
+    ],
+    "palier": 3,
+    "prerequis": [
+      "de-palier-2"
+    ],
+    "cap_complexite": "les phrases suffisent : aucune règle cachée, suivre les chaînes",
+    "contenu": {
+      "consigne": "Place les neuf figures colorées. Deux évidences seulement : chaque figure colorée (un carré bleu, un cercle rouge…) se pose une fois, et une case ne contient qu'une figure. Tout le reste est dans les phrases : suis les chaînes d'une figure à l'autre, note ce qui est certain, barre ce qui devient impossible.",
+      "figures": [
+        "cercle",
+        "carre",
+        "triangle"
+      ],
+      "couleurs": [
+        "rouge",
+        "bleu",
+        "vert"
+      ],
+      "enonces": [
+        {
+          "type": "pas-diagonale-inverse",
+          "figure": "triangle",
+          "couleur": "rouge",
+          "et": [
+            {
+              "figure": "triangle",
+              "couleur": "rouge",
+              "type": "comparaison",
+              "figure2": "triangle",
+              "couleur2": "bleu"
+            }
+          ]
+        },
+        {
+          "type": "pas-coin",
+          "figure": "triangle",
+          "couleur": "vert",
+          "et": [
+            {
+              "figure": "triangle",
+              "couleur": "vert",
+              "type": "comparaison",
+              "figure2": "carre",
+              "couleur2": "rouge"
+            }
+          ]
+        },
+        {
+          "type": "pas-colonne",
+          "colonne": 1,
+          "figure": "triangle",
+          "couleur": "bleu",
+          "et": [
+            {
+              "figure": "triangle",
+              "couleur": "bleu",
+              "type": "voisin-diagonale",
+              "figure2": "carre",
+              "couleur2": "vert"
+            }
+          ]
+        },
+        {
+          "type": "pas-ligne",
+          "ligne": 1,
+          "figure": "carre",
+          "couleur": "bleu",
+          "et": [
+            {
+              "figure": "carre",
+              "couleur": "bleu",
+              "type": "comparaison",
+              "figure2": "triangle",
+              "couleur2": "vert"
+            }
+          ]
+        },
+        {
+          "type": "pas-ligne",
+          "ligne": 0,
+          "figure": "carre",
+          "couleur": "vert",
+          "et": [
+            {
+              "figure": "carre",
+              "couleur": "vert",
+              "type": "comparaison",
+              "figure2": "cercle",
+              "couleur2": "vert"
+            }
+          ]
+        },
+        {
+          "type": "pas-ligne",
+          "ligne": 2,
+          "figure": "carre",
+          "couleur": "rouge",
+          "et": [
+            {
+              "figure": "carre",
+              "couleur": "rouge",
+              "type": "voisin-diagonale",
+              "figure2": "cercle",
+              "couleur2": "bleu"
+            }
+          ]
+        },
+        {
+          "type": "ni-ni",
+          "figure": "cercle",
+          "couleur": "bleu",
+          "et": [
+            {
+              "figure": "cercle",
+              "couleur": "bleu",
+              "type": "voisin-diagonale",
+              "figure2": "carre",
+              "couleur2": "bleu"
+            }
+          ]
+        },
+        {
+          "type": "pas-diagonale",
+          "figure": "cercle",
+          "couleur": "rouge",
+          "et": [
+            {
+              "figure": "cercle",
+              "couleur": "rouge",
+              "type": "comparaison",
+              "figure2": "carre",
+              "couleur2": "vert"
+            }
+          ]
+        }
+      ],
+      "indices": [
+        {
+          "type": "case",
+          "figure": "carre",
+          "couleur": "rouge",
+          "case": 2
+        },
+        {
+          "type": "ligne",
+          "figure": "triangle",
+          "couleur": "bleu",
+          "ligne": 1
+        },
+        {
+          "type": "ligne",
+          "figure": "carre",
+          "couleur": "bleu",
+          "ligne": 0
+        }
+      ],
+      "aide": "Chaque phrase enchaîne plusieurs informations : commence par la figure dont la phrase donne la position, puis suis les relations."
+    },
+    "reponse": {
+      "valeur": "carre:bleu;triangle:vert;carre:rouge;triangle:rouge;cercle:bleu;triangle:bleu;cercle:rouge;carre:vert;cercle:vert",
+      "grille": [
+        [
+          "carre",
+          "bleu"
+        ],
+        [
+          "triangle",
+          "vert"
+        ],
+        [
+          "carre",
+          "rouge"
+        ],
+        [
+          "triangle",
+          "rouge"
+        ],
+        [
+          "cercle",
+          "bleu"
+        ],
+        [
+          "triangle",
+          "bleu"
+        ],
+        [
+          "cercle",
+          "rouge"
+        ],
+        [
+          "carre",
+          "vert"
+        ],
+        [
+          "cercle",
+          "vert"
+        ]
+      ]
+    },
+    "meta": {
+      "auteur": "generation-automatique (tools/generer_deduction.py)",
+      "date_creation": "2026-09-25",
+      "relecture_ortho": {
+        "statut": "a_revoir"
+      }
+    }
+  },
+  {
+    "id": "de-3-17",
+    "type": "grille-deduction",
+    "module": "entrainement",
+    "theme": "deduction",
+    "fonctions_ciblees": [
+      "fonctions-executives",
+      "memoire-travail"
+    ],
+    "palier": 3,
+    "prerequis": [
+      "de-palier-2"
+    ],
+    "cap_complexite": "les phrases suffisent : aucune règle cachée, suivre les chaînes",
+    "contenu": {
+      "consigne": "Place les neuf figures colorées. Deux évidences seulement : chaque figure colorée (un carré bleu, un cercle rouge…) se pose une fois, et une case ne contient qu'une figure. Tout le reste est dans les phrases : suis les chaînes d'une figure à l'autre, note ce qui est certain, barre ce qui devient impossible.",
+      "figures": [
+        "cercle",
+        "carre",
+        "triangle"
+      ],
+      "couleurs": [
+        "rouge",
+        "bleu",
+        "vert"
+      ],
+      "enonces": [
+        {
+          "type": "pas-diagonale-inverse",
+          "figure": "cercle",
+          "couleur": "vert",
+          "et": [
+            {
+              "figure": "cercle",
+              "couleur": "vert",
+              "type": "comparaison",
+              "figure2": "cercle",
+              "couleur2": "bleu"
+            }
+          ]
+        },
+        {
+          "type": "pas-diagonale",
+          "figure": "cercle",
+          "couleur": "bleu",
+          "et": [
+            {
+              "figure": "cercle",
+              "couleur": "bleu",
+              "type": "voisin-diagonale",
+              "figure2": "triangle",
+              "couleur2": "vert"
+            }
+          ]
+        },
+        {
+          "type": "pas-diagonale-inverse",
+          "figure": "carre",
+          "couleur": "bleu",
+          "et": [
+            {
+              "figure": "carre",
+              "couleur": "bleu",
+              "type": "comparaison",
+              "figure2": "cercle",
+              "couleur2": "vert"
+            }
+          ]
+        },
+        {
+          "type": "pas-bord",
+          "figure": "triangle",
+          "couleur": "vert",
+          "et": [
+            {
+              "figure": "triangle",
+              "couleur": "vert",
+              "type": "voisin-diagonale",
+              "figure2": "cercle",
+              "couleur2": "rouge"
+            }
+          ]
+        },
+        {
+          "type": "pas-ligne",
+          "ligne": 2,
+          "figure": "triangle",
+          "couleur": "rouge",
+          "et": [
+            {
+              "figure": "triangle",
+              "couleur": "rouge",
+              "type": "voisin-diagonale",
+              "figure2": "cercle",
+              "couleur2": "vert"
+            }
+          ]
+        },
+        {
+          "type": "pas-ligne",
+          "ligne": 0,
+          "figure": "carre",
+          "couleur": "vert",
+          "et": [
+            {
+              "figure": "carre",
+              "couleur": "vert",
+              "type": "voisin-diagonale",
+              "figure2": "triangle",
+              "couleur2": "bleu"
+            }
+          ]
+        },
+        {
+          "type": "pas-diagonale",
+          "figure": "triangle",
+          "couleur": "bleu",
+          "et": [
+            {
+              "figure": "triangle",
+              "couleur": "bleu",
+              "type": "comparaison",
+              "figure2": "triangle",
+              "couleur2": "rouge"
+            }
+          ]
+        },
+        {
+          "type": "pas-colonne",
+          "colonne": 2,
+          "figure": "cercle",
+          "couleur": "rouge",
+          "et": [
+            {
+              "figure": "cercle",
+              "couleur": "rouge",
+              "type": "comparaison",
+              "figure2": "carre",
+              "couleur2": "rouge"
+            }
+          ]
+        }
+      ],
+      "indices": [
+        {
+          "type": "case",
+          "figure": "triangle",
+          "couleur": "bleu",
+          "case": 3
+        },
+        {
+          "type": "ligne",
+          "figure": "cercle",
+          "couleur": "rouge",
+          "ligne": 2
+        },
+        {
+          "type": "case",
+          "figure": "triangle",
+          "couleur": "vert",
+          "case": 4
+        }
+      ],
+      "aide": "Chaque phrase enchaîne plusieurs informations : commence par la figure dont la phrase donne la position, puis suis les relations."
+    },
+    "reponse": {
+      "valeur": "carre:bleu;cercle:vert;cercle:bleu;triangle:bleu;triangle:vert;triangle:rouge;cercle:rouge;carre:vert;carre:rouge",
+      "grille": [
+        [
+          "carre",
+          "bleu"
+        ],
+        [
+          "cercle",
+          "vert"
+        ],
+        [
+          "cercle",
+          "bleu"
+        ],
+        [
+          "triangle",
+          "bleu"
+        ],
+        [
+          "triangle",
+          "vert"
+        ],
+        [
+          "triangle",
+          "rouge"
+        ],
+        [
+          "cercle",
+          "rouge"
+        ],
+        [
+          "carre",
+          "vert"
+        ],
+        [
+          "carre",
+          "rouge"
+        ]
+      ]
+    },
+    "meta": {
+      "auteur": "generation-automatique (tools/generer_deduction.py)",
+      "date_creation": "2026-09-25",
+      "relecture_ortho": {
+        "statut": "a_revoir"
+      }
+    }
+  },
+  {
+    "id": "de-3-18",
+    "type": "grille-deduction",
+    "module": "entrainement",
+    "theme": "deduction",
+    "fonctions_ciblees": [
+      "fonctions-executives",
+      "memoire-travail"
+    ],
+    "palier": 3,
+    "prerequis": [
+      "de-palier-2"
+    ],
+    "cap_complexite": "les phrases suffisent : aucune règle cachée, suivre les chaînes",
+    "contenu": {
+      "consigne": "Place les neuf figures colorées. Deux évidences seulement : chaque figure colorée (un carré bleu, un cercle rouge…) se pose une fois, et une case ne contient qu'une figure. Tout le reste est dans les phrases : suis les chaînes d'une figure à l'autre, note ce qui est certain, barre ce qui devient impossible.",
+      "figures": [
+        "cercle",
+        "carre",
+        "triangle"
+      ],
+      "couleurs": [
+        "rouge",
+        "bleu",
+        "vert"
+      ],
+      "enonces": [
+        {
+          "type": "pas-ligne",
+          "ligne": 0,
+          "figure": "carre",
+          "couleur": "rouge",
+          "et": [
+            {
+              "figure": "carre",
+              "couleur": "rouge",
+              "type": "voisin-diagonale",
+              "figure2": "triangle",
+              "couleur2": "rouge"
+            }
+          ]
+        },
+        {
+          "type": "pas-ligne",
+          "ligne": 1,
+          "figure": "cercle",
+          "couleur": "bleu",
+          "et": [
+            {
+              "figure": "cercle",
+              "couleur": "bleu",
+              "type": "comparaison",
+              "figure2": "carre",
+              "couleur2": "vert"
+            }
+          ]
+        },
+        {
+          "type": "pas-coin",
+          "figure": "cercle",
+          "couleur": "rouge",
+          "et": [
+            {
+              "figure": "cercle",
+              "couleur": "rouge",
+              "type": "voisin-diagonale",
+              "figure2": "carre",
+              "couleur2": "vert"
+            }
+          ]
+        },
+        {
+          "type": "pas-coin",
+          "figure": "carre",
+          "couleur": "bleu",
+          "et": [
+            {
+              "figure": "carre",
+              "couleur": "bleu",
+              "type": "en-dessous-de",
+              "figure2": "triangle",
+              "couleur2": "rouge"
+            }
+          ]
+        },
+        {
+          "type": "pas-diagonale",
+          "figure": "triangle",
+          "couleur": "bleu",
+          "et": [
+            {
+              "figure": "triangle",
+              "couleur": "bleu",
+              "type": "comparaison",
+              "figure2": "carre",
+              "couleur2": "bleu"
+            }
+          ]
+        },
+        {
+          "type": "pas-coin",
+          "figure": "triangle",
+          "couleur": "vert",
+          "et": [
+            {
+              "figure": "triangle",
+              "couleur": "vert",
+              "type": "comparaison",
+              "figure2": "triangle",
+              "couleur2": "rouge"
+            }
+          ]
+        },
+        {
+          "type": "ni-ni",
+          "figure": "triangle",
+          "couleur": "rouge",
+          "et": [
+            {
+              "figure": "triangle",
+              "couleur": "rouge",
+              "type": "voisin-diagonale",
+              "figure2": "cercle",
+              "couleur2": "bleu"
+            }
+          ]
+        },
+        {
+          "type": "pas-diagonale-inverse",
+          "figure": "carre",
+          "couleur": "vert",
+          "et": [
+            {
+              "figure": "carre",
+              "couleur": "vert",
+              "type": "comparaison",
+              "figure2": "cercle",
+              "couleur2": "vert"
+            }
+          ]
+        }
+      ],
+      "indices": [
+        {
+          "type": "case",
+          "figure": "cercle",
+          "couleur": "vert",
+          "case": 2
+        },
+        {
+          "type": "colonne",
+          "figure": "triangle",
+          "couleur": "rouge",
+          "colonne": 1
+        },
+        {
+          "type": "ligne",
+          "figure": "carre",
+          "couleur": "rouge",
+          "ligne": 2
+        }
+      ],
+      "aide": "Chaque phrase enchaîne plusieurs informations : commence par la figure dont la phrase donne la position, puis suis les relations."
+    },
+    "reponse": {
+      "valeur": "cercle:bleu;carre:vert;cercle:vert;triangle:vert;triangle:rouge;cercle:rouge;triangle:bleu;carre:bleu;carre:rouge",
+      "grille": [
+        [
+          "cercle",
+          "bleu"
+        ],
+        [
+          "carre",
+          "vert"
+        ],
+        [
+          "cercle",
+          "vert"
+        ],
+        [
+          "triangle",
+          "vert"
+        ],
+        [
+          "triangle",
+          "rouge"
+        ],
+        [
+          "cercle",
+          "rouge"
+        ],
+        [
+          "triangle",
+          "bleu"
+        ],
+        [
+          "carre",
+          "bleu"
+        ],
+        [
+          "carre",
+          "rouge"
+        ]
+      ]
+    },
+    "meta": {
+      "auteur": "generation-automatique (tools/generer_deduction.py)",
+      "date_creation": "2026-09-25",
+      "relecture_ortho": {
+        "statut": "a_revoir"
+      }
+    }
+  },
+  {
+    "id": "de-3-19",
+    "type": "grille-deduction",
+    "module": "entrainement",
+    "theme": "deduction",
+    "fonctions_ciblees": [
+      "fonctions-executives",
+      "memoire-travail"
+    ],
+    "palier": 3,
+    "prerequis": [
+      "de-palier-2"
+    ],
+    "cap_complexite": "les phrases suffisent : aucune règle cachée, suivre les chaînes",
+    "contenu": {
+      "consigne": "Place les neuf figures colorées. Deux évidences seulement : chaque figure colorée (un carré bleu, un cercle rouge…) se pose une fois, et une case ne contient qu'une figure. Tout le reste est dans les phrases : suis les chaînes d'une figure à l'autre, note ce qui est certain, barre ce qui devient impossible.",
+      "figures": [
+        "cercle",
+        "carre",
+        "triangle"
+      ],
+      "couleurs": [
+        "rouge",
+        "bleu",
+        "vert"
+      ],
+      "enonces": [
+        {
+          "type": "pas-ligne",
+          "ligne": 2,
+          "figure": "triangle",
+          "couleur": "vert",
+          "et": [
+            {
+              "figure": "triangle",
+              "couleur": "vert",
+              "type": "comparaison",
+              "figure2": "triangle",
+              "couleur2": "rouge"
+            }
+          ]
+        },
+        {
+          "type": "pas-diagonale-inverse",
+          "figure": "carre",
+          "couleur": "rouge",
+          "et": [
+            {
+              "figure": "carre",
+              "couleur": "rouge",
+              "type": "comparaison",
+              "figure2": "triangle",
+              "couleur2": "vert"
+            }
+          ]
+        },
+        {
+          "type": "pas-bord",
+          "figure": "carre",
+          "couleur": "vert",
+          "et": [
+            {
+              "figure": "carre",
+              "couleur": "vert",
+              "type": "voisin-diagonale",
+              "figure2": "triangle",
+              "couleur2": "rouge"
+            }
+          ]
+        },
+        {
+          "type": "pas-diagonale-inverse",
+          "figure": "carre",
+          "couleur": "bleu",
+          "et": [
+            {
+              "figure": "carre",
+              "couleur": "bleu",
+              "type": "voisin-diagonale",
+              "figure2": "carre",
+              "couleur2": "vert"
+            }
+          ]
+        },
+        {
+          "type": "pas-colonne",
+          "colonne": 1,
+          "figure": "cercle",
+          "couleur": "rouge",
+          "et": [
+            {
+              "figure": "cercle",
+              "couleur": "rouge",
+              "type": "voisin-diagonale",
+              "figure2": "triangle",
+              "couleur2": "vert"
+            }
+          ]
+        },
+        {
+          "type": "pas-diagonale",
+          "figure": "cercle",
+          "couleur": "vert",
+          "et": [
+            {
+              "figure": "cercle",
+              "couleur": "vert",
+              "type": "comparaison",
+              "figure2": "cercle",
+              "couleur2": "rouge"
+            }
+          ]
+        },
+        {
+          "type": "pas-colonne",
+          "colonne": 2,
+          "figure": "triangle",
+          "couleur": "bleu",
+          "et": [
+            {
+              "figure": "triangle",
+              "couleur": "bleu",
+              "type": "comparaison",
+              "figure2": "carre",
+              "couleur2": "bleu"
+            }
+          ]
+        },
+        {
+          "type": "pas-coin",
+          "figure": "cercle",
+          "couleur": "bleu",
+          "et": [
+            {
+              "figure": "cercle",
+              "couleur": "bleu",
+              "type": "comparaison",
+              "figure2": "carre",
+              "couleur2": "bleu"
+            }
+          ]
+        }
+      ],
+      "indices": [
+        {
+          "type": "ligne",
+          "figure": "triangle",
+          "couleur": "rouge",
+          "ligne": 0
+        },
+        {
+          "type": "case",
+          "figure": "carre",
+          "couleur": "rouge",
+          "case": 0
+        },
+        {
+          "type": "colonne",
+          "figure": "carre",
+          "couleur": "vert",
+          "colonne": 1
+        }
+      ],
+      "aide": "Chaque phrase enchaîne plusieurs informations : commence par la figure dont la phrase donne la position, puis suis les relations."
+    },
+    "reponse": {
+      "valeur": "carre:rouge;triangle:vert;triangle:rouge;cercle:vert;carre:vert;cercle:rouge;triangle:bleu;cercle:bleu;carre:bleu",
+      "grille": [
+        [
+          "carre",
+          "rouge"
+        ],
+        [
+          "triangle",
+          "vert"
+        ],
+        [
+          "triangle",
+          "rouge"
+        ],
+        [
+          "cercle",
+          "vert"
+        ],
+        [
+          "carre",
+          "vert"
+        ],
+        [
+          "cercle",
+          "rouge"
+        ],
+        [
+          "triangle",
+          "bleu"
+        ],
+        [
+          "cercle",
+          "bleu"
+        ],
+        [
+          "carre",
+          "bleu"
+        ]
+      ]
+    },
+    "meta": {
+      "auteur": "generation-automatique (tools/generer_deduction.py)",
+      "date_creation": "2026-09-25",
+      "relecture_ortho": {
+        "statut": "a_revoir"
+      }
+    }
+  },
+  {
+    "id": "de-3-20",
+    "type": "grille-deduction",
+    "module": "entrainement",
+    "theme": "deduction",
+    "fonctions_ciblees": [
+      "fonctions-executives",
+      "memoire-travail"
+    ],
+    "palier": 3,
+    "prerequis": [
+      "de-palier-2"
+    ],
+    "cap_complexite": "les phrases suffisent : aucune règle cachée, suivre les chaînes",
+    "contenu": {
+      "consigne": "Place les neuf figures colorées. Deux évidences seulement : chaque figure colorée (un carré bleu, un cercle rouge…) se pose une fois, et une case ne contient qu'une figure. Tout le reste est dans les phrases : suis les chaînes d'une figure à l'autre, note ce qui est certain, barre ce qui devient impossible.",
+      "figures": [
+        "cercle",
+        "carre",
+        "triangle"
+      ],
+      "couleurs": [
+        "rouge",
+        "bleu",
+        "vert"
+      ],
+      "enonces": [
+        {
+          "type": "pas-diagonale",
+          "figure": "carre",
+          "couleur": "vert",
+          "et": [
+            {
+              "figure": "carre",
+              "couleur": "vert",
+              "type": "voisin-diagonale",
+              "figure2": "carre",
+              "couleur2": "bleu"
+            }
+          ]
+        },
+        {
+          "type": "ni-ni",
+          "figure": "carre",
+          "couleur": "bleu",
+          "et": [
+            {
+              "figure": "carre",
+              "couleur": "bleu",
+              "type": "voisin-diagonale",
+              "figure2": "carre",
+              "couleur2": "vert"
+            }
+          ]
+        },
+        {
+          "type": "pas-coin",
+          "figure": "triangle",
+          "couleur": "vert",
+          "et": [
+            {
+              "figure": "triangle",
+              "couleur": "vert",
+              "type": "comparaison",
+              "figure2": "carre",
+              "couleur2": "bleu"
+            }
+          ]
+        },
+        {
+          "type": "pas-coin",
+          "figure": "cercle",
+          "couleur": "bleu",
+          "et": [
+            {
+              "figure": "cercle",
+              "couleur": "bleu",
+              "type": "au-dessus-de",
+              "figure2": "carre",
+              "couleur2": "bleu"
+            }
+          ]
+        },
+        {
+          "type": "pas-coin",
+          "figure": "cercle",
+          "couleur": "vert",
+          "et": [
+            {
+              "figure": "cercle",
+              "couleur": "vert",
+              "type": "comparaison",
+              "figure2": "triangle",
+              "couleur2": "bleu"
+            }
+          ]
+        },
+        {
+          "type": "pas-diagonale-inverse",
+          "figure": "triangle",
+          "couleur": "rouge",
+          "et": [
+            {
+              "figure": "triangle",
+              "couleur": "rouge",
+              "type": "comparaison",
+              "figure2": "cercle",
+              "couleur2": "bleu"
+            }
+          ]
+        },
+        {
+          "type": "pas-diagonale",
+          "figure": "carre",
+          "couleur": "rouge",
+          "et": [
+            {
+              "figure": "carre",
+              "couleur": "rouge",
+              "type": "comparaison",
+              "figure2": "triangle",
+              "couleur2": "bleu"
+            }
+          ]
+        },
+        {
+          "type": "pas-coin",
+          "figure": "cercle",
+          "couleur": "rouge",
+          "et": [
+            {
+              "figure": "cercle",
+              "couleur": "rouge",
+              "type": "voisin-diagonale",
+              "figure2": "cercle",
+              "couleur2": "vert"
+            }
+          ]
+        }
+      ],
+      "indices": [
+        {
+          "type": "case",
+          "figure": "triangle",
+          "couleur": "vert",
+          "case": 3
+        },
+        {
+          "type": "case",
+          "figure": "carre",
+          "couleur": "bleu",
+          "case": 4
+        },
+        {
+          "type": "colonne",
+          "figure": "cercle",
+          "couleur": "rouge",
+          "colonne": 2
+        }
+      ],
+      "aide": "Chaque phrase enchaîne plusieurs informations : commence par la figure dont la phrase donne la position, puis suis les relations."
+    },
+    "reponse": {
+      "valeur": "triangle:rouge;cercle:bleu;carre:vert;triangle:vert;carre:bleu;cercle:rouge;carre:rouge;cercle:vert;triangle:bleu",
+      "grille": [
+        [
+          "triangle",
+          "rouge"
+        ],
+        [
+          "cercle",
+          "bleu"
+        ],
+        [
+          "carre",
+          "vert"
+        ],
+        [
+          "triangle",
+          "vert"
+        ],
+        [
+          "carre",
+          "bleu"
+        ],
+        [
+          "cercle",
+          "rouge"
+        ],
+        [
+          "carre",
+          "rouge"
+        ],
+        [
+          "cercle",
+          "vert"
+        ],
+        [
+          "triangle",
+          "bleu"
+        ]
+      ]
+    },
+    "meta": {
+      "auteur": "generation-automatique (tools/generer_deduction.py)",
+      "date_creation": "2026-09-25",
+      "relecture_ortho": {
+        "statut": "a_revoir"
+      }
+    }
+  }
+]
