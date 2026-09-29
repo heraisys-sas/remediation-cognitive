@@ -7,13 +7,19 @@ from pathlib import Path
 sys.path.insert(0, str(Path(__file__).resolve().parents[2] / "tools"))
 from deduction_commun import (  # noqa: E402
     PALIERS_RECOUPMENT_BLOQUANT,
-    _vrai_binaire,
-    phrases_qui_fixent_seules,
-    rang_premiere_certitude,
     TYPES_BINAIRES,
+    TYPES_UNAIRES,
+    _vrai_binaire,
+    _vrai_unaire,
+    informations_autonomes,
+    phrases_qui_fixent_seules,
+    positions_forcees_phrase,
     pred_indice,
+    propager,
+    rang_premiere_certitude,
     resoudre_par_deduction,
 )
+import mesurer_difficulte  # noqa: E402
 
 from backend.app.domain.contenu import ChargeurContenu  # noqa: E402
 
@@ -225,3 +231,203 @@ def test_grilles_solubles_par_deduction_et_solutions_distinctes():
 
     assert len(solutions) == len(items), "deux grilles partagent la même solution"
     assert len(items) >= 80, "stock insuffisant pour un entraînement de trois mois"
+
+# --------------------------------------------------------------------------- #
+# Preuve exacte du « fixe seule » et réparation par scission — correction du
+# défaut C, 2026-09-29. Tests INDÉPENDANTS : reproduction du cas df-3-03,
+# propagation inverse et unicité, retrait réel des informations (ancre comprise)
+# sans mutation, distinction rang de lecture / support, et contrôle par
+# énumération brute de TOUT le contenu des paliers 2 à 4.
+# --------------------------------------------------------------------------- #
+
+FIGURES3 = ["cercle", "carre", "triangle"]
+COULEURS3 = ["rouge", "bleu", "vert"]
+
+
+def _phrase_solo_df_3_03() -> dict:
+    """Première phrase de l'ex-df-3-03, reconstruite indépendamment du contenu."""
+    return {
+        "type": "diagonale", "figure": "triangle", "couleur": "rouge",
+        "et": [
+            {"figure": "triangle", "couleur": "rouge", "type": "oppose",
+             "figure2": "cercle", "couleur2": "bleu"},
+            {"figure": "cercle", "couleur": "bleu", "type": "comparaison",
+             "figure2": "cercle", "couleur2": "rouge"},
+        ],
+    }
+
+
+def test_reproduction_df_3_03_la_phrase_seule_fixe_les_cases_0_et_8():
+    """Reproduction du faux « zéro solo » : cette phrase, prise SEULE, fixe deux
+    positions — le triangle rouge en case 8 et le cercle bleu en case 0 (le
+    centre est exclu : deux jetons ne partagent pas une case). La propagation à
+    sens unique de l'ancienne détection ne le voyait pas."""
+    phrase = _phrase_solo_df_3_03()
+    assert positions_forcees_phrase(phrase, 3) == {
+        ("triangle", "rouge"): 8, ("cercle", "bleu"): 0}
+    assert phrases_qui_fixent_seules([phrase], 3, FIGURES3, COULEURS3) == [0]
+
+
+def test_la_scission_rend_chaque_chaine_inoffensive_seule():
+    """La réparation scinde la phrase solo en deux chaînes de deux informations,
+    [ancre + oppose] et [oppose + comparaison] : aucune ne fixe seule une
+    position — c'est leur croisement qui retrouve les cases 0 et 8."""
+    infos = informations_autonomes(_phrase_solo_df_3_03())
+    assert [a["type"] for a in infos] == ["diagonale", "oppose", "comparaison"]
+    premiere = {**infos[0], "et": [dict(infos[1])]}
+    seconde = {**infos[1], "et": [dict(infos[2])]}
+    assert phrases_qui_fixent_seules([premiere], 3, FIGURES3, COULEURS3) == []
+    assert phrases_qui_fixent_seules([seconde], 3, FIGURES3, COULEURS3) == []
+
+
+def test_propagation_inverse_et_unicite_des_cases():
+    """La propagation binaire réduit les DEUX extrémités de la relation ;
+    deux jetons ne partagent jamais une case."""
+    phrases = [
+        {"type": "coin", "figure": "cercle", "couleur": "rouge"},
+        {"type": "voisin-gauche", "figure": "cercle", "couleur": "rouge",
+         "figure2": "carre", "couleur2": "rouge"},
+    ]
+    domaines = propager(phrases, 3, FIGURES3, COULEURS3)
+    assert domaines is not None
+    cr = (FIGURES3.index("cercle"), COULEURS3.index("rouge"))
+    kr = (FIGURES3.index("carre"), COULEURS3.index("rouge"))
+    assert {c for c, d in enumerate(domaines) if cr in d} == {0, 6}
+    assert {c for c, d in enumerate(domaines) if kr in d} == {1, 7}
+
+    # Unicité : deux jetons ne peuvent pas occuper la même case.
+    assert propager([
+        {"type": "case", "figure": "cercle", "couleur": "rouge", "case": 4},
+        {"type": "case", "figure": "carre", "couleur": "rouge", "case": 4},
+    ], 3, FIGURES3, COULEURS3) is None
+
+    # Le centre est exclu d'un « à l'opposé » : il faudrait y mettre les deux.
+    domaines = propager([
+        {"type": "oppose", "figure": "cercle", "couleur": "rouge",
+         "figure2": "carre", "couleur2": "rouge"},
+    ], 3, FIGURES3, COULEURS3)
+    assert 4 not in {c for c, d in enumerate(domaines) if cr in d}
+    assert 4 not in {c for c, d in enumerate(domaines) if kr in d}
+
+
+def test_retrait_reel_derniere_sous_info_et_ancre_sans_mutation():
+    """La mesure retire VRAIMENT chaque information — la dernière sous-information
+    comprise (l'ancienne copie gardait le champ « et » et ne retirait rien) — et
+    l'ancre est testée comme les autres. Aucune mutation des phrases au passage."""
+    # (1) Tout est retirable un à un : chaque retrait laisse la grille déterminée
+    # (le jeton libéré retrouve la seule case restante) — 9 retraits comptés,
+    # l'ancre de la première phrase comprise : elle n'était jamais testée avant.
+    toutes_retirables = [
+        {"type": "case", "figure": "cercle", "couleur": "rouge", "case": 0,
+         "et": [{"figure": "carre", "couleur": "rouge", "type": "case", "case": 1}]},
+        {"type": "case", "figure": "carre", "couleur": "bleu", "case": 2},
+        {"type": "case", "figure": "carre", "couleur": "vert", "case": 3},
+        {"type": "case", "figure": "triangle", "couleur": "rouge", "case": 4},
+        {"type": "case", "figure": "triangle", "couleur": "bleu", "case": 5},
+        {"type": "case", "figure": "triangle", "couleur": "vert", "case": 6},
+        {"type": "case", "figure": "cercle", "couleur": "bleu", "case": 7},
+        {"type": "case", "figure": "cercle", "couleur": "vert", "case": 8},
+    ]
+    assert resoudre_par_deduction(toutes_retirables, 3, FIGURES3, COULEURS3)
+    assert mesurer_difficulte._retirables_internes(
+        toutes_retirables, 3, FIGURES3, COULEURS3) == 9
+
+    # (2) Une relation essentielle (deux jetons se partagent les dernières cases,
+    # départagés par « plus à droite que ») : la retirer casse réellement la
+    # détermination — elle n'est donc pas comptée. L'ancien faux retrait (copie
+    # gardant « et ») l'aurait comptée à tort sans rien retirer.
+    essentielle = [
+        {"type": "case", "figure": "cercle", "couleur": "rouge", "case": 0,
+         "et": [{"figure": "carre", "couleur": "rouge", "type": "a-droite-de",
+                 "figure2": "cercle", "couleur2": "vert"}]},
+        {"type": "case", "figure": "carre", "couleur": "bleu", "case": 2},
+        {"type": "case", "figure": "carre", "couleur": "vert", "case": 3},
+        {"type": "case", "figure": "triangle", "couleur": "rouge", "case": 4},
+        {"type": "case", "figure": "triangle", "couleur": "bleu", "case": 5},
+        {"type": "case", "figure": "triangle", "couleur": "vert", "case": 6},
+        {"type": "case", "figure": "cercle", "couleur": "bleu", "case": 7},
+    ]
+    assert resoudre_par_deduction(essentielle, 3, FIGURES3, COULEURS3)
+    sans_relation = [
+        {"type": "case", "figure": "cercle", "couleur": "rouge", "case": 0},
+    ] + essentielle[1:]
+    assert not resoudre_par_deduction(sans_relation, 3, FIGURES3, COULEURS3)
+    assert mesurer_difficulte._retirables_internes(
+        essentielle, 3, FIGURES3, COULEURS3) == 0
+
+    # (3) Aucune mutation des phrases mesurées ni des atomes décomposés.
+    instantane = json.dumps(toutes_retirables, sort_keys=True)
+    mesurer_difficulte._retirables_internes(toutes_retirables, 3, FIGURES3, COULEURS3)
+    assert json.dumps(toutes_retirables, sort_keys=True) == instantane
+    phrase = {"type": "ligne", "ligne": 1, "figure": "cercle", "couleur": "bleu",
+              "et": [{"type": "colonne", "colonne": 2}]}
+    avant = json.dumps(phrase, sort_keys=True)
+    atomes = informations_autonomes(phrase)
+    assert json.dumps(phrase, sort_keys=True) == avant
+    assert [a["type"] for a in atomes] == ["ligne", "colonne"]
+    assert all("et" not in a for a in atomes)
+    assert (atomes[1]["figure"], atomes[1]["couleur"]) == ("cercle", "bleu")
+
+
+def test_rang_de_lecture_et_support_disent_des_choses_differentes():
+    """Le rang de lecture suit l'ordre présenté (il change au mélange) ; le
+    support propagé cherche des lots de 1 à 3 phrases sans ordre — borne."""
+    neutre = {"type": "autre-ligne", "figure": "cercle", "couleur": "rouge",
+              "figure2": "carre", "couleur2": "bleu"}
+    directe = {"type": "case", "figure": "cercle", "couleur": "rouge", "case": 0}
+    assert mesurer_difficulte._k_premier_placement(
+        [neutre, directe], 3, FIGURES3, COULEURS3) == 2
+    assert mesurer_difficulte._support_propage(
+        [neutre, directe], 3, FIGURES3, COULEURS3) == 1
+    assert mesurer_difficulte._k_premier_placement(
+        [directe, neutre], 3, FIGURES3, COULEURS3) == 1
+    assert mesurer_difficulte._support_propage(
+        [directe, neutre], 3, FIGURES3, COULEURS3) == 1
+
+
+def test_paliers_2_4_zero_phrase_solo_par_enumeration_independante():
+    """Contrôle indépendant sur TOUT le contenu des paliers 2 à 4 : pour chaque
+    phrase, énumération brute (permutations, sans cache ni élagage) de toutes
+    les affectations injectives des seuls jetons cités — aucun jeton cité ne
+    doit avoir une position certaine."""
+    from itertools import permutations
+
+    for item in CONTENU.items("deduction"):
+        if item["palier"] not in PALIERS_RECOUPMENT_BLOQUANT:
+            continue
+        contenu = item["contenu"]
+        n = len(contenu["figures"])
+        for phrase in contenu["enonces"]:
+            infos = informations_autonomes(phrase)
+            variables: list[tuple[str, str]] = []
+            for a in infos:
+                jetons = [(a["figure"], a["couleur"])]
+                if a["type"] in TYPES_BINAIRES:
+                    jetons.append((a["figure2"], a["couleur2"]))
+                for v in jetons:
+                    if v not in variables:
+                        variables.append(v)
+            assert len(variables) <= 3, f"{item['id']} : phrase à plus de 3 jetons cités"
+            possibles = {v: set() for v in variables}
+            for cases in permutations(range(n * n), len(variables)):
+                affectation = dict(zip(variables, cases))
+                verifie = True
+                for a in infos:
+                    c1 = affectation[(a["figure"], a["couleur"])]
+                    if a["type"] in TYPES_UNAIRES:
+                        if not _vrai_unaire(a, c1, n):
+                            verifie = False
+                            break
+                    elif a["type"] in TYPES_BINAIRES:
+                        if not _vrai_binaire(a, c1, affectation[(a["figure2"], a["couleur2"])], n):
+                            verifie = False
+                            break
+                    else:
+                        raise AssertionError("type inconnu : " + str(a["type"]))
+                if verifie:
+                    for v, c in affectation.items():
+                        possibles[v].add(c)
+            for v, cases in possibles.items():
+                assert len(cases) != 1, \
+                    f"{item['id']} : {v} fixé seul (énumération indépendante)"
+

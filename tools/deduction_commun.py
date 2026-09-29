@@ -24,6 +24,8 @@ propagation, sans hypothèse.
 from __future__ import annotations
 
 import random
+from functools import lru_cache
+import json
 
 #: Types d'indices portant sur la position d'un seul jeton (contraintes unaires).
 TYPES_UNAIRES = {"case", "ligne", "colonne", "pas-ligne", "pas-colonne",
@@ -240,12 +242,21 @@ def propager(indices: list[dict], n: int, noms_f: list[str], noms_c: list[str],
 
         # 2. Relations entre deux figures colorées (consistance d'arc).
         for atome, jeton1, jeton2 in binaires:
+            # Réduire les DEUX extrémités ; deux jetons ne partagent pas une case.
             places2 = {c for c in range(n * n) if jeton2 in domaines[c]}
             for case in range(n * n):
                 if jeton1 in domaines[case] and not any(
-                    _vrai_binaire(atome, case, autre, n) for autre in places2
+                    case != autre and _vrai_binaire(atome, case, autre, n)
+                    for autre in places2
                 ):
                     change |= retirer(case, jeton1)
+            places1 = {c for c in range(n * n) if jeton1 in domaines[c]}
+            for case in range(n * n):
+                if jeton2 in domaines[case] and not any(
+                    autre != case and _vrai_binaire(atome, autre, case, n)
+                    for autre in places1
+                ):
+                    change |= retirer(case, jeton2)
 
         # 3. Case déterminée -> le jeton est là.
         for case in range(n * n):
@@ -278,7 +289,7 @@ def resoudre_par_deduction(indices: list[dict], n: int,
 
 
 #: Paliers où l'exigence de recoupement est bloquante : le palier 1 est une
-#: initiation séquentielle (chaîne ordonnée) où une phrase d'ancrage peut
+#: initiation aux relations de voisinage où une phrase d'ancrage peut
 #: déterminer une position — l'exigence est mesurée là, bloquée ailleurs.
 PALIERS_RECOUPMENT_BLOQUANT = frozenset({2, 3, 4})
 
@@ -287,17 +298,113 @@ def phrases_qui_fixent_seules(indices: list[dict], n: int,
                              noms_f: list[str], noms_c: list[str]) -> list[int]:
     """Rangs des phrases qui, prises SEULES, déterminent au moins une position.
 
-    Une phrase « qui fixe seule » rend un domaine singleton après propagation
-    de cette phrase seule — un placement direct déguisé, même sans type `case` :
+    Une phrase « qui fixe seule » impose une position dans TOUS les placements
+    injectifs compatibles avec cette phrase seule — un placement direct déguisé, même sans type `case` :
     sur 3×3, « ni dans un coin ni sur le bord » ne laisse que le centre.
     """
-    return [rang for rang, phrase in enumerate(indices)
-            if _une_phrase_fixe(phrase, n, noms_f, noms_c)]
+    verdicts = []
+    for rang, phrase in enumerate(indices):
+        _verifier_jetons_cites(phrase, noms_f, noms_c)
+        if _une_phrase_fixe(phrase, n, noms_f, noms_c):
+            verdicts.append(rang)
+    return verdicts
+
+
+def _verifier_jetons_cites(phrase: dict, noms_f: list[str], noms_c: list[str]) -> None:
+    """Un jeton inconnu rendrait la preuve exacte muette : échouer bruyamment.
+
+    L'énumération ne voit que les jetons cités par la phrase ; un nom hors
+    vocabulaire serait traité comme une variable libre et pourrait masquer un
+    raccourci — un faux « zéro solo » reste une erreur, jamais un verdict.
+    """
+    for atome in atomes(phrase):
+        figure, couleur = sujet(phrase, atome)
+        if figure not in noms_f or couleur not in noms_c:
+            raise ValueError(f"jeton inconnu cité par la phrase : {figure} {couleur}")
+        if atome.get("type") in TYPES_BINAIRES:
+            if atome.get("figure2") not in noms_f or atome.get("couleur2") not in noms_c:
+                raise ValueError("jeton inconnu cité par la phrase : "
+                                 f"{atome.get('figure2')} {atome.get('couleur2')}")
+
+
+def informations_autonomes(phrase: dict) -> list[dict]:
+    """Copier les atomes sans conserver un ancien `et`, avec sujet explicite."""
+    resultat = []
+    for atome in atomes(phrase):
+        copie = {k: v for k, v in atome.items() if k != "et"}
+        copie["figure"], copie["couleur"] = sujet(phrase, atome)
+        resultat.append(copie)
+    return resultat
+
+
+@lru_cache(maxsize=8192)
+def _placements_phrase_exacte(serialisee: str, n: int) -> tuple:
+    """Énumération injective des seuls jetons cités, indépendante de propager.
+
+    Les jetons non cités occupent librement les cases restantes. Le budget échoue
+    explicitement : un contrôle inachevé ne vaut jamais « pas de raccourci ».
+    """
+    informations = json.loads(serialisee)
+    variables = set()
+    for a in informations:
+        variables.add((a["figure"], a["couleur"]))
+        if a["type"] in TYPES_BINAIRES:
+            variables.add((a["figure2"], a["couleur2"]))
+        elif a["type"] not in TYPES_UNAIRES:
+            raise ValueError("Type d'indice inconnu : " + a["type"])
+    possibles = {v: set() for v in variables}
+    candidats = {v: [c for c in range(n*n) if all(
+        _vrai_unaire(a, c, n) for a in informations
+        if a["type"] in TYPES_UNAIRES and (a["figure"], a["couleur"]) == v
+    )] for v in variables}
+    ordre = sorted(variables, key=lambda v: (len(candidats[v]), v))
+    affectation, utilisees = {}, set()
+    visites = 0
+
+    def explorer(rang):
+        nonlocal visites
+        visites += 1
+        if visites > 100000:
+            raise ValueError("Budget du contrôle exact d'une phrase dépassé")
+        if rang == len(ordre):
+            for v, c in affectation.items():
+                possibles[v].add(c)
+            return
+        v = ordre[rang]
+        for c in candidats[v]:
+            if c in utilisees:
+                continue
+            affectation[v] = c
+            coherent = True
+            for a in informations:
+                if a["type"] not in TYPES_BINAIRES:
+                    continue
+                v1, v2 = (a["figure"], a["couleur"]), (a["figure2"], a["couleur2"])
+                if v1 in affectation and v2 in affectation and not _vrai_binaire(
+                    a, affectation[v1], affectation[v2], n
+                ):
+                    coherent = False
+                    break
+            if coherent:
+                utilisees.add(c)
+                explorer(rang+1)
+                utilisees.remove(c)
+            del affectation[v]
+    explorer(0)
+    if not possibles or any(not cases for cases in possibles.values()):
+        raise ValueError("Phrase contradictoire : aucun placement compatible")
+    return tuple((v, tuple(sorted(cases))) for v, cases in sorted(possibles.items()))
+
+
+def positions_forcees_phrase(phrase: dict, n: int) -> dict:
+    """Positions certaines prouvées par tous les placements de la phrase seule."""
+    contenu = json.dumps(informations_autonomes(phrase), sort_keys=True)
+    return {v: cases[0] for v, cases in _placements_phrase_exacte(contenu, n)
+            if len(cases) == 1}
 
 
 def _une_phrase_fixe(phrase: dict, n: int, noms_f: list[str], noms_c: list[str]) -> bool:
-    domaines = propager([phrase], n, noms_f, noms_c)
-    return bool(domaines) and any(len(domaine) == 1 for domaine in domaines)
+    return bool(positions_forcees_phrase(phrase, n))
 
 
 def rang_premiere_certitude(indices: list[dict], n: int,
@@ -324,8 +431,7 @@ def recoupement_suffisant(indices: list[dict], n: int, palier: int,
     """Les chaînes de déductions se recoupent-elles assez ? (défaut C)
 
     Aux paliers avancés (2, 3, 4) : aucune phrase seule ne fixe de position, et
-    la première certitude exige au moins deux phrases. Au palier 1 (initiation
-    séquentielle), les exigences sont mesurées sans être bloquantes.
+    la première certitude exige au moins deux phrases. Au palier 1 (initiation), les exigences sont mesurées sans être bloquantes.
     """
     if palier not in PALIERS_RECOUPMENT_BLOQUANT:
         return True

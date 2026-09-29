@@ -57,7 +57,7 @@ RACINE_DEPOT = Path(__file__).resolve().parent.parent
 BASE_SORTIE = RACINE_DEPOT / "content" / "entrainement" / "deduction"
 
 GRAINE: int = 20260928
-DATE_CREATION: str = "2026-09-28"
+DATE_CREATION: str = "2026-09-29"
 AUTEUR: str = "generation-automatique (tools/generer_deduction.py)"
 PAR_PALIER_DEFAUT: int = 20
 
@@ -65,10 +65,10 @@ FIGURES = ["cercle", "carre", "triangle", "losange"]
 COULEURS = ["rouge", "bleu", "vert", "jaune"]
 
 #: Relations utilisées pour les chaînes, par palier — **progression Logix**
-#: (« Élémentaire, mon cher… ») : séquentiel/positif → négatif → relatif → complexe.
+#: (« Élémentaire, mon cher… ») : positif → négatif → relatif → complexe.
 #:
-#: P1 **séquentiel/positif** : voisinage direct, phrases qui s'enchaînent dans l'ordre
-#: de résolution ;
+#: P1 **positif** : voisinage direct, phrases enchaînées d'une figure à la suivante —
+#: l'ordre de présentation reste libre ;
 #: P2 **négatif** : éliminations (autre-ligne, autre-colonne) — plus aucune position
 #: positive ni voisinage ;
 #: P3 **relatif** : relations relatives sans ancrage précis (plus haut que, plus à droite
@@ -79,8 +79,10 @@ RELATIONS_PAR_PALIER = {
     2: {"autre-ligne", "autre-colonne", "pas-voisin-gauche", "pas-voisin-droite",
         "pas-voisin-dessus", "pas-voisin-dessous", "pas-a-droite-de", "pas-a-gauche-de",
         "pas-au-dessus-de", "pas-en-dessous-de"},
+    # Palier 3 : aucun type unaire dans les relations de chaîne (pas-ligne,
+    # pas-colonne, pas-coin sont des repères d'ancre — voir ANCRES_PAR_PALIER).
     3: {"au-dessus-de", "en-dessous-de", "a-droite-de", "a-gauche-de", "oppose",
-        "comparaison", "pas-ligne", "pas-colonne", "pas-coin",
+        "comparaison",
         "pas-a-droite-de", "pas-a-gauche-de", "pas-au-dessus-de", "pas-en-dessous-de"},
     4: {"voisin-gauche", "voisin-droite", "voisin-dessus", "voisin-dessous",
         "voisin-diagonale", "oppose", "comparaison", "a-droite-de", "a-gauche-de",
@@ -137,11 +139,21 @@ FAISCEAU = 60
 TAILLE_VIVIER = 400
 
 DESCRIPTIONS = [
-    "Séquentiel positif : phrases enchaînées de voisinage, dans l'ordre",
+    "Positif : phrases de voisinage enchaînées d'une figure à la suivante",
     "Négatif : éliminer par la ligne et la colonne, sans position directe",
-    "Relatif : chaînes à trois informations, situer l'un par rapport à l'autre",
-    "Complexe : tout mélangé, moins de phrases, chaines courtes",
+    "Relatif : situer l'un par rapport à l'autre, recouper les phrases",
+    "Complexe : tout mélangé, chaînes courtes",
 ]
+
+
+#: Aide affichée sur demande. Au palier 1, une phrase enchaîne un repère et des
+#: relations : elle peut porter la position. Aux paliers suivants, aucune phrase
+#: ne suffit seule — c'est le croisement des phrases qui révèle les cases certaines.
+AIDE_ANCRAGE = ("Chaque phrase enchaîne plusieurs informations : commence par la figure "
+                "dont la phrase donne la position, puis suis les relations.")
+AIDE_CROISEMENT = ("Aucune phrase ne suffit seule : recoupe les phrases entre elles, "
+                   "barre ce qui devient impossible — les cases certaines apparaissent "
+                   "au croisement.")
 
 
 def _atomes_position(case: int, n: int) -> list[dict]:
@@ -296,12 +308,13 @@ def _nombre_ancres(phrases: list[dict]) -> int:
 
 
 def _minimaliser(phrases: list[dict], n: int, noms_f: list[str], noms_c: list[str],
-                 plancher: int = 3, preserver: frozenset = frozenset()) -> list[dict]:
+                 plancher: int = 4, preserver: frozenset = frozenset()) -> list[dict]:
     """Retire les phrases devenues inutiles : aucune indication redondante.
 
     Une phrase est redondante quand la grille reste entièrement déterminée sans elle
     — la figure est déjà située par les autres phrases. Les phrases ``preserver``
-    (vocabulaire demandé) ne sont jamais retirées.
+    (vocabulaire demandé) ne sont jamais retirées. Le plancher est 4 : le validateur
+    exige au moins quatre phrases par grille (le nettoyage ne descend jamais plus bas).
     """
     resultat = list(phrases)
     change = True
@@ -445,8 +458,7 @@ def _item(palier: int, rang: int, paire, phrases: list[dict], secours: list[dict
             "couleurs": couleurs,
             "enonces": phrases,
             "indices": secours,
-            "aide": ("Chaque phrase enchaîne plusieurs informations : commence par la figure "
-                     "dont la phrase donne la position, puis suis les relations."),
+            "aide": AIDE_ANCRAGE if palier == 1 else AIDE_CROISEMENT,
         },
         "reponse": {
             "valeur": ";".join("%s:%s" % (c[0], c[1]) for c in grille),

@@ -3,7 +3,7 @@
   "paliers": [
     {
       "id": "de-palier-1",
-      "description": "Séquentiel positif : phrases enchaînées de voisinage, dans l'ordre",
+      "description": "Positif : phrases de voisinage enchaînées d'une figure à la suivante",
       "prerequis": [],
       "fichier": "paliers/palier-01.json",
       "nb_items": 20
@@ -19,7 +19,7 @@
     },
     {
       "id": "de-palier-3",
-      "description": "Relatif : chaînes à trois informations, situer l'un par rapport à l'autre",
+      "description": "Relatif : situer l'un par rapport à l'autre, recouper les phrases",
       "prerequis": [
         "de-palier-2"
       ],
@@ -28,7 +28,7 @@
     },
     {
       "id": "de-palier-4",
-      "description": "Complexe : tout mélangé, moins de phrases, chaines courtes",
+      "description": "Complexe : tout mélangé, chaînes courtes",
       "prerequis": [
         "de-palier-3"
       ],
