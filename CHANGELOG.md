@@ -2,6 +2,16 @@
 
 Format : [date] — [périmètre] — description. Les retours informels de l'orthophoniste sont journalisés ici, sans caution clinique.
 
+## 2026-09-29 · Déduction : preuve exacte du « fixe seule » et réparation du palier 3
+
+La détection des phrases qui fixent seules une position était incomplète (propagation à sens unique, sans l'unicité des cases) : elle rendait un faux « zéro phrase solo » au palier 3. Vérification indépendante : **19 phrases fautives dans 13 grilles sur 20** — des chaînes « diagonale + opposé + comparaison » qui fixent deux jetons d'un coup.
+
+- **Preuve exacte** : énumération exhaustive des placements injectifs des seules figures citées (cache, budget borné, erreur explicite si dépassé — jamais de faux zéro) ; propagation binaire complétée (les deux extrémités, unicité, vocabulaire vérifié). « rang de lecture » remplace l'ancien « k » (ordre présenté, pas un minimum) ; « support propagé » est une borne supérieure.
+- **Contenu réparé** : les 13 grilles fautives du palier 3 gardent leur solution ; leurs phrases solo sont scindées en deux chaînes de deux informations qui exigent le croisement entre phrases. **Identifiants remplacés** : df-3-03→dc-3-03, df-3-04→dc-3-04, df-3-05→dc-3-05, df-3-07→dc-3-07, df-3-09→dc-3-09, df-3-11→dc-3-11, df-3-12→dc-3-12, df-3-13→dc-3-13, df-3-15→dc-3-15, df-3-16→dc-3-16, df-3-17→dc-3-17, df-3-18→dc-3-18, df-3-20→dc-3-20 — les autres identifiants sont inchangés, les df-3-* remplacés ne seront pas réutilisés.
+- **Mesure du 29/09** (outil exact, 80 grilles) : palier 3 — solo 19→0, rang de lecture 1–3→2–4, redondances entre phrases 16→9, redondances internes 229→171. Paliers 2 et 4 : inchangés (zéro solo). Résidus documentés : quatre grilles gardent une phrase retirable (plancher de quatre phrases du validateur) ; palier 4 — redondances mesurées à 122, pré-existantes, hors périmètre de cette correction.
+- **Générateur** : types unaires retirés des relations du palier 3 ; plancher de nettoyage à quatre phrases (aligné sur le validateur) ; aide des paliers 2–4 réécrite (croisement, plus « la phrase donne la position ») ; descriptions corrigées (palier 1 non séquentiel, palier 4 sans « moins de phrases »). Essai borné : 32 grilles générées conformes.
+- **Tests** : +6 tests indépendants (reproduction df-3-03 cases 0/8, scission inoffensive, propagation inverse et unicité, retrait réel des informations et de l'ancre sans mutation, distinction rang de lecture / support, zéro solo paliers 2–4 par énumération brute). Total : 216 tests. Le rapport de la nuit du 28 (`895efdf`) est dépassé sur le critère C — voir ADR-016.
+
 ## 2026-09-27 · Sélecteur de palier (outil d'essai)
 
 Demande : pouvoir choisir le palier pendant la phase de test.

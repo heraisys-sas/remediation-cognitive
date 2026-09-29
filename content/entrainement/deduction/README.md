@@ -6,7 +6,7 @@ Tout le reste doit venir des **phrases**. Aucune règle cachée : si une phrase 
 
 ## Les phrases sont des chaînes
 
-Une phrase part d'un **repère** sur une figure, puis **suit les relations** d'une figure à la suivante. Elle porte donc trois informations ou plus, ce qui **raccourcit l'exercice** — surtout au début :
+Une phrase part d'un **repère** sur une figure, puis **suit les relations** d'une figure à la suivante. Elle porte deux ou trois informations, ce qui **raccourcit l'exercice** — surtout au début ; quand deux chaînes portent chacune deux informations, c'est leur croisement qui tranche :
 
 > « Le carré rouge est sur la ligne du bas, **est juste à droite du cercle vert, qui est juste au-dessus du cercle rouge**. »
 
@@ -28,25 +28,27 @@ Une phrase part d'un **repère** sur une figure, puis **suit les relations** d'u
 | Palier | Grille | Phrases |
 |---|---|---|
 | 1 | 3×3 | chaînes longues : un repère (ligne, colonne ou coin), puis deux relations de voisinage |
-| 2 | 3×3 | + diagonales et voisinage diagonal, relations plus variées |
-| 3 | 3×3 | repères **négatifs** (« n'est pas sur la diagonale », « ni dans un coin ni sur le bord ») et relations lâches : éliminer pour déduire |
-| 4 | 4×4 | tout le vocabulaire, dont « à l'opposé de » |
+| 2 | 3×3 | repères négatifs et éliminations (« pas sur la colonne », « pas juste à gauche de ») : déduire par ce qui est exclu |
+| 3 | 3×3 | relations relatives (« plus à droite que », « à l'opposé de ») : aucune phrase ne suffit seule, c'est le croisement qui tranche |
+| 4 | 4×4 | tout le vocabulaire, chaînes courtes, nombreuses phrases |
 
 **20 grilles par palier, soit 80 grilles**, et 3 phrases de secours par grille (bouton « Un indice »), qui n'apparaissent que si on les demande.
 
-Dosage : **4 phrases** au palier 1, 8 à 10 aux paliers 2 et 3, 15 à 17 en 4×4.
+Dosage (moyennes mesurées) : **4 phrases** au palier 1 et au palier 3, **11** au palier 2, **15 à 16** en 4×4. L'ordre de présentation des phrases est **tiré au sort** à chaque grille — il ne porte aucune information.
 
 **Séance** : **six grilles** au maximum — chaque grille demande une chaîne de raisonnement complète, douze ne tiendraient pas dans une séance courte. Au bout de **dix minutes**, la séance ne se ferme pas d'elle-même : elle **propose** de s'arrêter (« tu peux t'arrêter là ou continuer — c'est toi qui vois »). Le vocabulaire demandé (diagonales, coins, « à l'opposé ») est garanti présent dans chaque palier concerné.
 
 ## Aucune phrase redondante
 
-Une phrase que l'on peut retirer **sans perdre la solution** est supprimée automatiquement : inutile de situer une figure déjà située par les autres phrases. Les phrases qui portent le vocabulaire demandé sont protégées de ce nettoyage.
+Une phrase que l'on peut retirer **sans perdre la solution** est supprimée automatiquement : inutile de situer une figure déjà située par les autres phrases. Les phrases qui portent le vocabulaire demandé sont protégées de ce nettoyage. Le nettoyage a ses limites assumées : le plancher de quatre phrases et la protection du vocabulaire retiennent parfois une phrase de plus — elle reste visible dans la mesure publiée (`tools/mesurer_difficulte.py`). Dernière passe (29/09/2026) : les 13 grilles du palier 3 qui contenaient une phrase **fixant seule** une position ont été scindées en deux chaînes de deux informations (mêmes solutions ; identifiants `df-3-XX` → `dc-3-XX`).
 
 ## La garantie : le solveur est le juge
 
 `tools/deduction_commun.py` raisonne comme la personne, **avec la seule règle énoncée** : chaque case part avec toutes les figures colorées possibles, chaque phrase retire ce qui devient impossible, une case déterminée fixe sa figure, une figure qui n'a plus qu'une case possible s'y place, et l'on recommence jusqu'à ce que rien ne bouge.
 
 Génération constructive : on ajoute les phrases qui **déterminent le plus de cases**, jusqu'à ce que le solveur termine. Contrôle triple : à la génération, au dépôt, et par un test rejoué sur chaque grille du dépôt.
+
+**Le « fixe seule » est prouvé exactement.** Aux paliers 2 à 4, aucune phrase ne fixe une position à elle seule (placement direct déguisé) : on énumère **tous** les placements injectifs compatibles avec les seules figures citées par la phrase — cache et budget bornés, erreur explicite si dépassé, jamais de faux « zéro solo ». Les indicateurs publics restent structurels : le **rang de lecture** suit l'ordre affiché (ce n'est pas un minimum logique) et le **support propagé** est une borne supérieure — aucune calibration clinique n'est revendiquée.
 
 Deux contrôles indépendants du solveur :
 
