@@ -73,4 +73,4 @@ Palette de jetons (figure × couleur), placement par clic, « Vider la grille »
 
     python3 tools/generer_deduction.py --par-palier 20
 
-Déterministe (graine fixe), piloté par le solveur, placements tous distincts. Relecture orthophoniste à faire.
+Déterministe (graine fixe), piloté par le solveur, placements tous distincts. Les identifiants sont **dérivés du contenu** (empreinte du contenu pédagogique) : une re-génération identique garde les mêmes identifiants, tout contenu modifié en reçoit de nouveaux — impossible de réutiliser l'identifiant d'un contenu déjà livré. Relecture orthophoniste à faire.

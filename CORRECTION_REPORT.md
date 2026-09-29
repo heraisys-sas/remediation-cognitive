@@ -1,6 +1,6 @@
 # CORRECTION_REPORT — Déduction : preuve exacte du « fixe seule » et réparation du palier 3
 
-**Date** : 2026-09-29 · **Dépôt** : `/Users/olivierhz/orthogone/deduction-corrections` · **Branche** : `amelioration-deduction-20260927` · **Base** : `895efdf` · **Commit de la correction** : `8299f0b`
+**Date** : 2026-09-29 · **Dépôt** : `/Users/olivierhz/orthogone/deduction-corrections` · **Branche** : `amelioration-deduction-20260927` · **Base** : `895efdf` · **Commits de la correction** : `8299f0b` (première passe), `d534e40` (deuxième passe : identifiants + aides)
 
 Reprise rapide pour Codex : ce qui a été fait, les nombres réellement mesurés, les limites.
 
@@ -42,6 +42,34 @@ Observation hors périmètre : palier 4, redondances entre phrases 122 (≈ 6/gr
 - `python3 tools/validate_items.py` → 0 erreur (920 items) ; `verifier_reponses.py` → 0 anomalie ; `verifier_interface.py` → OK.
 - `node tools/verifier_phrases.js` → 8 phrases dorées + 687 phrases / 1269 informations, 0 anomalie ; `node --check frontend/src/app.js` → OK.
 - Générateur (essai borné) : 8 grilles en ≈ 2,5 s ; 32 grilles générées vérifiées conformes (0 solo, 0 rang-1, déterminées, ≥ 4 phrases, ≥ 2 informations + relation par phrase).
+
+## Deuxième passe — même jour (identifiants + aides)
+
+Deux corrections demandées après validation Codex du matin. Commit de cette passe : `d534e40`.
+
+### 1. Identifiants du générateur dérivés du contenu
+
+Défaut reproduit : `generer_palier(1, random.Random(GRAINE), 1, set())[0]` produisait un `df-1-01` dont les énoncés diffèrent du `df-1-01` livré — identifiant positionnel réutilisé à contenu changé (remplacement silencieux). Désormais :
+
+- `identifiant_item` = `df-<palier>-<empreinte>` où l'empreinte est un sha256 tronqué (12 hex) du contenu pédagogique canonique — consigne, figures, couleurs, énoncés, indices, aide, réponse ; **date, auteur et identifiant exclus** ;
+- garanties testées : re-génération identique → identifiants identiques ; changement (phrase / aide / réponse) → identifiant différent ; date/auteur sans effet ; aucun recouvrement avec les identifiants positionnels `df-*`/`dc-*` ; un même identifiant n'est partagé que par un contenu identique ;
+- collision d'empreinte en génération : échec bruyant (`SystemExit`) — jamais deux contenus sous un identifiant ;
+- `_item` ne reçoit plus de rang positionnel ; aucune régénération des 80 grilles.
+
+### 2. Aides harmonisées (47 items, paliers 2–4)
+
+- Les 47 items portant encore « dont la phrase donne la position » (P2 20 + P3 7 + P4 20) passent à `AIDE_CROISEMENT`. Énoncés, solutions, indices et consignes **strictement préservés** (assertions du script) ; l'aide, la méta et l'identifiant changent — identifiant recalculé par empreinte. Correspondance complète : `.cluster/correction-deduction-20260929/mapping_aides_anciens_nouveaux.md` ;
+- le palier 1 garde son texte d'ancrage (initiation) — décision documentée ;
+- contrôles ajoutés : validateur du dépôt (`tools/validate_items.py`) + test dédié sur tout le corpus avancé.
+
+### Contrôles de cette passe
+
+- `python3 -m pytest -q` → **218 passed, 0 skipped** sur ce poste. Codex signalait 215 passed + 1 skipped (empreintes système absentes) : le test concerné (`backend/tests/test_correction_sens.py`, empreintes sémantiques locales) s'exécute et passe ici — même suite, même contenu.
+- `validate_items` → 0 erreur (920 items, contrôle des aides inclus) ; `verifier_reponses` → 0 anomalie (920 identifiants uniques) ; `verifier_interface` → OK.
+- Node : 8 phrases dorées + 687 phrases / 1269 informations, 0 anomalie ; `node --check frontend/src/app.js` → OK.
+- Générateur (essai borné) : 32 grilles conformes (0 solo, 0 rang-1, déterminées, ≥ 4 phrases, verrou pédagogique respecté).
+- Aides : 60/60 en « croisement » aux paliers 2–4 ; 20/20 en « ancrage » au palier 1.
+- Aucun travail sur les redondances dans cette passe (demande explicite).
 
 ## Suites (pour Codex)
 

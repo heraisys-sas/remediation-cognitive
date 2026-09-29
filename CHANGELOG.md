@@ -2,6 +2,14 @@
 
 Format : [date] — [périmètre] — description. Les retours informels de l'orthophoniste sont journalisés ici, sans caution clinique.
 
+## 2026-09-29 · Déduction : identifiants dérivés du contenu + aides harmonisées (paliers 2–4)
+
+Deux finitions, après la correction du matin (preuve exacte, palier 3 réparé) :
+
+- **Identifiants du générateur dérivés du contenu.** Les anciens identifiants positionnels (`df-<palier>-<rang>`) étaient réutilisés à contenu changé — reproduction : la graine produisait un `df-1-01` aux énoncés différents du livré. Désormais l'identifiant est une **empreinte sha256 tronquée (12 hex)** du contenu pédagogique canonique (consigne, figures, couleurs, énoncés, indices, aide, réponse ; date, auteur et identifiant exclus) : une re-génération identique garde les identifiants, tout changement en produit un nouveau, une collision d'empreinte échoue bruyamment, et les tests vérifient l'absence de recouvrement avec les identifiants positionnels historiques `df-*`/`dc-*`.
+- **Aides harmonisées (47 items, paliers 2–4).** Les 47 derniers items portant « dont la phrase donne la position » passent à l'aide « croisement » — énoncés, solutions, indices et consignes strictement préservés. Identifiants remplacés (dérivés du contenu) ; correspondance complète dans `.cluster/correction-deduction-20260929/mapping_aides_anciens_nouveaux.md`. Le palier 1 garde son texte d'ancrage (initiation, décision documentée). Contrôle de cohérence des aides ajouté au validateur du dépôt et à la suite de tests.
+- **Contrôles** : pytest 218 passed ; `validate_items` 0 erreur (920 items) ; Node 687 phrases / 0 anomalie ; générateur : 32 grilles d'essai conformes. Aucun travail sur les redondances dans cette passe (demande explicite).
+
 ## 2026-09-29 · Déduction : preuve exacte du « fixe seule » et réparation du palier 3
 
 La détection des phrases qui fixent seules une position était incomplète (propagation à sens unique, sans l'unicité des cases) : elle rendait un faux « zéro phrase solo » au palier 3. Vérification indépendante : **19 phrases fautives dans 13 grilles sur 20** — des chaînes « diagonale + opposé + comparaison » qui fixent deux jetons d'un coup.

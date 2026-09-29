@@ -24,6 +24,8 @@ Trois issues, dans cet ordre de préférence :
 2. **Remplacer les identifiants** des items concernés (nouvelle génération = nouvel identifiant), pour que l'ancienne progression reste cohérente avec l'ancien exercice.
 3. **Régénérer sans changer les identifiants** uniquement s'il n'existe **aucune** donnée d'usage — et le dire explicitement.
 
+Depuis le 2026-09-29, le générateur « déduction » **dérive l'identifiant du contenu lui-même** (`identifiant_item` : empreinte sha256 tronquée du contenu pédagogique canonique — date, auteur et identifiant exclus). Une re-génération identique garde les mêmes identifiants ; tout contenu modifié en reçoit de nouveaux : la règle 2 y devient automatique, et une collision d'empreinte échoue bruyamment à la génération.
+
 ## 3. Toute modification de contenu se dit
 
 Le message de commit mentionne, quand c'est le cas : quel thème, quels identifiants, combien d'items, et pourquoi. Un relecteur doit pouvoir distinguer un **ajout** d'un **remplacement** sans lire le diff ligne à ligne.
@@ -40,5 +42,6 @@ Ces contrôles garantissent que le contenu est **valide** ; ils ne détectent pa
 
 ## Historique
 
+- **Correction du 2026-09-29** — le générateur « déduction » utilisait des identifiants positionnels (`df-<palier>-<rang>`), réutilisés à contenu changé (reproduction : la graine produisait un `df-1-01` aux énoncés différents du livré — un remplacement silencieux, précisément le cas que ces règles interdisent). Les identifiants sont désormais dérivés du contenu (empreinte du contenu canonique ; garde-fou anti-collision). Les 47 items des paliers 2–4 dont l'aide a été harmonisée ont reçu de nouveaux identifiants (correspondance : `.cluster/correction-deduction-20260929/mapping_aides_anciens_nouveaux.md`).
 - **Sprint 4 (2026-09-22)** — l'ajout des paliers d'empan de mots a consommé 72 tirages sur un générateur partagé **avant** la génération du thème « concentration » : 161 des 162 items de ce thème ont été réécrits à identifiants constants. Le contenu restait valide (0 erreur), mais le changement était invisible dans le message de commit. Détecté lors de la revue de commits du 2026-09-22.
 - **Correction du 2026-09-22** — tirages isolés par `thème:famille` dans `tools/generer_memo_concentration.py` et `tools/generer_evocation_social.py` (déjà isolés par thème pour `generer_rappel_series.py`, une seule famille). Cette correction a elle-même **remplacé** le contenu des thèmes mémoire, concentration, evocation et social — décision assumée et documentée, aucune donnée d'usage n'existant à cette date. **À compter de cette date, la règle 2 s'applique sans exception.**
