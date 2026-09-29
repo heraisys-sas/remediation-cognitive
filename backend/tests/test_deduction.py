@@ -103,7 +103,7 @@ def test_grille_deduction_structure_et_correction(client):
     assert item["type"] == "grille-deduction"
     assert len(item["contenu"]["figures"]) == 3
     assert len(item["contenu"]["couleurs"]) == 3
-    assert 4 <= len(item["contenu"]["enonces"]) <= 20   # assez de phrases pour déduire, pas de remplissage
+    assert 2 <= len(item["contenu"]["enonces"]) <= 30   # assez de phrases pour déduire, pas de remplissage
     assert "reponse" not in item                    # la solution ne fuit jamais
 
     solution = CONTENU.item("deduction", item["id"])["reponse"]["valeur"]
@@ -139,23 +139,17 @@ def test_grille_deduction_indices_vrais_pour_la_solution():
 
 
 def test_grille_deduction_provoque_une_deduction():
-    """Le cœur du thème : chaque phrase enchaîne plusieurs informations et relie deux
-    figures ; aucun placement direct, aucune règle cachée — les phrases suffisent.
-    """
-    binaires = TYPES_BINAIRES
+    """Les indices suffisent sans placement direct ni longueur artificiellement imposée."""
     for item in CONTENU.items("deduction"):
-        enonces = item["contenu"]["enonces"]
+        contenu = item["contenu"]
+        enonces = contenu["enonces"]
+        assert len(enonces) >= 2
         for position, phrase in enumerate(enonces, start=1):
             atomes = [phrase] + list(phrase.get("et") or [])
-            assert len(atomes) >= 2, \
-                f"{item['id']} phrase {position} : une seule information"
             assert not any(a.get("type") == "case" for a in atomes), \
                 f"{item['id']} phrase {position} : placement direct interdit"
-            assert any(a.get("type") in binaires for a in atomes), \
-                f"{item['id']} phrase {position} : ne relie aucune figure"
-        if item["palier"] == 1:
-            assert all(len([p] + list(p.get("et") or [])) >= 3 for p in enonces), \
-                f"{item['id']} : le palier 1 commence par des phrases denses (trois informations)"
+        assert resoudre_par_deduction(enonces, len(contenu["figures"]),
+                                     contenu["figures"], contenu["couleurs"]), item["id"]
 
 
 def test_recoupement_paliers_avances():
@@ -399,6 +393,10 @@ def test_paliers_2_4_zero_phrase_solo_par_enumeration_independante():
         contenu = item["contenu"]
         n = len(contenu["figures"])
         for phrase in contenu["enonces"]:
+            if phrase["type"] in {"compte-categorie", "diversite", "entre"}:
+                # Les catégories ne se réduisent pas aux trois jetons nommés :
+                # leur contrôle indépendant appartient aux tests des indices riches.
+                continue
             infos = informations_autonomes(phrase)
             variables: list[tuple[str, str]] = []
             for a in infos:
@@ -448,7 +446,7 @@ def test_generateur_identifiants_derives_du_contenu():
     def genere():
         rng = _random.Random(generer_deduction.GRAINE)
         deja_vus: set = set()
-        return [generer_deduction.generer_palier(p, rng, 2, deja_vus) for p in (1, 2, 3, 4)]
+        return [generer_deduction.generer_palier(p, rng, 2, deja_vus) for p in (1, 2, 3, 4, 5)]
 
     premiere = genere()
     seconde = genere()
@@ -456,7 +454,7 @@ def test_generateur_identifiants_derives_du_contenu():
     ids2 = [item["id"] for lot in seconde for item in lot]
     assert ids1 == ids2, "une re-génération identique doit garder les identifiants"
     for identifiant in ids1:
-        assert _re.fullmatch(r"df-[1-4]-[0-9a-f]{12}", identifiant), identifiant
+        assert _re.fullmatch(r"df-[1-5]-[0-9a-f]{12}", identifiant), identifiant
 
     # La date, l'auteur et l'identifiant lui-même ne font pas partie du contenu.
     item = premiere[0][0]
@@ -528,3 +526,46 @@ def test_seance_deduction_palier_force_et_mode_auto(client):
         "/api/entrainement/deduction/sessions", json={"palier": 9}
     ).status_code == 422
 
+
+def test_lecture_independante_indices_collectifs_et_entre():
+    """La lecture de contrôle ne se contente pas de reprendre le solveur."""
+    import validate_items as vi
+
+    figures = {f: i for i, f in enumerate(("cercle", "carre", "triangle", "losange"))}
+    couleurs = {c: i for i, c in enumerate(("rouge", "bleu", "vert", "jaune"))}
+    fig = [0, 1, 2, 3] * 4
+    coul = [i // 4 for i in range(16)]
+    def sens(a):
+        return vi._sens_contredit(a, fig, coul, figures, couleurs, 4)
+
+    compte = {"type": "compte-categorie", "categorie": {"couleur": "rouge"},
+              "zone": "ligne", "numero": 0, "nombre": 4}
+    assert sens(compte) is None
+    assert sens(dict(compte, nombre=3)) is not None
+    exclusion = dict(compte, numero=1, nombre=0)
+    assert sens(exclusion) is None
+    assert sens(dict(exclusion, numero=0)) is not None
+    diversite = {"type": "diversite", "attribut": "figure", "zone": "ligne", "numero": "chaque"}
+    assert sens(diversite) is None
+    assert sens(dict(diversite, zone="colonne")) is not None
+    entre = {"type": "entre", "figure": "carre", "couleur": "rouge",
+             "extremites": [{"figure": "cercle"}, {"figure": "losange"}], "axe": "ligne"}
+    # Positions 0, 1, 3 : ni adjacency aux deux extrémités, ni équidistance.
+    assert sens(entre) is None
+    assert sens(dict(entre, axe="colonne")) is not None
+    diagonal = {"type": "entre", "figure": "carre", "couleur": "bleu",
+                "extremites": [{"figure": "cercle", "couleur": "rouge"},
+                               {"figure": "losange", "couleur": "jaune"}], "axe": "diagonale"}
+    assert sens(diagonal) is None
+    assert sens(dict(diagonal, couleur="vert")) is not None
+
+
+def test_validateur_signale_structure_collective_invalide():
+    import validate_items as vi
+    item = json.loads(json.dumps(next(iter(CONTENU.items("deduction")))))
+    item["contenu"]["enonces"][0] = {
+        "type": "compte-categorie", "categorie": {"couleur": "rouge"},
+        "zone": "ligne", "numero": 99, "nombre": 0,
+    }
+    erreurs = vi._erreurs_grille_deduction(item, "", item["contenu"])
+    assert any("structure des indices invalide" in e for e in erreurs)

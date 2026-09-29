@@ -2,6 +2,15 @@
 
 Format : [date] — [périmètre] — description. Les retours informels de l'orthophoniste sont journalisés ici, sans caution clinique.
 
+## 2026-09-29 · Déduction : contraintes collectives et cinq paliers (Codex)
+
+- Remplacement explicite des 80 grilles par 100 nouveaux items (identifiants dérivés du contenu), P1–P4 en 3×3 et P5 en 4×4. Graines isolées par palier.
+- Répartitions et exclusions de catégories, diversité explicitement annoncée, entre-deux avec références partielles ; aucune règle collective implicite. Suppression des quotas de longueur et des informations dispensables pour la preuve par propagation.
+- Trois étapes par palier ; place réservée aux nouveautés malgré les révisions dues. Maîtrise suivie sur les séances comprenant une réponse de dernière étape, sans réutiliser les taux de l'ancien corpus ; palier courant et ancien historique conservés.
+- Rendu français des nouveaux indices, correction des phrases mêlant négation et relation positive ; contrôles JS par atome corrigés pour isoler réellement chaque prédicat.
+- Contre-vérification indépendante : 100 solutions uniques conformes aux réponses. 237 tests réussis, un test sémantique système ignoré (empreintes absentes) ; 940 items valides ; 890 phrases contrôlées et 19 références de rendu. Régénération identique vérifiée.
+- ADR-017 ; contenu à relire, aucune calibration clinique revendiquée. Serveur utilisateur et autre checkout préservés.
+
 ## 2026-09-29 · Déduction : le choix de palier part vraiment au serveur (sélecteur d'essai)
 
 Défaut confirmé par Codex : en choisissant « Essai — palier 2 », le frontend démarrait la séance au palier courant (une grille du palier 1 était servie). `demarrerSession` recevait le palier mais POSTait `…/sessions` sans corps — le choix était ignoré.

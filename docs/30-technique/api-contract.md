@@ -11,7 +11,7 @@ Base : `/api/entrainement` — périmètre **hors médical**. Format JSON. Pas d
 `{"themes": [{"id": "calcul-mental", "nom": "Calcul mental", "description": "Tables et calcul rapide, paliers progressifs"}, {"id": "anglais", …}, {"id": "python", …}, {"id": "memoire", "nom": "Mémoire", "description": "Empans de chiffres, séquences et associations — mémorisation progressive"}, {"id": "concentration", "nom": "Concentration", "description": "Calculs chaînés, double tâche et séries — une attention qui tient"}]}`
 
 ### POST /api/entrainement/{theme}/sessions
-Démarre une séance. Sélection serveur : items dus (FSRS) d'abord, puis nouveaux du palier courant.
+Démarre une séance. Sélection serveur : items dus (FSRS) d'abord, puis nouveaux du palier courant. Exception pour les contenus à `etape_progression` (déduction) : réserver la moitié des places aux nouveautés disponibles dans l'ordre des étapes, et prioriser les révisions avancées (ADR-017). Les trois séances du critère de maîtrise doivent chacune comporter une réponse de l'étape finale ; elles sont suivies dans `historique_etapes`, séparément des anciens taux conservés.
 - `201` → `{"session_id": str, "items": [{"id": str, "type": str, "palier": int, "contenu": {...}}], "regles": {"max_items": 12, "duree_max_s": 600}} — les valeurs dépendent du thème (déduction : 6 exercices)}`
 - `429` → `{"erreur": "limite_sessions_atteinte", "sessions_restantes_aujourdhui": 0}`
 

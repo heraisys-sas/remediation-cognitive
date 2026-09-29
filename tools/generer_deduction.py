@@ -1,32 +1,12 @@
 #!/usr/bin/env python3
-"""Génère le thème « deduction » — logigrammes 3×3 et 4×4.
+"""Génère 100 grilles de déduction en cinq paliers.
 
-**Une seule règle, évidente** : chaque figure colorée se pose une fois, dans une case,
-et une case ne contient qu'une figure. Tout le reste vient des **phrases**.
-
-Une phrase est une **chaîne** : une ancre de départ, puis des relations d'une figure à
-la suivante. Elle peut donc porter trois informations ou plus, ce qui raccourcit
-l'exercice — surtout au début :
-
-    « Le triangle vert est dans le coin en bas à droite, juste au-dessus du carré bleu,
-      qui est juste à gauche du cercle rouge. »
-
-Méthode :
-
-1. on tire un placement (chaque figure colorée une fois) ;
-2. on construit le vivier de chaînes vraies (ancre + relations enchaînées) ;
-3. on ajoute les chaînes les plus fortes jusqu'à ce que le **solveur de déduction**
-   (`deduction_commun.resoudre_par_deduction`) détermine toutes les cases — sans
-   hypothèse, avec les seules phrases.
-
-Les paliers resserrent ensuite les phrases : chaînes longues et ancres précises au
-début, relations plus lâches (voisinage, comparaison, négations, conditionnel) ensuite.
-
-Usage :
-
-    python3 tools/generer_deduction.py                 # 20 grilles par palier
-    python3 tools/generer_deduction.py --par-palier 18
-    python3 tools/generer_deduction.py --dry-run
+P1 : chaînes d'initiation progressivement décomposées. P2–P5 : construction
+avec contraintes collectives et entre-deux (generer_deduction_riche).
+P1–P4 sont en 3×3 ; P5 en 4×4. Rien hormis l'unicité des pions/cases
+n'est implicite. La propagation doit résoudre chaque grille sans hypothèse.
+Toute information dispensable pour cette preuve est retirée ; les familles
+riches doivent rester effectivement présentes. Voir ADR-017 et le README.
 """
 
 from __future__ import annotations
@@ -48,6 +28,7 @@ from deduction_commun import (  # noqa: E402
     cellule,
     coins,
     jetons,
+    informations_autonomes,
     phrases_qui_fixent_seules,
     rang_premiere_certitude,
     propager,
@@ -150,8 +131,8 @@ DESCRIPTIONS = [
 #: Aide affichée sur demande. Au palier 1, une phrase enchaîne un repère et des
 #: relations : elle peut porter la position. Aux paliers suivants, aucune phrase
 #: ne suffit seule — c'est le croisement des phrases qui révèle les cases certaines.
-AIDE_ANCRAGE = ("Chaque phrase enchaîne plusieurs informations : commence par la figure "
-                "dont la phrase donne la position, puis suis les relations.")
+AIDE_ANCRAGE = ("Repère les indications de ligne ou de colonne, puis relie-les aux autres phrases. "
+                "Ne place une figure que lorsque sa case est certaine.")
 AIDE_CROISEMENT = ("Aucune phrase ne suffit seule : recoupe les phrases entre elles, "
                    "barre ce qui devient impossible — les cases certaines apparaissent "
                    "au croisement.")
@@ -511,7 +492,10 @@ def generer_palier(palier: int, rng: random.Random, nombre: int, deja_vus: set) 
     d'empreinte — deux contenus différents sous un même identifiant — échoue
     bruyamment au lieu de passer inaperçue.
     """
-    n = 3 if palier <= 3 else 4
+    if palier >= 2:
+        from generer_deduction_riche import generer
+        return generer(palier, rng, nombre, deja_vus)
+    n = 3
     figures, couleurs = FIGURES[:n], COULEURS[:n]
     items: list[dict] = []
     ids_utilises: set[str] = set()
@@ -527,10 +511,24 @@ def generer_palier(palier: int, rng: random.Random, nombre: int, deja_vus: set) 
         for _ in range(6):
             phrases = _selection(paire, n, figures, couleurs, palier, rng)
             if phrases and _recoupement_apres_presentation(phrases, n, palier, figures, couleurs):
+                # Initiation graduelle : retirer les informations dispensables,
+                # puis alléger le guidage de la phrase au fil des trois étapes.
+                phrases = [informations_autonomes(ph) for ph in phrases]
+                for bloc in list(phrases):
+                    for a in list(bloc):
+                        essai = [b for groupe in phrases for b in groupe if b is not a]
+                        if resoudre_par_deduction(essai, n, figures, couleurs):
+                            bloc.remove(a)
+                etape = min(3, 1 + len(items)*3//nombre)
+                taille = 4-etape
+                phrases = [dict(bloc[j], **({"et": bloc[j+1:j+taille]} if len(bloc[j+1:j+taille]) else {}))
+                           for bloc in phrases for j in range(0,len(bloc),taille)]
                 deja_vus.add(paire)
                 item = _item(palier, paire, phrases,
                              _secours(paire, n, figures, couleurs, rng),
                              n, figures, couleurs)
+                item["contenu"]["etape_progression"] = etape
+                item["id"] = identifiant_item(palier, item["contenu"], item["reponse"])
                 if item["id"] in ids_utilises:
                     raise SystemExit("palier %d : collision d'empreinte d'identifiant (%s)"
                                      % (palier, item["id"]))
@@ -546,7 +544,7 @@ def _manifest(paliers: list[list[dict]]) -> dict:
         "paliers": [
             {
                 "id": "de-palier-%d" % numero,
-                "description": DESCRIPTIONS[numero - 1],
+                "description": ["Repères et chaînes — 3×3", "Exclusions par catégorie et recoupement — 3×3", "Répartitions et entre-deux — 3×3", "Contraintes collectives croisées — 3×3 avancé", "Synthèse et diagonales — 4×4"][numero - 1],
                 "prerequis": [] if numero == 1 else ["de-palier-%d" % (numero - 1)],
                 "fichier": "paliers/palier-%02d.json" % numero,
                 "nb_items": len(items),
@@ -572,9 +570,8 @@ def main() -> int:
                          help="répertoire de sortie (par défaut : contenu du thème)")
     options = parseur.parse_args()
 
-    rng = random.Random(GRAINE)
     deja_vus: set = set()
-    paliers = [generer_palier(p, rng, options.par_palier, deja_vus) for p in (1, 2, 3, 4)]
+    paliers = [generer_palier(p, random.Random(f"{GRAINE}:deduction:{p}"), options.par_palier, deja_vus) for p in (1, 2, 3, 4, 5)]
 
     cibles = {options.sortie / "paliers.json": _manifest(paliers)}
     for numero, items in enumerate(paliers, start=1):
@@ -597,7 +594,7 @@ def main() -> int:
     print("Total : %d grilles, %d paliers, placements distincts : %d." % (total, len(paliers), len(deja_vus)))
     print("Phrases par grille : min %d, max %d, moyenne %.1f." % (min(nombres), max(nombres), sum(nombres) / len(nombres)))
     print("Informations par grille : min %d, max %d, moyenne %.1f." % (min(infos), max(infos), sum(infos) / len(infos)))
-    print("Figures citées par grille : min %d, max %d (sur %d)." % (min(figures_citees), max(figures_citees), 9))
+    print("Figures citées par grille : min %d, max %d (sur %d)." % (min(figures_citees), max(figures_citees), 16))
     return 0
 
 

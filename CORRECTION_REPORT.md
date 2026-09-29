@@ -1,3 +1,38 @@
+# Livraison Codex — 29 septembre 2026, session du soir
+
+Implémentation directe sur `amelioration-deduction-20260927`, base `7400534`, après les échecs AutoClaw. Cette livraison remplace les observations de corpus de 80 grilles dans les comptes rendus historiques ci-dessous.
+
+## Résultat
+
+100 nouveaux items, 20 par palier, 3 étapes (7/7/6). P4 est désormais le 3×3 avancé, P5 le 4×4. Exclusions collectives, répartition, diversité, entre-deux et références partielles présents dans le contenu effectivement servi. Les contraintes collectives restent des indices explicites propres à chaque grille.
+
+| Palier | Phrases moyennes | Phrases fixant seules une case | Informations retirables par propagation |
+|---|---:|---:|---:|
+| 1 | 4,5 | 3 au total (initiation autorisée) | 0 |
+| 2 | 9,8 | 0 | 0 |
+| 3 | 7,7 | 0 | 0 |
+| 4 | 7,6 | 0 | 0 |
+| 5 | 14,9 | 0 | 0 |
+
+Le nombre de phrases n'est pas une mesure de difficulté. Les paliers changent les familles, les références et le guidage ; leur difficulté cognitive n'est pas étalonnée. Une information nécessaire à la preuve par propagation n'est pas forcément indispensable à l'unicité : les deux propriétés sont contrôlées séparément.
+
+## Vérifications
+
+- Propagation sans hypothèse : les 100 grilles résolues ; chaque information conservée est nécessaire à cette preuve, test de retrait effectué sur tout le corpus.
+- Recherche MRV indépendante du propagateur : 100 solutions uniques identiques aux réponses, 193 945 nœuds au total. Budget explicite, échec si dépassé ; tests d'ambiguïté et de contradiction.
+- 2 160 affectations comparées à un oracle indépendant pour les contraintes riches. Régression : un compte impossible « deux cercles dans chaque ligne » est refusé, aucune distribution latine implicite.
+- Rendu réel JS : 19 phrases de référence, 890 phrases du corpus sans anomalie ; corrections des enchaînements négatif/positif et du contrôle d'atomes conservant auparavant le `et` du parent.
+- `validate_items.py` : 940 items, 0 erreur ; `verifier_reponses.py` : 0 anomalie (l'unicité déduction relève du nouvel outil séparé) ; `verifier_interface.py` et syntaxe JS : OK.
+- `pytest` avec Node sur PATH : 237 passed, 1 skipped. Le test ignoré concerne les empreintes sémantiques Apple indisponibles dans cet environnement ; aucun test de déduction n'est ignoré.
+- Régénération complète dans un dossier temporaire : contenu des cinq fichiers identique octet pour octet.
+- Progression testée avec des révisions dues et un ancien historique parfait : les dernières étapes deviennent accessibles ; les anciens scores ne valident pas les nouvelles étapes ; le palier ne recule pas.
+
+Documentation : ADR-017 et README du thème. Nouveaux contenus `a_revoir`. Publication limitée à la branche d'essai ; main, le serveur actif et l'autre checkout n'ont pas été modifiés.
+
+---
+
+# Rapports historiques (avant cette refonte)
+
 # CORRECTION_REPORT — Déduction : preuve exacte du « fixe seule » et réparation du palier 3
 
 **Date** : 2026-09-29 · **Dépôt** : `/Users/olivierhz/orthogone/deduction-corrections` · **Branche** : `amelioration-deduction-20260927` · **Base** : `895efdf` · **Commits de la correction** : `8299f0b` (première passe), `d534e40` et `7f0ff8b` (deuxième passe : identifiants, aides, sélecteur de palier)

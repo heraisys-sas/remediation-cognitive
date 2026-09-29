@@ -101,16 +101,22 @@ class StockageJSON:
             (int(palier), float(taux))
             for palier, taux in (donnees.get("historique") or [])
         ]
-        return {"palier_courant": palier_courant, "historique": historique}
+        etat = {"palier_courant": palier_courant, "historique": historique}
+        if "historique_etapes" in donnees:
+            etat["historique_etapes"] = [(int(p), float(t)) for p, t in donnees["historique_etapes"]]
+        return etat
 
     def ecrire_maitrise(
-        self, theme: str, palier_courant: int, historique: list[tuple[int, float]]
+        self, theme: str, palier_courant: int, historique: list[tuple[int, float]],
+        historique_etapes: list[tuple[int, float]] | None = None,
     ) -> None:
         """Persiste le palier courant et l'historique chronologique."""
         contenu = {
             "palier_courant": int(palier_courant),
             "historique": [[palier, taux] for palier, taux in historique],
         }
+        if historique_etapes is not None:
+            contenu["historique_etapes"] = [[p, t] for p, t in historique_etapes]
         self._ecrire_json(self._dossier_theme(theme) / "maitrise.json", contenu)
 
     # -- compteur de séances du jour --------------------------------------------

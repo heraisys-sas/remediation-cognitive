@@ -2,6 +2,10 @@
 
 Monorepo pour un logiciel de **bilan cognitif**, de **rééducation ciblée** et d'**entraînement cérébral générique** destiné à des adultes avec syndrome post-commotionnel (SPC).
 
+## Déduction — branche d’essai
+
+100 grilles en cinq paliers : P1–P4 en 3×3, P5 en 4×4. Indices collectifs explicites, références partielles et entre-deux ; progression en trois étapes par palier. [Contenu et vérifications](content/entrainement/deduction/README.md).
+
 ## Principe directeur
 
 Le moteur adaptatif (`engine/`) est **unique** et réutilisé par les trois modules. Le contenu (`content/`) est versionné **séparément du code**. Les garde-fous cliniques vivent dans `backend/app/domain/` — ils ne sont pas contournables par l'UI.

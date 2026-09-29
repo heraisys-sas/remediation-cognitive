@@ -421,6 +421,8 @@ def erreurs_contenu(item: dict, prefixe: str) -> list[str]:
 
 
 #: Types d'indices admis dans une grille de déduction.
+from deduction_contraintes import TYPES_RICHES, compiler as compiler_contraintes
+
 TYPES_INDICE_GRILLE = {
     "case", "ligne", "colonne", "pas-ligne", "pas-colonne",
     "coin", "pas-coin", "pas-bord", "ni-ni",
@@ -432,15 +434,7 @@ TYPES_INDICE_GRILLE = {
     "pas-voisin-gauche", "pas-voisin-droite", "pas-voisin-dessus", "pas-voisin-dessous",
     "pas-a-droite-de", "pas-a-gauche-de", "pas-au-dessus-de", "pas-en-dessous-de",
     "si-alors", "regle",
-}
-
-#: Nombre minimal d'informations par phrase, par palier : au début, les phrases sont
-#: **denses** (chaîne d'une ancre et de deux relations) pour raccourcir l'exercice ;
-#: ensuite elles se resserrent à deux informations et il faut recouper davantage.
-QUOTA_MIN_COMPOSE = {1: 3, 2: 2, 3: 2, 4: 2}
-
-#: Types d'indices admis dans une grille de déduction.
-
+} | TYPES_RICHES
 
 def _cellule_grille(fig: list[int], coul: list[int], i_f: int, i_c: int) -> int:
     """Case de la figure colorée (i_f, i_c) ; -1 si absente (grille non orthogonale)."""
@@ -464,6 +458,51 @@ def _predicat_grille(indice: dict, fig: list[int], coul: list[int],
     return pred_indice(indice, (tuple(fig), tuple(coul)), n, noms_f, noms_c)
 
 
+def _sens_riche_contredit(indice: dict, fig: list[int], coul: list[int],
+                          index_figure: dict, index_couleur: dict, n: int) -> str | None:
+    """Lecture indépendante des trois nouvelles familles, sans le moteur CSP."""
+    def cases(categorie):
+        return [i for i in range(n * n)
+                if ("figure" not in categorie or fig[i] == index_figure[categorie["figure"]])
+                and ("couleur" not in categorie or coul[i] == index_couleur[categorie["couleur"]])]
+
+    if indice["type"] in {"compte-categorie", "diversite"}:
+        numeros = range(n) if indice["numero"] == "chaque" else [indice["numero"]]
+        for numero in numeros:
+            region = [i for i in range(n * n)
+                      if (i // n if indice["zone"] == "ligne" else i % n) == numero]
+            if indice["type"] == "compte-categorie":
+                compte = len(set(region) & set(cases(indice["categorie"])))
+                if compte != indice["nombre"]:
+                    return "le nombre de pions de la catégorie dans la zone est différent"
+            else:
+                valeurs = fig if indice["attribut"] == "figure" else coul
+                if len({valeurs[i] for i in region}) != n:
+                    return "la zone ne contient pas exactement un pion de chaque valeur annoncée"
+        return None
+    centre = cases({"figure": indice["figure"], "couleur": indice["couleur"]})[0]
+    cr, cc = divmod(centre, n)
+    for a in cases(indice["extremites"][0]):
+        for b in cases(indice["extremites"][1]):
+            if len({a, b, centre}) != 3:
+                continue
+            ar, ac = divmod(a, n)
+            br, bc = divmod(b, n)
+            if indice["axe"] == "ligne":
+                vrai = ar == cr == br and (ac < cc < bc or bc < cc < ac)
+            elif indice["axe"] == "colonne":
+                vrai = ac == cc == bc and (ar < cr < br or br < cr < ar)
+            else:
+                # Les deux segments sont obliques à 45°, de même pente,
+                # et le centre se trouve strictement entre les extrémités.
+                vrai = (abs(ar-cr) == abs(ac-cc) and abs(br-cr) == abs(bc-cc)
+                        and (ar-cr)*(bc-cc) == (br-cr)*(ac-cc)
+                        and (ar < cr < br or br < cr < ar))
+            if vrai:
+                return None
+    return "aucune paire de pions des catégories annoncées n'encadre le sujet sur cet axe"
+
+
 def _sens_contredit(indice: dict, fig: list[int], coul: list[int],
                     index_figure: dict, index_couleur: dict, n: int) -> str | None:
     """Contradiction entre le **sens français** de la phrase et la solution.
@@ -474,6 +513,9 @@ def _sens_contredit(indice: dict, fig: list[int], coul: list[int],
     manquait quand une paire droite/gauche ou dessus/dessous a été inversée -
     l'inversion rendait la grille insoluble sans qu'aucun outil ne s'en aperçoive.
     """
+    if indice.get("type") in TYPES_RICHES:
+        return _sens_riche_contredit(indice, fig, coul, index_figure, index_couleur, n)
+
     def case_de(nom_f: str, nom_c: str) -> int:
         return _cellule_grille(fig, coul, index_figure[nom_f], index_couleur[nom_c])
 
@@ -610,7 +652,7 @@ def erreurs_sequence_pqrst(item: dict, prefixe: str, contenu: dict) -> list[str]
 
 
 def _erreurs_grille_deduction(item: dict, prefixe: str, contenu: dict) -> list[str]:
-    """Vérifie une grille de déduction : structure, carré latin, indices vrais."""
+    """Vérifie une grille de déduction : structure, pions uniques et indices vrais, sans règle de carré latin."""
     erreurs: list[str] = []
     figures = contenu.get("figures")
     couleurs = contenu.get("couleurs")
@@ -623,10 +665,21 @@ def _erreurs_grille_deduction(item: dict, prefixe: str, contenu: dict) -> list[s
     n = len(figures)
 
     enonces = contenu.get("enonces")
-    if not isinstance(enonces, list) or len(enonces) < 4 or not all(
+    if not isinstance(enonces, list) or len(enonces) < 2 or not all(
         isinstance(e, dict) and e.get("type") in TYPES_INDICE_GRILLE for e in enonces
     ):
-        erreurs.append(prefixe + "grille-deduction : indices structurés attendus")
+        erreurs.append(prefixe + "grille-deduction : au moins deux indices structurés attendus")
+        return erreurs
+    # Valider avant tout prédicat : un indice mal formé doit produire un diagnostic,
+    # et non interrompre la validation du dépôt avec une exception.
+    secours = contenu.get("indices", [])
+    if not isinstance(secours, list):
+        return [prefixe + "grille-deduction : indices de secours attendus en liste"]
+    try:
+        compiler_contraintes(enonces + [i for i in secours if isinstance(i, dict)
+                                       and i.get("type") != "regle"], n, figures, couleurs)
+    except (ValueError, KeyError, TypeError, IndexError, StopIteration) as exc:
+        return [prefixe + f"grille-deduction : structure des indices invalide ({exc})"]
 
     reponse_bloc = item.get("reponse") if isinstance(item.get("reponse"), dict) else {}
     grille = reponse_bloc.get("grille")
@@ -679,20 +732,10 @@ def _erreurs_grille_deduction(item: dict, prefixe: str, contenu: dict) -> list[s
 
     # Pédagogie verrouillée : les phrases doivent contenir la résolution.
     palier = item.get("palier")
-    minimum = QUOTA_MIN_COMPOSE.get(palier, 2)
-    if any(isinstance(i, dict) and i.get("type") == "case" for i in enonces):
+    if any(a.get("type") == "case" for i in enonces
+           for a in [i] + list(i.get("et") or [])):
         erreurs.append(prefixe + "grille-deduction : placement direct interdit "
                                 "(toute la résolution doit venir des phrases)")
-    for position, indice in enumerate(enonces, start=1):
-        if not isinstance(indice, dict):
-            continue
-        informations = 1 + len(indice.get("et") or [])
-        if informations < minimum:
-            erreurs.append(prefixe + f"grille-deduction : phrase {position} à {informations} information(s) "
-                                    f"(minimum {minimum} au palier {palier})")
-        if not any(a.get("type") in TYPES_BINAIRES_DEDUCTION for a in [indice] + list(indice.get("et") or [])):
-            erreurs.append(prefixe + f"grille-deduction : phrase {position} ne relie aucune figure "
-                                    "(aucune déduction provoquée)")
     secours = contenu.get("indices")
     if isinstance(secours, list):
         for position, indice in enumerate(secours, start=1):

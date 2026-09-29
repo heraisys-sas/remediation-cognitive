@@ -26,6 +26,7 @@ from __future__ import annotations
 import random
 from functools import lru_cache
 import json
+from deduction_contraintes import TYPES_RICHES
 
 #: Types d'indices portant sur la position d'un seul jeton (contraintes unaires).
 TYPES_UNAIRES = {"case", "ligne", "colonne", "pas-ligne", "pas-colonne",
@@ -173,6 +174,9 @@ def _vrai_binaire(indice: dict, i1: int, i2: int, n: int) -> bool:
 
 def pred_indice(indice: dict, paire, n: int, noms_f: list[str], noms_c: list[str]) -> bool:
     """La phrase est-elle vraie pour cet arrangement ? (toutes ses informations)"""
+    if indice.get("type") in TYPES_RICHES:
+        from deduction_contraintes import vrai_riche
+        return vrai_riche(indice, paire, n, noms_f, noms_c)
     fig, coul = paire
     for atome in atomes(indice):
         nom_f, nom_c = sujet(indice, atome)
@@ -199,6 +203,9 @@ def propager(indices: list[dict], n: int, noms_f: list[str], noms_c: list[str],
     Règles utilisées, et elles seules : une case ne contient qu'une figure colorée,
     et chaque figure colorée est posée une fois. Le reste vient des phrases.
     """
+    if any(a.get("type") in TYPES_RICHES for ph in indices for a in atomes(ph)):
+        from deduction_contraintes import propager_riche
+        return propager_riche(indices, n, noms_f, noms_c)
     tous = jetons(n)
     domaines: list[set[tuple[int, int]]] = [set(tous) for _ in range(n * n)]
 
@@ -291,7 +298,7 @@ def resoudre_par_deduction(indices: list[dict], n: int,
 #: Paliers où l'exigence de recoupement est bloquante : le palier 1 est une
 #: initiation aux relations de voisinage où une phrase d'ancrage peut
 #: déterminer une position — l'exigence est mesurée là, bloquée ailleurs.
-PALIERS_RECOUPMENT_BLOQUANT = frozenset({2, 3, 4})
+PALIERS_RECOUPMENT_BLOQUANT = frozenset({2, 3, 4, 5})
 
 
 def phrases_qui_fixent_seules(indices: list[dict], n: int,
@@ -304,6 +311,11 @@ def phrases_qui_fixent_seules(indices: list[dict], n: int,
     """
     verdicts = []
     for rang, phrase in enumerate(indices):
+        if phrase.get("type") in TYPES_RICHES:
+            from deduction_contraintes import forcees_riche
+            if forcees_riche(phrase, n, noms_f, noms_c):
+                verdicts.append(rang)
+            continue
         _verifier_jetons_cites(phrase, noms_f, noms_c)
         if _une_phrase_fixe(phrase, n, noms_f, noms_c):
             verdicts.append(rang)
@@ -332,7 +344,8 @@ def informations_autonomes(phrase: dict) -> list[dict]:
     resultat = []
     for atome in atomes(phrase):
         copie = {k: v for k, v in atome.items() if k != "et"}
-        copie["figure"], copie["couleur"] = sujet(phrase, atome)
+        if atome.get("type") not in TYPES_RICHES:
+            copie["figure"], copie["couleur"] = sujet(phrase, atome)
         resultat.append(copie)
     return resultat
 

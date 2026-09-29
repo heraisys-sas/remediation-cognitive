@@ -513,15 +513,31 @@ class GestionnaireSessions:
         """
         if nb_repondu <= 0:
             return
+        # Les premières étapes préparent le palier : trois répétitions de ces
+        # seules grilles ne démontrent pas la maîtrise de sa dernière étape.
+        etapes = [i.get("contenu", {}).get("etape_progression", 0)
+                  for i in self.contenu.items(session.theme) if i.get("palier") == session.palier]
+        etape_finale = max(etapes, default=0)
+        if etape_finale and not any(
+            session.items_par_id[i]["contenu"].get("etape_progression") == etape_finale
+            for i in session.reponses
+        ):
+            return
         etat = self.stockage.lire_maitrise(session.theme)
         historique = list(etat["historique"])
         historique.append((session.palier, float(taux)))
+        historique_etapes = None
+        if etape_finale:
+            # Les taux de l'ancien corpus ne prouvent pas la maîtrise de ces
+            # nouvelles étapes ; les conserver sans les réutiliser pour avancer.
+            historique_etapes = list(etat.get("historique_etapes", []))
+            historique_etapes.append((session.palier, float(taux)))
         palier = etat["palier_courant"]
         if palier_maitrise_historique(
-            historique,
+            historique_etapes if etape_finale else historique,
             palier=session.palier,
             seuil=SEUIL_MAITRISE,
             sessions_consecutives=SESSIONS_CONSECUTIVES_MAITRISE,
         ):
             palier = max(palier, session.palier + 1)
-        self.stockage.ecrire_maitrise(session.theme, palier, historique)
+        self.stockage.ecrire_maitrise(session.theme, palier, historique, historique_etapes)

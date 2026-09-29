@@ -45,4 +45,12 @@ def selectionner_items(
         if item["id"] in cartes and est_due(cartes[item["id"]], maintenant)
     ]
     nouveaux = [item for item in du_palier if item["id"] not in cartes]
+    if any(item.get("contenu", {}).get("etape_progression") for item in du_palier):
+        # Les révisions faciles ne doivent pas monopoliser toutes les séances.
+        # Nouveautés dans l'ordre des étapes ; révisions les plus avancées d'abord.
+        nouveaux.sort(key=lambda i: i["contenu"].get("etape_progression", 1))
+        dus.sort(key=lambda i: -i["contenu"].get("etape_progression", 1))
+        reserve = min(len(nouveaux), max(1, max_items // 2))
+        revises = dus[:max_items - reserve]
+        return revises + nouveaux[:max_items - len(revises)]
     return (dus + nouveaux)[:max_items]

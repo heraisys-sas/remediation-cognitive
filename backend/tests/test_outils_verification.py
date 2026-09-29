@@ -58,3 +58,18 @@ def test_verifier_session_transmet_le_palier():
     assert resultat.returncode == 0, (resultat.stdout + resultat.stderr)[-2000:]
     assert "palier 2 : POST avec corps" in resultat.stdout
 
+
+
+def test_phrases_francaises_du_corpus():
+    node = os.environ.get("NODE_BIN") or shutil.which("node")
+    if not node:
+        pytest.skip("node indisponible : contrôle des phrases non exécuté")
+    resultat = subprocess.run([node, "tools/verifier_phrases.js"], cwd=RACINE_DEPOT,
+                              capture_output=True, text=True, timeout=120)
+    assert resultat.returncode == 0, (resultat.stdout + resultat.stderr)[-3000:]
+
+
+def test_unicite_deduction_independante():
+    resultat = _executer("verifier_unicite_deduction.py")
+    assert resultat.returncode == 0, (resultat.stdout + resultat.stderr)[-3000:]
+    assert "100 grilles uniques" in resultat.stdout

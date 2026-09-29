@@ -62,7 +62,8 @@ const morceaux = [
     source.slice(source.indexOf("const libelleFigure"),
                  source.indexOf("\n", source.indexOf("const libelleFigure"))),
     extraire("nomsPour"), extraire("predicatAtome"), extraire("relationAtome"),
-    extraire("phraseAtome"), extraire("sansEst"), extraire("formaterEnonce"),
+    extraire("phraseAtome"), extraire("sansEst"), extraire("libelleCategorie"),
+    extraire("formaterIndiceCollectif"), extraire("formaterEnonce"),
   ]);
 
 const fabrique = new Function(`${morceaux.join("\n")}\nreturn { formaterEnonce };`);
@@ -73,6 +74,30 @@ const { formaterEnonce } = fabrique();
 //: vide, un « undefined » ou une formulation qui dit l'inverse échoue ici — même
 //: quand le contenu du dépôt ne contient pas encore ce type.
 const DOREES = [
+  [{type:"pas-colonne",figure:"carre",couleur:"bleu",colonne:0,
+    et:[{type:"voisin-dessus",figure2:"cercle",couleur2:"rouge"}]},
+   "Le carré bleu n'est pas dans la colonne de gauche et est juste au-dessus du cercle rouge."],
+  [{type:"voisin-dessus",figure:"carre",couleur:"bleu",figure2:"cercle",couleur2:"rouge",
+    et:[{type:"voisin-gauche",figure:"cercle",couleur:"rouge",figure2:"triangle",couleur2:"vert"}]},
+   "Le carré bleu est juste au-dessus du cercle rouge, qui est juste à gauche du triangle vert."],
+  [{ type: "compte-categorie", categorie: { figure: "carre" }, zone: "colonne", numero: 3, nombre: 0 },
+   "La colonne 4 ne contient aucun pion de forme carré.", 4],
+  [{ type: "entre", figure: "losange", couleur: "jaune", extremites: [{ couleur: "bleu" }, { couleur: "bleu" }], axe: "ligne" },
+   "Le losange jaune est strictement entre deux pions de couleur bleu, sur une même ligne, sans être nécessairement voisins ni à égale distance.", 4],
+  [{ type: "compte-categorie", categorie: { couleur: "rouge" }, zone: "colonne", numero: 2, nombre: 0 },
+   "La colonne de droite ne contient aucun pion de couleur rouge."],
+  [{ type: "compte-categorie", categorie: { figure: "losange" }, zone: "ligne", numero: "chaque", nombre: 1 },
+   "Chaque ligne contient exactement 1 pion de forme losange."],
+  [{ type: "compte-categorie", categorie: { couleur: "vert" }, zone: "ligne", numero: 0, nombre: 2 },
+   "La ligne du haut contient exactement 2 pions de couleur vert."],
+  [{ type: "diversite", attribut: "figure", zone: "ligne", numero: "chaque" },
+   "Chaque ligne contient exactement un pion de chaque forme."],
+  [{ type: "diversite", attribut: "couleur", zone: "colonne", numero: 1 },
+   "La colonne du centre contient exactement un pion de chaque couleur."],
+  [{ type: "entre", figure: "carre", couleur: "rouge", extremites: [{ figure: "cercle" }, { figure: "cercle" }], axe: "diagonale" },
+   "Le carré rouge est strictement entre deux pions de forme cercle, sur une même diagonale, sans être nécessairement voisins ni à égale distance."],
+  [{ type: "entre", figure: "carre", couleur: "rouge", extremites: [{ couleur: "vert" }, { figure: "triangle", couleur: "bleu" }], axe: "colonne" },
+   "Le carré rouge est strictement entre un pion de couleur vert et un triangle bleu, dans une même colonne, sans être nécessairement voisins ni à égale distance."],
   [{ type: "pas-voisin-gauche", figure: "carre", couleur: "bleu", figure2: "cercle", couleur2: "rouge" },
    "Le carré bleu n'est pas juste à gauche du cercle rouge."],
   [{ type: "pas-voisin-droite", figure: "carre", couleur: "bleu", figure2: "cercle", couleur2: "rouge" },
@@ -90,8 +115,8 @@ const DOREES = [
   [{ type: "pas-en-dessous-de", figure: "triangle", couleur: "vert", figure2: "losange", couleur2: "jaune" },
    "Le triangle vert n'est pas plus bas que le losange jaune."],
 ];
-for (const [atome, attendu] of DOREES) {
-  const rendu = formaterEnonce(atome, 3);
+for (const [atome, attendu, taille = 3] of DOREES) {
+  const rendu = formaterEnonce(atome, taille);
   if (rendu !== attendu) {
     console.error(`✗ phrase dorée « ${atome.type} » : attendu « ${attendu} », rendu « ${rendu} »`);
     process.exit(1);
@@ -101,7 +126,7 @@ for (const [atome, attendu] of DOREES) {
     process.exit(1);
   }
 }
-console.log(`✓ ${DOREES.length} phrases dorées (types négatifs) rendues à l'identique`);
+console.log(`✓ ${DOREES.length} phrases dorées (relations et indices collectifs) rendues à l'identique`);
 
 //: Expressions attendues pour chaque type de relation : une inversion entre le nom de
 //: l'indice et la phrase affichée (« voisin-dessus » écrit « en dessous ») rendait la
@@ -154,7 +179,7 @@ for (const fichier of fs.readdirSync(dossier).filter((f) => f.endsWith(".json"))
       const fautes = [];
       if (/undefined/.test(rendu)) fautes.push("undefined");
       if (/\bet\s*\./.test(rendu) || /,\s*\./.test(rendu)) fautes.push("prédicat vide");
-      if (!/\best\b|\bn'est\b/.test(rendu)) fautes.push("aucun verbe");
+      if (!/\best\b|\bn'est\b|\bcontient\b|\btouche\b/.test(rendu)) fautes.push("aucun verbe");
       if (fautes.length) anomalies.push(`${item.id} phrase ${rang + 1} — ${fautes.join(", ")} → « ${rendu} »`);
 
       // Chaque information, rendue seule, doit dire ce que son nom annonce.
@@ -163,7 +188,7 @@ for (const fichier of fs.readdirSync(dossier).filter((f) => f.endsWith(".json"))
         if (!attendu) continue;
         atomes += 1;
         const seul = formaterEnonce({ ...atome, figure: atome.figure || phrase.figure,
-                                      couleur: atome.couleur || phrase.couleur }, n);
+                                      couleur: atome.couleur || phrase.couleur, et: [] }, n);
         for (const marque of attendu.contient) {
           if (!seul.includes(marque)) {
             anomalies.push(`${item.id} : « ${atome.type} » devrait dire « ${marque} » → « ${seul} »`);

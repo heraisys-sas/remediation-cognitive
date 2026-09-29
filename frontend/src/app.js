@@ -1840,10 +1840,52 @@ function sansEst(texte) {
   return texte.startsWith("est ") ? texte.slice(4) : texte;
 }
 
+/** Un sélecteur peut désigner une catégorie, sans identifier sa couleur ou sa forme. */
+function libelleCategorie(categorie) {
+  if (categorie.figure && categorie.couleur) return `${libelleFigure(categorie.figure)} ${categorie.couleur}`;
+  if (categorie.figure) return `pion de forme ${libelleFigure(categorie.figure)}`;
+  return `pion de couleur ${categorie.couleur}`;
+}
+
+/** Ces contraintes appartiennent à cette grille, jamais aux règles permanentes. */
+function formaterIndiceCollectif(indice, n) {
+  const noms = nomsPour(n);
+  const zone = indice.numero === "chaque"
+    ? `Chaque ${indice.zone}`
+    : `La ${indice.zone} ${(indice.zone === "ligne" ? noms.lignes : noms.colonnes)[indice.numero]}`;
+  if (indice.type === "compte-categorie") {
+    const categorie = libelleCategorie(indice.categorie);
+    if (indice.nombre === 0) return `${zone} ne contient aucun ${categorie}.`;
+    // Le nom « pion(s) » évite de pluraliser chaque nom de forme.
+    const complement = indice.categorie.figure && indice.categorie.couleur
+      ? `de forme ${libelleFigure(indice.categorie.figure)} et de couleur ${indice.categorie.couleur}`
+      : indice.categorie.figure
+        ? `de forme ${libelleFigure(indice.categorie.figure)}`
+        : `de couleur ${indice.categorie.couleur}`;
+    return `${zone} contient exactement ${indice.nombre} pion${indice.nombre > 1 ? "s" : ""} ${complement}.`;
+  }
+  if (indice.type === "diversite") {
+    return `${zone} contient exactement un pion de chaque ${indice.attribut === "figure" ? "forme" : "couleur"}.`;
+  }
+  if (indice.type === "entre") {
+    const [a, b] = indice.extremites;
+    const extremites = a.figure === b.figure && a.couleur === b.couleur
+      ? `deux pions ${a.figure ? `de forme ${libelleFigure(a.figure)}` : ""}${a.figure && a.couleur ? " et " : ""}${a.couleur ? `de couleur ${a.couleur}` : ""}`
+      : `un ${libelleCategorie(a)} et un ${libelleCategorie(b)}`;
+    const alignement = indice.axe === "ligne" ? "sur une même ligne"
+      : indice.axe === "colonne" ? "dans une même colonne" : "sur une même diagonale";
+    return `Le ${libelleFigure(indice.figure)} ${indice.couleur} est strictement entre ${extremites}, ${alignement}, sans être nécessairement voisins ni à égale distance.`;
+  }
+  return null;
+}
+
 /** Formule une phrase en français lisible (n = taille de la grille).
  *  Une phrase est une **chaîne** : un repère sur une figure, puis des relations
  *  d'une figure à la suivante (« …, qui est juste au-dessus du … »). */
 function formaterEnonce(indice, n) {
+  if (["compte-categorie", "diversite", "entre"].includes(indice.type)) {
+    return formaterIndiceCollectif(indice, n);
+  }
   const atomes = [indice, ...(Array.isArray(indice.et) ? indice.et : [])];
   const nomDe = (atome) =>
     `${libelleFigure(atome.figure || indice.figure)} ${atome.couleur || indice.couleur}`;
@@ -1857,14 +1899,14 @@ function formaterEnonce(indice, n) {
     if (rang === 0) {
       texte += `Le ${nomDe(atome)} ${predicat}`;
     } else if (ceSujet === sujet) {
-      texte += ` et ${sansEst(predicat)}`;
+      texte += ` et ${predicat}`;
     } else if (ceSujet === cible) {
       texte += `, qui ${predicat}`;
     } else {
       texte += `, et le ${nomDe(atome)} ${predicat}`;
     }
     sujet = ceSujet;
-    if (atome.figure2) cible = `${atome.figure2}:${atome.couleur2}`;
+    cible = atome.figure2 ? `${atome.figure2}:${atome.couleur2}` : null;
   });
   return texte + ".";
 }
