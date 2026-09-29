@@ -2,6 +2,14 @@
 
 Format : [date] — [périmètre] — description. Les retours informels de l'orthophoniste sont journalisés ici, sans caution clinique.
 
+## 2026-09-29 · Déduction : le choix de palier part vraiment au serveur (sélecteur d'essai)
+
+Défaut confirmé par Codex : en choisissant « Essai — palier 2 », le frontend démarrait la séance au palier courant (une grille du palier 1 était servie). `demarrerSession` recevait le palier mais POSTait `…/sessions` sans corps — le choix était ignoré.
+
+- **Interface** : le palier choisi part dans le corps JSON (`{"palier": N}`, contrat `DemarrageOptionnel` du serveur) ; le mode **auto** reste sans corps (progression côté serveur, comportement inchangé) ; les réessais (incident réseau ou bandeau) conservent le palier choisi. Version du script incrémentée (`app.js?v=20260929a`).
+- **Contrôles** : nouveau `tools/verifier_session.js` — il exécute le **vrai** `demarrerSession` + `apiFetch` de `frontend/src/app.js` sur un `fetch` simulé (pas une copie) : palier 2 → POST avec corps `{"palier": 2}` et `Content-Type` JSON ; auto → aucun corps ; réessai réseau → le palier est conservé. Branché dans la suite de tests (Node requis, sinon contrôle ignoré et signalé). Test d'API dédié au thème : palier 2 forcé → tous les items servis sont du palier 2 ; sans corps → palier 1 sur un état vierge ; palier inconnu → 422.
+- **Filtrage serveur revérifié** : `selectionner_items` ne mélange aucun item d'un autre palier.
+
 ## 2026-09-29 · Déduction : identifiants dérivés du contenu + aides harmonisées (paliers 2–4)
 
 Deux finitions, après la correction du matin (preuve exacte, palier 3 réparé) :
