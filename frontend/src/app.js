@@ -501,9 +501,16 @@ async function demarrerSession(theme, palier = null) {
   reglerEtatBoutons();
 
   try {
+    // Essai sur un palier précis : le choix part dans le corps JSON (contrat
+    // « DemarrageOptionnel » du serveur). En mode auto (palier null), aucun
+    // corps n'est envoyé : le serveur suit la progression, comportement inchangé.
+    const options = { method: "POST" };
+    if (palier !== null) {
+      options.body = JSON.stringify({ palier: palier });
+    }
     const donnees = await apiFetch(
       `/${encodeURIComponent(theme.id)}/sessions`,
-      { method: "POST" }
+      options
     );
     masquerBandeau();
 
@@ -534,10 +541,10 @@ async function demarrerSession(theme, palier = null) {
         "Trois séances déjà faites aujourd’hui — le repos fait partie de l’entraînement."
       );
     } else if (erreur.type === "reseau") {
-      afficherErreurReseau(() => demarrerSession(theme));
+      afficherErreurReseau(() => demarrerSession(theme, palier));
     } else {
       afficherBandeau("Impossible de démarrer la séance pour le moment.", {
-        reessayer: () => demarrerSession(theme),
+        reessayer: () => demarrerSession(theme, palier),
       });
     }
   } finally {

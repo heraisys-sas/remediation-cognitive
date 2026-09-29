@@ -509,3 +509,22 @@ def test_aides_harmonisees_sur_les_paliers_avances():
             assert item["contenu"]["aide"] == generer_deduction.AIDE_ANCRAGE, \
                 "%s : le palier 1 garde l'aide d'initiation" % item["id"]
 
+def test_seance_deduction_palier_force_et_mode_auto(client):
+    """Un palier explicitement choisi est bien servi — tous les items rendus sont
+    du palier demandé (filtrage strict côté serveur) — et sans corps, la séance
+    suit la progression (palier 1 sur un état vierge). Palier inconnu → 422."""
+    forcee = client.post("/api/entrainement/deduction/sessions", json={"palier": 2})
+    assert forcee.status_code == 201, forcee.text
+    items = forcee.json()["items"]
+    assert items and all(item["palier"] == 2 for item in items)
+    assert all(item["id"].startswith("df-2-") for item in items)
+
+    automatique = client.post("/api/entrainement/deduction/sessions")
+    assert automatique.status_code == 201, automatique.text
+    items_auto = automatique.json()["items"]
+    assert items_auto and all(item["palier"] == 1 for item in items_auto)
+
+    assert client.post(
+        "/api/entrainement/deduction/sessions", json={"palier": 9}
+    ).status_code == 422
+
