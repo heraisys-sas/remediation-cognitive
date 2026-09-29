@@ -19,6 +19,7 @@ from deduction_commun import (  # noqa: E402
     rang_premiere_certitude,
     resoudre_par_deduction,
 )
+import generer_deduction  # noqa: E402
 import mesurer_difficulte  # noqa: E402
 
 from backend.app.domain.contenu import ChargeurContenu  # noqa: E402
@@ -430,4 +431,81 @@ def test_paliers_2_4_zero_phrase_solo_par_enumeration_independante():
             for v, cases in possibles.items():
                 assert len(cases) != 1, \
                     f"{item['id']} : {v} fixé seul (énumération indépendante)"
+
+# --------------------------------------------------------------------------- #
+# Identifiants dérivés du contenu et aides harmonisées — 2026-09-29.
+# --------------------------------------------------------------------------- #
+
+
+def test_generateur_identifiants_derives_du_contenu():
+    """L'identifiant suit le CONTENU : une re-génération identique garde les
+    mêmes identifiants ; tout changement significatif (phrase, aide, réponse) en
+    produit un nouveau ; la date, l'auteur et l'identifiant lui-même sont exclus ;
+    aucun recouvrement avec les identifiants positionnels historiques df-*/dc-*."""
+    import random as _random
+    import re as _re
+
+    def genere():
+        rng = _random.Random(generer_deduction.GRAINE)
+        deja_vus: set = set()
+        return [generer_deduction.generer_palier(p, rng, 2, deja_vus) for p in (1, 2, 3, 4)]
+
+    premiere = genere()
+    seconde = genere()
+    ids1 = [item["id"] for lot in premiere for item in lot]
+    ids2 = [item["id"] for lot in seconde for item in lot]
+    assert ids1 == ids2, "une re-génération identique doit garder les identifiants"
+    for identifiant in ids1:
+        assert _re.fullmatch(r"df-[1-4]-[0-9a-f]{12}", identifiant), identifiant
+
+    # La date, l'auteur et l'identifiant lui-même ne font pas partie du contenu.
+    item = premiere[0][0]
+    modifie = json.loads(json.dumps(item))
+    modifie["meta"]["date_creation"] = "2099-12-31"
+    modifie["meta"]["auteur"] = "quelqu'un d'autre"
+    modifie["id"] = "df-1-remplace"
+    assert generer_deduction.identifiant_item(
+        modifie["palier"], modifie["contenu"], modifie["reponse"]) == item["id"]
+
+    # Tout changement significatif — phrase, aide ou réponse — change l'identifiant.
+    for nom, geste in (
+        ("une phrase", lambda i: i["contenu"]["enonces"].pop(0)),
+        ("l'aide", lambda i: i["contenu"].update({"aide": i["contenu"]["aide"] + " "})),
+        ("la réponse", lambda i: i["reponse"].update({"valeur": i["reponse"]["valeur"] + ";"})),
+    ):
+        modifie = json.loads(json.dumps(item))
+        geste(modifie)
+        assert generer_deduction.identifiant_item(
+            modifie["palier"], modifie["contenu"], modifie["reponse"]) != item["id"], \
+            "un changement de %s doit changer l'identifiant" % nom
+
+    # Aucune collision avec les identifiants positionnels historiques df-*/dc-*.
+    historiques = {i["id"] for i in CONTENU.items("deduction")
+                   if _re.fullmatch(r"d[cf]-\d-\d{2}", i["id"])}
+    assert set(ids1).isdisjoint(historiques)
+
+    # Un même identifiant n'est partagé que par un contenu identique (par empreinte).
+    corpus = {i["id"]: i for i in CONTENU.items("deduction")}
+    for lot in premiere:
+        for item in lot:
+            autre = corpus.get(item["id"])
+            if autre is not None:
+                assert generer_deduction.empreinte_contenu(
+                    autre["contenu"], autre["reponse"]) == generer_deduction.empreinte_contenu(
+                    item["contenu"], item["reponse"]), \
+                    "même identifiant pour un contenu différent"
+
+
+def test_aides_harmonisees_sur_les_paliers_avances():
+    """Contrôle de cohérence des aides : tous les items des paliers 2 à 4 portent
+    l'aide « croisement » — aucune ne promet une position donnée par une phrase
+    seule. Le palier 1 (initiation) garde son texte d'ancrage, par décision."""
+    for item in CONTENU.items("deduction"):
+        if item["palier"] in PALIERS_RECOUPMENT_BLOQUANT:
+            assert item["contenu"]["aide"] == generer_deduction.AIDE_CROISEMENT, \
+                "%s : aide non harmonisée (paliers 2-4)" % item["id"]
+            assert "donne la position" not in item["contenu"]["aide"]
+        else:
+            assert item["contenu"]["aide"] == generer_deduction.AIDE_ANCRAGE, \
+                "%s : le palier 1 garde l'aide d'initiation" % item["id"]
 

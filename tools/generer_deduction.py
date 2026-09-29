@@ -32,6 +32,7 @@ Usage :
 from __future__ import annotations
 
 import argparse
+import hashlib
 import json
 import random
 import sys
@@ -154,6 +155,35 @@ AIDE_ANCRAGE = ("Chaque phrase enchaîne plusieurs informations : commence par l
 AIDE_CROISEMENT = ("Aucune phrase ne suffit seule : recoupe les phrases entre elles, "
                    "barre ce qui devient impossible — les cases certaines apparaissent "
                    "au croisement.")
+
+#: Longueur (en caractères hexadécimaux) de l'empreinte d'identifiant. 12 caractères
+#: (48 bits) : une collision d'empreinte est déjà improbable, et le générateur la
+#: détecte de toute façon explicitement (jamais deux contenus sous un identifiant).
+LONGUEUR_EMPREINTE: int = 12
+
+
+def empreinte_contenu(contenu: dict, reponse: dict) -> str:
+    """Empreinte déterministe du contenu pédagogique : sha256 tronqué (hex).
+
+    Le canonique couvre ``contenu`` et ``reponse`` — consigne, figures, couleurs,
+    énoncés, indices de secours, aide et réponse. La date, l'auteur et
+    l'identifiant lui-même sont exclus : ils ne font pas partie du contenu.
+    """
+    canonique = json.dumps(
+        {"contenu": contenu, "reponse": reponse},
+        ensure_ascii=False, sort_keys=True, separators=(",", ":"),
+    )
+    return hashlib.sha256(canonique.encode("utf-8")).hexdigest()[:LONGUEUR_EMPREINTE]
+
+
+def identifiant_item(palier: int, contenu: dict, reponse: dict) -> str:
+    """Identifiant stable : ``df-<palier>-<empreinte>``.
+
+    Un contenu identique reçoit toujours le même identifiant ; tout changement
+    (phrase, aide, réponse…) en produit un nouveau — impossible de réutiliser
+    l'identifiant d'un contenu déjà livré (règle du contenu versionné).
+    """
+    return "df-%d-%s" % (palier, empreinte_contenu(contenu, reponse))
 
 
 def _atomes_position(case: int, n: int) -> list[dict]:
@@ -434,13 +464,29 @@ def _secours(paire, n: int, noms_f: list[str], noms_c: list[str],
     return secours
 
 
-def _item(palier: int, rang: int, paire, phrases: list[dict], secours: list[dict],
+def _item(palier: int, paire, phrases: list[dict], secours: list[dict],
           n: int, figures: list[str], couleurs: list[str]) -> dict:
     fig, coul = paire
     grille = [[figures[fig[i]], couleurs[coul[i]]] for i in range(n * n)]
     nombre = "neuf" if n == 3 else "seize"
+    contenu = {
+        "consigne": (
+            f"Place les {nombre} figures colorées. Deux évidences seulement : chaque figure "
+            "colorée (un carré bleu, un cercle rouge…) se pose une fois, et une case ne "
+            "contient qu'une figure. Tout le reste est dans les phrases : suis les chaînes "
+            "d'une figure à l'autre, note ce qui est certain, barre ce qui devient impossible."),
+        "figures": figures,
+        "couleurs": couleurs,
+        "enonces": phrases,
+        "indices": secours,
+        "aide": AIDE_ANCRAGE if palier == 1 else AIDE_CROISEMENT,
+    }
+    reponse = {
+        "valeur": ";".join("%s:%s" % (c[0], c[1]) for c in grille),
+        "grille": grille,
+    }
     return {
-        "id": "df-%d-%02d" % (palier, rang),
+        "id": identifiant_item(palier, contenu, reponse),
         "type": "grille-deduction",
         "module": "entrainement",
         "theme": "deduction",
@@ -448,22 +494,8 @@ def _item(palier: int, rang: int, paire, phrases: list[dict], secours: list[dict
         "palier": palier,
         "prerequis": [] if palier == 1 else ["de-palier-%d" % (palier - 1)],
         "cap_complexite": "les phrases suffisent : aucune règle cachée, suivre les chaînes",
-        "contenu": {
-            "consigne": (
-                f"Place les {nombre} figures colorées. Deux évidences seulement : chaque figure "
-                "colorée (un carré bleu, un cercle rouge…) se pose une fois, et une case ne "
-                "contient qu'une figure. Tout le reste est dans les phrases : suis les chaînes "
-                "d'une figure à l'autre, note ce qui est certain, barre ce qui devient impossible."),
-            "figures": figures,
-            "couleurs": couleurs,
-            "enonces": phrases,
-            "indices": secours,
-            "aide": AIDE_ANCRAGE if palier == 1 else AIDE_CROISEMENT,
-        },
-        "reponse": {
-            "valeur": ";".join("%s:%s" % (c[0], c[1]) for c in grille),
-            "grille": grille,
-        },
+        "contenu": contenu,
+        "reponse": reponse,
         "meta": {
             "auteur": AUTEUR,
             "date_creation": DATE_CREATION,
@@ -473,10 +505,16 @@ def _item(palier: int, rang: int, paire, phrases: list[dict], secours: list[dict
 
 
 def generer_palier(palier: int, rng: random.Random, nombre: int, deja_vus: set) -> list[dict]:
-    """Grilles d'un palier : placements distincts, chacune déductible des seules phrases."""
+    """Grilles d'un palier : placements distincts, chacune déductible des seules phrases.
+
+    L'identifiant est dérivé du contenu (``identifiant_item``) : une collision
+    d'empreinte — deux contenus différents sous un même identifiant — échoue
+    bruyamment au lieu de passer inaperçue.
+    """
     n = 3 if palier <= 3 else 4
     figures, couleurs = FIGURES[:n], COULEURS[:n]
     items: list[dict] = []
+    ids_utilises: set[str] = set()
     essais = 0
     while len(items) < nombre:
         essais += 1
@@ -490,9 +528,14 @@ def generer_palier(palier: int, rng: random.Random, nombre: int, deja_vus: set) 
             phrases = _selection(paire, n, figures, couleurs, palier, rng)
             if phrases and _recoupement_apres_presentation(phrases, n, palier, figures, couleurs):
                 deja_vus.add(paire)
-                items.append(_item(palier, len(items) + 1, paire, phrases,
-                                   _secours(paire, n, figures, couleurs, rng),
-                                   n, figures, couleurs))
+                item = _item(palier, paire, phrases,
+                             _secours(paire, n, figures, couleurs, rng),
+                             n, figures, couleurs)
+                if item["id"] in ids_utilises:
+                    raise SystemExit("palier %d : collision d'empreinte d'identifiant (%s)"
+                                     % (palier, item["id"]))
+                ids_utilises.add(item["id"])
+                items.append(item)
                 break
     return items
 

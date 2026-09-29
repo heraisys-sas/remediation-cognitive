@@ -58,6 +58,7 @@ from deduction_commun import (  # noqa: E402
     rang_premiere_certitude,
     resoudre_par_deduction,
 )
+from generer_deduction import AIDE_CROISEMENT  # noqa: E402
 
 #: Racine du dépôt (parent du dossier tools/) et dossiers de référence.
 RACINE_DEPOT = Path(__file__).resolve().parent.parent
@@ -724,6 +725,14 @@ def _erreurs_grille_deduction(item: dict, prefixe: str, contenu: dict) -> list[s
         if premiere == 1:
             erreurs.append(prefixe + "grille-deduction : la première certitude vient d'une seule "
                                     "phrase (au moins deux phrases doivent se recouper)")
+
+    # Aide harmonisée : les paliers avancés parlent de croisement des phrases —
+    # jamais d'une position donnée par une phrase seule (le palier 1 garde son
+    # texte d'initiation). Contrôle de cohérence sur tout le corpus avancé.
+    if isinstance(palier, int) and palier in PALIERS_RECOUPMENT_BLOQUANT:
+        if contenu.get("aide") != AIDE_CROISEMENT:
+            erreurs.append(prefixe + "grille-deduction : aide non harmonisée "
+                                    "(attendu : texte de croisement des phrases)")
     return erreurs
 
 

@@ -1,6 +1,6 @@
 [
   {
-    "id": "df-4-01",
+    "id": "df-4-fc1abcb3eb96",
     "type": "grille-deduction",
     "module": "entrainement",
     "theme": "deduction",
@@ -281,7 +281,7 @@
           "colonne": 2
         }
       ],
-      "aide": "Chaque phrase enchaîne plusieurs informations : commence par la figure dont la phrase donne la position, puis suis les relations."
+      "aide": "Aucune phrase ne suffit seule : recoupe les phrases entre elles, barre ce qui devient impossible — les cases certaines apparaissent au croisement."
     },
     "reponse": {
       "valeur": "losange:jaune;carre:bleu;losange:vert;triangle:vert;losange:rouge;triangle:jaune;triangle:bleu;carre:rouge;carre:jaune;triangle:rouge;carre:vert;cercle:bleu;cercle:jaune;cercle:rouge;losange:bleu;cercle:vert",
@@ -353,15 +353,15 @@
       ]
     },
     "meta": {
-      "auteur": "generation-automatique (tools/generer_deduction.py)",
-      "date_creation": "2026-09-28",
+      "auteur": "generation-automatique (tools/generer_deduction.py) ; correction 2026-09-29 : aide harmonisée (croisement des phrases)",
+      "date_creation": "2026-09-29",
       "relecture_ortho": {
         "statut": "a_revoir"
       }
     }
   },
   {
-    "id": "df-4-02",
+    "id": "df-4-0736dd2a29bd",
     "type": "grille-deduction",
     "module": "entrainement",
     "theme": "deduction",
@@ -631,7 +631,7 @@
           "colonne": 3
         }
       ],
-      "aide": "Chaque phrase enchaîne plusieurs informations : commence par la figure dont la phrase donne la position, puis suis les relations."
+      "aide": "Aucune phrase ne suffit seule : recoupe les phrases entre elles, barre ce qui devient impossible — les cases certaines apparaissent au croisement."
     },
     "reponse": {
       "valeur": "losange:jaune;carre:rouge;cercle:jaune;carre:bleu;losange:vert;carre:jaune;triangle:vert;cercle:rouge;triangle:jaune;cercle:bleu;triangle:bleu;triangle:rouge;cercle:vert;carre:vert;losange:rouge;losange:bleu",
@@ -703,15 +703,15 @@
       ]
     },
     "meta": {
-      "auteur": "generation-automatique (tools/generer_deduction.py)",
-      "date_creation": "2026-09-28",
+      "auteur": "generation-automatique (tools/generer_deduction.py) ; correction 2026-09-29 : aide harmonisée (croisement des phrases)",
+      "date_creation": "2026-09-29",
       "relecture_ortho": {
         "statut": "a_revoir"
       }
     }
   },
   {
-    "id": "df-4-03",
+    "id": "df-4-fe60881bdfeb",
     "type": "grille-deduction",
     "module": "entrainement",
     "theme": "deduction",
@@ -994,7 +994,7 @@
           "colonne": 1
         }
       ],
-      "aide": "Chaque phrase enchaîne plusieurs informations : commence par la figure dont la phrase donne la position, puis suis les relations."
+      "aide": "Aucune phrase ne suffit seule : recoupe les phrases entre elles, barre ce qui devient impossible — les cases certaines apparaissent au croisement."
     },
     "reponse": {
       "valeur": "losange:vert;cercle:jaune;triangle:rouge;triangle:vert;triangle:jaune;carre:jaune;carre:rouge;carre:vert;cercle:bleu;cercle:vert;cercle:rouge;losange:bleu;carre:bleu;losange:rouge;triangle:bleu;losange:jaune",
@@ -1066,15 +1066,15 @@
       ]
     },
     "meta": {
-      "auteur": "generation-automatique (tools/generer_deduction.py)",
-      "date_creation": "2026-09-28",
+      "auteur": "generation-automatique (tools/generer_deduction.py) ; correction 2026-09-29 : aide harmonisée (croisement des phrases)",
+      "date_creation": "2026-09-29",
       "relecture_ortho": {
         "statut": "a_revoir"
       }
     }
   },
   {
-    "id": "df-4-04",
+    "id": "df-4-ca5a7834890f",
     "type": "grille-deduction",
     "module": "entrainement",
     "theme": "deduction",
@@ -1343,7 +1343,7 @@
           "case": 13
         }
       ],
-      "aide": "Chaque phrase enchaîne plusieurs informations : commence par la figure dont la phrase donne la position, puis suis les relations."
+      "aide": "Aucune phrase ne suffit seule : recoupe les phrases entre elles, barre ce qui devient impossible — les cases certaines apparaissent au croisement."
     },
     "reponse": {
       "valeur": "cercle:jaune;losange:vert;carre:jaune;losange:jaune;cercle:bleu;losange:rouge;cercle:vert;cercle:rouge;triangle:rouge;carre:vert;triangle:bleu;carre:bleu;triangle:jaune;triangle:vert;losange:bleu;carre:rouge",
@@ -1415,15 +1415,15 @@
       ]
     },
     "meta": {
-      "auteur": "generation-automatique (tools/generer_deduction.py)",
-      "date_creation": "2026-09-28",
+      "auteur": "generation-automatique (tools/generer_deduction.py) ; correction 2026-09-29 : aide harmonisée (croisement des phrases)",
+      "date_creation": "2026-09-29",
       "relecture_ortho": {
         "statut": "a_revoir"
       }
     }
   },
   {
-    "id": "df-4-05",
+    "id": "df-4-c96bfa5b4dd9",
     "type": "grille-deduction",
     "module": "entrainement",
     "theme": "deduction",
@@ -1691,7 +1691,7 @@
           "case": 4
         }
       ],
-      "aide": "Chaque phrase enchaîne plusieurs informations : commence par la figure dont la phrase donne la position, puis suis les relations."
+      "aide": "Aucune phrase ne suffit seule : recoupe les phrases entre elles, barre ce qui devient impossible — les cases certaines apparaissent au croisement."
     },
     "reponse": {
       "valeur": "carre:rouge;losange:bleu;carre:vert;cercle:jaune;cercle:rouge;triangle:jaune;triangle:vert;losange:vert;losange:jaune;carre:bleu;triangle:bleu;triangle:rouge;cercle:bleu;losange:rouge;carre:jaune;cercle:vert",
@@ -1763,15 +1763,15 @@
       ]
     },
     "meta": {
-      "auteur": "generation-automatique (tools/generer_deduction.py)",
-      "date_creation": "2026-09-28",
+      "auteur": "generation-automatique (tools/generer_deduction.py) ; correction 2026-09-29 : aide harmonisée (croisement des phrases)",
+      "date_creation": "2026-09-29",
       "relecture_ortho": {
         "statut": "a_revoir"
       }
     }
   },
   {
-    "id": "df-4-06",
+    "id": "df-4-5053715793e9",
     "type": "grille-deduction",
     "module": "entrainement",
     "theme": "deduction",
@@ -2039,7 +2039,7 @@
           "ligne": 1
         }
       ],
-      "aide": "Chaque phrase enchaîne plusieurs informations : commence par la figure dont la phrase donne la position, puis suis les relations."
+      "aide": "Aucune phrase ne suffit seule : recoupe les phrases entre elles, barre ce qui devient impossible — les cases certaines apparaissent au croisement."
     },
     "reponse": {
       "valeur": "cercle:jaune;cercle:vert;losange:bleu;cercle:bleu;triangle:vert;carre:bleu;carre:jaune;carre:rouge;triangle:jaune;losange:rouge;triangle:bleu;triangle:rouge;cercle:rouge;losange:jaune;carre:vert;losange:vert",
@@ -2111,15 +2111,15 @@
       ]
     },
     "meta": {
-      "auteur": "generation-automatique (tools/generer_deduction.py)",
-      "date_creation": "2026-09-28",
+      "auteur": "generation-automatique (tools/generer_deduction.py) ; correction 2026-09-29 : aide harmonisée (croisement des phrases)",
+      "date_creation": "2026-09-29",
       "relecture_ortho": {
         "statut": "a_revoir"
       }
     }
   },
   {
-    "id": "df-4-07",
+    "id": "df-4-0fda2175888c",
     "type": "grille-deduction",
     "module": "entrainement",
     "theme": "deduction",
@@ -2388,7 +2388,7 @@
           "colonne": 1
         }
       ],
-      "aide": "Chaque phrase enchaîne plusieurs informations : commence par la figure dont la phrase donne la position, puis suis les relations."
+      "aide": "Aucune phrase ne suffit seule : recoupe les phrases entre elles, barre ce qui devient impossible — les cases certaines apparaissent au croisement."
     },
     "reponse": {
       "valeur": "triangle:vert;carre:jaune;carre:vert;cercle:bleu;cercle:vert;triangle:rouge;losange:vert;losange:rouge;triangle:jaune;carre:rouge;losange:bleu;triangle:bleu;carre:bleu;losange:jaune;cercle:jaune;cercle:rouge",
@@ -2460,15 +2460,15 @@
       ]
     },
     "meta": {
-      "auteur": "generation-automatique (tools/generer_deduction.py)",
-      "date_creation": "2026-09-28",
+      "auteur": "generation-automatique (tools/generer_deduction.py) ; correction 2026-09-29 : aide harmonisée (croisement des phrases)",
+      "date_creation": "2026-09-29",
       "relecture_ortho": {
         "statut": "a_revoir"
       }
     }
   },
   {
-    "id": "df-4-08",
+    "id": "df-4-197539dfdda6",
     "type": "grille-deduction",
     "module": "entrainement",
     "theme": "deduction",
@@ -2750,7 +2750,7 @@
           "colonne": 2
         }
       ],
-      "aide": "Chaque phrase enchaîne plusieurs informations : commence par la figure dont la phrase donne la position, puis suis les relations."
+      "aide": "Aucune phrase ne suffit seule : recoupe les phrases entre elles, barre ce qui devient impossible — les cases certaines apparaissent au croisement."
     },
     "reponse": {
       "valeur": "losange:rouge;triangle:jaune;triangle:bleu;carre:vert;losange:vert;carre:bleu;carre:jaune;cercle:vert;triangle:vert;cercle:rouge;triangle:rouge;carre:rouge;losange:bleu;cercle:bleu;cercle:jaune;losange:jaune",
@@ -2822,15 +2822,15 @@
       ]
     },
     "meta": {
-      "auteur": "generation-automatique (tools/generer_deduction.py)",
-      "date_creation": "2026-09-28",
+      "auteur": "generation-automatique (tools/generer_deduction.py) ; correction 2026-09-29 : aide harmonisée (croisement des phrases)",
+      "date_creation": "2026-09-29",
       "relecture_ortho": {
         "statut": "a_revoir"
       }
     }
   },
   {
-    "id": "df-4-09",
+    "id": "df-4-9ab9c3380b75",
     "type": "grille-deduction",
     "module": "entrainement",
     "theme": "deduction",
@@ -3098,7 +3098,7 @@
           "colonne": 1
         }
       ],
-      "aide": "Chaque phrase enchaîne plusieurs informations : commence par la figure dont la phrase donne la position, puis suis les relations."
+      "aide": "Aucune phrase ne suffit seule : recoupe les phrases entre elles, barre ce qui devient impossible — les cases certaines apparaissent au croisement."
     },
     "reponse": {
       "valeur": "carre:rouge;losange:bleu;carre:bleu;losange:vert;triangle:bleu;cercle:vert;cercle:rouge;triangle:jaune;cercle:bleu;losange:jaune;carre:vert;cercle:jaune;losange:rouge;triangle:vert;carre:jaune;triangle:rouge",
@@ -3170,15 +3170,15 @@
       ]
     },
     "meta": {
-      "auteur": "generation-automatique (tools/generer_deduction.py)",
-      "date_creation": "2026-09-28",
+      "auteur": "generation-automatique (tools/generer_deduction.py) ; correction 2026-09-29 : aide harmonisée (croisement des phrases)",
+      "date_creation": "2026-09-29",
       "relecture_ortho": {
         "statut": "a_revoir"
       }
     }
   },
   {
-    "id": "df-4-10",
+    "id": "df-4-f387cafff1b9",
     "type": "grille-deduction",
     "module": "entrainement",
     "theme": "deduction",
@@ -3449,7 +3449,7 @@
           "ligne": 3
         }
       ],
-      "aide": "Chaque phrase enchaîne plusieurs informations : commence par la figure dont la phrase donne la position, puis suis les relations."
+      "aide": "Aucune phrase ne suffit seule : recoupe les phrases entre elles, barre ce qui devient impossible — les cases certaines apparaissent au croisement."
     },
     "reponse": {
       "valeur": "cercle:bleu;losange:vert;losange:rouge;carre:bleu;cercle:rouge;carre:jaune;carre:vert;losange:jaune;cercle:jaune;triangle:jaune;triangle:vert;carre:rouge;triangle:bleu;triangle:rouge;cercle:vert;losange:bleu",
@@ -3521,15 +3521,15 @@
       ]
     },
     "meta": {
-      "auteur": "generation-automatique (tools/generer_deduction.py)",
-      "date_creation": "2026-09-28",
+      "auteur": "generation-automatique (tools/generer_deduction.py) ; correction 2026-09-29 : aide harmonisée (croisement des phrases)",
+      "date_creation": "2026-09-29",
       "relecture_ortho": {
         "statut": "a_revoir"
       }
     }
   },
   {
-    "id": "df-4-11",
+    "id": "df-4-34e96404ab6e",
     "type": "grille-deduction",
     "module": "entrainement",
     "theme": "deduction",
@@ -3798,7 +3798,7 @@
           "ligne": 3
         }
       ],
-      "aide": "Chaque phrase enchaîne plusieurs informations : commence par la figure dont la phrase donne la position, puis suis les relations."
+      "aide": "Aucune phrase ne suffit seule : recoupe les phrases entre elles, barre ce qui devient impossible — les cases certaines apparaissent au croisement."
     },
     "reponse": {
       "valeur": "cercle:jaune;carre:bleu;cercle:rouge;losange:jaune;losange:rouge;losange:vert;triangle:bleu;losange:bleu;carre:jaune;triangle:rouge;carre:vert;carre:rouge;triangle:vert;cercle:bleu;triangle:jaune;cercle:vert",
@@ -3870,15 +3870,15 @@
       ]
     },
     "meta": {
-      "auteur": "generation-automatique (tools/generer_deduction.py)",
-      "date_creation": "2026-09-28",
+      "auteur": "generation-automatique (tools/generer_deduction.py) ; correction 2026-09-29 : aide harmonisée (croisement des phrases)",
+      "date_creation": "2026-09-29",
       "relecture_ortho": {
         "statut": "a_revoir"
       }
     }
   },
   {
-    "id": "df-4-12",
+    "id": "df-4-ef7b19caaaa3",
     "type": "grille-deduction",
     "module": "entrainement",
     "theme": "deduction",
@@ -4161,7 +4161,7 @@
           "colonne": 1
         }
       ],
-      "aide": "Chaque phrase enchaîne plusieurs informations : commence par la figure dont la phrase donne la position, puis suis les relations."
+      "aide": "Aucune phrase ne suffit seule : recoupe les phrases entre elles, barre ce qui devient impossible — les cases certaines apparaissent au croisement."
     },
     "reponse": {
       "valeur": "losange:rouge;losange:bleu;carre:rouge;carre:vert;losange:vert;cercle:bleu;triangle:rouge;carre:jaune;carre:bleu;cercle:rouge;cercle:jaune;triangle:jaune;triangle:vert;losange:jaune;triangle:bleu;cercle:vert",
@@ -4233,15 +4233,15 @@
       ]
     },
     "meta": {
-      "auteur": "generation-automatique (tools/generer_deduction.py)",
-      "date_creation": "2026-09-28",
+      "auteur": "generation-automatique (tools/generer_deduction.py) ; correction 2026-09-29 : aide harmonisée (croisement des phrases)",
+      "date_creation": "2026-09-29",
       "relecture_ortho": {
         "statut": "a_revoir"
       }
     }
   },
   {
-    "id": "df-4-13",
+    "id": "df-4-aa064755e85a",
     "type": "grille-deduction",
     "module": "entrainement",
     "theme": "deduction",
@@ -4509,7 +4509,7 @@
           "colonne": 0
         }
       ],
-      "aide": "Chaque phrase enchaîne plusieurs informations : commence par la figure dont la phrase donne la position, puis suis les relations."
+      "aide": "Aucune phrase ne suffit seule : recoupe les phrases entre elles, barre ce qui devient impossible — les cases certaines apparaissent au croisement."
     },
     "reponse": {
       "valeur": "triangle:bleu;cercle:vert;losange:vert;cercle:bleu;carre:jaune;triangle:vert;losange:rouge;losange:bleu;cercle:jaune;carre:bleu;triangle:rouge;losange:jaune;carre:rouge;carre:vert;cercle:rouge;triangle:jaune",
@@ -4581,15 +4581,15 @@
       ]
     },
     "meta": {
-      "auteur": "generation-automatique (tools/generer_deduction.py)",
-      "date_creation": "2026-09-28",
+      "auteur": "generation-automatique (tools/generer_deduction.py) ; correction 2026-09-29 : aide harmonisée (croisement des phrases)",
+      "date_creation": "2026-09-29",
       "relecture_ortho": {
         "statut": "a_revoir"
       }
     }
   },
   {
-    "id": "df-4-14",
+    "id": "df-4-739aef5b5828",
     "type": "grille-deduction",
     "module": "entrainement",
     "theme": "deduction",
@@ -4857,7 +4857,7 @@
           "case": 1
         }
       ],
-      "aide": "Chaque phrase enchaîne plusieurs informations : commence par la figure dont la phrase donne la position, puis suis les relations."
+      "aide": "Aucune phrase ne suffit seule : recoupe les phrases entre elles, barre ce qui devient impossible — les cases certaines apparaissent au croisement."
     },
     "reponse": {
       "valeur": "triangle:rouge;carre:rouge;triangle:bleu;cercle:bleu;losange:vert;losange:bleu;triangle:vert;cercle:jaune;losange:rouge;triangle:jaune;cercle:vert;carre:vert;carre:jaune;losange:jaune;cercle:rouge;carre:bleu",
@@ -4929,15 +4929,15 @@
       ]
     },
     "meta": {
-      "auteur": "generation-automatique (tools/generer_deduction.py)",
-      "date_creation": "2026-09-28",
+      "auteur": "generation-automatique (tools/generer_deduction.py) ; correction 2026-09-29 : aide harmonisée (croisement des phrases)",
+      "date_creation": "2026-09-29",
       "relecture_ortho": {
         "statut": "a_revoir"
       }
     }
   },
   {
-    "id": "df-4-15",
+    "id": "df-4-a4c80f68b0c6",
     "type": "grille-deduction",
     "module": "entrainement",
     "theme": "deduction",
@@ -5206,7 +5206,7 @@
           "case": 3
         }
       ],
-      "aide": "Chaque phrase enchaîne plusieurs informations : commence par la figure dont la phrase donne la position, puis suis les relations."
+      "aide": "Aucune phrase ne suffit seule : recoupe les phrases entre elles, barre ce qui devient impossible — les cases certaines apparaissent au croisement."
     },
     "reponse": {
       "valeur": "cercle:vert;cercle:bleu;triangle:rouge;cercle:jaune;carre:rouge;carre:jaune;triangle:vert;losange:bleu;losange:rouge;triangle:jaune;losange:jaune;carre:bleu;triangle:bleu;losange:vert;carre:vert;cercle:rouge",
@@ -5278,15 +5278,15 @@
       ]
     },
     "meta": {
-      "auteur": "generation-automatique (tools/generer_deduction.py)",
-      "date_creation": "2026-09-28",
+      "auteur": "generation-automatique (tools/generer_deduction.py) ; correction 2026-09-29 : aide harmonisée (croisement des phrases)",
+      "date_creation": "2026-09-29",
       "relecture_ortho": {
         "statut": "a_revoir"
       }
     }
   },
   {
-    "id": "df-4-16",
+    "id": "df-4-c483120ffcf6",
     "type": "grille-deduction",
     "module": "entrainement",
     "theme": "deduction",
@@ -5553,7 +5553,7 @@
           "case": 15
         }
       ],
-      "aide": "Chaque phrase enchaîne plusieurs informations : commence par la figure dont la phrase donne la position, puis suis les relations."
+      "aide": "Aucune phrase ne suffit seule : recoupe les phrases entre elles, barre ce qui devient impossible — les cases certaines apparaissent au croisement."
     },
     "reponse": {
       "valeur": "cercle:jaune;carre:jaune;cercle:vert;losange:vert;losange:rouge;losange:jaune;carre:rouge;triangle:vert;carre:vert;cercle:bleu;carre:bleu;losange:bleu;triangle:rouge;triangle:bleu;triangle:jaune;cercle:rouge",
@@ -5625,15 +5625,15 @@
       ]
     },
     "meta": {
-      "auteur": "generation-automatique (tools/generer_deduction.py)",
-      "date_creation": "2026-09-28",
+      "auteur": "generation-automatique (tools/generer_deduction.py) ; correction 2026-09-29 : aide harmonisée (croisement des phrases)",
+      "date_creation": "2026-09-29",
       "relecture_ortho": {
         "statut": "a_revoir"
       }
     }
   },
   {
-    "id": "df-4-17",
+    "id": "df-4-82e6d082a279",
     "type": "grille-deduction",
     "module": "entrainement",
     "theme": "deduction",
@@ -5899,7 +5899,7 @@
           "colonne": 1
         }
       ],
-      "aide": "Chaque phrase enchaîne plusieurs informations : commence par la figure dont la phrase donne la position, puis suis les relations."
+      "aide": "Aucune phrase ne suffit seule : recoupe les phrases entre elles, barre ce qui devient impossible — les cases certaines apparaissent au croisement."
     },
     "reponse": {
       "valeur": "triangle:bleu;cercle:bleu;carre:rouge;losange:rouge;triangle:jaune;triangle:rouge;losange:jaune;cercle:jaune;triangle:vert;cercle:vert;carre:bleu;losange:bleu;carre:jaune;cercle:rouge;losange:vert;carre:vert",
@@ -5971,15 +5971,15 @@
       ]
     },
     "meta": {
-      "auteur": "generation-automatique (tools/generer_deduction.py)",
-      "date_creation": "2026-09-28",
+      "auteur": "generation-automatique (tools/generer_deduction.py) ; correction 2026-09-29 : aide harmonisée (croisement des phrases)",
+      "date_creation": "2026-09-29",
       "relecture_ortho": {
         "statut": "a_revoir"
       }
     }
   },
   {
-    "id": "df-4-18",
+    "id": "df-4-1b5bd33e6e4f",
     "type": "grille-deduction",
     "module": "entrainement",
     "theme": "deduction",
@@ -6250,7 +6250,7 @@
           "case": 2
         }
       ],
-      "aide": "Chaque phrase enchaîne plusieurs informations : commence par la figure dont la phrase donne la position, puis suis les relations."
+      "aide": "Aucune phrase ne suffit seule : recoupe les phrases entre elles, barre ce qui devient impossible — les cases certaines apparaissent au croisement."
     },
     "reponse": {
       "valeur": "cercle:vert;triangle:vert;losange:vert;carre:jaune;carre:rouge;triangle:rouge;losange:jaune;losange:bleu;carre:vert;carre:bleu;triangle:jaune;triangle:bleu;cercle:bleu;cercle:rouge;losange:rouge;cercle:jaune",
@@ -6322,15 +6322,15 @@
       ]
     },
     "meta": {
-      "auteur": "generation-automatique (tools/generer_deduction.py)",
-      "date_creation": "2026-09-28",
+      "auteur": "generation-automatique (tools/generer_deduction.py) ; correction 2026-09-29 : aide harmonisée (croisement des phrases)",
+      "date_creation": "2026-09-29",
       "relecture_ortho": {
         "statut": "a_revoir"
       }
     }
   },
   {
-    "id": "df-4-19",
+    "id": "df-4-d4ab9ea2b733",
     "type": "grille-deduction",
     "module": "entrainement",
     "theme": "deduction",
@@ -6616,7 +6616,7 @@
           "case": 13
         }
       ],
-      "aide": "Chaque phrase enchaîne plusieurs informations : commence par la figure dont la phrase donne la position, puis suis les relations."
+      "aide": "Aucune phrase ne suffit seule : recoupe les phrases entre elles, barre ce qui devient impossible — les cases certaines apparaissent au croisement."
     },
     "reponse": {
       "valeur": "cercle:jaune;losange:vert;carre:bleu;carre:rouge;triangle:rouge;cercle:rouge;carre:vert;triangle:jaune;losange:bleu;triangle:vert;cercle:bleu;cercle:vert;carre:jaune;losange:jaune;triangle:bleu;losange:rouge",
@@ -6688,15 +6688,15 @@
       ]
     },
     "meta": {
-      "auteur": "generation-automatique (tools/generer_deduction.py)",
-      "date_creation": "2026-09-28",
+      "auteur": "generation-automatique (tools/generer_deduction.py) ; correction 2026-09-29 : aide harmonisée (croisement des phrases)",
+      "date_creation": "2026-09-29",
       "relecture_ortho": {
         "statut": "a_revoir"
       }
     }
   },
   {
-    "id": "df-4-20",
+    "id": "df-4-80278ab71345",
     "type": "grille-deduction",
     "module": "entrainement",
     "theme": "deduction",
@@ -6963,7 +6963,7 @@
           "case": 1
         }
       ],
-      "aide": "Chaque phrase enchaîne plusieurs informations : commence par la figure dont la phrase donne la position, puis suis les relations."
+      "aide": "Aucune phrase ne suffit seule : recoupe les phrases entre elles, barre ce qui devient impossible — les cases certaines apparaissent au croisement."
     },
     "reponse": {
       "valeur": "carre:jaune;losange:rouge;losange:vert;losange:bleu;cercle:jaune;carre:rouge;triangle:bleu;carre:vert;cercle:rouge;losange:jaune;triangle:jaune;cercle:vert;triangle:vert;triangle:rouge;carre:bleu;cercle:bleu",
@@ -7035,8 +7035,8 @@
       ]
     },
     "meta": {
-      "auteur": "generation-automatique (tools/generer_deduction.py)",
-      "date_creation": "2026-09-28",
+      "auteur": "generation-automatique (tools/generer_deduction.py) ; correction 2026-09-29 : aide harmonisée (croisement des phrases)",
+      "date_creation": "2026-09-29",
       "relecture_ortho": {
         "statut": "a_revoir"
       }
