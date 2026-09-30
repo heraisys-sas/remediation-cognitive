@@ -24,6 +24,17 @@ const TYPES_A_CHOIX = new Set([
   "emotion-vignette",
   "reponse-adaptee",
   "lecture-intention",
+  "pqrst",
+  "but-etapes",
+  "auto-instruction",
+  "plan-a-verifier",
+  "etape-suivante",
+  "si-alors",
+  "par-ou-commencer",
+  "meilleure-solution",
+  "reperer-info",
+  "gestion-du-temps",
+  "aide-externe",
 ]);
 
 //: Thèmes d'appoint regroupés dans la section « Extra » de l'écran d'accueil.

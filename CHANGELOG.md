@@ -2,6 +2,11 @@
 
 Format : [date] — [périmètre] — description. Les retours informels de l'orthophoniste sont journalisés ici, sans caution clinique.
 
+## 2026-09-30 · Méthodes : plan et propositions visibles
+
+- Correction du routage des exercices à choix de Méthodes et Au quotidien, absents de la liste de l’interface : les propositions remplacent le champ libre et le palier 4 affiche son plan numéroté dans l’ordre fourni.
+- Contenu et réponses inchangés ; test de rendu des huit plans et contrôle de couverture des types à propositions du corpus.
+
 ## 2026-09-30 · Déduction : brouillon explicitement facultatif
 
 - « Tableau de déduction » devient « Aide — noter les possibilités », fermé par défaut à chaque exercice ; explication de son usage facultatif à l’intérieur du panneau.
