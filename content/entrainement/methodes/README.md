@@ -7,8 +7,8 @@
 | 1 | **PQRST** — Parcourir, Question, Lire, énoncer, Tester | mémoire de textes : **deux questions de mémoire par texte** |
 | 2 | **Goal Management Training** — but, étapes, vérification | planification : choisir le plan d'étapes cohérent |
 | 3 | **Auto-instruction** (Meichenbaum) — « qu'est-ce que je dois faire ? comment ? vérifie » | autorégulation : la question à se poser avant d'agir |
-| 4 | **Vérification de plan** — le « V » de GMT | relire un plan ordonné et repérer l'étape mal placée |
-| 5 | **Repérer l'information** — attention sélective | répondre de mémoire après masquage d’un document |
+| 4 | **Vérification de plan** — le « V » de GMT | croiser les contraintes et choisir la seule étape à déplacer |
+| 5 | **Repérer l'information** — attention sélective | chercher dans un document qui reste visible avec la question |
 
 12 items au palier 1, 8 dans chacun des paliers 2 à 5 et 4 séquences au palier 6, soit **48 items**.
 
@@ -31,3 +31,7 @@ Un item = **une séquence guidée** sur un texte de quatre phrases : Parcours (j
 
 ## Proposition en attente
 
+
+## Révision du 30 septembre 2026
+
+P2 à P5 : 32 nouveaux items `mt3-…` remplacent les anciens. Les plans ont des précédences explicites ; les documents de P5 restent consultables sans chronomètre. Les QCM de P2/P3 s’appuient sur des contraintes précises. Voir [ADR-019](../../../docs/30-technique/adr/ADR-019-plans-verifiables-et-documents-consultables.md).

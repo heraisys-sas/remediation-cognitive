@@ -93,12 +93,13 @@ def test_plan_a_verifier(client, tmp_path):
 
 
 def test_reperer_info_dans_un_document(client, tmp_path):
-    """Palier 5 : le document est affiché temporisé, l'information est à retrouver."""
+    """Palier 5 : le document reste consultable, sans phase de mémorisation."""
     _forcer_palier(tmp_path, "methodes", 5)
     payload = _demarrer(client, "methodes")
     item = payload["items"][0]
     assert item["type"] == "reperer-info"
-    assert item["contenu"]["affichage"]["mode"] == "texte"
+    assert item["contenu"]["document"]
+    assert "affichage" not in item["contenu"]
     assert _repondre(
         client, "methodes", payload["session_id"], item["id"], _attendue("methodes", item["id"])
     ).json()["correcte"] is True

@@ -297,6 +297,20 @@ def erreurs_contenu(item: dict, prefixe: str) -> list[str]:
     elif options is not None and (not isinstance(options, list) or len(options) < 2):
         erreurs.append(prefixe + "contenu.options doit être une liste d'au moins 2 propositions")
 
+    if type_item == "reperer-info":
+        document = contenu.get("document")
+        if not isinstance(document, str) or not document.strip():
+            erreurs.append(prefixe + "reperer-info : document permanent requis")
+        if "affichage" in contenu:
+            erreurs.append(prefixe + "reperer-info : pas de phase de mémorisation temporisée")
+    if type_item == "plan-a-verifier":
+        plan = contenu.get("plan")
+        if not isinstance(plan, list) or len(plan) != 3 or not all(isinstance(x, str) for x in plan):
+            erreurs.append(prefixe + "plan-a-verifier : trois étapes requises")
+        elif (len(set(plan)) != 3 or not isinstance(options, list)
+              or not all(isinstance(x, str) for x in options) or set(plan) != set(options)):
+            erreurs.append(prefixe + "plan-a-verifier : les choix doivent correspondre aux étapes")
+
     indices = contenu.get("indices")
     if type_item in TYPES_A_INDICES:
         if not isinstance(indices, list) or len(indices) < 2:

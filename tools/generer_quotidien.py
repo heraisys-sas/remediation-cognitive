@@ -84,32 +84,54 @@ PRISE_MESSAGE = [
 
 # --- Planification : l'étape suivante -----------------------------------------
 #: (situation, étape suivante correcte, deux leurres)
-ETAPE_SUIVANTE = [
-    ("Tu veux préparer un repas pour deux. Les ingrédients sont posés sur le plan de travail.",
-     "Préchauffer le four", ["Servir à table", "Ranger les courses"]),
-    ("Tu dois renouveler une ordonnance. Le médecin vient de te la remettre.",
-     "Aller à la pharmacie avec l'ordonnance", ["Jeter les anciennes boîtes", "Rappeler le médecin pour redemander"]),
-    ("Tu organises une sortie au marché samedi. Tu as noté la liste des achats.",
-     "Préparer un sac ou un cabas", ["Payer à la caisse", "Ranger les achats en rentrant"]),
-    ("Tu veux prendre rendez-vous chez le coiffeur. Tu as le numéro sous les yeux.",
-     "Appeler et proposer un créneau", ["Couper les cheveux", "Choisir une nouvelle coupe"]),
-    ("Tu viens de vider le lave-vaisselle. Les assiettes sont sur la table.",
-     "Ranger les assiettes dans le placard", ["Lancer une nouvelle machine", "Mettre la table pour le soir"]),
-    ("Tu prépares ta valise pour deux jours. Les vêtements sont sortis de l'armoire.",
-     "Plier et ranger les vêtements dans la valise", ["Fermer la valise", "Appeler le taxi"]),
-    ("Tu reçois un courrier de la mairie demandant un justificatif. Tu as trouvé le document.",
-     "Faire une copie du justificatif", ["Poster l'enveloppe", "Ranger le courrier"]),
-    ("Tu veux réserver une table pour vendredi. Tu es devant le site du restaurant.",
-     "Choisir le nombre de personnes et l'heure", ["Commander le menu", "Aller au restaurant"]),
-    ("Tu dois arroser les plantes. L'arrosoir est vide.",
-     "Remplir l'arrosoir", ["Vider l'eau des soucoupes", "Ranger l'arrosoir"]),
-    ("Tu prépares un gâteau. La recette est ouverte et les œufs sont sortis.",
-     "Casser les œufs dans le saladier", ["Sortir le gâteau du four", "Couper des parts"]),
-    ("Tu veux envoyer un colis. Le colis est fermé mais pas encore adressé.",
-     "Écrire l'adresse sur le colis", ["Le déposer au bureau de poste", "Ouvrir le colis"]),
-    ("Tu planifies ta matinée. Le réveil est réglé à 8 h.",
-     "Préparer les vêtements la veille", ["Prendre le petit-déjeuner", "Partir à l'heure"]),
-]
+ETAPE_SUIVANTE = [('La recette demande un four déjà chaud avant de mélanger la pâte. Les ingrédients sont prêts et le four '
+  'est éteint. Que faire maintenant ?',
+  'Préchauffer le four',
+  ['Mélanger la pâte', 'Beurrer le moule avant d’allumer le four']),
+ ('L’ordonnance renouvelée est prête. La pharmacie demande de la recevoir en ligne avant de confirmer la '
+  'disponibilité. Que faire maintenant ?',
+  'Transmettre l’ordonnance à la pharmacie',
+  ['Partir chercher les médicaments', 'Demander au médecin une seconde ordonnance']),
+ ('Ta liste du marché est faite. Tu veux acheter uniquement ce qui manque et tu n’as pas encore regardé les '
+  'réserves. Quelle étape vient maintenant ?',
+  'Comparer la liste avec les réserves',
+  ['Acheter les produits de la liste', 'Classer les achats par étal avant de vérifier les réserves']),
+ ('Le salon propose deux créneaux. Tu as le numéro mais tu ne connais pas encore tes disponibilités. Quelle '
+  'étape évite un second appel ?',
+  'Vérifier ton agenda avant de rappeler',
+  ['Choisir le premier créneau proposé', 'Rappeler pour demander les mêmes créneaux']),
+ ('Les assiettes propres sont sur la table. Tu dois libérer cette table maintenant pour travailler ; aucun '
+  'repas n’est prévu avant ce soir.',
+  'Ranger les assiettes dans le placard',
+  ['Mettre la table pour le dîner', 'Trier les couverts déjà rangés']),
+ ('La valise ne doit pas dépasser 8 kg. Elle est remplie mais pas encore pesée. Quelle vérification manque '
+  'avant de la considérer prête ?',
+  'Peser la valise',
+  ['Vérifier une seconde fois la météo', 'Réorganiser les vêtements par couleur']),
+ ('La mairie demande une copie, pas l’original. Tu as trouvé le justificatif et préparé l’enveloppe. Quelle '
+  'étape manque ?',
+  'Faire une copie du justificatif',
+  ['Mettre l’original dans l’enveloppe', 'Affranchir l’enveloppe avant de préparer la copie']),
+ ('Le restaurant attend le nombre définitif de personnes pour confirmer la réservation. Deux invités n’ont '
+  'pas encore répondu.',
+  'Obtenir la réponse des deux invités',
+  ['Confirmer pour le nombre maximal', 'Choisir les plats avant de confirmer le nombre']),
+ ('Tu dois arroser avec 2 litres d’eau ; le récipient contient déjà 1 litre. Quelle action prépare la '
+  'quantité demandée ?',
+  'Ajouter 1 litre d’eau',
+  ['Ajouter 2 litres d’eau', 'Vider le récipient puis ajouter 1 litre']),
+ ('La pâte est prête. La recette exige que le moule soit graissé avant d’y verser la pâte. Le moule est '
+  'encore sec.',
+  'Graisser le moule',
+  ['Verser la pâte', 'Lancer le minuteur de cuisson']),
+ ('Le colis est fermé et l’étiquette est imprimée. Le point de dépôt exige une étiquette collée et lisible.',
+  'Coller l’étiquette sur le colis',
+  ['Glisser l’étiquette dans ton sac', 'Déposer le colis avec l’étiquette séparée']),
+ ('Tu dois partir à 8 h 30. Le trajet jusqu’au rendez-vous prend 20 minutes et tout est prêt, sauf les '
+  'documents encore sur le bureau.',
+  'Mettre les documents dans le sac',
+  ['Rechercher un autre itinéraire sans changement annoncé',
+   'Vérifier à nouveau les horaires déjà confirmés'])]
 
 
 # --- Anticipation : estimer une durée -----------------------------------------
@@ -206,187 +228,239 @@ def _item_estimation(numero: int, palier: int, prerequis: list[str]) -> dict:
 
 # --- Initiation / planification : par où commencer ----------------------------
 #: (situation, première action adaptée, deux leurres)
-PAR_OU_COMMENCER = [
-    ("Tu dois ranger l'appartement avant l'arrivée d'un invité.",
-     "Ranger une pièce à la fois, en commençant par la plus visible",
-     ["Passer d'une pièce à l'autre au hasard", "Acheter de nouvelles étagères"]),
-    ("Tu prépares un dossier pour une demande d'aide.",
-     "Lister d'abord les documents demandés",
-     ["Rédiger la lettre sans savoir quoi joindre", "Attendre la date limite"]),
-    ("Tu organises un déménagement dans un mois.",
-     "Faire une liste des choses à faire et la classer par échéance",
-     ["Tout faire le dernier jour", "Espérer que ça se fasse tout seul"]),
-    ("Tu reprends un projet laissé de côté depuis des semaines.",
-     "Relire où tu t'étais arrêté",
-     ["Recommencer depuis le début", "Le laisser encore de côté"]),
-    ("Tu prépares un repas pour six personnes.",
-     "Vérifier les ingrédients et les quantités",
-     ["Allumer le four sans savoir quoi cuisiner", "Dresser la table d'abord"]),
-    ("Tu veux te remettre à une activité physique.",
-     "Choisir une activité simple et un créneau fixe",
-     ["Acheter tout l'équipement avant de commencer", "Attendre d'être en forme"]),
-    ("Tu as trois papiers administratifs à traiter.",
-     "Traiter d'abord celui dont l'échéance est la plus proche",
-     ["Les empiler et ne plus y toucher", "Tout faire en même temps"]),
-    ("Tu dois appeler pour faire une réclamation.",
-     "Noter en trois mots ce que tu veux dire avant d'appeler",
-     ["Appeler sans préparation", "Repousser l'appel"]),
-    ("Tu prépares un déplacement de deux jours.",
-     "Réserver le trajet et l'hébergement d'abord",
-     ["Choisir d'abord ce que tu mettras dans la valise", "Partir sans rien réserver"]),
-    ("Tu veux ranger les papiers de la maison.",
-     "Créer des dossiers par thème et tout y ranger",
-     ["Tout mettre dans un même carton", "Jeter sans trier"]),
-    ("Tu as un rendez-vous important demain matin.",
-     "Préparer les papiers et le trajet la veille",
-     ["Tout improviser le matin", "Annuler le rendez-vous"]),
-    ("Tu dois réparer un objet cassé.",
-     "Chercher la notice ou un tutoriel avant de démonter",
-     ["Démonter sans regarder comment c'est fait", "Le jeter directement"]),
-]
+PAR_OU_COMMENCER = [('Un invité arrive dans 20 minutes. Il utilisera seulement l’entrée et le salon, actuellement encombrés. '
+  'Par où commencer ?',
+  'Dégager l’entrée et le salon',
+  ['Réorganiser le rangement de la chambre', 'Trier les papiers dans un placard fermé']),
+ ('La liste des pièces de ta demande a changé cette année. Tu as un ancien dossier mais tu ignores les '
+  'nouvelles exigences.',
+  'Consulter la liste actuelle des pièces',
+  ['Photocopier toutes les pièces de l’ancien dossier', 'Rédiger la lettre avec l’ancien modèle']),
+ ('Pour ton déménagement, l’ascenseur se réserve au moins trois semaines avant. Tu déménages dans 23 jours ; '
+  'les cartons peuvent attendre.',
+  'Réserver le créneau de l’ascenseur',
+  ['Commencer par emballer les livres', 'Choisir la décoration du nouveau logement']),
+ ('Un projet reprend après un mois. Ton collègue a laissé un bilan des tâches achevées et de la prochaine '
+  'étape.',
+  'Lire le bilan de reprise',
+  ['Recommencer la première tâche du projet', 'Planifier toutes les tâches sans lire le bilan']),
+ ('Tu reçois six personnes dont une suit un régime particulier. Le menu n’est pas choisi. Quelle première '
+  'action évite de devoir changer les courses ?',
+  'Demander les contraintes alimentaires',
+  ['Acheter les ingrédients de ton menu habituel', 'Préparer le plan de table']),
+ ('Deux cours t’intéressent. Ils ont lieu à des horaires différents et tu ne peux te libérer qu’un soir '
+  'précis.',
+  'Comparer les horaires avec ta disponibilité',
+  ['Choisir la tenue adaptée à chaque cours', 'Comparer les durées d’abonnement avant les horaires']),
+ ('Trois courriers sont à traiter : l’un expire demain, les autres dans trois semaines. Ils demandent chacun '
+  'environ dix minutes.',
+  'Traiter le courrier qui expire demain',
+  ['Commencer par le courrier le plus récent', 'Commencer par celui dont l’enveloppe est déjà ouverte']),
+ ('Tu dois contester un montant. Le service demande la référence de facture dès le début de l’appel ; tu ne '
+  'l’as pas sous les yeux.',
+  'Retrouver la facture et sa référence',
+  ['Composer le numéro immédiatement', 'Chercher les tarifs d’un concurrent']),
+ ('Un déplacement dépend d’un rendez-vous dont la date n’est pas confirmée. Les billets envisagés ne sont '
+  'pas échangeables.',
+  'Faire confirmer la date du rendez-vous',
+  ['Acheter les billets au tarif actuel', 'Préparer la valise pour la date supposée']),
+ ('Tu veux retrouver rapidement tes documents. Les dossiers thématiques existent déjà mais les papiers '
+  'récents sont en pile.',
+  'Classer la pile dans les dossiers existants',
+  ['Créer un second jeu de dossiers identiques', 'Changer toutes les étiquettes déjà lisibles']),
+ ('Ton rendez-vous est demain à 8 h. Un justificatif est obligatoire et le service qui le fournit ferme dans '
+  'une heure.',
+  'Obtenir le justificatif avant la fermeture',
+  ['Préparer d’abord les vêtements de demain', 'Chercher un café près du rendez-vous']),
+ ('Tu veux démonter un appareil pour le réparer. La notice précise les précautions et l’ordre d’ouverture, '
+  'que tu ne connais pas.',
+  'Lire les précautions et l’ordre d’ouverture',
+  ['Retirer d’abord les vis visibles', 'Commander des pièces avant d’identifier le défaut'])]
 
 
 # --- Mémoire prospective : implémentation d'intention (« si … alors … ») --------
 #: (chose à se rappeler de faire, plan « si-alors » efficace, deux leurres)
-SI_ALORS = [
-    ("Prendre ton traitement le soir.",
-     "Quand je me brosserai les dents, je prendrai le traitement",
-     ["J'essaierai d'y penser", "Je le prendrai si j'y pense"]),
-    ("Rendre un livre à la bibliothèque.",
-     "Quand je sortirai avec mon sac, je mettrai le livre dedans",
-     ["J'essaierai de m'en souvenir", "Je le rendrai un jour"]),
-    ("Arroser les plantes le dimanche.",
-     "Le dimanche après le café, j'arrose les plantes",
-     ["Je le ferai quand j'aurai le temps", "J'espère ne pas oublier"]),
-    ("Répondre à un message important.",
-     "Quand je m'installerai après le repas, je répondrai",
-     ["Je répondrai plus tard", "Je laisserai le message en attente"]),
-    ("Ne pas oublier le four allumé.",
-     "Je règle une minuterie dès que j'allume le four",
-     ["Je ferai attention", "Je vérifierai de temps en temps"]),
-    ("Payer une facture avant le 5.",
-     "Quand la facture arrivera, je la paie tout de suite",
-     ["Je la paierai à la dernière minute", "Je la classerai pour plus tard"]),
-    ("Toujours retrouver tes clés.",
-     "Je les pose toujours au même endroit, près de la porte",
-     ["Je les poserai où je peux", "Je les chercherai quand j'en aurai besoin"]),
-    ("Ne pas manquer le rendez-vous.",
-     "Je le note dans le téléphone avec une alarme la veille",
-     ["Je m'en souviendrai tout seul", "Je le retiendrai de tête"]),
-    ("Rappeler le médecin.",
-     "Je programme le rappel dans le téléphone maintenant",
-     ["Je rappellerai quand j'y penserai", "J'attendrai qu'on me rappelle"]),
-    ("Sortir les poubelles le jeudi soir.",
-     "Le jeudi soir après le dîner, je sors les poubelles",
-     ["Je les sortirai quand elles seront pleines", "J'attendrai de m'en souvenir"]),
-    ("Boire de l'eau dans la journée.",
-     "Je remplis une bouteille le matin et je la garde près de moi",
-     ["J'essaierai d'y penser", "Je boirai seulement quand j'aurai soif"]),
-    ("Ranger après avoir cuisiné.",
-     "Je range au fur et à mesure pendant la cuisson",
-     ["Je rangerai tout à la fin", "Je laisserai pour demain"]),
-]
+SI_ALORS = [('Tu veux vérifier ton agenda chaque soir. Tu te brosses toujours les dents après le dîner ; l’heure du '
+  'dîner varie.',
+  'Quand j’ai fini de me brosser les dents, je consulte mon agenda',
+  ['À 19 h exactement, je consulte mon agenda pendant le dîner',
+   'Quand je consulte mon agenda, je décide quand dîner']),
+ ('Tu rends un livre demain en allant au travail. Tu prépares toujours ton sac avant de te coucher.',
+  'Quand je prépare mon sac ce soir, j’y mets le livre',
+  ['Quand je rentre du travail demain, je prépare le livre',
+   'Quand je termine un autre livre, je cherche celui à rendre']),
+ ('Tu veux arroser les plantes dimanche. Tu bois toujours ton café chez toi ce matin-là et tu veux '
+  'l’utiliser comme repère.',
+  'Après mon café du dimanche, j’arrose les plantes',
+  ['Après mon café du lundi, j’arrose les plantes', 'Avant de rentrer dimanche soir, j’arrose les plantes']),
+ ('Tu dois répondre avant 14 h. Ton déjeuner finit habituellement à 13 h et ta réunion commence à 13 h 30.',
+  'Dès la fin du déjeuner, j’envoie ma réponse',
+  ['Dès la fin de la réunion à 15 h, j’envoie ma réponse',
+   'En rentrant chez moi le soir, j’envoie ma réponse']),
+ ('Tu oublies de lancer le minuteur quand tu enfournes un plat. La durée de cuisson est connue.',
+  'Dès que j’enfourne le plat, je lance le minuteur',
+  ['Dès que je sors le plat, je lance le minuteur',
+   'Quand le four préchauffe, je compte toute la durée de cuisson']),
+ ('Tu veux enregistrer les factures dès leur réception, puis les payer à la date prévue dans ton agenda.',
+  'Quand une facture arrive, je note son échéance dans l’agenda',
+  ['Quand l’échéance passe, je classe la facture',
+   'Quand je règle une autre facture, je cherche les nouvelles']),
+ ('Tu perds tes clés en changeant d’endroit. Un crochet est installé juste à l’entrée et tu veux en faire '
+  'une habitude.',
+  'Dès que je rentre, j’accroche les clés à ce crochet',
+  ['Avant de sortir, je décide où les poser au retour',
+   'Quand je cherche les clés, je vérifie toutes les pièces']),
+ ('Tu veux noter tout nouveau rendez-vous avant de quitter le cabinet. Tu as ton téléphone avec toi.',
+  'Quand le rendez-vous est fixé, je l’enregistre avant de partir',
+  ['Quand j’arrive au prochain rendez-vous, je l’enregistre',
+   'Quand je range les papiers en fin de mois, je le note']),
+ ('Le secrétariat ouvre à 9 h. Tu prends ta pause chaque jour à 9 h 15 et tu dois appeler demain matin.',
+  'Quand ma pause de 9 h 15 commence demain, j’appelle',
+  ['Quand ma journée finit à 18 h, j’appelle', 'Quand ma pause de midi commence, je vérifie les horaires']),
+ ('La collecte a lieu vendredi matin. Tu veux sortir les bacs jeudi soir après ton dîner habituel.',
+  'Quand je termine le dîner du jeudi, je sors les bacs',
+  ['Quand je termine le dîner du vendredi, je sors les bacs',
+   'Quand j’entends le camion vendredi, je prépare les bacs']),
+ ('Tu veux emporter ta bouteille. Tu prépares toujours ton déjeuner dans la cuisine avant de partir.',
+  'Quand je range mon déjeuner dans le sac, j’ajoute la bouteille',
+  ['Quand je commence le déjeuner au travail, je prépare la bouteille chez moi',
+   'Quand je rentre du travail, je mets la bouteille près du déjeuner passé']),
+ ('Après chaque utilisation du scanner partagé, tu veux récupérer immédiatement tes originaux.',
+  'Quand la numérisation se termine, je récupère les originaux',
+  ['Quand j’ai besoin d’un autre document, je retourne au scanner',
+   'Quand le bureau ferme, je vérifie si mes documents y sont'])]
 
 
 # --- Résolution de problème : la meilleure solution ---------------------------
 #: (problème pratique, meilleure action, deux leurres)
-MEILLEURE_SOLUTION = [
-    ("La lumière de la salle de bain ne s'allume plus.",
-     "Vérifier l'ampoule puis le disjoncteur",
-     ["Changer toute l'installation", "Appeler un électricien sans rien vérifier"]),
-    ("Tu as oublié un rendez-vous.",
-     "Le noter avec une alarme dès maintenant",
-     ["Te reprocher de l'avoir oublié", "Ne plus prendre de rendez-vous"]),
-    ("Tu ne retrouves plus tes papiers.",
-     "Leur créer une place fixe et les y ranger",
-     ["Chercher partout à chaque fois", "Les laisser là où ils tombent"]),
-    ("Un formulaire te semble compliqué.",
-     "Le remplir section par section, et demander de l'aide si besoin",
-     ["Le remplir au hasard", "Le laisser de côté"]),
-    ("Tu te sens perdu face à plusieurs tâches.",
-     "En choisir une, la finir, puis passer à la suivante",
-     ["Tout commencer en même temps", "Attendre que ça passe"]),
-    ("Le bruit t'empêche de te concentrer.",
-     "Réduire les sources de bruit ou faire une pause",
-     ["Continuer en s'énervant", "Abandonner la tâche"]),
-    ("Tu as du mal à te souvenir des courses.",
-     "Écrire une liste et la garder sur toi",
-     ["Compter sur ta mémoire", "Acheter au hasard"]),
-    ("Un rendez-vous change de jour.",
-     "Le noter tout de suite au bon endroit",
-     ["Le mémoriser de tête", "S'en occuper plus tard"]),
-    ("Une tâche te paraît énorme.",
-     "La découper en petites étapes",
-     ["La faire d'un seul bloc", "La reporter indéfiniment"]),
-    ("Tu te fatigues vite en lisant.",
-     "Faire des pauses courtes",
-     ["Lire d'une traite jusqu'au bout", "Arrêter de lire"]),
-    ("Tu hésites avant de demander un renseignement.",
-     "Préparer ta question en une phrase",
-     ["Renoncer à demander", "Improviser sans savoir quoi dire"]),
-    ("Ton téléphone sonne pendant que tu es occupé.",
-     "Le mettre en silencieux et rappeler plus tard",
-     ["Répondre en abandonnant ce que tu fais", "Couper le téléphone"]),
-]
+MEILLEURE_SOLUTION = [('L’imprimante indique « bac papier vide ». Tu as du papier du format demandé et aucun autre message '
+  'd’erreur.',
+  'Remplir le bac demandé puis relancer l’impression',
+  ['Réinstaller le pilote de l’imprimante', 'Changer la cartouche d’encre']),
+ ('Tu viens de découvrir que tu as manqué ton rendez-vous de ce matin. Tu veux régler la situation actuelle '
+  'avant d’organiser les prochains.',
+  'Contacter le service pour convenir de la suite',
+  ['Ajouter une alarme au rendez-vous déjà passé',
+   'Préparer uniquement un calendrier pour le mois prochain']),
+ ('Tu ne retrouves pas un document. Le registre indique qu’il a été classé dans le dossier « logement ». Tu '
+  'veux le retrouver maintenant.',
+  'Consulter le dossier indiqué dans le registre',
+  ['Créer un nouveau dossier de rangement', 'Renommer tous les dossiers avant de chercher']),
+ ('Une seule rubrique du formulaire t’est incompréhensible. Les autres sont remplies et une assistance est '
+  'disponible pour expliquer les rubriques.',
+  'Demander une explication sur cette rubrique précise',
+  ['Recommencer les rubriques déjà complétées',
+   'Envoyer le formulaire en laissant la rubrique obligatoire vide']),
+ ('Deux tâches attendent : l’une bloque ton collègue maintenant, l’autre n’est due que demain. Elles '
+  'prennent le même temps.',
+  'Faire la tâche dont ton collègue a besoin maintenant',
+  ['Faire d’abord celle due demain', 'Alterner toutes les minutes entre les deux']),
+ ('Une conversation voisine empêche d’entendre ton appel. Une pièce calme est libre et tu peux t’y déplacer.',
+  'Poursuivre l’appel dans la pièce calme',
+  ['Augmenter seulement le volume au maximum', 'Demander de répéter chaque phrase sans changer de pièce']),
+ ('Tu es au magasin avec une liste enregistrée sur ton téléphone. Tu ne te rappelles plus le dernier '
+  'produit.',
+  'Consulter la liste enregistrée',
+  ['Reconstituer de mémoire la liste complète', 'Acheter un produit supplémentaire au cas où']),
+ ('Un rendez-vous passe du mardi au jeudi. Ton agenda contient encore le mardi et doit ne garder que le '
+  'nouveau créneau.',
+  'Modifier l’entrée existante pour le jeudi',
+  ['Ajouter jeudi en conservant l’entrée mardi', 'Mettre une note générale sans modifier la date']),
+ ('Tu dois traiter 30 dossiers identiques. Tu te perds lorsque plusieurs sont ouverts. Chaque dossier peut '
+  'être terminé séparément.',
+  'Terminer un dossier avant d’ouvrir le suivant',
+  ['Ouvrir les 30 pour voir l’ensemble', 'Commencer la première page de chaque dossier']),
+ ('Tu lis une notice longue pour trouver uniquement la procédure de retour. Le sommaire indique cette '
+  'rubrique.',
+  'Aller à la rubrique de retour indiquée',
+  ['Relire d’abord toutes les caractéristiques techniques',
+   'Chercher uniquement dans la rubrique d’installation']),
+ ('Tu veux connaître les pièces exigées pour une inscription. L’accueil répond à une question précise à la '
+  'fois.',
+  'Demander la liste des pièces pour cette inscription',
+  ['Demander tous les horaires de l’établissement', 'Raconter d’abord toutes les démarches déjà faites']),
+ ('Tu effectues une étape qui ne peut pas être interrompue pendant deux minutes. Un appel non urgent arrive '
+  '; la messagerie est active.',
+  'Finir cette étape puis consulter le message et rappeler',
+  ['Interrompre l’étape pour répondre immédiatement',
+   'Commencer une autre tâche avant de vérifier le message'])]
 
 
 # --- Aide externe (mémoire prospective) : quelle aide est adaptée ? ------------
 #: (situation, aide adaptée, deux aides moins efficaces)
-AIDE_EXTERNE = [
-    ("Tu dois te souvenir de sortir les poubelles jeudi soir.",
-     "Régler une alarme sur le téléphone pour jeudi à 20 h",
-     ["Compter sur ta mémoire", "L'écrire sur un papier rangé dans un tiroir"]),
-    ("Tu dois rappeler le médecin demain matin.",
-     "Programmer le rappel dans le téléphone pour demain 9 h",
-     ["Espérer y penser", "Le noter sur un papier que tu laisses chez toi"]),
-    ("Tu dois prendre un médicament avant chaque repas.",
-     "Poser les boîtes sur la table où tu prends tes repas",
-     ["Ranger les boîtes dans un placard", "Compter sur ta mémoire"]),
-    ("Tu dois emporter ton dossier pour le rendez-vous de demain.",
-     "Poser le dossier près de tes clés, sur ton chemin de sortie",
-     ["Le laisser sur le bureau", "Le ranger dans un tiroir"]),
-    ("Tu dois arroser les plantes en partant.",
-     "Poser l'arrosoir devant la porte d'entrée",
-     ["Ranger l'arrosoir au garage", "L'écrire dans un carnet que tu ne relis pas"]),
-    ("Tu dois rendre un livre à la bibliothèque.",
-     "Mettre le livre dans ton sac tout de suite",
-     ["Le poser près de la porte de la chambre", "Le noter dans un agenda"]),
-    ("Tu dois transmettre un message à ta sœur dès que possible.",
-     "Lui envoyer tout de suite un message : « je dois te dire quelque chose »",
-     ["Attendre de la croiser", "L'écrire dans un carnet"]),
-    ("Tu dois acheter du pain en rentrant.",
-     "Mettre un rappel à l'heure à laquelle tu passes devant la boulangerie",
-     ["Y penser en chemin", "L'écrire une fois rentré"]),
-]
+AIDE_EXTERNE = [('Tu dois sortir les bacs jeudi à 20 h. Tu seras chez toi avec ton téléphone, mais tu ne consulteras plus '
+  'tes mails après 18 h.',
+  'Programmer une alarme jeudi à 20 h',
+  ['Programmer un courriel jeudi à 20 h', 'Mettre une alarme vendredi à 20 h']),
+ ('Tu dois appeler demain à 9 h avec un numéro et une référence. Tu seras dehors avec ton téléphone.',
+  'Créer un rappel à 9 h avec le numéro et la référence',
+  ['Noter le numéro seul sur le bureau de la maison',
+   'Créer un rappel à 9 h sans les informations nécessaires']),
+ ('Tu dois emporter une carte professionnelle. Ton téléphone restera éteint et tu prends toujours ton sac '
+  'près de la porte.',
+  'Mettre la carte dans le sac avant le départ',
+  ['Prévoir une notification sur le téléphone éteint',
+   'Poser la carte dans un dossier que tu n’emportes pas']),
+ ('Tu dois emporter un dossier demain. Il ne tient pas dans ton sac ; tu prends toujours tes clés sur une '
+  'tablette dégagée.',
+  'Poser le dossier sur la tablette avec les clés',
+  ['Poser le dossier dans la pièce où tu ne passes pas',
+   'Mettre un rappel sur le calendrier du mois suivant']),
+ ('Tu dois vérifier les fenêtres en partant. Tu regardes toujours la poignée de la porte d’entrée ; le '
+  'passage doit rester libre.',
+  'Fixer un petit rappel visible près de la poignée',
+  ['Poser un objet au sol dans le passage', 'Mettre le rappel au dos d’une porte de placard fermée']),
+ ('Le livre doit être rendu aujourd’hui. Tu pars directement à la bibliothèque et ton sac est déjà près de '
+  'toi.',
+  'Mettre le livre dans le sac maintenant',
+  ['Créer un rappel pour ce soir après la fermeture', 'Noter seulement la date de retour dans l’agenda']),
+ ('Tu dois transmettre un code à ta sœur maintenant. Tu as le code et elle peut recevoir des messages '
+  'écrits.',
+  'Lui envoyer directement le code par message',
+  ['Lui envoyer seulement « rappelle-moi »', 'Créer un rappel pour lui envoyer le code demain']),
+ ('Tu dois acheter du pain sur le trajet du retour à 18 h. Tu auras ton téléphone et la boulangerie ferme à '
+  '18 h 30.',
+  'Régler un rappel à 18 h avec le lieu de l’achat',
+  ['Régler un rappel à 19 h au retour chez toi', 'Mettre la note sur le réfrigérateur à la maison'])]
 
 # --- Gestion de la pression temporelle (vitesse en situation) -------------------
 #: (situation, stratégie utile, deux stratégies qui font perdre du temps)
-GESTION_DU_TEMPS = [
-    ("Tu dois être prêt dans dix minutes et il reste trois choses à faire.",
-     "Faire d'abord ce qui est indispensable, laisser le reste",
-     ["Tout faire en même temps", "Renoncer à sortir"]),
-    ("Le bus part dans cinq minutes et tu n'as pas encore tes affaires.",
-     "Rassembler l'essentiel (clés, billet) et partir",
-     ["Chercher tout ce qui manque", "Attendre le prochain sans rien préparer"]),
-    ("Un appel se prolonge alors que tu dois partir.",
-     "Dire que tu rappelles plus tard, puis raccrocher",
-     ["Continuer à écouter", "Raccrocher sans rien dire"]),
-    ("Tu as trois rendez-vous le même jour.",
-     "Vérifier les trajets et prévoir de la marge entre les trois",
-     ["Les enchaîner au plus serré", "Tout regrouper le matin"]),
-    ("Tu dois rendre un devoir demain et il te reste une heure.",
-     "Commencer par la partie la plus importante",
-     ["Relire d'abord tout le texte", "Attendre le dernier moment"]),
-    ("Tu prépares un repas et tout doit être prêt en même temps.",
-     "Commencer par ce qui cuit le plus longtemps",
-     ["Tout commencer en même temps", "Servir au fur et à mesure"]),
-    ("Tu es déjà en retard et quelqu'un t'aborde dans la rue.",
-     "Dire en une phrase que tu es pressé et continuer ton chemin",
-     ["T'arrêter pour discuter", "Faire semblant de ne pas entendre"]),
-    ("Tu dois prendre la route et tu sens la fatigue monter.",
-     "T'arrêter maintenant pour une pause courte",
-     ["Finir vite ce que tu fais, puis partir", "Partir sans pause pour arriver plus tôt"]),
-]
+GESTION_DU_TEMPS = [('Tu pars dans dix minutes. Préparer les documents obligatoires prend cinq minutes, plier le linge dix '
+  'minutes. Le linge peut attendre.',
+  'Préparer les documents et reporter le linge',
+  ['Plier le linge puis chercher les documents', 'Partager les dix minutes également entre les deux']),
+ ('Le bus part dans cinq minutes et l’arrêt est à trois minutes. Le billet et les clés sont prêts ; chercher '
+  'un magazine prend quatre minutes.',
+  'Prendre le billet et les clés puis partir',
+  ['Chercher le magazine puis partir', 'Ranger le bureau pendant trois minutes puis partir']),
+ ('Tu dois partir maintenant. L’appel en cours n’est pas urgent et ton interlocuteur est disponible ce soir.',
+  'Convenir d’un rappel ce soir puis terminer l’appel',
+  ['Poursuivre l’appel jusqu’à sa fin naturelle',
+   'Commencer à chercher une autre heure de départ sans prévenir']),
+ ('Un rendez-vous finit à 11 h et le suivant commence à 11 h 20. Le trajet dure 30 minutes. Les deux '
+  'horaires peuvent encore être modifiés.',
+  'Demander un décalage permettant le trajet',
+  ['Conserver les horaires et réduire le trajet prévu à 20 minutes',
+   'Préparer les documents sans modifier les horaires']),
+ ('Un dossier est dû dans une heure. La pièce obligatoire prend 30 minutes ; une amélioration de '
+  'présentation facultative prend 45 minutes.',
+  'Terminer la pièce obligatoire avant la présentation',
+  ['Finir la présentation avant la pièce obligatoire',
+   'Consacrer 20 minutes à chaque tâche puis envoyer le dossier']),
+ ('Le repas doit être prêt dans 40 minutes. Une cuisson dure 35 minutes et la salade 10 minutes ; tu peux '
+  'préparer la salade pendant la cuisson.',
+  'Lancer la cuisson puis préparer la salade pendant ce temps',
+  ['Préparer la salade puis lancer la cuisson',
+   'Attendre d’avoir fini les deux préparations pour lancer la cuisson']),
+ ('Tu as deux minutes pour rejoindre un rendez-vous tout proche. Un voisin propose une discussion non '
+  'urgente qui prendra dix minutes.',
+  'Proposer de discuter au retour et poursuivre ton chemin',
+  ['Commencer la discussion en espérant qu’elle dure deux minutes',
+   'Décaler le rendez-vous sans vérifier la disponibilité']),
+ ('Tu disposes de 15 minutes. L’envoi obligatoire prend dix minutes ; le classement facultatif prend dix '
+  'minutes et peut attendre demain.',
+  'Faire l’envoi et reporter le classement',
+  ['Faire le classement puis commencer l’envoi', 'Commencer les deux tâches et les terminer demain'])]
 
 
 def _item_choix(numero: int, palier: int, famille: str, type_item: str,
@@ -443,7 +517,7 @@ def construire_paliers() -> list[list[dict]]:
     paliers.append([
         _item_choix(n, 5, "sialors", "si-alors", ["qo-palier-4"],
                     SI_ALORS,
-                    "Choisis le plan « si … alors … » le plus fiable. Astuce : accroche l'action à un moment précis de ta journée.",
+                    "Choisis le plan « quand … alors … » adapté à la situation. Relie l’action au repère indiqué.",
                     "Un plan précis, lié à un repère, est plus sûr qu'une bonne intention.",
                     ["memoire-prospective", "planification"])
         for n in range(1, 13)
@@ -453,7 +527,7 @@ def construire_paliers() -> list[list[dict]]:
         _item_choix(n, 6, "solution", "meilleure-solution", ["qo-palier-5"],
                     MEILLEURE_SOLUTION,
                     "Choisis l'action la plus utile. Astuce : commence par ce qui est simple et vérifiable.",
-                    "La bonne solution est souvent la plus simple et la plus directe.",
+                    "Compare chaque action avec le problème à résoudre maintenant.",
                     ["planification", "fonctions-executives"])
         for n in range(1, 13)
     ])
@@ -470,11 +544,16 @@ def construire_paliers() -> list[list[dict]]:
     paliers.append([
         _item_choix(n, 8, "temps", "gestion-du-temps", ["qo-palier-7"],
                     GESTION_DU_TEMPS,
-                    "Choisis la réaction la plus utile quand le temps presse. Astuce : mieux vaut décider vite de l'essentiel que tout tenter à la fois.",
+                    "Choisis une organisation compatible avec le temps disponible. Tu peux prendre le temps de comparer les propositions.",
                     "Dans l'urgence, on gagne du temps en simplifiant, pas en accélérant.",
                     ["planification", "fonctions-executives"])
         for n in range(1, 9)
     ])
+    # Versions distinctes des anciens contenus servis ; les familles inchangées gardent leurs identifiants.
+    for palier in (2, 4, 5, 6, 7, 8):
+        for item in paliers[palier - 1]:
+            item["id"] = item["id"].replace("qo-", "qo2-", 1)
+            item["meta"]["date_creation"] = "2026-09-30"
     return paliers
 
 

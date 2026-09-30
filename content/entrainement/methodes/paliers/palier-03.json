@@ -1,6 +1,6 @@
 [
   {
-    "id": "mt-3-autoinstruction-01",
+    "id": "mt3-3-autoinstruction-01",
     "type": "auto-instruction",
     "module": "entrainement",
     "theme": "methodes",
@@ -15,27 +15,27 @@
     "cap_complexite": null,
     "contenu": {
       "consigne": "Auto-instruction : avant d'agir, mets-toi une consigne à voix basse — « qu'est-ce que je dois faire ? » puis « comment ? » puis « vérifie ».",
-      "enonce": "Tu ouvres une boîte de médicaments avec une notice.",
+      "enonce": "Tu vas assembler une étagère. La notice et toutes les pièces sont disponibles, mais tu n’as pas encore repéré l’ordre du montage. Quelle question traite ce point ?",
       "options": [
-        "Combien de temps ça va me prendre ?",
-        "Qu'est-ce que je dois faire exactement, et dans quel ordre ?",
-        "Est-ce que je vais y arriver ?"
+        "Combien de livres faudra-t-il ranger sur l’étagère ?",
+        "Quelle pièce se monte d’abord et de quoi dépend la suivante ?",
+        "À quel endroit placer l’étagère une fois montée ?"
       ],
-      "aide": "La première question porte sur le but et le moyen, pas sur le résultat attendu."
+      "aide": "Choisis la question qui répond au point à clarifier dans cette situation."
     },
     "reponse": {
-      "valeur": "Qu'est-ce que je dois faire exactement, et dans quel ordre ?"
+      "valeur": "Quelle pièce se monte d’abord et de quoi dépend la suivante ?"
     },
     "meta": {
       "auteur": "redaction-assistee (tools/generer_methodes.py)",
-      "date_creation": "2026-09-24",
+      "date_creation": "2026-09-30",
       "relecture_ortho": {
         "statut": "a_revoir"
       }
     }
   },
   {
-    "id": "mt-3-autoinstruction-02",
+    "id": "mt3-3-autoinstruction-02",
     "type": "auto-instruction",
     "module": "entrainement",
     "theme": "methodes",
@@ -50,27 +50,27 @@
     "cap_complexite": null,
     "contenu": {
       "consigne": "Auto-instruction : avant d'agir, mets-toi une consigne à voix basse — « qu'est-ce que je dois faire ? » puis « comment ? » puis « vérifie ».",
-      "enonce": "Tu reçois un courrier administratif que tu ne comprends pas.",
+      "enonce": "Un courrier demande une réponse mais tu ne sais pas encore laquelle. Quelle question clarifie d’abord la demande ?",
       "options": [
-        "Pourquoi m'envoie-t-on toujours des papiers ?",
-        "Ai-je déjà vu ça ?",
-        "De quoi parle ce courrier, et qu'attend-on de moi ?"
+        "Dans quel dossier vais-je classer le courrier ?",
+        "Quel moyen de transport utiliser pour aller au guichet ?",
+        "Quelle action m’est demandée et pour quelle échéance ?"
       ],
-      "aide": "La première question porte sur le but et le moyen, pas sur le résultat attendu."
+      "aide": "Choisis la question qui répond au point à clarifier dans cette situation."
     },
     "reponse": {
-      "valeur": "De quoi parle ce courrier, et qu'attend-on de moi ?"
+      "valeur": "Quelle action m’est demandée et pour quelle échéance ?"
     },
     "meta": {
       "auteur": "redaction-assistee (tools/generer_methodes.py)",
-      "date_creation": "2026-09-24",
+      "date_creation": "2026-09-30",
       "relecture_ortho": {
         "statut": "a_revoir"
       }
     }
   },
   {
-    "id": "mt-3-autoinstruction-03",
+    "id": "mt3-3-autoinstruction-03",
     "type": "auto-instruction",
     "module": "entrainement",
     "theme": "methodes",
@@ -85,27 +85,27 @@
     "cap_complexite": null,
     "contenu": {
       "consigne": "Auto-instruction : avant d'agir, mets-toi une consigne à voix basse — « qu'est-ce que je dois faire ? » puis « comment ? » puis « vérifie ».",
-      "enonce": "Tu commences un nouveau livre.",
+      "enonce": "Tu lis un chapitre pour expliquer demain deux causes d’un phénomène. Quelle question guide une lecture adaptée à ce but ?",
       "options": [
-        "Combien de pages il reste ?",
-        "Est-ce que je vais aimer ?",
-        "De quoi parle-t-il, et qu'est-ce que je cherche à retenir ?"
+        "Quels passages racontent les conséquences du phénomène ?",
+        "Quels mots du chapitre sont les plus inhabituels ?",
+        "Quels passages expliquent ces deux causes ?"
       ],
-      "aide": "La première question porte sur le but et le moyen, pas sur le résultat attendu."
+      "aide": "Choisis la question qui répond au point à clarifier dans cette situation."
     },
     "reponse": {
-      "valeur": "De quoi parle-t-il, et qu'est-ce que je cherche à retenir ?"
+      "valeur": "Quels passages expliquent ces deux causes ?"
     },
     "meta": {
       "auteur": "redaction-assistee (tools/generer_methodes.py)",
-      "date_creation": "2026-09-24",
+      "date_creation": "2026-09-30",
       "relecture_ortho": {
         "statut": "a_revoir"
       }
     }
   },
   {
-    "id": "mt-3-autoinstruction-04",
+    "id": "mt3-3-autoinstruction-04",
     "type": "auto-instruction",
     "module": "entrainement",
     "theme": "methodes",
@@ -120,27 +120,27 @@
     "cap_complexite": null,
     "contenu": {
       "consigne": "Auto-instruction : avant d'agir, mets-toi une consigne à voix basse — « qu'est-ce que je dois faire ? » puis « comment ? » puis « vérifie ».",
-      "enonce": "Tu dois remplir un formulaire de plusieurs pages.",
+      "enonce": "Tu vas remplir un formulaire qui demande plusieurs justificatifs. Tu veux éviter de t’interrompre pour les chercher. Quelle question t’aide ?",
       "options": [
-        "Par quoi je commence, et que me faut-il sous les yeux ?",
-        "Est-ce long ?",
-        "Est-ce que je vais me tromper ?"
+        "Quels documents dois-je réunir avant de commencer ?",
+        "Comment classer le dossier après son envoi ?",
+        "Quelle sera la dernière rubrique à signer ?"
       ],
-      "aide": "La première question porte sur le but et le moyen, pas sur le résultat attendu."
+      "aide": "Choisis la question qui répond au point à clarifier dans cette situation."
     },
     "reponse": {
-      "valeur": "Par quoi je commence, et que me faut-il sous les yeux ?"
+      "valeur": "Quels documents dois-je réunir avant de commencer ?"
     },
     "meta": {
       "auteur": "redaction-assistee (tools/generer_methodes.py)",
-      "date_creation": "2026-09-24",
+      "date_creation": "2026-09-30",
       "relecture_ortho": {
         "statut": "a_revoir"
       }
     }
   },
   {
-    "id": "mt-3-autoinstruction-05",
+    "id": "mt3-3-autoinstruction-05",
     "type": "auto-instruction",
     "module": "entrainement",
     "theme": "methodes",
@@ -155,27 +155,27 @@
     "cap_complexite": null,
     "contenu": {
       "consigne": "Auto-instruction : avant d'agir, mets-toi une consigne à voix basse — « qu'est-ce que je dois faire ? » puis « comment ? » puis « vérifie ».",
-      "enonce": "Tu prépares un repas jamais essayé.",
+      "enonce": "La recette est nouvelle. Tu as tous les ingrédients mais seulement 40 minutes et certaines étapes nécessitent du repos. Quelle question vérifier avant de commencer ?",
       "options": [
-        "Quelles sont les étapes, et ai-je tout ce qu'il faut ?",
-        "Est-ce que ce sera bon ?",
-        "Ai-je le temps ?"
+        "Quelle est la durée totale, repos compris ?",
+        "Quelle est la quantité totale d’ingrédients ?",
+        "Quelle présentation choisir pour le plat terminé ?"
       ],
-      "aide": "La première question porte sur le but et le moyen, pas sur le résultat attendu."
+      "aide": "Choisis la question qui répond au point à clarifier dans cette situation."
     },
     "reponse": {
-      "valeur": "Quelles sont les étapes, et ai-je tout ce qu'il faut ?"
+      "valeur": "Quelle est la durée totale, repos compris ?"
     },
     "meta": {
       "auteur": "redaction-assistee (tools/generer_methodes.py)",
-      "date_creation": "2026-09-24",
+      "date_creation": "2026-09-30",
       "relecture_ortho": {
         "statut": "a_revoir"
       }
     }
   },
   {
-    "id": "mt-3-autoinstruction-06",
+    "id": "mt3-3-autoinstruction-06",
     "type": "auto-instruction",
     "module": "entrainement",
     "theme": "methodes",
@@ -190,27 +190,27 @@
     "cap_complexite": null,
     "contenu": {
       "consigne": "Auto-instruction : avant d'agir, mets-toi une consigne à voix basse — « qu'est-ce que je dois faire ? » puis « comment ? » puis « vérifie ».",
-      "enonce": "Tu ranges une pièce en désordre.",
+      "enonce": "Tu ranges une pièce pour libérer le passage jusqu’à la fenêtre. Quelle question garde ce but en vue ?",
       "options": [
-        "Est-ce que c'est fini bientôt ?",
-        "Qu'est-ce que je veux obtenir, et par quel coin je commence ?",
-        "Où tout cela va-t-il aller ?"
+        "Comment réorganiser tous les livres par auteur ?",
+        "Quels objets empêchent actuellement ce passage ?",
+        "Quels objets faudrait-il remplacer prochainement ?"
       ],
-      "aide": "La première question porte sur le but et le moyen, pas sur le résultat attendu."
+      "aide": "Choisis la question qui répond au point à clarifier dans cette situation."
     },
     "reponse": {
-      "valeur": "Qu'est-ce que je veux obtenir, et par quel coin je commence ?"
+      "valeur": "Quels objets empêchent actuellement ce passage ?"
     },
     "meta": {
       "auteur": "redaction-assistee (tools/generer_methodes.py)",
-      "date_creation": "2026-09-24",
+      "date_creation": "2026-09-30",
       "relecture_ortho": {
         "statut": "a_revoir"
       }
     }
   },
   {
-    "id": "mt-3-autoinstruction-07",
+    "id": "mt3-3-autoinstruction-07",
     "type": "auto-instruction",
     "module": "entrainement",
     "theme": "methodes",
@@ -225,27 +225,27 @@
     "cap_complexite": null,
     "contenu": {
       "consigne": "Auto-instruction : avant d'agir, mets-toi une consigne à voix basse — « qu'est-ce que je dois faire ? » puis « comment ? » puis « vérifie ».",
-      "enonce": "Tu appelles pour un problème de facture.",
+      "enonce": "Tu appelles pour un prélèvement en double. La référence est prête ; tu veux formuler clairement ce que tu demandes. Quelle question t’aide ?",
       "options": [
-        "Quel est mon problème, et quel résultat je veux obtenir ?",
-        "Combien de temps ça va durer ?",
-        "Vont-ils me croire ?"
+        "Quel prélèvement contester et quelle régularisation demander ?",
+        "Quel jour sont émises les prochaines factures ?",
+        "Quel autre forfait pourrait être intéressant ?"
       ],
-      "aide": "La première question porte sur le but et le moyen, pas sur le résultat attendu."
+      "aide": "Choisis la question qui répond au point à clarifier dans cette situation."
     },
     "reponse": {
-      "valeur": "Quel est mon problème, et quel résultat je veux obtenir ?"
+      "valeur": "Quel prélèvement contester et quelle régularisation demander ?"
     },
     "meta": {
       "auteur": "redaction-assistee (tools/generer_methodes.py)",
-      "date_creation": "2026-09-24",
+      "date_creation": "2026-09-30",
       "relecture_ortho": {
         "statut": "a_revoir"
       }
     }
   },
   {
-    "id": "mt-3-autoinstruction-08",
+    "id": "mt3-3-autoinstruction-08",
     "type": "auto-instruction",
     "module": "entrainement",
     "theme": "methodes",
@@ -260,20 +260,20 @@
     "cap_complexite": null,
     "contenu": {
       "consigne": "Auto-instruction : avant d'agir, mets-toi une consigne à voix basse — « qu'est-ce que je dois faire ? » puis « comment ? » puis « vérifie ».",
-      "enonce": "Tu dois réviser un texte pour le lendemain.",
+      "enonce": "Tu dois expliquer demain une procédure sans tes notes. Quelle question permet de vérifier ta préparation ?",
       "options": [
-        "Ai-je tout lu ?",
-        "Qu'est-ce que je dois savoir dire, et comment je vais le vérifier ?",
-        "Est-ce que je vais retenir ?"
+        "Ai-je souligné tous les titres de la procédure ?",
+        "Puis-je redire les étapes dans l’ordre sans regarder ?",
+        "Ai-je lu chaque page au moins une fois ?"
       ],
-      "aide": "La première question porte sur le but et le moyen, pas sur le résultat attendu."
+      "aide": "Choisis la question qui répond au point à clarifier dans cette situation."
     },
     "reponse": {
-      "valeur": "Qu'est-ce que je dois savoir dire, et comment je vais le vérifier ?"
+      "valeur": "Puis-je redire les étapes dans l’ordre sans regarder ?"
     },
     "meta": {
       "auteur": "redaction-assistee (tools/generer_methodes.py)",
-      "date_creation": "2026-09-24",
+      "date_creation": "2026-09-30",
       "relecture_ortho": {
         "statut": "a_revoir"
       }

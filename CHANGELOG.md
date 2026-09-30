@@ -2,6 +2,13 @@
 
 Format : [date] — [périmètre] — description. Les retours informels de l'orthophoniste sont journalisés ici, sans caution clinique.
 
+## 2026-09-30 · Plans, recherche documentaire et choix en situation
+
+- Méthodes P4 : huit plans entièrement revus, contraintes explicites et une seule étape à déplacer pour rétablir l’ordre.
+- Méthodes P5 : huit documents enrichis et visibles avec les questions, sans phase de mémorisation temporisée ; validation et rendu contrôlés.
+- Méthodes P2/P3 et Au quotidien P2/P4/P5/P6/P7/P8 : alternatives pertinentes au regard d’une contrainte précise, suppression des formulations caricaturales et des ambiguïtés repérées. P5 quotidien : liens événement-action ; P7 : supports de rappel.
+- Remplacement de 96 items : 32 `mt3-…` et 64 `qo2-…`, sans réaffectation des anciens identifiants ni modification des autres familles. ADR-019.
+
 ## 2026-09-30 · Libellés fidèles aux tâches
 
 - Au quotidien conservé ; descriptions centrées sur les actions demandées, sans assimiler rappel d’un détail à un entraînement spécifique de mémoire de travail.

@@ -1,6 +1,6 @@
 [
   {
-    "id": "qo-5-sialors-01",
+    "id": "qo2-5-sialors-01",
     "type": "si-alors",
     "module": "entrainement",
     "theme": "quotidien",
@@ -14,28 +14,28 @@
     ],
     "cap_complexite": null,
     "contenu": {
-      "consigne": "Choisis le plan « si … alors … » le plus fiable. Astuce : accroche l'action à un moment précis de ta journée.",
-      "enonce": "Prendre ton traitement le soir.",
+      "consigne": "Choisis le plan « quand … alors … » adapté à la situation. Relie l’action au repère indiqué.",
+      "enonce": "Tu veux vérifier ton agenda chaque soir. Tu te brosses toujours les dents après le dîner ; l’heure du dîner varie.",
       "options": [
-        "Je le prendrai si j'y pense",
-        "Quand je me brosserai les dents, je prendrai le traitement",
-        "J'essaierai d'y penser"
+        "Quand je consulte mon agenda, je décide quand dîner",
+        "Quand j’ai fini de me brosser les dents, je consulte mon agenda",
+        "À 19 h exactement, je consulte mon agenda pendant le dîner"
       ],
       "aide": "Un plan précis, lié à un repère, est plus sûr qu'une bonne intention."
     },
     "reponse": {
-      "valeur": "Quand je me brosserai les dents, je prendrai le traitement"
+      "valeur": "Quand j’ai fini de me brosser les dents, je consulte mon agenda"
     },
     "meta": {
       "auteur": "redaction-assistee (tools/generer_quotidien.py)",
-      "date_creation": "2026-09-23",
+      "date_creation": "2026-09-30",
       "relecture_ortho": {
         "statut": "a_revoir"
       }
     }
   },
   {
-    "id": "qo-5-sialors-02",
+    "id": "qo2-5-sialors-02",
     "type": "si-alors",
     "module": "entrainement",
     "theme": "quotidien",
@@ -49,28 +49,28 @@
     ],
     "cap_complexite": null,
     "contenu": {
-      "consigne": "Choisis le plan « si … alors … » le plus fiable. Astuce : accroche l'action à un moment précis de ta journée.",
-      "enonce": "Rendre un livre à la bibliothèque.",
+      "consigne": "Choisis le plan « quand … alors … » adapté à la situation. Relie l’action au repère indiqué.",
+      "enonce": "Tu rends un livre demain en allant au travail. Tu prépares toujours ton sac avant de te coucher.",
       "options": [
-        "J'essaierai de m'en souvenir",
-        "Je le rendrai un jour",
-        "Quand je sortirai avec mon sac, je mettrai le livre dedans"
+        "Quand je rentre du travail demain, je prépare le livre",
+        "Quand je termine un autre livre, je cherche celui à rendre",
+        "Quand je prépare mon sac ce soir, j’y mets le livre"
       ],
       "aide": "Un plan précis, lié à un repère, est plus sûr qu'une bonne intention."
     },
     "reponse": {
-      "valeur": "Quand je sortirai avec mon sac, je mettrai le livre dedans"
+      "valeur": "Quand je prépare mon sac ce soir, j’y mets le livre"
     },
     "meta": {
       "auteur": "redaction-assistee (tools/generer_quotidien.py)",
-      "date_creation": "2026-09-23",
+      "date_creation": "2026-09-30",
       "relecture_ortho": {
         "statut": "a_revoir"
       }
     }
   },
   {
-    "id": "qo-5-sialors-03",
+    "id": "qo2-5-sialors-03",
     "type": "si-alors",
     "module": "entrainement",
     "theme": "quotidien",
@@ -84,28 +84,28 @@
     ],
     "cap_complexite": null,
     "contenu": {
-      "consigne": "Choisis le plan « si … alors … » le plus fiable. Astuce : accroche l'action à un moment précis de ta journée.",
-      "enonce": "Arroser les plantes le dimanche.",
+      "consigne": "Choisis le plan « quand … alors … » adapté à la situation. Relie l’action au repère indiqué.",
+      "enonce": "Tu veux arroser les plantes dimanche. Tu bois toujours ton café chez toi ce matin-là et tu veux l’utiliser comme repère.",
       "options": [
-        "Je le ferai quand j'aurai le temps",
-        "J'espère ne pas oublier",
-        "Le dimanche après le café, j'arrose les plantes"
+        "Après mon café du lundi, j’arrose les plantes",
+        "Avant de rentrer dimanche soir, j’arrose les plantes",
+        "Après mon café du dimanche, j’arrose les plantes"
       ],
       "aide": "Un plan précis, lié à un repère, est plus sûr qu'une bonne intention."
     },
     "reponse": {
-      "valeur": "Le dimanche après le café, j'arrose les plantes"
+      "valeur": "Après mon café du dimanche, j’arrose les plantes"
     },
     "meta": {
       "auteur": "redaction-assistee (tools/generer_quotidien.py)",
-      "date_creation": "2026-09-23",
+      "date_creation": "2026-09-30",
       "relecture_ortho": {
         "statut": "a_revoir"
       }
     }
   },
   {
-    "id": "qo-5-sialors-04",
+    "id": "qo2-5-sialors-04",
     "type": "si-alors",
     "module": "entrainement",
     "theme": "quotidien",
@@ -119,28 +119,28 @@
     ],
     "cap_complexite": null,
     "contenu": {
-      "consigne": "Choisis le plan « si … alors … » le plus fiable. Astuce : accroche l'action à un moment précis de ta journée.",
-      "enonce": "Répondre à un message important.",
+      "consigne": "Choisis le plan « quand … alors … » adapté à la situation. Relie l’action au repère indiqué.",
+      "enonce": "Tu dois répondre avant 14 h. Ton déjeuner finit habituellement à 13 h et ta réunion commence à 13 h 30.",
       "options": [
-        "Je répondrai plus tard",
-        "Je laisserai le message en attente",
-        "Quand je m'installerai après le repas, je répondrai"
+        "Dès la fin de la réunion à 15 h, j’envoie ma réponse",
+        "En rentrant chez moi le soir, j’envoie ma réponse",
+        "Dès la fin du déjeuner, j’envoie ma réponse"
       ],
       "aide": "Un plan précis, lié à un repère, est plus sûr qu'une bonne intention."
     },
     "reponse": {
-      "valeur": "Quand je m'installerai après le repas, je répondrai"
+      "valeur": "Dès la fin du déjeuner, j’envoie ma réponse"
     },
     "meta": {
       "auteur": "redaction-assistee (tools/generer_quotidien.py)",
-      "date_creation": "2026-09-23",
+      "date_creation": "2026-09-30",
       "relecture_ortho": {
         "statut": "a_revoir"
       }
     }
   },
   {
-    "id": "qo-5-sialors-05",
+    "id": "qo2-5-sialors-05",
     "type": "si-alors",
     "module": "entrainement",
     "theme": "quotidien",
@@ -154,28 +154,28 @@
     ],
     "cap_complexite": null,
     "contenu": {
-      "consigne": "Choisis le plan « si … alors … » le plus fiable. Astuce : accroche l'action à un moment précis de ta journée.",
-      "enonce": "Ne pas oublier le four allumé.",
+      "consigne": "Choisis le plan « quand … alors … » adapté à la situation. Relie l’action au repère indiqué.",
+      "enonce": "Tu oublies de lancer le minuteur quand tu enfournes un plat. La durée de cuisson est connue.",
       "options": [
-        "Je vérifierai de temps en temps",
-        "Je règle une minuterie dès que j'allume le four",
-        "Je ferai attention"
+        "Quand le four préchauffe, je compte toute la durée de cuisson",
+        "Dès que j’enfourne le plat, je lance le minuteur",
+        "Dès que je sors le plat, je lance le minuteur"
       ],
       "aide": "Un plan précis, lié à un repère, est plus sûr qu'une bonne intention."
     },
     "reponse": {
-      "valeur": "Je règle une minuterie dès que j'allume le four"
+      "valeur": "Dès que j’enfourne le plat, je lance le minuteur"
     },
     "meta": {
       "auteur": "redaction-assistee (tools/generer_quotidien.py)",
-      "date_creation": "2026-09-23",
+      "date_creation": "2026-09-30",
       "relecture_ortho": {
         "statut": "a_revoir"
       }
     }
   },
   {
-    "id": "qo-5-sialors-06",
+    "id": "qo2-5-sialors-06",
     "type": "si-alors",
     "module": "entrainement",
     "theme": "quotidien",
@@ -189,28 +189,28 @@
     ],
     "cap_complexite": null,
     "contenu": {
-      "consigne": "Choisis le plan « si … alors … » le plus fiable. Astuce : accroche l'action à un moment précis de ta journée.",
-      "enonce": "Payer une facture avant le 5.",
+      "consigne": "Choisis le plan « quand … alors … » adapté à la situation. Relie l’action au repère indiqué.",
+      "enonce": "Tu veux enregistrer les factures dès leur réception, puis les payer à la date prévue dans ton agenda.",
       "options": [
-        "Je la paierai à la dernière minute",
-        "Je la classerai pour plus tard",
-        "Quand la facture arrivera, je la paie tout de suite"
+        "Quand l’échéance passe, je classe la facture",
+        "Quand je règle une autre facture, je cherche les nouvelles",
+        "Quand une facture arrive, je note son échéance dans l’agenda"
       ],
       "aide": "Un plan précis, lié à un repère, est plus sûr qu'une bonne intention."
     },
     "reponse": {
-      "valeur": "Quand la facture arrivera, je la paie tout de suite"
+      "valeur": "Quand une facture arrive, je note son échéance dans l’agenda"
     },
     "meta": {
       "auteur": "redaction-assistee (tools/generer_quotidien.py)",
-      "date_creation": "2026-09-23",
+      "date_creation": "2026-09-30",
       "relecture_ortho": {
         "statut": "a_revoir"
       }
     }
   },
   {
-    "id": "qo-5-sialors-07",
+    "id": "qo2-5-sialors-07",
     "type": "si-alors",
     "module": "entrainement",
     "theme": "quotidien",
@@ -224,28 +224,28 @@
     ],
     "cap_complexite": null,
     "contenu": {
-      "consigne": "Choisis le plan « si … alors … » le plus fiable. Astuce : accroche l'action à un moment précis de ta journée.",
-      "enonce": "Toujours retrouver tes clés.",
+      "consigne": "Choisis le plan « quand … alors … » adapté à la situation. Relie l’action au repère indiqué.",
+      "enonce": "Tu perds tes clés en changeant d’endroit. Un crochet est installé juste à l’entrée et tu veux en faire une habitude.",
       "options": [
-        "Je les chercherai quand j'en aurai besoin",
-        "Je les pose toujours au même endroit, près de la porte",
-        "Je les poserai où je peux"
+        "Quand je cherche les clés, je vérifie toutes les pièces",
+        "Dès que je rentre, j’accroche les clés à ce crochet",
+        "Avant de sortir, je décide où les poser au retour"
       ],
       "aide": "Un plan précis, lié à un repère, est plus sûr qu'une bonne intention."
     },
     "reponse": {
-      "valeur": "Je les pose toujours au même endroit, près de la porte"
+      "valeur": "Dès que je rentre, j’accroche les clés à ce crochet"
     },
     "meta": {
       "auteur": "redaction-assistee (tools/generer_quotidien.py)",
-      "date_creation": "2026-09-23",
+      "date_creation": "2026-09-30",
       "relecture_ortho": {
         "statut": "a_revoir"
       }
     }
   },
   {
-    "id": "qo-5-sialors-08",
+    "id": "qo2-5-sialors-08",
     "type": "si-alors",
     "module": "entrainement",
     "theme": "quotidien",
@@ -259,28 +259,28 @@
     ],
     "cap_complexite": null,
     "contenu": {
-      "consigne": "Choisis le plan « si … alors … » le plus fiable. Astuce : accroche l'action à un moment précis de ta journée.",
-      "enonce": "Ne pas manquer le rendez-vous.",
+      "consigne": "Choisis le plan « quand … alors … » adapté à la situation. Relie l’action au repère indiqué.",
+      "enonce": "Tu veux noter tout nouveau rendez-vous avant de quitter le cabinet. Tu as ton téléphone avec toi.",
       "options": [
-        "Je le note dans le téléphone avec une alarme la veille",
-        "Je m'en souviendrai tout seul",
-        "Je le retiendrai de tête"
+        "Quand le rendez-vous est fixé, je l’enregistre avant de partir",
+        "Quand j’arrive au prochain rendez-vous, je l’enregistre",
+        "Quand je range les papiers en fin de mois, je le note"
       ],
       "aide": "Un plan précis, lié à un repère, est plus sûr qu'une bonne intention."
     },
     "reponse": {
-      "valeur": "Je le note dans le téléphone avec une alarme la veille"
+      "valeur": "Quand le rendez-vous est fixé, je l’enregistre avant de partir"
     },
     "meta": {
       "auteur": "redaction-assistee (tools/generer_quotidien.py)",
-      "date_creation": "2026-09-23",
+      "date_creation": "2026-09-30",
       "relecture_ortho": {
         "statut": "a_revoir"
       }
     }
   },
   {
-    "id": "qo-5-sialors-09",
+    "id": "qo2-5-sialors-09",
     "type": "si-alors",
     "module": "entrainement",
     "theme": "quotidien",
@@ -294,28 +294,28 @@
     ],
     "cap_complexite": null,
     "contenu": {
-      "consigne": "Choisis le plan « si … alors … » le plus fiable. Astuce : accroche l'action à un moment précis de ta journée.",
-      "enonce": "Rappeler le médecin.",
+      "consigne": "Choisis le plan « quand … alors … » adapté à la situation. Relie l’action au repère indiqué.",
+      "enonce": "Le secrétariat ouvre à 9 h. Tu prends ta pause chaque jour à 9 h 15 et tu dois appeler demain matin.",
       "options": [
-        "Je rappellerai quand j'y penserai",
-        "J'attendrai qu'on me rappelle",
-        "Je programme le rappel dans le téléphone maintenant"
+        "Quand ma journée finit à 18 h, j’appelle",
+        "Quand ma pause de midi commence, je vérifie les horaires",
+        "Quand ma pause de 9 h 15 commence demain, j’appelle"
       ],
       "aide": "Un plan précis, lié à un repère, est plus sûr qu'une bonne intention."
     },
     "reponse": {
-      "valeur": "Je programme le rappel dans le téléphone maintenant"
+      "valeur": "Quand ma pause de 9 h 15 commence demain, j’appelle"
     },
     "meta": {
       "auteur": "redaction-assistee (tools/generer_quotidien.py)",
-      "date_creation": "2026-09-23",
+      "date_creation": "2026-09-30",
       "relecture_ortho": {
         "statut": "a_revoir"
       }
     }
   },
   {
-    "id": "qo-5-sialors-10",
+    "id": "qo2-5-sialors-10",
     "type": "si-alors",
     "module": "entrainement",
     "theme": "quotidien",
@@ -329,28 +329,28 @@
     ],
     "cap_complexite": null,
     "contenu": {
-      "consigne": "Choisis le plan « si … alors … » le plus fiable. Astuce : accroche l'action à un moment précis de ta journée.",
-      "enonce": "Sortir les poubelles le jeudi soir.",
+      "consigne": "Choisis le plan « quand … alors … » adapté à la situation. Relie l’action au repère indiqué.",
+      "enonce": "La collecte a lieu vendredi matin. Tu veux sortir les bacs jeudi soir après ton dîner habituel.",
       "options": [
-        "Je les sortirai quand elles seront pleines",
-        "J'attendrai de m'en souvenir",
-        "Le jeudi soir après le dîner, je sors les poubelles"
+        "Quand je termine le dîner du vendredi, je sors les bacs",
+        "Quand j’entends le camion vendredi, je prépare les bacs",
+        "Quand je termine le dîner du jeudi, je sors les bacs"
       ],
       "aide": "Un plan précis, lié à un repère, est plus sûr qu'une bonne intention."
     },
     "reponse": {
-      "valeur": "Le jeudi soir après le dîner, je sors les poubelles"
+      "valeur": "Quand je termine le dîner du jeudi, je sors les bacs"
     },
     "meta": {
       "auteur": "redaction-assistee (tools/generer_quotidien.py)",
-      "date_creation": "2026-09-23",
+      "date_creation": "2026-09-30",
       "relecture_ortho": {
         "statut": "a_revoir"
       }
     }
   },
   {
-    "id": "qo-5-sialors-11",
+    "id": "qo2-5-sialors-11",
     "type": "si-alors",
     "module": "entrainement",
     "theme": "quotidien",
@@ -364,28 +364,28 @@
     ],
     "cap_complexite": null,
     "contenu": {
-      "consigne": "Choisis le plan « si … alors … » le plus fiable. Astuce : accroche l'action à un moment précis de ta journée.",
-      "enonce": "Boire de l'eau dans la journée.",
+      "consigne": "Choisis le plan « quand … alors … » adapté à la situation. Relie l’action au repère indiqué.",
+      "enonce": "Tu veux emporter ta bouteille. Tu prépares toujours ton déjeuner dans la cuisine avant de partir.",
       "options": [
-        "J'essaierai d'y penser",
-        "Je boirai seulement quand j'aurai soif",
-        "Je remplis une bouteille le matin et je la garde près de moi"
+        "Quand je commence le déjeuner au travail, je prépare la bouteille chez moi",
+        "Quand je rentre du travail, je mets la bouteille près du déjeuner passé",
+        "Quand je range mon déjeuner dans le sac, j’ajoute la bouteille"
       ],
       "aide": "Un plan précis, lié à un repère, est plus sûr qu'une bonne intention."
     },
     "reponse": {
-      "valeur": "Je remplis une bouteille le matin et je la garde près de moi"
+      "valeur": "Quand je range mon déjeuner dans le sac, j’ajoute la bouteille"
     },
     "meta": {
       "auteur": "redaction-assistee (tools/generer_quotidien.py)",
-      "date_creation": "2026-09-23",
+      "date_creation": "2026-09-30",
       "relecture_ortho": {
         "statut": "a_revoir"
       }
     }
   },
   {
-    "id": "qo-5-sialors-12",
+    "id": "qo2-5-sialors-12",
     "type": "si-alors",
     "module": "entrainement",
     "theme": "quotidien",
@@ -399,21 +399,21 @@
     ],
     "cap_complexite": null,
     "contenu": {
-      "consigne": "Choisis le plan « si … alors … » le plus fiable. Astuce : accroche l'action à un moment précis de ta journée.",
-      "enonce": "Ranger après avoir cuisiné.",
+      "consigne": "Choisis le plan « quand … alors … » adapté à la situation. Relie l’action au repère indiqué.",
+      "enonce": "Après chaque utilisation du scanner partagé, tu veux récupérer immédiatement tes originaux.",
       "options": [
-        "Je rangerai tout à la fin",
-        "Je laisserai pour demain",
-        "Je range au fur et à mesure pendant la cuisson"
+        "Quand j’ai besoin d’un autre document, je retourne au scanner",
+        "Quand le bureau ferme, je vérifie si mes documents y sont",
+        "Quand la numérisation se termine, je récupère les originaux"
       ],
       "aide": "Un plan précis, lié à un repère, est plus sûr qu'une bonne intention."
     },
     "reponse": {
-      "valeur": "Je range au fur et à mesure pendant la cuisson"
+      "valeur": "Quand la numérisation se termine, je récupère les originaux"
     },
     "meta": {
       "auteur": "redaction-assistee (tools/generer_quotidien.py)",
-      "date_creation": "2026-09-23",
+      "date_creation": "2026-09-30",
       "relecture_ortho": {
         "statut": "a_revoir"
       }

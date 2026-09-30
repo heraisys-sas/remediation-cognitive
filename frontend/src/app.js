@@ -1076,6 +1076,16 @@ function afficherQuestion(item) {
 /** Propositions cliquables : un clic vaut réponse soumise (pas de saisie). */
 function rendreOptions(options, item) {
   const bac = creerElement("div", { classe: "grille-options" });
+  // Recherche d'information : le document reste consultable pendant la réponse.
+  // Il appartient à zoneChoix, vidée à chaque question (y compris avant une phase mémo).
+  const documentSource = item?.contenu?.document;
+  if (typeof documentSource === "string" && documentSource.trim()) {
+    bac.append(creerElement("section", { classe: "document-source", attributs: { "aria-label": "Document à consulter" } },
+      creerElement("h3", { texte: "Document à consulter" }),
+      creerElement("p", { texte: documentSource })
+    ));
+  }
+
   // Certains items à choix (plan à vérifier) présentent d'abord un plan ordonné.
   const plan = item && item.contenu ? item.contenu.plan : null;
   if (Array.isArray(plan) && plan.length) {

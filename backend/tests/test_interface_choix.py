@@ -22,8 +22,10 @@ def test_tous_les_types_avec_options_sont_rendus_en_choix():
                     assert item['type'] in types, (path, item['id'])
 
 
-def test_huit_plans_visibles_et_options_cliquables():
+def test_plans_documents_visibles_et_options_cliquables():
     items = json.loads((ROOT / 'content/entrainement/methodes/paliers/palier-04.json').read_text())
+    documents = json.loads((ROOT / 'content/entrainement/methodes/paliers/palier-05.json').read_text())
+    items = [entry for pair in zip(items, documents) for entry in pair] + items[:1]
     script = CHOIX + '\n' + '''
 const assert = require('node:assert/strict');
 function element(tag, attrs = {}, ...children) {
@@ -56,8 +58,14 @@ for (const item of items) {
   assert.equal(refs.formulaire.hidden, true);
   assert.equal(refs.zoneChoix.hidden, false);
   const nodes = refs.zoneChoix.children[0].children;
-  assert.equal(nodes[0].tag, 'ol');
-  assert.deepEqual(nodes[0].children.map(x => x.texte), item.contenu.plan);
+  if (item.type === 'reperer-info') {
+    assert.equal(nodes[0].tag, 'section');
+    assert.equal(nodes[0].children[1].texte, item.contenu.document);
+  } else {
+    assert.equal(nodes[0].tag, 'ol');
+    assert.deepEqual(nodes[0].children.map(x => x.texte), item.contenu.plan);
+  }
+  assert.equal(nodes.length, 4); // pas de document/plan résiduel du précédent item
   assert.deepEqual(nodes.slice(1).map(x => x.texte), item.contenu.options);
   nodes[1].click();
   assert.equal(valeur, item.contenu.options[0]);

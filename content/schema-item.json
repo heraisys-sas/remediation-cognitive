@@ -113,7 +113,7 @@
     },
     "contenu": {
       "type": "object",
-      "description": "Corps de l'item, spécifique au type d'exercice. Champs conventionnels : enonce, consigne, aide, options (liste de propositions pour les types à choix : reconnaissance, rappel-source, pqrst, etape-suivante… — la réponse attendue doit y figurer), indices (hiérarchie d'aides des items rappel-indice : [{type: semantique|phonologique|orthographique, texte}], jamais la réponse elle-même), affichage (phase de mémorisation temporisée : mode sequence|liste)."
+      "description": "Corps de l'item, spécifique au type d'exercice. Champs conventionnels : enonce, consigne, aide, options (liste de propositions pour les types à choix : reconnaissance, rappel-source, pqrst, etape-suivante… — la réponse attendue doit y figurer), indices (hiérarchie d'aides des items rappel-indice : [{type: semantique|phonologique|orthographique, texte}], jamais la réponse elle-même), document (texte permanent à consulter pendant la question pour reperer-info), affichage (phase de mémorisation temporisée : mode sequence|liste)."
     },
     "reponse": {
       "type": "object",

@@ -11,7 +11,7 @@
 | 3 | **Estimation de durée** | anticipation | « combien de minutes pour… », accepté dans une fourchette |
 | 4 | **Par où commencer** | initiation | la première action qui débloque la suite |
 | 5 | **Prévoir un rappel** | choisir une routine ou un repère | accrocher l'action à un repère précis (implémentation d'intention) |
-| 6 | **Meilleure solution** | résolution de problème | l'action la plus simple et vérifiable |
+| 6 | **Meilleure solution** | résolution de problème | l’action qui répond au problème et aux contraintes indiquées |
 | 7 | **Aide externe adaptée** | mémoire prospective | choisir le bon support, au bon endroit, au bon moment |
 | 8 | **Prioriser quand le temps manque** | organisation | choisir l’essentiel quand le temps presse |
 
@@ -23,7 +23,7 @@ La vitesse de traitement ne s'entraîne pas en accélérant sous contrainte : le
 
 ## Aide externe : la règle enseignée
 
-Une bonne aide est **au bon endroit, au bon moment, et visible juste avant l'action** : l'alarme réglée pour jeudi 20 h, l'arrosoir posé devant la porte, le dossier près des clés. Compter sur sa mémoire ou noter dans un carnet qu'on ne relit pas ne sont pas des aides.
+Une bonne aide est **au bon endroit, au bon moment, et visible juste avant l'action** : l'alarme réglée pour jeudi 20 h, un rappel fixé près de la poignée sans encombrer le passage, le dossier près des clés. Compter sur sa mémoire ou noter dans un carnet qu'on ne relit pas ne sont pas des aides.
 
 ## Réponses attendues
 
@@ -32,3 +32,7 @@ Choix parmi les propositions (comparaison tolérante) ; l'estimation de durée e
 ## Génération
 
 `tools/generer_quotidien.py` (déterministe). Relecture orthophoniste à faire.
+
+## Révision du 30 septembre 2026
+
+64 items de P2/P4/P5/P6/P7/P8 remplacés (`qo2-…`) : contraintes explicites, choix liés à la même situation, repères événement-action pour P5 et supports externes pour P7. Les messages et estimations de durée ne sont pas modifiés. Voir [ADR-019](../../../docs/30-technique/adr/ADR-019-plans-verifiables-et-documents-consultables.md).

@@ -37,7 +37,7 @@
     },
     {
       "id": "mt-palier-5",
-      "description": "Retenir une information utile — répondre après masquage du document",
+      "description": "Chercher une information utile — consulter le document pour répondre",
       "prerequis": [
         "mt-palier-4"
       ],

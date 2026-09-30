@@ -1,5 +1,7 @@
 # Revue des tâches et libellés — 30 septembre 2026
 
+**État historique avant correction.** Les défauts de plans, de document masqué et de QCM peu discriminants ci-dessous ont été traités dans [ADR-019](../30-technique/adr/ADR-019-plans-verifiables-et-documents-consultables.md) : 96 items remplacés. Les autres limites décrites ne sont pas assimilées à des défauts résolus.
+
 Lecture des 88 items Au quotidien et des 48 items Méthodes, et du routage de l’interface. Analyse de ce que le logiciel demande effectivement ; ce document ne démontre pas une efficacité clinique.
 
 ## Classement retenu

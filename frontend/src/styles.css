@@ -1036,3 +1036,8 @@ body {
   color: var(--texte-secondaire);
   font-size: 0.8rem;
 }
+
+/* Support permanent de recherche : distinct des propositions de réponse. */
+.document-source { padding: 1rem; border: 1px solid currentColor; border-radius: 0.75rem; line-height: 1.65; }
+.document-source h3 { margin-top: 0; }
+.document-source p { white-space: pre-line; margin-bottom: 0; }

@@ -227,94 +227,150 @@ TEXTES_PQRST = [
 ]
 
 # --- GMT : but et plan d'étapes ------------------------------------------------
-PLANS_GMT = [
-    ("Tu veux inviter des amis à dîner samedi soir.",
-     "Choisir le menu, vérifier les ingrédients, faire les courses, puis cuisiner",
-     ["Cuisiner, puis décider du menu", "Attendre samedi et improviser"]),
-    ("Tu dois déménager dans deux semaines.",
-     "Lister les affaires par pièce, réserver le camion, emballer, puis transporter",
-     ["Transporter d'abord, emballer ensuite", "Tout faire la veille du départ"]),
-    ("Tu prépares un dossier pour un logement.",
-     "Lire la liste des pièces demandées, rassembler les documents, puis déposer le dossier",
-     ["Déposer le dossier vide", "Écrire une lettre d'abord"]),
-    ("Tu veux repeindre la cuisine.",
-     "Protéger les meubles, préparer les murs, peindre, puis ranger",
-     ["Peindre, puis protéger les meubles", "Commencer par ranger le matériel"]),
-    ("Tu organises un week-end avec un ami.",
-     "Choisir les dates, réserver le logement, puis préparer les affaires",
-     ["Préparer la valise avant de choisir les dates", "Partir sans rien réserver"]),
-    ("Tu dois rendre un dossier administratif avant vendredi.",
-     "Vérifier la date limite, remplir le formulaire, joindre les pièces, puis envoyer",
-     ["Envoyer un dossier incomplet", "Attendre le dernier jour pour commencer"]),
-    ("Tu veux préparer une soupe pour la semaine.",
-     "Lister les légumes, faire les courses, cuisiner, puis répartir en portions",
-     ["Cuisiner sans avoir les légumes", "Acheter au hasard"]),
-    ("Tu décides de reprendre le sport.",
-     "Choisir une activité, fixer un créneau, prévoir une tenue, puis commencer doucement",
-     ["Acheter tout l'équipement avant de choisir l'activité", "Attendre d'être motivé"]),
-]
+PLANS_GMT = [('Tu prépares un dîner. Une invitée doit confirmer ses allergies avant le choix du menu. Les courses '
+  'dépendent du menu.',
+  'Confirmer les allergies, choisir le menu, faire les courses',
+  ['Choisir le menu, confirmer les allergies, faire les courses',
+   'Confirmer les allergies, faire les courses, choisir le menu']),
+ ('Pour déménager, tu dois mesurer le meuble avant de choisir un véhicule. Le transport exige une '
+  'réservation confirmée.',
+  'Mesurer le meuble, réserver le véhicule adapté, transporter',
+  ['Réserver le véhicule, mesurer le meuble, transporter',
+   'Mesurer le meuble, transporter, confirmer la réservation']),
+ ('Un dossier en ligne exige la liste des pièces à jour. Les fichiers doivent être contrôlés avant '
+  'validation définitive.',
+  'Lire la liste à jour, réunir et contrôler les fichiers, valider',
+  ['Réunir les fichiers habituels, valider, lire la liste à jour',
+   'Lire la liste à jour, valider, contrôler les fichiers']),
+ ('Pour repeindre, la notice exige de protéger le sol avant le ponçage, puis de dépoussiérer avant la '
+  'peinture.',
+  'Protéger le sol, poncer et dépoussiérer, peindre',
+  ['Poncer et dépoussiérer, protéger le sol, peindre', 'Protéger le sol, peindre, poncer et dépoussiérer']),
+ ('Le logement du week-end est non remboursable. Ton ami doit confirmer ses dates avant la réservation ; les '
+  'billets seront achetés après confirmation du logement.',
+  'Confirmer les dates, réserver le logement, acheter les billets',
+  ['Réserver le logement, confirmer les dates, acheter les billets',
+   'Confirmer les dates, acheter les billets, réserver le logement']),
+ ('Le formulaire génère une référence après validation. Cette référence est indispensable pour payer, et le '
+  'reçu de paiement doit être joint à l’envoi.',
+  'Valider le formulaire, payer avec la référence, envoyer avec le reçu',
+  ['Payer, valider le formulaire, envoyer avec le reçu',
+   'Valider le formulaire, envoyer le dossier, payer avec la référence']),
+ ('Pour préparer une soupe selon une recette, tu veux éviter les achats en double. Tu dois vérifier le stock '
+  'avant de compléter la liste, puis acheter ce qui manque.',
+  'Vérifier le stock, compléter la liste, acheter les manquants',
+  ['Compléter la liste, acheter, vérifier le stock', 'Vérifier le stock, acheter, compléter la liste']),
+ ('Le cours de sport exige une séance d’essai avant l’abonnement. Il faut réserver un créneau avant de venir '
+  'à l’essai.',
+  'Réserver un essai, participer à l’essai, choisir l’abonnement',
+  ['Choisir l’abonnement, réserver un essai, participer',
+   'Participer à l’essai, réserver le créneau, choisir l’abonnement'])]
 
 # --- Plan à vérifier : repérer l'étape mal placée -------------------------------
 #: (plan proposé (ordre erroné), étape mal placée, deux autres étapes)
-PLANS_A_VERIFIER = [
-    (["Protéger les meubles", "Peindre le mur", "Acheter la peinture"], "Acheter la peinture"),
-    (["Emballer les affaires", "Réserver le camion", "Transporter les cartons"], "Réserver le camion"),
-    (["Remplir le formulaire", "Lire la liste des pièces", "Joindre les documents"], "Lire la liste des pièces"),
-    (["Verser l'eau", "Faire bouillir l'eau", "Ajouter les pâtes"], "Faire bouillir l'eau"),
-    (["Éteindre le four", "Préchauffer le four", "Enfourner le gâteau"], "Préchauffer le four"),
-    (["Signer le courrier", "Écrire l'adresse", "Mettre le timbre"], "Écrire l'adresse"),
-    (["Prendre le médicament", "Lire la posologie", "Ouvrir la boîte"], "Lire la posologie"),
-    (["Déposer le colis", "Fermer le colis", "Écrire l'adresse"], "Fermer le colis"),
-]
+PLANS_A_VERIFIER = [('La peinture choisie doit être achetée avant de préparer le mélange. Le mur doit ensuite être peint avec '
+  'ce mélange.',
+  ['Acheter la peinture', 'Préparer le mélange', 'Peindre le mur']),
+ ('Le loueur confirme une réservation seulement après validation du devis. Le retrait du camion exige cette '
+  'confirmation.',
+  ['Valider le devis', 'Confirmer la réservation', 'Retirer le camion']),
+ ('Le portail produit un formulaire seulement après sélection de la demande. Il faut compléter ce formulaire '
+  'avant de transmettre le dossier.',
+  ['Sélectionner la demande', 'Compléter le formulaire', 'Transmettre le dossier']),
+ ('La recette demande de verser l’eau dans la casserole, de la porter à ébullition puis d’y ajouter les '
+  'pâtes.',
+  ['Verser l’eau dans la casserole', 'Porter l’eau à ébullition', 'Ajouter les pâtes']),
+ ('Pour ce gâteau, la recette impose un four préchauffé avant l’enfournement. Le minuteur démarre une fois '
+  'le gâteau enfourné.',
+  ['Préchauffer le four', 'Enfourner le gâteau', 'Démarrer le minuteur']),
+ ('Le courrier doit être signé avant d’être mis sous enveloppe. L’enveloppe doit être fermée avant le dépôt '
+  'au guichet.',
+  ['Signer le courrier', 'Fermer l’enveloppe contenant le courrier', 'Déposer l’enveloppe au guichet']),
+ ('Le service envoie un code après validation du compte. Ce code est nécessaire pour confirmer le '
+  'rendez-vous.',
+  ['Valider le compte', 'Recevoir le code', 'Confirmer le rendez-vous avec le code']),
+ ('L’étiquette est calculée à partir du poids du colis fermé. Le dépôt exige que cette étiquette soit collée '
+  'sur le colis.',
+  ['Fermer et peser le colis', 'Éditer et coller l’étiquette', 'Déposer le colis'])]
 
 # --- Auto-instruction : la question à se poser d'abord --------------------------
-AUTO_INSTRUCTION = [
-    ("Tu ouvres une boîte de médicaments avec une notice.",
-     "Qu'est-ce que je dois faire exactement, et dans quel ordre ?",
-     ["Est-ce que je vais y arriver ?", "Combien de temps ça va me prendre ?"]),
-    ("Tu reçois un courrier administratif que tu ne comprends pas.",
-     "De quoi parle ce courrier, et qu'attend-on de moi ?",
-     ["Pourquoi m'envoie-t-on toujours des papiers ?", "Ai-je déjà vu ça ?"]),
-    ("Tu commences un nouveau livre.",
-     "De quoi parle-t-il, et qu'est-ce que je cherche à retenir ?",
-     ["Combien de pages il reste ?", "Est-ce que je vais aimer ?"]),
-    ("Tu dois remplir un formulaire de plusieurs pages.",
-     "Par quoi je commence, et que me faut-il sous les yeux ?",
-     ["Est-ce que je vais me tromper ?", "Est-ce long ?"]),
-    ("Tu prépares un repas jamais essayé.",
-     "Quelles sont les étapes, et ai-je tout ce qu'il faut ?",
-     ["Est-ce que ce sera bon ?", "Ai-je le temps ?"]),
-    ("Tu ranges une pièce en désordre.",
-     "Qu'est-ce que je veux obtenir, et par quel coin je commence ?",
-     ["Où tout cela va-t-il aller ?", "Est-ce que c'est fini bientôt ?"]),
-    ("Tu appelles pour un problème de facture.",
-     "Quel est mon problème, et quel résultat je veux obtenir ?",
-     ["Vont-ils me croire ?", "Combien de temps ça va durer ?"]),
-    ("Tu dois réviser un texte pour le lendemain.",
-     "Qu'est-ce que je dois savoir dire, et comment je vais le vérifier ?",
-     ["Est-ce que je vais retenir ?", "Ai-je tout lu ?"]),
-]
+AUTO_INSTRUCTION = [('Tu vas assembler une étagère. La notice et toutes les pièces sont disponibles, mais tu n’as pas encore '
+  'repéré l’ordre du montage. Quelle question traite ce point ?',
+  'Quelle pièce se monte d’abord et de quoi dépend la suivante ?',
+  ['À quel endroit placer l’étagère une fois montée ?',
+   'Combien de livres faudra-t-il ranger sur l’étagère ?']),
+ ('Un courrier demande une réponse mais tu ne sais pas encore laquelle. Quelle question clarifie d’abord la '
+  'demande ?',
+  'Quelle action m’est demandée et pour quelle échéance ?',
+  ['Dans quel dossier vais-je classer le courrier ?',
+   'Quel moyen de transport utiliser pour aller au guichet ?']),
+ ('Tu lis un chapitre pour expliquer demain deux causes d’un phénomène. Quelle question guide une lecture '
+  'adaptée à ce but ?',
+  'Quels passages expliquent ces deux causes ?',
+  ['Quels passages racontent les conséquences du phénomène ?',
+   'Quels mots du chapitre sont les plus inhabituels ?']),
+ ('Tu vas remplir un formulaire qui demande plusieurs justificatifs. Tu veux éviter de t’interrompre pour '
+  'les chercher. Quelle question t’aide ?',
+  'Quels documents dois-je réunir avant de commencer ?',
+  ['Quelle sera la dernière rubrique à signer ?', 'Comment classer le dossier après son envoi ?']),
+ ('La recette est nouvelle. Tu as tous les ingrédients mais seulement 40 minutes et certaines étapes '
+  'nécessitent du repos. Quelle question vérifier avant de commencer ?',
+  'Quelle est la durée totale, repos compris ?',
+  ['Quelle est la quantité totale d’ingrédients ?', 'Quelle présentation choisir pour le plat terminé ?']),
+ ('Tu ranges une pièce pour libérer le passage jusqu’à la fenêtre. Quelle question garde ce but en vue ?',
+  'Quels objets empêchent actuellement ce passage ?',
+  ['Quels objets faudrait-il remplacer prochainement ?', 'Comment réorganiser tous les livres par auteur ?']),
+ ('Tu appelles pour un prélèvement en double. La référence est prête ; tu veux formuler clairement ce que tu '
+  'demandes. Quelle question t’aide ?',
+  'Quel prélèvement contester et quelle régularisation demander ?',
+  ['Quel autre forfait pourrait être intéressant ?', 'Quel jour sont émises les prochaines factures ?']),
+ ('Tu dois expliquer demain une procédure sans tes notes. Quelle question permet de vérifier ta préparation '
+  '?',
+  'Puis-je redire les étapes dans l’ordre sans regarder ?',
+  ['Ai-je lu chaque page au moins une fois ?', 'Ai-je souligné tous les titres de la procédure ?'])]
 
 # --- Repérer l'information utile dans un document -------------------------------
 #: (document court, question, bonne réponse, deux leurres)
-REPERER_INFO = [
-    ("Votre rendez-vous du 12 mars est reporté au 19 mars à 14 h.",
-     "À quelle date est le rendez-vous reporté ?", "le 19 mars", ["le 12 mars", "le 14 mars"]),
-    ("Ne pas utiliser cet appareil près d'une source d'eau.",
-     "Que ne faut-il pas faire ?", "l'utiliser près de l'eau", ["le laisser allumé", "le poser par terre"]),
-    ("Piscine fermée du 1er au 15 août pour travaux.",
-     "Pourquoi la piscine est-elle fermée ?", "pour travaux", ["pour les vacances", "pour nettoyage"]),
-    ("Je passe te prendre à 18 h devant la pharmacie.",
-     "Où se retrouve-t-on ?", "devant la pharmacie", ["devant la gare", "à la maison"]),
-    ("La collecte des encombrants a lieu le premier mardi du mois.",
-     "Quand a lieu la collecte ?", "le premier mardi du mois", ["le premier lundi du mois", "tous les mardis"]),
-    ("Prendre un comprimé le matin, deux le soir.",
-     "Combien de comprimés le soir ?", "deux", ["un", "trois"]),
-    ("Facture à régler avant le 30, par virement ou par chèque.",
-     "Quels moyens de paiement sont acceptés ?", "virement ou chèque", ["espèces uniquement", "carte bancaire uniquement"]),
-    ("Le magasin ferme exceptionnellement à 16 h aujourd'hui.",
-     "À quelle heure le magasin ferme-t-il aujourd'hui ?", "16 h", ["18 h", "19 h"]),
-]
+REPERER_INFO = [('Votre rendez-vous initial du 12 mars à 9 h est reporté au 19 mars à 14 h. Merci de confirmer avant le 14 '
+  'mars. L’accueil téléphonique ouvre à 8 h.',
+  'À quelle date le rendez-vous aura-t-il lieu ?',
+  'le 19 mars',
+  ['le 12 mars', 'le 14 mars']),
+ ('Notice de la lampe : installer sur une surface stable et sèche. Ne pas utiliser près d’une source d’eau. '
+  'Débrancher avant le nettoyage. Nettoyer avec un chiffon sec.',
+  'Que faut-il faire avant le nettoyage ?',
+  'débrancher la lampe',
+  ['installer la lampe sur une surface stable', 'passer un chiffon sec']),
+ ('La piscine est fermée pour travaux du 1er au 15 août. Les inscriptions restent ouvertes sur le site. Le '
+  'nettoyage hebdomadaire reprendra le lundi 17 août.',
+  'Pourquoi la piscine est-elle fermée du 1er au 15 août ?',
+  'pour travaux',
+  ['pour nettoyage', 'pour les inscriptions']),
+ ('Je pars de la gare à 17 h 30. Je te retrouve à 18 h devant la pharmacie, puis nous passons chez Luc à 18 '
+  'h 15. Il nous attend chez lui.',
+  'Où dois-tu retrouver la personne qui t’écrit ?',
+  'devant la pharmacie',
+  ['devant la gare', 'chez Luc']),
+ ('Les ordures ménagères passent tous les mardis. Les encombrants sont collectés le premier mardi du mois, '
+  'sur inscription avant le lundi précédent. Le verre passe le premier jeudi du mois.',
+  'Quand les encombrants sont-ils collectés ?',
+  'le premier mardi du mois',
+  ['tous les mardis', 'le premier jeudi du mois']),
+ ('Atelier photo : apporter deux tirages pour la séance du matin et trois pour celle du soir. Une photo '
+  'numérique suffit pour l’inscription. Les tirages seront rendus en fin de séance.',
+  'Combien de tirages faut-il pour la séance du soir ?',
+  'trois',
+  ['deux', 'un']),
+ ('Cette facture doit être réglée avant le 30 par virement ou par chèque. La carte bancaire est acceptée '
+  'uniquement au guichet pour les nouveaux achats. Les espèces ne sont pas acceptées.',
+  'Comment peux-tu régler cette facture ?',
+  'par virement ou par chèque',
+  ['par carte bancaire ou par chèque', 'par virement ou en espèces']),
+ ('Horaires habituels : 9 h–18 h, jusqu’à 19 h le vendredi. Aujourd’hui, inventaire : fermeture '
+  'exceptionnelle à 16 h. Demain, retour aux horaires habituels.',
+  'À quelle heure le magasin ferme-t-il aujourd’hui ?',
+  '16 h',
+  ['18 h', '19 h'])]
 
 
 def _item(famille: str, palier: int, numero: int, type_item: str, prerequis: list[str],
@@ -326,7 +382,7 @@ def _item(famille: str, palier: int, numero: int, type_item: str, prerequis: lis
     if extra:
         contenu.update(extra)
     return {
-        "id": f"mt-{palier}-{famille}-{numero:02d}",
+        "id": f"mt3-{palier}-{famille}-{numero:02d}" if palier in {2, 3, 4, 5} else f"mt-{palier}-{famille}-{numero:02d}",
         "type": type_item,
         "module": "entrainement",
         "theme": "methodes",
@@ -336,7 +392,7 @@ def _item(famille: str, palier: int, numero: int, type_item: str, prerequis: lis
         "cap_complexite": None,
         "contenu": contenu,
         "reponse": {"valeur": bonne},
-        "meta": _meta(),
+        "meta": {**_meta(), "date_creation": "2026-09-30"} if palier in {2, 3, 4, 5} else _meta(),
     }
 
 
@@ -364,7 +420,7 @@ def construire_paliers() -> list[list[dict]]:
     # Palier 2 — GMT : le but, puis le plan.
     items = [
         _item("gmt", 2, numero, "but-etapes", ["mt-palier-1"], bonne, leurres,
-              "Goal Management Training : pose d'abord ton but, puis choisis le plan d'étapes cohérent, "
+              "Planifier : repère le but et les contraintes, puis choisis le plan d’étapes cohérent, "
               "et vérifie-le avant de te lancer.", situation,
               "Un bon plan met d'abord ce qui rend la suite possible.",
               ["planification", "fonctions-executives"])
@@ -378,7 +434,7 @@ def construire_paliers() -> list[list[dict]]:
               "Auto-instruction : avant d'agir, mets-toi une consigne à voix basse — "
               "« qu'est-ce que je dois faire ? » puis « comment ? » puis « vérifie ».",
               tache,
-              "La première question porte sur le but et le moyen, pas sur le résultat attendu.",
+              "Choisis la question qui répond au point à clarifier dans cette situation.",
               ["fonctions-executives", "planification"])
         for numero, (tache, bonne, leurres) in enumerate(AUTO_INSTRUCTION, start=1)
     ]
@@ -386,16 +442,18 @@ def construire_paliers() -> list[list[dict]]:
 
     # Palier 4 — Plan à vérifier : le « Vérifier » de GMT.
     items = []
-    for numero, (plan, fautive) in enumerate(PLANS_A_VERIFIER, start=1):
+    for numero, (situation, ordre) in enumerate(PLANS_A_VERIFIER, start=1):
+        # Alternance des deux rotations : une seule relocalisation restaure l'ordre.
+        plan = ordre[1:] + ordre[:1] if numero % 2 else ordre[-1:] + ordre[:-1]
+        fautive = ordre[0] if numero % 2 else ordre[-1]
         leurres = [etape for etape in plan if etape != fautive]
         items.append(_item(
             "verif", 4, numero, "plan-a-verifier", ["mt-palier-3"], fautive, leurres,
-            "Goal Management Training — étape « Vérifier » : relis le plan dans l'ordre et repère "
-            "l'étape qui n'est pas à sa place.",
-            "Ce plan est mal ordonné. Quelle étape n'est pas à sa place ?",
-            "Demande-toi ce qui doit forcément venir avant le reste.",
-            ["planification", "fonctions-executives"],
-            extra={"plan": plan},
+            "Vérifier un plan : lis les contraintes, puis le plan. Choisis la seule étape "
+            "à déplacer pour que tout le plan respecte ces contraintes.",
+            situation + " Quelle seule étape faut-il déplacer, sans changer l’ordre des deux autres ?",
+            "Pour chaque étape, cherche ce qui doit être terminé avant elle.",
+            ["planification", "fonctions-executives"], extra={"plan": plan},
         ))
     paliers.append(items)
 
@@ -408,8 +466,8 @@ def construire_paliers() -> list[list[dict]]:
             "puis cherche seulement cette information dans le document.",
             question,
             "Cherche le mot de la question (date, heure, lieu) dans le document.",
-            ["attention-selective", "recuperation"],
-            extra={"affichage": {"mode": "texte", "duree_totale_ms": 20000, "elements": [document]}},
+            ["attention-selective"],
+            extra={"document": document},
         ))
     paliers.append(items)
 
@@ -469,7 +527,7 @@ def _manifest(paliers: list[list[dict]]) -> dict:
         "Choisir un plan — comparer des suites d’étapes pour atteindre un but",
         "Se guider avant d’agir — choisir une question à se poser",
         "Vérifier un plan — repérer une étape mal placée",
-        "Retenir une information utile — répondre après masquage du document",
+        "Chercher une information utile — consulter le document pour répondre",
         "Appliquer PQRST pas à pas — questionner, lire, reformuler et se tester",
     ]
     return {
