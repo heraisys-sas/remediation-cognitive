@@ -1,19 +1,19 @@
 # Module « Au quotidien » (remédiation fonctionnelle — hors MDR)
 
-**Principe** : ces exercices travaillent la fonction **altérée dans des situations de vie**, avec une **stratégie enseignée** par la consigne — voir `docs/10-clinique/remediation.md`. Chaque consigne porte l'astuce ; c'est la stratégie qui se transfère, pas le score.
+**Principe** : situations courantes pour rappeler une information ou choisir une stratégie. Les choix sur écran ne démontrent pas leur mise en œuvre dans la vie réelle. Voir la [revue des tâches et libellés](../../../docs/20-specs/revue-libelles-quotidien-methodes.md).
 
 ## Familles et paliers
 
-| Palier | Famille | Fonction remédiée | Exemple |
+| Palier | Famille | Objectif proposé | Exemple |
 |---|---|---|---|
-| 1 | **Prise de message** | mémoire de travail | retenir *qui / quoi / quand*, puis répondre de mémoire |
+| 1 | **Retenir un message** | rappel d’une information | retenir *qui / quoi / quand*, puis répondre de mémoire |
 | 2 | **Étape suivante** | planification | choisir la prochaine étape d'une tâche |
 | 3 | **Estimation de durée** | anticipation | « combien de minutes pour… », accepté dans une fourchette |
 | 4 | **Par où commencer** | initiation | la première action qui débloque la suite |
-| 5 | **Si … alors** | mémoire prospective | accrocher l'action à un repère précis (implémentation d'intention) |
+| 5 | **Prévoir un rappel** | choisir une routine ou un repère | accrocher l'action à un repère précis (implémentation d'intention) |
 | 6 | **Meilleure solution** | résolution de problème | l'action la plus simple et vérifiable |
 | 7 | **Aide externe adaptée** | mémoire prospective | choisir le bon support, au bon endroit, au bon moment |
-| 8 | **Gestion de la pression du temps** | vitesse en situation | décider vite de l'essentiel quand le temps presse |
+| 8 | **Prioriser quand le temps manque** | organisation | choisir l’essentiel quand le temps presse |
 
 88 items au total (12, 12, 12, 12, 12, 12, 8, 8).
 

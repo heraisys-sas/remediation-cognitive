@@ -465,12 +465,12 @@ def construire_palier_pqrst_mis_en_oeuvre() -> list[dict]:
 
 def _manifest(paliers: list[list[dict]]) -> dict:
     descriptions = [
-        "PQRST : deux questions de mémoire par texte",
-        "Goal Management Training : choisir le but et le plan d'étapes",
-        "Auto-instruction : quelle question se poser avant d'agir",
-        "Vérification d'un plan : repérer l'étape mal placée",
-        "Repérer l'information utile dans un document",
-        "PQRST mis en œuvre : appliquer la méthode pas à pas sur un texte",
+        "Retenir un texte — répondre de mémoire, avec un rappel de la méthode PQRST",
+        "Choisir un plan — comparer des suites d’étapes pour atteindre un but",
+        "Se guider avant d’agir — choisir une question à se poser",
+        "Vérifier un plan — repérer une étape mal placée",
+        "Retenir une information utile — répondre après masquage du document",
+        "Appliquer PQRST pas à pas — questionner, lire, reformuler et se tester",
     ]
     return {
         "theme": "methodes",

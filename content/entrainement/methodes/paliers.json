@@ -3,14 +3,14 @@
   "paliers": [
     {
       "id": "mt-palier-1",
-      "description": "PQRST : deux questions de mémoire par texte",
+      "description": "Retenir un texte — répondre de mémoire, avec un rappel de la méthode PQRST",
       "prerequis": [],
       "fichier": "paliers/palier-01.json",
       "nb_items": 12
     },
     {
       "id": "mt-palier-2",
-      "description": "Goal Management Training : choisir le but et le plan d'étapes",
+      "description": "Choisir un plan — comparer des suites d’étapes pour atteindre un but",
       "prerequis": [
         "mt-palier-1"
       ],
@@ -19,7 +19,7 @@
     },
     {
       "id": "mt-palier-3",
-      "description": "Auto-instruction : quelle question se poser avant d'agir",
+      "description": "Se guider avant d’agir — choisir une question à se poser",
       "prerequis": [
         "mt-palier-2"
       ],
@@ -28,7 +28,7 @@
     },
     {
       "id": "mt-palier-4",
-      "description": "Vérification d'un plan : repérer l'étape mal placée",
+      "description": "Vérifier un plan — repérer une étape mal placée",
       "prerequis": [
         "mt-palier-3"
       ],
@@ -37,7 +37,7 @@
     },
     {
       "id": "mt-palier-5",
-      "description": "Repérer l'information utile dans un document",
+      "description": "Retenir une information utile — répondre après masquage du document",
       "prerequis": [
         "mt-palier-4"
       ],
@@ -46,7 +46,7 @@
     },
     {
       "id": "mt-palier-6",
-      "description": "PQRST mis en œuvre : appliquer la méthode pas à pas sur un texte",
+      "description": "Appliquer PQRST pas à pas — questionner, lire, reformuler et se tester",
       "prerequis": [
         "mt-palier-5"
       ],

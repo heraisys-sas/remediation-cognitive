@@ -3,14 +3,14 @@
   "paliers": [
     {
       "id": "qo-palier-1",
-      "description": "Prendre un message et en retenir les détails (mémoire de travail)",
+      "description": "Retenir un message — rappeler un détail après sa lecture",
       "prerequis": [],
       "fichier": "paliers/palier-01.json",
       "nb_items": 12
     },
     {
       "id": "qo-palier-2",
-      "description": "Choisir la prochaine étape d'une tâche (planification)",
+      "description": "Choisir la prochaine étape — poursuivre une tâche commencée",
       "prerequis": [
         "qo-palier-1"
       ],
@@ -19,7 +19,7 @@
     },
     {
       "id": "qo-palier-3",
-      "description": "Estimer le temps nécessaire (anticipation)",
+      "description": "Estimer une durée — proposer un temps en minutes",
       "prerequis": [
         "qo-palier-2"
       ],
@@ -28,7 +28,7 @@
     },
     {
       "id": "qo-palier-4",
-      "description": "Choisir par où commencer (initiation)",
+      "description": "Choisir par où commencer — préparer une première action",
       "prerequis": [
         "qo-palier-3"
       ],
@@ -37,7 +37,7 @@
     },
     {
       "id": "qo-palier-5",
-      "description": "Construire un plan « si … alors » pour ne rien oublier (mémoire prospective)",
+      "description": "Prévoir un rappel — choisir une routine ou un repère pour penser à agir",
       "prerequis": [
         "qo-palier-4"
       ],
@@ -46,7 +46,7 @@
     },
     {
       "id": "qo-palier-6",
-      "description": "Choisir la meilleure solution à un problème (résolution de problème)",
+      "description": "Choisir une action utile — comparer des solutions à une difficulté",
       "prerequis": [
         "qo-palier-5"
       ],
@@ -55,7 +55,7 @@
     },
     {
       "id": "qo-palier-7",
-      "description": "Choisir la bonne aide externe (mémoire prospective)",
+      "description": "Choisir une aide-mémoire — placer un rappel au bon moment",
       "prerequis": [
         "qo-palier-6"
       ],
@@ -64,7 +64,7 @@
     },
     {
       "id": "qo-palier-8",
-      "description": "Gérer la pression du temps (vitesse en situation)",
+      "description": "Prioriser quand le temps manque — choisir quoi préparer, simplifier ou reporter",
       "prerequis": [
         "qo-palier-7"
       ],

@@ -480,14 +480,14 @@ def construire_paliers() -> list[list[dict]]:
 
 def _manifest(paliers: list[list[dict]]) -> dict:
     descriptions = [
-        "Prendre un message et en retenir les détails (mémoire de travail)",
-        "Choisir la prochaine étape d'une tâche (planification)",
-        "Estimer le temps nécessaire (anticipation)",
-        "Choisir par où commencer (initiation)",
-        "Construire un plan « si … alors » pour ne rien oublier (mémoire prospective)",
-        "Choisir la meilleure solution à un problème (résolution de problème)",
-        "Choisir la bonne aide externe (mémoire prospective)",
-        "Gérer la pression du temps (vitesse en situation)",
+        "Retenir un message — rappeler un détail après sa lecture",
+        "Choisir la prochaine étape — poursuivre une tâche commencée",
+        "Estimer une durée — proposer un temps en minutes",
+        "Choisir par où commencer — préparer une première action",
+        "Prévoir un rappel — choisir une routine ou un repère pour penser à agir",
+        "Choisir une action utile — comparer des solutions à une difficulté",
+        "Choisir une aide-mémoire — placer un rappel au bon moment",
+        "Prioriser quand le temps manque — choisir quoi préparer, simplifier ou reporter",
     ]
     return {
         "theme": "quotidien",

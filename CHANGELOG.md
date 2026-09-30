@@ -2,6 +2,12 @@
 
 Format : [date] — [périmètre] — description. Les retours informels de l'orthophoniste sont journalisés ici, sans caution clinique.
 
+## 2026-09-30 · Libellés fidèles aux tâches
+
+- Au quotidien conservé ; descriptions centrées sur les actions demandées, sans assimiler rappel d’un détail à un entraînement spécifique de mémoire de travail.
+- Méthodes devient « Méthodes pour retenir et s’organiser » ; descriptions des 14 paliers des deux thèmes et générateurs synchronisés. Aucun contenu d’item remplacé.
+- Revue des 136 items documentée, avec les défauts de contenu restant à traiter, notamment les plans sans erreur nécessaire.
+
 ## 2026-09-30 · Méthodes : plan et propositions visibles
 
 - Correction du routage des exercices à choix de Méthodes et Au quotidien, absents de la liste de l’interface : les propositions remplacent le champ libre et le palier 4 affiche son plan numéroté dans l’ordre fourni.

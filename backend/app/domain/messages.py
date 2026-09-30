@@ -44,15 +44,15 @@ VOCABULAIRES = {
             },
             "quotidien": {
                 "nom": "Au quotidien",
-                "description": "Mémoire de travail, planification et anticipation dans des situations de la vie",
+                "description": "Retenir un message, préparer ses actions et choisir des rappels dans des situations courantes",
             },
             "deduction": {
                 "nom": "Déduction",
-                "description": "Grilles logiques 3×3 : figures et couleurs à placer en recoupant les indices",
+                "description": "Grilles logiques 3×3 puis 4×4 : placer les figures et les couleurs en croisant les informations",
             },
             "methodes": {
-                "nom": "Méthodes",
-                "description": "PQRST, but et étapes, auto-instruction : des méthodes pour s'organiser et retenir",
+                "nom": "Méthodes pour retenir et s’organiser",
+                "description": "Choisir une stratégie, vérifier un plan et pratiquer la lecture PQRST pas à pas",
             },
             "concentration": {
                 "nom": "Concentration",
