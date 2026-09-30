@@ -1,6 +1,6 @@
 [
   {
-    "id": "cm2-3-01",
+    "id": "cm3-3-01",
     "type": "production",
     "module": "entrainement",
     "theme": "calcul-mental",
@@ -14,21 +14,21 @@
     "cap_complexite": null,
     "contenu": {
       "enonce": "Combien font 7 + 9 ?",
-      "aide": null
+      "methode": "Complète le premier nombre jusqu’à dix avec une partie du second, puis ajoute ce qu’il reste. Vérifie que le résultat est plus grand que chacun des deux nombres."
     },
     "reponse": {
       "valeur": 16
     },
     "meta": {
       "auteur": "generation-automatique (tools/generate_items.py)",
-      "date_creation": "2026-09-26",
+      "date_creation": "2026-09-30",
       "relecture_ortho": {
         "statut": "a_revoir"
       }
     }
   },
   {
-    "id": "cm2-3-02",
+    "id": "cm3-3-02",
     "type": "production",
     "module": "entrainement",
     "theme": "calcul-mental",
@@ -42,21 +42,21 @@
     "cap_complexite": null,
     "contenu": {
       "enonce": "Combien font 6 + 6 ?",
-      "aide": null
+      "methode": "Reconnais un double : le même nombre est ajouté deux fois. Utilise le double connu, ou décompose le nombre en parts faciles à doubler. Vérifie que le total est pair."
     },
     "reponse": {
       "valeur": 12
     },
     "meta": {
       "auteur": "generation-automatique (tools/generate_items.py)",
-      "date_creation": "2026-09-26",
+      "date_creation": "2026-09-30",
       "relecture_ortho": {
         "statut": "a_revoir"
       }
     }
   },
   {
-    "id": "cm2-3-03",
+    "id": "cm3-3-03",
     "type": "production",
     "module": "entrainement",
     "theme": "calcul-mental",
@@ -70,21 +70,21 @@
     "cap_complexite": null,
     "contenu": {
       "enonce": "Combien font 8 + 8 ?",
-      "aide": null
+      "methode": "Reconnais un double : le même nombre est ajouté deux fois. Utilise le double connu, ou décompose le nombre en parts faciles à doubler. Vérifie que le total est pair."
     },
     "reponse": {
       "valeur": 16
     },
     "meta": {
       "auteur": "generation-automatique (tools/generate_items.py)",
-      "date_creation": "2026-09-26",
+      "date_creation": "2026-09-30",
       "relecture_ortho": {
         "statut": "a_revoir"
       }
     }
   },
   {
-    "id": "cm2-3-04",
+    "id": "cm3-3-04",
     "type": "production",
     "module": "entrainement",
     "theme": "calcul-mental",
@@ -98,21 +98,21 @@
     "cap_complexite": null,
     "contenu": {
       "enonce": "Combien font 3 + 5 ?",
-      "aide": null
+      "methode": "Pars du plus grand nombre et avance du nombre d’unités indiqué par le plus petit. Vérifie en revenant en arrière du même nombre d’unités."
     },
     "reponse": {
       "valeur": 8
     },
     "meta": {
       "auteur": "generation-automatique (tools/generate_items.py)",
-      "date_creation": "2026-09-26",
+      "date_creation": "2026-09-30",
       "relecture_ortho": {
         "statut": "a_revoir"
       }
     }
   },
   {
-    "id": "cm2-3-05",
+    "id": "cm3-3-05",
     "type": "production",
     "module": "entrainement",
     "theme": "calcul-mental",
@@ -126,21 +126,21 @@
     "cap_complexite": null,
     "contenu": {
       "enonce": "Combien font 5 + 8 ?",
-      "aide": null
+      "methode": "Complète le premier nombre jusqu’à dix avec une partie du second, puis ajoute ce qu’il reste. Vérifie que le résultat est plus grand que chacun des deux nombres."
     },
     "reponse": {
       "valeur": 13
     },
     "meta": {
       "auteur": "generation-automatique (tools/generate_items.py)",
-      "date_creation": "2026-09-26",
+      "date_creation": "2026-09-30",
       "relecture_ortho": {
         "statut": "a_revoir"
       }
     }
   },
   {
-    "id": "cm2-3-06",
+    "id": "cm3-3-06",
     "type": "production",
     "module": "entrainement",
     "theme": "calcul-mental",
@@ -154,21 +154,21 @@
     "cap_complexite": null,
     "contenu": {
       "enonce": "Combien font 4 + 4 ?",
-      "aide": null
+      "methode": "Reconnais un double : le même nombre est ajouté deux fois. Utilise le double connu, ou décompose le nombre en parts faciles à doubler. Vérifie que le total est pair."
     },
     "reponse": {
       "valeur": 8
     },
     "meta": {
       "auteur": "generation-automatique (tools/generate_items.py)",
-      "date_creation": "2026-09-26",
+      "date_creation": "2026-09-30",
       "relecture_ortho": {
         "statut": "a_revoir"
       }
     }
   },
   {
-    "id": "cm2-3-07",
+    "id": "cm3-3-07",
     "type": "production",
     "module": "entrainement",
     "theme": "calcul-mental",
@@ -182,21 +182,21 @@
     "cap_complexite": null,
     "contenu": {
       "enonce": "Combien font 2 + 9 ?",
-      "aide": null
+      "methode": "Complète le premier nombre jusqu’à dix avec une partie du second, puis ajoute ce qu’il reste. Vérifie que le résultat est plus grand que chacun des deux nombres."
     },
     "reponse": {
       "valeur": 11
     },
     "meta": {
       "auteur": "generation-automatique (tools/generate_items.py)",
-      "date_creation": "2026-09-26",
+      "date_creation": "2026-09-30",
       "relecture_ortho": {
         "statut": "a_revoir"
       }
     }
   },
   {
-    "id": "cm2-3-08",
+    "id": "cm3-3-08",
     "type": "production",
     "module": "entrainement",
     "theme": "calcul-mental",
@@ -210,21 +210,21 @@
     "cap_complexite": null,
     "contenu": {
       "enonce": "Combien font 4 + 9 ?",
-      "aide": null
+      "methode": "Complète le premier nombre jusqu’à dix avec une partie du second, puis ajoute ce qu’il reste. Vérifie que le résultat est plus grand que chacun des deux nombres."
     },
     "reponse": {
       "valeur": 13
     },
     "meta": {
       "auteur": "generation-automatique (tools/generate_items.py)",
-      "date_creation": "2026-09-26",
+      "date_creation": "2026-09-30",
       "relecture_ortho": {
         "statut": "a_revoir"
       }
     }
   },
   {
-    "id": "cm2-3-09",
+    "id": "cm3-3-09",
     "type": "production",
     "module": "entrainement",
     "theme": "calcul-mental",
@@ -238,21 +238,21 @@
     "cap_complexite": null,
     "contenu": {
       "enonce": "Combien font 6 + 7 ?",
-      "aide": null
+      "methode": "Prends le double du plus petit nombre, puis ajoute une unité. Vérifie que le résultat est juste au-dessus de ce double."
     },
     "reponse": {
       "valeur": 13
     },
     "meta": {
       "auteur": "generation-automatique (tools/generate_items.py)",
-      "date_creation": "2026-09-26",
+      "date_creation": "2026-09-30",
       "relecture_ortho": {
         "statut": "a_revoir"
       }
     }
   },
   {
-    "id": "cm2-3-10",
+    "id": "cm3-3-10",
     "type": "production",
     "module": "entrainement",
     "theme": "calcul-mental",
@@ -266,21 +266,21 @@
     "cap_complexite": null,
     "contenu": {
       "enonce": "Combien font 2 + 7 ?",
-      "aide": null
+      "methode": "Pars du plus grand nombre et avance du nombre d’unités indiqué par le plus petit. Vérifie en revenant en arrière du même nombre d’unités."
     },
     "reponse": {
       "valeur": 9
     },
     "meta": {
       "auteur": "generation-automatique (tools/generate_items.py)",
-      "date_creation": "2026-09-26",
+      "date_creation": "2026-09-30",
       "relecture_ortho": {
         "statut": "a_revoir"
       }
     }
   },
   {
-    "id": "cm2-3-11",
+    "id": "cm3-3-11",
     "type": "production",
     "module": "entrainement",
     "theme": "calcul-mental",
@@ -294,21 +294,21 @@
     "cap_complexite": null,
     "contenu": {
       "enonce": "Combien font 3 + 7 ?",
-      "aide": null
+      "methode": "Pars du plus grand nombre et avance du nombre d’unités indiqué par le plus petit. Vérifie en revenant en arrière du même nombre d’unités."
     },
     "reponse": {
       "valeur": 10
     },
     "meta": {
       "auteur": "generation-automatique (tools/generate_items.py)",
-      "date_creation": "2026-09-26",
+      "date_creation": "2026-09-30",
       "relecture_ortho": {
         "statut": "a_revoir"
       }
     }
   },
   {
-    "id": "cm2-3-12",
+    "id": "cm3-3-12",
     "type": "production",
     "module": "entrainement",
     "theme": "calcul-mental",
@@ -322,21 +322,21 @@
     "cap_complexite": null,
     "contenu": {
       "enonce": "Combien font 5 + 9 ?",
-      "aide": null
+      "methode": "Complète le premier nombre jusqu’à dix avec une partie du second, puis ajoute ce qu’il reste. Vérifie que le résultat est plus grand que chacun des deux nombres."
     },
     "reponse": {
       "valeur": 14
     },
     "meta": {
       "auteur": "generation-automatique (tools/generate_items.py)",
-      "date_creation": "2026-09-26",
+      "date_creation": "2026-09-30",
       "relecture_ortho": {
         "statut": "a_revoir"
       }
     }
   },
   {
-    "id": "cm2-3-13",
+    "id": "cm3-3-13",
     "type": "production",
     "module": "entrainement",
     "theme": "calcul-mental",
@@ -350,21 +350,21 @@
     "cap_complexite": null,
     "contenu": {
       "enonce": "Combien font 7 + 7 ?",
-      "aide": null
+      "methode": "Reconnais un double : le même nombre est ajouté deux fois. Utilise le double connu, ou décompose le nombre en parts faciles à doubler. Vérifie que le total est pair."
     },
     "reponse": {
       "valeur": 14
     },
     "meta": {
       "auteur": "generation-automatique (tools/generate_items.py)",
-      "date_creation": "2026-09-26",
+      "date_creation": "2026-09-30",
       "relecture_ortho": {
         "statut": "a_revoir"
       }
     }
   },
   {
-    "id": "cm2-3-14",
+    "id": "cm3-3-14",
     "type": "production",
     "module": "entrainement",
     "theme": "calcul-mental",
@@ -378,21 +378,21 @@
     "cap_complexite": null,
     "contenu": {
       "enonce": "Combien font 5 + 6 ?",
-      "aide": null
+      "methode": "Prends le double du plus petit nombre, puis ajoute une unité. Vérifie que le résultat est juste au-dessus de ce double."
     },
     "reponse": {
       "valeur": 11
     },
     "meta": {
       "auteur": "generation-automatique (tools/generate_items.py)",
-      "date_creation": "2026-09-26",
+      "date_creation": "2026-09-30",
       "relecture_ortho": {
         "statut": "a_revoir"
       }
     }
   },
   {
-    "id": "cm2-3-15",
+    "id": "cm3-3-15",
     "type": "production",
     "module": "entrainement",
     "theme": "calcul-mental",
@@ -406,21 +406,21 @@
     "cap_complexite": null,
     "contenu": {
       "enonce": "Combien font 6 + 9 ?",
-      "aide": null
+      "methode": "Complète le premier nombre jusqu’à dix avec une partie du second, puis ajoute ce qu’il reste. Vérifie que le résultat est plus grand que chacun des deux nombres."
     },
     "reponse": {
       "valeur": 15
     },
     "meta": {
       "auteur": "generation-automatique (tools/generate_items.py)",
-      "date_creation": "2026-09-26",
+      "date_creation": "2026-09-30",
       "relecture_ortho": {
         "statut": "a_revoir"
       }
     }
   },
   {
-    "id": "cm2-3-16",
+    "id": "cm3-3-16",
     "type": "production",
     "module": "entrainement",
     "theme": "calcul-mental",
@@ -434,21 +434,21 @@
     "cap_complexite": null,
     "contenu": {
       "enonce": "Combien font 5 + 5 ?",
-      "aide": null
+      "methode": "Reconnais un double : le même nombre est ajouté deux fois. Utilise le double connu, ou décompose le nombre en parts faciles à doubler. Vérifie que le total est pair."
     },
     "reponse": {
       "valeur": 10
     },
     "meta": {
       "auteur": "generation-automatique (tools/generate_items.py)",
-      "date_creation": "2026-09-26",
+      "date_creation": "2026-09-30",
       "relecture_ortho": {
         "statut": "a_revoir"
       }
     }
   },
   {
-    "id": "cm2-3-17",
+    "id": "cm3-3-17",
     "type": "production",
     "module": "entrainement",
     "theme": "calcul-mental",
@@ -462,21 +462,21 @@
     "cap_complexite": null,
     "contenu": {
       "enonce": "Combien font 4 + 7 ?",
-      "aide": null
+      "methode": "Complète le premier nombre jusqu’à dix avec une partie du second, puis ajoute ce qu’il reste. Vérifie que le résultat est plus grand que chacun des deux nombres."
     },
     "reponse": {
       "valeur": 11
     },
     "meta": {
       "auteur": "generation-automatique (tools/generate_items.py)",
-      "date_creation": "2026-09-26",
+      "date_creation": "2026-09-30",
       "relecture_ortho": {
         "statut": "a_revoir"
       }
     }
   },
   {
-    "id": "cm2-3-18",
+    "id": "cm3-3-18",
     "type": "production",
     "module": "entrainement",
     "theme": "calcul-mental",
@@ -490,14 +490,14 @@
     "cap_complexite": null,
     "contenu": {
       "enonce": "Combien font 6 + 8 ?",
-      "aide": null
+      "methode": "Complète le premier nombre jusqu’à dix avec une partie du second, puis ajoute ce qu’il reste. Vérifie que le résultat est plus grand que chacun des deux nombres."
     },
     "reponse": {
       "valeur": 14
     },
     "meta": {
       "auteur": "generation-automatique (tools/generate_items.py)",
-      "date_creation": "2026-09-26",
+      "date_creation": "2026-09-30",
       "relecture_ortho": {
         "statut": "a_revoir"
       }

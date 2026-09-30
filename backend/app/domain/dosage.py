@@ -28,6 +28,7 @@ DUREE_MAX_SEANCE_S = 600
 #: de calcul mental — douze grilles ne tiendraient pas dans une séance.
 PARAMETRES_THEME: dict[str, dict[str, int | bool]] = {
     "deduction": {"max_items": 6},
+    "garder-cap": {"max_items": 4},
 }
 PARAMETRES_SEANCE_DEFAUT: dict[str, int | bool] = {
     "max_items": MAX_ITEMS_PAR_SEANCE,

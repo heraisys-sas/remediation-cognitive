@@ -26,6 +26,7 @@ THEMES_ATTENDUS = {
     "quotidien",
     "deduction",
     "methodes",
+    "garder-cap",
 }
 
 

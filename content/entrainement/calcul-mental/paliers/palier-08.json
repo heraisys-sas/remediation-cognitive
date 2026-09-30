@@ -1,6 +1,6 @@
 [
   {
-    "id": "cm2-8-01",
+    "id": "cm3-8-01",
     "type": "production",
     "module": "entrainement",
     "theme": "calcul-mental",
@@ -15,21 +15,21 @@
     "cap_complexite": null,
     "contenu": {
       "enonce": "2 articles à 1,50 € — combien en tout ?",
-      "aide": "Rends la monnaie : ce qu'on te donne moins ce que ça coûte."
+      "methode": "Calcule séparément le total des euros et celui des centimes, puis rassemble-les. Vérifie que le total couvre tous les articles."
     },
     "reponse": {
       "valeur": 3
     },
     "meta": {
       "auteur": "generation-automatique (tools/generate_items.py)",
-      "date_creation": "2026-09-26",
+      "date_creation": "2026-09-30",
       "relecture_ortho": {
         "statut": "a_revoir"
       }
     }
   },
   {
-    "id": "cm2-8-02",
+    "id": "cm3-8-02",
     "type": "production",
     "module": "entrainement",
     "theme": "calcul-mental",
@@ -44,21 +44,21 @@
     "cap_complexite": null,
     "contenu": {
       "enonce": "Un article à 7 €, payé avec 10 € — combien te rend-on ?",
-      "aide": "Rends la monnaie : ce qu'on te donne moins ce que ça coûte."
+      "methode": "Pars du prix et complète jusqu’à la somme payée, en passant si utile par une dizaine. Additionne mentalement ces compléments. Vérifie que prix et monnaie rendue reconstituent la somme payée."
     },
     "reponse": {
       "valeur": 3
     },
     "meta": {
       "auteur": "generation-automatique (tools/generate_items.py)",
-      "date_creation": "2026-09-26",
+      "date_creation": "2026-09-30",
       "relecture_ortho": {
         "statut": "a_revoir"
       }
     }
   },
   {
-    "id": "cm2-8-03",
+    "id": "cm3-8-03",
     "type": "production",
     "module": "entrainement",
     "theme": "calcul-mental",
@@ -73,21 +73,21 @@
     "cap_complexite": null,
     "contenu": {
       "enonce": "2 articles à 6 € — combien en tout ?",
-      "aide": "Rends la monnaie : ce qu'on te donne moins ce que ça coûte."
+      "methode": "Multiplie le prix d’un article par le nombre d’articles. Tu peux additionner le même prix autant de fois. Vérifie que tu réponds en euros."
     },
     "reponse": {
       "valeur": 12
     },
     "meta": {
       "auteur": "generation-automatique (tools/generate_items.py)",
-      "date_creation": "2026-09-26",
+      "date_creation": "2026-09-30",
       "relecture_ortho": {
         "statut": "a_revoir"
       }
     }
   },
   {
-    "id": "cm2-8-04",
+    "id": "cm3-8-04",
     "type": "production",
     "module": "entrainement",
     "theme": "calcul-mental",
@@ -102,21 +102,21 @@
     "cap_complexite": null,
     "contenu": {
       "enonce": "Un article à 2 €, payé avec 10 € — combien te rend-on ?",
-      "aide": "Rends la monnaie : ce qu'on te donne moins ce que ça coûte."
+      "methode": "Pars du prix et complète jusqu’à la somme payée, en passant si utile par une dizaine. Additionne mentalement ces compléments. Vérifie que prix et monnaie rendue reconstituent la somme payée."
     },
     "reponse": {
       "valeur": 8
     },
     "meta": {
       "auteur": "generation-automatique (tools/generate_items.py)",
-      "date_creation": "2026-09-26",
+      "date_creation": "2026-09-30",
       "relecture_ortho": {
         "statut": "a_revoir"
       }
     }
   },
   {
-    "id": "cm2-8-05",
+    "id": "cm3-8-05",
     "type": "production",
     "module": "entrainement",
     "theme": "calcul-mental",
@@ -131,21 +131,21 @@
     "cap_complexite": null,
     "contenu": {
       "enonce": "2 articles à 3 € — combien en tout ?",
-      "aide": "Rends la monnaie : ce qu'on te donne moins ce que ça coûte."
+      "methode": "Multiplie le prix d’un article par le nombre d’articles. Tu peux additionner le même prix autant de fois. Vérifie que tu réponds en euros."
     },
     "reponse": {
       "valeur": 6
     },
     "meta": {
       "auteur": "generation-automatique (tools/generate_items.py)",
-      "date_creation": "2026-09-26",
+      "date_creation": "2026-09-30",
       "relecture_ortho": {
         "statut": "a_revoir"
       }
     }
   },
   {
-    "id": "cm2-8-06",
+    "id": "cm3-8-06",
     "type": "production",
     "module": "entrainement",
     "theme": "calcul-mental",
@@ -160,21 +160,21 @@
     "cap_complexite": null,
     "contenu": {
       "enonce": "3 articles à 7 € — combien en tout ?",
-      "aide": "Rends la monnaie : ce qu'on te donne moins ce que ça coûte."
+      "methode": "Multiplie le prix d’un article par le nombre d’articles. Tu peux additionner le même prix autant de fois. Vérifie que tu réponds en euros."
     },
     "reponse": {
       "valeur": 21
     },
     "meta": {
       "auteur": "generation-automatique (tools/generate_items.py)",
-      "date_creation": "2026-09-26",
+      "date_creation": "2026-09-30",
       "relecture_ortho": {
         "statut": "a_revoir"
       }
     }
   },
   {
-    "id": "cm2-8-07",
+    "id": "cm3-8-07",
     "type": "production",
     "module": "entrainement",
     "theme": "calcul-mental",
@@ -189,21 +189,21 @@
     "cap_complexite": null,
     "contenu": {
       "enonce": "Un article à 16 €, payé avec 20 € — combien te rend-on ?",
-      "aide": "Rends la monnaie : ce qu'on te donne moins ce que ça coûte."
+      "methode": "Pars du prix et complète jusqu’à la somme payée, en passant si utile par une dizaine. Additionne mentalement ces compléments. Vérifie que prix et monnaie rendue reconstituent la somme payée."
     },
     "reponse": {
       "valeur": 4
     },
     "meta": {
       "auteur": "generation-automatique (tools/generate_items.py)",
-      "date_creation": "2026-09-26",
+      "date_creation": "2026-09-30",
       "relecture_ortho": {
         "statut": "a_revoir"
       }
     }
   },
   {
-    "id": "cm2-8-08",
+    "id": "cm3-8-08",
     "type": "production",
     "module": "entrainement",
     "theme": "calcul-mental",
@@ -218,21 +218,21 @@
     "cap_complexite": null,
     "contenu": {
       "enonce": "3 articles à 2 € — combien en tout ?",
-      "aide": "Rends la monnaie : ce qu'on te donne moins ce que ça coûte."
+      "methode": "Multiplie le prix d’un article par le nombre d’articles. Tu peux additionner le même prix autant de fois. Vérifie que tu réponds en euros."
     },
     "reponse": {
       "valeur": 6
     },
     "meta": {
       "auteur": "generation-automatique (tools/generate_items.py)",
-      "date_creation": "2026-09-26",
+      "date_creation": "2026-09-30",
       "relecture_ortho": {
         "statut": "a_revoir"
       }
     }
   },
   {
-    "id": "cm2-8-09",
+    "id": "cm3-8-09",
     "type": "production",
     "module": "entrainement",
     "theme": "calcul-mental",
@@ -247,21 +247,21 @@
     "cap_complexite": null,
     "contenu": {
       "enonce": "Un article à 12 €, payé avec 20 € — combien te rend-on ?",
-      "aide": "Rends la monnaie : ce qu'on te donne moins ce que ça coûte."
+      "methode": "Pars du prix et complète jusqu’à la somme payée, en passant si utile par une dizaine. Additionne mentalement ces compléments. Vérifie que prix et monnaie rendue reconstituent la somme payée."
     },
     "reponse": {
       "valeur": 8
     },
     "meta": {
       "auteur": "generation-automatique (tools/generate_items.py)",
-      "date_creation": "2026-09-26",
+      "date_creation": "2026-09-30",
       "relecture_ortho": {
         "statut": "a_revoir"
       }
     }
   },
   {
-    "id": "cm2-8-10",
+    "id": "cm3-8-10",
     "type": "production",
     "module": "entrainement",
     "theme": "calcul-mental",
@@ -276,21 +276,21 @@
     "cap_complexite": null,
     "contenu": {
       "enonce": "Un article à 8 €, payé avec 10 € — combien te rend-on ?",
-      "aide": "Rends la monnaie : ce qu'on te donne moins ce que ça coûte."
+      "methode": "Pars du prix et complète jusqu’à la somme payée, en passant si utile par une dizaine. Additionne mentalement ces compléments. Vérifie que prix et monnaie rendue reconstituent la somme payée."
     },
     "reponse": {
       "valeur": 2
     },
     "meta": {
       "auteur": "generation-automatique (tools/generate_items.py)",
-      "date_creation": "2026-09-26",
+      "date_creation": "2026-09-30",
       "relecture_ortho": {
         "statut": "a_revoir"
       }
     }
   },
   {
-    "id": "cm2-8-11",
+    "id": "cm3-8-11",
     "type": "production",
     "module": "entrainement",
     "theme": "calcul-mental",
@@ -305,21 +305,21 @@
     "cap_complexite": null,
     "contenu": {
       "enonce": "Un article à 6 €, payé avec 10 € — combien te rend-on ?",
-      "aide": "Rends la monnaie : ce qu'on te donne moins ce que ça coûte."
+      "methode": "Pars du prix et complète jusqu’à la somme payée, en passant si utile par une dizaine. Additionne mentalement ces compléments. Vérifie que prix et monnaie rendue reconstituent la somme payée."
     },
     "reponse": {
       "valeur": 4
     },
     "meta": {
       "auteur": "generation-automatique (tools/generate_items.py)",
-      "date_creation": "2026-09-26",
+      "date_creation": "2026-09-30",
       "relecture_ortho": {
         "statut": "a_revoir"
       }
     }
   },
   {
-    "id": "cm2-8-12",
+    "id": "cm3-8-12",
     "type": "production",
     "module": "entrainement",
     "theme": "calcul-mental",
@@ -334,21 +334,21 @@
     "cap_complexite": null,
     "contenu": {
       "enonce": "Un article à 4 €, payé avec 10 € — combien te rend-on ?",
-      "aide": "Rends la monnaie : ce qu'on te donne moins ce que ça coûte."
+      "methode": "Pars du prix et complète jusqu’à la somme payée, en passant si utile par une dizaine. Additionne mentalement ces compléments. Vérifie que prix et monnaie rendue reconstituent la somme payée."
     },
     "reponse": {
       "valeur": 6
     },
     "meta": {
       "auteur": "generation-automatique (tools/generate_items.py)",
-      "date_creation": "2026-09-26",
+      "date_creation": "2026-09-30",
       "relecture_ortho": {
         "statut": "a_revoir"
       }
     }
   },
   {
-    "id": "cm2-8-13",
+    "id": "cm3-8-13",
     "type": "production",
     "module": "entrainement",
     "theme": "calcul-mental",
@@ -363,21 +363,21 @@
     "cap_complexite": null,
     "contenu": {
       "enonce": "Un article à 18 €, payé avec 20 € — combien te rend-on ?",
-      "aide": "Rends la monnaie : ce qu'on te donne moins ce que ça coûte."
+      "methode": "Pars du prix et complète jusqu’à la somme payée, en passant si utile par une dizaine. Additionne mentalement ces compléments. Vérifie que prix et monnaie rendue reconstituent la somme payée."
     },
     "reponse": {
       "valeur": 2
     },
     "meta": {
       "auteur": "generation-automatique (tools/generate_items.py)",
-      "date_creation": "2026-09-26",
+      "date_creation": "2026-09-30",
       "relecture_ortho": {
         "statut": "a_revoir"
       }
     }
   },
   {
-    "id": "cm2-8-14",
+    "id": "cm3-8-14",
     "type": "production",
     "module": "entrainement",
     "theme": "calcul-mental",
@@ -392,21 +392,21 @@
     "cap_complexite": null,
     "contenu": {
       "enonce": "Un article à 15 €, payé avec 20 € — combien te rend-on ?",
-      "aide": "Rends la monnaie : ce qu'on te donne moins ce que ça coûte."
+      "methode": "Pars du prix et complète jusqu’à la somme payée, en passant si utile par une dizaine. Additionne mentalement ces compléments. Vérifie que prix et monnaie rendue reconstituent la somme payée."
     },
     "reponse": {
       "valeur": 5
     },
     "meta": {
       "auteur": "generation-automatique (tools/generate_items.py)",
-      "date_creation": "2026-09-26",
+      "date_creation": "2026-09-30",
       "relecture_ortho": {
         "statut": "a_revoir"
       }
     }
   },
   {
-    "id": "cm2-8-15",
+    "id": "cm3-8-15",
     "type": "production",
     "module": "entrainement",
     "theme": "calcul-mental",
@@ -421,21 +421,21 @@
     "cap_complexite": null,
     "contenu": {
       "enonce": "2 articles à 12,50 € — combien en tout ?",
-      "aide": "Rends la monnaie : ce qu'on te donne moins ce que ça coûte."
+      "methode": "Calcule séparément le total des euros et celui des centimes, puis rassemble-les. Vérifie que le total couvre tous les articles."
     },
     "reponse": {
       "valeur": 25
     },
     "meta": {
       "auteur": "generation-automatique (tools/generate_items.py)",
-      "date_creation": "2026-09-26",
+      "date_creation": "2026-09-30",
       "relecture_ortho": {
         "statut": "a_revoir"
       }
     }
   },
   {
-    "id": "cm2-8-16",
+    "id": "cm3-8-16",
     "type": "production",
     "module": "entrainement",
     "theme": "calcul-mental",
@@ -450,21 +450,21 @@
     "cap_complexite": null,
     "contenu": {
       "enonce": "2 articles à 4 € — combien en tout ?",
-      "aide": "Rends la monnaie : ce qu'on te donne moins ce que ça coûte."
+      "methode": "Multiplie le prix d’un article par le nombre d’articles. Tu peux additionner le même prix autant de fois. Vérifie que tu réponds en euros."
     },
     "reponse": {
       "valeur": 8
     },
     "meta": {
       "auteur": "generation-automatique (tools/generate_items.py)",
-      "date_creation": "2026-09-26",
+      "date_creation": "2026-09-30",
       "relecture_ortho": {
         "statut": "a_revoir"
       }
     }
   },
   {
-    "id": "cm2-8-17",
+    "id": "cm3-8-17",
     "type": "production",
     "module": "entrainement",
     "theme": "calcul-mental",
@@ -479,21 +479,21 @@
     "cap_complexite": null,
     "contenu": {
       "enonce": "Un article à 19 €, payé avec 20 € — combien te rend-on ?",
-      "aide": "Rends la monnaie : ce qu'on te donne moins ce que ça coûte."
+      "methode": "Pars du prix et complète jusqu’à la somme payée, en passant si utile par une dizaine. Additionne mentalement ces compléments. Vérifie que prix et monnaie rendue reconstituent la somme payée."
     },
     "reponse": {
       "valeur": 1
     },
     "meta": {
       "auteur": "generation-automatique (tools/generate_items.py)",
-      "date_creation": "2026-09-26",
+      "date_creation": "2026-09-30",
       "relecture_ortho": {
         "statut": "a_revoir"
       }
     }
   },
   {
-    "id": "cm2-8-18",
+    "id": "cm3-8-18",
     "type": "production",
     "module": "entrainement",
     "theme": "calcul-mental",
@@ -508,14 +508,14 @@
     "cap_complexite": null,
     "contenu": {
       "enonce": "Un article à 3 €, payé avec 10 € — combien te rend-on ?",
-      "aide": "Rends la monnaie : ce qu'on te donne moins ce que ça coûte."
+      "methode": "Pars du prix et complète jusqu’à la somme payée, en passant si utile par une dizaine. Additionne mentalement ces compléments. Vérifie que prix et monnaie rendue reconstituent la somme payée."
     },
     "reponse": {
       "valeur": 7
     },
     "meta": {
       "auteur": "generation-automatique (tools/generate_items.py)",
-      "date_creation": "2026-09-26",
+      "date_creation": "2026-09-30",
       "relecture_ortho": {
         "statut": "a_revoir"
       }

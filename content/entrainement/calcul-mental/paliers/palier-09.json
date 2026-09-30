@@ -1,6 +1,6 @@
 [
   {
-    "id": "cm2-9-01",
+    "id": "cm3-9-01",
     "type": "production",
     "module": "entrainement",
     "theme": "calcul-mental",
@@ -15,21 +15,21 @@
     "cap_complexite": "une seule transformation (double ou total), sans pourcentage",
     "contenu": {
       "enonce": "Trois rendez-vous d'une heure trente ? (en minutes)",
-      "aide": "Pour le double de personnes, il faut le double de quantité."
+      "methode": "Convertis une heure trente en minutes, puis multiplie cette durée par le nombre de rendez-vous. Vérifie l’unité : des minutes."
     },
     "reponse": {
       "valeur": 270
     },
     "meta": {
       "auteur": "generation-automatique (tools/generate_items.py)",
-      "date_creation": "2026-09-26",
+      "date_creation": "2026-09-30",
       "relecture_ortho": {
         "statut": "a_revoir"
       }
     }
   },
   {
-    "id": "cm2-9-02",
+    "id": "cm3-9-02",
     "type": "production",
     "module": "entrainement",
     "theme": "calcul-mental",
@@ -44,21 +44,21 @@
     "cap_complexite": "une seule transformation (double ou total), sans pourcentage",
     "contenu": {
       "enonce": "Un film de 90 minutes, plus 15 minutes de pause ?",
-      "aide": "Pour le double de personnes, il faut le double de quantité."
+      "methode": "Additionne la durée du film et celle de la pause. Vérifie que ton total est plus long que le film seul."
     },
     "reponse": {
       "valeur": 105
     },
     "meta": {
       "auteur": "generation-automatique (tools/generate_items.py)",
-      "date_creation": "2026-09-26",
+      "date_creation": "2026-09-30",
       "relecture_ortho": {
         "statut": "a_revoir"
       }
     }
   },
   {
-    "id": "cm2-9-03",
+    "id": "cm3-9-03",
     "type": "production",
     "module": "entrainement",
     "theme": "calcul-mental",
@@ -73,21 +73,21 @@
     "cap_complexite": "une seule transformation (double ou total), sans pourcentage",
     "contenu": {
       "enonce": "Un trajet dure 15 minutes. Quatre trajets ?",
-      "aide": "Pour le double de personnes, il faut le double de quantité."
+      "methode": "Multiplie la durée d’une activité par le nombre d’activités. Vérifie que le total est exprimé en minutes."
     },
     "reponse": {
       "valeur": 60
     },
     "meta": {
       "auteur": "generation-automatique (tools/generate_items.py)",
-      "date_creation": "2026-09-26",
+      "date_creation": "2026-09-30",
       "relecture_ortho": {
         "statut": "a_revoir"
       }
     }
   },
   {
-    "id": "cm2-9-04",
+    "id": "cm3-9-04",
     "type": "production",
     "module": "entrainement",
     "theme": "calcul-mental",
@@ -102,21 +102,21 @@
     "cap_complexite": "une seule transformation (double ou total), sans pourcentage",
     "contenu": {
       "enonce": "Une séance dure 20 minutes. Trois séances ?",
-      "aide": "Pour le double de personnes, il faut le double de quantité."
+      "methode": "Multiplie la durée d’une activité par le nombre d’activités. Vérifie que le total est exprimé en minutes."
     },
     "reponse": {
       "valeur": 60
     },
     "meta": {
       "auteur": "generation-automatique (tools/generate_items.py)",
-      "date_creation": "2026-09-26",
+      "date_creation": "2026-09-30",
       "relecture_ortho": {
         "statut": "a_revoir"
       }
     }
   },
   {
-    "id": "cm2-9-05",
+    "id": "cm3-9-05",
     "type": "production",
     "module": "entrainement",
     "theme": "calcul-mental",
@@ -131,21 +131,21 @@
     "cap_complexite": "une seule transformation (double ou total), sans pourcentage",
     "contenu": {
       "enonce": "Une recette pour 4 personnes demande 200 g de sucre. Pour 12 personnes ?",
-      "aide": "Pour le double de personnes, il faut le double de quantité."
+      "methode": "Compare le nombre de personnes prévu et le nouveau nombre. Applique le même multiplicateur à la quantité. Vérifie que tu conserves l’unité de la recette."
     },
     "reponse": {
       "valeur": 600
     },
     "meta": {
       "auteur": "generation-automatique (tools/generate_items.py)",
-      "date_creation": "2026-09-26",
+      "date_creation": "2026-09-30",
       "relecture_ortho": {
         "statut": "a_revoir"
       }
     }
   },
   {
-    "id": "cm2-9-06",
+    "id": "cm3-9-06",
     "type": "production",
     "module": "entrainement",
     "theme": "calcul-mental",
@@ -160,21 +160,21 @@
     "cap_complexite": "une seule transformation (double ou total), sans pourcentage",
     "contenu": {
       "enonce": "Un exercice prend 8 minutes. Cinq exercices ?",
-      "aide": "Pour le double de personnes, il faut le double de quantité."
+      "methode": "Multiplie la durée d’une activité par le nombre d’activités. Vérifie que le total est exprimé en minutes."
     },
     "reponse": {
       "valeur": 40
     },
     "meta": {
       "auteur": "generation-automatique (tools/generate_items.py)",
-      "date_creation": "2026-09-26",
+      "date_creation": "2026-09-30",
       "relecture_ortho": {
         "statut": "a_revoir"
       }
     }
   },
   {
-    "id": "cm2-9-07",
+    "id": "cm3-9-07",
     "type": "production",
     "module": "entrainement",
     "theme": "calcul-mental",
@@ -189,21 +189,21 @@
     "cap_complexite": "une seule transformation (double ou total), sans pourcentage",
     "contenu": {
       "enonce": "Une boîte de 30 comprimés, 3 par jour pendant 5 jours : combien en reste-t-il ?",
-      "aide": "Pour le double de personnes, il faut le double de quantité."
+      "methode": "Calcule la quantité utilisée pendant tous les jours indiqués, puis retire-la du stock initial. Garde le résultat intermédiaire en tête. Vérifie que le reste est inférieur au stock de départ."
     },
     "reponse": {
       "valeur": 15
     },
     "meta": {
       "auteur": "generation-automatique (tools/generate_items.py)",
-      "date_creation": "2026-09-26",
+      "date_creation": "2026-09-30",
       "relecture_ortho": {
         "statut": "a_revoir"
       }
     }
   },
   {
-    "id": "cm2-9-08",
+    "id": "cm3-9-08",
     "type": "production",
     "module": "entrainement",
     "theme": "calcul-mental",
@@ -218,21 +218,21 @@
     "cap_complexite": "une seule transformation (double ou total), sans pourcentage",
     "contenu": {
       "enonce": "Pour 4 personnes, il faut 250 g de farine. Pour 8 personnes ?",
-      "aide": "Pour le double de personnes, il faut le double de quantité."
+      "methode": "Compare le nombre de personnes prévu et le nouveau nombre. Applique le même multiplicateur à la quantité. Vérifie que tu conserves l’unité de la recette."
     },
     "reponse": {
       "valeur": 500
     },
     "meta": {
       "auteur": "generation-automatique (tools/generate_items.py)",
-      "date_creation": "2026-09-26",
+      "date_creation": "2026-09-30",
       "relecture_ortho": {
         "statut": "a_revoir"
       }
     }
   },
   {
-    "id": "cm2-9-09",
+    "id": "cm3-9-09",
     "type": "production",
     "module": "entrainement",
     "theme": "calcul-mental",
@@ -247,21 +247,21 @@
     "cap_complexite": "une seule transformation (double ou total), sans pourcentage",
     "contenu": {
       "enonce": "Un paquet contient 12 biscuits. Deux paquets ?",
-      "aide": "Pour le double de personnes, il faut le double de quantité."
+      "methode": "Multiplie la quantité d’un groupe par le nombre de groupes. Vérifie que tu comptes les éléments et non les groupes."
     },
     "reponse": {
       "valeur": 24
     },
     "meta": {
       "auteur": "generation-automatique (tools/generate_items.py)",
-      "date_creation": "2026-09-26",
+      "date_creation": "2026-09-30",
       "relecture_ortho": {
         "statut": "a_revoir"
       }
     }
   },
   {
-    "id": "cm2-9-10",
+    "id": "cm3-9-10",
     "type": "production",
     "module": "entrainement",
     "theme": "calcul-mental",
@@ -276,21 +276,21 @@
     "cap_complexite": "une seule transformation (double ou total), sans pourcentage",
     "contenu": {
       "enonce": "Une recette pour 2 personnes demande 3 œufs. Pour 6 personnes ?",
-      "aide": "Pour le double de personnes, il faut le double de quantité."
+      "methode": "Compare le nombre de personnes prévu et le nouveau nombre. Applique le même multiplicateur à la quantité. Vérifie que tu conserves l’unité de la recette."
     },
     "reponse": {
       "valeur": 9
     },
     "meta": {
       "auteur": "generation-automatique (tools/generate_items.py)",
-      "date_creation": "2026-09-26",
+      "date_creation": "2026-09-30",
       "relecture_ortho": {
         "statut": "a_revoir"
       }
     }
   },
   {
-    "id": "cm2-9-11",
+    "id": "cm3-9-11",
     "type": "production",
     "module": "entrainement",
     "theme": "calcul-mental",
@@ -305,21 +305,21 @@
     "cap_complexite": "une seule transformation (double ou total), sans pourcentage",
     "contenu": {
       "enonce": "Quinze cartons rangés par piles de 5 : combien de piles ?",
-      "aide": "Pour le double de personnes, il faut le double de quantité."
+      "methode": "Cherche combien de groupes de cinq cartons tu peux former. Vérifie que les piles reconstituent le total."
     },
     "reponse": {
       "valeur": 3
     },
     "meta": {
       "auteur": "generation-automatique (tools/generate_items.py)",
-      "date_creation": "2026-09-26",
+      "date_creation": "2026-09-30",
       "relecture_ortho": {
         "statut": "a_revoir"
       }
     }
   },
   {
-    "id": "cm2-9-12",
+    "id": "cm3-9-12",
     "type": "production",
     "module": "entrainement",
     "theme": "calcul-mental",
@@ -334,21 +334,21 @@
     "cap_complexite": "une seule transformation (double ou total), sans pourcentage",
     "contenu": {
       "enonce": "Une séance dure 25 minutes. Deux séances ?",
-      "aide": "Pour le double de personnes, il faut le double de quantité."
+      "methode": "Multiplie la durée d’une activité par le nombre d’activités. Vérifie que le total est exprimé en minutes."
     },
     "reponse": {
       "valeur": 50
     },
     "meta": {
       "auteur": "generation-automatique (tools/generate_items.py)",
-      "date_creation": "2026-09-26",
+      "date_creation": "2026-09-30",
       "relecture_ortho": {
         "statut": "a_revoir"
       }
     }
   },
   {
-    "id": "cm2-9-13",
+    "id": "cm3-9-13",
     "type": "production",
     "module": "entrainement",
     "theme": "calcul-mental",
@@ -363,21 +363,21 @@
     "cap_complexite": "une seule transformation (double ou total), sans pourcentage",
     "contenu": {
       "enonce": "Un pot de peinture couvre 5 m². Pour 20 m², combien de pots ?",
-      "aide": "Pour le double de personnes, il faut le double de quantité."
+      "methode": "Cherche combien de surfaces couvertes par un pot sont nécessaires pour couvrir la surface totale. Vérifie l’unité : des pots."
     },
     "reponse": {
       "valeur": 4
     },
     "meta": {
       "auteur": "generation-automatique (tools/generate_items.py)",
-      "date_creation": "2026-09-26",
+      "date_creation": "2026-09-30",
       "relecture_ortho": {
         "statut": "a_revoir"
       }
     }
   },
   {
-    "id": "cm2-9-14",
+    "id": "cm3-9-14",
     "type": "production",
     "module": "entrainement",
     "theme": "calcul-mental",
@@ -392,21 +392,21 @@
     "cap_complexite": "une seule transformation (double ou total), sans pourcentage",
     "contenu": {
       "enonce": "Pour 4 personnes, il faut 150 g de riz. Pour 8 personnes ?",
-      "aide": "Pour le double de personnes, il faut le double de quantité."
+      "methode": "Compare le nombre de personnes prévu et le nouveau nombre. Applique le même multiplicateur à la quantité. Vérifie que tu conserves l’unité de la recette."
     },
     "reponse": {
       "valeur": 300
     },
     "meta": {
       "auteur": "generation-automatique (tools/generate_items.py)",
-      "date_creation": "2026-09-26",
+      "date_creation": "2026-09-30",
       "relecture_ortho": {
         "statut": "a_revoir"
       }
     }
   },
   {
-    "id": "cm2-9-15",
+    "id": "cm3-9-15",
     "type": "production",
     "module": "entrainement",
     "theme": "calcul-mental",
@@ -421,21 +421,21 @@
     "cap_complexite": "une seule transformation (double ou total), sans pourcentage",
     "contenu": {
       "enonce": "Un paquet contient 10 serviettes. Il en reste 4 : combien ont été prises ?",
-      "aide": "Pour le double de personnes, il faut le double de quantité."
+      "methode": "Retire du nombre initial les serviettes qui restent. Vérifie que prises et restantes reconstituent le paquet."
     },
     "reponse": {
       "valeur": 6
     },
     "meta": {
       "auteur": "generation-automatique (tools/generate_items.py)",
-      "date_creation": "2026-09-26",
+      "date_creation": "2026-09-30",
       "relecture_ortho": {
         "statut": "a_revoir"
       }
     }
   },
   {
-    "id": "cm2-9-16",
+    "id": "cm3-9-16",
     "type": "production",
     "module": "entrainement",
     "theme": "calcul-mental",
@@ -450,21 +450,21 @@
     "cap_complexite": "une seule transformation (double ou total), sans pourcentage",
     "contenu": {
       "enonce": "Deux litres et demi d'eau, plus trois litres et demi ?",
-      "aide": "Pour le double de personnes, il faut le double de quantité."
+      "methode": "Additionne les litres entiers, puis rassemble les deux demi-litres. Vérifie que tu réponds en litres."
     },
     "reponse": {
       "valeur": 6
     },
     "meta": {
       "auteur": "generation-automatique (tools/generate_items.py)",
-      "date_creation": "2026-09-26",
+      "date_creation": "2026-09-30",
       "relecture_ortho": {
         "statut": "a_revoir"
       }
     }
   },
   {
-    "id": "cm2-9-17",
+    "id": "cm3-9-17",
     "type": "production",
     "module": "entrainement",
     "theme": "calcul-mental",
@@ -479,21 +479,21 @@
     "cap_complexite": "une seule transformation (double ou total), sans pourcentage",
     "contenu": {
       "enonce": "20 tablettes de chocolat partagées en 4 sachets — combien par sachet ?",
-      "aide": "Pour le double de personnes, il faut le double de quantité."
+      "methode": "Partage le total en groupes égaux : cherche combien chaque sachet reçoit. Vérifie en multipliant par le nombre de sachets."
     },
     "reponse": {
       "valeur": 5
     },
     "meta": {
       "auteur": "generation-automatique (tools/generate_items.py)",
-      "date_creation": "2026-09-26",
+      "date_creation": "2026-09-30",
       "relecture_ortho": {
         "statut": "a_revoir"
       }
     }
   },
   {
-    "id": "cm2-9-18",
+    "id": "cm3-9-18",
     "type": "production",
     "module": "entrainement",
     "theme": "calcul-mental",
@@ -508,14 +508,14 @@
     "cap_complexite": "une seule transformation (double ou total), sans pourcentage",
     "contenu": {
       "enonce": "Quatre séries de 7 répétitions ?",
-      "aide": "Pour le double de personnes, il faut le double de quantité."
+      "methode": "Multiplie la quantité d’un groupe par le nombre de groupes. Vérifie que tu comptes les éléments et non les groupes."
     },
     "reponse": {
       "valeur": 28
     },
     "meta": {
       "auteur": "generation-automatique (tools/generate_items.py)",
-      "date_creation": "2026-09-26",
+      "date_creation": "2026-09-30",
       "relecture_ortho": {
         "statut": "a_revoir"
       }

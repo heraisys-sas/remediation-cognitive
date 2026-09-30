@@ -50,6 +50,10 @@ VOCABULAIRES = {
                 "nom": "Déduction",
                 "description": "Grilles logiques 3×3 puis 4×4 : placer les figures et les couleurs en croisant les informations",
             },
+            "garder-cap": {
+                "nom": "Garder le cap",
+                "description": "Reprendre après une interruption, adapter son plan et vérifier avant de terminer",
+            },
             "methodes": {
                 "nom": "Méthodes pour retenir et s’organiser",
                 "description": "Choisir une stratégie, vérifier un plan et pratiquer la lecture PQRST pas à pas",

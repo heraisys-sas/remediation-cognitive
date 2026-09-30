@@ -144,6 +144,9 @@ const refs = {
   noteReprise: $("note-reprise"),
   zoneSequence: $("zone-sequence"),
   methodeExercice: $("methode-exercice"),
+  panneauMethode: $("panneau-methode"),
+  titreMethode: $("titre-methode"),
+  methodeGenerique: $("methode-generique"),
 };
 
 /* ---------------------------------------------------------------------
@@ -597,7 +600,11 @@ function montrerItem() {
   // La méthode de l'exercice en cours s'affiche dans le panneau « Méthode » : un exercice
   // de stratégie se travaille avec sa stratégie sous les yeux, pas seulement dans une
   // consigne lue une fois par séance (ADR-014).
-  const methode = (item.contenu || {}).consigne;
+  const methode = item.contenu?.methode || item.contenu?.consigne;
+  const specifique = Boolean(item.contenu?.methode);
+  refs.panneauMethode.open = false;
+  refs.titreMethode.textContent = specifique ? "Une méthode possible" : "Méthode — avant de répondre";
+  refs.methodeGenerique.hidden = specifique;
   refs.methodeExercice.textContent = methode || "";
   refs.methodeExercice.hidden = !methode;
   annulerMemo();

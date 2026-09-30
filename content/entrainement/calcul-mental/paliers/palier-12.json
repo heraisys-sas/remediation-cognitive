@@ -1,6 +1,6 @@
 [
   {
-    "id": "cm2-12-01",
+    "id": "cm3-12-01",
     "type": "production",
     "module": "entrainement",
     "theme": "calcul-mental",
@@ -16,21 +16,21 @@
     "cap_complexite": "aucune division posée : on cherche dans la table du facteur connu",
     "contenu": {
       "enonce": "42 = ? × 7",
-      "aide": "Cherche dans la table du facteur connu : 42 = 6 × ? — compte 6, 12, 18…"
+      "methode": "Cherche combien de fois 7 permet d’atteindre le total : avance dans sa table en comptant les groupes. Vérifie en multipliant ton nombre de groupes par 7."
     },
     "reponse": {
       "valeur": 6
     },
     "meta": {
       "auteur": "generation-automatique (tools/generate_items.py)",
-      "date_creation": "2026-09-26",
+      "date_creation": "2026-09-30",
       "relecture_ortho": {
         "statut": "a_revoir"
       }
     }
   },
   {
-    "id": "cm2-12-02",
+    "id": "cm3-12-02",
     "type": "production",
     "module": "entrainement",
     "theme": "calcul-mental",
@@ -46,21 +46,21 @@
     "cap_complexite": "aucune division posée : on cherche dans la table du facteur connu",
     "contenu": {
       "enonce": "24 = ? × 8",
-      "aide": "Cherche dans la table du facteur connu : 42 = 6 × ? — compte 6, 12, 18…"
+      "methode": "Cherche combien de fois 8 permet d’atteindre le total : avance dans sa table en comptant les groupes. Vérifie en multipliant ton nombre de groupes par 8."
     },
     "reponse": {
       "valeur": 3
     },
     "meta": {
       "auteur": "generation-automatique (tools/generate_items.py)",
-      "date_creation": "2026-09-26",
+      "date_creation": "2026-09-30",
       "relecture_ortho": {
         "statut": "a_revoir"
       }
     }
   },
   {
-    "id": "cm2-12-03",
+    "id": "cm3-12-03",
     "type": "production",
     "module": "entrainement",
     "theme": "calcul-mental",
@@ -76,21 +76,21 @@
     "cap_complexite": "aucune division posée : on cherche dans la table du facteur connu",
     "contenu": {
       "enonce": "63 = 7 × ?",
-      "aide": "Cherche dans la table du facteur connu : 42 = 6 × ? — compte 6, 12, 18…"
+      "methode": "Cherche combien de fois 7 permet d’atteindre le total : avance dans sa table en comptant les groupes. Vérifie en multipliant ton nombre de groupes par 7."
     },
     "reponse": {
       "valeur": 9
     },
     "meta": {
       "auteur": "generation-automatique (tools/generate_items.py)",
-      "date_creation": "2026-09-26",
+      "date_creation": "2026-09-30",
       "relecture_ortho": {
         "statut": "a_revoir"
       }
     }
   },
   {
-    "id": "cm2-12-04",
+    "id": "cm3-12-04",
     "type": "production",
     "module": "entrainement",
     "theme": "calcul-mental",
@@ -106,21 +106,21 @@
     "cap_complexite": "aucune division posée : on cherche dans la table du facteur connu",
     "contenu": {
       "enonce": "28 = 4 × ?",
-      "aide": "Cherche dans la table du facteur connu : 42 = 6 × ? — compte 6, 12, 18…"
+      "methode": "Cherche combien de fois 4 permet d’atteindre le total : avance dans sa table en comptant les groupes. Vérifie en multipliant ton nombre de groupes par 4."
     },
     "reponse": {
       "valeur": 7
     },
     "meta": {
       "auteur": "generation-automatique (tools/generate_items.py)",
-      "date_creation": "2026-09-26",
+      "date_creation": "2026-09-30",
       "relecture_ortho": {
         "statut": "a_revoir"
       }
     }
   },
   {
-    "id": "cm2-12-05",
+    "id": "cm3-12-05",
     "type": "production",
     "module": "entrainement",
     "theme": "calcul-mental",
@@ -136,21 +136,21 @@
     "cap_complexite": "aucune division posée : on cherche dans la table du facteur connu",
     "contenu": {
       "enonce": "27 = 3 × ?",
-      "aide": "Cherche dans la table du facteur connu : 42 = 6 × ? — compte 6, 12, 18…"
+      "methode": "Cherche combien de fois 3 permet d’atteindre le total : avance dans sa table en comptant les groupes. Vérifie en multipliant ton nombre de groupes par 3."
     },
     "reponse": {
       "valeur": 9
     },
     "meta": {
       "auteur": "generation-automatique (tools/generate_items.py)",
-      "date_creation": "2026-09-26",
+      "date_creation": "2026-09-30",
       "relecture_ortho": {
         "statut": "a_revoir"
       }
     }
   },
   {
-    "id": "cm2-12-06",
+    "id": "cm3-12-06",
     "type": "production",
     "module": "entrainement",
     "theme": "calcul-mental",
@@ -166,21 +166,21 @@
     "cap_complexite": "aucune division posée : on cherche dans la table du facteur connu",
     "contenu": {
       "enonce": "36 = ? × 6",
-      "aide": "Cherche dans la table du facteur connu : 42 = 6 × ? — compte 6, 12, 18…"
+      "methode": "Cherche combien de fois 6 permet d’atteindre le total : avance dans sa table en comptant les groupes. Vérifie en multipliant ton nombre de groupes par 6."
     },
     "reponse": {
       "valeur": 6
     },
     "meta": {
       "auteur": "generation-automatique (tools/generate_items.py)",
-      "date_creation": "2026-09-26",
+      "date_creation": "2026-09-30",
       "relecture_ortho": {
         "statut": "a_revoir"
       }
     }
   },
   {
-    "id": "cm2-12-07",
+    "id": "cm3-12-07",
     "type": "production",
     "module": "entrainement",
     "theme": "calcul-mental",
@@ -196,21 +196,21 @@
     "cap_complexite": "aucune division posée : on cherche dans la table du facteur connu",
     "contenu": {
       "enonce": "48 = 6 × ?",
-      "aide": "Cherche dans la table du facteur connu : 42 = 6 × ? — compte 6, 12, 18…"
+      "methode": "Cherche combien de fois 6 permet d’atteindre le total : avance dans sa table en comptant les groupes. Vérifie en multipliant ton nombre de groupes par 6."
     },
     "reponse": {
       "valeur": 8
     },
     "meta": {
       "auteur": "generation-automatique (tools/generate_items.py)",
-      "date_creation": "2026-09-26",
+      "date_creation": "2026-09-30",
       "relecture_ortho": {
         "statut": "a_revoir"
       }
     }
   },
   {
-    "id": "cm2-12-08",
+    "id": "cm3-12-08",
     "type": "production",
     "module": "entrainement",
     "theme": "calcul-mental",
@@ -226,21 +226,21 @@
     "cap_complexite": "aucune division posée : on cherche dans la table du facteur connu",
     "contenu": {
       "enonce": "45 = ? × 9",
-      "aide": "Cherche dans la table du facteur connu : 42 = 6 × ? — compte 6, 12, 18…"
+      "methode": "Cherche combien de fois 9 permet d’atteindre le total : avance dans sa table en comptant les groupes. Vérifie en multipliant ton nombre de groupes par 9."
     },
     "reponse": {
       "valeur": 5
     },
     "meta": {
       "auteur": "generation-automatique (tools/generate_items.py)",
-      "date_creation": "2026-09-26",
+      "date_creation": "2026-09-30",
       "relecture_ortho": {
         "statut": "a_revoir"
       }
     }
   },
   {
-    "id": "cm2-12-09",
+    "id": "cm3-12-09",
     "type": "production",
     "module": "entrainement",
     "theme": "calcul-mental",
@@ -256,21 +256,21 @@
     "cap_complexite": "aucune division posée : on cherche dans la table du facteur connu",
     "contenu": {
       "enonce": "56 = ? × 8",
-      "aide": "Cherche dans la table du facteur connu : 42 = 6 × ? — compte 6, 12, 18…"
+      "methode": "Cherche combien de fois 8 permet d’atteindre le total : avance dans sa table en comptant les groupes. Vérifie en multipliant ton nombre de groupes par 8."
     },
     "reponse": {
       "valeur": 7
     },
     "meta": {
       "auteur": "generation-automatique (tools/generate_items.py)",
-      "date_creation": "2026-09-26",
+      "date_creation": "2026-09-30",
       "relecture_ortho": {
         "statut": "a_revoir"
       }
     }
   },
   {
-    "id": "cm2-12-10",
+    "id": "cm3-12-10",
     "type": "production",
     "module": "entrainement",
     "theme": "calcul-mental",
@@ -286,21 +286,21 @@
     "cap_complexite": "aucune division posée : on cherche dans la table du facteur connu",
     "contenu": {
       "enonce": "32 = ? × 8",
-      "aide": "Cherche dans la table du facteur connu : 42 = 6 × ? — compte 6, 12, 18…"
+      "methode": "Cherche combien de fois 8 permet d’atteindre le total : avance dans sa table en comptant les groupes. Vérifie en multipliant ton nombre de groupes par 8."
     },
     "reponse": {
       "valeur": 4
     },
     "meta": {
       "auteur": "generation-automatique (tools/generate_items.py)",
-      "date_creation": "2026-09-26",
+      "date_creation": "2026-09-30",
       "relecture_ortho": {
         "statut": "a_revoir"
       }
     }
   },
   {
-    "id": "cm2-12-11",
+    "id": "cm3-12-11",
     "type": "production",
     "module": "entrainement",
     "theme": "calcul-mental",
@@ -316,21 +316,21 @@
     "cap_complexite": "aucune division posée : on cherche dans la table du facteur connu",
     "contenu": {
       "enonce": "64 = ? × 8",
-      "aide": "Cherche dans la table du facteur connu : 42 = 6 × ? — compte 6, 12, 18…"
+      "methode": "Cherche combien de fois 8 permet d’atteindre le total : avance dans sa table en comptant les groupes. Vérifie en multipliant ton nombre de groupes par 8."
     },
     "reponse": {
       "valeur": 8
     },
     "meta": {
       "auteur": "generation-automatique (tools/generate_items.py)",
-      "date_creation": "2026-09-26",
+      "date_creation": "2026-09-30",
       "relecture_ortho": {
         "statut": "a_revoir"
       }
     }
   },
   {
-    "id": "cm2-12-12",
+    "id": "cm3-12-12",
     "type": "production",
     "module": "entrainement",
     "theme": "calcul-mental",
@@ -346,21 +346,21 @@
     "cap_complexite": "aucune division posée : on cherche dans la table du facteur connu",
     "contenu": {
       "enonce": "81 = ? × 9",
-      "aide": "Cherche dans la table du facteur connu : 42 = 6 × ? — compte 6, 12, 18…"
+      "methode": "Cherche combien de fois 9 permet d’atteindre le total : avance dans sa table en comptant les groupes. Vérifie en multipliant ton nombre de groupes par 9."
     },
     "reponse": {
       "valeur": 9
     },
     "meta": {
       "auteur": "generation-automatique (tools/generate_items.py)",
-      "date_creation": "2026-09-26",
+      "date_creation": "2026-09-30",
       "relecture_ortho": {
         "statut": "a_revoir"
       }
     }
   },
   {
-    "id": "cm2-12-13",
+    "id": "cm3-12-13",
     "type": "production",
     "module": "entrainement",
     "theme": "calcul-mental",
@@ -376,21 +376,21 @@
     "cap_complexite": "aucune division posée : on cherche dans la table du facteur connu",
     "contenu": {
       "enonce": "49 = 7 × ?",
-      "aide": "Cherche dans la table du facteur connu : 42 = 6 × ? — compte 6, 12, 18…"
+      "methode": "Cherche combien de fois 7 permet d’atteindre le total : avance dans sa table en comptant les groupes. Vérifie en multipliant ton nombre de groupes par 7."
     },
     "reponse": {
       "valeur": 7
     },
     "meta": {
       "auteur": "generation-automatique (tools/generate_items.py)",
-      "date_creation": "2026-09-26",
+      "date_creation": "2026-09-30",
       "relecture_ortho": {
         "statut": "a_revoir"
       }
     }
   },
   {
-    "id": "cm2-12-14",
+    "id": "cm3-12-14",
     "type": "production",
     "module": "entrainement",
     "theme": "calcul-mental",
@@ -406,21 +406,21 @@
     "cap_complexite": "aucune division posée : on cherche dans la table du facteur connu",
     "contenu": {
       "enonce": "36 = ? × 9",
-      "aide": "Cherche dans la table du facteur connu : 42 = 6 × ? — compte 6, 12, 18…"
+      "methode": "Cherche combien de fois 9 permet d’atteindre le total : avance dans sa table en comptant les groupes. Vérifie en multipliant ton nombre de groupes par 9."
     },
     "reponse": {
       "valeur": 4
     },
     "meta": {
       "auteur": "generation-automatique (tools/generate_items.py)",
-      "date_creation": "2026-09-26",
+      "date_creation": "2026-09-30",
       "relecture_ortho": {
         "statut": "a_revoir"
       }
     }
   },
   {
-    "id": "cm2-12-15",
+    "id": "cm3-12-15",
     "type": "production",
     "module": "entrainement",
     "theme": "calcul-mental",
@@ -436,21 +436,21 @@
     "cap_complexite": "aucune division posée : on cherche dans la table du facteur connu",
     "contenu": {
       "enonce": "72 = ? × 9",
-      "aide": "Cherche dans la table du facteur connu : 42 = 6 × ? — compte 6, 12, 18…"
+      "methode": "Cherche combien de fois 9 permet d’atteindre le total : avance dans sa table en comptant les groupes. Vérifie en multipliant ton nombre de groupes par 9."
     },
     "reponse": {
       "valeur": 8
     },
     "meta": {
       "auteur": "generation-automatique (tools/generate_items.py)",
-      "date_creation": "2026-09-26",
+      "date_creation": "2026-09-30",
       "relecture_ortho": {
         "statut": "a_revoir"
       }
     }
   },
   {
-    "id": "cm2-12-16",
+    "id": "cm3-12-16",
     "type": "production",
     "module": "entrainement",
     "theme": "calcul-mental",
@@ -466,21 +466,21 @@
     "cap_complexite": "aucune division posée : on cherche dans la table du facteur connu",
     "contenu": {
       "enonce": "54 = ? × 9",
-      "aide": "Cherche dans la table du facteur connu : 42 = 6 × ? — compte 6, 12, 18…"
+      "methode": "Cherche combien de fois 9 permet d’atteindre le total : avance dans sa table en comptant les groupes. Vérifie en multipliant ton nombre de groupes par 9."
     },
     "reponse": {
       "valeur": 6
     },
     "meta": {
       "auteur": "generation-automatique (tools/generate_items.py)",
-      "date_creation": "2026-09-26",
+      "date_creation": "2026-09-30",
       "relecture_ortho": {
         "statut": "a_revoir"
       }
     }
   },
   {
-    "id": "cm2-12-17",
+    "id": "cm3-12-17",
     "type": "production",
     "module": "entrainement",
     "theme": "calcul-mental",
@@ -496,21 +496,21 @@
     "cap_complexite": "aucune division posée : on cherche dans la table du facteur connu",
     "contenu": {
       "enonce": "40 = ? × 8",
-      "aide": "Cherche dans la table du facteur connu : 42 = 6 × ? — compte 6, 12, 18…"
+      "methode": "Cherche combien de fois 8 permet d’atteindre le total : avance dans sa table en comptant les groupes. Vérifie en multipliant ton nombre de groupes par 8."
     },
     "reponse": {
       "valeur": 5
     },
     "meta": {
       "auteur": "generation-automatique (tools/generate_items.py)",
-      "date_creation": "2026-09-26",
+      "date_creation": "2026-09-30",
       "relecture_ortho": {
         "statut": "a_revoir"
       }
     }
   },
   {
-    "id": "cm2-12-18",
+    "id": "cm3-12-18",
     "type": "production",
     "module": "entrainement",
     "theme": "calcul-mental",
@@ -526,14 +526,14 @@
     "cap_complexite": "aucune division posée : on cherche dans la table du facteur connu",
     "contenu": {
       "enonce": "35 = 5 × ?",
-      "aide": "Cherche dans la table du facteur connu : 42 = 6 × ? — compte 6, 12, 18…"
+      "methode": "Cherche combien de fois 5 permet d’atteindre le total : avance dans sa table en comptant les groupes. Vérifie en multipliant ton nombre de groupes par 5."
     },
     "reponse": {
       "valeur": 7
     },
     "meta": {
       "auteur": "generation-automatique (tools/generate_items.py)",
-      "date_creation": "2026-09-26",
+      "date_creation": "2026-09-30",
       "relecture_ortho": {
         "statut": "a_revoir"
       }

@@ -70,7 +70,7 @@ FICHIER_SCHEMA = DOSSIER_CONTENU / "schema-item.json"
 MOTIF_REF_PALIER = re.compile(r"^[a-z]+-palier-\d+$")
 
 #: Motif d'un identifiant d'item de calcul mental : cm-<table>-<a>x<b>.
-MOTIF_ID_CALCUL = re.compile(r"^cm2-(\d+)-(\d+)$")
+MOTIF_ID_CALCUL = re.compile(r"^cm[23]-(\d+)-(\d+)$")
 MOTIF_CALCUL_ARITHMETIQUE = re.compile(r"Combien font (\d+) ([+−×]) (\d+)((?: [+−] \d+)?) ?\?")
 MOTIF_COMPLEMENT = re.compile(r"Combien manque-t-il à (\d+) pour faire (\d+) \?")
 MOTIF_TOTAL_ARTICLES = re.compile(r"(\d+) articles à ([\d,]+) € — combien en tout \?")
@@ -1020,7 +1020,7 @@ def erreurs_coherence_calcul(item: dict, prefixe: str,
 
     identifiant = item.get("id", "")
     if not MOTIF_ID_CALCUL.fullmatch(identifiant):
-        return [prefixe + f"id non conforme au motif cm2-<palier>-<rang> : {identifiant!r}"]
+        return [prefixe + f"id non conforme au motif cm2-/cm3-<palier>-<rang> : {identifiant!r}"]
 
     enonce = str((item.get("contenu") or {}).get("enonce") or "")
     reponse = (item.get("reponse") or {}).get("valeur")
@@ -1135,7 +1135,7 @@ def erreurs_manifest(manifest: object, chemin: Path, donnees_par_fichier: dict[P
 #: Thèmes réellement jouables (contrat GET /api/entrainement/themes) : le
 #: programme ne peut proposer qu'un thème que l'API expose.
 THEMES_CONNUS = {
-    "calcul-mental", "anglais", "python", "memoire", "concentration",
+    "calcul-mental", "anglais", "python", "memoire", "concentration", "garder-cap",
     "evocation", "rappel-series", "quotidien", "deduction", "methodes",
 }
 

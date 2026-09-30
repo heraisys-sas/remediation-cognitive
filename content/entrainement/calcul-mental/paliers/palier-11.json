@@ -1,6 +1,6 @@
 [
   {
-    "id": "cm2-11-01",
+    "id": "cm3-11-01",
     "type": "production",
     "module": "entrainement",
     "theme": "calcul-mental",
@@ -16,21 +16,21 @@
     "cap_complexite": "une seule suite à la fois, cinq nombres au maximum",
     "contenu": {
       "enonce": "Compte à rebours : 30, 27, 24, 21, ?",
-      "aide": "Trouve le pas de la suite sur les deux premiers nombres, puis vérifie chaque nombre."
+      "methode": "Compare les écarts entre plusieurs nombres pour repérer le pas régulier. Applique ce pas pour poursuivre la suite ou retrouver le nombre qui ne le respecte pas. Vérifie la règle sur toute la ligne."
     },
     "reponse": {
       "valeur": 18
     },
     "meta": {
       "auteur": "generation-automatique (tools/generate_items.py)",
-      "date_creation": "2026-09-26",
+      "date_creation": "2026-09-30",
       "relecture_ortho": {
         "statut": "a_revoir"
       }
     }
   },
   {
-    "id": "cm2-11-02",
+    "id": "cm3-11-02",
     "type": "production",
     "module": "entrainement",
     "theme": "calcul-mental",
@@ -46,21 +46,21 @@
     "cap_complexite": "une seule suite à la fois, cinq nombres au maximum",
     "contenu": {
       "enonce": "100, 90, 80, 82, 60 — quel nombre est faux ?",
-      "aide": "Trouve le pas de la suite sur les deux premiers nombres, puis vérifie chaque nombre."
+      "methode": "Compare les écarts entre plusieurs nombres pour repérer le pas régulier. Applique ce pas pour poursuivre la suite ou retrouver le nombre qui ne le respecte pas. Vérifie la règle sur toute la ligne."
     },
     "reponse": {
       "valeur": 82
     },
     "meta": {
       "auteur": "generation-automatique (tools/generate_items.py)",
-      "date_creation": "2026-09-26",
+      "date_creation": "2026-09-30",
       "relecture_ortho": {
         "statut": "a_revoir"
       }
     }
   },
   {
-    "id": "cm2-11-03",
+    "id": "cm3-11-03",
     "type": "production",
     "module": "entrainement",
     "theme": "calcul-mental",
@@ -76,21 +76,21 @@
     "cap_complexite": "une seule suite à la fois, cinq nombres au maximum",
     "contenu": {
       "enonce": "50, 45, 47, 35, 30 — quel nombre est faux ?",
-      "aide": "Trouve le pas de la suite sur les deux premiers nombres, puis vérifie chaque nombre."
+      "methode": "Compare les écarts entre plusieurs nombres pour repérer le pas régulier. Applique ce pas pour poursuivre la suite ou retrouver le nombre qui ne le respecte pas. Vérifie la règle sur toute la ligne."
     },
     "reponse": {
       "valeur": 47
     },
     "meta": {
       "auteur": "generation-automatique (tools/generate_items.py)",
-      "date_creation": "2026-09-26",
+      "date_creation": "2026-09-30",
       "relecture_ortho": {
         "statut": "a_revoir"
       }
     }
   },
   {
-    "id": "cm2-11-04",
+    "id": "cm3-11-04",
     "type": "production",
     "module": "entrainement",
     "theme": "calcul-mental",
@@ -106,21 +106,21 @@
     "cap_complexite": "une seule suite à la fois, cinq nombres au maximum",
     "contenu": {
       "enonce": "Compte à rebours : 40, 35, 30, 25, ?",
-      "aide": "Trouve le pas de la suite sur les deux premiers nombres, puis vérifie chaque nombre."
+      "methode": "Compare les écarts entre plusieurs nombres pour repérer le pas régulier. Applique ce pas pour poursuivre la suite ou retrouver le nombre qui ne le respecte pas. Vérifie la règle sur toute la ligne."
     },
     "reponse": {
       "valeur": 20
     },
     "meta": {
       "auteur": "generation-automatique (tools/generate_items.py)",
-      "date_creation": "2026-09-26",
+      "date_creation": "2026-09-30",
       "relecture_ortho": {
         "statut": "a_revoir"
       }
     }
   },
   {
-    "id": "cm2-11-05",
+    "id": "cm3-11-05",
     "type": "production",
     "module": "entrainement",
     "theme": "calcul-mental",
@@ -136,21 +136,21 @@
     "cap_complexite": "une seule suite à la fois, cinq nombres au maximum",
     "contenu": {
       "enonce": "Continue la suite : 90, 120, 150, 180, ?",
-      "aide": "Trouve le pas de la suite sur les deux premiers nombres, puis vérifie chaque nombre."
+      "methode": "Compare les écarts entre plusieurs nombres pour repérer le pas régulier. Applique ce pas pour poursuivre la suite ou retrouver le nombre qui ne le respecte pas. Vérifie la règle sur toute la ligne."
     },
     "reponse": {
       "valeur": 210
     },
     "meta": {
       "auteur": "generation-automatique (tools/generate_items.py)",
-      "date_creation": "2026-09-26",
+      "date_creation": "2026-09-30",
       "relecture_ortho": {
         "statut": "a_revoir"
       }
     }
   },
   {
-    "id": "cm2-11-06",
+    "id": "cm3-11-06",
     "type": "production",
     "module": "entrainement",
     "theme": "calcul-mental",
@@ -166,21 +166,21 @@
     "cap_complexite": "une seule suite à la fois, cinq nombres au maximum",
     "contenu": {
       "enonce": "Continue la suite : 15, 18, 21, 24, ?",
-      "aide": "Trouve le pas de la suite sur les deux premiers nombres, puis vérifie chaque nombre."
+      "methode": "Compare les écarts entre plusieurs nombres pour repérer le pas régulier. Applique ce pas pour poursuivre la suite ou retrouver le nombre qui ne le respecte pas. Vérifie la règle sur toute la ligne."
     },
     "reponse": {
       "valeur": 27
     },
     "meta": {
       "auteur": "generation-automatique (tools/generate_items.py)",
-      "date_creation": "2026-09-26",
+      "date_creation": "2026-09-30",
       "relecture_ortho": {
         "statut": "a_revoir"
       }
     }
   },
   {
-    "id": "cm2-11-07",
+    "id": "cm3-11-07",
     "type": "production",
     "module": "entrainement",
     "theme": "calcul-mental",
@@ -196,21 +196,21 @@
     "cap_complexite": "une seule suite à la fois, cinq nombres au maximum",
     "contenu": {
       "enonce": "Continue la suite : 60, 75, 90, 105, ?",
-      "aide": "Trouve le pas de la suite sur les deux premiers nombres, puis vérifie chaque nombre."
+      "methode": "Compare les écarts entre plusieurs nombres pour repérer le pas régulier. Applique ce pas pour poursuivre la suite ou retrouver le nombre qui ne le respecte pas. Vérifie la règle sur toute la ligne."
     },
     "reponse": {
       "valeur": 120
     },
     "meta": {
       "auteur": "generation-automatique (tools/generate_items.py)",
-      "date_creation": "2026-09-26",
+      "date_creation": "2026-09-30",
       "relecture_ortho": {
         "statut": "a_revoir"
       }
     }
   },
   {
-    "id": "cm2-11-08",
+    "id": "cm3-11-08",
     "type": "production",
     "module": "entrainement",
     "theme": "calcul-mental",
@@ -226,21 +226,21 @@
     "cap_complexite": "une seule suite à la fois, cinq nombres au maximum",
     "contenu": {
       "enonce": "5, 10, 15, 27, 25 — quel nombre est faux ?",
-      "aide": "Trouve le pas de la suite sur les deux premiers nombres, puis vérifie chaque nombre."
+      "methode": "Compare les écarts entre plusieurs nombres pour repérer le pas régulier. Applique ce pas pour poursuivre la suite ou retrouver le nombre qui ne le respecte pas. Vérifie la règle sur toute la ligne."
     },
     "reponse": {
       "valeur": 27
     },
     "meta": {
       "auteur": "generation-automatique (tools/generate_items.py)",
-      "date_creation": "2026-09-26",
+      "date_creation": "2026-09-30",
       "relecture_ortho": {
         "statut": "a_revoir"
       }
     }
   },
   {
-    "id": "cm2-11-09",
+    "id": "cm3-11-09",
     "type": "production",
     "module": "entrainement",
     "theme": "calcul-mental",
@@ -256,21 +256,21 @@
     "cap_complexite": "une seule suite à la fois, cinq nombres au maximum",
     "contenu": {
       "enonce": "4, 8, 12, 22, 20 — quel nombre est faux ?",
-      "aide": "Trouve le pas de la suite sur les deux premiers nombres, puis vérifie chaque nombre."
+      "methode": "Compare les écarts entre plusieurs nombres pour repérer le pas régulier. Applique ce pas pour poursuivre la suite ou retrouver le nombre qui ne le respecte pas. Vérifie la règle sur toute la ligne."
     },
     "reponse": {
       "valeur": 22
     },
     "meta": {
       "auteur": "generation-automatique (tools/generate_items.py)",
-      "date_creation": "2026-09-26",
+      "date_creation": "2026-09-30",
       "relecture_ortho": {
         "statut": "a_revoir"
       }
     }
   },
   {
-    "id": "cm2-11-10",
+    "id": "cm3-11-10",
     "type": "production",
     "module": "entrainement",
     "theme": "calcul-mental",
@@ -286,21 +286,21 @@
     "cap_complexite": "une seule suite à la fois, cinq nombres au maximum",
     "contenu": {
       "enonce": "Continue la suite : 12, 18, 24, 30, ?",
-      "aide": "Trouve le pas de la suite sur les deux premiers nombres, puis vérifie chaque nombre."
+      "methode": "Compare les écarts entre plusieurs nombres pour repérer le pas régulier. Applique ce pas pour poursuivre la suite ou retrouver le nombre qui ne le respecte pas. Vérifie la règle sur toute la ligne."
     },
     "reponse": {
       "valeur": 36
     },
     "meta": {
       "auteur": "generation-automatique (tools/generate_items.py)",
-      "date_creation": "2026-09-26",
+      "date_creation": "2026-09-30",
       "relecture_ortho": {
         "statut": "a_revoir"
       }
     }
   },
   {
-    "id": "cm2-11-11",
+    "id": "cm3-11-11",
     "type": "production",
     "module": "entrainement",
     "theme": "calcul-mental",
@@ -316,21 +316,21 @@
     "cap_complexite": "une seule suite à la fois, cinq nombres au maximum",
     "contenu": {
       "enonce": "Compte à rebours : 50, 45, 40, 35, ?",
-      "aide": "Trouve le pas de la suite sur les deux premiers nombres, puis vérifie chaque nombre."
+      "methode": "Compare les écarts entre plusieurs nombres pour repérer le pas régulier. Applique ce pas pour poursuivre la suite ou retrouver le nombre qui ne le respecte pas. Vérifie la règle sur toute la ligne."
     },
     "reponse": {
       "valeur": 30
     },
     "meta": {
       "auteur": "generation-automatique (tools/generate_items.py)",
-      "date_creation": "2026-09-26",
+      "date_creation": "2026-09-30",
       "relecture_ortho": {
         "statut": "a_revoir"
       }
     }
   },
   {
-    "id": "cm2-11-12",
+    "id": "cm3-11-12",
     "type": "production",
     "module": "entrainement",
     "theme": "calcul-mental",
@@ -346,21 +346,21 @@
     "cap_complexite": "une seule suite à la fois, cinq nombres au maximum",
     "contenu": {
       "enonce": "Compte à rebours : 80, 60, 40, 20, ?",
-      "aide": "Trouve le pas de la suite sur les deux premiers nombres, puis vérifie chaque nombre."
+      "methode": "Compare les écarts entre plusieurs nombres pour repérer le pas régulier. Applique ce pas pour poursuivre la suite ou retrouver le nombre qui ne le respecte pas. Vérifie la règle sur toute la ligne."
     },
     "reponse": {
       "valeur": 0
     },
     "meta": {
       "auteur": "generation-automatique (tools/generate_items.py)",
-      "date_creation": "2026-09-26",
+      "date_creation": "2026-09-30",
       "relecture_ortho": {
         "statut": "a_revoir"
       }
     }
   },
   {
-    "id": "cm2-11-13",
+    "id": "cm3-11-13",
     "type": "production",
     "module": "entrainement",
     "theme": "calcul-mental",
@@ -376,21 +376,21 @@
     "cap_complexite": "une seule suite à la fois, cinq nombres au maximum",
     "contenu": {
       "enonce": "Compte à rebours : 100, 90, 80, 70, ?",
-      "aide": "Trouve le pas de la suite sur les deux premiers nombres, puis vérifie chaque nombre."
+      "methode": "Compare les écarts entre plusieurs nombres pour repérer le pas régulier. Applique ce pas pour poursuivre la suite ou retrouver le nombre qui ne le respecte pas. Vérifie la règle sur toute la ligne."
     },
     "reponse": {
       "valeur": 60
     },
     "meta": {
       "auteur": "generation-automatique (tools/generate_items.py)",
-      "date_creation": "2026-09-26",
+      "date_creation": "2026-09-30",
       "relecture_ortho": {
         "statut": "a_revoir"
       }
     }
   },
   {
-    "id": "cm2-11-14",
+    "id": "cm3-11-14",
     "type": "production",
     "module": "entrainement",
     "theme": "calcul-mental",
@@ -406,21 +406,21 @@
     "cap_complexite": "une seule suite à la fois, cinq nombres au maximum",
     "contenu": {
       "enonce": "Continue la suite : 40, 50, 60, 70, ?",
-      "aide": "Trouve le pas de la suite sur les deux premiers nombres, puis vérifie chaque nombre."
+      "methode": "Compare les écarts entre plusieurs nombres pour repérer le pas régulier. Applique ce pas pour poursuivre la suite ou retrouver le nombre qui ne le respecte pas. Vérifie la règle sur toute la ligne."
     },
     "reponse": {
       "valeur": 80
     },
     "meta": {
       "auteur": "generation-automatique (tools/generate_items.py)",
-      "date_creation": "2026-09-26",
+      "date_creation": "2026-09-30",
       "relecture_ortho": {
         "statut": "a_revoir"
       }
     }
   },
   {
-    "id": "cm2-11-15",
+    "id": "cm3-11-15",
     "type": "production",
     "module": "entrainement",
     "theme": "calcul-mental",
@@ -436,21 +436,21 @@
     "cap_complexite": "une seule suite à la fois, cinq nombres au maximum",
     "contenu": {
       "enonce": "6, 12, 26, 24, 30 — quel nombre est faux ?",
-      "aide": "Trouve le pas de la suite sur les deux premiers nombres, puis vérifie chaque nombre."
+      "methode": "Compare les écarts entre plusieurs nombres pour repérer le pas régulier. Applique ce pas pour poursuivre la suite ou retrouver le nombre qui ne le respecte pas. Vérifie la règle sur toute la ligne."
     },
     "reponse": {
       "valeur": 26
     },
     "meta": {
       "auteur": "generation-automatique (tools/generate_items.py)",
-      "date_creation": "2026-09-26",
+      "date_creation": "2026-09-30",
       "relecture_ortho": {
         "statut": "a_revoir"
       }
     }
   },
   {
-    "id": "cm2-11-16",
+    "id": "cm3-11-16",
     "type": "production",
     "module": "entrainement",
     "theme": "calcul-mental",
@@ -466,21 +466,21 @@
     "cap_complexite": "une seule suite à la fois, cinq nombres au maximum",
     "contenu": {
       "enonce": "Compte à rebours : 24, 20, 16, 12, ?",
-      "aide": "Trouve le pas de la suite sur les deux premiers nombres, puis vérifie chaque nombre."
+      "methode": "Compare les écarts entre plusieurs nombres pour repérer le pas régulier. Applique ce pas pour poursuivre la suite ou retrouver le nombre qui ne le respecte pas. Vérifie la règle sur toute la ligne."
     },
     "reponse": {
       "valeur": 8
     },
     "meta": {
       "auteur": "generation-automatique (tools/generate_items.py)",
-      "date_creation": "2026-09-26",
+      "date_creation": "2026-09-30",
       "relecture_ortho": {
         "statut": "a_revoir"
       }
     }
   },
   {
-    "id": "cm2-11-17",
+    "id": "cm3-11-17",
     "type": "production",
     "module": "entrainement",
     "theme": "calcul-mental",
@@ -496,21 +496,21 @@
     "cap_complexite": "une seule suite à la fois, cinq nombres au maximum",
     "contenu": {
       "enonce": "Continue la suite : 3, 6, 9, 12, ?",
-      "aide": "Trouve le pas de la suite sur les deux premiers nombres, puis vérifie chaque nombre."
+      "methode": "Compare les écarts entre plusieurs nombres pour repérer le pas régulier. Applique ce pas pour poursuivre la suite ou retrouver le nombre qui ne le respecte pas. Vérifie la règle sur toute la ligne."
     },
     "reponse": {
       "valeur": 15
     },
     "meta": {
       "auteur": "generation-automatique (tools/generate_items.py)",
-      "date_creation": "2026-09-26",
+      "date_creation": "2026-09-30",
       "relecture_ortho": {
         "statut": "a_revoir"
       }
     }
   },
   {
-    "id": "cm2-11-18",
+    "id": "cm3-11-18",
     "type": "production",
     "module": "entrainement",
     "theme": "calcul-mental",
@@ -526,14 +526,14 @@
     "cap_complexite": "une seule suite à la fois, cinq nombres au maximum",
     "contenu": {
       "enonce": "70, 63, 56, 58, 42 — quel nombre est faux ?",
-      "aide": "Trouve le pas de la suite sur les deux premiers nombres, puis vérifie chaque nombre."
+      "methode": "Compare les écarts entre plusieurs nombres pour repérer le pas régulier. Applique ce pas pour poursuivre la suite ou retrouver le nombre qui ne le respecte pas. Vérifie la règle sur toute la ligne."
     },
     "reponse": {
       "valeur": 58
     },
     "meta": {
       "auteur": "generation-automatique (tools/generate_items.py)",
-      "date_creation": "2026-09-26",
+      "date_creation": "2026-09-30",
       "relecture_ortho": {
         "statut": "a_revoir"
       }

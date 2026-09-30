@@ -11,7 +11,7 @@ Un adulte n'a rien à automatiser sur la table de 1 ni sur celle de 10 : ce ne s
 3. **mémoire de travail** — deux opérations enchaînées, résultat intermédiaire à garder ;
 4. **numératie du quotidien** — argent, quantités, durées : c'est le **transfert** dans la vie réelle, qui est le but du module.
 
-## Les neuf paliers
+## Les douze paliers
 
 | Palier | Ce qui est travaillé | Exemple |
 |---|---|---|
@@ -30,7 +30,7 @@ Un adulte n'a rien à automatiser sur la table de 1 ni sur celle de 10 : ce ne s
 
 12 paliers, **212 items**, aucun doublon d'énoncé dans un palier. Les énoncés sont des questions courtes et naturelles : on s'adresse à un adulte, pas à un enfant qui apprend ses tables.
 
-Les paliers 2, 5, 6, 7, 8 et 9 portent une **aide** repliée (la stratégie, jamais le résultat) ; le palier 7 porte une **consigne** de méthode, affichée une fois par séance.
+Tous les paliers portent une méthode spécifique repliée (la stratégie, sans résultat fourni) ; le palier 7 conserve une consigne de maintien mental du résultat intermédiaire.
 
 ## Contrôle indépendant du générateur
 
@@ -60,3 +60,7 @@ Trois familles ont été ajoutées pour travailler autrement ce que le calcul di
 
 - **Abaque mental (soroban)** — mentionné dans `docs/10-clinique/fondements.md` comme intéressant en rééducation (représentation visuo-spatiale plutôt que rappel pur) : pourrait devenir un palier à part entière.
 - **Estimation** — « 48 € + 51 €, c'est plutôt 90, 100 ou 110 ? » : une compétence distincte et utile, à introduire en items à choix.
+
+## Aide spécifique — 30 septembre 2026
+
+Les 212 calculs disposent d’un panneau « Une méthode possible », facultatif et fermé à chaque question. Une seule stratégie adaptée à l’opération et une vérification sont proposées, sans résultat intermédiaire fourni. Il remplace les anciens conseils de palier parfois inadaptés. Énoncés et réponses conservés, identifiants `cm3-…`. Génération dans `tools/methodes_calcul.py` ; ADR-020.

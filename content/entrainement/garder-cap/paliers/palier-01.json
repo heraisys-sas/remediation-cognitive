@@ -1,0 +1,134 @@
+[
+  {
+    "id": "cap-1-1-01",
+    "type": "but-etapes",
+    "module": "entrainement",
+    "theme": "garder-cap",
+    "fonctions_ciblees": [
+      "fonctions-executives",
+      "planification"
+    ],
+    "palier": 1,
+    "prerequis": [],
+    "cap_complexite": null,
+    "contenu": {
+      "enonce": "Tu finalises un dossier avant 16 h. Le formulaire et le budget sont validés. Avant un appel, tu as noté : « remplacer l’annexe B par la version signée, puis contrôler les pièces ». Pendant l’appel, on confirme que le budget ne change pas. Le brouillon contient encore l’annexe B non signée. Quelle reprise évite à la fois un oubli et un travail inutile ?",
+      "options": [
+        "Revalider le budget, contrôler les pièces, puis envoyer",
+        "Remplacer B, envoyer, puis contrôler les pièces",
+        "Remplacer B, contrôler les pièces, puis envoyer"
+      ],
+      "methode": "Arrête-toi un instant, retrouve le but et le dernier point achevé, puis choisis la prochaine action.",
+      "consigne": "Lis la situation à ton rythme. Choisis l’action qui respecte le but et toutes les contraintes ; les informations restent visibles."
+    },
+    "reponse": {
+      "valeur": "Remplacer B, contrôler les pièces, puis envoyer"
+    },
+    "meta": {
+      "auteur": "redaction-assistee (tools/generer_garder_cap.py)",
+      "date_creation": "2026-09-30",
+      "relecture_ortho": {
+        "statut": "a_revoir"
+      }
+    }
+  },
+  {
+    "id": "cap-1-1-02",
+    "type": "but-etapes",
+    "module": "entrainement",
+    "theme": "garder-cap",
+    "fonctions_ciblees": [
+      "fonctions-executives",
+      "planification"
+    ],
+    "palier": 1,
+    "prerequis": [],
+    "cap_complexite": null,
+    "contenu": {
+      "enonce": "Tu compares trois offres selon deux critères obligatoires : livraison vendredi et installation incluse. A échoue sur la date ; B satisfait les deux critères ; C est moins chère mais son installation reste à confirmer. Après une interruption, la confirmation arrive : C ne comprend pas l’installation. Quelle suite exploite correctement le travail déjà fait ?",
+      "options": [
+        "Redemander les trois offres avant de relire les critères",
+        "Retenir C pour son prix et consigner sa livraison",
+        "Retenir B et consigner pourquoi A et C sont écartées"
+      ],
+      "methode": "Arrête-toi un instant, retrouve le but et le dernier point achevé, puis choisis la prochaine action.",
+      "consigne": "Lis la situation à ton rythme. Choisis l’action qui respecte le but et toutes les contraintes ; les informations restent visibles."
+    },
+    "reponse": {
+      "valeur": "Retenir B et consigner pourquoi A et C sont écartées"
+    },
+    "meta": {
+      "auteur": "redaction-assistee (tools/generer_garder_cap.py)",
+      "date_creation": "2026-09-30",
+      "relecture_ortho": {
+        "statut": "a_revoir"
+      }
+    }
+  },
+  {
+    "id": "cap-1-1-03",
+    "type": "but-etapes",
+    "module": "entrainement",
+    "theme": "garder-cap",
+    "fonctions_ciblees": [
+      "fonctions-executives",
+      "planification"
+    ],
+    "palier": 1,
+    "prerequis": [],
+    "cap_complexite": null,
+    "contenu": {
+      "enonce": "Tu prépares une note avec des chiffres actualisés. Les sections 1 et 2 sont vérifiées. Ta note de reprise précise : « tableau 3 actualisé, commentaire 3 encore ancien ». Une pause interrompt ton travail. Quelle action permet de reprendre sans conserver une contradiction ?",
+      "options": [
+        "Revoir le commentaire 3 à partir du tableau actualisé",
+        "Recalculer le tableau 3 en conservant son commentaire",
+        "Uniformiser la présentation des trois sections avant l’envoi"
+      ],
+      "methode": "Arrête-toi un instant, retrouve le but et le dernier point achevé, puis choisis la prochaine action.",
+      "consigne": "Lis la situation à ton rythme. Choisis l’action qui respecte le but et toutes les contraintes ; les informations restent visibles."
+    },
+    "reponse": {
+      "valeur": "Revoir le commentaire 3 à partir du tableau actualisé"
+    },
+    "meta": {
+      "auteur": "redaction-assistee (tools/generer_garder_cap.py)",
+      "date_creation": "2026-09-30",
+      "relecture_ortho": {
+        "statut": "a_revoir"
+      }
+    }
+  },
+  {
+    "id": "cap-1-1-04",
+    "type": "but-etapes",
+    "module": "entrainement",
+    "theme": "garder-cap",
+    "fonctions_ciblees": [
+      "fonctions-executives",
+      "planification"
+    ],
+    "palier": 1,
+    "prerequis": [],
+    "cap_complexite": null,
+    "contenu": {
+      "enonce": "Trois inscriptions sont suivies dans un tableau. A est confirmée ; B attendait une pièce désormais reçue ; C est complète mais ne peut être envoyée qu’après B. Tu reprends après un appel, avec dix minutes disponibles. Quelle séquence respecte les dépendances ?",
+      "options": [
+        "Vérifier de nouveau A, puis transmettre C",
+        "Finaliser B, puis transmettre C",
+        "Transmettre C, puis finaliser B"
+      ],
+      "methode": "Arrête-toi un instant, retrouve le but et le dernier point achevé, puis choisis la prochaine action.",
+      "consigne": "Lis la situation à ton rythme. Choisis l’action qui respecte le but et toutes les contraintes ; les informations restent visibles."
+    },
+    "reponse": {
+      "valeur": "Finaliser B, puis transmettre C"
+    },
+    "meta": {
+      "auteur": "redaction-assistee (tools/generer_garder_cap.py)",
+      "date_creation": "2026-09-30",
+      "relecture_ortho": {
+        "statut": "a_revoir"
+      }
+    }
+  }
+]

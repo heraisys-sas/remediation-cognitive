@@ -1,6 +1,6 @@
 [
   {
-    "id": "cm2-7-01",
+    "id": "cm3-7-01",
     "type": "production",
     "module": "entrainement",
     "theme": "calcul-mental",
@@ -15,7 +15,7 @@
     "cap_complexite": "deux opérations au maximum (charge de mémoire de travail bornée)",
     "contenu": {
       "enonce": "Combien font 8 + 7 − 2 ?",
-      "aide": "Garde le premier résultat en tête, puis enchaîne la seconde opération.",
+      "methode": "Effectue la première opération, garde son résultat en tête, puis applique la seconde. Vérifie le sens du dernier changement : un ajout augmente, un retrait diminue.",
       "consigne": "Calcule par étapes, sans rien écrire : d'abord la première opération, puis la seconde."
     },
     "reponse": {
@@ -23,14 +23,14 @@
     },
     "meta": {
       "auteur": "generation-automatique (tools/generate_items.py)",
-      "date_creation": "2026-09-26",
+      "date_creation": "2026-09-30",
       "relecture_ortho": {
         "statut": "a_revoir"
       }
     }
   },
   {
-    "id": "cm2-7-02",
+    "id": "cm3-7-02",
     "type": "production",
     "module": "entrainement",
     "theme": "calcul-mental",
@@ -45,7 +45,7 @@
     "cap_complexite": "deux opérations au maximum (charge de mémoire de travail bornée)",
     "contenu": {
       "enonce": "Combien font 9 + 5 − 6 ?",
-      "aide": "Garde le premier résultat en tête, puis enchaîne la seconde opération.",
+      "methode": "Effectue la première opération, garde son résultat en tête, puis applique la seconde. Vérifie le sens du dernier changement : un ajout augmente, un retrait diminue.",
       "consigne": "Calcule par étapes, sans rien écrire : d'abord la première opération, puis la seconde."
     },
     "reponse": {
@@ -53,14 +53,14 @@
     },
     "meta": {
       "auteur": "generation-automatique (tools/generate_items.py)",
-      "date_creation": "2026-09-26",
+      "date_creation": "2026-09-30",
       "relecture_ortho": {
         "statut": "a_revoir"
       }
     }
   },
   {
-    "id": "cm2-7-03",
+    "id": "cm3-7-03",
     "type": "production",
     "module": "entrainement",
     "theme": "calcul-mental",
@@ -75,7 +75,7 @@
     "cap_complexite": "deux opérations au maximum (charge de mémoire de travail bornée)",
     "contenu": {
       "enonce": "Combien font 3 × 6 + 4 ?",
-      "aide": "Garde le premier résultat en tête, puis enchaîne la seconde opération.",
+      "methode": "Effectue la première opération, garde son résultat en tête, puis applique la seconde. Vérifie le sens du dernier changement : un ajout augmente, un retrait diminue.",
       "consigne": "Calcule par étapes, sans rien écrire : d'abord la première opération, puis la seconde."
     },
     "reponse": {
@@ -83,14 +83,14 @@
     },
     "meta": {
       "auteur": "generation-automatique (tools/generate_items.py)",
-      "date_creation": "2026-09-26",
+      "date_creation": "2026-09-30",
       "relecture_ortho": {
         "statut": "a_revoir"
       }
     }
   },
   {
-    "id": "cm2-7-04",
+    "id": "cm3-7-04",
     "type": "production",
     "module": "entrainement",
     "theme": "calcul-mental",
@@ -105,7 +105,7 @@
     "cap_complexite": "deux opérations au maximum (charge de mémoire de travail bornée)",
     "contenu": {
       "enonce": "Combien font 6 + 4 − 2 ?",
-      "aide": "Garde le premier résultat en tête, puis enchaîne la seconde opération.",
+      "methode": "Effectue la première opération, garde son résultat en tête, puis applique la seconde. Vérifie le sens du dernier changement : un ajout augmente, un retrait diminue.",
       "consigne": "Calcule par étapes, sans rien écrire : d'abord la première opération, puis la seconde."
     },
     "reponse": {
@@ -113,14 +113,14 @@
     },
     "meta": {
       "auteur": "generation-automatique (tools/generate_items.py)",
-      "date_creation": "2026-09-26",
+      "date_creation": "2026-09-30",
       "relecture_ortho": {
         "statut": "a_revoir"
       }
     }
   },
   {
-    "id": "cm2-7-05",
+    "id": "cm3-7-05",
     "type": "production",
     "module": "entrainement",
     "theme": "calcul-mental",
@@ -135,7 +135,7 @@
     "cap_complexite": "deux opérations au maximum (charge de mémoire de travail bornée)",
     "contenu": {
       "enonce": "Combien font 4 × 4 + 5 ?",
-      "aide": "Garde le premier résultat en tête, puis enchaîne la seconde opération.",
+      "methode": "Effectue la première opération, garde son résultat en tête, puis applique la seconde. Vérifie le sens du dernier changement : un ajout augmente, un retrait diminue.",
       "consigne": "Calcule par étapes, sans rien écrire : d'abord la première opération, puis la seconde."
     },
     "reponse": {
@@ -143,14 +143,14 @@
     },
     "meta": {
       "auteur": "generation-automatique (tools/generate_items.py)",
-      "date_creation": "2026-09-26",
+      "date_creation": "2026-09-30",
       "relecture_ortho": {
         "statut": "a_revoir"
       }
     }
   },
   {
-    "id": "cm2-7-06",
+    "id": "cm3-7-06",
     "type": "production",
     "module": "entrainement",
     "theme": "calcul-mental",
@@ -165,7 +165,7 @@
     "cap_complexite": "deux opérations au maximum (charge de mémoire de travail bornée)",
     "contenu": {
       "enonce": "Combien font 4 × 7 + 5 ?",
-      "aide": "Garde le premier résultat en tête, puis enchaîne la seconde opération.",
+      "methode": "Effectue la première opération, garde son résultat en tête, puis applique la seconde. Vérifie le sens du dernier changement : un ajout augmente, un retrait diminue.",
       "consigne": "Calcule par étapes, sans rien écrire : d'abord la première opération, puis la seconde."
     },
     "reponse": {
@@ -173,14 +173,14 @@
     },
     "meta": {
       "auteur": "generation-automatique (tools/generate_items.py)",
-      "date_creation": "2026-09-26",
+      "date_creation": "2026-09-30",
       "relecture_ortho": {
         "statut": "a_revoir"
       }
     }
   },
   {
-    "id": "cm2-7-07",
+    "id": "cm3-7-07",
     "type": "production",
     "module": "entrainement",
     "theme": "calcul-mental",
@@ -195,7 +195,7 @@
     "cap_complexite": "deux opérations au maximum (charge de mémoire de travail bornée)",
     "contenu": {
       "enonce": "Combien font 5 + 5 − 2 ?",
-      "aide": "Garde le premier résultat en tête, puis enchaîne la seconde opération.",
+      "methode": "Effectue la première opération, garde son résultat en tête, puis applique la seconde. Vérifie le sens du dernier changement : un ajout augmente, un retrait diminue.",
       "consigne": "Calcule par étapes, sans rien écrire : d'abord la première opération, puis la seconde."
     },
     "reponse": {
@@ -203,14 +203,14 @@
     },
     "meta": {
       "auteur": "generation-automatique (tools/generate_items.py)",
-      "date_creation": "2026-09-26",
+      "date_creation": "2026-09-30",
       "relecture_ortho": {
         "statut": "a_revoir"
       }
     }
   },
   {
-    "id": "cm2-7-08",
+    "id": "cm3-7-08",
     "type": "production",
     "module": "entrainement",
     "theme": "calcul-mental",
@@ -225,7 +225,7 @@
     "cap_complexite": "deux opérations au maximum (charge de mémoire de travail bornée)",
     "contenu": {
       "enonce": "Combien font 4 + 6 − 2 ?",
-      "aide": "Garde le premier résultat en tête, puis enchaîne la seconde opération.",
+      "methode": "Effectue la première opération, garde son résultat en tête, puis applique la seconde. Vérifie le sens du dernier changement : un ajout augmente, un retrait diminue.",
       "consigne": "Calcule par étapes, sans rien écrire : d'abord la première opération, puis la seconde."
     },
     "reponse": {
@@ -233,14 +233,14 @@
     },
     "meta": {
       "auteur": "generation-automatique (tools/generate_items.py)",
-      "date_creation": "2026-09-26",
+      "date_creation": "2026-09-30",
       "relecture_ortho": {
         "statut": "a_revoir"
       }
     }
   },
   {
-    "id": "cm2-7-09",
+    "id": "cm3-7-09",
     "type": "production",
     "module": "entrainement",
     "theme": "calcul-mental",
@@ -255,7 +255,7 @@
     "cap_complexite": "deux opérations au maximum (charge de mémoire de travail bornée)",
     "contenu": {
       "enonce": "Combien font 5 + 7 − 4 ?",
-      "aide": "Garde le premier résultat en tête, puis enchaîne la seconde opération.",
+      "methode": "Effectue la première opération, garde son résultat en tête, puis applique la seconde. Vérifie le sens du dernier changement : un ajout augmente, un retrait diminue.",
       "consigne": "Calcule par étapes, sans rien écrire : d'abord la première opération, puis la seconde."
     },
     "reponse": {
@@ -263,14 +263,14 @@
     },
     "meta": {
       "auteur": "generation-automatique (tools/generate_items.py)",
-      "date_creation": "2026-09-26",
+      "date_creation": "2026-09-30",
       "relecture_ortho": {
         "statut": "a_revoir"
       }
     }
   },
   {
-    "id": "cm2-7-10",
+    "id": "cm3-7-10",
     "type": "production",
     "module": "entrainement",
     "theme": "calcul-mental",
@@ -285,7 +285,7 @@
     "cap_complexite": "deux opérations au maximum (charge de mémoire de travail bornée)",
     "contenu": {
       "enonce": "Combien font 7 + 5 − 4 ?",
-      "aide": "Garde le premier résultat en tête, puis enchaîne la seconde opération.",
+      "methode": "Effectue la première opération, garde son résultat en tête, puis applique la seconde. Vérifie le sens du dernier changement : un ajout augmente, un retrait diminue.",
       "consigne": "Calcule par étapes, sans rien écrire : d'abord la première opération, puis la seconde."
     },
     "reponse": {
@@ -293,14 +293,14 @@
     },
     "meta": {
       "auteur": "generation-automatique (tools/generate_items.py)",
-      "date_creation": "2026-09-26",
+      "date_creation": "2026-09-30",
       "relecture_ortho": {
         "statut": "a_revoir"
       }
     }
   },
   {
-    "id": "cm2-7-11",
+    "id": "cm3-7-11",
     "type": "production",
     "module": "entrainement",
     "theme": "calcul-mental",
@@ -315,7 +315,7 @@
     "cap_complexite": "deux opérations au maximum (charge de mémoire de travail bornée)",
     "contenu": {
       "enonce": "Combien font 2 × 7 + 3 ?",
-      "aide": "Garde le premier résultat en tête, puis enchaîne la seconde opération.",
+      "methode": "Effectue la première opération, garde son résultat en tête, puis applique la seconde. Vérifie le sens du dernier changement : un ajout augmente, un retrait diminue.",
       "consigne": "Calcule par étapes, sans rien écrire : d'abord la première opération, puis la seconde."
     },
     "reponse": {
@@ -323,14 +323,14 @@
     },
     "meta": {
       "auteur": "generation-automatique (tools/generate_items.py)",
-      "date_creation": "2026-09-26",
+      "date_creation": "2026-09-30",
       "relecture_ortho": {
         "statut": "a_revoir"
       }
     }
   },
   {
-    "id": "cm2-7-12",
+    "id": "cm3-7-12",
     "type": "production",
     "module": "entrainement",
     "theme": "calcul-mental",
@@ -345,7 +345,7 @@
     "cap_complexite": "deux opérations au maximum (charge de mémoire de travail bornée)",
     "contenu": {
       "enonce": "Combien font 7 + 3 − 2 ?",
-      "aide": "Garde le premier résultat en tête, puis enchaîne la seconde opération.",
+      "methode": "Effectue la première opération, garde son résultat en tête, puis applique la seconde. Vérifie le sens du dernier changement : un ajout augmente, un retrait diminue.",
       "consigne": "Calcule par étapes, sans rien écrire : d'abord la première opération, puis la seconde."
     },
     "reponse": {
@@ -353,14 +353,14 @@
     },
     "meta": {
       "auteur": "generation-automatique (tools/generate_items.py)",
-      "date_creation": "2026-09-26",
+      "date_creation": "2026-09-30",
       "relecture_ortho": {
         "statut": "a_revoir"
       }
     }
   },
   {
-    "id": "cm2-7-13",
+    "id": "cm3-7-13",
     "type": "production",
     "module": "entrainement",
     "theme": "calcul-mental",
@@ -375,7 +375,7 @@
     "cap_complexite": "deux opérations au maximum (charge de mémoire de travail bornée)",
     "contenu": {
       "enonce": "Combien font 4 × 6 + 5 ?",
-      "aide": "Garde le premier résultat en tête, puis enchaîne la seconde opération.",
+      "methode": "Effectue la première opération, garde son résultat en tête, puis applique la seconde. Vérifie le sens du dernier changement : un ajout augmente, un retrait diminue.",
       "consigne": "Calcule par étapes, sans rien écrire : d'abord la première opération, puis la seconde."
     },
     "reponse": {
@@ -383,14 +383,14 @@
     },
     "meta": {
       "auteur": "generation-automatique (tools/generate_items.py)",
-      "date_creation": "2026-09-26",
+      "date_creation": "2026-09-30",
       "relecture_ortho": {
         "statut": "a_revoir"
       }
     }
   },
   {
-    "id": "cm2-7-14",
+    "id": "cm3-7-14",
     "type": "production",
     "module": "entrainement",
     "theme": "calcul-mental",
@@ -405,7 +405,7 @@
     "cap_complexite": "deux opérations au maximum (charge de mémoire de travail bornée)",
     "contenu": {
       "enonce": "Combien font 3 × 4 + 4 ?",
-      "aide": "Garde le premier résultat en tête, puis enchaîne la seconde opération.",
+      "methode": "Effectue la première opération, garde son résultat en tête, puis applique la seconde. Vérifie le sens du dernier changement : un ajout augmente, un retrait diminue.",
       "consigne": "Calcule par étapes, sans rien écrire : d'abord la première opération, puis la seconde."
     },
     "reponse": {
@@ -413,14 +413,14 @@
     },
     "meta": {
       "auteur": "generation-automatique (tools/generate_items.py)",
-      "date_creation": "2026-09-26",
+      "date_creation": "2026-09-30",
       "relecture_ortho": {
         "statut": "a_revoir"
       }
     }
   },
   {
-    "id": "cm2-7-15",
+    "id": "cm3-7-15",
     "type": "production",
     "module": "entrainement",
     "theme": "calcul-mental",
@@ -435,7 +435,7 @@
     "cap_complexite": "deux opérations au maximum (charge de mémoire de travail bornée)",
     "contenu": {
       "enonce": "Combien font 6 + 9 − 2 ?",
-      "aide": "Garde le premier résultat en tête, puis enchaîne la seconde opération.",
+      "methode": "Effectue la première opération, garde son résultat en tête, puis applique la seconde. Vérifie le sens du dernier changement : un ajout augmente, un retrait diminue.",
       "consigne": "Calcule par étapes, sans rien écrire : d'abord la première opération, puis la seconde."
     },
     "reponse": {
@@ -443,14 +443,14 @@
     },
     "meta": {
       "auteur": "generation-automatique (tools/generate_items.py)",
-      "date_creation": "2026-09-26",
+      "date_creation": "2026-09-30",
       "relecture_ortho": {
         "statut": "a_revoir"
       }
     }
   },
   {
-    "id": "cm2-7-16",
+    "id": "cm3-7-16",
     "type": "production",
     "module": "entrainement",
     "theme": "calcul-mental",
@@ -465,7 +465,7 @@
     "cap_complexite": "deux opérations au maximum (charge de mémoire de travail bornée)",
     "contenu": {
       "enonce": "Combien font 2 × 3 + 3 ?",
-      "aide": "Garde le premier résultat en tête, puis enchaîne la seconde opération.",
+      "methode": "Effectue la première opération, garde son résultat en tête, puis applique la seconde. Vérifie le sens du dernier changement : un ajout augmente, un retrait diminue.",
       "consigne": "Calcule par étapes, sans rien écrire : d'abord la première opération, puis la seconde."
     },
     "reponse": {
@@ -473,14 +473,14 @@
     },
     "meta": {
       "auteur": "generation-automatique (tools/generate_items.py)",
-      "date_creation": "2026-09-26",
+      "date_creation": "2026-09-30",
       "relecture_ortho": {
         "statut": "a_revoir"
       }
     }
   },
   {
-    "id": "cm2-7-17",
+    "id": "cm3-7-17",
     "type": "production",
     "module": "entrainement",
     "theme": "calcul-mental",
@@ -495,7 +495,7 @@
     "cap_complexite": "deux opérations au maximum (charge de mémoire de travail bornée)",
     "contenu": {
       "enonce": "Combien font 9 + 8 − 4 ?",
-      "aide": "Garde le premier résultat en tête, puis enchaîne la seconde opération.",
+      "methode": "Effectue la première opération, garde son résultat en tête, puis applique la seconde. Vérifie le sens du dernier changement : un ajout augmente, un retrait diminue.",
       "consigne": "Calcule par étapes, sans rien écrire : d'abord la première opération, puis la seconde."
     },
     "reponse": {
@@ -503,14 +503,14 @@
     },
     "meta": {
       "auteur": "generation-automatique (tools/generate_items.py)",
-      "date_creation": "2026-09-26",
+      "date_creation": "2026-09-30",
       "relecture_ortho": {
         "statut": "a_revoir"
       }
     }
   },
   {
-    "id": "cm2-7-18",
+    "id": "cm3-7-18",
     "type": "production",
     "module": "entrainement",
     "theme": "calcul-mental",
@@ -525,7 +525,7 @@
     "cap_complexite": "deux opérations au maximum (charge de mémoire de travail bornée)",
     "contenu": {
       "enonce": "Combien font 5 + 4 − 6 ?",
-      "aide": "Garde le premier résultat en tête, puis enchaîne la seconde opération.",
+      "methode": "Effectue la première opération, garde son résultat en tête, puis applique la seconde. Vérifie le sens du dernier changement : un ajout augmente, un retrait diminue.",
       "consigne": "Calcule par étapes, sans rien écrire : d'abord la première opération, puis la seconde."
     },
     "reponse": {
@@ -533,7 +533,7 @@
     },
     "meta": {
       "auteur": "generation-automatique (tools/generate_items.py)",
-      "date_creation": "2026-09-26",
+      "date_creation": "2026-09-30",
       "relecture_ortho": {
         "statut": "a_revoir"
       }

@@ -1,6 +1,6 @@
 [
   {
-    "id": "cm2-10-01",
+    "id": "cm3-10-01",
     "type": "production",
     "module": "entrainement",
     "theme": "calcul-mental",
@@ -15,21 +15,21 @@
     "cap_complexite": null,
     "contenu": {
       "enonce": "Combien font 3 × 8 ?",
-      "aide": "Appuie-toi sur ce que tu sais déjà : × 9 = × 10 − le nombre ; × 8 = double de × 4 ; × 6 = × 5 + le nombre."
+      "methode": "Multiplie l’autre nombre par quatre, puis double ce résultat. Vérifie en comparant avec un produit voisin que tu connais."
     },
     "reponse": {
       "valeur": 24
     },
     "meta": {
       "auteur": "generation-automatique (tools/generate_items.py)",
-      "date_creation": "2026-09-26",
+      "date_creation": "2026-09-30",
       "relecture_ortho": {
         "statut": "a_revoir"
       }
     }
   },
   {
-    "id": "cm2-10-02",
+    "id": "cm3-10-02",
     "type": "production",
     "module": "entrainement",
     "theme": "calcul-mental",
@@ -44,21 +44,21 @@
     "cap_complexite": null,
     "contenu": {
       "enonce": "Combien font 9 × 9 ?",
-      "aide": "Appuie-toi sur ce que tu sais déjà : × 9 = × 10 − le nombre ; × 8 = double de × 4 ; × 6 = × 5 + le nombre."
+      "methode": "Multiplie l’autre nombre par dix, puis retire une fois ce nombre. Vérifie en comparant avec un produit voisin que tu connais."
     },
     "reponse": {
       "valeur": 81
     },
     "meta": {
       "auteur": "generation-automatique (tools/generate_items.py)",
-      "date_creation": "2026-09-26",
+      "date_creation": "2026-09-30",
       "relecture_ortho": {
         "statut": "a_revoir"
       }
     }
   },
   {
-    "id": "cm2-10-03",
+    "id": "cm3-10-03",
     "type": "production",
     "module": "entrainement",
     "theme": "calcul-mental",
@@ -73,21 +73,21 @@
     "cap_complexite": null,
     "contenu": {
       "enonce": "Combien font 3 × 7 ?",
-      "aide": "Appuie-toi sur ce que tu sais déjà : × 9 = × 10 − le nombre ; × 8 = double de × 4 ; × 6 = × 5 + le nombre."
+      "methode": "Prends le double de l’autre nombre, puis ajoute encore ce nombre. Vérifie en comparant avec un produit voisin que tu connais."
     },
     "reponse": {
       "valeur": 21
     },
     "meta": {
       "auteur": "generation-automatique (tools/generate_items.py)",
-      "date_creation": "2026-09-26",
+      "date_creation": "2026-09-30",
       "relecture_ortho": {
         "statut": "a_revoir"
       }
     }
   },
   {
-    "id": "cm2-10-04",
+    "id": "cm3-10-04",
     "type": "production",
     "module": "entrainement",
     "theme": "calcul-mental",
@@ -102,21 +102,21 @@
     "cap_complexite": null,
     "contenu": {
       "enonce": "Combien font 6 × 7 ?",
-      "aide": "Appuie-toi sur ce que tu sais déjà : × 9 = × 10 − le nombre ; × 8 = double de × 4 ; × 6 = × 5 + le nombre."
+      "methode": "Multiplie l’autre nombre par cinq, puis ajoute encore ce nombre. Vérifie en comparant avec un produit voisin que tu connais."
     },
     "reponse": {
       "valeur": 42
     },
     "meta": {
       "auteur": "generation-automatique (tools/generate_items.py)",
-      "date_creation": "2026-09-26",
+      "date_creation": "2026-09-30",
       "relecture_ortho": {
         "statut": "a_revoir"
       }
     }
   },
   {
-    "id": "cm2-10-05",
+    "id": "cm3-10-05",
     "type": "production",
     "module": "entrainement",
     "theme": "calcul-mental",
@@ -131,21 +131,21 @@
     "cap_complexite": null,
     "contenu": {
       "enonce": "Combien font 4 × 7 ?",
-      "aide": "Appuie-toi sur ce que tu sais déjà : × 9 = × 10 − le nombre ; × 8 = double de × 4 ; × 6 = × 5 + le nombre."
+      "methode": "Double l’autre nombre, puis double encore ce résultat. Vérifie en comparant avec un produit voisin que tu connais."
     },
     "reponse": {
       "valeur": 28
     },
     "meta": {
       "auteur": "generation-automatique (tools/generate_items.py)",
-      "date_creation": "2026-09-26",
+      "date_creation": "2026-09-30",
       "relecture_ortho": {
         "statut": "a_revoir"
       }
     }
   },
   {
-    "id": "cm2-10-06",
+    "id": "cm3-10-06",
     "type": "production",
     "module": "entrainement",
     "theme": "calcul-mental",
@@ -160,21 +160,21 @@
     "cap_complexite": null,
     "contenu": {
       "enonce": "Combien font 8 × 9 ?",
-      "aide": "Appuie-toi sur ce que tu sais déjà : × 9 = × 10 − le nombre ; × 8 = double de × 4 ; × 6 = × 5 + le nombre."
+      "methode": "Multiplie l’autre nombre par dix, puis retire une fois ce nombre. Vérifie en comparant avec un produit voisin que tu connais."
     },
     "reponse": {
       "valeur": 72
     },
     "meta": {
       "auteur": "generation-automatique (tools/generate_items.py)",
-      "date_creation": "2026-09-26",
+      "date_creation": "2026-09-30",
       "relecture_ortho": {
         "statut": "a_revoir"
       }
     }
   },
   {
-    "id": "cm2-10-07",
+    "id": "cm3-10-07",
     "type": "production",
     "module": "entrainement",
     "theme": "calcul-mental",
@@ -189,21 +189,21 @@
     "cap_complexite": null,
     "contenu": {
       "enonce": "Combien font 4 × 9 ?",
-      "aide": "Appuie-toi sur ce que tu sais déjà : × 9 = × 10 − le nombre ; × 8 = double de × 4 ; × 6 = × 5 + le nombre."
+      "methode": "Multiplie l’autre nombre par dix, puis retire une fois ce nombre. Vérifie en comparant avec un produit voisin que tu connais."
     },
     "reponse": {
       "valeur": 36
     },
     "meta": {
       "auteur": "generation-automatique (tools/generate_items.py)",
-      "date_creation": "2026-09-26",
+      "date_creation": "2026-09-30",
       "relecture_ortho": {
         "statut": "a_revoir"
       }
     }
   },
   {
-    "id": "cm2-10-08",
+    "id": "cm3-10-08",
     "type": "production",
     "module": "entrainement",
     "theme": "calcul-mental",
@@ -218,21 +218,21 @@
     "cap_complexite": null,
     "contenu": {
       "enonce": "Combien font 6 × 9 ?",
-      "aide": "Appuie-toi sur ce que tu sais déjà : × 9 = × 10 − le nombre ; × 8 = double de × 4 ; × 6 = × 5 + le nombre."
+      "methode": "Multiplie l’autre nombre par dix, puis retire une fois ce nombre. Vérifie en comparant avec un produit voisin que tu connais."
     },
     "reponse": {
       "valeur": 54
     },
     "meta": {
       "auteur": "generation-automatique (tools/generate_items.py)",
-      "date_creation": "2026-09-26",
+      "date_creation": "2026-09-30",
       "relecture_ortho": {
         "statut": "a_revoir"
       }
     }
   },
   {
-    "id": "cm2-10-09",
+    "id": "cm3-10-09",
     "type": "production",
     "module": "entrainement",
     "theme": "calcul-mental",
@@ -247,21 +247,21 @@
     "cap_complexite": null,
     "contenu": {
       "enonce": "Combien font 7 × 8 ?",
-      "aide": "Appuie-toi sur ce que tu sais déjà : × 9 = × 10 − le nombre ; × 8 = double de × 4 ; × 6 = × 5 + le nombre."
+      "methode": "Multiplie l’autre nombre par quatre, puis double ce résultat. Vérifie en comparant avec un produit voisin que tu connais."
     },
     "reponse": {
       "valeur": 56
     },
     "meta": {
       "auteur": "generation-automatique (tools/generate_items.py)",
-      "date_creation": "2026-09-26",
+      "date_creation": "2026-09-30",
       "relecture_ortho": {
         "statut": "a_revoir"
       }
     }
   },
   {
-    "id": "cm2-10-10",
+    "id": "cm3-10-10",
     "type": "production",
     "module": "entrainement",
     "theme": "calcul-mental",
@@ -276,21 +276,21 @@
     "cap_complexite": null,
     "contenu": {
       "enonce": "Combien font 4 × 8 ?",
-      "aide": "Appuie-toi sur ce que tu sais déjà : × 9 = × 10 − le nombre ; × 8 = double de × 4 ; × 6 = × 5 + le nombre."
+      "methode": "Double l’autre nombre, puis double encore ce résultat. Vérifie en comparant avec un produit voisin que tu connais."
     },
     "reponse": {
       "valeur": 32
     },
     "meta": {
       "auteur": "generation-automatique (tools/generate_items.py)",
-      "date_creation": "2026-09-26",
+      "date_creation": "2026-09-30",
       "relecture_ortho": {
         "statut": "a_revoir"
       }
     }
   },
   {
-    "id": "cm2-10-11",
+    "id": "cm3-10-11",
     "type": "production",
     "module": "entrainement",
     "theme": "calcul-mental",
@@ -305,21 +305,21 @@
     "cap_complexite": null,
     "contenu": {
       "enonce": "Combien font 7 × 7 ?",
-      "aide": "Appuie-toi sur ce que tu sais déjà : × 9 = × 10 − le nombre ; × 8 = double de × 4 ; × 6 = × 5 + le nombre."
+      "methode": "Décompose sept en cinq et deux : rassemble cinq fois et deux fois l’autre nombre. Vérifie en comparant avec un produit voisin que tu connais."
     },
     "reponse": {
       "valeur": 49
     },
     "meta": {
       "auteur": "generation-automatique (tools/generate_items.py)",
-      "date_creation": "2026-09-26",
+      "date_creation": "2026-09-30",
       "relecture_ortho": {
         "statut": "a_revoir"
       }
     }
   },
   {
-    "id": "cm2-10-12",
+    "id": "cm3-10-12",
     "type": "production",
     "module": "entrainement",
     "theme": "calcul-mental",
@@ -334,21 +334,21 @@
     "cap_complexite": null,
     "contenu": {
       "enonce": "Combien font 7 × 9 ?",
-      "aide": "Appuie-toi sur ce que tu sais déjà : × 9 = × 10 − le nombre ; × 8 = double de × 4 ; × 6 = × 5 + le nombre."
+      "methode": "Multiplie l’autre nombre par dix, puis retire une fois ce nombre. Vérifie en comparant avec un produit voisin que tu connais."
     },
     "reponse": {
       "valeur": 63
     },
     "meta": {
       "auteur": "generation-automatique (tools/generate_items.py)",
-      "date_creation": "2026-09-26",
+      "date_creation": "2026-09-30",
       "relecture_ortho": {
         "statut": "a_revoir"
       }
     }
   },
   {
-    "id": "cm2-10-13",
+    "id": "cm3-10-13",
     "type": "production",
     "module": "entrainement",
     "theme": "calcul-mental",
@@ -363,21 +363,21 @@
     "cap_complexite": null,
     "contenu": {
       "enonce": "Combien font 8 × 8 ?",
-      "aide": "Appuie-toi sur ce que tu sais déjà : × 9 = × 10 − le nombre ; × 8 = double de × 4 ; × 6 = × 5 + le nombre."
+      "methode": "Multiplie l’autre nombre par quatre, puis double ce résultat. Vérifie en comparant avec un produit voisin que tu connais."
     },
     "reponse": {
       "valeur": 64
     },
     "meta": {
       "auteur": "generation-automatique (tools/generate_items.py)",
-      "date_creation": "2026-09-26",
+      "date_creation": "2026-09-30",
       "relecture_ortho": {
         "statut": "a_revoir"
       }
     }
   },
   {
-    "id": "cm2-10-14",
+    "id": "cm3-10-14",
     "type": "production",
     "module": "entrainement",
     "theme": "calcul-mental",
@@ -392,21 +392,21 @@
     "cap_complexite": null,
     "contenu": {
       "enonce": "Combien font 6 × 8 ?",
-      "aide": "Appuie-toi sur ce que tu sais déjà : × 9 = × 10 − le nombre ; × 8 = double de × 4 ; × 6 = × 5 + le nombre."
+      "methode": "Multiplie l’autre nombre par quatre, puis double ce résultat. Vérifie en comparant avec un produit voisin que tu connais."
     },
     "reponse": {
       "valeur": 48
     },
     "meta": {
       "auteur": "generation-automatique (tools/generate_items.py)",
-      "date_creation": "2026-09-26",
+      "date_creation": "2026-09-30",
       "relecture_ortho": {
         "statut": "a_revoir"
       }
     }
   },
   {
-    "id": "cm2-10-15",
+    "id": "cm3-10-15",
     "type": "production",
     "module": "entrainement",
     "theme": "calcul-mental",
@@ -421,21 +421,21 @@
     "cap_complexite": null,
     "contenu": {
       "enonce": "Combien font 5 × 7 ?",
-      "aide": "Appuie-toi sur ce que tu sais déjà : × 9 = × 10 − le nombre ; × 8 = double de × 4 ; × 6 = × 5 + le nombre."
+      "methode": "Multiplie l’autre nombre par dix, puis prends la moitié. Vérifie en comparant avec un produit voisin que tu connais."
     },
     "reponse": {
       "valeur": 35
     },
     "meta": {
       "auteur": "generation-automatique (tools/generate_items.py)",
-      "date_creation": "2026-09-26",
+      "date_creation": "2026-09-30",
       "relecture_ortho": {
         "statut": "a_revoir"
       }
     }
   },
   {
-    "id": "cm2-10-16",
+    "id": "cm3-10-16",
     "type": "production",
     "module": "entrainement",
     "theme": "calcul-mental",
@@ -450,21 +450,21 @@
     "cap_complexite": null,
     "contenu": {
       "enonce": "Combien font 6 × 6 ?",
-      "aide": "Appuie-toi sur ce que tu sais déjà : × 9 = × 10 − le nombre ; × 8 = double de × 4 ; × 6 = × 5 + le nombre."
+      "methode": "Multiplie l’autre nombre par cinq, puis ajoute encore ce nombre. Vérifie en comparant avec un produit voisin que tu connais."
     },
     "reponse": {
       "valeur": 36
     },
     "meta": {
       "auteur": "generation-automatique (tools/generate_items.py)",
-      "date_creation": "2026-09-26",
+      "date_creation": "2026-09-30",
       "relecture_ortho": {
         "statut": "a_revoir"
       }
     }
   },
   {
-    "id": "cm2-10-17",
+    "id": "cm3-10-17",
     "type": "production",
     "module": "entrainement",
     "theme": "calcul-mental",
@@ -479,21 +479,21 @@
     "cap_complexite": null,
     "contenu": {
       "enonce": "Combien font 5 × 8 ?",
-      "aide": "Appuie-toi sur ce que tu sais déjà : × 9 = × 10 − le nombre ; × 8 = double de × 4 ; × 6 = × 5 + le nombre."
+      "methode": "Multiplie l’autre nombre par dix, puis prends la moitié. Vérifie en comparant avec un produit voisin que tu connais."
     },
     "reponse": {
       "valeur": 40
     },
     "meta": {
       "auteur": "generation-automatique (tools/generate_items.py)",
-      "date_creation": "2026-09-26",
+      "date_creation": "2026-09-30",
       "relecture_ortho": {
         "statut": "a_revoir"
       }
     }
   },
   {
-    "id": "cm2-10-18",
+    "id": "cm3-10-18",
     "type": "production",
     "module": "entrainement",
     "theme": "calcul-mental",
@@ -508,21 +508,21 @@
     "cap_complexite": null,
     "contenu": {
       "enonce": "Combien font 3 × 9 ?",
-      "aide": "Appuie-toi sur ce que tu sais déjà : × 9 = × 10 − le nombre ; × 8 = double de × 4 ; × 6 = × 5 + le nombre."
+      "methode": "Multiplie l’autre nombre par dix, puis retire une fois ce nombre. Vérifie en comparant avec un produit voisin que tu connais."
     },
     "reponse": {
       "valeur": 27
     },
     "meta": {
       "auteur": "generation-automatique (tools/generate_items.py)",
-      "date_creation": "2026-09-26",
+      "date_creation": "2026-09-30",
       "relecture_ortho": {
         "statut": "a_revoir"
       }
     }
   },
   {
-    "id": "cm2-10-19",
+    "id": "cm3-10-19",
     "type": "production",
     "module": "entrainement",
     "theme": "calcul-mental",
@@ -537,14 +537,14 @@
     "cap_complexite": null,
     "contenu": {
       "enonce": "Combien font 5 × 9 ?",
-      "aide": "Appuie-toi sur ce que tu sais déjà : × 9 = × 10 − le nombre ; × 8 = double de × 4 ; × 6 = × 5 + le nombre."
+      "methode": "Multiplie l’autre nombre par dix, puis prends la moitié. Vérifie en comparant avec un produit voisin que tu connais."
     },
     "reponse": {
       "valeur": 45
     },
     "meta": {
       "auteur": "generation-automatique (tools/generate_items.py)",
-      "date_creation": "2026-09-26",
+      "date_creation": "2026-09-30",
       "relecture_ortho": {
         "statut": "a_revoir"
       }

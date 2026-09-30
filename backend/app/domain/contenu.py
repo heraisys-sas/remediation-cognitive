@@ -31,6 +31,7 @@ _SOURCES_PAR_THEME: dict[str, tuple[str, str]] = {
     "quotidien": ("quotidien/paliers", "palier-*.json"),
     "deduction": ("deduction/paliers", "palier-*.json"),
     "methodes": ("methodes/paliers", "palier-*.json"),
+    "garder-cap": ("garder-cap/paliers", "palier-*.json"),
     "evocation": ("evocation/paliers", "palier-*.json"),
 }
 
@@ -48,6 +49,7 @@ _CATEGORIE_PAR_THEME: dict[str, str] = {
     "quotidien": "entrainement",
     "deduction": "entrainement",
     "methodes": "entrainement",
+    "garder-cap": "entrainement",
     "memoire": "evaluation",
     "concentration": "evaluation",
     "rappel-series": "evaluation",

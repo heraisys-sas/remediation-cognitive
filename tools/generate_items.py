@@ -29,6 +29,11 @@ Usage :
 
 from __future__ import annotations
 
+try:
+    from tools.methodes_calcul import methode_calcul
+except ModuleNotFoundError:
+    from methodes_calcul import methode_calcul
+
 import argparse
 import json
 import random
@@ -112,11 +117,11 @@ def _item(numero_palier: int, rang: int, enonce: str, valeur: int,
     entièrement revu, il ne doit donc pas hériter des états de révision de l'ancien
     (règle de versionnage du contenu).
     """
-    contenu: dict = {"enonce": enonce, "aide": aide}
+    contenu: dict = {"enonce": enonce, "methode": methode_calcul(enonce, numero_palier)}
     if numero_palier in CONSIGNES:
         contenu["consigne"] = CONSIGNES[numero_palier]
     return {
-        "id": f"cm2-{numero_palier}-{rang:02d}",
+        "id": f"cm3-{numero_palier}-{rang:02d}",
         "type": "production",
         "module": "entrainement",
         "theme": "calcul-mental",

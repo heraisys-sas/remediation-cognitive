@@ -2,6 +2,12 @@
 
 Format : [date] — [périmètre] — description. Les retours informels de l'orthophoniste sont journalisés ici, sans caution clinique.
 
+## 2026-09-30 · Méthodes de calcul et Garder le cap
+
+- Remplacement des aides génériques des 212 calculs par une stratégie adaptée et une vérification ; panneau unique facultatif « Une méthode possible », sans résultat intermédiaire fourni. Nouveaux identifiants cm3, opérations et réponses conservées.
+- Nouvelle carte « Garder le cap » : 12 situations de reprise après interruption, adaptation du plan et contrôle final. Sources primaires et limites documentées ; quatre items par séance, sans chronomètre de réponse.
+- Tests de couverture, rendu du panneau, transition entre thèmes et parcours API des trois familles. ADR-020.
+
 ## 2026-09-30 · Plans, recherche documentaire et choix en situation
 
 - Méthodes P4 : huit plans entièrement revus, contraintes explicites et une seule étape à déplacer pour rétablir l’ordre.
