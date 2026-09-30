@@ -41,7 +41,8 @@ def test_verifier_interface_coherence():
     assert resultat.returncode == 0, resultat.stdout
 
 def test_verifier_session_transmet_le_palier():
-    """La requête JS de démarrage porte le palier choisi (et rien en mode auto) :
+    """La requête JS de démarrage porte le palier choisi (et rien en mode auto),
+    ainsi que la dérogation sans_limite_sessions quand elle est active (ADR-021) :
     le contrôle exécute le VRAI demarrerSession + apiFetch de frontend/src/app.js
     sous Node, sur un fetch simulé. Node est cherché via NODE_BIN puis le PATH ;
     sans Node, le contrôle est ignoré et signalé."""
@@ -57,6 +58,7 @@ def test_verifier_session_transmet_le_palier():
     )
     assert resultat.returncode == 0, (resultat.stdout + resultat.stderr)[-2000:]
     assert "palier 2 : POST avec corps" in resultat.stdout
+    assert "dérogation active : POST avec corps" in resultat.stdout
 
 
 

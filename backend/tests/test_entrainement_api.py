@@ -418,6 +418,34 @@ def test_quatrieme_seance_du_jour_429(client):
     assert client.post("/api/entrainement/anglais/sessions").status_code == 201
 
 
+
+def test_derogation_limite_sessions_accordee_en_entrainement(client):
+    """Dérogation explicite (ADR-021) : le corps de la requête la demande ; le
+    serveur continue de compter la séance et refuse toujours sans elle."""
+    for _ in range(3):
+        assert client.post("/api/entrainement/calcul-mental/sessions").status_code == 201
+    assert client.post("/api/entrainement/calcul-mental/sessions").status_code == 429
+    accepte = client.post(
+        "/api/entrainement/calcul-mental/sessions",
+        json={"sans_limite_sessions": True},
+    )
+    assert accepte.status_code == 201, accepte.text
+    # Le compteur du jour continue de compter : la dérogation ne le remet pas à zéro.
+    assert client.post("/api/entrainement/calcul-mental/sessions").status_code == 429
+
+
+def test_derogation_combinee_au_palier_force(client):
+    """Palier d'essai + dérogation : les deux champs coexistent dans le corps."""
+    for _ in range(3):
+        assert client.post("/api/entrainement/calcul-mental/sessions").status_code == 201
+    reponse = client.post(
+        "/api/entrainement/calcul-mental/sessions",
+        json={"palier": 2, "sans_limite_sessions": True},
+    )
+    assert reponse.status_code == 201, reponse.text
+    assert {item["palier"] for item in reponse.json()["items"]} == {2}
+
+
 # -- garde-fou : arrêt proposé, jamais forcé --------------------------------------------
 
 

@@ -20,7 +20,7 @@ Trois choses ne bougent pas, quel que soit le thème :
 
 - la **durée maximale** (dix minutes) est **une proposition**, partout (ADR-010) : au-delà, la
   séance invite à s'arrêter — elle ne se ferme pas d'elle-même, la personne décide. Le garde-fou
-  de sur-sollicitation reste la **limite de séances par jour** et le nombre d'exercices par séance
+  de sur-sollicitation reste la **limite de séances par jour** (dérogation explicite possible pour l'entraînement, décidée par la personne — ADR-021) et le nombre d'exercices par séance
   (anti-syndrome du patient qui veut « prouver » qu'il va bien) ;
 - la **fatigue** reste une **proposition** d'arrêt, jamais une interruption ;
 - une séance qui atteint sa limite **termine proprement** : la réponse en cours est conservée,

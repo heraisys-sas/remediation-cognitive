@@ -1041,3 +1041,75 @@ body {
 .document-source { padding: 1rem; border: 1px solid currentColor; border-radius: 0.75rem; line-height: 1.65; }
 .document-source h3 { margin-top: 0; }
 .document-source p { white-space: pre-line; margin-bottom: 0; }
+
+/* ---------------------------------------------------------------------
+   Accueil : dérogation « dépasser la limite de séances » (ADR-021)
+   --------------------------------------------------------------------- */
+
+.reglage-limite {
+  margin-top: 2rem;
+  padding-top: 1.2rem;
+  border-top: 1px solid var(--bordure);
+}
+
+.commutateur {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.7rem;
+  cursor: pointer;
+  color: var(--texte);
+  font-size: 0.98rem;
+}
+
+/* L'input reste natif et focusable : seule sa présentation est redessinée. */
+.commutateur input {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  margin: 0;
+  padding: 0;
+  opacity: 0;
+}
+
+.commutateur-piste {
+  flex: none;
+  position: relative;
+  width: 2.5rem;
+  height: 1.45rem;
+  border: 1px solid var(--bordure);
+  border-radius: 999px;
+  background: var(--surface-haute);
+  transition: background-color 0.15s ease, border-color 0.15s ease;
+}
+
+.commutateur-piste::after {
+  content: "";
+  position: absolute;
+  top: 50%;
+  left: 0.16rem;
+  width: 0.95rem;
+  height: 0.95rem;
+  border-radius: 50%;
+  background: var(--texte-secondaire);
+  transform: translateY(-50%) translateX(0);
+  transition: background-color 0.15s ease;
+}
+
+.commutateur input:checked + .commutateur-piste {
+  border-color: var(--accent);
+  background: var(--accent);
+}
+
+.commutateur input:checked + .commutateur-piste::after {
+  transform: translateY(-50%) translateX(1.08rem);
+  background: var(--texte-sur-accent);
+}
+
+.commutateur input:focus-visible + .commutateur-piste {
+  outline: 2px solid var(--accent);
+  outline-offset: 2px;
+}
+
+.reglage-limite-note {
+  margin: 0.55rem 0 0;
+}

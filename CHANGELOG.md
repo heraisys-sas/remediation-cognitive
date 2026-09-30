@@ -2,6 +2,12 @@
 
 Format : [date] — [périmètre] — description. Les retours informels de l'orthophoniste sont journalisés ici, sans caution clinique.
 
+## 2026-09-30 · Limite de séances : dérogation explicite depuis l'accueil
+
+- Nouveau réglage sur l'accueil — « Dépasser la limite de séances du jour » : il lève le plafond pour la journée **pour les entraînements** ; l'évaluation reste à une séance par jour (répéter une mesure la fausse). Désactivé par défaut, conservé d'une visite à l'autre ; l'état est visible sur la page.
+- Le démarrage de séance transmet `sans_limite_sessions` (corps `DemarrageOptionnel`) : la dérogation est **accordée par le serveur**, jamais contournée par l'interface ; le compteur du jour continue de compter toutes les séances. Le résumé de fin remplace « séances restantes » par « Limite levée… » quand elle est active.
+- Documentation : ADR-021, contrat d'API et README ajustés ; tests dédiés (API : dérogation accordée en entraînement, ignorée en évaluation, combinée au palier ; contrôle JS exécutant la vraie requête).
+
 ## 2026-09-30 · Déduction : clôture des suites du rapport du 29/09 (matin)
 
 - Les deux suites du rapport de correction du matin du 29/09 portaient sur le corpus de 80 grilles, remplacé le soir même par la refonte à 100 grilles (`b68308a`) : **« quatre grilles à phrase retirable »** (palier 3, ex-`dc-3-12/16/17/20`) et **« redondances du palier 4 à arbitrer »** (122 mesurées) sont **closes**.

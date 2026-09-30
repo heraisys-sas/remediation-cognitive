@@ -31,7 +31,7 @@ Docs d'entrée : `docs/00-produit/vision.md`, `docs/00-produit/cadre-reglementai
 
 ## Règles non négociables (garde-fous cliniques)
 
-1. **Le dosage prime sur la difficulté** : séances 5–10 min, limites journalières, cap de difficulté avec justification pédagogique explicite.
+1. **Le dosage prime sur la difficulté** : séances 5–10 min, limites journalières (dérogation explicite possible depuis l'accueil — ADR-021), cap de difficulté avec justification pédagogique explicite.
 2. **Aucune norme populationnelle affichée à l'utilisateur** ; jamais présenter un score comme un diagnostic.
 3. **Séparation stricte des vocabulaires** : clinique (bilan) vs neutre/ludique (entraînement) — centralisée dans `backend/app/domain/messages.py`, ne pas construire de chaîne utilisateur ailleurs.
 4. **Aucune donnée de bilan ne transite par un service tiers non-HDS.**

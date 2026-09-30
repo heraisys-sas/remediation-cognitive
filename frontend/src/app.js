@@ -60,6 +60,17 @@ function lireSiLectureAuto(texte) {
   if (texte && lectureAutoActivee() && CAPACITES.syntheseDisponible()) CAPACITES.lire(texte);
 }
 
+//: Dérogation explicite au plafond de séances du jour (entraînements — ADR-021).
+//: Désactivée par défaut ; conservée d'une visite à l'autre, comme la lecture automatique.
+const CLE_SANS_LIMITE = "remediation.sansLimiteSessions";
+function sansLimiteActivee() {
+  try { return window.localStorage.getItem(CLE_SANS_LIMITE) === "on"; }
+  catch { return false; }
+}
+function definirSansLimite(active) {
+  try { window.localStorage.setItem(CLE_SANS_LIMITE, active ? "on" : "off"); } catch { /* stockage indisponible */ }
+}
+
 //: Blanc entre deux éléments d'une séquence (segmentation visuelle uniquement —
 //: ce n'est pas une pause d'attente : le rythme reste d'un élément par seconde).
 const BLANC_INTER_ITEM_MS = 120;
@@ -92,6 +103,8 @@ const refs = {
   boutonReessayer: $("bouton-reessayer"),
   boutonRetourThemes: $("bouton-retour-themes"),
   noticeThemes: $("notice-themes"),
+  caseSansLimite: $("case-sans-limite"),
+  noteSansLimite: $("note-sans-limite"),
   listeThemes: $("liste-themes"),
   sectionEvaluation: $("section-evaluation"),
   listeThemesEvaluation: $("liste-themes-evaluation"),
@@ -385,6 +398,14 @@ function masquerNoticeThemes() {
   refs.noticeThemes.textContent = "";
 }
 
+/** Réglage d'accueil « dépasser la limite » : reflète l'état (texte d'accompagnement). */
+function majReglageSansLimite() {
+  if (!refs.noteSansLimite) return;
+  refs.noteSansLimite.textContent = sansLimiteActivee()
+    ? "Limite levée pour les entraînements — tu décides quand t’arrêter."
+    : "Entraînements seulement — les mesures d’évaluation restent limitées.";
+}
+
 /** Réinitialise la confirmation en deux temps de « Terminer ». */
 function reinitialiserConfirmationFin() {
   etat.confirmationFin = false;
@@ -516,11 +537,16 @@ async function demarrerSession(theme, palier = null) {
 
   try {
     // Essai sur un palier précis : le choix part dans le corps JSON (contrat
-    // « DemarrageOptionnel » du serveur). En mode auto (palier null), aucun
-    // corps n'est envoyé : le serveur suit la progression, comportement inchangé.
+    // « DemarrageOptionnel » du serveur). En mode auto (palier null), rien n'est
+    // envoyé pour le palier : le serveur suit la progression, comportement inchangé.
+    // Dérogation « dépasser la limite » (si activée en accueil) : même corps — le
+    // serveur ne l'accorde qu'aux thèmes d'entraînement (ADR-021).
+    const corps = {};
+    if (palier !== null) corps.palier = palier;
+    if (sansLimiteActivee()) corps.sans_limite_sessions = true;
     const options = { method: "POST" };
-    if (palier !== null) {
-      options.body = JSON.stringify({ palier: palier });
+    if (Object.keys(corps).length > 0) {
+      options.body = JSON.stringify(corps);
     }
     const donnees = await apiFetch(
       `/${encodeURIComponent(theme.id)}/sessions`,
@@ -551,8 +577,11 @@ async function demarrerSession(theme, palier = null) {
   } catch (erreur) {
     if (erreur.type === "api" && erreur.status === 429) {
       // Limite de séances atteinte : message calme, le repos fait partie du plan.
+      // L'évaluation a sa raison propre — la dérogation ne s'y applique pas (ADR-021).
       montrerNoticeThemes(
-        "Trois séances déjà faites aujourd’hui — le repos fait partie de l’entraînement."
+        theme.categorie === "evaluation"
+          ? "Cette mesure a déjà été faite aujourd’hui — la répéter fausserait le repère."
+          : "Trois séances déjà faites aujourd’hui — le repos fait partie de l’entraînement."
       );
     } else if (erreur.type === "reseau") {
       afficherErreurReseau(() => demarrerSession(theme, palier));
@@ -1431,9 +1460,13 @@ function rendreResume(donnees) {
   refs.carteArret.hidden = !donnees.arret_propose;
 
   // Séances restantes aujourd'hui : information douce, l'utilisateur décide.
+  // Sous dérogation (entraînements), le compteur peut être à zéro : on parle de la
+  // limite levée, pas d'un « reviens demain » trompeur (ADR-021).
   const restantes = donnees.sessions_restantes_aujourdhui;
   let texteRestantes = "";
-  if (Number.isFinite(restantes)) {
+  if (sansLimiteActivee() && etat.theme && etat.theme.categorie !== "evaluation") {
+    texteRestantes = "Limite levée pour les entraînements — tu décides quand t’arrêter.";
+  } else if (Number.isFinite(restantes)) {
     if (restantes <= 0) {
       texteRestantes = "C’était la dernière séance du jour — à bientôt.";
     } else if (restantes === 1) {
@@ -2294,6 +2327,14 @@ function brancherEvenements() {
       CAPACITES.arreter();                       // coupée à tout moment
     }
   });
+
+  // Réglage d'accueil : dérogation explicite au plafond du jour (ADR-021).
+  if (refs.caseSansLimite) {
+    refs.caseSansLimite.addEventListener("change", () => {
+      definirSansLimite(refs.caseSansLimite.checked);
+      majReglageSansLimite();
+    });
+  }
   refs.boutonDicter.addEventListener("click", () => {
     if (!etat.session || etat.repondu) return;
     const prefixe = refs.champReponse.value.trim();   // ne pas écraser ce qui est déjà saisi
@@ -2324,6 +2365,8 @@ function brancherEvenements() {
 
 function init() {
   if (refs.caseLectureAuto) refs.caseLectureAuto.checked = lectureAutoActivee();
+  if (refs.caseSansLimite) refs.caseSansLimite.checked = sansLimiteActivee();
+  majReglageSansLimite();
   brancherEvenements();
   afficherVue("themes");
   chargerThemes();

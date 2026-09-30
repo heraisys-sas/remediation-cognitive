@@ -28,3 +28,8 @@ Le cadre clinique est pourtant explicite (`docs/10-clinique/protocoles.md`) : **
 - (+) Le dosage devient lisible : des **séances** comptées, des **exercices** comptés, pas un minuteur.
 - (−) Le temps n'est plus une contrainte technique : c'est à l'interface et au contenu de rendre la séance naturellement courte (six grilles pour la déduction, douze items courts ailleurs).
 - (−) Une personne qui insiste peut dépasser les dix minutes : c'est accepté explicitement (principe « proposition, jamais imposition ») — la limite de séances du jour reste, elle, ferme.
+
+
+## Ajustement du 30 septembre 2026
+
+La limite de séances du jour n'est plus entièrement ferme : une **dérogation explicite** existe pour les thèmes d'entraînement, décidée par la personne depuis l'accueil et accordée côté serveur (ADR-021). L'évaluation reste strictement plafonnée à une séance par jour.

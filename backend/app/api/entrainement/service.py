@@ -1,7 +1,8 @@
 """Orchestration des séances d'entraînement (couche service du sprint 1).
 
 Sépare la logique métier du mapping HTTP (router.py) :
-- démarrer une séance : garde-fou de dosage (3 séances/jour), sélection
+- démarrer une séance : garde-fou de dosage (3 séances/jour — dérogation
+  explicite possible, ADR-021), sélection
   des items (dus FSRS puis nouveaux, max 12), création du
   ``SessionRunner`` (moteur engine/ réutilisé tel quel) ;
 - enregistrer une réponse : correction serveur (la réponse attendue ne
@@ -36,6 +37,7 @@ from ...domain.dosage import (
     LIMITES_SESSIONS_JOUR,
     LIMITE_SESSIONS_JOUR,
     MAX_REPRISES_PAR_SEANCE,
+    derogation_limite_sessions,
     duree_proposee,
     parametres_seance,
 )
@@ -168,7 +170,12 @@ class GestionnaireSessions:
 
     # -- démarrage -----------------------------------------------------------
 
-    def demarrer(self, theme: str, palier_force: int | None = None) -> dict:
+    def demarrer(
+        self,
+        theme: str,
+        palier_force: int | None = None,
+        sans_limite_sessions: bool = False,
+    ) -> dict:
         """Démarre une séance et retourne le payload 201 du contrat.
 
         ``palier_force`` (essai) : travaille un palier choisi au lieu du palier courant.
@@ -176,6 +183,11 @@ class GestionnaireSessions:
         n'avance que vers le haut (``max(palier, session.palier + 1)``), donc un palier
         forcé ne peut pas faire reculer la progression — au mieux la fait-il avancer si la
         personne réussit, ce qui est exact.
+
+        ``sans_limite_sessions`` (dérogation, ADR-021) : la personne demande à
+        dépasser le plafond du jour depuis l'accueil. Accordée pour les thèmes
+        d'entraînement uniquement (l'évaluation reste plafonnée) ; le compteur du
+        jour continue de compter la séance.
 
         Lève ``ThemeInconnu`` (404), ``PalierInconnu`` (422) ou
         ``LimiteSessionsAtteinte`` (429). Le compteur du jour est incrémenté dès le
@@ -185,11 +197,16 @@ class GestionnaireSessions:
         if not self.contenu.theme_existe(theme):
             raise ThemeInconnu(theme)
         limite = self._limite_sessions(theme)
+        # Dérogation explicite (ADR-021), portée entraînement seulement : la règle
+        # reste côté serveur — l'interface la demande, elle ne la contourne pas.
+        deroge = derogation_limite_sessions(
+            self.contenu.categorie(theme), sans_limite_sessions
+        )
         with self._verrou_dosage:
             maintenant = self.horloge()
             aujourd_hui = maintenant.date()
             nb_sessions = self.stockage.lire_compteur(theme, aujourd_hui)
-            if nb_sessions >= limite:
+            if not deroge and nb_sessions >= limite:
                 raise LimiteSessionsAtteinte(
                     restantes=max(0, limite - nb_sessions)
                 )

@@ -28,9 +28,16 @@ router = APIRouter(prefix="/api/entrainement", tags=["entrainement"])
 
 
 class DemarrageOptionnel(BaseModel):
-    """Corps facultatif de POST …/sessions : palier d'essai."""
+    """Corps facultatif de POST …/sessions.
+
+    - ``palier`` : essai sur un palier précis (la progression ne peut pas reculer) ;
+    - ``sans_limite_sessions`` : dérogation explicite au plafond de séances du jour,
+      demandée depuis l'accueil — accordée par le serveur aux thèmes d'entraînement
+      seulement (l'évaluation reste plafonnée — ADR-021).
+    """
 
     palier: int | None = Field(default=None, ge=1)
+    sans_limite_sessions: bool = False
 
 
 class ReponseUtilisateur(BaseModel):
@@ -75,11 +82,17 @@ def lister_themes(request: Request) -> dict:
 def demarrer_session(theme: str, request: Request, corps: DemarrageOptionnel | None = None):
     """POST /api/entrainement/{theme}/sessions — 201 (items sans réponse) ou 429.
 
-    Corps facultatif ``{"palier": N}`` : essai sur un palier précis, sans effet sur la
-    progression (elle ne peut pas reculer).
+    Corps facultatif ``{"palier": N, "sans_limite_sessions": bool}`` : essai sur un
+    palier précis, sans effet sur la progression (elle ne peut pas reculer) ; et
+    dérogation explicite au plafond du jour — accordée aux thèmes d'entraînement
+    seulement (ADR-021).
     """
     try:
-        return _gestionnaire(request).demarrer(theme, palier_force=corps.palier if corps else None)
+        return _gestionnaire(request).demarrer(
+            theme,
+            palier_force=corps.palier if corps else None,
+            sans_limite_sessions=corps.sans_limite_sessions if corps else False,
+        )
     except PalierInconnu:
         return _erreur(422, "palier_inconnu")
     except ThemeInconnu:
@@ -87,7 +100,8 @@ def demarrer_session(theme: str, request: Request, corps: DemarrageOptionnel | N
     except ReponseInvalide:
         return _erreur(422, "reponse_invalide")
     except LimiteSessionsAtteinte:
-        # Corps exact du contrat (garde-fou de dosage, non contournable).
+        # Corps exact du contrat : refus du plafond du jour — une dérogation
+        # explicite (« sans_limite_sessions », ADR-021) peut le lever côté service.
         return JSONResponse(
             status_code=429,
             content={

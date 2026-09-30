@@ -8,7 +8,7 @@ Monorepo pour un logiciel de **bilan cognitif**, de **rééducation ciblée** et
 
 ## Principe directeur
 
-Le moteur adaptatif (`engine/`) est **unique** et réutilisé par les trois modules. Le contenu (`content/`) est versionné **séparément du code**. Les garde-fous cliniques vivent dans `backend/app/domain/` — ils ne sont pas contournables par l'UI.
+Le moteur adaptatif (`engine/`) est **unique** et réutilisé par les trois modules. Le contenu (`content/`) est versionné **séparément du code**. Les garde-fous cliniques vivent dans `backend/app/domain/` — ils ne sont pas contournables par l'UI : toute dérogation (ex. la limite de séances du jour, ADR-021) est explicite et accordée côté serveur.
 
 ## Les trois modules
 

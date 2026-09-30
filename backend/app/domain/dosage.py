@@ -2,7 +2,8 @@
 
 Règles issues de docs/10-clinique/protocoles.md :
 - séance courte 5–10 min ;
-- limite de sessions/jour paramétrable ;
+- limite de sessions/jour paramétrable (dérogation explicite possible pour
+  les thèmes d'entraînement — ADR-021) ;
 - cap de difficulté configurable avec justification pédagogique explicite
   (anti sur-sollicitation post-commotionnelle).
 """
@@ -72,3 +73,15 @@ LIMITES_SESSIONS_JOUR: dict[str, int] = {
 def appliquer_cap_difficulte(palier_demande: int, cap_actif: int) -> int:
     """Ne jamais dépasser le cap de difficulté actif."""
     return min(palier_demande, cap_actif)
+
+
+def derogation_limite_sessions(categorie: str, demandee: bool) -> bool:
+    """La dérogation explicite au plafond de séances du jour s'applique-t-elle ?
+
+    La personne peut lever le plafond depuis l'accueil (« Dépasser la limite de
+    séances du jour » — ADR-021). Portée volontairement limitée aux thèmes
+    d'**entraînement** : l'évaluation reste plafonnée à une séance par jour —
+    répéter une mesure la fausse. Le compteur du jour continue de compter les
+    séances jouées sous dérogation : le dosage reste juste.
+    """
+    return demandee and categorie == "entrainement"

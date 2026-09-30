@@ -43,3 +43,24 @@ def test_la_categorie_ne_change_pas_le_contenu(client):
     assert CONTENU.categorie("memoire") == "evaluation"
     assert CONTENU.categorie("quotidien") == "entrainement"
     assert CONTENU.items("memoire") and CONTENU.items("quotidien")
+
+
+def test_la_derogation_ne_sapplique_pas_a_levaluation(client):
+    """Le champ sans_limite_sessions est ignoré pour l'évaluation : une mesure
+    reste unique dans la journée (répéter une mesure la fausse — ADR-021)."""
+    assert client.post("/api/entrainement/memoire/sessions").status_code == 201
+    seconde = client.post(
+        "/api/entrainement/memoire/sessions",
+        json={"sans_limite_sessions": True},
+    )
+    assert seconde.status_code == 429
+    assert seconde.json()["sessions_restantes_aujourdhui"] == 0
+
+
+def test_derogation_au_niveau_domaine():
+    """La portée de la dérogation est une règle du domaine (entraînement seulement)."""
+    from backend.app.domain.dosage import derogation_limite_sessions
+
+    assert derogation_limite_sessions("entrainement", True)
+    assert not derogation_limite_sessions("evaluation", True)
+    assert not derogation_limite_sessions("entrainement", False)
