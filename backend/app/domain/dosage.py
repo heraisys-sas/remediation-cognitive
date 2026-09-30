@@ -2,11 +2,13 @@
 
 Règles issues de docs/10-clinique/protocoles.md :
 - séance courte 5–10 min ;
-- limite de sessions/jour paramétrable (dérogation explicite possible pour
-  les thèmes d'entraînement — ADR-021) ;
+- limite de sessions par fenêtre (jour, ou semaine pour l'évaluation),
+  dérogation explicite possible — ADR-021 ;
 - cap de difficulté configurable avec justification pédagogique explicite
   (anti sur-sollicitation post-commotionnelle).
 """
+
+from datetime import date, timedelta
 
 
 def verifier_droit_de_session(nb_sessions_du_jour: int, limite: int) -> bool:
@@ -16,7 +18,8 @@ def verifier_droit_de_session(nb_sessions_du_jour: int, limite: int) -> bool:
 
 # Garde-fous chiffrés du sprint 1 (docs/30-technique/api-contract.md) —
 # paramétrables ici uniquement, jamais côté client.
-LIMITE_SESSIONS_JOUR = 3
+LIMITE_SESSIONS_DEFAUT = 3
+FENETRE_SESSIONS_DEFAUT = "jour"
 MAX_ITEMS_PAR_SEANCE = 12
 DUREE_MAX_SEANCE_S = 600
 
@@ -60,13 +63,14 @@ def duree_proposee(theme: str) -> bool:
 #: exercices manqués reviennent à la séance suivante, par la répétition espacée.
 MAX_REPRISES_PAR_SEANCE = 4
 
-#: Limite de séances par jour selon la CATÉGORIE du thème.
-#: L'évaluation est volontairement limitée à une séance par jour : répéter une
-#: mesure la fausse (effet d'apprentissage), alors que l'entraînement de
-#: remédiation gagne à être régulier.
-LIMITES_SESSIONS_JOUR: dict[str, int] = {
-    "entrainement": 3,
-    "evaluation": 1,
+#: Plafond de séances par CATÉGORIE de thème : limite et fenêtre de comptage.
+#: L'évaluation est limitée à une séance par **semaine** (fenêtre du lundi au
+#: dimanche) : répéter une mesure la fausse (effet d'apprentissage), l'espacer
+#: d'une semaine la protège mieux qu'un plafond quotidien ; l'entraînement de
+#: remédiation, lui, gagne à être régulier (3 par jour).
+LIMITES_SESSIONS: dict[str, dict[str, int | str]] = {
+    "entrainement": {"limite": 3, "fenetre": "jour"},
+    "evaluation": {"limite": 1, "fenetre": "semaine"},
 }
 
 
@@ -75,13 +79,22 @@ def appliquer_cap_difficulte(palier_demande: int, cap_actif: int) -> int:
     return min(palier_demande, cap_actif)
 
 
-def derogation_limite_sessions(categorie: str, demandee: bool) -> bool:
-    """La dérogation explicite au plafond de séances du jour s'applique-t-elle ?
+def limite_sessions(categorie: str) -> int:
+    """Plafond de séances de la fenêtre courante pour cette catégorie de thème."""
+    return int(LIMITES_SESSIONS.get(categorie, {}).get("limite", LIMITE_SESSIONS_DEFAUT))
 
-    La personne peut lever le plafond depuis l'accueil (« Dépasser la limite de
-    séances du jour » — ADR-021). Portée volontairement limitée aux thèmes
-    d'**entraînement** : l'évaluation reste plafonnée à une séance par jour —
-    répéter une mesure la fausse. Le compteur du jour continue de compter les
-    séances jouées sous dérogation : le dosage reste juste.
+
+def fenetre_sessions(categorie: str) -> str:
+    """Fenêtre de comptage du plafond : « jour » ou « semaine » (lundi–dimanche)."""
+    return str(LIMITES_SESSIONS.get(categorie, {}).get("fenetre", FENETRE_SESSIONS_DEFAUT))
+
+
+def debut_fenetre(fenetre: str, reference: date) -> date:
+    """Premier jour de la fenêtre de comptage qui contient ``reference``.
+
+    « jour » → la date elle-même ; « semaine » → le lundi de la semaine
+    calendaire (lundi–dimanche).
     """
-    return demandee and categorie == "entrainement"
+    if fenetre == "semaine":
+        return reference - timedelta(days=reference.weekday())
+    return reference

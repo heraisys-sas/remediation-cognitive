@@ -402,8 +402,8 @@ function masquerNoticeThemes() {
 function majReglageSansLimite() {
   if (!refs.noteSansLimite) return;
   refs.noteSansLimite.textContent = sansLimiteActivee()
-    ? "Limite levée pour les entraînements — tu décides quand t’arrêter."
-    : "Entraînements seulement — les mesures d’évaluation restent limitées.";
+    ? "Limite levée pour tous les thèmes — tu décides quand t’arrêter."
+    : "S’applique aux entraînements et aux mesures d’évaluation.";
 }
 
 /** Réinitialise la confirmation en deux temps de « Terminer ». */
@@ -577,10 +577,10 @@ async function demarrerSession(theme, palier = null) {
   } catch (erreur) {
     if (erreur.type === "api" && erreur.status === 429) {
       // Limite de séances atteinte : message calme, le repos fait partie du plan.
-      // L'évaluation a sa raison propre — la dérogation ne s'y applique pas (ADR-021).
+      // L'évaluation est plafonnée à une mesure par semaine (la dérogation la lève — ADR-021).
       montrerNoticeThemes(
         theme.categorie === "evaluation"
-          ? "Cette mesure a déjà été faite aujourd’hui — la répéter fausserait le repère."
+          ? "Cette mesure a déjà été faite cette semaine — la répéter fausserait le repère."
           : "Trois séances déjà faites aujourd’hui — le repos fait partie de l’entraînement."
       );
     } else if (erreur.type === "reseau") {
@@ -1459,18 +1459,24 @@ function rendreResume(donnees) {
   // Proposition d'arrêt (arret_propose) : bienveillante, jamais forcée.
   refs.carteArret.hidden = !donnees.arret_propose;
 
-  // Séances restantes aujourd'hui : information douce, l'utilisateur décide.
-  // Sous dérogation (entraînements), le compteur peut être à zéro : on parle de la
-  // limite levée, pas d'un « reviens demain » trompeur (ADR-021).
+  // Séances restantes : information douce, dans la fenêtre du thème (jour, ou
+  // semaine pour l'évaluation — champ additif `fenetre_sessions`). Sous dérogation,
+  // le compteur peut être à zéro : on parle de la limite levée, sans « reviens
+  // demain » trompeur (ADR-021).
   const restantes = donnees.sessions_restantes_aujourdhui;
+  const fenetre = donnees.fenetre_sessions === "semaine" ? "semaine" : "jour";
   let texteRestantes = "";
-  if (sansLimiteActivee() && etat.theme && etat.theme.categorie !== "evaluation") {
-    texteRestantes = "Limite levée pour les entraînements — tu décides quand t’arrêter.";
+  if (sansLimiteActivee()) {
+    texteRestantes = "Limite de séances levée — tu décides quand t’arrêter.";
   } else if (Number.isFinite(restantes)) {
     if (restantes <= 0) {
-      texteRestantes = "C’était la dernière séance du jour — à bientôt.";
+      texteRestantes = fenetre === "semaine"
+        ? "C’était ta mesure de la semaine — à bientôt."
+        : "C’était la dernière séance du jour — à bientôt.";
     } else if (restantes === 1) {
-      texteRestantes = "Il te reste une séance aujourd’hui, si tu en sens l’envie.";
+      texteRestantes = fenetre === "semaine"
+        ? "Il te reste une mesure cette semaine, si tu en sens l’envie."
+        : "Il te reste une séance aujourd’hui, si tu en sens l’envie.";
     } else {
       texteRestantes = `Il te reste ${restantes} séances aujourd’hui, si tu en sens l’envie.`;
     }

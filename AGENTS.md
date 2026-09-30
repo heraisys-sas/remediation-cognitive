@@ -18,7 +18,7 @@ Docs d'entrée : `docs/00-produit/vision.md`, `docs/00-produit/cadre-reglementai
 
 ## État courant — sprint 6 livré (2026-09-23)
 
-- **Jouable de bout en bout** : dix thèmes répartis en deux sections — **entraînement** (calcul mental, retrouver le mot dont SFA/PCA, au quotidien, méthodes, déduction) et **évaluation** (mémoire, concentration, rappel de séries, plafonnés à 1 séance/jour), plus Python/anglais en « Extra » ; et les écrans transverses (programme, **missions dans la vraie vie** & carnet, repères). Le thème d'entraînement « vie sociale » a été retiré (trop simple) ; les missions hors écran sont conservées — voir `content/missions/README.md`. Lancer `python3 -m uvicorn backend.app.main:app` puis ouvrir `/ui/`.
+- **Jouable de bout en bout** : dix thèmes répartis en deux sections — **entraînement** (calcul mental, retrouver le mot dont SFA/PCA, au quotidien, méthodes, déduction) et **évaluation** (mémoire, concentration, rappel de séries, plafonnés à 1 séance/semaine), plus Python/anglais en « Extra » ; et les écrans transverses (programme, **missions dans la vraie vie** & carnet, repères). Le thème d'entraînement « vie sociale » a été retiré (trop simple) ; les missions hors écran sont conservées — voir `content/missions/README.md`. Lancer `python3 -m uvicorn backend.app.main:app` puis ouvrir `/ui/`.
 - **Principe clinique réaffirmé** : remédiation fonctionnelle plutôt qu'entraînement aux tests (ADR de fait : `docs/10-clinique/remediation.md`).
 
 - **Capacités du poste** — `backend/app/domain/capacites.py` et `/api/capacites` : similarité sémantique locale (empreintes Apple, sinon repli lexical), synthèse par la voix du système ; dictée côté client (`frontend/src/capacites.js`). Tout reste local.

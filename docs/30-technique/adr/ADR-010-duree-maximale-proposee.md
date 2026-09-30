@@ -32,4 +32,4 @@ Le cadre clinique est pourtant explicite (`docs/10-clinique/protocoles.md`) : **
 
 ## Ajustement du 30 septembre 2026
 
-La limite de séances du jour n'est plus entièrement ferme : une **dérogation explicite** existe pour les thèmes d'entraînement, décidée par la personne depuis l'accueil et accordée côté serveur (ADR-021). L'évaluation reste strictement plafonnée à une séance par jour.
+La limite de séances n'est plus entièrement ferme : une **dérogation explicite** existe, décidée par la personne depuis l'accueil et accordée côté serveur (ADR-021), pour tous les thèmes. L'évaluation est plafonnée à une séance **par semaine** (fenêtre du lundi au dimanche).

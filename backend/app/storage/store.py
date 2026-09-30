@@ -6,8 +6,9 @@ Fichiers sous ``backend/data/entrainement/<theme>/`` (hors dépôt : le
   ``from_dict`` de engine.srs.fsrs, utilisé tel quel) ;
 - ``maitrise.json``         : palier courant + historique chronologique
   des couples (palier, taux de réussite) — critère 90 % × 3 séances ;
-- ``compteur-seances.json`` : compteur de séances démarrées du jour
-  (remis à zéro au changement de date).
+- ``compteur-seances.json`` : compteur de séances de la fenêtre courante —
+  jour, ou semaine (lundi) pour l'évaluation — remis à zéro au changement
+  de fenêtre.
 
 Les répertoires sont créés à la volée à l'écriture ; les lectures sur
 fichiers absents retournent des valeurs par défaut (thème vierge :
@@ -119,22 +120,22 @@ class StockageJSON:
             contenu["historique_etapes"] = [[p, t] for p, t in historique_etapes]
         self._ecrire_json(self._dossier_theme(theme) / "maitrise.json", contenu)
 
-    # -- compteur de séances du jour --------------------------------------------
+    # -- compteur de séances (fenêtre courante) ---------------------------------
 
-    def lire_compteur(self, theme: str, aujourd_hui: date) -> int:
-        """Nombre de séances démarrées aujourd'hui (0 si autre jour / thème vierge)."""
+    def lire_compteur(self, theme: str, debut: date) -> int:
+        """Séances démarrées dans la fenêtre ouverte à ``debut`` (0 sinon)."""
         donnees = (
             self._lire_json(self._dossier_theme(theme) / "compteur-seances.json")
             or {}
         )
-        if donnees.get("date") != aujourd_hui.isoformat():
+        if donnees.get("date") != debut.isoformat():
             return 0
         return int(donnees.get("nb_sessions") or 0)
 
-    def ecrire_compteur(self, theme: str, aujourd_hui: date, nb_sessions: int) -> None:
-        """Persiste le compteur du jour (la date stockée pilote la remise à zéro)."""
+    def ecrire_compteur(self, theme: str, debut: date, nb_sessions: int) -> None:
+        """Persiste le compteur de la fenêtre (le début stocké pilote la remise à zéro)."""
         contenu = {
-            "date": aujourd_hui.isoformat(),
+            "date": debut.isoformat(),
             "nb_sessions": int(nb_sessions),
         }
         self._ecrire_json(

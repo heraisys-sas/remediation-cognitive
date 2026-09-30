@@ -53,7 +53,7 @@ Mis en œuvre : les thèmes sont désormais **catégorisés**.
 
 Conséquences concrètes :
 
-- les thèmes d'évaluation restent **jouables** (pour se situer) mais sont plafonnés à **une séance par jour** : répéter une mesure la fausse par l'apprentissage du matériel ;
+- les thèmes d'évaluation restent **jouables** (pour se situer) mais sont plafonnés à **une séance par semaine** : répéter une mesure la fausse par l'apprentissage du matériel ;
 - l'interface les range dans une section « Évaluation » distincte, présentée comme telle ;
 - aucun nouveau contenu d'allure évaluative n'est ajouté à la section entraînement (règle maintenue).
 

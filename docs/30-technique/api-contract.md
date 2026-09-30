@@ -13,10 +13,10 @@ Base : `/api/entrainement` — périmètre **hors médical**. Format JSON. Pas d
 ### POST /api/entrainement/{theme}/sessions
 Démarre une séance. Sélection serveur : items dus (FSRS) d'abord, puis nouveaux du palier courant. Exception pour les contenus à `etape_progression` (déduction) : réserver la moitié des places aux nouveautés disponibles dans l'ordre des étapes, et prioriser les révisions avancées (ADR-017). Les trois séances du critère de maîtrise doivent chacune comporter une réponse de l'étape finale ; elles sont suivies dans `historique_etapes`, séparément des anciens taux conservés.
 
-**Corps facultatif** (`DemarrageOptionnel`) : `{"palier": N}` — essai sur un palier précis (la progression ne peut pas reculer) ; `{"sans_limite_sessions": true}` — dérogation explicite au plafond de séances du jour, **accordée aux thèmes d'entraînement seulement** (l'évaluation reste plafonnée — ADR-021).
+**Corps facultatif** (`DemarrageOptionnel`) : `{"palier": N}` — essai sur un palier précis (la progression ne peut pas reculer) ; `{"sans_limite_sessions": true}` — dérogation explicite au plafond de séances du jour, **accordée par le serveur pour tous les thèmes** (fenêtre du jour ou de la semaine selon la catégorie — ADR-021).
 
 - `201` → `{"session_id": str, "items": [{"id": str, "type": str, "palier": int, "contenu": {...}}], "regles": {"max_items": 12, "duree_max_s": 600}} — les valeurs dépendent du thème (déduction : 6 exercices)}`
-- `429` → `{"erreur": "limite_sessions_atteinte", "sessions_restantes_aujourdhui": 0}` — refus du plafond du jour ; une dérogation accordée le lève (ADR-021).
+- `429` → `{"erreur": "limite_sessions_atteinte", "sessions_restantes_aujourdhui": 0}` — refus du plafond de la fenêtre ; une dérogation accordée le lève (ADR-021).
 
 **Le payload `items` ne contient jamais `reponse`.**
 
@@ -34,7 +34,7 @@ Clôture la séance, applique FSRS + maîtrise, persiste.
 
 ## Règles serveur (garde-fous)
 
-1. **Dosage** : max 12 items/séance (6 pour la déduction, voir `dosage.parametres_seance`) ; durée max 600 s ; **3 séances/jour** pour l'entraînement, **1 séance/jour pour l'évaluation** (paramétrable dans `backend/app/domain/dosage.py`) ; la limite d'entraînement peut être **levée pour la journée par une dérogation explicite** (`sans_limite_sessions` — ADR-021) ; le compteur du jour continue de compter les séances jouées.
+1. **Dosage** : max 12 items/séance (6 pour la déduction, voir `dosage.parametres_seance`) ; durée max 600 s ; **3 séances/jour** pour l'entraînement, **1 séance/semaine** pour l'évaluation (semaine calendaire, lundi–dimanche ; paramétrable dans `backend/app/domain/dosage.py`) ; la limite d'un thème peut être **levée pour sa fenêtre en cours par une dérogation explicite** (`sans_limite_sessions` — ADR-021) ; le compteur continue de compter les séances jouées.
 2. **Fatigue** : `arret_propose = true` si RT moyen glissant > 1,25 × baseline **ou** taux d'erreur ≥ 0,40 — **proposition uniquement, jamais d'interruption forcée**.
 3. **Vocabulaire** : neutre, ludique modéré — centralisé dans `backend/app/domain/messages.py` ; aucun terme clinique.
 4. **Aucune norme populationnelle** dans les réponses API.
@@ -124,8 +124,10 @@ réussite pour le moteur : carte FSRS notée en échec, non compté dans `resume
 
 ```json
 {"resume": {"items": 8, "correctes": 6, "assistees": 1, "sans_aide": 4, "duree_s": 214, "taux_reussite": 0.75},
- "arret_propose": false, "motif_arret": null, "sessions_restantes_aujourdhui": 2}
+ "arret_propose": false, "motif_arret": null, "sessions_restantes_aujourdhui": 2, "fenetre_sessions": "jour"}
 ```
+
+`sessions_restantes_aujourdhui` reste le décompte, dans la **fenêtre du thème** (`fenetre_sessions` : `jour` pour l'entraînement, `semaine` pour l'évaluation).
 
 `assistees` et `sans_aide` ne sont présents que pour les thèmes portant des indices. `sans_aide`
 compte les items retrouvés **sans aucune aide** — c'est la mesure de progrès pertinente pour

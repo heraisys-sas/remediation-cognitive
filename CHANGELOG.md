@@ -2,6 +2,12 @@
 
 Format : [date] — [périmètre] — description. Les retours informels de l'orthophoniste sont journalisés ici, sans caution clinique.
 
+## 2026-09-30 · Évaluation : dérogation étendue, plafond hebdomadaire
+
+- La dérogation « Dépasser la limite de séances » couvre désormais **tous les thèmes**, évaluation comprise ; libellé, note et messages de l'interface ajustés.
+- La limite de l'évaluation passe d'une séance par jour à **une séance par semaine** (semaine calendaire, lundi–dimanche ; compteur par fenêtre, remis à zéro le lundi). Motif inchangé — répéter une mesure la fausse — et mieux servi par l'espacement hebdomadaire.
+- Contrat : champ additif `fenetre_sessions` (`jour` | `semaine`) dans le résumé de fin ; `sessions_restantes_aujourdhui` reste le décompte, dans la fenêtre du thème. Résumé et refus 429 phrasés par fenêtre. ADR-021 ajusté ; `tools/reinitialiser_seances.py` adapté (fenêtre courante — l'évaluation se rouvre le lundi).
+
 ## 2026-09-30 · Limite de séances : dérogation explicite depuis l'accueil
 
 - Nouveau réglage sur l'accueil — « Dépasser la limite de séances du jour » : il lève le plafond pour la journée **pour les entraînements** ; l'évaluation reste à une séance par jour (répéter une mesure la fausse). Désactivé par défaut, conservé d'une visite à l'autre ; l'état est visible sur la page.

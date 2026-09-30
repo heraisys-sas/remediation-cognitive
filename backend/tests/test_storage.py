@@ -1,8 +1,8 @@
 """Tests unitaires : persistance JSON (storage.store).
 
 Couvre le round-trip des cartes FSRS (engine.srs.fsrs tel quel), la
-maîtrise par palier, le compteur de séances du jour (remise à zéro au
-changement de date) et la création des répertoires à la volée.
+maîtrise par palier, le compteur de séances par fenêtre (remise à zéro au
+changement de fenêtre) et la création des répertoires à la volée.
 """
 
 from datetime import date, datetime, timezone
@@ -58,17 +58,17 @@ def test_maitrise_valeurs_par_defaut_puis_round_trip(tmp_path):
     assert etat["historique"] == [(1, 0.95), (1, 1.0), (1, 0.9)]
 
 
-# -- compteur de séances du jour --------------------------------------------------
+# -- compteur de séances (fenêtre) --------------------------------------------------
 
 
-def test_compteur_jour_et_rollover(tmp_path):
+def test_compteur_fenetre_et_rollover(tmp_path):
     stockage = _stockage(tmp_path)
     jour = date(2026, 9, 3)
     assert stockage.lire_compteur("python", jour) == 0
 
     stockage.ecrire_compteur("python", jour, 2)
     assert stockage.lire_compteur("python", jour) == 2
-    # Le lendemain, le compteur est remis à zéro (date stockée ≠ date lue).
+    # Fenêtre suivante, le compteur est remis à zéro (début stocké ≠ début lu).
     assert stockage.lire_compteur("python", date(2026, 9, 4)) == 0
 
 

@@ -31,9 +31,9 @@ class DemarrageOptionnel(BaseModel):
     """Corps facultatif de POST …/sessions.
 
     - ``palier`` : essai sur un palier précis (la progression ne peut pas reculer) ;
-    - ``sans_limite_sessions`` : dérogation explicite au plafond de séances du jour,
-      demandée depuis l'accueil — accordée par le serveur aux thèmes d'entraînement
-      seulement (l'évaluation reste plafonnée — ADR-021).
+    - ``sans_limite_sessions`` : dérogation explicite au plafond de séances,
+      demandée depuis l'accueil — accordée par le serveur pour tous les thèmes
+      (fenêtre du jour ou de la semaine selon la catégorie — ADR-021).
     """
 
     palier: int | None = Field(default=None, ge=1)
@@ -84,8 +84,7 @@ def demarrer_session(theme: str, request: Request, corps: DemarrageOptionnel | N
 
     Corps facultatif ``{"palier": N, "sans_limite_sessions": bool}`` : essai sur un
     palier précis, sans effet sur la progression (elle ne peut pas reculer) ; et
-    dérogation explicite au plafond du jour — accordée aux thèmes d'entraînement
-    seulement (ADR-021).
+    dérogation explicite au plafond de la fenêtre du thème — tous les thèmes (ADR-021).
     """
     try:
         return _gestionnaire(request).demarrer(
@@ -100,7 +99,7 @@ def demarrer_session(theme: str, request: Request, corps: DemarrageOptionnel | N
     except ReponseInvalide:
         return _erreur(422, "reponse_invalide")
     except LimiteSessionsAtteinte:
-        # Corps exact du contrat : refus du plafond du jour — une dérogation
+        # Corps exact du contrat : refus du plafond de la fenêtre — une dérogation
         # explicite (« sans_limite_sessions », ADR-021) peut le lever côté service.
         return JSONResponse(
             status_code=429,

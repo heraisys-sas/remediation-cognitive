@@ -39,11 +39,11 @@
       <div id="liste-themes" class="grille-themes"></div>
 
       <!-- Section « Évaluation » : thèmes qui mesurent (empans, attention,
-           rappel de listes). Jouables pour se situer, mais à ne pas répéter
-           quotidiennement — sinon la mesure est faussée par l'apprentissage. -->
+           rappel de listes). Jouables pour se situer, mais à espacer — une
+           séance par semaine — sinon la mesure est faussée par l'apprentissage. -->
       <section id="section-evaluation" class="section-extra" aria-labelledby="titre-evaluation" hidden>
         <h3 id="titre-evaluation" class="titre-extra">Évaluation</h3>
-        <p class="intro-extra">Des mesures pour se situer — une séance par jour au plus. Répéter une mesure la fausse : pour progresser, ce sont les entraînements ci-dessus.</p>
+        <p class="intro-extra">Des mesures pour se situer — une séance par semaine au plus. Répéter une mesure la fausse : pour progresser, ce sont les entraînements ci-dessus.</p>
         <div id="liste-themes-evaluation" class="grille-themes"></div>
       </section>
 
@@ -55,17 +55,17 @@
         <div id="liste-themes-extra" class="grille-themes"></div>
       </section>
 
-      <!-- Dérogation explicite au plafond de séances du jour (anti-fatigue).
-           S'applique aux entraînements ; les mesures d'évaluation gardent leur
-           limite (répéter une mesure la fausse — ADR-021). Le réglage est conservé
-           d'une visite à l'autre ; l'état reste visible ici. -->
+      <!-- Dérogation explicite au plafond de séances (anti-fatigue), tous thèmes :
+           entraînements (fenêtre du jour) et mesures d'évaluation (fenêtre de la
+           semaine). Le réglage est conservé d'une visite à l'autre ; l'état reste
+           visible ici. ADR-021. -->
       <div class="reglage-limite">
         <label class="commutateur">
           <input id="case-sans-limite" type="checkbox" role="switch" aria-describedby="note-sans-limite" />
           <span class="commutateur-piste" aria-hidden="true"></span>
-          <span class="commutateur-texte">Dépasser la limite de séances du jour</span>
+          <span class="commutateur-texte">Dépasser la limite de séances</span>
         </label>
-        <p id="note-sans-limite" class="ligne-discrete reglage-limite-note">Entraînements seulement — les mesures d’évaluation restent limitées.</p>
+        <p id="note-sans-limite" class="ligne-discrete reglage-limite-note">S’applique aux entraînements et aux mesures d’évaluation.</p>
       </div>
 
       <div class="actions-suite">
@@ -259,6 +259,6 @@
        script resté en cache (un script périmé mélangé au contenu courant affichait
        des phrases tronquées). À incrémenter après toute modification de src/. -->
   <script src="src/capacites.js?v=20260927c" defer></script>
-  <script src="src/app.js?v=20260930f" defer></script>
+  <script src="src/app.js?v=20260930g" defer></script>
 </body>
 </html>

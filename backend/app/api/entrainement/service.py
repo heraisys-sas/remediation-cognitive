@@ -1,8 +1,8 @@
 """Orchestration des séances d'entraînement (couche service du sprint 1).
 
 Sépare la logique métier du mapping HTTP (router.py) :
-- démarrer une séance : garde-fou de dosage (3 séances/jour — dérogation
-  explicite possible, ADR-021), sélection
+- démarrer une séance : garde-fou de dosage (3 par jour en entraînement, 1 par
+  semaine en évaluation — dérogation explicite possible, ADR-021), sélection
   des items (dus FSRS puis nouveaux, max 12), création du
   ``SessionRunner`` (moteur engine/ réutilisé tel quel) ;
 - enregistrer une réponse : correction serveur (la réponse attendue ne
@@ -34,11 +34,11 @@ from ...domain.contenu import ChargeurContenu
 from ...domain.correction import corriger, corriger_sequence
 from ...domain.feedback import essai_supplementaire
 from ...domain.dosage import (
-    LIMITES_SESSIONS_JOUR,
-    LIMITE_SESSIONS_JOUR,
     MAX_REPRISES_PAR_SEANCE,
-    derogation_limite_sessions,
+    debut_fenetre,
     duree_proposee,
+    fenetre_sessions,
+    limite_sessions,
     parametres_seance,
 )
 from ...domain.selection import selectionner_items
@@ -185,9 +185,8 @@ class GestionnaireSessions:
         personne réussit, ce qui est exact.
 
         ``sans_limite_sessions`` (dérogation, ADR-021) : la personne demande à
-        dépasser le plafond du jour depuis l'accueil. Accordée pour les thèmes
-        d'entraînement uniquement (l'évaluation reste plafonnée) ; le compteur du
-        jour continue de compter la séance.
+        dépasser le plafond de sa fenêtre (jour, ou semaine pour l'évaluation) ;
+        accordée pour tous les thèmes ; le compteur continue de compter la séance.
 
         Lève ``ThemeInconnu`` (404), ``PalierInconnu`` (422) ou
         ``LimiteSessionsAtteinte`` (429). Le compteur du jour est incrémenté dès le
@@ -196,16 +195,16 @@ class GestionnaireSessions:
         """
         if not self.contenu.theme_existe(theme):
             raise ThemeInconnu(theme)
-        limite = self._limite_sessions(theme)
-        # Dérogation explicite (ADR-021), portée entraînement seulement : la règle
-        # reste côté serveur — l'interface la demande, elle ne la contourne pas.
-        deroge = derogation_limite_sessions(
-            self.contenu.categorie(theme), sans_limite_sessions
-        )
+        categorie = self.contenu.categorie(theme)
+        limite = limite_sessions(categorie)
+        fenetre = fenetre_sessions(categorie)
+        # Dérogation explicite (ADR-021) : elle couvre tous les thèmes — la règle
+        # reste côté serveur, l'interface la demande, elle ne la contourne pas.
+        deroge = sans_limite_sessions
         with self._verrou_dosage:
             maintenant = self.horloge()
-            aujourd_hui = maintenant.date()
-            nb_sessions = self.stockage.lire_compteur(theme, aujourd_hui)
+            debut = debut_fenetre(fenetre, maintenant.date())
+            nb_sessions = self.stockage.lire_compteur(theme, debut)
             if not deroge and nb_sessions >= limite:
                 raise LimiteSessionsAtteinte(
                     restantes=max(0, limite - nb_sessions)
@@ -250,9 +249,9 @@ class GestionnaireSessions:
                 depart=maintenant,
             )
             # Une séance **vide** (rien de dû, rien de nouveau) ne consomme pas le quota
-            # du jour : elle n'a rien proposé, elle ne doit rien coûter.
+            # de la fenêtre : elle n'a rien proposé, elle ne doit rien coûter.
             if selection:
-                self.stockage.ecrire_compteur(theme, aujourd_hui, nb_sessions + 1)
+                self.stockage.ecrire_compteur(theme, debut, nb_sessions + 1)
         return {
             "session_id": session_id,
             "items": [_item_sans_reponse(item) for item in selection],
@@ -261,15 +260,6 @@ class GestionnaireSessions:
                 "duree_max_s": reglages["duree_max_s"],
             },
         }
-
-    def _limite_sessions(self, theme: str) -> int:
-        """Limite de séances du jour selon la catégorie du thème.
-
-        L'évaluation est plafonnée plus bas que l'entraînement : répéter une
-        mesure la fausse (effet d'apprentissage du matériel).
-        """
-        categorie = self.contenu.categorie(theme)
-        return LIMITES_SESSIONS_JOUR.get(categorie, LIMITE_SESSIONS_JOUR)
 
     def _palier_courant(self, theme: str, palier_stocke: int) -> int:
         """Palier de travail : celui du stockage, borné au contenu disponible."""
@@ -446,11 +436,13 @@ class GestionnaireSessions:
 
     def _payload_fin(self, theme: str, session: SessionEnCours, resume_moteur: dict,
                      nb_repondu: int, nb_correctes: int, taux: float) -> dict:
-        """Payload de fin de séance (résumé, arrêt proposé, quota du jour)."""
+        """Payload de fin de séance (résumé, arrêt proposé, quota de la fenêtre)."""
+        categorie = self.contenu.categorie(theme)
+        fenetre = fenetre_sessions(categorie)
+        debut = debut_fenetre(fenetre, self.horloge().date())
         restantes = max(
             0,
-            self._limite_sessions(theme)
-            - self.stockage.lire_compteur(theme, self.horloge().date()),
+            limite_sessions(categorie) - self.stockage.lire_compteur(theme, debut),
         )
         arret_propose = bool(resume_moteur["alerte_fatigue"])
         retour = {
@@ -463,6 +455,7 @@ class GestionnaireSessions:
             "arret_propose": arret_propose,
             "motif_arret": "fatigue" if arret_propose else None,
             "sessions_restantes_aujourdhui": restantes,
+            "fenetre_sessions": fenetre,
         }
         # Champs propres aux exercices d'accès au mot : aide réellement
         # nécessaire et essais clos sans erreur (réponse affichée).
