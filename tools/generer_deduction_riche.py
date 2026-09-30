@@ -178,7 +178,7 @@ def generer(palier, rng, nombre, deja_vus):
         item['contenu']['etape_progression']=etape
         item['contenu']['consigne']=(f'Place les {n*n} figures colorées : chacune une seule fois, une par case. '
             'Toute autre contrainte est écrite dans les indices. Croise les phrases, '
-            'note les possibilités et ne place un pion que lorsque sa case est certaine.')
+            'compare les possibilités et ne place un pion que lorsque sa case est certaine.')
         item['cap_complexite']='Croisement de contraintes explicites ; étape %d/3, grille %d×%d.'%(etape,n,n)
         item['id']=identifiant_item(palier,item['contenu'],item['reponse'])
         items.append(item)

@@ -1,6 +1,6 @@
 [
   {
-    "id": "df-1-5f90acc462fa",
+    "id": "df-1-e07059558011",
     "type": "grille-deduction",
     "module": "entrainement",
     "theme": "deduction",
@@ -12,7 +12,7 @@
     "prerequis": [],
     "cap_complexite": "les phrases suffisent : aucune règle cachée, suivre les chaînes",
     "contenu": {
-      "consigne": "Place les neuf figures colorées. Deux évidences seulement : chaque figure colorée (un carré bleu, un cercle rouge…) se pose une fois, et une case ne contient qu'une figure. Tout le reste est dans les phrases : suis les chaînes d'une figure à l'autre, note ce qui est certain, barre ce qui devient impossible.",
+      "consigne": "Place les neuf figures colorées. Deux évidences seulement : chaque figure colorée (un carré bleu, un cercle rouge…) se pose une fois, et une case ne contient qu'une figure. Tout le reste est dans les phrases : suis les chaînes d'une figure à l'autre, retiens ce qui est certain et écarte les positions impossibles.",
       "figures": [
         "cercle",
         "carre",
@@ -313,7 +313,7 @@
     }
   },
   {
-    "id": "df-1-fc455692bab4",
+    "id": "df-1-8b7da5a0e7da",
     "type": "grille-deduction",
     "module": "entrainement",
     "theme": "deduction",
@@ -325,7 +325,7 @@
     "prerequis": [],
     "cap_complexite": "les phrases suffisent : aucune règle cachée, suivre les chaînes",
     "contenu": {
-      "consigne": "Place les neuf figures colorées. Deux évidences seulement : chaque figure colorée (un carré bleu, un cercle rouge…) se pose une fois, et une case ne contient qu'une figure. Tout le reste est dans les phrases : suis les chaînes d'une figure à l'autre, note ce qui est certain, barre ce qui devient impossible.",
+      "consigne": "Place les neuf figures colorées. Deux évidences seulement : chaque figure colorée (un carré bleu, un cercle rouge…) se pose une fois, et une case ne contient qu'une figure. Tout le reste est dans les phrases : suis les chaînes d'une figure à l'autre, retiens ce qui est certain et écarte les positions impossibles.",
       "figures": [
         "cercle",
         "carre",
@@ -624,7 +624,7 @@
     }
   },
   {
-    "id": "df-1-3b68e5574d1b",
+    "id": "df-1-54d1fed83a9f",
     "type": "grille-deduction",
     "module": "entrainement",
     "theme": "deduction",
@@ -636,7 +636,7 @@
     "prerequis": [],
     "cap_complexite": "les phrases suffisent : aucune règle cachée, suivre les chaînes",
     "contenu": {
-      "consigne": "Place les neuf figures colorées. Deux évidences seulement : chaque figure colorée (un carré bleu, un cercle rouge…) se pose une fois, et une case ne contient qu'une figure. Tout le reste est dans les phrases : suis les chaînes d'une figure à l'autre, note ce qui est certain, barre ce qui devient impossible.",
+      "consigne": "Place les neuf figures colorées. Deux évidences seulement : chaque figure colorée (un carré bleu, un cercle rouge…) se pose une fois, et une case ne contient qu'une figure. Tout le reste est dans les phrases : suis les chaînes d'une figure à l'autre, retiens ce qui est certain et écarte les positions impossibles.",
       "figures": [
         "cercle",
         "carre",
@@ -956,7 +956,7 @@
     }
   },
   {
-    "id": "df-1-baa154b3f399",
+    "id": "df-1-deb0f13b948b",
     "type": "grille-deduction",
     "module": "entrainement",
     "theme": "deduction",
@@ -968,7 +968,7 @@
     "prerequis": [],
     "cap_complexite": "les phrases suffisent : aucune règle cachée, suivre les chaînes",
     "contenu": {
-      "consigne": "Place les neuf figures colorées. Deux évidences seulement : chaque figure colorée (un carré bleu, un cercle rouge…) se pose une fois, et une case ne contient qu'une figure. Tout le reste est dans les phrases : suis les chaînes d'une figure à l'autre, note ce qui est certain, barre ce qui devient impossible.",
+      "consigne": "Place les neuf figures colorées. Deux évidences seulement : chaque figure colorée (un carré bleu, un cercle rouge…) se pose une fois, et une case ne contient qu'une figure. Tout le reste est dans les phrases : suis les chaînes d'une figure à l'autre, retiens ce qui est certain et écarte les positions impossibles.",
       "figures": [
         "cercle",
         "carre",
@@ -1105,7 +1105,7 @@
     }
   },
   {
-    "id": "df-1-26360953ea10",
+    "id": "df-1-cc5f5b4fa8d6",
     "type": "grille-deduction",
     "module": "entrainement",
     "theme": "deduction",
@@ -1117,7 +1117,7 @@
     "prerequis": [],
     "cap_complexite": "les phrases suffisent : aucune règle cachée, suivre les chaînes",
     "contenu": {
-      "consigne": "Place les neuf figures colorées. Deux évidences seulement : chaque figure colorée (un carré bleu, un cercle rouge…) se pose une fois, et une case ne contient qu'une figure. Tout le reste est dans les phrases : suis les chaînes d'une figure à l'autre, note ce qui est certain, barre ce qui devient impossible.",
+      "consigne": "Place les neuf figures colorées. Deux évidences seulement : chaque figure colorée (un carré bleu, un cercle rouge…) se pose une fois, et une case ne contient qu'une figure. Tout le reste est dans les phrases : suis les chaînes d'une figure à l'autre, retiens ce qui est certain et écarte les positions impossibles.",
       "figures": [
         "cercle",
         "carre",
@@ -1375,7 +1375,7 @@
     }
   },
   {
-    "id": "df-1-53ba145ed664",
+    "id": "df-1-63326e937d43",
     "type": "grille-deduction",
     "module": "entrainement",
     "theme": "deduction",
@@ -1387,7 +1387,7 @@
     "prerequis": [],
     "cap_complexite": "les phrases suffisent : aucune règle cachée, suivre les chaînes",
     "contenu": {
-      "consigne": "Place les neuf figures colorées. Deux évidences seulement : chaque figure colorée (un carré bleu, un cercle rouge…) se pose une fois, et une case ne contient qu'une figure. Tout le reste est dans les phrases : suis les chaînes d'une figure à l'autre, note ce qui est certain, barre ce qui devient impossible.",
+      "consigne": "Place les neuf figures colorées. Deux évidences seulement : chaque figure colorée (un carré bleu, un cercle rouge…) se pose une fois, et une case ne contient qu'une figure. Tout le reste est dans les phrases : suis les chaînes d'une figure à l'autre, retiens ce qui est certain et écarte les positions impossibles.",
       "figures": [
         "cercle",
         "carre",
@@ -1530,7 +1530,7 @@
     }
   },
   {
-    "id": "df-1-3c307fdf036e",
+    "id": "df-1-e5a53022d455",
     "type": "grille-deduction",
     "module": "entrainement",
     "theme": "deduction",
@@ -1542,7 +1542,7 @@
     "prerequis": [],
     "cap_complexite": "les phrases suffisent : aucune règle cachée, suivre les chaînes",
     "contenu": {
-      "consigne": "Place les neuf figures colorées. Deux évidences seulement : chaque figure colorée (un carré bleu, un cercle rouge…) se pose une fois, et une case ne contient qu'une figure. Tout le reste est dans les phrases : suis les chaînes d'une figure à l'autre, note ce qui est certain, barre ce qui devient impossible.",
+      "consigne": "Place les neuf figures colorées. Deux évidences seulement : chaque figure colorée (un carré bleu, un cercle rouge…) se pose une fois, et une case ne contient qu'une figure. Tout le reste est dans les phrases : suis les chaînes d'une figure à l'autre, retiens ce qui est certain et écarte les positions impossibles.",
       "figures": [
         "cercle",
         "carre",
@@ -1828,7 +1828,7 @@
     }
   },
   {
-    "id": "df-1-ca432f152741",
+    "id": "df-1-607df544c492",
     "type": "grille-deduction",
     "module": "entrainement",
     "theme": "deduction",
@@ -1840,7 +1840,7 @@
     "prerequis": [],
     "cap_complexite": "les phrases suffisent : aucune règle cachée, suivre les chaînes",
     "contenu": {
-      "consigne": "Place les neuf figures colorées. Deux évidences seulement : chaque figure colorée (un carré bleu, un cercle rouge…) se pose une fois, et une case ne contient qu'une figure. Tout le reste est dans les phrases : suis les chaînes d'une figure à l'autre, note ce qui est certain, barre ce qui devient impossible.",
+      "consigne": "Place les neuf figures colorées. Deux évidences seulement : chaque figure colorée (un carré bleu, un cercle rouge…) se pose une fois, et une case ne contient qu'une figure. Tout le reste est dans les phrases : suis les chaînes d'une figure à l'autre, retiens ce qui est certain et écarte les positions impossibles.",
       "figures": [
         "cercle",
         "carre",
@@ -1983,7 +1983,7 @@
     }
   },
   {
-    "id": "df-1-d8c508f89124",
+    "id": "df-1-3468b88b38f1",
     "type": "grille-deduction",
     "module": "entrainement",
     "theme": "deduction",
@@ -1995,7 +1995,7 @@
     "prerequis": [],
     "cap_complexite": "les phrases suffisent : aucune règle cachée, suivre les chaînes",
     "contenu": {
-      "consigne": "Place les neuf figures colorées. Deux évidences seulement : chaque figure colorée (un carré bleu, un cercle rouge…) se pose une fois, et une case ne contient qu'une figure. Tout le reste est dans les phrases : suis les chaînes d'une figure à l'autre, note ce qui est certain, barre ce qui devient impossible.",
+      "consigne": "Place les neuf figures colorées. Deux évidences seulement : chaque figure colorée (un carré bleu, un cercle rouge…) se pose une fois, et une case ne contient qu'une figure. Tout le reste est dans les phrases : suis les chaînes d'une figure à l'autre, retiens ce qui est certain et écarte les positions impossibles.",
       "figures": [
         "cercle",
         "carre",
@@ -2140,7 +2140,7 @@
     }
   },
   {
-    "id": "df-1-3791cf493374",
+    "id": "df-1-e48bec7c506c",
     "type": "grille-deduction",
     "module": "entrainement",
     "theme": "deduction",
@@ -2152,7 +2152,7 @@
     "prerequis": [],
     "cap_complexite": "les phrases suffisent : aucune règle cachée, suivre les chaînes",
     "contenu": {
-      "consigne": "Place les neuf figures colorées. Deux évidences seulement : chaque figure colorée (un carré bleu, un cercle rouge…) se pose une fois, et une case ne contient qu'une figure. Tout le reste est dans les phrases : suis les chaînes d'une figure à l'autre, note ce qui est certain, barre ce qui devient impossible.",
+      "consigne": "Place les neuf figures colorées. Deux évidences seulement : chaque figure colorée (un carré bleu, un cercle rouge…) se pose une fois, et une case ne contient qu'une figure. Tout le reste est dans les phrases : suis les chaînes d'une figure à l'autre, retiens ce qui est certain et écarte les positions impossibles.",
       "figures": [
         "cercle",
         "carre",
@@ -2287,7 +2287,7 @@
     }
   },
   {
-    "id": "df-1-ee79ce8b43d1",
+    "id": "df-1-65a30f5a1045",
     "type": "grille-deduction",
     "module": "entrainement",
     "theme": "deduction",
@@ -2299,7 +2299,7 @@
     "prerequis": [],
     "cap_complexite": "les phrases suffisent : aucune règle cachée, suivre les chaînes",
     "contenu": {
-      "consigne": "Place les neuf figures colorées. Deux évidences seulement : chaque figure colorée (un carré bleu, un cercle rouge…) se pose une fois, et une case ne contient qu'une figure. Tout le reste est dans les phrases : suis les chaînes d'une figure à l'autre, note ce qui est certain, barre ce qui devient impossible.",
+      "consigne": "Place les neuf figures colorées. Deux évidences seulement : chaque figure colorée (un carré bleu, un cercle rouge…) se pose une fois, et une case ne contient qu'une figure. Tout le reste est dans les phrases : suis les chaînes d'une figure à l'autre, retiens ce qui est certain et écarte les positions impossibles.",
       "figures": [
         "cercle",
         "carre",
@@ -2631,7 +2631,7 @@
     }
   },
   {
-    "id": "df-1-84b1346ef16d",
+    "id": "df-1-9a6d9caf15f7",
     "type": "grille-deduction",
     "module": "entrainement",
     "theme": "deduction",
@@ -2643,7 +2643,7 @@
     "prerequis": [],
     "cap_complexite": "les phrases suffisent : aucune règle cachée, suivre les chaînes",
     "contenu": {
-      "consigne": "Place les neuf figures colorées. Deux évidences seulement : chaque figure colorée (un carré bleu, un cercle rouge…) se pose une fois, et une case ne contient qu'une figure. Tout le reste est dans les phrases : suis les chaînes d'une figure à l'autre, note ce qui est certain, barre ce qui devient impossible.",
+      "consigne": "Place les neuf figures colorées. Deux évidences seulement : chaque figure colorée (un carré bleu, un cercle rouge…) se pose une fois, et une case ne contient qu'une figure. Tout le reste est dans les phrases : suis les chaînes d'une figure à l'autre, retiens ce qui est certain et écarte les positions impossibles.",
       "figures": [
         "cercle",
         "carre",
@@ -2957,7 +2957,7 @@
     }
   },
   {
-    "id": "df-1-135966e2efc7",
+    "id": "df-1-c5846b570fdf",
     "type": "grille-deduction",
     "module": "entrainement",
     "theme": "deduction",
@@ -2969,7 +2969,7 @@
     "prerequis": [],
     "cap_complexite": "les phrases suffisent : aucune règle cachée, suivre les chaînes",
     "contenu": {
-      "consigne": "Place les neuf figures colorées. Deux évidences seulement : chaque figure colorée (un carré bleu, un cercle rouge…) se pose une fois, et une case ne contient qu'une figure. Tout le reste est dans les phrases : suis les chaînes d'une figure à l'autre, note ce qui est certain, barre ce qui devient impossible.",
+      "consigne": "Place les neuf figures colorées. Deux évidences seulement : chaque figure colorée (un carré bleu, un cercle rouge…) se pose une fois, et une case ne contient qu'une figure. Tout le reste est dans les phrases : suis les chaînes d'une figure à l'autre, retiens ce qui est certain et écarte les positions impossibles.",
       "figures": [
         "cercle",
         "carre",
@@ -3114,7 +3114,7 @@
     }
   },
   {
-    "id": "df-1-c04582f90b03",
+    "id": "df-1-58eb203de3e5",
     "type": "grille-deduction",
     "module": "entrainement",
     "theme": "deduction",
@@ -3126,7 +3126,7 @@
     "prerequis": [],
     "cap_complexite": "les phrases suffisent : aucune règle cachée, suivre les chaînes",
     "contenu": {
-      "consigne": "Place les neuf figures colorées. Deux évidences seulement : chaque figure colorée (un carré bleu, un cercle rouge…) se pose une fois, et une case ne contient qu'une figure. Tout le reste est dans les phrases : suis les chaînes d'une figure à l'autre, note ce qui est certain, barre ce qui devient impossible.",
+      "consigne": "Place les neuf figures colorées. Deux évidences seulement : chaque figure colorée (un carré bleu, un cercle rouge…) se pose une fois, et une case ne contient qu'une figure. Tout le reste est dans les phrases : suis les chaînes d'une figure à l'autre, retiens ce qui est certain et écarte les positions impossibles.",
       "figures": [
         "cercle",
         "carre",
@@ -3457,7 +3457,7 @@
     }
   },
   {
-    "id": "df-1-9080bab3ace9",
+    "id": "df-1-dea361163580",
     "type": "grille-deduction",
     "module": "entrainement",
     "theme": "deduction",
@@ -3469,7 +3469,7 @@
     "prerequis": [],
     "cap_complexite": "les phrases suffisent : aucune règle cachée, suivre les chaînes",
     "contenu": {
-      "consigne": "Place les neuf figures colorées. Deux évidences seulement : chaque figure colorée (un carré bleu, un cercle rouge…) se pose une fois, et une case ne contient qu'une figure. Tout le reste est dans les phrases : suis les chaînes d'une figure à l'autre, note ce qui est certain, barre ce qui devient impossible.",
+      "consigne": "Place les neuf figures colorées. Deux évidences seulement : chaque figure colorée (un carré bleu, un cercle rouge…) se pose une fois, et une case ne contient qu'une figure. Tout le reste est dans les phrases : suis les chaînes d'une figure à l'autre, retiens ce qui est certain et écarte les positions impossibles.",
       "figures": [
         "cercle",
         "carre",
@@ -3874,7 +3874,7 @@
     }
   },
   {
-    "id": "df-1-7d7e1ccee3ef",
+    "id": "df-1-d4b736fef907",
     "type": "grille-deduction",
     "module": "entrainement",
     "theme": "deduction",
@@ -3886,7 +3886,7 @@
     "prerequis": [],
     "cap_complexite": "les phrases suffisent : aucune règle cachée, suivre les chaînes",
     "contenu": {
-      "consigne": "Place les neuf figures colorées. Deux évidences seulement : chaque figure colorée (un carré bleu, un cercle rouge…) se pose une fois, et une case ne contient qu'une figure. Tout le reste est dans les phrases : suis les chaînes d'une figure à l'autre, note ce qui est certain, barre ce qui devient impossible.",
+      "consigne": "Place les neuf figures colorées. Deux évidences seulement : chaque figure colorée (un carré bleu, un cercle rouge…) se pose une fois, et une case ne contient qu'une figure. Tout le reste est dans les phrases : suis les chaînes d'une figure à l'autre, retiens ce qui est certain et écarte les positions impossibles.",
       "figures": [
         "cercle",
         "carre",
@@ -4242,7 +4242,7 @@
     }
   },
   {
-    "id": "df-1-20cfe45b1aa7",
+    "id": "df-1-449255161e90",
     "type": "grille-deduction",
     "module": "entrainement",
     "theme": "deduction",
@@ -4254,7 +4254,7 @@
     "prerequis": [],
     "cap_complexite": "les phrases suffisent : aucune règle cachée, suivre les chaînes",
     "contenu": {
-      "consigne": "Place les neuf figures colorées. Deux évidences seulement : chaque figure colorée (un carré bleu, un cercle rouge…) se pose une fois, et une case ne contient qu'une figure. Tout le reste est dans les phrases : suis les chaînes d'une figure à l'autre, note ce qui est certain, barre ce qui devient impossible.",
+      "consigne": "Place les neuf figures colorées. Deux évidences seulement : chaque figure colorée (un carré bleu, un cercle rouge…) se pose une fois, et une case ne contient qu'une figure. Tout le reste est dans les phrases : suis les chaînes d'une figure à l'autre, retiens ce qui est certain et écarte les positions impossibles.",
       "figures": [
         "cercle",
         "carre",
@@ -4600,7 +4600,7 @@
     }
   },
   {
-    "id": "df-1-8a9615fab2a4",
+    "id": "df-1-b24878e93592",
     "type": "grille-deduction",
     "module": "entrainement",
     "theme": "deduction",
@@ -4612,7 +4612,7 @@
     "prerequis": [],
     "cap_complexite": "les phrases suffisent : aucune règle cachée, suivre les chaînes",
     "contenu": {
-      "consigne": "Place les neuf figures colorées. Deux évidences seulement : chaque figure colorée (un carré bleu, un cercle rouge…) se pose une fois, et une case ne contient qu'une figure. Tout le reste est dans les phrases : suis les chaînes d'une figure à l'autre, note ce qui est certain, barre ce qui devient impossible.",
+      "consigne": "Place les neuf figures colorées. Deux évidences seulement : chaque figure colorée (un carré bleu, un cercle rouge…) se pose une fois, et une case ne contient qu'une figure. Tout le reste est dans les phrases : suis les chaînes d'une figure à l'autre, retiens ce qui est certain et écarte les positions impossibles.",
       "figures": [
         "cercle",
         "carre",
@@ -4970,7 +4970,7 @@
     }
   },
   {
-    "id": "df-1-596c7093a017",
+    "id": "df-1-b83680b0c85c",
     "type": "grille-deduction",
     "module": "entrainement",
     "theme": "deduction",
@@ -4982,7 +4982,7 @@
     "prerequis": [],
     "cap_complexite": "les phrases suffisent : aucune règle cachée, suivre les chaînes",
     "contenu": {
-      "consigne": "Place les neuf figures colorées. Deux évidences seulement : chaque figure colorée (un carré bleu, un cercle rouge…) se pose une fois, et une case ne contient qu'une figure. Tout le reste est dans les phrases : suis les chaînes d'une figure à l'autre, note ce qui est certain, barre ce qui devient impossible.",
+      "consigne": "Place les neuf figures colorées. Deux évidences seulement : chaque figure colorée (un carré bleu, un cercle rouge…) se pose une fois, et une case ne contient qu'une figure. Tout le reste est dans les phrases : suis les chaînes d'une figure à l'autre, retiens ce qui est certain et écarte les positions impossibles.",
       "figures": [
         "cercle",
         "carre",
@@ -5384,7 +5384,7 @@
     }
   },
   {
-    "id": "df-1-478588f31bc3",
+    "id": "df-1-294e9ae15dfa",
     "type": "grille-deduction",
     "module": "entrainement",
     "theme": "deduction",
@@ -5396,7 +5396,7 @@
     "prerequis": [],
     "cap_complexite": "les phrases suffisent : aucune règle cachée, suivre les chaînes",
     "contenu": {
-      "consigne": "Place les neuf figures colorées. Deux évidences seulement : chaque figure colorée (un carré bleu, un cercle rouge…) se pose une fois, et une case ne contient qu'une figure. Tout le reste est dans les phrases : suis les chaînes d'une figure à l'autre, note ce qui est certain, barre ce qui devient impossible.",
+      "consigne": "Place les neuf figures colorées. Deux évidences seulement : chaque figure colorée (un carré bleu, un cercle rouge…) se pose une fois, et une case ne contient qu'une figure. Tout le reste est dans les phrases : suis les chaînes d'une figure à l'autre, retiens ce qui est certain et écarte les positions impossibles.",
       "figures": [
         "cercle",
         "carre",

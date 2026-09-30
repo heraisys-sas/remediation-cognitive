@@ -15,3 +15,10 @@ Le mode intersection compare les domaines obtenus par chaque phrase séparément
 ## Conséquences
 
 Les 100 identifiants changent puisque les aides changent. P1/P3/P4/P5 conservent leurs solutions et énoncés ; la conception de leur difficulté n’est pas revue dans cette passe. P2 est régénéré. La résolution et l’unicité sont vérifiées sans les aides ; le repère pédagogique reste un énoncé visible. Les démonstrations complexes peuvent être longues au P5 ; leur adaptation pédagogique spécifique reste à examiner en usage, sans calibration clinique revendiquée.
+
+
+## Ajustement du 30 septembre — brouillon facultatif
+
+Olivier précise que le travail mental de maintien et de croisement des informations fait partie de l’exercice conduit par son orthophoniste. Le tableau de possibilités est une aide ajoutée au logiciel ; la [fiche de l’éditeur d’Élémentaire, mon cher…](https://www.orthoedition.com/materiels-ouvrages/elementaire-mon-cher-650) décrit grille, pions et livret et cite la mémoire de travail verbale, sans mentionner cette matrice de possibilités. Nous ne prétendons pas avoir vérifié le manuel complet.
+
+Conserver le panneau `details` fermé par défaut à chaque grille, sous le libellé « Aide — noter les possibilités ». Expliquer son caractère facultatif à l’intérieur du panneau. Retirer des consignes, de la méthode d’entrée de P2 et des aides graduées toutes les injonctions de noter ou barrer dans le tableau. Le raisonnement peut se poursuivre sans brouillon. Aucun changement des contraintes, placements, étapes ou démonstrations. Les identifiants changent avec les textes pédagogiques ; la grille de placement reste distincte de cette aide.

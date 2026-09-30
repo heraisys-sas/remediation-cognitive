@@ -1,6 +1,6 @@
 [
   {
-    "id": "df-4-e641ed2fbc4b",
+    "id": "df-4-cb9a32a74b49",
     "type": "grille-deduction",
     "module": "entrainement",
     "theme": "deduction",
@@ -14,7 +14,7 @@
     ],
     "cap_complexite": "Croisement de contraintes explicites ; étape 1/3, grille 3×3.",
     "contenu": {
-      "consigne": "Place les 9 figures colorées : chacune une seule fois, une par case. Toute autre contrainte est écrite dans les indices. Croise les phrases, note les possibilités et ne place un pion que lorsque sa case est certaine.",
+      "consigne": "Place les 9 figures colorées : chacune une seule fois, une par case. Toute autre contrainte est écrite dans les indices. Croise les phrases, compare les possibilités et ne place un pion que lorsque sa case est certaine.",
       "figures": [
         "cercle",
         "carre",
@@ -99,7 +99,7 @@
         }
       ],
       "indices": [],
-      "aide": "Aucune phrase ne suffit seule : recoupe les phrases entre elles, barre ce qui devient impossible — les cases certaines apparaissent au croisement.",
+      "aide": "Aucune phrase ne suffit seule : recoupe les phrases entre elles, écarte les positions impossibles — les cases certaines apparaissent au croisement.",
       "etape_progression": 1,
       "aide_raisonnement": {
         "mode": "croisement",
@@ -440,7 +440,7 @@
     }
   },
   {
-    "id": "df-4-a504483a1173",
+    "id": "df-4-22ec9f89e73e",
     "type": "grille-deduction",
     "module": "entrainement",
     "theme": "deduction",
@@ -454,7 +454,7 @@
     ],
     "cap_complexite": "Croisement de contraintes explicites ; étape 1/3, grille 3×3.",
     "contenu": {
-      "consigne": "Place les 9 figures colorées : chacune une seule fois, une par case. Toute autre contrainte est écrite dans les indices. Croise les phrases, note les possibilités et ne place un pion que lorsque sa case est certaine.",
+      "consigne": "Place les 9 figures colorées : chacune une seule fois, une par case. Toute autre contrainte est écrite dans les indices. Croise les phrases, compare les possibilités et ne place un pion que lorsque sa case est certaine.",
       "figures": [
         "cercle",
         "carre",
@@ -553,7 +553,7 @@
         }
       ],
       "indices": [],
-      "aide": "Aucune phrase ne suffit seule : recoupe les phrases entre elles, barre ce qui devient impossible — les cases certaines apparaissent au croisement.",
+      "aide": "Aucune phrase ne suffit seule : recoupe les phrases entre elles, écarte les positions impossibles — les cases certaines apparaissent au croisement.",
       "etape_progression": 1,
       "aide_raisonnement": {
         "mode": "croisement",
@@ -978,7 +978,7 @@
     }
   },
   {
-    "id": "df-4-552da1f93a2d",
+    "id": "df-4-cec14c921f12",
     "type": "grille-deduction",
     "module": "entrainement",
     "theme": "deduction",
@@ -992,7 +992,7 @@
     ],
     "cap_complexite": "Croisement de contraintes explicites ; étape 1/3, grille 3×3.",
     "contenu": {
-      "consigne": "Place les 9 figures colorées : chacune une seule fois, une par case. Toute autre contrainte est écrite dans les indices. Croise les phrases, note les possibilités et ne place un pion que lorsque sa case est certaine.",
+      "consigne": "Place les 9 figures colorées : chacune une seule fois, une par case. Toute autre contrainte est écrite dans les indices. Croise les phrases, compare les possibilités et ne place un pion que lorsque sa case est certaine.",
       "figures": [
         "cercle",
         "carre",
@@ -1074,7 +1074,7 @@
         }
       ],
       "indices": [],
-      "aide": "Aucune phrase ne suffit seule : recoupe les phrases entre elles, barre ce qui devient impossible — les cases certaines apparaissent au croisement.",
+      "aide": "Aucune phrase ne suffit seule : recoupe les phrases entre elles, écarte les positions impossibles — les cases certaines apparaissent au croisement.",
       "etape_progression": 1,
       "aide_raisonnement": {
         "mode": "croisement",
@@ -1466,7 +1466,7 @@
     }
   },
   {
-    "id": "df-4-bcc8ca36c96f",
+    "id": "df-4-052051a0c57f",
     "type": "grille-deduction",
     "module": "entrainement",
     "theme": "deduction",
@@ -1480,7 +1480,7 @@
     ],
     "cap_complexite": "Croisement de contraintes explicites ; étape 1/3, grille 3×3.",
     "contenu": {
-      "consigne": "Place les 9 figures colorées : chacune une seule fois, une par case. Toute autre contrainte est écrite dans les indices. Croise les phrases, note les possibilités et ne place un pion que lorsque sa case est certaine.",
+      "consigne": "Place les 9 figures colorées : chacune une seule fois, une par case. Toute autre contrainte est écrite dans les indices. Croise les phrases, compare les possibilités et ne place un pion que lorsque sa case est certaine.",
       "figures": [
         "cercle",
         "carre",
@@ -1570,7 +1570,7 @@
         }
       ],
       "indices": [],
-      "aide": "Aucune phrase ne suffit seule : recoupe les phrases entre elles, barre ce qui devient impossible — les cases certaines apparaissent au croisement.",
+      "aide": "Aucune phrase ne suffit seule : recoupe les phrases entre elles, écarte les positions impossibles — les cases certaines apparaissent au croisement.",
       "etape_progression": 1,
       "aide_raisonnement": {
         "mode": "croisement",
@@ -1978,7 +1978,7 @@
     }
   },
   {
-    "id": "df-4-280b7cdc2dd5",
+    "id": "df-4-500844765d7e",
     "type": "grille-deduction",
     "module": "entrainement",
     "theme": "deduction",
@@ -1992,7 +1992,7 @@
     ],
     "cap_complexite": "Croisement de contraintes explicites ; étape 1/3, grille 3×3.",
     "contenu": {
-      "consigne": "Place les 9 figures colorées : chacune une seule fois, une par case. Toute autre contrainte est écrite dans les indices. Croise les phrases, note les possibilités et ne place un pion que lorsque sa case est certaine.",
+      "consigne": "Place les 9 figures colorées : chacune une seule fois, une par case. Toute autre contrainte est écrite dans les indices. Croise les phrases, compare les possibilités et ne place un pion que lorsque sa case est certaine.",
       "figures": [
         "cercle",
         "carre",
@@ -2063,7 +2063,7 @@
         }
       ],
       "indices": [],
-      "aide": "Aucune phrase ne suffit seule : recoupe les phrases entre elles, barre ce qui devient impossible — les cases certaines apparaissent au croisement.",
+      "aide": "Aucune phrase ne suffit seule : recoupe les phrases entre elles, écarte les positions impossibles — les cases certaines apparaissent au croisement.",
       "etape_progression": 1,
       "aide_raisonnement": {
         "mode": "croisement",
@@ -2423,7 +2423,7 @@
     }
   },
   {
-    "id": "df-4-b87316a11dd6",
+    "id": "df-4-597ddee6b0f4",
     "type": "grille-deduction",
     "module": "entrainement",
     "theme": "deduction",
@@ -2437,7 +2437,7 @@
     ],
     "cap_complexite": "Croisement de contraintes explicites ; étape 1/3, grille 3×3.",
     "contenu": {
-      "consigne": "Place les 9 figures colorées : chacune une seule fois, une par case. Toute autre contrainte est écrite dans les indices. Croise les phrases, note les possibilités et ne place un pion que lorsque sa case est certaine.",
+      "consigne": "Place les 9 figures colorées : chacune une seule fois, une par case. Toute autre contrainte est écrite dans les indices. Croise les phrases, compare les possibilités et ne place un pion que lorsque sa case est certaine.",
       "figures": [
         "cercle",
         "carre",
@@ -2522,7 +2522,7 @@
         }
       ],
       "indices": [],
-      "aide": "Aucune phrase ne suffit seule : recoupe les phrases entre elles, barre ce qui devient impossible — les cases certaines apparaissent au croisement.",
+      "aide": "Aucune phrase ne suffit seule : recoupe les phrases entre elles, écarte les positions impossibles — les cases certaines apparaissent au croisement.",
       "etape_progression": 1,
       "aide_raisonnement": {
         "mode": "croisement",
@@ -2900,7 +2900,7 @@
     }
   },
   {
-    "id": "df-4-6900c4393696",
+    "id": "df-4-3ddb24ed50a0",
     "type": "grille-deduction",
     "module": "entrainement",
     "theme": "deduction",
@@ -2914,7 +2914,7 @@
     ],
     "cap_complexite": "Croisement de contraintes explicites ; étape 1/3, grille 3×3.",
     "contenu": {
-      "consigne": "Place les 9 figures colorées : chacune une seule fois, une par case. Toute autre contrainte est écrite dans les indices. Croise les phrases, note les possibilités et ne place un pion que lorsque sa case est certaine.",
+      "consigne": "Place les 9 figures colorées : chacune une seule fois, une par case. Toute autre contrainte est écrite dans les indices. Croise les phrases, compare les possibilités et ne place un pion que lorsque sa case est certaine.",
       "figures": [
         "cercle",
         "carre",
@@ -3004,7 +3004,7 @@
         }
       ],
       "indices": [],
-      "aide": "Aucune phrase ne suffit seule : recoupe les phrases entre elles, barre ce qui devient impossible — les cases certaines apparaissent au croisement.",
+      "aide": "Aucune phrase ne suffit seule : recoupe les phrases entre elles, écarte les positions impossibles — les cases certaines apparaissent au croisement.",
       "etape_progression": 1,
       "aide_raisonnement": {
         "mode": "croisement",
@@ -3392,7 +3392,7 @@
     }
   },
   {
-    "id": "df-4-b1c1ba1643ac",
+    "id": "df-4-55d654bf190a",
     "type": "grille-deduction",
     "module": "entrainement",
     "theme": "deduction",
@@ -3406,7 +3406,7 @@
     ],
     "cap_complexite": "Croisement de contraintes explicites ; étape 2/3, grille 3×3.",
     "contenu": {
-      "consigne": "Place les 9 figures colorées : chacune une seule fois, une par case. Toute autre contrainte est écrite dans les indices. Croise les phrases, note les possibilités et ne place un pion que lorsque sa case est certaine.",
+      "consigne": "Place les 9 figures colorées : chacune une seule fois, une par case. Toute autre contrainte est écrite dans les indices. Croise les phrases, compare les possibilités et ne place un pion que lorsque sa case est certaine.",
       "figures": [
         "cercle",
         "carre",
@@ -3483,7 +3483,7 @@
         }
       ],
       "indices": [],
-      "aide": "Aucune phrase ne suffit seule : recoupe les phrases entre elles, barre ce qui devient impossible — les cases certaines apparaissent au croisement.",
+      "aide": "Aucune phrase ne suffit seule : recoupe les phrases entre elles, écarte les positions impossibles — les cases certaines apparaissent au croisement.",
       "etape_progression": 2,
       "aide_raisonnement": {
         "mode": "croisement",
@@ -3779,7 +3779,7 @@
     }
   },
   {
-    "id": "df-4-5d294bab5a2c",
+    "id": "df-4-927126655e7a",
     "type": "grille-deduction",
     "module": "entrainement",
     "theme": "deduction",
@@ -3793,7 +3793,7 @@
     ],
     "cap_complexite": "Croisement de contraintes explicites ; étape 2/3, grille 3×3.",
     "contenu": {
-      "consigne": "Place les 9 figures colorées : chacune une seule fois, une par case. Toute autre contrainte est écrite dans les indices. Croise les phrases, note les possibilités et ne place un pion que lorsque sa case est certaine.",
+      "consigne": "Place les 9 figures colorées : chacune une seule fois, une par case. Toute autre contrainte est écrite dans les indices. Croise les phrases, compare les possibilités et ne place un pion que lorsque sa case est certaine.",
       "figures": [
         "cercle",
         "carre",
@@ -3873,7 +3873,7 @@
         }
       ],
       "indices": [],
-      "aide": "Aucune phrase ne suffit seule : recoupe les phrases entre elles, barre ce qui devient impossible — les cases certaines apparaissent au croisement.",
+      "aide": "Aucune phrase ne suffit seule : recoupe les phrases entre elles, écarte les positions impossibles — les cases certaines apparaissent au croisement.",
       "etape_progression": 2,
       "aide_raisonnement": {
         "mode": "croisement",
@@ -4238,7 +4238,7 @@
     }
   },
   {
-    "id": "df-4-a2397c1a72f5",
+    "id": "df-4-679f11761d4b",
     "type": "grille-deduction",
     "module": "entrainement",
     "theme": "deduction",
@@ -4252,7 +4252,7 @@
     ],
     "cap_complexite": "Croisement de contraintes explicites ; étape 2/3, grille 3×3.",
     "contenu": {
-      "consigne": "Place les 9 figures colorées : chacune une seule fois, une par case. Toute autre contrainte est écrite dans les indices. Croise les phrases, note les possibilités et ne place un pion que lorsque sa case est certaine.",
+      "consigne": "Place les 9 figures colorées : chacune une seule fois, une par case. Toute autre contrainte est écrite dans les indices. Croise les phrases, compare les possibilités et ne place un pion que lorsque sa case est certaine.",
       "figures": [
         "cercle",
         "carre",
@@ -4350,7 +4350,7 @@
         }
       ],
       "indices": [],
-      "aide": "Aucune phrase ne suffit seule : recoupe les phrases entre elles, barre ce qui devient impossible — les cases certaines apparaissent au croisement.",
+      "aide": "Aucune phrase ne suffit seule : recoupe les phrases entre elles, écarte les positions impossibles — les cases certaines apparaissent au croisement.",
       "etape_progression": 2,
       "aide_raisonnement": {
         "mode": "croisement",
@@ -4814,7 +4814,7 @@
     }
   },
   {
-    "id": "df-4-b24f99fcbc90",
+    "id": "df-4-ae18a5e6425c",
     "type": "grille-deduction",
     "module": "entrainement",
     "theme": "deduction",
@@ -4828,7 +4828,7 @@
     ],
     "cap_complexite": "Croisement de contraintes explicites ; étape 2/3, grille 3×3.",
     "contenu": {
-      "consigne": "Place les 9 figures colorées : chacune une seule fois, une par case. Toute autre contrainte est écrite dans les indices. Croise les phrases, note les possibilités et ne place un pion que lorsque sa case est certaine.",
+      "consigne": "Place les 9 figures colorées : chacune une seule fois, une par case. Toute autre contrainte est écrite dans les indices. Croise les phrases, compare les possibilités et ne place un pion que lorsque sa case est certaine.",
       "figures": [
         "cercle",
         "carre",
@@ -4934,7 +4934,7 @@
         }
       ],
       "indices": [],
-      "aide": "Aucune phrase ne suffit seule : recoupe les phrases entre elles, barre ce qui devient impossible — les cases certaines apparaissent au croisement.",
+      "aide": "Aucune phrase ne suffit seule : recoupe les phrases entre elles, écarte les positions impossibles — les cases certaines apparaissent au croisement.",
       "etape_progression": 2,
       "aide_raisonnement": {
         "mode": "croisement",
@@ -5244,7 +5244,7 @@
     }
   },
   {
-    "id": "df-4-7be1692d5155",
+    "id": "df-4-a463f6037f68",
     "type": "grille-deduction",
     "module": "entrainement",
     "theme": "deduction",
@@ -5258,7 +5258,7 @@
     ],
     "cap_complexite": "Croisement de contraintes explicites ; étape 2/3, grille 3×3.",
     "contenu": {
-      "consigne": "Place les 9 figures colorées : chacune une seule fois, une par case. Toute autre contrainte est écrite dans les indices. Croise les phrases, note les possibilités et ne place un pion que lorsque sa case est certaine.",
+      "consigne": "Place les 9 figures colorées : chacune une seule fois, une par case. Toute autre contrainte est écrite dans les indices. Croise les phrases, compare les possibilités et ne place un pion que lorsque sa case est certaine.",
       "figures": [
         "cercle",
         "carre",
@@ -5351,7 +5351,7 @@
         }
       ],
       "indices": [],
-      "aide": "Aucune phrase ne suffit seule : recoupe les phrases entre elles, barre ce qui devient impossible — les cases certaines apparaissent au croisement.",
+      "aide": "Aucune phrase ne suffit seule : recoupe les phrases entre elles, écarte les positions impossibles — les cases certaines apparaissent au croisement.",
       "etape_progression": 2,
       "aide_raisonnement": {
         "mode": "croisement",
@@ -5647,7 +5647,7 @@
     }
   },
   {
-    "id": "df-4-cb1bb5007e85",
+    "id": "df-4-c7765e45376c",
     "type": "grille-deduction",
     "module": "entrainement",
     "theme": "deduction",
@@ -5661,7 +5661,7 @@
     ],
     "cap_complexite": "Croisement de contraintes explicites ; étape 2/3, grille 3×3.",
     "contenu": {
-      "consigne": "Place les 9 figures colorées : chacune une seule fois, une par case. Toute autre contrainte est écrite dans les indices. Croise les phrases, note les possibilités et ne place un pion que lorsque sa case est certaine.",
+      "consigne": "Place les 9 figures colorées : chacune une seule fois, une par case. Toute autre contrainte est écrite dans les indices. Croise les phrases, compare les possibilités et ne place un pion que lorsque sa case est certaine.",
       "figures": [
         "cercle",
         "carre",
@@ -5743,7 +5743,7 @@
         }
       ],
       "indices": [],
-      "aide": "Aucune phrase ne suffit seule : recoupe les phrases entre elles, barre ce qui devient impossible — les cases certaines apparaissent au croisement.",
+      "aide": "Aucune phrase ne suffit seule : recoupe les phrases entre elles, écarte les positions impossibles — les cases certaines apparaissent au croisement.",
       "etape_progression": 2,
       "aide_raisonnement": {
         "mode": "croisement",
@@ -6096,7 +6096,7 @@
     }
   },
   {
-    "id": "df-4-c394978f7417",
+    "id": "df-4-b5d6f9d7c17c",
     "type": "grille-deduction",
     "module": "entrainement",
     "theme": "deduction",
@@ -6110,7 +6110,7 @@
     ],
     "cap_complexite": "Croisement de contraintes explicites ; étape 2/3, grille 3×3.",
     "contenu": {
-      "consigne": "Place les 9 figures colorées : chacune une seule fois, une par case. Toute autre contrainte est écrite dans les indices. Croise les phrases, note les possibilités et ne place un pion que lorsque sa case est certaine.",
+      "consigne": "Place les 9 figures colorées : chacune une seule fois, une par case. Toute autre contrainte est écrite dans les indices. Croise les phrases, compare les possibilités et ne place un pion que lorsque sa case est certaine.",
       "figures": [
         "cercle",
         "carre",
@@ -6197,7 +6197,7 @@
         }
       ],
       "indices": [],
-      "aide": "Aucune phrase ne suffit seule : recoupe les phrases entre elles, barre ce qui devient impossible — les cases certaines apparaissent au croisement.",
+      "aide": "Aucune phrase ne suffit seule : recoupe les phrases entre elles, écarte les positions impossibles — les cases certaines apparaissent au croisement.",
       "etape_progression": 2,
       "aide_raisonnement": {
         "mode": "croisement",
@@ -6655,7 +6655,7 @@
     }
   },
   {
-    "id": "df-4-65e7414c5ce4",
+    "id": "df-4-0d011c6ecb41",
     "type": "grille-deduction",
     "module": "entrainement",
     "theme": "deduction",
@@ -6669,7 +6669,7 @@
     ],
     "cap_complexite": "Croisement de contraintes explicites ; étape 3/3, grille 3×3.",
     "contenu": {
-      "consigne": "Place les 9 figures colorées : chacune une seule fois, une par case. Toute autre contrainte est écrite dans les indices. Croise les phrases, note les possibilités et ne place un pion que lorsque sa case est certaine.",
+      "consigne": "Place les 9 figures colorées : chacune une seule fois, une par case. Toute autre contrainte est écrite dans les indices. Croise les phrases, compare les possibilités et ne place un pion que lorsque sa case est certaine.",
       "figures": [
         "cercle",
         "carre",
@@ -6758,7 +6758,7 @@
         }
       ],
       "indices": [],
-      "aide": "Aucune phrase ne suffit seule : recoupe les phrases entre elles, barre ce qui devient impossible — les cases certaines apparaissent au croisement.",
+      "aide": "Aucune phrase ne suffit seule : recoupe les phrases entre elles, écarte les positions impossibles — les cases certaines apparaissent au croisement.",
       "etape_progression": 3,
       "aide_raisonnement": {
         "mode": "croisement",
@@ -7042,7 +7042,7 @@
     }
   },
   {
-    "id": "df-4-2b532c5d2863",
+    "id": "df-4-d76be9421d73",
     "type": "grille-deduction",
     "module": "entrainement",
     "theme": "deduction",
@@ -7056,7 +7056,7 @@
     ],
     "cap_complexite": "Croisement de contraintes explicites ; étape 3/3, grille 3×3.",
     "contenu": {
-      "consigne": "Place les 9 figures colorées : chacune une seule fois, une par case. Toute autre contrainte est écrite dans les indices. Croise les phrases, note les possibilités et ne place un pion que lorsque sa case est certaine.",
+      "consigne": "Place les 9 figures colorées : chacune une seule fois, une par case. Toute autre contrainte est écrite dans les indices. Croise les phrases, compare les possibilités et ne place un pion que lorsque sa case est certaine.",
       "figures": [
         "cercle",
         "carre",
@@ -7138,7 +7138,7 @@
         }
       ],
       "indices": [],
-      "aide": "Aucune phrase ne suffit seule : recoupe les phrases entre elles, barre ce qui devient impossible — les cases certaines apparaissent au croisement.",
+      "aide": "Aucune phrase ne suffit seule : recoupe les phrases entre elles, écarte les positions impossibles — les cases certaines apparaissent au croisement.",
       "etape_progression": 3,
       "aide_raisonnement": {
         "mode": "croisement",
@@ -7495,7 +7495,7 @@
     }
   },
   {
-    "id": "df-4-1a24391572b3",
+    "id": "df-4-848f3d7d4447",
     "type": "grille-deduction",
     "module": "entrainement",
     "theme": "deduction",
@@ -7509,7 +7509,7 @@
     ],
     "cap_complexite": "Croisement de contraintes explicites ; étape 3/3, grille 3×3.",
     "contenu": {
-      "consigne": "Place les 9 figures colorées : chacune une seule fois, une par case. Toute autre contrainte est écrite dans les indices. Croise les phrases, note les possibilités et ne place un pion que lorsque sa case est certaine.",
+      "consigne": "Place les 9 figures colorées : chacune une seule fois, une par case. Toute autre contrainte est écrite dans les indices. Croise les phrases, compare les possibilités et ne place un pion que lorsque sa case est certaine.",
       "figures": [
         "cercle",
         "carre",
@@ -7598,7 +7598,7 @@
         }
       ],
       "indices": [],
-      "aide": "Aucune phrase ne suffit seule : recoupe les phrases entre elles, barre ce qui devient impossible — les cases certaines apparaissent au croisement.",
+      "aide": "Aucune phrase ne suffit seule : recoupe les phrases entre elles, écarte les positions impossibles — les cases certaines apparaissent au croisement.",
       "etape_progression": 3,
       "aide_raisonnement": {
         "mode": "croisement",
@@ -7941,7 +7941,7 @@
     }
   },
   {
-    "id": "df-4-7b83a7579dd0",
+    "id": "df-4-b191f6d3064d",
     "type": "grille-deduction",
     "module": "entrainement",
     "theme": "deduction",
@@ -7955,7 +7955,7 @@
     ],
     "cap_complexite": "Croisement de contraintes explicites ; étape 3/3, grille 3×3.",
     "contenu": {
-      "consigne": "Place les 9 figures colorées : chacune une seule fois, une par case. Toute autre contrainte est écrite dans les indices. Croise les phrases, note les possibilités et ne place un pion que lorsque sa case est certaine.",
+      "consigne": "Place les 9 figures colorées : chacune une seule fois, une par case. Toute autre contrainte est écrite dans les indices. Croise les phrases, compare les possibilités et ne place un pion que lorsque sa case est certaine.",
       "figures": [
         "cercle",
         "carre",
@@ -8035,7 +8035,7 @@
         }
       ],
       "indices": [],
-      "aide": "Aucune phrase ne suffit seule : recoupe les phrases entre elles, barre ce qui devient impossible — les cases certaines apparaissent au croisement.",
+      "aide": "Aucune phrase ne suffit seule : recoupe les phrases entre elles, écarte les positions impossibles — les cases certaines apparaissent au croisement.",
       "etape_progression": 3,
       "aide_raisonnement": {
         "mode": "croisement",
@@ -8377,7 +8377,7 @@
     }
   },
   {
-    "id": "df-4-33fff781b36d",
+    "id": "df-4-a5c8064ded92",
     "type": "grille-deduction",
     "module": "entrainement",
     "theme": "deduction",
@@ -8391,7 +8391,7 @@
     ],
     "cap_complexite": "Croisement de contraintes explicites ; étape 3/3, grille 3×3.",
     "contenu": {
-      "consigne": "Place les 9 figures colorées : chacune une seule fois, une par case. Toute autre contrainte est écrite dans les indices. Croise les phrases, note les possibilités et ne place un pion que lorsque sa case est certaine.",
+      "consigne": "Place les 9 figures colorées : chacune une seule fois, une par case. Toute autre contrainte est écrite dans les indices. Croise les phrases, compare les possibilités et ne place un pion que lorsque sa case est certaine.",
       "figures": [
         "cercle",
         "carre",
@@ -8473,7 +8473,7 @@
         }
       ],
       "indices": [],
-      "aide": "Aucune phrase ne suffit seule : recoupe les phrases entre elles, barre ce qui devient impossible — les cases certaines apparaissent au croisement.",
+      "aide": "Aucune phrase ne suffit seule : recoupe les phrases entre elles, écarte les positions impossibles — les cases certaines apparaissent au croisement.",
       "etape_progression": 3,
       "aide_raisonnement": {
         "mode": "intersection",
@@ -8548,7 +8548,7 @@
     }
   },
   {
-    "id": "df-4-8df41dfe69c7",
+    "id": "df-4-e0036dc3a187",
     "type": "grille-deduction",
     "module": "entrainement",
     "theme": "deduction",
@@ -8562,7 +8562,7 @@
     ],
     "cap_complexite": "Croisement de contraintes explicites ; étape 3/3, grille 3×3.",
     "contenu": {
-      "consigne": "Place les 9 figures colorées : chacune une seule fois, une par case. Toute autre contrainte est écrite dans les indices. Croise les phrases, note les possibilités et ne place un pion que lorsque sa case est certaine.",
+      "consigne": "Place les 9 figures colorées : chacune une seule fois, une par case. Toute autre contrainte est écrite dans les indices. Croise les phrases, compare les possibilités et ne place un pion que lorsque sa case est certaine.",
       "figures": [
         "cercle",
         "carre",
@@ -8637,7 +8637,7 @@
         }
       ],
       "indices": [],
-      "aide": "Aucune phrase ne suffit seule : recoupe les phrases entre elles, barre ce qui devient impossible — les cases certaines apparaissent au croisement.",
+      "aide": "Aucune phrase ne suffit seule : recoupe les phrases entre elles, écarte les positions impossibles — les cases certaines apparaissent au croisement.",
       "etape_progression": 3,
       "aide_raisonnement": {
         "mode": "croisement",

@@ -1,3 +1,11 @@
+# Ajustement du 30 septembre — tableau facultatif
+
+Le brouillon est désormais nommé « Aide — noter les possibilités » et reste fermé par défaut à chaque grille. Son caractère facultatif est expliqué à l’intérieur. Les consignes, la méthode de départ de P2 et les aides raisonnées ne prescrivent plus l’usage du tableau. La grille de placement reste visible ; aucun problème, solution ou chemin de démonstration n’est changé. Nouveaux identifiants pour les textes pédagogiques révisés.
+
+Contrôles : suite de tests, syntaxe JS, absence des anciennes injonctions et comparaison du contenu régénéré. Voir l’ajustement de l’ADR-018 pour la distinction entre matériel de référence et aide ajoutée.
+
+---
+
 # Mise à jour du 30 septembre — aides raisonnées et P2
 
 - P2 : 6–8 phrases par grille, moyenne **7,25** contre 9,8. Sept regroupements à deux repères individuels du même pion ; aucune chaîne changeant de sujet. Première étape accompagnée par une méthode visible et, sur cinq grilles, un repère explicite de démarrage. La troisième étape retire les repères individuels.

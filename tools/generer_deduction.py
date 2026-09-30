@@ -134,7 +134,7 @@ DESCRIPTIONS = [
 AIDE_ANCRAGE = ("Repère les indications de ligne ou de colonne, puis relie-les aux autres phrases. "
                 "Ne place une figure que lorsque sa case est certaine.")
 AIDE_CROISEMENT = ("Aucune phrase ne suffit seule : recoupe les phrases entre elles, "
-                   "barre ce qui devient impossible — les cases certaines apparaissent "
+                   "écarte les positions impossibles — les cases certaines apparaissent "
                    "au croisement.")
 
 #: Longueur (en caractères hexadécimaux) de l'empreinte d'identifiant. 12 caractères
@@ -455,7 +455,7 @@ def _item(palier: int, paire, phrases: list[dict], secours: list[dict],
             f"Place les {nombre} figures colorées. Deux évidences seulement : chaque figure "
             "colorée (un carré bleu, un cercle rouge…) se pose une fois, et une case ne "
             "contient qu'une figure. Tout le reste est dans les phrases : suis les chaînes "
-            "d'une figure à l'autre, note ce qui est certain, barre ce qui devient impossible."),
+            "d'une figure à l'autre, retiens ce qui est certain et écarte les positions impossibles."),
         "figures": figures,
         "couleurs": couleurs,
         "enonces": phrases,

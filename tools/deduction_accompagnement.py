@@ -94,11 +94,10 @@ def accompagner(item):
                             trouve=True; break
                     if trouve: break
                 if trouve: break
-            contenu['methode_depart']=("Commence par le repère de la phrase 1. Dans le tableau de déduction, "
-                "barre les cases exclues pour ce pion, puis cherche une autre phrase qui le concerne. "
-                "Tu peux noter des possibilités sans placer de pion. Le bouton « Aide au raisonnement » te guide si besoin.") if trouve else (
-                "Note les cases possibles dans le tableau de déduction avant de placer un pion. "
-                "Cherche deux phrases qui concernent le même pion.")
+            contenu['methode_depart']=("Commence par le repère de la phrase 1. Cherche une autre phrase qui concerne ce pion "
+                "et croise les deux informations avant de le placer.") if trouve else (
+                "Cherche deux phrases qui concernent le même pion et croise leurs informations "
+                "avant de le placer.")
         contenu['enonces']=enonces
     contenu['aide_raisonnement']=aide_raisonnement(contenu['enonces'],n,figures,couleurs)
     # Les anciens secours étaient des coordonnées tirées de la solution. Ils

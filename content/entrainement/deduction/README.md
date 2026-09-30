@@ -41,7 +41,7 @@ Ces contrôles structurels ne démontrent ni une équivalence clinique avec un m
 
 ## Utilisation et génération
 
-Six grilles au maximum par séance ; à dix minutes, l'arrêt est proposé. Le bouton **Aide au raisonnement** propose trois étapes : phrases numérotées à observer, possibilités à comparer, puis conclusion expliquée sur demande explicite. Les aides utilisent uniquement les énoncés déjà visibles : aucune coordonnée supplémentaire tirée au hasard de la solution. Pour les croisements complexes, la démonstration conserve la succession des réductions de possibilités, vérifiée étape par étape. Les grilles d’entrée de P2 affichent en plus une méthode de démarrage. Le tableau de déduction permet de noter les possibilités sans placer prématurément un pion.
+Six grilles au maximum par séance ; à dix minutes, l'arrêt est proposé. Le bouton **Aide au raisonnement** propose trois étapes : phrases numérotées à observer, possibilités à comparer, puis conclusion expliquée sur demande explicite. Les aides utilisent uniquement les énoncés déjà visibles : aucune coordonnée supplémentaire tirée au hasard de la solution. Pour les croisements complexes, la démonstration conserve la succession des réductions de possibilités, vérifiée étape par étape. Les grilles d’entrée de P2 affichent en plus une méthode de démarrage. Le tableau est une **aide facultative du logiciel**, fermée à chaque nouvelle grille et accessible par « Aide — noter les possibilités ». Les consignes et aides au raisonnement ne demandent pas de l’utiliser. Son ouverture permet d’externaliser les possibilités ; il ne fait pas partie du parcours par défaut. La grille de placement des pions reste, elle, toujours présente.
 
 ```sh
 python3 tools/generer_deduction.py

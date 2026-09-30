@@ -2,6 +2,12 @@
 
 Format : [date] — [périmètre] — description. Les retours informels de l'orthophoniste sont journalisés ici, sans caution clinique.
 
+## 2026-09-30 · Déduction : brouillon explicitement facultatif
+
+- « Tableau de déduction » devient « Aide — noter les possibilités », fermé par défaut à chaque exercice ; explication de son usage facultatif à l’intérieur du panneau.
+- Retrait des invitations systématiques à noter/barrer dans les consignes des cinq paliers, dans la méthode de départ de P2 et dans les aides graduées. La grille, les pions et les phrases restent le parcours par défaut.
+- Aucun changement des problèmes ou de leurs solutions. Nouveaux identifiants dérivés des textes pédagogiques modifiés ; générateurs mis à jour.
+
 ## 2026-09-30 · Aides raisonnées et lisibilité du palier 2
 
 - P2 : 6–8 phrases par grille (moyenne 7,25 contre 9,8), deux repères individuels du même pion reliés par « et », aucun changement de sujet. Sélection d’informations plus utiles, retrait des négations relatives difficiles en fin de palier ; étape 3 sans repères individuels. Les regroupements seuls ne suffisaient pas : ils allongeaient la liste en décomposant les chaînes, d'où cette révision ciblée.

@@ -1916,12 +1916,12 @@ function formaterAideRaisonnement(aide, n, niveau) {
   const pion = `${libelleFigure(aide.figure)} ${aide.couleur}`;
   const references = aide.phrases.join(", ");
   const cases = nomsPour(n).cases;
-  if (niveau === 0) return `Observe les phrases ${references}. Cherche où peut se trouver le ${pion}. Note les possibilités dans le tableau avant de placer le pion.`;
+  if (niveau === 0) return `Observe les phrases ${references}. Cherche où peut se trouver le ${pion}. Croise ces informations avant de placer le pion.`;
   if (niveau === 1 && aide.mode === "croisement") {
     const premiere = (aide.demonstration || []).find(e => e.reductions.some(r => r.cases.length > 1));
     const details = premiere ? premiere.reductions.filter(r => r.cases.length > 1).map(r =>
       `${libelleFigure(r.figure)} ${r.couleur} : ${r.cases.map(c => cases[c]).join(" ; ")}.`).join("\n") : "";
-    return `Commence par appliquer la phrase ${premiere ? premiere.phrase : aide.phrases[0]}. Note les possibilités restantes :\n${details}\nReprends ensuite les autres phrases citées : une case déjà occupée ne peut plus accueillir un autre pion.`;
+    return `Commence par appliquer la phrase ${premiere ? premiere.phrase : aide.phrases[0]}. Compare les possibilités restantes :\n${details}\nReprends ensuite les autres phrases citées : une case déjà occupée ne peut plus accueillir un autre pion.`;
   }
   if (niveau === 1) {
     const details = aide.phrases.map((rang, i) => `Phrase ${rang} : ${aide.possibilites[i].map(c => cases[c]).join(" ; ")}.`).join("\n");
@@ -1949,7 +1949,7 @@ function nomsCourtsCases(n) {
   return ["H·G", "H·C", "H·D", "M·G", "M·C", "M·D", "B·G", "B·C", "B·D"];
 }
 
-/** Tableau de déduction : le brouillon papier de l'orthophoniste, en version cliquable.
+/** Aide facultative ajoutée au logiciel pour noter les possibilités.
  *  Une ligne par figure colorée, une colonne par case : ✗ exclu, ✓ certain. */
 function rendreTableauDeduction(contenu) {
   const n = contenu.figures.length;
@@ -1993,9 +1993,9 @@ function rendreTableauDeduction(contenu) {
     ? "L = ligne (1 = haut), C = colonne (1 = gauche)."
     : "H = haut, M = milieu, B = bas · G = gauche, C = centre, D = droite.";
   return creerElement("details", { classe: "methode-panneau" },
-    creerElement("summary", { texte: "Tableau de déduction (brouillon)" }),
+    creerElement("summary", { texte: "Aide — noter les possibilités" }),
     creerElement("p", { classe: "tableau-legende",
-      texte: `${legende} Cliquez une case pour la marquer : ✗ impossible, ✓ certain.` }),
+      texte: `Ce brouillon facultatif permet de garder les possibilités sous les yeux. Tu peux faire l’exercice sans l’ouvrir. ${legende} Cliquez une case pour la marquer : ✗ impossible, ✓ certain.` }),
     creerElement("div", { classe: "tableau-enveloppe" },
       creerElement("table", { classe: "tableau-deduction" }, creerElement("thead", {}, entete), corps))
   );
