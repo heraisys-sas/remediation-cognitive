@@ -1095,7 +1095,7 @@ function rendreIndices(item) {
   const liste = creerElement("ol", { classe: "liste-indices" });
   const bouton = creerElement("button", {
     classe: "bouton bouton-secondaire",
-    texte: "Un indice",
+    texte: aideRaisonnement ? "Aide au raisonnement" : "Un indice",
     attributs: { type: "button" },
   });
   const majBouton = () => {
@@ -1911,6 +1911,32 @@ function formaterEnonce(indice, n) {
   return texte + ".";
 }
 
+/** Trois aides successives fondées sur les seules phrases de la grille. */
+function formaterAideRaisonnement(aide, n, niveau) {
+  const pion = `${libelleFigure(aide.figure)} ${aide.couleur}`;
+  const references = aide.phrases.join(", ");
+  const cases = nomsPour(n).cases;
+  if (niveau === 0) return `Observe les phrases ${references}. Cherche où peut se trouver le ${pion}. Note les possibilités dans le tableau avant de placer le pion.`;
+  if (niveau === 1 && aide.mode === "croisement") {
+    const premiere = (aide.demonstration || []).find(e => e.reductions.some(r => r.cases.length > 1));
+    const details = premiere ? premiere.reductions.filter(r => r.cases.length > 1).map(r =>
+      `${libelleFigure(r.figure)} ${r.couleur} : ${r.cases.map(c => cases[c]).join(" ; ")}.`).join("\n") : "";
+    return `Commence par appliquer la phrase ${premiere ? premiere.phrase : aide.phrases[0]}. Note les possibilités restantes :\n${details}\nReprends ensuite les autres phrases citées : une case déjà occupée ne peut plus accueillir un autre pion.`;
+  }
+  if (niveau === 1) {
+    const details = aide.phrases.map((rang, i) => `Phrase ${rang} : ${aide.possibilites[i].map(c => cases[c]).join(" ; ")}.`).join("\n");
+    return `Pour le ${pion}, voici les cases encore possibles en appliquant chaque phrase séparément.\n${details}\n${aide.mode === "intersection" ? "Cherche la case commune à ces listes." : "Il faut aussi croiser les positions des autres pions : chaque case ne reçoit qu’un pion."}`;
+  }
+  if (aide.mode === "croisement") {
+    const trace = aide.demonstration.map(e => `Avec la phrase ${e.phrase} et les possibilités déjà établies :\n` +
+      e.reductions.map(r => `${libelleFigure(r.figure)} ${r.couleur} → ${r.cases.map(c => cases[c]).join(" ; ")}.`).join("\n")).join("\n\n");
+    return `${trace}\n\nChaque pion et chaque case sont utilisés une fois. Ces éliminations donnent une seule position pour le ${pion} : ${cases[aide.case]}.`;
+  }
+  return aide.mode === "intersection"
+    ? `La seule case commune aux possibilités des phrases ${references} est ${cases[aide.case]}. Le ${pion} y est donc placé : aucune information supplémentaire n’a été ajoutée.`
+    : `En croisant les phrases ${references} et en tenant compte des cases occupées par les autres pions, une seule position reste possible pour le ${pion} : ${cases[aide.case]}. Chaque pion est utilisé une seule fois et chaque case reçoit un seul pion.`;
+}
+
 /** Étiquettes courtes des cases, pour le tableau de déduction. */
 function nomsCourtsCases(n) {
   if (n === 4) {
@@ -2065,20 +2091,32 @@ function rendreGrille(item) {
     if (etat.grille.every(Boolean)) soumettreGrille();
   });
 
-  const indices = creerElement("ul", { classe: "grille-indices" },
+  const indices = creerElement("ol", { classe: "grille-indices" },
     ...contenu.enonces.map((e) => creerElement("li", { texte: formaterEnonce(e, n) }))
   );
 
-  // Indices de secours : un bouton « Un indice » les révèle un à un.
+  // Aides graduées ; compatibilité avec les anciens contenus à secours directs.
   let revele = 0;
+  const aideRaisonnement = contenu.aide_raisonnement;
   const secours = Array.isArray(contenu.indices) ? contenu.indices : [];
   const listeSecours = creerElement("ul", { classe: "grille-indices grille-secours" });
   const boutonIndice = creerElement("button", {
     classe: "bouton bouton-secondaire",
-    texte: "Un indice",
+    texte: aideRaisonnement ? "Aide au raisonnement" : "Un indice",
     attributs: { type: "button" },
   });
   boutonIndice.addEventListener("click", () => {
+    if (aideRaisonnement) {
+      if (revele >= 3) return;
+      const texte = formaterAideRaisonnement(aideRaisonnement, n, revele);
+      const paragraphe = creerElement("li", { texte });
+      paragraphe.style.whiteSpace = "pre-line";
+      listeSecours.append(paragraphe);
+      revele += 1;
+      boutonIndice.textContent = revele === 1 ? "Comparer les possibilités" : "Voir la conclusion expliquée";
+      if (revele === 3) { boutonIndice.disabled = true; boutonIndice.textContent = "Aide affichée"; }
+      return;
+    }
     if (revele < secours.length) {
       listeSecours.append(creerElement("li", { texte: formaterEnonce(secours[revele], n) }));
       revele += 1;
@@ -2086,9 +2124,10 @@ function rendreGrille(item) {
     }
   });
   const zoneIndices = creerElement("div", {},
+    contenu.methode_depart ? creerElement("p", { texte: contenu.methode_depart }) : null,
     indices,
     listeSecours,
-    secours.length ? boutonIndice : null
+    (aideRaisonnement || secours.length) ? boutonIndice : null
   );
 
   refs.zoneGrille.replaceChildren(

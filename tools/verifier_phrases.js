@@ -63,11 +63,11 @@ const morceaux = [
                  source.indexOf("\n", source.indexOf("const libelleFigure"))),
     extraire("nomsPour"), extraire("predicatAtome"), extraire("relationAtome"),
     extraire("phraseAtome"), extraire("sansEst"), extraire("libelleCategorie"),
-    extraire("formaterIndiceCollectif"), extraire("formaterEnonce"),
+    extraire("formaterIndiceCollectif"), extraire("formaterEnonce"), extraire("formaterAideRaisonnement"),
   ]);
 
-const fabrique = new Function(`${morceaux.join("\n")}\nreturn { formaterEnonce };`);
-const { formaterEnonce } = fabrique();
+const fabrique = new Function(`${morceaux.join("\n")}\nreturn { formaterEnonce, formaterAideRaisonnement };`);
+const { formaterEnonce, formaterAideRaisonnement } = fabrique();
 
 //: Phrases dorées : rendu EXACT attendu pour chaque type négatif (les huit types
 //: ajoutés avec les négations de voisinage et les relatives négatives). Un rendu
@@ -173,6 +173,20 @@ const anomalies = [];
 for (const fichier of fs.readdirSync(dossier).filter((f) => f.endsWith(".json"))) {
   for (const item of JSON.parse(fs.readFileSync(path.join(dossier, fichier), "utf8"))) {
     const n = item.contenu.figures.length;
+    const aide = item.contenu.aide_raisonnement;
+    if (aide) {
+      const rendus = [0,1,2].map(niveau => formaterAideRaisonnement(aide,n,niveau));
+      if (rendus.some(t => !t || /undefined|NaN/.test(t)) || new Set(rendus).size !== 3) {
+        anomalies.push(`${item.id} : aides graduées absentes ou incohérentes`);
+      }
+      if (!rendus[0].includes(aide.phrases.join(", ")) || !rendus[2].includes("une seule position") && !rendus[2].includes("seule case commune")) {
+        anomalies.push(`${item.id} : orientation ou conclusion absente`);
+      }
+      if (rendus.slice(0,2).some(t => /seule position|seule case commune|y est donc placé/.test(t))) {
+        anomalies.push(`${item.id} : conclusion révélée trop tôt`);
+      }
+    }
+
     for (const [rang, phrase] of item.contenu.enonces.entries()) {
       const rendu = formaterEnonce(phrase, n);
       phrases += 1;

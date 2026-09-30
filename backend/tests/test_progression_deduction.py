@@ -17,7 +17,7 @@ def test_revisions_faciles_ne_masquent_pas_les_nouvelles_etapes():
 
 
 def test_palier_ne_valide_pas_sur_les_seules_etapes_faciles(tmp_path):
-    now=[datetime(2026,9,29,tzinfo=timezone.utc)]
+    now=[datetime.now(timezone.utc)]
     app=creer_app(racine_donnees=tmp_path/'data',horloge=lambda:now[0])
     client=TestClient(app)
     gestion=app.state.gestionnaire_entrainement
@@ -34,7 +34,7 @@ def test_palier_ne_valide_pas_sur_les_seules_etapes_faciles(tmp_path):
             reponse=gestion.contenu.item('deduction',item['id'])['reponse']['valeur']
             result=client.post(f"/api/entrainement/deduction/sessions/{session['session_id']}/reponses",
                                json={'item_id':item['id'],'reponse':reponse,'temps_ms':2000})
-            assert result.status_code==200
+            assert result.status_code==200, result.text
         client.post(f"/api/entrainement/deduction/sessions/{session['session_id']}/fin")
         eligibles+=finales
         maitrise=gestion.stockage.lire_maitrise('deduction')

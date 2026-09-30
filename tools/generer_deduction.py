@@ -39,7 +39,7 @@ RACINE_DEPOT = Path(__file__).resolve().parent.parent
 BASE_SORTIE = RACINE_DEPOT / "content" / "entrainement" / "deduction"
 
 GRAINE: int = 20260928
-DATE_CREATION: str = "2026-09-29"
+DATE_CREATION: str = "2026-09-30"
 AUTEUR: str = "generation-automatique (tools/generer_deduction.py)"
 PAR_PALIER_DEFAUT: int = 20
 
@@ -572,6 +572,9 @@ def main() -> int:
 
     deja_vus: set = set()
     paliers = [generer_palier(p, random.Random(f"{GRAINE}:deduction:{p}"), options.par_palier, deja_vus) for p in (1, 2, 3, 4, 5)]
+
+    from deduction_accompagnement import accompagner
+    paliers = [[accompagner(item) for item in lot] for lot in paliers]
 
     cibles = {options.sortie / "paliers.json": _manifest(paliers)}
     for numero, items in enumerate(paliers, start=1):

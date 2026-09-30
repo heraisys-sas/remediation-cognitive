@@ -769,6 +769,49 @@ def _erreurs_grille_deduction(item: dict, prefixe: str, contenu: dict) -> list[s
             erreurs.append(prefixe + "grille-deduction : la première certitude vient d'une seule "
                                     "phrase (au moins deux phrases doivent se recouper)")
 
+    aide = contenu.get("aide_raisonnement")
+    if aide is not None:
+        from deduction_commun import propager
+        try:
+            refs = aide["phrases"]
+            if (aide["mode"] not in ("intersection", "croisement") or not refs
+                or any(type(k) is not int or not 1 <= k <= len(enonces) for k in refs)
+                or len(set(refs)) != len(refs)
+                or type(aide["case"]) is not int or not 0 <= aide["case"] < n*n):
+                raise ValueError("références ou case invalides")
+            pion = (figures.index(aide["figure"]), couleurs.index(aide["couleur"]))
+            support = [enonces[k-1] for k in refs]
+            possibles = [[k for k,d in enumerate(propager([ph], n, figures, couleurs)) if pion in d]
+                         for ph in support]
+            if aide["possibilites"] != possibles:
+                raise ValueError("listes de possibilités non fidèles aux phrases")
+            if aide["mode"] == "intersection" and set.intersection(*(set(d) for d in possibles)) != {aide["case"]}:
+                raise ValueError("intersection annoncée fausse")
+            d = propager(support, n, figures, couleurs)
+            if [k for k,c in enumerate(d) if pion in c] != [aide["case"]]:
+                raise ValueError("conclusion non déductible des phrases citées")
+            if aide["mode"] == "croisement":
+                from deduction_contraintes import compiler, reduire
+                domaines = [set(range(n*n)) for _ in range(n*n)]
+                demonstration = aide["demonstration"]
+                if not demonstration:
+                    raise ValueError("démonstration absente")
+                for etape in demonstration:
+                    if etape["phrase"] not in refs:
+                        raise ValueError("phrase de démonstration non annoncée")
+                    apres = reduire(compiler([enonces[etape["phrase"]-1]], n, figures, couleurs), n, domaines)
+                    attendu = [dict(figure=figures[i//n], couleur=couleurs[i%n], cases=sorted(apres[i]))
+                               for i in range(n*n) if apres[i] != domaines[i]]
+                    if etape["reductions"] != attendu:
+                        raise ValueError("étape de démonstration incorrecte")
+                    domaines = apres
+                if domaines[pion[0]*n+pion[1]] != {aide["case"]}:
+                    raise ValueError("démonstration inachevée")
+            if cellules[aide["case"]] != [aide["figure"], aide["couleur"]]:
+                raise ValueError("conclusion différente de la solution")
+        except (ValueError, KeyError, TypeError, IndexError) as exc:
+            erreurs.append(prefixe + f"grille-deduction : aide de raisonnement invalide ({exc})")
+
     # Aide harmonisée : les paliers avancés parlent de croisement des phrases —
     # jamais d'une position donnée par une phrase seule (le palier 1 garde son
     # texte d'initiation). Contrôle de cohérence sur tout le corpus avancé.

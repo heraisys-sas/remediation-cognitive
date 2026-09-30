@@ -1,3 +1,16 @@
+# Mise à jour du 30 septembre — aides raisonnées et P2
+
+- P2 : 6–8 phrases par grille, moyenne **7,25** contre 9,8. Sept regroupements à deux repères individuels du même pion ; aucune chaîne changeant de sujet. Première étape accompagnée par une méthode visible et, sur cinq grilles, un repère explicite de démarrage. La troisième étape retire les repères individuels.
+- Cinq paliers : orientation vers les phrases numérotées, comparaison des possibilités, puis conclusion sur un troisième clic explicite. Les démonstrations proviennent des phrases affichées et de l’unicité des pions/cases ; les coordonnées aléatoires de secours sont retirées.
+- Les intersections sont contrôlées et les démonstrations complexes sont rejouées étape par étape. Le repère pédagogique visible de P2 est distingué du noyau minimal ; ce dernier reste déductible sans aide.
+- P1/P3/P4/P5 : énoncés et solutions identiques au commit précédent, vérifiés par comparaison. Les aides modifiées entraînent de nouveaux identifiants pour les 100 items ; P2 est régénéré.
+- **240 tests réussis, 1 ignoré** (empreintes sémantiques système absentes). Unicité indépendante des 100 grilles, 940 items valides, 839 phrases et 19 références de rendu vérifiées. Syntaxe JS et cohérence interface : OK. Régénération identique vérifiée.
+- Test de progression rendu indépendant du 29 septembre : cette date devenue passée faisait expirer artificiellement les sessions du test. Aucun changement du serveur pour contourner ce défaut de test.
+
+Voir ADR-018. Le réglage pédagogique particulier des autres paliers reste à examiner en usage ; les aides communes ne constituent pas une calibration clinique.
+
+---
+
 # Livraison Codex — 29 septembre 2026, session du soir
 
 Implémentation directe sur `amelioration-deduction-20260927`, base `7400534`, après les échecs AutoClaw. Cette livraison remplace les observations de corpus de 80 grilles dans les comptes rendus historiques ci-dessous.

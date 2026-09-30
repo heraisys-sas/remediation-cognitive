@@ -6,7 +6,7 @@ règles globales. Le nettoyage n'impose aucun quota de mots/informations.
 from itertools import combinations
 import random
 from deduction_commun import (_vrai_binaire, _vrai_unaire, arrangement, pred_indice,
-                              resoudre_par_deduction, phrases_qui_fixent_seules)
+                              resoudre_par_deduction, phrases_qui_fixent_seules, propager, TYPES_UNAIRES)
 from deduction_contraintes import est_entre, TYPES_RICHES
 
 
@@ -55,7 +55,7 @@ def candidats(paire, n, figures, couleurs, palier, etape):
     unaires = ['pas-ligne','pas-colonne','pas-coin']
     if etape==1:
         unaires += ['ligne','colonne']
-    if palier>=4 and etape==3:
+    if (palier==2 or palier>=4) and etape==3:
         unaires=[]
     for p,(f,c) in enumerate(pions):
         for t in unaires:
@@ -67,8 +67,6 @@ def candidats(paire, n, figures, couleurs, palier, etape):
         for q,(f2,c2) in enumerate(pions):
             if p==q: continue
             types=['voisin-gauche','voisin-dessus','autre-ligne','autre-colonne']
-            if palier==2 and etape==3:
-                types=['autre-ligne','autre-colonne','pas-a-droite-de','pas-au-dessus-de']
             if palier>=3:
                 types += ['oppose','a-gauche-de','au-dessus-de','comparaison']
             if palier>=4:
@@ -103,11 +101,30 @@ def construire(paire,n,figures,couleurs,palier,etape,rng):
         if not options: return None
         options.sort(key=lambda a:a.get('numero')!='chaque')
         choisis.append(options[0])
+    groupe_requis=[]
+    if palier == 2 and etape == 2:
+        for a,b in combinations([a for a in pool if a['type'] in TYPES_UNAIRES],2):
+            if (a['figure'],a['couleur'])==(b['figure'],b['couleur']) and not phrases_qui_fixent_seules([{**a,'et':[b]}],n,figures,couleurs):
+                groupe_requis=[a,b]
+                choisis.extend(groupe_requis)
+                break
+        if not groupe_requis: return None
     if n == 4:
         choisis.extend([a for a in riches if a not in choisis][:4])
     restants=[a for a in pool if a not in choisis and a['type'] not in TYPES_RICHES]
     # Quelques informations simples supplémentaires, puis retrait de TOUT
     # indice dispensable, y compris des familles riches : pas de décoration.
+    if palier == 2:
+        # Éviter une accumulation de négations faibles : sélectionner une
+        # information qui réduit réellement les possibilités à chaque ajout.
+        while restants and not resoudre_par_deduction(choisis,n,figures,couleurs):
+            def poids(a):
+                d=propager(choisis+[a],n,figures,couleurs)
+                return sum(map(len,d)) if d else n**5
+            meilleur=min(restants,key=poids)
+            choisis.append(meilleur)
+            restants.remove(meilleur)
+        restants=[]
     for a in restants:
         choisis.append(a)
         if len(choisis)%3==0 and resoudre_par_deduction(choisis,n,figures,couleurs):
@@ -118,7 +135,7 @@ def construire(paire,n,figures,couleurs,palier,etape,rng):
         essai=[b for b in choisis if b is not a]
         if resoudre_par_deduction(essai,n,figures,couleurs):
             choisis=essai
-    if not besoins <= {famille(a) for a in choisis}:
+    if not besoins <= {famille(a) for a in choisis} or any(a not in choisis for a in groupe_requis):
         return None
     if len(choisis) > (21 if n==3 else 32):
         return None

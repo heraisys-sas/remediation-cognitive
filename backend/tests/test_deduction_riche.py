@@ -160,7 +160,9 @@ def test_corpus_cinq_paliers_familles_utiles_et_progression():
             assert any(a['type']=='entre' and a['axe']=='diagonale' for a in c['enonces'])
         # Une famille n'est pas présente pour décorer : retirer une information
         # retire une étape de la preuve sans hypothèse. Unicité vérifiée à part.
-        infos=[a for ph in c['enonces'] for a in informations_autonomes(ph)]
+        core=[ph for k,ph in enumerate(c['enonces'],1) if k != c.get('repere_accompagnement')]
+        assert resoudre_par_deduction(core,n,c['figures'],c['couleurs'])
+        infos=[a for ph in core for a in informations_autonomes(ph)]
         for k in range(len(infos)):
             assert not resoudre_par_deduction(infos[:k]+infos[k+1:],n,c['figures'],c['couleurs']), item['id']
     for p in range(1,6):

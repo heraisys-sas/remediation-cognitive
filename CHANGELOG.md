@@ -2,6 +2,13 @@
 
 Format : [date] — [périmètre] — description. Les retours informels de l'orthophoniste sont journalisés ici, sans caution clinique.
 
+## 2026-09-30 · Aides raisonnées et lisibilité du palier 2
+
+- P2 : 6–8 phrases par grille (moyenne 7,25 contre 9,8), deux repères individuels du même pion reliés par « et », aucun changement de sujet. Sélection d’informations plus utiles, retrait des négations relatives difficiles en fin de palier ; étape 3 sans repères individuels. Les regroupements seuls ne suffisaient pas : ils allongeaient la liste en décomposant les chaînes, d'où cette révision ciblée.
+- Entrée de P2 : méthode visible et repère d’accompagnement supplémentaire lorsqu’il permet un premier croisement simple ; aucune phrase ne donne seule une case. Les redondances pédagogiques explicites sont admises et distinguées du noyau de résolution.
+- Tous les paliers : bouton « Aide au raisonnement », puis comparaison des possibilités, puis conclusion expliquée. Listes numérotées ; démonstrations calculées depuis les énoncés, sans indices cachés de position. L’unicité et la résolution sans aide restent contrôlées.
+- Nouveaux identifiants pour les 100 contenus modifiés (les aides font partie du contenu). Solutions P1/P3/P4/P5 conservées ; P2 régénéré. Les spécificités de progression P3–P5 restent inchangées.
+
 ## 2026-09-29 · Déduction : contraintes collectives et cinq paliers (Codex)
 
 - Remplacement explicite des 80 grilles par 100 nouveaux items (identifiants dérivés du contenu), P1–P4 en 3×3 et P5 en 4×4. Graines isolées par palier.
