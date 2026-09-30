@@ -8,7 +8,7 @@
   <meta name="color-scheme" content="dark" />
   <meta name="theme-color" content="#14161b" />
   <title>Entraînement — séances courtes</title>
-  <link rel="stylesheet" href="src/styles.css?v=20260930a" />
+  <link rel="stylesheet" href="src/styles.css?v=20260930b" />
 </head>
 <body>
   <!-- Lien d'évitement : première tabulation, pour sauter directement au contenu. -->
@@ -16,7 +16,22 @@
 
   <header class="entete">
     <h1 class="entete-titre">Entraînement</h1>
-    <p class="entete-sous-titre">Des séances courtes, à ton rythme.</p>
+    <div class="entete-ligne">
+      <p class="entete-sous-titre">Des séances courtes, à ton rythme.</p>
+
+      <!-- Dérogation explicite au plafond de séances (anti-fatigue), tous thèmes :
+           entraînements (fenêtre du jour) et mesures d'évaluation (fenêtre de la
+           semaine) ; à droite du sous-titre, visible sur toutes les vues. Le
+           réglage est conservé d'une visite à l'autre. ADR-021. -->
+      <div class="reglage-limite">
+        <label class="commutateur">
+          <input id="case-sans-limite" type="checkbox" role="switch" aria-describedby="note-sans-limite" />
+          <span class="commutateur-piste" aria-hidden="true"></span>
+          <span class="commutateur-texte">Dépasser la limite de séances</span>
+        </label>
+        <p id="note-sans-limite" class="ligne-discrete reglage-limite-note">Entraînements et mesures d’évaluation.</p>
+      </div>
+    </div>
   </header>
 
   <main id="zone-principale" class="conteneur">
@@ -54,19 +69,6 @@
         <p class="intro-extra">Deux thèmes à part : du vocabulaire et des commandes à mémoriser, pour un usage plus tardif.</p>
         <div id="liste-themes-extra" class="grille-themes"></div>
       </section>
-
-      <!-- Dérogation explicite au plafond de séances (anti-fatigue), tous thèmes :
-           entraînements (fenêtre du jour) et mesures d'évaluation (fenêtre de la
-           semaine). Le réglage est conservé d'une visite à l'autre ; l'état reste
-           visible ici. ADR-021. -->
-      <div class="reglage-limite">
-        <label class="commutateur">
-          <input id="case-sans-limite" type="checkbox" role="switch" aria-describedby="note-sans-limite" />
-          <span class="commutateur-piste" aria-hidden="true"></span>
-          <span class="commutateur-texte">Dépasser la limite de séances</span>
-        </label>
-        <p id="note-sans-limite" class="ligne-discrete reglage-limite-note">S’applique aux entraînements et aux mesures d’évaluation.</p>
-      </div>
 
       <div class="actions-suite">
         <button id="bouton-programme" type="button" class="bouton bouton-primaire bouton-large">Programme de 8 semaines</button>
@@ -259,6 +261,6 @@
        script resté en cache (un script périmé mélangé au contenu courant affichait
        des phrases tronquées). À incrémenter après toute modification de src/. -->
   <script src="src/capacites.js?v=20260927c" defer></script>
-  <script src="src/app.js?v=20260930g" defer></script>
+  <script src="src/app.js?v=20260930h" defer></script>
 </body>
 </html>

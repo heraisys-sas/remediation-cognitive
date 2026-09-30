@@ -6,7 +6,7 @@ Demande d'Olivier : pouvoir désactiver, depuis l'accueil, la limite du nombre d
 
 ## Décision
 
-Un commutateur « Dépasser la limite de séances du jour » est placé sur l'accueil, dans la zone des accès secondaires (au-dessus de Programme / Missions / Repères). Il lève le plafond de séances du jour **pour les thèmes d'entraînement** ; l'**évaluation reste plafonnée à une séance par jour** (répéter une mesure la fausse — règle antérieure conservée).
+Un commutateur « Dépasser la limite de séances » est placé dans l'en-tête, à droite du sous-titre (visible sur toutes les vues). Il lève le plafond de séances du jour **pour les thèmes d'entraînement** ; l'**évaluation reste plafonnée à une séance par jour** (répéter une mesure la fausse — règle antérieure conservée).
 
 - Le réglage est conservé côté client (`localStorage`, comme la lecture automatique), **désactivé par défaut** ; son état reste visible sur l'accueil.
 - Chaque démarrage de séance transmet `sans_limite_sessions` dans le corps `DemarrageOptionnel` ; **c'est le serveur qui accorde ou refuse** — l'interface ne contourne pas la règle, elle la demande explicitement (contrat d'API mis à jour).

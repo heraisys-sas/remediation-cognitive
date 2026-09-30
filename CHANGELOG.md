@@ -2,6 +2,10 @@
 
 Format : [date] — [périmètre] — description. Les retours informels de l'orthophoniste sont journalisés ici, sans caution clinique.
 
+## 2026-09-30 · En-tête : commutateur de limite déplacé à droite du sous-titre
+
+- Le commutateur « Dépasser la limite de séances » quitte le bas de l'accueil et passe dans l'en-tête, à droite de « Des séances courtes, à ton rythme. » — il reste visible sur toutes les vues ; la note de portée est raccourcie. Aucun changement de comportement ni d'API.
+
 ## 2026-09-30 · Évaluation : dérogation étendue, plafond hebdomadaire
 
 - La dérogation « Dépasser la limite de séances » couvre désormais **tous les thèmes**, évaluation comprise ; libellé, note et messages de l'interface ajustés.

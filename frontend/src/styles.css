@@ -1043,13 +1043,27 @@ body {
 .document-source p { white-space: pre-line; margin-bottom: 0; }
 
 /* ---------------------------------------------------------------------
-   Accueil : dérogation « dépasser la limite de séances » (ADR-021)
+   Dérogation « dépasser la limite de séances » (ADR-021) : dans l'en-tête,
+   à droite du sous-titre — entraînements (jour), évaluation (semaine).
    --------------------------------------------------------------------- */
 
+.entete-ligne {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+  column-gap: 1rem;
+  row-gap: 0.35rem;
+  margin-top: 0.25rem;
+}
+
+.entete-ligne .entete-sous-titre { margin: 0; }
+
 .reglage-limite {
-  margin-top: 2rem;
-  padding-top: 1.2rem;
-  border-top: 1px solid var(--bordure);
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 0.1rem;
 }
 
 .commutateur {
@@ -1111,5 +1125,15 @@ body {
 }
 
 .reglage-limite-note {
-  margin: 0.55rem 0 0;
+  margin: 0;
+  font-size: 0.9rem;
+  line-height: 1.45;
+}
+
+/* En-tête étroit : le réglage passe sous le sous-titre, aligné à gauche. */
+@media (max-width: 30rem) {
+  .entete-ligne {
+    flex-direction: column;
+    align-items: flex-start;
+  }
 }

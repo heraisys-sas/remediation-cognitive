@@ -402,8 +402,8 @@ function masquerNoticeThemes() {
 function majReglageSansLimite() {
   if (!refs.noteSansLimite) return;
   refs.noteSansLimite.textContent = sansLimiteActivee()
-    ? "Limite levée pour tous les thèmes — tu décides quand t’arrêter."
-    : "S’applique aux entraînements et aux mesures d’évaluation.";
+    ? "Limite levée — tu décides quand t’arrêter."
+    : "Entraînements et mesures d’évaluation.";
 }
 
 /** Réinitialise la confirmation en deux temps de « Terminer ». */
