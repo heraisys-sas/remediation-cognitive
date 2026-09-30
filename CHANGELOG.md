@@ -2,6 +2,11 @@
 
 Format : [date] — [périmètre] — description. Les retours informels de l'orthophoniste sont journalisés ici, sans caution clinique.
 
+## 2026-09-30 · Déduction : clôture des suites du rapport du 29/09 (matin)
+
+- Les deux suites du rapport de correction du matin du 29/09 portaient sur le corpus de 80 grilles, remplacé le soir même par la refonte à 100 grilles (`b68308a`) : **« quatre grilles à phrase retirable »** (palier 3, ex-`dc-3-12/16/17/20`) et **« redondances du palier 4 à arbitrer »** (122 mesurées) sont **closes**.
+- Contrôle du 30/09 sur le corpus actuel (`tools/mesurer_difficulte.py`) : palier 3 → 0 phrase retirable ; palier 4 → 0 phrase retirable et 0 information interne retirable ; seul résidu de redondance du corpus : les cinq repères d'accompagnement de P2, voulus (ADR-018). Documentation seule — aucun contenu modifié.
+
 ## 2026-09-30 · Méthodes de calcul et Garder le cap
 
 - Remplacement des aides génériques des 212 calculs par une stratégie adaptée et une vérification ; panneau unique facultatif « Une méthode possible », sans résultat intermédiaire fourni. Nouveaux identifiants cm3, opérations et réponses conservées.

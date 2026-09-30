@@ -1,3 +1,14 @@
+# Clôture du 30 septembre — suites du rapport du 29/09 (matin)
+
+Les deux suites listées en fin de rapport historique ci-dessous sont **closes** : elles portaient sur le corpus de 80 grilles, entièrement remplacé le 29/09 au soir (`b68308a`, 100 grilles / cinq paliers).
+
+- **« Quatre grilles à phrase retirable résiduelle (plancher ≥ 4) »** (palier 3, ex-`dc-3-12/16/17/20`) : les grilles concernées n'existent plus ; le corpus actuel est à 0 phrase retirable au palier 3.
+- **« Palier 4 : arbitrer un nettoyage des redondances mesurées »** (122 redondances entre phrases sur l'ancien corpus) : le corpus actuel est à 0 phrase retirable et 0 information interne retirable au palier 4.
+
+Contrôle du 30/09 (`tools/mesurer_difficulte.py`) : les seules « retirables » de tout le corpus sont les cinq repères d'accompagnement de P2, voulus et documentés (ADR-018) ; tests déduction ciblés (`test_deduction.py`, `test_deduction_riche.py`) rejoués au vert (31 réussis). Relecture orthophoniste : statut `a_revoir` inchangé. Documentation seule — aucun contenu modifié.
+
+---
+
 # Ajustement du 30 septembre — tableau facultatif
 
 Le brouillon est désormais nommé « Aide — noter les possibilités » et reste fermé par défaut à chaque grille. Son caractère facultatif est expliqué à l’intérieur. Les consignes, la méthode de départ de P2 et les aides raisonnées ne prescrivent plus l’usage du tableau. La grille de placement reste visible ; aucun problème, solution ou chemin de démonstration n’est changé. Nouveaux identifiants pour les textes pédagogiques révisés.
@@ -139,6 +150,6 @@ Défaut confirmé par Codex : en choisissant « Essai — palier 2 », le fronte
 ## Suites (pour Codex)
 
 - Relecture orthophoniste du contenu : statut inchangé (`a_revoir`).
-- Quatre grilles à phrase retirable résiduelle (plancher ≥ 4) : accepter ou re-générer ces quatre contenus.
-- Palier 4 : arbitrer un nettoyage des redondances mesurées (hors défaut C).
+- Quatre grilles à phrase retirable résiduelle (plancher ≥ 4) : accepter ou re-générer ces quatre contenus. — **Clos le 30/09/2026** (corpus de 80 grilles remplacé ; voir « Clôture du 30 septembre » en tête de rapport).
+- Palier 4 : arbitrer un nettoyage des redondances mesurées (hors défaut C). — **Clos le 30/09/2026** (corpus de 80 grilles remplacé ; voir « Clôture du 30 septembre » en tête de rapport).
 - Négations binaires toujours peu exercées (piste d'enrichissement déjà tracée).
