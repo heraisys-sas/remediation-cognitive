@@ -667,7 +667,10 @@ body {
    Section « Extra » : thèmes d'appoint, en bas de l'écran d'accueil
    --------------------------------------------------------------------- */
 
-.section-extra {
+/* Filet de séparation entre rubriques — sections « Évaluation »/« Extra » et
+   accès secondaires de l'accueil (placés avant « Extra »). */
+.section-extra,
+.acces-accueil {
   margin-top: 2.25rem;
   padding-top: 1.5rem;
   border-top: 1px solid var(--bordure);

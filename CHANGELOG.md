@@ -2,6 +2,10 @@
 
 Format : [date] — [périmètre] — description. Les retours informels de l'orthophoniste sont journalisés ici, sans caution clinique.
 
+## 2026-09-30 · Accueil : accès secondaires remontés avant « Extra »
+
+- Les trois accès (Programme, « Sociabilité — reprendre contact », Repères) passent au-dessus de la rubrique « Extra », séparés comme les autres rubriques ; « Extra » reste en fin de page.
+
 ## 2026-09-30 · Accueil : boutons du bas uniformisés ; « Sociabilité — reprendre contact »
 
 - Les trois accès secondaires du bas de l'accueil (Programme, missions, Repères) partagent désormais le même style (secondaire) et sont légèrement espacés.
