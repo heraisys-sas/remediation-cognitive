@@ -46,7 +46,6 @@ THEMES_EXTRA = ["anglais", "python"]
 PALIERS_DISPONIBLES = {
     "calcul-mental": 12,
     "memoire": 12,
-    "concentration": 9,
     "evocation": 7,
     "quotidien": 8,
     "methodes": 6,
