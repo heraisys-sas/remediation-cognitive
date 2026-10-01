@@ -477,7 +477,8 @@ function rendreThemes(themes) {
     ...themes.filter(theme => !prioritaires.includes(theme.id)),
   ];
   for (const theme of themesOrdonnes) {
-    if (theme.id === "series-entendues") continue;
+    // Ancien thème Concentration retiré de l’accueil ; historiques conservés.
+    if (["series-entendues", "concentration"].includes(theme.id)) continue;
     let cible = refs.listeThemes;
     if (THEMES_EXTRA.has(theme.id)) cible = refs.listeThemesExtra;
     else if (["evaluation", "cible"].includes(theme.categorie)) cible = refs.listeThemesEvaluation;

@@ -1,3 +1,7 @@
+# 2026-10-01 — retrait de la carte chaînes et suites
+
+Retrait de « Calculs en chaîne et suites » de la page des thèmes. Calcul mental inchangé ; contenu et historiques de l’ancien thème conservés.
+
 # 2026-10-01 — séries et attention fonctionnelle
 
 Rubriques clarifiées, parcours auditif autonome (48 mots AAC mutualisés, 329 ko), rythme visuel 2 s + 2 s. Remplacement des 32 items rs-* par rs2-* ; ajout de 32 listes auditives et de 36 situations fonctionnelles (actualiser, comparer, sélectionner). Les historiques des anciens thèmes sont conservés. Programme synchronisé, correction et interface couvertes par tests ; fondement et limites dans ADR-022.
