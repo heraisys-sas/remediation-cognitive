@@ -1,3 +1,7 @@
+# 2026-10-01 — retours PQRST et rappel libre fiabilisés
+
+La reformulation PQRST n'est plus jugée par la seule présence de cinq mots-clés : chaque item déclare cinq critères, leurs formulations reconnues, leurs éventuels sous-faits et des contradictions explicites. Le retour distingue idées retrouvées, non reconnues et contredites ; les quatre séquences reçoivent des identifiants `mt2-…`. Le rappel libre distingue désormais cibles retrouvées, omissions, confusions entre séries et intrusions ; une intrusion ne produit plus une maîtrise complète malgré un rappel suffisant. Interface, générateur, validateur et tests synchronisés.
+
 # 2026-10-01 — retrait de la carte chaînes et suites
 
 Suppression complète de « Calculs en chaîne et suites » : carte, 162 items, générateur spécifique, types dédiés, compatibilité API, tests et historique local. Calcul mental et le moteur partagé restent inchangés.

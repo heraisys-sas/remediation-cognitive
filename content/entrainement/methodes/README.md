@@ -27,7 +27,7 @@ Les paliers 1 à 5 proposent des réponses à choix ; le palier 6 comprend aussi
 
 ## PQRST mis en œuvre (palier 6, ADR-015)
 
-Un item = **une séquence guidée** sur un texte de quatre phrases : Parcours (jugé), **Question à écrire** (non notée, modèle affiché), Lecture (sans chronomètre), **Reformulation** (jugée à **4 idées-clés sur 5**, résumé modèle montré), Test (2 questions de mémoire). Les deux productions — sa question, sa reformulation — sont ce que le palier entraîne. La **fiche méthode** (5 lignes) est reprise au résumé de séance.
+Un item = **une séquence guidée** sur un texte de quatre phrases : Parcours (jugé), **Question à écrire** (non notée, modèle affiché), Lecture (sans chronomètre), **Reformulation** (jugée à **4 idées sur 5**, résumé modèle montré), Test (2 questions de mémoire). Les idées sont définies par des formulations bornées et des contradictions propres au texte ; une idée composée peut exiger plusieurs sous-faits. Le retour distingue ce qui est retrouvé, contredit ou non reconnu. Les deux productions — sa question, sa reformulation — sont ce que le palier entraîne. La **fiche méthode** (5 lignes) est reprise au résumé de séance.
 
 ## Proposition en attente
 

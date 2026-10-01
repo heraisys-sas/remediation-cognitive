@@ -39,14 +39,14 @@ DATE_PQRST: str = "2026-09-27"
 
 #: Séquences du palier « PQRST mis en œuvre » : un texte de quatre phrases, cinq étapes.
 #: Chaque texte porte un `parcours` (question de survol à choix), une `question_modele`
-#: (production libre non notée), une `reformulation` (5 idées-clés, seuil 4/5) et deux
+#: (production libre non notée), une `reformulation` (5 critères bornés, seuil 4/5) et deux
 #: questions de `test` (mémoire, à choix). Arbitrages de l'orthophoniste du 2026-09-27.
 SEQUENCES_PQRST: list[dict] = [
     {
         "titre": "Le colis à retirer",
         "texte": (
             "Le colis est arrivé au bureau de tabac de la place. Il faut le retirer avant "
-            "jeudi, avec une pièce d'identité. Le bureau ferme à 18 h, sauf le samedi midi. "
+            "jeudi, avec une pièce d'identité. Le bureau ferme à 18 h. "
             "Si le colis n'est pas retiré, il repart à l'expéditeur."
         ),
         "attendu": "l'enlèvement d'un colis, l'identité, le délai et les horaires",
@@ -62,8 +62,18 @@ SEQUENCES_PQRST: list[dict] = [
              "enonce": "Lis le texte entier, en cherchant la réponse à ta question."},
             {"etape": 4, "nom": "Reformulation",
              "enonce": "Redis le texte en une phrase, avec tes mots.",
-             "modele": "Le colis attend au bureau de tabac : il faut le retirer avant jeudi, avec une pièce d'identité, avant 18 h.",
-             "idees_cles": ["colis", "bureau", "jeudi", "identite", "18"], "seuil": 0.8},
+             "modele": "Le colis attend au bureau de tabac : il faut le retirer avant jeudi, avec une pièce d'identité, avant la fermeture à 18 h.",
+             "criteres": [
+                 {"label": "le colis", "expressions": ["colis"], "contradictions": []},
+                 {"label": "le bureau de tabac", "expressions": ["bureau de tabac", "bureau", "buraliste"],
+                  "contradictions": ["pas au bureau", "n est pas au bureau", "ailleurs que le bureau"]},
+                 {"label": "avant jeudi", "expressions": ["avant jeudi", "mercredi", "jeudi au plus tard"],
+                  "contradictions": ["apres jeudi", "vendredi", "samedi"]},
+                 {"label": "une pièce d'identité", "expressions": ["piece d identite", "carte d identite", "identite"],
+                  "contradictions": ["sans piece d identite", "pas apporter d identite", "ne pas apporter d identite"]},
+                 {"label": "la fermeture à 18 h", "expressions": ["fermeture a 18 h", "18 h", "18"],
+                  "contradictions": ["19 h", "19", "20 h", "20"]},
+             ], "seuil": 0.8},
             {"etape": 5, "nom": "Test", "questions": [
                 {"enonce": "Jusqu'à quand peut-on retirer le colis ?",
                  "options": ["jusqu'à jeudi", "jusqu'à samedi", "jusqu'à la fin du mois"],
@@ -96,7 +106,20 @@ SEQUENCES_PQRST: list[dict] = [
             {"etape": 4, "nom": "Reformulation",
              "enonce": "Redis le texte en une phrase, avec tes mots.",
              "modele": "Avant la première lessive : ouvrir le robinet, lancer un cycle à vide à 60 degrés avec du vinaigre, puis trier le linge et nettoyer le filtre chaque mois.",
-             "idees_cles": ["robinet", "vinaigre", "60", "trier", "filtre"], "seuil": 0.8},
+             "criteres": [
+                 {"label": "ouvrir le robinet", "expressions": ["ouvrir le robinet", "robinet ouvert"],
+                  "contradictions": ["fermer le robinet", "sans ouvrir le robinet"]},
+                 {"label": "utiliser du vinaigre", "expressions": ["vinaigre blanc", "vinaigre"],
+                  "contradictions": ["sans vinaigre", "pas de vinaigre"]},
+                 {"label": "un cycle à vide à 60 degrés", "expressions": ["cycle a vide a 60 degres"],
+                  "groupes": [["cycle a vide"], ["60 degres", "60"]],
+                  "contradictions": ["cycle avec du linge", "cycle a froid", "30 degres", "30"]},
+                 {"label": "trier le linge", "expressions": ["trier le linge", "tri du linge", "trier"],
+                  "contradictions": ["sans trier", "ne pas trier"]},
+                 {"label": "nettoyer le filtre chaque mois", "expressions": ["filtre chaque mois", "filtre mensuel"],
+                  "groupes": [["filtre"], ["chaque mois", "mensuel", "une fois par mois"]],
+                  "contradictions": ["filtre chaque semaine", "filtre chaque annee", "ne pas nettoyer le filtre"]},
+             ], "seuil": 0.8},
             {"etape": 5, "nom": "Test", "questions": [
                 {"enonce": "Quel cycle lancer avant la première lessive ?",
                  "options": ["un cycle à vide à 60 degrés", "un cycle court à froid", "un cycle avec du linge blanc"],
@@ -128,8 +151,21 @@ SEQUENCES_PQRST: list[dict] = [
              "enonce": "Lis le texte entier, en cherchant la réponse à ta question."},
             {"etape": 4, "nom": "Reformulation",
              "enonce": "Redis le texte en une phrase, avec tes mots.",
-             "modele": "Le dossier est complet et sera remboursé sous quinze jours ; on peut appeler le numéro de la lettre pour toute question.",
-             "idees_cles": ["dossier", "complet", "rembourse", "quinze", "numero"], "seuil": 0.8},
+             "modele": "Le dossier a bien été reçu, il est complet et sera remboursé sous quinze jours ; on peut appeler le numéro de la lettre pour toute question.",
+             "criteres": [
+                 {"label": "le dossier reçu", "expressions": ["dossier recu", "accuse reception"],
+                  "groupes": [["dossier"], ["recu", "reception"]],
+                  "contradictions": ["dossier non recu", "pas recu le dossier"]},
+                 {"label": "les pièces complètes", "expressions": ["pieces completes", "dossier complet"],
+                  "contradictions": ["pieces manquantes", "dossier incomplet", "pas complet"]},
+                 {"label": "le remboursement", "expressions": ["remboursement", "rembourse"],
+                  "contradictions": ["pas de remboursement", "ne sera pas rembourse"]},
+                 {"label": "sous quinze jours", "expressions": ["sous quinze jours", "15 jours", "quinze"],
+                  "contradictions": ["deux mois", "2 mois", "immediatement"]},
+                 {"label": "appeler le numéro de la lettre", "expressions": ["appeler le numero de la lettre", "appeler le numero"],
+                  "groupes": [["appeler", "telephone", "telephoner"], ["numero de la lettre", "numero"]],
+                  "contradictions": ["par la messagerie", "utiliser la messagerie"]},
+             ], "seuil": 0.8},
             {"etape": 5, "nom": "Test", "questions": [
                 {"enonce": "Sous quel délai le remboursement sera-t-il versé ?",
                  "options": ["sous quinze jours", "sous deux mois", "immédiatement"],
@@ -161,8 +197,21 @@ SEQUENCES_PQRST: list[dict] = [
              "enonce": "Lis le texte entier, en cherchant la réponse à ta question."},
             {"etape": 4, "nom": "Reformulation",
              "enonce": "Redis le texte en une phrase, avec tes mots.",
-             "modele": "La piscine a des créneaux tranquilles mardi et jeudi matin, avec un tarif simple, un bonnet obligatoire et des lignes réservées aux nageurs lents.",
-             "idees_cles": ["mardi", "jeudi", "tarif", "bonnet", "ligne"], "seuil": 0.8},
+             "modele": "La piscine a des créneaux tranquilles mardi et jeudi matin, avec un tarif simple, un bonnet obligatoire, une pièce pour le casier et des lignes réservées aux nageurs lents.",
+             "criteres": [
+                 {"label": "le mardi matin", "expressions": ["mardi matin", "mardi"],
+                  "contradictions": ["pas le mardi", "samedi"]},
+                 {"label": "le jeudi matin", "expressions": ["jeudi matin", "jeudi"],
+                  "contradictions": ["pas le jeudi", "vendredi"]},
+                 {"label": "les tarifs", "expressions": ["tarif", "quatre euros", "4 euros", "trente euros", "30 euros"],
+                  "contradictions": ["gratuit"]},
+                 {"label": "le bonnet et la pièce pour le casier", "expressions": ["bonnet et piece pour le casier"],
+                  "groupes": [["bonnet"], ["piece pour le casier", "piece de un euro", "piece d un euro"]],
+                  "contradictions": ["sans bonnet", "pas de bonnet", "cadenas"]},
+                 {"label": "les lignes réservées aux nageurs lents", "expressions": ["lignes reservees aux nageurs lents", "lignes lentes"],
+                  "groupes": [["ligne", "lignes"], ["nageurs lents", "lents", "lentes"]],
+                  "contradictions": ["nageurs rapides"]},
+             ], "seuil": 0.8},
             {"etape": 5, "nom": "Test", "questions": [
                 {"enonce": "Quels jours sont tranquilles ?",
                  "options": ["mardi et jeudi matin", "samedi après-midi", "tous les soirs"],
@@ -488,7 +537,7 @@ def construire_palier_pqrst_mis_en_oeuvre() -> list[dict]:
     items = []
     for numero, sequence in enumerate(SEQUENCES_PQRST, start=1):
         items.append({
-            "id": f"mt-6-pqrst-{numero:02d}",
+            "id": f"mt2-6-pqrst-{numero:02d}",
             "type": "pqrst-mise-en-oeuvre",
             "module": "entrainement",
             "theme": "methodes",

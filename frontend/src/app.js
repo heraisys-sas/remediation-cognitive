@@ -1148,7 +1148,8 @@ function rendreFeedbackSequence(resultat) {
     { titre: "2. Ta question", correcte: true, nonNotee: true,
       texte: `non notée — une question possible : « ${detail["2"]?.modele ?? ""} »` },
     { titre: "4. Reformulation", correcte: detail["4"]?.correcte,
-      texte: `${detail["4"]?.trouvees?.length ?? 0}/${(detail["4"]?.trouvees?.length ?? 0) + (detail["4"]?.manquantes?.length ?? 0)} idées retrouvées`
+      texte: `${detail["4"]?.trouvees?.length ?? 0}/${(detail["4"]?.trouvees?.length ?? 0) + (detail["4"]?.manquantes?.length ?? 0) + (detail["4"]?.contredites?.length ?? 0)} idées retrouvées`
+        + (detail["4"]?.contredites?.length ? ` — à corriger : ${detail["4"].contredites.join(", ")}` : "")
         + (detail["4"]?.manquantes?.length ? ` — manquaient : ${detail["4"].manquantes.join(", ")}` : "")
         + ` · modèle : « ${detail["4"]?.modele ?? ""} »` },
     { titre: "5. Test", correcte: detail["5"]?.correcte,
@@ -1513,7 +1514,7 @@ function rendreFeedback(resultat) {
   const assistee = Boolean(resultat.assistee);
   // Rappel libre : la réponse attendue est une LISTE de mots — on montre ce qui
   // a été retrouvé et ce qui manquait, plutôt qu'un « tout juste / tout faux ».
-  const rappelLibre = Array.isArray(resultat.attendue);
+  const rappelLibre = Boolean(resultat.detail_rappel) || Array.isArray(resultat.attendue);
   refs.carteFeedback.replaceChildren();
   refs.carteFeedback.className =
     "carte-feedback " +
@@ -1539,17 +1540,16 @@ function rendreFeedback(resultat) {
   );
 
   if (rappelLibre) {
-    const jetons = new Set(motsDe(etat.reponseSoumise));
-    const trouves = resultat.attendue.filter(
-      (mot) => jetons.has(clefMot(mot)) || jetons.has(`${clefMot(mot)}s`)
-    );
+    const detail = resultat.detail_rappel || {};
+    const trouves = detail.retrouves || [];
+    const attendue = Array.isArray(resultat.attendue) ? resultat.attendue : [];
     refs.carteFeedback.append(
       creerElement("p", {
         classe: "feedback-attendue",
-        texte: `Retrouvés : ${trouves.length} sur ${resultat.attendue.length}`,
+        texte: `Retrouvés : ${trouves.length} sur ${attendue.length}`,
       })
     );
-    const manques = resultat.attendue.filter((mot) => !trouves.includes(mot));
+    const manques = detail.omis || attendue.filter((mot) => !trouves.includes(mot));
     if (manques.length) {
       refs.carteFeedback.append(
         creerElement("p", {
@@ -1558,6 +1558,14 @@ function rendreFeedback(resultat) {
         })
       );
     }
+    if (detail.confusions_series?.length) refs.carteFeedback.append(
+      creerElement("p", { classe: "feedback-commentaire",
+        texte: `Mots d’une autre série : ${detail.confusions_series.join(", ")}` })
+    );
+    if (detail.intrusions?.length) refs.carteFeedback.append(
+      creerElement("p", { classe: "feedback-commentaire",
+        texte: `Mots non présentés : ${detail.intrusions.join(", ")}` })
+    );
   } else if (resultat.attendue !== undefined && resultat.attendue !== null) {
     const ligne = creerElement("p", { classe: "feedback-attendue" });
     ligne.append(assistee ? "Réponse : " : "Réponse attendue : ");

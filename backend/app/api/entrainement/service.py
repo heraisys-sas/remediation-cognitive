@@ -31,7 +31,7 @@ from engine.srs.fsrs import CarteFSRS, planifier
 
 from ...domain import messages
 from ...domain.contenu import ChargeurContenu
-from ...domain.correction import corriger, corriger_sequence
+from ...domain.correction import corriger, corriger_rappel_libre, corriger_sequence
 from ...domain.attention_fonctionnelle import TYPES as TYPES_FONCTIONNELS, corriger_detail
 from ...domain.feedback import essai_supplementaire
 from ...domain.dosage import (
@@ -332,12 +332,15 @@ class GestionnaireSessions:
         assistee = nb_indices > 0 and indice_utilise > nb_indices
         detail_fonctionnel = None
         detail_sequence: dict | None = None
+        detail_rappel: dict | None = None
         if item.get("type") in TYPES_FONCTIONNELS:
             correcte, detail_fonctionnel = corriger_detail(item, reponse)
         elif item.get("type") == "pqrst-mise-en-oeuvre":
             # Séquence guidée (ADR-015) : une seule réception, jugée étape par étape.
             # La question écrite n'est pas notée ; seules les étapes 1, 4 et 5 décident.
             correcte, detail_sequence = corriger_sequence(item, reponse)
+        elif item.get("type") == "rappel-libre":
+            correcte, detail_rappel = corriger_rappel_libre(item, reponse)
         else:
             correcte = False if assistee else corriger(theme, item, reponse)
 
@@ -390,6 +393,8 @@ class GestionnaireSessions:
             # étape par étape (parcours, question modèle, idées-clés, test).
             resultat["attendue"] = None
             resultat["sequence"] = detail_sequence
+        if detail_rappel is not None:
+            resultat["detail_rappel"] = detail_rappel
         # Reprise errorless : un exercice manqué (et non assisté) revient **une fois**, en
         # fin de séance, avec la réponse fournie avant le nouvel essai. On ne ré-encode pas
         # une erreur ; le plafond évite de doubler la durée de la séance.

@@ -107,12 +107,44 @@ def test_rappel_libre_seuil_et_series(client, tmp_path):
     assert reponse.json()["correcte"] is False
     assert isinstance(reponse.json()["attendue"], list)
 
-    # Tous les mots (avec un mot en trop, et sans accents) : réussi.
+    # Tous les mots sans accents : réussite complète.
     tous = " ".join(_sans_accents(mot) for serie in series for mot in serie)
     reponse = _repondre(
-        client, "rappel-series", payload["session_id"], item["id"], f"{tous} ardoise"
+        client, "rappel-series", payload["session_id"], item["id"], tous
     )
     assert reponse.json()["correcte"] is True
+    assert len(reponse.json()["detail_rappel"]["retrouves"]) == len(series[0])
+
+
+def test_rappel_libre_credite_les_cibles_mais_signale_une_intrusion(client, tmp_path):
+    """Un mot inventé ne doit plus produire une maîtrise complète malgré les cibles retrouvées."""
+    _forcer_palier(tmp_path, "rappel-series", 1)
+    payload = _demarrer(client, "rappel-series")
+    item = payload["items"][0]
+    cibles = " ".join(item["contenu"]["affichage"]["series"][0])
+    resultat = _repondre(
+        client, "rappel-series", payload["session_id"], item["id"], f"{cibles} ardoise"
+    ).json()
+    assert resultat["correcte"] is False
+    assert len(resultat["detail_rappel"]["retrouves"]) == len(
+        item["contenu"]["affichage"]["series"][0]
+    )
+    assert resultat["detail_rappel"]["intrusions"] == ["ardoise"]
+
+
+def test_rappel_premiere_serie_distingue_une_confusion_de_serie(client, tmp_path):
+    """Un mot présenté hors de la série demandée est une confusion, pas une intrusion."""
+    _forcer_palier(tmp_path, "rappel-series", 4)
+    payload = _demarrer(client, "rappel-series")
+    item = next(i for i in payload["items"] if i["contenu"]["portee"] == "premiere-serie")
+    series = item["contenu"]["affichage"]["series"]
+    reponse = " ".join([*series[0], series[1][0]])
+    resultat = _repondre(
+        client, "rappel-series", payload["session_id"], item["id"], reponse
+    ).json()
+    assert resultat["correcte"] is False
+    assert resultat["detail_rappel"]["confusions_series"] == [series[1][0]]
+    assert resultat["detail_rappel"]["intrusions"] == []
 
 
 def test_rappel_differe_declare_et_premiere_serie(client, tmp_path):

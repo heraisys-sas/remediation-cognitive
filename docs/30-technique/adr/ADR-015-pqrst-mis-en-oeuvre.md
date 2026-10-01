@@ -24,18 +24,19 @@ Or les deux étapes qui portent l'apprentissage (**écrire sa question**, **refo
 
 **3. La production n'est pas notée.** La question personnelle est une production active ; sa note n'aurait pas de sens et découragerait. Ce qui est vérifié, c'est qu'elle a été écrite — puis le modèle sert de repère (même logique que l'analyse de mot en évocation).
 
-**4. Une seule réception, une correction par étape.** Les cinq étapes se répondent d'affilée et partent en un seul envoi ; le retour détaille chaque étape (parcours, question modèle, idées retrouvées et manquées, test). C'est la procédure entière qui est revue, comme elle se déroule dans la vie réelle.
+**4. Une seule réception, une correction par étape.** Les cinq étapes se répondent d'affilée et partent en un seul envoi ; le retour détaille chaque étape (parcours, question modèle, idées retrouvées, non reconnues ou contredites, test). C'est la procédure entière qui est revue, comme elle se déroule dans la vie réelle.
 
 **5. La fiche méthode est reprise en fin de séance** : les cinq étapes en cinq lignes, à garder hors écran.
 
-**6. La faisabilité est vérifiée au dépôt.** Le validateur exige que **chaque idée-clé se retrouve dans le résumé modèle** — sans quoi une reformulation juste serait refusée. Ce contrôle a immédiatement attrapé un défaut réel : deux résumés modèles ne portaient pas toutes leurs idées.
+**6. La faisabilité est vérifiée au dépôt.** Chaque idée est décrite par des expressions bornées et, si elle est composée, par des sous-faits tous nécessaires. Des formulations explicitement contradictoires sont déclarées par item. Le validateur exige que le résumé modèle satisfasse chacun des cinq critères. Cette correction ne prétend pas analyser librement le sens : les formulations non reconnues sont présentées comme telles dans le retour.
 
 ## Conséquences
 
 - (+) La stratégie est réellement entraînée : deux productions par texte, guidées par la méthode et non par un test de mémoire.
 - (+) La séquence est indivisible : les cinq étapes d'un même texte se suivent dans la séance.
-- (+) Rien n'est jugé qui ne doive l'être ; les tolérances habituelles s'appliquent (accents, variantes, dictée), et le seuil de reformulation est explicite (4/5).
-- (+) Les nouveaux identifiants (`mt-6-…`) évitent tout héritage d'état de révision.
+- (+) Rien n'est jugé qui ne doive l'être ; les tolérances déclarées par item s'appliquent et le seuil de reformulation est explicite (4/5). Une contradiction explicite empêche la réussite même si quatre mots-clés sont présents.
+- (+) Les identifiants de la correction structurée (`mt2-6-…`) évitent d'hériter de la maîtrise calculée par l'ancien repérage de mots-clés.
 - (−) L'item est long (2 à 3 minutes) : quatre textes par palier, soit une séance de 8 à 12 minutes — dans le cadre, sans nouveau paramètre.
 - (−) Le contenu est rédigé à la main (quatre séquences) : l'enrichir demandera du soin, chaque texte devant tenir ses cinq idées-clés.
 - (−) Un type d'exercice de plus à maintenir (structure, correction, interface, contrôles).
+- (−) Une paraphrase juste hors des expressions prévues peut rester « non reconnue » ; le résumé modèle permet alors une comparaison guidée, sans présenter le résultat automatique comme une analyse linguistique certaine.

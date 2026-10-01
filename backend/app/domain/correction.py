@@ -133,6 +133,52 @@ def _mots_sequence(valeur) -> set[str]:
     return {jeton for jeton in re.split(r"[^0-9a-z]+", _clef_texte(valeur)) if jeton}
 
 
+def _liste_mots_sequence(valeur) -> list[str]:
+    """Version ordonnée des jetons, utile pour reconnaître une expression et sa négation."""
+    return [jeton for jeton in re.split(r"[^0-9a-z]+", _clef_texte(valeur)) if jeton]
+
+
+def _positions_expression(expression: str, jetons: list[str]) -> list[int]:
+    """Renvoie les débuts d'une expression présente comme suite de mots entière."""
+    attendus = _liste_mots_sequence(expression)
+    if not attendus:
+        return []
+    largeur = len(attendus)
+    return [
+        debut for debut in range(len(jetons) - largeur + 1)
+        if jetons[debut:debut + largeur] == attendus
+    ]
+
+
+def _evaluer_critere_sequence(critere: dict, jetons: list[str]) -> str:
+    """Classe une idée de reformulation : retrouvée, contredite ou non reconnue.
+
+    Les expressions et contradictions sont déclarées par item. Une négation située
+    juste avant une expression reconnue (``pas au bureau``, ``sans identité``) prime
+    également sur la simple présence du mot-clé. Le correcteur reste volontairement
+    borné : il ne prétend pas comprendre toute phrase libre.
+    """
+    for contradiction in critere.get("contradictions") or []:
+        if _positions_expression(str(contradiction), jetons):
+            return "contredite"
+
+    groupes = critere.get("groupes") or [critere.get("expressions") or []]
+    groupes_retrouves = 0
+    for groupe in groupes:
+        groupe_retrouve = False
+        for expression in groupe:
+            for debut in _positions_expression(str(expression), jetons):
+                contexte = jetons[max(0, debut - 4):debut]
+                if any(mot in contexte for mot in ("pas", "sans", "jamais", "aucun", "aucune")):
+                    return "contredite"
+                groupe_retrouve = True
+                break
+            if groupe_retrouve:
+                break
+        groupes_retrouves += int(groupe_retrouve)
+    return "retrouvee" if groupes and groupes_retrouves == len(groupes) else "non_reconnue"
+
+
 def _idee_retrouvee(idee: str, jetons: set[str], minimum: int = 4) -> bool:
     """Une idée-clé est retrouvée si un jeton la porte — égal ou préfixe.
 
@@ -186,20 +232,28 @@ def corriger_sequence(item: dict, reponse) -> tuple[bool, dict]:
         "non_notee": True,
     }
 
-    # 4 — Reformulation : part d'idées-clés retrouvées, seuil de l'item
+    # 4 — Reformulation : critères sémantiques bornés, avec contradictions explicites.
     reformulation = etapes.get(4) or {}
-    idees = [str(idee) for idee in reformulation.get("idees_cles") or []]
+    criteres = reformulation.get("criteres") or []
     seuil = float((item.get("reponse") or {}).get("seuil") or reformulation.get("seuil") or 1.0)
-    jetons = _mots_sequence(fournie(4))
-    trouvees = [idee for idee in idees if _idee_retrouvee(idee, jetons)]
-    manquantes = [idee for idee in idees if idee not in trouvees]
-    reussi_4 = bool(idees) and (len(trouvees) / len(idees)) >= seuil
+    jetons = _liste_mots_sequence(fournie(4))
+    evaluations = [(_evaluer_critere_sequence(critere, jetons), critere) for critere in criteres]
+    trouvees = [critere["label"] for etat, critere in evaluations if etat == "retrouvee"]
+    contredites = [critere["label"] for etat, critere in evaluations if etat == "contredite"]
+    manquantes = [critere["label"] for etat, critere in evaluations if etat == "non_reconnue"]
+    reussi_4 = (
+        bool(criteres)
+        and not contredites
+        and (len(trouvees) / len(criteres)) >= seuil
+    )
     detail["4"] = {
         "correcte": reussi_4,
         "trouvees": trouvees,
+        "contredites": contredites,
         "manquantes": manquantes,
         "seuil": seuil,
         "modele": reformulation.get("modele"),
+        "correction_bornee": True,
     }
     verdicts.append(reussi_4)
 
@@ -561,25 +615,51 @@ def _corriger_mots_ordonnes(reponse, attendue) -> bool:
     return _mots(reponse) == _mots(attendue)
 
 
-def _corriger_rappel_libre(item: dict, reponse) -> bool:
-    """Rappel libre : réussi si la part de mots retrouvés atteint le seuil.
+def corriger_rappel_libre(item: dict, reponse) -> tuple[bool, dict]:
+    """Corrige un rappel libre et distingue omissions, confusions et intrusions.
 
-    Aucun ordre n'est exigé — le rappel libre mesure ce qui revient, pas la
-    restitution d'une liste. Comparaison sans accents ni casse ; le pluriel
-    simple (mot + « s ») est toléré.
+    Une confusion est un mot réellement présenté mais hors de la portée demandée
+    (par exemple un mot de la deuxième série quand seule la première est ciblée).
+    Une intrusion n'a été présentée dans aucune série. Ces erreurs restent créditées
+    séparément des mots retrouvés, mais empêchent une maîtrise complète de l'item.
     """
     reponse_item = item.get("reponse") or {}
     cibles = reponse_item.get("valeur") or []
     if not isinstance(cibles, list) or not cibles:
-        return False
+        return False, {"retrouves": [], "omis": [], "confusions_series": [], "intrusions": []}
     seuil = float(reponse_item.get("seuil") or 1.0)
     jetons = set(_mots(reponse))
-    trouves = sum(
-        1
-        for mot in cibles
-        if _clef_texte(mot) in jetons or f"{_clef_texte(mot)}s" in jetons
+
+    def correspond(mot: str, jeton: str) -> bool:
+        clef = _clef_texte(mot)
+        return jeton == clef or jeton == f"{clef}s"
+
+    trouves = [mot for mot in cibles if any(correspond(mot, jeton) for jeton in jetons)]
+    omis = [mot for mot in cibles if mot not in trouves]
+    series = (((item.get("contenu") or {}).get("affichage") or {}).get("series") or [])
+    presentes = [mot for serie in series if isinstance(serie, list) for mot in serie]
+    hors_portee = [mot for mot in presentes if mot not in cibles]
+    confusions = [mot for mot in hors_portee if any(correspond(mot, jeton) for jeton in jetons)]
+    reconnus = [*cibles, *hors_portee]
+    intrusions = sorted(
+        jeton for jeton in jetons
+        if not any(correspond(mot, jeton) for mot in reconnus)
     )
-    return (trouves / len(cibles)) >= seuil
+    proportion = len(trouves) / len(cibles)
+    detail = {
+        "retrouves": trouves,
+        "omis": omis,
+        "confusions_series": confusions,
+        "intrusions": intrusions,
+        "proportion": proportion,
+        "seuil": seuil,
+    }
+    return proportion >= seuil and not confusions and not intrusions, detail
+
+
+def _corriger_rappel_libre(item: dict, reponse) -> bool:
+    """Compatibilité du comparateur booléen avec le détail du rappel libre."""
+    return corriger_rappel_libre(item, reponse)[0]
 
 
 def _corriger_estimation(item: dict, reponse) -> bool:

@@ -630,10 +630,9 @@ def _sens_contredit(indice: dict, fig: list[int], coul: list[int],
 def erreurs_sequence_pqrst(item: dict, prefixe: str, contenu: dict) -> list[str]:
     """Contrôle du palier « PQRST mis en œuvre » (ADR-015).
 
-    Vérifie la structure des cinq étapes et surtout la **faisabilité** : chaque idée-clé doit
-    se retrouver dans le résumé modèle, sinon une reformulation juste serait refusée. Le
-    contrôle réutilise volontairement le comparateur de la correction : c'est lui qui doit
-    pouvoir noter l'item.
+    Vérifie la structure des cinq étapes et surtout la **faisabilité** : chacun des cinq
+    critères doit proposer des expressions reconnaissables dont au moins une figure dans
+    le résumé modèle. Les contradictions sont explicites et ne peuvent pas être vides.
     """
     erreurs: list[str] = []
     etapes_liste = contenu.get("etapes")
@@ -659,17 +658,40 @@ def erreurs_sequence_pqrst(item: dict, prefixe: str, contenu: dict) -> list[str]
         erreurs.append(prefixe + "étape 3 (lecture) : rien ne doit être demandé")
 
     reformulation = etapes.get(4) or {}
-    idees = reformulation.get("idees_cles") or []
-    if len(idees) != 5:
-        erreurs.append(prefixe + f"étape 4 : 5 idées-clés attendues (reçu {len(idees)})")
+    criteres = reformulation.get("criteres") or []
+    if len(criteres) != 5:
+        erreurs.append(prefixe + f"étape 4 : 5 critères attendus (reçu {len(criteres)})")
     seuil = (item.get("reponse") or {}).get("seuil")
     if seuil != 0.8:
         erreurs.append(prefixe + f"étape 4 : seuil attendu 0,8 — 4 idées sur 5 (reçu {seuil!r})")
     modele = str(reformulation.get("modele") or "")
     jetons = mots_sequence(modele)
-    absentes = [idee for idee in idees if not idee_retrouvee(idee, jetons)]
-    if absentes:
-        erreurs.append(prefixe + f"étape 4 : idées-clés introuvables dans le résumé modèle {absentes}")
+    for rang, critere in enumerate(criteres, start=1):
+        if not isinstance(critere, dict) or not str(critere.get("label") or "").strip():
+            erreurs.append(prefixe + f"étape 4, critère {rang} : label manquant")
+            continue
+        expressions = critere.get("expressions") or []
+        groupes = critere.get("groupes") or [expressions]
+        contradictions = critere.get("contradictions")
+        if not isinstance(expressions, list) or not expressions or not all(
+            isinstance(expression, str) and expression.strip() for expression in expressions
+        ):
+            erreurs.append(prefixe + f"étape 4, critère {rang} : expressions non vides attendues")
+        if not isinstance(groupes, list) or not groupes or any(
+            not isinstance(groupe, list) or not groupe or not all(
+                isinstance(expression, str) and expression.strip() for expression in groupe
+            ) for groupe in groupes
+        ):
+            erreurs.append(prefixe + f"étape 4, critère {rang} : groupes d'expressions invalides")
+        elif any(
+            not any(set(mots_sequence(expression)) <= jetons for expression in groupe)
+            for groupe in groupes
+        ):
+            erreurs.append(prefixe + f"étape 4, critère {rang} : un sous-fait manque au résumé modèle")
+        if not isinstance(contradictions, list) or not all(
+            isinstance(expression, str) and expression.strip() for expression in contradictions
+        ):
+            erreurs.append(prefixe + f"étape 4, critère {rang} : contradictions doit être une liste de textes")
 
     test = etapes.get(5) or {}
     questions = test.get("questions") or []

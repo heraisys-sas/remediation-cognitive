@@ -131,7 +131,7 @@ from backend.app.domain.correction import corriger_sequence  # noqa: E402
 CONTENU_PQRST = ChargeurContenu()
 
 
-def _sequence(item_id="mt-6-pqrst-01"):
+def _sequence(item_id="mt2-6-pqrst-01"):
     return CONTENU_PQRST.item("methodes", item_id)
 
 
@@ -157,11 +157,21 @@ def test_sequence_exige_4_idees_sur_5():
     """Seuil validé : 4 idées-clés sur 5 — une phrase vague ne suffit pas."""
     item = _sequence()
     etapes = {e["etape"]: e for e in item["contenu"]["etapes"]}
-    vague = " ".join(etapes[4]["idees_cles"][:3])
+    vague = " ".join(critere["expressions"][0] for critere in etapes[4]["criteres"][:3])
     reussi, detail = corriger_sequence(item, _reponses(item, reformulation=vague))
     assert detail["4"]["correcte"] is False
     assert reussi is False
     assert detail["4"]["manquantes"], "les idées manquées sont signalées"
+
+
+def test_sequence_refuse_une_reformulation_qui_contredit_le_texte():
+    """La présence des mots-clés ne doit pas masquer un sens explicitement inverse."""
+    item = _sequence()
+    phrase = "Le colis n'est pas au bureau et il ne faut pas apporter d'identité avant jeudi à 18 h."
+    reussi, detail = corriger_sequence(item, _reponses(item, reformulation=phrase))
+    assert reussi is False
+    assert "le bureau de tabac" in detail["4"]["contredites"]
+    assert "une pièce d'identité" in detail["4"]["contredites"]
 
 
 def test_question_ecrite_non_notee_mais_modele_fourni():

@@ -123,6 +123,25 @@ assert.ok(texte(refs.carteFeedback).includes('Atlas'));
     execute(script)
 
 
+def test_feedback_rappel_distingue_omission_confusion_et_intrusion():
+    script=BASE+'''\nconst etat={theme:{id:'rappel-series'},reponseSoumise:''};
+refs.carteFeedback=creerElement('div');refs.carteFeedback.hidden=true;
+function rendreFeedbackGrille(){} function rendreFeedbackSequence(){}
+'''
+    script+='\nfunction rendreFeedback(resultat) '+corps_fonction(SOURCE,'rendreFeedback')
+    script+='''
+rendreFeedback({correcte:false,attendue:['chat','lune'],detail_rappel:{
+  retrouves:['chat'],omis:['lune'],confusions_series:['gare'],intrusions:['ardoise']
+}});
+const retour=texte(refs.carteFeedback);
+assert.ok(retour.includes('Retrouvés : 1 sur 2'));
+assert.ok(retour.includes('Il restait : lune'));
+assert.ok(retour.includes('Mots d’une autre série : gare'));
+assert.ok(retour.includes('Mots non présentés : ardoise'));
+'''
+    execute(script)
+
+
 def test_lecteur_fichiers_attend_fin_et_invalide_anciens_evenements():
     source=(ROOT/'frontend/src/capacites.js').read_text()
     script='''

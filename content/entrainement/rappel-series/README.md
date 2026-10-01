@@ -4,7 +4,7 @@
 
 **Principe** : plusieurs courtes séries de mots sont présentées l'une après l'autre, puis l'utilisateur **rappelle librement** ce dont il se souvient — tous mots confondus, ou seulement ceux de la première série. C'est un exercice de **récupération** : rien n'est proposé, l'indice n'existe plus, il faut retrouver.
 
-Un rappel libre n'est ni « juste » ni « faux » : l'item déclare un **seuil** (`reponse.seuil`) et la réussite est atteinte quand la part de mots retrouvés l'atteint. L'interface affiche ensuite les mots retrouvés et ceux qui manquaient — un repère de travail, jamais une note.
+Le nombre de mots retrouvés reste le résultat principal : l'item déclare un **seuil** (`reponse.seuil`). L'interface sépare désormais les mots retrouvés, les omissions, les mots d'une autre série quand seule la première était demandée, et les intrusions (mots jamais présentés). Atteindre le seuil avec une confusion ou une intrusion ne compte pas comme maîtrise complète de la carte, tout en créditant explicitement les cibles retrouvées.
 
 ## Paliers
 
@@ -29,7 +29,7 @@ Un rappel libre n'est ni « juste » ni « faux » : l'item déclare un **seuil*
 
 ## Réponses attendues
 
-`reponse.valeur` est la liste des mots cibles ; `reponse.seuil` le seuil de réussite. La comparaison est faite côté serveur : mots comparés sans accents ni casse, ordre indifférent, pluriel simple toléré. Aucun mot ne peut apparaître dans deux séries (le comptage serait ambigu) — contrôle bloquant du validateur.
+`reponse.valeur` est la liste des mots cibles ; `reponse.seuil` le seuil de réussite. La comparaison est faite côté serveur : mots comparés sans accents ni casse, ordre indifférent, pluriel simple toléré. Le serveur renvoie aussi le détail des omissions, confusions de série et intrusions ; le navigateur ne recalcule pas ce résultat. Aucun mot ne peut apparaître dans deux séries (le comptage serait ambigu) — contrôle bloquant du validateur.
 
 ## Précautions
 
