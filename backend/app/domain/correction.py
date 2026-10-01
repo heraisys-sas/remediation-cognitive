@@ -13,8 +13,6 @@ Règles par thème (docs/30-technique/api-contract.md) :
 - ``memoire``        : texte insensible à la casse, TOUS les espaces ignorés
   (les empans tapés avec espaces restent valides) — sauf ``empan-mots``, où
   l'ORDRE des mots est significatif (comparaison mot à mot, sans accents) ;
-- ``concentration``  : comparaison numérique (chaînes, cascades, double tâche,
-  séries — réponses entières) ;
 - ``rappel-series``  : rappel libre — réussite si la part de mots retrouvés
   atteint le seuil déclaré par l'item (``reponse.seuil``) ;
 - ``evocation``      : texte tolérant — casse, accents, espaces et guillemets
@@ -616,7 +614,7 @@ def corriger(theme: str, item: dict, reponse) -> bool:
     """Retourne True si la réponse soumise correspond à la réponse attendue.
 
     - ``theme`` : identifiant API du thème (calcul-mental, anglais, python,
-      memoire, concentration) ;
+      memoire) ;
     - ``item`` : item complet côté serveur (avec ``reponse.valeur``) ;
     - ``reponse`` : réponse utilisateur (str ou nombre, corps du contrat).
 
@@ -626,7 +624,7 @@ def corriger(theme: str, item: dict, reponse) -> bool:
         from .attention_fonctionnelle import corriger_detail
         return corriger_detail(item, reponse)[0]
     attendue = (item.get("reponse") or {}).get("valeur")
-    if theme in ("calcul-mental", "concentration"):
+    if theme == "calcul-mental":
         return _corriger_numerique(reponse, attendue)
     if theme == "deduction":
         return _corriger_grille(item, reponse)

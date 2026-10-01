@@ -8,7 +8,7 @@ Base : `/api/entrainement` — périmètre **hors médical**. Format JSON. Pas d
 `{"status": "ok"}`
 
 ### GET /api/entrainement/themes
-`{"themes": [{"id": "calcul-mental", "nom": "Calcul mental", "description": "Tables et calcul rapide, paliers progressifs"}, {"id": "anglais", …}, {"id": "python", …}, {"id": "memoire", "nom": "Mémoire", "description": "Empans de chiffres, séquences et associations — mémorisation progressive"}, {"id": "concentration", "nom": "Concentration", "description": "Calculs chaînés, double tâche et séries — une attention qui tient"}]}`
+`{"themes": [{"id": "calcul-mental", "nom": "Calcul mental", "description": "Tables et calcul rapide, paliers progressifs"}, {"id": "anglais", …}, {"id": "python", …}, {"id": "memoire", "nom": "Retenir et manipuler", "description": "Empans de chiffres, séquences et associations — mémorisation progressive"}]}`
 
 ### POST /api/entrainement/{theme}/sessions
 Démarre une séance. Sélection serveur : items dus (FSRS) d'abord, puis nouveaux du palier courant. Exception pour les contenus à `etape_progression` (déduction) : réserver la moitié des places aux nouveautés disponibles dans l'ordre des étapes, et prioriser les révisions avancées (ADR-017). Les trois séances du critère de maîtrise doivent chacune comporter une réponse de l'étape finale ; elles sont suivies dans `historique_etapes`, séparément des anciens taux conservés.
@@ -51,15 +51,11 @@ Clôture la séance, applique FSRS + maîtrise, persiste.
 
 Types du sprint 1 : `production` (saisie libre), `prediction-sortie` (python : exécution mentale d'un snippet).
 
-## Types d'exercices — sprint 2 (mémorisation & concentration)
+## Types d'exercices — sprint 2 (mémorisation)
 
-Nouveaux thèmes `memoire` et `concentration`, nouvelles familles : `chaine-calcul`
-(chaînes d'additions/soustractions évaluées de gauche à droite — la longueur 3 → 7
-opérations croît la charge de mémoire de travail et conduit progressivement à la
-fatigue, détectée par le garde-fou existant), `serie-manquante` (suites
-arithmétiques/géométriques/alternées), `paires-associatives` (mot–nombre), et
-activation des types `empan`, `n-back` (sonde temporelle), `double-tache`
-(filtrage chiffres/lettres) sur ces thèmes.
+Le thème `memoire` active les types `empan`, `n-back` (sonde temporelle) et
+`paires-associatives` (mot–nombre). L'ancien thème `concentration` et ses types
+propres ont été retirés le 2026-10-01.
 
 ### Affichage temporisé (phase de mémorisation)
 

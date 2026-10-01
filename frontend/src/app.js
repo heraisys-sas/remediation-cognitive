@@ -258,7 +258,7 @@ function formaterTaux(taux) {
 
 /** Clavier adapté au type d'item (numérique quand la réponse est un nombre). */
 const TYPES_REPONSE_NUMERIQUE = new Set([
-  "production", "chaine-calcul", "serie-manquante", "double-tache",
+  "production",
   "empan", "paires-associatives", "estimation-temps",
 ]);
 
@@ -301,13 +301,13 @@ function annulerMemo() {
 
 /**
  * Normalise la saisie pour le corps de POST /reponses (contrat : str | number).
- * Thèmes calcul-mental et concentration : saisie numérique → nombre.
+ * Thème calcul-mental : saisie numérique → nombre.
  * Sinon (anglais, mémoire, prédiction de sortie…) on envoie la chaîne brute.
  */
 function normaliserReponse(brut, theme) {
   const texte = brut.trim();
   if (
-    theme && (theme.id === "calcul-mental" || theme.id === "concentration")
+    theme && theme.id === "calcul-mental"
     && /^-?\d+(?:[.,]\d+)?$/.test(texte)
   ) {
     const nombre = Number(texte.replace(",", "."));
@@ -477,8 +477,7 @@ function rendreThemes(themes) {
     ...themes.filter(theme => !prioritaires.includes(theme.id)),
   ];
   for (const theme of themesOrdonnes) {
-    // Ancien thème Concentration retiré de l’accueil ; historiques conservés.
-    if (["series-entendues", "concentration"].includes(theme.id)) continue;
+    if (theme.id === "series-entendues") continue;
     let cible = refs.listeThemes;
     if (THEMES_EXTRA.has(theme.id)) cible = refs.listeThemesExtra;
     else if (["evaluation", "cible"].includes(theme.categorie)) cible = refs.listeThemesEvaluation;

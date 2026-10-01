@@ -4,7 +4,7 @@
 Le programme décrit **ce qui est proposé** chaque jour, jamais ce qui est exigé :
 
 - rythme : 5 jours de séance, 1 journée légère, 1 jour de repos ;
-- rotation des thèmes : calcul mental, mémoire, concentration, accès au mot,
+- rotation des thèmes : calcul mental, mémoire, attention fonctionnelle, accès au mot,
   puis vie sociale / rappel de séries en alternance — l'alternance des domaines
   (interleaving) est plus favorable que l'enchaînement d'un seul thème, et elle
   limite la fatigue sur un même réseau ;
@@ -80,7 +80,7 @@ REGLES = {
         "jour suivant, sans cumul."
     ),
     "alternance": (
-        "Les domaines alternent dans la semaine (calcul, mémoire, concentration, "
+        "Les domaines alternent dans la semaine (calcul, mémoire, attention fonctionnelle, "
         "langage, vie quotidienne, méthodes, déduction) : l'alternance limite la fatigue "
         "sur un même réseau et favorise le transfert."
     ),

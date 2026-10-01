@@ -6,7 +6,7 @@ from datetime import date
 
 def test_categories_des_themes(client):
     themes = {t['id']:t for t in client.get('/api/entrainement/themes').json()['themes']}
-    for t in ('memoire','concentration','rappel-series','series-entendues'):
+    for t in ('memoire','rappel-series','series-entendues'):
         assert themes[t]['categorie']=='cible'
     assert not any(t['categorie']=='evaluation' for t in themes.values())
 

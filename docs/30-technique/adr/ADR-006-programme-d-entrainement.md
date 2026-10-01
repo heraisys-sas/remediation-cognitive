@@ -17,7 +17,7 @@ Deux risques à éviter :
 
 - 8 semaines × 7 jours ; 5 séances, 1 journée légère, 1 jour de repos ;
 - durée 6 → 9 minutes (+1 minute toutes les deux semaines, jamais plus de 10) ;
-- rotation des thèmes (calcul, mémoire, concentration, accès au mot, social / rappel) avec décalage hebdomadaire ;
+- rotation des thèmes (calcul, mémoire, attention fonctionnelle, accès au mot, méthodes / rappel) avec décalage hebdomadaire ;
 - `plafond_palier` par thème et par semaine : **borne**, jamais objectif, ramenée aux paliers réellement disponibles ;
 - bloc `regles` explicite : maîtrise prioritaire, fatigue respectée, journée manquée non rattrapée, recul après deux séances faibles.
 

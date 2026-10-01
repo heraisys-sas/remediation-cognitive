@@ -31,8 +31,6 @@ ACCEPTEES = [
     # Valeurs numériques : chiffres, mots, symboles d'unité.
     ("calcul-mental", "cm3-1-01", "3"),                 # attendu 3
     ("calcul-mental", "cm3-1-01", "trois"),
-    ("concentration", "co-1-chaine-01", "quarante-six"),  # attendu 46
-    ("concentration", "co-1-chaine-01", "46"),
     # Séquences de chiffres : espacées, collées, ou dictées en mots.
     ("memoire", "me-1-empan-01", "549"),
     ("memoire", "me-1-empan-01", "5 4 9"),
@@ -55,7 +53,6 @@ ACCEPTEES = [
 REFUSEES = [
     # Un chiffre, un montant, un jour, un moment, un ordre ne s'accepte pas « à peu près ».
     ("calcul-mental", "cm3-1-01", "quatre"),
-    ("concentration", "co-1-chaine-01", "47"),
     ("memoire", "me-1-empan-01", "cinq quatre huit"),
     ("memoire", "me-1-empan-01", "neuf quatre cinq"),   # ordre inversé
     ("memoire", "me-1-empan-01", "554"),

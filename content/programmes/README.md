@@ -7,7 +7,7 @@
 - **8 semaines × 7 jours = 56 jours** (environ deux mois).
 - **Rythme hebdomadaire** : 5 séances · 1 journée légère (« au choix », plus courte) · 1 jour de repos.
 - **Durée** : 6 minutes les deux premières semaines, +1 minute toutes les deux semaines, plafonnée à 9 minutes (jamais plus de 10).
-- **Rotation des thèmes** : calcul mental → mémoire → concentration → accès au mot → vie sociale / rappel de séries, avec un décalage d'une semaine à l'autre pour que le même thème ne tombe pas toujours le même jour.
+- **Rotation des thèmes** : calcul mental → mémoire → attention fonctionnelle → accès au mot → méthodes / rappel de séries, avec un décalage d'une semaine à l'autre pour que le même thème ne tombe pas toujours le même jour.
 - **`plafond_palier`** (par thème et par semaine) : borne haute de complexité. Semaine 1 : palier 2 au plus ; semaine 8 : palier 9 au plus — ramené au nombre de paliers réellement disponibles dans chaque thème.
 
 ## Pourquoi cette montée en complexité

@@ -21,7 +21,6 @@ THEMES_ATTENDUS = {
     "anglais",
     "python",
     "memoire",
-    "concentration",
     "evocation",
     "rappel-series",
     "quotidien",
@@ -294,26 +293,6 @@ def test_correction_memoire_tolerante(client):
         str(_valeur_attendue("memoire", autre["id"])) + "9",
     )
     assert reponse.json()["correcte"] is False
-
-
-def test_correction_concentration_numerique(client):
-    """Concentration : chaînes, double tâches et séries ont des réponses numériques."""
-    payload = _demarrer(client, "concentration")
-    item = payload["items"][0]
-    attendue = _valeur_attendue("concentration", item["id"])
-    reponse = _repondre(
-        client, "concentration", payload["session_id"], item["id"], str(attendue)
-    )
-    assert reponse.status_code == 200
-    assert reponse.json()["correcte"] is True
-    # "43,0" est accepté comme 43 (tolérance numérique du contrat).
-    autre = payload["items"][1]
-    attendue_autre = _valeur_attendue("concentration", autre["id"])
-    reponse = _repondre(
-        client, "concentration", payload["session_id"], autre["id"],
-        f"{attendue_autre},0",
-    )
-    assert reponse.json()["correcte"] is True
 
 
 def test_cycle_complet_memoire(client):

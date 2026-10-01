@@ -20,7 +20,7 @@ motif ``cm-<table>-<a>x<b>`` avec la table déclarée par le manifest, un des
 deux facteurs doit valoir la table et la réponse doit valoir ``a × b``. Les
 références ``cm-palier-N`` placées dans ``prerequis`` doivent pointer vers un
 palier existant du manifest. Multi-thèmes : chaque manifest déclare son thème
-(calcul-mental, memoire, concentration...) ; le contrôle de cohérence spécifique
+(calcul-mental, memoire...) ; le contrôle de cohérence spécifique
 (tables, produits) ne s'applique qu'au calcul-mental, les autres thèmes ayant
 des identifiants à structure libre.
 
@@ -261,8 +261,6 @@ def erreurs_item(item: object, chemin: Path, regles: dict, ids_vus: dict[str, Pa
         erreurs.extend(
             erreurs_coherence_calcul(item, prefixe, manifest_par_theme)
         )
-    if item.get("theme") == "concentration":
-        erreurs.extend(erreurs_coherence_chaine(item, prefixe))
     return erreurs
 
 
@@ -1013,22 +1011,6 @@ def _reponse_calculee(enonce: str) -> int | None:
     return None
 
 
-def erreurs_coherence_chaine(item: dict, prefixe: str) -> list[str]:
-    """Série de calcul (attention soutenue) : on refait le calcul de gauche à droite.
-
-    Contrôle indépendant du générateur : une série associée à un mauvais total — ou dont
-    le total change selon l'ordre des opérations — est refusée au dépôt.
-    """
-    enonce = str((item.get("contenu") or {}).get("enonce") or "")
-    if not MOTIF_CHAINE.match(enonce.strip()):
-        return []
-    reponse = (item.get("reponse") or {}).get("valeur")
-    attendue = _reponse_calculee(enonce)
-    if attendue is None or attendue == reponse:
-        return []
-    return [prefixe + f"série « {enonce} » : total {attendue}, pas {reponse}"]
-
-
 def erreurs_coherence_calcul(item: dict, prefixe: str,
                              manifest_par_theme: dict[str, dict[int, dict]]) -> list[str]:
     """Vérifie un item de calcul mental d'après son **énoncé**, pas d'après son rang.
@@ -1161,7 +1143,7 @@ def erreurs_manifest(manifest: object, chemin: Path, donnees_par_fichier: dict[P
 #: Thèmes réellement jouables (contrat GET /api/entrainement/themes) : le
 #: programme ne peut proposer qu'un thème que l'API expose.
 THEMES_CONNUS = {
-    "calcul-mental", "anglais", "python", "memoire", "concentration", "garder-cap",
+    "calcul-mental", "anglais", "python", "memoire", "garder-cap",
     "evocation", "rappel-series", "quotidien", "deduction", "methodes",
     "series-entendues", "actualiser-consigne", "comparer-documents", "reperer-essentiel",
 }

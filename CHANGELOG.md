@@ -1,6 +1,6 @@
 # 2026-10-01 — retrait de la carte chaînes et suites
 
-Retrait de « Calculs en chaîne et suites » de la page des thèmes. Calcul mental inchangé ; contenu et historiques de l’ancien thème conservés. Nettoyage du plafond de palier inutilisé de Concentration dans les métadonnées du programme ; moteur partagé et compatibilité API conservés.
+Suppression complète de « Calculs en chaîne et suites » : carte, 162 items, générateur spécifique, types dédiés, compatibilité API, tests et historique local. Calcul mental et le moteur partagé restent inchangés.
 
 # 2026-10-01 — séries et attention fonctionnelle
 

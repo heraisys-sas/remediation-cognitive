@@ -36,7 +36,7 @@ Le risque inverse est réel : une tolérance trop large accepterait une réponse
 
 | Champ libre (dictée) | Tolérance de forme | Tolérance de sens | Borne |
 |---|---|---|---|
-| Calcul mental, concentration (valeurs) | chiffres ↔ mots, symboles d'unité (`180 €`) | — | valeur exacte |
+| Calcul mental (valeurs) | chiffres ↔ mots, symboles d'unité (`180 €`) | — | valeur exacte |
 | Mémoire — séquences chiffrées (empans, nombre associé) | espaces, **mots** (« zéro sept un »), casse | — | ordre strict |
 | Mémoire — empan de mots | accents, casse, ponctuation | non (l'ordre **est** la tâche) | séquence exacte |
 | Évocation (mot retrouvé) | accents, casse, variantes déclarées, faute de frappe | oui (empreintes locales) | jamais à travers un jalon |

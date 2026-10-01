@@ -74,10 +74,6 @@ VOCABULAIRES = {
                 "nom": "Méthodes pour retenir et s’organiser",
                 "description": "Choisir une stratégie, vérifier un plan et pratiquer la lecture PQRST pas à pas",
             },
-            "concentration": {
-                "nom": "Calculs en chaîne et suites",
-                "description": "Calculer par étapes, filtrer des lettres et poursuivre une suite numérique",
-            },
             "evocation": {
                 "nom": "Retrouver des mots et leur contexte",
                 "description": "Définitions, indices progressifs, mémoire du contexte — retrouver ce qu'on sait déjà",

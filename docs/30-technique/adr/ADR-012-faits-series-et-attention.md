@@ -1,6 +1,6 @@
 # ADR-012 — Contenus numériques : faits difficiles, séries et attention soutenue
 
-**Statut** : accepté (2026-09-26) — **périmètre corrigé le jour même**
+**Statut** : accepté pour Calcul mental (2026-09-26) — volet Concentration retiré le 2026-10-01
 
 > **Périmètre** : la **dyscalculie est hors périmètre de ce POC** (elle a été incluse par erreur au premier jet de cette décision). Le palier de « sens du nombre » qui en découlait a été retiré le jour même, ainsi que ses contrôles. Ce qui reste — faits difficiles, séries, attention soutenue — vise la population du projet : adultes présentant des troubles cognitifs **acquis** (post-commotionnels).
 
@@ -18,14 +18,11 @@ ADR-011 a refondu le calcul mental autour des besoins d'un adulte (faits de base
 
 **2. Un palier de faits difficiles (lacunes ciblées)** — `calcul-mental`, palier 10 : × 6 à × 9, carrés compris, travaillés par **stratégie** et non par récitation. L'aide enseigne l'appui sur ce qui est su : « × 9 = × 10 − le nombre », « × 8 = double de × 4 ». La répétition espacée fait le reste : sur ces items, ce sont les faits effectivement manqués qui reviennent le plus.
 
-**3. Les séries tiennent l'attention** — `concentration` : les chaînes vont de 3 à 7 opérations, avec l'aide « calcule de gauche à droite, étape par étape » et, pour les cascades, « retranche toujours le même nombre — garde le rythme ». Ce qui progresse, c'est la **longueur tenue**, jamais la vitesse.
-
-**4. Le dépôt recalcule les totaux.** Le contrôle indépendant d'ADR-011 est étendu : les séries de calcul sont recalculées de gauche à droite à partir de l'énoncé, et refusées en cas de discordance.
+**3. Volet retiré.** Les chaînes, cascades, filtrages et séries du thème `concentration` ont finalement été supprimés : leur valeur ajoutée n'était pas assez nette face à Calcul mental et aux exercices fonctionnels.
 
 ## Conséquences
 
-- (+) Les trois publics disposent d'une progression qui va à leur difficulté : socle du nombre, faits manquants, endurance de l'attention.
+- (+) Les faits manquants disposent d'une progression ciblée dans Calcul mental.
 - (+) Aucune récitation inutile : ce qui est connu ne sera pas resservi indéfiniment, puisque la sélection se fait par faits manqués.
-- (+) Un total de série faux ou un énoncé mal associé est arrêté au dépôt, pas en séance.
 - (−) Le palier des faits difficiles liste des faits choisis à la main : il faudra l'enrichir si l'usage montre d'autres faits manqués récurrents.
 - (−) La **dyscalculie** (trouble développemental du sens du nombre) n'est pas traitée : elle sortirait du périmètre du projet, qui vise des difficultés **acquises** chez l'adulte.

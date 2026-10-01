@@ -44,7 +44,7 @@ Déterministe (graine fixe). Les identifiants portent un suffixe de génération
 
 ## Deux difficultés servies par d'autres séries (ADR-012)
 
-- **Maintien de l'attention** — travaillé ici par les *suites et erreurs* (tenir le pas, repérer le nombre qui ne suit pas) et, au thème *concentration*, par les séries de 3 à 7 opérations : ce qui progresse est la **longueur tenue**, jamais la vitesse.
+- **Maintien de l'attention** — travaillé ici par les *suites et erreurs* : tenir le pas et repérer le nombre qui ne suit pas.
 - **Lacunes ciblées** — le palier 10 isole les faits qui résistent (7 × 8, 8 × 9, 9 × 9…) et les travaille par stratégie ; le palier 12 les cherche par l'autre bout (« 42 = 6 × ? ») ; la répétition espacée resservira d'abord ce qui est manqué.
 
 *Hors périmètre : la dyscalculie (trouble développemental du sens du nombre) — le projet vise des difficultés **acquises** chez l'adulte.*

@@ -41,20 +41,9 @@ Thème centré sur l'attention qui tient, avec **fatigue progressive conçue dan
 contenu** : la charge croît par palier (chaînes plus longues, séquences plus denses)
 et la détection de fatigue existante fait le reste.
 
-- **Calcul chaîné** : additions/soustractions bout à bout, évaluées de gauche à
-  droite, 3 → 7 opérations — le total courant doit être maintenu en mémoire de
-  travail, sans rien poser. Famille des tâches de calcul sériel (logique PASAT
-  assimilée ; protocole NON copié : visuel, rythme libre, opérations variables).
-- **Cascade de soustractions** : départ − pas répété (départ et pas variables) —
-  automatisation de la soustraction sous charge.
-- **Double tâche de filtrage** : suite mêlant lettres et chiffres (affichée
-  temporisée), puis « somme des chiffres » ou « nombre de lettres » — attention
-  divisée et sélective (logique d2 assimilée, originale).
-- **Séries à règle** : nombre manquant dans une suite arithmétique, géométrique ou
-  alternée — mémoire de travail et vitesse.
-
-Détail des paliers : `content/entrainement/memoire/` et `content/entrainement/concentration/`
-(générés par `tools/generer_memo_concentration.py`, déterministe).
+Détail des paliers : `content/entrainement/memoire/`
+(généré par `tools/generer_memo_concentration.py`, déterministe ; le nom du script
+est conservé pour la traçabilité des items existants).
 
 ## Transition thérapeutique → développement
 

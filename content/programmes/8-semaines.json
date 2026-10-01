@@ -38,7 +38,7 @@
     "progression": "Le passage d'un palier reste piloté par la maîtrise (90 % de réussite sur 3 séances consécutives). Le plafond hebdomadaire de ce programme est une borne, jamais un objectif : un palier non maîtrisé se reprend.",
     "fatigue": "La proposition d'arrêt en fin de séance est respectée ; une séance peut être close à tout moment.",
     "jours_manques": "Une journée manquée ne se rattrape pas : le programme reprend simplement au jour suivant, sans cumul.",
-    "alternance": "Les domaines alternent dans la semaine (calcul, mémoire, concentration, langage, vie quotidienne, méthodes, déduction) : l'alternance limite la fatigue sur un même réseau et favorise le transfert.",
+    "alternance": "Les domaines alternent dans la semaine (calcul, mémoire, attention fonctionnelle, langage, vie quotidienne, méthodes, déduction) : l'alternance limite la fatigue sur un même réseau et favorise le transfert.",
     "duree": "Une séance dure de 6 à 9 minutes selon la semaine, jamais plus de 10 minutes ; la journée légère est volontairement plus courte.",
     "recul": "Si deux séances consécutives d'un thème passent sous 50 % de réussite, le palier courant se reprend avant toute nouvelle montée en complexité."
   },
