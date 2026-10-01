@@ -33,6 +33,12 @@ DUREE_MAX_SEANCE_S = 600
 PARAMETRES_THEME: dict[str, dict[str, int | bool]] = {
     "deduction": {"max_items": 6},
     "garder-cap": {"max_items": 4},
+    "rappel-series": {"max_items": 4},
+    "series-entendues": {"max_items": 4},
+    "actualiser-consigne": {"max_items": 4},
+    "comparer-documents": {"max_items": 4},
+    "reperer-essentiel": {"max_items": 4},
+
 }
 PARAMETRES_SEANCE_DEFAUT: dict[str, int | bool] = {
     "max_items": MAX_ITEMS_PAR_SEANCE,
@@ -70,6 +76,7 @@ MAX_REPRISES_PAR_SEANCE = 4
 #: remédiation, lui, gagne à être régulier (3 par jour).
 LIMITES_SESSIONS: dict[str, dict[str, int | str]] = {
     "entrainement": {"limite": 3, "fenetre": "jour"},
+    "cible": {"limite": 3, "fenetre": "jour"},
     "evaluation": {"limite": 1, "fenetre": "semaine"},
 }
 

@@ -37,7 +37,7 @@ NOM_FICHIER = "8-semaines.json"
 SEMAINES = 8
 
 #: Thèmes principaux, dans l'ordre de rotation hebdomadaire.
-THEMES = ["calcul-mental", "memoire", "concentration", "evocation", "quotidien", "methodes", "deduction", "rappel-series"]
+THEMES = ["calcul-mental", "memoire", "reperer-essentiel", "evocation", "quotidien", "methodes", "deduction", "rappel-series", "series-entendues", "actualiser-consigne", "comparer-documents", "garder-cap"]
 
 #: Thèmes d'appoint, proposés seulement en journée légère « au choix ».
 THEMES_EXTRA = ["anglais", "python"]
@@ -50,7 +50,12 @@ PALIERS_DISPONIBLES = {
     "evocation": 7,
     "quotidien": 8,
     "methodes": 6,
-    "deduction": 4,
+    "deduction": 5,
+    "series-entendues": 4,
+    "actualiser-consigne": 3,
+    "comparer-documents": 3,
+    "reperer-essentiel": 3,
+    "garder-cap": 3,
     "rappel-series": 4,
 }
 

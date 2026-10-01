@@ -66,7 +66,10 @@
         "reperer-info",
         "aide-externe",
         "gestion-du-temps",
-        "pqrst-mise-en-oeuvre"
+        "pqrst-mise-en-oeuvre",
+        "actualiser-consigne",
+        "comparer-documents",
+        "reperer-essentiel"
       ]
     },
     "fonctions_ciblees": {

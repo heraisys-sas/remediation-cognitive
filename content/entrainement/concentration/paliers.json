@@ -28,7 +28,7 @@
     },
     {
       "id": "co-palier-4",
-      "description": "Double tâche : somme des chiffres",
+      "description": "Filtrage et calcul : somme des chiffres",
       "prerequis": [
         "co-palier-3"
       ],
@@ -46,7 +46,7 @@
     },
     {
       "id": "co-palier-6",
-      "description": "Double tâche 7 éléments",
+      "description": "Filtrage et calcul 7 éléments",
       "prerequis": [
         "co-palier-5"
       ],
@@ -64,7 +64,7 @@
     },
     {
       "id": "co-palier-8",
-      "description": "Chaîne de 7 + double tâche 9",
+      "description": "Chaîne de 7 + filtrage et calcul 9",
       "prerequis": [
         "co-palier-7"
       ],

@@ -24,7 +24,23 @@ VOCABULAIRES = {
         "themes": {
             "calcul-mental": {
                 "nom": "Calcul mental",
-                "description": "Tables et calcul rapide, paliers progressifs",
+                "description": "Calculer de tête : quantités, durées et situations pratiques, avec des méthodes adaptées",
+            },
+            "series-entendues": {
+                "nom": "Mémoriser des séries — mots entendus",
+                "description": "Écouter des mots sans les lire, puis les rappeler librement",
+            },
+            "actualiser-consigne": {
+                "nom": "Actualiser une consigne",
+                "description": "Retenir une consigne, intégrer ses changements et restituer ce qui reste valable",
+            },
+            "comparer-documents": {
+                "nom": "Comparer deux documents",
+                "description": "Repérer les écarts utiles entre une demande et sa confirmation, documents sous les yeux",
+            },
+            "reperer-essentiel": {
+                "nom": "Repérer l’essentiel",
+                "description": "Garder un objectif et sélectionner les informations qui changent la tâche",
             },
             "anglais": {
                 "nom": "Anglais — verbes irréguliers",
@@ -35,12 +51,12 @@ VOCABULAIRES = {
                 "description": "Commandes du langage et prédiction de sortie de snippets",
             },
             "memoire": {
-                "nom": "Mémoire",
+                "nom": "Retenir et manipuler",
                 "description": "Empans de chiffres et de mots, séquences et associations — mémorisation progressive",
             },
             "rappel-series": {
-                "nom": "Rappel de séries",
-                "description": "Plusieurs séries de mots, puis rappel libre de tout ce dont on se souvient",
+                "nom": "Mémoriser des séries",
+                "description": "Deux parcours indépendants : mots lus ou entendus, puis rappel libre",
             },
             "quotidien": {
                 "nom": "Au quotidien",
@@ -52,18 +68,18 @@ VOCABULAIRES = {
             },
             "garder-cap": {
                 "nom": "Garder le cap",
-                "description": "Reprendre après une interruption, adapter son plan et vérifier avant de terminer",
+                "description": "Choisir comment reprendre, adapter et vérifier un plan à partir de situations écrites",
             },
             "methodes": {
                 "nom": "Méthodes pour retenir et s’organiser",
                 "description": "Choisir une stratégie, vérifier un plan et pratiquer la lecture PQRST pas à pas",
             },
             "concentration": {
-                "nom": "Concentration",
-                "description": "Calculs chaînés, double tâche et séries — une attention qui tient",
+                "nom": "Calculs en chaîne et suites",
+                "description": "Calculer par étapes, filtrer des lettres et poursuivre une suite numérique",
             },
             "evocation": {
-                "nom": "Retrouver le mot",
+                "nom": "Retrouver des mots et leur contexte",
                 "description": "Définitions, indices progressifs, mémoire du contexte — retrouver ce qu'on sait déjà",
             },
         },

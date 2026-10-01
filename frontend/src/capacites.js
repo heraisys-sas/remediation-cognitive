@@ -49,18 +49,49 @@ const Capacites = (() => {
     return ecoute;
   }
 
+  // Garder une référence jusqu’à la fin : certains moteurs collectent sinon l’énoncé.
+  let enonceActif = null;
+
   /** Lit un texte à voix haute avec la voix du système. */
-  function lire(texte) {
+  function lire(texte, { onFin, onErreur } = {}) {
     if (!syntheseDisponible() || !texte) return false;
     window.speechSynthesis.cancel();
     const enonce = new SpeechSynthesisUtterance(String(texte));
     enonce.lang = "fr-FR";
     enonce.rate = 0.95;
+    enonceActif = enonce;
+    const voix = window.speechSynthesis.getVoices().find(v => v.lang.startsWith("fr") && v.localService);
+    if (voix) enonce.voice = voix;
+    enonce.onend = () => { if (enonceActif === enonce) enonceActif = null; if (onFin) onFin(); };
+    enonce.onerror = (event) => { if (enonceActif === enonce) enonceActif = null; if (onErreur) onErreur(event.error); };
     window.speechSynthesis.speak(enonce);
     return true;
   }
 
-  const arreter = () => { if (syntheseDisponible()) window.speechSynthesis.cancel(); };
+  let lecteurAudio = null;
+  let generationAudio = 0;
+  /** Lecture des mots préparés : même voix locale, sans dépendre de Web Speech. */
+  function lireFichier(url, { onFin, onErreur } = {}) {
+    if (typeof window.Audio === "undefined") return false;
+    arreter();
+    const generation = generationAudio;
+    lecteurAudio ??= new window.Audio();
+    lecteurAudio.src = url;
+    lecteurAudio.onended = () => { if (generation === generationAudio && onFin) onFin(); };
+    lecteurAudio.onerror = () => { if (generation === generationAudio && onErreur) onErreur("audio"); };
+    lecteurAudio.play().catch(() => { if (generation === generationAudio && onErreur) onErreur("lecture"); });
+    return true;
+  }
 
-  return { voixDisponible, syntheseDisponible, dicter, lire, arreter };
+  const arreter = () => {
+    generationAudio++;
+    if (lecteurAudio) {
+      lecteurAudio.onended = null;
+      lecteurAudio.onerror = null;
+      lecteurAudio.pause();
+    }
+    if (syntheseDisponible()) window.speechSynthesis.cancel();
+  };
+
+  return { voixDisponible, syntheseDisponible, dicter, lire, lireFichier, arreter };
 })();

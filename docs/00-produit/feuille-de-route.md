@@ -1,5 +1,19 @@
 # Feuille de route
 
+## Lot autorisé le 1er octobre 2026
+
+- [x] Fusionner l’état courant de la branche d’essai dans main (8a75404).
+- [x] Clarifier les rubriques et les descriptions ; ne plus présenter les exercices actuels comme une évaluation standardisée.
+- [x] Séries : 2 secondes d’affichage + 2 secondes de pause ; parcours lus et entendus séparés, voix locale française, mots préparés et mutualisés. Réglage de confort, pas norme validée.
+- [x] Développer Actualiser une consigne et Comparer deux documents.
+- [x] Remplacer l’entrée Concentration par Repérer l’essentiel ; conserver ses calculs dans Calcul mental.
+- [ ] Relecture des nouveaux contenus avec l’orthophoniste ; ajuster rythme et charge selon l’essai.
+- [ ] Reprise après interruption réellement vécue (lot suivant).
+
+Voir [ADR-022](../30-technique/adr/ADR-022-parcours-series-et-attention-fonctionnelle.md).
+
+La planification historique ci-dessous reste à réviser : elle ne vaut pas décision d’ajouter un bilan ou un modèle IRT, piste écartée par l’utilisateur.
+
 ## Phase 1 — priorité immédiate (usage familial, sans contrainte réglementaire)
 
 - [ ] Moteur adaptatif : règle ±1 palier, critères de maîtrise (90 % × 3 sessions), orchestration de séance, détection de fatigue

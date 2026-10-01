@@ -8,7 +8,7 @@
   <meta name="color-scheme" content="dark" />
   <meta name="theme-color" content="#14161b" />
   <title>Entraînement — séances courtes</title>
-  <link rel="stylesheet" href="src/styles.css?v=20260930d" />
+  <link rel="stylesheet" href="src/styles.css?v=20261001a" />
 </head>
 <body>
   <!-- Lien d'évitement : première tabulation, pour sauter directement au contenu. -->
@@ -29,7 +29,7 @@
           <span class="commutateur-piste" aria-hidden="true"></span>
           <span class="commutateur-texte">Dépasser la limite de séances</span>
         </label>
-        <p id="note-sans-limite" class="ligne-discrete reglage-limite-note">Entraînements et mesures d’évaluation.</p>
+        <p id="note-sans-limite" class="ligne-discrete reglage-limite-note">Tous les exercices.</p>
       </div>
     </div>
   </header>
@@ -53,12 +53,10 @@
       <p id="notice-themes" class="notice" role="status" hidden></p>
       <div id="liste-themes" class="grille-themes"></div>
 
-      <!-- Section « Évaluation » : thèmes qui mesurent (empans, attention,
-           rappel de listes). Jouables pour se situer, mais à espacer — une
-           séance par semaine — sinon la mesure est faussée par l'apprentissage. -->
+      <!-- Exercices ciblés : pratique, sans interprétation diagnostique. -->
       <section id="section-evaluation" class="section-extra" aria-labelledby="titre-evaluation" hidden>
-        <h3 id="titre-evaluation" class="titre-extra">Évaluation</h3>
-        <p class="intro-extra">Des mesures pour se situer — une séance par semaine au plus. Répéter une mesure la fausse : pour progresser, ce sont les entraînements ci-dessus.</p>
+        <h3 id="titre-evaluation" class="titre-extra">Exercices ciblés</h3>
+        <p class="intro-extra">Des exercices pour retenir et manipuler des informations. Les résultats décrivent la séance, sans constituer un bilan.</p>
         <div id="liste-themes-evaluation" class="grille-themes"></div>
       </section>
 
@@ -264,7 +262,7 @@
   <!-- Le numéro de version change l'URL : le navigateur ne peut pas servir un ancien
        script resté en cache (un script périmé mélangé au contenu courant affichait
        des phrases tronquées). À incrémenter après toute modification de src/. -->
-  <script src="src/capacites.js?v=20260927c" defer></script>
-  <script src="src/app.js?v=20260930h" defer></script>
+  <script src="src/capacites.js?v=20261001a" defer></script>
+  <script src="src/app.js?v=20261001a" defer></script>
 </body>
 </html>

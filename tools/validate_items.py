@@ -311,6 +311,32 @@ def erreurs_contenu(item: dict, prefixe: str) -> list[str]:
               or not all(isinstance(x, str) for x in options) or set(plan) != set(options)):
             erreurs.append(prefixe + "plan-a-verifier : les choix doivent correspondre aux étapes")
 
+    if type_item in {"actualiser-consigne", "comparer-documents", "reperer-essentiel"}:
+        champs = contenu.get("messages") if type_item == "reperer-essentiel" else contenu.get("champs")
+        if not isinstance(champs, list) or not champs or not all(isinstance(x, dict) and x.get("id") for x in champs):
+            erreurs.append(prefixe + "champs/messages fonctionnels requis")
+        elif not isinstance(reponse, dict) or set(reponse) != {x["id"] for x in champs} or len(reponse) != len(champs):
+            erreurs.append(prefixe + "une réponse requise pour chaque champ/message distinct")
+        if type_item == "actualiser-consigne":
+            etapes = contenu.get("etapes")
+            if not isinstance(etapes, list) or len(etapes) < 2 or not all(isinstance(e, dict) and e.get("texte") for e in etapes):
+                erreurs.append(prefixe + "consigne initiale et mises à jour requises")
+        elif type_item == "comparer-documents":
+            documents = contenu.get("documents")
+            if not isinstance(documents, list) or len(documents) != 2:
+                erreurs.append(prefixe + "deux documents consultables requis")
+            elif isinstance(reponse, dict):
+                try:
+                    a, b = [{l["id"]: l["texte"] for l in d["lignes"]} for d in documents]
+                    calcule = {k: "conforme" if a[k] == b[k] else "ecart" for k in a}
+                    if set(a) != set(b) or calcule != reponse:
+                        erreurs.append(prefixe + "écarts incohérents avec les documents")
+                except (KeyError, TypeError):
+                    erreurs.append(prefixe + "lignes des documents invalides")
+        elif isinstance(reponse, dict):
+            if not contenu.get("objectif") or not contenu.get("critere") or set(reponse.values()) != {"oui", "non"}:
+                erreurs.append(prefixe + "objectif, critères et deux catégories de messages requis")
+
     indices = contenu.get("indices")
     if type_item in TYPES_A_INDICES:
         if not isinstance(indices, list) or len(indices) < 2:
@@ -1137,6 +1163,7 @@ def erreurs_manifest(manifest: object, chemin: Path, donnees_par_fichier: dict[P
 THEMES_CONNUS = {
     "calcul-mental", "anglais", "python", "memoire", "concentration", "garder-cap",
     "evocation", "rappel-series", "quotidien", "deduction", "methodes",
+    "series-entendues", "actualiser-consigne", "comparer-documents", "reperer-essentiel",
 }
 
 #: Types de jour admis dans un programme.

@@ -40,7 +40,7 @@ BASE_SORTIE = RACINE_DEPOT / "content" / "entrainement" / "rappel-series"
 #: déjà isolé par construction — pas de flux partagé à découpler ici
 #: (règle du dépôt : docs/30-technique/contenu-versionne.md).
 GRAINE: int = 20260922
-DATE_CREATION: str = "2026-09-22"
+DATE_CREATION: str = "2026-10-01"
 AUTEUR: str = "redaction-assistee (tools/generer_rappel_series.py)"
 
 #: Pool de mots : concrets, courts, choisis pour limiter les confusions
@@ -62,9 +62,9 @@ if len(set(MOTS)) != len(MOTS):
     doublons = sorted({mot for mot in MOTS if MOTS.count(mot) > 1})
     raise SystemExit(f"Pool de mots invalide — doublons : {doublons}")
 
-#: Rythme d'affichage : un mot par seconde environ, courte pause entre séries.
-DUREE_MOT_MS: int = 1000
-PAUSE_SERIE_MS: int = 1500
+#: Rythme de départ du POC, à ajuster avec la personne (pas une norme clinique).
+DUREE_MOT_MS: int = 2000
+PAUSE_SERIE_MS: int = 3000
 
 
 def _meta() -> dict:
@@ -126,6 +126,8 @@ def _item_rappel(
             "mode": "series",
             "series": series,
             "duree_par_item_ms": DUREE_MOT_MS,
+            "pause_item_ms": 2000,
+            "modalite": "visuelle",
             "pause_serie_ms": PAUSE_SERIE_MS,
         },
         "delai_s": delai_s,
@@ -134,7 +136,7 @@ def _item_rappel(
         "aide": "Note d'abord les mots qui viennent sans effort, puis cherche les autres.",
     }
     return {
-        "id": f"rs-{palier}-libre-{numero:02d}",
+        "id": f"rs2-{palier}-libre-{numero:02d}",
         "type": "rappel-libre",
         "module": "entrainement",
         "theme": "rappel-series",
@@ -181,6 +183,11 @@ def construire_paliers(rng: random.Random) -> list[list[dict]]:
                 items.append(
                     _item_rappel(rng, numero, compteur, tailles, portee, seuil, delai, prerequis)
                 )
+        if numero == 4:
+            # Une séance courte doit rencontrer les deux portées de rappel.
+            items = [item for paire in zip(items[:4], items[4:]) for item in paire]
+            for rang, item in enumerate(items, 1):
+                item['id'] = f"rs2-{numero}-libre-{rang:02d}"
         paliers.append(items)
     return paliers
 

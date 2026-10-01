@@ -1,0 +1,234 @@
+[
+  {
+    "id": "reperer-essentiel-v1-1-01",
+    "module": "entrainement",
+    "theme": "reperer-essentiel",
+    "type": "reperer-essentiel",
+    "palier": 1,
+    "prerequis": [],
+    "fonctions_ciblees": [
+      "attention-selective",
+      "inhibition"
+    ],
+    "contenu": {
+      "enonce": "Préparer le déplacement pour la conférence de jeudi à Lyon",
+      "objectif": "Tu pars jeudi pour Lyon, train de 8 h 20, quai 3. Ton billet est enregistré. Le badge est fourni sur place.",
+      "critere": "Uniquement les changements d’horaire de ta tâche.",
+      "consigne": "Pour chaque message, décide s’il change la tâche selon les critères affichés. Les confirmations et les informations sur une autre tâche sont à écarter.",
+      "methode": "Relis le but et les critères. Vérifie de quelle tâche parle le message, puis ce qu’il change réellement. Une information liée au thème n’est pas forcément utile.",
+      "messages": [
+        {
+          "id": "m1",
+          "texte": "Le billet de ton train est confirmé, sans modification."
+        },
+        {
+          "id": "m2",
+          "texte": "Le train de jeudi à 8 h 20 partira désormais à 8 h 40."
+        },
+        {
+          "id": "m3",
+          "texte": "Le train de vendredi à 8 h 20 pour Lyon est retardé."
+        },
+        {
+          "id": "m4",
+          "texte": "Pour la conférence de jeudi, il faut désormais imprimer le badge avant le départ."
+        }
+      ]
+    },
+    "reponse": {
+      "valeur": {
+        "m1": "non",
+        "m2": "oui",
+        "m3": "non",
+        "m4": "non"
+      },
+      "explications": {
+        "m1": "Aucune information nouvelle ne change ta préparation.",
+        "m2": "L’horaire de ton train change.",
+        "m3": "Ce message concerne vendredi.",
+        "m4": "Ce changement ne relève pas des critères retenus pour cette série."
+      }
+    },
+    "meta": {
+      "auteur": "redaction-assistee (tools/generer_attention_fonctionnelle.py)",
+      "date_creation": "2026-10-01",
+      "relecture_ortho": {
+        "statut": "a_revoir"
+      }
+    }
+  },
+  {
+    "id": "reperer-essentiel-v1-1-02",
+    "module": "entrainement",
+    "theme": "reperer-essentiel",
+    "type": "reperer-essentiel",
+    "palier": 1,
+    "prerequis": [],
+    "fonctions_ciblees": [
+      "attention-selective",
+      "inhibition"
+    ],
+    "contenu": {
+      "enonce": "Préparer la réunion de mardi du dossier Atlas",
+      "objectif": "La réunion Atlas est mardi à 14 h, salle 2, avec quatre participants. Le dossier version 3 est prêt.",
+      "critere": "Uniquement les changements d’horaire de ta tâche.",
+      "consigne": "Pour chaque message, décide s’il change la tâche selon les critères affichés. Les confirmations et les informations sur une autre tâche sont à écarter.",
+      "methode": "Relis le but et les critères. Vérifie de quelle tâche parle le message, puis ce qu’il change réellement. Une information liée au thème n’est pas forcément utile.",
+      "messages": [
+        {
+          "id": "m1",
+          "texte": "La réunion Orion de mardi est déplacée en salle 5."
+        },
+        {
+          "id": "m2",
+          "texte": "La salle 2 reste réservée pour la réunion Atlas."
+        },
+        {
+          "id": "m3",
+          "texte": "La réunion Atlas de mardi commencera à 14 h 30."
+        },
+        {
+          "id": "m4",
+          "texte": "Un cinquième participant rejoint la réunion Atlas de mardi : prévoir son exemplaire."
+        }
+      ]
+    },
+    "reponse": {
+      "valeur": {
+        "m1": "non",
+        "m2": "non",
+        "m3": "oui",
+        "m4": "non"
+      },
+      "explications": {
+        "m1": "Ce n’est pas le dossier Atlas.",
+        "m2": "Cela confirme une information déjà acquise.",
+        "m3": "L’horaire de ta réunion change.",
+        "m4": "Ce changement ne relève pas des critères retenus pour cette série."
+      }
+    },
+    "meta": {
+      "auteur": "redaction-assistee (tools/generer_attention_fonctionnelle.py)",
+      "date_creation": "2026-10-01",
+      "relecture_ortho": {
+        "statut": "a_revoir"
+      }
+    }
+  },
+  {
+    "id": "reperer-essentiel-v1-1-03",
+    "module": "entrainement",
+    "theme": "reperer-essentiel",
+    "type": "reperer-essentiel",
+    "palier": 1,
+    "prerequis": [],
+    "fonctions_ciblees": [
+      "attention-selective",
+      "inhibition"
+    ],
+    "contenu": {
+      "enonce": "Finaliser la commande AX-24 pour jeudi",
+      "objectif": "Six unités AX-24 sont commandées pour jeudi, à livrer à l’entrée nord. Le bon est prêt, paiement après livraison.",
+      "critere": "Uniquement les changements de date de ta tâche.",
+      "consigne": "Pour chaque message, décide s’il change la tâche selon les critères affichés. Les confirmations et les informations sur une autre tâche sont à écarter.",
+      "methode": "Relis le but et les critères. Vérifie de quelle tâche parle le message, puis ce qu’il change réellement. Une information liée au thème n’est pas forcément utile.",
+      "messages": [
+        {
+          "id": "m1",
+          "texte": "Six unités AX-24 sont confirmées, sans changement."
+        },
+        {
+          "id": "m2",
+          "texte": "Pour AX-24, présenter désormais le bon signé à la livraison. Le bon prêt ne porte pas de signature."
+        },
+        {
+          "id": "m3",
+          "texte": "La livraison AX-24 prévue jeudi est reportée à vendredi."
+        },
+        {
+          "id": "m4",
+          "texte": "La commande AX-42 sera livrée à l’entrée sud."
+        }
+      ]
+    },
+    "reponse": {
+      "valeur": {
+        "m1": "non",
+        "m2": "non",
+        "m3": "oui",
+        "m4": "non"
+      },
+      "explications": {
+        "m1": "La quantité était déjà prévue.",
+        "m2": "Ce changement ne relève pas des critères retenus pour cette série.",
+        "m3": "La date de cette livraison change.",
+        "m4": "La référence AX-42 concerne une autre commande."
+      }
+    },
+    "meta": {
+      "auteur": "redaction-assistee (tools/generer_attention_fonctionnelle.py)",
+      "date_creation": "2026-10-01",
+      "relecture_ortho": {
+        "statut": "a_revoir"
+      }
+    }
+  },
+  {
+    "id": "reperer-essentiel-v1-1-04",
+    "module": "entrainement",
+    "theme": "reperer-essentiel",
+    "type": "reperer-essentiel",
+    "palier": 1,
+    "prerequis": [],
+    "fonctions_ciblees": [
+      "attention-selective",
+      "inhibition"
+    ],
+    "contenu": {
+      "enonce": "Préparer l’atelier de samedi à la bibliothèque",
+      "objectif": "L’atelier est samedi à 10 h, pour huit inscrits. Il faut apporter un ordinateur chargé. Les supports sont sur place.",
+      "critere": "Uniquement les changements d’horaire de ta tâche.",
+      "consigne": "Pour chaque message, décide s’il change la tâche selon les critères affichés. Les confirmations et les informations sur une autre tâche sont à écarter.",
+      "methode": "Relis le but et les critères. Vérifie de quelle tâche parle le message, puis ce qu’il change réellement. Une information liée au thème n’est pas forcément utile.",
+      "messages": [
+        {
+          "id": "m1",
+          "texte": "L’atelier de samedi est confirmé pour huit personnes."
+        },
+        {
+          "id": "m2",
+          "texte": "L’atelier de dimanche demande un casque audio."
+        },
+        {
+          "id": "m3",
+          "texte": "L’atelier de samedi commencera à 11 h."
+        },
+        {
+          "id": "m4",
+          "texte": "Pour samedi, les supports sont désormais à télécharger avant de venir."
+        }
+      ]
+    },
+    "reponse": {
+      "valeur": {
+        "m1": "non",
+        "m2": "non",
+        "m3": "oui",
+        "m4": "non"
+      },
+      "explications": {
+        "m1": "La situation prévue reste identique.",
+        "m2": "Cela concerne dimanche.",
+        "m3": "L’horaire de ton atelier change.",
+        "m4": "Ce changement ne relève pas des critères retenus pour cette série."
+      }
+    },
+    "meta": {
+      "auteur": "redaction-assistee (tools/generer_attention_fonctionnelle.py)",
+      "date_creation": "2026-10-01",
+      "relecture_ortho": {
+        "statut": "a_revoir"
+      }
+    }
+  }
+]

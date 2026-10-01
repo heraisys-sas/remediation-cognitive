@@ -37,7 +37,7 @@
     },
     {
       "id": "me-palier-5",
-      "description": "Envers 4 + sonde n-back (pas 2)",
+      "description": "Envers 4 + sonde rappel d’une position (pas 2)",
       "prerequis": [
         "me-palier-4"
       ],
@@ -55,7 +55,7 @@
     },
     {
       "id": "me-palier-7",
-      "description": "Envers 6 + sonde n-back (pas 3)",
+      "description": "Envers 6 + sonde rappel d’une position (pas 3)",
       "prerequis": [
         "me-palier-6"
       ],
@@ -64,7 +64,7 @@
     },
     {
       "id": "me-palier-8",
-      "description": "Paires 4 + sonde n-back (pas 4)",
+      "description": "Paires 4 + sonde rappel d’une position (pas 4)",
       "prerequis": [
         "me-palier-7"
       ],

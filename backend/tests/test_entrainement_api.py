@@ -16,6 +16,7 @@ from backend.app.main import creer_app
 
 CONTENU = ChargeurContenu()
 THEMES_ATTENDUS = {
+    "series-entendues", "actualiser-consigne", "comparer-documents", "reperer-essentiel",
     "calcul-mental",
     "anglais",
     "python",
@@ -100,7 +101,7 @@ def test_themes(client):
     assert {t["id"] for t in themes} == THEMES_ATTENDUS
     for theme in themes:
         assert set(theme) == {"id", "nom", "description", "categorie", "paliers"}
-        assert theme["categorie"] in {"entrainement", "evaluation"}
+        assert theme["categorie"] in {"entrainement", "evaluation", "cible"}
         assert theme["nom"] and theme["description"]
 
 

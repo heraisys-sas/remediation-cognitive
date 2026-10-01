@@ -285,6 +285,8 @@ function motsDe(texte) {
 
 /** Annule les minuteries de la phase de mémorisation et masque la zone. */
 function annulerMemo() {
+  etat.memoGeneration = (etat.memoGeneration || 0) + 1;
+  CAPACITES.arreter();
   for (const minuterie of etat.minuteriesMemo) {
     // Les identifiants sont partagés entre timeouts et intervals : on nettoie
     // les deux (sinon un compte à rebours de rappel différé survivrait au
@@ -403,7 +405,7 @@ function majReglageSansLimite() {
   if (!refs.noteSansLimite) return;
   refs.noteSansLimite.textContent = sansLimiteActivee()
     ? "Limite levée — tu décides quand t’arrêter."
-    : "Entraînements et mesures d’évaluation.";
+    : "Tous les exercices.";
 }
 
 /** Réinitialise la confirmation en deux temps de « Terminer ». */
@@ -428,6 +430,10 @@ async function chargerThemes() {
   refs.listeThemes.replaceChildren(
     creerElement("p", { classe: "ligne-discrete", texte: "Chargement…" })
   );
+  refs.listeThemesEvaluation.replaceChildren();
+  refs.listeThemesExtra.replaceChildren();
+  refs.sectionEvaluation.hidden = true;
+  refs.sectionExtra.hidden = true;
 
   try {
     const donnees = await apiFetch("/themes");
@@ -467,21 +473,42 @@ function rendreThemes(themes) {
   // Trois groupes : les entraînements de remédiation, puis les mesures
   // (évaluation), puis les thèmes d'appoint (vocabulaire, commandes).
   for (const theme of themes) {
+    if (["series-entendues", "concentration"].includes(theme.id)) continue;
     let cible = refs.listeThemes;
     if (THEMES_EXTRA.has(theme.id)) cible = refs.listeThemesExtra;
-    else if (theme.categorie === "evaluation") cible = refs.listeThemesEvaluation;
-    cible.append(carteTheme(theme));
+    else if (["evaluation", "cible"].includes(theme.categorie)) cible = refs.listeThemesEvaluation;
+    const carte = carteTheme(theme, theme.id === "rappel-series"
+      ? themes.find(t => t.id === "series-entendues") : null);
+    if (theme.id === "calcul-mental") {
+      const ancien = themes.find(t => t.id === "concentration");
+      if (ancien) carte.append(creerElement("details", {},
+        creerElement("summary", { texte: "Autres calculs : chaînes et suites" }), carteTheme(ancien)));
+    }
+    cible.append(carte);
   }
   refs.sectionEvaluation.hidden = !refs.listeThemesEvaluation.childElementCount;
   refs.sectionExtra.hidden = !refs.listeThemesExtra.childElementCount;
 }
 
 /** Carte cliquable d'un thème : nom, description, bouton « Commencer ». */
-function carteTheme(theme) {
+function carteTheme(theme, parcoursAudio = null) {
   const carte = creerElement("article", { classe: "carte-theme" },
     creerElement("h3", { texte: theme.nom }),
     creerElement("p", { texte: theme.description || "" })
   );
+
+  let themeChoisi = theme;
+  if (parcoursAudio) {
+    const selecteur = creerElement("select", { classe: "selecteur-palier",
+      attributs: { "aria-label": "Parcours de mémorisation" } });
+    selecteur.append(creerElement("option", { texte: "Mots lus", attributs: { value: theme.id } }),
+      creerElement("option", { texte: "Mots entendus", attributs: { value: parcoursAudio.id } }));
+    selecteur.addEventListener("change", () => {
+      themeChoisi = selecteur.value === parcoursAudio.id ? parcoursAudio : theme;
+    });
+    carte.append(selecteur, creerElement("p", { classe: "ligne-discrete",
+      texte: "La progression est distincte dans chaque parcours." }));
+  }
 
   // Sélecteur de palier — **outil d'essai**. « auto » suit la progression : c'est le
   // fonctionnement normal. Choisir un palier ne fait jamais reculer la progression.
@@ -509,7 +536,7 @@ function carteTheme(theme) {
     attributs: { type: "button" },
   });
   bouton.addEventListener("click", () => demarrerSession(
-    theme, choix && choix.value ? Number(choix.value) : null
+    themeChoisi, choix && choix.value ? Number(choix.value) : null
   ));
   carte.append(bouton);
   return carte;
@@ -580,7 +607,7 @@ async function demarrerSession(theme, palier = null) {
       // L'évaluation est plafonnée à une mesure par semaine (la dérogation la lève — ADR-021).
       montrerNoticeThemes(
         theme.categorie === "evaluation"
-          ? "Cette mesure a déjà été faite cette semaine — la répéter fausserait le repère."
+          ? "Le nombre de séances prévu cette semaine est atteint."
           : "Trois séances déjà faites aujourd’hui — le repos fait partie de l’entraînement."
       );
     } else if (erreur.type === "reseau") {
@@ -629,8 +656,9 @@ function montrerItem() {
   // La méthode de l'exercice en cours s'affiche dans le panneau « Méthode » : un exercice
   // de stratégie se travaille avec sa stratégie sous les yeux, pas seulement dans une
   // consigne lue une fois par séance (ADR-014).
-  const methode = item.contenu?.methode || item.contenu?.consigne;
-  const specifique = Boolean(item.contenu?.methode);
+  const aideMethode = item.type === "analyse-mot" ? item.contenu?.consigne : item.contenu?.methode;
+  const methode = aideMethode || item.contenu?.consigne;
+  const specifique = Boolean(aideMethode);
   refs.panneauMethode.open = false;
   refs.titreMethode.textContent = specifique ? "Une méthode possible" : "Méthode — avant de répondre";
   refs.methodeGenerique.hidden = specifique;
@@ -682,11 +710,12 @@ function afficherPhaseMemo(item) {
   const affichage = contenu.affichage;
   const estSequence = affichage.mode === "sequence";
   const estSeries = affichage.mode === "series";
-  const parElement = (affichage.duree_par_item_ms + BLANC_INTER_ITEM_MS) / 1000;
+  const audio = affichage.modalite === "auditive";
+  const parElement = (affichage.duree_par_item_ms + (affichage.pause_item_ms ?? BLANC_INTER_ITEM_MS)) / 1000;
   const nbElements = estSeries
     ? affichage.series.reduce((total, serie) => total + serie.length, 0)
     : affichage.elements.length;
-  const mention = estSequence || estSeries
+  const mention = audio ? `${nbElements} mots · 2 s de pause après chaque mot entendu` : estSequence || estSeries
     ? `${nbElements} éléments · un toutes les ${parElement.toFixed(2).replace(".", ",")} s`
     : `${affichage.elements.length} paires · environ ${Math.round(affichage.duree_totale_ms / 1000)} s`;
 
@@ -697,7 +726,7 @@ function afficherPhaseMemo(item) {
   const methodeDejaVue = etat.consignesVues.has(item.type);
   const consigneAffichee = (contenu.consigne && !methodeDejaVue)
     ? contenu.consigne
-    : "Mémorise le contenu affiché.";
+    : audio ? "Mémorise les mots entendus." : "Mémorise le contenu affiché.";
   if (contenu.consigne) etat.consignesVues.add(item.type);
   refs.enonce.textContent = consigneAffichee;
   refs.enonce.className = "enonce";
@@ -713,10 +742,14 @@ function afficherPhaseMemo(item) {
 
   const boutonAfficher = creerElement("button", {
     classe: "bouton bouton-primaire bouton-large",
-    texte: "Afficher",
+    texte: audio ? "Écouter la série" : "Afficher",
     attributs: { type: "button" },
   });
   boutonAfficher.addEventListener("click", () => jouerAffichage(item));
+  if (audio && !affichage.audio && !CAPACITES.syntheseDisponible()) {
+    boutonAfficher.disabled = true;
+    refs.enonce.textContent = "La synthèse vocale est indisponible sur ce navigateur. Choisis le parcours Mots lus depuis l’accueil.";
+  }
   refs.zoneMemo.replaceChildren(
     creerElement("div", { classe: "memo-actions" },
       boutonAfficher,
@@ -729,6 +762,8 @@ function afficherPhaseMemo(item) {
 
 /** Lecture temporisée du stimulus (séquence élément par élément, ou liste). */
 function jouerAffichage(item) {
+  CAPACITES.arreter();
+  refs.ligneAudio.hidden = true;
   const affichage = item.contenu.affichage;
   const plateau = creerElement("div", { classe: "memo-plateau" });
   const indicateur = creerElement("p", { classe: "memo-points" });
@@ -740,6 +775,10 @@ function jouerAffichage(item) {
   boutonPasser.addEventListener("click", () => afficherQuestion(item));
   refs.zoneMemo.replaceChildren(plateau, indicateur, boutonPasser);
 
+  if (affichage.modalite === "auditive") {
+    jouerSeriesAudio(item, plateau, indicateur);
+    return;
+  }
   if (affichage.mode === "texte") {
     // Texte à lire (méthode PQRST) : affiché pendant la durée prévue, puis masqué.
     plateau.replaceChildren(
@@ -783,7 +822,7 @@ function jouerAffichage(item) {
   // inter-éléments ne sert qu'à séparer visuellement les éléments (segmentation
   // perceptive) : il n'ajoute AUCUNE pause d'attente.
   const groupes = affichage.mode === "series" ? affichage.series : [affichage.elements];
-  const blancMemoMs = BLANC_INTER_ITEM_MS;
+  const blancMemoMs = affichage.pause_item_ms ?? BLANC_INTER_ITEM_MS;
   let delai = 0;
   groupes.forEach((groupe, indexGroupe) => {
     groupe.forEach((element, index) => {
@@ -812,7 +851,132 @@ function jouerAffichage(item) {
       delai += Number(affichage.pause_serie_ms || 1500);
     }
   });
+  if (affichage.pause_item_ms) {
+    etat.minuteriesMemo.push(setTimeout(() => plateau.replaceChildren(), delai));
+    delai += affichage.pause_item_ms;
+  }
   etat.minuteriesMemo.push(setTimeout(() => jouerDelaiOuQuestion(item), delai));
+}
+
+/** Réponses produites ou choix par point, sans réponse attendue côté client. */
+function rendreFonctionnel(item) {
+  const c = item.contenu;
+  const zone = refs.zoneSequence;
+  zone.hidden = false;
+  zone.replaceChildren();
+  const reponses = {};
+  const bouton = (texte, action) => {
+    const b = creerElement("button", { texte, classe: "bouton bouton-secondaire",
+      attributs: { type: "button" } });
+    b.addEventListener("click", action); return b;
+  };
+  function soumettre() { soumettreValeur({ ...reponses }, 0); }
+  function formulaire() {
+    const valider = bouton("Valider", soumettre);
+    valider.disabled = true;
+    const verifier = () => { valider.disabled = !c.champs.every(champ => String(reponses[champ.id] || "").trim()); };
+    for (const champ of c.champs) {
+      const ligne = creerElement("label", { classe: "champ-fonctionnel" },
+        creerElement("span", { texte: champ.label }));
+      if (item.type === "actualiser-consigne") {
+        const saisie = creerElement("input", { attributs: { type: "text", autocomplete: "off" } });
+        saisie.addEventListener("input", () => { reponses[champ.id] = saisie.value; verifier(); });
+        ligne.append(saisie);
+      } else {
+        const choix = creerElement("select", { attributs: { "aria-label": champ.label } });
+        for (const [value, texte] of [["", "À vérifier"], ["conforme", "Conforme"], ["ecart", "Écart à corriger"]]) {
+          choix.append(creerElement("option", { texte, attributs: { value } }));
+        }
+        choix.addEventListener("change", () => { reponses[champ.id] = choix.value; verifier(); });
+        ligne.append(choix);
+      }
+      zone.append(ligne);
+    }
+    zone.append(valider);
+  }
+  if (item.type === "actualiser-consigne") {
+    let index = 0;
+    function montrer() {
+      zone.replaceChildren();
+      const etape = c.etapes[index];
+      if (!etape) {
+        zone.append(creerElement("p", { texte: "Écris la consigne finale. Les éléments non modifiés restent valables." }));
+        formulaire(); return;
+      }
+      zone.append(creerElement("p", { classe: "ligne-discrete", texte: `${etape.titre} — ${index + 1}/${c.etapes.length}` }),
+        creerElement("p", { classe: "document-source", texte: etape.texte }),
+        bouton(index === c.etapes.length - 1 ? "Restituer la consigne" : "Message suivant", () => { index++; montrer(); }));
+    }
+    montrer(); return;
+  }
+  if (item.type === "comparer-documents") {
+    const documents = creerElement("div", { classe: "documents-comparaison" });
+    for (const doc of c.documents) {
+      const bloc = creerElement("section", { classe: "document-source" }, creerElement("h3", { texte: doc.titre }));
+      for (const ligne of doc.lignes) bloc.append(creerElement("p", { texte: `${ligne.label} : ${ligne.texte}` }));
+      documents.append(bloc);
+    }
+    zone.append(documents); formulaire(); return;
+  }
+  let index = 0;
+  const objectif = creerElement("section", { classe: "document-source" },
+    creerElement("p", { texte: c.objectif }), creerElement("p", { texte: `À retenir : ${c.critere}` }));
+  const message = creerElement("div");
+  zone.append(objectif, message);
+  function prochain() {
+    message.replaceChildren();
+    const courant = c.messages[index];
+    if (!courant) { message.append(bouton("Vérifier mes choix", soumettre)); return; }
+    message.append(creerElement("p", { classe: "ligne-discrete", texte: `Message ${index + 1}/${c.messages.length}` }),
+      creerElement("p", { classe: "document-source", texte: courant.texte }));
+    for (const [valeur, libelle] of [["oui", "À prendre en compte"], ["non", "Sans conséquence selon les critères"]]) {
+      message.append(bouton(libelle, () => { reponses[courant.id] = valeur; index++; prochain(); }));
+    }
+  }
+  prochain();
+}
+
+/** Les mots auditifs ne sont jamais écrits dans le DOM. La voix pilote l'avancement. */
+function jouerSeriesAudio(item, plateau, indicateur) {
+  const generation = etat.memoGeneration;
+  const a = item.contenu.affichage;
+  const mots = a.series.flatMap((serie, groupe) => serie.map((mot, index) => ({
+    mot, groupe, dernier: index === serie.length - 1,
+  })));
+  const actif = () => generation === etat.memoGeneration;
+  function jouer(index) {
+    if (!actif()) return;
+    if (index === mots.length) { jouerDelaiOuQuestion(item); return; }
+    const { mot, groupe, dernier } = mots[index];
+    plateau.textContent = "Écoute…";
+    indicateur.textContent = `Série ${groupe + 1} / ${a.series.length}`;
+    let termine = false;
+    function erreur() {
+      if (!actif() || termine) return;
+      termine = true;
+      CAPACITES.arreter();
+      plateau.textContent = "Lecture interrompue. Tu peux réécouter la série depuis le début.";
+      const reprendre = creerElement("button", { texte: "Réécouter depuis le début",
+        classe: "bouton bouton-secondaire", attributs: { type: "button" } });
+      reprendre.addEventListener("click", () => { annulerMemo(); afficherPhaseMemo(item); });
+      plateau.append(reprendre);
+    }
+    const lireMot = a.audio?.[mot] ? CAPACITES.lireFichier : CAPACITES.lire;
+    const disponible = lireMot(a.audio?.[mot] || mot, {
+      onFin() {
+        if (!actif() || termine) return;
+        termine = true;
+        plateau.textContent = "…";
+        const pause = dernier && index < mots.length - 1 ? a.pause_serie_ms : a.pause_item_ms;
+        etat.minuteriesMemo.push(setTimeout(() => jouer(index + 1), pause));
+      },
+      onErreur: erreur,
+    });
+    if (!disponible) erreur();
+    // Un moteur muet ne doit pas laisser la séance bloquée indéfiniment.
+    etat.minuteriesMemo.push(setTimeout(erreur, 15000));
+  }
+  jouer(0);
 }
 
 /** Après le stimulus : attente volontaire (rappel différé) puis question. */
@@ -1055,6 +1219,18 @@ function afficherQuestion(item) {
     rendreSequence(item);
   }
 
+  if (["actualiser-consigne", "comparer-documents", "reperer-essentiel"].includes(item.type)) {
+    refs.formulaire.hidden = true;
+    refs.carteFeedback.hidden = true;
+    refs.boutonSuivant.hidden = true;
+    CAPACITES.arreter();
+    refs.ligneAudio.hidden = true;
+    rendreFonctionnel(item);
+    etat.debutQuestion = Date.now();
+    reglerEtatBoutons();
+    return;
+  }
+
   // Grille de déduction : placement de jetons, pas de saisie de texte.
   if (item.type === "grille-deduction") {
     refs.formulaire.hidden = true;
@@ -1206,7 +1382,7 @@ async function soumettreValeur(brut, indiceUtilise) {
 
   const item = etat.session.items[etat.indexItem];
   // Séquence guidée : le payload est déjà l'objet des réponses par étape.
-  const sequence = item.type === "pqrst-mise-en-oeuvre";
+  const sequence = ["pqrst-mise-en-oeuvre", "actualiser-consigne", "comparer-documents", "reperer-essentiel"].includes(item.type);
   const corps = {
     item_id: item.id,
     reponse: sequence ? brut : normaliserReponse(brut, etat.theme),
@@ -1247,6 +1423,8 @@ async function soumettreValeur(brut, indiceUtilise) {
         texte: "Cet exercice reviendra une fois en fin de séance, avec la réponse.",
       }));
     }
+
+    for (const controle of refs.zoneSequence.querySelectorAll("input, select, button")) controle.disabled = true;
 
     // On masque la saisie pour laisser toute la place au retour.
     refs.formulaire.hidden = true;
@@ -1298,6 +1476,21 @@ function rendreFeedback(resultat) {
     return;
   }
   // Séquence guidée : correction étape par étape (parcours, question modèle, idées-clés, test).
+  if (resultat.detail_fonctionnel) {
+    const detail = resultat.detail_fonctionnel;
+    refs.carteFeedback.hidden = false;
+    refs.carteFeedback.replaceChildren(creerElement("p", {
+      classe: "feedback-titre", texte: resultat.correcte ? "Tous les points sont retrouvés." : "Reprenons les points un à un."
+    }));
+    refs.carteFeedback.className = "carte-feedback";
+    for (const ligne of detail.lignes) refs.carteFeedback.append(creerElement("p", {
+      texte: `${ligne.correcte ? "✓" : "↻"} ${ligne.label} : ${ligne.attendue}. ${ligne.explication}`
+    }));
+    if (detail.type === "reperer-essentiel") refs.carteFeedback.append(creerElement("p", {
+      texte: `Informations utiles omises : ${detail.omissions} · Sélections inutiles : ${detail.fausses_selections}`
+    }));
+    return;
+  }
   if (resultat.sequence) {
     rendreFeedbackSequence(resultat);
     return;

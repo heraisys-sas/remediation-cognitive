@@ -1,0 +1,26 @@
+{
+  "theme": "reperer-essentiel",
+  "paliers": [
+    {
+      "id": "reperer-essentiel-palier-1",
+      "description": "Un critère stable",
+      "prerequis": [],
+      "fichier": "paliers/palier-01.json",
+      "nb_items": 4
+    },
+    {
+      "id": "reperer-essentiel-palier-2",
+      "description": "Deux critères stables",
+      "prerequis": [],
+      "fichier": "paliers/palier-02.json",
+      "nb_items": 4
+    },
+    {
+      "id": "reperer-essentiel-palier-3",
+      "description": "Plusieurs types de changements utiles",
+      "prerequis": [],
+      "fichier": "paliers/palier-03.json",
+      "nb_items": 4
+    }
+  ]
+}

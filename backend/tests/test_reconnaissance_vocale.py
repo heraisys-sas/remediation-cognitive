@@ -46,7 +46,7 @@ ACCEPTEES = [
     ("quotidien", "qo-1-message-01", "14 heures 30"),   # attendu « 14 h 30 »
     ("quotidien", "qo-1-message-08", "jeudi soir"),
     # Rappel libre : liste dans le désordre partiel, accents/casse ignorés.
-    ("rappel-series", "rs-1-libre-01", "Radis, cahier, plage, pomme"),
+    ("rappel-series", "rs2-1-libre-01", "Radis, cahier, plage, pomme"),
 ]
 
 

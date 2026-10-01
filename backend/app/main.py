@@ -29,9 +29,13 @@ class InterfaceStatique(StaticFiles):
 
     async def get_response(self, path, scope):
         reponse = await super().get_response(path, scope)
-        reponse.headers["Cache-Control"] = "no-cache, no-store, must-revalidate"
-        reponse.headers["Pragma"] = "no-cache"
-        reponse.headers["Expires"] = "0"
+        if path.startswith("audio/series/") and path.endswith(".m4a") and reponse.status_code < 400:
+            # Corpus audio immuable, chemins versionnés et mutualisés entre listes.
+            reponse.headers["Cache-Control"] = "public, max-age=31536000, immutable"
+        else:
+            reponse.headers["Cache-Control"] = "no-cache, no-store, must-revalidate"
+            reponse.headers["Pragma"] = "no-cache"
+            reponse.headers["Expires"] = "0"
         return reponse
 
 from .api.entrainement import router as router_entrainement

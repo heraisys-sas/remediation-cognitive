@@ -1,3 +1,5 @@
+> Mise à jour du 1er octobre 2026 : deux parcours indépendants depuis la carte « Mémoriser des séries ». Mots lus : 2 s visibles + 2 s de blanc ; mots entendus : fichiers locaux mutualisés, pause de 2 s après la fin du mot. Séances de quatre items. Voir ADR-022. Les descriptions de rythme antérieures ci-dessous sont historiques.
+
 # Module « Rappel de séries » (rappel libre — hors MDR)
 
 **Principe** : plusieurs courtes séries de mots sont présentées l'une après l'autre, puis l'utilisateur **rappelle librement** ce dont il se souvient — tous mots confondus, ou seulement ceux de la première série. C'est un exercice de **récupération** : rien n'est proposé, l'indice n'existe plus, il faut retrouver.

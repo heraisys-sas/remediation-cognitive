@@ -32,6 +32,7 @@ from engine.srs.fsrs import CarteFSRS, planifier
 from ...domain import messages
 from ...domain.contenu import ChargeurContenu
 from ...domain.correction import corriger, corriger_sequence
+from ...domain.attention_fonctionnelle import TYPES as TYPES_FONCTIONNELS, corriger_detail
 from ...domain.feedback import essai_supplementaire
 from ...domain.dosage import (
     MAX_REPRISES_PAR_SEANCE,
@@ -329,8 +330,11 @@ class GestionnaireSessions:
         ):
             raise ReponseInvalide("indice_utilise hors bornes")
         assistee = nb_indices > 0 and indice_utilise > nb_indices
+        detail_fonctionnel = None
         detail_sequence: dict | None = None
-        if item.get("type") == "pqrst-mise-en-oeuvre":
+        if item.get("type") in TYPES_FONCTIONNELS:
+            correcte, detail_fonctionnel = corriger_detail(item, reponse)
+        elif item.get("type") == "pqrst-mise-en-oeuvre":
             # Séquence guidée (ADR-015) : une seule réception, jugée étape par étape.
             # La question écrite n'est pas notée ; seules les étapes 1, 4 et 5 décident.
             correcte, detail_sequence = corriger_sequence(item, reponse)
@@ -377,6 +381,10 @@ class GestionnaireSessions:
             "attendue": item["reponse"]["valeur"],
             "feedback": messages.texte("entrainement", cle),
         }
+        if detail_fonctionnel is not None:
+            resultat["detail_fonctionnel"] = detail_fonctionnel
+            resultat["attendue"] = " ; ".join(
+                f"{l['label']} : {l['attendue']}" for l in detail_fonctionnel['lignes'])
         if detail_sequence is not None:
             # Le détail par étape remplace la réponse attendue : la séquence se corrige
             # étape par étape (parcours, question modèle, idées-clés, test).

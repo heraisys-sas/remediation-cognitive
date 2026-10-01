@@ -5,12 +5,16 @@
   "themes": [
     "calcul-mental",
     "memoire",
-    "concentration",
+    "reperer-essentiel",
     "evocation",
     "quotidien",
     "methodes",
     "deduction",
-    "rappel-series"
+    "rappel-series",
+    "series-entendues",
+    "actualiser-consigne",
+    "comparer-documents",
+    "garder-cap"
   ],
   "themes_extra": [
     "anglais",
@@ -23,7 +27,12 @@
     "evocation": 7,
     "quotidien": 8,
     "methodes": 6,
-    "deduction": 4,
+    "deduction": 5,
+    "series-entendues": 4,
+    "actualiser-consigne": 3,
+    "comparer-documents": 3,
+    "reperer-essentiel": 3,
+    "garder-cap": 3,
     "rappel-series": 4
   },
   "regles": {
@@ -41,12 +50,16 @@
       "plafond_palier": {
         "calcul-mental": 2,
         "memoire": 2,
-        "concentration": 2,
+        "reperer-essentiel": 2,
         "evocation": 2,
         "quotidien": 2,
         "methodes": 2,
         "deduction": 2,
-        "rappel-series": 2
+        "rappel-series": 2,
+        "series-entendues": 2,
+        "actualiser-consigne": 2,
+        "comparer-documents": 2,
+        "garder-cap": 2
       },
       "jours": [
         {
@@ -70,7 +83,7 @@
           "type": "seance",
           "duree_min": 6,
           "themes": [
-            "concentration"
+            "reperer-essentiel"
           ]
         },
         {
@@ -115,12 +128,16 @@
       "plafond_palier": {
         "calcul-mental": 3,
         "memoire": 3,
-        "concentration": 3,
+        "reperer-essentiel": 3,
         "evocation": 3,
         "quotidien": 3,
         "methodes": 3,
         "deduction": 3,
-        "rappel-series": 3
+        "rappel-series": 3,
+        "series-entendues": 3,
+        "actualiser-consigne": 3,
+        "comparer-documents": 3,
+        "garder-cap": 3
       },
       "jours": [
         {
@@ -136,7 +153,7 @@
           "type": "seance",
           "duree_min": 6,
           "themes": [
-            "concentration"
+            "reperer-essentiel"
           ]
         },
         {
@@ -189,12 +206,16 @@
       "plafond_palier": {
         "calcul-mental": 4,
         "memoire": 4,
-        "concentration": 4,
+        "reperer-essentiel": 3,
         "evocation": 4,
         "quotidien": 4,
         "methodes": 4,
         "deduction": 4,
-        "rappel-series": 4
+        "rappel-series": 4,
+        "series-entendues": 4,
+        "actualiser-consigne": 3,
+        "comparer-documents": 3,
+        "garder-cap": 3
       },
       "jours": [
         {
@@ -202,7 +223,7 @@
           "type": "seance",
           "duree_min": 7,
           "themes": [
-            "concentration"
+            "reperer-essentiel"
           ]
         },
         {
@@ -263,12 +284,16 @@
       "plafond_palier": {
         "calcul-mental": 5,
         "memoire": 5,
-        "concentration": 5,
+        "reperer-essentiel": 3,
         "evocation": 5,
         "quotidien": 5,
         "methodes": 5,
-        "deduction": 4,
-        "rappel-series": 4
+        "deduction": 5,
+        "rappel-series": 4,
+        "series-entendues": 4,
+        "actualiser-consigne": 3,
+        "comparer-documents": 3,
+        "garder-cap": 3
       },
       "jours": [
         {
@@ -337,12 +362,16 @@
       "plafond_palier": {
         "calcul-mental": 6,
         "memoire": 6,
-        "concentration": 6,
+        "reperer-essentiel": 3,
         "evocation": 6,
         "quotidien": 6,
         "methodes": 6,
-        "deduction": 4,
-        "rappel-series": 4
+        "deduction": 5,
+        "rappel-series": 4,
+        "series-entendues": 4,
+        "actualiser-consigne": 3,
+        "comparer-documents": 3,
+        "garder-cap": 3
       },
       "jours": [
         {
@@ -382,7 +411,7 @@
           "type": "seance",
           "duree_min": 8,
           "themes": [
-            "calcul-mental"
+            "series-entendues"
           ]
         },
         {
@@ -411,12 +440,16 @@
       "plafond_palier": {
         "calcul-mental": 7,
         "memoire": 7,
-        "concentration": 7,
+        "reperer-essentiel": 3,
         "evocation": 7,
         "quotidien": 7,
         "methodes": 6,
-        "deduction": 4,
-        "rappel-series": 4
+        "deduction": 5,
+        "rappel-series": 4,
+        "series-entendues": 4,
+        "actualiser-consigne": 3,
+        "comparer-documents": 3,
+        "garder-cap": 3
       },
       "jours": [
         {
@@ -448,7 +481,7 @@
           "type": "seance",
           "duree_min": 8,
           "themes": [
-            "calcul-mental"
+            "series-entendues"
           ]
         },
         {
@@ -456,7 +489,7 @@
           "type": "seance",
           "duree_min": 8,
           "themes": [
-            "memoire"
+            "actualiser-consigne"
           ]
         },
         {
@@ -485,12 +518,16 @@
       "plafond_palier": {
         "calcul-mental": 8,
         "memoire": 8,
-        "concentration": 8,
+        "reperer-essentiel": 3,
         "evocation": 7,
         "quotidien": 8,
         "methodes": 6,
-        "deduction": 4,
-        "rappel-series": 4
+        "deduction": 5,
+        "rappel-series": 4,
+        "series-entendues": 4,
+        "actualiser-consigne": 3,
+        "comparer-documents": 3,
+        "garder-cap": 3
       },
       "jours": [
         {
@@ -514,7 +551,7 @@
           "type": "seance",
           "duree_min": 9,
           "themes": [
-            "calcul-mental"
+            "series-entendues"
           ]
         },
         {
@@ -522,7 +559,7 @@
           "type": "seance",
           "duree_min": 9,
           "themes": [
-            "memoire"
+            "actualiser-consigne"
           ]
         },
         {
@@ -530,7 +567,7 @@
           "type": "seance",
           "duree_min": 9,
           "themes": [
-            "concentration"
+            "comparer-documents"
           ]
         },
         {
@@ -559,12 +596,16 @@
       "plafond_palier": {
         "calcul-mental": 9,
         "memoire": 9,
-        "concentration": 9,
+        "reperer-essentiel": 3,
         "evocation": 7,
         "quotidien": 8,
         "methodes": 6,
-        "deduction": 4,
-        "rappel-series": 4
+        "deduction": 5,
+        "rappel-series": 4,
+        "series-entendues": 4,
+        "actualiser-consigne": 3,
+        "comparer-documents": 3,
+        "garder-cap": 3
       },
       "jours": [
         {
@@ -580,7 +621,7 @@
           "type": "seance",
           "duree_min": 9,
           "themes": [
-            "calcul-mental"
+            "series-entendues"
           ]
         },
         {
@@ -588,7 +629,7 @@
           "type": "seance",
           "duree_min": 9,
           "themes": [
-            "memoire"
+            "actualiser-consigne"
           ]
         },
         {
@@ -596,7 +637,7 @@
           "type": "seance",
           "duree_min": 9,
           "themes": [
-            "concentration"
+            "comparer-documents"
           ]
         },
         {
@@ -604,7 +645,7 @@
           "type": "seance",
           "duree_min": 9,
           "themes": [
-            "evocation"
+            "garder-cap"
           ]
         },
         {

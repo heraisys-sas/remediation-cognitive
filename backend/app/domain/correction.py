@@ -622,6 +622,9 @@ def corriger(theme: str, item: dict, reponse) -> bool:
 
     Fonction interne serveur : ne jamais l'exposer avant soumission.
     """
+    if item.get("type") in {"actualiser-consigne", "comparer-documents", "reperer-essentiel"}:
+        from .attention_fonctionnelle import corriger_detail
+        return corriger_detail(item, reponse)[0]
     attendue = (item.get("reponse") or {}).get("valeur")
     if theme in ("calcul-mental", "concentration"):
         return _corriger_numerique(reponse, attendue)
@@ -652,7 +655,7 @@ def corriger(theme: str, item: dict, reponse) -> bool:
             return _corriger_estimation(item, reponse)
         # etape-suivante et les familles à choix : la proposition choisie, en clair.
         return _clef_reponse(reponse) == _clef_reponse(attendue)
-    if theme == "rappel-series":
+    if theme in ("rappel-series", "series-entendues"):
         return _corriger_rappel_libre(item, reponse)
     if theme == "evocation":
         # Accès lexical : mot retrouvé, avec variantes et petite tolérance de frappe.

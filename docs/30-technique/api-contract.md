@@ -239,3 +239,8 @@ d'observance ni de complétion n'est calculé — ce ne serait pas une mesure cl
 
 Stockage : `backend/data/programme/programme.json` (hors dépôt), limité à la date de
 début — périmètre entraînement, aucune donnée de santé (ADR-002).
+
+
+## Extension 2026-10-01 (ADR-022)
+
+Catégorie de thème `cible` pour les exercices ciblés (trois séances/jour). Nouveaux thèmes `series-entendues`, `actualiser-consigne`, `comparer-documents`, `reperer-essentiel`. Les trois derniers acceptent une réponse objet : clés des champs/messages, valeurs textuelles. Après soumission, `detail_fonctionnel` décrit les lignes (`label`, `correcte`, `attendue`, `explication`) et les compteurs `omissions`/`fausses_selections` du filtrage. Le reste du contrat séance/fin est inchangé.

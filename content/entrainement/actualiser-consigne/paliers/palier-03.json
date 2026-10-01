@@ -1,0 +1,286 @@
+[
+  {
+    "id": "actualiser-consigne-v1-3-01",
+    "module": "entrainement",
+    "theme": "actualiser-consigne",
+    "type": "actualiser-consigne",
+    "palier": 3,
+    "prerequis": [],
+    "fonctions_ciblees": [
+      "memoire-travail",
+      "inhibition"
+    ],
+    "contenu": {
+      "enonce": "Préparer une réunion — restitue la consigne finale.",
+      "consigne": "Lis chaque message à ton rythme. Il sera masqué au suivant. Garde ce qui reste valable et remplace seulement ce qui change.",
+      "methode": "Reformule la consigne en quelques éléments. À chaque message, remplace l’élément modifié et répète mentalement la version à jour.",
+      "etapes": [
+        {
+          "titre": "Consigne initiale",
+          "texte": "Horaire : 14 h. Salle : Atlas. Document à apporter : budget."
+        },
+        {
+          "titre": "Mise à jour",
+          "texte": "Horaire : désormais 15 h. Les autres informations restent valables."
+        },
+        {
+          "titre": "Information séparée",
+          "texte": "Une autre équipe prépare une activité la semaine prochaine. Cela ne change rien à ta consigne."
+        },
+        {
+          "titre": "Mise à jour",
+          "texte": "Document à apporter : désormais aucun. Les autres informations restent valables."
+        },
+        {
+          "titre": "Mise à jour",
+          "texte": "Horaire : désormais 16 h. Les autres informations restent valables."
+        },
+        {
+          "titre": "Mise à jour",
+          "texte": "Salle : désormais Orion. Les autres informations restent valables."
+        }
+      ],
+      "champs": [
+        {
+          "id": "heure",
+          "label": "Horaire"
+        },
+        {
+          "id": "lieu",
+          "label": "Salle"
+        },
+        {
+          "id": "piece",
+          "label": "Document à apporter"
+        }
+      ]
+    },
+    "reponse": {
+      "valeur": {
+        "heure": "16 h",
+        "lieu": "Orion",
+        "piece": "aucun"
+      }
+    },
+    "meta": {
+      "auteur": "redaction-assistee (tools/generer_attention_fonctionnelle.py)",
+      "date_creation": "2026-10-01",
+      "relecture_ortho": {
+        "statut": "a_revoir"
+      }
+    }
+  },
+  {
+    "id": "actualiser-consigne-v1-3-02",
+    "module": "entrainement",
+    "theme": "actualiser-consigne",
+    "type": "actualiser-consigne",
+    "palier": 3,
+    "prerequis": [],
+    "fonctions_ciblees": [
+      "memoire-travail",
+      "inhibition"
+    ],
+    "contenu": {
+      "enonce": "Organiser un retrait de dossier — restitue la consigne finale.",
+      "consigne": "Lis chaque message à ton rythme. Il sera masqué au suivant. Garde ce qui reste valable et remplace seulement ce qui change.",
+      "methode": "Reformule la consigne en quelques éléments. À chaque message, remplace l’élément modifié et répète mentalement la version à jour.",
+      "etapes": [
+        {
+          "titre": "Consigne initiale",
+          "texte": "Jour : mardi. Lieu : accueil. Pièce à présenter : badge."
+        },
+        {
+          "titre": "Mise à jour",
+          "texte": "Lieu : désormais bureau 12. Les autres informations restent valables."
+        },
+        {
+          "titre": "Information séparée",
+          "texte": "Une autre équipe prépare une activité la semaine prochaine. Cela ne change rien à ta consigne."
+        },
+        {
+          "titre": "Mise à jour",
+          "texte": "Pièce à présenter : désormais aucune. Les autres informations restent valables."
+        },
+        {
+          "titre": "Mise à jour",
+          "texte": "Lieu : désormais secrétariat. Les autres informations restent valables."
+        },
+        {
+          "titre": "Mise à jour",
+          "texte": "Jour : désormais jeudi. Les autres informations restent valables."
+        }
+      ],
+      "champs": [
+        {
+          "id": "jour",
+          "label": "Jour"
+        },
+        {
+          "id": "lieu",
+          "label": "Lieu"
+        },
+        {
+          "id": "piece",
+          "label": "Pièce à présenter"
+        }
+      ]
+    },
+    "reponse": {
+      "valeur": {
+        "jour": "jeudi",
+        "lieu": "secrétariat",
+        "piece": "aucune"
+      }
+    },
+    "meta": {
+      "auteur": "redaction-assistee (tools/generer_attention_fonctionnelle.py)",
+      "date_creation": "2026-10-01",
+      "relecture_ortho": {
+        "statut": "a_revoir"
+      }
+    }
+  },
+  {
+    "id": "actualiser-consigne-v1-3-03",
+    "module": "entrainement",
+    "theme": "actualiser-consigne",
+    "type": "actualiser-consigne",
+    "palier": 3,
+    "prerequis": [],
+    "fonctions_ciblees": [
+      "memoire-travail",
+      "inhibition"
+    ],
+    "contenu": {
+      "enonce": "Préparer une livraison — restitue la consigne finale.",
+      "consigne": "Lis chaque message à ton rythme. Il sera masqué au suivant. Garde ce qui reste valable et remplace seulement ce qui change.",
+      "methode": "Reformule la consigne en quelques éléments. À chaque message, remplace l’élément modifié et répète mentalement la version à jour.",
+      "etapes": [
+        {
+          "titre": "Consigne initiale",
+          "texte": "Horaire : 10 h. Entrée : nord. Document à remettre : bon de commande."
+        },
+        {
+          "titre": "Mise à jour",
+          "texte": "Horaire : désormais 11 h. Les autres informations restent valables."
+        },
+        {
+          "titre": "Information séparée",
+          "texte": "Une autre équipe prépare une activité la semaine prochaine. Cela ne change rien à ta consigne."
+        },
+        {
+          "titre": "Mise à jour",
+          "texte": "Document à remettre : désormais aucun. Les autres informations restent valables."
+        },
+        {
+          "titre": "Mise à jour",
+          "texte": "Horaire : désormais 12 h. Les autres informations restent valables."
+        },
+        {
+          "titre": "Mise à jour",
+          "texte": "Entrée : désormais sud. Les autres informations restent valables."
+        }
+      ],
+      "champs": [
+        {
+          "id": "heure",
+          "label": "Horaire"
+        },
+        {
+          "id": "lieu",
+          "label": "Entrée"
+        },
+        {
+          "id": "piece",
+          "label": "Document à remettre"
+        }
+      ]
+    },
+    "reponse": {
+      "valeur": {
+        "heure": "12 h",
+        "lieu": "sud",
+        "piece": "aucun"
+      }
+    },
+    "meta": {
+      "auteur": "redaction-assistee (tools/generer_attention_fonctionnelle.py)",
+      "date_creation": "2026-10-01",
+      "relecture_ortho": {
+        "statut": "a_revoir"
+      }
+    }
+  },
+  {
+    "id": "actualiser-consigne-v1-3-04",
+    "module": "entrainement",
+    "theme": "actualiser-consigne",
+    "type": "actualiser-consigne",
+    "palier": 3,
+    "prerequis": [],
+    "fonctions_ciblees": [
+      "memoire-travail",
+      "inhibition"
+    ],
+    "contenu": {
+      "enonce": "Organiser une visite — restitue la consigne finale.",
+      "consigne": "Lis chaque message à ton rythme. Il sera masqué au suivant. Garde ce qui reste valable et remplace seulement ce qui change.",
+      "methode": "Reformule la consigne en quelques éléments. À chaque message, remplace l’élément modifié et répète mentalement la version à jour.",
+      "etapes": [
+        {
+          "titre": "Consigne initiale",
+          "texte": "Jour : lundi. Rendez-vous : gare. Document à emporter : plan."
+        },
+        {
+          "titre": "Mise à jour",
+          "texte": "Rendez-vous : désormais musée. Les autres informations restent valables."
+        },
+        {
+          "titre": "Information séparée",
+          "texte": "Une autre équipe prépare une activité la semaine prochaine. Cela ne change rien à ta consigne."
+        },
+        {
+          "titre": "Mise à jour",
+          "texte": "Document à emporter : désormais aucun. Les autres informations restent valables."
+        },
+        {
+          "titre": "Mise à jour",
+          "texte": "Rendez-vous : désormais bibliothèque. Les autres informations restent valables."
+        },
+        {
+          "titre": "Mise à jour",
+          "texte": "Jour : désormais mercredi. Les autres informations restent valables."
+        }
+      ],
+      "champs": [
+        {
+          "id": "jour",
+          "label": "Jour"
+        },
+        {
+          "id": "lieu",
+          "label": "Rendez-vous"
+        },
+        {
+          "id": "piece",
+          "label": "Document à emporter"
+        }
+      ]
+    },
+    "reponse": {
+      "valeur": {
+        "jour": "mercredi",
+        "lieu": "bibliothèque",
+        "piece": "aucun"
+      }
+    },
+    "meta": {
+      "auteur": "redaction-assistee (tools/generer_attention_fonctionnelle.py)",
+      "date_creation": "2026-10-01",
+      "relecture_ortho": {
+        "statut": "a_revoir"
+      }
+    }
+  }
+]

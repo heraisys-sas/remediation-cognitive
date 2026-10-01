@@ -1,6 +1,6 @@
 [
   {
-    "id": "rs-3-libre-01",
+    "id": "rs2-3-libre-01",
     "type": "rappel-libre",
     "module": "entrainement",
     "theme": "rappel-series",
@@ -34,8 +34,10 @@
             "chat"
           ]
         ],
-        "duree_par_item_ms": 1000,
-        "pause_serie_ms": 1500
+        "duree_par_item_ms": 2000,
+        "pause_item_ms": 2000,
+        "modalite": "visuelle",
+        "pause_serie_ms": 3000
       },
       "delai_s": 0,
       "portee": "toutes-series",
@@ -58,14 +60,14 @@
     },
     "meta": {
       "auteur": "redaction-assistee (tools/generer_rappel_series.py)",
-      "date_creation": "2026-09-22",
+      "date_creation": "2026-10-01",
       "relecture_ortho": {
         "statut": "a_revoir"
       }
     }
   },
   {
-    "id": "rs-3-libre-02",
+    "id": "rs2-3-libre-02",
     "type": "rappel-libre",
     "module": "entrainement",
     "theme": "rappel-series",
@@ -99,8 +101,10 @@
             "panier"
           ]
         ],
-        "duree_par_item_ms": 1000,
-        "pause_serie_ms": 1500
+        "duree_par_item_ms": 2000,
+        "pause_item_ms": 2000,
+        "modalite": "visuelle",
+        "pause_serie_ms": 3000
       },
       "delai_s": 0,
       "portee": "toutes-series",
@@ -123,14 +127,14 @@
     },
     "meta": {
       "auteur": "redaction-assistee (tools/generer_rappel_series.py)",
-      "date_creation": "2026-09-22",
+      "date_creation": "2026-10-01",
       "relecture_ortho": {
         "statut": "a_revoir"
       }
     }
   },
   {
-    "id": "rs-3-libre-03",
+    "id": "rs2-3-libre-03",
     "type": "rappel-libre",
     "module": "entrainement",
     "theme": "rappel-series",
@@ -164,8 +168,10 @@
             "feuille"
           ]
         ],
-        "duree_par_item_ms": 1000,
-        "pause_serie_ms": 1500
+        "duree_par_item_ms": 2000,
+        "pause_item_ms": 2000,
+        "modalite": "visuelle",
+        "pause_serie_ms": 3000
       },
       "delai_s": 0,
       "portee": "toutes-series",
@@ -188,14 +194,14 @@
     },
     "meta": {
       "auteur": "redaction-assistee (tools/generer_rappel_series.py)",
-      "date_creation": "2026-09-22",
+      "date_creation": "2026-10-01",
       "relecture_ortho": {
         "statut": "a_revoir"
       }
     }
   },
   {
-    "id": "rs-3-libre-04",
+    "id": "rs2-3-libre-04",
     "type": "rappel-libre",
     "module": "entrainement",
     "theme": "rappel-series",
@@ -229,8 +235,10 @@
             "musique"
           ]
         ],
-        "duree_par_item_ms": 1000,
-        "pause_serie_ms": 1500
+        "duree_par_item_ms": 2000,
+        "pause_item_ms": 2000,
+        "modalite": "visuelle",
+        "pause_serie_ms": 3000
       },
       "delai_s": 0,
       "portee": "toutes-series",
@@ -253,14 +261,14 @@
     },
     "meta": {
       "auteur": "redaction-assistee (tools/generer_rappel_series.py)",
-      "date_creation": "2026-09-22",
+      "date_creation": "2026-10-01",
       "relecture_ortho": {
         "statut": "a_revoir"
       }
     }
   },
   {
-    "id": "rs-3-libre-05",
+    "id": "rs2-3-libre-05",
     "type": "rappel-libre",
     "module": "entrainement",
     "theme": "rappel-series",
@@ -294,8 +302,10 @@
             "musique"
           ]
         ],
-        "duree_par_item_ms": 1000,
-        "pause_serie_ms": 1500
+        "duree_par_item_ms": 2000,
+        "pause_item_ms": 2000,
+        "modalite": "visuelle",
+        "pause_serie_ms": 3000
       },
       "delai_s": 0,
       "portee": "toutes-series",
@@ -318,14 +328,14 @@
     },
     "meta": {
       "auteur": "redaction-assistee (tools/generer_rappel_series.py)",
-      "date_creation": "2026-09-22",
+      "date_creation": "2026-10-01",
       "relecture_ortho": {
         "statut": "a_revoir"
       }
     }
   },
   {
-    "id": "rs-3-libre-06",
+    "id": "rs2-3-libre-06",
     "type": "rappel-libre",
     "module": "entrainement",
     "theme": "rappel-series",
@@ -359,8 +369,10 @@
             "poisson"
           ]
         ],
-        "duree_par_item_ms": 1000,
-        "pause_serie_ms": 1500
+        "duree_par_item_ms": 2000,
+        "pause_item_ms": 2000,
+        "modalite": "visuelle",
+        "pause_serie_ms": 3000
       },
       "delai_s": 0,
       "portee": "toutes-series",
@@ -383,14 +395,14 @@
     },
     "meta": {
       "auteur": "redaction-assistee (tools/generer_rappel_series.py)",
-      "date_creation": "2026-09-22",
+      "date_creation": "2026-10-01",
       "relecture_ortho": {
         "statut": "a_revoir"
       }
     }
   },
   {
-    "id": "rs-3-libre-07",
+    "id": "rs2-3-libre-07",
     "type": "rappel-libre",
     "module": "entrainement",
     "theme": "rappel-series",
@@ -424,8 +436,10 @@
             "montre"
           ]
         ],
-        "duree_par_item_ms": 1000,
-        "pause_serie_ms": 1500
+        "duree_par_item_ms": 2000,
+        "pause_item_ms": 2000,
+        "modalite": "visuelle",
+        "pause_serie_ms": 3000
       },
       "delai_s": 0,
       "portee": "toutes-series",
@@ -448,14 +462,14 @@
     },
     "meta": {
       "auteur": "redaction-assistee (tools/generer_rappel_series.py)",
-      "date_creation": "2026-09-22",
+      "date_creation": "2026-10-01",
       "relecture_ortho": {
         "statut": "a_revoir"
       }
     }
   },
   {
-    "id": "rs-3-libre-08",
+    "id": "rs2-3-libre-08",
     "type": "rappel-libre",
     "module": "entrainement",
     "theme": "rappel-series",
@@ -489,8 +503,10 @@
             "poisson"
           ]
         ],
-        "duree_par_item_ms": 1000,
-        "pause_serie_ms": 1500
+        "duree_par_item_ms": 2000,
+        "pause_item_ms": 2000,
+        "modalite": "visuelle",
+        "pause_serie_ms": 3000
       },
       "delai_s": 0,
       "portee": "toutes-series",
@@ -513,7 +529,7 @@
     },
     "meta": {
       "auteur": "redaction-assistee (tools/generer_rappel_series.py)",
-      "date_creation": "2026-09-22",
+      "date_creation": "2026-10-01",
       "relecture_ortho": {
         "statut": "a_revoir"
       }

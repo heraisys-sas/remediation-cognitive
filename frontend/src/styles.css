@@ -1145,3 +1145,9 @@ body {
     align-items: flex-start;
   }
 }
+
+/* Comparer sans devoir mémoriser la première source. */
+.documents-comparaison { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 1rem; }
+.champ-fonctionnel { display: grid; gap: .5rem; margin: 1rem 0; }
+.champ-fonctionnel input, .champ-fonctionnel select { font: inherit; padding: .7rem; color: inherit; background: var(--surface, #1c2129); border: 1px solid #68717d; border-radius: .5rem; }
+@media (max-width: 650px) { .documents-comparaison { grid-template-columns: 1fr; } }

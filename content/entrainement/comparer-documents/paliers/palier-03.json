@@ -1,0 +1,530 @@
+[
+  {
+    "id": "comparer-documents-v1-3-01",
+    "module": "entrainement",
+    "theme": "comparer-documents",
+    "type": "comparer-documents",
+    "palier": 3,
+    "prerequis": [],
+    "fonctions_ciblees": [
+      "attention-selective",
+      "fonctions-executives"
+    ],
+    "contenu": {
+      "enonce": "Réservation de salle — vérifie chaque point de la confirmation.",
+      "consigne": "Les deux documents restent consultables. Pour chaque point, indique si la confirmation respecte la demande. Une confirmation peut être entièrement conforme.",
+      "methode": "Prends un critère de la demande, retrouve-le dans la confirmation, compare sa valeur puis passe au suivant. Termine par une vérification des points non traités.",
+      "documents": [
+        {
+          "titre": "Demande",
+          "lignes": [
+            {
+              "id": "jour",
+              "label": "Jour",
+              "texte": "jeudi"
+            },
+            {
+              "id": "debut",
+              "label": "Début",
+              "texte": "14 h"
+            },
+            {
+              "id": "duree",
+              "label": "Durée",
+              "texte": "90 minutes"
+            },
+            {
+              "id": "salle",
+              "label": "Salle",
+              "texte": "Orion"
+            },
+            {
+              "id": "places",
+              "label": "Places",
+              "texte": "12"
+            },
+            {
+              "id": "equipement",
+              "label": "Équipement",
+              "texte": "vidéoprojecteur"
+            }
+          ]
+        },
+        {
+          "titre": "Confirmation",
+          "lignes": [
+            {
+              "id": "jour",
+              "label": "Jour",
+              "texte": "vendredi"
+            },
+            {
+              "id": "equipement",
+              "label": "Équipement",
+              "texte": "vidéoprojecteur"
+            },
+            {
+              "id": "places",
+              "label": "Places",
+              "texte": "12"
+            },
+            {
+              "id": "salle",
+              "label": "Salle",
+              "texte": "Atlas"
+            },
+            {
+              "id": "duree",
+              "label": "Durée",
+              "texte": "90 minutes"
+            },
+            {
+              "id": "debut",
+              "label": "Début",
+              "texte": "15 h"
+            }
+          ]
+        }
+      ],
+      "champs": [
+        {
+          "id": "jour",
+          "label": "Jour"
+        },
+        {
+          "id": "debut",
+          "label": "Début"
+        },
+        {
+          "id": "duree",
+          "label": "Durée"
+        },
+        {
+          "id": "salle",
+          "label": "Salle"
+        },
+        {
+          "id": "places",
+          "label": "Places"
+        },
+        {
+          "id": "equipement",
+          "label": "Équipement"
+        }
+      ]
+    },
+    "reponse": {
+      "valeur": {
+        "jour": "ecart",
+        "debut": "ecart",
+        "duree": "conforme",
+        "salle": "ecart",
+        "places": "conforme",
+        "equipement": "conforme"
+      }
+    },
+    "meta": {
+      "auteur": "redaction-assistee (tools/generer_attention_fonctionnelle.py)",
+      "date_creation": "2026-10-01",
+      "relecture_ortho": {
+        "statut": "a_revoir"
+      }
+    }
+  },
+  {
+    "id": "comparer-documents-v1-3-02",
+    "module": "entrainement",
+    "theme": "comparer-documents",
+    "type": "comparer-documents",
+    "palier": 3,
+    "prerequis": [],
+    "fonctions_ciblees": [
+      "attention-selective",
+      "fonctions-executives"
+    ],
+    "contenu": {
+      "enonce": "Confirmation de voyage — vérifie chaque point de la confirmation.",
+      "consigne": "Les deux documents restent consultables. Pour chaque point, indique si la confirmation respecte la demande. Une confirmation peut être entièrement conforme.",
+      "methode": "Prends un critère de la demande, retrouve-le dans la confirmation, compare sa valeur puis passe au suivant. Termine par une vérification des points non traités.",
+      "documents": [
+        {
+          "titre": "Demande",
+          "lignes": [
+            {
+              "id": "date",
+              "label": "Date",
+              "texte": "18 novembre"
+            },
+            {
+              "id": "depart",
+              "label": "Départ",
+              "texte": "8 h 20"
+            },
+            {
+              "id": "destination",
+              "label": "Destination",
+              "texte": "Lyon"
+            },
+            {
+              "id": "voyageurs",
+              "label": "Voyageurs",
+              "texte": "2"
+            },
+            {
+              "id": "classe",
+              "label": "Classe",
+              "texte": "seconde"
+            },
+            {
+              "id": "retour",
+              "label": "Retour",
+              "texte": "20 novembre"
+            }
+          ]
+        },
+        {
+          "titre": "Confirmation",
+          "lignes": [
+            {
+              "id": "classe",
+              "label": "Classe",
+              "texte": "seconde"
+            },
+            {
+              "id": "depart",
+              "label": "Départ",
+              "texte": "8 h 40"
+            },
+            {
+              "id": "retour",
+              "label": "Retour",
+              "texte": "20 novembre"
+            },
+            {
+              "id": "voyageurs",
+              "label": "Voyageurs",
+              "texte": "1"
+            },
+            {
+              "id": "date",
+              "label": "Date",
+              "texte": "19 novembre"
+            },
+            {
+              "id": "destination",
+              "label": "Destination",
+              "texte": "Lyon"
+            }
+          ]
+        }
+      ],
+      "champs": [
+        {
+          "id": "date",
+          "label": "Date"
+        },
+        {
+          "id": "depart",
+          "label": "Départ"
+        },
+        {
+          "id": "destination",
+          "label": "Destination"
+        },
+        {
+          "id": "voyageurs",
+          "label": "Voyageurs"
+        },
+        {
+          "id": "classe",
+          "label": "Classe"
+        },
+        {
+          "id": "retour",
+          "label": "Retour"
+        }
+      ]
+    },
+    "reponse": {
+      "valeur": {
+        "date": "ecart",
+        "depart": "ecart",
+        "destination": "conforme",
+        "voyageurs": "ecart",
+        "classe": "conforme",
+        "retour": "conforme"
+      }
+    },
+    "meta": {
+      "auteur": "redaction-assistee (tools/generer_attention_fonctionnelle.py)",
+      "date_creation": "2026-10-01",
+      "relecture_ortho": {
+        "statut": "a_revoir"
+      }
+    }
+  },
+  {
+    "id": "comparer-documents-v1-3-03",
+    "module": "entrainement",
+    "theme": "comparer-documents",
+    "type": "comparer-documents",
+    "palier": 3,
+    "prerequis": [],
+    "fonctions_ciblees": [
+      "attention-selective",
+      "fonctions-executives"
+    ],
+    "contenu": {
+      "enonce": "Commande de matériel — vérifie chaque point de la confirmation.",
+      "consigne": "Les deux documents restent consultables. Pour chaque point, indique si la confirmation respecte la demande. Une confirmation peut être entièrement conforme.",
+      "methode": "Prends un critère de la demande, retrouve-le dans la confirmation, compare sa valeur puis passe au suivant. Termine par une vérification des points non traités.",
+      "documents": [
+        {
+          "titre": "Demande",
+          "lignes": [
+            {
+              "id": "ref",
+              "label": "Référence",
+              "texte": "AX-24"
+            },
+            {
+              "id": "quantite",
+              "label": "Quantité",
+              "texte": "6"
+            },
+            {
+              "id": "prix",
+              "label": "Prix total",
+              "texte": "480 euros"
+            },
+            {
+              "id": "delai",
+              "label": "Livraison",
+              "texte": "12 octobre"
+            },
+            {
+              "id": "adresse",
+              "label": "Adresse",
+              "texte": "18 rue des Pins"
+            },
+            {
+              "id": "garantie",
+              "label": "Garantie",
+              "texte": "24 mois"
+            }
+          ]
+        },
+        {
+          "titre": "Confirmation",
+          "lignes": [
+            {
+              "id": "garantie",
+              "label": "Garantie",
+              "texte": "12 mois"
+            },
+            {
+              "id": "quantite",
+              "label": "Quantité",
+              "texte": "6"
+            },
+            {
+              "id": "adresse",
+              "label": "Adresse",
+              "texte": "18 rue des Pins"
+            },
+            {
+              "id": "delai",
+              "label": "Livraison",
+              "texte": "12 octobre"
+            },
+            {
+              "id": "prix",
+              "label": "Prix total",
+              "texte": "840 euros"
+            },
+            {
+              "id": "ref",
+              "label": "Référence",
+              "texte": "AX-42"
+            }
+          ]
+        }
+      ],
+      "champs": [
+        {
+          "id": "ref",
+          "label": "Référence"
+        },
+        {
+          "id": "quantite",
+          "label": "Quantité"
+        },
+        {
+          "id": "prix",
+          "label": "Prix total"
+        },
+        {
+          "id": "delai",
+          "label": "Livraison"
+        },
+        {
+          "id": "adresse",
+          "label": "Adresse"
+        },
+        {
+          "id": "garantie",
+          "label": "Garantie"
+        }
+      ]
+    },
+    "reponse": {
+      "valeur": {
+        "ref": "ecart",
+        "quantite": "conforme",
+        "prix": "ecart",
+        "delai": "conforme",
+        "adresse": "conforme",
+        "garantie": "ecart"
+      }
+    },
+    "meta": {
+      "auteur": "redaction-assistee (tools/generer_attention_fonctionnelle.py)",
+      "date_creation": "2026-10-01",
+      "relecture_ortho": {
+        "statut": "a_revoir"
+      }
+    }
+  },
+  {
+    "id": "comparer-documents-v1-3-04",
+    "module": "entrainement",
+    "theme": "comparer-documents",
+    "type": "comparer-documents",
+    "palier": 3,
+    "prerequis": [],
+    "fonctions_ciblees": [
+      "attention-selective",
+      "fonctions-executives"
+    ],
+    "contenu": {
+      "enonce": "Inscription à une formation — vérifie chaque point de la confirmation.",
+      "consigne": "Les deux documents restent consultables. Pour chaque point, indique si la confirmation respecte la demande. Une confirmation peut être entièrement conforme.",
+      "methode": "Prends un critère de la demande, retrouve-le dans la confirmation, compare sa valeur puis passe au suivant. Termine par une vérification des points non traités.",
+      "documents": [
+        {
+          "titre": "Demande",
+          "lignes": [
+            {
+              "id": "intitule",
+              "label": "Intitulé",
+              "texte": "Analyse de données"
+            },
+            {
+              "id": "date",
+              "label": "Date",
+              "texte": "7 décembre"
+            },
+            {
+              "id": "duree",
+              "label": "Durée",
+              "texte": "2 jours"
+            },
+            {
+              "id": "format",
+              "label": "Format",
+              "texte": "à distance"
+            },
+            {
+              "id": "tarif",
+              "label": "Tarif",
+              "texte": "320 euros"
+            },
+            {
+              "id": "attestation",
+              "label": "Attestation",
+              "texte": "incluse"
+            }
+          ]
+        },
+        {
+          "titre": "Confirmation",
+          "lignes": [
+            {
+              "id": "tarif",
+              "label": "Tarif",
+              "texte": "320 euros"
+            },
+            {
+              "id": "attestation",
+              "label": "Attestation",
+              "texte": "incluse"
+            },
+            {
+              "id": "format",
+              "label": "Format",
+              "texte": "à distance"
+            },
+            {
+              "id": "intitule",
+              "label": "Intitulé",
+              "texte": "Analyse de données"
+            },
+            {
+              "id": "duree",
+              "label": "Durée",
+              "texte": "2 jours"
+            },
+            {
+              "id": "date",
+              "label": "Date",
+              "texte": "7 décembre"
+            }
+          ]
+        }
+      ],
+      "champs": [
+        {
+          "id": "intitule",
+          "label": "Intitulé"
+        },
+        {
+          "id": "date",
+          "label": "Date"
+        },
+        {
+          "id": "duree",
+          "label": "Durée"
+        },
+        {
+          "id": "format",
+          "label": "Format"
+        },
+        {
+          "id": "tarif",
+          "label": "Tarif"
+        },
+        {
+          "id": "attestation",
+          "label": "Attestation"
+        }
+      ]
+    },
+    "reponse": {
+      "valeur": {
+        "intitule": "conforme",
+        "date": "conforme",
+        "duree": "conforme",
+        "format": "conforme",
+        "tarif": "conforme",
+        "attestation": "conforme"
+      }
+    },
+    "meta": {
+      "auteur": "redaction-assistee (tools/generer_attention_fonctionnelle.py)",
+      "date_creation": "2026-10-01",
+      "relecture_ortho": {
+        "statut": "a_revoir"
+      }
+    }
+  }
+]

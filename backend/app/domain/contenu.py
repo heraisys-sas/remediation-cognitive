@@ -28,6 +28,11 @@ _SOURCES_PAR_THEME: dict[str, tuple[str, str]] = {
     "memoire": ("memoire/paliers", "palier-*.json"),
     "concentration": ("concentration/paliers", "palier-*.json"),
     "rappel-series": ("rappel-series/paliers", "palier-*.json"),
+    "series-entendues": ("series-entendues/paliers", "palier-*.json"),
+    "actualiser-consigne": ("actualiser-consigne/paliers", "palier-*.json"),
+    "comparer-documents": ("comparer-documents/paliers", "palier-*.json"),
+    "reperer-essentiel": ("reperer-essentiel/paliers", "palier-*.json"),
+
     "quotidien": ("quotidien/paliers", "palier-*.json"),
     "deduction": ("deduction/paliers", "palier-*.json"),
     "methodes": ("methodes/paliers", "palier-*.json"),
@@ -38,9 +43,7 @@ _SOURCES_PAR_THEME: dict[str, tuple[str, str]] = {
 #: Fichier des missions d'interaction réelle (hors écran, périmètre « missions »).
 _FICHIER_MISSIONS = Path("content/missions/missions.json")
 
-#: Catégorie de chaque thème : « entrainement » (remédiation, régulier) ou
-#: « evaluation » (mesures — à faire ponctuellement pour ne pas être faussées
-#: par l'apprentissage du matériel).
+#: Présentation : entraînements fonctionnels et exercices ciblés (aucun bilan).
 _CATEGORIE_PAR_THEME: dict[str, str] = {
     "calcul-mental": "entrainement",
     "anglais": "entrainement",
@@ -50,9 +53,13 @@ _CATEGORIE_PAR_THEME: dict[str, str] = {
     "deduction": "entrainement",
     "methodes": "entrainement",
     "garder-cap": "entrainement",
-    "memoire": "evaluation",
-    "concentration": "evaluation",
-    "rappel-series": "evaluation",
+    "memoire": "cible",
+    "concentration": "cible",
+    "rappel-series": "cible",
+    "series-entendues": "cible",
+    "actualiser-consigne": "entrainement",
+    "comparer-documents": "entrainement",
+    "reperer-essentiel": "entrainement",
 }
 
 #: Programme d'entraînement (cadrage du rythme et des paliers).
@@ -108,7 +115,7 @@ class ChargeurContenu:
         """Métadonnées des thèmes exposés par l'API (contrat GET /themes).
 
         Chaque thème porte sa ``categorie`` : « entrainement » (remédiation) ou
-        « evaluation » (mesures) — l'interface sépare les deux sections.
+        « cible » (exercices ciblés) — l’interface sépare les deux sections.
         """
         libelles = messages.VOCABULAIRES["entrainement"]["themes"]
         return [
