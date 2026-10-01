@@ -967,8 +967,15 @@ function rendreFonctionnel(item) {
     if (!courant) { message.append(bouton("Vérifier mes choix", soumettre)); return; }
     message.append(creerElement("p", { classe: "ligne-discrete", texte: `Message ${index + 1}/${c.messages.length}` }),
       creerElement("p", { classe: "document-source", texte: courant.texte }));
+    let reponseDonnee = false;
     for (const [valeur, libelle] of [["oui", "À prendre en compte"], ["non", "Sans conséquence selon les critères"]]) {
-      message.append(bouton(libelle, () => { reponses[courant.id] = valeur; index++; prochain(); }));
+      message.append(bouton(libelle, () => {
+        if (reponseDonnee) return;
+        reponseDonnee = true;
+        reponses[courant.id] = valeur;
+        index++;
+        prochain();
+      }));
     }
   }
   prochain();

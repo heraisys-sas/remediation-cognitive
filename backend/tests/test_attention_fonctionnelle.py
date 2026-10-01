@@ -35,17 +35,24 @@ def test_cycle_fonctionnel_et_correction_point_par_point(client, theme):
 
 def test_reponses_actualisees_derivent_des_messages():
     for item in CONTENU.items('actualiser-consigne'):
-        c=item['contenu'];labels={f['label']:f['id'] for f in c['champs']}
-        etat={}
+        c=item['contenu'];etat=dict(c['etat_initial'])
         for etape in c['etapes']:
-            for phrase in etape['texte'].split('. '):
-                if ': ' not in phrase: continue
-                label,val=phrase.split(': ',1)
-                label=label.strip()
-                if label in labels:
-                    etat[labels[label]]=val.removeprefix('désormais ').rstrip('.')
+            if etape['evenement']=='mise_a_jour':
+                etat[etape['champ']]=etape['nouveau']
         assert etat==item['reponse']['valeur'],item['id']
         assert len(c['etapes'])=={1:2,2:3,3:6}[item['palier']]
+
+
+def test_banque_actualisation_progressive_et_correction_successive():
+    for palier in range(1,4):
+        items=[i for i in CONTENU.items('actualiser-consigne') if i['palier']==palier]
+        assert len(items)==12
+        assert all(len(i['contenu']['champs'])==palier+1 for i in items)
+    for item in (i for i in CONTENU.items('actualiser-consigne') if i['palier']==3):
+        c=item['contenu']; mises=[e for e in c['etapes'] if e['evenement']=='mise_a_jour']
+        assert len({e['champ'] for e in mises})<len(mises),item['id']
+        assert any(item['reponse']['valeur'][k]==v for k,v in c['etat_initial'].items()),item['id']
+        assert sum(e['evenement']=='autre_tache' for e in c['etapes'])==1
 
 
 def test_ecarts_recalculables_et_cas_entierement_conformes():
@@ -55,7 +62,16 @@ def test_ecarts_recalculables_et_cas_entierement_conformes():
         assert calcule==item['reponse']['valeur']
         assert len(a)==2*item['palier']
     assert sum(all(v=='conforme' for v in i['reponse']['valeur'].values())
-               for i in CONTENU.items('comparer-documents'))==3
+               for i in CONTENU.items('comparer-documents'))==9
+
+
+def test_banque_comparaison_varie_nombre_ecarts_et_contextes():
+    for palier in range(1,4):
+        items=[i for i in CONTENU.items('comparer-documents') if i['palier']==palier]
+        assert len(items)==12
+        assert len({i['contenu']['enonce'] for i in items})==12
+        comptes={sum(v=='ecart' for v in i['reponse']['valeur'].values()) for i in items}
+        assert 0 in comptes and max(comptes)==palier
 
 
 def test_selection_omissions_et_fausses_selections_separees():
@@ -68,6 +84,18 @@ def test_selection_omissions_et_fausses_selections_separees():
         _,detail=corriger_detail(item,{k:'oui' for k in attendu})
         assert detail['omissions']==0
         assert detail['fausses_selections']==sum(v=='non' for v in attendu.values())
+
+
+def test_filtrage_sans_distracteur_auto_revelateur_et_nombre_variable():
+    interdits=('sans modification','aucun changement','ne change rien','reste identique','toujours prévu')
+    for palier in range(1,4):
+        items=[i for i in CONTENU.items('reperer-essentiel') if i['palier']==palier]
+        assert len(items)==12
+        for item in items:
+            textes=' '.join(m['texte'].lower() for m in item['contenu']['messages'])
+            assert not any(mot in textes for mot in interdits),item['id']
+        comptes={sum(v=='oui' for v in i['reponse']['valeur'].values()) for i in items}
+        assert comptes==({1} if palier==1 else ({1,2} if palier==2 else {2,3}))
 
 
 def test_listes_modalites_rythme_et_absence_de_doublons_exacts():

@@ -1,3 +1,7 @@
+# 2026-10-01 — banques fonctionnelles enrichies
+
+Actualiser une consigne, Comparer deux documents et Repérer l’essentiel passent de 4 à 12 situations par palier, en conservant quatre exercices par séance. Progressions rendues explicites, corrections successives et informations à conserver ajoutées, nombre d’écarts et de sélections rendu variable, distracteurs auto-révélateurs supprimés. Nouveaux identifiants `v2` ; double clic neutralisé dans le flux de sélection.
+
 # 2026-10-01 — parcours homogènes et départ automatique ajusté
 
 Les cartes Mémoire, Séries, Méthodes, Garder le cap et Évocation proposent maintenant des parcours dont les maîtrises, cartes FSRS et baselines sont séparées. Les stratégies SFA/PCA et la mémoire de la source ne sont plus des niveaux obligatoires de l'accès lexical ; PQRST guidé est directement accessible. Pour un parcours neuf, le mode automatique évite les entrées les plus faibles lorsqu'elles n'introduisent pas une manipulation indispensable (cinq chiffres, quatre mots, trois paires, deux séries, rappel lexical avec indices). Les historiques composites restent conservés sans être convertis. ADR-023.

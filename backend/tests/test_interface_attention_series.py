@@ -48,10 +48,14 @@ item=items[1]; rendreFonctionnel(item);
 for(const d of item.contenu.documents) for(const l of d.lignes) assert.ok(texte(refs.zoneSequence).includes(l.texte));
 assert.equal(nodes(refs.zoneSequence,'select').length,item.contenu.champs.length);
 item=items[2];rendreFonctionnel(item);
-for(const m of item.contenu.messages) {
+for(let i=0;i<item.contenu.messages.length;i++) {
+  const m=item.contenu.messages[i];
   assert.ok(texte(refs.zoneSequence).includes(item.contenu.critere));
   assert.ok(texte(refs.zoneSequence).includes(m.texte));
-  nodes(refs.zoneSequence,'button')[item.reponse.valeur[m.id]==='oui'?0:1].click();
+  const choix=nodes(refs.zoneSequence,'button')[item.reponse.valeur[m.id]==='oui'?0:1];
+  choix.click();
+  // Un double clic sur l'ancien bouton ne doit pas répondre au message suivant.
+  if(i===0) choix.click();
 }
 nodes(refs.zoneSequence,'button')[0].click();assert.deepEqual(soumis,item.reponse.valeur);
 '''
