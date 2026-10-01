@@ -6,7 +6,7 @@
 2. Adapter le plan : actualiser une action sans perdre le but ni les contraintes valables.
 3. Vérifier avant de terminer : comparer le résultat à la demande, repérer une discordance.
 
-Les informations restent visibles ; aucun chronomètre de réponse. Une méthode facultative invite à faire une pause, identifier le but et contrôler. Une première erreur autorise un second essai sans dévoiler la réponse (type `but-etapes` existant). Quatre situations par séance. Les trois numéros repèrent des familles, pas des degrés de sévérité clinique.
+Les informations restent visibles ; aucun chronomètre de réponse. Une méthode facultative invite à faire une pause, identifier le but et contrôler. Une première erreur autorise un second essai sans dévoiler la réponse (type `but-etapes` existant). Quatre situations par séance. Les trois familles ont désormais des progressions indépendantes : leurs numéros ne sont pas des degrés de sévérité clinique.
 
 Le choix parmi trois actions constitue une initiation au raisonnement explicite. Il ne remplace ni l’exécution d’une tâche personnelle, ni le programme complet de Goal Management Training. L’objectif proposé est pédagogique ; l’efficacité clinique de ces items n’a pas été mesurée. Relecture orthophoniste à faire.
 

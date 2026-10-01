@@ -107,6 +107,10 @@ class StockageJSON:
             etat["historique_etapes"] = [(int(p), float(t)) for p, t in donnees["historique_etapes"]]
         return etat
 
+    def maitrise_existe(self, theme: str) -> bool:
+        """True si une progression a déjà été persistée pour ce thème/parcours."""
+        return (self._dossier_theme(theme) / "maitrise.json").is_file()
+
     def ecrire_maitrise(
         self, theme: str, palier_courant: int, historique: list[tuple[int, float]],
         historique_etapes: list[tuple[int, float]] | None = None,

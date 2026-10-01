@@ -1,3 +1,7 @@
+# 2026-10-01 — parcours homogènes et départ automatique ajusté
+
+Les cartes Mémoire, Séries, Méthodes, Garder le cap et Évocation proposent maintenant des parcours dont les maîtrises, cartes FSRS et baselines sont séparées. Les stratégies SFA/PCA et la mémoire de la source ne sont plus des niveaux obligatoires de l'accès lexical ; PQRST guidé est directement accessible. Pour un parcours neuf, le mode automatique évite les entrées les plus faibles lorsqu'elles n'introduisent pas une manipulation indispensable (cinq chiffres, quatre mots, trois paires, deux séries, rappel lexical avec indices). Les historiques composites restent conservés sans être convertis. ADR-023.
+
 # 2026-10-01 — retours PQRST et rappel libre fiabilisés
 
 La reformulation PQRST n'est plus jugée par la seule présence de cinq mots-clés : chaque item déclare cinq critères, leurs formulations reconnues, leurs éventuels sous-faits et des contradictions explicites. Le retour distingue idées retrouvées, non reconnues et contredites ; les quatre séquences reçoivent des identifiants `mt2-…`. Le rappel libre distingue désormais cibles retrouvées, omissions, confusions entre séries et intrusions ; une intrusion ne produit plus une maîtrise complète malgré un rappel suffisant. Interface, générateur, validateur et tests synchronisés.

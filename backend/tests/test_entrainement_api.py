@@ -99,9 +99,91 @@ def test_themes(client):
     themes = reponse.json()["themes"]
     assert {t["id"] for t in themes} == THEMES_ATTENDUS
     for theme in themes:
-        assert set(theme) == {"id", "nom", "description", "categorie", "paliers"}
+        assert set(theme) == {"id", "nom", "description", "categorie", "paliers", "parcours"}
         assert theme["categorie"] in {"entrainement", "evaluation", "cible"}
         assert theme["nom"] and theme["description"]
+
+
+def test_parcours_homogenes_exposes_et_filtres(client):
+    """Chaque parcours sert une seule famille avec des paliers locaux."""
+    themes = {t["id"]: t for t in client.get("/api/entrainement/themes").json()["themes"]}
+    assert {p["id"] for p in themes["memoire"]["parcours"]} == {
+        "chiffres-endroit", "chiffres-envers", "mots", "associations", "position"
+    }
+    cas = [
+        ("memoire", "mots", {"empan-mots"}, 2),
+        ("memoire", "associations", {"paires-associatives"}, 2),
+        ("methodes", "pqrst-guide", {"pqrst-mise-en-oeuvre"}, 1),
+        ("evocation", "memoire-source", {"rappel-source"}, 1),
+        ("rappel-series", "premiere-serie", {"rappel-libre"}, 1),
+    ]
+    for theme, parcours, types, palier in cas:
+        reponse = client.post(
+            f"/api/entrainement/{theme}/sessions",
+            json={"parcours": parcours, "sans_limite_sessions": True},
+        )
+        assert reponse.status_code == 201, reponse.text
+        payload = reponse.json()
+        assert payload["parcours"] == parcours
+        assert payload["items"]
+        assert {item["type"] for item in payload["items"]} == types
+        assert {item["palier"] for item in payload["items"]} == {palier}
+    assert client.post(
+        "/api/entrainement/memoire/sessions", json={"parcours": "inconnu"}
+    ).status_code == 422
+
+
+def test_parcours_ne_reutilise_pas_la_maitrise_du_theme(client, tmp_path):
+    """L'ancienne progression composite reste archivée et ne classe pas le nouveau parcours."""
+    dossier = tmp_path / "data" / "memoire"
+    dossier.mkdir(parents=True)
+    (dossier / "maitrise.json").write_text(
+        '{"palier_courant": 12, "historique": []}', encoding="utf-8"
+    )
+    payload = client.post(
+        "/api/entrainement/memoire/sessions", json={"parcours": "mots"}
+    ).json()
+    assert {item["palier"] for item in payload["items"]} == {2}
+    gestionnaire = client.app.state.gestionnaire_entrainement
+    session = gestionnaire._sessions[payload["session_id"]]
+    assert session.stockage_theme == "memoire--mots"
+
+
+def test_depart_auto_evite_les_niveaux_trop_elementaires(client):
+    """Le départ relevé reste ciblé : cinq chiffres, trois paires, deux séries."""
+    chiffres = client.post(
+        "/api/entrainement/memoire/sessions",
+        json={"parcours": "chiffres-endroit", "sans_limite_sessions": True},
+    ).json()["items"]
+    assert {item["palier"] for item in chiffres} == {3}
+    assert all(len(item["contenu"]["affichage"]["elements"]) == 5 for item in chiffres)
+    assert all("à l'envers" not in item["contenu"]["enonce"] for item in chiffres)
+
+    paires = client.post(
+        "/api/entrainement/memoire/sessions",
+        json={"parcours": "associations", "sans_limite_sessions": True},
+    ).json()["items"]
+    assert {item["palier"] for item in paires} == {2}
+    assert all(len(item["contenu"]["affichage"]["elements"]) == 3 for item in paires)
+
+    series = client.post(
+        "/api/entrainement/rappel-series/sessions",
+        json={"parcours": "immediat", "sans_limite_sessions": True},
+    ).json()["items"]
+    assert {item["palier"] for item in series} == {2}
+    assert all(len(item["contenu"]["affichage"]["series"]) == 2 for item in series)
+
+
+def test_depart_auto_necrase_pas_un_palier_deja_persiste(client, tmp_path):
+    dossier = tmp_path / "data" / "memoire--mots"
+    dossier.mkdir(parents=True)
+    (dossier / "maitrise.json").write_text(
+        '{"palier_courant": 1, "historique": [[1, 0.5]]}', encoding="utf-8"
+    )
+    payload = client.post(
+        "/api/entrainement/memoire/sessions", json={"parcours": "mots"}
+    ).json()
+    assert {item["palier"] for item in payload["items"]} == {1}
 
 
 # -- démarrage de séance -----------------------------------------------------------

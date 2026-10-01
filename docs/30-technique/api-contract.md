@@ -8,14 +8,14 @@ Base : `/api/entrainement` — périmètre **hors médical**. Format JSON. Pas d
 `{"status": "ok"}`
 
 ### GET /api/entrainement/themes
-`{"themes": [{"id": "calcul-mental", "nom": "Calcul mental", "description": "Tables et calcul rapide, paliers progressifs"}, {"id": "anglais", …}, {"id": "python", …}, {"id": "memoire", "nom": "Retenir et manipuler", "description": "Empans de chiffres, séquences et associations — mémorisation progressive"}]}`
+Chaque thème porte `paliers` et, quand plusieurs tâches cohabitent sous une carte, `parcours`: `[{"id", "nom", "description"?, "paliers", "palier_depart"?}]`. Les parcours disposent d'une progression indépendante (ADR-023).
 
 ### POST /api/entrainement/{theme}/sessions
 Démarre une séance. Sélection serveur : items dus (FSRS) d'abord, puis nouveaux du palier courant. Exception pour les contenus à `etape_progression` (déduction) : réserver la moitié des places aux nouveautés disponibles dans l'ordre des étapes, et prioriser les révisions avancées (ADR-017). Les trois séances du critère de maîtrise doivent chacune comporter une réponse de l'étape finale ; elles sont suivies dans `historique_etapes`, séparément des anciens taux conservés.
 
-**Corps facultatif** (`DemarrageOptionnel`) : `{"palier": N}` — essai sur un palier précis (la progression ne peut pas reculer) ; `{"sans_limite_sessions": true}` — dérogation explicite au plafond de séances du jour, **accordée par le serveur pour tous les thèmes** (fenêtre du jour ou de la semaine selon la catégorie — ADR-021).
+**Corps facultatif** (`DemarrageOptionnel`) : `{"palier": N}` — essai sur un palier précis (la progression ne peut pas reculer) ; `{"parcours": "mots"}` — progression homogène choisie dans la carte ; `{"sans_limite_sessions": true}` — dérogation explicite au plafond de séances du jour, **accordée par le serveur pour tous les thèmes** (fenêtre du jour ou de la semaine selon la catégorie — ADR-021).
 
-- `201` → `{"session_id": str, "items": [{"id": str, "type": str, "palier": int, "contenu": {...}}], "regles": {"max_items": 12, "duree_max_s": 600}} — les valeurs dépendent du thème (déduction : 6 exercices)}`
+- `201` → `{"session_id": str, "parcours": str|null, "items": [{"id": str, "type": str, "palier": int, "contenu": {...}}], "regles": {"max_items": 12, "duree_max_s": 600}}` — les valeurs dépendent du thème (déduction : 6 exercices).
 - `429` → `{"erreur": "limite_sessions_atteinte", "sessions_restantes_aujourdhui": 0}` — refus du plafond de la fenêtre ; une dérogation accordée le lève (ADR-021).
 
 **Le payload `items` ne contient jamais `reponse`.**
@@ -39,7 +39,7 @@ Clôture la séance, applique FSRS + maîtrise, persiste.
 3. **Vocabulaire** : neutre, ludique modéré — centralisé dans `backend/app/domain/messages.py` ; aucun terme clinique.
 4. **Aucune norme populationnelle** dans les réponses API.
 5. **Périmètre** : aucun endpoint `/api/bilan` ce sprint ; aucune donnée de bilan stockée.
-6. **Stockage** : fichiers JSON sous `backend/data/entrainement/` (hors dépôt, `.gitignore`) — decks FSRS, maîtrise par palier, compteur séances/jour.
+6. **Stockage** : fichiers JSON sous `backend/data/entrainement/` (hors dépôt, `.gitignore`) — decks FSRS, maîtrise par palier, compteur séances/jour. Un parcours utilise un dossier propre (`memoire--mots`) ; le compteur du quota reste celui du thème parent.
 7. **Durée max (600 s)** : la réponse **en cours est toujours conservée** — on ne refuse jamais le travail fait. La durée est **proposée** (ADR-010) : `arret_propose: true`, `motif_arret: "duree"`, renvoyé **une seule fois** ; la séance reste ouverte, la personne décide de continuer ou de terminer. Le code de clôture automatique subsiste pour un thème qui demanderait un jour une limite ferme (`seance_terminee: true`, réponse suivante en 409).
 
 ## Forme d'un item (conforme à content/schema-item.json)

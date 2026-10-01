@@ -497,6 +497,40 @@ function carteTheme(theme, parcoursAudio = null) {
   );
 
   let themeChoisi = theme;
+  let parcoursChoisi = null;
+  let selecteurParcours = null;
+  let descriptionParcours = null;
+  let choix = null;
+
+  function majPaliers() {
+    if (!choix) return;
+    const definition = (themeChoisi.parcours || []).find(p => p.id === parcoursChoisi);
+    const paliers = definition?.paliers || themeChoisi.paliers || [];
+    choix.replaceChildren(creerElement("option", {
+      texte: definition?.palier_depart > 1
+        ? `Palier : auto — départ ${definition.palier_depart}`
+        : "Palier : auto",
+      attributs: { value: "" },
+    }));
+    for (const palier of paliers) choix.append(creerElement("option", {
+      texte: `Essai — palier ${palier}`, attributs: { value: String(palier) },
+    }));
+    choix.hidden = paliers.length <= 1;
+  }
+
+  function majParcours() {
+    if (!selecteurParcours) return;
+    const parcours = themeChoisi.parcours || [];
+    selecteurParcours.replaceChildren(...parcours.map(definition => creerElement("option", {
+      texte: definition.nom, attributs: { value: definition.id },
+    })));
+    parcoursChoisi = parcours[0]?.id || null;
+    selecteurParcours.hidden = parcours.length <= 1;
+    const definition = parcours[0];
+    descriptionParcours.textContent = definition?.description || "Chaque parcours a sa propre progression.";
+    majPaliers();
+  }
+
   if (parcoursAudio) {
     const selecteur = creerElement("select", { classe: "selecteur-palier",
       attributs: { "aria-label": "Parcours de mémorisation" } });
@@ -504,30 +538,34 @@ function carteTheme(theme, parcoursAudio = null) {
       creerElement("option", { texte: "Mots entendus", attributs: { value: parcoursAudio.id } }));
     selecteur.addEventListener("change", () => {
       themeChoisi = selecteur.value === parcoursAudio.id ? parcoursAudio : theme;
+      majParcours();
     });
     carte.append(selecteur, creerElement("p", { classe: "ligne-discrete",
       texte: "La progression est distincte dans chaque parcours." }));
   }
 
+  if ((theme.parcours || []).length || (parcoursAudio?.parcours || []).length) {
+    selecteurParcours = creerElement("select", { classe: "selecteur-palier",
+      attributs: { "aria-label": `Parcours pour ${theme.nom}` } });
+    descriptionParcours = creerElement("p", { classe: "ligne-discrete" });
+    selecteurParcours.addEventListener("change", () => {
+      parcoursChoisi = selecteurParcours.value || null;
+      const definition = (themeChoisi.parcours || []).find(p => p.id === parcoursChoisi);
+      descriptionParcours.textContent = definition?.description || "Progression indépendante.";
+      majPaliers();
+    });
+    carte.append(selecteurParcours, descriptionParcours);
+  }
+
   // Sélecteur de palier — **outil d'essai**. « auto » suit la progression : c'est le
   // fonctionnement normal. Choisir un palier ne fait jamais reculer la progression.
-  const paliers = Array.isArray(theme.paliers) ? theme.paliers : [];
-  let choix = null;
-  if (paliers.length > 1) {
-    choix = creerElement("select", {
-      classe: "selecteur-palier",
-      attributs: { "aria-label": `Palier d'essai pour ${theme.nom}` },
-    });
-    choix.append(creerElement("option", {
-      texte: "Palier : auto", attributs: { value: "" },
-    }));
-    for (const palier of paliers) {
-      choix.append(creerElement("option", {
-        texte: `Essai — palier ${palier}`, attributs: { value: String(palier) },
-      }));
-    }
-    carte.append(choix);
-  }
+  choix = creerElement("select", {
+    classe: "selecteur-palier",
+    attributs: { "aria-label": `Palier d'essai pour ${theme.nom}` },
+  });
+  carte.append(choix);
+  majParcours();
+  majPaliers();
 
   const bouton = creerElement("button", {
     classe: "bouton bouton-primaire",
@@ -535,7 +573,7 @@ function carteTheme(theme, parcoursAudio = null) {
     attributs: { type: "button" },
   });
   bouton.addEventListener("click", () => demarrerSession(
-    themeChoisi, choix && choix.value ? Number(choix.value) : null
+    themeChoisi, choix && choix.value ? Number(choix.value) : null, parcoursChoisi
   ));
   carte.append(bouton);
   return carte;
@@ -556,7 +594,7 @@ function revenirAuxThemes() {
    Démarrage de séance (POST /{theme}/sessions)
    --------------------------------------------------------------------- */
 
-async function demarrerSession(theme, palier = null) {
+async function demarrerSession(theme, palier = null, parcours = null) {
   if (etat.actionEnCours) return;
   etat.actionEnCours = true;
   reglerEtatBoutons();
@@ -569,6 +607,7 @@ async function demarrerSession(theme, palier = null) {
     // serveur ne l'accorde qu'aux thèmes d'entraînement (ADR-021).
     const corps = {};
     if (palier !== null) corps.palier = palier;
+    if (parcours !== null) corps.parcours = parcours;
     if (sansLimiteActivee()) corps.sans_limite_sessions = true;
     const options = { method: "POST" };
     if (Object.keys(corps).length > 0) {
@@ -610,10 +649,10 @@ async function demarrerSession(theme, palier = null) {
           : "Trois séances déjà faites aujourd’hui — le repos fait partie de l’entraînement."
       );
     } else if (erreur.type === "reseau") {
-      afficherErreurReseau(() => demarrerSession(theme, palier));
+      afficherErreurReseau(() => demarrerSession(theme, palier, parcours));
     } else {
       afficherBandeau("Impossible de démarrer la séance pour le moment.", {
-        reessayer: () => demarrerSession(theme, palier),
+        reessayer: () => demarrerSession(theme, palier, parcours),
       });
     }
   } finally {
@@ -1932,12 +1971,23 @@ function rendrePlanJour(jour) {
     const theme = etat.themesParId.get(identifiant);
     if (!theme) continue;
     const plafond = plafonds[identifiant];
+    let parcours = theme.parcours?.[0]?.id || null;
+    const selecteurParcours = theme.parcours?.length > 1
+      ? creerElement("select", { classe: "selecteur-palier",
+          attributs: { "aria-label": `Parcours pour ${theme.nom}` } })
+      : null;
+    if (selecteurParcours) {
+      for (const definition of theme.parcours) selecteurParcours.append(creerElement(
+        "option", { texte: definition.nom, attributs: { value: definition.id } }
+      ));
+      selecteurParcours.addEventListener("change", () => { parcours = selecteurParcours.value; });
+    }
     const bouton = creerElement("button", {
       classe: "bouton bouton-primaire",
       texte: "Commencer",
       attributs: { type: "button" },
     });
-    bouton.addEventListener("click", () => demarrerSession(theme));
+    bouton.addEventListener("click", () => demarrerSession(theme, null, parcours));
     refs.planJour.append(
       creerElement("div", { classe: "jour-theme" },
         creerElement("h4", { texte: theme.nom }),
@@ -1945,6 +1995,7 @@ function rendrePlanJour(jour) {
           classe: "jour-detail",
           texte: `${jour.duree_min} min${plafond ? ` · palier ${plafond} au plus` : ""}`,
         }),
+        selecteurParcours,
         bouton
       )
     );

@@ -59,6 +59,7 @@ def test_verifier_session_transmet_le_palier():
     assert resultat.returncode == 0, (resultat.stdout + resultat.stderr)[-2000:]
     assert "palier 2 : POST avec corps" in resultat.stdout
     assert "dérogation active : POST avec corps" in resultat.stdout
+    assert "parcours : transmis et conservé" in resultat.stdout
 
 
 

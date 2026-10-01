@@ -86,6 +86,10 @@ class PalierInconnu(Exception):
     """Palier demandé absent du thème (essai)."""
 
 
+class ParcoursInconnu(Exception):
+    """Parcours demandé absent du thème."""
+
+
 class ItemHorsSeance(Exception):
     """Item absent de la séance en cours (404 du contrat)."""
 
@@ -116,9 +120,12 @@ class SessionEnCours:
 
     session_id: str
     theme: str
+    stockage_theme: str
+    parcours: str | None
     palier: int
     runner: SessionRunner
     items_par_id: dict[str, dict]
+    items_disponibles: list[dict]
     # Départ de la séance (garde-fou de durée, injectable via l'horloge).
     depart: datetime = field(default_factory=lambda: datetime.now(timezone.utc))
     # Première réponse par item — fait foi pour FSRS ; les essais
@@ -176,6 +183,7 @@ class GestionnaireSessions:
         theme: str,
         palier_force: int | None = None,
         sans_limite_sessions: bool = False,
+        parcours: str | None = None,
     ) -> dict:
         """Démarre une séance et retourne le payload 201 du contrat.
 
@@ -196,6 +204,10 @@ class GestionnaireSessions:
         """
         if not self.contenu.theme_existe(theme):
             raise ThemeInconnu(theme)
+        if not self.contenu.parcours_existe(theme, parcours):
+            raise ParcoursInconnu(parcours)
+        stockage_theme = f"{theme}--{parcours}" if parcours else theme
+        items_disponibles = self.contenu.items(theme, parcours)
         categorie = self.contenu.categorie(theme)
         limite = limite_sessions(categorie)
         fenetre = fenetre_sessions(categorie)
@@ -210,19 +222,27 @@ class GestionnaireSessions:
                 raise LimiteSessionsAtteinte(
                     restantes=max(0, limite - nb_sessions)
                 )
-            etat_maitrise = self.stockage.lire_maitrise(theme)
-            if palier_force is not None and palier_force not in self.contenu.paliers(theme):
+            etat_maitrise = self.stockage.lire_maitrise(stockage_theme)
+            if palier_force is not None and palier_force not in self.contenu.paliers(theme, parcours):
                 raise PalierInconnu(palier_force)
-            palier = (
-                palier_force if palier_force is not None
-                else self._palier_courant(theme, etat_maitrise["palier_courant"])
+            parcours_neuf = parcours is not None and not self.stockage.maitrise_existe(stockage_theme)
+            palier_initial = (
+                self.contenu.palier_depart(theme, parcours)
+                if parcours_neuf else etat_maitrise["palier_courant"]
             )
-            cartes = self.stockage.lire_cartes(theme)
+            palier = palier_force if palier_force is not None else self._palier_courant(
+                theme, palier_initial, parcours
+            )
+            if parcours_neuf and palier_force is None:
+                # Le départ relevé devient l'état initial réel : une première séance
+                # incomplète ne doit pas faire retomber ensuite le parcours au palier 1.
+                self.stockage.ecrire_maitrise(stockage_theme, palier, [])
+            cartes = self.stockage.lire_cartes(stockage_theme)
             # Dosage propre au thème : une grille de déduction n'a pas le coût
             # d'un item de calcul mental (voir domain/dosage.parametres_seance).
             reglages = parametres_seance(theme)
             selection = selectionner_items(
-                self.contenu.items(theme),
+                items_disponibles,
                 cartes,
                 palier,
                 maintenant,
@@ -232,7 +252,7 @@ class GestionnaireSessions:
                 items=[ItemMoteur(item) for item in selection],
                 max_items=reglages["max_items"],
                 duree_max_s=reglages["duree_max_s"],
-                baseline_rt_ms=self._baseline_rt(theme),
+                baseline_rt_ms=self._baseline_rt(stockage_theme),
                 depart=maintenant,
             )
             # Le contrat livre tous les items d'un bloc au démarrage : ils
@@ -244,9 +264,12 @@ class GestionnaireSessions:
             self._sessions[session_id] = SessionEnCours(
                 session_id=session_id,
                 theme=theme,
+                stockage_theme=stockage_theme,
+                parcours=parcours,
                 palier=palier,
                 runner=runner,
                 items_par_id={item["id"]: item for item in selection},
+                items_disponibles=items_disponibles,
                 depart=maintenant,
             )
             # Une séance **vide** (rien de dû, rien de nouveau) ne consomme pas le quota
@@ -255,6 +278,7 @@ class GestionnaireSessions:
                 self.stockage.ecrire_compteur(theme, debut, nb_sessions + 1)
         return {
             "session_id": session_id,
+            "parcours": parcours,
             "items": [_item_sans_reponse(item) for item in selection],
             "regles": {
                 "max_items": reglages["max_items"],
@@ -262,9 +286,11 @@ class GestionnaireSessions:
             },
         }
 
-    def _palier_courant(self, theme: str, palier_stocke: int) -> int:
+    def _palier_courant(
+        self, theme: str, palier_stocke: int, parcours: str | None = None
+    ) -> int:
         """Palier de travail : celui du stockage, borné au contenu disponible."""
-        paliers = self.contenu.paliers(theme)
+        paliers = self.contenu.paliers(theme, parcours)
         if not paliers:
             return max(1, palier_stocke)
         return min(max(1, palier_stocke), paliers[-1])
@@ -499,9 +525,9 @@ class GestionnaireSessions:
         taux = nb_correctes / nb_repondu if nb_repondu else 0.0
         self._appliquer_maitrise(session, nb_repondu, taux)
         # Baseline RT : on accumule les temps corrects de la séance.
-        temps_accumules = self.stockage.lire_temps_reference(session.theme)
+        temps_accumules = self.stockage.lire_temps_reference(session.stockage_theme)
         temps_accumules.extend(session.temps_reference)
-        self.stockage.ecrire_temps_reference(session.theme, temps_accumules[-100:])
+        self.stockage.ecrire_temps_reference(session.stockage_theme, temps_accumules[-100:])
         session.terminee = True
         return resume_moteur, nb_repondu, nb_correctes, taux
 
@@ -518,12 +544,12 @@ class GestionnaireSessions:
         """Met à jour les cartes FSRS des items répondus puis persiste le deck."""
         if not session.reponses:
             return
-        cartes = self.stockage.lire_cartes(session.theme)
+        cartes = self.stockage.lire_cartes(session.stockage_theme)
         for item_id, correcte in session.reponses.items():
             carte = cartes.get(item_id) or CarteFSRS(item_id)
             note = NOTE_REUSSITE if correcte else NOTE_ECHEC
             cartes[item_id] = planifier(carte, note, maintenant)[0]
-        self.stockage.ecrire_cartes(session.theme, cartes)
+        self.stockage.ecrire_cartes(session.stockage_theme, cartes)
 
     def _appliquer_maitrise(
         self, session: SessionEnCours, nb_repondu: int, taux: float
@@ -539,14 +565,14 @@ class GestionnaireSessions:
         # Les premières étapes préparent le palier : trois répétitions de ces
         # seules grilles ne démontrent pas la maîtrise de sa dernière étape.
         etapes = [i.get("contenu", {}).get("etape_progression", 0)
-                  for i in self.contenu.items(session.theme) if i.get("palier") == session.palier]
+                  for i in session.items_disponibles if i.get("palier") == session.palier]
         etape_finale = max(etapes, default=0)
         if etape_finale and not any(
             session.items_par_id[i]["contenu"].get("etape_progression") == etape_finale
             for i in session.reponses
         ):
             return
-        etat = self.stockage.lire_maitrise(session.theme)
+        etat = self.stockage.lire_maitrise(session.stockage_theme)
         historique = list(etat["historique"])
         historique.append((session.palier, float(taux)))
         historique_etapes = None
@@ -563,4 +589,6 @@ class GestionnaireSessions:
             sessions_consecutives=SESSIONS_CONSECUTIVES_MAITRISE,
         ):
             palier = max(palier, session.palier + 1)
-        self.stockage.ecrire_maitrise(session.theme, palier, historique, historique_etapes)
+        self.stockage.ecrire_maitrise(
+            session.stockage_theme, palier, historique, historique_etapes
+        )

@@ -86,6 +86,7 @@ VOCABULAIRES = {
         "feedback_essaie_encore": "Pas tout à fait. Reprends : tu peux demander un indice.",
         # Messages d'erreur (clés : erreur_<code machine du contrat>).
         "erreur_palier_inconnu": "Ce palier n'existe pas pour ce thème.",
+        "erreur_parcours_inconnu": "Ce parcours n'existe pas pour ce thème.",
         "erreur_theme_inconnu": "Thème inconnu.",
         "erreur_session_inconnue": "Séance introuvable (elle n'existe plus en mémoire).",
         "erreur_session_terminee": "Cette séance est déjà terminée.",

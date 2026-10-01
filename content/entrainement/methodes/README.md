@@ -12,6 +12,8 @@
 
 12 items au palier 1, 8 dans chacun des paliers 2 à 5 et 4 séquences au palier 6, soit **48 items**.
 
+Ces six familles sont accessibles comme **parcours indépendants** : leur ordre dans le tableau décrit le corpus, pas une difficulté commune. En particulier, « PQRST guidé pas à pas » est directement accessible sans devoir maîtriser auparavant les QCM de planification ou de recherche documentaire.
+
 ## Comment c'est entraîné
 
 - **PQRST** : le texte s'affiche temporisé (25 s), puis disparaît — la question est posée de mémoire (`affichage` mode `texte`). La consigne rappelle la méthode, c'est elle qui est retenue.

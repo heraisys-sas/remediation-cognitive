@@ -17,6 +17,8 @@ Le nombre de mots retrouvés reste le résultat principal : l'item déclare un *
 
 8 items par palier, soit **32 items**.
 
+La carte sépare trois progressions : rappel immédiat, rappel différé de toutes les séries et rappel de la première série seulement. Le parcours immédiat commence automatiquement au palier 2 (deux séries de trois mots) pour éviter une première séance limitée à quatre mots ; le palier 1 reste disponible. Les deux tâches différées commencent à leur unique niveau et ne sont pas présentées comme la suite obligatoire du rappel immédiat.
+
 ## Deux mécanismes, deux effets distincts
 
 - **Interférence entre séries** (paliers 2 et 3) : plus il y a de séries, plus le rappel doit trier — c'est le rappel de *toutes* les séries qui est demandé, pas seulement de la dernière.

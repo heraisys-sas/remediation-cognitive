@@ -18,6 +18,7 @@ from .service import (
     ItemHorsSeance,
     LimiteSessionsAtteinte,
     PalierInconnu,
+    ParcoursInconnu,
     ReponseInvalide,
     SessionDejaTerminee,
     SessionInconnue,
@@ -37,6 +38,7 @@ class DemarrageOptionnel(BaseModel):
     """
 
     palier: int | None = Field(default=None, ge=1)
+    parcours: str | None = Field(default=None, pattern=r"^[a-z0-9-]+$")
     sans_limite_sessions: bool = False
 
 
@@ -91,9 +93,12 @@ def demarrer_session(theme: str, request: Request, corps: DemarrageOptionnel | N
             theme,
             palier_force=corps.palier if corps else None,
             sans_limite_sessions=corps.sans_limite_sessions if corps else False,
+            parcours=corps.parcours if corps else None,
         )
     except PalierInconnu:
         return _erreur(422, "palier_inconnu")
+    except ParcoursInconnu:
+        return _erreur(422, "parcours_inconnu")
     except ThemeInconnu:
         return _erreur(404, "theme_inconnu")
     except ReponseInvalide:

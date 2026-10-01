@@ -138,6 +138,7 @@ function verifier(condition, message) {
   // 1. Essai « palier 2 » : le corps JSON porte le palier, la méthode est POST.
   outils.remettreAZero();
   outils.reglerSansLimite(false);
+
   await demarrerSession(theme, 2);
   let requetes = outils.requetes();
   verifier(requetes.length === 1, `palier 2 : ${requetes.length} requête(s) au lieu d'une`);
@@ -238,6 +239,20 @@ function verifier(condition, message) {
   }
   outils.reglerSansLimite(false);
 
+  // 6. Un parcours choisi est transmis et survit au réessai réseau.
+  outils.remettreAZero();
+  outils.preparer({ items: [{ id: "item-test" }], session_id: "session-test" }, 1);
+  await demarrerSession(theme, null, "mots");
+  const relanceParcours = outils.reessaiReseau();
+  verifier(typeof relanceParcours === "function", "parcours + incident réseau : aucun réessai proposé");
+  if (typeof relanceParcours === "function") await relanceParcours();
+  requetes = outils.requetes();
+  verifier(requetes.length === 2, `parcours : ${requetes.length} requête(s) au lieu de deux`);
+  for (const requete of requetes) {
+    const corps = typeof requete.options.body === "string" ? JSON.parse(requete.options.body) : {};
+    verifier(corps.parcours === "mots", `parcours perdu (${requete.options.body})`);
+  }
+
   if (echecs.length) {
     for (const echec of echecs) console.error(`✗ ${echec}`);
     process.exit(1);
@@ -247,4 +262,5 @@ function verifier(condition, message) {
   console.log("✓ réessai réseau : le palier choisi est conservé");
   console.log('✓ dérogation active : POST avec corps {"sans_limite_sessions": true}');
   console.log("✓ dérogation + palier : les deux champs partent, réessai compris");
+  console.log("✓ parcours : transmis et conservé au réessai");
 })();

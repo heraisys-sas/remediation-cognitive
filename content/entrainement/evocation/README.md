@@ -8,6 +8,8 @@
 - **Rappel indicé** (paliers 2, 3, 5) : la définition est seule ; l'utilisateur demande des indices **un par un** (catégorie → attaque phonologique → forme écrite). Le dernier cran affiche la réponse : l'essai se clôt alors **sans erreur** (le moteur l'enregistre comme non retrouvé, sans jamais signaler un échec).
 - **Rappel de la source** (palier 4) : une fiche (contexte + information) est affichée de façon temporisée ; le stimulus disparaît, la question porte sur **le contexte dans lequel l'information a été vue** — entraîne la mémoire de la source.
 
+Ces familles ne forment plus une échelle unique. L'accès lexical, la mémoire de la source, SFA et PCA sont quatre parcours indépendants. Le mode automatique de l'accès lexical commence par le rappel avec indices facultatifs ; le QCM de reconnaissance reste accessible au palier d'essai 1. SFA et PCA sont des stratégies proposées, jamais des passages obligatoires pour progresser en accès lexical.
+
 ## Structure
 
 - `paliers.json` — manifest des 5 paliers (id, description, prerequis, nb_items)

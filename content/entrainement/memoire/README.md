@@ -2,11 +2,13 @@
 
 **Principe** : entraîner la mémoire de travail et la mémorisation par les familles classiques des techniques d'entraînement cognitif — empan, apprentissage par paires, sonde n-back. Implémentations originales : la logique des paradigmes est assimilée.
 
-## Familles
+## Parcours indépendants
 
 - **Empan de chiffres** (endroit puis envers) : longueur 3 → 6 chiffres par paliers ; l'envers ajoute la manipulation en mémoire de travail. Affichage séquentiel, 800 ms par élément.
 - **Paires associatives mot–nombre** : 2 → 4 paires de mots concrets courants, affichage en liste (16 s), puis rappel du nombre associé à un mot sondé — entraîne une compétence utile au quotidien (codes, rendez-vous, cours).
 - **Sonde n-back** : rappel de l'élément situé N positions avant la fin d'une séquence de lettres (N = 2 → 4) — variante « rappel » du paradigme n-back, exigeante mais moins frustrante que la version oui/non continue.
+
+Les cinq parcours ont une maîtrise séparée : chiffres endroit, chiffres envers, mots, associations et position dans une séquence. Le mode automatique commence à cinq chiffres endroit, quatre mots et trois paires ; l'ordre inverse et la sonde de position commencent à leur premier niveau car ils introduisent une manipulation différente. Les niveaux plus simples restent disponibles dans le sélecteur d'essai.
 
 ## Structure
 
@@ -25,7 +27,7 @@ Contenu produit par `tools/generer_memo_concentration.py` (déterministe, graine
 
 ## Moteur
 
-Identique aux autres thèmes : paliers (90 % × 3 séances), FSRS, détection de fatigue. L'affichage temporisé (phase de mémorisation distincte de la question, stimulus masqué avant la saisie) est pris en charge par l'interface ; le temps de mémorisation ne compte pas dans `temps_ms`.
+Identique aux autres thèmes : paliers (90 % × 3 séances), FSRS, détection de fatigue, séparément pour chaque parcours. L'affichage temporisé (phase de mémorisation distincte de la question, stimulus masqué avant la saisie) est pris en charge par l'interface ; le temps de mémorisation ne compte pas dans `temps_ms`.
 
 ## Empan de mots (sprint 4, paliers 9 à 12)
 
