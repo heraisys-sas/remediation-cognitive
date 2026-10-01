@@ -470,9 +470,13 @@ function rendreThemes(themes) {
     return;
   }
 
-  // Trois groupes : les entraînements de remédiation, puis les mesures
-  // (évaluation), puis les thèmes d'appoint (vocabulaire, commandes).
-  for (const theme of themes) {
+  // Déduction et Calcul mental ouvrent la liste ; les autres gardent leur ordre.
+  const prioritaires = ["deduction", "calcul-mental"];
+  const themesOrdonnes = [
+    ...prioritaires.flatMap(id => themes.filter(theme => theme.id === id)),
+    ...themes.filter(theme => !prioritaires.includes(theme.id)),
+  ];
+  for (const theme of themesOrdonnes) {
     if (["series-entendues", "concentration"].includes(theme.id)) continue;
     let cible = refs.listeThemes;
     if (THEMES_EXTRA.has(theme.id)) cible = refs.listeThemesExtra;
