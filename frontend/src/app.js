@@ -477,17 +477,12 @@ function rendreThemes(themes) {
     ...themes.filter(theme => !prioritaires.includes(theme.id)),
   ];
   for (const theme of themesOrdonnes) {
-    if (["series-entendues", "concentration"].includes(theme.id)) continue;
+    if (theme.id === "series-entendues") continue;
     let cible = refs.listeThemes;
     if (THEMES_EXTRA.has(theme.id)) cible = refs.listeThemesExtra;
     else if (["evaluation", "cible"].includes(theme.categorie)) cible = refs.listeThemesEvaluation;
     const carte = carteTheme(theme, theme.id === "rappel-series"
       ? themes.find(t => t.id === "series-entendues") : null);
-    if (theme.id === "calcul-mental") {
-      const ancien = themes.find(t => t.id === "concentration");
-      if (ancien) carte.append(creerElement("details", {},
-        creerElement("summary", { texte: "Autres calculs : chaînes et suites" }), carteTheme(ancien)));
-    }
     cible.append(carte);
   }
   refs.sectionEvaluation.hidden = !refs.listeThemesEvaluation.childElementCount;

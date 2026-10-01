@@ -6,7 +6,8 @@
 - [x] Clarifier les rubriques et les descriptions ; ne plus présenter les exercices actuels comme une évaluation standardisée.
 - [x] Séries : 2 secondes d’affichage + 2 secondes de pause ; parcours lus et entendus séparés, voix locale française, mots préparés et mutualisés. Réglage de confort, pas norme validée.
 - [x] Développer Actualiser une consigne et Comparer deux documents.
-- [x] Remplacer l’entrée Concentration par Repérer l’essentiel ; conserver ses calculs dans Calcul mental.
+- [x] Remplacer l’entrée Concentration par Repérer l’essentiel ; conserver ses calculs dans une carte autonome « Calculs en chaîne et suites » des Exercices ciblés.
+- [ ] Évaluer la valeur ajoutée de « Calculs en chaîne et suites » par rapport à Calcul mental avant de décider de leur rapprochement.
 - [ ] Relecture des nouveaux contenus avec l’orthophoniste ; ajuster rythme et charge selon l’essai.
 - [ ] Reprise après interruption réellement vécue (lot suivant).
 

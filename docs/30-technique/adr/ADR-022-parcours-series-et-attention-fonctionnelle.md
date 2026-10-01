@@ -16,7 +16,7 @@ POC de laboratoire, adultes de niveau intellectuel antérieur élevé, en compl�
 - **Comparer deux documents** : documents consultables, jugement par champ conforme/écart ; 2, 4 puis 6 points, ordre modifié, valeurs proches et cas entièrement conformes.
 - **Repérer l’essentiel** : but et critères visibles, messages successifs au rythme choisi, sélection/non-sélection ; critères de plus en plus larges, distracteurs proches. Omissions et sélections inutiles séparées dans le retour.
 - Chaque nouveau thème comprend 12 situations, 4 par palier. Nouveaux types et réponses objet réutilisant les séances et le stockage existants. Retour API additionnel `detail_fonctionnel` (lignes corrigées et explications ; pour le filtrage, omissions/fausses sélections). Aucune réponse ni explication corrective avant soumission.
-- Les anciens calculs de « Concentration » sont accessibles dans la carte Calcul mental, sous leur nom explicite, avec leurs anciens identifiants et historiques. Calcul mental reste dans sa rubrique.
+- À la demande de l’utilisateur, les anciens calculs de « Concentration » sont accessibles dans une carte autonome « Calculs en chaîne et suites » des Exercices ciblés, avec leurs anciens identifiants et historiques. Leur valeur ajoutée par rapport à Calcul mental reste à évaluer. Calcul mental reste dans sa rubrique.
 - Descriptions corrigées : mémoire, mots/contexte, Garder le cap. Le discriminant technique SFA/PCA ne doit plus être affiché comme méthode. « N-back » et « double tâche » ne décrivent pas fidèlement les tâches historiques : descriptions de famille reformulées, types techniques conservés.
 - Programme de huit semaines synchronisé : cinq paliers de déduction et nouveaux thèmes. Aucun changement dans le moteur `engine/`.
 
