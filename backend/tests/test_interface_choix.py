@@ -121,7 +121,7 @@ def test_deduction_masque_le_coup_de_pouce_et_prepare_tous_les_indices_a_lire():
     )[0]
     affichage = corps_fonction(SOURCE, 'afficherQuestion')
     assert 'aideGeneriquePourItem(item)' in affichage
-    assert 'textePourLectureDeduction(contenu)' in affichage
+    assert 'texteAutomatiquePourDeduction(contenu)' in affichage
 
     script = '''
 const assert=require('node:assert/strict');
@@ -129,20 +129,37 @@ const assert=require('node:assert/strict');
     script += '\nfunction aideGeneriquePourItem(item) ' + corps_fonction(
         SOURCE, 'aideGeneriquePourItem'
     )
-    script += '\nfunction textePourLectureDeduction(contenu, formateur) ' + corps_fonction(
+    script += '\nfunction textePourLectureDeduction(contenu, inclureConsigne, formateur) ' + corps_fonction(
         SOURCE, 'textePourLectureDeduction'
+    )
+    script += '\nfunction texteAutomatiquePourDeduction(contenu, consignesLues, formateur) ' + corps_fonction(
+        SOURCE, 'texteAutomatiquePourDeduction'
     )
     script += '\nconst item=' + json.dumps(item) + ''';
 assert.equal(aideGeneriquePourItem(item),'');
 assert.equal(aideGeneriquePourItem({type:'autre',contenu:{aide:'  Aide utile.  '}}),'Aide utile.');
 let vus=[];
-const texte=textePourLectureDeduction(item.contenu,(indice,n)=>{
+const formateur=(indice,n)=>{
   vus.push({indice,n}); return `Indice lu ${vus.length}.`;
-});
+};
+const texte=textePourLectureDeduction(item.contenu,true,formateur);
 assert.equal(vus.length,item.contenu.enonces.length);
 assert.ok(vus.every(v=>v.n===item.contenu.figures.length));
 assert.ok(texte.startsWith(item.contenu.consigne+' Indices.'));
 for(let i=1;i<=vus.length;i++) assert.ok(texte.includes(`Indice lu ${i}.`));
+vus=[];
+const sansConsigne=textePourLectureDeduction(item.contenu,false,formateur);
+assert.ok(sansConsigne.startsWith('Indices.'));
+assert.ok(!sansConsigne.includes(item.contenu.consigne));
+assert.equal(vus.length,item.contenu.enonces.length);
+vus=[];
+const consignesLues=new Set();
+const premiere=texteAutomatiquePourDeduction(item.contenu,consignesLues,formateur);
+const suivante=texteAutomatiquePourDeduction(item.contenu,consignesLues,formateur);
+assert.ok(premiere.startsWith(item.contenu.consigne+' Indices.'));
+assert.ok(suivante.startsWith('Indices.'));
+assert.ok(!suivante.includes(item.contenu.consigne));
+assert.equal(vus.length,item.contenu.enonces.length*2);
 '''
     node = shutil.which('node')
     assert node, 'Node requis pour vérifier le rendu réel des fonctions JS'

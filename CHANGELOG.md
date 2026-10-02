@@ -1,6 +1,6 @@
 # 2026-10-02 — déduction allégée et lecture des indices réparée
 
-Le panneau générique « Voir un coup de pouce » est masqué dans Déduction : il répétait la méthode alors que l'exercice possède déjà une aide au raisonnement graduée. Les aides propres à la grille et le tableau facultatif restent disponibles. Le bouton « Écouter » lit désormais la consigne puis toutes les phrases de la grille ; auparavant `contenu.enonce` était vide pour ce type structuré, donc aucun texte n'était envoyé à la synthèse vocale.
+Le panneau générique « Voir un coup de pouce » est masqué dans Déduction : il répétait la méthode alors que l'exercice possède déjà une aide au raisonnement graduée. Les aides propres à la grille et le tableau facultatif restent disponibles. Le bouton « Écouter » lit désormais la consigne puis toutes les phrases de la grille ; auparavant `contenu.enonce` était vide pour ce type structuré, donc aucun texte n'était envoyé à la synthèse vocale. En lecture automatique, une consigne identique n'est dite qu'à la première grille de la séance ; les indices nouveaux sont toujours lus et le bouton permet toujours de demander une relecture complète.
 
 # 2026-10-02 — méthodes spécifiques plutôt qu'un rappel universel
 

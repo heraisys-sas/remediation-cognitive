@@ -218,6 +218,7 @@ const etat = {
   enonceCourant: "",       // ce qui est affiché à l'écran (pour « Écouter »)
   consignesVues: new Set(), // rappels de méthode déjà affichés (une fois par type)
   consignesMemoVues: new Set(), // consignes de mémorisation déjà rencontrées (texte exact)
+  consignesAudioVues: new Set(), // consignes déjà dites automatiquement (texte exact)
   seanceTerminee: false,   // séance clôturée par la durée maximale (aller au résumé)
   reprisesAfficher: new Set(), // exercices qui reviennent en reprise (réponse à montrer)
   reponsesAttendues: {},   // réponse attendue par item, retenue du retour serveur
@@ -664,6 +665,7 @@ async function demarrerSession(theme, palier = null, parcours = null) {
     etat.reprisesAfficher = new Set();
     etat.reponsesAttendues = {};
     etat.consignesMemoVues = new Set();
+    etat.consignesAudioVues = new Set();
     etat.indexItem = 0;
     etat.repondu = false;
     reinitialiserConfirmationFin();
@@ -734,14 +736,32 @@ function aideGeneriquePourItem(item) {
 
 /** Texte complet envoyé à la synthèse pour une grille dont l'énoncé visible est
  * construit à partir d'indices structurés plutôt que de ``contenu.enonce``. */
-function textePourLectureDeduction(contenu, formateur = formaterEnonce) {
+function textePourLectureDeduction(
+  contenu,
+  inclureConsigne = true,
+  formateur = formaterEnonce,
+) {
   const n = Array.isArray(contenu.figures) ? contenu.figures.length : 3;
   const indices = Array.isArray(contenu.enonces)
     ? contenu.enonces.map((indice) => formateur(indice, n)).filter(Boolean)
     : [];
-  return [contenu.consigne, indices.length ? "Indices." : "", ...indices]
+  return [inclureConsigne ? contenu.consigne : "", indices.length ? "Indices." : "", ...indices]
     .filter(Boolean)
     .join(" ");
+}
+
+/** Pour l'enchaînement automatique, ne répète pas une consigne déjà entendue
+ * dans la séance. Une action explicite sur « Écouter » utilise toujours le
+ * texte complet conservé dans ``etat.enonceCourant``. */
+function texteAutomatiquePourDeduction(
+  contenu,
+  consignesLues = etat.consignesAudioVues,
+  formateur = formaterEnonce,
+) {
+  const consigne = String(contenu.consigne || "").trim();
+  const dejaLue = Boolean(consigne && consignesLues.has(consigne));
+  if (consigne) consignesLues.add(consigne);
+  return textePourLectureDeduction(contenu, !dejaLue, formateur);
 }
 
 function montrerItem() {
@@ -1379,12 +1399,16 @@ function afficherQuestion(item) {
   refs.enonce.textContent = contenu.enonce ?? "";
   refs.enonce.className =
     "enonce" + (item.type === "prediction-sortie" ? " enonce-code" : "");
-  // « Écouter » ne lit que la QUESTION : la consigne est un rappel de méthode, pas
-  // une formule à répéter à chaque question (elle serait rébarbative à la longue).
-  etat.enonceCourant = item.type === "grille-deduction"
-    ? textePourLectureDeduction(contenu)
-    : contenu.enonce ?? "";
-  lireSiLectureAuto(etat.enonceCourant);
+  // « Écouter » relit volontairement l'énoncé complet. En lecture automatique,
+  // une consigne de déduction identique n'est dite qu'une fois dans la séance ;
+  // les indices propres à chaque nouvelle grille restent toujours lus.
+  if (item.type === "grille-deduction") {
+    etat.enonceCourant = textePourLectureDeduction(contenu, true);
+    lireSiLectureAuto(texteAutomatiquePourDeduction(contenu));
+  } else {
+    etat.enonceCourant = contenu.enonce ?? "";
+    lireSiLectureAuto(etat.enonceCourant);
+  }
 
   // Rappel de méthode : affiché une seule fois par type d'exercice dans la séance.
   // (Les items à stimulus le montrent déjà pendant la phase de mémorisation.)
