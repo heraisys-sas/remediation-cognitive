@@ -1,3 +1,7 @@
+# 2026-10-02 — démarrage des exercices avec indices réparé
+
+Le rendu d'un item à indices progressifs référençait par erreur une variable réservée à l'aide des grilles de déduction. Quand un tel item était tiré en premier dans « Retrouver des mots et leur contexte », la question était lue puis le démarrage affichait un échec. Le bouton d'indice lexical est de nouveau rendu indépendamment sous le libellé « Un indice ».
+
 # 2026-10-02 — consigne audio non répétée
 
 Pendant une séance de mémorisation, une consigne identique n'est désormais lue automatiquement qu'à sa première occurrence. Le rappel bref reste affiché sur les items suivants et le bouton « Écouter » permet toujours une répétition volontaire. Une consigne réellement différente est affichée et lue lors de sa première apparition.

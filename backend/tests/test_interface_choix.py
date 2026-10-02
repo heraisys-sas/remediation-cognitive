@@ -74,3 +74,40 @@ for (const item of items) {
     node = shutil.which('node')
     assert node, 'Node requis pour vérifier le rendu réel des fonctions JS'
     subprocess.run([node, '-e', script], check=True, capture_output=True, text=True)
+
+
+def test_indices_lexicaux_se_rendent_sans_variable_de_grille():
+    """Un rappel avec indices doit démarrer même hors d'une grille de déduction."""
+    item = next(
+        item
+        for path in (ROOT / 'content/entrainement/evocation/paliers').glob('palier-*.json')
+        for item in json.loads(path.read_text())
+        if item.get('contenu', {}).get('indices')
+    )
+    script = '''
+const assert = require('node:assert/strict');
+function creerElement(tag, attrs = {}, ...children) {
+  return {tag, ...attrs, children,
+    append(...c) {this.children.push(...c)},
+    replaceChildren(...c) {this.children = c},
+    addEventListener(event, cb) {this[event] = cb}};
+}
+const refs={zoneIndices:creerElement('div')};
+const etat={repondu:false,actionEnCours:false,indicesReveles:0};
+let soumis=false;
+function soumettreValeur(){soumis=true}
+'''
+    script += '\nfunction rendreIndices(item) ' + corps_fonction(SOURCE, 'rendreIndices')
+    script += '\nconst item=' + json.dumps(item) + ''';
+rendreIndices(item);
+const [statut,liste,bouton]=refs.zoneIndices.children;
+assert.equal(bouton.texte,'Un indice');
+assert.equal(liste.children.length,0);
+bouton.click();
+assert.equal(liste.children.length,1);
+assert.equal(liste.children[0].texte,item.contenu.indices[0].texte);
+assert.equal(soumis,false);
+'''
+    node = shutil.which('node')
+    assert node, 'Node requis pour vérifier le rendu réel des fonctions JS'
+    subprocess.run([node, '-e', script], check=True, capture_output=True, text=True)

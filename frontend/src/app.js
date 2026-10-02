@@ -1464,7 +1464,7 @@ function rendreIndices(item) {
   const liste = creerElement("ol", { classe: "liste-indices" });
   const bouton = creerElement("button", {
     classe: "bouton bouton-secondaire",
-    texte: aideRaisonnement ? "Aide au raisonnement" : "Un indice",
+    texte: "Un indice",
     attributs: { type: "button" },
   });
   const majBouton = () => {
