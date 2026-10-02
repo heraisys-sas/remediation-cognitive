@@ -114,6 +114,42 @@ assert.equal(fin,false);for(const t of timers.filter(t=>t.ms===8000))t.f();asser
     execute(script)
 
 
+def test_consigne_memo_identique_lue_une_seule_fois_mais_reste_affichee():
+    script = BASE + r'''
+for (const nom of ['enonce','rappelConsigne','zoneAide','carteFeedback',
+                   'boutonSuivant','formulaire']) refs[nom]=creerElement('div');
+const etat={consignesMemoVues:new Set(),enonceCourant:''};
+const CAPACITES={syntheseDisponible(){return true}};
+const BLANC_INTER_ITEM_MS=2000;
+let lectures=[];
+function viderZonesReponse(){}
+function lireSiLectureAuto(texte){lectures.push(texte)}
+function reglerEtatBoutons(){}
+function jouerAffichage(){}
+'''
+    script += '\nfunction afficherPhaseMemo(item) ' + corps_fonction(SOURCE, 'afficherPhaseMemo')
+    script += r'''
+const item={type:'empan',contenu:{
+  consigne:'Mémorise la séquence de chiffres.',
+  affichage:{mode:'sequence',elements:['4','7'],duree_par_item_ms:2000,pause_item_ms:2000}
+}};
+afficherPhaseMemo(item);
+assert.deepEqual(lectures,['Mémorise la séquence de chiffres.']);
+assert.equal(refs.enonce.textContent,'Mémorise la séquence de chiffres.');
+afficherPhaseMemo(item);
+assert.equal(lectures.length,1);
+assert.equal(refs.enonce.textContent,'Mémorise le contenu affiché.');
+const nouvelle={...item,contenu:{...item.contenu,consigne:'Mémorise les mots dans l’ordre.'}};
+afficherPhaseMemo(nouvelle);
+assert.deepEqual(lectures,[
+  'Mémorise la séquence de chiffres.',
+  'Mémorise les mots dans l’ordre.'
+]);
+assert.equal(refs.enonce.textContent,'Mémorise les mots dans l’ordre.');
+'''
+    execute(script)
+
+
 def test_feedback_fonctionnel_visible():
     script=BASE+'''\nconst etat={theme:{id:'actualiser-consigne'}};
 refs.carteFeedback=creerElement('div');refs.carteFeedback.hidden=true;

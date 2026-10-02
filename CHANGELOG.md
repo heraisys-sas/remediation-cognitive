@@ -1,3 +1,7 @@
+# 2026-10-02 — consigne audio non répétée
+
+Pendant une séance de mémorisation, une consigne identique n'est désormais lue automatiquement qu'à sa première occurrence. Le rappel bref reste affiché sur les items suivants et le bouton « Écouter » permet toujours une répétition volontaire. Une consigne réellement différente est affichée et lue lors de sa première apparition.
+
 # 2026-10-02 — cadence commune des séquences à mémoriser
 
 Les empans de chiffres, les empans de mots et les séquences de lettres utilisent désormais la même cadence que les séries visuelles : chaque élément reste visible 2 secondes, puis un blanc de 2 secondes précède le suivant. Le contenu généré porte explicitement les deux durées, l'interface emploie aussi 2 secondes comme valeur de repli et le validateur refuse toute séquence plus rapide.

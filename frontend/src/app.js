@@ -187,6 +187,7 @@ const etat = {
   jetonChoisi: null,       // jeton de la palette actuellement sélectionné
   enonceCourant: "",       // ce qui est affiché à l'écran (pour « Écouter »)
   consignesVues: new Set(), // rappels de méthode déjà affichés (une fois par type)
+  consignesMemoVues: new Set(), // consignes de mémorisation déjà rencontrées (texte exact)
   seanceTerminee: false,   // séance clôturée par la durée maximale (aller au résumé)
   reprisesAfficher: new Set(), // exercices qui reviennent en reprise (réponse à montrer)
   reponsesAttendues: {},   // réponse attendue par item, retenue du retour serveur
@@ -632,6 +633,7 @@ async function demarrerSession(theme, palier = null, parcours = null) {
     etat.seanceTerminee = false;
     etat.reprisesAfficher = new Set();
     etat.reponsesAttendues = {};
+    etat.consignesMemoVues = new Set();
     etat.indexItem = 0;
     etat.repondu = false;
     reinitialiserConfirmationFin();
@@ -761,18 +763,25 @@ function afficherPhaseMemo(item) {
   // de l'utilisateur (set attentionnel : on sait quoi chercher avant de voir).
   // La consigne de méthode n'est affichée qu'UNE fois par type dans la séance :
   // ensuite une phrase courte suffit (la répétition serait rébarbative).
-  const methodeDejaVue = etat.consignesVues.has(item.type);
-  const consigneAffichee = (contenu.consigne && !methodeDejaVue)
-    ? contenu.consigne
+  const consigneComplete = String(contenu.consigne || "").trim();
+  const cleConsigne = consigneComplete || (audio
+    ? "Mémorise les mots entendus."
+    : "Mémorise le contenu affiché.");
+  const consigneDejaVue = etat.consignesMemoVues.has(cleConsigne);
+  const consigneAffichee = (consigneComplete && !consigneDejaVue)
+    ? consigneComplete
     : audio ? "Mémorise les mots entendus." : "Mémorise le contenu affiché.";
-  if (contenu.consigne) etat.consignesVues.add(item.type);
+  etat.consignesMemoVues.add(cleConsigne);
   refs.enonce.textContent = consigneAffichee;
   refs.enonce.className = "enonce";
   // « Écouter » lit ce qui est affiché à ce stade : la consigne, pas la question.
   etat.enonceCourant = consigneAffichee;
   refs.ligneAudio.hidden = !CAPACITES.syntheseDisponible();
   refs.rappelConsigne.hidden = true;
-  lireSiLectureAuto(consigneAffichee);
+  // Le texte reste visible à chaque item, mais une consigne identique n'est lue
+  // automatiquement qu'à sa première occurrence dans la séance. Le bouton
+  // « Écouter » reste disponible si la personne souhaite l'entendre à nouveau.
+  if (!consigneDejaVue) lireSiLectureAuto(consigneAffichee);
   refs.zoneAide.hidden = true;
   refs.carteFeedback.hidden = true;
   refs.boutonSuivant.hidden = true;
