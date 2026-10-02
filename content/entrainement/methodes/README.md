@@ -20,7 +20,7 @@ Ces six familles sont accessibles comme **parcours indépendants** : leur ordre 
 - **GMT** : la situation est donnée, la bonne réponse est le **plan d'étapes cohérent** (et non une étape isolée) ; la consigne invite à vérifier son plan.
 - **Auto-instruction** : la bonne réponse est la **première question à se poser** (portant sur le but et le moyen), pas sur le résultat attendu.
 
-Les paliers 1 à 5 proposent des réponses à choix ; le palier 6 comprend aussi des productions libres. La méthode elle-même est un **fil conducteur** : un panneau « Méthode — avant de répondre » (les trois questions d'auto-instruction) est disponible à tout moment pendant les séances, toutes familles confondues.
+Les paliers 1 à 5 proposent des réponses à choix ; le palier 6 comprend aussi des productions libres. Pour les paliers 1 à 5, la consigne stratégique reste consultable dans le panneau « Une méthode possible ». Au palier 6, les cinq étapes PQRST sont déjà affichées dans le composant guidé : aucun panneau supplémentaire ne les double. Le triptyque d'auto-instruction appartient à l'exercice qui l'entraîne et n'est plus imposé aux autres familles.
 
 ## Génération
 

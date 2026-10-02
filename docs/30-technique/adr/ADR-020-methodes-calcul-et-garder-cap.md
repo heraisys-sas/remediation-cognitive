@@ -4,7 +4,9 @@ Date : 2026-09-30. Statut : adopté sur la branche d’essai.
 
 ## Décision
 
-`contenu.methode`, texte facultatif, prend priorité sur la consigne dans le panneau. Le titre devient « Une méthode possible » ; les trois questions génériques sont masquées. Le panneau est fermé à chaque nouvel item. L’ancien comportement est rétabli pour les items sans méthode. Aucun nouveau résultat intermédiaire ou solution n’est affiché par l’aide.
+`contenu.methode`, texte facultatif, prend priorité dans le panneau « Une méthode possible ». Le panneau est fermé à chaque nouvel item. Aucun nouveau résultat intermédiaire ou solution n’est affiché par l’aide.
+
+Extension du 2 octobre 2026 : le triptyque métacognitif générique n'est plus utilisé comme repli universel. À défaut de `contenu.methode`, seules les familles pour lesquelles une démarche concrète a été définie affichent le panneau : consigne stratégique des tâches fonctionnelles, ou stratégie stable de déduction, d'encodage, de rappel et d'accès lexical. Le panneau est masqué pour une reconnaissance simple, l'anglais, Python et une séquence déjà guidée. L'absence de stratégie vaut mieux qu'un rappel vague sans lien avec l'objectif de l'item.
 
 Les 212 items de calcul reçoivent une stratégie par famille et opération réelle, plus une vérification pertinente. Le champ `aide` est retiré pour éviter le doublon « Coup de pouce ». Opérations, énoncés et réponses conservés ; nouveaux identifiants `cm3-…` pour distinguer ces conditions d’aide. Les résultats intermédiaires restent à produire et maintenir mentalement. La consultation de ce texte ne vaut pas révélation de solution ; elle n’est pas comptée comme une réponse assistée. Aucun score d’autonomie sans aide n’est donc inféré de la réussite.
 
@@ -18,7 +20,7 @@ Voir le README du thème Garder le cap pour les sources primaires vérifiées, l
 
 ## Vérification
 
-Couverture de toutes les familles calculatoires, contrôles des cas argent/durées/proportions et petits nombres, conservation des opérations/réponses, tests du panneau JS et de son retour au mode générique, exposition API de la nouvelle carte et séances sur les trois parcours, deuxième essai des QCM et correction, validation générale. L’extension vérifie en plus le masquage réel du dossier, la variation du moment d’interruption, la reprise au point suivant, le double clic et le retour détaillé par point.
+Couverture de toutes les familles calculatoires, contrôles des cas argent/durées/proportions et petits nombres, conservation des opérations/réponses, tests du panneau JS et de son masquage sans méthode pertinente, exposition API de la nouvelle carte et séances sur les trois parcours, deuxième essai des QCM et correction, validation générale. L’extension vérifie en plus le masquage réel du dossier, la variation du moment d’interruption, la reprise au point suivant, le double clic et le retour détaillé par point.
 
 ## Précision du public
 

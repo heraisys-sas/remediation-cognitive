@@ -1,3 +1,7 @@
+# 2026-10-02 — méthodes spécifiques plutôt qu'un rappel universel
+
+Le triptyque générique « quoi faire / comment / vérifier » n'est plus affiché dans toutes les familles. Le panneau est désormais masqué quand aucune stratégie concrète n'est définie ; il montre en priorité la méthode propre à l'item, ou une stratégie stable adaptée à la déduction, aux empans, aux associations, au rappel de séries et à l'accès lexical. Les consignes stratégiques des tâches fonctionnelles restent consultables. Reconnaissance simple, anglais, Python et séquences déjà guidées n'ont plus de panneau redondant.
+
 # 2026-10-02 — démarrage des exercices avec indices réparé
 
 Le rendu d'un item à indices progressifs référençait par erreur une variable réservée à l'aide des grilles de déduction. Quand un tel item était tiré en premier dans « Retrouver des mots et leur contexte », la question était lue puis le démarrage affichait un échec. Le bouton d'indice lexical est de nouveau rendu indépendamment sous le libellé « Un indice ».

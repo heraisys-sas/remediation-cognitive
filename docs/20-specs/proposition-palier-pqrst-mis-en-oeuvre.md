@@ -71,7 +71,7 @@ Nouveaux (`mt2-…`) : contenu entièrement neuf, il ne doit pas hériter des é
 |---|---|---|
 | Contenu | générateur + 4 textes × 5 étapes, manifest, relecture | le plus gros poste, mais mécanique |
 | Type d'item | `pqrst-mise-en-oeuvre` + jugement par étape (choix, production non jugée, idées-clés) | correction à écrire et tester |
-| Interface | petit composant « séquence » (étape n/5, retour arrière interdit, panneau méthode visible) | contenu dans l'app actuelle |
+| Interface | composant « séquence » montrant les cinq étapes et leur consigne au point d'usage | contenu dans l'app actuelle |
 | Contrôles | validateur (structure des étapes, seuils, cohérence des modèles), tests de correction | à ajouter |
 
 ## Critères d'acceptation
@@ -81,4 +81,4 @@ Nouveaux (`mt2-…`) : contenu entièrement neuf, il ne doit pas hériter des é
 - rien n'est jugé qui ne doive l'être (production libre non notée, modèle affiché) ;
 - la correction reste déterministe et testée ; les tolérances d'ADR-008 s'appliquent ;
 - une séance de ce palier tient dans le cadre de durée, sans chronomètre sur la lecture ;
-- la méthode reste **visible pendant l'exercice** (panneau « Méthode »).
+- la méthode reste **visible pendant l'exercice** dans les cinq étapes du composant guidé, sans panneau redondant.

@@ -37,6 +37,37 @@ const TYPES_A_CHOIX = new Set([
   "aide-externe",
 ]);
 
+//: Une consigne peut aussi être une stratégie lorsque son texte décrit une
+//: démarche stable, et pas seulement l'action demandée sur l'item courant.
+const TYPES_CONSIGNE_COMME_METHODE = new Set([
+  "auto-instruction",
+  "but-etapes",
+  "plan-a-verifier",
+  "reperer-info",
+  "pqrst",
+  "estimation-temps",
+  "etape-suivante",
+  "si-alors",
+  "gestion-du-temps",
+  "par-ou-commencer",
+  "aide-externe",
+  "meilleure-solution",
+  "prise-message",
+]);
+
+//: Stratégies stables pour les familles où les items ne portent pas encore un
+//: champ ``methode``. Aucun repli générique : une famille absente masque le panneau.
+const METHODES_PAR_TYPE = Object.freeze({
+  "grille-deduction": "Commence par les placements certains. Croise ensuite plusieurs indices et vérifie que chaque phrase reste respectée.",
+  "empan": "Regroupe mentalement les chiffres par deux ou trois. Pour l’ordre inverse, repars du dernier groupe.",
+  "empan-mots": "Relie les mots par une petite scène mentale en gardant leur ordre. Pour l’ordre inverse, reparcours la scène depuis la fin.",
+  "n-back": "Garde une place mentale pour chaque élément. À la fin, remonte du nombre de positions demandé.",
+  "paires-associatives": "Crée pour chaque mot et son nombre une image ou un lien inhabituel, puis retrouve ce lien au rappel.",
+  "rappel-libre": "Pendant la présentation, regroupe les mots qui peuvent former une image ou une histoire. Au rappel, reparcours ces groupes.",
+  "rappel-indice": "Cherche d’abord la catégorie et un contexte où tu emploies ce mot. Si nécessaire, révèle les indices un par un.",
+  "rappel-source": "Associe l’information à un détail distinctif de son contexte, puis reconstruis ce contexte au moment du rappel.",
+});
+
 //: Thèmes d'appoint regroupés dans la section « Extra » de l'écran d'accueil.
 const THEMES_EXTRA = new Set(["python", "anglais"]);
 
@@ -159,7 +190,6 @@ const refs = {
   methodeExercice: $("methode-exercice"),
   panneauMethode: $("panneau-methode"),
   titreMethode: $("titre-methode"),
-  methodeGenerique: $("methode-generique"),
 };
 
 /* ---------------------------------------------------------------------
@@ -683,6 +713,18 @@ function preparerEcranSeance() {
 }
 
 /** Affiche l'item courant : progression, puis phase mémo ou question directe. */
+function methodePourItem(item) {
+  const contenu = item.contenu || {};
+  if (item.type === "analyse-mot") return String(contenu.consigne || "").trim();
+  if (typeof contenu.methode === "string" && contenu.methode.trim()) {
+    return contenu.methode.trim();
+  }
+  if (TYPES_CONSIGNE_COMME_METHODE.has(item.type)) {
+    return String(contenu.consigne || "").trim();
+  }
+  return METHODES_PAR_TYPE[item.type] || "";
+}
+
 function montrerItem() {
   const items = etat.session.items;
   const item = items[etat.indexItem];
@@ -693,15 +735,12 @@ function montrerItem() {
   if (etat.indexItem === 0) etat.consignesVues = new Set();  // rappels par séance
   refs.rappelConsigne.hidden = true;
   refs.noteReprise.hidden = true;
-  // La méthode de l'exercice en cours s'affiche dans le panneau « Méthode » : un exercice
-  // de stratégie se travaille avec sa stratégie sous les yeux, pas seulement dans une
-  // consigne lue une fois par séance (ADR-014).
-  const aideMethode = item.type === "analyse-mot" ? item.contenu?.consigne : item.contenu?.methode;
-  const methode = aideMethode || item.contenu?.consigne;
-  const specifique = Boolean(aideMethode);
+  // Une méthode n'est affichée que si elle apporte une démarche propre à la
+  // tâche. Une consigne générique permanente ajouterait de la charge sans guider.
+  const methode = methodePourItem(item);
   refs.panneauMethode.open = false;
-  refs.titreMethode.textContent = specifique ? "Une méthode possible" : "Méthode — avant de répondre";
-  refs.methodeGenerique.hidden = specifique;
+  refs.panneauMethode.hidden = !methode;
+  refs.titreMethode.textContent = "Une méthode possible";
   refs.methodeExercice.textContent = methode || "";
   refs.methodeExercice.hidden = !methode;
   annulerMemo();

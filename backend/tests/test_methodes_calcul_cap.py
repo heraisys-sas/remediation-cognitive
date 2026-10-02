@@ -1,5 +1,6 @@
 import json
 from pathlib import Path
+import re
 import subprocess
 import shutil
 from tools.methodes_calcul import methode_calcul
@@ -78,24 +79,46 @@ def test_reprise_reellement_interrompue_et_correction_detaillee(client):
     assert not juste and not detail['lignes'][-1]['correcte']
 
 
-def test_panneau_methode_reinitialise_et_retour_generique():
+def test_panneau_methode_specifique_ou_masque_sans_repli_generique():
     source=(ROOT/'frontend/src/app.js').read_text()
-    script='''
+    types_consigne = re.search(
+        r'const TYPES_CONSIGNE_COMME_METHODE = new Set\(\[.*?\]\);', source, re.S
+    ).group(0)
+    methodes_type = re.search(
+        r'const METHODES_PAR_TYPE = Object\.freeze\(\{.*?\}\);', source, re.S
+    ).group(0)
+    script=types_consigne+'\n'+methodes_type+'''
 const assert=require('node:assert/strict');
 const refs=new Proxy({}, {get(o,k){return o[k]??={style:{},setAttribute(){}}}});
 const etat={session:{items:[]},indexItem:0,reprisesAfficher:new Set()};
 function annulerMemo(){} function afficherQuestion(){} function afficherPhaseMemo(){}
-'''+ 'function montrerItem() '+corps_fonction(source,'montrerItem')+'''
+'''+ 'function methodePourItem(item) '+corps_fonction(source,'methodePourItem') \
+        +'\nfunction montrerItem() '+corps_fonction(source,'montrerItem')+'''
 etat.session.items=[{id:'calcul',contenu:{methode:'Décompose le nombre.'}}];
 refs.panneauMethode.open=true;
 montrerItem();
 assert.equal(refs.panneauMethode.open,false);
+assert.equal(refs.panneauMethode.hidden,false);
 assert.equal(refs.titreMethode.textContent,'Une méthode possible');
-assert.equal(refs.methodeGenerique.hidden,true);
 assert.equal(refs.methodeExercice.textContent,'Décompose le nombre.');
-etat.session.items=[{id:'autre',contenu:{consigne:'Lis le message.'}}];
+
+etat.session.items=[{id:'empan',type:'empan',contenu:{consigne:'Mémorise les chiffres.'}}];
 montrerItem();
-assert.equal(refs.methodeGenerique.hidden,false);
-assert.equal(refs.methodeExercice.textContent,'Lis le message.');
+assert.equal(refs.panneauMethode.hidden,false);
+assert.ok(refs.methodeExercice.textContent.includes('Regroupe mentalement'));
+
+etat.session.items=[{id:'strategie',type:'auto-instruction',contenu:{consigne:'Formule une consigne avant d’agir.'}}];
+montrerItem();
+assert.equal(refs.panneauMethode.hidden,false);
+assert.equal(refs.methodeExercice.textContent,'Formule une consigne avant d’agir.');
+
+etat.session.items=[{id:'reconnaissance',type:'reconnaissance',contenu:{consigne:'Choisis le mot.'}}];
+montrerItem();
+assert.equal(refs.panneauMethode.hidden,true);
+assert.equal(refs.methodeExercice.textContent,'');
+
+etat.session.items=[{id:'guide',type:'pqrst-mise-en-oeuvre',contenu:{consigne:'Les étapes sont déjà affichées.'}}];
+montrerItem();
+assert.equal(refs.panneauMethode.hidden,true);
 '''
     subprocess.run([shutil.which('node'),'-e',script],check=True,capture_output=True,text=True)
