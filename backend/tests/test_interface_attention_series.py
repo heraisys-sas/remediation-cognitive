@@ -200,3 +200,33 @@ assert.equal(fins,0);assert.equal(erreurs,0);assert.equal(lecteur.onended,null);
 Capacites.lireFichier('/autre.m4a',{onFin(){fins++}});lecteur.onended();assert.equal(fins,1);
 '''
     execute(script)
+
+
+def test_synthese_explicitement_les_operateurs_sans_casser_les_mots_composes():
+    source=(ROOT/'frontend/src/capacites.js').read_text()
+    script=r'''
+const assert=require('node:assert/strict');
+let prononce=[];
+class Enonce {constructor(texte){this.text=texte}}
+const window={
+  SpeechSynthesisUtterance:Enonce,
+  speechSynthesis:{cancel(){},getVoices(){return []},speak(e){prononce.push(e.text)}}
+};
+const SpeechSynthesisUtterance=Enonce;
+'''+source+r'''
+Capacites.lire('Combien font 8 − 3 × 2 ?');
+assert.equal(prononce.pop(),'Combien font 8 moins 3 multiplié par 2 ?');
+Capacites.lire('42 = ? × 7');
+assert.equal(prononce.pop(),'42 égale quel nombre multiplié par 7');
+Capacites.lire('? + 3 = 8');
+assert.equal(prononce.pop(),'quel nombre plus 3 égale 8');
+Capacites.lire('10 − ? = 4');
+assert.equal(prononce.pop(),'10 moins quel nombre égale 4');
+Capacites.lire('? = 6 × 7');
+assert.equal(prononce.pop(),'quel nombre égale 6 multiplié par 7');
+Capacites.lire('Combien font 8 - 3 x 2 + 1 ?');
+assert.equal(prononce.pop(),'Combien font 8 moins 3 multiplié par 2 plus 1 ?');
+Capacites.lire('Rendez-vous à mi-parcours.');
+assert.equal(prononce.pop(),'Rendez-vous à mi-parcours.');
+'''
+    execute(script)

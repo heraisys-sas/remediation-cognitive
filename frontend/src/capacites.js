@@ -52,11 +52,32 @@ const Capacites = (() => {
   // Garder une référence jusqu’à la fin : certains moteurs collectent sinon l’énoncé.
   let enonceActif = null;
 
+  /** Prépare une formulation orale sans modifier le texte affiché.
+   *
+   * Les moteurs Web Speech ne prononcent pas tous les opérateurs de la même
+   * manière. On explicite uniquement les signes mathématiques ; un trait
+   * d'union interne à un mot (``rendez-vous``) reste intact.
+   */
+  function textePourSynthese(texte) {
+    return String(texte)
+      .replace(/\?\s*(?=[+\-−×xX*÷=])/g, "quel nombre ")
+      .replace(/([+\-−×xX*÷=])\s*\?/g, "$1 quel nombre")
+      .replace(/\s*−\s*/g, " moins ")
+      .replace(/\s+-\s+/g, " moins ")
+      .replace(/\s*×\s*/g, " multiplié par ")
+      .replace(/\s+[xX*]\s+/g, " multiplié par ")
+      .replace(/\s*\+\s*/g, " plus ")
+      .replace(/\s*=\s*/g, " égale ")
+      .replace(/\s*÷\s*/g, " divisé par ")
+      .replace(/\s+/g, " ")
+      .trim();
+  }
+
   /** Lit un texte à voix haute avec la voix du système. */
   function lire(texte, { onFin, onErreur } = {}) {
     if (!syntheseDisponible() || !texte) return false;
     window.speechSynthesis.cancel();
-    const enonce = new SpeechSynthesisUtterance(String(texte));
+    const enonce = new SpeechSynthesisUtterance(textePourSynthese(texte));
     enonce.lang = "fr-FR";
     enonce.rate = 0.95;
     enonceActif = enonce;

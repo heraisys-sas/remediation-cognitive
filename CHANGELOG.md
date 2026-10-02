@@ -1,3 +1,7 @@
+# 2026-10-02 — opérateurs mathématiques prononcés explicitement
+
+La synthèse vocale reçoit désormais une formulation orale dédiée : `−` et le moins ASCII espacé deviennent « moins », `×`, `x` ou `*` entre espaces deviennent « multiplié par », `+`, `=` et `÷` sont également explicités. Un `?` occupant la place d’un terme dans une opération devient « quel nombre », tandis qu’un point d’interrogation final reste une ponctuation. Le texte affiché et les traits d’union des mots restent inchangés.
+
 # 2026-10-02 — reprise après interruption réellement vécue
 
 Le parcours Reprendre de « Garder le cap » remplace quatre vignettes décrites par douze contrôles réellement interrompus : quatre points à traiter, détour bref non noté après un à trois points, dossier masqué, identification du prochain point puis achèvement. Correction détaillée des décisions et de la reprise, nouveaux identifiants `cap-2-reprise-…`, double clic neutralisé. Adapter et Vérifier restent inchangés.
