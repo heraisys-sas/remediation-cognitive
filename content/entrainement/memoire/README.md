@@ -4,7 +4,7 @@
 
 ## Parcours indépendants
 
-- **Empan de chiffres** (endroit puis envers) : longueur 3 → 6 chiffres par paliers ; l'envers ajoute la manipulation en mémoire de travail. Affichage séquentiel, 800 ms par élément.
+- **Empan de chiffres** (endroit puis envers) : longueur 3 → 6 chiffres par paliers ; l'envers ajoute la manipulation en mémoire de travail. Affichage séquentiel, avec 2 secondes visibles et 2 secondes de blanc par élément.
 - **Paires associatives mot–nombre** : 2 → 4 paires de mots concrets courants, affichage en liste (16 s), puis rappel du nombre associé à un mot sondé — entraîne une compétence utile au quotidien (codes, rendez-vous, cours).
 - **Sonde n-back** : rappel de l'élément situé N positions avant la fin d'une séquence de lettres (N = 2 → 4) — variante « rappel » du paradigme n-back, exigeante mais moins frustrante que la version oui/non continue.
 
@@ -41,11 +41,9 @@ sans accents ni casse.
 - Le rappel verbal est sensible à la similarité phonologique et au sens : le pool
   est concret, court, et sans doublon dans une même séquence.
 
-## Rythme d'affichage (correctif sprint 4)
+## Rythme d'affichage
 
-Le rythme est d'environ **un élément par seconde** : 800 ms pour un chiffre,
-900 ms pour un mot, plus un **blanc de 120 ms** qui ne sert qu'à séparer
-visuellement les éléments — ce n'est pas une pause d'attente. L'interface affiche
-désormais le rythme explicitement (« 3 éléments · un toutes les 0,92 s ») au lieu
-d'une durée approximative qui pouvait se lire comme un temps de pause. Le
-validateur borne ce rythme entre 400 et 2000 ms par élément.
+Chaque chiffre, mot ou lettre reste visible **2 secondes**, puis disparaît pendant
+**2 secondes** avant l'élément suivant. L'interface affiche donc explicitement
+« un élément toutes les 4 secondes ». Le validateur exige ces deux durées sur
+toute séquence à mémoriser.

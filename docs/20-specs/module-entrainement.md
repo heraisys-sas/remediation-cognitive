@@ -88,13 +88,14 @@ Le rappel libre n'est pas un tout-ou-rien : chaque item déclare un **seuil** de
 retrouvés (0,5 à 0,75), et l'interface indique ensuite ce qui a été retrouvé et ce
 qui manquait. Ce retour est la valeur pédagogique de l'exercice — jamais une note.
 
-## Rythme de présentation (correctif sprint 4)
+## Rythme de présentation
 
-Les éléments d'un empan défilent à **un par seconde environ** (800 ms par chiffre,
-900 ms par mot) ; le blanc inter-éléments (120 ms) ne sert qu'à séparer visuellement
-les éléments, ce n'est pas une pause d'attente. L'interface annonce le rythme
-explicitement, et le validateur borne ce rythme (400–2000 ms) : une pause d'attente
-déguisée en empan ne peut plus entrer dans le contenu.
+Toutes les séquences à mémoriser suivent la même cadence : chaque chiffre, mot ou
+lettre reste visible **2 secondes**, puis un blanc de **2 secondes** le sépare du
+suivant. Les séries de mots lues et entendues utilisent déjà cette pause ; pour
+l'audio, elle commence à la fin du fichier prononcé. L'interface annonce le rythme
+et le validateur exige explicitement les deux durées afin qu'un nouveau palier ne
+réintroduise pas une présentation plus rapide.
 
 ## Programme de 8 semaines (sprint 5)
 

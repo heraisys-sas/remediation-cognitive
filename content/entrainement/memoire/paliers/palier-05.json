@@ -16,7 +16,8 @@
       "consigne": "Mémorise la séquence de chiffres.",
       "affichage": {
         "mode": "sequence",
-        "duree_par_item_ms": 800,
+        "duree_par_item_ms": 2000,
+        "pause_item_ms": 2000,
         "elements": [
           "7",
           "6",
@@ -55,7 +56,8 @@
       "consigne": "Mémorise la séquence de chiffres.",
       "affichage": {
         "mode": "sequence",
-        "duree_par_item_ms": 800,
+        "duree_par_item_ms": 2000,
+        "pause_item_ms": 2000,
         "elements": [
           "1",
           "8",
@@ -94,7 +96,8 @@
       "consigne": "Mémorise la séquence de chiffres.",
       "affichage": {
         "mode": "sequence",
-        "duree_par_item_ms": 800,
+        "duree_par_item_ms": 2000,
+        "pause_item_ms": 2000,
         "elements": [
           "8",
           "9",
@@ -133,7 +136,8 @@
       "consigne": "Mémorise la séquence de chiffres.",
       "affichage": {
         "mode": "sequence",
-        "duree_par_item_ms": 800,
+        "duree_par_item_ms": 2000,
+        "pause_item_ms": 2000,
         "elements": [
           "9",
           "0",
@@ -172,7 +176,8 @@
       "consigne": "Mémorise la séquence de chiffres.",
       "affichage": {
         "mode": "sequence",
-        "duree_par_item_ms": 800,
+        "duree_par_item_ms": 2000,
+        "pause_item_ms": 2000,
         "elements": [
           "3",
           "1",
@@ -211,7 +216,8 @@
       "consigne": "Mémorise la séquence de chiffres.",
       "affichage": {
         "mode": "sequence",
-        "duree_par_item_ms": 800,
+        "duree_par_item_ms": 2000,
+        "pause_item_ms": 2000,
         "elements": [
           "9",
           "6",
@@ -250,7 +256,8 @@
       "consigne": "Mémorise la séquence de chiffres.",
       "affichage": {
         "mode": "sequence",
-        "duree_par_item_ms": 800,
+        "duree_par_item_ms": 2000,
+        "pause_item_ms": 2000,
         "elements": [
           "2",
           "9",
@@ -289,7 +296,8 @@
       "consigne": "Mémorise la séquence de chiffres.",
       "affichage": {
         "mode": "sequence",
-        "duree_par_item_ms": 800,
+        "duree_par_item_ms": 2000,
+        "pause_item_ms": 2000,
         "elements": [
           "6",
           "2",
@@ -328,7 +336,8 @@
       "consigne": "Mémorise la séquence de chiffres.",
       "affichage": {
         "mode": "sequence",
-        "duree_par_item_ms": 800,
+        "duree_par_item_ms": 2000,
+        "pause_item_ms": 2000,
         "elements": [
           "8",
           "2",
@@ -367,7 +376,8 @@
       "consigne": "Mémorise la séquence de chiffres.",
       "affichage": {
         "mode": "sequence",
-        "duree_par_item_ms": 800,
+        "duree_par_item_ms": 2000,
+        "pause_item_ms": 2000,
         "elements": [
           "8",
           "9",
@@ -407,7 +417,8 @@
       "consigne": "Mémorise la séquence d'éléments.",
       "affichage": {
         "mode": "sequence",
-        "duree_par_item_ms": 1200,
+        "duree_par_item_ms": 2000,
+        "pause_item_ms": 2000,
         "elements": [
           "P",
           "K",
@@ -449,7 +460,8 @@
       "consigne": "Mémorise la séquence d'éléments.",
       "affichage": {
         "mode": "sequence",
-        "duree_par_item_ms": 1200,
+        "duree_par_item_ms": 2000,
+        "pause_item_ms": 2000,
         "elements": [
           "M",
           "B",
@@ -491,7 +503,8 @@
       "consigne": "Mémorise la séquence d'éléments.",
       "affichage": {
         "mode": "sequence",
-        "duree_par_item_ms": 1200,
+        "duree_par_item_ms": 2000,
+        "pause_item_ms": 2000,
         "elements": [
           "K",
           "L",
@@ -533,7 +546,8 @@
       "consigne": "Mémorise la séquence d'éléments.",
       "affichage": {
         "mode": "sequence",
-        "duree_par_item_ms": 1200,
+        "duree_par_item_ms": 2000,
+        "pause_item_ms": 2000,
         "elements": [
           "R",
           "M",
@@ -575,7 +589,8 @@
       "consigne": "Mémorise la séquence d'éléments.",
       "affichage": {
         "mode": "sequence",
-        "duree_par_item_ms": 1200,
+        "duree_par_item_ms": 2000,
+        "pause_item_ms": 2000,
         "elements": [
           "P",
           "L",
@@ -617,7 +632,8 @@
       "consigne": "Mémorise la séquence d'éléments.",
       "affichage": {
         "mode": "sequence",
-        "duree_par_item_ms": 1200,
+        "duree_par_item_ms": 2000,
+        "pause_item_ms": 2000,
         "elements": [
           "T",
           "P",
@@ -659,7 +675,8 @@
       "consigne": "Mémorise la séquence d'éléments.",
       "affichage": {
         "mode": "sequence",
-        "duree_par_item_ms": 1200,
+        "duree_par_item_ms": 2000,
+        "pause_item_ms": 2000,
         "elements": [
           "K",
           "T",
@@ -701,7 +718,8 @@
       "consigne": "Mémorise la séquence d'éléments.",
       "affichage": {
         "mode": "sequence",
-        "duree_par_item_ms": 1200,
+        "duree_par_item_ms": 2000,
+        "pause_item_ms": 2000,
         "elements": [
           "R",
           "L",

@@ -16,7 +16,8 @@
       "consigne": "Mémorise les mots affichés.",
       "affichage": {
         "mode": "sequence",
-        "duree_par_item_ms": 900,
+        "duree_par_item_ms": 2000,
+        "pause_item_ms": 2000,
         "elements": [
           "bouteille",
           "drapeau",
@@ -55,7 +56,8 @@
       "consigne": "Mémorise les mots affichés.",
       "affichage": {
         "mode": "sequence",
-        "duree_par_item_ms": 900,
+        "duree_par_item_ms": 2000,
+        "pause_item_ms": 2000,
         "elements": [
           "drapeau",
           "nuage",
@@ -94,7 +96,8 @@
       "consigne": "Mémorise les mots affichés.",
       "affichage": {
         "mode": "sequence",
-        "duree_par_item_ms": 900,
+        "duree_par_item_ms": 2000,
+        "pause_item_ms": 2000,
         "elements": [
           "chemise",
           "cuisine",
@@ -133,7 +136,8 @@
       "consigne": "Mémorise les mots affichés.",
       "affichage": {
         "mode": "sequence",
-        "duree_par_item_ms": 900,
+        "duree_par_item_ms": 2000,
+        "pause_item_ms": 2000,
         "elements": [
           "manteau",
           "neige",
@@ -172,7 +176,8 @@
       "consigne": "Mémorise les mots affichés.",
       "affichage": {
         "mode": "sequence",
-        "duree_par_item_ms": 900,
+        "duree_par_item_ms": 2000,
+        "pause_item_ms": 2000,
         "elements": [
           "camion",
           "jardin",
@@ -211,7 +216,8 @@
       "consigne": "Mémorise les mots affichés.",
       "affichage": {
         "mode": "sequence",
-        "duree_par_item_ms": 900,
+        "duree_par_item_ms": 2000,
+        "pause_item_ms": 2000,
         "elements": [
           "jardin",
           "rivière",
@@ -250,7 +256,8 @@
       "consigne": "Mémorise les mots affichés.",
       "affichage": {
         "mode": "sequence",
-        "duree_par_item_ms": 900,
+        "duree_par_item_ms": 2000,
+        "pause_item_ms": 2000,
         "elements": [
           "vélo",
           "radis",
@@ -289,7 +296,8 @@
       "consigne": "Mémorise les mots affichés.",
       "affichage": {
         "mode": "sequence",
-        "duree_par_item_ms": 900,
+        "duree_par_item_ms": 2000,
+        "pause_item_ms": 2000,
         "elements": [
           "cahier",
           "jardinier",
@@ -328,7 +336,8 @@
       "consigne": "Mémorise les mots affichés.",
       "affichage": {
         "mode": "sequence",
-        "duree_par_item_ms": 900,
+        "duree_par_item_ms": 2000,
+        "pause_item_ms": 2000,
         "elements": [
           "lune",
           "vélo",
@@ -367,7 +376,8 @@
       "consigne": "Mémorise les mots affichés.",
       "affichage": {
         "mode": "sequence",
-        "duree_par_item_ms": 900,
+        "duree_par_item_ms": 2000,
+        "pause_item_ms": 2000,
         "elements": [
           "bureau",
           "tapis",
@@ -406,7 +416,8 @@
       "consigne": "Mémorise les mots affichés.",
       "affichage": {
         "mode": "sequence",
-        "duree_par_item_ms": 900,
+        "duree_par_item_ms": 2000,
+        "pause_item_ms": 2000,
         "elements": [
           "poisson",
           "ballon",
@@ -445,7 +456,8 @@
       "consigne": "Mémorise les mots affichés.",
       "affichage": {
         "mode": "sequence",
-        "duree_par_item_ms": 900,
+        "duree_par_item_ms": 2000,
+        "pause_item_ms": 2000,
         "elements": [
           "crayon",
           "montagne",
@@ -484,7 +496,8 @@
       "consigne": "Mémorise les mots affichés.",
       "affichage": {
         "mode": "sequence",
-        "duree_par_item_ms": 900,
+        "duree_par_item_ms": 2000,
+        "pause_item_ms": 2000,
         "elements": [
           "fenêtre",
           "cuisine",
@@ -523,7 +536,8 @@
       "consigne": "Mémorise les mots affichés.",
       "affichage": {
         "mode": "sequence",
-        "duree_par_item_ms": 900,
+        "duree_par_item_ms": 2000,
+        "pause_item_ms": 2000,
         "elements": [
           "jardinier",
           "pomme",
@@ -562,7 +576,8 @@
       "consigne": "Mémorise les mots affichés.",
       "affichage": {
         "mode": "sequence",
-        "duree_par_item_ms": 900,
+        "duree_par_item_ms": 2000,
+        "pause_item_ms": 2000,
         "elements": [
           "pomme",
           "guitare",
@@ -601,7 +616,8 @@
       "consigne": "Mémorise les mots affichés.",
       "affichage": {
         "mode": "sequence",
-        "duree_par_item_ms": 900,
+        "duree_par_item_ms": 2000,
+        "pause_item_ms": 2000,
         "elements": [
           "crayon",
           "drapeau",
@@ -640,7 +656,8 @@
       "consigne": "Mémorise les mots affichés.",
       "affichage": {
         "mode": "sequence",
-        "duree_par_item_ms": 900,
+        "duree_par_item_ms": 2000,
+        "pause_item_ms": 2000,
         "elements": [
           "journal",
           "chat",
@@ -679,7 +696,8 @@
       "consigne": "Mémorise les mots affichés.",
       "affichage": {
         "mode": "sequence",
-        "duree_par_item_ms": 900,
+        "duree_par_item_ms": 2000,
+        "pause_item_ms": 2000,
         "elements": [
           "journal",
           "tapis",

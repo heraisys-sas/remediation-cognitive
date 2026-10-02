@@ -1,3 +1,7 @@
+# 2026-10-02 — cadence commune des séquences à mémoriser
+
+Les empans de chiffres, les empans de mots et les séquences de lettres utilisent désormais la même cadence que les séries visuelles : chaque élément reste visible 2 secondes, puis un blanc de 2 secondes précède le suivant. Le contenu généré porte explicitement les deux durées, l'interface emploie aussi 2 secondes comme valeur de repli et le validateur refuse toute séquence plus rapide.
+
 # 2026-10-02 — opérateurs mathématiques prononcés explicitement
 
 La synthèse vocale reçoit désormais une formulation orale dédiée : `−` et le moins ASCII espacé deviennent « moins », `×`, `x` ou `*` entre espaces deviennent « multiplié par », `+`, `=` et `÷` sont également explicités. Un `?` occupant la place d’un terme dans une opération devient « quel nombre », tandis qu’un point d’interrogation final reste une ponctuation. Le texte affiché et les traits d’union des mots restent inchangés.

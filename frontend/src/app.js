@@ -71,9 +71,9 @@ function definirSansLimite(active) {
   try { window.localStorage.setItem(CLE_SANS_LIMITE, active ? "on" : "off"); } catch { /* stockage indisponible */ }
 }
 
-//: Blanc entre deux éléments d'une séquence (segmentation visuelle uniquement —
-//: ce n'est pas une pause d'attente : le rythme reste d'un élément par seconde).
-const BLANC_INTER_ITEM_MS = 120;
+//: Valeur de repli pour toute séquence à mémoriser. Le contenu explicite aussi
+//: cette pause ; le repli évite qu'un ancien item soit présenté trop vite.
+const BLANC_INTER_ITEM_MS = 2000;
 
 /* ---------------------------------------------------------------------
    Raccourcis DOM (l'HTML statique porte toutes les vues)
@@ -856,9 +856,8 @@ function jouerAffichage(item) {
     return;
   }
 
-  // Séquence de chiffres/mots ou séries de mots : un élément à la fois. Le blanc
-  // inter-éléments ne sert qu'à séparer visuellement les éléments (segmentation
-  // perceptive) : il n'ajoute AUCUNE pause d'attente.
+  // Séquence de chiffres/mots/lettres ou séries de mots : un élément à la fois,
+  // suivi d'un blanc de deux secondes avant le suivant.
   const groupes = affichage.mode === "series" ? affichage.series : [affichage.elements];
   const blancMemoMs = affichage.pause_item_ms ?? BLANC_INTER_ITEM_MS;
   let delai = 0;

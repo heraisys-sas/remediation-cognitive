@@ -64,12 +64,12 @@ MOTS_EMPAN = [
     "camion", "radis", "vélo", "ballon", "cahier", "jardinier",
 ]
 
-#: Rythme d'affichage des séquences : un élément par seconde environ.
-#: Le blanc inter-éléments sert seulement à marquer la séparation visuelle
-#: (segmentation perceptive) — il n'ajoute aucune pause d'attente.
-DUREE_ITEM_MS: int = 800
-DUREE_ITEM_MOTS_MS: int = 900
-BLANC_INTER_ITEM_MS: int = 120
+#: Rythme commun des séquences à mémoriser : deux secondes de présentation,
+#: puis deux secondes de blanc. Cette cadence vaut pour les chiffres, les mots
+#: et les lettres afin que le rythme ne dépende pas du palier ou de la famille.
+DUREE_ITEM_MS: int = 2000
+DUREE_ITEM_MOTS_MS: int = 2000
+BLANC_INTER_ITEM_MS: int = 2000
 
 #: Caps de complexité explicites (dosage anti sur-sollicitation).
 CAP_NBACK_8 = "séquences de 8 éléments maximum"
@@ -161,6 +161,7 @@ def _empan(rng, palier, longueur, envers, nn, prerequis, date_creation):
         "affichage": {
             "mode": "sequence",
             "duree_par_item_ms": DUREE_ITEM_MS,
+            "pause_item_ms": BLANC_INTER_ITEM_MS,
             "elements": elements,
         },
         "enonce": enonce,
@@ -190,6 +191,7 @@ def _empan_mots(rng, palier, longueur, envers, nn, prerequis, date_creation):
         "affichage": {
             "mode": "sequence",
             "duree_par_item_ms": DUREE_ITEM_MOTS_MS,
+            "pause_item_ms": BLANC_INTER_ITEM_MS,
             "elements": elements,
         },
         "enonce": enonce,
@@ -210,7 +212,8 @@ def _nback(rng, palier, pas, nn, prerequis, date_creation):
         "consigne": "Mémorise la séquence d'éléments.",
         "affichage": {
             "mode": "sequence",
-            "duree_par_item_ms": 1200,
+            "duree_par_item_ms": DUREE_ITEM_MS,
+            "pause_item_ms": BLANC_INTER_ITEM_MS,
             "elements": elements,
         },
         "enonce": f"Quel élément était {pas} positions avant la fin ? Tape-le.",

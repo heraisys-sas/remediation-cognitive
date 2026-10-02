@@ -392,6 +392,12 @@ def erreurs_contenu(item: dict, prefixe: str) -> list[str]:
                         prefixe
                         + f"affichage.duree_par_item_ms hors {RYTHME_MIN_MS}..{RYTHME_MAX_MS} ms : {duree!r}"
                     )
+                pause = affichage.get("pause_item_ms")
+                if duree != 2000 or pause != 2000:
+                    erreurs.append(
+                        prefixe
+                        + "séquence à mémoriser : 2000 ms d'affichage et 2000 ms de pause attendus"
+                    )
 
     # Empan de mots : séquence de mots distincts, réponse = séquence ou inverse.
     if type_item == "empan-mots":

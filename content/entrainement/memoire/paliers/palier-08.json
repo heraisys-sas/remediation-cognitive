@@ -433,7 +433,8 @@
       "consigne": "Mémorise la séquence d'éléments.",
       "affichage": {
         "mode": "sequence",
-        "duree_par_item_ms": 1200,
+        "duree_par_item_ms": 2000,
+        "pause_item_ms": 2000,
         "elements": [
           "B",
           "K",
@@ -477,7 +478,8 @@
       "consigne": "Mémorise la séquence d'éléments.",
       "affichage": {
         "mode": "sequence",
-        "duree_par_item_ms": 1200,
+        "duree_par_item_ms": 2000,
+        "pause_item_ms": 2000,
         "elements": [
           "P",
           "R",
@@ -521,7 +523,8 @@
       "consigne": "Mémorise la séquence d'éléments.",
       "affichage": {
         "mode": "sequence",
-        "duree_par_item_ms": 1200,
+        "duree_par_item_ms": 2000,
+        "pause_item_ms": 2000,
         "elements": [
           "R",
           "M",
@@ -565,7 +568,8 @@
       "consigne": "Mémorise la séquence d'éléments.",
       "affichage": {
         "mode": "sequence",
-        "duree_par_item_ms": 1200,
+        "duree_par_item_ms": 2000,
+        "pause_item_ms": 2000,
         "elements": [
           "B",
           "M",
@@ -609,7 +613,8 @@
       "consigne": "Mémorise la séquence d'éléments.",
       "affichage": {
         "mode": "sequence",
-        "duree_par_item_ms": 1200,
+        "duree_par_item_ms": 2000,
+        "pause_item_ms": 2000,
         "elements": [
           "P",
           "R",
@@ -653,7 +658,8 @@
       "consigne": "Mémorise la séquence d'éléments.",
       "affichage": {
         "mode": "sequence",
-        "duree_par_item_ms": 1200,
+        "duree_par_item_ms": 2000,
+        "pause_item_ms": 2000,
         "elements": [
           "R",
           "B",
@@ -697,7 +703,8 @@
       "consigne": "Mémorise la séquence d'éléments.",
       "affichage": {
         "mode": "sequence",
-        "duree_par_item_ms": 1200,
+        "duree_par_item_ms": 2000,
+        "pause_item_ms": 2000,
         "elements": [
           "T",
           "L",
@@ -741,7 +748,8 @@
       "consigne": "Mémorise la séquence d'éléments.",
       "affichage": {
         "mode": "sequence",
-        "duree_par_item_ms": 1200,
+        "duree_par_item_ms": 2000,
+        "pause_item_ms": 2000,
         "elements": [
           "P",
           "T",
@@ -785,7 +793,8 @@
       "consigne": "Mémorise la séquence d'éléments.",
       "affichage": {
         "mode": "sequence",
-        "duree_par_item_ms": 1200,
+        "duree_par_item_ms": 2000,
+        "pause_item_ms": 2000,
         "elements": [
           "K",
           "L",
@@ -829,7 +838,8 @@
       "consigne": "Mémorise la séquence d'éléments.",
       "affichage": {
         "mode": "sequence",
-        "duree_par_item_ms": 1200,
+        "duree_par_item_ms": 2000,
+        "pause_item_ms": 2000,
         "elements": [
           "R",
           "K",

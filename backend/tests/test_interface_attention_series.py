@@ -95,7 +95,7 @@ const etat={minuteriesMemo:[]};const CAPACITES={arreter(){}};
 let timers=[],heure=0;function setTimeout(f,ms){timers.push({f,ms});return timers.length}
 function creerNoeud(tag,attrs,...children){return creerElement(tag,attrs,...children)}
 function afficherQuestion(){}let fin=false;function jouerDelaiOuQuestion(){fin=true}
-const BLANC_INTER_ITEM_MS=120;
+const BLANC_INTER_ITEM_MS=2000;
 '''
     script+='\nfunction jouerAffichage(item) '+corps_fonction(SOURCE,'jouerAffichage')
     script+=r'''

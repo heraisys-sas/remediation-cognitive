@@ -16,7 +16,8 @@
       "consigne": "Mémorise les mots affichés.",
       "affichage": {
         "mode": "sequence",
-        "duree_par_item_ms": 900,
+        "duree_par_item_ms": 2000,
+        "pause_item_ms": 2000,
         "elements": [
           "bureau",
           "chapeau",
@@ -56,7 +57,8 @@
       "consigne": "Mémorise les mots affichés.",
       "affichage": {
         "mode": "sequence",
-        "duree_par_item_ms": 900,
+        "duree_par_item_ms": 2000,
+        "pause_item_ms": 2000,
         "elements": [
           "chapeau",
           "nuage",
@@ -96,7 +98,8 @@
       "consigne": "Mémorise les mots affichés.",
       "affichage": {
         "mode": "sequence",
-        "duree_par_item_ms": 900,
+        "duree_par_item_ms": 2000,
+        "pause_item_ms": 2000,
         "elements": [
           "nuage",
           "montre",
@@ -136,7 +139,8 @@
       "consigne": "Mémorise les mots affichés.",
       "affichage": {
         "mode": "sequence",
-        "duree_par_item_ms": 900,
+        "duree_par_item_ms": 2000,
+        "pause_item_ms": 2000,
         "elements": [
           "plage",
           "guitare",
@@ -176,7 +180,8 @@
       "consigne": "Mémorise les mots affichés.",
       "affichage": {
         "mode": "sequence",
-        "duree_par_item_ms": 900,
+        "duree_par_item_ms": 2000,
+        "pause_item_ms": 2000,
         "elements": [
           "vélo",
           "nuage",
@@ -216,7 +221,8 @@
       "consigne": "Mémorise les mots affichés.",
       "affichage": {
         "mode": "sequence",
-        "duree_par_item_ms": 900,
+        "duree_par_item_ms": 2000,
+        "pause_item_ms": 2000,
         "elements": [
           "marteau",
           "fromage",
@@ -256,7 +262,8 @@
       "consigne": "Mémorise les mots affichés.",
       "affichage": {
         "mode": "sequence",
-        "duree_par_item_ms": 900,
+        "duree_par_item_ms": 2000,
+        "pause_item_ms": 2000,
         "elements": [
           "table",
           "nuage",
@@ -296,7 +303,8 @@
       "consigne": "Mémorise les mots affichés.",
       "affichage": {
         "mode": "sequence",
-        "duree_par_item_ms": 900,
+        "duree_par_item_ms": 2000,
+        "pause_item_ms": 2000,
         "elements": [
           "chemise",
           "panier",
@@ -336,7 +344,8 @@
       "consigne": "Mémorise les mots affichés.",
       "affichage": {
         "mode": "sequence",
-        "duree_par_item_ms": 900,
+        "duree_par_item_ms": 2000,
+        "pause_item_ms": 2000,
         "elements": [
           "soleil",
           "stylo",
@@ -376,7 +385,8 @@
       "consigne": "Mémorise les mots affichés.",
       "affichage": {
         "mode": "sequence",
-        "duree_par_item_ms": 900,
+        "duree_par_item_ms": 2000,
+        "pause_item_ms": 2000,
         "elements": [
           "poisson",
           "montagne",
@@ -416,7 +426,8 @@
       "consigne": "Mémorise les mots affichés.",
       "affichage": {
         "mode": "sequence",
-        "duree_par_item_ms": 900,
+        "duree_par_item_ms": 2000,
+        "pause_item_ms": 2000,
         "elements": [
           "table",
           "neige",
@@ -456,7 +467,8 @@
       "consigne": "Mémorise les mots affichés.",
       "affichage": {
         "mode": "sequence",
-        "duree_par_item_ms": 900,
+        "duree_par_item_ms": 2000,
+        "pause_item_ms": 2000,
         "elements": [
           "chapeau",
           "colline",
@@ -496,7 +508,8 @@
       "consigne": "Mémorise les mots affichés.",
       "affichage": {
         "mode": "sequence",
-        "duree_par_item_ms": 900,
+        "duree_par_item_ms": 2000,
+        "pause_item_ms": 2000,
         "elements": [
           "bureau",
           "sable",
@@ -536,7 +549,8 @@
       "consigne": "Mémorise les mots affichés.",
       "affichage": {
         "mode": "sequence",
-        "duree_par_item_ms": 900,
+        "duree_par_item_ms": 2000,
+        "pause_item_ms": 2000,
         "elements": [
           "bureau",
           "colline",
@@ -576,7 +590,8 @@
       "consigne": "Mémorise les mots affichés.",
       "affichage": {
         "mode": "sequence",
-        "duree_par_item_ms": 900,
+        "duree_par_item_ms": 2000,
+        "pause_item_ms": 2000,
         "elements": [
           "jardinier",
           "cuisine",
@@ -616,7 +631,8 @@
       "consigne": "Mémorise les mots affichés.",
       "affichage": {
         "mode": "sequence",
-        "duree_par_item_ms": 900,
+        "duree_par_item_ms": 2000,
+        "pause_item_ms": 2000,
         "elements": [
           "radis",
           "sable",
@@ -656,7 +672,8 @@
       "consigne": "Mémorise les mots affichés.",
       "affichage": {
         "mode": "sequence",
-        "duree_par_item_ms": 900,
+        "duree_par_item_ms": 2000,
+        "pause_item_ms": 2000,
         "elements": [
           "stylo",
           "drapeau",
@@ -696,7 +713,8 @@
       "consigne": "Mémorise les mots affichés.",
       "affichage": {
         "mode": "sequence",
-        "duree_par_item_ms": 900,
+        "duree_par_item_ms": 2000,
+        "pause_item_ms": 2000,
         "elements": [
           "panier",
           "jardin",

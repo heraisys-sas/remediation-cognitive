@@ -56,7 +56,8 @@ def test_empan_mots_ordre_et_tolerance(client, tmp_path):
     elements = item["contenu"]["affichage"]["elements"]
     assert len(elements) >= 3
     assert len(set(elements)) == len(elements)      # pas de mot répété
-    assert item["contenu"]["affichage"]["duree_par_item_ms"] <= 2000
+    assert item["contenu"]["affichage"]["duree_par_item_ms"] == 2000
+    assert item["contenu"]["affichage"]["pause_item_ms"] == 2000
 
     # Bon ordre, saisie sans accents et en majuscules : accepté.
     bonne = " ".join(_sans_accents(mot) for mot in elements).upper()
@@ -69,6 +70,25 @@ def test_empan_mots_ordre_et_tolerance(client, tmp_path):
     desordre = " ".join(reversed(elements2))
     reponse = _repondre(client, "memoire", payload["session_id"], deuxieme["id"], desordre)
     assert reponse.json()["correcte"] is False
+
+
+def test_toutes_les_sequences_memoire_suivent_la_cadence_deux_plus_deux():
+    """Chiffres, mots et lettres partagent 2 s d'affichage puis 2 s de blanc."""
+    items = CONTENU.items("memoire")
+    sequences = [
+        (item["id"], item["contenu"]["affichage"])
+        for item in items
+        if item["contenu"].get("affichage", {}).get("mode") == "sequence"
+    ]
+
+    assert sequences
+    assert {item["type"] for item in items
+            if item["contenu"].get("affichage", {}).get("mode") == "sequence"} == {
+                "empan", "empan-mots", "n-back",
+            }
+    for identifiant, affichage in sequences:
+        assert affichage["duree_par_item_ms"] == 2000, identifiant
+        assert affichage["pause_item_ms"] == 2000, identifiant
 
 
 def test_empan_mots_reponse_attendue_masquee(client, tmp_path):

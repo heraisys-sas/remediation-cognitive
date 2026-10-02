@@ -152,7 +152,8 @@ joint aux données de séance (ADR-002 / ADR-004), borné aux 500 notes les plus
 
 ### Empan de mots (`empan-mots`, thème `memoire`, paliers 9 à 12)
 
-Séquence de mots affichés un par un (`mode: "sequence"`, 900 ms par élément), à
+Séquence de mots affichés un par un (`mode: "sequence"`, 2 s visibles puis 2 s de
+blanc par élément), à
 retranscrire **dans l'ordre** (ou à l'envers selon l'énoncé). La comparaison est
 ordonnée et tolérante à la saisie : accents, casse et ponctuation ignorés, ordre
 significatif.
@@ -167,8 +168,9 @@ significatif.
     "affichage": {
       "mode": "series",
       "series": [["chat", "lune", "porte"], ["table", "nuage", "crayon"]],
-      "duree_par_item_ms": 1000,
-      "pause_serie_ms": 1500
+      "duree_par_item_ms": 2000,
+      "pause_item_ms": 2000,
+      "pause_serie_ms": 3000
     },
     "delai_s": 20,
     "portee": "toutes-series",
@@ -195,8 +197,7 @@ jamais une note, jamais une norme.
 
 ### Invariantes de contenu ajoutées au validateur
 
-- rythme d'affichage d'un élément : **400 à 2000 ms** (au-delà, ce n'est plus une
-  présentation d'empan mais une pause d'attente) ;
+- séquences et séries : **2000 ms d'affichage puis 2000 ms de blanc** par élément ;
 - aucun mot dupliqué dans une séquence ni entre les séries d'un même item ;
 - les cibles déclarées correspondent exactement aux séries affichées (selon la portée) ;
 - seuil et délai bornés ; modes d'affichage connus (`sequence`, `liste`, `series`).
