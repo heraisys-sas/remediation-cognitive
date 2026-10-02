@@ -335,6 +335,27 @@ def erreurs_contenu(item: dict, prefixe: str) -> list[str]:
             if not contenu.get("objectif") or not contenu.get("critere") or set(reponse.values()) != {"oui", "non"}:
                 erreurs.append(prefixe + "objectif, critères et deux catégories de messages requis")
 
+    if type_item == "reprise-interrompue":
+        points = contenu.get("points")
+        interruption = contenu.get("interruption")
+        apres = contenu.get("interruption_apres")
+        if not isinstance(points, list) or len(points) != 4 or not all(
+                isinstance(p, dict) and p.get("id") and p.get("label") and p.get("etat")
+                and p.get("options") == ["Déjà validé", "À reprendre"] for p in points):
+            erreurs.append(prefixe + "reprise-interrompue : quatre points structurés requis")
+        elif not isinstance(reponse, dict) or set(reponse) != {"points", "reprise"}:
+            erreurs.append(prefixe + "reprise-interrompue : réponse points + reprise requise")
+        else:
+            ids = [p["id"] for p in points]
+            if len(set(ids)) != len(ids) or set(reponse["points"]) != set(ids):
+                erreurs.append(prefixe + "reprise-interrompue : réponse requise pour chaque point distinct")
+            if set(reponse["points"].values()) != {"valide", "reprendre"}:
+                erreurs.append(prefixe + "reprise-interrompue : les deux états doivent être présents")
+            if not isinstance(apres, int) or apres not in {1, 2, 3} or reponse["reprise"] != ids[apres]:
+                erreurs.append(prefixe + "reprise-interrompue : point de reprise incohérent")
+        if not isinstance(interruption, dict) or not interruption.get("enonce") or not isinstance(interruption.get("options"), list) or len(interruption["options"]) < 2:
+            erreurs.append(prefixe + "reprise-interrompue : interruption brève avec choix requise")
+
     indices = contenu.get("indices")
     if type_item in TYPES_A_INDICES:
         if not isinstance(indices, list) or len(indices) < 2:

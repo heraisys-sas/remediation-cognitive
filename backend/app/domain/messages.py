@@ -68,7 +68,7 @@ VOCABULAIRES = {
             },
             "garder-cap": {
                 "nom": "Garder le cap",
-                "description": "Choisir comment reprendre, adapter et vérifier un plan à partir de situations écrites",
+                "description": "Reprendre une tâche réellement interrompue, adapter un plan et vérifier avant de terminer",
             },
             "methodes": {
                 "nom": "Méthodes pour retenir et s’organiser",

@@ -29,7 +29,7 @@ def test_garder_cap_accessible_et_corrige(client):
     theme=next(t for t in themes if t['id']=='garder-cap')
     assert theme['categorie']=='entrainement'
     contenu=ChargeurContenu()
-    for palier in (1,2,3):
+    for palier in (2,3):
         r=client.post('/api/entrainement/garder-cap/sessions',json={'palier':palier})
         assert r.status_code==201,r.text
         session=r.json();assert len(session['items'])==4
@@ -43,6 +43,39 @@ def test_garder_cap_accessible_et_corrige(client):
         assert premier.json().get('attendue') is None
         second=client.post(url,json={'item_id':item['id'],'reponse':bonne,'temps_ms':2000})
         assert second.status_code==200 and second.json()['correcte']
+
+
+def test_reprise_reellement_interrompue_et_correction_detaillee(client):
+    contenu=ChargeurContenu()
+    items=[i for i in contenu.items('garder-cap') if i['palier']==1]
+    assert len(items)==12
+    assert {i['contenu']['interruption_apres'] for i in items}=={1,2,3}
+    assert all(i['type']=='reprise-interrompue' and len(i['contenu']['points'])==4 for i in items)
+    profils={tuple(i['reponse']['valeur']['points'][p['id']] for p in i['contenu']['points']) for i in items}
+    assert len(profils)>=5
+    for position in range(4):
+        assert {tuple(i['reponse']['valeur']['points'].values())[position] for i in items}=={'valide','reprendre'}
+    session=client.post('/api/entrainement/garder-cap/sessions',json={
+        'parcours':'reprendre','palier':1}).json()
+    assert len(session['items'])==4
+    public=session['items'][0]; complet=contenu.item('garder-cap',public['id'])
+    assert 'reponse' not in public
+    bonne=complet['reponse']['valeur']
+    payload={**bonne,'interruption':'réponse non notée'}
+    url=f"/api/entrainement/garder-cap/sessions/{session['session_id']}/reponses"
+    resultat=client.post(url,json={'item_id':public['id'],'reponse':payload,'temps_ms':4000})
+    assert resultat.status_code==200,resultat.text
+    corps=resultat.json();assert corps['correcte']
+    assert corps['detail_fonctionnel']['type']=='reprise-interrompue'
+    assert corps['detail_fonctionnel']['interruption_non_notee'] is True
+    assert len(corps['detail_fonctionnel']['lignes'])==5
+
+    mauvaise={**bonne,'reprise':complet['contenu']['points'][0]['id']}
+    if mauvaise['reprise']==bonne['reprise']:
+        mauvaise['reprise']=complet['contenu']['points'][-1]['id']
+    from backend.app.domain.attention_fonctionnelle import corriger_detail
+    juste,detail=corriger_detail(complet,mauvaise)
+    assert not juste and not detail['lignes'][-1]['correcte']
 
 
 def test_panneau_methode_reinitialise_et_retour_generique():

@@ -898,6 +898,10 @@ function jouerAffichage(item) {
 
 /** Réponses produites ou choix par point, sans réponse attendue côté client. */
 function rendreFonctionnel(item) {
+  if (item.type === "reprise-interrompue") {
+    rendreRepriseInterrompue(item);
+    return;
+  }
   const c = item.contenu;
   const zone = refs.zoneSequence;
   zone.hidden = false;
@@ -979,6 +983,84 @@ function rendreFonctionnel(item) {
     }
   }
   prochain();
+}
+
+/** Tâche commencée, bref détour réellement affiché, puis récupération du point de reprise. */
+function rendreRepriseInterrompue(item) {
+  const c = item.contenu;
+  const zone = refs.zoneSequence;
+  const reponses = { points: {}, reprise: "", interruption: "" };
+  let index = 0;
+  let interruptionFaite = false;
+  zone.hidden = false;
+
+  const bouton = (texte, action, classe = "bouton bouton-secondaire") => {
+    const element = creerElement("button", { texte, classe, attributs: { type: "button" } });
+    element.addEventListener("click", action);
+    return element;
+  };
+  const cadreBut = () => creerElement("section", { classe: "document-source" },
+    creerElement("h3", { texte: c.enonce }), creerElement("p", { texte: c.but }));
+
+  function montrerPoint() {
+    if (!interruptionFaite && index === c.interruption_apres) {
+      montrerInterruption();
+      return;
+    }
+    if (index >= c.points.length) {
+      zone.replaceChildren(cadreBut(),
+        creerElement("p", { texte: "Le contrôle est terminé." }),
+        bouton("Valider le contrôle", () => soumettreValeur({ ...reponses,
+          points: { ...reponses.points } }, 0), "bouton bouton-primaire"));
+      return;
+    }
+    const point = c.points[index];
+    let choixFait = false;
+    const actions = point.options.map((libelle, position) => bouton(libelle, () => {
+      if (choixFait) return;
+      choixFait = true;
+      reponses.points[point.id] = position === 0 ? "valide" : "reprendre";
+      index += 1;
+      montrerPoint();
+    }));
+    zone.replaceChildren(cadreBut(),
+      creerElement("p", { classe: "ligne-discrete", texte: `Point ${index + 1}/${c.points.length} — ${point.label}` }),
+      creerElement("p", { classe: "document-source", texte: point.etat }),
+      creerElement("div", { classe: "grille-options" }, ...actions));
+  }
+
+  function montrerInterruption() {
+    interruptionFaite = true;
+    const interruption = c.interruption;
+    let choixFait = false;
+    const actions = interruption.options.map(option => bouton(option, () => {
+      if (choixFait) return;
+      choixFait = true;
+      reponses.interruption = option;
+      montrerReprise();
+    }));
+    zone.replaceChildren(
+      creerElement("p", { classe: "ligne-discrete", texte: "Interruption" }),
+      creerElement("p", { texte: "Réponds à ce bref message avant de revenir au contrôle." }),
+      creerElement("p", { classe: "document-source", texte: interruption.enonce }),
+      creerElement("div", { classe: "grille-options" }, ...actions));
+  }
+
+  function montrerReprise() {
+    let choixFait = false;
+    const actions = c.points.map(point => bouton(point.label, () => {
+      if (choixFait) return;
+      choixFait = true;
+      reponses.reprise = point.id;
+      montrerPoint();
+    }));
+    zone.replaceChildren(
+      creerElement("p", { classe: "ligne-discrete", texte: "Retrouve le fil" }),
+      creerElement("p", { texte: "Le dossier est momentanément masqué. Quel point dois-tu traiter maintenant ?" }),
+      creerElement("div", { classe: "grille-options" }, ...actions));
+  }
+
+  montrerPoint();
 }
 
 /** Les mots auditifs ne sont jamais écrits dans le DOM. La voix pilote l'avancement. */
@@ -1265,7 +1347,7 @@ function afficherQuestion(item) {
     rendreSequence(item);
   }
 
-  if (["actualiser-consigne", "comparer-documents", "reperer-essentiel"].includes(item.type)) {
+  if (["actualiser-consigne", "comparer-documents", "reperer-essentiel", "reprise-interrompue"].includes(item.type)) {
     refs.formulaire.hidden = true;
     refs.carteFeedback.hidden = true;
     refs.boutonSuivant.hidden = true;
@@ -1428,7 +1510,7 @@ async function soumettreValeur(brut, indiceUtilise) {
 
   const item = etat.session.items[etat.indexItem];
   // Séquence guidée : le payload est déjà l'objet des réponses par étape.
-  const sequence = ["pqrst-mise-en-oeuvre", "actualiser-consigne", "comparer-documents", "reperer-essentiel"].includes(item.type);
+  const sequence = ["pqrst-mise-en-oeuvre", "actualiser-consigne", "comparer-documents", "reperer-essentiel", "reprise-interrompue"].includes(item.type);
   const corps = {
     item_id: item.id,
     reponse: sequence ? brut : normaliserReponse(brut, etat.theme),

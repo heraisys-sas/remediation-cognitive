@@ -3,10 +3,10 @@
   "paliers": [
     {
       "id": "cap-palier-1",
-      "description": "Reprendre après une interruption",
+      "description": "Reprendre une tâche après une interruption réellement vécue",
       "prerequis": [],
       "fichier": "paliers/palier-01.json",
-      "nb_items": 4
+      "nb_items": 12
     },
     {
       "id": "cap-palier-2",

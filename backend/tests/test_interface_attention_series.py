@@ -127,6 +127,40 @@ assert.ok(texte(refs.carteFeedback).includes('Atlas'));
     execute(script)
 
 
+def test_reprise_interrompt_masque_le_dossier_et_retrouve_le_point_suivant():
+    item=next(i for i in ChargeurContenu().items('garder-cap') if i['type']=='reprise-interrompue'
+              and i['contenu']['interruption_apres']==2)
+    script=BASE+'\nfunction rendreRepriseInterrompue(item) '+corps_fonction(SOURCE,'rendreRepriseInterrompue')
+    script+='\nconst item='+json.dumps(item)+r''';
+rendreRepriseInterrompue(item);
+for(let i=0;i<item.contenu.interruption_apres;i++) {
+  const point=item.contenu.points[i];
+  assert.ok(texte(refs.zoneSequence).includes(point.etat));
+  const position=item.reponse.valeur.points[point.id]==='valide'?0:1;
+  nodes(refs.zoneSequence,'button')[position].click();
+}
+assert.ok(texte(refs.zoneSequence).includes('Interruption'));
+assert.ok(!texte(refs.zoneSequence).includes(item.contenu.but));
+const boutonsDétour=nodes(refs.zoneSequence,'button');
+boutonsDétour[0].click();boutonsDétour[0].click();boutonsDétour[1].click();
+assert.ok(texte(refs.zoneSequence).includes('Retrouve le fil'));
+assert.ok(!texte(refs.zoneSequence).includes(item.contenu.but));
+const prochain=item.reponse.valeur.reprise;
+const labels=item.contenu.points.map(p=>p.label);
+nodes(refs.zoneSequence,'button')[item.contenu.points.findIndex(p=>p.id===prochain)].click();
+for(let i=item.contenu.interruption_apres;i<item.contenu.points.length;i++) {
+  const point=item.contenu.points[i];
+  assert.ok(texte(refs.zoneSequence).includes(point.etat));
+  nodes(refs.zoneSequence,'button')[item.reponse.valeur.points[point.id]==='valide'?0:1].click();
+}
+nodes(refs.zoneSequence,'button')[0].click();
+assert.deepEqual(soumis.points,item.reponse.valeur.points);
+assert.equal(soumis.reprise,item.reponse.valeur.reprise);
+assert.equal(soumis.interruption,item.contenu.interruption.options[0]);
+'''
+    execute(script)
+
+
 def test_feedback_rappel_distingue_omission_confusion_et_intrusion():
     script=BASE+'''\nconst etat={theme:{id:'rappel-series'},reponseSoumise:''};
 refs.carteFeedback=creerElement('div');refs.carteFeedback.hidden=true;

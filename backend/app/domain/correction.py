@@ -700,7 +700,8 @@ def corriger(theme: str, item: dict, reponse) -> bool:
 
     Fonction interne serveur : ne jamais l'exposer avant soumission.
     """
-    if item.get("type") in {"actualiser-consigne", "comparer-documents", "reperer-essentiel"}:
+    if item.get("type") in {"actualiser-consigne", "comparer-documents", "reperer-essentiel",
+                             "reprise-interrompue"}:
         from .attention_fonctionnelle import corriger_detail
         return corriger_detail(item, reponse)[0]
     attendue = (item.get("reponse") or {}).get("valeur")

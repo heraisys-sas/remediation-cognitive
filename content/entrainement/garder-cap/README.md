@@ -1,12 +1,12 @@
 # Garder le cap
 
-12 situations originales, trois familles de quatre items, accessibles depuis l’accueil patient :
+20 situations originales réparties dans trois parcours indépendants, accessibles depuis l’accueil patient :
 
-1. Reprendre après une interruption : identifier ce qui est achevé et ce qui reste.
+1. Reprendre après une interruption : 12 contrôles en quatre points réellement commencés, interrompus par un bref message non noté, puis repris après identification du prochain point.
 2. Adapter le plan : actualiser une action sans perdre le but ni les contraintes valables.
 3. Vérifier avant de terminer : comparer le résultat à la demande, repérer une discordance.
 
-Les informations restent visibles ; aucun chronomètre de réponse. Une méthode facultative invite à faire une pause, identifier le but et contrôler. Une première erreur autorise un second essai sans dévoiler la réponse (type `but-etapes` existant). Quatre situations par séance. Les trois familles ont désormais des progressions indépendantes : leurs numéros ne sont pas des degrés de sévérité clinique.
+Dans les parcours Adapter et Vérifier, les informations restent visibles et une première erreur autorise un second essai sans dévoiler la réponse (`but-etapes`). Dans Reprendre, le dossier est visible pendant le contrôle, masqué pendant l’interruption et pendant le choix du point de reprise, puis restauré. L’interruption exige une réponse pour produire un vrai détour attentionnel mais n’entre pas dans la réussite ; le point de reprise et les quatre contrôles sont corrigés séparément. Aucun chronomètre de réponse. Quatre situations par séance. Les trois parcours ont des progressions indépendantes : leurs numéros ne sont pas des degrés de sévérité clinique.
 
 Le choix parmi trois actions constitue une initiation au raisonnement explicite. Il ne remplace ni l’exécution d’une tâche personnelle, ni le programme complet de Goal Management Training. L’objectif proposé est pédagogique ; l’efficacité clinique de ces items n’a pas été mesurée. Relecture orthophoniste à faire.
 
@@ -22,11 +22,11 @@ Recherche effectuée le 30 septembre 2026 à partir des notices/résumés primai
 
 | Famille | Objectif fonctionnel | Analogie avec les sources | Limite |
 |---|---|---|---|
-| Reprise | Éviter de recommencer ou sauter une étape après interruption | Recentrage sur le but et suivi de tâche (INCOG/GMT) | L’interruption est décrite, pas provoquée en temps réel |
+| Reprise | Éviter de recommencer ou sauter une étape après interruption | Recentrage sur le but et suivi de tâche (INCOG/GMT) | L’interruption est provoquée dans une simulation écran, sans démonstration de transfert à une tâche personnelle |
 | Adaptation | Réviser le plan après une information nouvelle | Gestion du but et résolution de problèmes (INCOG/GMT) | La flexibilité est sollicitée par le choix, pas mesurée isolément |
 | Contrôle | Repérer un destinataire, horaire ou état de fichier incorrect | Auto-surveillance et vérification (INCOG) | Pas de mesure de généralisation au quotidien |
 
-Générateur : `python3 tools/generer_garder_cap.py`. Corpus versionné `cap-1-…`.
+Générateur : `python3 tools/generer_garder_cap.py`. Les reprises réellement interrompues portent des identifiants `cap-2-reprise-…` ; les anciens QCM de reprise conservent leur historique sans être resservis.
 
 ## Ajustement au public post-commotionnel de niveau antérieur élevé
 

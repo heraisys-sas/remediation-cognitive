@@ -1,12 +1,36 @@
 """Correction explicite des trois tâches fonctionnelles, sans similarité approximative."""
 from .correction import _clef_reponse
 
-TYPES = frozenset({'actualiser-consigne', 'comparer-documents', 'reperer-essentiel'})
+TYPES = frozenset({'actualiser-consigne', 'comparer-documents', 'reperer-essentiel',
+                   'reprise-interrompue'})
 
 def corriger_detail(item, reponse):
     c = item['contenu']
     attendu = item['reponse']['valeur']
     donne = reponse if isinstance(reponse, dict) else {}
+    if item['type'] == 'reprise-interrompue':
+        points_donnes = donne.get('points') if isinstance(donne.get('points'), dict) else {}
+        points_attendus = attendu['points']
+        labels = {point['id']: point['label'] for point in c['points']}
+        lignes = []
+        for cle, valeur in points_attendus.items():
+            correcte = points_donnes.get(cle) == valeur
+            lignes.append({'label': labels[cle], 'correcte': correcte,
+                           'attendue': {'valide': 'Déjà validé',
+                                       'reprendre': 'À reprendre'}[valeur],
+                           'explication': ''})
+        reprise = donne.get('reprise')
+        reprise_attendue = attendu['reprise']
+        reprise_correcte = reprise == reprise_attendue
+        lignes.append({'label': 'Reprise après interruption',
+                       'correcte': reprise_correcte,
+                       'attendue': f'Reprendre par « {labels[reprise_attendue]} »',
+                       'explication': 'Le point précédent était déjà traité.'})
+        complete = set(points_donnes) == set(points_attendus)
+        return complete and reprise_correcte and all(l['correcte'] for l in lignes), {
+            'lignes': lignes, 'omissions': 0, 'fausses_selections': 0,
+            'type': item['type'], 'interruption_non_notee': True,
+        }
     champs = c.get('champs') or [{'id':m['id'],'label':m['texte']} for m in c['messages']]
     lignes=[]
     omissions=fausses_selections=0

@@ -1,3 +1,7 @@
+# 2026-10-02 — reprise après interruption réellement vécue
+
+Le parcours Reprendre de « Garder le cap » remplace quatre vignettes décrites par douze contrôles réellement interrompus : quatre points à traiter, détour bref non noté après un à trois points, dossier masqué, identification du prochain point puis achèvement. Correction détaillée des décisions et de la reprise, nouveaux identifiants `cap-2-reprise-…`, double clic neutralisé. Adapter et Vérifier restent inchangés.
+
 # 2026-10-01 — banques fonctionnelles enrichies
 
 Actualiser une consigne, Comparer deux documents et Repérer l’essentiel passent de 4 à 12 situations par palier, en conservant quatre exercices par séance. Progressions rendues explicites, corrections successives et informations à conserver ajoutées, nombre d’écarts et de sélections rendu variable, distracteurs auto-révélateurs supprimés. Nouveaux identifiants `v2` ; double clic neutralisé dans le flux de sélection.
