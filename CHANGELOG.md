@@ -1,3 +1,7 @@
+# 2026-10-02 — déduction allégée et lecture des indices réparée
+
+Le panneau générique « Voir un coup de pouce » est masqué dans Déduction : il répétait la méthode alors que l'exercice possède déjà une aide au raisonnement graduée. Les aides propres à la grille et le tableau facultatif restent disponibles. Le bouton « Écouter » lit désormais la consigne puis toutes les phrases de la grille ; auparavant `contenu.enonce` était vide pour ce type structuré, donc aucun texte n'était envoyé à la synthèse vocale.
+
 # 2026-10-02 — méthodes spécifiques plutôt qu'un rappel universel
 
 Le triptyque générique « quoi faire / comment / vérifier » n'est plus affiché dans toutes les familles. Le panneau est désormais masqué quand aucune stratégie concrète n'est définie ; il montre en priorité la méthode propre à l'item, ou une stratégie stable adaptée à la déduction, aux empans, aux associations, au rappel de séries et à l'accès lexical. Les consignes stratégiques des tâches fonctionnelles restent consultables. Reconnaissance simple, anglais, Python et séquences déjà guidées n'ont plus de panneau redondant.

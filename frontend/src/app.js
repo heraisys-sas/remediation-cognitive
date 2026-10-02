@@ -725,6 +725,25 @@ function methodePourItem(item) {
   return METHODES_PAR_TYPE[item.type] || "";
 }
 
+/** Le coup de pouce général est inutile sur une grille : la méthode et l'aide
+ * graduée propre aux indices couvrent déjà le besoin sans ajouter un panneau. */
+function aideGeneriquePourItem(item) {
+  if (item.type === "grille-deduction") return "";
+  return typeof item.contenu?.aide === "string" ? item.contenu.aide.trim() : "";
+}
+
+/** Texte complet envoyé à la synthèse pour une grille dont l'énoncé visible est
+ * construit à partir d'indices structurés plutôt que de ``contenu.enonce``. */
+function textePourLectureDeduction(contenu, formateur = formaterEnonce) {
+  const n = Array.isArray(contenu.figures) ? contenu.figures.length : 3;
+  const indices = Array.isArray(contenu.enonces)
+    ? contenu.enonces.map((indice) => formateur(indice, n)).filter(Boolean)
+    : [];
+  return [contenu.consigne, indices.length ? "Indices." : "", ...indices]
+    .filter(Boolean)
+    .join(" ");
+}
+
 function montrerItem() {
   const items = etat.session.items;
   const item = items[etat.indexItem];
@@ -1362,7 +1381,9 @@ function afficherQuestion(item) {
     "enonce" + (item.type === "prediction-sortie" ? " enonce-code" : "");
   // « Écouter » ne lit que la QUESTION : la consigne est un rappel de méthode, pas
   // une formule à répéter à chaque question (elle serait rébarbative à la longue).
-  etat.enonceCourant = contenu.enonce ?? "";
+  etat.enonceCourant = item.type === "grille-deduction"
+    ? textePourLectureDeduction(contenu)
+    : contenu.enonce ?? "";
   lireSiLectureAuto(etat.enonceCourant);
 
   // Rappel de méthode : affiché une seule fois par type d'exercice dans la séance.
@@ -1376,8 +1397,9 @@ function afficherQuestion(item) {
   }
 
   // Aide optionnelle (contenu.aide) : repliée par défaut.
-  if (contenu.aide) {
-    refs.texteAide.textContent = contenu.aide;
+  const aideGenerique = aideGeneriquePourItem(item);
+  if (aideGenerique) {
+    refs.texteAide.textContent = aideGenerique;
     refs.zoneAide.hidden = false;
   } else {
     refs.texteAide.textContent = "";

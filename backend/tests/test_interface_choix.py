@@ -44,6 +44,8 @@ const THEMES_SANS_DICTEE = new Set();
 function annulerMemo() {}
 function viderZonesReponse() {refs.zoneChoix.replaceChildren()}
 function lireSiLectureAuto() {}
+function aideGeneriquePourItem(item) {return item.contenu.aide || ''}
+function textePourLectureDeduction() {return ''}
 function inputmodePour() {return 'text'}
 function reglerEtatBoutons() {}
 let valeur;
@@ -107,6 +109,40 @@ bouton.click();
 assert.equal(liste.children.length,1);
 assert.equal(liste.children[0].texte,item.contenu.indices[0].texte);
 assert.equal(soumis,false);
+'''
+    node = shutil.which('node')
+    assert node, 'Node requis pour vérifier le rendu réel des fonctions JS'
+    subprocess.run([node, '-e', script], check=True, capture_output=True, text=True)
+
+
+def test_deduction_masque_le_coup_de_pouce_et_prepare_tous_les_indices_a_lire():
+    item = json.loads(
+        (ROOT / 'content/entrainement/deduction/paliers/palier-02.json').read_text()
+    )[0]
+    affichage = corps_fonction(SOURCE, 'afficherQuestion')
+    assert 'aideGeneriquePourItem(item)' in affichage
+    assert 'textePourLectureDeduction(contenu)' in affichage
+
+    script = '''
+const assert=require('node:assert/strict');
+'''
+    script += '\nfunction aideGeneriquePourItem(item) ' + corps_fonction(
+        SOURCE, 'aideGeneriquePourItem'
+    )
+    script += '\nfunction textePourLectureDeduction(contenu, formateur) ' + corps_fonction(
+        SOURCE, 'textePourLectureDeduction'
+    )
+    script += '\nconst item=' + json.dumps(item) + ''';
+assert.equal(aideGeneriquePourItem(item),'');
+assert.equal(aideGeneriquePourItem({type:'autre',contenu:{aide:'  Aide utile.  '}}),'Aide utile.');
+let vus=[];
+const texte=textePourLectureDeduction(item.contenu,(indice,n)=>{
+  vus.push({indice,n}); return `Indice lu ${vus.length}.`;
+});
+assert.equal(vus.length,item.contenu.enonces.length);
+assert.ok(vus.every(v=>v.n===item.contenu.figures.length));
+assert.ok(texte.startsWith(item.contenu.consigne+' Indices.'));
+for(let i=1;i<=vus.length;i++) assert.ok(texte.includes(`Indice lu ${i}.`));
 '''
     node = shutil.which('node')
     assert node, 'Node requis pour vérifier le rendu réel des fonctions JS'
