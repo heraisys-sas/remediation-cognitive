@@ -198,7 +198,48 @@ def test_demarrage_payload_conforme(client):
     for item in items:
         # Contrat exact : id, type, palier, contenu — et JAMAIS de réponse.
         assert set(item) == {"id", "type", "palier", "contenu"}
-        assert item["palier"] == 1  # thème vierge → palier 1
+        assert item["palier"] == 5  # entrée adulte ; le socle reste sélectionnable
+
+
+def test_calibration_calcul_replie_au_socle_apres_difficulte_nette(client):
+    payload = _demarrer(client, "calcul-mental")
+    assert {item["palier"] for item in payload["items"]} == {5}
+    # Huit réponses donnent un échantillon suffisant ; moins de 50 % déclenche
+    # le repli. Une séance interrompue après quelques réponses ne le ferait pas.
+    for item in payload["items"][:8]:
+        assert _repondre(
+            client, "calcul-mental", payload["session_id"], item["id"], 999999,
+        ).status_code == 200
+    assert _finir(client, "calcul-mental", payload["session_id"]).status_code == 200
+
+    racine = _racine_donnees(client)
+    maitrise = json.loads((racine / "calcul-mental" / "maitrise.json").read_text())
+    assert maitrise["palier_courant"] == 3
+    assert maitrise["historique"] == [[5, 0.0]]
+    suivant = _demarrer(client, "calcul-mental")
+    assert {item["palier"] for item in suivant["items"]} == {3}
+
+
+def test_depart_calcul_migre_un_ancien_socle_reussi(client, tmp_path):
+    dossier = tmp_path / "data" / "calcul-mental"
+    dossier.mkdir(parents=True)
+    (dossier / "maitrise.json").write_text(
+        '{"palier_courant": 1, "historique": [[1, 0.9]]}', encoding="utf-8"
+    )
+    payload = _demarrer(client, "calcul-mental")
+    assert {item["palier"] for item in payload["items"]} == {5}
+    maitrise = json.loads((dossier / "maitrise.json").read_text())
+    assert maitrise["palier_courant"] == 5
+
+
+def test_depart_calcul_conserve_un_socle_en_difficulte(client, tmp_path):
+    dossier = tmp_path / "data" / "calcul-mental"
+    dossier.mkdir(parents=True)
+    (dossier / "maitrise.json").write_text(
+        '{"palier_courant": 1, "historique": [[1, 0.4]]}', encoding="utf-8"
+    )
+    payload = _demarrer(client, "calcul-mental")
+    assert {item["palier"] for item in payload["items"]} == {1}
 
 
 def test_reponse_attendue_absente_du_payload_tous_themes(client):
@@ -276,8 +317,8 @@ def test_cycle_complet_avec_resume_coherent(client, tmp_path):
     cartes = json.loads((racine / "calcul-mental" / "cartes-fsrs.json").read_text())
     assert set(cartes["cartes"]) == {item["id"] for item in items}
     maitrise = json.loads((racine / "calcul-mental" / "maitrise.json").read_text())
-    assert maitrise["palier_courant"] == 1
-    assert maitrise["historique"] == [[1, 11 / 12]]
+    assert maitrise["palier_courant"] == 5
+    assert maitrise["historique"] == [[5, 11 / 12]]
     compteur = json.loads((racine / "calcul-mental" / "compteur-seances.json").read_text())
     assert compteur["nb_sessions"] == 1
 
@@ -318,7 +359,7 @@ def test_resume_seance_partiellement_repondue(client):
     # La maîtrise n'historise que des séances réellement répondues.
     racine = _racine_donnees(client)
     maitrise = json.loads((racine / "calcul-mental" / "maitrise.json").read_text())
-    assert maitrise["historique"] == [[1, 2 / 3]]
+    assert maitrise["historique"] == [[5, 2 / 3]]
 
 
 def test_baseline_rt_adaptative(client):
@@ -547,7 +588,7 @@ def test_maitrise_trois_seances_parfaites_font_progresser_palier(client):
         # Calcul mental autorise une pratique volontaire dans la journée : la
         # troisième séance ne devient pas vide une fois les nouveautés épuisées.
         assert len(payload["items"]) == 12
-        assert {item["palier"] for item in payload["items"]} == {1}
+        assert {item["palier"] for item in payload["items"]} == {5}
         resultats = _repondre_tout(
             client, "calcul-mental", payload,
             reponse_factory=lambda item: _valeur_attendue("calcul-mental", item["id"]),
@@ -558,8 +599,8 @@ def test_maitrise_trois_seances_parfaites_font_progresser_palier(client):
         assert fin["arret_propose"] is False
     racine = _racine_donnees(client)
     maitrise = json.loads((racine / "calcul-mental" / "maitrise.json").read_text())
-    assert maitrise["historique"] == [[1, 1.0], [1, 1.0], [1, 1.0]]
-    assert maitrise["palier_courant"] == 2
+    assert maitrise["historique"] == [[5, 1.0], [5, 1.0], [5, 1.0]]
+    assert maitrise["palier_courant"] == 6
 
 
 # -- garde-fou : aucun endpoint /api/bilan ------------------------------------------------
@@ -673,7 +714,7 @@ def test_duree_max_appliquee_serveur(tmp_path):
     cartes = json.loads((racine / "calcul-mental" / "cartes-fsrs.json").read_text())
     assert items[0]["id"] in cartes["cartes"]
     maitrise = json.loads((racine / "calcul-mental" / "maitrise.json").read_text())
-    assert maitrise["historique"] == [[1, 1.0]]
+    assert maitrise["historique"] == [[5, 1.0]]
 
 
 def test_deduction_seance_plus_courte(tmp_path):

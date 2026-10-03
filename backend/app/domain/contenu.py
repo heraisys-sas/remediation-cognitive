@@ -132,6 +132,13 @@ _CATEGORIE_PAR_THEME: dict[str, str] = {
     "reperer-essentiel": "entrainement",
 }
 
+# Niveau d'entrée automatique d'un thème sans parcours. Les niveaux inférieurs
+# restent accessibles par le sélecteur d'essai ; ils servent de socle si la
+# calibration montre une difficulté réelle.
+_PALIER_DEPART_PAR_THEME: dict[str, int] = {
+    "calcul-mental": 5,
+}
+
 #: Programme d'entraînement (cadrage du rythme et des paliers).
 _FICHIER_PROGRAMME = Path("content/programmes/8-semaines.json")
 
@@ -227,10 +234,12 @@ class ChargeurContenu:
         )
 
     def palier_depart(self, theme: str, parcours: str | None) -> int:
-        """Palier initial d'un parcours neuf ; 1 quand aucun saut n'est justifié."""
+        """Palier initial d'une progression neuve ; 1 sans saut justifié."""
         definition = next((p for p in _PARCOURS_PAR_THEME.get(theme, [])
                            if p["id"] == parcours), None)
-        return int((definition or {}).get("palier_depart", 1))
+        if definition is not None:
+            return int(definition.get("palier_depart", 1))
+        return int(_PALIER_DEPART_PAR_THEME.get(theme, 1))
 
     # -- items -------------------------------------------------------------
 

@@ -2,6 +2,8 @@
 
 Le commutateur « Dépasser la limite de séances » levait déjà le quota serveur, mais Calcul mental pouvait ne plus avoir de carte due après deux séances : la séance suivante était vide et donnait l'impression que le réglage ne fonctionnait pas. Calcul mental complète désormais une séance avec les cartes non dues dont l'échéance est la plus proche, sans changer la sélection des autres thèmes. Son plafond ordinaire passe de trois à six séances quotidiennes ; la dérogation permet toujours d'aller au-delà. Le résumé utilise ce plafond propre au thème.
 
+Le mode Auto de Calcul mental ne commence plus par les compléments dans 10 : une progression neuve entre au palier 5, tandis que les paliers 1 à 4 restent disponibles dans le sélecteur. Une première séance automatique suffisamment complète (au moins huit réponses) et réussie à moins de 50 % ramène la séance suivante au palier 3. Les anciens historiques de socle réussis rejoignent le nouveau départ ; une difficulté déjà observée conserve le niveau stocké.
+
 # 2026-10-02 — déduction allégée et lecture des indices réparée
 
 Le panneau générique « Voir un coup de pouce » est masqué dans Déduction : il répétait la méthode alors que l'exercice possède déjà une aide au raisonnement graduée. Les aides propres à la grille et le tableau facultatif restent disponibles. Le bouton « Écouter » lit désormais la consigne puis toutes les phrases de la grille ; auparavant `contenu.enonce` était vide pour ce type structuré, donc aucun texte n'était envoyé à la synthèse vocale. En lecture automatique, une consigne identique n'est dite qu'à la première grille de la séance ; les indices nouveaux sont toujours lus et le bouton permet toujours de demander une relecture complète.

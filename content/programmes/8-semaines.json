@@ -47,7 +47,7 @@
       "semaine": 1,
       "duree_min": 6,
       "plafond_palier": {
-        "calcul-mental": 2,
+        "calcul-mental": 5,
         "memoire": 2,
         "reperer-essentiel": 2,
         "evocation": 2,
@@ -125,7 +125,7 @@
       "semaine": 2,
       "duree_min": 6,
       "plafond_palier": {
-        "calcul-mental": 3,
+        "calcul-mental": 6,
         "memoire": 3,
         "reperer-essentiel": 3,
         "evocation": 3,
@@ -203,7 +203,7 @@
       "semaine": 3,
       "duree_min": 7,
       "plafond_palier": {
-        "calcul-mental": 4,
+        "calcul-mental": 7,
         "memoire": 4,
         "reperer-essentiel": 3,
         "evocation": 4,
@@ -281,7 +281,7 @@
       "semaine": 4,
       "duree_min": 7,
       "plafond_palier": {
-        "calcul-mental": 5,
+        "calcul-mental": 8,
         "memoire": 5,
         "reperer-essentiel": 3,
         "evocation": 5,
@@ -359,7 +359,7 @@
       "semaine": 5,
       "duree_min": 8,
       "plafond_palier": {
-        "calcul-mental": 6,
+        "calcul-mental": 9,
         "memoire": 6,
         "reperer-essentiel": 3,
         "evocation": 6,
@@ -437,7 +437,7 @@
       "semaine": 6,
       "duree_min": 8,
       "plafond_palier": {
-        "calcul-mental": 7,
+        "calcul-mental": 10,
         "memoire": 7,
         "reperer-essentiel": 3,
         "evocation": 7,
@@ -515,7 +515,7 @@
       "semaine": 7,
       "duree_min": 9,
       "plafond_palier": {
-        "calcul-mental": 8,
+        "calcul-mental": 11,
         "memoire": 8,
         "reperer-essentiel": 3,
         "evocation": 7,
@@ -593,7 +593,7 @@
       "semaine": 8,
       "duree_min": 9,
       "plafond_palier": {
-        "calcul-mental": 9,
+        "calcul-mental": 12,
         "memoire": 9,
         "reperer-essentiel": 3,
         "evocation": 7,

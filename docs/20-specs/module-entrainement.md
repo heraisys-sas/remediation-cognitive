@@ -104,7 +104,8 @@ Cadre temporel **proposé**, jamais imposé : 8 semaines × 7 jours avec 5 séan
 semaine ; rotation des thèmes pour alterner les domaines.
 
 Chaque semaine porte un **plafond de palier** par thème — borne haute de complexité
-(2 en semaine 1, 9 en semaine 8, ramenée aux paliers disponibles). Ce plafond n'est
+(généralement 2 en semaine 1 et 9 en semaine 8, ramenée aux paliers disponibles ;
+Calcul mental suit son entrée adulte, de 5 à 12). Ce plafond n'est
 jamais un objectif : l'avancement reste piloté par la maîtrise (90 % × 3 séances) et
 par la fatigue. Une journée manquée ne se rattrape pas ; après deux séances sous
 50 % de réussite sur un thème, le palier courant est repris avant toute nouvelle

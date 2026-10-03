@@ -53,6 +53,14 @@ NOTE_ECHEC = 1
 SEUIL_MAITRISE = 0.9
 SESSIONS_CONSECUTIVES_MAITRISE = 3
 
+# Calibration de l'entrée adulte en calcul mental : le palier 5 évite les faits
+# élémentaires, mais une difficulté nette sur un échantillon suffisant ramène au
+# palier 3 lors de la séance automatique suivante.
+PALIER_DEPART_CALCUL = 5
+PALIER_REPLI_CALCUL = 3
+SEUIL_REPLI_CALCUL = 0.5
+MIN_REPONSES_CALIBRATION = 8
+
 
 def _horloge_utc() -> datetime:
     """Horloge par défaut (injectable pour les tests)."""
@@ -123,6 +131,7 @@ class SessionEnCours:
     stockage_theme: str
     parcours: str | None
     palier: int
+    palier_force: bool
     runner: SessionRunner
     items_par_id: dict[str, dict]
     items_disponibles: list[dict]
@@ -226,18 +235,38 @@ class GestionnaireSessions:
             etat_maitrise = self.stockage.lire_maitrise(stockage_theme)
             if palier_force is not None and palier_force not in self.contenu.paliers(theme, parcours):
                 raise PalierInconnu(palier_force)
-            parcours_neuf = parcours is not None and not self.stockage.maitrise_existe(stockage_theme)
+            progression_neuve = not self.stockage.maitrise_existe(stockage_theme)
             palier_initial = (
                 self.contenu.palier_depart(theme, parcours)
-                if parcours_neuf else etat_maitrise["palier_courant"]
+                if progression_neuve else etat_maitrise["palier_courant"]
             )
+            # Compatibilité avec les progressions créées avant le relèvement du
+            # départ : une réussite récente au socle permet de rejoindre le nouveau
+            # point d'entrée ; une difficulté (< 50 %) conserve le niveau stocké.
+            if (
+                theme == "calcul-mental"
+                and parcours is None
+                and palier_initial < PALIER_DEPART_CALCUL
+                and (
+                    not etat_maitrise["historique"]
+                    or etat_maitrise["historique"][-1][1] >= SEUIL_REPLI_CALCUL
+                )
+            ):
+                palier_initial = PALIER_DEPART_CALCUL
             palier = palier_force if palier_force is not None else self._palier_courant(
                 theme, palier_initial, parcours
             )
-            if parcours_neuf and palier_force is None:
-                # Le départ relevé devient l'état initial réel : une première séance
-                # incomplète ne doit pas faire retomber ensuite le parcours au palier 1.
-                self.stockage.ecrire_maitrise(stockage_theme, palier, [])
+            if palier_force is None and (
+                progression_neuve or palier_initial != etat_maitrise["palier_courant"]
+            ):
+                # Le départ relevé devient l'état réel : une première séance
+                # interrompue ne doit pas faire retomber la progression au palier 1.
+                self.stockage.ecrire_maitrise(
+                    stockage_theme,
+                    palier,
+                    list(etat_maitrise["historique"]),
+                    etat_maitrise.get("historique_etapes"),
+                )
             cartes = self.stockage.lire_cartes(stockage_theme)
             # Dosage propre au thème : une grille de déduction n'a pas le coût
             # d'un item de calcul mental (voir domain/dosage.parametres_seance).
@@ -268,6 +297,7 @@ class GestionnaireSessions:
                 stockage_theme=stockage_theme,
                 parcours=parcours,
                 palier=palier,
+                palier_force=palier_force is not None,
                 runner=runner,
                 items_par_id={item["id"]: item for item in selection},
                 items_disponibles=items_disponibles,
@@ -575,7 +605,8 @@ class GestionnaireSessions:
         ):
             return
         etat = self.stockage.lire_maitrise(session.stockage_theme)
-        historique = list(etat["historique"])
+        historique_avant = list(etat["historique"])
+        historique = list(historique_avant)
         historique.append((session.palier, float(taux)))
         historique_etapes = None
         if etape_finale:
@@ -584,7 +615,17 @@ class GestionnaireSessions:
             historique_etapes = list(etat.get("historique_etapes", []))
             historique_etapes.append((session.palier, float(taux)))
         palier = etat["palier_courant"]
-        if palier_maitrise_historique(
+        calibration_en_echec = (
+            session.theme == "calcul-mental"
+            and not session.palier_force
+            and session.palier == PALIER_DEPART_CALCUL
+            and not historique_avant
+            and nb_repondu >= MIN_REPONSES_CALIBRATION
+            and taux < SEUIL_REPLI_CALCUL
+        )
+        if calibration_en_echec:
+            palier = PALIER_REPLI_CALCUL
+        elif palier_maitrise_historique(
             historique_etapes if etape_finale else historique,
             palier=session.palier,
             seuil=SEUIL_MAITRISE,
