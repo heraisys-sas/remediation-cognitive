@@ -1009,6 +1009,12 @@ function rendreFonctionnel(item) {
       if (item.type === "actualiser-consigne") {
         const saisie = creerElement("input", { attributs: { type: "text", autocomplete: "off" } });
         saisie.addEventListener("input", () => { reponses[champ.id] = saisie.value; verifier(); });
+        // Champs sur une seule ligne : Entrée équivaut au bouton Valider.
+        saisie.addEventListener("keydown", (evenement) => {
+          if (evenement.key !== "Enter" || evenement.isComposing || evenement.repeat) return;
+          evenement.preventDefault();
+          if (!valider.disabled) valider.click();
+        });
         ligne.append(saisie);
       } else {
         const choix = creerElement("select", { attributs: { "aria-label": champ.label } });

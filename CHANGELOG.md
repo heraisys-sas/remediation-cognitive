@@ -1,3 +1,7 @@
+# 2026-10-03 — validation au clavier dans Actualiser une consigne
+
+Entrée dans un champ de réponse déclenche désormais le bouton Valider lorsque tous les champs sont renseignés. Ces champs sont sur une seule ligne et ne nécessitent pas de retour à la ligne. La composition de texte et le maintien de la touche ne déclenchent pas de validation supplémentaire.
+
 # 2026-10-03 — entre-deux plus lisible dans Déduction 3×3
 
 La précision « sans être nécessairement voisins ni à égale distance » est retirée des indices entre-deux sur les grilles 3×3 (ligne, colonne et diagonale) : elle décrit une liberté impossible avec trois cases. Elle reste sur les grilles 4×4. La contrainte logique, les solutions et les identifiants sont inchangés ; seule leur formulation est allégée.
