@@ -1,8 +1,8 @@
 """Orchestration des séances d'entraînement (couche service du sprint 1).
 
 Sépare la logique métier du mapping HTTP (router.py) :
-- démarrer une séance : garde-fou de dosage (3 par jour en entraînement, 1 par
-  semaine en évaluation — dérogation explicite possible, ADR-021), sélection
+- démarrer une séance : garde-fou de dosage (plafond par thème/catégorie,
+  dérogation explicite possible, ADR-021), sélection
   des items (dus FSRS puis nouveaux, max 12), création du
   ``SessionRunner`` (moteur engine/ réutilisé tel quel) ;
 - enregistrer une réponse : correction serveur (la réponse attendue ne
@@ -39,7 +39,7 @@ from ...domain.dosage import (
     debut_fenetre,
     duree_proposee,
     fenetre_sessions,
-    limite_sessions,
+    limite_sessions_theme,
     parametres_seance,
 )
 from ...domain.selection import selectionner_items
@@ -209,7 +209,8 @@ class GestionnaireSessions:
         stockage_theme = f"{theme}--{parcours}" if parcours else theme
         items_disponibles = self.contenu.items(theme, parcours)
         categorie = self.contenu.categorie(theme)
-        limite = limite_sessions(categorie)
+        reglages = parametres_seance(theme)
+        limite = limite_sessions_theme(theme, categorie)
         fenetre = fenetre_sessions(categorie)
         # Dérogation explicite (ADR-021) : elle couvre tous les thèmes — la règle
         # reste côté serveur, l'interface la demande, elle ne la contourne pas.
@@ -240,13 +241,13 @@ class GestionnaireSessions:
             cartes = self.stockage.lire_cartes(stockage_theme)
             # Dosage propre au thème : une grille de déduction n'a pas le coût
             # d'un item de calcul mental (voir domain/dosage.parametres_seance).
-            reglages = parametres_seance(theme)
             selection = selectionner_items(
                 items_disponibles,
                 cartes,
                 palier,
                 maintenant,
                 reglages["max_items"],
+                inclure_non_dus=bool(reglages.get("inclure_non_dus", False)),
             )
             runner = SessionRunner(
                 items=[ItemMoteur(item) for item in selection],
@@ -481,7 +482,8 @@ class GestionnaireSessions:
         debut = debut_fenetre(fenetre, self.horloge().date())
         restantes = max(
             0,
-            limite_sessions(categorie) - self.stockage.lire_compteur(theme, debut),
+            limite_sessions_theme(theme, categorie)
+            - self.stockage.lire_compteur(theme, debut),
         )
         arret_propose = bool(resume_moteur["alerte_fatigue"])
         retour = {

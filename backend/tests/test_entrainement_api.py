@@ -259,7 +259,7 @@ def test_cycle_complet_avec_resume_coherent(client, tmp_path):
     assert fin["resume"]["taux_reussite"] == pytest.approx(11 / 12)
     assert fin["arret_propose"] is False
     assert fin["motif_arret"] is None
-    assert fin["sessions_restantes_aujourdhui"] == 2
+    assert fin["sessions_restantes_aujourdhui"] == 5
 
     # Fin idempotente : un second appel renvoie le MÊME résumé, sans conflit
     # (l'interface doit pouvoir afficher le résumé après une clôture déjà faite).
@@ -463,11 +463,11 @@ def test_item_hors_seance_404(client):
     assert reponse.json()["erreur"] == "item_hors_seance"
 
 
-# -- garde-fou : 3 séances/jour ----------------------------------------------------
+# -- garde-fou : 6 séances/jour pour le calcul mental ------------------------------
 
 
-def test_quatrieme_seance_du_jour_429(client):
-    for _ in range(3):
+def test_septieme_seance_de_calcul_du_jour_429(client):
+    for _ in range(6):
         assert client.post("/api/entrainement/calcul-mental/sessions").status_code == 201
     reponse = client.post("/api/entrainement/calcul-mental/sessions")
     assert reponse.status_code == 429
@@ -484,7 +484,7 @@ def test_quatrieme_seance_du_jour_429(client):
 def test_derogation_limite_sessions_accordee_en_entrainement(client):
     """Dérogation explicite (ADR-021) : le corps de la requête la demande ; le
     serveur continue de compter la séance et refuse toujours sans elle."""
-    for _ in range(3):
+    for _ in range(6):
         assert client.post("/api/entrainement/calcul-mental/sessions").status_code == 201
     assert client.post("/api/entrainement/calcul-mental/sessions").status_code == 429
     accepte = client.post(
@@ -498,7 +498,7 @@ def test_derogation_limite_sessions_accordee_en_entrainement(client):
 
 def test_derogation_combinee_au_palier_force(client):
     """Palier d'essai + dérogation : les deux champs coexistent dans le corps."""
-    for _ in range(3):
+    for _ in range(6):
         assert client.post("/api/entrainement/calcul-mental/sessions").status_code == 201
     reponse = client.post(
         "/api/entrainement/calcul-mental/sessions",
@@ -541,30 +541,13 @@ def test_arret_propose_jamais_force(client):
 # -- progression de palier : 90 % × 3 séances consécutives -------------------------------
 
 
-def _forcer_echeance_passee(client, theme):
-    """Simule l'oubli : rejoue les cartes persistées avec une échéance passée.
-
-    Teste au passage le round-trip de persistance des cartes FSRS
-    (engine.srs.fsrs to_dict/from_dict, utilisés tel quel).
-    """
-    chemin = _racine_donnees(client) / theme / "cartes-fsrs.json"
-    donnees = json.loads(chemin.read_text(encoding="utf-8"))
-    for etat in donnees["cartes"].values():
-        etat["due"] = "2020-01-01T00:00:00+00:00"
-    chemin.write_text(json.dumps(donnees), encoding="utf-8")
-
-
 def test_maitrise_trois_seances_parfaites_font_progresser_palier(client):
-    ids_session_1 = None
     for numero in range(3):
         payload = _demarrer(client, "calcul-mental")
-        if numero == 0:
-            ids_session_1 = {item["id"] for item in payload["items"]}
-            assert len(ids_session_1) == 12
-        else:
-            # Les items dus (échéance forcée au passé) sont servis en premier :
-            # ce sont exactement les items déjà vus de la 1re séance.
-            assert {item["id"] for item in payload["items"]} == ids_session_1
+        # Calcul mental autorise une pratique volontaire dans la journée : la
+        # troisième séance ne devient pas vide une fois les nouveautés épuisées.
+        assert len(payload["items"]) == 12
+        assert {item["palier"] for item in payload["items"]} == {1}
         resultats = _repondre_tout(
             client, "calcul-mental", payload,
             reponse_factory=lambda item: _valeur_attendue("calcul-mental", item["id"]),
@@ -573,9 +556,6 @@ def test_maitrise_trois_seances_parfaites_font_progresser_palier(client):
         fin = _finir(client, "calcul-mental", payload["session_id"]).json()
         assert fin["resume"]["taux_reussite"] == 1.0
         assert fin["arret_propose"] is False
-        if numero < 2:
-            _forcer_echeance_passee(client, "calcul-mental")
-
     racine = _racine_donnees(client)
     maitrise = json.loads((racine / "calcul-mental" / "maitrise.json").read_text())
     assert maitrise["historique"] == [[1, 1.0], [1, 1.0], [1, 1.0]]

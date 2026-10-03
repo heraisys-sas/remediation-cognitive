@@ -21,4 +21,13 @@ Un commutateur « Dépasser la limite de séances » est placé dans l'en-tête,
 
 ## Ajustement du 30 septembre (soir)
 
-Demande d'Olivier : intégrer l'évaluation dans l'exception, et ramener son plafond à **une séance par semaine** (au lieu d'une par jour). La fenêtre d'évaluation est la semaine calendaire (lundi–dimanche) ; la dérogation lève la limite pour la fenêtre en cours, comme pour l'entraînement. Le motif du plafond ne change pas — répéter une mesure la fausse — et l'espacement hebdomadaire le sert mieux qu'un plafond quotidien ; la dérogation reste un choix explicite de la personne. Conséquence technique : le compteur stocke désormais le **début de fenêtre** (le jour, ou le lundi pour l'évaluation) ; le résumé de fin expose `fenetre_sessions`.
+Demande d'Olivier : intégrer l'évaluation dans l'exception, et ramener son plafond à **une séance par semaine** (au lieu d'une par jour). La fenêtre d'évaluation est la semaine calendaire (lundi-dimanche) ; la dérogation lève la limite pour la fenêtre en cours, comme pour l'entraînement. Le motif du plafond ne change pas — répéter une mesure la fausse — et l'espacement hebdomadaire le sert mieux qu'un plafond quotidien ; la dérogation reste un choix explicite de la personne. Conséquence technique : le compteur stocke désormais le **début de fenêtre** (le jour, ou le lundi pour l'évaluation) ; le résumé de fin expose `fenetre_sessions`.
+
+## Ajustement du 3 octobre — limite et disponibilité des items
+
+Le commutateur levait correctement le quota, mais ne pouvait pas rendre disponibles des
+cartes reportées par FSRS. Cela se voyait surtout en Calcul mental, dont un palier était
+épuisé après environ deux séances. Calcul mental dispose maintenant de six séances
+ordinaires par jour et d'une pratique anticipée des cartes non dues ; le commutateur
+permet alors effectivement de poursuivre au-delà de six. Les autres thèmes conservent
+leur sélection espacée et leur plafond propre.

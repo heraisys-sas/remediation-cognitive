@@ -1,7 +1,7 @@
 """Tests unitaires : correction serveur (domain.correction) et sélection
 des items (domain.selection)."""
 
-from datetime import datetime, timezone
+from datetime import datetime, timedelta, timezone
 
 from backend.app.domain.correction import corriger
 from backend.app.domain.selection import selectionner_items
@@ -138,3 +138,21 @@ def test_selection_aucun_item_disponible():
             cartes[item["id"]], _ = planifier(CarteFSRS(item["id"]), 3, T0)
     selection = selectionner_items(items, cartes, palier_courant=1, maintenant=T0, max_items=12)
     assert selection == []
+
+
+def test_selection_pratique_anticipee_prend_les_echeances_les_plus_proches():
+    from engine.srs.fsrs import CarteFSRS, planifier
+
+    items = _items_paliers()
+    cartes = {}
+    for rang, item in enumerate(items):
+        if item["palier"] == 1:
+            # Horaires de revue inversés : les six dernières cartes ont
+            # l'échéance la plus proche, sans toucher à l'état interne FSRS.
+            revue = T0 + timedelta(minutes=13 - rang)
+            cartes[item["id"]], _ = planifier(CarteFSRS(item["id"]), 3, revue)
+    selection = selectionner_items(
+        items, cartes, palier_courant=1, maintenant=T0, max_items=6,
+        inclure_non_dus=True,
+    )
+    assert [item["id"] for item in selection] == [f"p1-{n}" for n in range(13, 7, -1)]

@@ -53,3 +53,18 @@ La décision a été confrontée aux sources disponibles. La recherche en ligne 
 - (−) Après une séance, une deuxième séance du même thème dans la même journée peut n'avoir **rien à proposer** : l'interface l'annonce calmement (« Rien à réviser pour l'instant — ta prochaine séance arrive au bon moment »). C'est le comportement voulu, mais il doit rester expliqué à l'écran.
 - (+) Une erreur ne reste pas sans reprise : elle revient dans la même séance, réponse fournie, ce que demande l'errorless learning — sans retomber dans la répétition en boucle, puisqu'elle revient **une seule fois** et qu'elle est **plafonnée**.
 - (−) La **fréquence** des séances (5-10 min, jusqu'à 3 par jour) n'a pas été instruite par ces recherches : elle reste le cadre propre du projet (`docs/10-clinique/protocoles.md`), pas une donnée de la littérature retrouvée ici.
+
+## Ajustement du 3 octobre — pratique volontaire du calcul mental
+
+Les paliers de Calcul mental ne contiennent que 14 à 19 items : deux séances pouvaient
+épuiser les nouveautés, puis produire une séance vide même lorsque la personne activait
+« Dépasser la limite de séances ». La limite et la disponibilité FSRS étaient deux
+mécanismes distincts, mais l'interface les rendait indiscernables.
+
+Calcul mental autorise désormais une **pratique anticipée** : après les cartes dues et
+les nouveautés, une séance est complétée par les cartes non dues dont l'échéance est la
+plus proche. Cette exception ne s'applique à aucun exercice de mémoire, d'attention ou
+de déduction. Son plafond ordinaire passe de trois à **six séances par jour** ; la
+dérogation explicite peut toujours le lever. C'est une décision de produit pour un
+exercice court de réactivation, pas une conclusion tirée de la littérature sur la
+répétition espacée.

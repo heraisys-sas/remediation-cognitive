@@ -1,6 +1,8 @@
 """Les exercices ciblés n'ont ni statut de bilan ni quota censé valider une mesure."""
 from backend.app.domain.contenu import ChargeurContenu
-from backend.app.domain.dosage import debut_fenetre, fenetre_sessions, limite_sessions
+from backend.app.domain.dosage import (
+    debut_fenetre, fenetre_sessions, limite_sessions, limite_sessions_theme,
+)
 from datetime import date
 
 
@@ -28,6 +30,8 @@ def test_entrainement_garde_son_dosage(client):
 def test_fenetres():
     assert fenetre_sessions('cible')=='jour'
     assert limite_sessions('cible')==3
+    assert limite_sessions_theme('calcul-mental','entrainement')==6
+    assert limite_sessions_theme('quotidien','entrainement')==3
     assert debut_fenetre('jour',date(2026,10,1))==date(2026,10,1)
     assert debut_fenetre('semaine',date(2026,10,1))==date(2026,9,28)
 

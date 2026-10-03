@@ -11,7 +11,7 @@ Base : `/api/entrainement` — périmètre **hors médical**. Format JSON. Pas d
 Chaque thème porte `paliers` et, quand plusieurs tâches cohabitent sous une carte, `parcours`: `[{"id", "nom", "description"?, "paliers", "palier_depart"?}]`. Les parcours disposent d'une progression indépendante (ADR-023).
 
 ### POST /api/entrainement/{theme}/sessions
-Démarre une séance. Sélection serveur : items dus (FSRS) d'abord, puis nouveaux du palier courant. Exception pour les contenus à `etape_progression` (déduction) : réserver la moitié des places aux nouveautés disponibles dans l'ordre des étapes, et prioriser les révisions avancées (ADR-017). Les trois séances du critère de maîtrise doivent chacune comporter une réponse de l'étape finale ; elles sont suivies dans `historique_etapes`, séparément des anciens taux conservés.
+Démarre une séance. Sélection serveur : items dus (FSRS) d'abord, puis nouveaux du palier courant. En Calcul mental, exercice court pratiqué volontairement, les places encore libres peuvent être complétées par les cartes non dues dont l'échéance est la plus proche : une troisième séance ne devient donc pas vide après épuisement des 14 à 19 items du palier. Exception pour les contenus à `etape_progression` (déduction) : réserver la moitié des places aux nouveautés disponibles dans l'ordre des étapes, et prioriser les révisions avancées (ADR-017). Les trois séances du critère de maîtrise doivent chacune comporter une réponse de l'étape finale ; elles sont suivies dans `historique_etapes`, séparément des anciens taux conservés.
 
 **Corps facultatif** (`DemarrageOptionnel`) : `{"palier": N}` — essai sur un palier précis (la progression ne peut pas reculer) ; `{"parcours": "mots"}` — progression homogène choisie dans la carte ; `{"sans_limite_sessions": true}` — dérogation explicite au plafond de séances du jour, **accordée par le serveur pour tous les thèmes** (fenêtre du jour ou de la semaine selon la catégorie — ADR-021).
 
@@ -34,7 +34,7 @@ Clôture la séance, applique FSRS + maîtrise, persiste.
 
 ## Règles serveur (garde-fous)
 
-1. **Dosage** : max 12 items/séance (6 pour la déduction, voir `dosage.parametres_seance`) ; durée max 600 s ; **3 séances/jour** pour l'entraînement, **1 séance/semaine** pour l'évaluation (semaine calendaire, lundi–dimanche ; paramétrable dans `backend/app/domain/dosage.py`) ; la limite d'un thème peut être **levée pour sa fenêtre en cours par une dérogation explicite** (`sans_limite_sessions` — ADR-021) ; le compteur continue de compter les séances jouées.
+1. **Dosage** : max 12 items/séance (6 pour la déduction, voir `dosage.parametres_seance`) ; durée max 600 s ; **3 séances/jour** par défaut pour l'entraînement, **6 pour Calcul mental**, **1 séance/semaine** pour l'évaluation (semaine calendaire, lundi–dimanche ; paramétrable dans `backend/app/domain/dosage.py`) ; la limite d'un thème peut être **levée pour sa fenêtre en cours par une dérogation explicite** (`sans_limite_sessions` — ADR-021) ; le compteur continue de compter les séances jouées.
 2. **Fatigue** : `arret_propose = true` si RT moyen glissant > 1,25 × baseline **ou** taux d'erreur ≥ 0,40 — **proposition uniquement, jamais d'interruption forcée**.
 3. **Vocabulaire** : neutre, ludique modéré — centralisé dans `backend/app/domain/messages.py` ; aucun terme clinique.
 4. **Aucune norme populationnelle** dans les réponses API.
