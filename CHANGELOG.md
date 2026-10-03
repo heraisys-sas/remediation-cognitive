@@ -1,3 +1,7 @@
+# 2026-10-03 — entre-deux plus lisible dans Déduction 3×3
+
+La précision « sans être nécessairement voisins ni à égale distance » est retirée des indices entre-deux sur les grilles 3×3 (ligne, colonne et diagonale) : elle décrit une liberté impossible avec trois cases. Elle reste sur les grilles 4×4. La contrainte logique, les solutions et les identifiants sont inchangés ; seule leur formulation est allégée.
+
 # 2026-10-03 — calcul adulte plus exigeant dès le palier 5
 
 Remplacement des paliers 5–12 par 252 nouveaux items `cm4-…` : opérations directes, produits et divisions, transformations inverses, décimales, proportions, pourcentages et applications à plusieurs étapes. Le calcul pur reste présent à chaque palier ; méthodes spécifiques et réponses recalculées indépendamment. P1–4 conservés, 320 items au total. Historiques préservés, anciennes réussites exclues de la maîtrise du nouveau corpus. ADR-024.

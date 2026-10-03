@@ -74,6 +74,8 @@ const { formaterEnonce, formaterAideRaisonnement } = fabrique();
 //: vide, un « undefined » ou une formulation qui dit l'inverse échoue ici — même
 //: quand le contenu du dépôt ne contient pas encore ce type.
 const DOREES = [
+  [{ type: "entre", figure: "triangle", couleur: "vert", extremites: [{ figure: "carre", couleur: "rouge" }, { figure: "carre", couleur: "bleu" }], axe: "ligne" },
+   "Le triangle vert est strictement entre un carré rouge et un carré bleu, sur une même ligne.", 3],
   [{type:"pas-colonne",figure:"carre",couleur:"bleu",colonne:0,
     et:[{type:"voisin-dessus",figure2:"cercle",couleur2:"rouge"}]},
    "Le carré bleu n'est pas dans la colonne de gauche et est juste au-dessus du cercle rouge."],
@@ -95,9 +97,9 @@ const DOREES = [
   [{ type: "diversite", attribut: "couleur", zone: "colonne", numero: 1 },
    "La colonne du centre contient exactement un pion de chaque couleur."],
   [{ type: "entre", figure: "carre", couleur: "rouge", extremites: [{ figure: "cercle" }, { figure: "cercle" }], axe: "diagonale" },
-   "Le carré rouge est strictement entre deux pions de forme cercle, sur une même diagonale, sans être nécessairement voisins ni à égale distance."],
+   "Le carré rouge est strictement entre deux pions de forme cercle, sur une même diagonale."],
   [{ type: "entre", figure: "carre", couleur: "rouge", extremites: [{ couleur: "vert" }, { figure: "triangle", couleur: "bleu" }], axe: "colonne" },
-   "Le carré rouge est strictement entre un pion de couleur vert et un triangle bleu, dans une même colonne, sans être nécessairement voisins ni à égale distance."],
+   "Le carré rouge est strictement entre un pion de couleur vert et un triangle bleu, dans une même colonne."],
   [{ type: "pas-voisin-gauche", figure: "carre", couleur: "bleu", figure2: "cercle", couleur2: "rouge" },
    "Le carré bleu n'est pas juste à gauche du cercle rouge."],
   [{ type: "pas-voisin-droite", figure: "carre", couleur: "bleu", figure2: "cercle", couleur2: "rouge" },

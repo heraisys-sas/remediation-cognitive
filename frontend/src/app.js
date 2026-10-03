@@ -2374,7 +2374,10 @@ function formaterIndiceCollectif(indice, n) {
       : `un ${libelleCategorie(a)} et un ${libelleCategorie(b)}`;
     const alignement = indice.axe === "ligne" ? "sur une même ligne"
       : indice.axe === "colonne" ? "dans une même colonne" : "sur une même diagonale";
-    return `Le ${libelleFigure(indice.figure)} ${indice.couleur} est strictement entre ${extremites}, ${alignement}, sans être nécessairement voisins ni à égale distance.`;
+    // En 3×3, trois pions alignés occupent forcément trois cases consécutives.
+    // La précision sur les distances ne devient utile que pour une grille plus grande.
+    const precision = n > 3 ? ", sans être nécessairement voisins ni à égale distance" : "";
+    return `Le ${libelleFigure(indice.figure)} ${indice.couleur} est strictement entre ${extremites}, ${alignement}${precision}.`;
   }
   return null;
 }
