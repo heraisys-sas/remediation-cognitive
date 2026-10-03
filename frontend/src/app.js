@@ -883,6 +883,8 @@ function afficherPhaseMemo(item) {
   );
   refs.zoneMemo.hidden = false;
   reglerEtatBoutons();
+  // Dans Au quotidien, Entrée déclenche l'action visible par le comportement natif du bouton.
+  if (etat.theme?.id === "quotidien" && !boutonAfficher.disabled) boutonAfficher.focus();
 }
 
 /** Lecture temporisée du stimulus (séquence élément par élément, ou liste). */
@@ -899,6 +901,7 @@ function jouerAffichage(item) {
   });
   boutonPasser.addEventListener("click", () => afficherQuestion(item));
   refs.zoneMemo.replaceChildren(plateau, indicateur, boutonPasser);
+  if (etat.theme?.id === "quotidien") boutonPasser.focus();
 
   if (affichage.modalite === "auditive") {
     jouerSeriesAudio(item, plateau, indicateur);

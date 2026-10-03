@@ -1,3 +1,7 @@
+# 2026-10-03 — parcours clavier dans Au quotidien
+
+Les boutons Afficher puis Passer reçoivent le focus à leur apparition dans Au quotidien : Entrée les active. La saisie, les choix de réponse et le bouton Suivant utilisaient déjà le focus et la validation clavier natifs. Aucun choix supplémentaire n’est déclenché automatiquement.
+
 # 2026-10-03 — validation au clavier dans Actualiser une consigne
 
 Entrée dans un champ de réponse déclenche désormais le bouton Valider lorsque tous les champs sont renseignés. Ces champs sont sur une seule ligne et ne nécessitent pas de retour à la ligne. La composition de texte et le maintien de la touche ne déclenchent pas de validation supplémentaire.
