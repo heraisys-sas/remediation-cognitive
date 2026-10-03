@@ -609,7 +609,11 @@ class GestionnaireSessions:
         historique = list(historique_avant)
         historique.append((session.palier, float(taux)))
         historique_etapes = None
-        if etape_finale:
+        corpus_renouvele = etape_finale or (
+            session.theme == "calcul-mental"
+            and any(i.startswith("cm4-") for i in session.reponses)
+        )
+        if corpus_renouvele:
             # Les taux de l'ancien corpus ne prouvent pas la maîtrise de ces
             # nouvelles étapes ; les conserver sans les réutiliser pour avancer.
             historique_etapes = list(etat.get("historique_etapes", []))
@@ -626,7 +630,7 @@ class GestionnaireSessions:
         if calibration_en_echec:
             palier = PALIER_REPLI_CALCUL
         elif palier_maitrise_historique(
-            historique_etapes if etape_finale else historique,
+            historique_etapes if corpus_renouvele else historique,
             palier=session.palier,
             seuil=SEUIL_MAITRISE,
             sessions_consecutives=SESSIONS_CONSECUTIVES_MAITRISE,

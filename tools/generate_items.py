@@ -1,37 +1,18 @@
 #!/usr/bin/env python3
-"""Générateur d'items de calcul mental — automatismes utiles et numératie du quotidien.
+"""Génère les paliers adultes 5–12 de Calcul mental et leur manifest.
 
-Génère, avec la seule bibliothèque standard, le contenu du thème « calcul-mental » :
-
-- ``content/entrainement/calcul-mental/paliers/palier-01.json`` … ``palier-09.json`` ;
-- ``content/entrainement/calcul-mental/paliers.json`` : manifest ordonné.
-
-**Pourquoi cette progression et pas les tables dans l'ordre scolaire.** Un adulte
-n'a rien à automatiser sur la table de 1 ni sur celle de 10 : ce ne sont pas des
-faits à retrouver mais des **règles** (« × 1 ne change rien », « × 10 ajoute un
-zéro »). Les driller prend du temps sans rien construire. La progression retenue
-suit ce dont un adulte se sert réellement :
-
-1. **faits de base** (compléments dans 10, doubles, additions et soustractions
-   dans 20) — la récupération automatique libère de la mémoire de travail ;
-2. **repères étendus** (compléments à 100, multiplications utiles ×2 à ×5) ;
-3. **mémoire de travail** (deux opérations enchaînées) ;
-4. **numératie du quotidien** (argent, quantités, durées) — le transfert dans la
-   vie réelle, qui est le but du module.
-
-Les énoncés sont des questions courtes et naturelles, jamais « 2 × 1 » : on
-s'adresse à un adulte, pas à un enfant qui apprend ses tables.
-
-Usage :
-
-    python3 tools/generate_items.py [--dry-run] [--date AAAA-MM-JJ]
+Le socle déjà servi P1–4 est lu sans être réécrit. Les anciennes fonctions de
+construction restent disponibles pour les outils historiques ; le point d'entrée
+utilise le corpus cm4 de calcul_adulte. Voir ADR-024.
 """
 
 from __future__ import annotations
 
 try:
+    from tools.calcul_adulte import construire as construire_adulte, DESCRIPTIONS as DESCRIPTIONS_ADULTES
     from tools.methodes_calcul import methode_calcul
 except ModuleNotFoundError:
+    from calcul_adulte import construire as construire_adulte, DESCRIPTIONS as DESCRIPTIONS_ADULTES
     from methodes_calcul import methode_calcul
 
 import argparse
@@ -49,7 +30,7 @@ ITEMS_PAR_PALIER: int = 18
 
 #: Métadonnées traçables posées sur chaque item généré.
 AUTEUR: str = "generation-automatique (tools/generate_items.py)"
-DATE_CREATION_DEFAUT: str = "2026-09-26"
+DATE_CREATION_DEFAUT: str = "2026-10-03"
 
 RACINE_DEPOT = Path(__file__).resolve().parent.parent
 DOSSIER_SORTIE = RACINE_DEPOT / "content" / "entrainement" / "calcul-mental"
@@ -69,6 +50,8 @@ DESCRIPTIONS: list[str] = [
     "Suites et erreurs : tenir le pas, repérer ce qui ne suit pas",
     "Faits à l'envers : retrouver le facteur manquant",
 ]
+
+DESCRIPTIONS[4:] = DESCRIPTIONS_ADULTES
 
 #: Fonctions ciblées par palier (au-delà de l'automatisation de base).
 FONCTIONS_PAR_PALIER: list[list[str]] = [
@@ -380,12 +363,15 @@ def main() -> int:
                          help="date de création posée dans les métadonnées")
     options = parseur.parse_args()
 
-    rng = random.Random(GRAINE)
-    paliers = [construire_palier(numero, rng, options.date)
-               for numero in range(1, len(FAMILLES) + 1)]
+    # Conserver à l'identique le socle déjà servi, y compris ses identifiants.
+    paliers = [json.loads((DOSSIER_SORTIE / 'paliers' / f'palier-{n:02d}.json').read_text())
+               for n in range(1, 5)]
+    paliers.extend(construire_adulte(options.date).values())
 
     cibles = {DOSSIER_SORTIE / "paliers.json": construire_manifest(paliers)}
     for numero, items in enumerate(paliers, start=1):
+        if numero < 5:
+            continue
         cibles[DOSSIER_SORTIE / "paliers" / f"palier-{numero:02d}.json"] = items
 
     for chemin, donnees in cibles.items():

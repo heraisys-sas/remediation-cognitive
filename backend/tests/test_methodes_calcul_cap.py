@@ -4,6 +4,7 @@ import re
 import subprocess
 import shutil
 from tools.methodes_calcul import methode_calcul
+from tools.calcul_adulte import METHODES
 from tools.verifier_interface import corps_fonction
 from backend.app.domain.contenu import ChargeurContenu
 
@@ -13,7 +14,8 @@ ROOT=Path(__file__).resolve().parents[2]
 def test_methodes_adaptees_et_couverture():
     for path in (ROOT/'content/entrainement/calcul-mental/paliers').glob('*.json'):
         for item in json.loads(path.read_text()):
-            assert item['contenu']['methode']==methode_calcul(item['contenu']['enonce'],item['palier'])
+            attendue = METHODES[item['contenu']['famille_calcul']] if item['id'].startswith('cm4-') else methode_calcul(item['contenu']['enonce'],item['palier'])
+            assert item['contenu']['methode'] == attendue
             assert 'aide' not in item['contenu']
     assert 'centimes' in methode_calcul('2 articles à 1,50 € — combien en tout ?',8)
     assert 'monnaie rendue' in methode_calcul('Un article à 7 €, payé avec 10 € — combien te rend-on ?',8)

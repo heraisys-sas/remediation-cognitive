@@ -981,3 +981,19 @@ def test_palier_force_ne_fait_pas_reculer_la_maitrise(tmp_path):
 
     maitrise = _json.loads((dossier / "maitrise.json").read_text())
     assert maitrise["palier_courant"] >= 5, "la progression ne doit jamais reculer"
+
+
+def test_calcul_nouveau_corpus_ne_reutilise_pas_les_anciennes_reussites(client):
+    racine = _racine_donnees(client) / "calcul-mental"
+    racine.mkdir(parents=True, exist_ok=True)
+    (racine / "maitrise.json").write_text(json.dumps({
+        "palier_courant": 5, "historique": [[5, 1.0], [5, 1.0]]
+    }))
+    payload = _demarrer(client, "calcul-mental")
+    _repondre_tout(client, "calcul-mental", payload,
+        reponse_factory=lambda item: _valeur_attendue("calcul-mental", item["id"]))
+    _finir(client, "calcul-mental", payload["session_id"])
+    etat = json.loads((racine / "maitrise.json").read_text())
+    assert etat["palier_courant"] == 5
+    assert len(etat["historique"]) == 3
+    assert etat["historique_etapes"] == [[5, 1.0]]

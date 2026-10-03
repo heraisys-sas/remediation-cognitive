@@ -37,75 +37,75 @@
     },
     {
       "id": "cm-palier-5",
-      "description": "Compléments à 100 : les repères d'argent et de quantités",
+      "description": "Calcul souple : compensation, décomposition et écarts à deux chiffres",
       "prerequis": [
         "cm-palier-4"
       ],
       "fichier": "paliers/palier-05.json",
-      "nb_items": 17
+      "nb_items": 24
     },
     {
       "id": "cm-palier-6",
-      "description": "Multiplications utiles (× 2 à × 5) : doubler, tripler, partager",
+      "description": "Produits et partages : distribuer, factoriser et vérifier",
       "prerequis": [
         "cm-palier-5"
       ],
       "fichier": "paliers/palier-06.json",
-      "nb_items": 18
+      "nb_items": 24
     },
     {
       "id": "cm-palier-7",
-      "description": "Deux opérations enchaînées : mémoire de travail",
+      "description": "Tenir un résultat : deux transformations et calcul inverse",
       "prerequis": [
         "cm-palier-6"
       ],
       "fichier": "paliers/palier-07.json",
-      "nb_items": 18
+      "nb_items": 24
     },
     {
       "id": "cm-palier-8",
-      "description": "Au quotidien : l'argent (total, rendu de monnaie)",
+      "description": "Montants et décimaux : achats, budgets et prix unitaires",
       "prerequis": [
         "cm-palier-7"
       ],
       "fichier": "paliers/palier-08.json",
-      "nb_items": 18
+      "nb_items": 36
     },
     {
       "id": "cm-palier-9",
-      "description": "Au quotidien : quantités et durées (proportions, totaux)",
+      "description": "Proportions et durées : changer d’échelle et convertir",
       "prerequis": [
         "cm-palier-8"
       ],
       "fichier": "paliers/palier-09.json",
-      "nb_items": 18
+      "nb_items": 36
     },
     {
       "id": "cm-palier-10",
-      "description": "Faits difficiles (× 6 à × 9) : combler les lacunes, avec une stratégie",
+      "description": "Pourcentages : remise, variation et recherche de la base",
       "prerequis": [
         "cm-palier-9"
       ],
       "fichier": "paliers/palier-10.json",
-      "nb_items": 19
+      "nb_items": 36
     },
     {
       "id": "cm-palier-11",
-      "description": "Suites et erreurs : tenir le pas, repérer ce qui ne suit pas",
+      "description": "Comparer des offres : frais fixes, quantités et seuils",
       "prerequis": [
         "cm-palier-10"
       ],
       "fichier": "paliers/palier-11.json",
-      "nb_items": 18
+      "nb_items": 36
     },
     {
       "id": "cm-palier-12",
-      "description": "Faits à l'envers : retrouver le facteur manquant",
+      "description": "Synthèse : coûts, rendements et variations successives",
       "prerequis": [
         "cm-palier-11"
       ],
       "fichier": "paliers/palier-12.json",
-      "nb_items": 18
+      "nb_items": 36
     }
   ]
 }

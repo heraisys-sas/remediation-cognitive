@@ -14,3 +14,7 @@ Cadrage : relecture **informelle et bienveillante** du contenu — pertinence de
 ## Entrées
 
 _(aucune pour l'instant)_
+
+## 2026-10-03 — Calcul mental P5–12
+
+252 nouveaux items adultes, calcul pur maintenu et applications complémentaires ; 68 items de socle conservés. Vérification technique indépendante des réponses, variété des familles, méthodes sans résultat. Relecture clinique informelle à faire (`a_revoir`) ; difficulté pédagogique non étalonnée, aucun effet global sur l’intelligence revendiqué. Références et limites de populations : ADR-024.

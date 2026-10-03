@@ -1,3 +1,7 @@
+# 2026-10-03 — calcul adulte plus exigeant dès le palier 5
+
+Remplacement des paliers 5–12 par 252 nouveaux items `cm4-…` : opérations directes, produits et divisions, transformations inverses, décimales, proportions, pourcentages et applications à plusieurs étapes. Le calcul pur reste présent à chaque palier ; méthodes spécifiques et réponses recalculées indépendamment. P1–4 conservés, 320 items au total. Historiques préservés, anciennes réussites exclues de la maîtrise du nouveau corpus. ADR-024.
+
 # 2026-10-03 — séances supplémentaires de calcul mental réellement disponibles
 
 Le commutateur « Dépasser la limite de séances » levait déjà le quota serveur, mais Calcul mental pouvait ne plus avoir de carte due après deux séances : la séance suivante était vide et donnait l'impression que le réglage ne fonctionnait pas. Calcul mental complète désormais une séance avec les cartes non dues dont l'échéance est la plus proche, sans changer la sélection des autres thèmes. Son plafond ordinaire passe de trois à six séances quotidiennes ; la dérogation permet toujours d'aller au-delà. Le résumé utilise ce plafond propre au thème.

@@ -35,6 +35,7 @@ from __future__ import annotations
 
 import json
 import re
+import math
 import sys
 from collections import Counter
 from datetime import date
@@ -70,7 +71,7 @@ FICHIER_SCHEMA = DOSSIER_CONTENU / "schema-item.json"
 MOTIF_REF_PALIER = re.compile(r"^[a-z]+-palier-\d+$")
 
 #: Motif d'un identifiant d'item de calcul mental : cm-<table>-<a>x<b>.
-MOTIF_ID_CALCUL = re.compile(r"^cm[23]-(\d+)-(\d+)$")
+MOTIF_ID_CALCUL = re.compile(r"^(?:cm[23]-\d+-\d+|cm4-\d+-[0-9a-f]{12})$")
 MOTIF_CALCUL_ARITHMETIQUE = re.compile(r"Combien font (\d+) ([+−×]) (\d+)((?: [+−] \d+)?) ?\?")
 MOTIF_COMPLEMENT = re.compile(r"Combien manque-t-il à (\d+) pour faire (\d+) \?")
 MOTIF_TOTAL_ARTICLES = re.compile(r"(\d+) articles à ([\d,]+) € — combien en tout \?")
@@ -997,6 +998,13 @@ def _reponse_calculee(enonce: str) -> int | None:
     (quantités, durées) ne sont pas calculables automatiquement : on n'invente rien,
     ils sont contrôlés en forme seulement.
     """
+    try:
+        from tools.verifier_calcul_adulte import recalculer
+    except ModuleNotFoundError:
+        from verifier_calcul_adulte import recalculer
+    adulte = recalculer(enonce)
+    if adulte is not None:
+        return float(adulte)
     correspondance = MOTIF_CALCUL_ARITHMETIQUE.fullmatch(enonce.strip())
     if correspondance:
         a, operateur, b, suite = (
@@ -1077,12 +1085,12 @@ def erreurs_coherence_calcul(item: dict, prefixe: str,
 
     identifiant = item.get("id", "")
     if not MOTIF_ID_CALCUL.fullmatch(identifiant):
-        return [prefixe + f"id non conforme au motif cm2-/cm3-<palier>-<rang> : {identifiant!r}"]
+        return [prefixe + f"id non conforme au motif cm2/cm3 ou cm4-<palier>-<empreinte> : {identifiant!r}"]
 
     enonce = str((item.get("contenu") or {}).get("enonce") or "")
     reponse = (item.get("reponse") or {}).get("valeur")
-    if isinstance(reponse, bool) or not isinstance(reponse, int) or reponse < 0:
-        return [prefixe + f"réponse entière positive attendue, reçue {reponse!r}"]
+    if isinstance(reponse, bool) or not isinstance(reponse, (int, float)) or not math.isfinite(reponse) or reponse < 0:
+        return [prefixe + f"réponse numérique finie positive attendue, reçue {reponse!r}"]
     attendue = _reponse_calculee(enonce)
     if attendue is not None and attendue != reponse:
         return [prefixe + f"« {enonce} » vaut {attendue}, pas {reponse}"]
