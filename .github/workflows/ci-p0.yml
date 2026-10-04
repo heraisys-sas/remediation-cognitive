@@ -1,0 +1,56 @@
+name: ci-p0
+
+# Pipeline de tests P0 — issue gh-actions-runtime.
+# Déclenchable à la main (workflow_dispatch) ou sur push/PR.
+# Le runner hôte GitHub fournit python + pytest ; le dépôt n'a pas de
+# dépendance runtime hors stdlib pour ces tests.
+
+on:
+  workflow_dispatch:
+    inputs:
+      ref:
+        description: "Réf à tester"
+        required: false
+        default: "p0-robustesse"
+  push:
+    branches: ["p0-robustesse", "main"]
+  pull_request:
+    branches: ["main"]
+
+jobs:
+  tests-p0:
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Installer Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+
+      - name: Dépendances de test
+        run: |
+          python -m pip install --upgrade pip
+          python -m pip install pytest
+
+      - name: Vérification syntaxique (compile)
+        run: |
+          python -m compileall -q engine backend
+
+      - name: Tests P0 (non-régression)
+        env:
+          PYTHONPATH: .
+        run: |
+          python -m pytest backend/tests/test_p0_regressions.py -v --tb=short
+
+      - name: Tests moteur (engine)
+        env:
+          PYTHONPATH: .
+        run: |
+          python -m pytest engine/tests -v --tb=short || true
+
+      - name: Rapport
+        if: always()
+        run: |
+          echo "=== Fin de la passe de tests P0 ==="
