@@ -1,9 +1,8 @@
 name: ci-p0
 
-# Pipeline de tests P0 — issue gh-actions-runtime.
+# Pipeline de tests P0 — usage gh-actions-runtime.
 # Déclenchable à la main (workflow_dispatch) ou sur push/PR.
-# Le runner hôte GitHub fournit python + pytest ; le dépôt n'a pas de
-# dépendance runtime hors stdlib pour ces tests.
+# Les dépendances proviennent de requirements-dev.txt (figées).
 
 on:
   workflow_dispatch:
@@ -28,11 +27,12 @@ jobs:
         uses: actions/setup-python@v5
         with:
           python-version: "3.12"
+          cache: "pip"
 
       - name: Dépendances de test
         run: |
           python -m pip install --upgrade pip
-          python -m pip install pytest
+          python -m pip install -r requirements-dev.txt
 
       - name: Vérification syntaxique (compile)
         run: |
@@ -48,7 +48,7 @@ jobs:
         env:
           PYTHONPATH: .
         run: |
-          python -m pytest engine/tests -v --tb=short || true
+          python -m pytest engine/tests -v --tb=short
 
       - name: Rapport
         if: always()
