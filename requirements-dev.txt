@@ -1,0 +1,17 @@
+# Dépendances de développement et de test (figées pour la CI).
+# Le pyproject reste volontairement minimal ; la CI installe ce fichier.
+
+pytest>=8
+
+# Backend FastAPI (nécessaire à backend/tests/conftest.py et aux app)
+fastapi>=0.110
+uvicorn>=0.29
+pydantic>=2.7
+httpx>=0.27
+python-multipart>=0.0.9
+
+# Moteur : paquet FSRS (engine/srs/fsrs.py)
+fsrs>=1.0
+
+# Export PDF (Phase 2)
+reportlab>=4.0
