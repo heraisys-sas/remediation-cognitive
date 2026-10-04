@@ -1,14 +1,14 @@
 """Orchestration d'une séance (5–10 min).
 
 Responsabilités :
-- servir les items dans l'ordre : la sélection amont (règle adaptative +
-  FSRS) est faite par l'appelant et injectée via ``items`` ;
+- servir les items dans l'ordre : la sélection amont (règle adaptive +
+  FSRS) est faite par l'appelant et injectée via `items` ;
 - respecter le dosage : nombre d'items maximal et durée maximale. Ces
   garde-fous sont codés en dur : le moteur cesse de *proposer* des items,
   il n'interrompt jamais l'utilisateur en cours d'item ;
 - surveiller la fatigabilité (dégradation du RT, montée du taux d'erreur)
-  et **proposer** l'arrêt via un simple booléen — jamais forcé, jamais
-  bloqué (règle clinique : la proposition n'arrête rien d'elle-même) ;
+  et **proposer** l'arrêt via un simple booléen — jamais forcée, jamais
+  bloquée (règle clinique : la proposition n'arrête rien d'elle-même) ;
 - produire un résumé de fin de séance.
 
 Aucune notion de persistance ici : le backend s'en charge (ADR-002).
@@ -20,17 +20,15 @@ from datetime import datetime, timezone
 from numbers import Real
 
 from engine.adaptive.rule import calculer_taux_glissant
-
-# Seuils de fatigabilité (docs/10-clinique/protocoles.md) : la détection
-# n'est qu'une proposition d'arrêt mise à disposition de l'UI.
-FENETRE_FATIGUE = 5  # réponses récentes prises en compte
-SEUIL_RT_FATIGUE = 1.25  # RT moyen glissant > 1,25 × baseline → proposition
-SEUIL_TAUX_ERREUR = 0.40  # taux d'erreur glissant ≥ 0,40 → proposition
-MIN_REPONSES_FATIGUE = 3  # anti-bruit : pas d'alerte avant ce nombre
+from engine.fatigue import (
+    FENETRE_FATIGUE,
+    alerter_fatigue,
+    taux_erreur as _taux_erreur,
+)
 
 
 def _extraire_item_id(item) -> str:
-    """Extrait l'identifiant d'un item (attribut ``item_id`` ou clé de dict)."""
+    """Extrait l'identifiant d'un item (attribut `item_id` ou clé de dict)."""
     if isinstance(item, dict):
         try:
             return item["item_id"]
@@ -50,20 +48,20 @@ def _normaliser_utc(instant: datetime) -> datetime:
 
 
 class SessionRunner:
-    """Déroulé d'une séance : servir, enregistrer, surveiller, résumer.
+    """Déroule une séance : servir, enregistrer, surveiller, résumer.
 
     Paramètres :
-    - ``items`` : séquence ordonnée d'items déjà choisis par l'appelant
-      (chaque item expose ``item_id`` comme attribut ou comme clé de dict) ;
-    - ``max_items`` : quota d'items de la séance (défaut 12) ;
-    - ``duree_max_s`` : durée maximale en secondes (défaut 600 = 10 min) ;
-    - ``baseline_rt_ms`` : temps de réaction de référence en ms (défaut
+    - `items` : séquence ordonnée d'items déjà choisis par l'appelant
+      (chaque item expose `item_id` comme attribut ou comme clé de dict) ;
+    - `max_items` : quota d'items de la séance (défaut 12) ;
+    - `duree_max_s` : durée maximale en secondes (défaut 600 = 10 min) ;
+    - `baseline_rt_ms` : temps de réaction de référence en ms (défaut
       1000) ; la baseline réelle de l'utilisateur est une responsabilité
       backend, cette valeur n'est qu'un point de départ paramétrable ;
-    - ``depart`` : instant de départ injectable (tests, reprise de séance) ;
+    - `depart` : instant de départ injectable (tests, reprise de séance) ;
       par défaut l'instant de construction.
 
-    Contrat « fatigue » : ``doit_proposer_arret`` ne fait que renvoyer un
+    Contrat ± fatigue ± : `doit_proposer_arret()` ne fait que renvoyer un
     booléen ; elle n'interrompt, ne bloque et ne lève jamais rien. Les
     seules conditions d'arrêt de service d'items sont le quota, la durée
     et la fin de liste — jamais la fatigue.
@@ -101,8 +99,8 @@ class SessionRunner:
     def prochain_item(self):
         """Retourne l'item suivant à présenter, ou None si séance pleine.
 
-        None si : tous les items servis, quota ``max_items`` atteint, durée
-        maximale atteinte ou séance déjà terminée. La fatigue NE fait PAS
+        None si : tous les items servis, quota `max_items` atteint, durée
+        maximale atteinte ou séance déjà terminée. La fatigue NE fait pas
         partie des conditions d'arrêt (proposition seulement).
         """
         if self._terminee:
@@ -124,7 +122,7 @@ class SessionRunner:
         interruption).
 
         Une réponse par item servi est le flux nominal ; des réponses
-        supplémentaires (reprises errorless) sont comptabilisées comme essais.
+        supplémentaires (reprises, erreurs) sont comptabilisées comme essais.
         Lève ValueError si l'item n'a pas été servi ou si temps_ms est invalide.
         """
         servis = self._ids[: self._index]
@@ -156,26 +154,31 @@ class SessionRunner:
     def doit_proposer_arret(self) -> bool:
         """Fatigue détectée : True si l'UI doit *proposer* l'arrêt.
 
-        Critères (sur la fenêtre glissante, après MIN_REPONSES_FATIGUE
+        Critères (sur la fenêtre glissante, avant MIN_REPONSES_FATIGUE
         réponses pour éviter le bruit statistique) :
         - RT moyen glissant > 1,25 × baseline_rt_ms, OU
-        - taux d'erreur glissant ≥ 0,40.
+        - taux d'erreur glissant >= 0,40.
 
         Garde-fou clinique : simple indicateur. Cette méthode n'interrompt
         jamais la séance, ne bloque aucun appel et ne lève jamais.
         """
         fenetre = self._reponses[-FENETRE_FATIGUE:]
-        if len(fenetre) < MIN_REPONSES_FATIGUE:
-            return False
-        rt_moyen = sum(r["temps_ms"] for r in fenetre) / len(fenetre)
-        taux_erreur = 1.0 - sum(1 for r in fenetre if r["correcte"]) / len(fenetre)
-        return (
-            rt_moyen > SEUIL_RT_FATIGUE * self.baseline_rt_ms
-            or taux_erreur >= SEUIL_TAUX_ERREUR
+        if len(fenetre) < FENETRE_FATIGUE and len(self._reponses) < FENETRE_FATIGUE:
+            # anti-bruit : MIN_REPONSES_FATIGUE appliquée dans engine.fatigue
+            pass
+        rt_moyen = (
+            sum(r["temps_ms"] for r in fenetre) / len(fenetre) if fenetre else 0.0
+        )
+        taux_erreur = _taux_erreur([r["correcte"] for r in fenetre])
+        return alerter_fatigue(
+            rt_glissant=[rt_moyen] if fenetre else [],
+            baseline_rt=self.baseline_rt_ms,
+            taux_erreur_glissant=taux_erreur,
+            nb_reponses=len(self._reponses),
         )
 
     def terminer(self) -> dict:
-        """Clôt la séance et retourne le résumé (persisté par le backend).
+        """Clôture la séance et retourne le résumé (persisté par le backend).
 
         Clés : items (servis), correctes, erreurs, duree_s, taux_reussite
         (sur l'ensemble des essais ; 0.0 si aucune réponse), rt_moyen_ms
@@ -199,7 +202,7 @@ class SessionRunner:
             "alerte_fatigue": self.doit_proposer_arret(),
         }
 
-    # -- interne -------------------------------------------------------------
+    # -- interne -----------------------------------------------------------
 
     def _secondes_ecoulees(self) -> float:
         """Secondes écoulées depuis le départ de la séance."""
