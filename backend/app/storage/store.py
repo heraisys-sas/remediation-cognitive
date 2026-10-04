@@ -1,21 +1,25 @@
 """Persistance JSON de l'entraînement — données non médicales (ADR-002).
 
-Fichiers sous ``backend/data/entrainement/<theme>/`` (hors dépôt : le
-.gitignore du projet exclut ``data/``) :
-- ``cartes-fsrs.json``      : état FSRS par item (``CarteFSRS.to_dict`` /
-  ``from_dict`` de engine.srs.fsrs, utilisé tel quel) ;
-- ``maitrise.json``         : palier courant + historique chronologique
+Fichiers sous `backend/data/entrainement/<theme>/` (hors dépôt : le
+.gitignore du projet exclut `data/`) :
+- `cartes-fsrs.json`     : état FSRS par item (`CarteFSRS.to_dict` /
+  `from_dict` de engine.srs.fsrs, utilisé tel quel) ;
+- `maitrise.json`        : palier courant + historique chronologique
   des couples (palier, taux de réussite) — critère 90 % × 3 séances ;
-- ``compteur-seances.json`` : compteur de séances de la fenêtre courante —
+- `compteur-seances.json` : compteur de séances de la fenêtre courante —
   jour, ou semaine (lundi) pour l'évaluation — remis à zéro au changement
   de fenêtre.
 
-Les répertoires sont créés à la volée à l'écriture ; les lectures sur
+Les repéreurs sont créés à la volée à l'écriture ; les lectures sur
 fichiers absents retournent des valeurs par défaut (thème vierge :
 palier 1, aucun historique, aucune carte, 0 séance).
 
 Les séances en cours restent en mémoire (registre backend) et ne sont
 persistées qu'à la fin — seuls les états ci-dessus sont écrits.
+
+Concurrence (issues #1, P0-A2) : chaque lecture/écriture passe par un
+verrou fichier (`_verrou`) qui protège les opérations read-modify-write
+contre les accès concurrents de plusieurs processus.
 """
 
 from __future__ import annotations
@@ -23,21 +27,74 @@ from __future__ import annotations
 import json
 import os
 import re
+import threading
+from contextlib import contextmanager
 from datetime import date
 from pathlib import Path
 
 from engine.srs.fsrs import CarteFSRS
 
-RACINE_PROJET = Path(__file__).resolve().parents[3]
-"""Racine du dépôt remediation-cognitive (résolution indépendante du CWD)."""
+
+def _racine_projet() -> Path:
+    """Racine du dépôt remediation-cognitive.
+
+    Ordre de résolution :
+    1. variable d'environnement `REMEDIATION_ROOT` (explicite, prioritaire) ;
+    2. repli sur la structure de dépôt (présence de `pyproject.toml` ou de
+       `backend/`) en remontant depuis ce fichier.
+
+    Lève RuntimeError si aucune racine n'est résoluble — plus aucune
+    dépendance à une profondeur d'installation figée (issue #4, P0-A3).
+    """
+    env = os.environ.get("REMEDIATION_ROOT")
+    if env:
+        racine = Path(env).expanduser().resolve()
+        return racine
+    ici = Path(__file__).resolve()
+    for ancetre in ici.parents:
+        if (ancetre / "pyproject.toml").exists() or (ancetre / "backend").is_dir():
+            return ancetre
+    raise RuntimeError(
+        "Racine du projet introuvable : définissez la variable d'environnement "
+        "REMEDIATION_ROOT pour pointer vers le dépôt remediation-cognitive."
+    )
+
+
+RACINE_PROJET = _racine_projet()
 
 _MOTIF_THEME = re.compile(r"^[a-z0-9-]+$")
+
+# Verrou processus : protège les opérations read-modify-write (P0-A2).
+_verrou = threading.RLock()
+
+
+@contextmanager
+def _verrou_fichier(chemin: Path):
+    """Verrou inter-processus sur `chemin` (fcntl POSIX / msvcrt Windows)."""
+    chemin.parent.mkdir(parents=True, exist_ok=True)
+    avec = chemin.with_suffix(chemin.suffix + ".lock")
+    with open(avec, "a+b") as poignee:
+        try:
+            import fcntl
+
+            fcntl.flock(poignee.fileno(), fcntl.LOCK_EX)
+            relacher = lambda: fcntl.flock(poignee.fileno(), fcntl.LOCK_UN)  # noqa: E731
+        except ImportError:  # Windows
+            import msvcrt
+
+            poignee.seek(0)
+            msvcrt.locking(poignee.fileno(), msvcrt.LK_LOCK, 1)
+            relacher = lambda: msvcrt.locking(poignee.fileno(), msvcrt.LK_UNLCK, 1)  # noqa: E731
+        try:
+            yield
+        finally:
+            relacher()
 
 
 class StockageJSON:
     """Accès fichiers JSON par thème ; racine injectable (tests).
 
-    Périmètre strictement « entraînement » : aucune donnée de bilan ne
+    Périphérique strictement ± entrainement ± : aucune donnée de bilan ne
     transite ici (séparation ADR-002).
     """
 
@@ -48,7 +105,7 @@ class StockageJSON:
             else RACINE_PROJET / "backend" / "data" / "entrainement"
         )
 
-    # -- primitives ----------------------------------------------------------
+    # -- primitives --------------------------------------------------------
 
     def _dossier_theme(self, theme: str) -> Path:
         """Dossier du thème, avec garde contre toute injection de chemin."""
@@ -65,17 +122,19 @@ class StockageJSON:
 
     def _ecrire_json(self, chemin: Path, contenu: dict) -> None:
         """Écriture atomique (temporaire + rename) ; crée le répertoire à la volée."""
-        chemin.parent.mkdir(parents=True, exist_ok=True)
-        temporaire = chemin.with_suffix(chemin.suffix + ".tmp")
-        temporaire.write_text(
-            json.dumps(contenu, ensure_ascii=False, indent=1), encoding="utf-8"
-        )
-        os.replace(temporaire, chemin)
+        with _verrou:
+            with _verrou_fichier(chemin):
+                chemin.parent.mkdir(parents=True, exist_ok=True)
+                temporaire = chemin.with_suffix(chemin.suffix + ".tmp")
+                temporaire.write_text(
+                    json.dumps(contenu, ensure_ascii=False, indent=1), encoding="utf-8"
+                )
+                os.replace(temporaire, chemin)
 
-    # -- cartes FSRS ---------------------------------------------------------
+    # -- cartes FSRS -------------------------------------------------------
 
     def lire_cartes(self, theme: str) -> dict[str, CarteFSRS]:
-        """Cartes FSRS persistées du thème (dictionnaire vide si thème vierge)."""
+        """Cartes FSRS persistées du thème (dict clair sinon thème vierge)."""
         donnees = self._lire_json(self._dossier_theme(theme) / "cartes-fsrs.json") or {}
         cartes: dict[str, CarteFSRS] = {}
         for item_id, etat in (donnees.get("cartes") or {}).items():
@@ -92,7 +151,7 @@ class StockageJSON:
         }
         self._ecrire_json(self._dossier_theme(theme) / "cartes-fsrs.json", contenu)
 
-    # -- maîtrise par palier ---------------------------------------------------
+    # -- maîtrise par palier -----------------------------------------------
 
     def lire_maitrise(self, theme: str) -> dict:
         """État de maîtrise : palier courant + historique [(palier, taux), …]."""
@@ -112,7 +171,10 @@ class StockageJSON:
         return (self._dossier_theme(theme) / "maitrise.json").is_file()
 
     def ecrire_maitrise(
-        self, theme: str, palier_courant: int, historique: list[tuple[int, float]],
+        self,
+        theme: str,
+        palier_courant: int,
+        historique: list[tuple[int, float]],
         historique_etapes: list[tuple[int, float]] | None = None,
     ) -> None:
         """Persiste le palier courant et l'historique chronologique."""
@@ -124,10 +186,10 @@ class StockageJSON:
             contenu["historique_etapes"] = [[p, t] for p, t in historique_etapes]
         self._ecrire_json(self._dossier_theme(theme) / "maitrise.json", contenu)
 
-    # -- compteur de séances (fenêtre courante) ---------------------------------
+    # -- compteur de séances (fenêtre courante) -----------------------------
 
     def lire_compteur(self, theme: str, debut: date) -> int:
-        """Séances démarrées dans la fenêtre ouverte à ``debut`` (0 sinon)."""
+        """Séances démarrées dans la fenêtre ouverte à `debut` (0 sinon)."""
         donnees = (
             self._lire_json(self._dossier_theme(theme) / "compteur-seances.json")
             or {}
@@ -137,16 +199,14 @@ class StockageJSON:
         return int(donnees.get("nb_sessions") or 0)
 
     def ecrire_compteur(self, theme: str, debut: date, nb_sessions: int) -> None:
-        """Persiste le compteur de la fenêtre (le début stocké pilote la remise à zéro)."""
+        """Persiste le compteur de la fenêtre (le début stocke pilote la remise à zéro)."""
         contenu = {
             "date": debut.isoformat(),
             "nb_sessions": int(nb_sessions),
         }
-        self._ecrire_json(
-            self._dossier_theme(theme) / "compteur-seances.json", contenu
-        )
+        self._ecrire_json(self._dossier_theme(theme) / "compteur-seances.json", contenu)
 
-    # -- baseline RT (temps de référence) ---------------------------------------
+    # -- baseline RT (temps de référence) -----------------------------------
 
     def lire_temps_reference(self, theme: str) -> list[float]:
         """Derniers temps de réaction corrects (ms), vide si thème vierge."""
@@ -157,7 +217,7 @@ class StockageJSON:
         return [float(t) for t in (donnees.get("temps") or [])]
 
     def ecrire_temps_reference(self, theme: str, temps: list[float]) -> None:
-        """Persiste les ≤ 100 derniers temps corrects (médiane → baseline RT)."""
+        """Persiste les ± 100 derniers temps corrects (médiane ≤ baseline RT)."""
         contenu = {"temps": [float(t) for t in temps[-100:]]}
         self._ecrire_json(
             self._dossier_theme(theme) / "temps-reference.json", contenu
