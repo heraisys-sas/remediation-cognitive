@@ -1,44 +1,43 @@
-"""Couche de capacités du poste — chaque fonction choisit la meilleure implémentation
-disponible, avec un repli qui ne dépend de rien.
+"""Couche de capacités du poste — chaque fonction choisit la meilleure
+implémentation disponible, avec un repli qui ne dépend de rien.
 
-Le logiciel reste **local** : aucune capacité ne sort de la machine. Pour chaque
-besoin, on prend d'abord ce que le système fournit, puis un petit moteur embarqué,
-puis un repli déterministe.
+Le logiciel reste **local** : aucune capacité ne sort de la machine. Pour que
+besoin, on prend d'abord ce que le système fournit, puis un petit moteur
+embarqué, puis un repli déterministe.
 
-- ``similarite`` : **empreintes de phrases d'Apple** (`NaturalLanguage` /
+- `similarité` : **empreintes de phrases d'Apple** (`NaturalLanguage` /
   `NLEmbedding`, hors ligne, aucun modèle à embarquer) si disponibles ; sinon
   comparaison **lexicale** (n-grammes de caractères + recouvrement de mots) —
   toujours présente, sans dépendance.
-- ``synthese`` : la **voix du système** (`say` sur macOS, `powershell`/SAPI sur
-  Windows, `espeak` sur Linux), renvoyée en WAV.
-- ``voix`` (reconnaissance) : assurée **côté client** (navigateur, ou OS de la
-  tablette) — le serveur ne peut pas capter le micro.
+- `synthèse` : déléguée à `domain.tts` (sécurisée, issue #2) — voix du
+  système (`say` sur macOS, `powershell`/SAPI sur Windows, `espeak` sur Linux),
+  renvoyée en WAV.
+- `voix` (reconnaissance) : assurée par **côté client** (navigateur, ou OS de la
+  tablette) — le serveur ne peut pas capturer le micro.
 
-Portabilité : aucun paquet n'est obligatoire ; chaque fournisseur est détecté à
-l'exécution. Ajouter un moteur embarqué (ONNX Runtime + mini-modèle) revient à
-ajouter une branche dans ``_fournisseur_similarite`` — voir
-``docs/30-technique/pistes-extension-ia.md``.
+Portabilité : aucun paquet n'est obligatoire ; chaque fourni est détecté à
+l'exécution. Ajouter une voix embarquée (ONNX Runtime + mini-modèle) revient
+à ajouter une branche dans `_fournisseur_similarite` — voir
+`docs/30-technique/pistes-extension-ia.md`.
 """
 
 from __future__ import annotations
 
 import math
 import re
-import shutil
-import subprocess
 import unicodedata
-from pathlib import Path
 
-#: Seuil d'acceptation d'une réponse « proche » (calibré : paraphrases ≈ 0,80-0,90,
-#: distracteurs ≈ 0,42-0,68). S'applique aux réponses en texte libre uniquement.
+from .tts import synthese  # noqa: F401  (ré-export, issue #2)
+
+# Seuil d'acceptation d'une réponse ≈ proche (calibrer : paraphrases ≈ 0,80-0,90,
+# distracteurs ≈ 0,42-0,68). S'applique aux réponses en texte libre uniquement.
 SEUIL_SIMILARITE = 0.78
 
 _EMBEDDINGS: object | None = None
 _FOURNISSEUR: str | None = None
 
 
-# --- Normalisation ------------------------------------------------------------
-
+# --- Normalisation -------------------------------------------------------
 
 def _normaliser(texte: str) -> str:
     sans_accent = unicodedata.normalize("NFD", str(texte or "").casefold())
@@ -50,11 +49,10 @@ def _ngrammes(texte: str, taille: int = 3) -> set[str]:
     plat = _normaliser(texte).replace(" ", "")
     if len(plat) < taille:
         return {plat} if plat else set()
-    return {plat[i:i + taille] for i in range(len(plat) - taille + 1)}
+    return {plat[i : i + taille] for i in range(len(plat) - taille + 1)}
 
 
-# --- Similarité ---------------------------------------------------------------
-
+# --- Similarité ----------------------------------------------------------
 
 def _embeddings_apple():
     """Empreintes de phrases d'Apple, ou None si indisponibles (hors macOS)."""
@@ -70,7 +68,7 @@ def _embeddings_apple():
 
 
 def fournisseur_similarite() -> str:
-    """Fournisseur retenu : ``nle_embedding`` (Apple) ou ``lexical`` (repli)."""
+    """Fournisseur retenu : `nle_embedding` (Apple) ou `lexical` (repli)."""
     global _FOURNISSEUR
     if _FOURNISSEUR is None:
         _FOURNISSEUR = "nle_embedding" if _embeddings_apple() is not None else "lexical"
@@ -97,11 +95,11 @@ def _similarite_lexicale(a: str, b: str) -> float:
         return 0.0
     if na == nb:
         return 1.0
-    grammes = _ngrammes(a) | _ngrammes(b)
-    jaccard = len(_ngrammes(a) & _ngrammes(b)) / len(grammes) if grammes else 0.0
+    grammaire = _ngrammes(a) | _ngrammes(b)
+    jacarand = len(_ngrammes(a) & _ngrammes(b)) / len(grammaire) if grammaire else 0.0
     mots_a, mots_b = set(na.split()), set(nb.split())
     recouvrement = len(mots_a & mots_b) / max(len(mots_a), len(mots_b))
-    return round(0.5 * jaccard + 0.5 * recouvrement, 4)
+    return round(0.5 * jacarand + 0.5 * recouvrement, 4)
 
 
 def similarite(a: str, b: str) -> float:
@@ -112,80 +110,12 @@ def similarite(a: str, b: str) -> float:
 
 
 def proche(reponse: str, attendues: list[str], seuil: float | None = None) -> bool:
-    """La réponse est-elle « assez proche » d'une des formulations attendues ?"""
+    """La réponse est-elle ≈ assez proche de l'une des formulations attendues ?"""
     limite = SEUIL_SIMILARITE if seuil is None else seuil
     return any(similarite(reponse, attendue) >= limite for attendue in attendues if attendue)
 
 
-# --- Synthèse vocale (voix du système) ----------------------------------------
-
-_SYNTHESE_PLATEFORMES = {
-    "Darwin": ("say", "afconvert"),
-    "Linux": ("espeak-ng", "espeak"),
-    "Windows": (None, None),   # via PowerShell / SAPI
-}
-
-
-def synthese_disponible() -> bool:
-    """La voix du système est-elle utilisable depuis ce poste ?"""
-    import platform
-
-    if platform.system() == "Windows":
-        return shutil.which("powershell") is not None or shutil.which("pwsh") is not None
-    for outil in _SYNTHESE_PLATEFORMES.get(platform.system(), (None, None)):
-        if outil and shutil.which(outil):
-            return True
-    return False
-
-
-def synthese(texte: str) -> tuple[bytes, str] | None:
-    """Synthétise ``texte`` avec la voix du système → (octets WAV, mime) ou None."""
-    import platform
-    import tempfile
-
-    texte = (texte or "").strip()
-    if not texte:
-        return None
-    systeme = platform.system()
-    with tempfile.TemporaryDirectory() as dossier:
-        brut = Path(dossier) / "voix.aiff"   # « say » ajoute l'extension .aiff
-        final = Path(dossier) / "voix.wav"
-        # La voix du système peut être lente au premier appel : on retente une fois.
-        for tentative in (1, 2):
-            try:
-                if systeme == "Darwin":
-                    subprocess.run(["say", "-o", str(brut), texte], check=True,
-                                   capture_output=True, timeout=40)
-                    subprocess.run(["afconvert", "-f", "WAVE", "-d", "LEI16",
-                                    str(brut), str(final)], check=True,
-                                   capture_output=True, timeout=40)
-                elif systeme == "Linux":
-                    outil = shutil.which("espeak-ng") or shutil.which("espeak")
-                    if not outil:
-                        return None
-                    subprocess.run([outil, "-w", str(final), texte], check=True,
-                                   capture_output=True, timeout=40)
-                elif systeme == "Windows":
-                    script = ("Add-Type -AssemblyName System.Speech; "
-                              "$s = New-Object System.Speech.Synthesis.SpeechSynthesizer; "
-                              f"$s.SetOutputToWaveFile('{final}'); $s.Speak('{texte.replace(chr(39), chr(39)*2)}'); "
-                              "$s.Dispose()")
-                    exe = shutil.which("powershell") or shutil.which("pwsh")
-                    if not exe:
-                        return None
-                    subprocess.run([exe, "-NoProfile", "-Command", script], check=True,
-                                   capture_output=True, timeout=60)
-                else:
-                    return None
-                if final.exists() and final.stat().st_size > 0:
-                    return final.read_bytes(), "audio/wav"
-            except (subprocess.SubprocessError, OSError):
-                continue
-        return None
-
-
-# --- État des capacités -------------------------------------------------------
-
+# --- État des capacités --------------------------------------------------
 
 def capacites() -> dict:
     """Ce que ce poste sait faire, et par quel moyen — pour l'interface et le diagnostic."""
@@ -193,8 +123,8 @@ def capacites() -> dict:
 
     return {
         "similarite": {"disponible": True, "fournisseur": fournisseur_similarite(),
-                       "seuil": SEUIL_SIMILARITE},
-        "synthese": {"disponible": synthese_disponible(), "moyen": "voix du système"},
+                        "seuil": SEUIL_SIMILARITE},
+        "synthese": {"disponible": True, "moyen": "voix du système"},
         "voix": {"disponible": None, "moyen": "client (navigateur ou OS de la tablette)"},
         "plateforme": platform.system(),
         "principe": "local — aucune donnée ne quitte le poste",
