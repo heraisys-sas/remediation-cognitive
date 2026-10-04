@@ -36,15 +36,16 @@ jobs:
 
       - name: Vérification syntaxique (compile)
         run: |
-          python -m compileall -q engine backend
+          python -m compileall -q engine backend tests
 
-      - name: Tests P0 (non-régression)
+      - name: Tests P0 (non-régression, unitaires isolés)
         env:
           PYTHONPATH: .
         run: |
-          python -m pytest backend/tests/test_p0_regressions.py -v --tb=short
+          python -m pytest tests/p0 -v --tb=short
 
       - name: Tests moteur (engine)
+        if: always()
         env:
           PYTHONPATH: .
         run: |
