@@ -9,27 +9,28 @@ Valide les quatre correctifs de robustesse :
 
 from __future__ import annotations
 
-import os
-import subprocess
+import datetime
 from pathlib import Path
 
 import pytest
 
+from backend.app.domain import tts
+from backend.app.domain.fatigue import alerter_fatigue as domain_alerter
+from backend.app.storage import store as store_mod
+from backend.app.storage.store import StockageJSON, _racine_projet
 from engine.fatigue import (
     SEUIL_RT_FATIGUE,
     SEUIL_TAUX_ERREUR,
     alerter_fatigue,
     taux_erreur,
 )
-from backend.app.domain import tts
-from backend.app.domain.fatigue import alerter_fatigue as domain_alerter
-from backend.app.storage.store import StockageJSON, _racine_projet
 
 
 # --- P0-A1 : pas d'injection shell dans la synthèse vocale ----------------
 
+
 def test_tts_ne_construit_pas_de_commande_shell():
-    """Aucun appel à synthesese ne doit utiliser shell=True."""
+    """Aucun appel à synthese ne doit utiliser shell=True."""
     source = Path(tts.__file__).read_text(encoding="utf-8")
     assert "shell=True" not in source
 
@@ -37,18 +38,16 @@ def test_tts_ne_construit_pas_de_commande_shell():
 def test_tts_texte_malveillant_ne_leve_pas_et_ne_declenche_rien():
     """Entrées à injection : le texte ne doit jamais être exécuté."""
     hostiles = [
-        "$(touch /tmp/pwned)",
+        "$(touch [REDACTED_HOST_PATH])",
         "`id`",
-        "'; echo pwned > /tmp/pwned ; '",
-        'a"; rm -rf /tmp/x; "',
+        "'; echo pwned > [REDACTED_HOST_PATH] ; '",
+        'a"; rm -rf [REDACTED_HOST_PATH]; "',
         "texte\nnormal avec ' guillemet",
     ]
     for texte in hostiles:
-        # Ne doit jamais lever, quel que soit le moteur (ou None si indisponible).
         resultat = tts.synthese(texte)
         assert resultat is None or isinstance(resultat, tuple)
-    # Aucun effet de bord : le flag d'injection n'a pas été créé.
-    assert not Path("/tmp/pwned").exists()
+    assert not Path("[REDACTED_HOST_PATH]").exists()
 
 
 def test_tts_vide_renvoie_none():
@@ -58,17 +57,18 @@ def test_tts_vide_renvoie_none():
 
 # --- P0-A4 : source unique de la fatigue ----------------------------------
 
+
 def test_seuil_erreur_est_inclusif():
     """Un taux d'erreur exactement au seuil déclenche l'alerte (>=)."""
-    assert alerter_fatigue([], baseline_rt=1000.0, taux_erreur_glissant=SEUIL_TAUX_ERREUR) is True
-    assert alerter_fatigue([], baseline_rt=1000.0, taux_erreur_glissant=SEUIL_TAUX_ERREUR - 0.01) is False
+    assert alerter_fatigue([], 1000.0, taux_erreur_glissant=SEUIL_TAUX_ERREUR) is True
+    assert alerter_fatigue([], 1000.0, taux_erreur_glissant=SEUIL_TAUX_ERREUR - 0.01) is False
 
 
 def test_seuil_rt_est_strict():
     """Un RT exactement à 1,25x baseline NE déclenche PAS l'alerte (strict >)."""
     rt = 1000.0 * SEUIL_RT_FATIGUE
-    assert alerter_fatigue([rt], baseline_rt=1000.0) is False
-    assert alerter_fatigue([rt + 1], baseline_rt=1000.0) is True
+    assert alerter_fatigue([rt], 1000.0) is False
+    assert alerter_fatigue([rt + 1], 1000.0) is True
 
 
 def test_anti_bruit_min_reponses():
@@ -91,6 +91,7 @@ def test_taux_erreur():
 
 # --- P0-A3 : racine explicite ---------------------------------------------
 
+
 def test_racine_via_variable_environnement(tmp_path, monkeypatch):
     monkeypatch.setenv("REMEDIATION_ROOT", str(tmp_path))
     assert _racine_projet() == tmp_path.resolve()
@@ -99,30 +100,27 @@ def test_racine_via_variable_environnement(tmp_path, monkeypatch):
 def test_stockage_accepte_racine_explicite(tmp_path):
     stockage = StockageJSON(racine=tmp_path)
     assert stockage.racine == tmp_path
-    # Écriture/lecture sur racine personnalisée, indépendante de la profondeur.
-    stockage.ecrire_compteur("calcul-mental", __import__("datetime").date(2026, 1, 5), 2)
-    assert stockage.lire_compteur("calcul-mental", __import__("datetime").date(2026, 1, 5)) == 2
+    stockage.ecrire_compteur("calcul-mental", datetime.date(2026, 1, 5), 2)
+    assert stockage.lire_compteur("calcul-mental", datetime.date(2026, 1, 5)) == 2
 
 
 def test_theme_invalide_rejete(tmp_path):
     stockage = StockageJSON(racine=tmp_path)
     with pytest.raises(ValueError):
-        stockage.lire_cartes("../etc/passwd")
+        stockage.lire_cartes("..[REDACTED_HOST_PATH]")
 
 
 # --- P0-A2 : verrou sur la persistance ------------------------------------
 
-def test_ecritures_concurrentes_sans_perte(tmp_path):
-    """Plusieurs écritures concurrentes ne doivent perdre aucune donnée."""
-    import datetime
 
+def test_ecritures_concurrentes_sans_perte(tmp_path):
+    """Plusieurs écritures successives ne doivent perdre aucune donnée."""
     stockage = StockageJSON(racine=tmp_path)
-    # Enchaînement read-modify-write simulé par écritures successives.
     for i in range(1, 6):
         stockage.ecrire_compteur("calcul-mental", datetime.date(2026, 1, 5), i)
     assert stockage.lire_compteur("calcul-mental", datetime.date(2026, 1, 5)) == 5
 
 
 def test_module_store_ne_contient_plus_parents3():
-    source = Path(os.path.dirname(__import__("backend.app.storage.store", fromlist=["x"]).__file__)) .joinpath("store.py")
-    assert "parents[3]" not in source.read_text(encoding="utf-8")
+    source = Path(store_mod.__file__).read_text(encoding="utf-8")
+    assert "parents[3]" not in source
