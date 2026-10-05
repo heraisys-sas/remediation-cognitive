@@ -1,0 +1,64 @@
+name: ci-p1
+
+# Pipeline de tests P1 (maintenabilité) — usage gh-actions-runtime.
+# Déclenchable à la main (workflow_dispatch) ou sur push/PR.
+# Dépendances : requirements-dev.txt (figées).
+
+on:
+  workflow_dispatch:
+    inputs:
+      ref:
+        description: "Réf à tester"
+        required: false
+        default: "p1-maintenabilite"
+  push:
+    branches: ["p1-maintenabilite", "main"]
+  pull_request:
+    branches: ["main"]
+
+jobs:
+  tests-p1:
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Installer Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+          cache: "pip"
+
+      - name: Dépendances de test
+        run: |
+          python -m pip install --upgrade pip
+          python -m pip install -r requirements-dev.txt
+
+      - name: Vérification syntaxique (compile)
+        run: |
+          python -m compileall -q engine backend tests
+
+      - name: Tests P0 (non-régression)
+        env:
+          PYTHONPATH: .
+        run: |
+          python -m pytest tests/p0 -v --tb=short
+
+      - name: Tests P1 (maintenabilité)
+        if: always()
+        env:
+          PYTHONPATH: .
+        run: |
+          python -m pytest tests/p1 -v --tb=short
+
+      - name: Tests moteur (engine)
+        if: always()
+        env:
+          PYTHONPATH: .
+        run: |
+          python -m pytest engine/tests -v --tb=short
+
+      - name: Rapport
+        if: always()
+        run: |
+          echo "=== Fin de la passe de tests P1 ==="
