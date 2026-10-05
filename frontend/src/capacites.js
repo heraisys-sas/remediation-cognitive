@@ -53,10 +53,20 @@ const Capacites = (() => {
   let enonceActif = null;
   const CLE_VOIX = "remediation.voixLocale";
   let voixChoisie = "";
+  let voixNatives = [];
   try { voixChoisie = window.localStorage.getItem(CLE_VOIX) || ""; } catch {}
-  const voixLocales = () => syntheseDisponible()
-    ? window.speechSynthesis.getVoices().filter(v => /^fr(?:[-_]|$)/i.test(v.lang) && v.localService)
-    : [];
+  const voixLocales = () => [...voixNatives, ...(syntheseDisponible()
+    ? window.speechSynthesis.getVoices().filter(v => /^fr(?:[-_]|$)/i.test(v.lang) && v.localService
+      && !/^(Eddy|Flo|Grandma|Grandpa|Reed|Rocko|Sandy|Shelley)\b/i.test(v.name || ""))
+    : [])];
+  async function chargerVoixLocales() {
+    try {
+      const r = await fetch('/api/capacites/voix');
+      if (!r.ok) return;
+      const donnees = await r.json();
+      voixNatives = donnees.voix.map(v => ({name:v.nom, voiceURI:`macos:${v.id}`, lang:'fr-FR', localService:true, native:v.id}));
+    } catch { /* Ancien serveur : les voix du navigateur restent disponibles. */ }
+  }
   function choisirVoix(uri) {
     voixChoisie = uri;
     try { window.localStorage.setItem(CLE_VOIX, uri); } catch {}
@@ -89,8 +99,21 @@ const Capacites = (() => {
     if (!syntheseDisponible() || !texte) return false;
     const locales = voixLocales();
     const voix = locales.find(v => v.voiceURI === voixChoisie)
-      || locales.find(v => v.default) || locales[0];
+      || locales.find(v => v.native) || locales.find(v => v.default) || locales[0];
     if (!voix) { if (onErreur) onErreur("voix_locale_indisponible"); return false; }
+    arreter();
+    if (voix.native) {
+      const generation = generationAudio;
+      fetch('/api/capacites/synthese', {
+        method:'POST', headers:{'Content-Type':'application/json'},
+        body:JSON.stringify({texte:textePourSynthese(texte), voix:voix.native}),
+      }).then(async r => {
+        if (!r.ok) throw new Error('synthese');
+        const audio = await r.json();
+        if (generation === generationAudio) lireFichier(`data:${audio.mime};base64,${audio.audio_base64}`, {onFin,onErreur});
+      }).catch(() => { if (generation === generationAudio && onErreur) onErreur('synthese'); });
+      return true;
+    }
     window.speechSynthesis.cancel();
     const enonce = new SpeechSynthesisUtterance(textePourSynthese(texte));
     enonce.lang = "fr-FR";
@@ -129,5 +152,5 @@ const Capacites = (() => {
   };
 
   return { voixDisponible, syntheseDisponible, dicter, lire, lireFichier, arreter,
-    voixLocales, choisirVoix, choixVoix };
+    voixLocales, choisirVoix, choixVoix, chargerVoixLocales };
 })();

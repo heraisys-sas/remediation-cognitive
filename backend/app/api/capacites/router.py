@@ -17,6 +17,7 @@ from fastapi.responses import JSONResponse
 from pydantic import BaseModel
 
 from ...domain import capacites as cap
+from ...domain import voix_locales
 
 router = APIRouter(prefix="/api/capacites", tags=["capacites"])
 
@@ -32,6 +33,12 @@ class DemandeSynthese(BaseModel):
     """Corps de POST /api/capacites/synthese."""
 
     texte: str
+    voix: str | None = None
+
+
+@router.get("/voix")
+def liste_voix() -> dict:
+    return {"voix": voix_locales.voix_disponibles()}
 
 
 @router.get("")
@@ -58,7 +65,8 @@ def similarite(corps: DemandeSimilarite) -> dict:
 @router.post("/synthese")
 def synthese(corps: DemandeSynthese):
     """Synthèse du texte par la voix du système → WAV en base64."""
-    resultat = cap.synthese(corps.texte)
+    resultat = (voix_locales.synthetiser(corps.texte, corps.voix)
+                if corps.voix else cap.synthese(corps.texte))
     if resultat is None:
         return JSONResponse(
             status_code=503,

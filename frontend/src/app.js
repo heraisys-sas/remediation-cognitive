@@ -2847,6 +2847,7 @@ function initialiserChoixVoix() {
   });
   window.speechSynthesis?.addEventListener("voiceschanged", actualiser);
   actualiser();
+  CAPACITES.chargerVoixLocales?.().then(actualiser);
 }
 
 function init() {

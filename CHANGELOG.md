@@ -1,3 +1,7 @@
+# 2026-10-05 — Audrey haute qualité via macOS
+
+Le sélecteur ajoute les voix françaises Premium/Enhanced installées sur macOS, même si Chrome ne les expose pas. Leur lecture passe par le serveur local et `say`, sans service distant ni modèle ajouté. Le mode automatique privilégie ces voix ; les voix fantaisie sont retirées des choix navigateur. Une lecture native devenue obsolète après changement d'étape est ignorée. Redémarrage du backend nécessaire pour les nouvelles routes.
+
 # 2026-10-05 — choix explicite de la voix française locale
 
 L'interface ne force plus arbitrairement la première voix française : un sélecteur à côté d'Écouter permet de mémoriser la voix souhaitée. Le mode automatique privilégie la voix française locale marquée par défaut par le navigateur. La liste suit les changements de voix exposés par celui-ci ; aucune voix distante n'est utilisée comme secours. Les règles de prononciation et de non-répétition sont conservées.
