@@ -25,6 +25,7 @@ from engine.fatigue import (
     alerter_fatigue,
     taux_erreur as _taux_erreur,
 )
+from engine.timeutil import normaliser_utc as _normaliser_utc  # noqa: F401 (P1-B1)
 
 
 def _extraire_item_id(item) -> str:
@@ -38,13 +39,6 @@ def _extraire_item_id(item) -> str:
     if item_id is None:
         raise ValueError("item sans identifiant : attribut 'item_id' requis")
     return item_id
-
-
-def _normaliser_utc(instant: datetime) -> datetime:
-    """Normalise un datetime vers UTC (un datetime naïf est supposé UTC)."""
-    if instant.tzinfo is None:
-        return instant.replace(tzinfo=timezone.utc)
-    return instant.astimezone(timezone.utc)
 
 
 class SessionRunner:
@@ -163,9 +157,6 @@ class SessionRunner:
         jamais la séance, ne bloque aucun appel et ne lève jamais.
         """
         fenetre = self._reponses[-FENETRE_FATIGUE:]
-        if len(fenetre) < FENETRE_FATIGUE and len(self._reponses) < FENETRE_FATIGUE:
-            # anti-bruit : MIN_REPONSES_FATIGUE appliquée dans engine.fatigue
-            pass
         rt_moyen = (
             sum(r["temps_ms"] for r in fenetre) / len(fenetre) if fenetre else 0.0
         )
