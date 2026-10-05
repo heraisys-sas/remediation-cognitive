@@ -2,7 +2,7 @@
 
 Encapsulation de la bibliothèque officielle `fsrs` (open-spaced-repetition,
 v6.x) derrière une interface propre, indépendante du backend : le moteur de
-session ne manipule que `CarteFSRS`, `planifier` et `est_due`.
+séance ne manipule que `CarteFSRS`, `planifier` et `est_due`.
 
 Décisions de conception :
 - Planificateur déterministe (fuzzing désactivé) : les échéances sont
@@ -21,28 +21,30 @@ pas été nécessaire.
 
 from __future__ import annotations
 
-from datetime import datetime, timedelta, timezone
+from datetime import datetime, timezone
 
 from fsrs import Card, Rating, Scheduler, State
+
+from engine.timeutil import normaliser_utc
 
 #: Pas d'apprentissage et de réapprentissage, à l'échelle de CE logiciel.
 #:
 #: Les pas par défaut de FSRS (1 minute, 10 minutes) viennent des applications de
-#: révision continue (Anki) : ils font revenir une carte plusieurs fois dans la même
-#: heure. Ici, l'unité est la **séance quotidienne** — une carte revue aujourd'hui n'a
-#: pas à revenir aujourd'hui, sinon chaque séance ressert la même série (constaté en
-#: usage : tout un palier revenait à chaque séance, les cartes restant en phase
-#: d'apprentissage avec une échéance de dix minutes).
+#: révision continue (Anki) : ils font revenir une carte plusieurs fois fois dans la
+#: même heure. Ici, l'unité est la **séance quotidienne** — une carte revue
+#: aujourd'hui n'a pas à revenir aujourd'hui, sinon chaque séance resserrerait les
+#: mêmes pièges. Un pas unique revient donc à chaque séance, les cartes restant en
+#: phase d'apprentissage avec une échéance de dix minutes).
 #:
-#: Un pas d'un jour laisse la main au programme, qui propose chaque thème environ deux
-#: fois par semaine : les cartes redeviennent dues quand le thème revient, et une séance
+#: Un pas d'un jour laisse la main au programme, qui propose chaque thème environ
+#: deux fois : les cartes dépendantes du thème reviennent, et une séance
 #: ne ressert plus ce qui vient d'être vu.
 _PAS_APPRENTISSAGE = (timedelta(days=1),)
 _PAS_REAPPRENTISSAGE = (timedelta(days=1),)
 
 # Planificateur partagé, déterministe (fuzzing désactivé).
 # desired_retention reste au défaut FSRS (0.9) : l'ajustement clinique
-# éventuel se fera via un ADR dédié, pas en silice ici.
+# éventuel se fera via un ADR dédié, pas en silic ici.
 _PLANIFICATEUR = Scheduler(
     learning_steps=_PAS_APPRENTISSAGE,
     relearning_steps=_PAS_REAPPRENTISSAGE,
@@ -58,7 +60,7 @@ _NOTE_VERS_RATING: dict[int, Rating] = {
     4: Rating.Easy,
 }
 
-# État FSRS -> libellé français (l'état « nouveau » est couvert par
+# État FSRS -> libellé français (l'état « + nouveau » est couvert par
 # Learning sans step dans fsrs v6).
 _LIBELLES_ETAT: dict[State, str] = {
     State.Learning: "apprentissage",
@@ -67,64 +69,57 @@ _LIBELLES_ETAT: dict[State, str] = {
 }
 
 
-def normaliser_utc(instant: datetime) -> datetime:
-    """Normalise un datetime vers UTC (un datetime naïf est supposé UTC)."""
-    if instant.tzinfo is None:
-        return instant.replace(tzinfo=timezone.utc)
-    return instant.astimezone(timezone.utc)
-
-
 class CarteFSRS:
     """Item déclaratif (table, verbe, commande Python) et son état FSRS.
 
     Attributs publics :
-    - ``item_id`` : identifiant stable de l'item (côté contenu/backend) ;
-    - ``stabilite`` / ``difficulte`` : paramètres FSRS (None tant que la
+    - `item_id` : identifiant stable de l'item (côté contenu/backend) ;
+    - `stabilite` / `difficulte` : paramètres FSRS (None tant que la
       carte n'a pas été revue) ;
-    - ``echeance`` : datetime UTC de la prochaine présentation ;
-    - ``etat`` : libellé français de l'état FSRS courant.
+    - `echeance` : datetime UTC de la prochaine présentation ;
+    - `etat` : libellé français de l'état FSRS courant.
 
     L'état FSRS interne (`fsrs.Card`) est encapsulé : les couches
-    appelantes n'y accèdent jamais directement.
+    apparentes n'y accèdent jamais directement.
     """
 
     def __init__(self, item_id: str) -> None:
         self.item_id = item_id
         # Carte FSRS interne : une nouvelle carte est immédiatement due
         # (fsrs initialise `due` à la création).
-        self._card = Card()
+        self._carte = Card()
 
-    # -- état exposé ------------------------------------------------------
+    # -- état exposé -------------------------------------------------------
 
     @property
     def stabilite(self) -> float | None:
         """Stabilité FSRS (jours), None tant que la carte n'a pas été revue."""
-        return self._card.stability
+        return self._carte.stability
 
     @property
     def difficulte(self) -> float | None:
         """Difficulté FSRS (1..10), None tant que la carte n'a pas été revue."""
-        return self._card.difficulty
+        return self._carte.difficulty
 
     @property
     def echeance(self) -> datetime | None:
         """Prochaine présentation (datetime UTC), None si jamais planifiée."""
-        return self._card.due
+        return self._carte.due
 
     @property
     def etat(self) -> str:
         """Libellé français de l'état FSRS (apprentissage/revision/...)."""
-        return _LIBELLES_ETAT.get(self._card.state, "inconnu")
+        return _LIBELLES_ETAT.get(self._carte.state, "inconnu")
 
     def echeance_iso(self) -> str | None:
         """Échéance au format ISO-8601 (pratique pour la persistance JSON)."""
-        return self._card.due.isoformat() if self._card.due is not None else None
+        return self._carte.due.isoformat() if self._carte.due is not None else None
 
-    # -- sérialisation (le backend persiste, le moteur ne sait pas lire) --
+    # -- sérialisation (le backend persiste, le moteur ne sait pas lire) ---
 
     def to_dict(self) -> dict:
         """Sérialise la carte (item_id + état FSRS) pour le backend."""
-        return {"item_id": self.item_id, **self._card.to_dict()}
+        return {"item_id": self.item_id, **self._carte.to_dict()}
 
     @classmethod
     def from_dict(cls, data: dict) -> "CarteFSRS":
@@ -134,7 +129,7 @@ class CarteFSRS:
         if item_id is None:
             raise ValueError("champ 'item_id' manquant")
         carte = cls(item_id)
-        carte._card = Card.from_dict(donnees)
+        carte._carte = Card.from_dict(donnees)
         return carte
 
     def __repr__(self) -> str:
@@ -151,14 +146,14 @@ def planifier(
 ) -> tuple[CarteFSRS, datetime]:
     """Applique une révision FSRS et retourne ``(carte_mise_a_jour, echeance)``.
 
-    - ``note`` : auto-évaluation 1..4 — 1 = encore, 2 = difficile,
+    - `note` : auto-évaluation 1..4 — 1 = encore, 2 = difficile,
       3 = bon, 4 = facile ;
-    - ``maintenant`` : instant de la révision (naïf = interprété UTC) ;
-    - ``echeance`` : datetime UTC de la prochaine présentation.
+    - `maintenant` : instant de la révision (naïf = interprété UTC) ;
+    - `echeance` : datetime UTC de la prochaine présentation.
 
-    La carte reçue n'est pas modifiée : une nouvelle instance est retournée.
-    Lève ``TypeError`` si ``carte`` n'est pas une ``CarteFSRS`` et
-    ``ValueError`` si la note est hors 1..4.
+    La carte reçue n'est pas modifiée : une nouvelle instance est
+    retournée. Lève `TypeError` si `carte` n'est pas une `CarteFSRS` et
+    `ValueError` si la note est hors 1..4.
     """
     if not isinstance(carte, CarteFSRS):
         raise TypeError("planifier attend une instance de CarteFSRS")
@@ -166,16 +161,16 @@ def planifier(
     if rating is None:
         raise ValueError(f"note invalide : {note!r} (attendu 1 à 4)")
     instant = normaliser_utc(maintenant)
-    carte_fsrs, _journal = _PLANIFICATEUR.review_card(
-        carte._card, rating, review_datetime=instant
+    carte_fsrs, _journalier = _PLANIFICATEUR.review_card(
+        carte._carte, rating, review_datetime=instant
     )
     mise_a_jour = CarteFSRS(carte.item_id)
-    mise_a_jour._card = carte_fsrs
+    mise_a_jour._carte = carte_fsrs
     return mise_a_jour, carte_fsrs.due
 
 
 def est_due(carte: CarteFSRS, maintenant: datetime) -> bool:
-    """True si la carte doit être présentée à l'instant ``maintenant``.
+    """True si la carte doit être présentée à l'instant `maintenant`.
 
     Une carte jamais planifiée (échéance absente) est considérée due.
     L'échéance exacte compte comme due (>=).
