@@ -125,6 +125,18 @@ class StockageJSON:
 
     # -- primitives sans verrou (appelées sous verrou) -------------------
 
+    @contextmanager
+    def transaction_theme(self, theme: str):
+        """Sérialise une opération de séance complète sur un thème.
+
+        Ce verrou distinct des fichiers de données couvre également les parcours
+        du thème. Les méthodes de lecture/écriture restent utilisables à l'intérieur.
+        Ne pas imbriquer deux transactions de thème.
+        """
+        with _verrou:
+            with _verrou_fichier(self._dossier_theme(theme) / "transaction"):
+                yield
+
     def _dossier_theme(self, theme: str) -> Path:
         """Dossier du thème, avec garde contre toute injection de chemin."""
         if not _MOTIF_THEME.match(theme or ""):

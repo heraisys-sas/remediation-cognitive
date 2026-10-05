@@ -5,7 +5,7 @@ description = "Bilan et rééducation cognitive (syndrome post-commotionnel) —
 requires-python = ">=3.11"
 
 [tool.pytest.ini_options]
-testpaths = ["backend/tests", "engine/tests"]
+testpaths = ["backend/tests", "engine/tests", "tests/p0", "tests/p1"]
 pythonpath = ["."]
 
 # Dépendances à figer lors du premier sprint backend :

@@ -25,6 +25,18 @@ from pathlib import Path
 _TIMEOUT_S = 40
 
 
+def synthese_disponible() -> bool:
+    """Vérifie les exécutables nécessaires, sans lancer la voix."""
+    systeme = platform.system()
+    if systeme == "Darwin":
+        return bool(shutil.which("say") and shutil.which("afconvert"))
+    if systeme == "Linux":
+        return bool(shutil.which("espeak-ng") or shutil.which("espeak"))
+    if systeme == "Windows":
+        return bool(shutil.which("powershell") or shutil.which("pwsh"))
+    return False
+
+
 def _run(args: list[str], timeout: int = _TIMEOUT_S) -> bool:
     """Exécute une commande en **liste d'arguments** (jamais shell=True)."""
     try:

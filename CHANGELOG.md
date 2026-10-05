@@ -1,3 +1,7 @@
+# 2026-10-05 — intégration des correctifs de robustesse P1
+
+Démarrage et clôture protégés par une transaction de thème : quota et incrément atomiques, conservation des cartes, historiques et temps en concurrence. Rétablissement de `synthese_disponible` et d'une annonce audio fidèle aux exécutables disponibles. Tests audio simulant les trois plateformes ; CI étendue au backend, à l'interface et au contenu. La référence de temps adaptative existante est documentée et testée (ADR-025), sans changement de calcul.
+
 # 2026-10-03 — parcours clavier dans Au quotidien
 
 Les boutons Afficher puis Passer reçoivent le focus à leur apparition dans Au quotidien : Entrée les active. La saisie, les choix de réponse et le bouton Suivant utilisaient déjà le focus et la validation clavier natifs. Aucun choix supplémentaire n’est déclenché automatiquement.

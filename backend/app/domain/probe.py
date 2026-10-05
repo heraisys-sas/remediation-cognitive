@@ -14,6 +14,7 @@ from __future__ import annotations
 import platform
 
 from .similarity import SEUIL_SIMILARITE, fournisseur_similarite
+from .tts import synthese_disponible
 
 
 def capacites() -> dict:
@@ -24,7 +25,7 @@ def capacites() -> dict:
             "fournisseur": fournisseur_similarite(),
             "seuil": SEUIL_SIMILARITE,
         },
-        "synthese": {"disponible": True, "moyen": "voix du système"},
+        "synthese": {"disponible": synthese_disponible(), "moyen": "voix du système"},
         "voix": {
             "disponible": None,
             "moyen": "client (navigateur ou OS de la tablette)",

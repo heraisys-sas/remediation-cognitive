@@ -29,6 +29,10 @@ jobs:
           python-version: "3.12"
           cache: "pip"
 
+      - uses: actions/setup-node@v4
+        with:
+          node-version: "22"
+
       - name: Dépendances de test
         run: |
           python -m pip install --upgrade pip
@@ -57,6 +61,19 @@ jobs:
           PYTHONPATH: .
         run: |
           python -m pytest engine/tests -v --tb=short
+
+      - name: Tests backend et interface
+        if: always()
+        run: python -m pytest backend/tests -q --tb=short
+
+      - name: Validation du contenu et du rendu
+        if: always()
+        run: |
+          python tools/validate_items.py
+          python tools/verifier_reponses.py
+          python tools/verifier_interface.py
+          node tools/verifier_phrases.js
+          node --check frontend/src/app.js
 
       - name: Rapport
         if: always()

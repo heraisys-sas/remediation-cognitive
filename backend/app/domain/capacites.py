@@ -21,7 +21,7 @@ from .similarity import (
     proche,
     similarite,
 )
-from .tts import synthese
+from .tts import synthese, synthese_disponible
 
 __all__ = [
     "SEUIL_SIMILARITE",
@@ -30,4 +30,5 @@ __all__ = [
     "proche",
     "similarite",
     "synthese",
+    "synthese_disponible",
 ]
