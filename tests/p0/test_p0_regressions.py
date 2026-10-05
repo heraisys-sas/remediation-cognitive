@@ -12,6 +12,7 @@ storage.store) sans démarrer l'application.
 
 from __future__ import annotations
 
+import ast
 import datetime
 from pathlib import Path
 
@@ -32,9 +33,36 @@ from engine.fatigue import (
 # --- P0-A1 : pas d'injection shell dans la synthèse vocale ----------------
 
 
+def _appels_subprocess_avec_shell(chemin: Path) -> list[str]:
+    """Retourne les appels subprocess.* qui passent `shell=True` (analyse AST).
+
+    On inspecte l'arbre syntaxique, pas le texte : un docstring mentionnant
+    « shell=True » ne déclenche donc pas de faux positif.
+    """
+    aborescence = ast.parse(chemin.read_text(encoding="utf-8"))
+    fautifs: list[str] = []
+    for noeud in ast.walk(aborescence):
+        if not isinstance(noeud, ast.Call):
+            continue
+        fonction = noeud.func
+        nom = (
+            fonction.attr
+            if isinstance(fonction, ast.Attribute)
+            else fonction.id
+            if isinstance(fonction, ast.Name)
+            else ""
+        )
+        if not nom.startswith(("run", "Popen", "call", "check_call", "check_output")):
+            continue
+        for motcle in noeud.keywords:
+            if motcle.arg == "shell" and isinstance(motcle.value, ast.Constant) and motcle.value.value is True:
+                fautifs.append(nom)
+    return fautifs
+
+
 def test_tts_ne_construit_pas_de_commande_shell():
-    source = Path(tts.__file__).read_text(encoding="utf-8")
-    assert "shell=True" not in source
+    """Aucun appel subprocess du module TTS n'utilise shell=True."""
+    assert _appels_subprocess_avec_shell(Path(tts.__file__)) == []
 
 
 def test_tts_texte_malveillant_ne_leve_pas_et_ne_declenche_rien(tmp_path, monkeypatch):
