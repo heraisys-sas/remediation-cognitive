@@ -246,7 +246,7 @@ let prononce=[];
 class Enonce {constructor(texte){this.text=texte}}
 const window={
   SpeechSynthesisUtterance:Enonce,
-  speechSynthesis:{cancel(){},getVoices(){return []},speak(e){prononce.push(e.text)}}
+  speechSynthesis:{cancel(){},getVoices(){return [{lang:"fr-FR",localService:true,voiceURI:"locale"}]},speak(e){prononce.push(e.text)}}
 };
 const SpeechSynthesisUtterance=Enonce;
 '''+source+r'''
@@ -295,3 +295,32 @@ assert.equal(etat.enonceCourant,'Écris la consigne finale.');
 assert.equal(arrets,4);
 """
     execute(script)
+
+
+def test_choix_voix_locale_prioritaire_et_persistant():
+    source=(ROOT/'frontend/src/capacites.js').read_text()
+    execute(r"""
+const assert=require('node:assert/strict');
+let dernier, stock={}, voix=[
+ {lang:'fr-FR',localService:false,voiceURI:'cloud',default:true},
+ {lang:'fr-FR',localService:true,voiceURI:'premiere'},
+ {lang:'fr-FR',localService:true,voiceURI:'preferee',default:true}];
+class Enonce {constructor(t){this.text=t}}
+const SpeechSynthesisUtterance=Enonce;
+const window={SpeechSynthesisUtterance:Enonce,
+ localStorage:{getItem(k){return stock[k]},setItem(k,v){stock[k]=v}},
+ speechSynthesis:{cancel(){},getVoices(){return voix},speak(e){dernier=e}}};
+""" + source + r"""
+Capacites.lire('Bonjour');
+assert.equal(dernier.voice.voiceURI,'preferee');
+Capacites.choisirVoix('premiere');
+Capacites.lire('Bonjour');
+assert.equal(dernier.voice.voiceURI,'premiere');
+assert.equal(stock['remediation.voixLocale'],'premiere');
+assert.equal(Capacites.voixLocales().length,2);
+Capacites.choisirVoix('disparue');
+Capacites.lire('Bonjour');
+assert.equal(dernier.voice.voiceURI,'preferee');
+voix=[voix[0]];
+assert.equal(Capacites.lire('Bonjour'),false);
+""")

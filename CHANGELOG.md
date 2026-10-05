@@ -1,3 +1,7 @@
+# 2026-10-05 — choix explicite de la voix française locale
+
+L'interface ne force plus arbitrairement la première voix française : un sélecteur à côté d'Écouter permet de mémoriser la voix souhaitée. Le mode automatique privilégie la voix française locale marquée par défaut par le navigateur. La liste suit les changements de voix exposés par celui-ci ; aucune voix distante n'est utilisée comme secours. Les règles de prononciation et de non-répétition sont conservées.
+
 # 2026-10-05 — lecture rétablie dans Actualiser une consigne
 
 Le parcours masquait les commandes audio et annulait la lecture dès son lancement. Chaque message courant dispose désormais du bouton Écouter et de la lecture automatique, selon la préférence existante. La consigne générale n'est lue automatiquement qu'une fois par séance ; changer d'étape coupe l'ancien message et remplace le texte à relire. La restitution finale ne permet pas de réécouter les messages masqués. Prononciation des calculs et règles de lecture des autres thèmes conservées.

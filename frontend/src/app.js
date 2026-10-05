@@ -2827,7 +2827,30 @@ function brancherEvenements() {
   refs.boutonEnregistrerNote.addEventListener("click", enregistrerNote);
 }
 
+function initialiserChoixVoix() {
+  const select = $("choix-voix");
+  if (!select || !CAPACITES.voixLocales) return;
+  const actualiser = () => {
+    const voix = CAPACITES.voixLocales();
+    select.replaceChildren(creerElement("option", {
+      texte: voix.length ? "Automatique (voix locale)" : "Aucune voix française locale disponible",
+      attributs: { value: "" },
+    }), ...voix.map(v => creerElement("option", {
+      texte: `${v.name} (${v.lang})`, attributs: { value: v.voiceURI },
+    })));
+    select.value = voix.some(v => v.voiceURI === CAPACITES.choixVoix()) ? CAPACITES.choixVoix() : "";
+    select.disabled = voix.length === 0;
+  };
+  select.addEventListener("change", () => {
+    CAPACITES.arreter();
+    CAPACITES.choisirVoix(select.value);
+  });
+  window.speechSynthesis?.addEventListener("voiceschanged", actualiser);
+  actualiser();
+}
+
 function init() {
+  initialiserChoixVoix();
   if (refs.caseLectureAuto) refs.caseLectureAuto.checked = lectureAutoActivee();
   if (refs.caseSansLimite) refs.caseSansLimite.checked = sansLimiteActivee();
   majReglageSansLimite();

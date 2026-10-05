@@ -51,6 +51,17 @@ const Capacites = (() => {
 
   // Garder une référence jusqu’à la fin : certains moteurs collectent sinon l’énoncé.
   let enonceActif = null;
+  const CLE_VOIX = "remediation.voixLocale";
+  let voixChoisie = "";
+  try { voixChoisie = window.localStorage.getItem(CLE_VOIX) || ""; } catch {}
+  const voixLocales = () => syntheseDisponible()
+    ? window.speechSynthesis.getVoices().filter(v => /^fr(?:[-_]|$)/i.test(v.lang) && v.localService)
+    : [];
+  function choisirVoix(uri) {
+    voixChoisie = uri;
+    try { window.localStorage.setItem(CLE_VOIX, uri); } catch {}
+  }
+  const choixVoix = () => voixChoisie;
 
   /** Prépare une formulation orale sans modifier le texte affiché.
    *
@@ -76,13 +87,16 @@ const Capacites = (() => {
   /** Lit un texte à voix haute avec la voix du système. */
   function lire(texte, { onFin, onErreur } = {}) {
     if (!syntheseDisponible() || !texte) return false;
+    const locales = voixLocales();
+    const voix = locales.find(v => v.voiceURI === voixChoisie)
+      || locales.find(v => v.default) || locales[0];
+    if (!voix) { if (onErreur) onErreur("voix_locale_indisponible"); return false; }
     window.speechSynthesis.cancel();
     const enonce = new SpeechSynthesisUtterance(textePourSynthese(texte));
     enonce.lang = "fr-FR";
     enonce.rate = 0.95;
     enonceActif = enonce;
-    const voix = window.speechSynthesis.getVoices().find(v => v.lang.startsWith("fr") && v.localService);
-    if (voix) enonce.voice = voix;
+    enonce.voice = voix;
     enonce.onend = () => { if (enonceActif === enonce) enonceActif = null; if (onFin) onFin(); };
     enonce.onerror = (event) => { if (enonceActif === enonce) enonceActif = null; if (onErreur) onErreur(event.error); };
     window.speechSynthesis.speak(enonce);
@@ -114,5 +128,6 @@ const Capacites = (() => {
     if (syntheseDisponible()) window.speechSynthesis.cancel();
   };
 
-  return { voixDisponible, syntheseDisponible, dicter, lire, lireFichier, arreter };
+  return { voixDisponible, syntheseDisponible, dicter, lire, lireFichier, arreter,
+    voixLocales, choisirVoix, choixVoix };
 })();
