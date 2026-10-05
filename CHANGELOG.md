@@ -1,3 +1,7 @@
+# 2026-10-05 — lecture rétablie dans Actualiser une consigne
+
+Le parcours masquait les commandes audio et annulait la lecture dès son lancement. Chaque message courant dispose désormais du bouton Écouter et de la lecture automatique, selon la préférence existante. La consigne générale n'est lue automatiquement qu'une fois par séance ; changer d'étape coupe l'ancien message et remplace le texte à relire. La restitution finale ne permet pas de réécouter les messages masqués. Prononciation des calculs et règles de lecture des autres thèmes conservées.
+
 # 2026-10-03 — parcours clavier dans Au quotidien
 
 Les boutons Afficher puis Passer reçoivent le focus à leur apparition dans Au quotidien : Entrée les active. La saisie, les choix de réponse et le bouton Suivant utilisaient déjà le focus et la validation clavier natifs. Aucun choix supplémentaire n’est déclenché automatiquement.

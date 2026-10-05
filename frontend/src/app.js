@@ -985,6 +985,17 @@ function jouerAffichage(item) {
   etat.minuteriesMemo.push(setTimeout(() => jouerDelaiOuQuestion(item), delai));
 }
 
+/** Lecture du seul message courant : la consigne générale n'est dite qu'une fois. */
+function lireEtapeActualisation(item, texte, premiereEtape = false) {
+  CAPACITES.arreter();
+  const consigne = premiereEtape ? String(item.contenu.consigne || "").trim() : "";
+  const dejaLue = etat.consignesMemoVues.has(consigne);
+  if (consigne) etat.consignesMemoVues.add(consigne);
+  etat.enonceCourant = [consigne, texte].filter(Boolean).join(" ");
+  refs.ligneAudio.hidden = !CAPACITES.syntheseDisponible();
+  lireSiLectureAuto([!dejaLue ? consigne : "", texte].filter(Boolean).join(" "));
+}
+
 /** Réponses produites ou choix par point, sans réponse attendue côté client. */
 function rendreFonctionnel(item) {
   if (item.type === "reprise-interrompue") {
@@ -1038,11 +1049,13 @@ function rendreFonctionnel(item) {
       const etape = c.etapes[index];
       if (!etape) {
         zone.append(creerElement("p", { texte: "Écris la consigne finale. Les éléments non modifiés restent valables." }));
+        lireEtapeActualisation(item, "Écris la consigne finale. Les éléments non modifiés restent valables.");
         formulaire(); return;
       }
       zone.append(creerElement("p", { classe: "ligne-discrete", texte: `${etape.titre} — ${index + 1}/${c.etapes.length}` }),
         creerElement("p", { classe: "document-source", texte: etape.texte }),
         bouton(index === c.etapes.length - 1 ? "Restituer la consigne" : "Message suivant", () => { index++; montrer(); }));
+      lireEtapeActualisation(item, `${etape.titre}. ${etape.texte}`, index === 0);
     }
     montrer(); return;
   }
@@ -1416,7 +1429,7 @@ function afficherQuestion(item) {
     lireSiLectureAuto(texteAutomatiquePourDeduction(contenu));
   } else {
     etat.enonceCourant = contenu.enonce ?? "";
-    lireSiLectureAuto(etat.enonceCourant);
+    if (item.type !== "actualiser-consigne") lireSiLectureAuto(etat.enonceCourant);
   }
 
   // Rappel de méthode : affiché une seule fois par type d'exercice dans la séance.

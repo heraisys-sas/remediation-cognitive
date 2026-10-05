@@ -31,7 +31,7 @@ def execute(script):
 def test_actualiser_masque_chaque_message_et_compare_garde_les_documents():
     contenu=ChargeurContenu()
     items=[contenu.items(t)[-1] for t in ('actualiser-consigne','comparer-documents','reperer-essentiel')]
-    script=BASE+'\nfunction rendreFonctionnel(item) '+corps_fonction(SOURCE,'rendreFonctionnel')
+    script=BASE+'\nfunction lireEtapeActualisation() {}\nfunction rendreFonctionnel(item) '+corps_fonction(SOURCE,'rendreFonctionnel')
     script+='\nconst items='+json.dumps(items)+r''';
 let item=items[0]; rendreFonctionnel(item);
 for(let i=0;i<item.contenu.etapes.length;i++) {
@@ -265,4 +265,33 @@ assert.equal(prononce.pop(),'Combien font 8 moins 3 multiplié par 2 plus 1 ?');
 Capacites.lire('Rendez-vous à mi-parcours.');
 assert.equal(prononce.pop(),'Rendez-vous à mi-parcours.');
 '''
+    execute(script)
+
+
+def test_actualisation_audio_message_courant_et_consigne_non_repetee():
+    script = r"""
+const assert=require('node:assert/strict');
+const etat={consignesMemoVues:new Set(),enonceCourant:''};
+const refs={ligneAudio:{hidden:true}};
+let lectures=[],auto=true,arrets=0;
+const CAPACITES={arreter(){arrets++},syntheseDisponible(){return true}};
+function lireSiLectureAuto(t){if(auto) lectures.push(t)}
+""" + 'function lireEtapeActualisation(item, texte, premiereEtape = false) ' + corps_fonction(SOURCE,'lireEtapeActualisation') + r"""
+const item={contenu:{consigne:'Garde ce qui reste valable.'}};
+lireEtapeActualisation(item,'Réunion à 14 h.',true);
+assert.equal(refs.ligneAudio.hidden,false);
+assert.equal(lectures.at(-1),'Garde ce qui reste valable. Réunion à 14 h.');
+lireEtapeActualisation(item,'Nouvel horaire : 15 h.');
+assert.equal(etat.enonceCourant,'Nouvel horaire : 15 h.');
+assert.equal(lectures.at(-1),'Nouvel horaire : 15 h.');
+lireEtapeActualisation(item,'Autre réunion à 10 h.',true);
+assert.equal(lectures.at(-1),'Autre réunion à 10 h.');
+assert.equal(etat.enonceCourant,'Garde ce qui reste valable. Autre réunion à 10 h.');
+auto=false;
+const nb=lectures.length;
+lireEtapeActualisation(item,'Écris la consigne finale.');
+assert.equal(lectures.length,nb);
+assert.equal(etat.enonceCourant,'Écris la consigne finale.');
+assert.equal(arrets,4);
+"""
     execute(script)
