@@ -15,11 +15,11 @@ from typing import Literal
 
 from fastapi import APIRouter
 from fastapi.responses import JSONResponse
-from pydantic import BaseModel, Field, constr
+from pydantic import BaseModel, Field, constr, ConfigDict
 
 from ...domain import capacites as cap
 from ...domain import voix_locales
-from ...domain import accompagnement_local
+from ...domain import accompagnement_local, accompagnement_documents
 
 router = APIRouter(prefix="/api/capacites", tags=["capacites"])
 
@@ -45,6 +45,28 @@ class DemandeAccompagnement(BaseModel):
     reformulation: constr(strip_whitespace=True, min_length=1, max_length=2000)
     question: constr(strip_whitespace=True, max_length=2000) = ""
     categories_deja_vues: list[Literal["objectif", "contrainte", "verification", "question"]] = Field(default_factory=list, max_length=2)
+
+
+class EchangeDocuments(BaseModel):
+    model_config = ConfigDict(extra="forbid")
+    justification: constr(strip_whitespace=True, min_length=1, max_length=800)
+    relance: constr(strip_whitespace=True, min_length=1, max_length=350)
+
+
+class DemandeAccompagnementDocuments(BaseModel):
+    model_config = ConfigDict(extra="forbid")
+    item_id: constr(strip_whitespace=True, min_length=1, max_length=100)
+    reponses: dict[constr(max_length=60), Literal["conforme", "ecart"]] = Field(max_length=12)
+    justification: constr(strip_whitespace=True, min_length=1, max_length=800)
+    echanges: list[EchangeDocuments] = Field(default_factory=list, max_length=1)
+
+
+@router.post("/accompagnement-documents")
+async def accompagner_documents(corps: DemandeAccompagnementDocuments) -> dict:
+    return await accompagnement_documents.accompagner(
+        corps.item_id, corps.reponses, corps.justification,
+        [e.model_dump() for e in corps.echanges],
+    )
 
 
 @router.get("/accompagnement")

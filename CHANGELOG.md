@@ -739,3 +739,7 @@ PQRST guidé pas à pas précède désormais PQRST — répondre de mémoire dan
 ### Cartes allégées
 
 Retrait du paragraphe explicatif Auto sous les sélecteurs. Le libellé « Auto — suivre ma progression » suffit ; le comportement reste identique.
+
+## Lot 1 — Approfondir Comparer deux documents
+
+Après correction, une option discrète « Approfondir » permet une justification libre et deux relances maximum du modèle Apple local. Les relances utilisent les documents du corpus, les choix initiaux et l'échange précédent. Aucun changement de score, de corpus ou de progression ; fonctionnement normal sans modèle disponible. Issue #13, ADR-029.

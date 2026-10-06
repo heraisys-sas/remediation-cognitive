@@ -21,6 +21,9 @@ VOCABULAIRES = {
     "entrainement": {
         "titre_session": "Session d'entraînement",
         "accompagnement_question": "Ta reformulation répond-elle à la question que tu t’étais posée ? Quel passage te permet de le vérifier ?",
+        "accompagnement_documents_preuve": "Pour {critere} ({documents}), comment relies-tu ces informations à ton explication ?",
+        "accompagnement_documents_consequence": "Pour {critere} ({documents}), quelle conséquence concrète retiens-tu pour la suite ?",
+        "accompagnement_documents_verification": "Pour {critere} ({documents}), quelle vérification ferais-tu avant d’agir ?",
         "accompagnement_objectif": "Quel était l'objectif ou l'idée principale du texte ? Comment l'as-tu exprimé avec tes mots ?",
         "accompagnement_contrainte": "Quelle condition ou précision était importante pour agir correctement ? Comment l'as-tu retenue ?",
         "accompagnement_verification": "Comment as-tu vérifié que ta reformulation reprenait l'essentiel, sans ajouter d'information ?",

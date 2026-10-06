@@ -55,3 +55,11 @@ optimal : « objectif » a été choisi pour une reformulation qui mentionnait d
 l'action principale. L'interface ne présente donc pas la relance comme une lacune
 détectée. Le test matériel a nécessité l'accès natif hors sandbox ; pas de coupure
 réseau imposée au Mac pendant cet essai. Aucun serveur utilisateur redémarré.
+
+## Lot 1 — Comparer deux documents
+
+Le même environnement permet d'ouvrir « Approfondir » après correction dans
+Comparer deux documents. Expliquer son raisonnement, puis répondre à une première
+relance pour en demander une dernière. Le modèle choisit un critère et un angle ;
+les valeurs citées sont reprises exactement des documents par le logiciel. Les
+échanges ne changent pas le score et ne sont pas enregistrés. Voir ADR-029.

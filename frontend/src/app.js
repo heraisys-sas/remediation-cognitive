@@ -1656,7 +1656,7 @@ async function soumettreValeur(brut, indiceUtilise) {
     masquerBandeau();
     // Second essai (exercices de stratégie) : on ne révèle rien, l'exercice reste actif.
     if (resultat.essai_supplementaire === true) {
-      rendreFeedback(resultat);
+      rendreFeedback(resultat, brut);
       etat.actionEnCours = false;
       reglerEtatBoutons();
       return;
@@ -1664,7 +1664,7 @@ async function soumettreValeur(brut, indiceUtilise) {
     etat.repondu = true;
 
     // Feedback : statut + réponse attendue (après coup) + commentaire serveur.
-    rendreFeedback(resultat);
+    rendreFeedback(resultat, brut);
     etat.reponsesAttendues[item.id] = resultat.attendue;
     if (resultat.reprise === true && etat.session) {
       // Reprise errorless : l'exercice revient une fois, en fin de séance.
@@ -1722,7 +1722,7 @@ async function soumettreValeur(brut, indiceUtilise) {
 }
 
 /** Rend le feedback dans la carte aria-live="polite". */
-function rendreFeedback(resultat) {
+function rendreFeedback(resultat, reponseInitiale) {
   if (etat.theme && etat.theme.id === "deduction") {
     rendreFeedbackGrille(resultat);
     return;
@@ -1738,6 +1738,12 @@ function rendreFeedback(resultat) {
     for (const ligne of detail.lignes) refs.carteFeedback.append(creerElement("p", {
       texte: `${ligne.correcte ? "✓" : "↻"} ${ligne.label} : ${ligne.attendue}. ${ligne.explication}`
     }));
+    if (detail.type === "comparer-documents") {
+      const item = etat.session?.items[etat.indexItem];
+      if (item?.type === "comparer-documents") refs.carteFeedback.append(
+        creerApprofondissementDocuments(item.id, reponseInitiale)
+      );
+    }
     if (detail.type === "reperer-essentiel") refs.carteFeedback.append(creerElement("p", {
       texte: `Informations utiles omises : ${detail.omissions} · Sélections inutiles : ${detail.fausses_selections}`
     }));
