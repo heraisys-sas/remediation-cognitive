@@ -727,3 +727,7 @@ Le bilan restitue la question du champ 2 et précise « sans score ». La questi
 ### PQRST — suppression de la saisie générique redondante
 
 Le palier de mise en œuvre conserve uniquement ses champs dédiés. La préparation générique ne réaffiche plus « Ta réponse » et sa dictée après le rendu de la séquence.
+
+### Méthodes — ordre des parcours
+
+PQRST guidé pas à pas précède désormais PQRST — répondre de mémoire dans le sélecteur, et devient le choix initial à l’ouverture. Aucun changement des items ni des historiques.

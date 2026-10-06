@@ -37,3 +37,7 @@ Un item = **une séquence guidée** sur un texte de quatre phrases : Parcours (j
 ## Révision du 30 septembre 2026
 
 P2 à P5 : 32 nouveaux items `mt3-…` remplacent les anciens. Les plans ont des précédences explicites ; les documents de P5 restent consultables sans chronomètre. Les QCM de P2/P3 s’appuient sur des contraintes précises. Voir [ADR-019](../../../docs/30-technique/adr/ADR-019-plans-verifiables-et-documents-consultables.md).
+
+## Ordre de présentation
+
+La liste des parcours commence par **PQRST guidé pas à pas**, puis **PQRST — répondre de mémoire** : découvrir les étapes avant de les mobiliser avec moins de guidage. Les parcours restent indépendants et les numéros historiques des sources ne changent pas.
