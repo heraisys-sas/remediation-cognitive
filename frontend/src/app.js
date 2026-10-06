@@ -537,21 +537,25 @@ function carteTheme(theme, parcoursAudio = null) {
   let selecteurParcours = null;
   let descriptionParcours = null;
   let choix = null;
+  const explicationAuto = creerElement("p", { classe: "ligne-discrete" });
 
   function majPaliers() {
     if (!choix) return;
     const definition = (themeChoisi.parcours || []).find(p => p.id === parcoursChoisi);
     const paliers = definition?.paliers || themeChoisi.paliers || [];
     choix.replaceChildren(creerElement("option", {
-      texte: definition?.palier_depart > 1
-        ? `Palier : auto — départ ${definition.palier_depart}`
-        : "Palier : auto",
+      texte: "Auto — suivre ma progression",
       attributs: { value: "" },
     }));
     for (const palier of paliers) choix.append(creerElement("option", {
       texte: `Essai — palier ${palier}`, attributs: { value: String(palier) },
     }));
     choix.hidden = paliers.length <= 1;
+    const depart = definition ? (definition.palier_depart || 1) : (themeChoisi.palier_depart || 1);
+    explicationAuto.textContent = paliers.length <= 1
+      ? "Ce parcours comporte un seul palier."
+      : `Auto reprend ta progression dans ce parcours. Pour une première séance : palier ${depart}.`;
+
   }
 
   function majParcours() {
@@ -599,7 +603,7 @@ function carteTheme(theme, parcoursAudio = null) {
     classe: "selecteur-palier",
     attributs: { "aria-label": `Palier d'essai pour ${theme.nom}` },
   });
-  carte.append(choix);
+  carte.append(choix, explicationAuto);
   majParcours();
   majPaliers();
 

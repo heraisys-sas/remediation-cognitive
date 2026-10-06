@@ -203,6 +203,7 @@ class ChargeurContenu:
                 # (« Palier : auto » suit la progression ; un palier forcé ne sert
                 # que pour les essais, il ne fait jamais reculer la maîtrise).
                 "paliers": self.paliers(theme_id),
+                "palier_depart": self.palier_depart(theme_id, None),
                 "parcours": self.parcours(theme_id),
                 **libelles[theme_id],
             }

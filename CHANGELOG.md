@@ -731,3 +731,7 @@ Le palier de mise en œuvre conserve uniquement ses champs dédiés. La prépara
 ### Méthodes — ordre des parcours
 
 PQRST guidé pas à pas précède désormais PQRST — répondre de mémoire dans le sélecteur, et devient le choix initial à l’ouverture. Aucun changement des items ni des historiques.
+
+### Sélecteurs — départ Auto explicite
+
+« Auto — suivre ma progression » distingue désormais la reprise du niveau initial indiqué séparément pour une première séance. Le départ Calcul mental (5) provient de l’API. Les parcours à palier unique sont explicitement identifiés.
