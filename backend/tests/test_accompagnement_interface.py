@@ -18,13 +18,14 @@ async function fetch(url, options) {
   appels++;
   assert.equal(url, '/api/capacites/accompagnement');
   const body = JSON.parse(options.body);
-  assert.deepEqual(Object.keys(body).sort(), ['categories_deja_vues', 'reformulation', 'texte']);
+  assert.deepEqual(Object.keys(body).sort(), ['categories_deja_vues', 'question', 'reformulation', 'texte']);
+  assert.equal(body.question, 'Pourquoi ?');
   if (panne) throw new Error('test');
   return {ok:true,json:async()=>({disponible:true,relance:'Que vérifier ?'})};
 }
 ''' + source + r'''
 (async () => {
- const zone = creerAccompagnementPqrst('Texte', 'Mon résumé');
+ const zone = creerAccompagnementPqrst('Texte', 'Mon résumé', 'Pourquoi ?');
  const bouton = zone.children[3];
  await bouton.click();
  assert.equal(bouton.disabled, false);
@@ -47,14 +48,31 @@ def test_retour_pqrst_visible_et_accompagnement_apres_correction():
     source = (Path(__file__).parents[2] / 'frontend/src/app.js').read_text()
     body = corps_fonction(source, 'rendreFeedback')
     script = "const assert=require('node:assert/strict');" + r"""
-const etat={theme:{id:'methodes'}, session:{items:[{type:'pqrst-mise-en-oeuvre',contenu:{texte:'Texte'}}]},indexItem:0,sequence:{'4':'Résumé'}};
+const etat={theme:{id:'methodes'}, session:{items:[{type:'pqrst-mise-en-oeuvre',contenu:{texte:'Texte'}}]},indexItem:0,sequence:{'4':'Résumé','2':'Pourquoi ?'}};
 const refs={carteFeedback:{hidden:true,append(node){this.node=node}}};
 let corrige=false;
 function rendreFeedbackSequence(){corrige=true;}
-function creerAccompagnementPqrst(texte,reponse){assert.ok(corrige);assert.equal(reponse,'Résumé');return 'accompagnement'}
+function creerAccompagnementPqrst(texte,reponse,question){assert.equal(question, "Pourquoi ?");assert.ok(corrige);assert.equal(reponse,'Résumé');return 'accompagnement'}
 """ + 'function rendreFeedback(resultat) ' + body + r"""
 rendreFeedback({sequence:{}});
 assert.equal(refs.carteFeedback.hidden,false);
 assert.equal(refs.carteFeedback.node,'accompagnement');
+"""
+    subprocess.run([shutil.which('node'), '-e', script], check=True, capture_output=True, text=True)
+
+
+def test_bilan_affiche_question_personnelle_et_modele_separement():
+    from tools.verifier_interface import corps_fonction
+    source = (Path(__file__).parents[2] / 'frontend/src/app.js').read_text()
+    script = r"""
+const assert=require('node:assert/strict');
+const etat={sequence:{'2':'Pourquoi une lessive à vide ?'}};
+const refs={carteFeedback:{children:[],replaceChildren(){this.children=[]},append(x){this.children.push(x)}}};
+function creerElement(tag, options){return options}
+""" + 'function rendreFeedbackSequence(resultat) ' + corps_fonction(source, 'rendreFeedbackSequence') + r"""
+rendreFeedbackSequence({sequence:{'2':{modele:'Que faire avant ?'}}});
+const ligne=refs.carteFeedback.children.find(x=>x.texte.startsWith('2. Ta question'));
+assert.ok(ligne.texte.includes('Pourquoi une lessive à vide ?'));
+assert.ok(ligne.texte.includes('sans score. Autre question possible : « Que faire avant ? »'));
 """
     subprocess.run([shutil.which('node'), '-e', script], check=True, capture_output=True, text=True)

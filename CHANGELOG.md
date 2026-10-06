@@ -719,3 +719,7 @@ Retour d'usage : « les indices sont insuffisants pour reconstruire l'ensemble d
 ## 2026-10-06 — Prototype PQRST, accompagnement Apple local
 
 Retour facultatif après correction : deux relances métacognitives maximum, reformulation retravaillable sans modifier le score. Modèle Apple embarqué optionnel, absence ou panne sans blocage, aucun repli cloud. Voir ADR-027.
+
+### PQRST — question personnelle
+
+Le bilan restitue la question du champ 2 et précise « sans score ». La question modèle reste un exemple distinct. La question personnelle est désormais transmise au modèle local avec la reformulation ; une relance peut inviter à vérifier leur lien, sans notation supplémentaire.

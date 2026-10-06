@@ -1,7 +1,7 @@
 "use strict";
 
 /** Retour facultatif après correction : n'intervient jamais dans le score. */
-function creerAccompagnementPqrst(texte, reformulation) {
+function creerAccompagnementPqrst(texte, reformulation, question = "") {
   const zone = document.createElement("section");
   const titre = document.createElement("h3");
   titre.textContent = "Revenir sur ma méthode";
@@ -35,7 +35,7 @@ function creerAccompagnementPqrst(texte, reformulation) {
     try {
       const reponse = await fetch("/api/capacites/accompagnement", {
         method: "POST", headers: {"Content-Type": "application/json"},
-        body: JSON.stringify({texte, reformulation: champ.value.trim(), categories_deja_vues: categories}),
+        body: JSON.stringify({texte, question, reformulation: champ.value.trim(), categories_deja_vues: categories}),
         signal: controleur.signal,
       });
       if (!reponse.ok) throw new Error("indisponible");

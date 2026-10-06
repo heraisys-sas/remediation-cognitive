@@ -61,8 +61,8 @@ def test_relance_fermee_et_session_locale(client, monkeypatch):
     assert response == {"disponible": True, "categorie": "contrainte", "relance": texte("entrainement", "accompagnement_contrainte")}
     assert seen["model"] is model
     assert seen["tools"] == []
-    assert json.loads(seen["prompt"]) == payload
-    assert seen["categories"] == list(coaching.CATEGORIES)
+    assert json.loads(seen["prompt"]) == {**payload, "question": ""}
+    assert seen["categories"] == [c for c in coaching.CATEGORIES if c != "question"]
     assert seen["generating"].__name__ == "Selection"
 
 
@@ -130,3 +130,15 @@ def test_inference_reelle_locale():
     assert result["disponible"] is True
     assert result["categorie"] in coaching.CATEGORIES
     assert result["relance"] == texte("entrainement", "accompagnement_" + result["categorie"])
+
+
+def test_question_personnelle_transmise_sans_notation(client, monkeypatch):
+    _, seen = fake_sdk(monkeypatch, category="question")
+    response = client.post("/api/capacites/accompagnement", json={
+        "texte": "Le colis attend au guichet.", "reformulation": "Je retire le colis.",
+        "question": "Où aller ?",
+    }).json()
+    assert json.loads(seen["prompt"])["question"] == "Où aller ?"
+    assert response["categorie"] == "question"
+    assert "score" not in response
+    assert response["relance"] == texte("entrainement", "accompagnement_question")

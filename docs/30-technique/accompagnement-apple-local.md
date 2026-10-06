@@ -39,7 +39,7 @@ Apple nécessitent un réseau ; l'inférence utilise les ressources du Mac.
 
 Compléter les tests unitaires par un essai manuel sans réseau, et relire les
 relances avec l'orthophoniste. Une sortie structurée n'assure pas la pertinence
-pédagogique. Ce prototype choisit entre trois angles de réflexion, sans conversation
+pédagogique. Ce prototype choisit entre quatre angles (dont le lien avec la question personnelle) de réflexion, sans conversation
 ouverte ni nouvelle correction sémantique.
 
 Source technique : https://github.com/apple/python-apple-fm-sdk

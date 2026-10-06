@@ -43,7 +43,8 @@ class DemandeAccompagnement(BaseModel):
 
     texte: constr(strip_whitespace=True, min_length=1, max_length=6000)
     reformulation: constr(strip_whitespace=True, min_length=1, max_length=2000)
-    categories_deja_vues: list[Literal["objectif", "contrainte", "verification"]] = Field(default_factory=list, max_length=2)
+    question: constr(strip_whitespace=True, max_length=2000) = ""
+    categories_deja_vues: list[Literal["objectif", "contrainte", "verification", "question"]] = Field(default_factory=list, max_length=2)
 
 
 @router.get("/accompagnement")
@@ -53,7 +54,7 @@ def etat_accompagnement() -> dict:
 
 @router.post("/accompagnement")
 async def accompagner(corps: DemandeAccompagnement) -> dict:
-    return await accompagnement_local.accompagner(corps.texte, corps.reformulation, corps.categories_deja_vues)
+    return await accompagnement_local.accompagner(corps.texte, corps.reformulation, corps.categories_deja_vues, question=corps.question)
 
 
 @router.get("/voix")

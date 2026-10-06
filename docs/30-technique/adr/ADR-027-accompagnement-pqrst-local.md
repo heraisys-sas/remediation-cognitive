@@ -16,14 +16,14 @@ réussite autonome. Le premier périmètre est donc le retour après correction.
   prédéfinies. Aucun texte libre généré n'est affiché ; le modèle n'est pas correcteur.
 - Modèle système embarqué uniquement, pas de repli distant ni d'outils réseau.
 - SDK facultatif : absence, modèle indisponible ou délai dépassé ne bloquent jamais la séance.
-- Seuls le texte de travail et la reformulation sont traités, sans stockage de conversation.
+- Seuls le texte de travail, la question personnelle et la reformulation sont traités, sans stockage de conversation.
   Les scores, historiques et identifiants de contenu restent inchangés.
 
 ## API
 
 `GET /api/capacites/accompagnement` annonce la disponibilité locale.
-`POST /api/capacites/accompagnement` reçoit `texte` et `reformulation` et retourne
-`disponible` et, si possible, `relance`. Les entrées sont bornées et une expiration
+`POST /api/capacites/accompagnement` reçoit `texte`, `reformulation` et une `question` facultative (2 000 caractères maximum) et retourne
+`disponible` et, si possible, `relance` et `categorie`. Les entrées sont bornées et une expiration
 limite l'attente. L'interface affiche le résultat comme question de méthode, jamais
 comme jugement de justesse.
 
@@ -36,3 +36,5 @@ relire des exemples avec l'orthophoniste, notamment reformulations correctes,
 incomplètes, paraphrases et contresens, et vérifier le comportement hors réseau.
 Le SDK réutilise les ressources Apple Intelligence présentes sur le Mac ; sa
  disponibilité dépend de la configuration du système. Aucun nouveau corpus créé.
+
+La catégorie `question` relie la production du champ 2 à la reformulation. Elle est exclue lorsque le champ 2 est vide. La question personnelle n’est jamais comparée au modèle ni notée.

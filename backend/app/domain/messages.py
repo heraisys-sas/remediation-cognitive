@@ -20,6 +20,7 @@ VOCABULAIRES = {
     },
     "entrainement": {
         "titre_session": "Session d'entraînement",
+        "accompagnement_question": "Ta reformulation répond-elle à la question que tu t’étais posée ? Quel passage te permet de le vérifier ?",
         "accompagnement_objectif": "Quel était l'objectif ou l'idée principale du texte ? Comment l'as-tu exprimé avec tes mots ?",
         "accompagnement_contrainte": "Quelle condition ou précision était importante pour agir correctement ? Comment l'as-tu retenue ?",
         "accompagnement_verification": "Comment as-tu vérifié que ta reformulation reprenait l'essentiel, sans ajouter d'information ?",

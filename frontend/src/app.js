@@ -1386,7 +1386,7 @@ function rendreFeedbackSequence(resultat) {
     { titre: "1. Parcours", correcte: detail["1"]?.correcte,
       texte: detail["1"]?.correcte ? "sujet du texte trouvé" : `attendu : ${detail["1"]?.attendue ?? "—"}` },
     { titre: "2. Ta question", correcte: true, nonNotee: true,
-      texte: `non notée — une question possible : « ${detail["2"]?.modele ?? ""} »` },
+      texte: `${etat.sequence?.["2"]?.trim() ? `« ${etat.sequence["2"].trim()} »` : "Aucune question saisie"} — sans score. Autre question possible : « ${detail["2"]?.modele ?? ""} »` },
     { titre: "4. Reformulation", correcte: detail["4"]?.correcte,
       texte: `${detail["4"]?.trouvees?.length ?? 0}/${(detail["4"]?.trouvees?.length ?? 0) + (detail["4"]?.manquantes?.length ?? 0) + (detail["4"]?.contredites?.length ?? 0)} idées retrouvées`
         + (detail["4"]?.contredites?.length ? ` — à corriger : ${detail["4"].contredites.join(", ")}` : "")
@@ -1744,7 +1744,7 @@ function rendreFeedback(resultat) {
     const item = etat.session?.items[etat.indexItem];
     if (item?.type === "pqrst-mise-en-oeuvre") {
       refs.carteFeedback.append(creerAccompagnementPqrst(
-        item.contenu?.texte || "", etat.sequence?.["4"] || ""
+        item.contenu?.texte || "", etat.sequence?.["4"] || "", etat.sequence?.["2"] || ""
       ));
     }
     return;
