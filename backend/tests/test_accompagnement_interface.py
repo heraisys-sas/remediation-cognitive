@@ -76,3 +76,27 @@ assert.ok(ligne.texte.includes('Pourquoi une lessive à vide ?'));
 assert.ok(ligne.texte.includes('sans score. Autre question possible : « Que faire avant ? »'));
 """
     subprocess.run([shutil.which('node'), '-e', script], check=True, capture_output=True, text=True)
+
+
+def test_sequence_pqrst_ne_reaffiche_pas_saisie_generique():
+    from tools.verifier_interface import corps_fonction
+    source = (Path(__file__).parents[2] / 'frontend/src/app.js').read_text()
+    script = r"""
+const assert=require('node:assert/strict');
+const refs = Object.fromEntries(['boutonDicter','ligneAudio','enonce','rappelConsigne','texteAide','zoneAide','formulaire','carteFeedback','boutonSuivant'].map(k=>[k,{hidden:false}]));
+const etat={consignesVues:new Set()};
+const CAPACITES={arreter(){},syntheseDisponible(){return true}};
+function annulerMemo(){} function viderZonesReponse(){} function lireSiLectureAuto(){}
+function aideGeneriquePourItem(){return null} function reglerEtatBoutons(){}
+let sequenceAffichee=false;
+function rendreSequence(){sequenceAffichee=true;refs.formulaire.hidden=true;}
+""" + 'function afficherQuestion(item) ' + corps_fonction(source, 'afficherQuestion') + r"""
+afficherQuestion({type:'pqrst-mise-en-oeuvre',contenu:{enonce:'PQRST'}});
+assert.ok(sequenceAffichee);
+assert.equal(refs.formulaire.hidden,true);
+assert.equal(refs.boutonDicter.hidden,true);
+assert.equal(refs.carteFeedback.hidden,true);
+assert.equal(refs.boutonSuivant.hidden,true);
+assert.ok(etat.debutQuestion>0);
+"""
+    subprocess.run([shutil.which('node'), '-e', script], check=True, capture_output=True, text=True)

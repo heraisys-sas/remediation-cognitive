@@ -1464,6 +1464,13 @@ function afficherQuestion(item) {
   // Séquence guidée « PQRST mis en œuvre » : les cinq étapes se répondent d'un bloc.
   if (item.type === "pqrst-mise-en-oeuvre") {
     rendreSequence(item);
+    refs.carteFeedback.hidden = true;
+    refs.boutonSuivant.hidden = true;
+    etat.debutQuestion = Date.now();
+    reglerEtatBoutons();
+    // Les champs de la séquence remplacent entièrement la réponse générique.
+    // Ne pas réafficher plus bas « Ta réponse » ni sa dictée.
+    return;
   }
 
   if (["actualiser-consigne", "comparer-documents", "reperer-essentiel", "reprise-interrompue"].includes(item.type)) {

@@ -723,3 +723,7 @@ Retour facultatif après correction : deux relances métacognitives maximum, ref
 ### PQRST — question personnelle
 
 Le bilan restitue la question du champ 2 et précise « sans score ». La question modèle reste un exemple distinct. La question personnelle est désormais transmise au modèle local avec la reformulation ; une relance peut inviter à vérifier leur lien, sans notation supplémentaire.
+
+### PQRST — suppression de la saisie générique redondante
+
+Le palier de mise en œuvre conserve uniquement ses champs dédiés. La préparation générique ne réaffiche plus « Ta réponse » et sa dictée après le rendu de la séquence.
