@@ -1739,7 +1739,14 @@ function rendreFeedback(resultat) {
     return;
   }
   if (resultat.sequence) {
+    refs.carteFeedback.hidden = false;
     rendreFeedbackSequence(resultat);
+    const item = etat.session?.items[etat.indexItem];
+    if (item?.type === "pqrst-mise-en-oeuvre") {
+      refs.carteFeedback.append(creerAccompagnementPqrst(
+        item.contenu?.texte || "", etat.sequence?.["4"] || ""
+      ));
+    }
     return;
   }
   // Second essai : on encourage à reprendre, sans donner la réponse (c'est l'essai qui

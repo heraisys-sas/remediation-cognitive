@@ -715,3 +715,7 @@ Retour d'usage : « les indices sont insuffisants pour reconstruire l'ensemble d
 - **Décision produit** — module Python cadré : mémorisation de concepts et de commandes du langage ; thématique cognitive à double dividende (l'effort de mémorisation est l'exercice, le contenu acquis est une compétence durable). Formats : errorless → production → prédiction de sortie ; cap de complexité de 2 niveaux d'imbrication en phase initiale.
 - **Décision réglementaire (rappel)** — scission Entraînement (hors MDR) / Rééducation + Bilan (usage strictement familial) ; voie DM classe I différée en Phase 3.
 - **Projet** — création du squelette d'arborescence (monorepo), documentation de cadrage, ADR-001 et ADR-002, schéma d'item normalisé.
+
+## 2026-10-06 — Prototype PQRST, accompagnement Apple local
+
+Retour facultatif après correction : deux relances métacognitives maximum, reformulation retravaillable sans modifier le score. Modèle Apple embarqué optionnel, absence ou panne sans blocage, aucun repli cloud. Voir ADR-027.

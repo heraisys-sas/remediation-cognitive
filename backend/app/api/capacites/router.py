@@ -11,13 +11,15 @@ Tout est **local** : la reconnaissance vocale, elle, est assurée côté client
 from __future__ import annotations
 
 import base64
+from typing import Literal
 
 from fastapi import APIRouter
 from fastapi.responses import JSONResponse
-from pydantic import BaseModel
+from pydantic import BaseModel, Field, constr
 
 from ...domain import capacites as cap
 from ...domain import voix_locales
+from ...domain import accompagnement_local
 
 router = APIRouter(prefix="/api/capacites", tags=["capacites"])
 
@@ -34,6 +36,24 @@ class DemandeSynthese(BaseModel):
 
     texte: str
     voix: str | None = None
+
+
+class DemandeAccompagnement(BaseModel):
+    """Seulement le texte présenté et la tentative, jamais un corrigé."""
+
+    texte: constr(strip_whitespace=True, min_length=1, max_length=6000)
+    reformulation: constr(strip_whitespace=True, min_length=1, max_length=2000)
+    categories_deja_vues: list[Literal["objectif", "contrainte", "verification"]] = Field(default_factory=list, max_length=2)
+
+
+@router.get("/accompagnement")
+def etat_accompagnement() -> dict:
+    return accompagnement_local.etat()
+
+
+@router.post("/accompagnement")
+async def accompagner(corps: DemandeAccompagnement) -> dict:
+    return await accompagnement_local.accompagner(corps.texte, corps.reformulation, corps.categories_deja_vues)
 
 
 @router.get("/voix")
