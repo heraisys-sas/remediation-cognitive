@@ -1,3 +1,7 @@
+# 2026-10-06 — prononciation française de triangle
+
+Correction orale ciblée « triangle(s) » → « tri-angle(s) » pour éviter la lecture anglaise de l'homographe par certaines voix avancées. Appliquée à la lecture automatique et au bouton Écouter dans les thèmes français, pour le navigateur comme pour macOS. Texte affiché et réponses inchangés ; anglais et Python exclus. Le rendu vocal reste à apprécier à l'écoute selon la voix.
+
 # 2026-10-05 — Audrey haute qualité via macOS
 
 Le sélecteur ajoute les voix françaises Premium/Enhanced installées sur macOS, même si Chrome ne les expose pas. Leur lecture passe par le serveur local et `say`, sans service distant ni modèle ajouté. Le mode automatique privilégie ces voix ; les voix fantaisie sont retirées des choix navigateur. Une lecture native devenue obsolète après changement d'étape est ignorée. Redémarrage du backend nécessaire pour les nouvelles routes.

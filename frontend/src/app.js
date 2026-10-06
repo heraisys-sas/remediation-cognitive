@@ -88,7 +88,11 @@ function definirLectureAuto(active) {
 }
 /** Lit le texte seulement si la lecture automatique est active. */
 function lireSiLectureAuto(texte) {
-  if (texte && lectureAutoActivee() && CAPACITES.syntheseDisponible()) CAPACITES.lire(texte);
+  if (texte && lectureAutoActivee() && CAPACITES.syntheseDisponible()) lireTexteExercice(texte);
+}
+
+function lireTexteExercice(texte) {
+  return CAPACITES.lire(texte, { francais: Boolean(etat.theme) && !THEMES_EXTRA.has(etat.theme.id) });
 }
 
 //: Dérogation explicite au plafond de séances du jour (entraînements — ADR-021).
@@ -2781,12 +2785,12 @@ function brancherEvenements() {
   // Capacités du poste : écouter la consigne, répondre à voix haute.
   refs.boutonEcouter.addEventListener("click", () => {
     // Lecture à la demande (indépendante du réglage automatique).
-    CAPACITES.lire(etat.enonceCourant);
+    lireTexteExercice(etat.enonceCourant);
   });
   refs.caseLectureAuto.addEventListener("change", () => {
     definirLectureAuto(refs.caseLectureAuto.checked);
     if (refs.caseLectureAuto.checked) {
-      CAPACITES.lire(etat.enonceCourant);        // on entend tout de suite l'effet
+      lireTexteExercice(etat.enonceCourant);        // on entend tout de suite l'effet
     } else {
       CAPACITES.arreter();                       // coupée à tout moment
     }

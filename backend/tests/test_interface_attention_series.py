@@ -264,6 +264,13 @@ Capacites.lire('Combien font 8 - 3 x 2 + 1 ?');
 assert.equal(prononce.pop(),'Combien font 8 moins 3 multiplié par 2 plus 1 ?');
 Capacites.lire('Rendez-vous à mi-parcours.');
 assert.equal(prononce.pop(),'Rendez-vous à mi-parcours.');
+Capacites.lire('Le triangle vert et les triangles bleus.', {francais:true});
+assert.equal(prononce.pop(),'Le tri-angle vert et les tri-angles bleus.');
+Capacites.lire('triangle and triangles', {francais:false});
+assert.equal(prononce.pop(),'triangle and triangles');
+Capacites.lire('triangulaire', {francais:true});
+assert.equal(prononce.pop(),'triangulaire');
+
 '''
     execute(script)
 
@@ -323,4 +330,19 @@ Capacites.lire('Bonjour');
 assert.equal(dernier.voice.voiceURI,'preferee');
 voix=[voix[0]];
 assert.equal(Capacites.lire('Bonjour'),false);
+""")
+
+
+def test_prononciation_cible_les_themes_francais():
+    execute(r"""
+const assert=require('node:assert/strict');
+const THEMES_EXTRA=new Set(['anglais','python']);
+const etat={theme:{id:'deduction'}};
+let options;
+const CAPACITES={lire(t,o){options=o}};
+"""+'function lireTexteExercice(texte) '+corps_fonction(SOURCE,'lireTexteExercice')+r"""
+lireTexteExercice('triangle');assert.equal(options.francais,true);
+for(const id of ['anglais','python']) {
+ etat.theme={id};lireTexteExercice('triangle');assert.equal(options.francais,false);
+}
 """)
