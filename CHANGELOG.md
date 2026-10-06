@@ -735,3 +735,7 @@ PQRST guidé pas à pas précède désormais PQRST — répondre de mémoire dan
 ### Sélecteurs — départ Auto explicite
 
 « Auto — suivre ma progression » distingue désormais la reprise du niveau initial indiqué séparément pour une première séance. Le départ Calcul mental (5) provient de l’API. Les parcours à palier unique sont explicitement identifiés.
+
+### Cartes allégées
+
+Retrait du paragraphe explicatif Auto sous les sélecteurs. Le libellé « Auto — suivre ma progression » suffit ; le comportement reste identique.

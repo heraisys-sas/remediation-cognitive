@@ -537,7 +537,6 @@ function carteTheme(theme, parcoursAudio = null) {
   let selecteurParcours = null;
   let descriptionParcours = null;
   let choix = null;
-  const explicationAuto = creerElement("p", { classe: "ligne-discrete" });
 
   function majPaliers() {
     if (!choix) return;
@@ -551,11 +550,6 @@ function carteTheme(theme, parcoursAudio = null) {
       texte: `Essai — palier ${palier}`, attributs: { value: String(palier) },
     }));
     choix.hidden = paliers.length <= 1;
-    const depart = definition ? (definition.palier_depart || 1) : (themeChoisi.palier_depart || 1);
-    explicationAuto.textContent = paliers.length <= 1
-      ? "Ce parcours comporte un seul palier."
-      : `Auto reprend ta progression dans ce parcours. Pour une première séance : palier ${depart}.`;
-
   }
 
   function majParcours() {
@@ -603,7 +597,7 @@ function carteTheme(theme, parcoursAudio = null) {
     classe: "selecteur-palier",
     attributs: { "aria-label": `Palier d'essai pour ${theme.nom}` },
   });
-  carte.append(choix, explicationAuto);
+  carte.append(choix);
   majParcours();
   majPaliers();
 
