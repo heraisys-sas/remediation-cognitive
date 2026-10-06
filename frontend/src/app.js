@@ -88,7 +88,11 @@ function definirLectureAuto(active) {
 }
 /** Lit le texte seulement si la lecture automatique est active. */
 function lireSiLectureAuto(texte) {
-  if (texte && lectureAutoActivee() && CAPACITES.syntheseDisponible()) CAPACITES.lire(texte);
+  if (texte && lectureAutoActivee() && CAPACITES.syntheseDisponible()) lireTexteExercice(texte);
+}
+
+function lireTexteExercice(texte) {
+  return CAPACITES.lire(texte, { francais: Boolean(etat.theme) && !THEMES_EXTRA.has(etat.theme.id) });
 }
 
 //: Dérogation explicite au plafond de séances du jour (entraînements — ADR-021).
@@ -539,9 +543,7 @@ function carteTheme(theme, parcoursAudio = null) {
     const definition = (themeChoisi.parcours || []).find(p => p.id === parcoursChoisi);
     const paliers = definition?.paliers || themeChoisi.paliers || [];
     choix.replaceChildren(creerElement("option", {
-      texte: definition?.palier_depart > 1
-        ? `Palier : auto — départ ${definition.palier_depart}`
-        : "Palier : auto",
+      texte: "Auto — suivre ma progression",
       attributs: { value: "" },
     }));
     for (const palier of paliers) choix.append(creerElement("option", {
@@ -985,6 +987,17 @@ function jouerAffichage(item) {
   etat.minuteriesMemo.push(setTimeout(() => jouerDelaiOuQuestion(item), delai));
 }
 
+/** Lecture du seul message courant : la consigne générale n'est dite qu'une fois. */
+function lireEtapeActualisation(item, texte, premiereEtape = false) {
+  CAPACITES.arreter();
+  const consigne = premiereEtape ? String(item.contenu.consigne || "").trim() : "";
+  const dejaLue = etat.consignesMemoVues.has(consigne);
+  if (consigne) etat.consignesMemoVues.add(consigne);
+  etat.enonceCourant = [consigne, texte].filter(Boolean).join(" ");
+  refs.ligneAudio.hidden = !CAPACITES.syntheseDisponible();
+  lireSiLectureAuto([!dejaLue ? consigne : "", texte].filter(Boolean).join(" "));
+}
+
 /** Réponses produites ou choix par point, sans réponse attendue côté client. */
 function rendreFonctionnel(item) {
   if (item.type === "reprise-interrompue") {
@@ -1038,11 +1051,13 @@ function rendreFonctionnel(item) {
       const etape = c.etapes[index];
       if (!etape) {
         zone.append(creerElement("p", { texte: "Écris la consigne finale. Les éléments non modifiés restent valables." }));
+        lireEtapeActualisation(item, "Écris la consigne finale. Les éléments non modifiés restent valables.");
         formulaire(); return;
       }
       zone.append(creerElement("p", { classe: "ligne-discrete", texte: `${etape.titre} — ${index + 1}/${c.etapes.length}` }),
         creerElement("p", { classe: "document-source", texte: etape.texte }),
         bouton(index === c.etapes.length - 1 ? "Restituer la consigne" : "Message suivant", () => { index++; montrer(); }));
+      lireEtapeActualisation(item, `${etape.titre}. ${etape.texte}`, index === 0);
     }
     montrer(); return;
   }
@@ -1369,7 +1384,7 @@ function rendreFeedbackSequence(resultat) {
     { titre: "1. Parcours", correcte: detail["1"]?.correcte,
       texte: detail["1"]?.correcte ? "sujet du texte trouvé" : `attendu : ${detail["1"]?.attendue ?? "—"}` },
     { titre: "2. Ta question", correcte: true, nonNotee: true,
-      texte: `non notée — une question possible : « ${detail["2"]?.modele ?? ""} »` },
+      texte: `${etat.sequence?.["2"]?.trim() ? `« ${etat.sequence["2"].trim()} »` : "Aucune question saisie"} — sans score. Autre question possible : « ${detail["2"]?.modele ?? ""} »` },
     { titre: "4. Reformulation", correcte: detail["4"]?.correcte,
       texte: `${detail["4"]?.trouvees?.length ?? 0}/${(detail["4"]?.trouvees?.length ?? 0) + (detail["4"]?.manquantes?.length ?? 0) + (detail["4"]?.contredites?.length ?? 0)} idées retrouvées`
         + (detail["4"]?.contredites?.length ? ` — à corriger : ${detail["4"].contredites.join(", ")}` : "")
@@ -1416,7 +1431,7 @@ function afficherQuestion(item) {
     lireSiLectureAuto(texteAutomatiquePourDeduction(contenu));
   } else {
     etat.enonceCourant = contenu.enonce ?? "";
-    lireSiLectureAuto(etat.enonceCourant);
+    if (item.type !== "actualiser-consigne") lireSiLectureAuto(etat.enonceCourant);
   }
 
   // Rappel de méthode : affiché une seule fois par type d'exercice dans la séance.
@@ -1447,6 +1462,13 @@ function afficherQuestion(item) {
   // Séquence guidée « PQRST mis en œuvre » : les cinq étapes se répondent d'un bloc.
   if (item.type === "pqrst-mise-en-oeuvre") {
     rendreSequence(item);
+    refs.carteFeedback.hidden = true;
+    refs.boutonSuivant.hidden = true;
+    etat.debutQuestion = Date.now();
+    reglerEtatBoutons();
+    // Les champs de la séquence remplacent entièrement la réponse générique.
+    // Ne pas réafficher plus bas « Ta réponse » ni sa dictée.
+    return;
   }
 
   if (["actualiser-consigne", "comparer-documents", "reperer-essentiel", "reprise-interrompue"].includes(item.type)) {
@@ -1722,7 +1744,14 @@ function rendreFeedback(resultat) {
     return;
   }
   if (resultat.sequence) {
+    refs.carteFeedback.hidden = false;
     rendreFeedbackSequence(resultat);
+    const item = etat.session?.items[etat.indexItem];
+    if (item?.type === "pqrst-mise-en-oeuvre") {
+      refs.carteFeedback.append(creerAccompagnementPqrst(
+        item.contenu?.texte || "", etat.sequence?.["4"] || "", etat.sequence?.["2"] || ""
+      ));
+    }
     return;
   }
   // Second essai : on encourage à reprendre, sans donner la réponse (c'est l'essai qui
@@ -2768,12 +2797,12 @@ function brancherEvenements() {
   // Capacités du poste : écouter la consigne, répondre à voix haute.
   refs.boutonEcouter.addEventListener("click", () => {
     // Lecture à la demande (indépendante du réglage automatique).
-    CAPACITES.lire(etat.enonceCourant);
+    lireTexteExercice(etat.enonceCourant);
   });
   refs.caseLectureAuto.addEventListener("change", () => {
     definirLectureAuto(refs.caseLectureAuto.checked);
     if (refs.caseLectureAuto.checked) {
-      CAPACITES.lire(etat.enonceCourant);        // on entend tout de suite l'effet
+      lireTexteExercice(etat.enonceCourant);        // on entend tout de suite l'effet
     } else {
       CAPACITES.arreter();                       // coupée à tout moment
     }
@@ -2814,7 +2843,31 @@ function brancherEvenements() {
   refs.boutonEnregistrerNote.addEventListener("click", enregistrerNote);
 }
 
+function initialiserChoixVoix() {
+  const select = $("choix-voix");
+  if (!select || !CAPACITES.voixLocales) return;
+  const actualiser = () => {
+    const voix = CAPACITES.voixLocales();
+    select.replaceChildren(creerElement("option", {
+      texte: voix.length ? "Automatique (voix locale)" : "Aucune voix française locale disponible",
+      attributs: { value: "" },
+    }), ...voix.map(v => creerElement("option", {
+      texte: `${v.name} (${v.lang})`, attributs: { value: v.voiceURI },
+    })));
+    select.value = voix.some(v => v.voiceURI === CAPACITES.choixVoix()) ? CAPACITES.choixVoix() : "";
+    select.disabled = voix.length === 0;
+  };
+  select.addEventListener("change", () => {
+    CAPACITES.arreter();
+    CAPACITES.choisirVoix(select.value);
+  });
+  window.speechSynthesis?.addEventListener("voiceschanged", actualiser);
+  actualiser();
+  CAPACITES.chargerVoixLocales?.().then(actualiser);
+}
+
 function init() {
+  initialiserChoixVoix();
   if (refs.caseLectureAuto) refs.caseLectureAuto.checked = lectureAutoActivee();
   if (refs.caseSansLimite) refs.caseSansLimite.checked = sansLimiteActivee();
   majReglageSansLimite();

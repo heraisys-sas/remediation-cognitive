@@ -99,9 +99,10 @@ def test_themes(client):
     themes = reponse.json()["themes"]
     assert {t["id"] for t in themes} == THEMES_ATTENDUS
     for theme in themes:
-        assert set(theme) == {"id", "nom", "description", "categorie", "paliers", "parcours"}
+        assert set(theme) == {"id", "nom", "description", "categorie", "paliers", "parcours", "palier_depart"}
         assert theme["categorie"] in {"entrainement", "evaluation", "cible"}
         assert theme["nom"] and theme["description"]
+        assert theme["palier_depart"] in theme["paliers"]
 
 
 def test_parcours_homogenes_exposes_et_filtres(client):
@@ -997,3 +998,9 @@ def test_calcul_nouveau_corpus_ne_reutilise_pas_les_anciennes_reussites(client):
     assert etat["palier_courant"] == 5
     assert len(etat["historique"]) == 3
     assert etat["historique_etapes"] == [[5, 1.0]]
+
+
+def test_depart_calcul_annonce_par_api(client):
+    themes = client.get("/api/entrainement/themes").json()["themes"]
+    calcul = next(t for t in themes if t["id"] == "calcul-mental")
+    assert calcul["palier_depart"] == 5

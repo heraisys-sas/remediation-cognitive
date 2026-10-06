@@ -31,7 +31,7 @@ def execute(script):
 def test_actualiser_masque_chaque_message_et_compare_garde_les_documents():
     contenu=ChargeurContenu()
     items=[contenu.items(t)[-1] for t in ('actualiser-consigne','comparer-documents','reperer-essentiel')]
-    script=BASE+'\nfunction rendreFonctionnel(item) '+corps_fonction(SOURCE,'rendreFonctionnel')
+    script=BASE+'\nfunction lireEtapeActualisation() {}\nfunction rendreFonctionnel(item) '+corps_fonction(SOURCE,'rendreFonctionnel')
     script+='\nconst items='+json.dumps(items)+r''';
 let item=items[0]; rendreFonctionnel(item);
 for(let i=0;i<item.contenu.etapes.length;i++) {
@@ -246,7 +246,7 @@ let prononce=[];
 class Enonce {constructor(texte){this.text=texte}}
 const window={
   SpeechSynthesisUtterance:Enonce,
-  speechSynthesis:{cancel(){},getVoices(){return []},speak(e){prononce.push(e.text)}}
+  speechSynthesis:{cancel(){},getVoices(){return [{lang:"fr-FR",localService:true,voiceURI:"locale"}]},speak(e){prononce.push(e.text)}}
 };
 const SpeechSynthesisUtterance=Enonce;
 '''+source+r'''
@@ -264,5 +264,85 @@ Capacites.lire('Combien font 8 - 3 x 2 + 1 ?');
 assert.equal(prononce.pop(),'Combien font 8 moins 3 multiplié par 2 plus 1 ?');
 Capacites.lire('Rendez-vous à mi-parcours.');
 assert.equal(prononce.pop(),'Rendez-vous à mi-parcours.');
+Capacites.lire('Le triangle vert et les triangles bleus.', {francais:true});
+assert.equal(prononce.pop(),'Le tri-angle vert et les tri-angles bleus.');
+Capacites.lire('triangle and triangles', {francais:false});
+assert.equal(prononce.pop(),'triangle and triangles');
+Capacites.lire('triangulaire', {francais:true});
+assert.equal(prononce.pop(),'triangulaire');
+
 '''
     execute(script)
+
+
+def test_actualisation_audio_message_courant_et_consigne_non_repetee():
+    script = r"""
+const assert=require('node:assert/strict');
+const etat={consignesMemoVues:new Set(),enonceCourant:''};
+const refs={ligneAudio:{hidden:true}};
+let lectures=[],auto=true,arrets=0;
+const CAPACITES={arreter(){arrets++},syntheseDisponible(){return true}};
+function lireSiLectureAuto(t){if(auto) lectures.push(t)}
+""" + 'function lireEtapeActualisation(item, texte, premiereEtape = false) ' + corps_fonction(SOURCE,'lireEtapeActualisation') + r"""
+const item={contenu:{consigne:'Garde ce qui reste valable.'}};
+lireEtapeActualisation(item,'Réunion à 14 h.',true);
+assert.equal(refs.ligneAudio.hidden,false);
+assert.equal(lectures.at(-1),'Garde ce qui reste valable. Réunion à 14 h.');
+lireEtapeActualisation(item,'Nouvel horaire : 15 h.');
+assert.equal(etat.enonceCourant,'Nouvel horaire : 15 h.');
+assert.equal(lectures.at(-1),'Nouvel horaire : 15 h.');
+lireEtapeActualisation(item,'Autre réunion à 10 h.',true);
+assert.equal(lectures.at(-1),'Autre réunion à 10 h.');
+assert.equal(etat.enonceCourant,'Garde ce qui reste valable. Autre réunion à 10 h.');
+auto=false;
+const nb=lectures.length;
+lireEtapeActualisation(item,'Écris la consigne finale.');
+assert.equal(lectures.length,nb);
+assert.equal(etat.enonceCourant,'Écris la consigne finale.');
+assert.equal(arrets,4);
+"""
+    execute(script)
+
+
+def test_choix_voix_locale_prioritaire_et_persistant():
+    source=(ROOT/'frontend/src/capacites.js').read_text()
+    execute(r"""
+const assert=require('node:assert/strict');
+let dernier, stock={}, voix=[
+ {lang:'fr-FR',localService:false,voiceURI:'cloud',default:true},
+ {lang:'fr-FR',localService:true,voiceURI:'premiere'},
+ {lang:'fr-FR',localService:true,voiceURI:'preferee',default:true}];
+class Enonce {constructor(t){this.text=t}}
+const SpeechSynthesisUtterance=Enonce;
+const window={SpeechSynthesisUtterance:Enonce,
+ localStorage:{getItem(k){return stock[k]},setItem(k,v){stock[k]=v}},
+ speechSynthesis:{cancel(){},getVoices(){return voix},speak(e){dernier=e}}};
+""" + source + r"""
+Capacites.lire('Bonjour');
+assert.equal(dernier.voice.voiceURI,'preferee');
+Capacites.choisirVoix('premiere');
+Capacites.lire('Bonjour');
+assert.equal(dernier.voice.voiceURI,'premiere');
+assert.equal(stock['remediation.voixLocale'],'premiere');
+assert.equal(Capacites.voixLocales().length,2);
+Capacites.choisirVoix('disparue');
+Capacites.lire('Bonjour');
+assert.equal(dernier.voice.voiceURI,'preferee');
+voix=[voix[0]];
+assert.equal(Capacites.lire('Bonjour'),false);
+""")
+
+
+def test_prononciation_cible_les_themes_francais():
+    execute(r"""
+const assert=require('node:assert/strict');
+const THEMES_EXTRA=new Set(['anglais','python']);
+const etat={theme:{id:'deduction'}};
+let options;
+const CAPACITES={lire(t,o){options=o}};
+"""+'function lireTexteExercice(texte) '+corps_fonction(SOURCE,'lireTexteExercice')+r"""
+lireTexteExercice('triangle');assert.equal(options.francais,true);
+for(const id of ['anglais','python']) {
+ etat.theme={id};lireTexteExercice('triangle');assert.equal(options.francais,false);
+}
+""")

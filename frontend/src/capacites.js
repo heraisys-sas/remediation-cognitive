@@ -51,6 +51,27 @@ const Capacites = (() => {
 
   // Garder une référence jusqu’à la fin : certains moteurs collectent sinon l’énoncé.
   let enonceActif = null;
+  const CLE_VOIX = "remediation.voixLocale";
+  let voixChoisie = "";
+  let voixNatives = [];
+  try { voixChoisie = window.localStorage.getItem(CLE_VOIX) || ""; } catch {}
+  const voixLocales = () => [...voixNatives, ...(syntheseDisponible()
+    ? window.speechSynthesis.getVoices().filter(v => /^fr(?:[-_]|$)/i.test(v.lang) && v.localService
+      && !/^(Eddy|Flo|Grandma|Grandpa|Reed|Rocko|Sandy|Shelley)\b/i.test(v.name || ""))
+    : [])];
+  async function chargerVoixLocales() {
+    try {
+      const r = await fetch('/api/capacites/voix');
+      if (!r.ok) return;
+      const donnees = await r.json();
+      voixNatives = donnees.voix.map(v => ({name:v.nom, voiceURI:`macos:${v.id}`, lang:'fr-FR', localService:true, native:v.id}));
+    } catch { /* Ancien serveur : les voix du navigateur restent disponibles. */ }
+  }
+  function choisirVoix(uri) {
+    voixChoisie = uri;
+    try { window.localStorage.setItem(CLE_VOIX, uri); } catch {}
+  }
+  const choixVoix = () => voixChoisie;
 
   /** Prépare une formulation orale sans modifier le texte affiché.
    *
@@ -58,8 +79,13 @@ const Capacites = (() => {
    * manière. On explicite uniquement les signes mathématiques ; un trait
    * d'union interne à un mot (``rendez-vous``) reste intact.
    */
-  function textePourSynthese(texte) {
-    return String(texte)
+  function textePourSynthese(texte, francais = false) {
+    // Correction orale uniquement : certaines voix lisent cet homographe à l'anglaise.
+    // Le découpage syllabique est limité au mot entier, jamais aux textes mixtes.
+    const oral = francais
+      ? String(texte).replace(/\btriangles?\b/gi, mot => mot.length === 9 ? "tri-angles" : "tri-angle")
+      : String(texte);
+    return oral
       .replace(/\?\s*(?=[+\-−×xX*÷=])/g, "quel nombre ")
       .replace(/([+\-−×xX*÷=])\s*\?/g, "$1 quel nombre")
       .replace(/\s*−\s*/g, " moins ")
@@ -74,15 +100,31 @@ const Capacites = (() => {
   }
 
   /** Lit un texte à voix haute avec la voix du système. */
-  function lire(texte, { onFin, onErreur } = {}) {
+  function lire(texte, { onFin, onErreur, francais = false } = {}) {
     if (!syntheseDisponible() || !texte) return false;
+    const locales = voixLocales();
+    const voix = locales.find(v => v.voiceURI === voixChoisie)
+      || locales.find(v => v.native) || locales.find(v => v.default) || locales[0];
+    if (!voix) { if (onErreur) onErreur("voix_locale_indisponible"); return false; }
+    arreter();
+    if (voix.native) {
+      const generation = generationAudio;
+      fetch('/api/capacites/synthese', {
+        method:'POST', headers:{'Content-Type':'application/json'},
+        body:JSON.stringify({texte:textePourSynthese(texte, francais), voix:voix.native}),
+      }).then(async r => {
+        if (!r.ok) throw new Error('synthese');
+        const audio = await r.json();
+        if (generation === generationAudio) lireFichier(`data:${audio.mime};base64,${audio.audio_base64}`, {onFin,onErreur});
+      }).catch(() => { if (generation === generationAudio && onErreur) onErreur('synthese'); });
+      return true;
+    }
     window.speechSynthesis.cancel();
-    const enonce = new SpeechSynthesisUtterance(textePourSynthese(texte));
+    const enonce = new SpeechSynthesisUtterance(textePourSynthese(texte, francais));
     enonce.lang = "fr-FR";
     enonce.rate = 0.95;
     enonceActif = enonce;
-    const voix = window.speechSynthesis.getVoices().find(v => v.lang.startsWith("fr") && v.localService);
-    if (voix) enonce.voice = voix;
+    enonce.voice = voix;
     enonce.onend = () => { if (enonceActif === enonce) enonceActif = null; if (onFin) onFin(); };
     enonce.onerror = (event) => { if (enonceActif === enonce) enonceActif = null; if (onErreur) onErreur(event.error); };
     window.speechSynthesis.speak(enonce);
@@ -114,5 +156,6 @@ const Capacites = (() => {
     if (syntheseDisponible()) window.speechSynthesis.cancel();
   };
 
-  return { voixDisponible, syntheseDisponible, dicter, lire, lireFichier, arreter };
+  return { voixDisponible, syntheseDisponible, dicter, lire, lireFichier, arreter,
+    voixLocales, choisirVoix, choixVoix, chargerVoixLocales };
 })();

@@ -86,12 +86,12 @@ _PARCOURS_PAR_THEME: dict[str, list[dict]] = {
          "portee": "premiere-serie"},
     ],
     "methodes": [
+        {"id": "pqrst-guide", "nom": "PQRST guidé pas à pas", "sources": [6]},
         {"id": "pqrst-rappel", "nom": "PQRST — répondre de mémoire", "sources": [1]},
         {"id": "choisir-plan", "nom": "Choisir un plan", "sources": [2]},
         {"id": "auto-instruction", "nom": "Se guider avant d’agir", "sources": [3]},
         {"id": "verifier-plan", "nom": "Vérifier un plan", "sources": [4]},
         {"id": "chercher-information", "nom": "Chercher dans un document", "sources": [5]},
-        {"id": "pqrst-guide", "nom": "PQRST guidé pas à pas", "sources": [6]},
     ],
     "garder-cap": [
         {"id": "reprendre", "nom": "Reprendre après une interruption", "sources": [1]},
@@ -203,6 +203,7 @@ class ChargeurContenu:
                 # (« Palier : auto » suit la progression ; un palier forcé ne sert
                 # que pour les essais, il ne fait jamais reculer la maîtrise).
                 "paliers": self.paliers(theme_id),
+                "palier_depart": self.palier_depart(theme_id, None),
                 "parcours": self.parcours(theme_id),
                 **libelles[theme_id],
             }

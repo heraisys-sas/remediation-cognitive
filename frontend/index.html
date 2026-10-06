@@ -104,6 +104,9 @@
           <input id="case-lecture-auto" type="checkbox" /> Lecture automatique
         </label>
         <button id="bouton-ecouter" type="button" class="bouton bouton-secondaire" title="Lit ce qui est actuellement affiché">🔊 Écouter</button>
+        <label>Voix locale
+          <select id="choix-voix" aria-label="Voix française locale"></select>
+        </label>
       </div>
         <!-- Aide optionnelle fournie par l'item (contenu.aide) — repliée par défaut. -->
         <details id="zone-aide" class="aide" hidden>
@@ -256,7 +259,8 @@
   <!-- Le numéro de version change l'URL : le navigateur ne peut pas servir un ancien
        script resté en cache (un script périmé mélangé au contenu courant affichait
        des phrases tronquées). À incrémenter après toute modification de src/. -->
-  <script src="src/capacites.js?v=20261002b" defer></script>
-  <script src="src/app.js?v=20261003c" defer></script>
+  <script src="src/capacites.js?v=20261006a" defer></script>
+  <script src="src/accompagnement.js?v=20261006c" defer></script>
+  <script src="src/app.js?v=20261006f" defer></script>
 </body>
 </html>

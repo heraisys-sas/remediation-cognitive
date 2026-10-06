@@ -11,12 +11,15 @@ Tout est **local** : la reconnaissance vocale, elle, est assurée côté client
 from __future__ import annotations
 
 import base64
+from typing import Literal
 
 from fastapi import APIRouter
 from fastapi.responses import JSONResponse
-from pydantic import BaseModel
+from pydantic import BaseModel, Field, constr
 
 from ...domain import capacites as cap
+from ...domain import voix_locales
+from ...domain import accompagnement_local
 
 router = APIRouter(prefix="/api/capacites", tags=["capacites"])
 
@@ -32,6 +35,31 @@ class DemandeSynthese(BaseModel):
     """Corps de POST /api/capacites/synthese."""
 
     texte: str
+    voix: str | None = None
+
+
+class DemandeAccompagnement(BaseModel):
+    """Seulement le texte présenté et la tentative, jamais un corrigé."""
+
+    texte: constr(strip_whitespace=True, min_length=1, max_length=6000)
+    reformulation: constr(strip_whitespace=True, min_length=1, max_length=2000)
+    question: constr(strip_whitespace=True, max_length=2000) = ""
+    categories_deja_vues: list[Literal["objectif", "contrainte", "verification", "question"]] = Field(default_factory=list, max_length=2)
+
+
+@router.get("/accompagnement")
+def etat_accompagnement() -> dict:
+    return accompagnement_local.etat()
+
+
+@router.post("/accompagnement")
+async def accompagner(corps: DemandeAccompagnement) -> dict:
+    return await accompagnement_local.accompagner(corps.texte, corps.reformulation, corps.categories_deja_vues, question=corps.question)
+
+
+@router.get("/voix")
+def liste_voix() -> dict:
+    return {"voix": voix_locales.voix_disponibles()}
 
 
 @router.get("")
@@ -58,7 +86,8 @@ def similarite(corps: DemandeSimilarite) -> dict:
 @router.post("/synthese")
 def synthese(corps: DemandeSynthese):
     """Synthèse du texte par la voix du système → WAV en base64."""
-    resultat = cap.synthese(corps.texte)
+    resultat = (voix_locales.synthetiser(corps.texte, corps.voix)
+                if corps.voix else cap.synthese(corps.texte))
     if resultat is None:
         return JSONResponse(
             status_code=503,

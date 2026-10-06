@@ -1,3 +1,19 @@
+# 2026-10-06 — prononciation française de triangle
+
+Correction orale ciblée « triangle(s) » → « tri-angle(s) » pour éviter la lecture anglaise de l'homographe par certaines voix avancées. Appliquée à la lecture automatique et au bouton Écouter dans les thèmes français, pour le navigateur comme pour macOS. Texte affiché et réponses inchangés ; anglais et Python exclus. Le rendu vocal reste à apprécier à l'écoute selon la voix.
+
+# 2026-10-05 — Audrey haute qualité via macOS
+
+Le sélecteur ajoute les voix françaises Premium/Enhanced installées sur macOS, même si Chrome ne les expose pas. Leur lecture passe par le serveur local et `say`, sans service distant ni modèle ajouté. Le mode automatique privilégie ces voix ; les voix fantaisie sont retirées des choix navigateur. Une lecture native devenue obsolète après changement d'étape est ignorée. Redémarrage du backend nécessaire pour les nouvelles routes.
+
+# 2026-10-05 — choix explicite de la voix française locale
+
+L'interface ne force plus arbitrairement la première voix française : un sélecteur à côté d'Écouter permet de mémoriser la voix souhaitée. Le mode automatique privilégie la voix française locale marquée par défaut par le navigateur. La liste suit les changements de voix exposés par celui-ci ; aucune voix distante n'est utilisée comme secours. Les règles de prononciation et de non-répétition sont conservées.
+
+# 2026-10-05 — lecture rétablie dans Actualiser une consigne
+
+Le parcours masquait les commandes audio et annulait la lecture dès son lancement. Chaque message courant dispose désormais du bouton Écouter et de la lecture automatique, selon la préférence existante. La consigne générale n'est lue automatiquement qu'une fois par séance ; changer d'étape coupe l'ancien message et remplace le texte à relire. La restitution finale ne permet pas de réécouter les messages masqués. Prononciation des calculs et règles de lecture des autres thèmes conservées.
+
 # 2026-10-03 — parcours clavier dans Au quotidien
 
 Les boutons Afficher puis Passer reçoivent le focus à leur apparition dans Au quotidien : Entrée les active. La saisie, les choix de réponse et le bouton Suivant utilisaient déjà le focus et la validation clavier natifs. Aucun choix supplémentaire n’est déclenché automatiquement.
@@ -699,3 +715,27 @@ Retour d'usage : « les indices sont insuffisants pour reconstruire l'ensemble d
 - **Décision produit** — module Python cadré : mémorisation de concepts et de commandes du langage ; thématique cognitive à double dividende (l'effort de mémorisation est l'exercice, le contenu acquis est une compétence durable). Formats : errorless → production → prédiction de sortie ; cap de complexité de 2 niveaux d'imbrication en phase initiale.
 - **Décision réglementaire (rappel)** — scission Entraînement (hors MDR) / Rééducation + Bilan (usage strictement familial) ; voie DM classe I différée en Phase 3.
 - **Projet** — création du squelette d'arborescence (monorepo), documentation de cadrage, ADR-001 et ADR-002, schéma d'item normalisé.
+
+## 2026-10-06 — Prototype PQRST, accompagnement Apple local
+
+Retour facultatif après correction : deux relances métacognitives maximum, reformulation retravaillable sans modifier le score. Modèle Apple embarqué optionnel, absence ou panne sans blocage, aucun repli cloud. Voir ADR-027.
+
+### PQRST — question personnelle
+
+Le bilan restitue la question du champ 2 et précise « sans score ». La question modèle reste un exemple distinct. La question personnelle est désormais transmise au modèle local avec la reformulation ; une relance peut inviter à vérifier leur lien, sans notation supplémentaire.
+
+### PQRST — suppression de la saisie générique redondante
+
+Le palier de mise en œuvre conserve uniquement ses champs dédiés. La préparation générique ne réaffiche plus « Ta réponse » et sa dictée après le rendu de la séquence.
+
+### Méthodes — ordre des parcours
+
+PQRST guidé pas à pas précède désormais PQRST — répondre de mémoire dans le sélecteur, et devient le choix initial à l’ouverture. Aucun changement des items ni des historiques.
+
+### Sélecteurs — départ Auto explicite
+
+« Auto — suivre ma progression » distingue désormais la reprise du niveau initial indiqué séparément pour une première séance. Le départ Calcul mental (5) provient de l’API. Les parcours à palier unique sont explicitement identifiés.
+
+### Cartes allégées
+
+Retrait du paragraphe explicatif Auto sous les sélecteurs. Le libellé « Auto — suivre ma progression » suffit ; le comportement reste identique.

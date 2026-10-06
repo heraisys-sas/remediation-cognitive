@@ -29,3 +29,6 @@ data/
 # OS
 .DS_Store
 Thumbs.db
+
+# Adaptateurs locaux facultatifs et environnements isolés
+.local/
