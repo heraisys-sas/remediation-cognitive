@@ -19,6 +19,8 @@ from __future__ import annotations
 from datetime import datetime, timezone
 from numbers import Real
 
+from engine.timeutil import normaliser_utc as _normaliser_utc
+
 from engine.adaptive.rule import calculer_taux_glissant
 
 # Seuils de fatigabilité (docs/10-clinique/protocoles.md) : la détection
@@ -40,13 +42,6 @@ def _extraire_item_id(item) -> str:
     if item_id is None:
         raise ValueError("item sans identifiant : attribut 'item_id' requis")
     return item_id
-
-
-def _normaliser_utc(instant: datetime) -> datetime:
-    """Normalise un datetime vers UTC (un datetime naïf est supposé UTC)."""
-    if instant.tzinfo is None:
-        return instant.replace(tzinfo=timezone.utc)
-    return instant.astimezone(timezone.utc)
 
 
 class SessionRunner:

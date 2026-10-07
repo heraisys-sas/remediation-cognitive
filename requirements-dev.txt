@@ -1,0 +1,8 @@
+# Dépendances directes de développement/test ; FSRS doit rester en version 6.
+# Plages compatibles, pas un lock des dépendances transitives.
+pytest>=8,<10
+fastapi>=0.110,<1
+uvicorn>=0.29,<1
+pydantic>=2.7,<3
+httpx>=0.27,<0.29
+fsrs>=6,<7

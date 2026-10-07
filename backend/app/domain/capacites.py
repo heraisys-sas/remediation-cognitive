@@ -132,6 +132,8 @@ def synthese_disponible() -> bool:
 
     if platform.system() == "Windows":
         return shutil.which("powershell") is not None or shutil.which("pwsh") is not None
+    if platform.system() == "Darwin":
+        return bool(shutil.which("say") and shutil.which("afconvert"))
     for outil in _SYNTHESE_PLATEFORMES.get(platform.system(), (None, None)):
         if outil and shutil.which(outil):
             return True
@@ -166,15 +168,20 @@ def synthese(texte: str) -> tuple[bytes, str] | None:
                     subprocess.run([outil, "-w", str(final), texte], check=True,
                                    capture_output=True, timeout=40)
                 elif systeme == "Windows":
+                    import base64
+                    import os
                     script = ("Add-Type -AssemblyName System.Speech; "
                               "$s = New-Object System.Speech.Synthesis.SpeechSynthesizer; "
-                              f"$s.SetOutputToWaveFile('{final}'); $s.Speak('{texte.replace(chr(39), chr(39)*2)}'); "
+                              "$s.SetOutputToWaveFile($env:TTS_OUT); "
+                              "$s.Speak([Environment]::GetEnvironmentVariable('TTS_TEXT')); "
                               "$s.Dispose()")
                     exe = shutil.which("powershell") or shutil.which("pwsh")
                     if not exe:
                         return None
-                    subprocess.run([exe, "-NoProfile", "-Command", script], check=True,
-                                   capture_output=True, timeout=60)
+                    encoded = base64.b64encode(script.encode("utf-16-le")).decode("ascii")
+                    subprocess.run([exe, "-NoProfile", "-EncodedCommand", encoded], check=True,
+                                   capture_output=True, timeout=60,
+                                   env={**os.environ, "TTS_TEXT": texte, "TTS_OUT": str(final)})
                 else:
                     return None
                 if final.exists() and final.stat().st_size > 0:

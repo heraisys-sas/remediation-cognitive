@@ -224,7 +224,7 @@ class GestionnaireSessions:
         # Dérogation explicite (ADR-021) : elle couvre tous les thèmes — la règle
         # reste côté serveur, l'interface la demande, elle ne la contourne pas.
         deroge = sans_limite_sessions
-        with self._verrou_dosage:
+        with self._verrou_dosage, self.stockage.transaction_theme(theme):
             maintenant = self.horloge()
             debut = debut_fenetre(fenetre, maintenant.date())
             nb_sessions = self.stockage.lire_compteur(theme, debut)
@@ -306,7 +306,7 @@ class GestionnaireSessions:
             # Une séance **vide** (rien de dû, rien de nouveau) ne consomme pas le quota
             # de la fenêtre : elle n'a rien proposé, elle ne doit rien coûter.
             if selection:
-                self.stockage.ecrire_compteur(theme, debut, nb_sessions + 1)
+                self.stockage.incrementer_compteur(theme, debut)
         return {
             "session_id": session_id,
             "parcours": parcours,
@@ -540,6 +540,13 @@ class GestionnaireSessions:
         return retour
 
     def _cloturer(
+        self, session: SessionEnCours, maintenant: datetime
+    ) -> tuple[dict, int, int, float]:
+        # Couvre la lecture-modification-écriture de toutes les progressions.
+        with self.stockage.transaction_theme(session.theme):
+            return self._cloturer_sous_verrou(session, maintenant)
+
+    def _cloturer_sous_verrou(
         self, session: SessionEnCours, maintenant: datetime
     ) -> tuple[dict, int, int, float]:
         """Finalise la séance : FSRS + maîtrise + baseline RT + persistance.
