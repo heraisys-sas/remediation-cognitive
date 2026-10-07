@@ -25,6 +25,8 @@ from datetime import datetime, timedelta, timezone
 
 from fsrs import Card, Rating, Scheduler, State
 
+from engine.timeutil import normaliser_utc
+
 #: Pas d'apprentissage et de réapprentissage, à l'échelle de CE logiciel.
 #:
 #: Les pas par défaut de FSRS (1 minute, 10 minutes) viennent des applications de
@@ -65,13 +67,6 @@ _LIBELLES_ETAT: dict[State, str] = {
     State.Review: "revision",
     State.Relearning: "reapprentissage",
 }
-
-
-def normaliser_utc(instant: datetime) -> datetime:
-    """Normalise un datetime vers UTC (un datetime naïf est supposé UTC)."""
-    if instant.tzinfo is None:
-        return instant.replace(tzinfo=timezone.utc)
-    return instant.astimezone(timezone.utc)
 
 
 class CarteFSRS:
