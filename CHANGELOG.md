@@ -1,3 +1,7 @@
+# 2026-10-07 — extraction critique de la PR #11
+
+Sauvegardes et compteurs protégés contre les accès concurrents, normalisation UTC partagée, correction ciblée de synthèse Windows et de détection macOS. Les comportements d'exercices, seuils de fatigue et fonctions vocales récentes sont conservés. Tests de concurrence, sélection et dates ajoutés ; workflow CI unique. Décisions détaillées dans `docs/30-technique/revue-pr11.md`.
+
 # 2026-10-06 — prononciation française de triangle
 
 Correction orale ciblée « triangle(s) » → « tri-angle(s) » pour éviter la lecture anglaise de l'homographe par certaines voix avancées. Appliquée à la lecture automatique et au bouton Écouter dans les thèmes français, pour le navigateur comme pour macOS. Texte affiché et réponses inchangés ; anglais et Python exclus. Le rendu vocal reste à apprécier à l'écoute selon la voix.
