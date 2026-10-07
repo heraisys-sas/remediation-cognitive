@@ -6,9 +6,9 @@
   <!-- Environnement sombre par défaut (photophobie SPC) : on annonce le schéma sombre
        au navigateur pour que champs, barres de défilement et nuanciers natifs suivent. -->
   <meta name="color-scheme" content="dark" />
-  <meta name="theme-color" content="#14161b" />
+  <meta name="theme-color" content="#192029" />
   <title>Entraînement — séances courtes</title>
-  <link rel="stylesheet" href="src/styles.css?v=20261001a" />
+  <link rel="stylesheet" href="src/styles.css?v=20261007c" />
 </head>
 <body>
   <!-- Lien d'évitement : première tabulation, pour sauter directement au contenu. -->
@@ -19,18 +19,29 @@
     <div class="entete-ligne">
       <p class="entete-sous-titre">Des séances courtes, à ton rythme.</p>
 
-      <!-- Dérogation explicite au plafond de séances (anti-fatigue), tous thèmes :
-           entraînements (fenêtre du jour) et mesures d'évaluation (fenêtre de la
-           semaine) ; à droite du sous-titre, visible sur toutes les vues. Le
-           réglage est conservé d'une visite à l'autre. ADR-021. -->
-      <div class="reglage-limite">
-        <label class="commutateur">
-          <input id="case-sans-limite" type="checkbox" role="switch" aria-describedby="note-sans-limite" />
-          <span class="commutateur-piste" aria-hidden="true"></span>
-          <span class="commutateur-texte">Dépasser la limite de séances</span>
-        </label>
-        <p id="note-sans-limite" class="ligne-discrete reglage-limite-note">Tous les exercices.</p>
-      </div>
+      <details class="reglages" id="reglages-interface">
+        <summary>Réglages</summary>
+        <div class="reglages-contenu">
+          <label class="commutateur">
+            <input id="case-lecture-auto" type="checkbox" />
+            <span>Lire les consignes à voix haute</span>
+          </label>
+          <label class="reglage-voix">Voix locale
+            <select id="choix-voix" aria-label="Voix française locale"></select>
+          </label>
+          <label class="commutateur">
+            <input id="case-mode-derogatoire" type="checkbox" role="switch" />
+            <span>Mode dérogatoire</span>
+          </label>
+          <div id="reglages-derogatoires" hidden>
+            <label class="commutateur">
+              <input id="case-sans-limite" type="checkbox" role="switch" aria-describedby="note-sans-limite" />
+              <span>Dépasser la limite de séances</span>
+            </label>
+            <p id="note-sans-limite" class="ligne-discrete">Tous les exercices.</p>
+          </div>
+        </div>
+      </details>
     </div>
   </header>
 
@@ -63,11 +74,14 @@
       <!-- Accès secondaires de l'accueil : placés avant « Extra » (rubrique d'appoint
            reléguée en fin de page), séparés comme les autres rubriques — Programme,
            missions, Repères, même style entre eux. -->
+      <details class="acces-secondaires"><summary>Programme et ressources</summary>
       <div class="actions-suite acces-accueil">
         <button id="bouton-programme" type="button" class="bouton bouton-secondaire bouton-large">Programme de 8 semaines</button>
         <button id="bouton-missions" type="button" class="bouton bouton-secondaire bouton-large">Sociabilité — reprendre contact</button>
         <button id="bouton-reperes" type="button" class="bouton bouton-secondaire bouton-large">Repères — quand en parler</button>
       </div>
+
+      </details>
 
       <!-- Thèmes d'appoint (vocabulaire, commandes) : regroupés en bas, ils ne
            relèvent pas des familles d'entraînement cognitif principales. -->
@@ -100,13 +114,7 @@
       <p id="note-reprise" class="rappel-consigne note-reprise" hidden></p>
       <!-- Lecture : automatique par défaut, désactivable à tout moment (le réglage est gardé). -->
       <div id="ligne-audio" class="ligne-audio" hidden>
-        <label class="lecture-auto">
-          <input id="case-lecture-auto" type="checkbox" /> Lecture automatique
-        </label>
-        <button id="bouton-ecouter" type="button" class="bouton bouton-secondaire" title="Lit ce qui est actuellement affiché">🔊 Écouter</button>
-        <label>Voix locale
-          <select id="choix-voix" aria-label="Voix française locale"></select>
-        </label>
+        <button id="bouton-ecouter" type="button" class="bouton bouton-discret bouton-audio" title="Écouter" aria-label="Écouter">Écouter</button>
       </div>
         <!-- Aide optionnelle fournie par l'item (contenu.aide) — repliée par défaut. -->
         <details id="zone-aide" class="aide" hidden>
@@ -234,15 +242,18 @@
 
       <!-- Proposition d'arrêt (arret_propose) : bienveillante, jamais forcée. -->
       <div id="carte-arret" class="carte-arret" role="status" hidden>
-        <p class="carte-arret-message">Tu sembles fatigué·e — c’est le bon moment pour souffler. On s’arrête ici, c’est déjà très bien.</p>
+        <p class="carte-arret-message">Tu peux faire une pause maintenant.</p>
         <p class="carte-arret-note">C’est une suggestion : tu décides toujours.</p>
       </div>
 
+      <p class="intro-vue">Tu peux t’arrêter ici et reprendre quand tu le souhaites.</p>
+      <details class="details-resultats"><summary>Voir les détails de la séance</summary>
       <dl id="stats-resume" class="grille-stats"></dl>
+      </details>
       <p id="ligne-seances-restantes" class="ligne-discrete"></p>
 
       <div class="actions-suite">
-        <button id="bouton-nouvelle-seance" type="button" class="bouton bouton-primaire bouton-large">Nouvelle séance</button>
+        <button id="bouton-nouvelle-seance" type="button" class="bouton bouton-primaire bouton-large">Retour à l’accueil</button>
       </div>
     </section>
 
@@ -259,8 +270,10 @@
   <!-- Le numéro de version change l'URL : le navigateur ne peut pas servir un ancien
        script resté en cache (un script périmé mélangé au contenu courant affichait
        des phrases tronquées). À incrémenter après toute modification de src/. -->
-  <script src="src/capacites.js?v=20261006a" defer></script>
-  <script src="src/accompagnement.js?v=20261006c" defer></script>
-  <script src="src/app.js?v=20261006f" defer></script>
+  <script src="src/dictee-native.js?v=20261007e" defer></script>
+  <script src="src/capacites.js?v=20261007-native5" defer></script>
+  <script src="src/accompagnement.js?v=20261007b" defer></script>
+  <script src="src/dictee-auto.js?v=20261007b" defer></script>
+  <script src="src/app.js?v=20261007-cartes1" defer></script>
 </body>
 </html>

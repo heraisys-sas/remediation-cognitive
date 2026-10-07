@@ -4,8 +4,8 @@
 - `POST /api/capacites/similarite` → proximité de deux textes (0 à 1) ;
 - `POST /api/capacites/synthese`   → synthèse vocale par la voix du système (WAV).
 
-Tout est **local** : la reconnaissance vocale, elle, est assurée côté client
-(navigateur ou OS de la tablette) — le serveur ne capte pas le micro.
+Tout est **local** : le navigateur capte le micro et peut transmettre un WAV
+au moteur Apple du serveur local ; aucun repli de reconnaissance distant.
 """
 
 from __future__ import annotations
@@ -20,6 +20,7 @@ from pydantic import BaseModel, Field, constr
 from ...domain import capacites as cap
 from ...domain import voix_locales
 from ...domain import accompagnement_local
+from ...domain import dictee_locale
 
 router = APIRouter(prefix="/api/capacites", tags=["capacites"])
 
@@ -96,3 +97,23 @@ def synthese(corps: DemandeSynthese):
         )
     audio, mime = resultat
     return {"mime": mime, "audio_base64": base64.b64encode(audio).decode("ascii")}
+
+
+class DemandeDictee(BaseModel):
+    audio_base64: constr(min_length=1, max_length=dictee_locale.MAX_BASE64_LENGTH)
+
+
+@router.get("/dictee")
+def etat_dictee() -> dict:
+    return dictee_locale.etat()
+
+
+@router.post("/dictee")
+def dicter(corps: DemandeDictee):
+    try:
+        resultat = dictee_locale.transcrire(corps.audio_base64)
+    except ValueError:
+        return JSONResponse(status_code=422, content={"erreur": "audio_invalide"})
+    if not resultat.get("disponible"):
+        return JSONResponse(status_code=503, content=resultat)
+    return resultat

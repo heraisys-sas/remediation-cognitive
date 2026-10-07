@@ -97,9 +97,28 @@ function lireTexteExercice(texte) {
 
 //: Dérogation explicite au plafond de séances du jour (entraînements — ADR-021).
 //: Désactivée par défaut ; conservée d'une visite à l'autre, comme la lecture automatique.
+const CLE_MODE_DEROGATOIRE = "orthogone.modeDerogatoire";
+function preferenceLocale(cle, repli = "") {
+  try { return window.localStorage.getItem(cle) ?? repli; } catch { return repli; }
+}
+function garderPreference(cle, valeur) {
+  try { window.localStorage.setItem(cle, valeur); } catch { /* stockage indisponible */ }
+}
+function modeDerogatoireActif() {
+  // Migration : une dérogation déjà activée reste disponible.
+  return preferenceLocale(CLE_MODE_DEROGATOIRE,
+    preferenceLocale("remediation.sansLimiteSessions") === "on" ? "on" : "off") === "on";
+}
+function majModeDerogatoire() {
+  $("reglages-derogatoires").hidden = !modeDerogatoireActif();
+  for (const panneau of document.querySelectorAll(".reglages-essai")) {
+    panneau.hidden = !modeDerogatoireActif();
+  }
+  majReglageSansLimite();
+}
 const CLE_SANS_LIMITE = "remediation.sansLimiteSessions";
 function sansLimiteActivee() {
-  try { return window.localStorage.getItem(CLE_SANS_LIMITE) === "on"; }
+  try { return modeDerogatoireActif() && window.localStorage.getItem(CLE_SANS_LIMITE) === "on"; }
   catch { return false; }
 }
 function definirSansLimite(active) {
@@ -321,6 +340,10 @@ function motsDe(texte) {
 
 /** Annule les minuteries de la phase de mémorisation et masque la zone. */
 function annulerMemo() {
+  etat.autoDictee?.abort();
+  etat.autoDictee = null;
+  etat.dicteeActive?.abort();
+  etat.dicteeActive = null;
   etat.memoGeneration = (etat.memoGeneration || 0) + 1;
   CAPACITES.arreter();
   for (const minuterie of etat.minuteriesMemo) {
@@ -506,8 +529,8 @@ function rendreThemes(themes) {
     return;
   }
 
-  // Déduction et Calcul mental ouvrent la liste ; les autres gardent leur ordre.
-  const prioritaires = ["deduction", "calcul-mental"];
+  // Les quatre thèmes prioritaires ouvrent la liste ; les autres gardent leur ordre.
+  const prioritaires = ["deduction", "calcul-mental", "evocation", "methodes"];
   const themesOrdonnes = [
     ...prioritaires.flatMap(id => themes.filter(theme => theme.id === id)),
     ...themes.filter(theme => !prioritaires.includes(theme.id)),
@@ -532,6 +555,9 @@ function carteTheme(theme, parcoursAudio = null) {
     creerElement("p", { texte: theme.description || "" })
   );
 
+  const optionsParcours = creerElement("details", { classe: "choix-parcours" },
+    creerElement("summary", { texte: "Choisir le parcours" }));
+  if (parcoursAudio || (theme.parcours || []).length) carte.append(optionsParcours);
   let themeChoisi = theme;
   let parcoursChoisi = null;
   let selecteurParcours = null;
@@ -549,6 +575,8 @@ function carteTheme(theme, parcoursAudio = null) {
     for (const palier of paliers) choix.append(creerElement("option", {
       texte: `Essai — palier ${palier}`, attributs: { value: String(palier) },
     }));
+    const memorise = preferenceLocale(`orthogone.palier.${themeChoisi.id}.${parcoursChoisi || "default"}`);
+    if ([...choix.options].some(option => option.value === memorise)) choix.value = memorise;
     choix.hidden = paliers.length <= 1;
   }
 
@@ -558,9 +586,11 @@ function carteTheme(theme, parcoursAudio = null) {
     selecteurParcours.replaceChildren(...parcours.map(definition => creerElement("option", {
       texte: definition.nom, attributs: { value: definition.id },
     })));
-    parcoursChoisi = parcours[0]?.id || null;
+    const memorise = preferenceLocale(`orthogone.parcours.${themeChoisi.id}`);
+    parcoursChoisi = parcours.some(p => p.id === memorise) ? memorise : parcours[0]?.id || null;
+    selecteurParcours.value = parcoursChoisi || "";
     selecteurParcours.hidden = parcours.length <= 1;
-    const definition = parcours[0];
+    const definition = parcours.find(p => p.id === parcoursChoisi);
     descriptionParcours.textContent = definition?.description || "Chaque parcours a sa propre progression.";
     majPaliers();
   }
@@ -570,11 +600,15 @@ function carteTheme(theme, parcoursAudio = null) {
       attributs: { "aria-label": "Parcours de mémorisation" } });
     selecteur.append(creerElement("option", { texte: "Mots lus", attributs: { value: theme.id } }),
       creerElement("option", { texte: "Mots entendus", attributs: { value: parcoursAudio.id } }));
+    const modalite = preferenceLocale(`orthogone.modalite.${theme.id}`, theme.id);
+    selecteur.value = modalite === parcoursAudio.id ? parcoursAudio.id : theme.id;
+    themeChoisi = selecteur.value === parcoursAudio.id ? parcoursAudio : theme;
     selecteur.addEventListener("change", () => {
+      garderPreference(`orthogone.modalite.${theme.id}`, selecteur.value);
       themeChoisi = selecteur.value === parcoursAudio.id ? parcoursAudio : theme;
       majParcours();
     });
-    carte.append(selecteur, creerElement("p", { classe: "ligne-discrete",
+    optionsParcours.append(selecteur, creerElement("p", { classe: "ligne-discrete",
       texte: "La progression est distincte dans chaque parcours." }));
   }
 
@@ -584,11 +618,12 @@ function carteTheme(theme, parcoursAudio = null) {
     descriptionParcours = creerElement("p", { classe: "ligne-discrete" });
     selecteurParcours.addEventListener("change", () => {
       parcoursChoisi = selecteurParcours.value || null;
+      garderPreference(`orthogone.parcours.${themeChoisi.id}`, parcoursChoisi || "");
       const definition = (themeChoisi.parcours || []).find(p => p.id === parcoursChoisi);
       descriptionParcours.textContent = definition?.description || "Progression indépendante.";
       majPaliers();
     });
-    carte.append(selecteurParcours, descriptionParcours);
+    optionsParcours.append(selecteurParcours, descriptionParcours);
   }
 
   // Sélecteur de palier — **outil d'essai**. « auto » suit la progression : c'est le
@@ -597,7 +632,12 @@ function carteTheme(theme, parcoursAudio = null) {
     classe: "selecteur-palier",
     attributs: { "aria-label": `Palier d'essai pour ${theme.nom}` },
   });
-  carte.append(choix);
+  const essais = creerElement("details", { classe: "reglages-essai" },
+    creerElement("summary", { texte: "Réglages de cette séance" }), choix);
+  essais.hidden = !modeDerogatoireActif();
+  carte.append(essais);
+  choix.addEventListener("change", () => garderPreference(
+    `orthogone.palier.${themeChoisi.id}.${parcoursChoisi || "default"}`, choix.value));
   majParcours();
   majPaliers();
 
@@ -607,7 +647,7 @@ function carteTheme(theme, parcoursAudio = null) {
     attributs: { type: "button" },
   });
   bouton.addEventListener("click", () => demarrerSession(
-    themeChoisi, choix && choix.value ? Number(choix.value) : null, parcoursChoisi
+    themeChoisi, modeDerogatoireActif() && choix && choix.value ? Number(choix.value) : null, parcoursChoisi
   ));
   carte.append(bouton);
   return carte;
@@ -615,6 +655,7 @@ function carteTheme(theme, parcoursAudio = null) {
 
 /** Repli sûr vers l'écran des thèmes (après incident ou fin de séance). */
 function revenirAuxThemes() {
+  CAPACITES.libererPreparationDictee?.();
   annulerMemo();
   etat.theme = null;
   etat.session = null;
@@ -661,6 +702,14 @@ async function demarrerSession(theme, palier = null, parcours = null) {
       return;
     }
 
+    // L'autorisation précède tout affichage/lecture de la première question.
+    // Le flux ouvert est transféré à la dictée, sans deuxième demande d'accès.
+    CAPACITES.libererPreparationDictee?.();
+    etat.dicteeAutoAutorisee = false;
+    if (theme.id === "evocation" && donnees.items.some(item => item.type === "rappel-indice")) {
+      montrerNoticeThemes("Préparation du microphone… En cas de refus, tu répondras au clavier.");
+      etat.dicteeAutoAutorisee = Boolean(await CAPACITES.autoriserDictee?.());
+    }
     etat.theme = theme;
     etat.session = donnees;
     etat.seanceTerminee = false;
@@ -1264,7 +1313,7 @@ function rendreSequence(item) {
   zone.append(creerElement("p", { classe: "sequence-titre", texte: contenu.titre_texte || "" }));
 
   const boutonValider = creerElement("button", {
-    classe: "bouton-principal", texte: "Valider la séquence",
+    classe: "bouton bouton-primaire bouton-large", texte: "Valider la séquence",
     attributs: { type: "button" },
   });
   boutonValider.addEventListener("click", () => soumettreValeur(etat.sequence, 0));
@@ -1529,6 +1578,24 @@ function afficherQuestion(item) {
   reglerEtatBoutons();
 
   etat.debutQuestion = Date.now();
+  if (dicteePossible && etat.dicteeAutoAutorisee && etat.theme.id === "evocation" && item.type === "rappel-indice") {
+    const session = etat.session;
+    etat.autoDictee = DicteeAuto.demarrer({
+      capacites: CAPACITES,
+      verifier: transcription => apiFetch(
+        `/evocation/sessions/${encodeURIComponent(session.session_id)}/verifier-dictee`,
+        { method: "POST", body: JSON.stringify({ item_id: item.id, transcription }) }),
+      afficher: texte => { refs.champReponse.value = texte; },
+      statut: texte => { refs.boutonDicter.textContent = texte; },
+      clavier: disponible => {
+        if (disponible === false) etat.dicteeAutoAutorisee = false;
+        etat.autoDictee = null;
+        refs.boutonDicter.textContent = "🎤 Répondre à voix haute";
+        refs.champReponse.focus();
+      },
+      valider: texte => { etat.autoDictee = null; soumettreValeur(texte, etat.indicesReveles); },
+    });
+  }
   if (avecChoix) {
     const premier = refs.zoneChoix.querySelector("button");
     if (premier) premier.focus();
@@ -1612,6 +1679,8 @@ function rendreIndices(item) {
 
 /** Validation (Entrée ou bouton) → POST /reponses → feedback immédiat. */
 async function validerReponse() {
+  // Terminer la transcription avant de juger le texte, sans valider un aperçu.
+  if (etat.dicteeActive) { etat.dicteeActive.stop(); return; }
   if (etat.actionEnCours || etat.repondu || !etat.session) return;
 
   const brut = refs.champReponse.value.trim();
@@ -1631,6 +1700,8 @@ async function validerReponse() {
  */
 async function soumettreValeur(brut, indiceUtilise) {
   if (etat.actionEnCours || etat.repondu || !etat.session) return;
+  etat.autoDictee?.abort();
+  etat.autoDictee = null;
 
   const item = etat.session.items[etat.indexItem];
   // Séquence guidée : le payload est déjà l'objet des réponses par étape.
@@ -1703,6 +1774,7 @@ async function soumettreValeur(brut, indiceUtilise) {
     etat.actionEnCours = false;
     reglerEtatBoutons();
     refs.boutonSuivant.focus();
+    programmerSuiteLexicale(resultat, item);
   } catch (erreur) {
     if (erreur.type === "reseau") {
       // La saisie est conservée : on peut réessayer sans rien retaper.
@@ -1841,6 +1913,19 @@ function rendreFeedback(resultat) {
   refs.carteFeedback.hidden = false;
 }
 
+/** Laisser trois secondes de retour après un rappel lexical réussi. */
+function programmerSuiteLexicale(resultat, item) {
+  if (resultat.correcte !== true || etat.theme?.id !== "evocation"
+      || item.type !== "rappel-indice") return;
+  const session = etat.session;
+  const index = etat.indexItem;
+  etat.minuteriesMemo.push(setTimeout(() => {
+    if (etat.session !== session || etat.indexItem !== index
+        || !etat.repondu || etat.actionEnCours) return;
+    itemSuivant();
+  }, 3000));
+}
+
 /** « Suivant » / « Voir le résumé » : avance ou clôture la séance. */
 function itemSuivant() {
   if (!etat.session || !etat.repondu) return;
@@ -1860,6 +1945,7 @@ function itemSuivant() {
 
 async function finirSeance() {
   if (etat.actionEnCours || !etat.session) return;
+  CAPACITES.libererPreparationDictee?.();
   etat.actionEnCours = true;
   reglerEtatBoutons();
   annulerMemo();
@@ -2517,6 +2603,7 @@ function rendreTableauDeduction(contenu) {
         const basculer = () => {
           cellule.textContent = cellule.textContent === "" ? "✗" : cellule.textContent === "✗" ? "✓" : "";
           cellule.dataset.etat = cellule.textContent;
+          cellule.setAttribute("aria-label", `${libelleFigure(figure)} ${couleur} — case ${courts[c]} — ${cellule.textContent === "✗" ? "impossible" : cellule.textContent === "✓" ? "certain" : "non renseigné"}`);
         };
         cellule.addEventListener("click", basculer);
         cellule.addEventListener("keydown", (evenement) => {
@@ -2774,6 +2861,10 @@ function brancherEvenements() {
     validerReponse();
   });
 
+  $("case-mode-derogatoire").addEventListener("change", (evenement) => {
+    garderPreference(CLE_MODE_DEROGATOIRE, evenement.target.checked ? "on" : "off");
+    majModeDerogatoire();
+  });
   refs.boutonSuivant.addEventListener("click", itemSuivant);
 
   // « Terminer la séance » : confirmation en deux temps, sans fenêtre brusque.
@@ -2782,7 +2873,7 @@ function brancherEvenements() {
     if (!etat.confirmationFin) {
       etat.confirmationFin = true;
       refs.boutonTerminer.textContent = "Confirmer la fin ?";
-      etat.minuterieConfirmation = setTimeout(reinitialiserConfirmationFin, 5000);
+      // La confirmation reste disponible sans contrainte de temps.
     } else {
       finirSeance();
     }
@@ -2797,7 +2888,8 @@ function brancherEvenements() {
   // Capacités du poste : écouter la consigne, répondre à voix haute.
   refs.boutonEcouter.addEventListener("click", () => {
     // Lecture à la demande (indépendante du réglage automatique).
-    lireTexteExercice(etat.enonceCourant);
+    if (CAPACITES.lectureEnCours?.()) CAPACITES.arreter();
+    else lireTexteExercice(etat.enonceCourant);
   });
   refs.caseLectureAuto.addEventListener("change", () => {
     definirLectureAuto(refs.caseLectureAuto.checked);
@@ -2816,25 +2908,42 @@ function brancherEvenements() {
     });
   }
   refs.boutonDicter.addEventListener("click", () => {
+    if (etat.autoDictee) { etat.autoDictee.manuel(); return; }
     if (!etat.session || etat.repondu) return;
+    if (etat.dicteeActive) { etat.dicteeActive.stop(); return; }
+    CAPACITES.arreter();
+    const sessionDictee = etat.session;
+    const indexDictee = etat.indexItem;
     const prefixe = refs.champReponse.value.trim();   // ne pas écraser ce qui est déjà saisi
     const afficher = (texte) => {
+      if (etat.session !== sessionDictee || etat.indexItem !== indexDictee || etat.repondu) return;
       refs.champReponse.value = [prefixe, texte].filter(Boolean).join(" ");
     };
-    CAPACITES.dicter({
+    refs.boutonDicter.textContent = "Préparation de la dictée locale…";
+    etat.dicteeActive = CAPACITES.dicter({
+      onTraitement: () => { refs.boutonDicter.textContent = "Transcription locale…"; },
       onDebut: () => {
-        refs.boutonDicter.textContent = "🎙️ Je t'écoute…";
+        refs.boutonDicter.textContent = "Parle maintenant · Terminer la dictée";
         refs.champReponse.classList.add("champ-dictee");
       },
       // Transcription au fur et à mesure : la réponse s'écrit en direct.
       onPartiel: afficher,
       onResultat: (texte) => { afficher(texte); refs.champReponse.focus(); },
       onFin: () => {
+        etat.dicteeActive = null;
         refs.boutonDicter.textContent = "🎤 Répondre à voix haute";
         refs.champReponse.classList.remove("champ-dictee");
       },
-      onErreur: () => {
-        refs.boutonDicter.textContent = "🎤 Répondre à voix haute";
+      onErreur: (code) => {
+        etat.dicteeActive = null;
+        const messages = {
+          parole_non_detectee: "Aucune parole reconnue — réessaie",
+          audio_vide: "Enregistrement trop court — réessaie",
+          micro_refuse: "Autorise le microphone pour dicter",
+          delai_depasse: "Transcription trop longue — réessaie",
+          transcription_trop_longue: "Transcription trop longue — réessaie",
+        };
+        refs.boutonDicter.textContent = messages[code] || "Dictée locale indisponible — réessaie";
         refs.champReponse.classList.remove("champ-dictee");
       },
     });
@@ -2866,11 +2975,30 @@ function initialiserChoixVoix() {
   CAPACITES.chargerVoixLocales?.().then(actualiser);
 }
 
+/** Le même contrôle écoute ou coupe la lecture, y compris automatique. */
+function actualiserBoutonAudio(active) {
+  const bouton = refs.boutonEcouter;
+  bouton.replaceChildren();
+  bouton.setAttribute("aria-label", active ? "Arrêter la lecture" : "Écouter");
+  bouton.title = active ? "Arrêter la lecture" : "Écouter";
+  if (!active) { bouton.textContent = "Écouter"; return; }
+  const svg = document.createElementNS("http://www.w3.org/2000/svg", "svg");
+  svg.setAttribute("viewBox", "0 0 24 24");
+  svg.setAttribute("aria-hidden", "true");
+  svg.setAttribute("focusable", "false");
+  const chemin = document.createElementNS(svg.namespaceURI, "path");
+  chemin.setAttribute("d", "M3 9h4l5-4v14l-5-4H3z M16 9l5 6 M21 9l-5 6");
+  svg.append(chemin);
+  bouton.append(svg);
+}
+
 function init() {
+  CAPACITES.observerLecture?.(actualiserBoutonAudio);
   initialiserChoixVoix();
   if (refs.caseLectureAuto) refs.caseLectureAuto.checked = lectureAutoActivee();
-  if (refs.caseSansLimite) refs.caseSansLimite.checked = sansLimiteActivee();
-  majReglageSansLimite();
+  if (refs.caseSansLimite) refs.caseSansLimite.checked = preferenceLocale(CLE_SANS_LIMITE) === "on";
+  $("case-mode-derogatoire").checked = modeDerogatoireActif();
+  majModeDerogatoire();
   brancherEvenements();
   afficherVue("themes");
   chargerThemes();

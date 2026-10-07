@@ -1,9 +1,8 @@
 /* Capacités du poste, côté client : dictée et synthèse vocale.
  *
- * On utilise ce que le système fournit — l'API du navigateur, qui s'appuie sur
- * les moteurs de l'OS (Siri sur Apple, moteur système sur Android/Windows).
- * Repli silencieux : si la capacité manque, on rend `false` et l'interface
- * masque le bouton — la saisie au clavier reste toujours possible.
+ * La dictée privilégie le moteur Apple via le serveur loopback. Le repli
+ * navigateur exige un moteur local et le pack français déjà disponible.
+ * Aucun repli distant ni téléchargement automatique.
  *
  * Portable : ce module ne dépend d'aucune bibliothèque ; une enveloppe native
  * (tablette) pourra le remplacer sans toucher au reste de l'interface.
@@ -11,16 +10,25 @@
 const Capacites = (() => {
   const Reconnaissance = window.SpeechRecognition || window.webkitSpeechRecognition || null;
 
-  const voixDisponible = () => Boolean(Reconnaissance);
+  const voixDisponible = () => (typeof DicteeNative !== "undefined" && DicteeNative.disponible()) || Boolean(Reconnaissance);
   const syntheseDisponible = () => typeof window.speechSynthesis !== "undefined"
     && typeof window.SpeechSynthesisUtterance !== "undefined";
 
   /** Écoute le micro et transcrit au fur et à mesure.
    *  `onPartiel(texte)` est appelé pendant la parole (texte provisoire),
    *  `onResultat(texte)` à la fin de la phrase (texte définitif). */
-  function dicter({ onPartiel, onResultat, onDebut, onFin, onErreur } = {}) {
-    if (!Reconnaissance) return null;
+  function dicter({ onPartiel, onResultat, onDebut, onFin, onErreur, onTraitement } = {}) {
+    if (typeof DicteeNative !== "undefined" && DicteeNative.disponible()) {
+      return DicteeNative.demarrer({onPartiel,onResultat,onDebut,onFin,onErreur,onTraitement});
+    }
+    if (!Reconnaissance) { if (onErreur) onErreur("dictee_locale_indisponible"); return null; }
     const ecoute = new Reconnaissance();
+    // Ne jamais démarrer un moteur qui ne sait pas garantir le mode local.
+    if (!("processLocally" in ecoute) || typeof Reconnaissance.available !== "function") {
+      if (onErreur) onErreur("dictee_locale_indisponible");
+      return null;
+    }
+    ecoute.processLocally = true;
     ecoute.lang = "fr-FR";
     ecoute.interimResults = true;   // transcription au fur et à mesure
     ecoute.continuous = false;
@@ -39,18 +47,60 @@ const Capacites = (() => {
     };
     ecoute.onerror = (evenement) => { if (onErreur) onErreur(evenement.error || "erreur"); };
     ecoute.onend = () => { if (onFin) onFin(); };
-    try {
-      ecoute.start();
-      if (onDebut) onDebut();
-    } catch {
-      if (onErreur) onErreur("indisponible");
-      return null;
+    let annule = false;
+    let minuterie;
+    const controle = {
+      abort() { annule = true; clearTimeout(minuterie); ecoute.abort(); },
+      stop() { annule = true; clearTimeout(minuterie); ecoute.stop(); },
+    };
+    (async () => {
+      try {
+        const disponibilite = await Promise.race([
+          Reconnaissance.available({ langs: ["fr-FR"], processLocally: true }),
+          new Promise((_, rejet) => { minuterie = setTimeout(() => rejet(new Error("delai")), 3000); }),
+        ]);
+        if (annule) return;
+        if (disponibilite !== "available" || ecoute.processLocally !== true) {
+          if (onErreur) onErreur("dictee_locale_indisponible");
+          return;
+        }
+        ecoute.start();
+        if (onDebut) onDebut();
+      } catch {
+        if (!annule && onErreur) onErreur("dictee_locale_indisponible");
+      } finally { clearTimeout(minuterie); }
+    })();
+    return controle;
+  }
+
+  async function autoriserDictee() {
+    return typeof DicteeNative !== "undefined" && await DicteeNative.autoriser();
+  }
+  function libererPreparationDictee() {
+    if (typeof DicteeNative !== "undefined") DicteeNative.libererPreparation();
+  }
+
+  // Préparer le matériel pendant la question, sans enregistrer sa lecture.
+  function preparerDictee(options) {
+    if (typeof DicteeNative !== "undefined" && DicteeNative.disponible()) {
+      return DicteeNative.demarrer({ ...options, enAttente: true });
     }
-    return ecoute;
+    return null;
   }
 
   // Garder une référence jusqu’à la fin : certains moteurs collectent sinon l’énoncé.
   let enonceActif = null;
+  let lectureActive = false;
+  const abonnesLecture = new Set();
+  function notifierLecture(active) {
+    lectureActive = active;
+    for (const abonne of abonnesLecture) abonne(active);
+  }
+  function observerLecture(abonne) {
+    abonnesLecture.add(abonne);
+    abonne(lectureActive);
+    return () => abonnesLecture.delete(abonne);
+  }
   const CLE_VOIX = "remediation.voixLocale";
   let voixChoisie = "";
   let voixNatives = [];
@@ -107,6 +157,7 @@ const Capacites = (() => {
       || locales.find(v => v.native) || locales.find(v => v.default) || locales[0];
     if (!voix) { if (onErreur) onErreur("voix_locale_indisponible"); return false; }
     arreter();
+    notifierLecture(true);
     if (voix.native) {
       const generation = generationAudio;
       fetch('/api/capacites/synthese', {
@@ -116,7 +167,7 @@ const Capacites = (() => {
         if (!r.ok) throw new Error('synthese');
         const audio = await r.json();
         if (generation === generationAudio) lireFichier(`data:${audio.mime};base64,${audio.audio_base64}`, {onFin,onErreur});
-      }).catch(() => { if (generation === generationAudio && onErreur) onErreur('synthese'); });
+      }).catch(() => { if (generation === generationAudio) { notifierLecture(false); if (onErreur) onErreur('synthese'); } });
       return true;
     }
     window.speechSynthesis.cancel();
@@ -125,9 +176,10 @@ const Capacites = (() => {
     enonce.rate = 0.95;
     enonceActif = enonce;
     enonce.voice = voix;
-    enonce.onend = () => { if (enonceActif === enonce) enonceActif = null; if (onFin) onFin(); };
-    enonce.onerror = (event) => { if (enonceActif === enonce) enonceActif = null; if (onErreur) onErreur(event.error); };
-    window.speechSynthesis.speak(enonce);
+    enonce.onend = () => { if (enonceActif !== enonce) return; enonceActif = null; notifierLecture(false); if (onFin) onFin(); };
+    enonce.onerror = (event) => { if (enonceActif !== enonce) return; enonceActif = null; notifierLecture(false); if (onErreur) onErreur(event.error); };
+    try { window.speechSynthesis.speak(enonce); }
+    catch { enonceActif = null; notifierLecture(false); if (onErreur) onErreur("lecture"); return false; }
     return true;
   }
 
@@ -139,15 +191,18 @@ const Capacites = (() => {
     arreter();
     const generation = generationAudio;
     lecteurAudio ??= new window.Audio();
+    notifierLecture(true);
     lecteurAudio.src = url;
-    lecteurAudio.onended = () => { if (generation === generationAudio && onFin) onFin(); };
-    lecteurAudio.onerror = () => { if (generation === generationAudio && onErreur) onErreur("audio"); };
-    lecteurAudio.play().catch(() => { if (generation === generationAudio && onErreur) onErreur("lecture"); });
+    lecteurAudio.onended = () => { if (generation === generationAudio) { notifierLecture(false); if (onFin) onFin(); } };
+    lecteurAudio.onerror = () => { if (generation === generationAudio) { notifierLecture(false); if (onErreur) onErreur("audio"); } };
+    lecteurAudio.play().catch(() => { if (generation === generationAudio) { notifierLecture(false); if (onErreur) onErreur("lecture"); } });
     return true;
   }
 
   const arreter = () => {
     generationAudio++;
+    enonceActif = null;
+    notifierLecture(false);
     if (lecteurAudio) {
       lecteurAudio.onended = null;
       lecteurAudio.onerror = null;
@@ -156,6 +211,7 @@ const Capacites = (() => {
     if (syntheseDisponible()) window.speechSynthesis.cancel();
   };
 
-  return { voixDisponible, syntheseDisponible, dicter, lire, lireFichier, arreter,
-    voixLocales, choisirVoix, choixVoix, chargerVoixLocales };
+  return { voixDisponible, syntheseDisponible, dicter, preparerDictee, autoriserDictee, libererPreparationDictee, lire, lireFichier, arreter,
+    voixLocales, choisirVoix, choixVoix, chargerVoixLocales, observerLecture,
+    lectureEnCours: () => lectureActive };
 })();

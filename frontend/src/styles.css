@@ -14,11 +14,11 @@
 
 :root {
   /* Palette — oklch, désaturée, enveloppante (teinte ~262, bleu-gris neutre) */
-  --fond:            oklch(0.165 0.012 262);  /* fond principal, profond */
-  --fond-haut:       oklch(0.20  0.014 262);  /* léger dégradé d'ouverture (statique) */
-  --surface:         oklch(0.205 0.014 262);  /* cartes */
-  --surface-haute:   oklch(0.245 0.016 262);  /* champs, barre de progression */
-  --bordure:         oklch(0.31  0.018 262);
+  --fond:            oklch(0.235 0.014 255);  /* fond principal, profond */
+  --fond-haut:       oklch(0.255 0.014 255);  /* léger dégradé d'ouverture (statique) */
+  --surface:         oklch(0.275 0.014 255);  /* cartes */
+  --surface-haute:   oklch(0.305 0.016 255);  /* champs, barre de progression */
+  --bordure:         oklch(0.365 0.018 255);
 
   /* Texte : blanc cassé doux (jamais blanc pur, éblouissant) */
   --texte:           oklch(0.90  0.008 262);
@@ -1144,3 +1144,55 @@ body {
 .champ-fonctionnel { display: grid; gap: .5rem; margin: 1rem 0; }
 .champ-fonctionnel input, .champ-fonctionnel select { font: inherit; padding: .7rem; color: inherit; background: var(--surface, #1c2129); border: 1px solid #68717d; border-radius: .5rem; }
 @media (max-width: 650px) { .documents-comparaison { grid-template-columns: 1fr; } }
+
+/* Carnet sobre : hiérarchie, surfaces mates et commandes secondaires en retrait. */
+body {
+  background: radial-gradient(ellipse 65rem 40rem at 50% 0%,
+    var(--fond-haut), var(--fond) 80%);
+  background-color: var(--fond);
+}
+.entete { padding-top: 2rem; }
+.entete-titre { font-size: 1.15rem; letter-spacing: 0; }
+.entete-ligne { align-items: flex-start; }
+.reglages { margin-left: auto; max-width: 100%; }
+summary { cursor: pointer; min-height: 2.75rem; padding: 0.6rem 0; }
+summary:focus-visible, select:focus-visible, .sequence-option:focus-visible {
+  outline: 2px solid var(--accent); outline-offset: 3px;
+}
+.reglages > summary { color: var(--texte-secondaire); text-align: right; }
+.reglages-contenu { display: grid; gap: 1rem; padding: 1rem; border: 1px solid var(--bordure); border-radius: 12px; background: var(--surface); }
+.reglage-voix { display: grid; gap: 0.35rem; }
+.commutateur input { position: static; width: 1.2rem; height: 1.2rem; opacity: 1; margin: 0; accent-color: var(--accent); flex: none; }
+.commutateur { min-height: 2.75rem; }
+.reglages select, .selecteur-palier { min-height: 2.75rem; width: 100%; font: inherit; padding: 0.5rem 0.65rem; border: 1px solid var(--bordure); border-radius: 8px; background: var(--surface); color: var(--texte); }
+.reglages select { max-width: 100%; }
+.titre-vue { font-size: clamp(1.6rem, 4vw, 1.9rem); letter-spacing: -0.02em; }
+.grille-themes { grid-template-columns: repeat(auto-fit, minmax(min(100%, 15rem), 1fr)); gap: 1.25rem; }
+.carte-theme { padding: 1.5rem; border-radius: 14px; border-color: color-mix(in oklch, var(--bordure) 65%, var(--surface)); gap: 0.75rem; }
+.carte-theme h3 { font-weight: 600; }
+.carte-theme .bouton-primaire { background: transparent; color: var(--accent); border-color: var(--bordure); }
+.carte-theme .bouton-primaire:hover { background: var(--surface-haute); }
+.reglages-essai { width: 100%; }
+.reglages-essai summary, .acces-secondaires > summary, .details-resultats > summary { color: var(--texte-secondaire); font-size: 0.95rem; }
+.acces-secondaires { margin-top: 1.5rem; border-top: 1px solid var(--bordure); padding-top: 0.5rem; }
+.acces-accueil { margin-top: 0.5rem; }
+.carte-enonce { background: transparent; border: 0; padding: 0; border-radius: 0; }
+.enonce { line-height: 1.5; font-weight: 500; }
+.ligne-audio { gap: 0.5rem; }
+.pied-seance { border-top: 1px solid var(--bordure); padding-top: 1rem; }
+.details-resultats { margin: 1rem 0; }
+.sequence-option { font: inherit; min-height: 2.75rem; padding: 0.6rem 0.8rem; }
+.sequence-champ { font: inherit; min-height: 3rem; }
+.tableau-deduction { font-size: 1rem; }
+.tableau-deduction th, .tableau-deduction td { min-width: 2.75rem; height: 2.75rem; padding: 0.4rem; }
+.tableau-deduction .tableau-nom, .tableau-legende { font-size: 0.95rem; opacity: 1; }
+.tableau-deduction td:focus-visible { outline: 2px solid var(--accent); outline-offset: -3px; }
+@media (max-width: 30rem) {
+  .reglages { margin-left: 0; width: 100%; }
+  .reglages > summary { text-align: left; }
+  .carte-theme { padding: 1.25rem; }
+}
+
+/* Une seule commande audio : taille stable et symbole monochrome. */
+.bouton-audio { width: 7rem; min-height: 3rem; display: inline-flex; align-items: center; justify-content: center; flex: none; }
+.bouton-audio svg { width: 1.4rem; height: 1.4rem; fill: none; stroke: currentColor; stroke-width: 1.6; stroke-linecap: round; stroke-linejoin: round; }

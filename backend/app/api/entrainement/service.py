@@ -18,6 +18,7 @@ proposition renvoyée en fin de séance — JAMAIS une interruption.
 
 from __future__ import annotations
 
+import re
 import statistics
 import threading
 import uuid
@@ -340,6 +341,28 @@ class GestionnaireSessions:
         return 1000.0
 
     # -- réponses ------------------------------------------------------------
+
+    def verifier_dictee(self, theme: str, session_id: str, item_id: str,
+                        transcription: str) -> dict:
+        """Prévisualise un mot dicté sans essai, feedback ni écriture persistante.
+
+        Seul le rappel lexical libre autorise cette détection automatique. Les
+        transcriptions intermédiaires négatives restent sans effet sur la séance.
+        """
+        session = self._session(theme, session_id)
+        if session.terminee:
+            raise SessionDejaTerminee()
+        item = session.items_par_id.get(item_id)
+        if item is None:
+            raise ItemHorsSeance()
+        if (theme != "evocation" or item.get("type") != "rappel-indice"
+                or not isinstance(transcription, str) or len(transcription) > 500):
+            raise ReponseInvalide()
+        # Une transcription « ce n'est pas une gare » contient le bon mot,
+        # mais ne doit jamais déclencher une validation automatique.
+        negation = re.search(r"\b(?:pas|jamais|sans|aucun|aucune|non|ni)\b",
+                             transcription, flags=re.IGNORECASE)
+        return {"acceptee": not bool(negation) and corriger(theme, item, transcription)}
 
     def repondre(
         self,

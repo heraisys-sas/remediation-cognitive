@@ -1,3 +1,23 @@
+# 2026-10-07 — ordre des cartes de thèmes
+
+Retrouver des mots et leur contexte et Méthodes pour retenir et s’organiser sont placés immédiatement après Déduction et Calcul mental. L’ordre relatif des autres cartes est conservé.
+
+# 2026-10-07 — autorisation micro avant la première question
+
+Les séances de rappel lexical demandent l'accès au micro avant de présenter et lire la première question. Le flux autorisé est réutilisé pour éviter une deuxième demande. Refus ou échec d'ouverture : saisie clavier automatique, sans nouvelle ouverture automatique pendant la séance. La décision dans le dialogue d'autorisation est attendue avant la lecture.
+
+# 2026-10-07 — préparer le micro avant la réponse lexicale
+
+Le micro natif est ouvert pendant la lecture de la question, avec capture conservée et transcription désactivées jusqu’à sa fin. Cela retire l’ouverture du matériel du début de la réponse. Les transitions internes de la voix native ne rouvrent pas inutilement le micro préparé. Annulation et passage au clavier libèrent toujours le micro. Le « oui » rapporté sur la première réponse n’a pas été reproduit sur audio synthétique ; validation avec le microphone utilisateur nécessaire.
+
+# 2026-10-07 — enchaînement du rappel lexical
+
+Après une réponse correcte dans Retrouver le mot (rappel indicé), passage à la suite après trois secondes, ou au résumé en fin de séance. Le bouton reste utilisable immédiatement. Les réponses incorrectes et les autres types d'exercices restent à progression manuelle. Les minuteries sont annulées au changement d'écran.
+
+# 2026-10-07 — réponse orale automatique pour retrouver un mot
+
+Dans les items de rappel lexical, le micro local démarre après la lecture de la question. Les transcriptions provisoires sont affichées et vérifiées sans compter comme essais ; une réponse reconnue comme correcte est soumise une seule fois. « Répondre au clavier » coupe le micro et vide le champ. Les autres types d’exercices conservent leur mode de réponse.
+
 # 2026-10-06 — prononciation française de triangle
 
 Correction orale ciblée « triangle(s) » → « tri-angle(s) » pour éviter la lecture anglaise de l'homographe par certaines voix avancées. Appliquée à la lecture automatique et au bouton Écouter dans les thèmes français, pour le navigateur comme pour macOS. Texte affiché et réponses inchangés ; anglais et Python exclus. Le rendu vocal reste à apprécier à l'écoute selon la voix.
@@ -739,3 +759,16 @@ PQRST guidé pas à pas précède désormais PQRST — répondre de mémoire dan
 ### Cartes allégées
 
 Retrait du paragraphe explicatif Auto sous les sélecteurs. Le libellé « Auto — suivre ma progression » suffit ; le comportement reste identique.
+
+## 2026-10-07 — Interface discrète
+
+- Accueil et exercices allégés, réglages et résultats détaillés repliés.
+- Mode dérogatoire persistant sans bandeau ; paliers et dépassement conditionnés au mode, préférences conservées.
+- Boutons spécialisés harmonisés et confirmation de fin sans expiration.
+- Aucun contenu ni moteur modifié ; ADR-030.
+
+### Finition audio et fond
+
+- Une commande unique « Écouter », remplacée par un haut-parleur barré pendant la lecture ; taille fixe et nom accessible « Arrêter la lecture ».
+- État partagé entre synthèse navigateur, voix locale et fichiers audio ; retour au repos après arrêt, fin ou erreur.
+- Éclairage de fond très léger et statique, sans motif ni animation.
