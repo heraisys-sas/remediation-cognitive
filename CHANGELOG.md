@@ -739,3 +739,9 @@ PQRST guidé pas à pas précède désormais PQRST — répondre de mémoire dan
 ### Cartes allégées
 
 Retrait du paragraphe explicatif Auto sous les sélecteurs. Le libellé « Auto — suivre ma progression » suffit ; le comportement reste identique.
+
+## 2026-10-07 — Spécification des prototypes cognitifs
+
+- Remplace la backlog des nouvelles épreuves par une spécification versionnée et ADR-033.
+- Précise interface sobre, réglages dérogatoires persistants, comptage oral vérifié, interruptions, comparaisons et stockage séparé.
+- Aucun code, moteur ou contenu d’exercice modifié.
