@@ -102,7 +102,10 @@ _PARCOURS_PAR_THEME: dict[str, list[dict]] = {
         {"id": "acces-lexical", "nom": "Retrouver le mot",
          "description": "Rappel avec indices gradués ; départ automatique sans QCM de reconnaissance",
          "sources": [1, 2, 3, 5], "types": ["reconnaissance", "rappel-indice"],
-         "palier_depart": 2},
+         "palier_depart": 2,
+         "types_par_source": {5: ["rappel-indice"]},
+         "libelles_paliers": {1: "QCM", 2: "Point de départ · mots concrets",
+                              3: "Notions abstraites · réponse libre", 4: "Définitions variées · réponse libre"}},
         {"id": "memoire-source", "nom": "Retrouver le contexte",
          "description": "Distinguer l’information de l’endroit où elle a été apprise", "sources": [4],
          "types": ["rappel-source"]},
@@ -223,7 +226,7 @@ class ChargeurContenu:
         """Parcours indépendants du thème, avec leurs paliers locaux."""
         return [
             {cle: valeur for cle, valeur in definition.items()
-             if cle not in {"sources", "types", "portee", "enonce_contient"}}
+             if cle not in {"sources", "types", "types_par_source", "portee", "enonce_contient"}}
             | {"paliers": list(range(1, len(definition["sources"]) + 1))}
             for definition in _PARCOURS_PAR_THEME.get(theme, [])
         ]
@@ -263,6 +266,9 @@ class ChargeurContenu:
                     if item.get("palier") not in rangs:
                         continue
                     if types and item.get("type") not in types:
+                        continue
+                    types_source = definition.get("types_par_source", {}).get(item["palier"])
+                    if types_source and item.get("type") not in types_source:
                         continue
                     if portee and (item.get("contenu") or {}).get("portee") != portee:
                         continue

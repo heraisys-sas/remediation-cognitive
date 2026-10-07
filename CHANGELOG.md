@@ -1,3 +1,7 @@
+# 2026-10-07 — parcours lexical sans retour au QCM
+
+Le palier 4 du parcours Retrouver le mot ne sélectionne plus les QCM de l'ancien niveau mixte : il sert les cinq rappels indicés existants. Le QCM reste au palier 1 ; les anciens items et historiques sont conservés. Les libellés de paliers précisent la tâche et le point de départ Auto (palier 2). Un repère textuel discret indique le mode de réponse sur cette carte.
+
 # 2026-10-07 — ordre des cartes de thèmes
 
 Retrouver des mots et leur contexte et Méthodes pour retenir et s’organiser sont placés immédiatement après Déduction et Calcul mental. L’ordre relatif des autres cartes est conservé.
