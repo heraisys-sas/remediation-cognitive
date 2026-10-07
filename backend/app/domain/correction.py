@@ -524,11 +524,16 @@ def _sens_proche(reponse, attendues) -> bool:
     les jalons diffèrent, la proximité de sens ne s'applique pas. Les variantes
     acceptables (réponse plus courte, synonyme) se déclarent dans l'item.
     """
+    if not isinstance(reponse, str) or not reponse.strip():
+        return False
     jalons = _jetons_critiques(reponse)
+    # Une proximité vectorielle ne distingue pas toujours une phrase de sa négation.
+    negations = {"pas", "jamais", "sans", "aucun", "aucune", "non"}
+    polarite = lambda valeur: bool(negations & set(_clef_texte(valeur).split()))
     for cible in attendues:
         if not cible:
             continue
-        if _jetons_critiques(cible) != jalons:
+        if _jetons_critiques(cible) != jalons or polarite(cible) != polarite(reponse):
             continue
         if capacites.proche(str(reponse or ""), [str(cible)]):
             return True
@@ -593,8 +598,9 @@ def _corriger_mot(reponse, item: dict) -> bool:
         # Le mot attendu peut avoir été écrit dans une phrase (« un verre d'eau »).
         if _contient_reponse(reponse, cible):
             return True
-    # Dernier recours : le poste sait-il comparer le SENS (synonymes) ?
-    return _sens_proche(reponse, [cible for cible in cibles if cible])
+    # Accès lexical : retrouver le mot demandé, pas un voisin sémantique.
+    # Les synonymes légitimes restent possibles via les variantes du contenu.
+    return False
 
 
 def _mots(texte) -> list[str]:

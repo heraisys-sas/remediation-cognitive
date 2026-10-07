@@ -16,7 +16,7 @@ function creerAccompagnementPqrst(texte, reformulation, question = "") {
   label.append(champ);
   const bouton = document.createElement("button");
   bouton.type = "button";
-  bouton.className = "bouton-secondaire";
+  bouton.className = "bouton bouton-secondaire";
   bouton.textContent = "Demander une relance";
   const retour = document.createElement("p");
   retour.setAttribute("role", "status");

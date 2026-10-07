@@ -58,6 +58,13 @@ class ReponseUtilisateur(BaseModel):
     indice_utilise: int | None = None
 
 
+class TranscriptionAVerifier(BaseModel):
+    """Aperçu de dictée : aucune réponse n'est encore enregistrée."""
+
+    item_id: str
+    transcription: str = Field(max_length=500)
+
+
 def _gestionnaire(request: Request) -> GestionnaireSessions:
     """Récupère le gestionnaire métier attaché à l'application."""
     return request.app.state.gestionnaire_entrainement
@@ -126,6 +133,24 @@ def envoyer_reponse(theme: str, session_id: str, corps: ReponseUtilisateur, requ
             corps.reponse,
             corps.temps_ms,
             corps.indice_utilise,
+        )
+    except SessionInconnue:
+        return _erreur(404, "session_inconnue")
+    except SessionDejaTerminee:
+        return _erreur(409, "session_terminee")
+    except ItemHorsSeance:
+        return _erreur(404, "item_hors_seance")
+    except ReponseInvalide:
+        return _erreur(422, "reponse_invalide")
+
+
+@router.post("/{theme}/sessions/{session_id}/verifier-dictee")
+def verifier_dictee(theme: str, session_id: str, corps: TranscriptionAVerifier,
+                    request: Request):
+    """Détecte un mot attendu sans comptabiliser les transcriptions partielles."""
+    try:
+        return _gestionnaire(request).verifier_dictee(
+            theme, session_id, corps.item_id, corps.transcription,
         )
     except SessionInconnue:
         return _erreur(404, "session_inconnue")
