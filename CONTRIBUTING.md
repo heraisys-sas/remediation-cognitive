@@ -35,7 +35,7 @@ gh pr checks NUMERO
 gh pr merge NUMERO --squash --delete-branch
 ```
 
-Le squash est réservé aux branches temporaires. Les preuves de validation et limites des essais sont consignées dans la PR. Une CI verte ne remplace pas un essai du micro, des ressources Apple ou du comportement réel de l’interface quand ces fonctions changent.
+La suppression automatique globale après fusion est désactivée pour préserver `dev` lors des livraisons. Supprimer explicitement les branches temporaires avec `--delete-branch`, comme ci-dessus. Le squash est réservé aux branches temporaires. Les preuves de validation et limites des essais sont consignées dans la PR. Une CI verte ne remplace pas un essai du micro, des ressources Apple ou du comportement réel de l’interface quand ces fonctions changent.
 
 ## Livraison dev vers main
 

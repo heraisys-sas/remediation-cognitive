@@ -8,7 +8,7 @@ Les modifications étaient validées sur plusieurs branches d’essai et fusionn
 
 Créer dev depuis main (8b3510b). Les branches temporaires partent de dev, y sont fusionnées par PR après revue et CI verte, puis supprimées. La PR #23 est redirigée vers dev. Main reste stable jusqu’à une PR de livraison dev → main, autorisée et validée fonctionnellement.
 
-CI sur pushes et PR vers dev et main, avec les contrôles existants conservés. Squash pour les branches temporaires, merge commit pour la livraison de la branche permanente dev ; dev n’est jamais supprimée. Hotfix de main reporté vers dev par PR ; pas de force push. Le guide CONTRIBUTING.md décrit les commandes et exceptions de checkout sale.
+CI sur pushes et PR vers dev et main, avec les contrôles existants conservés. Squash pour les branches temporaires, merge commit pour la livraison de la branche permanente dev ; dev n’est jamais supprimée. La suppression automatique globale après fusion est désactivée : les branches temporaires sont supprimées explicitement, dev reste permanente. Hotfix de main reporté vers dev par PR ; pas de force push. Le guide CONTRIBUTING.md décrit les commandes et exceptions de checkout sale.
 
 ## Conséquences
 
