@@ -100,12 +100,15 @@ _PARCOURS_PAR_THEME: dict[str, list[dict]] = {
     ],
     "evocation": [
         {"id": "acces-lexical", "nom": "Retrouver le mot",
-         "description": "Rappel avec indices gradués ; départ automatique sans QCM de reconnaissance",
-         "sources": [1, 2, 3, 5], "types": ["reconnaissance", "rappel-indice"],
-         "palier_depart": 2,
-         "types_par_source": {5: ["rappel-indice"]},
-         "libelles_paliers": {1: "QCM", 2: "Point de départ · mots concrets",
-                              3: "Notions abstraites · réponse libre", 4: "Définitions variées · réponse libre"}},
+         "description": "Mots adultes, indices gradués ; réponse orale ou clavier, QCM de soutien au palier 1",
+         "sources": list(range(8, 20)), "palier_depart": 2,
+         "max_items_paliers": {1: 10, 2: 10, 3: 10, 4: 8, 5: 8, 6: 6, 7: 6, 8: 6, 9: 6, 10: 6, 11: 6, 12: 6},
+         "libelles_paliers": {1: "QCM de soutien", 2: "Point de départ · objets familiers · voix ou clavier",
+            3: "Mots précis · voix ou clavier", 4: "Notions en contexte · voix ou clavier",
+            5: "Verbes utiles · voix ou clavier", 6: "Mots en situation · voix ou clavier",
+            7: "Culture générale · voix ou clavier", 8: "Concepts culturels · voix ou clavier",
+            9: "Langue soutenue · voix ou clavier", 10: "Verbes de précision · voix ou clavier",
+            11: "Interprétation et raisonnement · voix ou clavier", 12: "Nuances soutenues · voix ou clavier"}},
         {"id": "memoire-source", "nom": "Retrouver le contexte",
          "description": "Distinguer l’information de l’endroit où elle a été apprise", "sources": [4],
          "types": ["rappel-source"]},
@@ -236,6 +239,10 @@ class ChargeurContenu:
         return parcours is None or any(
             definition["id"] == parcours for definition in _PARCOURS_PAR_THEME.get(theme, [])
         )
+
+    def max_items_parcours(self, theme: str, parcours: str | None, palier: int) -> int | None:
+        definition = next((p for p in _PARCOURS_PAR_THEME.get(theme, []) if p["id"] == parcours), {})
+        return definition.get("max_items_paliers", {}).get(palier)
 
     def palier_depart(self, theme: str, parcours: str | None) -> int:
         """Palier initial d'une progression neuve ; 1 sans saut justifié."""

@@ -268,6 +268,9 @@ class GestionnaireSessions:
                     list(etat_maitrise["historique"]),
                     etat_maitrise.get("historique_etapes"),
                 )
+            quota_parcours = self.contenu.max_items_parcours(theme, parcours, palier)
+            if quota_parcours is not None:
+                reglages = {**reglages, "max_items": quota_parcours}
             cartes = self.stockage.lire_cartes(stockage_theme)
             # Dosage propre au thème : une grille de déduction n'a pas le coût
             # d'un item de calcul mental (voir domain/dosage.parametres_seance).
@@ -639,7 +642,7 @@ class GestionnaireSessions:
         historique = list(historique_avant)
         historique.append((session.palier, float(taux)))
         historique_etapes = None
-        corpus_renouvele = etape_finale or (
+        corpus_renouvele = etape_finale or any(i.startswith("ev2-") for i in session.reponses) or (
             session.theme == "calcul-mental"
             and any(i.startswith("cm4-") for i in session.reponses)
         )

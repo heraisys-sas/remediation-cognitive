@@ -28,6 +28,10 @@ import argparse
 import json
 import random
 from pathlib import Path
+try:
+    from .generer_lexical_adulte import items_lexicaux, DESCRIPTIONS as DESCRIPTIONS_ADULTES
+except ImportError:
+    from generer_lexical_adulte import items_lexicaux, DESCRIPTIONS as DESCRIPTIONS_ADULTES
 
 RACINE_DEPOT = Path(__file__).resolve().parent.parent
 DOSSIER_CONTENU = RACINE_DEPOT / "content" / "entrainement"
@@ -333,7 +337,7 @@ def items_evocation() -> list[dict]:
     for numero, (definition, mot) in enumerate(ANALYSE_PCA, start=1):
         items.append(_item_analyse(numero, 7, "phonologique", definition, mot, ["ev-palier-6"]))
 
-    return items
+    return items + items_lexicaux()
 
 
 # --------------------------------------------------------------------------
@@ -451,7 +455,7 @@ MISSIONS = [
 
 def ecrire_contenu(dry_run: bool = False) -> dict:
     """Écrit les paliers, les manifestes et les missions ; retourne les compteurs."""
-    paliers_evocation = 7
+    paliers_evocation = len(DESCRIPTION_PALIERS["evocation"])
     items_ev = items_evocation()
 
     def paquet(items: list[dict], thème: str, palier: int) -> list[dict]:
@@ -468,7 +472,7 @@ def ecrire_contenu(dry_run: bool = False) -> dict:
                 {
                     "id": f"{'ev' if thème == 'evocation' else 'so'}-palier-{palier}",
                     "description": DESCRIPTION_PALIERS[thème][palier - 1],
-                    "prerequis": [f"{'ev' if thème == 'evocation' else 'so'}-palier-{palier - 1}"] if palier > 1 else [],
+                    "prerequis": [f"{'ev' if thème == 'evocation' else 'so'}-palier-{palier - 1}"] if 1 < palier <= 7 else [],
                     "fichier": f"paliers/palier-{palier:02d}.json",
                     "nb_items": len(paquet(items, thème, palier)),
                 }
@@ -501,6 +505,8 @@ DESCRIPTION_PALIERS = {
         "Analyse phonologique (PCA) : décomposer le mot par ses sons, puis le nommer",
     ],
 }
+
+DESCRIPTION_PALIERS["evocation"].extend(DESCRIPTIONS_ADULTES)
 
 
 def main() -> None:

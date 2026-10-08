@@ -12,8 +12,26 @@ Ces familles ne forment plus une échelle unique. L'accès lexical, la mémoire 
 
 ## Structure
 
-- `paliers.json` — manifest des 5 paliers (id, description, prerequis, nb_items)
-- `paliers/palier-01..05.json` — 10 items par palier, soit **50 items**
+Le parcours **Retrouver le mot** comporte douze paliers de 24 mots :
+
+1. QCM de soutien, mots usuels adultes.
+2. Objets familiers — départ automatique, réponse orale ou clavier.
+3. Mots précis et documents.
+4. Notions courantes en contexte.
+5. Verbes utiles dans les démarches et le travail.
+6. Mots à mobiliser dans une situation courte.
+7. Culture générale courante : arts, sciences, société.
+8. Concepts de culture générale plus précis.
+9. Nuances de langue soutenue.
+10. Verbes de précision et d'argumentation.
+11. Interprétation et raisonnement.
+12. Nuances soutenues dans des situations discriminantes.
+
+Les banques sont dans `palier-08..19.json`, avec identifiants `ev2-…` ; leurs numéros internes sont remappés en paliers 1–12 du parcours. Les fichiers 1–7 restent conservés pour les historiques et les autres parcours. Les séances contiennent 10/10/10/8/8/6 questions aux six premiers paliers, puis six questions à chaque palier supérieur selon le niveau, jamais les 24 mots d'un palier en une seule séance. La durée dépend du besoin d'indices et du rythme de la personne.
+
+La difficulté n'est pas une échelle clinique : un terme inconnu ne témoigne pas d'une panne d'accès lexical. La progression relève de la familiarité, de la précision et de la formulation, sans imposer du jargon. Définitions et variantes sont à relire avec l'orthophoniste.
+
+La banque source est `tools/banque_lexicale_adulte.json`. `python3 tools/generer_lexical_adulte.py` régénère uniquement l'extension. Le générateur général intègre aussi cette banque.
 
 ## Réponses attendues
 
@@ -38,3 +56,11 @@ L'enrichissement « remédiation » du manque du mot : au lieu de recevoir des i
 - **Palier 7 — PCA** (analyse phonologique) : même principe, mais l'analyse porte sur les sons — premier son, nombre de syllabes, rime, dernier son — puis le mot.
 
 Les notes saisies dans les étapes ne sont **pas** évaluées (elles ne servent qu'à débloquer le mot) : seule la réponse finale est corrigée, avec la tolérance habituelle (casse, accents). Cette absence de notation est volontaire : l'objectif est la génération des attributs, pas leur exactitude.
+
+## Appuis et limites de la conception
+
+Une réflexion ciblée GPT‑6 Astra a été relue pour construire la banque. Les recommandations INCOG 2.0 privilégient les objectifs individualisés et pertinents en situation ; leur population principale est celle des traumatismes modérés à sévères, et non un public post-commotionnel homogène. [Togher et al., 2023](https://pubmed.ncbi.nlm.nih.gov/36594860/).
+
+Les difficultés lexicales après traumatisme léger peuvent être subtiles et dépendantes de la tâche ; une petite étude ne valide pas le présent classement. [King et al., 2006](https://pubmed.ncbi.nlm.nih.gov/16809205/).
+
+Les travaux sur récupération active et espacement en aphasie concernent les mots entraînés et ne démontrent pas ici un transfert conversationnel post-commotionnel. [Middleton et al., 2019](https://pubmed.ncbi.nlm.nih.gov/31408823/).

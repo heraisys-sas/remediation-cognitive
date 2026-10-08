@@ -555,10 +555,6 @@ function carteTheme(theme, parcoursAudio = null) {
     creerElement("p", { texte: theme.description || "" })
   );
 
-  const repereReponse = creerElement("span", { classe: "repere-reponse" });
-  repereReponse.hidden = true;
-  carte.append(repereReponse);
-
   const optionsParcours = creerElement("details", { classe: "choix-parcours" },
     creerElement("summary", { texte: "Choisir le parcours" }));
   if (parcoursAudio || (theme.parcours || []).length) carte.append(optionsParcours);
@@ -582,18 +578,6 @@ function carteTheme(theme, parcoursAudio = null) {
     const memorise = preferenceLocale(`orthogone.palier.${themeChoisi.id}.${parcoursChoisi || "default"}`);
     if ([...choix.options].some(option => option.value === memorise)) choix.value = memorise;
     choix.hidden = paliers.length <= 1;
-    majRepereReponse();
-  }
-
-  function majRepereReponse() {
-    const lexical = themeChoisi.id === "evocation" && parcoursChoisi === "acces-lexical";
-    repereReponse.hidden = !lexical;
-    if (!lexical) return;
-    const palier = modeDerogatoireActif() ? choix?.value : "";
-    const texte = palier === "1" ? "QCM" : palier ? "Voix ou clavier" : "Voix ou clavier · QCM au palier 1";
-    // Un libellé court reste compréhensible sans infobulle ni code d'icônes.
-    repereReponse.textContent = texte;
-    repereReponse.title = "Mode de réponse. La dictée dépend du microphone local ; la saisie clavier reste disponible.";
   }
 
   function majParcours() {
@@ -654,7 +638,6 @@ function carteTheme(theme, parcoursAudio = null) {
   carte.append(essais);
   choix.addEventListener("change", () => {
     garderPreference(`orthogone.palier.${themeChoisi.id}.${parcoursChoisi || "default"}`, choix.value);
-    majRepereReponse();
   });
   majParcours();
   majPaliers();

@@ -1196,7 +1196,3 @@ summary:focus-visible, select:focus-visible, .sequence-option:focus-visible {
 /* Une seule commande audio : taille stable et symbole monochrome. */
 .bouton-audio { width: 7rem; min-height: 3rem; display: inline-flex; align-items: center; justify-content: center; flex: none; }
 .bouton-audio svg { width: 1.4rem; height: 1.4rem; fill: none; stroke: currentColor; stroke-width: 1.6; stroke-linecap: round; stroke-linejoin: round; }
-
-/* Mode de réponse : un seul repère discret, sans rangée d'icônes ambiguës. */
-.repere-reponse { align-self: flex-end; font-size: 0.8rem; color: var(--texte-secondaire, var(--texte)); }
-.repere-reponse[hidden] { display: none; }
