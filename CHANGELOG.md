@@ -825,3 +825,7 @@ Feuille de route remise en cohérence avec main : livraisons identifiées, ancie
 ## 2026-10-08 — Circuit d’intégration dev → main
 
 Création de dev depuis main ; branches temporaires validées par PR vers dev, puis livraison fonctionnellement validée par PR dev → main. CI conservée et activée sur les deux branches. README, CONTRIBUTING et AGENTS précisent les commandes, les fusions, la préservation du checkout utilisateur et les ressources Apple locales. ADR-040. Main n’est pas livré automatiquement.
+
+## 2026-10-08 — README aligné sur le logiciel livré
+
+Présentation du POC de remédiation, fonctions jouables et capacités Apple facultatives ; démarrage, données et contrôles documentés. Retrait des annonces de bilan/export/graphe/HDS et de React comme fonctionnalités disponibles. Prototypes distingués du code livré, circuit dev → main conservé. Documentation uniquement.
