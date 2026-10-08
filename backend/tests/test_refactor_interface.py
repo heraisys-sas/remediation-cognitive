@@ -58,6 +58,7 @@ assert.equal(defaultHandler.readAnswer('  un verre  '),'un verre');
 const reponse={'2':'Ma question'};
 assert.equal(sequenceHandler.readAnswer(reponse),reponse);
 '''
-    resultat = subprocess.run([shutil.which('node'), '-e', prefixe + source + assertions],
+    resultat = subprocess.run([shutil.which('node'), '-'],
+                              input=prefixe + source + assertions,
                               capture_output=True, text=True)
     assert resultat.returncode == 0, resultat.stderr[-2000:]

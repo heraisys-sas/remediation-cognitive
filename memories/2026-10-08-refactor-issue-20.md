@@ -13,3 +13,7 @@ Pièges vérifiés : l'extracteur JS doit ignorer les objets par défaut des sig
 le contrôle de POST seul pouvait manquer une erreur après réception de la séance.
 Les tests lisent désormais les scripts effectivement servis et contrôlent l'installation
 réelle de la séance. Ne pas réinitialiser le compteur de génération des minuteries.
+
+CI Linux : la limite de taille d’un argument interdit `node -e` pour l’ensemble
+des scripts. Le test de chargement transmet le code par stdin (`node -`), sans
+modifier le scénario ni ses assertions.
