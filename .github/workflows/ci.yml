@@ -35,6 +35,7 @@ jobs:
           python tools/verifier_reponses.py
           python tools/verifier_interface.py
           node tools/verifier_phrases.js
+          node --test tools/test_serie_contextes.cjs
       - name: Syntaxe Python et JavaScript
         run: |
           python -m compileall -q backend engine tools

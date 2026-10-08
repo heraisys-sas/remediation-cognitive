@@ -250,3 +250,7 @@ Chaque thème de `GET /api/entrainement/themes` fournit aussi `interface` :
 `extra` (section d’appoint), `francais` (prononciation française), `dictee`
 (réponse dictée autorisée par la nature du thème). Le serveur dérive ces trois
 booléens du catalogue ; le client continue de vérifier les capacités du poste.
+
+## Scènes de contexte — mémorisation puis rappel (ADR-039)
+
+POST …/reponses accepte `memorisation: bool` (défaut false). True est réservé aux items `rappel-source` ayant une image, avant leur réponse de rappel : correction immédiate et attendue retournées, aucune inscription dans moteur/FSRS/maîtrise/baseline. Hors de ce périmètre : 422. Le client l’envoie pendant la découverte ; le rappel final utilise la réponse ordinaire et détermine le résumé et la progression. Un arrêt avant ce rappel retourne zéro item répondu, pas un score de découverte. Les résultats historiques antérieurs ne sont pas recalculés.

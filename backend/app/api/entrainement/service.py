@@ -368,6 +368,7 @@ class GestionnaireSessions:
         reponse,
         temps_ms,
         indice_utilise: int | None = None,
+        memorisation: bool = False,
     ) -> dict:
         """Corrige côté serveur et retourne le payload 200 du contrat.
 
@@ -408,6 +409,27 @@ class GestionnaireSessions:
         assistee = nb_indices > 0 and indice_utilise > nb_indices
         correction = evaluer(theme, item, reponse, assistee)
         correcte = correction.correcte
+
+        # Scènes de contexte : la découverte prépare l’encodage. Seul le rappel
+        # final doit alimenter le moteur, la maîtrise, FSRS et les temps de référence.
+        if memorisation:
+            if (theme != "evocation" or item.get("type") != "rappel-source"
+                    or not item.get("contenu", {}).get("affichage", {}).get("image")
+                    or item_id in session.reponses):
+                raise ReponseInvalide("memorisation hors parcours ou après rappel")
+            if isinstance(temps_ms, bool) or not isinstance(temps_ms, (int, float)) or temps_ms < 0:
+                raise ReponseInvalide("temps_ms hors bornes")
+            resultat = {
+                "correcte": correcte,
+                "assistee": assistee,
+                "attendue": item["reponse"]["valeur"],
+                "memorisation": True,
+                "feedback": messages.texte("entrainement", "feedback_correcte" if correcte else "feedback_incorrecte"),
+            }
+            resultat.update(correction.feedback())
+            if duree_depassee:
+                resultat.update(arret_propose=True, motif_arret="duree")
+            return resultat
 
         # Second essai (exercices où la réponse se **raisonne**, ADR-014) : sur une
         # première erreur, on ne révèle rien et on n'enregistre rien — le premier essai

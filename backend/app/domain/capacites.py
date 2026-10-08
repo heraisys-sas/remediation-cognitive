@@ -29,8 +29,8 @@ import subprocess
 import unicodedata
 from pathlib import Path
 
-#: Seuil d'acceptation d'une réponse « proche » (calibré : paraphrases ≈ 0,80-0,90,
-#: distracteurs ≈ 0,42-0,68). S'applique aux réponses en texte libre uniquement.
+#: Seuil historique des réponses libres. Les scores observés sur un poste ne
+#: constituent pas une calibration transférable entre fournisseurs (issue #6).
 SEUIL_SIMILARITE = 0.78
 
 _EMBEDDINGS: object | None = None
