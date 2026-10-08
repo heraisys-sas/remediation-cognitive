@@ -2,9 +2,18 @@
 
 Monorepo pour un logiciel de **bilan cognitif**, de **rééducation ciblée** et d'**entraînement cérébral générique** destiné à des adultes avec syndrome post-commotionnel (SPC).
 
-## Déduction — branche d’essai
+## Déduction
 
 100 grilles en cinq paliers : P1–P4 en 3×3, P5 en 4×4. Indices collectifs explicites, références partielles et entre-deux ; progression en trois étapes par palier. [Contenu et vérifications](content/entrainement/deduction/README.md).
+
+## Développement et version stable
+
+- `main` : version stable utilisée au quotidien.
+- `dev` : intégration des changements validés ; version à essayer avant livraison.
+- Branches temporaires : créées depuis `dev`, fusionnées par PR vers `dev` après revue et CI verte, puis supprimées.
+- Livraison : PR de `dev` vers `main`, après essai fonctionnel des parcours concernés, de la voix et de la dictée. Ne pas fusionner automatiquement `dev` dans `main` sur la seule réussite des tests.
+
+La CI vérifie les pushes et PR vers `dev` et `main`. Pour les commandes Git, la mise à jour locale et les environnements Apple : [guide de contribution](CONTRIBUTING.md). Le backlog actif est la [feuille de route](docs/00-produit/feuille-de-route.md).
 
 ## Principe directeur
 

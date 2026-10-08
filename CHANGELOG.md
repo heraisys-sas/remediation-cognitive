@@ -821,3 +821,7 @@ Feuille de route remise en cohérence avec main : livraisons identifiées, ancie
 ### Scènes : le rappel final compte
 
 À la suite de la précision utilisateur, les réponses de découverte servent uniquement à mémoriser et recevoir une correction. Seul le rappel final alimente résumé, FSRS, maîtrise et temps de référence. Un arrêt pendant la découverte affiche « Rappel non commencé ». Contrat additif `memorisation`, ADR-039 ; contenu et identifiants inchangés, anciens historiques conservés sans réinterprétation.
+
+## 2026-10-08 — Circuit d’intégration dev → main
+
+Création de dev depuis main ; branches temporaires validées par PR vers dev, puis livraison fonctionnellement validée par PR dev → main. CI conservée et activée sur les deux branches. README, CONTRIBUTING et AGENTS précisent les commandes, les fusions, la préservation du checkout utilisateur et les ressources Apple locales. ADR-040. Main n’est pas livré automatiquement.
