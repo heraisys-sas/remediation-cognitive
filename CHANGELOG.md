@@ -1,3 +1,7 @@
+# 2026-10-08 — enrichissement du parcours Retrouver le mot
+
+Nouvelle banque adulte de 144 mots : six paliers de 24, QCM uniquement au premier, départ Auto au deuxième. Difficulté graduée par précision et contexte ; quotas de séance 10/10/10/8/8/6. Le repère permanent de mode de réponse quitte la carte ; les précisions figurent dans les listes des réglages. Nouveaux identifiants ev2, anciennes banques et historiques conservés.
+
 # 2026-10-07 — parcours lexical sans retour au QCM
 
 Le palier 4 du parcours Retrouver le mot ne sélectionne plus les QCM de l'ancien niveau mixte : il sert les cinq rappels indicés existants. Le QCM reste au palier 1 ; les anciens items et historiques sont conservés. Les libellés de paliers précisent la tâche et le point de départ Auto (palier 2). Un repère textuel discret indique le mode de réponse sur cette carte.

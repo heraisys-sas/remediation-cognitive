@@ -61,6 +61,48 @@
       ],
       "fichier": "paliers/palier-07.json",
       "nb_items": 6
+    },
+    {
+      "id": "ev-palier-8",
+      "description": "QCM de soutien",
+      "prerequis": [],
+      "fichier": "paliers/palier-08.json",
+      "nb_items": 24
+    },
+    {
+      "id": "ev-palier-9",
+      "description": "Objets familiers",
+      "prerequis": [],
+      "fichier": "paliers/palier-09.json",
+      "nb_items": 24
+    },
+    {
+      "id": "ev-palier-10",
+      "description": "Mots précis et documents",
+      "prerequis": [],
+      "fichier": "paliers/palier-10.json",
+      "nb_items": 24
+    },
+    {
+      "id": "ev-palier-11",
+      "description": "Notions en contexte",
+      "prerequis": [],
+      "fichier": "paliers/palier-11.json",
+      "nb_items": 24
+    },
+    {
+      "id": "ev-palier-12",
+      "description": "Verbes utiles",
+      "prerequis": [],
+      "fichier": "paliers/palier-12.json",
+      "nb_items": 24
+    },
+    {
+      "id": "ev-palier-13",
+      "description": "Mots en situation",
+      "prerequis": [],
+      "fichier": "paliers/palier-13.json",
+      "nb_items": 24
     }
   ]
 }

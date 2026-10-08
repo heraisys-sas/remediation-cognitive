@@ -1,0 +1,1358 @@
+{
+  "paliers": [
+    {
+      "palier": 1,
+      "items": [
+        {
+          "mot": "badge",
+          "definition": "Carte que l'on porte sur soi pour être identifié à l'entrée d'un lieu de travail.",
+          "categorie": "identification",
+          "amorce": "ba",
+          "variantes": [],
+          "leurres": [
+            "ticket",
+            "étiquette"
+          ]
+        },
+        {
+          "mot": "agenda",
+          "definition": "Carnet dans lequel on inscrit ses rendez-vous aux dates prévues.",
+          "categorie": "organisation",
+          "amorce": "a",
+          "variantes": [
+            "calendrier"
+          ],
+          "leurres": [
+            "annuaire",
+            "répertoire"
+          ]
+        },
+        {
+          "mot": "colis",
+          "definition": "Objet ou ensemble d'objets emballés pour être expédiés par la poste ou par un transporteur.",
+          "categorie": "envois",
+          "amorce": "co",
+          "variantes": [
+            "paquet"
+          ],
+          "leurres": [
+            "enveloppe",
+            "carte postale"
+          ]
+        },
+        {
+          "mot": "serrure",
+          "definition": "Mécanisme fixé sur une porte, dans lequel on introduit une clé pour la verrouiller.",
+          "categorie": "équipement du logement",
+          "amorce": "se",
+          "variantes": [],
+          "leurres": [
+            "poignée",
+            "charnière"
+          ]
+        },
+        {
+          "mot": "facture",
+          "definition": "Document établi par un vendeur indiquant les achats effectués et la somme à payer.",
+          "categorie": "documents commerciaux",
+          "amorce": "fa",
+          "variantes": [],
+          "leurres": [
+            "devis",
+            "catalogue"
+          ]
+        },
+        {
+          "mot": "valise",
+          "definition": "Bagage généralement rigide, muni d'une poignée, pour emporter ses vêtements en voyage.",
+          "categorie": "bagages",
+          "amorce": "va",
+          "variantes": [],
+          "leurres": [
+            "portefeuille",
+            "pochette"
+          ]
+        },
+        {
+          "mot": "ampoule",
+          "definition": "Élément lumineux que l'on remplace dans une lampe lorsqu'il ne fonctionne plus.",
+          "categorie": "éclairage",
+          "amorce": "am",
+          "variantes": [],
+          "leurres": [
+            "interrupteur",
+            "prise"
+          ]
+        },
+        {
+          "mot": "ciseaux",
+          "definition": "Instrument à deux lames articulées que l'on rapproche pour couper du papier.",
+          "categorie": "outils de bureau",
+          "amorce": "ci",
+          "variantes": [],
+          "leurres": [
+            "agrafeuse",
+            "perforatrice"
+          ]
+        },
+        {
+          "mot": "casque",
+          "definition": "Protection rigide que l'on porte sur la tête à vélo ou à moto.",
+          "categorie": "protections",
+          "amorce": "ca",
+          "variantes": [],
+          "leurres": [
+            "gants",
+            "genouillères"
+          ]
+        },
+        {
+          "mot": "passeport",
+          "definition": "Document officiel avec photo qui atteste l'identité et la nationalité pour voyager à l'étranger.",
+          "categorie": "identité et voyage",
+          "amorce": "pa",
+          "variantes": [],
+          "leurres": [
+            "permis de conduire",
+            "carte bancaire"
+          ]
+        },
+        {
+          "mot": "pharmacie",
+          "definition": "Commerce dans lequel on fait préparer ou délivrer les médicaments d'une ordonnance.",
+          "categorie": "commerces",
+          "amorce": "fa",
+          "variantes": [],
+          "leurres": [
+            "épicerie",
+            "librairie"
+          ]
+        },
+        {
+          "mot": "quai",
+          "definition": "Plateforme aménagée le long des voies, où les voyageurs attendent avant de monter dans le train.",
+          "categorie": "lieux de transport",
+          "amorce": "k",
+          "variantes": [],
+          "leurres": [
+            "guichet",
+            "parking"
+          ]
+        },
+        {
+          "mot": "garantie",
+          "definition": "Engagement du vendeur à réparer ou remplacer un appareil défectueux dans les conditions prévues.",
+          "categorie": "services commerciaux",
+          "amorce": "ga",
+          "variantes": [],
+          "leurres": [
+            "remise",
+            "livraison"
+          ]
+        },
+        {
+          "mot": "abonnement",
+          "definition": "Contrat donnant accès régulièrement à un service pendant une période, en échange d'un paiement.",
+          "categorie": "services",
+          "amorce": "a",
+          "variantes": [],
+          "leurres": [
+            "caution",
+            "acompte"
+          ]
+        },
+        {
+          "mot": "caution",
+          "definition": "Somme versée à titre de sûreté et rendue si les engagements sont respectés.",
+          "categorie": "paiements",
+          "amorce": "co",
+          "variantes": [
+            "dépôt de garantie"
+          ],
+          "leurres": [
+            "loyer",
+            "pourboire"
+          ]
+        },
+        {
+          "mot": "ascenseur",
+          "definition": "Cabine qui transporte des personnes d'un étage à l'autre dans un bâtiment.",
+          "categorie": "équipement du bâtiment",
+          "amorce": "a",
+          "variantes": [],
+          "leurres": [
+            "escalier",
+            "couloir"
+          ]
+        },
+        {
+          "mot": "clavier",
+          "definition": "Ensemble de touches permettant de saisir du texte sur un ordinateur.",
+          "categorie": "informatique",
+          "amorce": "cla",
+          "variantes": [],
+          "leurres": [
+            "écran",
+            "souris"
+          ]
+        },
+        {
+          "mot": "batterie",
+          "definition": "Réserve rechargeable d'énergie électrique qui permet au téléphone de fonctionner sans être branché.",
+          "categorie": "électricité",
+          "amorce": "ba",
+          "variantes": [
+            "accumulateur"
+          ],
+          "leurres": [
+            "câble",
+            "adaptateur"
+          ]
+        },
+        {
+          "mot": "signature",
+          "definition": "Marque personnelle, souvent formée du nom, que l'on trace au bas d'un contrat pour l'approuver.",
+          "categorie": "documents",
+          "amorce": "si",
+          "variantes": [],
+          "leurres": [
+            "en-tête",
+            "tampon"
+          ]
+        },
+        {
+          "mot": "parking",
+          "definition": "Espace aménagé pour laisser plusieurs véhicules en stationnement.",
+          "categorie": "déplacements",
+          "amorce": "par",
+          "variantes": [
+            "parc de stationnement"
+          ],
+          "leurres": [
+            "carrefour",
+            "tunnel"
+          ]
+        },
+        {
+          "mot": "annuaire",
+          "definition": "Répertoire classé de personnes ou de services, accompagné de leurs coordonnées.",
+          "categorie": "recherche d'information",
+          "amorce": "a",
+          "variantes": [],
+          "leurres": [
+            "journal",
+            "agenda"
+          ]
+        },
+        {
+          "mot": "étiquette",
+          "definition": "Petit morceau de papier fixé sur un produit pour en indiquer le nom ou le prix.",
+          "categorie": "commerce",
+          "amorce": "é",
+          "variantes": [],
+          "leurres": [
+            "emballage",
+            "sac"
+          ]
+        },
+        {
+          "mot": "billet",
+          "definition": "Titre de transport à présenter pour prendre un train à une date et sur un trajet donnés.",
+          "categorie": "transport",
+          "amorce": "bi",
+          "variantes": [
+            "ticket"
+          ],
+          "leurres": [
+            "reçu",
+            "plan"
+          ]
+        },
+        {
+          "mot": "ordonnance",
+          "definition": "Document sur lequel un médecin prescrit les médicaments et leur mode de prise.",
+          "categorie": "documents de santé",
+          "amorce": "or",
+          "variantes": [
+            "prescription"
+          ],
+          "leurres": [
+            "facture",
+            "carte Vitale"
+          ]
+        }
+      ]
+    },
+    {
+      "palier": 2,
+      "items": [
+        {
+          "mot": "agrafeuse",
+          "definition": "Petit appareil de bureau qui assemble des feuilles au moyen d'une attache métallique repliée.",
+          "categorie": "matériel de bureau",
+          "amorce": "a",
+          "variantes": []
+        },
+        {
+          "mot": "rallonge",
+          "definition": "Câble électrique muni d'une fiche et d'une prise, qui permet de brancher un appareil plus loin.",
+          "categorie": "équipement électrique",
+          "amorce": "ra",
+          "variantes": [
+            "rallonge électrique"
+          ]
+        },
+        {
+          "mot": "passoire",
+          "definition": "Récipient percé de trous qui retient les pâtes pendant que l'eau de cuisson s'écoule.",
+          "categorie": "ustensiles de cuisine",
+          "amorce": "pa",
+          "variantes": []
+        },
+        {
+          "mot": "cadenas",
+          "definition": "Petite fermeture amovible munie d'un arceau, que l'on accroche par exemple à un casier.",
+          "categorie": "fermetures",
+          "amorce": "ca",
+          "variantes": []
+        },
+        {
+          "mot": "rétroviseur",
+          "definition": "Miroir placé sur un véhicule pour voir ce qui se trouve derrière sans tourner la tête.",
+          "categorie": "équipement automobile",
+          "amorce": "ré",
+          "variantes": []
+        },
+        {
+          "mot": "classeur",
+          "definition": "Objet de bureau à couverture rigide et à anneaux, dans lequel on range des feuilles perforées.",
+          "categorie": "rangement",
+          "amorce": "cla",
+          "variantes": []
+        },
+        {
+          "mot": "tournevis",
+          "definition": "Outil dont l'extrémité s'engage dans la tête d'une vis pour la faire tourner.",
+          "categorie": "outils",
+          "amorce": "tour",
+          "variantes": []
+        },
+        {
+          "mot": "bouilloire",
+          "definition": "Appareil ou récipient à bec conçu pour faire chauffer de l'eau jusqu'à ébullition.",
+          "categorie": "équipement de cuisine",
+          "amorce": "bou",
+          "variantes": []
+        },
+        {
+          "mot": "parapluie",
+          "definition": "Accessoire à toile tendue sur des branches repliables, que l'on tient au-dessus de soi sous la pluie.",
+          "categorie": "accessoires",
+          "amorce": "pa",
+          "variantes": []
+        },
+        {
+          "mot": "marteau",
+          "definition": "Outil à manche et à tête lourde, utilisé pour enfoncer des clous en les frappant.",
+          "categorie": "outils",
+          "amorce": "mar",
+          "variantes": []
+        },
+        {
+          "mot": "peigne",
+          "definition": "Petit accessoire muni d'une rangée de dents, que l'on passe dans les cheveux pour les démêler.",
+          "categorie": "soins du quotidien",
+          "amorce": "pe",
+          "variantes": []
+        },
+        {
+          "mot": "cintre",
+          "definition": "Support que l'on suspend par un crochet et sur lequel on place une veste pour la ranger.",
+          "categorie": "rangement des vêtements",
+          "amorce": "ci",
+          "variantes": []
+        },
+        {
+          "mot": "louche",
+          "definition": "Grand ustensile à manche terminé par une coupe profonde, utilisé pour servir la soupe.",
+          "categorie": "ustensiles de cuisine",
+          "amorce": "lou",
+          "variantes": []
+        },
+        {
+          "mot": "balayette",
+          "definition": "Petite brosse munie d'un manche court, utilisée avec une pelle pour ramasser les miettes au sol.",
+          "categorie": "entretien du logement",
+          "amorce": "ba",
+          "variantes": []
+        },
+        {
+          "mot": "rideau",
+          "definition": "Pièce de tissu suspendue devant une fenêtre, que l'on tire pour masquer la vue.",
+          "categorie": "aménagement du logement",
+          "amorce": "ri",
+          "variantes": []
+        },
+        {
+          "mot": "tapis",
+          "definition": "Pièce de textile épais posée sur le sol, que l'on peut déplacer pour nettoyer dessous.",
+          "categorie": "aménagement du logement",
+          "amorce": "ta",
+          "variantes": []
+        },
+        {
+          "mot": "ventilateur",
+          "definition": "Appareil à pales tournantes qui met l'air en mouvement pour rafraîchir une pièce.",
+          "categorie": "équipement du logement",
+          "amorce": "ven",
+          "variantes": []
+        },
+        {
+          "mot": "aspirateur",
+          "definition": "Appareil électrique qui retire la poussière du sol en l'attirant dans un réservoir ou un sac.",
+          "categorie": "entretien du logement",
+          "amorce": "as",
+          "variantes": []
+        },
+        {
+          "mot": "écouteurs",
+          "definition": "Petits accessoires que l'on place dans les oreilles pour écouter du son sans haut-parleur.",
+          "categorie": "équipement audio",
+          "amorce": "é",
+          "variantes": []
+        },
+        {
+          "mot": "portefeuille",
+          "definition": "Petit étui pliant que l'on garde sur soi pour ranger billets de banque et cartes.",
+          "categorie": "accessoires personnels",
+          "amorce": "por",
+          "variantes": []
+        },
+        {
+          "mot": "rouleau",
+          "definition": "Outil de peinture constitué d'un cylindre absorbant monté sur un manche et tournant sur lui-même.",
+          "categorie": "outils de peinture",
+          "amorce": "rou",
+          "variantes": [
+            "rouleau à peinture"
+          ]
+        },
+        {
+          "mot": "trépied",
+          "definition": "Support à trois pieds sur lequel on fixe un appareil photo pour le stabiliser.",
+          "categorie": "matériel photographique",
+          "amorce": "tré",
+          "variantes": []
+        },
+        {
+          "mot": "éponge",
+          "definition": "Objet souple et poreux qui absorbe l'eau, utilisé pour nettoyer une surface.",
+          "categorie": "entretien du logement",
+          "amorce": "é",
+          "variantes": []
+        },
+        {
+          "mot": "thermos",
+          "definition": "Récipient isolant à bouchon, conçu pour garder une boisson chaude ou froide pendant plusieurs heures.",
+          "categorie": "récipients",
+          "amorce": "ther",
+          "variantes": [
+            "bouteille isotherme"
+          ]
+        }
+      ]
+    },
+    {
+      "palier": 3,
+      "items": [
+        {
+          "mot": "entonnoir",
+          "definition": "Ustensile à large ouverture prolongée par un tube étroit, utilisé pour remplir une bouteille.",
+          "categorie": "ustensiles de cuisine",
+          "amorce": "en",
+          "variantes": []
+        },
+        {
+          "mot": "charnière",
+          "definition": "Pièce articulée reliant une porte à son cadre et lui permettant de pivoter.",
+          "categorie": "quincaillerie",
+          "amorce": "char",
+          "variantes": [
+            "paumelle"
+          ]
+        },
+        {
+          "mot": "thermostat",
+          "definition": "Dispositif qui commande le chauffage pour maintenir une température choisie.",
+          "categorie": "réglage du logement",
+          "amorce": "ther",
+          "variantes": []
+        },
+        {
+          "mot": "devis",
+          "definition": "Document qui détaille le prix proposé pour des travaux avant leur acceptation.",
+          "categorie": "documents commerciaux",
+          "amorce": "de",
+          "variantes": []
+        },
+        {
+          "mot": "récépissé",
+          "definition": "Document remis pour attester qu'un service a enregistré un dépôt ou une demande.",
+          "categorie": "documents administratifs",
+          "amorce": "ré",
+          "variantes": [
+            "reçu",
+            "accusé de réception"
+          ]
+        },
+        {
+          "mot": "échéancier",
+          "definition": "Document qui répartit les sommes à régler selon leurs dates de paiement.",
+          "categorie": "organisation des paiements",
+          "amorce": "é",
+          "variantes": [
+            "calendrier de paiement"
+          ]
+        },
+        {
+          "mot": "quittance",
+          "definition": "Document par lequel le propriétaire reconnaît que le loyer a été entièrement payé.",
+          "categorie": "documents de logement",
+          "amorce": "qui",
+          "variantes": [
+            "quittance de loyer"
+          ]
+        },
+        {
+          "mot": "inventaire",
+          "definition": "Liste détaillée des biens présents dans un lieu, établie après les avoir recensés.",
+          "categorie": "gestion des biens",
+          "amorce": "in",
+          "variantes": []
+        },
+        {
+          "mot": "procuration",
+          "definition": "Document autorisant une autre personne à agir ou à signer en son nom.",
+          "categorie": "documents administratifs",
+          "amorce": "pro",
+          "variantes": [
+            "mandat"
+          ]
+        },
+        {
+          "mot": "avenant",
+          "definition": "Document ajouté à un contrat existant pour en modifier certaines clauses.",
+          "categorie": "documents contractuels",
+          "amorce": "a",
+          "variantes": []
+        },
+        {
+          "mot": "attestation",
+          "definition": "Document signé qui certifie l'exactitude d'un fait, par exemple l'hébergement d'une personne.",
+          "categorie": "documents administratifs",
+          "amorce": "a",
+          "variantes": [
+            "certificat"
+          ]
+        },
+        {
+          "mot": "bordereau",
+          "definition": "Feuille récapitulative qui accompagne un envoi de marchandises et en détaille le contenu.",
+          "categorie": "documents d'expédition",
+          "amorce": "bor",
+          "variantes": [
+            "bordereau d'expédition",
+            "bordereau de livraison",
+            "bon de livraison"
+          ]
+        },
+        {
+          "mot": "intercalaire",
+          "definition": "Feuille munie d'un onglet, placée dans un dossier pour séparer deux rubriques.",
+          "categorie": "matériel de bureau",
+          "amorce": "in",
+          "variantes": []
+        },
+        {
+          "mot": "perforatrice",
+          "definition": "Appareil de bureau qui fait des trous réguliers dans des feuilles pour les ranger dans un classeur.",
+          "categorie": "matériel de bureau",
+          "amorce": "per",
+          "variantes": []
+        },
+        {
+          "mot": "mousqueton",
+          "definition": "Anneau métallique muni d'une ouverture à ressort, utilisé pour accrocher rapidement une sangle.",
+          "categorie": "matériel de fixation",
+          "amorce": "mou",
+          "variantes": []
+        },
+        {
+          "mot": "joint",
+          "definition": "Anneau souple placé entre deux pièces d'un raccord pour empêcher l'eau de passer.",
+          "categorie": "plomberie",
+          "amorce": "j",
+          "variantes": [
+            "joint d'étanchéité"
+          ]
+        },
+        {
+          "mot": "rondelle",
+          "definition": "Petit disque percé en son centre que l'on place sous un écrou pour répartir le serrage.",
+          "categorie": "quincaillerie",
+          "amorce": "ron",
+          "variantes": []
+        },
+        {
+          "mot": "cheville",
+          "definition": "Pièce que l'on insère dans un trou du mur pour y maintenir une vis.",
+          "categorie": "quincaillerie",
+          "amorce": "che",
+          "variantes": []
+        },
+        {
+          "mot": "étau",
+          "definition": "Outil fixé sur un établi, doté de deux mâchoires que l'on serre pour immobiliser une pièce.",
+          "categorie": "outils",
+          "amorce": "é",
+          "variantes": []
+        },
+        {
+          "mot": "niveau",
+          "definition": "Instrument muni d'une bulle, utilisé pour vérifier qu'une étagère est horizontale.",
+          "categorie": "outils de mesure",
+          "amorce": "ni",
+          "variantes": [
+            "niveau à bulle"
+          ]
+        },
+        {
+          "mot": "minuteur",
+          "definition": "Dispositif que l'on règle pour qu'il sonne après la durée choisie.",
+          "categorie": "mesure du temps",
+          "amorce": "mi",
+          "variantes": []
+        },
+        {
+          "mot": "baromètre",
+          "definition": "Instrument qui mesure la pression atmosphérique.",
+          "categorie": "instruments de mesure",
+          "amorce": "ba",
+          "variantes": []
+        },
+        {
+          "mot": "boussole",
+          "definition": "Instrument à aiguille aimantée permettant de repérer la direction du nord.",
+          "categorie": "orientation",
+          "amorce": "bou",
+          "variantes": []
+        },
+        {
+          "mot": "disjoncteur",
+          "definition": "Dispositif de sécurité que l'on peut réarmer après qu'il a coupé automatiquement un circuit électrique en cas de surcharge.",
+          "categorie": "sécurité électrique",
+          "amorce": "di",
+          "variantes": []
+        }
+      ]
+    },
+    {
+      "palier": 4,
+      "items": [
+        {
+          "mot": "délai",
+          "definition": "On vous laisse une semaine pour répondre. Quel nom désigne cette période dont vous disposez pour accomplir la démarche ?",
+          "categorie": "organisation du temps",
+          "amorce": "dé",
+          "variantes": [
+            "durée",
+            "temps imparti",
+            "temps accordé"
+          ]
+        },
+        {
+          "mot": "priorité",
+          "definition": "Deux tâches vous attendent ; l'une doit passer avant les autres. Quel nom désigne cette place au premier rang ?",
+          "categorie": "organisation",
+          "amorce": "pri",
+          "variantes": [
+            "primauté"
+          ]
+        },
+        {
+          "mot": "compromis",
+          "definition": "Deux personnes font chacune des concessions pour aboutir à un accord. Comment nommer cet accord ?",
+          "categorie": "relations et décisions",
+          "amorce": "com",
+          "variantes": [
+            "arrangement",
+            "terrain d’entente",
+            "terrain d'entente"
+          ]
+        },
+        {
+          "mot": "confiance",
+          "definition": "Vous remettez un travail à un collègue en étant assuré de pouvoir compter sur lui. Quel sentiment éprouvez-vous ?",
+          "categorie": "relations",
+          "amorce": "con",
+          "variantes": [
+            "assurance"
+          ]
+        },
+        {
+          "mot": "prudence",
+          "definition": "Avant de traverser, une personne vérifie les deux côtés pour éviter un danger. Quelle qualité guide sa conduite ?",
+          "categorie": "manières d'agir",
+          "amorce": "pru",
+          "variantes": [
+            "précaution"
+          ]
+        },
+        {
+          "mot": "autonomie",
+          "definition": "Une personne organise ses démarches et prend ses décisions sans devoir être guidée. Quelle capacité manifeste-t-elle ?",
+          "categorie": "capacités personnelles",
+          "amorce": "o",
+          "variantes": [
+            "indépendance"
+          ]
+        },
+        {
+          "mot": "patience",
+          "definition": "La file avance lentement, mais vous restez calme et acceptez d'attendre. Quelle qualité montrez-vous ?",
+          "categorie": "qualités personnelles",
+          "amorce": "pa",
+          "variantes": []
+        },
+        {
+          "mot": "confidentialité",
+          "definition": "Les informations d'un entretien doivent rester réservées aux personnes autorisées. Quel principe doit être respecté ?",
+          "categorie": "circulation de l'information",
+          "amorce": "con",
+          "variantes": [
+            "secret",
+            "discrétion"
+          ]
+        },
+        {
+          "mot": "responsabilité",
+          "definition": "Une personne doit répondre des décisions qu'elle a prises et de leurs conséquences. Quel nom désigne cette obligation ?",
+          "categorie": "engagements",
+          "amorce": "res",
+          "variantes": []
+        },
+        {
+          "mot": "coopération",
+          "definition": "Plusieurs collègues travaillent ensemble à un même résultat en s'entraidant. Comment nommer cette manière d'agir ?",
+          "categorie": "travail collectif",
+          "amorce": "co",
+          "variantes": [
+            "collaboration",
+            "entraide"
+          ]
+        },
+        {
+          "mot": "incertitude",
+          "definition": "Vous ignorez si votre demande sera acceptée ou refusée. Quel nom désigne l'état dans lequel vous êtes, faute de pouvoir connaître l'issue ?",
+          "categorie": "connaissance d'une situation",
+          "amorce": "in",
+          "variantes": [
+            "doute"
+          ]
+        },
+        {
+          "mot": "soulagement",
+          "definition": "Le problème qui vous préoccupait vient d'être résolu ; la tension retombe. Quel sentiment apparaît ?",
+          "categorie": "émotions",
+          "amorce": "sou",
+          "variantes": [
+            "apaisement"
+          ]
+        },
+        {
+          "mot": "déception",
+          "definition": "Le résultat attendu avec espoir n'est pas au rendez-vous. Quel sentiment peut-on éprouver ?",
+          "categorie": "émotions",
+          "amorce": "dé",
+          "variantes": [
+            "désillusion",
+            "désappointement"
+          ]
+        },
+        {
+          "mot": "reconnaissance",
+          "definition": "Une personne vous a apporté une aide précieuse ; vous souhaitez la remercier pour ce qu'elle a fait. Quel sentiment éprouvez-vous envers elle ?",
+          "categorie": "relations",
+          "amorce": "re",
+          "variantes": [
+            "gratitude"
+          ]
+        },
+        {
+          "mot": "équité",
+          "definition": "On adapte l'aide aux besoins de chacun afin que le traitement soit juste. Quel principe cherche-t-on à respecter ?",
+          "categorie": "principes de justice",
+          "amorce": "é",
+          "variantes": [
+            "justice"
+          ]
+        },
+        {
+          "mot": "réciprocité",
+          "definition": "Vous rendez à une personne le soutien qu'elle vous a apporté : l'échange va dans les deux sens. Quel principe cela illustre-t-il ?",
+          "categorie": "relations",
+          "amorce": "ré",
+          "variantes": []
+        },
+        {
+          "mot": "cohérence",
+          "definition": "Les différentes parties d'un exposé s'accordent entre elles et ne se contredisent pas. Quelle qualité possède cet exposé ?",
+          "categorie": "qualité d'un raisonnement",
+          "amorce": "co",
+          "variantes": [
+            "logique"
+          ]
+        },
+        {
+          "mot": "fiabilité",
+          "definition": "Un appareil donne régulièrement un résultat exact et fonctionne sans défaillance. Quelle qualité lui attribue-t-on ?",
+          "categorie": "qualité d'un outil",
+          "amorce": "fi",
+          "variantes": [
+            "sûreté"
+          ]
+        },
+        {
+          "mot": "pertinence",
+          "definition": "Une remarque répond exactement au problème discuté. Quel nom désigne le fait qu'elle convient au sujet ?",
+          "categorie": "qualité d'une contribution",
+          "amorce": "per",
+          "variantes": [
+            "à-propos",
+            "adéquation"
+          ]
+        },
+        {
+          "mot": "vigilance",
+          "definition": "Une personne reste attentive aux signaux qui pourraient annoncer un danger. Quel état maintient-elle pour pouvoir réagir rapidement ?",
+          "categorie": "attention",
+          "amorce": "vi",
+          "variantes": [
+            "attention"
+          ]
+        },
+        {
+          "mot": "disponibilité",
+          "definition": "Une collègue a du temps libre et peut vous aider maintenant. Quel nom désigne le fait qu'elle soit en mesure de vous consacrer ce temps ?",
+          "categorie": "organisation personnelle",
+          "amorce": "di",
+          "variantes": []
+        },
+        {
+          "mot": "curiosité",
+          "definition": "Vous cherchez spontanément à comprendre un sujet nouveau et multipliez les questions pour en savoir davantage. Quelle disposition vous anime ?",
+          "categorie": "qualités personnelles",
+          "amorce": "cu",
+          "variantes": [
+            "intérêt",
+            "soif d'apprendre"
+          ]
+        },
+        {
+          "mot": "persévérance",
+          "definition": "Malgré plusieurs difficultés, une personne poursuit son effort vers son objectif. Quelle qualité manifeste-t-elle ?",
+          "categorie": "qualités personnelles",
+          "amorce": "per",
+          "variantes": [
+            "ténacité",
+            "persistance",
+            "constance"
+          ]
+        },
+        {
+          "mot": "souplesse",
+          "definition": "Une personne accepte facilement d'adapter ses habitudes lorsque la situation change. Quelle qualité, également associée à ce qui se plie sans casser, manifeste-t-elle ?",
+          "categorie": "adaptation",
+          "amorce": "sou",
+          "variantes": [
+            "flexibilité",
+            "adaptabilité"
+          ]
+        }
+      ]
+    },
+    {
+      "palier": 5,
+      "items": [
+        {
+          "mot": "reporter",
+          "definition": "Quel verbe signifie déplacer un rendez-vous à une date plus tardive ?",
+          "categorie": "organisation du temps",
+          "amorce": "re",
+          "variantes": [
+            "différer",
+            "repousser",
+            "remettre",
+            "décaler"
+          ]
+        },
+        {
+          "mot": "déléguer",
+          "definition": "Quel verbe signifie charger une autre personne d'une tâche en lui donnant le pouvoir nécessaire pour l'accomplir ?",
+          "categorie": "organisation du travail",
+          "amorce": "dé",
+          "variantes": [
+            "confier",
+            "mandater"
+          ]
+        },
+        {
+          "mot": "résilier",
+          "definition": "Quel verbe signifie mettre fin à un contrat d'abonnement selon les conditions prévues ?",
+          "categorie": "démarches contractuelles",
+          "amorce": "ré",
+          "variantes": [
+            "rompre",
+            "dénoncer",
+            "annuler"
+          ]
+        },
+        {
+          "mot": "anticiper",
+          "definition": "Quel verbe signifie se représenter ce qui risque de se produire et s'y préparer à l'avance ?",
+          "categorie": "préparation",
+          "amorce": "an",
+          "variantes": [
+            "prévoir"
+          ]
+        },
+        {
+          "mot": "synthétiser",
+          "definition": "Quel verbe signifie rassembler les idées essentielles de plusieurs documents en un ensemble bref et organisé ?",
+          "categorie": "traitement de l'information",
+          "amorce": "sin",
+          "variantes": [
+            "résumer"
+          ]
+        },
+        {
+          "mot": "hiérarchiser",
+          "definition": "Quel verbe signifie classer plusieurs tâches par ordre d'importance ?",
+          "categorie": "organisation",
+          "amorce": "i",
+          "variantes": [
+            "prioriser"
+          ]
+        },
+        {
+          "mot": "vérifier",
+          "definition": "Quel verbe signifie examiner un calcul pour s'assurer qu'il est exact ?",
+          "categorie": "contrôle",
+          "amorce": "vé",
+          "variantes": [
+            "contrôler"
+          ]
+        },
+        {
+          "mot": "clarifier",
+          "definition": "Quel verbe signifie rendre une explication compréhensible en dissipant ce qui prête à confusion ?",
+          "categorie": "communication",
+          "amorce": "cla",
+          "variantes": [
+            "éclaircir",
+            "expliciter"
+          ]
+        },
+        {
+          "mot": "reformuler",
+          "definition": "Quel verbe signifie exprimer de nouveau la même idée avec d'autres mots ?",
+          "categorie": "communication",
+          "amorce": "re",
+          "variantes": []
+        },
+        {
+          "mot": "nuancer",
+          "definition": "Quel verbe signifie apporter des distinctions à un jugement trop catégorique pour le rendre moins absolu ?",
+          "categorie": "expression d'un jugement",
+          "amorce": "nu",
+          "variantes": [
+            "relativiser",
+            "tempérer"
+          ]
+        },
+        {
+          "mot": "argumenter",
+          "definition": "Quel verbe signifie présenter des raisons organisées pour soutenir une opinion ?",
+          "categorie": "raisonnement",
+          "amorce": "ar",
+          "variantes": [
+            "étayer"
+          ]
+        },
+        {
+          "mot": "justifier",
+          "definition": "Quel verbe signifie donner les raisons qui rendent une décision fondée ou acceptable ?",
+          "categorie": "raisonnement",
+          "amorce": "ju",
+          "variantes": [
+            "motiver"
+          ]
+        },
+        {
+          "mot": "comparer",
+          "definition": "Quel verbe signifie examiner deux propositions pour repérer leurs ressemblances et leurs différences ?",
+          "categorie": "examen d'options",
+          "amorce": "com",
+          "variantes": [
+            "confronter"
+          ]
+        },
+        {
+          "mot": "distinguer",
+          "definition": "Quel verbe signifie reconnaître ce qui différencie deux notions pour ne pas les confondre ?",
+          "categorie": "précision des idées",
+          "amorce": "di",
+          "variantes": [
+            "différencier",
+            "discerner"
+          ]
+        },
+        {
+          "mot": "concilier",
+          "definition": "Quel verbe signifie rendre compatibles deux exigences qui semblaient s'opposer ?",
+          "categorie": "recherche d'accord",
+          "amorce": "con",
+          "variantes": [
+            "accorder",
+            "harmoniser"
+          ]
+        },
+        {
+          "mot": "consulter",
+          "definition": "Quel verbe signifie demander l'avis d'une personne avant de prendre une décision ?",
+          "categorie": "préparation d'une décision",
+          "amorce": "con",
+          "variantes": [
+            "solliciter"
+          ]
+        },
+        {
+          "mot": "valider",
+          "definition": "Quel verbe signifie reconnaître officiellement qu'un document ou une étape satisfait aux exigences prévues ?",
+          "categorie": "décision",
+          "amorce": "va",
+          "variantes": [
+            "approuver",
+            "entériner"
+          ]
+        },
+        {
+          "mot": "contester",
+          "definition": "Quel verbe signifie mettre en cause le bien-fondé d'une décision que l'on juge injustifiée ?",
+          "categorie": "désaccord",
+          "amorce": "con",
+          "variantes": [
+            "discuter",
+            "remettre en cause"
+          ]
+        },
+        {
+          "mot": "rectifier",
+          "definition": "Quel verbe signifie remplacer une information inexacte que l'on a déjà donnée par l'information exacte ?",
+          "categorie": "correction",
+          "amorce": "rec",
+          "variantes": [
+            "corriger"
+          ]
+        },
+        {
+          "mot": "archiver",
+          "definition": "Quel verbe signifie conserver des documents qui ne servent plus couramment, en les classant pour pouvoir les retrouver ?",
+          "categorie": "gestion documentaire",
+          "amorce": "ar",
+          "variantes": []
+        },
+        {
+          "mot": "recenser",
+          "definition": "Quel verbe signifie établir la liste complète des personnes ou des objets d'un ensemble en les dénombrant ?",
+          "categorie": "collecte d'information",
+          "amorce": "re",
+          "variantes": [
+            "dénombrer",
+            "inventorier",
+            "répertorier"
+          ]
+        },
+        {
+          "mot": "répartir",
+          "definition": "Quel verbe signifie attribuer à chacune de plusieurs personnes une part de la quantité totale de travail ?",
+          "categorie": "organisation du travail",
+          "amorce": "ré",
+          "variantes": [
+            "distribuer",
+            "partager"
+          ]
+        },
+        {
+          "mot": "coordonner",
+          "definition": "Quel verbe signifie organiser les actions de plusieurs personnes pour qu'elles se complètent efficacement sans se gêner ?",
+          "categorie": "organisation collective",
+          "amorce": "co",
+          "variantes": [
+            "articuler"
+          ]
+        },
+        {
+          "mot": "préserver",
+          "definition": "Quel verbe signifie mettre une ressource à l'abri des dommages afin de la garder intacte et disponible ?",
+          "categorie": "protection des ressources",
+          "amorce": "pré",
+          "variantes": [
+            "sauvegarder",
+            "conserver",
+            "protéger"
+          ]
+        }
+      ]
+    },
+    {
+      "palier": 6,
+      "items": [
+        {
+          "mot": "objection",
+          "definition": "Lors d'une discussion, vous présentez un argument qui s'oppose à la proposition avancée. Comment nommer cet argument contraire ?",
+          "categorie": "discussion",
+          "amorce": "o",
+          "variantes": [
+            "contre-argument",
+            "contre argument"
+          ]
+        },
+        {
+          "mot": "concession",
+          "definition": "Pour faciliter un accord, vous renoncez à une partie de ce que vous demandiez. Comment nommer ce que vous avez accepté de céder ?",
+          "categorie": "négociation",
+          "amorce": "con",
+          "variantes": [
+            "renoncement"
+          ]
+        },
+        {
+          "mot": "contradiction",
+          "definition": "Un rapport affirme qu'une porte était fermée et qu'elle ne l'était pas au même instant. Quelle relation existe entre ces deux affirmations ?",
+          "categorie": "logique",
+          "amorce": "con",
+          "variantes": [
+            "incompatibilité",
+            "incohérence"
+          ]
+        },
+        {
+          "mot": "hypothèse",
+          "definition": "Vous proposez une explication provisoire d'un problème, qui reste à vérifier par des observations. Comment nommer cette explication ?",
+          "categorie": "raisonnement",
+          "amorce": "i",
+          "variantes": [
+            "supposition",
+            "conjecture"
+          ]
+        },
+        {
+          "mot": "ambiguïté",
+          "definition": "Une phrase peut recevoir deux interprétations différentes, sans permettre de choisir laquelle est voulue. Quel défaut présente-t-elle ?",
+          "categorie": "communication",
+          "amorce": "am",
+          "variantes": [
+            "équivoque",
+            "double sens"
+          ]
+        },
+        {
+          "mot": "consensus",
+          "definition": "Après discussion, tous les membres d'un groupe acceptent une même solution sans opposition. Comment nommer ce résultat collectif ?",
+          "categorie": "décision collective",
+          "amorce": "con",
+          "variantes": [
+            "unanimité",
+            "accord général",
+            "accord collectif"
+          ]
+        },
+        {
+          "mot": "prérequis",
+          "definition": "Une formation exige une compétence qui doit déjà être acquise avant de commencer. Comment nommer cette compétence indispensable à l'entrée ?",
+          "categorie": "apprentissage",
+          "amorce": "pré",
+          "variantes": [
+            "préalable",
+            "condition préalable"
+          ]
+        },
+        {
+          "mot": "contrainte",
+          "definition": "Vous devez organiser un déplacement en respectant obligatoirement un budget maximal. Quel nom désigne cette limite imposée ?",
+          "categorie": "organisation",
+          "amorce": "con",
+          "variantes": [
+            "obligation",
+            "impératif",
+            "restriction",
+            "limitation"
+          ]
+        },
+        {
+          "mot": "alternative",
+          "definition": "Pour rejoindre un lieu, vous avez exactement deux possibilités entre lesquelles choisir. Quel nom désigne ce choix entre deux possibilités ?",
+          "categorie": "décision",
+          "amorce": "al",
+          "variantes": []
+        },
+        {
+          "mot": "conséquence",
+          "definition": "Une route ferme à la circulation ; les trajets deviennent plus longs. Quel nom désigne ce qui découle de la fermeture ?",
+          "categorie": "relations entre événements",
+          "amorce": "con",
+          "variantes": [
+            "répercussion",
+            "effet",
+            "résultat",
+            "suite"
+          ]
+        },
+        {
+          "mot": "dépendance",
+          "definition": "Une tâche ne peut commencer que si une autre est achevée : elle ne peut pas avancer seule. Quel nom désigne ce lien entre les deux tâches ?",
+          "categorie": "relations entre tâches",
+          "amorce": "dé",
+          "variantes": [
+            "subordination"
+          ]
+        },
+        {
+          "mot": "exception",
+          "definition": "Une règle s'applique à tous les dossiers sauf à un cas expressément prévu. Comment nommer ce cas qui échappe à la règle générale ?",
+          "categorie": "règles",
+          "amorce": "ex",
+          "variantes": [
+            "dérogation"
+          ]
+        },
+        {
+          "mot": "condition",
+          "definition": "Un remboursement n'est possible qu'en fournissant le justificatif. Quel nom désigne ce dont dépend son obtention ?",
+          "categorie": "décisions et exigences",
+          "amorce": "con",
+          "variantes": [
+            "prérequis",
+            "préalable",
+            "exigence"
+          ]
+        },
+        {
+          "mot": "critère",
+          "definition": "Pour comparer des logements, vous retenez leur distance au travail comme élément de jugement. Comment nommer cet élément servant à évaluer les options ?",
+          "categorie": "évaluation",
+          "amorce": "cri",
+          "variantes": [
+            "indicateur"
+          ]
+        },
+        {
+          "mot": "proportion",
+          "definition": "Sur l'ensemble des demandes reçues, une certaine part a été acceptée. Quel nom désigne cette part rapportée au total ?",
+          "categorie": "quantités",
+          "amorce": "pro",
+          "variantes": [
+            "pourcentage",
+            "ratio",
+            "fraction"
+          ]
+        },
+        {
+          "mot": "tendance",
+          "definition": "Sur une longue période, des résultats augmentent globalement malgré quelques baisses ponctuelles. Comment nommer le mouvement d'ensemble qui se dégage ?",
+          "categorie": "évolution",
+          "amorce": "ten",
+          "variantes": [
+            "orientation générale",
+            "évolution générale"
+          ]
+        },
+        {
+          "mot": "estimation",
+          "definition": "Sans mesure exacte, vous proposez une valeur approximative du temps nécessaire à une tâche. Comment nommer cette évaluation approchée ?",
+          "categorie": "évaluation",
+          "amorce": "es",
+          "variantes": [
+            "approximation"
+          ]
+        },
+        {
+          "mot": "projection",
+          "definition": "Vous prolongez les évolutions actuelles pour décrire une situation future possible. Quel nom désigne ce résultat tourné vers l'avenir ?",
+          "categorie": "anticipation",
+          "amorce": "pro",
+          "variantes": [
+            "extrapolation",
+            "prévision"
+          ]
+        },
+        {
+          "mot": "redondance",
+          "definition": "Deux phrases successives donnent la même information sans rien ajouter. Quel nom désigne le fait de donner inutilement plusieurs fois le même contenu ?",
+          "categorie": "qualité de l'information",
+          "amorce": "re",
+          "variantes": [
+            "répétition",
+            "doublon"
+          ]
+        },
+        {
+          "mot": "implicite",
+          "definition": "Dans un message, une idée n'est pas exprimée directement mais se comprend grâce au contexte. Quel adjectif qualifie cette idée ?",
+          "categorie": "interprétation",
+          "amorce": "im",
+          "variantes": [
+            "sous-entendue",
+            "sous-entendu",
+            "tacite"
+          ]
+        },
+        {
+          "mot": "explicite",
+          "definition": "Une consigne formule directement toutes ses exigences, sans rien laisser à deviner. Quel adjectif qualifie cette manière de les exprimer ?",
+          "categorie": "communication",
+          "amorce": "ex",
+          "variantes": [
+            "expressément formulée",
+            "clairement énoncée"
+          ]
+        },
+        {
+          "mot": "impartialité",
+          "definition": "Une personne arbitre un désaccord sans favoriser aucun des deux camps. Quel principe respecte-t-elle ?",
+          "categorie": "jugement",
+          "amorce": "im",
+          "variantes": [
+            "neutralité",
+            "objectivité"
+          ]
+        },
+        {
+          "mot": "transparence",
+          "definition": "Une organisation rend accessibles ses décisions et leurs motifs, afin que chacun puisse les comprendre. Quel principe applique-t-elle ?",
+          "categorie": "communication institutionnelle",
+          "amorce": "tran",
+          "variantes": []
+        },
+        {
+          "mot": "traçabilité",
+          "definition": "Chaque étape du traitement d'un dossier est enregistrée afin de pouvoir reconstituer son parcours. Quelle propriété ce suivi garantit-il ?",
+          "categorie": "suivi de l'information",
+          "amorce": "tra",
+          "variantes": []
+        }
+      ]
+    }
+  ]
+}
