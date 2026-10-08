@@ -55,6 +55,20 @@ Si le SDK est installé dans `.local/apple-fm-venv`, lancer avec ce Python plut�
 
 Cet environnement doit également contenir les dépendances serveur ; si nécessaire, les installer avec `.local/apple-fm-venv/bin/python -m pip install -r requirements-dev.txt`. L’installation initiale des dépendances et la préparation des ressources Apple peuvent nécessiter le réseau ; les fonctions Apple utilisées par le logiciel s’exécutent localement.
 
+### Vérifier le moteur sémantique Apple
+
+La similarité sémantique utilise les empreintes de phrases françaises **NaturalLanguage / NLEmbedding**, accessibles depuis Python par PyObjC. Elle ne dépend pas du SDK Apple Foundation Models ni de l’activation d’Apple Intelligence. Elle fonctionne localement quand le framework et les empreintes françaises sont disponibles, sans modèle tiers à embarquer.
+
+Dans l’environnement Python qui lance réellement le serveur :
+
+```sh
+.local/apple-fm-venv/bin/python -c 'from backend.app.domain.capacites import fournisseur_similarite; print(fournisseur_similarite())'
+```
+
+`nle_embedding` confirme le moteur Apple ; `lexical` indique le repli. Adapter l’exécutable si le serveur utilise `.venv` ou un autre Python. Le même diagnostic est exposé par [GET /api/capacites](http://127.0.0.1:8766/api/capacites), champ `similarite.fournisseur`. `similarite.disponible = true` signifie qu’un fournisseur existe, pas nécessairement celui d’Apple.
+
+La similarité est un recours pour des reformulations libres, après les vérifications de sens explicites. Elle ne remplace pas la correction stricte ni ne garantit la justesse d’une réponse. Les variantes, articles et petites contextualisations peuvent être reconnus par les règles déterministes même sans moteur Apple. Le seuil historique et les divergences Apple/repli restent à valider dans l’issue #6.
+
 ## Données et contenu
 
 - Les items et leurs paliers sont des données versionnées dans `content/`, distinctes du code. Toute modification substantielle d’un item déjà servi respecte les [règles d’identifiants et d’historiques](docs/30-technique/contenu-versionne.md).
