@@ -455,7 +455,7 @@ MISSIONS = [
 
 def ecrire_contenu(dry_run: bool = False) -> dict:
     """Écrit les paliers, les manifestes et les missions ; retourne les compteurs."""
-    paliers_evocation = 13
+    paliers_evocation = len(DESCRIPTION_PALIERS["evocation"])
     items_ev = items_evocation()
 
     def paquet(items: list[dict], thème: str, palier: int) -> list[dict]:
@@ -472,7 +472,7 @@ def ecrire_contenu(dry_run: bool = False) -> dict:
                 {
                     "id": f"{'ev' if thème == 'evocation' else 'so'}-palier-{palier}",
                     "description": DESCRIPTION_PALIERS[thème][palier - 1],
-                    "prerequis": [f"{'ev' if thème == 'evocation' else 'so'}-palier-{palier - 1}"] if palier > 1 else [],
+                    "prerequis": [f"{'ev' if thème == 'evocation' else 'so'}-palier-{palier - 1}"] if 1 < palier <= 7 else [],
                     "fichier": f"paliers/palier-{palier:02d}.json",
                     "nb_items": len(paquet(items, thème, palier)),
                 }

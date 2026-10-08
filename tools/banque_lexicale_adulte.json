@@ -1353,6 +1353,1366 @@
           "variantes": []
         }
       ]
+    },
+    {
+      "palier": 7,
+      "items": [
+        {
+          "mot": "continent",
+          "definition": "Très vaste masse de terres émergées, que la géographie distingue comme une grande division du globe.",
+          "categorie": "géographie physique",
+          "amorce": "con",
+          "variantes": []
+        },
+        {
+          "mot": "archipel",
+          "definition": "Ensemble d'îles proches les unes des autres, considéré comme un groupe géographique.",
+          "categorie": "géographie physique",
+          "amorce": "ar",
+          "variantes": [
+            "groupe d'îles"
+          ]
+        },
+        {
+          "mot": "péninsule",
+          "definition": "Grande étendue de terre entourée d'eau sur presque tous ses côtés et rattachée à une masse terrestre plus vaste.",
+          "categorie": "géographie physique",
+          "amorce": "pé",
+          "variantes": [
+            "presqu'île"
+          ]
+        },
+        {
+          "mot": "estuaire",
+          "definition": "Embouchure d'un fleuve où les marées font entrer l'eau de mer, généralement en formant une ouverture évasée.",
+          "categorie": "géographie des cours d'eau",
+          "amorce": "es",
+          "variantes": []
+        },
+        {
+          "mot": "volcan",
+          "definition": "Édifice naturel par lequel peuvent sortir de la lave, des gaz et des cendres provenant de l'intérieur de la Terre.",
+          "categorie": "relief et phénomènes naturels",
+          "amorce": "vol",
+          "variantes": []
+        },
+        {
+          "mot": "fossile",
+          "definition": "Reste ou trace d'un organisme ancien conservé dans une roche.",
+          "categorie": "traces du passé vivant",
+          "amorce": "fo",
+          "variantes": []
+        },
+        {
+          "mot": "orbite",
+          "definition": "Trajectoire suivie par un corps céleste autour d'un autre sous l'effet de leur attraction.",
+          "categorie": "astronomie",
+          "amorce": "or",
+          "variantes": []
+        },
+        {
+          "mot": "satellite",
+          "definition": "Corps naturel ou objet artificiel qui tourne autour d'une planète.",
+          "categorie": "astronomie",
+          "amorce": "sa",
+          "variantes": []
+        },
+        {
+          "mot": "éclipse",
+          "definition": "Disparition apparente, totale ou partielle, d'un astre lorsqu'un autre corps en masque la lumière.",
+          "categorie": "astronomie",
+          "amorce": "é",
+          "variantes": []
+        },
+        {
+          "mot": "équateur",
+          "definition": "Ligne imaginaire faisant le tour de la Terre à égale distance de ses pôles.",
+          "categorie": "repères géographiques",
+          "amorce": "é",
+          "variantes": []
+        },
+        {
+          "mot": "chronologie",
+          "definition": "Présentation d'événements dans l'ordre de leurs dates, du plus ancien au plus récent.",
+          "categorie": "organisation de l'histoire",
+          "amorce": "cro",
+          "variantes": []
+        },
+        {
+          "mot": "dynastie",
+          "definition": "Suite de souverains issus d'une même famille et se succédant au pouvoir.",
+          "categorie": "histoire politique",
+          "amorce": "di",
+          "variantes": []
+        },
+        {
+          "mot": "monarchie",
+          "definition": "Régime politique dans lequel le chef de l'État est un roi ou une reine.",
+          "categorie": "régimes politiques",
+          "amorce": "mo",
+          "variantes": []
+        },
+        {
+          "mot": "démocratie",
+          "definition": "Régime politique dans lequel le peuple détient la souveraineté et l'exerce directement ou par des représentants élus.",
+          "categorie": "régimes politiques",
+          "amorce": "dé",
+          "variantes": []
+        },
+        {
+          "mot": "constitution",
+          "definition": "Ensemble des règles fondamentales qui organisent les pouvoirs publics d'un État et leurs rapports.",
+          "categorie": "institutions politiques",
+          "amorce": "con",
+          "variantes": [
+            "loi fondamentale"
+          ]
+        },
+        {
+          "mot": "révolution",
+          "definition": "Bouleversement qui renverse profondément l'ordre politique et social établi.",
+          "categorie": "transformations historiques",
+          "amorce": "ré",
+          "variantes": []
+        },
+        {
+          "mot": "fresque",
+          "definition": "Peinture murale réalisée avec des pigments appliqués sur un enduit encore humide.",
+          "categorie": "techniques artistiques",
+          "amorce": "frè",
+          "variantes": []
+        },
+        {
+          "mot": "sculpture",
+          "definition": "Œuvre d'art en volume obtenue en taillant, en modelant ou en assemblant des matériaux.",
+          "categorie": "arts plastiques",
+          "amorce": "scu",
+          "variantes": []
+        },
+        {
+          "mot": "portrait",
+          "definition": "Représentation artistique d'une personne, centrée notamment sur son visage et ses traits.",
+          "categorie": "genres artistiques",
+          "amorce": "por",
+          "variantes": []
+        },
+        {
+          "mot": "paysage",
+          "definition": "Tableau dont le sujet principal est une vue de la nature ou d'un lieu, plutôt qu'un personnage.",
+          "categorie": "genres picturaux",
+          "amorce": "pé",
+          "variantes": []
+        },
+        {
+          "mot": "biographie",
+          "definition": "Récit de la vie d'une personne écrit par quelqu'un d'autre.",
+          "categorie": "genres de récits",
+          "amorce": "bi",
+          "variantes": []
+        },
+        {
+          "mot": "autobiographie",
+          "definition": "Récit dans lequel une personne raconte elle-même l'histoire de sa vie.",
+          "categorie": "genres de récits",
+          "amorce": "o",
+          "variantes": []
+        },
+        {
+          "mot": "roman",
+          "definition": "Œuvre littéraire généralement longue, en prose, racontant une histoire avec des personnages et une intrigue.",
+          "categorie": "genres littéraires",
+          "amorce": "ro",
+          "variantes": []
+        },
+        {
+          "mot": "métaphore",
+          "definition": "Figure de style qui désigne une chose par une autre en s'appuyant sur une ressemblance, sans employer un mot de comparaison.",
+          "categorie": "figures de style",
+          "amorce": "mé",
+          "variantes": []
+        }
+      ]
+    },
+    {
+      "palier": 8,
+      "items": [
+        {
+          "mot": "isthme",
+          "definition": "Bande de terre étroite reliant deux étendues terrestres plus vastes et bordée d'eau de part et d'autre.",
+          "categorie": "formes du relief",
+          "amorce": "i",
+          "variantes": []
+        },
+        {
+          "mot": "delta",
+          "definition": "Embouchure où un fleuve se divise en plusieurs bras parmi les dépôts qu'il a accumulés.",
+          "categorie": "géographie des cours d'eau",
+          "amorce": "del",
+          "variantes": []
+        },
+        {
+          "mot": "latitude",
+          "definition": "Distance angulaire d'un lieu par rapport à l'équateur, mesurée vers le nord ou vers le sud.",
+          "categorie": "repères géographiques",
+          "amorce": "la",
+          "variantes": []
+        },
+        {
+          "mot": "longitude",
+          "definition": "Distance angulaire d'un lieu par rapport au méridien de référence, mesurée vers l'est ou vers l'ouest.",
+          "categorie": "repères géographiques",
+          "amorce": "lon",
+          "variantes": []
+        },
+        {
+          "mot": "méridien",
+          "definition": "Demi-cercle imaginaire tracé à la surface de la Terre pour relier un pôle à l'autre.",
+          "categorie": "repères géographiques",
+          "amorce": "mé",
+          "variantes": []
+        },
+        {
+          "mot": "hémisphère",
+          "definition": "Chacune des moitiés du globe terrestre séparées, par exemple, par l'équateur.",
+          "categorie": "représentation du globe",
+          "amorce": "é",
+          "variantes": []
+        },
+        {
+          "mot": "biodiversité",
+          "definition": "Variété des êtres vivants, de leurs différences génétiques et des milieux qu'ils forment.",
+          "categorie": "sciences du vivant",
+          "amorce": "bi",
+          "variantes": []
+        },
+        {
+          "mot": "écosystème",
+          "definition": "Ensemble formé par un milieu, les êtres vivants qui l'occupent et leurs interactions.",
+          "categorie": "sciences du vivant",
+          "amorce": "é",
+          "variantes": []
+        },
+        {
+          "mot": "photosynthèse",
+          "definition": "Processus par lequel les végétaux verts utilisent la lumière pour produire de la matière organique à partir d'eau et de dioxyde de carbone.",
+          "categorie": "sciences du vivant",
+          "amorce": "fo",
+          "variantes": []
+        },
+        {
+          "mot": "gravitation",
+          "definition": "Attraction mutuelle qui s'exerce entre les corps possédant une masse.",
+          "categorie": "phénomènes physiques",
+          "amorce": "gra",
+          "variantes": [
+            "attraction gravitationnelle"
+          ]
+        },
+        {
+          "mot": "inertie",
+          "definition": "Propriété d'un corps de conserver son état de repos ou son mouvement rectiligne uniforme lorsque les forces qui s'exercent sur lui se compensent.",
+          "categorie": "phénomènes physiques",
+          "amorce": "i",
+          "variantes": []
+        },
+        {
+          "mot": "sédiment",
+          "definition": "Matière issue de particules qui se déposent au fond de l'eau ou à la surface du sol.",
+          "categorie": "formation des sols et des roches",
+          "amorce": "sé",
+          "variantes": [
+            "dépôt"
+          ]
+        },
+        {
+          "mot": "cartographie",
+          "definition": "Discipline qui conçoit et réalise les représentations d'un territoire sous forme de cartes.",
+          "categorie": "représentation de l'espace",
+          "amorce": "car",
+          "variantes": []
+        },
+        {
+          "mot": "archéologie",
+          "definition": "Discipline qui étudie les sociétés du passé à partir de leurs vestiges matériels, notamment par des fouilles.",
+          "categorie": "connaissance du passé",
+          "amorce": "ar",
+          "variantes": []
+        },
+        {
+          "mot": "paléontologie",
+          "definition": "Science qui étudie les êtres vivants des époques anciennes à partir de leurs restes et de leurs traces conservés dans les roches.",
+          "categorie": "connaissance du vivant ancien",
+          "amorce": "pa",
+          "variantes": []
+        },
+        {
+          "mot": "humanisme",
+          "definition": "Courant de pensée qui place la dignité de la personne, son éducation et son épanouissement au centre de ses préoccupations.",
+          "categorie": "courants de pensée",
+          "amorce": "u",
+          "variantes": []
+        },
+        {
+          "mot": "laïcité",
+          "definition": "Principe d'organisation de l'État reposant sur sa neutralité envers les religions et la liberté de conscience.",
+          "categorie": "principes politiques",
+          "amorce": "la",
+          "variantes": []
+        },
+        {
+          "mot": "souveraineté",
+          "definition": "Pouvoir suprême reconnu à un État ou à un peuple pour décider de son organisation et de ses affaires.",
+          "categorie": "pouvoir politique",
+          "amorce": "sou",
+          "variantes": []
+        },
+        {
+          "mot": "fédération",
+          "definition": "Union d'États ou de territoires dotés d'une autonomie, partageant un gouvernement central et soumis à une constitution commune.",
+          "categorie": "organisation politique",
+          "amorce": "fé",
+          "variantes": [
+            "État fédéral"
+          ]
+        },
+        {
+          "mot": "allégorie",
+          "definition": "Représentation d'une idée abstraite par une figure, une scène ou un récit concret, comme la justice figurée par une personne tenant une balance.",
+          "categorie": "expression artistique",
+          "amorce": "a",
+          "variantes": []
+        },
+        {
+          "mot": "satire",
+          "definition": "Œuvre qui tourne en ridicule les défauts d'une personne ou d'une société pour les dénoncer.",
+          "categorie": "genres littéraires",
+          "amorce": "sa",
+          "variantes": []
+        },
+        {
+          "mot": "sonnet",
+          "definition": "Poème de quatorze vers, traditionnellement répartis en deux quatrains et deux tercets.",
+          "categorie": "formes poétiques",
+          "amorce": "so",
+          "variantes": []
+        },
+        {
+          "mot": "épilogue",
+          "definition": "Dernière partie d'un récit qui indique ce que deviennent les personnages après le dénouement.",
+          "categorie": "composition d'un récit",
+          "amorce": "é",
+          "variantes": []
+        },
+        {
+          "mot": "patrimoine",
+          "definition": "Ensemble des biens, des œuvres et des traditions reçus des générations précédentes et que l'on souhaite transmettre.",
+          "categorie": "culture et transmission",
+          "amorce": "pa",
+          "variantes": [
+            "héritage culturel"
+          ]
+        }
+      ]
+    },
+    {
+      "palier": 9,
+      "items": [
+        {
+          "mot": "discernement",
+          "definition": "Capacité à apprécier une situation avec finesse et à distinguer ce qui mérite d'être retenu ou écarté.",
+          "categorie": "qualités du jugement",
+          "amorce": "di",
+          "variantes": [
+            "clairvoyance",
+            "lucidité"
+          ]
+        },
+        {
+          "mot": "circonspection",
+          "definition": "Attitude de grande retenue dans le jugement et l'action, qui conduit à examiner les risques avant de se prononcer.",
+          "categorie": "attitudes face à l'incertitude",
+          "amorce": "cir",
+          "variantes": [
+            "prudence",
+            "précaution"
+          ]
+        },
+        {
+          "mot": "tact",
+          "definition": "Art d'aborder un sujet délicat sans blesser ni embarrasser son interlocuteur.",
+          "categorie": "qualités relationnelles",
+          "amorce": "ta",
+          "variantes": [
+            "délicatesse",
+            "doigté"
+          ]
+        },
+        {
+          "mot": "sobriété",
+          "definition": "Qualité d'un style dépouillé, sans ornements superflus ni effets excessifs.",
+          "categorie": "qualités d'expression",
+          "amorce": "so",
+          "variantes": [
+            "simplicité",
+            "dépouillement"
+          ]
+        },
+        {
+          "mot": "concision",
+          "definition": "Qualité d'un propos qui exprime l'essentiel en peu de mots, sans développement inutile.",
+          "categorie": "qualités d'expression",
+          "amorce": "con",
+          "variantes": [
+            "brièveté"
+          ]
+        },
+        {
+          "mot": "éloquence",
+          "definition": "Art de bien parler de façon à convaincre ou à émouvoir ceux qui écoutent.",
+          "categorie": "expression orale",
+          "amorce": "é",
+          "variantes": []
+        },
+        {
+          "mot": "candeur",
+          "definition": "Sincérité ingénue d'une personne qui ne soupçonne pas la tromperie et se montre sans artifice.",
+          "categorie": "dispositions personnelles",
+          "amorce": "can",
+          "variantes": [
+            "naïveté",
+            "innocence",
+            "ingénuité"
+          ]
+        },
+        {
+          "mot": "désinvolture",
+          "definition": "Manière d'agir avec une liberté détachée, qui peut donner l'impression de ne pas prendre les obligations au sérieux.",
+          "categorie": "attitudes sociales",
+          "amorce": "dé",
+          "variantes": [
+            "nonchalance"
+          ]
+        },
+        {
+          "mot": "désarroi",
+          "definition": "Trouble profond d'une personne qui ne sait plus comment agir face à une situation qui la dépasse.",
+          "categorie": "états émotionnels",
+          "amorce": "dé",
+          "variantes": [
+            "désorientation",
+            "perplexité"
+          ]
+        },
+        {
+          "mot": "ambivalence",
+          "definition": "Présence simultanée de sentiments ou de désirs opposés envers une même personne ou une même situation.",
+          "categorie": "vie affective",
+          "amorce": "am",
+          "variantes": []
+        },
+        {
+          "mot": "scrupule",
+          "definition": "Hésitation d'ordre moral devant un acte dont on craint qu'il puisse être fautif ou nuire à quelqu'un.",
+          "categorie": "jugement moral",
+          "amorce": "scru",
+          "variantes": []
+        },
+        {
+          "mot": "bienveillance",
+          "definition": "Disposition à considérer autrui favorablement et à vouloir son bien.",
+          "categorie": "relations humaines",
+          "amorce": "bien",
+          "variantes": [
+            "bonté",
+            "sollicitude"
+          ]
+        },
+        {
+          "mot": "perspicace",
+          "definition": "Quel adjectif qualifie une personne qui comprend rapidement ce qui se cache derrière les apparences ?",
+          "categorie": "qualités du jugement",
+          "amorce": "per",
+          "variantes": [
+            "clairvoyant",
+            "clairvoyante",
+            "lucide",
+            "pénétrant",
+            "pénétrante"
+          ]
+        },
+        {
+          "mot": "prolixe",
+          "definition": "Quel adjectif qualifie une personne qui s'exprime beaucoup trop longuement, avec un excès de détails ?",
+          "categorie": "manières de s'exprimer",
+          "amorce": "pro",
+          "variantes": [
+            "verbeux",
+            "verbeuse",
+            "bavard",
+            "bavarde"
+          ]
+        },
+        {
+          "mot": "laconique",
+          "definition": "Quel adjectif qualifie une réponse volontairement très brève, réduite à quelques mots ?",
+          "categorie": "manières de s'exprimer",
+          "amorce": "la",
+          "variantes": [
+            "succinct",
+            "succincte",
+            "concis",
+            "concise",
+            "lapidaire"
+          ]
+        },
+        {
+          "mot": "pondéré",
+          "definition": "Quel adjectif qualifie une personne qui réagit avec calme, sans emportement ni prise de position extrême ?",
+          "categorie": "attitudes personnelles",
+          "amorce": "pon",
+          "variantes": [
+            "pondérée",
+            "mesuré",
+            "mesurée",
+            "modéré",
+            "modérée",
+            "tempéré",
+            "tempérée",
+            "posé",
+            "posée"
+          ]
+        },
+        {
+          "mot": "véhément",
+          "definition": "Quel adjectif qualifie un propos exprimé avec une force passionnée et une grande intensité ?",
+          "categorie": "intensité de l'expression",
+          "amorce": "vé",
+          "variantes": [
+            "fougueux",
+            "ardent",
+            "virulent"
+          ]
+        },
+        {
+          "mot": "désuet",
+          "definition": "Quel adjectif qualifie un usage autrefois courant, mais aujourd'hui sorti des habitudes et paraissant d'une autre époque ?",
+          "categorie": "rapport au temps",
+          "amorce": "dé",
+          "variantes": [
+            "suranné",
+            "vieilli",
+            "démodé",
+            "obsolète"
+          ]
+        },
+        {
+          "mot": "péremptoire",
+          "definition": "Quel adjectif qualifie une affirmation énoncée comme une vérité incontestable, qui ferme la porte à toute discussion ?",
+          "categorie": "manières d'affirmer",
+          "amorce": "pé",
+          "variantes": [
+            "tranchant",
+            "tranchante",
+            "sans appel",
+            "dogmatique",
+            "catégorique"
+          ]
+        },
+        {
+          "mot": "affable",
+          "definition": "Quel adjectif qualifie une personne qui met les autres à l'aise dès le premier contact et les reçoit avec courtoisie ?",
+          "categorie": "qualités relationnelles",
+          "amorce": "a",
+          "variantes": [
+            "avenant",
+            "avenante",
+            "accueillant",
+            "accueillante",
+            "amène",
+            "cordial",
+            "cordiale",
+            "aimable"
+          ]
+        },
+        {
+          "mot": "tangible",
+          "definition": "Quel adjectif qualifie une preuve directement observable, sur laquelle on peut s'appuyer plutôt que sur une simple impression ?",
+          "categorie": "solidité des éléments",
+          "amorce": "tan",
+          "variantes": [
+            "palpable",
+            "matériel",
+            "matérielle",
+            "concret",
+            "concrète",
+            "vérifiable"
+          ]
+        },
+        {
+          "mot": "plausible",
+          "definition": "Quel adjectif qualifie une explication qui paraît pouvoir être vraie, sans être encore démontrée ?",
+          "categorie": "degré de crédibilité",
+          "amorce": "plau",
+          "variantes": [
+            "vraisemblable",
+            "crédible",
+            "possible"
+          ]
+        },
+        {
+          "mot": "précaire",
+          "definition": "Quel adjectif qualifie une situation sans stabilité assurée, exposée à se dégrader ou à disparaître rapidement ?",
+          "categorie": "stabilité des situations",
+          "amorce": "pré",
+          "variantes": [
+            "fragile",
+            "instable",
+            "incertain",
+            "incertaine"
+          ]
+        },
+        {
+          "mot": "stoïque",
+          "definition": "Quel adjectif qualifie une personne qui supporte une épreuve pénible avec fermeté, sans se plaindre ?",
+          "categorie": "attitudes face à l'épreuve",
+          "amorce": "sto",
+          "variantes": [
+            "impassible",
+            "imperturbable"
+          ]
+        }
+      ]
+    },
+    {
+      "palier": 10,
+      "items": [
+        {
+          "mot": "corroborer",
+          "definition": "Quel verbe signifie apporter de nouveaux éléments qui renforcent la crédibilité d'une affirmation déjà avancée ?",
+          "categorie": "appui d'une affirmation",
+          "amorce": "co",
+          "variantes": [
+            "confirmer",
+            "conforter",
+            "étayer"
+          ]
+        },
+        {
+          "mot": "réfuter",
+          "definition": "Quel verbe signifie démontrer, par des raisons ou des preuves, qu'une affirmation est fausse ?",
+          "categorie": "examen d'un argument",
+          "amorce": "ré",
+          "variantes": [
+            "invalider",
+            "démentir"
+          ]
+        },
+        {
+          "mot": "concéder",
+          "definition": "Quel verbe signifie donner raison à son interlocuteur sur un point précis, tout en maintenant un désaccord sur le reste ?",
+          "categorie": "discussion et accord partiel",
+          "amorce": "con",
+          "variantes": [
+            "admettre",
+            "reconnaître",
+            "accorder"
+          ]
+        },
+        {
+          "mot": "objecter",
+          "definition": "Quel verbe signifie présenter à son interlocuteur une raison qui s'oppose à ce qu'il propose ?",
+          "categorie": "discussion et désaccord",
+          "amorce": "o",
+          "variantes": [
+            "opposer",
+            "rétorquer"
+          ]
+        },
+        {
+          "mot": "inférer",
+          "definition": "Quel verbe signifie tirer une conclusion à partir d'indices ou de propositions dont on dispose ?",
+          "categorie": "raisonnement",
+          "amorce": "in",
+          "variantes": [
+            "déduire",
+            "conclure"
+          ]
+        },
+        {
+          "mot": "extrapoler",
+          "definition": "Quel verbe signifie prolonger des observations au-delà du domaine où elles ont été recueillies, pour avancer un résultat dans un cas encore inconnu ?",
+          "categorie": "raisonnement et anticipation",
+          "amorce": "ex",
+          "variantes": []
+        },
+        {
+          "mot": "présupposer",
+          "definition": "Quel verbe signifie tenir une idée pour admise avant même de développer un raisonnement qui en dépend ?",
+          "categorie": "points de départ d'un raisonnement",
+          "amorce": "pré",
+          "variantes": [
+            "supposer",
+            "postuler"
+          ]
+        },
+        {
+          "mot": "postuler",
+          "definition": "Quel verbe signifie poser explicitement une proposition comme point de départ d'un raisonnement, sans la démontrer à ce stade ?",
+          "categorie": "points de départ d'un raisonnement",
+          "amorce": "pos",
+          "variantes": [
+            "supposer",
+            "admettre"
+          ]
+        },
+        {
+          "mot": "étayer",
+          "definition": "Quel verbe signifie soutenir une thèse à l'aide de raisons, d'exemples ou de preuves ?",
+          "categorie": "construction d'un argument",
+          "amorce": "é",
+          "variantes": [
+            "appuyer",
+            "justifier",
+            "argumenter",
+            "corroborer"
+          ]
+        },
+        {
+          "mot": "expliciter",
+          "definition": "Quel verbe signifie développer ce qui restait sous-entendu dans une idée pour le rendre directement compréhensible ?",
+          "categorie": "précision d'une explication",
+          "amorce": "ex",
+          "variantes": [
+            "clarifier",
+            "expliquer",
+            "éclaircir"
+          ]
+        },
+        {
+          "mot": "circonscrire",
+          "definition": "Quel verbe signifie fixer les limites exactes d'un sujet afin que la discussion ne s'étende pas au-delà ?",
+          "categorie": "définition d'un sujet",
+          "amorce": "cir",
+          "variantes": [
+            "délimiter",
+            "cerner",
+            "borner"
+          ]
+        },
+        {
+          "mot": "paraphraser",
+          "definition": "Quel verbe signifie reprendre le contenu d'un texte avec d'autres mots, souvent en le développant davantage ?",
+          "categorie": "reprise d'un texte",
+          "amorce": "pa",
+          "variantes": [
+            "reformuler"
+          ]
+        },
+        {
+          "mot": "stipuler",
+          "definition": "Quel verbe signifie énoncer expressément une disposition dans un contrat ?",
+          "categorie": "formulation contractuelle",
+          "amorce": "sti",
+          "variantes": [
+            "prévoir",
+            "préciser",
+            "disposer"
+          ]
+        },
+        {
+          "mot": "préconiser",
+          "definition": "Quel verbe signifie présenter une solution comme celle qu'il serait souhaitable d'adopter face à un problème ?",
+          "categorie": "proposition d'une action",
+          "amorce": "pré",
+          "variantes": [
+            "conseiller",
+            "recommander",
+            "prôner"
+          ]
+        },
+        {
+          "mot": "temporiser",
+          "definition": "Quel verbe signifie différer volontairement une décision en attendant un moment jugé plus favorable ?",
+          "categorie": "gestion d'une décision",
+          "amorce": "tem",
+          "variantes": [
+            "tergiverser",
+            "attendre",
+            "patienter"
+          ]
+        },
+        {
+          "mot": "éluder",
+          "definition": "Quel verbe signifie se soustraire à une question embarrassante en détournant la conversation plutôt qu'en y répondant ?",
+          "categorie": "attitudes dans une discussion",
+          "amorce": "é",
+          "variantes": [
+            "esquiver",
+            "contourner",
+            "éviter"
+          ]
+        },
+        {
+          "mot": "atténuer",
+          "definition": "Quel verbe signifie diminuer la force ou la gravité d'un propos sans en supprimer complètement le contenu ?",
+          "categorie": "degré d'affirmation",
+          "amorce": "a",
+          "variantes": [
+            "adoucir",
+            "tempérer",
+            "modérer",
+            "nuancer"
+          ]
+        },
+        {
+          "mot": "pondérer",
+          "definition": "Quel verbe signifie attribuer une importance différente à plusieurs éléments avant de les combiner dans un jugement ?",
+          "categorie": "évaluation de plusieurs éléments",
+          "amorce": "pon",
+          "variantes": []
+        },
+        {
+          "mot": "récuser",
+          "definition": "Quel verbe signifie refuser qu'une personne participe à un jugement parce que son impartialité est mise en doute ?",
+          "categorie": "impartialité du jugement",
+          "amorce": "ré",
+          "variantes": [
+            "écarter",
+            "disqualifier"
+          ]
+        },
+        {
+          "mot": "alléguer",
+          "definition": "Quel verbe signifie avancer un fait pour soutenir sa position sans en fournir nécessairement la preuve ?",
+          "categorie": "statut d'une affirmation",
+          "amorce": "a",
+          "variantes": [
+            "invoquer",
+            "affirmer",
+            "prétendre"
+          ]
+        },
+        {
+          "mot": "imputer",
+          "definition": "Quel verbe signifie considérer une personne comme responsable d'une faute ou d'un dommage ?",
+          "categorie": "attribution d'une responsabilité",
+          "amorce": "im",
+          "variantes": [
+            "attribuer",
+            "reprocher",
+            "incriminer"
+          ]
+        },
+        {
+          "mot": "dissocier",
+          "definition": "Quel verbe signifie considérer séparément deux questions habituellement liées, pour ne pas les traiter comme un seul problème ?",
+          "categorie": "organisation d'un raisonnement",
+          "amorce": "di",
+          "variantes": [
+            "séparer",
+            "distinguer",
+            "découpler"
+          ]
+        },
+        {
+          "mot": "concorder",
+          "definition": "Quel verbe signifie, pour deux témoignages, présenter des informations compatibles qui vont dans le même sens ?",
+          "categorie": "relations entre informations",
+          "amorce": "con",
+          "variantes": [
+            "coïncider",
+            "converger",
+            "s'accorder"
+          ]
+        },
+        {
+          "mot": "prévaloir",
+          "definition": "Quel verbe signifie avoir plus de poids qu'une autre considération et l'emporter dans une décision ?",
+          "categorie": "poids des arguments",
+          "amorce": "pré",
+          "variantes": [
+            "primer",
+            "prédominer"
+          ]
+        }
+      ]
+    },
+    {
+      "palier": 11,
+      "items": [
+        {
+          "mot": "analogie",
+          "definition": "Rapport de ressemblance entre deux situations différentes, utilisé pour éclairer l'une à partir de l'autre.",
+          "categorie": "rapprochements entre idées",
+          "amorce": "a",
+          "variantes": [
+            "similitude",
+            "parallèle"
+          ]
+        },
+        {
+          "mot": "paradoxe",
+          "definition": "Proposition qui heurte l'opinion commune ou semble contradictoire, tout en pouvant conduire à une réflexion fondée.",
+          "categorie": "tensions dans le raisonnement",
+          "amorce": "pa",
+          "variantes": []
+        },
+        {
+          "mot": "ironie",
+          "definition": "Manière de faire comprendre, souvent avec une intention moqueuse, autre chose que ce que les mots affirment littéralement.",
+          "categorie": "interprétation des propos",
+          "amorce": "i",
+          "variantes": []
+        },
+        {
+          "mot": "anachronisme",
+          "definition": "Présence d'un objet, d'un mot ou d'une pratique dans une époque à laquelle il n'appartient pas.",
+          "categorie": "cohérence historique",
+          "amorce": "a",
+          "variantes": []
+        },
+        {
+          "mot": "euphémisme",
+          "definition": "Expression qui adoucit la formulation d'une réalité jugée pénible, choquante ou brutale.",
+          "categorie": "figures de style",
+          "amorce": "eu",
+          "variantes": [
+            "atténuation"
+          ]
+        },
+        {
+          "mot": "hyperbole",
+          "definition": "Figure de style qui amplifie volontairement une réalité de façon excessive pour frapper l'esprit.",
+          "categorie": "figures de style",
+          "amorce": "i",
+          "variantes": [
+            "exagération"
+          ]
+        },
+        {
+          "mot": "oxymore",
+          "definition": "Figure de style qui réunit, dans une expression très courte, deux mots de sens opposés.",
+          "categorie": "figures de style",
+          "amorce": "o",
+          "variantes": [
+            "oxymoron"
+          ]
+        },
+        {
+          "mot": "litote",
+          "definition": "Figure de style qui dit volontairement moins pour faire entendre davantage, souvent en niant le contraire de ce que l'on veut exprimer.",
+          "categorie": "figures de style",
+          "amorce": "li",
+          "variantes": []
+        },
+        {
+          "mot": "métonymie",
+          "definition": "Figure de style qui remplace un nom par un autre en raison d'un lien concret, par exemple le contenant pour son contenu.",
+          "categorie": "figures de style",
+          "amorce": "mé",
+          "variantes": []
+        },
+        {
+          "mot": "polysémie",
+          "definition": "Propriété d'un même mot de posséder plusieurs sens liés les uns aux autres.",
+          "categorie": "sens des mots",
+          "amorce": "po",
+          "variantes": []
+        },
+        {
+          "mot": "causalité",
+          "definition": "Relation dans laquelle un phénomène produit un autre phénomène, au-delà du simple fait qu'ils apparaissent ensemble.",
+          "categorie": "relations entre phénomènes",
+          "amorce": "co",
+          "variantes": [
+            "lien de cause à effet"
+          ]
+        },
+        {
+          "mot": "contingence",
+          "definition": "Caractère de ce qui existe ou se produit, mais aurait pu ne pas exister ou se produire autrement.",
+          "categorie": "possibilité et nécessité",
+          "amorce": "con",
+          "variantes": []
+        },
+        {
+          "mot": "déterminisme",
+          "definition": "Conception selon laquelle les phénomènes résultent de causes qui, dans les mêmes conditions, produisent les mêmes effets.",
+          "categorie": "explication des phénomènes",
+          "amorce": "dé",
+          "variantes": []
+        },
+        {
+          "mot": "relativisme",
+          "definition": "Position selon laquelle les jugements et les valeurs dépendent du contexte ou du point de vue, plutôt que de critères valables absolument.",
+          "categorie": "philosophie du jugement",
+          "amorce": "re",
+          "variantes": []
+        },
+        {
+          "mot": "scepticisme",
+          "definition": "Attitude qui suspend l'adhésion à une affirmation en doutant qu'on dispose de raisons suffisantes pour la tenir pour vraie.",
+          "categorie": "attitudes envers la connaissance",
+          "amorce": "scep",
+          "variantes": [
+            "doute",
+            "réserve"
+          ]
+        },
+        {
+          "mot": "empirisme",
+          "definition": "Courant de pensée qui fait de l'expérience sensible la source principale de nos connaissances.",
+          "categorie": "théories de la connaissance",
+          "amorce": "em",
+          "variantes": []
+        },
+        {
+          "mot": "rationalisme",
+          "definition": "Courant de pensée qui accorde à la raison un rôle premier dans l'accès à la connaissance.",
+          "categorie": "théories de la connaissance",
+          "amorce": "ra",
+          "variantes": []
+        },
+        {
+          "mot": "altruisme",
+          "definition": "Disposition à agir pour le bien d'autrui, même lorsque cela ne procure pas d'avantage personnel.",
+          "categorie": "motivations de l'action",
+          "amorce": "al",
+          "variantes": [
+            "désintéressement",
+            "générosité"
+          ]
+        },
+        {
+          "mot": "utopie",
+          "definition": "Représentation d'une société idéale qui n'existe pas dans la réalité et sert parfois à critiquer le monde présent.",
+          "categorie": "imagination politique",
+          "amorce": "u",
+          "variantes": []
+        },
+        {
+          "mot": "idéologie",
+          "definition": "Ensemble organisé d'idées et de valeurs qui oriente la manière dont un groupe comprend la société et souhaite la transformer.",
+          "categorie": "représentations collectives",
+          "amorce": "i",
+          "variantes": []
+        },
+        {
+          "mot": "pluralisme",
+          "definition": "Principe qui reconnaît et permet la coexistence de plusieurs opinions, croyances ou courants dans une société.",
+          "categorie": "organisation de la vie collective",
+          "amorce": "plu",
+          "variantes": []
+        },
+        {
+          "mot": "universalité",
+          "definition": "Caractère de ce qui vaut pour tous, sans restriction à un groupe, à un lieu ou à une époque particuliers.",
+          "categorie": "portée d'une idée",
+          "amorce": "u",
+          "variantes": []
+        },
+        {
+          "mot": "singularité",
+          "definition": "Caractère propre et distinctif par lequel une personne, une œuvre ou une situation se différencie de toutes les autres.",
+          "categorie": "caractère d'une chose",
+          "amorce": "sin",
+          "variantes": [
+            "unicité",
+            "originalité",
+            "particularité"
+          ]
+        },
+        {
+          "mot": "dialectique",
+          "definition": "Démarche de pensée qui fait progresser la réflexion par la confrontation de positions opposées et l'examen de leurs contradictions.",
+          "categorie": "méthodes de réflexion",
+          "amorce": "di",
+          "variantes": []
+        }
+      ]
+    },
+    {
+      "palier": 12,
+      "items": [
+        {
+          "mot": "équivoque",
+          "definition": "Une formule peut être comprise de deux façons et l'orateur ne permet pas de savoir laquelle il retient. Quel adjectif qualifie cette formule ?",
+          "categorie": "précision de l'expression",
+          "amorce": "é",
+          "variantes": [
+            "ambigu",
+            "ambiguë",
+            "ambigüe"
+          ]
+        },
+        {
+          "mot": "fallacieux",
+          "definition": "Un argument conduit à une conclusion fausse en donnant l'impression d'être valable. Quel adjectif le qualifie ?",
+          "categorie": "qualité d'un argument",
+          "amorce": "fa",
+          "variantes": [
+            "trompeur",
+            "mensonger",
+            "spécieux"
+          ]
+        },
+        {
+          "mot": "spécieux",
+          "definition": "Un raisonnement séduit au premier abord par son apparente justesse, mais l'examen révèle qu'il n'est pas fondé. Quel adjectif souligne cette apparence trompeuse ?",
+          "categorie": "apparence d'un raisonnement",
+          "amorce": "spé",
+          "variantes": [
+            "fallacieux",
+            "captieux"
+          ]
+        },
+        {
+          "mot": "probant",
+          "definition": "Un élément suffit à établir solidement le point discuté et emporte la conviction. Quel adjectif qualifie cet élément de preuve ?",
+          "categorie": "force d'une preuve",
+          "amorce": "pro",
+          "variantes": [
+            "convaincant",
+            "concluant",
+            "décisif"
+          ]
+        },
+        {
+          "mot": "dilatoire",
+          "definition": "Une personne multiplie les demandes de précision uniquement pour retarder la décision. Quel adjectif qualifie cette manœuvre ?",
+          "categorie": "intentions dans une discussion",
+          "amorce": "di",
+          "variantes": []
+        },
+        {
+          "mot": "lapidaire",
+          "definition": "Un avis tient en quelques mots nets et incisifs, sans aucune explication supplémentaire. Quel adjectif qualifie cette formulation ?",
+          "categorie": "manières de formuler",
+          "amorce": "la",
+          "variantes": [
+            "laconique",
+            "concis",
+            "concise",
+            "succinct",
+            "succincte"
+          ]
+        },
+        {
+          "mot": "sibyllin",
+          "definition": "Une réponse semble receler un sens caché et demeure difficile à interpréter, comme une devinette. Quel adjectif soutenu la qualifie ?",
+          "categorie": "interprétation d'un message",
+          "amorce": "si",
+          "variantes": [
+            "sibylline",
+            "énigmatique",
+            "obscur",
+            "obscure",
+            "cryptique"
+          ]
+        },
+        {
+          "mot": "elliptique",
+          "definition": "Un récit saute volontairement des étapes que le lecteur doit reconstituer, sans tout exprimer. Quel adjectif qualifie cette manière de raconter ?",
+          "categorie": "construction d'un récit",
+          "amorce": "é",
+          "variantes": [
+            "allusif"
+          ]
+        },
+        {
+          "mot": "circonstancié",
+          "definition": "Un compte rendu relate le lieu, les moments et toutes les conditions dans lesquelles les faits se sont déroulés. Quel adjectif qualifie ce récit ?",
+          "categorie": "précision d'un récit",
+          "amorce": "cir",
+          "variantes": [
+            "détaillé",
+            "précis",
+            "minutieux"
+          ]
+        },
+        {
+          "mot": "exhaustif",
+          "definition": "Un inventaire couvre tous les éléments du domaine annoncé, sans aucune omission. Quel adjectif le qualifie ?",
+          "categorie": "étendue d'un examen",
+          "amorce": "ex",
+          "variantes": [
+            "complet",
+            "intégral"
+          ]
+        },
+        {
+          "mot": "parcimonieux",
+          "definition": "Une personne n'utilise une ressource qu'en très petite quantité, en veillant à en dépenser le moins possible. Quel adjectif qualifie son usage de cette ressource ?",
+          "categorie": "mesure dans l'usage des ressources",
+          "amorce": "par",
+          "variantes": [
+            "économe",
+            "mesuré",
+            "frugal"
+          ]
+        },
+        {
+          "mot": "magnanime",
+          "definition": "Après un conflit, une personne en position de force pardonne à son adversaire et renonce à se venger. Quel adjectif souligne sa grandeur d'âme ?",
+          "categorie": "attitudes envers autrui",
+          "amorce": "ma",
+          "variantes": [
+            "clément",
+            "clémente",
+            "généreux",
+            "généreuse",
+            "indulgent",
+            "indulgente"
+          ]
+        },
+        {
+          "mot": "intempestif",
+          "definition": "Une intervention surgit au mauvais moment et perturbe la discussion en cours. Quel adjectif qualifie cette intervention ?",
+          "categorie": "adéquation au moment",
+          "amorce": "in",
+          "variantes": [
+            "intempestive",
+            "inopportun",
+            "inopportune",
+            "malvenu",
+            "malvenue",
+            "inapproprié",
+            "inappropriée"
+          ]
+        },
+        {
+          "mot": "opportun",
+          "definition": "Une proposition arrive au moment où elle répond exactement au besoin présent. Quel adjectif souligne qu'elle survient à propos ?",
+          "categorie": "adéquation au moment",
+          "amorce": "o",
+          "variantes": [
+            "opportune",
+            "bienvenu",
+            "bienvenue",
+            "approprié",
+            "appropriée",
+            "judicieux",
+            "judicieuse"
+          ]
+        },
+        {
+          "mot": "salutaire",
+          "definition": "Une remarque désagréable à entendre permet pourtant d'éviter une erreur importante et de corriger la situation. Quel adjectif souligne son effet favorable ?",
+          "categorie": "effets d'une intervention",
+          "amorce": "sa",
+          "variantes": [
+            "bénéfique",
+            "profitable",
+            "utile"
+          ]
+        },
+        {
+          "mot": "insidieux",
+          "definition": "Un problème s'installe discrètement, sans signes immédiatement alarmants, puis révèle progressivement ses effets nuisibles. Quel adjectif qualifie cette manière d'apparaître ?",
+          "categorie": "évolution d'un danger",
+          "amorce": "in",
+          "variantes": [
+            "insidieuse",
+            "sournois",
+            "sournoise",
+            "pernicieux",
+            "pernicieuse"
+          ]
+        },
+        {
+          "mot": "rédhibitoire",
+          "definition": "Un défaut suffit à lui seul à faire abandonner un achat, quels que soient les autres avantages. Quel adjectif qualifie ce défaut ?",
+          "categorie": "obstacles à une décision",
+          "amorce": "ré",
+          "variantes": [
+            "éliminatoire",
+            "inacceptable"
+          ]
+        },
+        {
+          "mot": "inéluctable",
+          "definition": "Toutes les tentatives pour empêcher un événement échouent et rien ne permet plus de l'éviter. Quel adjectif qualifie sa survenue ?",
+          "categorie": "possibilité d'agir sur un événement",
+          "amorce": "i",
+          "variantes": [
+            "inévitable",
+            "fatal",
+            "fatale",
+            "inexorable"
+          ]
+        },
+        {
+          "mot": "indéfectible",
+          "definition": "Une personne se tient auprès d'un proche à travers toutes les épreuves, sans jamais se détourner de lui. Quel adjectif qualifie son soutien ?",
+          "categorie": "solidité d'un engagement",
+          "amorce": "in",
+          "variantes": [
+            "infaillible",
+            "constant",
+            "inébranlable",
+            "fidèle"
+          ]
+        },
+        {
+          "mot": "velléitaire",
+          "definition": "Une personne exprime souvent son intention d'agir, mais s'arrête avant de passer réellement à l'action. Quel adjectif la qualifie ?",
+          "categorie": "passage de l'intention à l'action",
+          "amorce": "vel",
+          "variantes": [
+            "indécis",
+            "indécise",
+            "irrésolu",
+            "irrésolue"
+          ]
+        },
+        {
+          "mot": "versatile",
+          "definition": "Une personne change souvent d'avis et d'engagement, au gré des influences du moment. Quel adjectif qualifie cette instabilité ?",
+          "categorie": "constance des attitudes",
+          "amorce": "ver",
+          "variantes": [
+            "inconstant",
+            "inconstante",
+            "changeant",
+            "changeante",
+            "instable",
+            "volage"
+          ]
+        },
+        {
+          "mot": "acrimonie",
+          "definition": "Dans un échange, les critiques prennent une tournure mordante et malveillante, traduisant un ressentiment tenace. Quel nom soutenu désigne ce ton des paroles ?",
+          "categorie": "ton d'un échange",
+          "amorce": "a",
+          "variantes": [
+            "aigreur",
+            "amertume",
+            "âpreté"
+          ]
+        },
+        {
+          "mot": "équanimité",
+          "definition": "Une personne réagit avec le même calme lorsqu'elle réussit et lorsqu'elle subit un revers, sans se laisser emporter ni abattre. Quel nom soutenu désigne cette attitude ?",
+          "categorie": "stabilité émotionnelle",
+          "amorce": "é",
+          "variantes": [
+            "sérénité",
+            "impassibilité",
+            "égalité d'humeur"
+          ]
+        },
+        {
+          "mot": "abnégation",
+          "definition": "Une personne renonce volontairement à son intérêt propre pour se consacrer aux autres ou à une cause. Quel nom désigne ce sacrifice de soi ?",
+          "categorie": "motivations de l'action",
+          "amorce": "ab",
+          "variantes": [
+            "dévouement",
+            "désintéressement",
+            "renoncement"
+          ]
+        }
+      ]
     }
   ]
 }

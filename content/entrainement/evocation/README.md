@@ -12,7 +12,7 @@ Ces familles ne forment plus une échelle unique. L'accès lexical, la mémoire 
 
 ## Structure
 
-Le parcours **Retrouver le mot** comporte six paliers de 24 mots :
+Le parcours **Retrouver le mot** comporte douze paliers de 24 mots :
 
 1. QCM de soutien, mots usuels adultes.
 2. Objets familiers — départ automatique, réponse orale ou clavier.
@@ -20,8 +20,14 @@ Le parcours **Retrouver le mot** comporte six paliers de 24 mots :
 4. Notions courantes en contexte.
 5. Verbes utiles dans les démarches et le travail.
 6. Mots à mobiliser dans une situation courte.
+7. Culture générale courante : arts, sciences, société.
+8. Concepts de culture générale plus précis.
+9. Nuances de langue soutenue.
+10. Verbes de précision et d'argumentation.
+11. Interprétation et raisonnement.
+12. Nuances soutenues dans des situations discriminantes.
 
-Les banques sont dans `palier-08..13.json`, avec identifiants `ev2-…` ; leurs numéros internes sont remappés en paliers 1–6 du parcours. Les fichiers 1–7 restent conservés pour les historiques et les autres parcours. Les séances contiennent 10/10/10/8/8/6 questions selon le niveau, jamais les 24 mots d'un palier en une seule séance. La durée dépend du besoin d'indices et du rythme de la personne.
+Les banques sont dans `palier-08..19.json`, avec identifiants `ev2-…` ; leurs numéros internes sont remappés en paliers 1–12 du parcours. Les fichiers 1–7 restent conservés pour les historiques et les autres parcours. Les séances contiennent 10/10/10/8/8/6 questions aux six premiers paliers, puis six questions à chaque palier supérieur selon le niveau, jamais les 24 mots d'un palier en une seule séance. La durée dépend du besoin d'indices et du rythme de la personne.
 
 La difficulté n'est pas une échelle clinique : un terme inconnu ne témoigne pas d'une panne d'accès lexical. La progression relève de la familiarité, de la précision et de la formulation, sans imposer du jargon. Définitions et variantes sont à relire avec l'orthophoniste.
 

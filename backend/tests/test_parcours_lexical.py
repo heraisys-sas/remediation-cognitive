@@ -6,7 +6,7 @@ def test_palier_quatre_sans_qcm_et_historiques_preserves():
     chargeur = ChargeurContenu()
     parcours = chargeur.items('evocation', 'acces-lexical')
     assert {i['type'] for i in parcours if i['palier'] == 1} == {'reconnaissance'}
-    for palier in (2, 3, 4, 5, 6):
+    for palier in range(2, 13):
         items = [i for i in parcours if i['palier'] == palier]
         assert items
         assert {i['type'] for i in items} == {'rappel-indice'}
@@ -23,8 +23,8 @@ def test_banque_adulte_variee_et_dosee():
     from backend.app.domain.correction import corriger
     c = ChargeurContenu()
     items = c.items('evocation', 'acces-lexical')
-    assert len(items) == 144
-    for palier in range(1, 7):
+    assert len(items) == 288
+    for palier in range(1, 13):
         lot = [i for i in items if i['palier'] == palier]
         assert len(lot) == 24
         assert len({i['reponse']['valeur'] for i in lot}) == 24
@@ -39,7 +39,7 @@ def test_banque_adulte_variee_et_dosee():
 
 
 def test_quota_reel_de_seance(client):
-    for palier, quota in [(2, 10), (6, 6)]:
+    for palier, quota in [(2, 10), (6, 6), (12, 6)]:
         resultat = client.post('/api/entrainement/evocation/sessions', json={
             'parcours': 'acces-lexical', 'palier': palier, 'sans_limite_sessions': True})
         assert resultat.status_code == 201

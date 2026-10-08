@@ -5,7 +5,7 @@ import re
 import unicodedata
 
 ROOT = Path(__file__).resolve().parent.parent
-DESCRIPTIONS = ["QCM de soutien", "Objets familiers", "Mots précis et documents", "Notions en contexte", "Verbes utiles", "Mots en situation"]
+DESCRIPTIONS = ["QCM de soutien", "Objets familiers", "Mots précis et documents", "Notions en contexte", "Verbes utiles", "Mots en situation", "Culture générale courante", "Concepts de culture générale", "Nuances de langue soutenue", "Verbes de précision", "Interprétation et raisonnement", "Nuances soutenues en situation"]
 
 
 def normaliser(texte):
