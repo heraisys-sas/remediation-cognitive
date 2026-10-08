@@ -24,8 +24,11 @@ Usage :
 
 from __future__ import annotations
 
-import argparse
-import json
+try:
+    from tools.generation import ecrire_json, arguments_generation
+except ModuleNotFoundError:
+    from generation import ecrire_json, arguments_generation
+
 import random
 from pathlib import Path
 try:
@@ -484,8 +487,7 @@ def ecrire_contenu(dry_run: bool = False) -> dict:
 
     for chemin, donnees in ecritures:
         if not dry_run:
-            chemin.parent.mkdir(parents=True, exist_ok=True)
-            chemin.write_text(json.dumps(donnees, ensure_ascii=False, indent=2) + "\n", encoding="utf-8")
+            ecrire_json(chemin, donnees)
 
     return {
         "evocation": len(items_ev),
@@ -510,9 +512,7 @@ DESCRIPTION_PALIERS["evocation"].extend(DESCRIPTIONS_ADULTES)
 
 
 def main() -> None:
-    analyseur = argparse.ArgumentParser(description=__doc__)
-    analyseur.add_argument("--dry-run", action="store_true", help="afficher les compteurs sans écrire")
-    args = analyseur.parse_args()
+    args = arguments_generation(__doc__)
     compteurs = ecrire_contenu(dry_run=args.dry_run)
     prefixe = "[dry-run] " if args.dry_run else ""
     print(

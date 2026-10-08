@@ -1,12 +1,12 @@
 """Le délai de feedback lexical ne doit pas sauter une question ultérieure."""
+from tools.verifier_interface import source_interface
 import shutil
 import subprocess
-from pathlib import Path
 from tools.verifier_interface import corps_fonction
 
 
 def test_suite_lexicale():
-    source = (Path(__file__).parents[2] / 'frontend/src/app.js').read_text()
+    source = source_interface()
     script = "function programmerSuiteLexicale(resultat, item) " + corps_fonction(source, 'programmerSuiteLexicale')
     script += r'''
 const assert=require('node:assert/strict');

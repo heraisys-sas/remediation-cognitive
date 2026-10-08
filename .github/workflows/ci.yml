@@ -25,6 +25,8 @@ jobs:
           node-version: '22'
       - name: Dépendances
         run: python -m pip install -r requirements-dev.txt
+      - name: Analyse statique Python
+        run: ruff check backend engine tools
       - name: Tests backend, moteur et interface
         run: python -m pytest -q
       - name: Contenu, réponses et rendu
@@ -36,4 +38,4 @@ jobs:
       - name: Syntaxe Python et JavaScript
         run: |
           python -m compileall -q backend engine tools
-          for fichier in frontend/src/*.js; do node --check "$fichier"; done
+          for fichier in frontend/src/*.js frontend/src/exercises/*.js; do node --check "$fichier"; done

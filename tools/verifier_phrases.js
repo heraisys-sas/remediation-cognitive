@@ -14,7 +14,7 @@ const fs = require("fs");
 const path = require("path");
 
 const racine = path.resolve(__dirname, "..");
-const source = fs.readFileSync(path.join(racine, "frontend", "src", "app.js"), "utf8");
+const source = require("./frontend_source")();
 
 /** Extrait un bloc équilibré à partir d'un index d'ouverture ( { ou [ ). */
 function blocEquilibre(texte, depart) {

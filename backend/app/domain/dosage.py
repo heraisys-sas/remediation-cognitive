@@ -12,7 +12,6 @@ from datetime import date, timedelta
 
 
 def verifier_droit_de_session(nb_sessions_du_jour: int, limite: int) -> bool:
-    """True si l'utilisateur peut encore démarrer une séance aujourd'hui."""
     return nb_sessions_du_jour < limite
 
 
@@ -30,21 +29,8 @@ DUREE_MAX_SEANCE_S = 600
 #: d'exercices** : une grille de déduction demande une chaîne de raisonnement complète
 #: (mémoire de travail + fonctions exécutives) et dure bien plus longtemps qu'un item
 #: de calcul mental — douze grilles ne tiendraient pas dans une séance.
-PARAMETRES_THEME: dict[str, dict[str, int | bool]] = {
-    # Les items sont courts et peu coûteux. Six séances restent un plafond par
-    # défaut ; le commutateur explicite peut encore le lever. La pratique
-    # anticipée évite qu'un palier de 14 à 19 items soit épuisé après deux
-    # séances alors que la personne souhaite poursuivre le calcul.
-    "calcul-mental": {"limite_sessions": 6, "inclure_non_dus": True},
-    "deduction": {"max_items": 6},
-    "garder-cap": {"max_items": 4},
-    "rappel-series": {"max_items": 4},
-    "series-entendues": {"max_items": 4},
-    "actualiser-consigne": {"max_items": 4},
-    "comparer-documents": {"max_items": 4},
-    "reperer-essentiel": {"max_items": 4},
+from .catalog import PARAMETRES_THEME
 
-}
 PARAMETRES_SEANCE_DEFAUT: dict[str, int | bool] = {
     "max_items": MAX_ITEMS_PAR_SEANCE,
     "duree_max_s": DUREE_MAX_SEANCE_S,
@@ -53,7 +39,6 @@ PARAMETRES_SEANCE_DEFAUT: dict[str, int | bool] = {
 
 
 def parametres_seance(theme: str) -> dict[str, int | bool]:
-    """Nombre d'exercices, durée maximale et nature de cette durée, pour ce thème."""
     return {**PARAMETRES_SEANCE_DEFAUT, **PARAMETRES_THEME.get(theme, {})}
 
 
@@ -92,17 +77,14 @@ def appliquer_cap_difficulte(palier_demande: int, cap_actif: int) -> int:
 
 
 def limite_sessions(categorie: str) -> int:
-    """Plafond de séances de la fenêtre courante pour cette catégorie de thème."""
     return int(LIMITES_SESSIONS.get(categorie, {}).get("limite", LIMITE_SESSIONS_DEFAUT))
 
 
 def limite_sessions_theme(theme: str, categorie: str) -> int:
-    """Plafond du thème, ou à défaut celui de sa catégorie."""
     return int(parametres_seance(theme).get("limite_sessions", limite_sessions(categorie)))
 
 
 def fenetre_sessions(categorie: str) -> str:
-    """Fenêtre de comptage du plafond : « jour » ou « semaine » (lundi–dimanche)."""
     return str(LIMITES_SESSIONS.get(categorie, {}).get("fenetre", FENETRE_SESSIONS_DEFAUT))
 
 

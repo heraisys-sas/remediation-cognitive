@@ -5,6 +5,7 @@ la forme dictée doit passer, et une réponse *fausse* doit rester refusée. Le 
 compte le plus : accepter une mauvaise réponse est plus grave que refuser une bonne réponse
 écrite autrement (ADR-008).
 """
+from tools.verifier_interface import source_interface
 
 import sys
 from pathlib import Path
@@ -86,8 +87,10 @@ def test_empan_dicté_en_mots_et_en_chiffres_donnent_la_meme_cle():
 
 def test_le_code_ne_se_dicte_pas():
     """La dictée est retirée des thèmes dont la réponse est du code (indentation, symboles)."""
-    source = (Path(__file__).resolve().parents[2] / "frontend" / "src" / "app.js").read_text()
-    assert "THEMES_SANS_DICTEE" in source and "python" in source
+    source = source_interface()
+    from backend.app.domain.catalog import proprietes_interface
+    assert proprietes_interface("python")["dictee"] is False
+    assert "etat.theme.interface?.dictee !== false" in source
 
 
 # --- Articles et réponses courtes écrites dans une phrase ---------------------

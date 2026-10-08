@@ -5,8 +5,12 @@ AAC mono 32 kbit/s, fichiers mutualisés par mot. L'application servie n'a plus
 besoin de synthèse vocale pour les stimuli. Les fichiers existants sont conservés.
 Changer PROFIL pour renouveler volontairement la voix/le débit du corpus.
 """
+
+try:
+    from tools.generation import ecrire_json
+except ModuleNotFoundError:
+    from generation import ecrire_json
 import hashlib
-import json
 import re
 import subprocess
 import tempfile
@@ -39,7 +43,7 @@ def main():
             entrees[mot]={'fichier':nom_fichier(mot),'duree_s':duree,'octets':chemin.stat().st_size}
     manifest={'profil':PROFIL,'voix':'Thomas (fr-FR)','debit_mots_min':155,
               'codec':'AAC mono 32 kbit/s','mots':entrees}
-    (BASE/'manifest.json').write_text(json.dumps(manifest,ensure_ascii=False,indent=2)+'\n')
+    ecrire_json(BASE/'manifest.json', manifest)
     print(f'{len(entrees)} mots, {sum(e["octets"] for e in entrees.values())} octets audio')
 
 if __name__=='__main__': main()

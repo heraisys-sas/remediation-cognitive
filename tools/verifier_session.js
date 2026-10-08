@@ -18,7 +18,7 @@ const fs = require("fs");
 const path = require("path");
 
 const racine = path.resolve(__dirname, "..");
-const source = fs.readFileSync(path.join(racine, "frontend", "src", "app.js"), "utf8");
+const source = require("./frontend_source")();
 
 /** Extrait un bloc équilibré à partir d'un index d'ouverture ( { ou [ ).
  *
@@ -88,7 +88,57 @@ const fabrique = new Function(`
     return { ok: true, status: 201, json: async () => reponseFactice };
   };
 
-  const etat = { actionEnCours: false };
+  "use strict";
+function createSessionState() {
+  return {
+  autoDictee: null,
+  dicteeActive: null,
+  dicteeAutoAutorisee: false,
+  theme: null,
+  session: null,
+  indexItem: 0,
+  repondu: false,
+  debutQuestion: 0,
+  confirmationFin: false,
+  minuterieConfirmation: null,
+  minuteriesMemo: [],
+  indicesReveles: 0,
+  optionChoisie: null,
+  reponseSoumise: "",
+  grille: null,
+  jetonChoisi: null,
+  enonceCourant: "",
+  consignesVues: new Set(),
+  consignesMemoVues: new Set(),
+  consignesAudioVues: new Set(),
+  seanceTerminee: false,
+  reprisesAfficher: new Set(),
+  reponsesAttendues: {},
+  sequence: {},
+  };
+}
+const etat = {
+  memoGeneration: 0,
+  actionEnCours: false,
+  reessai: null,
+  missions: [],
+  missionActive: null,
+  themesParId: new Map(),
+  seance: createSessionState(),
+};
+// Façade maintenue pour les callbacks existants ; stockage de séance séparé.
+for (const cle of Object.keys(etat.seance)) {
+  Object.defineProperty(etat, cle, {
+    get() { return etat.seance[cle]; },
+    set(valeur) { etat.seance[cle] = valeur; },
+  });
+}
+function resetSessionState() {
+  etat.seance = createSessionState();
+}
+
+  const CAPACITES = { libererPreparationDictee() {} };
+  function annulerMemo() {}
   let sansLimiteActif = false;
   function sansLimiteActivee() { return sansLimiteActif; }
   function reglerEtatBoutons() {}
@@ -106,6 +156,7 @@ const fabrique = new Function(`
   }
 
   const API_BASE = ${JSON.stringify(apiBase[1])};
+  ${extraireFonction("fetchJson")}
   ${extraireFonction("apiFetch")}
   ${extraireFonction("demarrerSession")}
 
@@ -120,6 +171,7 @@ const fabrique = new Function(`
         echecAvantSucces = 0;
       },
       requetes: () => requetes,
+      etat: () => etat,
       reessaiReseau: () => reessaiReseau,
       reglerSansLimite: (actif) => { sansLimiteActif = actif; },
     },
@@ -140,6 +192,7 @@ function verifier(condition, message) {
   outils.reglerSansLimite(false);
 
   await demarrerSession(theme, 2);
+  verifier(outils.etat().session?.session_id === "session-test", "séance non affichée après démarrage");
   let requetes = outils.requetes();
   verifier(requetes.length === 1, `palier 2 : ${requetes.length} requête(s) au lieu d'une`);
   if (requetes.length) {

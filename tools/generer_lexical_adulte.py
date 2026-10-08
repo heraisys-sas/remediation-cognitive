@@ -1,7 +1,11 @@
 """Extension lexicale adulte : nouveaux identifiants, ancien corpus conservé."""
+
+try:
+    from tools.generation import ecrire_json, arguments_generation
+except ModuleNotFoundError:
+    from generation import ecrire_json, arguments_generation
 from pathlib import Path
 import json
-import re
 import unicodedata
 
 ROOT = Path(__file__).resolve().parent.parent
@@ -42,7 +46,7 @@ def items_lexicaux():
     return items
 
 
-def ecrire():
+def ecrire(dry_run=False):
     dossier = ROOT / 'content/entrainement/evocation'
     items = items_lexicaux()
     manifeste = json.loads((dossier/'paliers.json').read_text())
@@ -50,10 +54,11 @@ def ecrire():
     for niveau, description in enumerate(DESCRIPTIONS, 8):
         lot = [i for i in items if i['palier'] == niveau]
         fichier = f'paliers/palier-{niveau:02d}.json'
-        (dossier/fichier).write_text(json.dumps(lot, ensure_ascii=False, indent=2)+'\n')
+        ecrire_json(dossier/fichier, lot, dry_run=dry_run)
         manifeste['paliers'].append({'id': f'ev-palier-{niveau}', 'description': description,
             'prerequis': [], 'fichier': fichier, 'nb_items': len(lot)})
-    (dossier/'paliers.json').write_text(json.dumps(manifeste, ensure_ascii=False, indent=2)+'\n')
+    ecrire_json(dossier/'paliers.json', manifeste, dry_run=dry_run)
 
 
-if __name__ == '__main__': ecrire()
+if __name__ == '__main__':
+    ecrire(dry_run=arguments_generation(__doc__).dry_run)

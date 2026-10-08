@@ -10,3 +10,11 @@ pythonpath = ["."]
 
 # Dépendances à figer lors du premier sprint backend :
 # fastapi, uvicorn, pydantic, fsrs, python-multipart, reportlab (export PDF)
+
+[tool.ruff]
+line-length = 100
+exclude = [".cluster", ".local"]
+
+[tool.ruff.lint]
+# Premier socle : noms/imports invalides, syntaxe et valeurs mutables partagées.
+select = ["F", "E9", "B006"]

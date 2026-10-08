@@ -99,7 +99,7 @@ def test_themes(client):
     themes = reponse.json()["themes"]
     assert {t["id"] for t in themes} == THEMES_ATTENDUS
     for theme in themes:
-        assert set(theme) == {"id", "nom", "description", "categorie", "paliers", "parcours", "palier_depart"}
+        assert set(theme) == {"id", "nom", "description", "categorie", "paliers", "parcours", "palier_depart", "interface"}
         assert theme["categorie"] in {"entrainement", "evaluation", "cible"}
         assert theme["nom"] and theme["description"]
         assert theme["palier_depart"] in theme["paliers"]

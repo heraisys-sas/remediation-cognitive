@@ -1,3 +1,4 @@
+from tools.verifier_interface import source_interface
 import json
 from pathlib import Path
 import re
@@ -82,7 +83,7 @@ def test_reprise_reellement_interrompue_et_correction_detaillee(client):
 
 
 def test_panneau_methode_specifique_ou_masque_sans_repli_generique():
-    source=(ROOT/'frontend/src/app.js').read_text()
+    source=source_interface()
     types_consigne = re.search(
         r'const TYPES_CONSIGNE_COMME_METHODE = new Set\(\[.*?\]\);', source, re.S
     ).group(0)

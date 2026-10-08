@@ -1,7 +1,6 @@
 """WAV borné, nettoyage et absence de repli réseau de la dictée Apple."""
 import base64
 import io
-import json
 from pathlib import Path
 from types import SimpleNamespace
 import subprocess

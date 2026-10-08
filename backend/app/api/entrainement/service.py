@@ -24,16 +24,14 @@ import threading
 import uuid
 from collections.abc import Callable
 from dataclasses import dataclass, field
-from datetime import date, datetime, timezone
+from datetime import datetime, timezone
 
-from engine.mastery.criteria import palier_maitrise_historique
 from engine.session.runner import SessionRunner
 from engine.srs.fsrs import CarteFSRS, planifier
 
 from ...domain import messages
 from ...domain.contenu import ChargeurContenu
-from ...domain.correction import corriger, corriger_rappel_libre, corriger_sequence
-from ...domain.attention_fonctionnelle import TYPES as TYPES_FONCTIONNELS, corriger_detail
+from ...domain.correction import corriger, evaluer
 from ...domain.feedback import essai_supplementaire
 from ...domain.dosage import (
     MAX_REPRISES_PAR_SEANCE,
@@ -50,21 +48,12 @@ from ...storage.store import StockageJSON
 NOTE_REUSSITE = 3
 NOTE_ECHEC = 1
 
-# Critère de maîtrise (docs/10-clinique/protocoles.md, paramétrable).
-SEUIL_MAITRISE = 0.9
-SESSIONS_CONSECUTIVES_MAITRISE = 3
-
-# Calibration de l'entrée adulte en calcul mental : le palier 5 évite les faits
-# élémentaires, mais une difficulté nette sur un échantillon suffisant ramène au
-# palier 3 lors de la séance automatique suivante.
-PALIER_DEPART_CALCUL = 5
-PALIER_REPLI_CALCUL = 3
-SEUIL_REPLI_CALCUL = 0.5
-MIN_REPONSES_CALIBRATION = 8
+from ...domain.progression import (
+    progression_apres_session, PALIER_DEPART_CALCUL, SEUIL_REPLI_CALCUL,
+)
 
 
 def _horloge_utc() -> datetime:
-    """Horloge par défaut (injectable pour les tests)."""
     return datetime.now(timezone.utc)
 
 
@@ -413,19 +402,8 @@ class GestionnaireSessions:
         ):
             raise ReponseInvalide("indice_utilise hors bornes")
         assistee = nb_indices > 0 and indice_utilise > nb_indices
-        detail_fonctionnel = None
-        detail_sequence: dict | None = None
-        detail_rappel: dict | None = None
-        if item.get("type") in TYPES_FONCTIONNELS:
-            correcte, detail_fonctionnel = corriger_detail(item, reponse)
-        elif item.get("type") == "pqrst-mise-en-oeuvre":
-            # Séquence guidée (ADR-015) : une seule réception, jugée étape par étape.
-            # La question écrite n'est pas notée ; seules les étapes 1, 4 et 5 décident.
-            correcte, detail_sequence = corriger_sequence(item, reponse)
-        elif item.get("type") == "rappel-libre":
-            correcte, detail_rappel = corriger_rappel_libre(item, reponse)
-        else:
-            correcte = False if assistee else corriger(theme, item, reponse)
+        correction = evaluer(theme, item, reponse, assistee)
+        correcte = correction.correcte
 
         # Second essai (exercices où la réponse se **raisonne**, ADR-014) : sur une
         # première erreur, on ne révèle rien et on n'enregistre rien — le premier essai
@@ -467,17 +445,7 @@ class GestionnaireSessions:
             "attendue": item["reponse"]["valeur"],
             "feedback": messages.texte("entrainement", cle),
         }
-        if detail_fonctionnel is not None:
-            resultat["detail_fonctionnel"] = detail_fonctionnel
-            resultat["attendue"] = " ; ".join(
-                f"{l['label']} : {l['attendue']}" for l in detail_fonctionnel['lignes'])
-        if detail_sequence is not None:
-            # Le détail par étape remplace la réponse attendue : la séquence se corrige
-            # étape par étape (parcours, question modèle, idées-clés, test).
-            resultat["attendue"] = None
-            resultat["sequence"] = detail_sequence
-        if detail_rappel is not None:
-            resultat["detail_rappel"] = detail_rappel
+        resultat.update(correction.feedback())
         # Reprise errorless : un exercice manqué (et non assisté) revient **une fois**, en
         # fin de séance, avec la réponse fournie avant le nouvel essai. On ne ré-encode pas
         # une erreur ; le plafond évite de doubler la durée de la séance.
@@ -616,59 +584,8 @@ class GestionnaireSessions:
             cartes[item_id] = planifier(carte, note, maintenant)[0]
         self.stockage.ecrire_cartes(session.stockage_theme, cartes)
 
-    def _appliquer_maitrise(
-        self, session: SessionEnCours, nb_repondu: int, taux: float
-    ) -> None:
-        """Historise le taux de la séance et applique le critère de maîtrise.
-
-        Une séance sans item répondu n'est pas historisée (aucun signal).
-        Critère : 90 % de réussite sur 3 séances consécutives au même
-        palier → le palier courant avance d'un cran.
-        """
-        if nb_repondu <= 0:
-            return
-        # Les premières étapes préparent le palier : trois répétitions de ces
-        # seules grilles ne démontrent pas la maîtrise de sa dernière étape.
-        etapes = [i.get("contenu", {}).get("etape_progression", 0)
-                  for i in session.items_disponibles if i.get("palier") == session.palier]
-        etape_finale = max(etapes, default=0)
-        if etape_finale and not any(
-            session.items_par_id[i]["contenu"].get("etape_progression") == etape_finale
-            for i in session.reponses
-        ):
-            return
-        etat = self.stockage.lire_maitrise(session.stockage_theme)
-        historique_avant = list(etat["historique"])
-        historique = list(historique_avant)
-        historique.append((session.palier, float(taux)))
-        historique_etapes = None
-        corpus_renouvele = etape_finale or any(i.startswith("ev2-") for i in session.reponses) or (
-            session.theme == "calcul-mental"
-            and any(i.startswith("cm4-") for i in session.reponses)
-        )
-        if corpus_renouvele:
-            # Les taux de l'ancien corpus ne prouvent pas la maîtrise de ces
-            # nouvelles étapes ; les conserver sans les réutiliser pour avancer.
-            historique_etapes = list(etat.get("historique_etapes", []))
-            historique_etapes.append((session.palier, float(taux)))
-        palier = etat["palier_courant"]
-        calibration_en_echec = (
-            session.theme == "calcul-mental"
-            and not session.palier_force
-            and session.palier == PALIER_DEPART_CALCUL
-            and not historique_avant
-            and nb_repondu >= MIN_REPONSES_CALIBRATION
-            and taux < SEUIL_REPLI_CALCUL
-        )
-        if calibration_en_echec:
-            palier = PALIER_REPLI_CALCUL
-        elif palier_maitrise_historique(
-            historique_etapes if corpus_renouvele else historique,
-            palier=session.palier,
-            seuil=SEUIL_MAITRISE,
-            sessions_consecutives=SESSIONS_CONSECUTIVES_MAITRISE,
-        ):
-            palier = max(palier, session.palier + 1)
-        self.stockage.ecrire_maitrise(
-            session.stockage_theme, palier, historique, historique_etapes
-        )
+    def _appliquer_maitrise(self, session: SessionEnCours, nb_repondu: int, taux: float) -> None:
+        progression = progression_apres_session(
+            session, nb_repondu, taux, self.stockage.lire_maitrise(session.stockage_theme))
+        if progression is not None:
+            self.stockage.ecrire_maitrise(session.stockage_theme, *progression)

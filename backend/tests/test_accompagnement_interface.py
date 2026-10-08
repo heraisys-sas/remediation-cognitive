@@ -1,4 +1,5 @@
 """Vérifie les limites du dialogue facultatif, sans moteur de notation."""
+from tools.verifier_interface import source_interface
 import shutil
 import subprocess
 from pathlib import Path
@@ -40,12 +41,14 @@ async function fetch(url, options) {
  assert.equal(vide.children[3].disabled, true);
 })().catch(e => {console.error(e);process.exitCode = 1});
 '''
+    if "function afficherQuestion(item)" in script:
+        script = (Path(__file__).parents[2] / "frontend/src/exercises/handlers.js").read_text() + "\n" + script
     subprocess.run([shutil.which('node'), '-e', script], check=True, capture_output=True, text=True)
 
 
 def test_retour_pqrst_visible_et_accompagnement_apres_correction():
     from tools.verifier_interface import corps_fonction
-    source = (Path(__file__).parents[2] / 'frontend/src/app.js').read_text()
+    source = source_interface()
     body = corps_fonction(source, 'rendreFeedback')
     script = "const assert=require('node:assert/strict');" + r"""
 const etat={theme:{id:'methodes'}, session:{items:[{type:'pqrst-mise-en-oeuvre',contenu:{texte:'Texte'}}]},indexItem:0,sequence:{'4':'Résumé','2':'Pourquoi ?'}};
@@ -58,12 +61,14 @@ rendreFeedback({sequence:{}});
 assert.equal(refs.carteFeedback.hidden,false);
 assert.equal(refs.carteFeedback.node,'accompagnement');
 """
+    if "function afficherQuestion(item)" in script:
+        script = (Path(__file__).parents[2] / "frontend/src/exercises/handlers.js").read_text() + "\n" + script
     subprocess.run([shutil.which('node'), '-e', script], check=True, capture_output=True, text=True)
 
 
 def test_bilan_affiche_question_personnelle_et_modele_separement():
     from tools.verifier_interface import corps_fonction
-    source = (Path(__file__).parents[2] / 'frontend/src/app.js').read_text()
+    source = source_interface()
     script = r"""
 const assert=require('node:assert/strict');
 const etat={sequence:{'2':'Pourquoi une lessive à vide ?'}};
@@ -75,12 +80,14 @@ const ligne=refs.carteFeedback.children.find(x=>x.texte.startsWith('2. Ta questi
 assert.ok(ligne.texte.includes('Pourquoi une lessive à vide ?'));
 assert.ok(ligne.texte.includes('sans score. Autre question possible : « Que faire avant ? »'));
 """
+    if "function afficherQuestion(item)" in script:
+        script = (Path(__file__).parents[2] / "frontend/src/exercises/handlers.js").read_text() + "\n" + script
     subprocess.run([shutil.which('node'), '-e', script], check=True, capture_output=True, text=True)
 
 
 def test_sequence_pqrst_ne_reaffiche_pas_saisie_generique():
     from tools.verifier_interface import corps_fonction
-    source = (Path(__file__).parents[2] / 'frontend/src/app.js').read_text()
+    source = source_interface()
     script = r"""
 const assert=require('node:assert/strict');
 const refs = Object.fromEntries(['boutonDicter','ligneAudio','enonce','rappelConsigne','texteAide','zoneAide','formulaire','carteFeedback','boutonSuivant'].map(k=>[k,{hidden:false}]));
@@ -99,4 +106,6 @@ assert.equal(refs.carteFeedback.hidden,true);
 assert.equal(refs.boutonSuivant.hidden,true);
 assert.ok(etat.debutQuestion>0);
 """
+    if "function afficherQuestion(item)" in script:
+        script = (Path(__file__).parents[2] / "frontend/src/exercises/handlers.js").read_text() + "\n" + script
     subprocess.run([shutil.which('node'), '-e', script], check=True, capture_output=True, text=True)

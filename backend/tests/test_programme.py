@@ -82,7 +82,7 @@ def test_programme_date_debut_stable_et_fin_de_programme(tmp_path):
     assert json.loads((tmp_path / "programme" / "programme.json").read_text())["date_debut"] == premiere
 
     # Au-delà des 8 semaines : programme terminé (jamais prolongé d'office).
-    apres = premiere_date = date(2026, 9, 22) + timedelta(days=8 * 7 + 1)
+    apres = date(2026, 9, 22) + timedelta(days=8 * 7 + 1)
     client_apres = TestClient(_app_a_la_date(racine, apres))
     jour = client_apres.get("/api/programme").json()["aujourd_hui"]
     assert jour["type"] == "termine" and jour["jours_restants"] == 0

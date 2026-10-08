@@ -4,7 +4,6 @@ Les contraintes collectives sont sélectionnées comme des phrases, jamais comme
 règles globales. Le nettoyage n'impose aucun quota de mots/informations.
 """
 from itertools import combinations
-import random
 from deduction_commun import (_vrai_binaire, _vrai_unaire, arrangement, pred_indice,
                               resoudre_par_deduction, phrases_qui_fixent_seules, propager, TYPES_UNAIRES)
 from deduction_contraintes import est_entre, TYPES_RICHES
