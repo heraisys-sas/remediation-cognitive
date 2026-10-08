@@ -24,6 +24,8 @@ Usage :
 
 from __future__ import annotations
 
+import json
+
 try:
     from tools.generation import ecrire_json, arguments_generation
 except ModuleNotFoundError:
