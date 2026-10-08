@@ -190,6 +190,7 @@ async function soumettreValeur(brut, indiceUtilise) {
   if (Number.isInteger(indiceUtilise) && indiceUtilise > 0) {
     corps.indice_utilise = indiceUtilise;
   }
+  if (etat.phaseContextes === "decouverte") corps.memorisation = true;
   etat.reponseSoumise = typeof brut === "object" ? "" : String(brut);
 
   etat.actionEnCours = true;
@@ -337,10 +338,10 @@ function rendreResume(donnees) {
 
   // Aucun jugement, aucune norme : de simples comptes personnels.
   const stats = [
-    { label: "Questions", valeur: String(resume.items ?? "—") },
+    { label: etat.phaseContextes ? "Questions du rappel final" : "Questions", valeur: String(resume.items ?? "—") },
     { label: "Bonnes réponses", valeur: String(resume.correctes ?? "—") },
     { label: "Durée", valeur: formaterDuree(resume.duree_s) },
-    { label: "Réussite", valeur: formaterTaux(resume.taux_reussite) },
+    { label: "Réussite", valeur: etat.phaseContextes && !resume.items ? "Rappel non commencé" : formaterTaux(resume.taux_reussite) },
   ];
 
   refs.statsResume.replaceChildren();

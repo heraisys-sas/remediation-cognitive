@@ -13,38 +13,42 @@
 
 Voir [ADR-022](../30-technique/adr/ADR-022-parcours-series-et-attention-fonctionnelle.md).
 
-La planification historique ci-dessous reste à réviser : elle ne vaut pas décision d’ajouter un bilan ou un modèle IRT, piste écartée par l’utilisateur.
+## Suivi actif — vérifié le 8 octobre 2026
 
-## Phase 1 — priorité immédiate (usage familial, sans contrainte réglementaire)
+La référence est l’état livré sur `main`, pas une ancienne case non cochée.
 
-- [ ] Moteur adaptatif : règle ±1 palier, critères de maîtrise (90 % × 3 sessions), orchestration de séance, détection de fatigue
-- [ ] FSRS pour les items déclaratifs
-- [ ] Module Entraînement : calcul mental/tables → anglais → Python
-- [ ] Module Rééducation (usage familial) avec garde-fous actifs
-- [ ] Relectures informelles de l'orthophoniste au fil de l'eau
+### Livré
 
-**Critères de sortie** : un cycle complet de calcul mental jouable de bout en bout, garde-fous vérifiés par tests, première relecture de contenu réalisée.
+- [x] Moteur adaptatif, maîtrise, orchestration, répétition espacée FSRS et propositions d’arrêt.
+- [x] Parcours indépendants, correction locale et dictée locale, séries lues/entendues séparées.
+- [x] Parcours lexical adulte à douze paliers et 288 mots (PR #19).
+- [x] Catalogue partagé, correcteurs et interface découpés ; validateurs conservés (PR #21, issue #5).
+- [x] Référence des temps personnalisée : médiane de cinq à cent premières réponses correctes sans aide ; repli initial à 1000 ms (issue #9).
+- [x] Appels de synthèse testés par faux sous-processus en CI, sans dépendre d’une voix installée (issue #10).
+- [x] Scènes de contexte versionnées, découverte puis rappel final, et rejeu des items non dus (PR #22).
 
-## Phase 2 — bilan structuré (toujours en usage familial)
+Dans les scènes, les premières questions servent à mémoriser et ne comptent pas pour la progression. Le résumé, la maîtrise et FSRS reposent sur le rappel final uniquement (ADR-039). Un arrêt pendant la découverte ne produit aucun résultat de rappel.
 
-- [ ] Batterie 15–20 min fractionnable (attention soutenue, divisée, mémoire de travail, flexibilité, inhibition, vitesse de traitement)
-- [ ] Trajectoire personnelle ; bilan de suivi automatique toutes les 2 semaines
-- [ ] Export PDF + JSON (désidentifié par défaut)
-- [ ] Calibration des épreuves avec un neuropsychologue
+### Priorité suivante : correction sémantique locale — issue #6
 
-## Phase 3 — DM classe I autodéclarée (différée, conditionnelle)
+- [ ] Constituer un corpus versionné de formulations acceptables et de contre-exemples, tiré des tâches à réponse libre existantes, avec décisions attendues relues.
+- [ ] Mesurer séparément le repli lexical et Apple NaturalLanguage ; conserver scores, fournisseur et disponibilité. CI : repli déterministe ; poste Mac : moteur Apple réellement exécuté, aucun score simulé présenté comme calibration.
+- [ ] Vérifier les erreurs proches : négations, nombres, horaires, jours, rôles et actions inversés. Garder les mots stricts, séries, nombres et QCM hors de la similarité sémantique.
+- [ ] Documenter les divergences et le mode dégradé. Justifier les seuils par fournisseur sur un corpus de contrôle distinct ; ne pas annoncer une validation clinique.
+- [ ] Ajouter les cas aux tests et consigner le choix dans un ADR avant de modifier la règle d’acceptation.
 
-- [ ] Décision go/no-go selon la demande professionnelle constatée
-- [ ] QMS allégé ISO 13485, ISO 14971, documentation technique
-- [ ] Hébergement HDS le cas échéant
+Périmètre : rester hors ligne, sans modèle supplémentaire obligatoire ; préserver la tolérance aux articles et petites contextualisations. Un score lexical ne mesure pas la même chose qu’une proximité vectorielle : le seuil 0,78 commun ne vaut pas calibration établie. Aucune modification du seuil dans cette remise en cohérence documentaire.
 
-Chantier administratif **distinct des sprints produit** — ne pas mélanger.
+### Autres travaux ouverts
 
-## Phase 4 — boucle longitudinale
+- [ ] Relecture informelle des contenus avec l’orthophoniste et essais de confort ; aucune validation clinique présumée.
+- [ ] Préciser l’usage mono-utilisateur local et les conséquences d’une exposition réseau (issue #7). Aucun chantier d’authentification imposé au POC.
+- [ ] Décider de l’utilité et du périmètre d’un export JSON/PDF avant son développement (issue #8). Le graphe de connaissances n’est pas planifié ; les modules vides ne sont pas des fonctionnalités livrées.
+- [ ] Vérifier le rythme et la charge sur les usages réels avant toute nouvelle adaptation du dosage.
 
-- [ ] Migration règle adaptative → IRT (quand les données le justifient)
-- [ ] Ajustements de dosage sur données réelles
-- [ ] Cap de difficulté adaptative réévalué (objectif « au-delà de la moyenne sans mettre la barre trop haut »)
+### Orientations sorties du backlog actif
+
+Le bilan standardisé, l’IRT, le bilan automatique toutes les deux semaines et une batterie diagnostique ne sont pas autorisés par cette feuille de route. Les anciennes phases réglementaires ne sont pas des tâches du sprint de laboratoire. Leur historique reste dans Git ; une éventuelle réouverture exige une décision explicite.
 
 ## Prototypes d’épreuves cognitives — spécification de référence
 

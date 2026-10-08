@@ -813,3 +813,15 @@ Retrait du paragraphe explicatif Auto sous les sélecteurs. Le libellé « Auto 
 - Case sous « Dépasser la limite de séances », activable en mode dérogatoire et persistante entre visites.
 - Dérogation facultative `rejouer_palier` : inclut les exercices déjà faits sans attendre leur échéance, dans le palier choisi et le quota normal ; ni remise à zéro ni levée implicite de la limite de séances.
 - ADR-036 ; 49 tests backend ciblés et contrôle Chrome de la persistance/activation conditionnelle.
+
+## 2026-10-08 — Suivi du backlog et revue de la livraison des contextes
+
+Feuille de route remise en cohérence avec main : livraisons identifiées, anciennes orientations retirées du backlog actif, validation de la correction sémantique priorisée (#6). Les prototypes restent spécifiés et non implémentés. Précision sur le résumé des deux passes de contexte, protégé par test ; chemin Linux de synthèse exercé par faux sous-processus en CI. Aucun contenu ni seuil de correction modifié.
+
+### Scènes : le rappel final compte
+
+À la suite de la précision utilisateur, les réponses de découverte servent uniquement à mémoriser et recevoir une correction. Seul le rappel final alimente résumé, FSRS, maîtrise et temps de référence. Un arrêt pendant la découverte affiche « Rappel non commencé ». Contrat additif `memorisation`, ADR-039 ; contenu et identifiants inchangés, anciens historiques conservés sans réinterprétation.
+
+## 2026-10-08 — Circuit d’intégration dev → main
+
+Création de dev depuis main ; branches temporaires validées par PR vers dev, puis livraison fonctionnellement validée par PR dev → main. CI conservée et activée sur les deux branches. README, CONTRIBUTING et AGENTS précisent les commandes, les fusions, la préservation du checkout utilisateur et les ressources Apple locales. ADR-040. Main n’est pas livré automatiquement.

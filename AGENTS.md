@@ -41,6 +41,18 @@ Docs d'entrée : `docs/00-produit/vision.md`, `docs/00-produit/cadre-reglementai
 8. Errorless en entrée de palier ; la détection de fatigue **propose** l'arrêt, jamais forcée.
 9. **Remédiation, pas évaluation** : aucun nouvel exercice d'allure évaluative (empan, n-back, séries…) ; on travaille la fonction altérée dans des situations de vie avec des stratégies — `docs/10-clinique/remediation.md`. Les épreuves existantes seront déplacées vers une section « évaluation » quand le module bilan existera.
 
+## Flux Git courant — 8 octobre 2026
+
+Cette section remplace les anciens usages de branches d’essai longues : suivre [CONTRIBUTING.md](CONTRIBUTING.md) et ADR-040.
+
+- `main` stable ; `dev` branche permanente d’intégration.
+- Créer chaque branche temporaire depuis `dev`, PR vers `dev`, revue et CI verte sur le dernier commit avant fusion. Supprimer la branche temporaire après fusion.
+- Livraison par PR `dev` → `main` uniquement après essai fonctionnel et autorisation dans la session ; pas de livraison automatique fondée sur la seule CI.
+- Squash des branches temporaires ; merge commit de `dev` vers `main`, sans supprimer `dev`.
+- Aucun force push ni push de modifications courantes directement sur `dev`/`main`. Reporter les hotfix de `main` vers `dev` par PR.
+- Préserver les changements actifs des autres agents et le checkout du serveur. Ne pas changer sa branche, le réinitialiser ou stasher son travail ; travailler ailleurs si nécessaire.
+- Conserver les environnements `.local` et les données utilisateur. Ne pas confondre choix de branche, SDK Python Apple et adaptateur Swift de dictée.
+
 ## Conventions
 
 - **Langues** : documentation et contenu en français ; identifiants de code en anglais, docstrings/commentaires en français.

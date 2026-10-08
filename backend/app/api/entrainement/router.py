@@ -58,6 +58,7 @@ class ReponseUtilisateur(BaseModel):
     reponse: str | int | float | dict
     temps_ms: int
     indice_utilise: int | None = None
+    memorisation: bool = False
 
 
 class TranscriptionAVerifier(BaseModel):
@@ -136,6 +137,7 @@ def envoyer_reponse(theme: str, session_id: str, corps: ReponseUtilisateur, requ
             corps.reponse,
             corps.temps_ms,
             corps.indice_utilise,
+            memorisation=corps.memorisation,
         )
     except SessionInconnue:
         return _erreur(404, "session_inconnue")

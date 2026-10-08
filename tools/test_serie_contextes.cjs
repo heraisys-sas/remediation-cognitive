@@ -58,3 +58,20 @@ for (const correcte of [true, false]) test(`correction ${correcte ? 'juste sans 
   assert.equal(figures.length, correcte ? 0 : 1);
   if (!correcte) assert.equal(figures[0].contenu[0].options.attributs.src, 'scene.webp');
 });
+
+for (const phase of ['decouverte', 'rappel', null]) test(`payload de réponse : ${phase}`, async () => {
+  let corps;
+  const c = {
+    etat: { phaseContextes: phase, repondu: false, actionEnCours: false,
+      debutQuestion: Date.now(), theme: { id: 'evocation' },
+      session: { session_id: 'test', items: [{ id: 'scene' }] }, indexItem: 0 },
+    handlerPour: () => ({ readAnswer: x => x, renderFeedback() {} }),
+    apiFetch: async (_, options) => { corps = JSON.parse(options.body); return { essai_supplementaire: true }; },
+    masquerBandeau() {}, reglerEtatBoutons() {}, Date,
+  };
+  vm.createContext(c);
+  vm.runInContext('async ' + fonction('soumettreValeur', 'programmerSuiteLexicale'), c);
+  await c.soumettreValeur('Sur le frigo', 0);
+  assert.equal(corps.memorisation === true, phase === 'decouverte');
+  assert.equal(corps.reponse, 'Sur le frigo');
+});
