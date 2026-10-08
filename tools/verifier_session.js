@@ -141,6 +141,7 @@ function resetSessionState() {
   function annulerMemo() {}
   let sansLimiteActif = false;
   function sansLimiteActivee() { return sansLimiteActif; }
+  function rejouerPalierActive() { return false; }
   function reglerEtatBoutons() {}
   function masquerBandeau() {}
   function cloreSessionSilencieusement() {}

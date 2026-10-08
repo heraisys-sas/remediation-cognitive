@@ -290,6 +290,21 @@ function rendreFeedback(resultat) {
     );
   }
 
+  const imageContexte = etat.session?.items[etat.indexItem]?.contenu?.affichage?.image;
+  if (!correcte && imageContexte && etat.phaseContextes === "rappel") {
+    const image = creerElement("img", { classe: "scene-contexte", attributs: {
+      src: imageContexte.src, srcset: imageContexte.srcset,
+      sizes: "(max-width: 640px) calc(100vw - 40px), 592px",
+      width: String(imageContexte.width), height: String(imageContexte.height),
+      alt: `Scène à retrouver : ${resultat.attendue}. ${imageContexte.alt}`,
+      decoding: "async",
+    } });
+    const figure = creerElement("figure", { classe: "scene-source" }, image);
+    image.addEventListener("error", () => figure.replaceChildren(creerElement("p", {
+      texte: "La scène n’a pas pu être chargée. La réponse attendue reste indiquée ci-dessus.",
+    })), { once: true });
+    refs.carteFeedback.append(figure);
+  }
   refs.carteFeedback.hidden = false;
 }
 

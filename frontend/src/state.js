@@ -6,6 +6,7 @@ function createSessionState() {
   dicteeAutoAutorisee: false,
   theme: null,
   session: null,
+  phaseContextes: null,
   indexItem: 0,
   repondu: false,
   debutQuestion: 0,

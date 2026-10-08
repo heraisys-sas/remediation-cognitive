@@ -793,3 +793,23 @@ Retrait du paragraphe explicatif Auto sous les sélecteurs. Le libellé « Auto 
 - Une commande unique « Écouter », remplacée par un haut-parleur barré pendant la lecture ; taille fixe et nom accessible « Arrêter la lecture ».
 - État partagé entre synthèse navigateur, voix locale et fichiers audio ; retour au repos après arrêt, fin ou erreur.
 - Éclairage de fond très léger et statique, sans motif ni animation.
+
+## 2026-10-08 — Retrouver le contexte en images
+
+- Remplacement des dix items de mémoire de source du palier 4 par de nouvelles identités illustrées ; messages, options et réponses conservés, autres familles inchangées.
+- Dix scènes générées depuis les contextes du contenu, 20 exports WebP responsive de 13 à 112 Ko.
+- Révélation par Afficher, phrase de contexte masquée, transcription du message seul ; stimulus retiré avant le rappel.
+- Temps de mémorisation déclenché après décodage de l’image, reprise sur erreur de chargement. ADR-035.
+
+### Retrouver le contexte — seconde passe de rappel (2026-10-08)
+
+- Première passe conservée : chaque scène est suivie immédiatement de sa question.
+- « Passer au rappel » repose ensuite toutes les questions sans montrer les scènes ; une erreur révèle uniquement la scène correspondante dans la correction.
+- Progression Découverte/Rappel, retrait de la correction entre questions, pas de reprise supplémentaire pour ce parcours.
+- Même contenu et mêmes images WebP ; API et moteur inchangés. Tests : 5 Node, 50 backend, Chrome mobile sur les deux passes.
+
+### Réglages — rejouer un palier terminé (2026-10-08)
+
+- Case sous « Dépasser la limite de séances », activable en mode dérogatoire et persistante entre visites.
+- Dérogation facultative `rejouer_palier` : inclut les exercices déjà faits sans attendre leur échéance, dans le palier choisi et le quota normal ; ni remise à zéro ni levée implicite de la limite de séances.
+- ADR-036 ; 49 tests backend ciblés et contrôle Chrome de la persistance/activation conditionnelle.

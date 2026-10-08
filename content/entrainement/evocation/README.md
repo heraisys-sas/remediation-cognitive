@@ -64,3 +64,9 @@ Une réflexion ciblée GPT‑6 Astra a été relue pour construire la banque. Le
 Les difficultés lexicales après traumatisme léger peuvent être subtiles et dépendantes de la tâche ; une petite étude ne valide pas le présent classement. [King et al., 2006](https://pubmed.ncbi.nlm.nih.gov/16809205/).
 
 Les travaux sur récupération active et espacement en aphasie concernent les mots entraînés et ne démontrent pas ici un transfert conversationnel post-commotionnel. [Middleton et al., 2019](https://pubmed.ncbi.nlm.nih.gov/31408823/).
+
+## Retrouver le contexte — scènes illustrées (8 octobre 2026)
+
+Les dix messages du palier 4 sont montrés dans des scènes générées. La phrase de contexte est remplacée par l’image ; le message seul est aussi transcrit pour rester lisible sur petit écran. « Afficher » révèle la scène pendant 12 secondes après son chargement ; image et transcription disparaissent avant le rappel.
+
+Nouveaux IDs `ev-4-source-image-v1-*`, aucun changement des messages ni de leurs réponses. Correspondance et assets : `frontend/images/contextes/manifest.json`. Voir ADR-035. Ne pas régénérer tout le thème pour mettre à jour ces scènes.

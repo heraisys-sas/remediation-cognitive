@@ -183,6 +183,7 @@ class GestionnaireSessions:
         palier_force: int | None = None,
         sans_limite_sessions: bool = False,
         parcours: str | None = None,
+        rejouer_palier: bool = False,
     ) -> dict:
         """Démarre une séance et retourne le payload 201 du contrat.
 
@@ -191,6 +192,9 @@ class GestionnaireSessions:
         n'avance que vers le haut (``max(palier, session.palier + 1)``), donc un palier
         forcé ne peut pas faire reculer la progression — au mieux la fait-il avancer si la
         personne réussit, ce qui est exact.
+
+        ``rejouer_palier`` : complète la sélection avec les exercices déjà vus
+        non dus du palier choisi, sans réinitialiser les cartes ni la progression.
 
         ``sans_limite_sessions`` (dérogation, ADR-021) : la personne demande à
         dépasser le plafond de sa fenêtre (jour, ou semaine pour l'évaluation) ;
@@ -269,7 +273,7 @@ class GestionnaireSessions:
                 palier,
                 maintenant,
                 reglages["max_items"],
-                inclure_non_dus=bool(reglages.get("inclure_non_dus", False)),
+                inclure_non_dus=rejouer_palier or bool(reglages.get("inclure_non_dus", False)),
             )
             runner = SessionRunner(
                 items=[ItemMoteur(item) for item in selection],

@@ -46,74 +46,12 @@ Chantier administratif **distinct des sprints produit** — ne pas mélanger.
 - [ ] Ajustements de dosage sur données réelles
 - [ ] Cap de difficulté adaptative réévalué (objectif « au-delà de la moyenne sans mettre la barre trop haut »)
 
-## Backlog — nouvelles épreuves cognitives à prototyper
+## Prototypes d’épreuves cognitives — spécification de référence
 
-> Ces éléments relèvent du futur module **évaluation/bilan** et non du module de remédiation, conformément aux garde-fous du dépôt. Ils constituent des pistes de prototype et ne doivent pas être présentés comme des tests standardisés ou diagnostiques sans validation clinique et métrologique.
+La backlog du 7 octobre 2026 est remplacée par la [spécification des prototypes d’épreuves cognitives](../20-specs/prototypes-epreuves-cognitives.md), version 1. Décision : [ADR-038](../30-technique/adr/ADR-038-prototypes-epreuves-cognitives.md).
 
-### Attention différée avec questions de culture générale
+- [x] Formaliser déroulements, réglages, comptage, interruptions et critères d’acceptation.
+- [ ] Développer par lots : infrastructure, séries de couleurs, attention différée, reconstruction de figures.
+- [ ] Vérifier les règles de mesure et le confort à partir des essais locaux avant d’ajouter les comparaisons avancées.
 
-- [ ] Créer une épreuve d’attention/mémoire de travail fondée sur des questions de culture générale.
-- [ ] Énoncer une question, recueillir ou laisser préparer la réponse, puis énoncer la question suivante **avant** de révéler la bonne réponse à la question précédente.
-- [ ] Permettre plusieurs niveaux de difficulté et des délais/interférences variables.
-- [ ] Prévoir des modalités écrite, orale et mixte.
-- [ ] Mesurer : bonnes réponses, erreurs, omissions et temps de réponse.
-
-### Mémoire visuospatiale — reproduction de figures
-
-- [ ] Afficher pendant une durée paramétrable une figure géométrique relativement complexe composée de plusieurs formes imbriquées.
-- [ ] Masquer ensuite complètement le modèle.
-- [ ] Permettre à l’utilisateur de reconstruire la figure de mémoire.
-- [ ] Prévoir deux modes : dessin libre et reconstruction à partir d’une palette de formes.
-- [ ] Faire varier la complexité : nombre de formes, intersections, symétrie/asymétrie, orientation, position relative et détails.
-- [ ] Conserver la reproduction pour comparaison avec le modèle.
-- [ ] Étudier un scoring automatique portant sur les éléments présents/oubliés/ajoutés, leur position, orientation, proportions, intersections et la similarité globale.
-
-### Série couleur 1 — lecture rapide de noms de couleurs
-
-- [ ] Générer une liste aléatoire de 50 noms de couleurs simples, affichés en noir.
-- [ ] Demander de lire à voix haute le plus grand nombre de mots possible en 45 secondes.
-- [ ] Reboucler automatiquement sur la liste de 50 jusqu’à la fin du temps.
-- [ ] Compter le nombre d’items parcourus, les réponses correctes, erreurs et omissions.
-- [ ] Calculer le débit de réponses correctes par minute.
-- [ ] Si la reconnaissance vocale est utilisée, conserver la transcription et permettre une correction manuelle des erreurs de reconnaissance.
-
-### Série couleur 2 — dénomination rapide de carrés colorés
-
-- [ ] Afficher une liste de 50 carrés de couleurs simples.
-- [ ] Demander de nommer oralement leur couleur le plus rapidement possible pendant 45 secondes.
-- [ ] Reboucler sur les 50 stimuli jusqu’à la fin du temps.
-- [ ] Utiliser le même vocabulaire de couleurs que dans l’épreuve de lecture.
-- [ ] Compter items parcourus, réponses correctes, erreurs, omissions et débit correct par minute.
-
-### Série couleur 3 — interférence couleur-mot de type Stroop
-
-- [ ] Afficher 50 noms de couleurs dont la couleur typographique ne correspond pas au mot écrit.
-- [ ] Demander de **nommer la couleur des caractères**, sans lire le mot.
-- [ ] Faire durer l’épreuve 45 secondes et reboucler sur les 50 stimuli.
-- [ ] Compter items parcourus, réponses correctes, erreurs, omissions et corrections spontanées.
-- [ ] Calculer le débit correct par minute.
-
-### Comparaison des trois épreuves de couleurs
-
-- [ ] Regrouper les trois épreuves dans une même session optionnelle.
-- [ ] Produire un tableau comparatif : items traités, bonnes réponses, erreurs, omissions, précision et débit correct par minute.
-- [ ] Calculer des écarts de vitesse entre lecture, dénomination simple et condition d’interférence.
-- [ ] Étudier un indicateur de coût d’interférence, sans le présenter comme un diagnostic ni une norme populationnelle.
-
-### Infrastructure commune de mesure
-
-- [ ] Enregistrer pour chaque épreuve : date/heure, durée, niveau, nombre de stimuli, réponses, bonnes réponses, erreurs, omissions et temps de réaction lorsque mesurable.
-- [ ] Conserver la distinction entre **performance brute**, **précision** et **vitesse de traitement**.
-- [ ] Prévoir un mode entraînement avec feedback et un mode évaluation sans feedback pendant l’épreuve.
-- [ ] Rendre configurables durées, tailles de listes, délais de présentation, difficultés et modalités audio/visuelles.
-- [ ] Afficher une évolution strictement intra-individuelle (séances précédentes, tendances personnelles) sans comparaison normative.
-- [ ] Étudier une difficulté adaptative pour les prototypes d’entraînement, mais ne pas modifier automatiquement une épreuve destinée à être comparable dans le temps sans décision clinique explicite.
-
-### Pistes complémentaires
-
-- [ ] Étudier un N-back visuel/auditif uniquement dans le périmètre évaluation/bilan.
-- [ ] Étudier une tâche de double attention.
-- [ ] Étudier une tâche de mémoire de séquences spatiales inspirée des blocs de Corsi.
-- [ ] Étudier une tâche de recherche visuelle avec distracteurs.
-- [ ] Avant implémentation de ces épreuves, formaliser leur place produit et leurs règles de mesure dans un ADR, puis prévoir une revue clinique/métrologique.
-
+Familiarisation et mesure personnelle restent dans un périmètre local distinct de la remédiation, sans diagnostic ni réactivation implicite du bilan standardisé historique. Les pistes N-back, double tâche, Corsi et recherche visuelle sont conservées dans la spécification, hors version 1.

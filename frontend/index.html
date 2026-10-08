@@ -8,7 +8,7 @@
   <meta name="color-scheme" content="dark" />
   <meta name="theme-color" content="#192029" />
   <title>Entraînement — séances courtes</title>
-  <link rel="stylesheet" href="src/styles.css?v=20261007c" />
+  <link rel="stylesheet" href="src/styles.css?v=20261008-contextes-integration" />
 </head>
 <body>
   <!-- Lien d'évitement : première tabulation, pour sauter directement au contenu. -->
@@ -34,6 +34,10 @@
             <span>Mode dérogatoire</span>
           </label>
           <div id="reglages-derogatoires" hidden>
+            <label class="commutateur">
+              <input id="case-rejouer-palier" type="checkbox" disabled />
+              <span>Rejouer un palier terminé</span>
+            </label>
             <label class="commutateur">
               <input id="case-sans-limite" type="checkbox" role="switch" aria-describedby="note-sans-limite" />
               <span>Dépasser la limite de séances</span>
@@ -274,19 +278,19 @@
   <script src="src/capacites.js?v=20261007-native5" defer></script>
   <script src="src/accompagnement.js?v=20261007b" defer></script>
   <script src="src/dictee-auto.js?v=20261007b" defer></script>
-  <script src="src/api.js?v=20261008-refactor20" defer></script>
-  <script src="src/preferences.js?v=20261008-refactor20" defer></script>
-  <script src="src/state.js?v=20261008-refactor20" defer></script>
-  <script src="src/exercises/deduction.js?v=20261008-refactor20" defer></script>
-  <script src="src/exercises/choice.js?v=20261008-refactor20" defer></script>
-  <script src="src/exercises/sequence.js?v=20261008-refactor20" defer></script>
-  <script src="src/exercises/functional.js?v=20261008-refactor20" defer></script>
-  <script src="src/exercises/presentation.js?v=20261008-refactor20" defer></script>
-  <script src="src/exercises/default.js?v=20261008-refactor20" defer></script>
-  <script src="src/exercises/handlers.js?v=20261008-refactor20" defer></script>
-  <script src="src/session.js?v=20261008-refactor20" defer></script>
-  <script src="src/missions.js?v=20261008-refactor20" defer></script>
-  <script src="src/programme.js?v=20261008-refactor20" defer></script>
-  <script src="src/app.js?v=20261008-refactor20" defer></script>
+  <script src="src/api.js?v=20261008-contextes-integration" defer></script>
+  <script src="src/preferences.js?v=20261008-contextes-integration" defer></script>
+  <script src="src/state.js?v=20261008-contextes-integration" defer></script>
+  <script src="src/exercises/deduction.js?v=20261008-contextes-integration" defer></script>
+  <script src="src/exercises/choice.js?v=20261008-contextes-integration" defer></script>
+  <script src="src/exercises/sequence.js?v=20261008-contextes-integration" defer></script>
+  <script src="src/exercises/functional.js?v=20261008-contextes-integration" defer></script>
+  <script src="src/exercises/presentation.js?v=20261008-contextes-integration" defer></script>
+  <script src="src/exercises/default.js?v=20261008-contextes-integration" defer></script>
+  <script src="src/exercises/handlers.js?v=20261008-contextes-integration" defer></script>
+  <script src="src/session.js?v=20261008-contextes-integration" defer></script>
+  <script src="src/missions.js?v=20261008-contextes-integration" defer></script>
+  <script src="src/programme.js?v=20261008-contextes-integration" defer></script>
+  <script src="src/app.js?v=20261008-contextes-integration" defer></script>
 </body>
 </html>
