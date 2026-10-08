@@ -48,7 +48,7 @@ Chantier administratif **distinct des sprints produit** — ne pas mélanger.
 
 ## Prototypes d’épreuves cognitives — spécification de référence
 
-La backlog du 7 octobre 2026 est remplacée par la [spécification des prototypes d’épreuves cognitives](../20-specs/prototypes-epreuves-cognitives.md), version 1. Décision : [ADR-033](../30-technique/adr/ADR-033-prototypes-epreuves-cognitives.md).
+La backlog du 7 octobre 2026 est remplacée par la [spécification des prototypes d’épreuves cognitives](../20-specs/prototypes-epreuves-cognitives.md), version 1. Décision : [ADR-038](../30-technique/adr/ADR-038-prototypes-epreuves-cognitives.md).
 
 - [x] Formaliser déroulements, réglages, comptage, interruptions et critères d’acceptation.
 - [ ] Développer par lots : infrastructure, séries de couleurs, attention différée, reconstruction de figures.

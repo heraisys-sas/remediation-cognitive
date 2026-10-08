@@ -2,7 +2,7 @@
 
 Version 1 — 7 octobre 2026. Statut : spécification de prototypes à développer ; aucune épreuve implémentée ou validée par ce document.
 
-Remplace la backlog ajoutée au commit `acf74b54ccb64710f0fcfd3afcb37b64b371462b`. Les idées proviennent de l’utilisateur ; les règles opérationnelles ci-dessous sont des décisions de conception révisables, sans valeur de protocole clinique standardisé. Référence produit : ADR-033.
+Remplace la backlog ajoutée au commit `acf74b54ccb64710f0fcfd3afcb37b64b371462b`. Les idées proviennent de l’utilisateur ; les règles opérationnelles ci-dessous sont des décisions de conception révisables, sans valeur de protocole clinique standardisé. Référence produit : ADR-038.
 
 ## 1. Problème, objectifs et périmètre
 

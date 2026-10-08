@@ -1,4 +1,4 @@
-# ADR-033 — Spécifier les prototypes cognitifs séparément de la remédiation
+# ADR-038 — Spécifier les prototypes cognitifs séparément de la remédiation
 
 ## Contexte
 
