@@ -12,10 +12,8 @@ from __future__ import annotations
 
 import datetime
 import multiprocessing as mp
-import sys
 import threading
 
-import pytest
 
 from backend.app.storage.store import StockageJSON
 from engine.srs.fsrs import CarteFSRS

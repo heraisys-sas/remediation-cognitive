@@ -1,6 +1,10 @@
 #!/usr/bin/env python3
 """Génère trois banques de situations fonctionnelles adultes, sans vitesse imposée."""
-import json
+
+try:
+    from tools.generation import ecrire_json
+except ModuleNotFoundError:
+    from generation import ecrire_json
 import random
 from pathlib import Path
 
@@ -199,11 +203,11 @@ def main():
         manifeste = {'theme': theme, 'paliers': []}
         for numero, items in enumerate(paliers, 1):
             fichier = f'paliers/palier-{numero:02}.json'
-            (base / fichier).write_text(json.dumps(items, ensure_ascii=False, indent=2) + '\n')
+            ecrire_json(base / fichier, items)
             manifeste['paliers'].append({'id': f'{theme}-palier-{numero}',
                  'description': DESCRIPTIONS[theme][numero - 1], 'prerequis': [],
                  'fichier': fichier, 'nb_items': len(items)})
-        (base / 'paliers.json').write_text(json.dumps(manifeste, ensure_ascii=False, indent=2) + '\n')
+        ecrire_json(base / 'paliers.json', manifeste)
 
 
 if __name__ == '__main__':

@@ -11,6 +11,11 @@ riches doivent rester effectivement présentes. Voir ADR-017 et le README.
 
 from __future__ import annotations
 
+try:
+    from tools.generation import ecrire_json
+except ModuleNotFoundError:
+    from generation import ecrire_json
+
 import argparse
 import hashlib
 import json
@@ -586,7 +591,7 @@ def main() -> int:
             print("[dry-run] %s (%s entrées)" % (_affiche_chemin(chemin), nb))
         else:
             chemin.parent.mkdir(parents=True, exist_ok=True)
-            chemin.write_text(json.dumps(donnees, ensure_ascii=False, indent=2) + "\n", encoding="utf-8")
+            ecrire_json(chemin, donnees)
             print("[écrit] %s (%s entrées)" % (_affiche_chemin(chemin), nb))
 
     total = sum(len(p) for p in paliers)

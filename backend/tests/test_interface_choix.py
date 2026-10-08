@@ -1,4 +1,5 @@
 """Les contenus à propositions doivent être jouables, notamment les plans GMT."""
+from tools.verifier_interface import source_interface
 import json
 import re
 import shutil
@@ -8,7 +9,7 @@ from pathlib import Path
 from tools.verifier_interface import corps_fonction
 
 ROOT = Path(__file__).resolve().parents[2]
-SOURCE = (ROOT / 'frontend/src/app.js').read_text()
+SOURCE = source_interface()
 CHOIX = re.search(r'const TYPES_A_CHOIX = new Set\(\[(.*?)\]\);', SOURCE, re.S).group(0)
 
 
@@ -75,6 +76,8 @@ for (const item of items) {
 '''
     node = shutil.which('node')
     assert node, 'Node requis pour vérifier le rendu réel des fonctions JS'
+    if "function afficherQuestion(item)" in script:
+        script = (Path(__file__).parents[2] / "frontend/src/exercises/handlers.js").read_text() + "\n" + script
     subprocess.run([node, '-e', script], check=True, capture_output=True, text=True)
 
 
@@ -112,6 +115,8 @@ assert.equal(soumis,false);
 '''
     node = shutil.which('node')
     assert node, 'Node requis pour vérifier le rendu réel des fonctions JS'
+    if "function afficherQuestion(item)" in script:
+        script = (Path(__file__).parents[2] / "frontend/src/exercises/handlers.js").read_text() + "\n" + script
     subprocess.run([node, '-e', script], check=True, capture_output=True, text=True)
 
 
@@ -163,4 +168,6 @@ assert.equal(vus.length,item.contenu.enonces.length*2);
 '''
     node = shutil.which('node')
     assert node, 'Node requis pour vérifier le rendu réel des fonctions JS'
+    if "function afficherQuestion(item)" in script:
+        script = (Path(__file__).parents[2] / "frontend/src/exercises/handlers.js").read_text() + "\n" + script
     subprocess.run([node, '-e', script], check=True, capture_output=True, text=True)

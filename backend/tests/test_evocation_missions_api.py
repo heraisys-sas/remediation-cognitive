@@ -8,7 +8,6 @@ aucune erreur commise mais FSRS en échec), validation du champ
 
 import json
 import unicodedata
-from pathlib import Path
 
 from backend.app.domain.contenu import ChargeurContenu
 

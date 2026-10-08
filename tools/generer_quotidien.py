@@ -22,8 +22,11 @@ Usage :
 
 from __future__ import annotations
 
-import argparse
-import json
+try:
+    from tools.generation import ecrire_json, arguments_generation
+except ModuleNotFoundError:
+    from generation import ecrire_json, arguments_generation
+
 import random
 from pathlib import Path
 
@@ -584,9 +587,7 @@ def _manifest(paliers: list[list[dict]]) -> dict:
 
 
 def main() -> int:
-    parseur = argparse.ArgumentParser(description="Génère le thème « quotidien ».")
-    parseur.add_argument("--dry-run", action="store_true", help="afficher sans écrire")
-    options = parseur.parse_args()
+    options = arguments_generation("Génère le thème « quotidien ».")
 
     paliers = construire_paliers()
     cibles = {BASE_SORTIE / "paliers.json": _manifest(paliers)}
@@ -601,8 +602,7 @@ def main() -> int:
         if options.dry_run:
             print(f"[dry-run] {chemin.relative_to(RACINE_DEPOT)} ({nb} entrées)")
         else:
-            chemin.parent.mkdir(parents=True, exist_ok=True)
-            chemin.write_text(json.dumps(donnees, ensure_ascii=False, indent=2) + "\n", encoding="utf-8")
+            ecrire_json(chemin, donnees)
             print(f"[écrit] {chemin.relative_to(RACINE_DEPOT)} ({nb} entrées)")
     print(f"Total : {total} items, {len(paliers)} paliers.")
     return 0

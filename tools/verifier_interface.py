@@ -12,7 +12,6 @@ Usage : python3 tools/verifier_interface.py  (code de sortie 1 si écart)
 from __future__ import annotations
 
 import re
-import sys
 from pathlib import Path
 
 RACINE_DEPOT = Path(__file__).resolve().parent.parent
@@ -44,12 +43,19 @@ ZONES_REPONSE = ("refs.zoneChoix", "refs.zoneIndices", "refs.zoneGeneration", "r
                  "refs.zoneSequence")
 
 
+def source_interface() -> str:
+    """Charge les scripts réellement référencés par la page, dans leur ordre."""
+    fichiers = re.findall(r'<script src="(src/[^"?]+)(?:\?[^"]*)?"', PAGE.read_text())
+    return "\n".join((PAGE.parent / fichier).read_text() for fichier in fichiers)
+
+
 def corps_fonction(source: str, nom: str) -> str | None:
     """Extrait le corps d'une fonction (accolades équilibrées) ou None."""
     debut = source.find(f"function {nom}(")
     if debut < 0:
         return None
-    accolade = source.find("{", debut)
+    signature = re.search(r"\)\s*\{", source[debut:])
+    accolade = debut + signature.end() - 1 if signature else -1
     if accolade < 0:
         return None
     profondeur = 0
@@ -92,7 +98,7 @@ def _chemins_interface(source: str) -> list[tuple[str, str]]:
 
 
 def main() -> int:
-    source = SCRIPT.read_text(encoding="utf-8")
+    source = source_interface()
     page = PAGE.read_text(encoding="utf-8")
     demandes = sorted(set(MOTIF_ID_DEMANDE.findall(source)))
     presents = set(MOTIF_ID_PRESENT.findall(page))

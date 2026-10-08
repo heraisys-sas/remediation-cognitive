@@ -1,4 +1,5 @@
 """Exécute les composants réels avec horloge contrôlée et DOM minimal."""
+from tools.verifier_interface import source_interface
 import json
 import shutil
 import subprocess
@@ -6,7 +7,7 @@ from pathlib import Path
 from tools.verifier_interface import corps_fonction
 from backend.app.domain.contenu import ChargeurContenu
 ROOT=Path(__file__).resolve().parents[2]
-SOURCE=(ROOT/'frontend/src/app.js').read_text()
+SOURCE=source_interface()
 
 BASE=r'''
 const assert=require('node:assert/strict');
@@ -343,6 +344,6 @@ const CAPACITES={lire(t,o){options=o}};
 """+'function lireTexteExercice(texte) '+corps_fonction(SOURCE,'lireTexteExercice')+r"""
 lireTexteExercice('triangle');assert.equal(options.francais,true);
 for(const id of ['anglais','python']) {
- etat.theme={id};lireTexteExercice('triangle');assert.equal(options.francais,false);
+ etat.theme={id,interface:{francais:false}};lireTexteExercice('triangle');assert.equal(options.francais,false);
 }
 """)

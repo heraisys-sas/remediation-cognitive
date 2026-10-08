@@ -1,5 +1,14 @@
 # 2026-10-08 — enrichissement du parcours Retrouver le mot
 
+## 2026-10-08 — Refactorisation (issue #20)
+
+Registre unique des thèmes et métadonnées d'interface, correcteurs et validateurs
+modulaires, I/O des générateurs mutualisée. Interface vanilla séparée en comportements,
+état de séance réinitialisable, progression pure extraite du service. Contrôles Ruff,
+chargement des scripts et non-régression renforcés ; nettoyage des copies `.cluster`.
+Contenu, règles de correction/dosage et persistance conservés. ADR-037.
+
+
 Nouvelle banque adulte de 288 mots : douze paliers de 24, QCM uniquement au premier, départ Auto au deuxième. Difficulté graduée par précision et contexte ; quotas de séance 10/10/10/8/8/6, puis six questions pour les paliers supérieurs de culture générale et de langue soutenue. Le repère permanent de mode de réponse quitte la carte ; les précisions figurent dans les listes des réglages. Nouveaux identifiants ev2, anciennes banques et historiques conservés.
 
 # 2026-10-07 — parcours lexical sans retour au QCM

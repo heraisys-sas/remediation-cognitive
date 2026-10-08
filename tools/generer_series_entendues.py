@@ -1,6 +1,10 @@
 #!/usr/bin/env python3
 """Parcours auditif indépendant, mêmes charges mais listes distinctes du parcours lu."""
-import json
+
+try:
+    from tools.generation import ecrire_json, arguments_generation
+except ModuleNotFoundError:
+    from generation import ecrire_json, arguments_generation
 import random
 from pathlib import Path
 from generer_rappel_series import construire_paliers, _manifest
@@ -26,8 +30,8 @@ def construire():
     return paliers
 
 def main():
+    options = arguments_generation(__doc__)
     base = ROOT/'content/entrainement/series-entendues'
-    (base/'paliers').mkdir(parents=True, exist_ok=True)
     paliers = construire()
     manifest = _manifest(paliers)
     manifest['theme'] = 'series-entendues'
@@ -35,8 +39,8 @@ def main():
         p['id'] = p['id'].replace('rs-', 'rse-')
         p['prerequis'] = [s.replace('rs-', 'rse-') for s in p['prerequis']]
     for n, items in enumerate(paliers, 1):
-        (base/f'paliers/palier-{n:02}.json').write_text(json.dumps(items, ensure_ascii=False, indent=2)+'\n')
-    (base/'paliers.json').write_text(json.dumps(manifest, ensure_ascii=False, indent=2)+'\n')
+        ecrire_json(base/f'paliers/palier-{n:02}.json', items, dry_run=options.dry_run)
+    ecrire_json(base/'paliers.json', manifest, dry_run=options.dry_run)
 
 if __name__ == '__main__':
     main()

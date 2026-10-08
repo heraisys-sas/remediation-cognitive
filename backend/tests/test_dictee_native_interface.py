@@ -1,4 +1,5 @@
 """Encodage local et annulation avant ouverture du micro."""
+from tools.verifier_interface import source_interface
 from pathlib import Path
 import shutil
 import subprocess
@@ -174,7 +175,7 @@ const navigator={mediaDevices:{async getUserMedia(){demandes++;if(refus)throw Er
 
 def test_autorisation_precede_la_premiere_question():
     from tools.verifier_interface import corps_fonction
-    source=(Path(__file__).parents[2]/'frontend/src/app.js').read_text()
+    source=source_interface()
     demarrage=corps_fonction(source, 'demarrerSession')
     assert demarrage.index('await CAPACITES.autoriserDictee') < demarrage.index('montrerItem()')
     assert 'etat.dicteeAutoAutorisee = false' in demarrage

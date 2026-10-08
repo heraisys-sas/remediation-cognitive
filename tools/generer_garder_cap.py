@@ -1,5 +1,9 @@
 """Situations originales de reprise, adaptation et contrôle, inspirées de stratégies métacognitives."""
-import json
+
+try:
+    from tools.generation import ecrire_json, arguments_generation
+except ModuleNotFoundError:
+    from generation import ecrire_json, arguments_generation
 import random
 from pathlib import Path
 
@@ -206,12 +210,13 @@ def construire():
 
 
 def main():
-    base=ROOT/'content/entrainement/garder-cap';(base/'paliers').mkdir(parents=True,exist_ok=True)
+    options = arguments_generation(__doc__)
+    base=ROOT/'content/entrainement/garder-cap'
     paliers=construire()
     descriptions=['Reprendre une tâche après une interruption réellement vécue', SERIES[1][0], SERIES[2][0]]
     manifest={'theme':'garder-cap','paliers':[{'id':f'cap-palier-{n}','description':descriptions[n-1], 'prerequis':[] if n==1 else [f'cap-palier-{n-1}'], 'fichier':f'paliers/palier-{n:02}.json','nb_items':len(items)} for n,items in enumerate(paliers,1)]}
     for n,items in enumerate(paliers,1):
-        (base/f'paliers/palier-{n:02}.json').write_text(json.dumps(items,ensure_ascii=False,indent=2)+'\n')
-    (base/'paliers.json').write_text(json.dumps(manifest,ensure_ascii=False,indent=2)+'\n')
+        ecrire_json(base/f'paliers/palier-{n:02}.json', items, dry_run=options.dry_run)
+    ecrire_json(base/'paliers.json', manifest, dry_run=options.dry_run)
 
 if __name__=='__main__':main()
