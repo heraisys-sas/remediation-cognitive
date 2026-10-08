@@ -15,6 +15,7 @@ async function demarrerSession(theme, palier = null, parcours = null) {
     if (palier !== null) corps.palier = palier;
     if (parcours !== null) corps.parcours = parcours;
     if (sansLimiteActivee()) corps.sans_limite_sessions = true;
+    if (rejouerPalierActive()) corps.rejouer_palier = true;
     const options = { method: "POST" };
     if (Object.keys(corps).length > 0) {
       options.body = JSON.stringify(corps);
@@ -46,6 +47,8 @@ async function demarrerSession(theme, palier = null, parcours = null) {
     }
     etat.theme = theme;
     etat.session = donnees;
+    etat.phaseContextes = donnees.items.every(item => item.type === "rappel-source" && item.contenu?.affichage?.image)
+      ? "decouverte" : null;
     masquerNoticeThemes();
     preparerEcranSeance();
     afficherVue("seance");
@@ -93,6 +96,8 @@ function montrerItem() {
   etat.repondu = false;
   etat.indicesReveles = 0;
   etat.optionChoisie = null;
+  refs.carteFeedback.replaceChildren();
+  refs.carteFeedback.hidden = true;
   if (etat.indexItem === 0) etat.consignesVues = new Set();  // rappels par séance
   refs.rappelConsigne.hidden = true;
   refs.noteReprise.hidden = true;
@@ -107,7 +112,7 @@ function montrerItem() {
   annulerMemo();
 
   // Progression discrète : « Question n sur max » + fine barre.
-  refs.progressionTexte.textContent = `Question ${etat.indexItem + 1} sur ${total}`;
+  refs.progressionTexte.textContent = `${etat.phaseContextes === "decouverte" ? "Découverte" : etat.phaseContextes === "rappel" ? "Rappel" : "Question"} ${etat.indexItem + 1} sur ${total}`;
   refs.barreProgression.setAttribute("aria-valuemax", String(total));
   refs.barreProgression.setAttribute("aria-valuenow", String(etat.indexItem + 1));
   refs.barreRemplie.style.width = `${((etat.indexItem + 1) / total) * 100}%`;
@@ -122,6 +127,10 @@ function montrerItem() {
       ? `Reprise — la réponse est « ${attendue} ». Il s'agit de la réancrer, pas de la deviner.`
       : "Reprise — cet exercice revient une fois, avec la réponse.";
     refs.noteReprise.hidden = false;
+  }
+  if (etat.phaseContextes === "rappel") {
+    afficherQuestion(item);
+    return;
   }
   if (contenu.affichage) {
     // Exercices de mémorisation : consigne → stimulus temporisé → question.
@@ -204,7 +213,7 @@ async function soumettreValeur(brut, indiceUtilise) {
     // Feedback : statut + réponse attendue (après coup) + commentaire serveur.
     handler.renderFeedback(resultat);
     etat.reponsesAttendues[item.id] = resultat.attendue;
-    if (resultat.reprise === true && etat.session) {
+    if (resultat.reprise === true && etat.session && !etat.phaseContextes) {
       // Reprise errorless : l'exercice revient une fois, en fin de séance.
       etat.session.items.push(item);
       etat.reprisesAfficher.add(item.id);
@@ -234,7 +243,9 @@ async function soumettreValeur(brut, indiceUtilise) {
         texte: "La séance dure depuis dix minutes. Tu peux t'arrêter là (bouton « Terminer la séance ») ou continuer — c'est toi qui vois.",
       }));
     }
-    refs.boutonSuivant.textContent = dernier || etat.seanceTerminee ? "Voir le résumé" : "Suivant";
+    refs.boutonSuivant.textContent = etat.seanceTerminee ? "Voir le résumé"
+      : dernier && etat.phaseContextes === "decouverte" ? "Passer au rappel"
+      : dernier ? "Voir le résumé" : "Suivant";
     refs.boutonSuivant.hidden = false;
     // Rendre la main AVANT de déplacer le focus : un bouton désactivé
     // ne peut pas le recevoir.
@@ -278,6 +289,10 @@ function itemSuivant() {
   // ce cas, on va au résumé même s'il reste des items livrés.
   if (!etat.seanceTerminee && etat.indexItem < etat.session.items.length - 1) {
     etat.indexItem += 1;
+    montrerItem();
+  } else if (!etat.seanceTerminee && etat.phaseContextes === "decouverte") {
+    etat.phaseContextes = "rappel";
+    etat.indexItem = 0;
     montrerItem();
   } else {
     finirSeance();

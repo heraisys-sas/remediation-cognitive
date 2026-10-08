@@ -18,6 +18,7 @@ function majModeDerogatoire() {
   for (const panneau of document.querySelectorAll(".reglages-essai")) {
     panneau.hidden = !modeDerogatoireActif();
   }
+  $("case-rejouer-palier").disabled = !modeDerogatoireActif();
   majReglageSansLimite();
 }
 
@@ -388,6 +389,10 @@ function brancherEvenements() {
     garderPreference(CLE_MODE_DEROGATOIRE, evenement.target.checked ? "on" : "off");
     majModeDerogatoire();
   });
+  $("case-rejouer-palier").addEventListener("change", (evenement) => {
+    if (!modeDerogatoireActif()) return;
+    garderPreference(CLE_REJOUER_PALIER, evenement.target.checked ? "on" : "off");
+  });
   refs.boutonSuivant.addEventListener("click", itemSuivant);
 
   refs.boutonTerminer.addEventListener("click", () => {
@@ -516,6 +521,7 @@ function init() {
   initialiserChoixVoix();
   if (refs.caseLectureAuto) refs.caseLectureAuto.checked = lectureAutoActivee();
   if (refs.caseSansLimite) refs.caseSansLimite.checked = preferenceLocale(CLE_SANS_LIMITE) === "on";
+  $("case-rejouer-palier").checked = preferenceLocale(CLE_REJOUER_PALIER) === "on";
   $("case-mode-derogatoire").checked = modeDerogatoireActif();
   majModeDerogatoire();
   brancherEvenements();

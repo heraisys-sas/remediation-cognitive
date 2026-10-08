@@ -92,7 +92,7 @@ def test_panneau_methode_specifique_ou_masque_sans_repli_generique():
     ).group(0)
     script=types_consigne+'\n'+methodes_type+'''
 const assert=require('node:assert/strict');
-const refs=new Proxy({}, {get(o,k){return o[k]??={style:{},setAttribute(){}}}});
+const refs=new Proxy({}, {get(o,k){return o[k]??={style:{},setAttribute(){},replaceChildren(){}}}});
 const etat={session:{items:[]},indexItem:0,reprisesAfficher:new Set()};
 function annulerMemo(){} function afficherQuestion(){} function afficherPhaseMemo(){}
 '''+ 'function methodePourItem(item) '+corps_fonction(source,'methodePourItem') \

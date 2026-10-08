@@ -37,3 +37,8 @@ function sansLimiteActivee() {
 function definirSansLimite(active) {
   try { window.localStorage.setItem(CLE_SANS_LIMITE, active ? "on" : "off"); } catch { /* stockage indisponible */ }
 }
+
+const CLE_REJOUER_PALIER = "orthogone.rejouerPalier";
+function rejouerPalierActive() {
+  return modeDerogatoireActif() && preferenceLocale(CLE_REJOUER_PALIER) === "on";
+}

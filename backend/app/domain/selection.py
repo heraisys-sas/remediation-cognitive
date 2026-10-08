@@ -55,8 +55,9 @@ def selectionner_items(
         dus.sort(key=lambda i: -i["contenu"].get("etape_progression", 1))
         reserve = min(len(nouveaux), max(1, max_items // 2))
         revises = dus[:max_items - reserve]
-        return revises + nouveaux[:max_items - len(revises)]
-    selection = dus + nouveaux
+        selection = revises + nouveaux[:max_items - len(revises)]
+    else:
+        selection = dus + nouveaux
     if inclure_non_dus and len(selection) < max_items:
         deja_choisis = {item["id"] for item in selection}
         non_dus = [

@@ -32,6 +32,7 @@ class DemarrageOptionnel(BaseModel):
     """Corps facultatif de POST …/sessions.
 
     - ``palier`` : essai sur un palier précis (la progression ne peut pas reculer) ;
+    - ``rejouer_palier`` : inclut les exercices déjà vus sans attendre leur échéance ;
     - ``sans_limite_sessions`` : dérogation explicite au plafond de séances,
       demandée depuis l'accueil — accordée par le serveur pour tous les thèmes
       (fenêtre du jour ou de la semaine selon la catégorie — ADR-021).
@@ -39,6 +40,7 @@ class DemarrageOptionnel(BaseModel):
 
     palier: int | None = Field(default=None, ge=1)
     parcours: str | None = Field(default=None, pattern=r"^[a-z0-9-]+$")
+    rejouer_palier: bool = False
     sans_limite_sessions: bool = False
 
 
@@ -101,6 +103,7 @@ def demarrer_session(theme: str, request: Request, corps: DemarrageOptionnel | N
             palier_force=corps.palier if corps else None,
             sans_limite_sessions=corps.sans_limite_sessions if corps else False,
             parcours=corps.parcours if corps else None,
+            rejouer_palier=corps.rejouer_palier if corps else False,
         )
     except PalierInconnu:
         return _erreur(422, "palier_inconnu")

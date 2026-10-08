@@ -225,6 +225,13 @@ def items_evocation() -> list[dict]:
         item["theme"] = "evocation"
         item["cap_complexite"] = None
         item["meta"] = meta()
+        if famille == "source":
+            images = json.loads((RACINE_DEPOT / "frontend/images/contextes/manifest.json").read_text(encoding="utf-8"))["scenes"]
+            scene = images[numero - 1]
+            item["id"] = scene["id"]
+            item["contenu"]["consigne"] = "Observe la scène et le message : tu devras retrouver dans quel contexte tu l'as vu."
+            item["contenu"]["affichage"]["elements"] = [["", scene["message"]]]
+            item["contenu"]["affichage"]["image"] = scene["image"]
         items.append(item)
 
     # Palier 1 — reconnaissance : la réponse est proposée avec deux leurres.

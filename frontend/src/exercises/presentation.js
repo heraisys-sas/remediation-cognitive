@@ -13,7 +13,7 @@ function afficherPhaseMemo(item) {
   const nbElements = estSeries
     ? affichage.series.reduce((total, serie) => total + serie.length, 0)
     : affichage.elements.length;
-  const mention = audio ? `${nbElements} mots · 2 s de pause après chaque mot entendu` : estSequence || estSeries
+  const mention = affichage.image ? `Une scène · ${Math.round(affichage.duree_totale_ms / 1000)} s` : audio ? `${nbElements} mots · 2 s de pause après chaque mot entendu` : estSequence || estSeries
     ? `${nbElements} éléments · un toutes les ${parElement.toFixed(2).replace(".", ",")} s`
     : `${affichage.elements.length} paires · environ ${Math.round(affichage.duree_totale_ms / 1000)} s`;
 
@@ -100,6 +100,54 @@ function jouerAffichage(item) {
     etat.minuteriesMemo.push(
       setTimeout(() => jouerDelaiOuQuestion(item), affichage.duree_totale_ms)
     );
+    return;
+  }
+
+  if (affichage.image) {
+    const generation = etat.memoGeneration;
+    const description = affichage.image;
+    const image = creerElement("img", { classe: "scene-contexte", attributs: {
+      width: description.width, height: description.height,
+      alt: description.alt, decoding: "async",
+      sizes: "(max-width: 640px) calc(100vw - 40px), 592px",
+    } });
+    const statut = creerElement("p", { classe: "ligne-discrete", texte: "Chargement de la scène…",
+      attributs: { role: "status" } });
+    plateau.replaceChildren(statut);
+    const valide = () => generation === etat.memoGeneration && plateau.isConnected;
+    let termine = false;
+    const echec = () => {
+      if (termine || !valide()) return;
+      termine = true;
+      clearTimeout(delaiChargement);
+      statut.textContent = "La scène n’a pas pu être chargée. Tu peux réessayer ou terminer la séance.";
+      const reessayer = creerElement("button", { classe: "bouton bouton-secondaire",
+        texte: "Réessayer", attributs: { type: "button" } });
+      reessayer.addEventListener("click", () => { annulerMemo(); refs.zoneMemo.hidden = false; jouerAffichage(item); });
+      plateau.append(reessayer);
+    };
+    // Le rappel ne démarre jamais sans avoir effectivement montré la scène.
+    boutonPasser.hidden = true;
+    const delaiChargement = setTimeout(echec, 15000);
+    etat.minuteriesMemo.push(delaiChargement);
+    image.onerror = echec;
+    image.onload = async () => {
+      try { await image.decode(); } catch { echec(); return; }
+      if (termine || !valide()) return;
+      termine = true;
+      clearTimeout(delaiChargement);
+      // Une transcription du message reste lisible sur petit écran, sans nommer la source.
+      const figure = creerElement("figure", { classe: "scene-source" }, image,
+        creerElement("figcaption", { texte: description.alt, attributs: { "aria-hidden": "true" } }));
+      plateau.replaceChildren(figure);
+      boutonPasser.hidden = false;
+      // L’alternative et la voix donnent le message, jamais le contexte attendu.
+      etat.enonceCourant = description.alt;
+      lireSiLectureAuto(etat.enonceCourant);
+      etat.minuteriesMemo.push(setTimeout(() => jouerDelaiOuQuestion(item), affichage.duree_totale_ms));
+    };
+    image.srcset = description.srcset;
+    image.src = description.src;
     return;
   }
 
