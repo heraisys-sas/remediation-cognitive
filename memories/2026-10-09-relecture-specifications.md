@@ -1,0 +1,5 @@
+# Relecture des spécifications — 9 octobre 2026
+
+Relecture primaire des quatre documents rédigés par GPT Astra, et des décisions/source locales. Corrections appliquées, v1.1 : délai de masquage/disponibilité/latence/saisie distingués ; frontières des flux et déduplication ; tâche B avec dix événements, fenêtres 4 s/intervalle 2 s dans profils seuls et ensemble ; mapping fixe lors changement de règle ; no-go au début distinct du stop-signal ; initialisation n-back et continuation sans reset, feedback retiré ; transitions PQRST, absence explicitement déclarée, correction T après les deux réponses ; bouton Afficher et phrase de source masquée pour contexte.
+
+Les paramètres ajoutés sont des profils proposés, pas une décision de livraison ni dosage clinique. Résumé après S conservé avant T puis masqué. Trois exercices protégés, quatre mémoires retenues et pistes écartées respectés. Aucun code/contenu d’exercice/historique modifié, aucun commit/push. Relecture clinique/essai d’usage restent à effectuer.

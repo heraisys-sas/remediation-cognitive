@@ -11,7 +11,8 @@ Sépare la logique métier du mapping HTTP (router.py) :
   (90 % × 3 séances consécutives → palier +1), puis persistance JSON.
 
 Les séances en cours vivent en mémoire (registre) ; seuls les états
-cartes / maîtrise / compteur sont persistés, à la fin de la séance.
+cartes / maîtrise / compteur sont persistés à la fin ; les observations
+de protocole sont journalisées séparément dès leur validation.
 La fatigue (``SessionRunner.doit_proposer_arret``) n'est qu'une
 proposition renvoyée en fin de séance — JAMAIS une interruption.
 """
@@ -42,6 +43,7 @@ from ...domain.dosage import (
     parametres_seance,
 )
 from ...domain.selection import selectionner_items
+from ...domain.observations_contextes import normaliser_faits, fusionner_faits
 from ...storage.store import StockageJSON
 
 # Notes FSRS v1 : réussite → Good (3), échec → Again (1).
@@ -132,6 +134,7 @@ class SessionEnCours:
     reponses: dict[str, bool] = field(default_factory=dict)
     # Temps (ms) des premières réponses correctes — baseline RT adaptative.
     temps_reference: list[float] = field(default_factory=list)
+    protocoles_pqrst: set[str] = field(default_factory=set)
     # Indices consultés par item (0 = sans aide) — mesure de l'aide nécessaire.
     indices_utilises: dict[str, int] = field(default_factory=dict)
     # Exercices déjà repris en fin de séance (un échec = au plus une reprise).
@@ -154,7 +157,8 @@ def _item_sans_reponse(item: dict) -> dict:
         "id": item["id"],
         "type": item["type"],
         "palier": item["palier"],
-        "contenu": item["contenu"],
+        "contenu": ({**item["contenu"], "interface_pqrst": messages.PQRST_INTERFACE}
+                    if item["type"] == "pqrst-mise-en-oeuvre" else item["contenu"]),
     }
 
 
@@ -369,6 +373,7 @@ class GestionnaireSessions:
         temps_ms,
         indice_utilise: int | None = None,
         memorisation: bool = False,
+        observation_contextes: dict | None = None,
     ) -> dict:
         """Corrige côté serveur et retourne le payload 200 du contrat.
 
@@ -407,7 +412,23 @@ class GestionnaireSessions:
         ):
             raise ReponseInvalide("indice_utilise hors bornes")
         assistee = nb_indices > 0 and indice_utilise > nb_indices
-        correction = evaluer(theme, item, reponse, assistee)
+        faits = None
+        if observation_contextes is not None:
+            try:
+                if observation_contextes.get("photo_apres_erreur") or "photo_revelee_ms" in observation_contextes:
+                    raise ValueError("révélation avant correction")
+                faits = self._faits_contexte(session, item, observation_contextes)
+                if faits["passe"] == "rappel" and not any(
+                    ligne["item_id"] == item_id and ligne.get("premiere_reponse")
+                    for ligne in self.stockage.lire_observations(session_id).get("contextes", {}).get("decouverte", [])
+                ):
+                    raise ValueError("rappel avant découverte")
+            except ValueError as exc:
+                raise ReponseInvalide(str(exc)) from exc
+        try:
+            correction = evaluer(theme, item, reponse, assistee)
+        except ValueError as exc:
+            raise ReponseInvalide(str(exc)) from exc
         correcte = correction.correcte
 
         # Scènes de contexte : la découverte prépare l’encodage. Seul le rappel
@@ -427,6 +448,10 @@ class GestionnaireSessions:
                 "feedback": messages.texte("entrainement", "feedback_correcte" if correcte else "feedback_incorrecte"),
             }
             resultat.update(correction.feedback())
+            if faits is not None:
+                premiere = {"reponse": reponse, "correcte": correcte, "aide": indice_utilise,
+                            "temps_ms": temps_ms, "validee_ms": int(self.horloge().timestamp() * 1000)}
+                self._enregistrer_contexte(session, faits, premiere)
             if duree_depassee:
                 resultat.update(arret_propose=True, motif_arret="duree")
             return resultat
@@ -451,13 +476,15 @@ class GestionnaireSessions:
             session.runner.enregistrer_reponse(item_id, correcte, temps_ms)
         except ValueError as exc:
             raise ReponseInvalide(str(exc)) from exc
+        if isinstance(reponse, dict) and "_pqrst" in reponse:
+            session.protocoles_pqrst.add(item_id)
         premiere_reponse = item_id not in session.reponses
         session.reponses.setdefault(item_id, correcte)
         if premiere_reponse:
             session.indices_utilises[item_id] = indice_utilise
             if assistee:
                 session.assistees.add(item_id)
-            elif correcte and indice_utilise == 0:
+            elif correcte and indice_utilise == 0 and item_id not in session.protocoles_pqrst:
                 # Seules les premières réponses correctes SANS AIDE nourrissent
                 # la baseline RT (les essais aidés ou dupliqués la fausseraient).
                 session.temps_reference.append(float(temps_ms))
@@ -472,6 +499,13 @@ class GestionnaireSessions:
             "feedback": messages.texte("entrainement", cle),
         }
         resultat.update(correction.feedback())
+        if faits is not None:
+            premiere = {"reponse": reponse, "correcte": correcte, "aide": indice_utilise,
+                        "temps_ms": temps_ms, "validee_ms": int(self.horloge().timestamp() * 1000)}
+            self._enregistrer_contexte(session, faits, premiere)
+        observation_pqrst = resultat.get("sequence", {}).get("observation")
+        if observation_pqrst is not None:
+            self._enregistrer_pqrst(session, item_id, observation_pqrst)
         # Reprise errorless : un exercice manqué (et non assisté) revient **une fois**, en
         # fin de séance, avec la réponse fournie avant le nouvel essai. On ne ré-encode pas
         # une erreur ; le plafond évite de doubler la durée de la séance.
@@ -501,9 +535,87 @@ class GestionnaireSessions:
                 resultat["motif"] = "duree"
         return resultat
 
+    def observer(self, theme: str, session_id: str, item_id: str, reponse: dict) -> dict:
+        from ...domain.correction.sequence import normaliser_observation_pqrst
+        session = self._session(theme, session_id)
+        if session.terminee:
+            raise SessionDejaTerminee()
+        item = session.items_par_id.get(item_id)
+        if item is None:
+            raise ItemHorsSeance()
+        if item["type"] != "pqrst-mise-en-oeuvre":
+            raise ReponseInvalide("observation incompatible")
+        try:
+            observation = normaliser_observation_pqrst(item, reponse, partielle=True)
+        except ValueError as exc:
+            raise ReponseInvalide(str(exc)) from exc
+        self._enregistrer_pqrst(session, item_id, observation)
+        return {"enregistree": True}
+
+    def _faits_contexte(self, session: SessionEnCours, item: dict, donnees: dict) -> dict:
+        ordre = list(session.items_par_id).index(item["id"]) + 1
+        return normaliser_faits(item, donnees, ordre)
+
+    def _enregistrer_contexte(self, session: SessionEnCours, faits: dict, premiere: dict | None = None) -> dict:
+        def modifier(document):
+            lignes = document["contextes"][faits["passe"]]
+            ligne = next((ligne for ligne in lignes if ligne["item_id"] == faits["item_id"]), None)
+            if ligne is None:
+                ligne = {"item_id": faits["item_id"], "passe": faits["passe"], "ordre": faits["ordre"]}
+                lignes.append(ligne)
+            if premiere is not None:
+                ligne.setdefault("premiere_reponse", premiere)
+                ligne["presentee"] = True
+            fusionner_faits(ligne, faits)
+            return document
+        return self.stockage.modifier_observations(session.session_id, modifier)
+
+    def _fusionner_contextes(self, session: SessionEnCours, donnees: dict) -> None:
+        try:
+            if not isinstance(donnees, dict) or set(donnees) - {"decouverte", "rappel"}:
+                raise ValueError("passes invalides")
+            faits = []
+            for passe, lignes in donnees.items():
+                if not isinstance(lignes, list) or len(lignes) > len(session.items_par_id):
+                    raise ValueError("observations trop nombreuses")
+                for ligne in lignes:
+                    if not isinstance(ligne, dict) or ligne.get("passe") != passe:
+                        raise ValueError("passe incompatible")
+                    item = session.items_par_id.get(ligne.get("item_id"))
+                    if item is None:
+                        raise ValueError("item inconnu")
+                    faits.append(self._faits_contexte(session, item, ligne))
+            if len({(fait["passe"], fait["item_id"]) for fait in faits}) != len(faits):
+                raise ValueError("observations dupliquées")
+            def modifier(document):
+                for fait in faits:
+                    lignes = document["contextes"][fait["passe"]]
+                    observation = next((ligne for ligne in lignes if ligne["item_id"] == fait["item_id"]), None)
+                    if observation is None:
+                        observation = {"item_id": fait["item_id"], "passe": fait["passe"], "ordre": fait["ordre"]}
+                        lignes.append(observation)
+                    if fait["passe"] == "rappel" and not any(
+                        ligne["item_id"] == fait["item_id"] and ligne.get("premiere_reponse")
+                        for ligne in document["contextes"]["decouverte"]
+                    ):
+                        raise ValueError("rappel avant découverte")
+                    fusionner_faits(observation, fait)
+                return document
+            self.stockage.modifier_observations(session.session_id, modifier)
+        except ValueError as exc:
+            raise ReponseInvalide(str(exc)) from exc
+
+    def _enregistrer_pqrst(self, session: SessionEnCours, item_id: str, observation: dict) -> None:
+        def modifier(document):
+            precedente = document["pqrst"].get(item_id)
+            if not precedente or precedente.get("statut") != "complete":
+                document["pqrst"][item_id] = observation
+            return document
+        self.stockage.modifier_observations(session.session_id, modifier)
+
     # -- fin de séance ---------------------------------------------------------
 
-    def terminer(self, theme: str, session_id: str) -> dict:
+    def terminer(self, theme: str, session_id: str, observations_contextes: dict | None = None) -> dict:
         """Clôture la séance : FSRS + maîtrise + persistance, payload 200 du contrat.
 
         **Idempotent** : un second appel (double clic, ou reprise après la clôture
@@ -512,8 +624,12 @@ class GestionnaireSessions:
         Lève ``SessionInconnue`` (404) seulement.
         """
         session = self._session(theme, session_id)
+        if observations_contextes is not None:
+            self._fusionner_contextes(session, observations_contextes)
         if session.terminee:
             if session.resume_cloture is not None:
+                if any(item["type"] == "rappel-source" for item in session.items_par_id.values()):
+                    session.resume_cloture["observations_contextes"] = self.stockage.lire_observations(session_id).get("contextes", {"decouverte": [], "rappel": []})
                 return session.resume_cloture
             raise SessionDejaTerminee()
         resume_moteur, nb_repondu, nb_correctes, taux = self._cloturer(
@@ -556,7 +672,10 @@ class GestionnaireSessions:
                 1
                 for item_id, correcte in session.reponses.items()
                 if correcte and session.indices_utilises.get(item_id, 0) == 0
+                and item_id not in session.protocoles_pqrst
             )
+        if any(item["type"] == "rappel-source" for item in session.items_par_id.values()):
+            retour["observations_contextes"] = self.stockage.lire_observations(session.session_id).get("contextes", {"decouverte": [], "rappel": []})
         return retour
 
     def _cloturer(

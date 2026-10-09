@@ -50,13 +50,60 @@ for (const correcte of [true, false]) test(`correction ${correcte ? 'juste sans 
   c.etat.session.items[0] = { contenu: { affichage: { image: {
     src: 'scene.webp', srcset: 'scene.webp 640w', width: 960, height: 640, alt: 'Le message.'
   } } } };
+  const observation = { photo_apres_erreur: false, incident_photo: false };
+  c.observationContexte = () => observation;
   c.refs = { carteFeedback: { replaceChildren: () => enfants.splice(0), append: (...e) => enfants.push(...e) } };
-  c.creerElement = (balise, options = {}, ...contenu) => ({ balise, options, contenu, addEventListener() {}, append(...e) { this.contenu.push(...e); } });
+  c.creerElement = (balise, options = {}, ...contenu) => ({ balise, options, contenu, events: {}, isConnected: true, addEventListener(nom, callback) { this.events[nom] = callback; }, replaceChildren(...e) { this.contenu = e; }, append(...e) { this.contenu.push(...e); } });
   vm.runInContext(fonction('rendreFeedback', 'programmerSuiteLexicale'), c);
   c.rendreFeedback({ correcte, attendue: 'Sur le frigo' });
   const figures = enfants.filter(e => e.balise === 'figure');
   assert.equal(figures.length, correcte ? 0 : 1);
-  if (!correcte) assert.equal(figures[0].contenu[0].options.attributs.src, 'scene.webp');
+  if (!correcte) {
+    const image = figures[0].contenu[0];
+    assert.equal(image.options.attributs.src, 'scene.webp');
+    assert.equal(observation.photo_apres_erreur, false);
+    image.events.load();
+    assert.equal(observation.photo_apres_erreur, true);
+    image.events.error();
+    assert.equal(observation.incident_photo, true);
+  }
+});
+
+function observations() {
+  const c = { etat: { phaseContextes: 'decouverte', indexItem: 0,
+    observationsContextes: { decouverte: [], rappel: [] } }, Date };
+  vm.createContext(c);
+  vm.runInContext(fonction('observationContexte', 'reinitialiserConfirmationFin'), c);
+  return c;
+}
+test('deux passes distinctes gardent la première erreur après aide', () => {
+  const c = observations(), item = { id: 'scene-1', type: 'rappel-source' };
+  c.observationContexte(item, true);
+  c.enregistrerReponseContexte(item, { reponse: 'frigo', temps_ms: 100 }, { correcte: true });
+  c.etat.phaseContextes = 'rappel';
+  const rappel = c.observationContexte(item, true);
+  c.enregistrerReponseContexte(item, { reponse: 'porte', temps_ms: 200 }, { correcte: false });
+  rappel.photo_apres_erreur = true;
+  c.enregistrerReponseContexte(item, { reponse: 'frigo', temps_ms: 300 }, { correcte: true });
+  assert.equal(c.etat.observationsContextes.decouverte[0].premiere_reponse.correcte, true);
+  assert.equal(rappel.premiere_reponse.correcte, false);
+  assert.equal(rappel.premiere_reponse.reponse, 'porte');
+  const stats = c.statistiquesContextes();
+  assert.equal(stats.find(s => s.label === 'Sans photo — premières réponses justes').valeur, '0');
+  assert.equal(stats.find(s => s.label === 'Photos revues après erreur').valeur, '1');
+  assert.ok(!stats.some(s => s.label === 'Réussite'));
+});
+test('sortie partielle ne compte pas les questions futures et fin ne transmet pas de justesse client', () => {
+  const c = observations();
+  c.observationContexte({ id: 'chargee', type: 'rappel-source' }, true);
+  c.enregistrerReponseContexte({ id: 'chargee', type: 'rappel-source' },
+    { reponse: 'porte', temps_ms: 10 }, { correcte: false });
+  c.observationContexte({ id: 'incident', type: 'rappel-source' }).incident_photo = true;
+  const stats = c.statistiquesContextes();
+  assert.equal(stats.find(s => s.label === 'Après photo — questions présentées').valeur, '1');
+  assert.equal(stats.find(s => s.label === 'Après photo — réponses validées').valeur, '1');
+  assert.equal(stats.find(s => s.label === 'Sans photo — questions présentées').valeur, '0');
+  assert.ok(!JSON.stringify(c.faitsContextes()).includes('premiere_reponse'));
 });
 
 for (const phase of ['decouverte', 'rappel', null]) test(`payload de réponse : ${phase}`, async () => {
@@ -64,14 +111,16 @@ for (const phase of ['decouverte', 'rappel', null]) test(`payload de réponse : 
   const c = {
     etat: { phaseContextes: phase, repondu: false, actionEnCours: false,
       debutQuestion: Date.now(), theme: { id: 'evocation' },
-      session: { session_id: 'test', items: [{ id: 'scene' }] }, indexItem: 0 },
+      session: { session_id: 'test', items: [{ id: 'scene', type: 'rappel-source' }] }, indexItem: 0,
+      observationsContextes: { decouverte: [], rappel: [] } },
     handlerPour: () => ({ readAnswer: x => x, renderFeedback() {} }),
     apiFetch: async (_, options) => { corps = JSON.parse(options.body); return { essai_supplementaire: true }; },
     masquerBandeau() {}, reglerEtatBoutons() {}, Date,
   };
   vm.createContext(c);
-  vm.runInContext('async ' + fonction('soumettreValeur', 'programmerSuiteLexicale'), c);
+  vm.runInContext(fonction('observationContexte', 'enregistrerReponseContexte') + '\nasync ' + fonction('soumettreValeur', 'programmerSuiteLexicale'), c);
   await c.soumettreValeur('Sur le frigo', 0);
   assert.equal(corps.memorisation === true, phase === 'decouverte');
   assert.equal(corps.reponse, 'Sur le frigo');
+  assert.equal(corps.observation_contextes?.passe ?? null, phase);
 });

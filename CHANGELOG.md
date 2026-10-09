@@ -1,3 +1,31 @@
+# 2026-10-09 — intégration des corrections cognitives dans dev
+
+Correction du rappel final déjà présente sur dev conservée : découverte avec `memorisation: true`, seul rappel final alimente FSRS/maîtrise/temps de référence, journal et résumé distincts pour les deux passes. Nouveaux ADR renumérotés 042–044, sans écraser les décisions 039/040. Contrôles d’intégration : 421 tests pytest réussis, 1 ignoré, 12 tests Node et Ruff réussis.
+
+# 2026-10-09 — PQRST séquencé et résultats Contextes validés
+
+- PQRST présenté par étapes, texte retiré au rappel, réponses T verrouillées avant correction ; absence et aide distinctes, résumé après S conservé. ADR-043.
+- Contextes : résultats descriptifs séparés après photo et sans photo ; première réponse conservée, photo révélée après erreur. Journal atomique par séance ; checkpoints PQRST sauvegardés avant clôture avec réessai après échec réseau. ADR-044.
+- Nouveaux protocoles PQRST exclus du temps de référence et du compteur sans aide ; FSRS, contenus, identifiants et historiques conservés.
+- Validation finale : 417 pytest réussis, 1 ignoré ; 9 tests Node, Ruff et contrôles CI locaux réussis. Recette navigateur PQRST et série complète de 20 réponses Contextes, données isolées. Pas de nouvelle recette mobile ni d’inférence Apple réelle.
+- Quatre mémoires immédiates et application des stratégies restent à développer. Aucun commit/push.
+
+# 2026-10-09 — relecture des spécifications cognitives
+
+Quatre spécifications passées en v1.1 : frontières des réponses, fenêtres de double tâche, distinction go/no-go et stop-signal, transitions PQRST/n-back, mapping du changement de règle et maintien du bouton Afficher pour les scènes. Relecture documentaire, sans sélection implicite de candidats ni modification de code.
+
+# 2026-10-09 — spécifications cognitives et autoévaluation
+
+Cadre commun, corrections des tâches existantes, quatre mémoires immédiates retenues et onze fiches candidates à arbitrer. Entraînement et Exercices ciblés distingués ; PQRST, faux n-back et deux passes du contexte précisés. Prototypes conservés avec portée résiduelle explicite (ADR-042). Aucun code, contenu d’exercice ou historique modifié.
+
+# 2026-10-09 — recherche préparatoire pour les compétences prévues
+
+Recherche Consensus ciblée sur attention soutenue/divisée/alternée, flexibilité, inhibition, vitesse et visuospatial : quatorze sources exploitables, candidats et limites. Distinction demandée : les formats d’observation pourront aller dans « Exercices ciblés » pour l’autoévaluation. Documents reliés ; nouvelles spécifications et implémentation à venir après sélection.
+
+# 2026-10-09 — revue scientifique des exercices implémentés
+
+Audit documentaire des tâches réelles, classification cognitive et onze références Consensus avec portée explicite. Propositions de révision de PQRST, des QCM de stratégies et des libellés ; Déduction, Calcul mental et Retrouver le mot conservés. Référentiel, taxonomie, bibliographie et feuille de route reliés à la revue. Aucun changement de code, contenu ou historique.
+
 # 2026-10-08 — enrichissement du parcours Retrouver le mot
 
 ## 2026-10-08 — Refactorisation (issue #20)
@@ -829,3 +857,10 @@ Création de dev depuis main ; branches temporaires validées par PR vers dev, p
 ## 2026-10-08 — README aligné sur le logiciel livré
 
 Présentation du POC de remédiation, fonctions jouables et capacités Apple facultatives ; démarrage, données et contrôles documentés. Retrait des annonces de bilan/export/graphe/HDS et de React comme fonctionnalités disponibles. Prototypes distingués du code livré, circuit dev → main conservé. Documentation uniquement.
+## 2026-10-09 — Référentiel des compétences et exercices
+
+- Référentiel destiné à l’orthophoniste, au chercheur et au développement : trois fiches de mémoires immédiates, variantes, justifications déjà consultées et état réel d’implémentation.
+- Inventaire des autres compétences à partir des cartes et de la feuille de route ; recherche Consensus suspendue jusqu’au signal de l’utilisateur.
+- Liens depuis la feuille de route, la taxonomie historique et la bibliographie ; aucun changement des exercices.
+
+- Sélection des mémoires immédiates précisée : « Quel objet était où ? » devient le quatrième exercice retenu ; les trois autres pistes complémentaires sont écartées. Référentiel v1.1, sans nouvelle recherche bibliographique.

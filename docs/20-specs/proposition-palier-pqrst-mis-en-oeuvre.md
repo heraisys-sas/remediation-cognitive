@@ -2,6 +2,8 @@
 
 **Statut** : **arbitrages rendus le 2026-09-27** — mise en œuvre prévue. Les décisions ci-dessous remplacent les questions ouvertes.
 
+**Actualisation du 9 octobre 2026 :** les décisions de contenu et les cinq étapes restent tracées ici. La [fiche EX-REV-001](corrections-exercices-existants.md#2-ex-rev-001--pqrst-réellement-séquencé) prévaut désormais pour le séquençage, le masquage du texte/des notes et l’interprétation des résultats. Le résumé après S reste le défaut conservé, masqué avant T ; T est donc décrit comme rappel après feedback. Aucune correction de code n’est déclarée par cette actualisation.
+
 ## Le constat
 
 Le palier PQRST actuel (`mt-1-pqrst-*`) **teste le résultat** de la méthode sans la faire appliquer. Déroulé réel d'un item :

@@ -8,6 +8,95 @@ from .text import (
 )
 
 ETAPES_JUGEES_SEQUENCE = (1, 4, 5)
+VERSION_PQRST = "pqrst-sequence-v1"
+ETAPES_PQRST = ["P", "Q", "R", "S", "retour-S", "T1", "T2"]
+PHASES_PQRST = {"pret", "P", "P-retour", "Q", "Q-retour", "R", "4",
+                "retour-S", "5.0", "5.1", "relecture", "fin"}
+
+
+def normaliser_observation_pqrst(item: dict, reponse: dict, partielle: bool = True) -> dict:
+    """Valide une trace client bornée ; ne note ni une réponse ni un checkpoint."""
+    def exiger(condition):
+        if not condition:
+            raise ValueError("Observation PQRST invalide")
+
+    exiger(item.get("type") == "pqrst-mise-en-oeuvre" and isinstance(reponse, dict))
+    exiger(set(reponse) <= {"1", "2", "4", "5", "_pqrst"})
+    meta = reponse.get("_pqrst")
+    attendues = {"version", "etapes_realisees", "statuts", "tentatives", "relectures",
+                 "interruptions", "modele_avant_test", "phase", "reprise_apres_correction"}
+    exiger(isinstance(meta, dict) and set(meta) == attendues)
+    exiger(meta["version"] == VERSION_PQRST and isinstance(meta["phase"], str)
+           and meta["phase"] in PHASES_PQRST)
+    faites = meta["etapes_realisees"]
+    exiger(isinstance(faites, list) and len(faites) <= len(ETAPES_PQRST)
+           and faites == ETAPES_PQRST[:len(faites)])
+    exiger(isinstance(meta["modele_avant_test"], bool)
+           and meta["modele_avant_test"] == ("retour-S" in faites))
+    exiger(isinstance(meta["reprise_apres_correction"], bool))
+    if not partielle:
+        exiger(faites == ETAPES_PQRST and meta["phase"] == "fin")
+
+    etapes = {e["etape"]: e for e in item["contenu"]["etapes"]}
+    cles = {"1": "P", "2": "Q", "4": "S", "5.0": "T1", "5.1": "T2"}
+    statuts, tentatives = meta["statuts"], meta["tentatives"]
+    exiger(isinstance(statuts, dict) and set(statuts) == {k for k, e in cles.items() if e in faites})
+    exiger(isinstance(tentatives, dict) and set(tentatives) == (set(statuts) & {"4", "5.0", "5.1"}))
+    tests = reponse.get("5", [])
+    exiger(isinstance(tests, list) and len(tests) == sum(k.startswith("5.") for k in statuts))
+    exiger(set(reponse) - {"5", "_pqrst"} == (set(statuts) & {"1", "2", "4"}))
+
+    def valeur(cle, brut):
+        exiger(brut is None or (isinstance(brut, str) and len(brut) <= 2000 and bool(brut.strip())))
+        if brut is not None:
+            brut = brut.strip()
+            if cle == "1":
+                exiger(brut in etapes[1]["options"])
+            elif cle.startswith("5."):
+                exiger(brut in etapes[5]["questions"][int(cle[-1])]["options"])
+        return brut
+
+    premieres = {}
+    for cle in statuts:
+        brute = tests[int(cle[-1])] if cle.startswith("5.") else reponse[cle]
+        premieres[cle] = valeur(cle, brute)
+        exiger(statuts[cle] == ("absence_declaree" if premieres[cle] is None else "reponse"))
+    relectures, interruptions = meta["relectures"], meta["interruptions"]
+    exiger(isinstance(relectures, list) and len(relectures) <= 3
+           and all(isinstance(c, str) and c in tentatives for c in relectures)
+           and len(set(relectures)) == len(relectures))
+    exiger(isinstance(interruptions, dict) and set(interruptions) <= PHASES_PQRST)
+    exiger(all(type(n) is int and 1 <= n <= 10000 for n in interruptions.values()))
+    normalisees = {}
+    for cle, essais in tentatives.items():
+        exiger(isinstance(essais, list) and 1 <= len(essais) <= (2 if cle in relectures else 1))
+        if not partielle:
+            exiger(len(essais) == (2 if cle in relectures else 1))
+        normalisees[cle] = []
+        for i, essai in enumerate(essais):
+            exiger(isinstance(essai, dict) and set(essai) == {"reponse", "condition", "modalite"})
+            condition = essai["condition"]
+            exiger(isinstance(condition, str) and condition in
+                   {"sans_relecture", "apres_relecture", "reprise_interrompue"})
+            exiger(essai["modalite"] == ("clavier" if cle == "4" else "choix"))
+            if i:
+                exiger(condition != "sans_relecture")
+            if condition == "reprise_interrompue":
+                exiger(bool(interruptions.get(cle)))
+            if condition == "apres_relecture":
+                exiger(cle in relectures or (cle == "5.1" and "5.0" in relectures))
+            donnee = valeur(cle, essai["reponse"])
+            if i == 0:
+                exiger(donnee == premieres[cle])
+            normalisees[cle].append({"reponse": donnee, "condition": condition,
+                                    "modalite": essai["modalite"]})
+    return {"version": VERSION_PQRST, "statut": "partielle" if partielle else "complete",
+            "phase": meta["phase"], "etapes_realisees": list(faites),
+            "reprise_apres_correction": meta["reprise_apres_correction"],
+            "modele_avant_test": meta["modele_avant_test"], "statuts": dict(statuts),
+            "parcours": premieres.get("1"), "question": premieres.get("2"),
+            "tentatives": normalisees, "relectures": list(relectures),
+            "interruptions": dict(interruptions)}
 
 def _mots_sequence(valeur) -> set[str]:
     """Jetons d'une réponse libre, découpés sur tout ce qui n'est pas alphanumérique.
@@ -88,6 +177,7 @@ def corriger_sequence(item: dict, reponse) -> tuple[bool, dict]:
     contenu = item.get("contenu") or {}
     etapes = {etape.get("etape"): etape for etape in contenu.get("etapes") or []}
     donnees = reponse if isinstance(reponse, dict) else {}
+    observation = normaliser_observation_pqrst(item, donnees, partielle=False) if "_pqrst" in donnees else None
 
     def fournie(numero: int):
         return donnees.get(str(numero), donnees.get(numero))
@@ -155,4 +245,22 @@ def corriger_sequence(item: dict, reponse) -> tuple[bool, dict]:
     }
     verdicts.append(reussi_5)
 
+    if observation is not None:
+        for cle, essais in observation["tentatives"].items():
+            for rang, essai in enumerate(essais):
+                if cle == "4":
+                    evaluation = detail["4"] if rang == 0 else corriger_sequence(
+                        item, {**{k: v for k, v in donnees.items() if k != "_pqrst"},
+                               "4": essai["reponse"]})[1]["4"]
+                    statut = ("absence_declaree" if essai["reponse"] is None else
+                              "contradiction" if evaluation["contredites"] else
+                              "a_verifier" if evaluation["manquantes"] else "compatible")
+                    essai["correction"] = {k: evaluation[k] for k in
+                                          ("correcte", "trouvees", "contredites", "manquantes", "seuil")}
+                    essai["correction"]["etat"] = statut
+                else:
+                    correcte = _clef_reponse(essai["reponse"]) == _clef_reponse(questions[int(cle[-1])]["bonne"])
+                    essai["correction"] = {"correcte": correcte, "etat":
+                        "absence_declaree" if essai["reponse"] is None else "exacte" if correcte else "incorrecte"}
+        detail["observation"] = observation
     return all(verdicts), detail

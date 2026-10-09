@@ -1,5 +1,7 @@
 # Taxonomie fonctions ↔ exercices ↔ paliers ↔ prérequis
 
+> Document historique : certaines catégories et épreuves ci-dessous ne décrivent plus les cartes actuelles. Pour distinguer mémoire immédiate, manipulation, exercices retenus et fonctions réellement implémentées, consulter le [référentiel des compétences et des exercices](referentiel-exercices.md). La [revue scientifique des exercices implémentés](revue-competences-exercices.md) précise les catégories et les limites des attributions actuelles. Les anciennes pistes ne valent pas décision de développement.
+
 Le graphe de connaissances (`backend/app/kg/`) modélise ces relations — plutôt que des tags SQL plats.
 
 ## Fonctions cibles et priorité (rééducation)

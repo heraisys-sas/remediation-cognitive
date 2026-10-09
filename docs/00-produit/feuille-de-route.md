@@ -1,5 +1,20 @@
 # Feuille de route
 
+## Référentiel des compétences et des exercices
+
+Le [référentiel cognitif](../10-clinique/referentiel-exercices.md) relie les compétences, exercices retenus, justifications déjà examinées et implémentations réelles. Sa première version détaille les mémoires immédiates et inventorie les autres compétences à partir des cartes et de cette feuille de route. La [revue des exercices implémentés](../10-clinique/revue-competences-exercices.md), autorisée le 9 octobre 2026, apporte classification, sources Consensus et propositions de révision. Le signal a ensuite été donné : la [recherche des exercices pour les compétences prévues](../10-clinique/recherche-exercices-feuille-de-route.md) prépare leur sélection avant de nouvelles spécifications. Les formats d’observation peuvent rejoindre « Exercices ciblés », rubrique d’autoévaluation, selon la précision de l’utilisateur. Il ne vaut pas autorisation de développer de nouveaux exercices ni de réactiver le bilan historique.
+
+## Spécifications cognitives — 9 octobre 2026
+
+Le [cadre commun](../20-specs/cadre-exercices-cognitifs.md) traduit le référentiel, la revue et la recherche en protocoles relisibles, avec distinction entraînement/autoévaluation. Décision documentaire : [ADR-042](../30-technique/adr/ADR-042-cadre-cognitif-et-autoevaluation.md). Aucun code ni contenu d’exercice modifié par ce lot.
+
+- [x] Spécifier les [corrections de l’existant](../20-specs/corrections-exercices-existants.md) : PQRST, faux n-back, deux passes du contexte, actions de stratégie et objectifs fidèles. Déduction, Calcul mental et Retrouver le mot conservés.
+- [x] Spécifier les [quatre mémoires immédiates retenues](../20-specs/memoires-immediates.md) ; les trois pistes écartées restent exclues.
+- [x] Rédiger les [fiches candidates](../20-specs/candidats-cognitifs.md), toutes en statut **proposition à arbitrer**, y compris les usages d’observation/réserve.
+- [ ] Arbitrer sélection/destination des candidats et paramètres proposés ; une priorité documentaire ne vaut pas décision de livraison.
+- [ ] Réaliser les corrections et les mémoires retenues par lots indépendants, après fixation des paramètres ; état logiciel actuel dans chaque fiche.
+- [ ] Effectuer relecture professionnelle et essais de compréhension/confort ; cela ne constitue pas une validation clinique.
+
 ## Lot autorisé le 1er octobre 2026
 
 - [x] Fusionner l’état courant de la branche d’essai dans main (8a75404).
@@ -50,12 +65,16 @@ Périmètre : rester hors ligne, sans modèle supplémentaire obligatoire ; pré
 
 Le bilan standardisé, l’IRT, le bilan automatique toutes les deux semaines et une batterie diagnostique ne sont pas autorisés par cette feuille de route. Les anciennes phases réglementaires ne sont pas des tâches du sprint de laboratoire. Leur historique reste dans Git ; une éventuelle réouverture exige une décision explicite.
 
-## Prototypes d’épreuves cognitives — spécification de référence
+## Prototypes d’épreuves cognitives — contrats complémentaires
 
-La backlog du 7 octobre 2026 est remplacée par la [spécification des prototypes d’épreuves cognitives](../20-specs/prototypes-epreuves-cognitives.md), version 1. Décision : [ADR-038](../30-technique/adr/ADR-038-prototypes-epreuves-cognitives.md).
+La backlog du 7 octobre 2026 a été remplacée par la [spécification des prototypes d’épreuves cognitives](../20-specs/prototypes-epreuves-cognitives.md), version 1, selon [ADR-038](../30-technique/adr/ADR-038-prototypes-epreuves-cognitives.md). Elle est conservée pour ses contrats détaillés de couleurs/comptage vocal, corrections entrelacées et palette de figures. Le [tableau d’articulation](../20-specs/cadre-exercices-cognitifs.md#9-articulation-avec-les-spécifications-antérieures) définit les exigences remplacées ; l’ancien ordre de lots n’engage plus leur livraison.
 
 - [x] Formaliser déroulements, réglages, comptage, interruptions et critères d’acceptation.
-- [ ] Développer par lots : infrastructure, séries de couleurs, attention différée, reconstruction de figures.
+- [ ] Arbitrer les candidats correspondants avant leur développement ; couleurs et corrections entrelacées ne deviennent pas une priorité d’entraînement par défaut.
 - [ ] Vérifier les règles de mesure et le confort à partir des essais locaux avant d’ajouter les comparaisons avancées.
 
-Familiarisation et mesure personnelle restent dans un périmètre local distinct de la remédiation, sans diagnostic ni réactivation implicite du bilan standardisé historique. Les pistes N-back, double tâche, Corsi et recherche visuelle sont conservées dans la spécification, hors version 1.
+L’observation personnelle rejoint la destination « Exercices ciblés » ; une version d’entraînement exige une pratique réelle et un protocole séparé. Corsi est repris dans Refaire le chemin, principe déjà retenu ; n-back, double tâche et recherche visuelle ont des fiches candidates, sans sélection implicite. Aucun diagnostic ni bilan standardisé/IRT réactivé.
+
+## Développement autorisé le 9 octobre 2026
+
+Le [plan de développement cognitif](../20-specs/plan-developpement-cognitif.md) organise les corrections existantes, puis les quatre mémoires immédiates retenues. PQRST séquencé et résultats séparés des deux passes de contexte sont implémentés et validés le 9 octobre 2026 ; voir les contrôles et limites dans le plan. Les nouveaux candidats restent à sélectionner. Reprise de conversation exécutée à 17 h 10 Europe/Paris, sans doublon.
