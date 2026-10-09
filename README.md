@@ -16,6 +16,8 @@ Le public visé peut avoir un niveau intellectuel antérieur élevé : progressi
 
 Le moteur gère les paliers, la maîtrise, la répétition espacée FSRS et les séances. Les départs automatiques et la longueur des séances dépendent du parcours. Les aides et propositions d’arrêt accompagnent l’exercice ; les dérogations prévues sont explicites. Les comptes de séance ne sont pas des scores cliniques normés.
 
+Une branche de développement ajoute la carte **Mémoires immédiates** : code, chemin, changement forme/couleur/association et objets à replacer ; pratique guidée, résultats descriptifs et données séparées. Voir [ADR-045](docs/30-technique/adr/ADR-045-memoires-immediates.md).
+
 Les prototypes d’attention différée, de reproduction de figures et de tâches de couleurs sont **spécifiés, pas encore implémentés**. Le bilan standardisé et l’IRT ne font pas partie du développement autorisé actuel. L’export PDF/JSON et le graphe de connaissances ne sont pas des fonctionnalités livrées. Voir la [feuille de route](docs/00-produit/feuille-de-route.md).
 
 ## Installer et démarrer

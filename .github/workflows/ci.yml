@@ -35,6 +35,9 @@ jobs:
           python tools/verifier_reponses.py
           python tools/verifier_interface.py
           node tools/verifier_phrases.js
+          node tools/test_immediate_sequences.cjs
+          node tools/test_immediate_visual.cjs
+          node tools/test_immediate_memory.cjs
           node --test tools/test_serie_contextes.cjs
       - name: Syntaxe Python et JavaScript
         run: |

@@ -43,7 +43,7 @@ const nodes=new Map();
 const document={getElementById(id){if(!nodes.has(id))nodes.set(id,node());return nodes.get(id)},
   createElement:node,querySelectorAll(){return []},addEventListener(){}};
 const fetch=async()=>({ok:true,json:async()=>({themes:[],voix:[],disponible:false})});
-const window={matchMedia(){return {matches:true}},scrollTo(){},localStorage:{getItem(){return null}}};
+const window={addEventListener(){},innerWidth:1024,innerHeight:768,matchMedia(){return {matches:true}},scrollTo(){},localStorage:{getItem(){return null}}};
 const location={hostname:'localhost'};
 const navigator={};
 '''

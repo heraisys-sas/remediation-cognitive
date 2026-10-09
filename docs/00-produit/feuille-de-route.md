@@ -78,3 +78,11 @@ L’observation personnelle rejoint la destination « Exercices ciblés » ; une
 ## Développement autorisé le 9 octobre 2026
 
 Le [plan de développement cognitif](../20-specs/plan-developpement-cognitif.md) organise les corrections existantes, puis les quatre mémoires immédiates retenues. PQRST séquencé et résultats séparés des deux passes de contexte sont implémentés et validés le 9 octobre 2026 ; voir les contrôles et limites dans le plan. Les nouveaux candidats restent à sélectionner. Reprise de conversation exécutée à 17 h 10 Europe/Paris, sans doublon.
+
+### Quatre mémoires immédiates — branche de développement
+
+- [x] Retenir un code, Refaire le chemin, Qu’est-ce qui a changé ?, Quel objet était où ? : pratique guidée V1, interface discrète, aides/interruption et données durables séparées.
+- [x] Validation technique : 439 tests pytest, 35 tests Node dédiés et recette des quatre interfaces, dont objets à largeur mobile.
+- [ ] Intégrer la branche memoires-immediates dans dev selon le flux Git, puis livrer main après autorisation et essai d’usage. Aucun push/fusion automatique.
+
+Les paramètres restent des choix de conception. Les candidats d’attention/inhibition/flexibilité non sélectionnés et l’application des stratégies restent en attente ; ce lot n’en développe aucun.

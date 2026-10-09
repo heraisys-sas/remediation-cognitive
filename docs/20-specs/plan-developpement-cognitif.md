@@ -10,8 +10,8 @@
 | 1A | PQRST séquencé, texte masqué au rappel, retour S avant T conservé | Parcours complet, absence/aides distinguées, tests de masquage et transitions, journal additif persistant | Validé — 9 octobre 2026 |
 | 1B | Résultats des deux passes de contexte | Photo sur Afficher, rappel sans photo puis photo après erreur ; résultats séparés, première réponse conservée et persistance testée | Validé — 9 octobre 2026 |
 | 1C | Libellés fidèles, intégration API/persistance et validation commune | Aucun n-back continu annoncé pour la position sérielle ; compatibilité ancienne API/historiques, seul rappel final pris en compte par FSRS (ADR-039) | Validé — intégration et contrôles communs |
-| 2 | Retenir un code, puis Refaire le chemin | Essai complet clavier/souris, masquage, aides, sortie et données de condition fiables | Après lot 1 |
-| 3 | Qu’est-ce qui a changé ?, puis Quel objet était où ? | Couleurs pertinentes, vrais essais identiques, association et ordre distincts, correction sans fuite | Après lot 2 |
+| 2 | Retenir un code, puis Refaire le chemin | Essai complet clavier/souris, masquage, aides, sortie et données de condition fiables | Implémenté et validé — branche memoires-immediates |
+| 3 | Qu’est-ce qui a changé ?, puis Quel objet était où ? | Couleurs pertinentes, vrais essais identiques, association et ordre distincts, correction sans fuite | Implémenté et validé — branche memoires-immediates |
 | 4 | Application des stratégies existantes | Plan exécuté/modifié, rappel externe utilisé, prise de message et estimation ; une action observable par tâche | À organiser après les mémoires |
 | 5 | Nouveaux candidats | Sélection explicite avant livraison ; destination entraînement ou Exercices ciblés et paramètres fixés | En attente de sélection |
 
@@ -40,3 +40,11 @@ Limites : pas de reprise de séance après rechargement, ni écran de consultati
 ## Intégration sur dev
 
 Le 9 octobre, intégration des commits déjà présents sur dev : découverte Contextes réservée à la mémorisation, seul rappel final dans FSRS/maîtrise/temps de référence. Les résultats descriptifs séparés et les journaux restent conservés. Nouveaux ADR renumérotés 042–044 pour préserver 039/040 de dev. Contrôles après résolution : 421 pytest réussis, 1 ignoré ; 12 tests Node, Ruff et vérifications de contenu/interface/syntaxe.
+
+## Lots 2–3 — quatre mémoires immédiates
+
+GO utilisateur explicite, tâches backend, code/chemin et visuels réparties entre trois sous-agents ; intégration et recette par le parent. Carte unique de pratique, exemple facultatif et quatre essais, sans adaptation automatique. Pas de seconde version d’observation livrée. API distincte et stockage additif, sans modifier le moteur existant ; ADR-045. Paramètres persistants, overrides conditionnés au mode dérogatoire.
+
+439 pytest réussis, 1 ignoré ; 35 tests Node dédiés ajoutés à la CI. Ruff et contrôles locaux de contenu/réponses/interface/phrases/syntaxe passent. Recette code (zéro initial, aide interrompue), chemin (clavier et annulation), changement (exemple hors données, décision verrouillée, localisation absente/fausse alerte), objets (emplacements vides et réserve indépendante, largeur 375 px). Les tests API parcourent les quatre essais de chacun des quatre parcours et les trois conditions visuelles.
+
+Branche memoires-immediates depuis origin/dev 71b3df4. Intégration dans dev autorisée le 10 octobre ; le checkout remediation-dev utilisé par le serveur est conservé. Validation technique, pas clinique. Lot 4 reste à organiser ; candidats non sélectionnés inchangés.

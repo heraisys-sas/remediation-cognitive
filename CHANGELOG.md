@@ -1,3 +1,9 @@
+# 2026-10-09 — quatre exercices de mémoire immédiate
+
+Une carte Mémoires immédiates regroupe Retenir un code, Refaire le chemin, Qu’est-ce qui a changé ? et Quel objet était où ?. Exemple facultatif, quatre essais nouveaux, départ volontaire, masquage réel, pause/exit et clavier. Couleurs pertinentes conservées ; résultats détaillés repliés, sans score global. Paramètres persistants, overrides réservés au mode dérogatoire.
+
+API locale séparée de FSRS : correction serveur, premières réponses immuables, aides et interruptions distinctes, fichiers atomiques et retries idempotents ; ADR-045. Aucun contenu, historique ni moteur existant modifié. 439 pytest réussis, 1 ignoré, 35 tests Node dédiés ; contrôles locaux et recette des quatre interfaces, dont objets sur petit écran. Intégration dans dev autorisée le 10 octobre.
+
 # 2026-10-09 — intégration des corrections cognitives dans dev
 
 Correction du rappel final déjà présente sur dev conservée : découverte avec `memorisation: true`, seul rappel final alimente FSRS/maîtrise/temps de référence, journal et résumé distincts pour les deux passes. Nouveaux ADR renumérotés 042–044, sans écraser les décisions 039/040. Contrôles d’intégration : 421 tests pytest réussis, 1 ignoré, 12 tests Node et Ruff réussis.

@@ -1,12 +1,12 @@
 # Les quatre exercices de mémoire immédiate retenus
 
-Version 1.1 — 9 octobre 2026. Relecture de cohérence documentaire effectuée ; relecture clinique et essai d’usage restent à réaliser. **Principes retenus par l’utilisateur ; spécifications proposées, non livrées.**
+Version 1.2 — 9 octobre 2026. Relecture de cohérence documentaire effectuée ; relecture clinique et essai d’usage restent à réaliser. **Quatre pratiques guidées V1 implémentées et techniquement vérifiées sur la branche de développement ; valeurs de conception, sans validation clinique.**
 
 Le [référentiel](../10-clinique/referentiel-exercices.md#3-exercices-retenus-pour-les-spécifications) définit les compétences et les quatre IDs conservés. Le [cadre commun](cadre-exercices-cognitifs.md) s’applique : départ volontaire, masquage réel, interruption, aides, données minimales et comparabilité. Les [références R1–R4](../10-clinique/referentiel-exercices.md#8-références-déjà-consultées-via-consensus) sont réutilisées ; aucune nouvelle validation clinique n’est revendiquée.
 
 ## Règles communes de ce lot
 
-**Usage proposé à arbitrer :** pratique en parcours d’entraînement, avec stratégie/démonstration facultative puis essais nouveaux ; version d’observation dans Exercices ciblés avec paramètres fixes et exemples distincts. Les résultats des deux usages sont séparés. La pratique porte sur le maintien/rappel ou la reconnaissance dans la tâche ; aucun transfert au quotidien n’est promis par l’habillage.
+**Usage V1 retenu pour ce développement :** pratique guidée sur une carte unique « Mémoires immédiates », quatre parcours, exemple facultatif hors données puis quatre essais nouveaux. Aucune version d’observation supplémentaire livrée ; une telle version reste à décider et doit conserver des résultats séparés. La pratique porte sur le maintien/rappel ou la reconnaissance dans la tâche ; aucun transfert au quotidien n’est promis par l’habillage.
 
 Défaut de départ proposé : un exemple corrigé puis un bloc de quatre essais, chaque essai lancé volontairement, possibilité de terminer après chacun. Ce nombre organise l’interface ; il n’est ni un minimum de dose ni un seuil d’interprétation. La personne peut poursuivre ou s’arrêter ; aucun objectif de complétion. Pour l’observation, la correction détaillée vient après le bloc ; en entraînement, après chaque réponse validée. Toute exposition corrective susceptible d’influencer l’essai suivant est connue, et les stimuli suivants sont nouveaux.
 
@@ -16,13 +16,13 @@ Pendant l’encodage et le maintien, une pause ou sortie invalide la continuité
 
 ## EX-MI-001 — Retenir un code
 
-**Compétences et statut.** MI-VER et MI-ORD ; attention d’encodage et familiarité numérique contribuent. Base visuelle directe existante `memoire/chiffres-endroit`, 3 à 6 chiffres, départ Auto actuel à 5 selon [catalog.py](../../backend/app/domain/catalog.py). La présentation fonctionnelle « code », son départ proposé à 3 et une version auditive dédiée sont **à développer** ; ces valeurs ne décrivent pas le logiciel courant. Aucun rappel inverse ou calcul dans cette variante.
+**Compétences et statut.** MI-VER et MI-ORD ; attention d’encodage et familiarité numérique contribuent. Base visuelle directe existante `memoire/chiffres-endroit`, 3 à 6 chiffres, départ Auto actuel à 5 selon [catalog.py](../../backend/app/domain/catalog.py). La présentation fonctionnelle « code », son départ à 4 et une version auditive dédiée sont **implémentées en V1** ; ces valeurs ne décrivent pas le logiciel courant. Aucun rappel inverse ou calcul dans cette variante.
 
 **But et consigne.** « Retenez ce code. Quand il aura disparu, entrez les chiffres dans le même ordre. » L’entraînement peut proposer avant un exemple une répétition mentale ou un regroupement choisi, sans montrer de groupement pendant un essai dit sans aide. L’autoévaluation garde la stratégie libre, avec déclaration facultative, sans nouveau conseil en cours de bloc.
 
-**Stimuli proposés.** Suite originale de trois chiffres entre 0 et 9, sans répétition dans le profil initial ; conserver les zéros initiaux. Génération isolée EX-MI-001, graine/ID et suite attendue versionnés. Présentation visuelle d’un chiffre centré à la fois, 2 s puis 1 s de blanc entre chiffres ; après dernier chiffre, masquage puis champ de réponse, sans délai additionnel intentionnel. En auditif, chaque chiffre prononcé une fois par voix française locale ; intervalle proposé 1 s après fin effective du chiffre, aucune forme écrite de la suite. Les deux rythmes ne sont pas supposés équivalents.
+**Stimuli proposés.** Suite originale de quatre chiffres entre 0 et 9, sans répétition dans le profil initial ; conserver les zéros initiaux. Génération isolée EX-MI-001, graine/ID et suite attendue versionnés. Présentation visuelle d’un chiffre centré à la fois, 2 s puis 1 s de blanc entre chiffres ; après dernier chiffre, masquage puis champ de réponse, sans délai additionnel intentionnel. En auditif, chaque chiffre prononcé une fois par voix française locale ; intervalle proposé 1 s après fin effective du chiffre, aucune forme écrite de la suite. Les deux rythmes ne sont pas supposés équivalents.
 
-**Phases et réponse.** Consigne/exemple → prêt → suite → masque → saisie texte de chiffres → validation → correction au moment prévu. Champ texte numérique, pas nombre entier, pour conserver « 047 » ; séparation par espaces/tirets tolérée. La dictée est une modalité de réponse distincte nécessitant vérification ; défaut proposé clavier/clavier visuel stable. Retour arrière avant validation autorisé. « Je ne sais pas » distinct d’une réponse vide non validée.
+**Phases et réponse.** Consigne/exemple → prêt → suite → masque → saisie texte de chiffres → validation → correction au moment prévu. Champ texte numérique, pas nombre entier, pour conserver « 047 » ; séparation par espaces/tirets tolérée. La dictée est une modalité de réponse distincte nécessitant vérification ; défaut proposé clavier/clavier visuel stable. Retour arrière avant validation autorisé. Pas de bouton « Je ne sais pas » ; saisie vide ou de longueur différente confirmable.
 
 **Aides et correction.** Montrer le code et la réponse après validation ; souligner sobrement les positions différentes avec texte, sans rouge/vert obligatoire. Une nouvelle présentation est assistée et datée. Ne pas faire jouer automatiquement la correction sonore avant le moment prévu. En entraînement, un nouvel essai avec un nouveau code permet de réutiliser la stratégie.
 
@@ -38,13 +38,13 @@ Pendant l’encodage et le maintien, une pause ou sortie invalide la continuité
 
 ## EX-MI-002 — Refaire le chemin
 
-**Compétences et statut.** MI-SPA et MI-ORD ; perception et précision du pointage contribuent. **Non implémenté** ; idée Corsi anciennement hors V1 des prototypes, désormais principe retenu pour cette spécification. Aucun empan clinique calculé.
+**Compétences et statut.** MI-SPA et MI-ORD ; perception et précision du pointage contribuent. **Implémenté V1** ; idée Corsi anciennement hors V1 des prototypes, désormais principe retenu pour cette spécification. Aucun empan clinique calculé.
 
 **But/consigne.** « Regardez les cases indiquées. Reprenez le même chemin, dans le même ordre. » Pratique possible d’un repérage spatial ou d’une répétition mentale ; ne pas demander de réciter des numéros. Aucun numéro affiché dans les cases.
 
 **Stimuli proposés.** Six cases fixes dans une géométrie irrégulière simple, coordonnées normalisées et versionnées ; trajet initial de trois positions distinctes. Chaque case active reçoit un contour stable et une légère différence de surface pendant 1,5 s, suivie de 0,5 s sans indication. Une seule case active ; pas de flash ni trace cumulée. La dernière indication disparaît avant activation de la réponse. La disposition et les dimensions restent identiques dans l’essai ; un changement de géométrie est une autre configuration.
 
-**Phases/réponse.** Prévisualisation des cases neutres → prêt → indications successives → toutes neutres → sélection du trajet → validation. Clic/toucher ; clavier : déplacement de focus prévisible entre cases et activation, avec alternative de sélection directe présentée pendant l’exemple. Les noms accessibles de positions identifient les commandes sans annoncer leur ordre correct. Les positions sélectionnées peuvent porter un repère discret d’ordre **de la réponse actuelle** ; jamais un indice de la solution. Annuler le dernier choix et recommencer la saisie sont disponibles avant validation.
+**Phases/réponse.** Prévisualisation des cases neutres → prêt → indications successives → toutes neutres → sélection du trajet → validation. Clic/toucher ; clavier : déplacement de focus prévisible entre cases et activation, avec alternative de sélection directe présentée pendant l’exemple. Les noms accessibles de positions identifient les commandes sans annoncer leur ordre correct. Les positions sélectionnées peuvent porter un repère discret d’ordre **de la réponse actuelle** ; jamais un indice de la solution. Cliquer de nouveau sur une case choisie la retire du trajet et renumérote les suivantes. « Vider les cases » efface tout le trajet. Une réponse incomplète, même vide, peut être validée après confirmation. La consigne annonce la durée d’allumage de chaque case et est lue une seule fois au démarrage, avec le bouton audio commun. La suite est silencieuse, sans boutons de pause ou « Je ne sais pas » ; « Terminer la séance » reste disponible. Aide : « Si tu hésites, suis ton intuition. Tu peux aussi laisser le chemin incomplet. »
 
 **Aides/correction.** Démonstration préalable ; revoir le trajet pendant l’essai exige une nouvelle tentative assistée. Après validation, comparer séquence attendue et reproduite à un rythme choisi, avec possibilité d’arrêter la lecture visuelle. Un retour sur la réponse n’ajoute pas une animation décorative.
 
@@ -58,7 +58,7 @@ Pendant l’encodage et le maintien, une pause ou sortie invalide la continuité
 
 ## EX-MI-003 — Qu’est-ce qui a changé ?
 
-**Compétences/statut.** MI-VIS ; MI-LIA pour association forme–couleur. **Non implémenté.** Détection/reconnaissance après masquage, pas rappel libre ; discrimination perceptive et attention contribuent. Les couleurs pertinentes sont explicitement conservées.
+**Compétences/statut.** MI-VIS ; MI-LIA pour association forme–couleur. **Implémenté en pratique guidée V1 sur la branche de développement.** Détection/reconnaissance après masquage, pas rappel libre ; discrimination perceptive et attention contribuent. Les couleurs pertinentes sont explicitement conservées.
 
 **But et consignes par condition.** Forme : « Retenez les formes ; dites si une forme a changé. » Couleur : « Retenez les couleurs ; dites si une couleur a changé. » Association : « Retenez quelle couleur porte chaque forme ; dites si les associations ont changé. » Une seule condition par bloc ; familiarisation séparée permettant de vérifier perceptibilité et compréhension.
 
@@ -68,7 +68,7 @@ Pendant l’encodage et le maintien, une pause ou sortie invalide la continuité
 | Couleur | Trois objets ; remplacer une seule couleur par une autre palette admissible | Formes, positions, taille/orientation |
 | Forme–couleur | Trois formes distinctes, trois couleurs ; permuter les couleurs de deux formes | Ensemble des formes/couleurs, positions, taille/orientation |
 
-**Défauts proposés.** Exposition simultanée 5 s, masque neutre 1 s, seconde composition stable sans limite de réponse. Quatre essais : deux identiques et deux différents, ordre mélangé et non annoncé comme une alternance. Le tirage doit permettre toutes les positions de changement et toutes les paires d’échange ; pas de motif apprenable « toujours au centre ». Un exemple hors bloc montre côte à côte deux compositions afin de vérifier la perceptibilité avant la tâche mnésique. Ce contrôle ne diagnostique pas la vision.
+**Défauts proposés.** Exposition simultanée 5 s, intervalle neutre de 1,5 s sans formes, seconde composition stable sans limite de réponse. Quatre essais : deux identiques et deux différents, ordre mélangé et non annoncé comme une alternance. Le tirage doit permettre toutes les positions de changement et toutes les paires d’échange ; pas de motif apprenable « toujours au centre ». Un exemple hors bloc montre côte à côte deux compositions afin de vérifier la perceptibilité avant la tâche mnésique. Ce contrôle ne diagnostique pas la vision.
 
 **Phases/réponse.** Prêt → première composition → masque → seconde composition → choix « Identique / Différent » → si Différent, localisation proposée → validation finale → correction. La décision identique/différent est verrouillée avant localisation pour ne pas réécrire la détection. En condition forme/couleur, sélectionner un élément ; en association, sélectionner les **deux** formes dont les couleurs sont échangées, annoncé dans la consigne. Un utilisateur peut déclarer ne pas savoir localiser ; cela ne transforme pas automatiquement sa détection en erreur.
 
@@ -84,7 +84,7 @@ Pendant l’encodage et le maintien, une pause ou sortie invalide la continuité
 
 ## EX-MI-004 — Quel objet était où ?
 
-**Compétences/statut.** MI-LIA et MI-SPA, identité des objets en contribution ; **non implémenté**. Associations simultanées avec objets fournis au rappel, sans ordre à mémoriser. Ce protocole n’est ni une reconnaissance des objets présents ni leur remise dans un ordre d’apparition.
+**Compétences/statut.** MI-LIA et MI-SPA, identité des objets en contribution ; **implémenté V1**. Associations simultanées avec objets fournis au rappel, sans ordre à mémoriser. Ce protocole n’est ni une reconnaissance des objets présents ni leur remise dans un ordre d’apparition.
 
 **But/consigne.** « Retenez où se trouve chaque objet. Ensuite, replacez les objets dans les emplacements vides. » En entraînement, proposer une stratégie avant l’exemple : repérer les relations (« la clé à gauche de la tasse »). La verbalisation est une stratégie, pas preuve d’un système de mémoire isolé. Version d’observation sans conseil nouveau pendant le bloc.
 
@@ -92,7 +92,7 @@ Pendant l’encodage et le maintien, une pause ou sortie invalide la continuité
 
 **Phases/réponse.** Prêt → modèle → masque → emplacements vides et réserve de tous les objets → sélectionner un objet puis sa destination → validation → comparaison. Réserve visuellement distincte de la zone des emplacements. Son ordre est tiré **indépendamment** de la disposition modèle ; ne pas recopier systématiquement l’ordre initial. Une coïncidence aléatoire reste possible : imposer que tout objet change de rang pourrait lui-même créer un indice, surtout avec deux objets. Ne pas utiliser nom, ID, texte alternatif ou couleur de case encodant la solution.
 
-**Interaction.** Alternative clavier et clic puis destination obligatoire ; glisser facultatif. Déplacer un objet déjà posé, retirer un placement et annuler possibles. Un objet ne peut occuper deux emplacements ; une case ne peut contenir deux objets. Déposer sur une case occupée propose un déplacement/échange explicite et réversible, jamais un écrasement invisible. Valider partiellement reste possible avec avertissement neutre « Un emplacement est vide » et choix de corriger ou confirmer ; cela n’impose pas de deviner.
+**Interaction.** Alternative clavier et clic puis destination obligatoire ; glisser facultatif. Déplacer un objet déjà posé et retirer un placement possibles. « Vider les cases » retire tous les objets et réactive la réserve, sans valider de réponse. Un objet ne peut occuper deux emplacements ; une case ne peut contenir deux objets. Les objets déjà posés sont grisés et désactivés dans la réserve. Cliquer ou activer au clavier une case occupée remet son objet dans la réserve ; il peut ensuite être replacé. L’objet retiré peut être replacé. Aucun bouton de retrait distinct ni écrasement d’une case occupée. Valider partiellement reste possible avec avertissement neutre « Un emplacement est vide » et choix de corriger ou confirmer ; cela n’impose pas de deviner. Aide affichée : « Si tu hésites, suis ton intuition. Tu peux aussi laisser une case vide. » Ce choix de pratique guidée autorise une tentative incertaine ; une réponse exacte ne prouve pas un souvenir conscient. Pas de boutons « Je ne sais pas » ou « Faire une pause » pour ce parcours ; « Terminer la séance » reste disponible.
 
 **Aides/correction.** Après réponse verrouillée, montrer modèle et placement. Revoir le modèle avant validation nécessite terminer la première tentative puis un essai assisté. Aucun fantôme d’objet ou dessin de couleur restant dans la bonne case. Le dernier placement peut être déduit des autres quand autant d’objets que de cases sont fournis : les associations ne sont donc pas des observations indépendantes.
 
@@ -106,6 +106,28 @@ Pendant l’encodage et le maintien, une pause ou sortie invalide la continuité
 
 ## Livraison, limites et décisions restantes
 
-Ces quatre fiches satisfont la sélection des principes et rendent leurs modalités discutables. La destination initiale, les valeurs proposées, les banques originales et palettes/géométries précises restent à figer avant livraison. La relecture professionnelle est à tracer comme relecture, sans label de validation clinique. Les critères P0 du cadre et de chaque fiche constituent la recette ; aucun score d’empan normé, de capacité générale ou d’observance n’est ajouté.
+La mise en œuvre V1 est décrite dans [ADR-045](../30-technique/adr/ADR-045-memoires-immediates.md). Pratique seule, départ à trois éléments ; paramètres chiffrés ci-dessus retenus comme défauts de conception. Stimuli originaux générés par UUID/graine et version, palette sRGB et géométries fixes définies dans [protocoles.py](../../backend/app/api/memoires_immediates/protocoles.py). Les réglages de difficulté/rythme sont persistants mais appliqués uniquement en mode dérogatoire ; condition et modalité choisies restent persistantes. Pas d’adaptation automatique. La relecture professionnelle est à tracer comme relecture, sans label de validation clinique. Les critères P0 du cadre et de chaque fiche constituent la recette ; aucun score d’empan normé, de capacité générale ou d’observance n’est ajouté.
 
 EX-MI-005 (objets présents), EX-MI-006 (éléments fournis à remettre dans l’ordre) et EX-MI-007 (sons/rythmes) restent **écartés**. Aucun développement, fiche supplémentaire ou banque correspondante n’est prévu dans ce lot.
+
+## État livré et limites V1
+
+[Socle d’interface](../../frontend/src/immediate-memory.js), [code/chemin](../../frontend/src/exercises/immediate-sequences.js), [formes/objets](../../frontend/src/exercises/immediate-visual.js) et [API](../../backend/app/api/memoires_immediates/__init__.py). Les trois exercices protégés et historiques restent inchangés.
+
+L’aide suit la correction de la première réponse, puis une nouvelle présentation : elle est explicitement enregistrée après correction, sans remplacer le résultat initial. Pause/onglet masqué/modification de largeur interrompent l’essai ; remplacement avec autre stimulus au même rang. Une aide interrompue conserve la première réponse et passe au prochain essai initial. Le clavier mobile modifiant seulement la hauteur n’interrompt pas. Résultats détaillés repliés, sans score global ; dénominateurs de détection et localisation distincts.
+
+Code auditif : voix française locale du navigateur, fin effective de chaque chiffre attendue ; indisponibilité tracée, choix explicite d’un nouveau bloc visuel. Pas de repli silencieux. Les voix natives du réglage général ne sont pas utilisées pour ce protocole auditif V1 ; la voix réellement utilisée est tracée. Pas de dictée ni de sauvegarde d’audio.
+
+API isolée de FSRS, trois blocs commencés par jour avec dérogation explicite. Journal atomique local durable, réponses verrouillées et retry réseau idempotent. Horodatages client déclaratifs, verrouillage mono-processus ; pas de reprise de séance dans l’interface après rechargement ni consultation historique. Les échecs réseau restent visibles jusqu’au réessai. La fermeture brutale peut perdre une réponse qui n’a pas encore été envoyée.
+
+Contrôles : 439 pytest réussis, 1 ignoré (inférence Apple facultative) ; 35 tests Node dédiés ; Ruff, contenu, réponses, interface et syntaxe. Recette navigateur sur les quatre parcours, et objets à largeur 375 pixels. Relecture clinique et essai d’usage restent à réaliser.
+
+### Intervalle sans formes — ajustement du 10 octobre 2026
+
+Changement : défaut 1,5 s (objets conservé à 1 s), positions conservées. Choix ergonomique, pas une norme clinique ni preuve de bénéfice thérapeutique. Les paradigmes utilisent souvent environ 900–1000 ms ; Logie, Brockmole et Jaswal (2011) discutent des résultats à 1000–1500 ms pour les liaisons de caractéristiques. Déplacer les objets modifie la correspondance spatiale et ajoute une difficulté distincte ; ce n’est pas un substitut équivalent à prolonger la rétention. Sources : https://visualcognition.nd.edu/assets/257341/logiebrockmolejaswal_m_c2011.pdf ; https://pmc.ncbi.nlm.nih.gov/articles/PMC1868390/.
+
+### Ergonomie finale et code auditif — 10 octobre 2026
+
+Consigne initiale lue une fois, voix choisie dans les réglages, bouton audio commun, progression « Exercice », sortie « Terminer la séance ». Après Suivant, compte à rebours 3 s et pause/reprise ; pour code, le compte à rebours commence directement sur la correction. Aides conservées séparément. Chemin : traits entre choix, retrait par clic, vider les cases, trajet vide sauvegardable. Objets : cases sans texte visible, pictogrammes contenus, réserve grisée pour objets posés, retrait par clic et vider les cases. Changement : sélection sans labels visibles, vider les cases et localisation partielle/vide confirmable ; décision et localisation séparées.
+
+Code auditif : lecture via le moteur vocal commun (voix native ou locale choisie), puis micro utilisant la dictée locale des champs libres. Chiffres prononcés un par un convertis sans perdre les zéros ; termes ambigus signalés. Capture arrêtée lorsque la longueur attendue est atteinte, validation seulement sur transcription définitive complète. Saisie clavier reste disponible ; génération/annulation empêchent une transcription tardive de modifier la réponse. Pas de biais natif de vocabulaire revendiqué. Ces choix remplacent les propositions initiales incompatibles ci-dessus.

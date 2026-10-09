@@ -40,6 +40,7 @@ class InterfaceStatique(StaticFiles):
 
 from .api.entrainement import router as router_entrainement
 from .api.entrainement.service import GestionnaireSessions
+from .api.memoires_immediates import Blocs, router as router_memoires
 from .api.capacites import router as router_capacites
 from .api.programme import router as router_programme
 from .api.missions import router as router_missions
@@ -81,6 +82,9 @@ def creer_app(
         horloge=horloge,
     )
     application.include_router(router_entrainement)
+    racine_memoires = Path(racine_donnees).parent / "memoires-immediates" if racine_donnees else RACINE_PROJET / "backend" / "data" / "memoires-immediates"
+    application.state.blocs_memoires = Blocs(racine_memoires)
+    application.include_router(router_memoires)
 
     # Carnet des missions hors écran (thème social) : stockage SÉPARÉ des
     # données d'entraînement (il contient des éléments personnels) — même

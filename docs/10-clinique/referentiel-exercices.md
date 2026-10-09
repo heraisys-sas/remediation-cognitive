@@ -1,6 +1,6 @@
 # Référentiel des compétences cognitives et des exercices
 
-Version 1.5 — 9 octobre 2026. Public : orthophoniste, chercheur, conception produit et développement. Cette version actualise les tâches implémentées : PQRST séquencé et résultats séparés du contexte. Les quatre nouvelles mémoires immédiates restent spécifiées, à développer.
+Version 1.6 — 9 octobre 2026. Public : orthophoniste, chercheur, conception produit et développement. Cette version actualise les tâches implémentées : PQRST séquencé et résultats séparés du contexte. Les quatre nouvelles mémoires immédiates sont implémentées en pratique guidée V1 sur une branche de développement, sans adaptation ni score clinique.
 
 Ce document relie la compétence visée, la tâche proposée, sa justification, les paramètres à spécifier et ce que le logiciel implémente réellement. Il oriente les spécifications ; il ne constitue ni un protocole thérapeutique validé ni une batterie standardisée.
 
@@ -37,7 +37,7 @@ Ces dimensions se recoupent ; elles ne sont pas présentées comme six systèmes
 
 ### EX-MI-001 — Retenir un code
 
-**Compétences :** MI-VER et MI-ORD. **Statut :** principe retenu ; [fiche détaillée rédigée](../20-specs/memoires-immediates.md#ex-mi-001--retenir-un-code). Version visuelle de rappel direct déjà présente dans `memoire/chiffres-endroit` ; présentation fonctionnelle « code » et variante auditive dédiée à développer selon les arbitrages de la fiche. Ce n’est pas une nouvelle carte déjà livrée.
+**Compétences :** MI-VER et MI-ORD. **Statut :** principe retenu ; [fiche détaillée rédigée](../20-specs/memoires-immediates.md#ex-mi-001--retenir-un-code). Version visuelle de rappel direct déjà présente dans `memoire/chiffres-endroit` ; nouvelle présentation « code » et variante auditive locale implémentées sur la carte Mémoires immédiates (ADR-045), sans réutiliser ni modifier les historiques des empans.
 
 **Déroulement :** départ volontaire → chiffres successifs → retrait complet → restitution immédiate dans le même ordre → validation → correction. Exemple : 4, 7, 2. Une nouvelle série différente est utilisée à l’essai suivant. Aucun calcul, tri ou inversion dans la variante de base.
 
@@ -53,7 +53,7 @@ Ces dimensions se recoupent ; elles ne sont pas présentées comme six systèmes
 
 ### EX-MI-002 — Refaire le chemin
 
-**Compétences :** MI-SPA et MI-ORD. **Statut :** retenu, [fiche détaillée rédigée](../20-specs/memoires-immediates.md#ex-mi-002--refaire-le-chemin), non implémenté dans les cartes actuelles ; la piste Corsi historiquement hors version 1 des prototypes est reprise dans cette fiche.
+**Compétences :** MI-SPA et MI-ORD. **Statut :** retenu, [fiche détaillée rédigée](../20-specs/memoires-immediates.md#ex-mi-002--refaire-le-chemin), implémenté V1 dans la carte Mémoires immédiates ; la piste Corsi historiquement hors version 1 des prototypes est reprise dans cette fiche.
 
 **Déroulement :** quelques cases fixes non numérotées → mise en évidence successive de positions → fin des indications → reproduction des positions dans le même ordre → comparaison après validation. La géométrie des cases ne change pas entre présentation et réponse. Une surbrillance stable remplace tout flash.
 
@@ -67,7 +67,7 @@ Ces dimensions se recoupent ; elles ne sont pas présentées comme six systèmes
 
 ### EX-MI-003 — Qu’est-ce qui a changé ?
 
-**Compétences :** MI-VIS ; MI-LIA dans la variante forme–couleur. **Statut :** retenu, [fiche détaillée rédigée](../20-specs/memoires-immediates.md#ex-mi-003--quest-ce-qui-a-changé-), non implémenté. La reconstruction de figures prévue dans la feuille de route est une autre tâche et ne constitue pas cette implémentation.
+**Compétences :** MI-VIS ; MI-LIA dans la variante forme–couleur. **Statut :** retenu, [fiche détaillée rédigée](../20-specs/memoires-immediates.md#ex-mi-003--quest-ce-qui-a-changé-), implémenté V1 (ADR-045). La reconstruction de figures prévue dans la feuille de route est une autre tâche et ne constitue pas cette implémentation.
 
 **Déroulement :** composition simple → masquage → seconde composition → réponse « Identique / Différent » → si demandé, localisation de l’élément modifié → validation → comparaison. Inclure des essais réellement identiques. Présentation simultanée, sans ordre de mémorisation imposé.
 
@@ -95,7 +95,7 @@ La variante association demande sa propre consigne et sa propre version : une pe
 
 ### EX-MI-004 — Quel objet était où ?
 
-**Compétences :** MI-LIA et MI-SPA, avec maintien de l’identité des objets. **Statut :** retenu explicitement par l’utilisateur le 9 octobre 2026 ; [fiche détaillée rédigée](../20-specs/memoires-immediates.md#ex-mi-004--quel-objet-était-où-), non implémenté. Aucun ordre de passage à mémoriser dans la variante de base.
+**Compétences :** MI-LIA et MI-SPA, avec maintien de l’identité des objets. **Statut :** retenu explicitement par l’utilisateur le 9 octobre 2026 ; [fiche détaillée rédigée](../20-specs/memoires-immediates.md#ex-mi-004--quel-objet-était-où-), implémenté V1 (ADR-045). Aucun ordre de passage à mémoriser dans la variante de base.
 
 **Déroulement :** départ volontaire → présentation simultanée de quelques objets distincts dans des emplacements fixes → masquage complet → objets fournis dans une réserve distincte → replacement aux emplacements mémorisés → validation → comparaison avec le modèle. Fournir les objets au rappel permet de cibler davantage leurs associations avec les emplacements que la récupération de leurs noms.
 
@@ -195,3 +195,7 @@ Cette section conserve les publications examinées pour la première version sur
 Référence complémentaire déjà examinée, sans nouvelle recherche : Norris, Kalm et Hall (2019 selon la fiche Consensus ; volume 46 de la revue), [Chunking and Redintegration in Verbal Short-Term Memory](https://consensus.app/papers/chunking-and-redintegration-in-verbal-shortterm-memory-norris-kalm/40afc0e4c6c5577fa9a7f96d4ae497e4/?utm_source=chatgpt). Six expériences sur regroupement verbal ; peut orienter une variante stratégique future. L’année d’édition finale devra être vérifiée avant une bibliographie de publication.
 
 État de relecture de ce référentiel : **à relire par l’orthophoniste ou le chercheur**, sans prétendre à une validation déjà obtenue. Toute nouvelle recherche, correction de classification ou décision de développement est ajoutée avec date et provenance.
+
+## Mise en œuvre des quatre pratiques V1
+
+[ADR-045](../30-technique/adr/ADR-045-memoires-immediates.md), [spécification actualisée](../20-specs/memoires-immediates.md). Pratique guidée seule, exemple facultatif hors résultats, quatre essais volontairement lancés, premiers résultats et aides distincts. Comparaison entre modalités/conditions non agrégée ; aucun transfert clinique revendiqué. Détection/fausse alerte et localisation du changement disposent de dénominateurs séparés. Les associations exactes/erronées/non placées sont décrites sans score de capacité. Documentation des limites et validation technique dans le plan.

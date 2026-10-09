@@ -265,3 +265,23 @@ Extensions optionnelles, compatibles avec les clients existants :
 Le journal local est persisté à chaque réponse/checkpoint et relisible par le stockage après redémarrage. Il n’autorise ni reprise d’une séance active ni consultation par une nouvelle route GET. Les historiques antérieurs ne sont pas migrés.
 
 Pour les nouveaux payloads PQRST `_pqrst`, la durée totale du protocole n’alimente pas `temps_reference`, et le résultat après modèle n’alimente pas `resume.sans_aide`. Les anciens payloads et historiques restent inchangés, ainsi que la première réponse par item et FSRS. Avant nettoyage de la séquence, le navigateur conserve un snapshot ; la clôture attend sa sauvegarde. Un échec réseau garde ce snapshot en mémoire pour le réessai de clôture.
+
+## Pratiques guidées de mémoire immédiate — ADR-045
+
+Périmètre local d’entraînement distinct du moteur adaptatif : `/api/memoires-immediates`. Aucun historique existant n’est modifié.
+
+- `POST /sessions` : `{parcours: "code"|"chemin"|"changement"|"objets", parametres?: {...}, sans_limite_sessions?: false}` → 201 `{session_id, parcours, version, parametres, essai:{id,index,stimulus}}`.
+- `POST /sessions/{uuid}/reponses` : `{essai_id,reponse,observations?:{},assistee?:false}` → `{correction,essai_suivant:null|essai,terminee}`. `terminee` indique la fin du bloc de quatre essais ; fermeture persistée uniquement par `/fin`. Réponse `null` = absence déclarée ; chaîne vide non validée rejetée. Retry identique idempotent ; tentative différente sur une première réponse verrouillée → 409.
+- `POST /sessions/{uuid}/aide` : `{essai_id}` après première réponse → `{essai,assistee:true}`. Nouvelle réponse avec `assistee:true`, indépendante de la première et explicitement après correction.
+- `POST /sessions/{uuid}/interruption` : `{essai_id,phase:"pret"|"exposition"|"masque"|"reponse",observations?:{}}` → `{essai}` de remplacement au même rang. Retry retourne le remplacement existant.
+- `POST /sessions/{uuid}/fin` : fermeture idempotente → `{session_id,parcours,version,parametres,terminee,observations:[{essai_id,index,premiere,aide,interruption,remplace}]}`. Enregistrement première `{reponse,correction,observations,validee}` ou `null` ; aide séparée ; interruption sans score.
+
+Paramètres : `longueur` 2–6 code/chemin, 2–5 changement, 2–4 objets ; départ 3. `modalite` visuelle, auditive permise uniquement pour le code. `condition` forme/couleur/association fixe dans un bloc de changement. `signal_ms` 500–10000 (code 2000, chemin 1500), `intervalle_ms` 0–5000 (code 1000, chemin 500), `exposition_ms` 1000–30000 (changement 5000, objets 6000), `masque_ms` 0–10000 (changement/objets 1000, code/chemin 0).
+
+Stimulus : code `{chiffres:["0","4","7"]}` ; chemin `{positions:[{id,x,y}],trajet:[ids]}` ; changement `{avant:[{position,forme,couleur}],apres:[...],palette:{couleur:hex}}` ; objets `{positions:[{id,x,y}],objets:[{id,nom}],modele:{objet:position},reserve:[objets]}`. Modèles nécessaires à la présentation, retirés du DOM par le client après encodage.
+
+Réponses : code texte préservant zéro initial (espaces/tirets tolérés), chemin liste de positions, changement `{decision:"identique"|"different",localisation:[positions],localisation_absente?:bool}`, objets mapping objet→position unique, partiel autorisé. Correction : suite entière/positions/contenu retrouvés ; détection/rejet correct/fausse alerte/changement manqué et localisation séparée ; associations exactes/erronées/non placées et permutation. Aucun résultat composite.
+
+Observations facultatives : clés terminant en `_ms`, nombres finis 0–86400000 ; `modalite`, `voix`, `phase`, `raison`, textes de 120 caractères maximum ; `audio_indisponible`, `absence_declaree`, booléens. Données déclarées par le navigateur, pas de journal de frappe. Erreurs : 422 paramètres/réponse invalides, 404 UUID inconnu, 409 essai verrouillé/indisponible, 429 troisième bloc déjà ouvert sans dérogation. Aucun endpoint de bilan.
+
+Une interruption peut inclure `assistee:true` (booléen strict) : une aide ouverte est marquée interrompue sans score, la première réponse reste intacte. Retour `{essai:prochain_essai_initial|null,assistee_interrompue:true}` ; aucun nouveau stimulus assisté, aucune revalidation de cette aide. Retry idempotent. Si aucun essai initial ne reste, fermer le bloc par `/fin`.

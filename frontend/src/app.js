@@ -27,6 +27,7 @@ const $ = (id) => document.getElementById(id);
 const refs = {
   vues: {
     themes: $("vue-themes"),
+    immediates: $("vue-memoires-immediates"),
     seance: $("vue-seance"),
     resume: $("vue-resume"),
     missions: $("vue-missions"),
@@ -35,6 +36,7 @@ const refs = {
   },
   titres: {
     themes: $("titre-themes"),
+    immediates: $("titre-memoires-immediates"),
     seance: $("titre-seance"),
     resume: $("titre-resume"),
     missions: $("titre-missions"),
@@ -261,6 +263,7 @@ function rendreThemes(themes) {
       ? themes.find(t => t.id === "series-entendues") : null);
     cible.append(carte);
   }
+  refs.listeThemes.append(carteMemoiresImmediates());
   refs.sectionEvaluation.hidden = !refs.listeThemesEvaluation.childElementCount;
   refs.sectionExtra.hidden = !refs.listeThemesExtra.childElementCount;
 }
@@ -500,8 +503,7 @@ function initialiserChoixVoix() {
   CAPACITES.chargerVoixLocales?.().then(actualiser);
 }
 
-function actualiserBoutonAudio(active) {
-  const bouton = refs.boutonEcouter;
+function actualiserBoutonAudio(active, bouton = refs.boutonEcouter) {
   bouton.replaceChildren();
   bouton.setAttribute("aria-label", active ? "Arrêter la lecture" : "Écouter");
   bouton.title = active ? "Arrêter la lecture" : "Écouter";
@@ -517,6 +519,7 @@ function actualiserBoutonAudio(active) {
 }
 
 function init() {
+  initialiserMemoiresImmediates();
   CAPACITES.observerLecture?.(actualiserBoutonAudio);
   initialiserChoixVoix();
   if (refs.caseLectureAuto) refs.caseLectureAuto.checked = lectureAutoActivee();
