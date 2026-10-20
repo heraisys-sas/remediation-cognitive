@@ -1,3 +1,9 @@
+# 2026-10-20 — accueil personnalisé par difficultés
+
+Choix persistants dans Réglages → Ce que tu souhaites travailler : huit domaines de difficultés, plus les apprentissages Extra. Les cartes associées sont annoncées à partir du catalogue rendu ; leur catégorie et leurs parcours sont conservés. Affichage complet par défaut, choix vide conservé, message en cas de stockage refusé. Aucune modification du moteur, des niveaux ou des historiques.
+
+Libellés et correspondances revus selon une perspective d’orthophonie neurologique avec références documentées, sans profil de gravité ni diagnostic. Vérification sur préférences synthétiques et dans le navigateur : filtrage, rechargement, sections et état vide. Voir `docs/30-technique/accueil-difficultes.md`.
+
 # 2026-10-09 — quatre exercices de mémoire immédiate
 
 Une carte Mémoires immédiates regroupe Retenir un code, Refaire le chemin, Qu’est-ce qui a changé ? et Quel objet était où ?. Exemple facultatif, quatre essais nouveaux, départ volontaire, masquage réel, pause/exit et clavier. Couleurs pertinentes conservées ; résultats détaillés repliés, sans score global. Paramètres persistants, overrides réservés au mode dérogatoire.
