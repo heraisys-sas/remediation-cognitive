@@ -1,3 +1,7 @@
+# 2026-10-21 — mesure et garde-fous des réponses libres
+
+Corpus versionné de 40 cas, outil local lexical/Apple et mesures réelles séparées. Négations et permutations des mêmes mots ne peuvent plus contourner les contrôles du filet approximatif. Aucun changement de seuil, de contenu ou de moteur. Trois substitutions restent acceptées par Apple et une reformulation refusée par le lexical : issue #6 maintenue ouverte, ADR-051.
+
 # 2026-10-09 — quatre exercices de mémoire immédiate
 
 Une carte Mémoires immédiates regroupe Retenir un code, Refaire le chemin, Qu’est-ce qui a changé ? et Quel objet était où ?. Exemple facultatif, quatre essais nouveaux, départ volontaire, masquage réel, pause/exit et clavier. Couleurs pertinentes conservées ; résultats détaillés repliés, sans score global. Paramètres persistants, overrides réservés au mode dérogatoire.
