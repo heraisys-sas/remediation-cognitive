@@ -22,6 +22,11 @@ Les prototypes d’attention différée, de reproduction de figures et de tâche
 
 ## Installer et démarrer
 
+L’instance actuelle est **mono-utilisateur et sans authentification applicative**.
+Conserver une écoute locale ; une exposition réseau exige un contrôle d’accès
+et une isolation par instance portés par l’infrastructure. Voir le
+[guide de déploiement](docs/30-technique/deploiement-local.md).
+
 Backend Python/FastAPI, interface HTML/CSS/JavaScript sans framework ni étape de build. La CI utilise Python 3.12 et Node.js 22 ; Node sert aux contrôles de développement, pas au lancement du serveur.
 
 Depuis un nouveau clone :
