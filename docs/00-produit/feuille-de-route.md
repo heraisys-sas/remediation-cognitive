@@ -58,7 +58,9 @@ Périmètre : rester hors ligne, sans modèle supplémentaire obligatoire ; pré
 
 - [ ] Relecture informelle des contenus avec l’orthophoniste et essais de confort ; aucune validation clinique présumée.
 - [ ] Préciser l’usage mono-utilisateur local et les conséquences d’une exposition réseau (issue #7). Aucun chantier d’authentification imposé au POC.
-- [ ] Décider de l’utilité et du périmètre d’un export JSON/PDF avant son développement (issue #8). Le graphe de connaissances n’est pas planifié ; les modules vides ne sont pas des fonctionnalités livrées.
+- [ ] Décider de l’utilité et du périmètre d’un export JSON/PDF avant son développement. L’ancienne issue #8 est close par décision du 20 octobre 2026 : elle n’engage plus la livraison d’un export ni d’un moteur de graphe. L’export reste différé, sans fonctionnalité livrée.
+- [x] Retirer le module de graphe vide et corriger les mentions le présentant comme implémenté (20 octobre 2026).
+- [ ] Piste ultérieure : générer une représentation documentaire des exercices, compétences et articles scientifiques cités, éventuellement lors d’une release. Périmètre et automatisation à décider ; voir [l’architecture](../30-technique/architecture.md#relations-entre-exercices-compétences-et-références).
 - [ ] Vérifier le rythme et la charge sur les usages réels avant toute nouvelle adaptation du dosage.
 
 ### Orientations sorties du backlog actif
