@@ -2,7 +2,7 @@
 
 > Document historique : certaines catégories et épreuves ci-dessous ne décrivent plus les cartes actuelles. Pour distinguer mémoire immédiate, manipulation, exercices retenus et fonctions réellement implémentées, consulter le [référentiel des compétences et des exercices](referentiel-exercices.md). La [revue scientifique des exercices implémentés](revue-competences-exercices.md) précise les catégories et les limites des attributions actuelles. Les anciennes pistes ne valent pas décision de développement.
 
-Le graphe de connaissances (`backend/app/kg/`) modélise ces relations — plutôt que des tags SQL plats.
+Le module de graphe vide a été retiré le 20 octobre 2026. Les relations ci-dessous restent une description historique ; aucune logique de graphe ne les exécute. Une future visualisation documentaire des exercices, compétences et publications citées est décrite dans [l’architecture](../30-technique/architecture.md#relations-entre-exercices-compétences-et-références).
 
 ## Fonctions cibles et priorité (rééducation)
 
@@ -37,7 +37,7 @@ Le graphe de connaissances (`backend/app/kg/`) modélise ces relations — plut�
 | Sonde n-back | n-back | MDT + attention soutenue | pas 2 → 4 |
 | Paires associatives | paires-associatives | MDT + mémorisation longue | 2 → 4 paires |
 
-Chaque item du contenu (`content/schema-item.json`) porte `fonctions_ciblees` et `prerequis` — la source de vérité du graphe.
+Le schéma des items (`content/schema-item.json`) prévoit les champs `fonctions_ciblees` et `prerequis`. Ces métadonnées sont conservées ; elles n’alimentent actuellement aucun moteur de graphe.
 
 ## Familles « accès au mot » (sprint 3)
 
