@@ -28,6 +28,7 @@ try:
 except ModuleNotFoundError:
     from generation import ecrire_json, arguments_generation
 
+import json
 import random
 from pathlib import Path
 
@@ -538,7 +539,9 @@ def construire_palier_pqrst_mis_en_oeuvre() -> list[dict]:
     ce qui manquait au palier PQRST « test ».
     """
     items = []
-    for numero, sequence in enumerate(SEQUENCES_PQRST, start=1):
+    source = RACINE_DEPOT / "tools/content_sources/methodes_pqrst_2026-10-10.json"
+    sequences = [*SEQUENCES_PQRST, *json.loads(source.read_text(encoding="utf-8"))]
+    for numero, sequence in enumerate(sequences, start=1):
         items.append({
             "id": f"mt2-6-pqrst-{numero:02d}",
             "type": "pqrst-mise-en-oeuvre",
@@ -565,8 +568,8 @@ def construire_palier_pqrst_mis_en_oeuvre() -> list[dict]:
             },
             "reponse": {"valeur": sequence["attendu"], "seuil": sequence["seuil"]},
             "meta": {
-                "auteur": "redaction-assistee (tools/generer_methodes.py)",
-                "date_creation": DATE_PQRST,
+                "auteur": sequence.get("meta", {}).get("auteur", "redaction-assistee (tools/generer_methodes.py)"),
+                "date_creation": sequence.get("meta", {}).get("date_creation", DATE_PQRST),
                 "relecture_ortho": {"statut": "a_revoir"},
             },
         })

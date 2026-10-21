@@ -28,6 +28,8 @@ const refs = {
   vues: {
     themes: $("vue-themes"),
     immediates: $("vue-memoires-immediates"),
+    strategies: $("vue-strategies"),
+    nback: $("vue-nback"),
     seance: $("vue-seance"),
     resume: $("vue-resume"),
     missions: $("vue-missions"),
@@ -37,6 +39,8 @@ const refs = {
   titres: {
     themes: $("titre-themes"),
     immediates: $("titre-memoires-immediates"),
+    strategies: $("titre-strategies"),
+    nback: $("titre-nback"),
     seance: $("titre-seance"),
     resume: $("titre-resume"),
     missions: $("titre-missions"),
@@ -127,6 +131,7 @@ function revenirEnHaut() {
 }
 
 function afficherVue(nom) {
+  if (nom !== "nback" && refs.vues.nback && !refs.vues.nback.hidden) nbackQuitter();
   for (const [cle, section] of Object.entries(refs.vues)) {
     section.hidden = cle !== nom;
   }
@@ -264,7 +269,8 @@ function rendreThemes(themes) {
     carte.dataset.activite = theme.id;
     cible.append(carte);
   }
-  refs.listeThemes.append(carteMemoiresImmediates());
+  refs.listeThemes.append(carteMemoiresImmediates(), carteStrategies());
+  refs.listeThemesEvaluation.append(carteNBack());
   refs.sectionEvaluation.hidden = !refs.listeThemesEvaluation.childElementCount;
   refs.sectionExtra.hidden = !refs.listeThemesExtra.childElementCount;
   AccueilDifficultes.actualiser();

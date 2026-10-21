@@ -15,7 +15,10 @@ import re
 import subprocess
 import tempfile
 from pathlib import Path
-from generer_rappel_series import MOTS
+try:
+    from tools.generer_rappel_series import MOTS
+except ModuleNotFoundError:
+    from generer_rappel_series import MOTS
 
 ROOT=Path(__file__).resolve().parents[1]
 PROFIL='fr-thomas-155-v1'

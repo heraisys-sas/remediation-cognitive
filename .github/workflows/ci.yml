@@ -38,6 +38,8 @@ jobs:
           node tools/test_immediate_sequences.cjs
           node tools/test_immediate_visual.cjs
           node tools/test_immediate_memory.cjs
+          node --test tools/test_strategies.cjs
+          node --test tools/test_nback.cjs
           node --test tools/test_serie_contextes.cjs
       - name: Syntaxe Python et JavaScript
         run: |

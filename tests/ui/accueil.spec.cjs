@@ -24,7 +24,9 @@ test('catalogue complet, cases nommées et absence de débordement', async ({ pa
   expect(reponse.ok()).toBeTruthy();
   const { themes } = await reponse.json();
   const noms = themes.filter(t => t.id !== 'series-entendues').map(t => t.nom);
-  expect((await cartes(page).allTextContents()).sort()).toEqual([...noms, 'Mémoires immédiates'].sort());
+  expect((await cartes(page).allTextContents()).sort()).toEqual([
+    ...noms, 'Mémoires immédiates', 'Application des stratégies', 'N-back : comparer les formes',
+  ].sort());
   await aucunDebordement(page);
   await reglages(page);
   const cases = page.locator('#choix-difficultes input');
@@ -101,7 +103,7 @@ test('recouvrements et interactions rapides sans doublons', async ({ page }) => 
   for (let i = 0; i < 3; i++) { await attention.uncheck(); await attention.check(); }
   const noms = await cartes(page).allTextContents();
   expect(noms.length).toBe(new Set(noms).size);
-  expect(noms.sort()).toEqual(['Méthodes pour retenir et s’organiser', 'Actualiser une consigne', 'Comparer deux documents', 'Repérer l’essentiel', 'Garder le cap'].sort());
+  expect(noms.sort()).toEqual(['Méthodes pour retenir et s’organiser', 'Actualiser une consigne', 'Comparer deux documents', 'Repérer l’essentiel', 'Garder le cap', 'Application des stratégies'].sort());
 });
 
 test('commande native au clavier et aucune erreur JavaScript', async ({ page }) => {
