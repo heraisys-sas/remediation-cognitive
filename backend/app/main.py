@@ -14,6 +14,8 @@ est résolu depuis l'emplacement de ce fichier, indépendamment du CWD.
 from __future__ import annotations
 
 from pathlib import Path
+from contextlib import asynccontextmanager
+import logging
 
 from fastapi import FastAPI
 from fastapi.staticfiles import StaticFiles
@@ -52,6 +54,17 @@ from .storage.programme import StockageProgramme
 from .storage.store import StockageJSON
 
 
+@asynccontextmanager
+async def avertir_deploiement(application):
+    logging.getLogger(__name__).warning(
+        "Orthogone sans authentification : instance mono-utilisateur, "
+        "à écouter sur 127.0.0.1 ou ::1. Une exposition réseau exige "
+        "un contrôle d'accès externe et une isolation des données par instance. "
+        "Voir docs/30-technique/deploiement-local.md."
+    )
+    yield
+
+
 def creer_app(
     racine_donnees: Path | None = None,
     dossier_frontend: Path | None = None,
@@ -65,6 +78,7 @@ def creer_app(
     et l'horloge UTC réelle.
     """
     application = FastAPI(
+        lifespan=avertir_deploiement,
         title="Entraînement cognitif — API (Phase 1)",
         version="0.1.0",
         description=(

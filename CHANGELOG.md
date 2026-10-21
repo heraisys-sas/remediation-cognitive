@@ -22,6 +22,13 @@ Choix persistants dans Réglages → Ce que tu souhaites travailler : huit domai
 
 Libellés et correspondances revus selon une perspective d’orthophonie neurologique avec références documentées, sans profil de gravité ni diagnostic. Vérification sur préférences synthétiques et dans le navigateur : filtrage, rechargement, sections et état vide. Voir `docs/30-technique/accueil-difficultes.md`.
 
+# 2026-10-21 — frontière de déploiement local
+
+Avertissement au démarrage ASGI : instance mono-utilisateur sans authentification,
+écoute locale recommandée. Guide des données persistées et des responsabilités
+de la passerelle externe ; aucune gestion des utilisateurs ajoutée (issue #7,
+ADR-050). L’avertissement ne bloque ni ne détecte le bind réseau.
+
 # 2026-10-20 — retrait du module de graphe vide
 
 Suppression de `backend/app/kg/__init__.py`, sans code exécuté ni import appelant. Architecture, taxonomie historique, README et feuille de route alignés. Une future visualisation documentaire des exercices, compétences et publications citées est envisagée, éventuellement lors d’une release ; aucun moteur de graphe ni automatisation ajouté. L’ancienne issue #8 est close sur décision utilisateur, sans annoncer l’export PDF/JSON comme livré ; son périmètre reste à décider.
