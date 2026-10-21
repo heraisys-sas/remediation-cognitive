@@ -42,3 +42,23 @@ Le contexte peut être travaillé avec les scènes de la version web ; la reconn
 ## Vérification
 
 `node --test tools/test_accueil_difficultes.cjs`, également exécuté depuis pytest : catalogue complet, préférence vide et rechargement, recouvrements, sélection exacte, changements rapides sans recréation, stockage refusé, préférence corrompue, catalogue incomplet/nouveau, commandes Tout afficher/Tout masquer. Stockage synthétique uniquement dans les tests automatisés.
+
+
+### Tests navigateur automatisés — 21 octobre 2026
+
+Installation et lancement depuis la racine du dépôt :
+
+```sh
+python3 -m pip install -r requirements-dev.txt
+npm ci
+npx playwright install chromium webkit
+npm run test:ui
+```
+
+`ORTHOGONE_TEST_PYTHON` permet de sélectionner le Python disposant des dépendances serveur. Le port de test est `127.0.0.1:18091` ; un serveur existant sur ce port n’est jamais réutilisé. `tools/serveur_tests_ui.py` conserve tous les états dans un dossier temporaire, nettoyé à l’arrêt normal. Chaque test utilise un contexte navigateur indépendant ; aucune préférence du navigateur personnel n’est consultée.
+
+Six scénarios exécutés sur quatre profils (24 tests réussis localement) : Chromium bureau, Chromium mobile Pixel 5, WebKit mobile iPhone SE et WebKit mobile à 320 px. Ils couvrent le catalogue réel complet, les noms/descriptions accessibles des cases, le débordement horizontal, la sélection exacte, la persistance au rechargement, les rubriques, la sélection vide, le refus de stockage, les recouvrements et la commande au clavier. Les changements de filtre ne doivent envoyer aucune requête API de modification.
+
+Le job GitHub Actions `interface-mobile` installe les navigateurs et leurs dépendances Linux, puis publie le rapport et les captures pendant sept jours ; les traces sont conservées en cas d’échec. Les dossiers `playwright-report/` et `test-results/` sont ignorés par Git.
+
+Ces profils simulent des dimensions et comportements mobiles : ils ne constituent ni une certification Android/iOS, ni un essai sur téléphone physique ou avec VoiceOver. Les captures sont des preuves d’affichage, sans comparaison automatique à une image de référence. La facturation GitHub Actions doit permettre le démarrage du job pour obtenir une validation distante.

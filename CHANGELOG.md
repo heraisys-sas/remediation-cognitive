@@ -1,3 +1,7 @@
+# 2026-10-21 — tests navigateur de l’accueil
+
+Ajout de Playwright verrouillé et d’un job CI pour Chromium et WebKit : six scénarios sur quatre profils, dont un écran de 320 px. Les 24 tests passent localement. Serveur et stockage éphémères, contextes navigateur indépendants, captures et rapport archivés dans GitHub ; aucune donnée personnelle utilisée. Validation sur téléphone physique et VoiceOver restant distincte.
+
 # 2026-10-20 — accueil personnalisé par difficultés
 
 Choix persistants dans Réglages → Ce que tu souhaites travailler : huit domaines de difficultés, plus les apprentissages Extra. Les cartes associées sont annoncées à partir du catalogue rendu ; leur catégorie et leurs parcours sont conservés. Affichage complet par défaut, choix vide conservé, message en cas de stockage refusé. Aucune modification du moteur, des niveaux ou des historiques.
