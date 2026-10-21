@@ -1,3 +1,10 @@
+# 2026-10-21 — frontière de déploiement local
+
+Avertissement au démarrage ASGI : instance mono-utilisateur sans authentification,
+écoute locale recommandée. Guide des données persistées et des responsabilités
+de la passerelle externe ; aucune gestion des utilisateurs ajoutée (issue #7,
+ADR-050). L’avertissement ne bloque ni ne détecte le bind réseau.
+
 # 2026-10-09 — quatre exercices de mémoire immédiate
 
 Une carte Mémoires immédiates regroupe Retenir un code, Refaire le chemin, Qu’est-ce qui a changé ? et Quel objet était où ?. Exemple facultatif, quatre essais nouveaux, départ volontaire, masquage réel, pause/exit et clavier. Couleurs pertinentes conservées ; résultats détaillés repliés, sans score global. Paramètres persistants, overrides réservés au mode dérogatoire.
