@@ -58,6 +58,17 @@ class ReponseUtilisateur(BaseModel):
     reponse: str | int | float | dict
     temps_ms: int
     indice_utilise: int | None = None
+    memorisation: bool = False
+    observation_contextes: dict | None = None
+
+
+class FinUtilisateur(BaseModel):
+    observations_contextes: dict | None = None
+
+
+class ObservationUtilisateur(BaseModel):
+    item_id: str = Field(max_length=200)
+    reponse: dict
 
 
 class TranscriptionAVerifier(BaseModel):
@@ -136,6 +147,8 @@ def envoyer_reponse(theme: str, session_id: str, corps: ReponseUtilisateur, requ
             corps.reponse,
             corps.temps_ms,
             corps.indice_utilise,
+            observation_contextes=corps.observation_contextes,
+            memorisation=corps.memorisation,
         )
     except SessionInconnue:
         return _erreur(404, "session_inconnue")
@@ -166,11 +179,28 @@ def verifier_dictee(theme: str, session_id: str, corps: TranscriptionAVerifier,
 
 
 @router.post("/{theme}/sessions/{session_id}/fin")
-def terminer_session(theme: str, session_id: str, request: Request):
+def terminer_session(theme: str, session_id: str, request: Request, corps: FinUtilisateur | None = None):
     """POST …/fin — résumé, proposition d'arrêt éventuelle, persistance."""
     try:
-        return _gestionnaire(request).terminer(theme, session_id)
+        return _gestionnaire(request).terminer(theme, session_id, corps.observations_contextes if corps else None)
     except SessionInconnue:
         return _erreur(404, "session_inconnue")
     except SessionDejaTerminee:
         return _erreur(409, "session_terminee")
+
+    except ReponseInvalide:
+        return _erreur(422, "reponse_invalide")
+
+
+@router.post("/{theme}/sessions/{session_id}/observations")
+def enregistrer_observation(theme: str, session_id: str, corps: ObservationUtilisateur, request: Request):
+    try:
+        return _gestionnaire(request).observer(theme, session_id, corps.item_id, corps.reponse)
+    except SessionInconnue:
+        return _erreur(404, "session_inconnue")
+    except SessionDejaTerminee:
+        return _erreur(409, "session_terminee")
+    except ItemHorsSeance:
+        return _erreur(404, "item_hors_seance")
+    except ReponseInvalide:
+        return _erreur(422, "reponse_invalide")

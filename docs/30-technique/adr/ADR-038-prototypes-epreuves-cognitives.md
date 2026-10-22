@@ -1,5 +1,7 @@
 # ADR-038 — Spécifier les prototypes cognitifs séparément de la remédiation
 
+**Complété le 9 octobre 2026 par [ADR-042](ADR-042-cadre-cognitif-et-autoevaluation.md).** Le cadre cognitif précise désormais entraînement, Exercices ciblés et double usage. La spécification ci-dessous conserve ses contrats techniques non remplacés ; sa séparation de rubrique et son ordre de livraison sont historiques, pas des contraintes concurrentes.
+
 ## Contexte
 
 L’utilisateur a demandé la formalisation des idées de correction différée, figures et couleurs, ajoutées à la feuille de route au commit acf74b5. La TODO mélangeait modes, métriques et paramètres sans contrat d’exécution. Il autorise son remplacement par une spécification meilleure.

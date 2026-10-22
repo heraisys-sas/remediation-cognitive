@@ -1,0 +1,262 @@
+{
+  "2": [
+    {
+      "enonce": "Tu veux acheter une lampe à moins de 30 €, avec une ampoule incluse. Le modèle prévu est épuisé. A coûte 24 € sans ampoule ; l’ampoule coûte 8 €. B coûte 28 € avec ampoule. C coûte 35 € avec ampoule. Quel remplacement respecte les deux contraintes ?",
+      "options": [
+        "Acheter A et son ampoule",
+        "Acheter B avec son ampoule",
+        "Acheter C avec son ampoule"
+      ],
+      "bonne": "Acheter B avec son ampoule",
+      "meta": {
+        "auteur": "redaction-assistee — enrichissement trois mois",
+        "date_creation": "2026-10-10",
+        "relecture_ortho": {
+          "statut": "a_revoir"
+        }
+      }
+    },
+    {
+      "enonce": "Tu dois imprimer dix pages recto simple avant 16 h. L’imprimante habituelle est en panne. A imprime en recto simple, disponible à 15 h. B imprime seulement recto verso, disponible à 14 h. C imprime recto simple, disponible demain. Quel choix conserve le résultat et le délai ?",
+      "options": [
+        "Utiliser l’imprimante A à 15 h",
+        "Utiliser l’imprimante B à 14 h",
+        "Attendre l’imprimante C demain"
+      ],
+      "bonne": "Utiliser l’imprimante A à 15 h",
+      "meta": {
+        "auteur": "redaction-assistee — enrichissement trois mois",
+        "date_creation": "2026-10-10",
+        "relecture_ortho": {
+          "statut": "a_revoir"
+        }
+      }
+    },
+    {
+      "enonce": "Tu organises une lecture pour quatre personnes dans un lieu calme. Le salon prévu devient bruyant à cause de travaux. A : table pour quatre dans un café animé ; B : salle calme pour deux ; C : salle calme pour quatre. Quel lieu remplace le salon sans modifier le but ?",
+      "options": [
+        "Choisir le lieu A",
+        "Choisir le lieu B",
+        "Choisir le lieu C"
+      ],
+      "bonne": "Choisir le lieu C",
+      "meta": {
+        "auteur": "redaction-assistee — enrichissement trois mois",
+        "date_creation": "2026-10-10",
+        "relecture_ortho": {
+          "statut": "a_revoir"
+        }
+      }
+    },
+    {
+      "enonce": "Tu dois livrer un gâteau vendredi avant midi, sans le congeler. Le destinataire sera absent à 11 h, horaire prévu. Il peut le recevoir vendredi à 9 h ou à 14 h, ou samedi à 10 h. Quel nouvel horaire respecte toutes les conditions ?",
+      "options": [
+        "Vendredi à 14 h",
+        "Vendredi à 9 h",
+        "Samedi à 10 h"
+      ],
+      "bonne": "Vendredi à 9 h",
+      "meta": {
+        "auteur": "redaction-assistee — enrichissement trois mois",
+        "date_creation": "2026-10-10",
+        "relecture_ortho": {
+          "statut": "a_revoir"
+        }
+      }
+    },
+    {
+      "enonce": "Tu veux rapporter trois livres avant la fermeture de 18 h et repartir avec un nouveau livre. Le guichet de prêt est fermé, mais une borne permet les retours et les prêts jusqu’à 18 h. Une boîte extérieure accepte seulement les retours. Quel ajustement permet encore les deux actions ?",
+      "options": [
+        "Utiliser seulement la boîte extérieure",
+        "Reporter toutes les actions à demain",
+        "Utiliser la borne pour rendre puis emprunter"
+      ],
+      "bonne": "Utiliser la borne pour rendre puis emprunter",
+      "meta": {
+        "auteur": "redaction-assistee — enrichissement trois mois",
+        "date_creation": "2026-10-10",
+        "relecture_ortho": {
+          "statut": "a_revoir"
+        }
+      }
+    },
+    {
+      "enonce": "Tu prépares un affichage lisible en noir et blanc. Les trois catégories étaient distinguées uniquement par couleur. L’imprimante couleur est indisponible et les trois couleurs donnent le même gris à l’impression. Quelle adaptation conserve la distinction entre les catégories ?",
+      "options": [
+        "Ajouter un symbole différent à chaque catégorie et imprimer en noir et blanc",
+        "Imprimer les couleurs en gris sans autre repère",
+        "Supprimer deux catégories"
+      ],
+      "bonne": "Ajouter un symbole différent à chaque catégorie et imprimer en noir et blanc",
+      "meta": {
+        "auteur": "redaction-assistee — enrichissement trois mois",
+        "date_creation": "2026-10-10",
+        "relecture_ortho": {
+          "statut": "a_revoir"
+        }
+      }
+    },
+    {
+      "enonce": "Tu dois participer à une réunion à distance à 14 h, avec son et image. La caméra de l’ordinateur est en panne. Le téléphone a son et caméra, mais sa batterie est vide ; son chargeur fonctionne. L’autre ordinateur a du son mais aucune caméra. Que modifier pour conserver la participation demandée ?",
+      "options": [
+        "Utiliser l’ordinateur sans caméra",
+        "Brancher le téléphone et rejoindre avec son et image",
+        "Rejoindre uniquement par téléphone sans image"
+      ],
+      "bonne": "Brancher le téléphone et rejoindre avec son et image",
+      "meta": {
+        "auteur": "redaction-assistee — enrichissement trois mois",
+        "date_creation": "2026-10-10",
+        "relecture_ortho": {
+          "statut": "a_revoir"
+        }
+      }
+    },
+    {
+      "enonce": "Tu dois apporter six verres propres et incassables pour une sortie. Deux des six verres prévus sont introuvables. Tu disposes de deux verres incassables propres, de deux tasses sales et de deux verres fragiles propres. Quel remplacement garde toutes les contraintes ?",
+      "options": [
+        "Remplacer par les deux tasses sales",
+        "Remplacer par les deux verres fragiles",
+        "Remplacer par les deux verres incassables propres"
+      ],
+      "bonne": "Remplacer par les deux verres incassables propres",
+      "meta": {
+        "auteur": "redaction-assistee — enrichissement trois mois",
+        "date_creation": "2026-10-10",
+        "relecture_ortho": {
+          "statut": "a_revoir"
+        }
+      }
+    }
+  ],
+  "3": [
+    {
+      "enonce": "Tu commandes quatre cahiers à grands carreaux. Le panier contient quatre cahiers, mais deux sont à petits carreaux. Le prix et l’adresse sont corrects. Que corriger avant de payer ?",
+      "options": [
+        "Remplacer les deux cahiers à petits carreaux",
+        "Changer seulement l’adresse",
+        "Ajouter deux cahiers sans retirer les autres"
+      ],
+      "bonne": "Remplacer les deux cahiers à petits carreaux",
+      "meta": {
+        "auteur": "redaction-assistee — enrichissement trois mois",
+        "date_creation": "2026-10-10",
+        "relecture_ortho": {
+          "statut": "a_revoir"
+        }
+      }
+    },
+    {
+      "enonce": "Tu dois envoyer une photo récente à Samira en pièce jointe. Le message est adressé à Samira, mais la photo apparaît seulement dans un lien privé auquel elle n’a pas accès. Quelle correction satisfait la demande ?",
+      "options": [
+        "Renvoyer le même lien privé",
+        "Joindre directement la photo récente au message",
+        "Changer le destinataire"
+      ],
+      "bonne": "Joindre directement la photo récente au message",
+      "meta": {
+        "auteur": "redaction-assistee — enrichissement trois mois",
+        "date_creation": "2026-10-10",
+        "relecture_ortho": {
+          "statut": "a_revoir"
+        }
+      }
+    },
+    {
+      "enonce": "Tu réserves une table pour cinq personnes dimanche à midi. La confirmation indique cinq personnes, dimanche à 19 h. Que faut-il faire vérifier avant de confirmer ?",
+      "options": [
+        "Le nombre de personnes",
+        "Le jour de la réservation",
+        "L’horaire, qui doit être midi"
+      ],
+      "bonne": "L’horaire, qui doit être midi",
+      "meta": {
+        "auteur": "redaction-assistee — enrichissement trois mois",
+        "date_creation": "2026-10-10",
+        "relecture_ortho": {
+          "statut": "a_revoir"
+        }
+      }
+    },
+    {
+      "enonce": "Tu dois rendre une clé et une carte d’accès à l’accueil. La clé est dans l’enveloppe de retour ; la carte est restée dans ton portefeuille. Que faire pour terminer la restitution ?",
+      "options": [
+        "Déposer l’enveloppe sans l’ouvrir",
+        "Ajouter la carte d’accès à l’enveloppe",
+        "Garder la clé avec la carte"
+      ],
+      "bonne": "Ajouter la carte d’accès à l’enveloppe",
+      "meta": {
+        "auteur": "redaction-assistee — enrichissement trois mois",
+        "date_creation": "2026-10-10",
+        "relecture_ortho": {
+          "statut": "a_revoir"
+        }
+      }
+    },
+    {
+      "enonce": "Tu dois apporter un formulaire signé et une copie d’identité. Le formulaire est rempli mais pas signé ; la copie d’identité est présente. Quelle action manque ?",
+      "options": [
+        "Signer le formulaire",
+        "Refaire la copie d’identité",
+        "Retirer la copie d’identité"
+      ],
+      "bonne": "Signer le formulaire",
+      "meta": {
+        "auteur": "redaction-assistee — enrichissement trois mois",
+        "date_creation": "2026-10-10",
+        "relecture_ortho": {
+          "statut": "a_revoir"
+        }
+      }
+    },
+    {
+      "enonce": "Tu prépares un colis avec deux livres et le bon de retour. Le colis contient les deux livres. Le bon est imprimé et reste sur la table. Que vérifier avant de fermer le colis ?",
+      "options": [
+        "Le poids de chaque livre seulement",
+        "Le nombre de pages du bon",
+        "La présence du bon de retour dans le colis"
+      ],
+      "bonne": "La présence du bon de retour dans le colis",
+      "meta": {
+        "auteur": "redaction-assistee — enrichissement trois mois",
+        "date_creation": "2026-10-10",
+        "relecture_ortho": {
+          "statut": "a_revoir"
+        }
+      }
+    },
+    {
+      "enonce": "Tu dois inscrire un rendez-vous vendredi à 10 h au centre de quartier. Le calendrier affiche vendredi à 10 h, mais indique la mairie comme lieu. Quel élément corriger ?",
+      "options": [
+        "Le jour",
+        "Le lieu, en indiquant le centre de quartier",
+        "L’heure"
+      ],
+      "bonne": "Le lieu, en indiquant le centre de quartier",
+      "meta": {
+        "auteur": "redaction-assistee — enrichissement trois mois",
+        "date_creation": "2026-10-10",
+        "relecture_ortho": {
+          "statut": "a_revoir"
+        }
+      }
+    },
+    {
+      "enonce": "Tu dois envoyer la version finale d’un compte rendu aux trois membres du groupe. Le message contient la version finale et seulement deux adresses du groupe. Que corriger avant l’envoi ?",
+      "options": [
+        "Ajouter l’adresse du troisième membre",
+        "Joindre aussi l’ancien brouillon",
+        "Retirer une des deux adresses présentes"
+      ],
+      "bonne": "Ajouter l’adresse du troisième membre",
+      "meta": {
+        "auteur": "redaction-assistee — enrichissement trois mois",
+        "date_creation": "2026-10-10",
+        "relecture_ortho": {
+          "statut": "a_revoir"
+        }
+      }
+    }
+  ]
+}

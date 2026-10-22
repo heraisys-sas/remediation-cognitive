@@ -52,8 +52,9 @@ function reglerEtatBoutons() {}
 let valeur;
 function soumettreValeur(v) {valeur = v}
 '''
-    for name in ('afficherQuestion', 'rendreOptions'):
-        args = 'item' if name == 'afficherQuestion' else 'options, item'
+    for name in ('observationContexte', 'afficherQuestion', 'rendreOptions'):
+        args = {'observationContexte': 'item, presented = false',
+                'afficherQuestion': 'item', 'rendreOptions': 'options, item'}[name]
         script += f'\nfunction {name}({args}) ' + corps_fonction(SOURCE, name)
     script += '\nconst items = ' + json.dumps(items) + ''';
 for (const item of items) {

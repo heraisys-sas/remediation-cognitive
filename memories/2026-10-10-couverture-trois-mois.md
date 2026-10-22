@@ -1,0 +1,19 @@
+# Couverture trois mois — livraison locale
+
+User demande quantité/progression3mois et auditautrescartes saufverbesirréguliers/Python. Réponse explicite :5séancesparsemaineAUTOTAL. Hypothèse13semaines/65séancesréparties14cartes,pas65parcarte.
+
+Agentcouverture a audité stocksparpalier/parcours etquotas avecoutiltools/auditer_couverture.py. Rapportdocs/20-specs/couverture-trois-mois-inventaire.md comprend14cartes exactes ettable65séancesréparties. Stocksfragiles :PQRSTguidé4,context10scènes,rappeldifféré/premièresérie4parmodalité,SFA/PCA6,Gardercapadapter/vérifier4,stratégies3partâche. Programmeexistant8semainesnonprolongé ;besoinversion13opt-in documenté. Userdemandaitévaluationdesautrescartes,pasréécrituremassivecontenu. FSRS/archives inchangés.
+
+Astraultra contratV2nback puisagentsbackend/frontend. Choix1/2/3explicit,mémorisédefault1,sanspromotion. n+15formes,ninitialisationsexclues,15decisions5matchesconstants. Générationchoisitmasqueciblesexact,copiesseq[i-n],excludeelse. EmpreintecanoniqueformeIDsrenommés exclutstructuresdéjàservies pourmême n/condition inclV1 ;1000tentativessouslock puis503 sansfichier/quota.65créationsnouvellestestéespourchaquen,redémarrageinclus. Leurresproximitéseulementnoncible,coincidenceauxiliairesurcible,coeffpasglobal. RésultatsV1inchangés.
+
+Validation :508pytest réussis1ignoré25,75s ;99Node dont28nback ;Ruffbackendengine tools passe ;interface/diff/syntaxe passent. Recette2back17formes15answerscorrect5matches10nonmatches,formeabsenteneutre ;exemples2ABACC et3ABCABCD corrects ;3initialisationssansanswer ;pausepos3aucunedécision ;choix3persistéreload ;aucuneerreurconsole. Capture/private/tmp/orthogone-nback-trois-niveaux.png. Onglettest6fermé,aucunviewportoverride,userongletpréservé.
+
+Checkout /Users/olivierhz/orthogone/deduction-corrections memoires-immediates ;tousanciensdirtychangementspaliers/stratégiespréservés ;aucuncommitpush ni modificationremediation-dev. Serveurrecette8091PID55180/session95818dernièreV2donnéesisolées/private/tmp/orthogone-mi-recette/nback. DernierinventaireJSON/private/tmp/orthogone-couverture-13semaines.json. Suitesélectionbanquescourtes ouprogramme13opt-in, essaisusage/relecture/intégrationautorisation restentouverts.
+
+## Finalisation après GO d’enrichissement
+
+126ajouts :90itemsstatiques+36simulations. Astraultra relitnouveauxcontenus etréponses, sansrechercheinutile ; correctionsduréesaliasPQRST/négations/ambiguïtéslexicales/grisverresappliquées. Revuesupportscontextes avecdistracteursplausiblespour éviterinférences. Nouvellesimages11..20 exacttexte inspectées, imagegenintégré;20WebP640/960total766862octets,max40598/70270. Promptsmanifestfrontend/images/contextes, anciens10inchangés. Quota contextelocal1=10maintientdosehistorique, ADR049.
+
+Sourcesversionnéestools/content_sources; générateursmethodes/garder-cap/rappel-series/series-entendues/evocation synchronisés; testesregeneration. Contenu1424items/98fichiers/12manifests0erreurs, verifierreponses0anomalies. 517pytestpass1skip25.97s,99Nodepass,Ruff/diff/interfacepass. Old8banquesprefixdeepEqualHEAD, stratégies16historiqueshashpréservé/rotation12+1/archivesV2; versionnouvellesV3, anciensprotocolesgardés.
+
+Serveurrecette8091 redémarréPID57657/session46354, donnéesisolées mêmes/private/tmp/orthogone-mi-recette. Browserlocalhostonglet7testcontext1sur10, clôturépartiel sansréponse ; nouveausource11v2640servi. Console0erreurs, screenshot/private/tmp/orthogone-enrichissement-contexte.png ; onglet7fermé,useronglet3intact,viewportaucuneoverride. Docsroadmap/plan/inventaire/strategies/API/ADR047addendum/ADR049/CHANGELOGactualisés. Riencommitépoussé,remediation-devpréservé. Programme8semainesrestantlimiteexplicite, pasdéblocageforcédate.

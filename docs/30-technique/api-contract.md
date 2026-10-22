@@ -250,3 +250,73 @@ Chaque thème de `GET /api/entrainement/themes` fournit aussi `interface` :
 `extra` (section d’appoint), `francais` (prononciation française), `dictee`
 (réponse dictée autorisée par la nature du thème). Le serveur dérive ces trois
 booléens du catalogue ; le client continue de vérifier les capacités du poste.
+
+## Scènes de contexte — mémorisation puis rappel (ADR-039)
+
+POST …/reponses accepte `memorisation: bool` (défaut false). True est réservé aux items `rappel-source` ayant une image, avant leur réponse de rappel : correction immédiate et attendue retournées, aucune inscription dans moteur/FSRS/maîtrise/baseline. Hors de ce périmètre : 422. Le client l’envoie pendant la découverte ; le rappel final utilise la réponse ordinaire et détermine le résumé et la progression. Un arrêt avant ce rappel retourne zéro item répondu, pas un score de découverte. Les résultats historiques antérieurs ne sont pas recalculés.
+## Observations de protocole — ADR-043 / ADR-044
+
+Extensions optionnelles, compatibles avec les clients existants :
+
+- `POST /api/entrainement/{theme}/sessions/{session_id}/reponses` : `observation_contextes` objet optionnel pour `rappel-source`, `{passe: "decouverte" | "rappel", ordre: entier 1..nombre_items, presentee_ms?: entier, exposition_ms?: entier, incident_photo?: bool}`. Les horodatages déclarés sont des millisecondes depuis l’époque, bornées à `0..10^14`. Ordre = position réelle de l’item livré. Le rappel documenté exige une réponse de découverte enregistrée. Justesse et première réponse sont calculées/conservées par le serveur.
+- `POST …/fin` : corps facultatif `{observations_contextes: {decouverte?: [faits], rappel?: [faits]}}`. Chaque fait contient `item_id`, `passe`, `ordre`, et facultativement les horodatages précédents, `presentee`, `incident_photo`, `photo_apres_erreur`, `photo_revelee_ms`. Révélation autorisée uniquement après une erreur initiale de rappel. Les champs de réponse/justesse clients sont ignorés. IDs, ordre, types, doublons et taille sont contrôlés ; incohérence = 422 `reponse_invalide`. Réponse de clôture Contextes seule : champ additif `observations_contextes` contenant faits et `premiere_reponse` serveur `{reponse,correcte,aide,temps_ms,validee_ms}`. Les autres payloads de clôture restent inchangés.
+- `POST …/observations` : `{item_id: str, reponse: dict}` pour `pqrst-mise-en-oeuvre` seulement. Le protocole `_pqrst` de l’ADR-043 est validé en mode partiel, enregistré localement sans notation, sans FSRS et sans runner ; réponse 200 `{enregistree: true}`. Métadonnées invalides = 422 ; séance/item inconnus = 404 ; séance clôturée = 409. Les observations complètes corrigées proviennent de `POST …/reponses` et sont conservées face aux checkpoints ultérieurs.
+
+Le journal local est persisté à chaque réponse/checkpoint et relisible par le stockage après redémarrage. Il n’autorise ni reprise d’une séance active ni consultation par une nouvelle route GET. Les historiques antérieurs ne sont pas migrés.
+
+Pour les nouveaux payloads PQRST `_pqrst`, la durée totale du protocole n’alimente pas `temps_reference`, et le résultat après modèle n’alimente pas `resume.sans_aide`. Les anciens payloads et historiques restent inchangés, ainsi que la première réponse par item et FSRS. Avant nettoyage de la séquence, le navigateur conserve un snapshot ; la clôture attend sa sauvegarde. Un échec réseau garde ce snapshot en mémoire pour le réessai de clôture.
+
+## Pratiques guidées de mémoire immédiate — ADR-045
+
+Périmètre local d’entraînement distinct du moteur adaptatif : `/api/memoires-immediates`. Aucun historique existant n’est modifié.
+
+- `POST /sessions` : `{parcours: "code"|"chemin"|"changement"|"objets", parametres?: {...}, sans_limite_sessions?: false}` → 201 `{session_id, parcours, version, parametres, essai:{id,index,stimulus}}`.
+- `POST /sessions/{uuid}/reponses` : `{essai_id,reponse,observations?:{},assistee?:false}` → `{correction,essai_suivant:null|essai,terminee}`. `terminee` indique la fin du bloc de quatre essais ; fermeture persistée uniquement par `/fin`. Réponse `null` = absence déclarée ; chaîne vide non validée rejetée. Retry identique idempotent ; tentative différente sur une première réponse verrouillée → 409.
+- `POST /sessions/{uuid}/aide` : `{essai_id}` après première réponse → `{essai,assistee:true}`. Nouvelle réponse avec `assistee:true`, indépendante de la première et explicitement après correction.
+- `POST /sessions/{uuid}/interruption` : `{essai_id,phase:"pret"|"exposition"|"masque"|"reponse",observations?:{}}` → `{essai}` de remplacement au même rang. Retry retourne le remplacement existant.
+- `POST /sessions/{uuid}/fin` : fermeture idempotente → `{session_id,parcours,version,parametres,terminee,observations:[{essai_id,index,premiere,aide,interruption,remplace}]}`. Enregistrement première `{reponse,correction,observations,validee}` ou `null` ; aide séparée ; interruption sans score.
+
+Paramètres : `longueur` 2–12 code, 2–9 chemin, 2–5 changement, 2–6 objets ; départ code 4, autres 3. `modalite` visuelle, auditive permise uniquement pour le code. `condition` forme/couleur/association fixe dans un bloc de changement. `signal_ms` 500–10000 (code 2000, chemin 1500), `intervalle_ms` 0–5000 (code 1000, chemin 500), `exposition_ms` 1000–30000 (changement 5000, objets 6000), `masque_ms` 0–10000 (changement 1500, objets 1000, code/chemin 0).
+
+Stimulus : code `{chiffres:["0","4","7"]}` ; chemin `{positions:[{id,x,y}],trajet:[ids]}` ; changement `{avant:[{position,forme,couleur}],apres:[...],palette:{couleur:hex}}` ; objets `{positions:[{id,x,y}],objets:[{id,nom}],modele:{objet:position},reserve:[objets]}`. Modèles nécessaires à la présentation, retirés du DOM par le client après encodage.
+
+Réponses : code texte préservant zéro initial (espaces/tirets tolérés), chemin liste de positions, changement `{decision:"identique"|"different",localisation:[positions],localisation_absente?:bool}`, objets mapping objet→position unique, partiel autorisé. Correction : suite entière/positions/contenu retrouvés ; détection/rejet correct/fausse alerte/changement manqué et localisation séparée ; associations exactes/erronées/non placées et permutation. Aucun résultat composite.
+
+Observations facultatives : clés terminant en `_ms`, nombres finis 0–86400000 ; `modalite`, `voix`, `phase`, `raison`, textes de 120 caractères maximum ; `audio_indisponible`, `absence_declaree`, booléens. Données déclarées par le navigateur, pas de journal de frappe. Erreurs : 422 paramètres/réponse invalides, 404 UUID inconnu, 409 essai verrouillé/indisponible, 429 troisième bloc déjà ouvert sans dérogation. Aucun endpoint de bilan.
+
+Une interruption peut inclure `assistee:true` (booléen strict) : une aide ouverte est marquée interrompue sans score, la première réponse reste intacte. Retour `{essai:prochain_essai_initial|null,assistee_interrompue:true}` ; aucun nouveau stimulus assisté, aucune revalidation de cette aide. Retry idempotent. Si aucun essai initial ne reste, fermer le bloc par `/fin`.
+
+### Progression des mémoires immédiates — protocole v2
+
+Création : `progression: bool` strict, défaut false pour compatibilité. True accepte seulement `modalite`/`condition` comme paramètres fournis ; réglages numériques libres : 422. Le serveur choisit les paramètres du palier et retourne `progression: {version,condition,palier,total,reussites}`. Paramètres effectifs supplémentaires : `repetitions` bool pour code, `plateau_etendu` bool pour chemin. Le journal conserve les paramètres et le palier de chaque bloc. La progression se reconstruit sur les blocs terminés, sans comptage double de /fin ou de retries. Les blocs incomplets/aidés/interrompus et anciens blocs sans progression ne font pas avancer. Deux blocs à ≥3/4 exacts font monter, deux à ≤1/4 font descendre ; sinon maintien. Modalités code et conditions changement séparées. Voir [paliers](../20-specs/paliers-memoires-immediates.md).
+
+
+## Stratégies appliquées — pratique originale V3
+
+Protocole `strategies-appliquees-v3`, douze scénarios versionnés par parcours. Les contenus et journaux V1/V2 restent résolus sans réinterprétation. Les journaux sont isolés dans `strategies`, sans écriture dans FSRS ni les anciens historiques ; décision [ADR-047](adr/ADR-047-strategies-appliquees.md).
+
+`POST /api/strategies/sessions` : `parcours` plan/rappel/message/temps, `condition` avec-note/sans-note uniquement pour message (avec-note par défaut), `sans_limite_sessions` booléen strict facultatif. Réponse 201 : session_id/parcours/version/condition/scenario/phase/donnees, avec l’ID dans `scenario.id` ; 429 après trois ouvertures quotidiennes, tous parcours stratégies confondus, sans dérogation. La journée est déterminée par la date UTC de création.
+
+Sous verrou, le serveur choisit la variante suivant la dernière ouverture persistée du même parcours, dans un cycle de douze. Rotation indépendante des résultats, partagée entre conditions de note et conservée au redémarrage. Une ouverture interrompue participe à la rotation ; un nouvel appel de création n’est pas un retry idempotent. Le journal archive `version` et `scenario_id` ; le contenu reste dans la banque versionnée. Les journaux V1 sans ID résolvent leur scénario original et conservent leur version et correction horaire historiques.
+
+`POST /api/strategies/sessions/{id}/etapes` : etape_id UUID, action, donnees. Transitions et clés autorisées validées, premières réponses verrouillées. Retry exact renvoie réponse durable identique ; changement du payload sous même ID ou transition indisponible 409, champs non admis 422. Réponse : phase et données publiques, scénario mis à jour, résultat seulement après correction. Message supprimé après encodage ; restitution non renvoyée avant correction ; rappel masqué tant que non consulté.
+
+Actions plan : plan_initial/reviser (ordre), executer (action_id), verifier/terminer. Rappel : configurer (piece_id/rappel), intercaler (action_id), consulter_rappel, joindre (piece_id), terminer. Message : masquer (note_presente seulement), restituer (quoi/quand/absence), agir (action_id/heure), consulter_note, reecouter. Temps : estimer (secondes), classer (document_id/categorie), comparer (duree_active_secondes/duree_ecoulee_secondes/pauses_secondes/attente_interface_secondes), marge (secondes). Pause/reprendre/incident/aide communs sans données supplémentaires. Les identifiants de pièces, actions intercalées, documents, catégories et choix sont ceux du scénario reçu.
+
+`comparer` accepte `attente_interface_secondes` facultatif, égal à zéro par défaut. Les durées déclarées doivent être numériques, entre 0 et 86 400 s, avec actif + pauses + attente interface = écoulé à 0,1 s près. Un incident ou une capture incohérente laisse la comparaison absente ; l’écart disponible est actif moins estimation. Ces valeurs décrivent l’horloge locale déclarée par le client, pas une latence réseau ou une mesure clinique contrôlée.
+
+`POST /api/strategies/sessions/{id}/fin` : clôture idempotente ; session_id/parcours/version/scenario_id/condition, statut termine ou interrompu, observations/aides/pauses, correction seulement si le parcours a atteint la phase correction. Notes personnelles jamais acceptées. Voir [version servie](../20-specs/strategies-appliquees.md) pour phases, interprétation et limites.
+
+## N-back visuel — observation distincte
+
+`POST /api/nback/sessions` : `{n?: entier strict1..3, sans_limite_sessions?: bool strict}`, crée un bloc V2, défautn1, condition `observation-sans-feedback`, n+15présentations,15décisions/cinqcorrespondances. Quota trois ouvertures par jour UTC, dérogation explicite. Réponse 201 : `session_id/version/condition/n/total/position/phase/terminee`. Aucun historique, attendu ou séquence avant fin. `symbole` présent uniquement aux phases `initialisation` et `decision`.
+
+`POST /api/nback/sessions/{id}/etapes` : UUID `etape_id`, `action`, `donnees`. Actions `commencer` (ready→initialisation, n premières positions sans réponse), `suivant` (initialisation→decision ou neutre→position suivante/résultat), `repondre` avec decision identique/different/absence (decision→neutre), `interrompre` avec raison pause/masquage/fatigue/sortie (clôture partielle). Une durée d’exposition locale facultative peut être déclarée : numérique finie 0–86400s, sans interprétation de temps de réaction ; l’interface V1 n’envoie pas de mesure. Champs inattendus 422, transitions impossibles 409. Rejeu exact d’un UUID renvoie l’accusé durable ; contenu différent sous même UUID 409.
+
+Dernier `suivant` et interruption clôturent atomiquement. `POST /api/nback/sessions/{id}/fin` clôture idempotente avec motif sortie si encore actif ; renvoie le payload public terminal. Résultat : compte des décisions validées, cibles/non-cibles observées et absences par catégorie, détections/manqués/rejets/fausses alertes, premières décisions avec attendu recalculé, seules présentations déjà atteintes, rythme auto-rythmé et statut. Données propres à cette tâche, jamais injectées dans l’ancien exercice ou FSRS. Voir [spécification](../20-specs/nback.md) et ADR-048.
+
+V2 : référence de correction exactement n places avant ; anti-doublon canonique sous verrou pourmême n/condition, archivesV1 incluses. Après1000collisions,503 sansjournal supplémentaire. RésultatV2 trace les lags proches horsn, leurres pournon-cibles et coïncidencesauxiliaires pourcibles ; les champsV1 restent conservés.
+
+### Dosage des contextes illustrés — enrichissement du 10 octobre
+
+Le parcours evocation/memoire-source expose une banque de vingt scènes versionnées, avec quota effectif maximal de dix items par séance (palier local 1). Le contrat de découverte `memorisation` et rappel final reste inchangé ; seul le rappel final alimente FSRS/maîtrise. Ajouter du contenu ne double pas le nombre de scènes d’une série. Voir ADR-049.

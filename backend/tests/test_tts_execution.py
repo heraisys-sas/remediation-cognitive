@@ -38,3 +38,23 @@ def test_retentative_voix_conservee(monkeypatch):
     monkeypatch.setattr(capacites.subprocess, 'run', lancer)
     assert capacites.synthese('gare') == (b'RIFF-test', 'audio/wav')
     assert len(appels) == 3
+
+
+def test_linux_appel_franc_et_sortie_sans_shell(monkeypatch):
+    """La CI exécute le chemin Linux même sans voix ni binaire installé."""
+    monkeypatch.setattr(platform, 'system', lambda: 'Linux')
+    monkeypatch.setattr(capacites.shutil, 'which', lambda outil: '/fake/espeak-ng' if outil == 'espeak-ng' else None)
+    texte = "$(commande); `id` ' triangle français"
+    appels = []
+    def lancer(args, **options):
+        appels.append(args)
+        assert args[0] == '/fake/espeak-ng'
+        assert args[1] == '-w'
+        assert args[-1] == texte
+        assert len(args) == 4
+        assert not options.get('shell', False)
+        assert options['check'] is True
+        Path(args[2]).write_bytes(b'RIFF-test')
+    monkeypatch.setattr(capacites.subprocess, 'run', lancer)
+    assert capacites.synthese(texte) == (b'RIFF-test', 'audio/wav')
+    assert len(appels) == 1

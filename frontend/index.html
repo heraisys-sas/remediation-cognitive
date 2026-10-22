@@ -8,7 +8,7 @@
   <meta name="color-scheme" content="dark" />
   <meta name="theme-color" content="#192029" />
   <title>Entraînement — séances courtes</title>
-  <link rel="stylesheet" href="src/styles.css?v=20261008-contextes-integration" />
+  <link rel="stylesheet" href="src/styles.css?v=20261020-accueil" />
 </head>
 <body>
   <!-- Lien d'évitement : première tabulation, pour sauter directement au contenu. -->
@@ -22,6 +22,13 @@
       <details class="reglages" id="reglages-interface">
         <summary>Réglages</summary>
         <div class="reglages-contenu">
+          <details id="reglages-difficultes" class="reglages-difficultes">
+            <summary>Ce que tu souhaites travailler</summary>
+            <p class="ligne-discrete">Choisis les difficultés qui te concernent pour alléger l’accueil. Plusieurs choix sont possibles ; les cartes gardent tous leurs parcours.</p>
+            <p class="ligne-discrete">Ce choix personnalise l’affichage, sans établir de diagnostic ni modifier ta progression.</p>
+            <fieldset id="choix-difficultes"><legend>Difficultés et activités associées</legend></fieldset>
+            <p id="erreur-difficultes" role="alert" hidden></p>
+          </details>
           <label class="commutateur">
             <input id="case-lecture-auto" type="checkbox" />
             <span>Lire les consignes à voix haute</span>
@@ -61,11 +68,36 @@
       </div>
     </div>
 
+    <section id="vue-memoires-immediates" class="vue" aria-labelledby="titre-memoires-immediates" hidden>
+      <h2 id="titre-memoires-immediates" class="titre-vue" tabindex="-1">Mémoires immédiates</h2>
+      <p id="mi-progression" class="ligne-discrete"></p>
+      <div id="mi-contenu" class="mi-content"></div>
+      <div id="mi-commandes" class="mi-controls"></div>
+    </section>
+
+    <section id="vue-strategies" class="vue" aria-labelledby="titre-strategies" hidden>
+      <h2 id="titre-strategies" class="titre-vue" tabindex="-1">Application des stratégies</h2>
+      <p id="strategie-progression" class="ligne-discrete"></p>
+      <div id="strategie-contenu" class="mi-content"></div>
+      <div id="strategie-commandes" class="mi-controls"></div>
+    </section>
+
+    <section id="vue-nback" class="vue" aria-labelledby="titre-nback" hidden>
+      <h2 id="titre-nback" class="titre-vue" tabindex="-1">N-back : comparer les formes</h2>
+      <p id="nback-progression" class="ligne-discrete"></p>
+      <div id="nback-contenu" class="mi-content"></div>
+      <div id="nback-commandes" class="mi-controls"></div>
+    </section>
+
     <!-- Écran 1 : choix du thème -->
     <section id="vue-themes" class="vue" aria-labelledby="titre-themes">
       <h2 id="titre-themes" class="titre-vue" tabindex="-1">Choisis ta séance</h2>
       <p class="intro-vue">Quelque chose de court et tranquille — quelques minutes suffisent.</p>
       <p id="notice-themes" class="notice" role="status" hidden></p>
+      <div id="accueil-filtre-vide" class="notice" role="status" hidden>
+        <p>Aucune carte n’est sélectionnée. Choisis ce que tu souhaites travailler dans les réglages.</p>
+        <button id="ouvrir-choix-difficultes" type="button" class="bouton bouton-secondaire">Choisir mes activités</button>
+      </div>
       <div id="liste-themes" class="grille-themes"></div>
 
       <!-- Exercices ciblés : pratique, sans interprétation diagnostique. -->
@@ -278,19 +310,25 @@
   <script src="src/capacites.js?v=20261007-native5" defer></script>
   <script src="src/accompagnement.js?v=20261007b" defer></script>
   <script src="src/dictee-auto.js?v=20261007b" defer></script>
-  <script src="src/api.js?v=20261008-contextes-integration" defer></script>
-  <script src="src/preferences.js?v=20261008-contextes-integration" defer></script>
-  <script src="src/state.js?v=20261008-contextes-integration" defer></script>
-  <script src="src/exercises/deduction.js?v=20261008-contextes-integration" defer></script>
-  <script src="src/exercises/choice.js?v=20261008-contextes-integration" defer></script>
-  <script src="src/exercises/sequence.js?v=20261008-contextes-integration" defer></script>
-  <script src="src/exercises/functional.js?v=20261008-contextes-integration" defer></script>
-  <script src="src/exercises/presentation.js?v=20261008-contextes-integration" defer></script>
-  <script src="src/exercises/default.js?v=20261008-contextes-integration" defer></script>
-  <script src="src/exercises/handlers.js?v=20261008-contextes-integration" defer></script>
-  <script src="src/session.js?v=20261008-contextes-integration" defer></script>
-  <script src="src/missions.js?v=20261008-contextes-integration" defer></script>
-  <script src="src/programme.js?v=20261008-contextes-integration" defer></script>
-  <script src="src/app.js?v=20261008-contextes-integration" defer></script>
+  <script src="src/api.js?v=20261009-memoires" defer></script>
+  <script src="src/preferences.js?v=20261009-memoires" defer></script>
+  <script src="src/state.js?v=20261009-memoires" defer></script>
+  <script src="src/exercises/deduction.js?v=20261009-memoires" defer></script>
+  <script src="src/exercises/choice.js?v=20261009-memoires" defer></script>
+  <script src="src/exercises/sequence.js?v=20261009-memoires" defer></script>
+  <script src="src/exercises/functional.js?v=20261009-memoires" defer></script>
+  <script src="src/exercises/presentation.js?v=20261009-memoires" defer></script>
+  <script src="src/exercises/default.js?v=20261009-memoires" defer></script>
+  <script src="src/exercises/handlers.js?v=20261009-memoires" defer></script>
+  <script src="src/session.js?v=20261009-memoires" defer></script>
+  <script src="src/missions.js?v=20261009-memoires" defer></script>
+  <script src="src/programme.js?v=20261009-memoires" defer></script>
+  <script src="src/exercises/immediate-sequences.js?v=20261019-integration" defer></script>
+  <script src="src/exercises/immediate-visual.js?v=20261019-integration" defer></script>
+  <script src="src/strategies.js?v=20261020-accueil" defer></script>
+  <script src="src/nback.js?v=20261020-accueil" defer></script>
+  <script src="src/immediate-memory.js?v=20261020-accueil" defer></script>
+  <script src="src/accueil-difficultes.js?v=20261020" defer></script>
+  <script src="src/app.js?v=20261020-accueil" defer></script>
 </body>
 </html>

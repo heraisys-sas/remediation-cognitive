@@ -7,6 +7,7 @@ function createSessionState() {
   theme: null,
   session: null,
   phaseContextes: null,
+  observationsContextes: { decouverte: [], rappel: [] },
   indexItem: 0,
   repondu: false,
   debutQuestion: 0,
@@ -30,6 +31,7 @@ function createSessionState() {
 }
 const etat = {
   memoGeneration: 0,
+  checkpointsPqrst: new Map(),
   actionEnCours: false,
   reessai: null,
   missions: [],

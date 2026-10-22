@@ -1,3 +1,100 @@
+# 2026-10-21 — mesure et garde-fous des réponses libres
+
+Corpus versionné de 70 cas, outil local lexical/Apple et mesures réelles séparées. Négations et permutations des mêmes mots ne peuvent plus contourner les contrôles du filet approximatif. Les prises de message utilisent désormais des faits et variantes explicites plutôt que le score de proximité : zéro fausse acceptation et zéro faux refus sur ce corpus exploratoire pour les deux fournisseurs. Aucun changement de seuil, de contenu ou de moteur. L’issue #6 reste ouverte pour un corpus indépendant et une revue des décisions ; aucune calibration clinique revendiquée. ADR-051.
+
+# 2026-10-21 — intégration des lots cognitifs et contenus enrichis
+
+Paliers des mémoires, stratégies V3 et n-back 1/2/3 réunis avec l’accueil filtré.
+126 ajouts de contenus (90 items et 36 simulations), sans suppression des anciens
+identifiants, scénarios ni historiques. Les banques concernées sont PQRST,
+Garder le cap, séries lues/entendues, SFA/PCA et contextes ; dix nouvelles scènes
+WebP. Le programme de huit semaines est conservé. Aucune nouvelle dépendance de
+production pour les exercices, aucun compte ni transfert de progression.
+
+518 tests Python réussis, 1 ignoré ; 99 tests Node, 24 tests navigateur de
+l’accueil et validateurs conformes. Fichiers de test DOM adaptés à l’identité des
+cartes ; attentes navigateur complétées pour stratégies et n-back. Les entrées
+historiques ci-dessous conservent leur état local à la date de rédaction.
+
+# 2026-10-21 — tests navigateur de l’accueil
+
+Ajout de Playwright verrouillé et d’un job CI pour Chromium et WebKit : six scénarios sur quatre profils, dont un écran de 320 px. Les 24 tests passent localement. Serveur et stockage éphémères, contextes navigateur indépendants, captures et rapport archivés dans GitHub ; aucune donnée personnelle utilisée. Validation sur téléphone physique et VoiceOver restant distincte.
+
+# 2026-10-20 — accueil personnalisé par difficultés
+
+Choix persistants dans Réglages → Ce que tu souhaites travailler : huit domaines de difficultés, plus les apprentissages Extra. Les cartes associées sont annoncées à partir du catalogue rendu ; leur catégorie et leurs parcours sont conservés. Affichage complet par défaut, choix vide conservé, message en cas de stockage refusé. Aucune modification du moteur, des niveaux ou des historiques.
+
+Libellés et correspondances revus selon une perspective d’orthophonie neurologique avec références documentées, sans profil de gravité ni diagnostic. Vérification sur préférences synthétiques et dans le navigateur : filtrage, rechargement, sections et état vide. Voir `docs/30-technique/accueil-difficultes.md`.
+
+# 2026-10-21 — frontière de déploiement local
+
+Avertissement au démarrage ASGI : instance mono-utilisateur sans authentification,
+écoute locale recommandée. Guide des données persistées et des responsabilités
+de la passerelle externe ; aucune gestion des utilisateurs ajoutée (issue #7,
+ADR-050). L’avertissement ne bloque ni ne détecte le bind réseau.
+
+# 2026-10-20 — retrait du module de graphe vide
+
+Suppression de `backend/app/kg/__init__.py`, sans code exécuté ni import appelant. Architecture, taxonomie historique, README et feuille de route alignés. Une future visualisation documentaire des exercices, compétences et publications citées est envisagée, éventuellement lors d’une release ; aucun moteur de graphe ni automatisation ajouté. L’ancienne issue #8 est close sur décision utilisateur, sans annoncer l’export PDF/JSON comme livré ; son périmètre reste à décider.
+
+# 2026-10-19 — harmonisation des nouveaux parcours
+
+Titres et commandes alignés : Commencer, Suivant, Terminer la séance, Retour à l’accueil. Tutoiement des consignes des quatre mémoires immédiates, y compris placement, localisation et messages audio. Résumés exprimés en séances et exercices. Messages de sauvegarde identiques ; pause des stratégies nommée Mettre en pause. Le n-back conserve une seule commande de fin explicite : son ancien bouton de pause interrompait définitivement la série.
+
+Versions des assets actualisées pour charger les dernières corrections. Contrôles locaux : 517 tests Python réussis, 1 ignoré, 99 tests JavaScript réussis ; contenu, réponses, interface, syntaxe et Ruff conformes. Vérification mobile avec le profil iPhone SE de Chrome ; essai sur téléphone physique restant à réaliser.
+
+# 2026-10-10 — banques courtes enrichies
+
+126 nouveaux contenus : 90 items et 36 simulations. PQRST guidé : 12 ; adapter/vérifier : 12 chacun ; différé/première série : 12 chacun par modalité ; SFA/PCA : 18 chacun ; contextes : 20 scènes ; stratégies : 12 situations par tâche sous V3. Revue GPT Astra ultra, corrections appliquées ; anciens contenus et historiques conservés.
+
+Sources éditoriales datées et régénération testée. Dix photos nouvelles en WebP640/960 légers ; dix scènes maximum par séance. 517 tests pytest réussis, 1 ignoré ;99 tests Node réussis ;1 424 items validés sans erreur. Documents et serveur recette 8091 actualisés. Aucun commit/push ; programme de 8 semaines préservé.
+
+# 2026-10-10 — couverture trois mois et n-back V2
+
+Dimensionnement cinq séances hebdomadaires au total, soit65 séances sur13 semaines. Audit reproductible des14cartes horsanglais/Python, stocks et banquescourtes décrits parpalier/parcours. Le programme existant8semaines est signalé, sansprolongation automatique.
+
+N-backV2 : choixpersistant1/2/3-back,15décisions/cinqcibles constants, anti-doublon canonique durable incluantarchivesV1,65séries distinctes testéespar n. Aucun passage automatique de niveau. Observationsleurres/coïncidences archivées sansfeedbackavantfin.508pytest réussis1ignoré,99 tests Node réussis. Changementslocauxnonpoussés.
+
+# 2026-10-10 — véritable n-back dans Exercices ciblés
+
+Autorisation utilisateur et conception relue GPT Astra ultra. 1-back visuel à rythme libre : 16 formes, comparaison successive, exemple indépendant, premières réponses verrouillées et corrections après bloc. Pas d’historique visible ni de feedback de justesse pendant la série. Absences et interruptions séparées ; pause termine l’observation et rechargement tente une clôture.
+
+API/journal distincts de l’ancien exercice de position et de FSRS ; ADR-048. Validation locale : 494 pytest réussis, 1 ignoré, 93 tests Node ; recette complète et mobile320px. Pas de 2-back ou cadence fixe livrés, aucun diagnostic/score global. Nouveaux changements non commités/poussés.
+
+# 2026-10-09 — quatre exercices de mémoire immédiate
+
+Une carte Mémoires immédiates regroupe Retenir un code, Refaire le chemin, Qu’est-ce qui a changé ? et Quel objet était où ?. Exemple facultatif, quatre essais nouveaux, départ volontaire, masquage réel, pause/exit et clavier. Couleurs pertinentes conservées ; résultats détaillés repliés, sans score global. Paramètres persistants, overrides réservés au mode dérogatoire.
+
+API locale séparée de FSRS : correction serveur, premières réponses immuables, aides et interruptions distinctes, fichiers atomiques et retries idempotents ; ADR-045. Aucun contenu, historique ni moteur existant modifié. 439 pytest réussis, 1 ignoré, 35 tests Node dédiés ; contrôles locaux et recette des quatre interfaces, dont objets sur petit écran. Intégration dans dev autorisée le 10 octobre.
+
+# 2026-10-09 — intégration des corrections cognitives dans dev
+
+Correction du rappel final déjà présente sur dev conservée : découverte avec `memorisation: true`, seul rappel final alimente FSRS/maîtrise/temps de référence, journal et résumé distincts pour les deux passes. Nouveaux ADR renumérotés 042–044, sans écraser les décisions 039/040. Contrôles d’intégration : 421 tests pytest réussis, 1 ignoré, 12 tests Node et Ruff réussis.
+
+# 2026-10-09 — PQRST séquencé et résultats Contextes validés
+
+- PQRST présenté par étapes, texte retiré au rappel, réponses T verrouillées avant correction ; absence et aide distinctes, résumé après S conservé. ADR-043.
+- Contextes : résultats descriptifs séparés après photo et sans photo ; première réponse conservée, photo révélée après erreur. Journal atomique par séance ; checkpoints PQRST sauvegardés avant clôture avec réessai après échec réseau. ADR-044.
+- Nouveaux protocoles PQRST exclus du temps de référence et du compteur sans aide ; FSRS, contenus, identifiants et historiques conservés.
+- Validation finale : 417 pytest réussis, 1 ignoré ; 9 tests Node, Ruff et contrôles CI locaux réussis. Recette navigateur PQRST et série complète de 20 réponses Contextes, données isolées. Pas de nouvelle recette mobile ni d’inférence Apple réelle.
+- Quatre mémoires immédiates et application des stratégies restent à développer. Aucun commit/push.
+
+# 2026-10-09 — relecture des spécifications cognitives
+
+Quatre spécifications passées en v1.1 : frontières des réponses, fenêtres de double tâche, distinction go/no-go et stop-signal, transitions PQRST/n-back, mapping du changement de règle et maintien du bouton Afficher pour les scènes. Relecture documentaire, sans sélection implicite de candidats ni modification de code.
+
+# 2026-10-09 — spécifications cognitives et autoévaluation
+
+Cadre commun, corrections des tâches existantes, quatre mémoires immédiates retenues et onze fiches candidates à arbitrer. Entraînement et Exercices ciblés distingués ; PQRST, faux n-back et deux passes du contexte précisés. Prototypes conservés avec portée résiduelle explicite (ADR-042). Aucun code, contenu d’exercice ou historique modifié.
+
+# 2026-10-09 — recherche préparatoire pour les compétences prévues
+
+Recherche Consensus ciblée sur attention soutenue/divisée/alternée, flexibilité, inhibition, vitesse et visuospatial : quatorze sources exploitables, candidats et limites. Distinction demandée : les formats d’observation pourront aller dans « Exercices ciblés » pour l’autoévaluation. Documents reliés ; nouvelles spécifications et implémentation à venir après sélection.
+
+# 2026-10-09 — revue scientifique des exercices implémentés
+
+Audit documentaire des tâches réelles, classification cognitive et onze références Consensus avec portée explicite. Propositions de révision de PQRST, des QCM de stratégies et des libellés ; Déduction, Calcul mental et Retrouver le mot conservés. Référentiel, taxonomie, bibliographie et feuille de route reliés à la revue. Aucun changement de code, contenu ou historique.
+
 # 2026-10-08 — enrichissement du parcours Retrouver le mot
 
 ## 2026-10-08 — Refactorisation (issue #20)
@@ -813,3 +910,26 @@ Retrait du paragraphe explicatif Auto sous les sélecteurs. Le libellé « Auto 
 - Case sous « Dépasser la limite de séances », activable en mode dérogatoire et persistante entre visites.
 - Dérogation facultative `rejouer_palier` : inclut les exercices déjà faits sans attendre leur échéance, dans le palier choisi et le quota normal ; ni remise à zéro ni levée implicite de la limite de séances.
 - ADR-036 ; 49 tests backend ciblés et contrôle Chrome de la persistance/activation conditionnelle.
+
+## 2026-10-08 — Suivi du backlog et revue de la livraison des contextes
+
+Feuille de route remise en cohérence avec main : livraisons identifiées, anciennes orientations retirées du backlog actif, validation de la correction sémantique priorisée (#6). Les prototypes restent spécifiés et non implémentés. Précision sur le résumé des deux passes de contexte, protégé par test ; chemin Linux de synthèse exercé par faux sous-processus en CI. Aucun contenu ni seuil de correction modifié.
+
+### Scènes : le rappel final compte
+
+À la suite de la précision utilisateur, les réponses de découverte servent uniquement à mémoriser et recevoir une correction. Seul le rappel final alimente résumé, FSRS, maîtrise et temps de référence. Un arrêt pendant la découverte affiche « Rappel non commencé ». Contrat additif `memorisation`, ADR-039 ; contenu et identifiants inchangés, anciens historiques conservés sans réinterprétation.
+
+## 2026-10-08 — Circuit d’intégration dev → main
+
+Création de dev depuis main ; branches temporaires validées par PR vers dev, puis livraison fonctionnellement validée par PR dev → main. CI conservée et activée sur les deux branches. README, CONTRIBUTING et AGENTS précisent les commandes, les fusions, la préservation du checkout utilisateur et les ressources Apple locales. ADR-040. Main n’est pas livré automatiquement.
+
+## 2026-10-08 — README aligné sur le logiciel livré
+
+Présentation du POC de remédiation, fonctions jouables et capacités Apple facultatives ; démarrage, données et contrôles documentés. Retrait des annonces de bilan/export/graphe/HDS et de React comme fonctionnalités disponibles. Prototypes distingués du code livré, circuit dev → main conservé. Documentation uniquement.
+## 2026-10-09 — Référentiel des compétences et exercices
+
+- Référentiel destiné à l’orthophoniste, au chercheur et au développement : trois fiches de mémoires immédiates, variantes, justifications déjà consultées et état réel d’implémentation.
+- Inventaire des autres compétences à partir des cartes et de la feuille de route ; recherche Consensus suspendue jusqu’au signal de l’utilisateur.
+- Liens depuis la feuille de route, la taxonomie historique et la bibliographie ; aucun changement des exercices.
+
+- Sélection des mémoires immédiates précisée : « Quel objet était où ? » devient le quatrième exercice retenu ; les trois autres pistes complémentaires sont écartées. Référentiel v1.1, sans nouvelle recherche bibliographique.

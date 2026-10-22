@@ -1206,3 +1206,68 @@ summary:focus-visible, select:focus-visible, .sequence-option:focus-visible {
 
 /* Chaque dérogation occupe sa propre ligne, même sur grand écran. */
 #reglages-derogatoires > .commutateur { display: flex; }
+
+/* Stimuli stables : aucun mouvement décoratif pendant la mémorisation. */
+.mi-content { margin-block: 1.5rem; min-height: 12rem; }
+.mi-controls { display: flex; flex-wrap: wrap; gap: .75rem; margin-block: 1rem; }
+.mi-controls .bouton { min-height: 44px; }
+.immediate-code { font-size: clamp(3rem, 12vw, 5rem); min-height: 7rem; display: grid; place-items: center; font-variant-numeric: tabular-nums; }
+.immediate-code-response { display: grid; gap: 1rem; max-width: 28rem; }
+.immediate-code-response label { display: grid; gap: .75rem; }
+.immediate-code-response input { font-size: 1.5rem; padding: .75rem; width: 100%; background: var(--surface, #232c37); color: inherit; border: 1px solid #7d8b9e; border-radius: .5rem; }
+.immediate-path { position: relative; width: min(100%, 420px); aspect-ratio: 1.4; margin-block: 1.5rem; }
+.immediate-path-cell { position: absolute; transform: translate(-50%, -50%); width: 56px; height: 56px; border: 2px solid #788b9f; border-radius: .5rem; background: #283442; color: #eef2f6; display: grid; place-items: center; font-size: 1.2rem; }
+.immediate-path-cell.is-stimulus { border: 3px solid #d4e0ed; background: #52667d; }
+.immediate-path-cell:focus-visible, .mi-object-slot:focus-visible { outline: 3px solid #d4e0ed; outline-offset: 4px; }
+.mi-visual-board { display: flex; align-items: center; justify-content: space-around; gap: .5rem; width: min(100%, 480px); margin-block: 1.5rem; min-height: 7rem; }
+.mi-visual-cell { width: clamp(44px, 15vw, 72px); min-height: 64px; display: grid; place-items: center; background: transparent; border: 2px solid transparent; border-radius: .5rem; }
+.mi-visual-cell svg { width: 100%; height: auto; }
+button.mi-visual-cell { cursor: pointer; }
+.mi-visual-cell[aria-pressed="true"] { border-color: #d4e0ed; }
+.mi-visual-mask { min-height: 9rem; background: #202a35; border-radius: .5rem; }
+.mi-object-board { display: block; position: relative; height: 9rem; min-height: 9rem; }
+.mi-object-slot { position: absolute; transform: translate(-50%, -50%); width: min(76px, calc(100% / var(--mi-object-count, 4) - 12px)); max-width: calc(100% / var(--mi-object-count, 4) - 12px); height: 76px; min-width: 0; padding: 0; display: grid; place-items: center; border: 2px solid #788b9f; border-radius: .5rem; background: #283442; color: #d8e2ee; }
+.mi-object-slot svg { display: block; width: min(56px, 80%); height: auto; max-height: 80%; aspect-ratio: 1; }
+.mi-object-reserve { display: flex; flex-wrap: wrap; gap: .75rem; margin-block: 1rem; padding-block-start: 1rem; border-top: 1px solid #627387; }
+.mi-object-reserve button { display: grid; gap: .5rem; justify-items: center; min-width: 64px; min-height: 96px; }
+.mi-object-reserve svg { width: 48px; height: 48px; }
+.mi-object-reserve [aria-pressed="true"] { outline: 2px solid #d4e0ed; outline-offset: 2px; }
+@media (max-width: 380px) { .immediate-path-cell { width: 48px; height: 48px; } }
+
+.mi-model-comparison { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 1.5rem; }
+.mi-model-comparison .mi-visual-board { width: 100%; }
+.mi-model-comparison .mi-visual-cell { width: 44px; flex-shrink: 1; }
+.mi-model-comparison .mi-object-slot { width: 56px; height: 56px; }
+.mi-model-comparison .mi-object-slot svg { width: 44px; height: 44px; }
+@media (max-width: 600px) { .mi-model-comparison { grid-template-columns: 1fr; } }
+
+/* Démarrage objets : audio dans la consigne, actions puis sortie en pied. */
+.mi-start-actions { display: grid; gap: .75rem; width: 100%; }
+#mi-commandes > .pied-seance { width: 100%; }
+
+.mi-object-reserve button.is-placed { opacity: .4; cursor: default; }
+
+.immediate-path-links { position: absolute; inset: 0; width: 100%; height: 100%; pointer-events: none; }
+.immediate-path-links line { stroke: #91a6bc; stroke-width: 2; vector-effect: non-scaling-stroke; }
+.immediate-path-cell { z-index: 1; }
+
+/* N-back : une forme stable, sans mouvement ni couleur discriminante. */
+#nback-contenu { min-height: 17rem; }
+.nback-forme.mi-visual-cell { width: min(100%, 9rem); height: 9rem; margin: 1.5rem auto; color: var(--texte); }
+.nback-forme svg { width: 7rem; max-width: 100%; height: 7rem; }
+.nback-choix { justify-content: center; gap: .75rem; }
+.nback-choix .bouton { min-height: 48px; }
+.nback-choix [aria-pressed="true"] { border-color: var(--accent); outline: 2px solid var(--accent); outline-offset: 2px; }
+
+/* Filtre documentaire de l’accueil : pas d’animation ni de nouvelle surface. */
+.reglages-difficultes { max-width: 34rem; min-width: 0; }
+#choix-difficultes { min-width: 0; margin: 1rem 0 0; padding: 0; border: 0; }
+#choix-difficultes legend { font-weight: 600; padding: 0 0 .5rem; }
+.choix-difficulte { display: flex; align-items: flex-start; gap: .75rem; padding: .8rem 0; min-height: 44px; cursor: pointer; border-top: 1px solid var(--bordure); }
+.choix-difficulte input { flex: none; width: 1.2rem; height: 1.2rem; margin: .2rem 0 0; accent-color: var(--accent); }
+.choix-difficulte input:focus-visible { outline: 2px solid var(--accent); outline-offset: 4px; }
+.choix-difficulte > span { display: grid; gap: .3rem; min-width: 0; overflow-wrap: anywhere; }
+.choix-difficulte strong { font-weight: 600; }
+.choix-difficulte > span > span { font-size: .95rem; line-height: 1.5; }
+.choix-difficulte .ligne-discrete { color: var(--texte-secondaire); }
+#erreur-difficultes { line-height: 1.5; }

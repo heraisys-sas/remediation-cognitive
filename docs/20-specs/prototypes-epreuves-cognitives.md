@@ -2,6 +2,8 @@
 
 Version 1 — 7 octobre 2026. Statut : spécification de prototypes à développer ; aucune épreuve implémentée ou validée par ce document.
 
+**Actualisation du 9 octobre 2026 : portée partiellement remplacée.** Le [cadre cognitif](cadre-exercices-cognitifs.md) et [ADR-042](../30-technique/adr/ADR-042-cadre-cognitif-et-autoevaluation.md) prévalent pour destination, statuts, confort, données minimales et comparabilité. Les [fiches candidates](candidats-cognitifs.md) reprennent couleurs, figures et corrections entrelacées en **propositions à arbitrer**. Les contrats techniques des §§4–7 ci-dessous restent utilisés selon le [tableau d’articulation](cadre-exercices-cognitifs.md#9-articulation-avec-les-spécifications-antérieures) ; les anciens ordre de livraison et emplacement « Prototypes » ne constituent plus des engagements. Document conservé car ces contrats ne sont pas entièrement remplacés.
+
 Remplace la backlog ajoutée au commit `acf74b54ccb64710f0fcfd3afcb37b64b371462b`. Les idées proviennent de l’utilisateur ; les règles opérationnelles ci-dessous sont des décisions de conception révisables, sans valeur de protocole clinique standardisé. Référence produit : ADR-038.
 
 ## 1. Problème, objectifs et périmètre
@@ -171,4 +173,4 @@ N-back visuel/auditif, double tâche, séquences spatiales de type Corsi, recher
 
 ## 11. Remplacement de cette spécification
 
-Ce document devient la source de travail unique pour ces prototypes. Une version plus précise pourra remplacer ses exigences ; mettre à jour le lien de feuille de route et la référence ADR dans le même changement. Supprimer alors le document supersédé si aucun lien actif ne le requiert : Git conserve la trace historique. Ne pas garder simultanément une ancienne TODO et une spécification concurrente.
+Ce document a été la source de travail unique au 7 octobre 2026. Depuis le 9 octobre, sa portée résiduelle est définie par le [cadre cognitif](cadre-exercices-cognitifs.md#9-articulation-avec-les-spécifications-antérieures). Ne le supprimer qu’après remplacement explicite de tous ses contrats encore utilisés et actualisation de leurs liens. Git conservera la trace historique ; ne pas entretenir deux exigences normatives concurrentes.

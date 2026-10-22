@@ -119,6 +119,8 @@ function jouerAffichage(item) {
     const echec = () => {
       if (termine || !valide()) return;
       termine = true;
+      const observation = observationContexte(item);
+      if (observation) observation.incident_photo = true;
       clearTimeout(delaiChargement);
       statut.textContent = "La scène n’a pas pu être chargée. Tu peux réessayer ou terminer la séance.";
       const reessayer = creerElement("button", { classe: "bouton bouton-secondaire",
@@ -140,6 +142,8 @@ function jouerAffichage(item) {
       const figure = creerElement("figure", { classe: "scene-source" }, image,
         creerElement("figcaption", { texte: description.alt, attributs: { "aria-hidden": "true" } }));
       plateau.replaceChildren(figure);
+      const observation = observationContexte(item);
+      if (observation) observation.exposition_ms = Date.now();
       boutonPasser.hidden = false;
       // L’alternative et la voix donnent le message, jamais le contexte attendu.
       etat.enonceCourant = description.alt;

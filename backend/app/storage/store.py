@@ -14,8 +14,8 @@ Les répertoires sont créés à la volée à l'accès (fichiers de verrou compr
 fichiers absents retournent des valeurs par défaut (thème vierge :
 palier 1, aucun historique, aucune carte, 0 séance).
 
-Les séances en cours restent en mémoire (registre backend) et ne sont
-persistées qu'à la fin — seuls les états ci-dessus sont écrits.
+Les séances actives restent en mémoire ; les observations de protocole sont
+écrites séparément dès une réponse ou un checkpoint (ADR-040/041).
 
 Concurrence (issues #1, P0-A2) : chaque accès est protégé par deux
 verrous imbriqués — un verrou processus (`threading.RLock`, protège les
@@ -39,6 +39,7 @@ import json
 import os
 import re
 import threading
+import uuid
 from collections.abc import Callable
 from contextlib import contextmanager
 from datetime import date
@@ -283,3 +284,16 @@ class StockageJSON:
         self._ecrire_json(
             self._dossier_theme(theme) / "temps-reference.json", contenu
         )
+
+    def _chemin_observations(self, session_id: str) -> Path:
+        identifiant = str(uuid.UUID(session_id))
+        if identifiant != session_id:
+            raise ValueError("identifiant de séance invalide")
+        return self.racine / "observations" / f"{identifiant}.json"
+
+    def lire_observations(self, session_id: str) -> dict:
+        return self._lire_json(self._chemin_observations(session_id)) or {}
+
+    def modifier_observations(self, session_id: str, transformation: Callable[[dict], dict]) -> dict:
+        return self._modifier_json(self._chemin_observations(session_id), transformation,
+                                   {"session_id": session_id, "contextes": {"decouverte": [], "rappel": []}, "pqrst": {}})

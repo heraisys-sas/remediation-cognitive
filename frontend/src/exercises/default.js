@@ -147,6 +147,7 @@ function afficherQuestion(item) {
   refs.boutonSuivant.hidden = true;
   reglerEtatBoutons();
 
+  observationContexte(item, true);
   etat.debutQuestion = Date.now();
   if (dicteePossible && etat.dicteeAutoAutorisee && etat.theme.id === "evocation" && item.type === "rappel-indice") {
     const session = etat.session;
@@ -300,9 +301,19 @@ function rendreFeedback(resultat) {
       decoding: "async",
     } });
     const figure = creerElement("figure", { classe: "scene-source" }, image);
-    image.addEventListener("error", () => figure.replaceChildren(creerElement("p", {
-      texte: "La scène n’a pas pu être chargée. La réponse attendue reste indiquée ci-dessus.",
-    })), { once: true });
+    const observation = observationContexte(etat.session.items[etat.indexItem]);
+    image.addEventListener("load", () => {
+      if (observation && figure.isConnected) {
+        observation.photo_apres_erreur = true;
+        observation.photo_revelee_ms = Date.now();
+      }
+    }, { once: true });
+    image.addEventListener("error", () => {
+      if (observation) observation.incident_photo = true;
+      figure.replaceChildren(creerElement("p", {
+        texte: "La scène n’a pas pu être chargée. La réponse attendue reste indiquée ci-dessus.",
+      }));
+    }, { once: true });
     refs.carteFeedback.append(figure);
   }
   refs.carteFeedback.hidden = false;

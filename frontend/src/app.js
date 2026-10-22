@@ -27,6 +27,9 @@ const $ = (id) => document.getElementById(id);
 const refs = {
   vues: {
     themes: $("vue-themes"),
+    immediates: $("vue-memoires-immediates"),
+    strategies: $("vue-strategies"),
+    nback: $("vue-nback"),
     seance: $("vue-seance"),
     resume: $("vue-resume"),
     missions: $("vue-missions"),
@@ -35,6 +38,9 @@ const refs = {
   },
   titres: {
     themes: $("titre-themes"),
+    immediates: $("titre-memoires-immediates"),
+    strategies: $("titre-strategies"),
+    nback: $("titre-nback"),
     seance: $("titre-seance"),
     resume: $("titre-resume"),
     missions: $("titre-missions"),
@@ -125,6 +131,7 @@ function revenirEnHaut() {
 }
 
 function afficherVue(nom) {
+  if (nom !== "nback" && refs.vues.nback && !refs.vues.nback.hidden) nbackQuitter();
   for (const [cle, section] of Object.entries(refs.vues)) {
     section.hidden = cle !== nom;
   }
@@ -259,10 +266,14 @@ function rendreThemes(themes) {
     else if (["evaluation", "cible"].includes(theme.categorie)) cible = refs.listeThemesEvaluation;
     const carte = carteTheme(theme, theme.id === "rappel-series"
       ? themes.find(t => t.id === "series-entendues") : null);
+    carte.dataset.activite = theme.id;
     cible.append(carte);
   }
+  refs.listeThemes.append(carteMemoiresImmediates(), carteStrategies());
+  refs.listeThemesEvaluation.append(carteNBack());
   refs.sectionEvaluation.hidden = !refs.listeThemesEvaluation.childElementCount;
   refs.sectionExtra.hidden = !refs.listeThemesExtra.childElementCount;
+  AccueilDifficultes.actualiser();
 }
 
 function carteTheme(theme, parcoursAudio = null) {
@@ -500,8 +511,7 @@ function initialiserChoixVoix() {
   CAPACITES.chargerVoixLocales?.().then(actualiser);
 }
 
-function actualiserBoutonAudio(active) {
-  const bouton = refs.boutonEcouter;
+function actualiserBoutonAudio(active, bouton = refs.boutonEcouter) {
   bouton.replaceChildren();
   bouton.setAttribute("aria-label", active ? "Arrêter la lecture" : "Écouter");
   bouton.title = active ? "Arrêter la lecture" : "Écouter";
@@ -517,6 +527,8 @@ function actualiserBoutonAudio(active) {
 }
 
 function init() {
+  AccueilDifficultes.initialiser();
+  initialiserMemoiresImmediates();
   CAPACITES.observerLecture?.(actualiserBoutonAudio);
   initialiserChoixVoix();
   if (refs.caseLectureAuto) refs.caseLectureAuto.checked = lectureAutoActivee();

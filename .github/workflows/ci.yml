@@ -1,9 +1,9 @@
 name: Vérifications
 on:
   push:
-    branches: [main]
+    branches: [dev, main]
   pull_request:
-    branches: [main]
+    branches: [dev, main]
   workflow_dispatch:
 permissions:
   contents: read
@@ -35,7 +35,43 @@ jobs:
           python tools/verifier_reponses.py
           python tools/verifier_interface.py
           node tools/verifier_phrases.js
+          node tools/test_immediate_sequences.cjs
+          node tools/test_immediate_visual.cjs
+          node tools/test_immediate_memory.cjs
+          node --test tools/test_strategies.cjs
+          node --test tools/test_nback.cjs
+          node --test tools/test_serie_contextes.cjs
       - name: Syntaxe Python et JavaScript
         run: |
           python -m compileall -q backend engine tools
           for fichier in frontend/src/*.js frontend/src/exercises/*.js; do node --check "$fichier"; done
+
+  interface-mobile:
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+          cache: pip
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+          cache: npm
+      - name: Dépendances serveur et navigateur
+        run: |
+          python -m pip install -r requirements-dev.txt
+          npm ci
+          npx playwright install --with-deps chromium webkit
+      - name: Accueil sur Chromium et WebKit
+        run: npm run test:ui
+      - name: Captures, traces et rapport
+        if: ${{ !cancelled() }}
+        uses: actions/upload-artifact@v4
+        with:
+          name: interface-mobile
+          path: |
+            playwright-report/
+            test-results/
+          retention-days: 7

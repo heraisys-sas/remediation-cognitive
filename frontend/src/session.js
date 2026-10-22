@@ -90,6 +90,7 @@ function preparerEcranSeance() {
 }
 
 function montrerItem() {
+  annulerMemo();
   const items = etat.session.items;
   const item = items[etat.indexItem];
   const total = items.length;
@@ -109,7 +110,6 @@ function montrerItem() {
   refs.titreMethode.textContent = "Une méthode possible";
   refs.methodeExercice.textContent = methode || "";
   refs.methodeExercice.hidden = !methode;
-  annulerMemo();
 
   // Progression discrète : « Question n sur max » + fine barre.
   refs.progressionTexte.textContent = `${etat.phaseContextes === "decouverte" ? "Découverte" : etat.phaseContextes === "rappel" ? "Rappel" : "Question"} ${etat.indexItem + 1} sur ${total}`;
@@ -141,6 +141,8 @@ function montrerItem() {
 }
 
 function annulerMemo() {
+  conserverCheckpointPqrst();
+  if (typeof nettoyerSequence === "function") nettoyerSequence();
   etat.autoDictee?.abort();
   etat.autoDictee = null;
   etat.dicteeActive?.abort();
@@ -190,6 +192,16 @@ async function soumettreValeur(brut, indiceUtilise) {
   if (Number.isInteger(indiceUtilise) && indiceUtilise > 0) {
     corps.indice_utilise = indiceUtilise;
   }
+  if (etat.phaseContextes === "decouverte") corps.memorisation = true;
+  const observation = observationContexte(item);
+  if (observation) {
+    corps.observation_contextes = {
+      passe: observation.passe, ordre: observation.ordre,
+      presentee_ms: observation.presentee_ms,
+      exposition_ms: observation.exposition_ms,
+      incident_photo: observation.incident_photo,
+    };
+  }
   etat.reponseSoumise = typeof brut === "object" ? "" : String(brut);
 
   etat.actionEnCours = true;
@@ -208,6 +220,7 @@ async function soumettreValeur(brut, indiceUtilise) {
       reglerEtatBoutons();
       return;
     }
+    enregistrerReponseContexte(item, corps, resultat);
     etat.repondu = true;
 
     // Feedback : statut + réponse attendue (après coup) + commentaire serveur.
@@ -308,9 +321,12 @@ async function finirSeance() {
   reinitialiserConfirmationFin();
 
   try {
+    await sauvegarderCheckpointsPqrst();
     const donnees = await apiFetch(
       `/${encodeURIComponent(etat.theme.id)}/sessions/${encodeURIComponent(etat.session.session_id)}/fin`,
-      { method: "POST" }
+      { method: "POST", ...(etat.phaseContextes ? {
+        body: JSON.stringify({ observations_contextes: faitsContextes() })
+      } : {}) }
     );
     masquerBandeau();
     rendreResume(donnees);
@@ -334,13 +350,14 @@ async function finirSeance() {
 
 function rendreResume(donnees) {
   const resume = donnees.resume || {};
+  if (donnees.observations_contextes) etat.observationsContextes = donnees.observations_contextes;
 
   // Aucun jugement, aucune norme : de simples comptes personnels.
-  const stats = [
+  const stats = etat.phaseContextes ? statistiquesContextes() : [
     { label: "Questions", valeur: String(resume.items ?? "—") },
     { label: "Bonnes réponses", valeur: String(resume.correctes ?? "—") },
     { label: "Durée", valeur: formaterDuree(resume.duree_s) },
-    { label: "Réussite", valeur: formaterTaux(resume.taux_reussite) },
+    { label: "Réussite", valeur: etat.phaseContextes && !resume.items ? "Rappel non commencé" : formaterTaux(resume.taux_reussite) },
   ];
 
   refs.statsResume.replaceChildren();
@@ -382,6 +399,87 @@ function rendreResume(donnees) {
     }
   }
   refs.ligneSeancesRestantes.textContent = texteRestantes;
+}
+
+function conserverCheckpointPqrst() {
+  const reponse = typeof snapshotPqrst === "function" ? snapshotPqrst() : null;
+  const item = etat.session?.items[etat.indexItem];
+  if (!reponse || item?.type !== "pqrst-mise-en-oeuvre") return;
+  const cle = `${etat.session.session_id}:${item.id}`;
+  const checkpoint = { theme: etat.theme.id, session_id: etat.session.session_id,
+    item_id: item.id, reponse, promesse: null };
+  etat.checkpointsPqrst.set(cle, checkpoint);
+  sauvegarderCheckpointPqrst(cle, checkpoint).catch(() => {});
+}
+
+function sauvegarderCheckpointPqrst(cle, checkpoint) {
+  if (checkpoint.promesse) return checkpoint.promesse;
+  checkpoint.promesse = apiFetch(
+    `/${encodeURIComponent(checkpoint.theme)}/sessions/${encodeURIComponent(checkpoint.session_id)}/observations`,
+    { method: "POST", body: JSON.stringify({ item_id: checkpoint.item_id, reponse: checkpoint.reponse }) }
+  ).then(() => {
+    if (etat.checkpointsPqrst.get(cle) === checkpoint) etat.checkpointsPqrst.delete(cle);
+  }).finally(() => { checkpoint.promesse = null; });
+  return checkpoint.promesse;
+}
+
+async function sauvegarderCheckpointsPqrst() {
+  const sessionId = etat.session?.session_id;
+  for (const [cle, checkpoint] of etat.checkpointsPqrst) {
+    if (checkpoint.session_id === sessionId) await sauvegarderCheckpointPqrst(cle, checkpoint);
+  }
+}
+
+// La première réponse de chaque passe ne peut pas être écrasée par une reprise aidée.
+function observationContexte(item, presented = false) {
+  const passe = etat.phaseContextes;
+  if (!passe || item.type !== "rappel-source") return null;
+  const observations = etat.observationsContextes[passe];
+  let observation = observations.find(ligne => ligne.item_id === item.id);
+  if (!observation) {
+    observation = { item_id: item.id, passe, ordre: etat.indexItem + 1,
+      presentee: false, premiere_reponse: null, photo_apres_erreur: false,
+      incident_photo: false };
+    observations.push(observation);
+  }
+  if (presented && !observation.presentee) {
+    observation.presentee = true;
+    observation.presentee_ms = Date.now();
+  }
+  return observation;
+}
+
+function enregistrerReponseContexte(item, corps, resultat) {
+  const observation = observationContexte(item);
+  if (!observation || observation.premiere_reponse) return;
+  observation.premiere_reponse = {
+    reponse: corps.reponse, correcte: resultat.correcte === true,
+    aide: corps.indice_utilise || 0, temps_ms: corps.temps_ms,
+    validee_ms: Date.now(),
+  };
+}
+
+function faitsContextes() {
+  return Object.fromEntries(Object.entries(etat.observationsContextes).map(([passe, lignes]) =>
+    [passe, lignes.map(({ premiere_reponse, ...faits }) => faits)]));
+}
+
+function statistiquesContextes() {
+  const stats = [];
+  for (const [passe, label] of [["decouverte", "Après photo"], ["rappel", "Sans photo"]]) {
+    const observations = etat.observationsContextes[passe];
+    const reponses = observations.filter(ligne => ligne.premiere_reponse);
+    stats.push({ label: `${label} — questions présentées`,
+      valeur: String(observations.filter(ligne => ligne.presentee).length) });
+    stats.push({ label: `${label} — réponses validées`, valeur: String(reponses.length) });
+    stats.push({ label: `${label} — premières réponses justes`,
+      valeur: String(reponses.filter(ligne => ligne.premiere_reponse.correcte).length) });
+    if (passe === "rappel") stats.push({ label: "Photos revues après erreur",
+      valeur: String(observations.filter(ligne => ligne.photo_apres_erreur).length) });
+  }
+  stats.push({ label: "Résultat", valeur: "Reconnaissance de source, deux passes distinctes" });
+
+  return stats;
 }
 
 function reinitialiserConfirmationFin() {
