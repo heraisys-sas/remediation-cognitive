@@ -1,0 +1,746 @@
+[
+  {
+    "id": "dc-3-01",
+    "module": "entrainement",
+    "theme": "debut-commun",
+    "type": "rappel-indice",
+    "palier": 3,
+    "fonctions_ciblees": [
+      "acces-lexical",
+      "recuperation"
+    ],
+    "contenu": {
+      "consigne": "Écris le même début devant les deux fins pour former deux noms. Les aides donnent leurs sens.",
+      "enonce": "…avis (nom masculin)\n…caution (nom féminin)",
+      "aide": null,
+      "methode": "Cherche un premier nom, puis vérifie le même début avec l’autre fin et le genre indiqué. Utilise une aide de sens si nécessaire. Les accents comptent.",
+      "debut_commun": {
+        "terminaisons": [
+          "avis",
+          "caution"
+        ],
+        "mots": [
+          "préavis",
+          "précaution"
+        ],
+        "genres": [
+          "m",
+          "f"
+        ],
+        "definitions": [
+          "Délai à respecter entre l’annonce d’un départ et sa prise d’effet.",
+          "Mesure prise pour éviter un risque."
+        ]
+      },
+      "indices": [
+        {
+          "type": "semantique",
+          "texte": "Délai à respecter entre l’annonce d’un départ et sa prise d’effet. Il peut précéder la fin d’un bail."
+        },
+        {
+          "type": "semantique",
+          "texte": "Mesure prise pour éviter un risque. Vérifier une issue avant de partir en est une."
+        },
+        {
+          "type": "orthographique",
+          "texte": "Le début recherché commence par « p »."
+        }
+      ]
+    },
+    "reponse": {
+      "valeur": "pré",
+      "variantes": []
+    },
+    "prerequis": [],
+    "cap_complexite": "Deux noms et un segment écrit ; recherche sans chronomètre.",
+    "meta": {
+      "auteur": "redaction-assistee (corpus original debut commun)",
+      "date_creation": "2026-10-22",
+      "relecture_ortho": {
+        "statut": "a_revoir"
+      }
+    }
+  },
+  {
+    "id": "dc-3-02",
+    "module": "entrainement",
+    "theme": "debut-commun",
+    "type": "rappel-indice",
+    "palier": 3,
+    "fonctions_ciblees": [
+      "acces-lexical",
+      "recuperation"
+    ],
+    "contenu": {
+      "consigne": "Écris le même début devant les deux fins pour former deux noms. Les aides donnent leurs sens.",
+      "enonce": "…serve (nom féminin)\n…cit (nom masculin)",
+      "aide": null,
+      "methode": "Cherche un premier nom, puis vérifie le même début avec l’autre fin et le genre indiqué. Utilise une aide de sens si nécessaire. Les accents comptent.",
+      "debut_commun": {
+        "terminaisons": [
+          "serve",
+          "cit"
+        ],
+        "mots": [
+          "réserve",
+          "récit"
+        ],
+        "genres": [
+          "f",
+          "m"
+        ],
+        "definitions": [
+          "Quantité conservée pour un besoin ultérieur.",
+          "Présentation orale ou écrite d’événements."
+        ]
+      },
+      "indices": [
+        {
+          "type": "semantique",
+          "texte": "Quantité conservée pour un besoin ultérieur. On y puise quand les provisions courantes manquent."
+        },
+        {
+          "type": "semantique",
+          "texte": "Présentation orale ou écrite d’événements. Il peut raconter un voyage."
+        },
+        {
+          "type": "orthographique",
+          "texte": "Le début recherché commence par « r »."
+        }
+      ]
+    },
+    "reponse": {
+      "valeur": "ré",
+      "variantes": []
+    },
+    "prerequis": [],
+    "cap_complexite": "Deux noms et un segment écrit ; recherche sans chronomètre.",
+    "meta": {
+      "auteur": "redaction-assistee (corpus original debut commun)",
+      "date_creation": "2026-10-22",
+      "relecture_ortho": {
+        "statut": "a_revoir"
+      }
+    }
+  },
+  {
+    "id": "dc-3-03",
+    "module": "entrainement",
+    "theme": "debut-commun",
+    "type": "rappel-indice",
+    "palier": 3,
+    "fonctions_ciblees": [
+      "acces-lexical",
+      "recuperation"
+    ],
+    "contenu": {
+      "consigne": "Écris le même début devant les deux fins pour former deux noms. Les aides donnent leurs sens.",
+      "enonce": "…port (nom masculin)\n…ition (nom féminin)",
+      "aide": null,
+      "methode": "Cherche un premier nom, puis vérifie le même début avec l’autre fin et le genre indiqué. Utilise une aide de sens si nécessaire. Les accents comptent.",
+      "debut_commun": {
+        "terminaisons": [
+          "port",
+          "ition"
+        ],
+        "mots": [
+          "transport",
+          "transition"
+        ],
+        "genres": [
+          "m",
+          "f"
+        ],
+        "definitions": [
+          "Déplacement de personnes ou de marchandises.",
+          "Passage progressif d’une situation à une autre."
+        ]
+      },
+      "indices": [
+        {
+          "type": "semantique",
+          "texte": "Déplacement de personnes ou de marchandises. Il peut être ferroviaire."
+        },
+        {
+          "type": "semantique",
+          "texte": "Passage progressif d’une situation à une autre. Elle relie deux étapes différentes."
+        },
+        {
+          "type": "orthographique",
+          "texte": "Le début recherché commence par « t »."
+        }
+      ]
+    },
+    "reponse": {
+      "valeur": "trans",
+      "variantes": []
+    },
+    "prerequis": [],
+    "cap_complexite": "Deux noms et un segment écrit ; recherche sans chronomètre.",
+    "meta": {
+      "auteur": "redaction-assistee (corpus original debut commun)",
+      "date_creation": "2026-10-22",
+      "relecture_ortho": {
+        "statut": "a_revoir"
+      }
+    }
+  },
+  {
+    "id": "dc-3-04",
+    "module": "entrainement",
+    "theme": "debut-commun",
+    "type": "rappel-indice",
+    "palier": 3,
+    "fonctions_ciblees": [
+      "acces-lexical",
+      "recuperation"
+    ],
+    "contenu": {
+      "consigne": "Écris le même début devant les deux fins pour former deux noms. Les aides donnent leurs sens.",
+      "enonce": "…signe (nom féminin)\n…stat (nom masculin)",
+      "aide": null,
+      "methode": "Cherche un premier nom, puis vérifie le même début avec l’autre fin et le genre indiqué. Utilise une aide de sens si nécessaire. Les accents comptent.",
+      "debut_commun": {
+        "terminaisons": [
+          "signe",
+          "stat"
+        ],
+        "mots": [
+          "consigne",
+          "constat"
+        ],
+        "genres": [
+          "f",
+          "m"
+        ],
+        "definitions": [
+          "Instruction précise à appliquer pour une tâche.",
+          "Document qui décrit des faits observés, par exemple après un accident."
+        ]
+      },
+      "indices": [
+        {
+          "type": "semantique",
+          "texte": "Instruction précise à appliquer pour une tâche. On la lit avant de commencer."
+        },
+        {
+          "type": "semantique",
+          "texte": "Document qui décrit des faits observés, par exemple après un accident. Deux conducteurs peuvent le remplir ensemble."
+        },
+        {
+          "type": "orthographique",
+          "texte": "Le début recherché commence par « c »."
+        }
+      ]
+    },
+    "reponse": {
+      "valeur": "con",
+      "variantes": []
+    },
+    "prerequis": [],
+    "cap_complexite": "Deux noms et un segment écrit ; recherche sans chronomètre.",
+    "meta": {
+      "auteur": "redaction-assistee (corpus original debut commun)",
+      "date_creation": "2026-10-22",
+      "relecture_ortho": {
+        "statut": "a_revoir"
+      }
+    }
+  },
+  {
+    "id": "dc-3-05",
+    "module": "entrainement",
+    "theme": "debut-commun",
+    "type": "rappel-indice",
+    "palier": 3,
+    "fonctions_ciblees": [
+      "acces-lexical",
+      "recuperation"
+    ],
+    "contenu": {
+      "consigne": "Écris le même début devant les deux fins pour former deux noms. Les aides donnent leurs sens.",
+      "enonce": "…cours (nom masculin)\n…tance (nom féminin)",
+      "aide": null,
+      "methode": "Cherche un premier nom, puis vérifie le même début avec l’autre fin et le genre indiqué. Utilise une aide de sens si nécessaire. Les accents comptent.",
+      "debut_commun": {
+        "terminaisons": [
+          "cours",
+          "tance"
+        ],
+        "mots": [
+          "discours",
+          "distance"
+        ],
+        "genres": [
+          "m",
+          "f"
+        ],
+        "definitions": [
+          "Prise de parole structurée devant un public.",
+          "Espace qui sépare deux lieux."
+        ]
+      },
+      "indices": [
+        {
+          "type": "semantique",
+          "texte": "Prise de parole structurée devant un public. Un orateur le prononce."
+        },
+        {
+          "type": "semantique",
+          "texte": "Espace qui sépare deux lieux. On peut la mesurer en kilomètres."
+        },
+        {
+          "type": "orthographique",
+          "texte": "Le début recherché commence par « d »."
+        }
+      ]
+    },
+    "reponse": {
+      "valeur": "dis",
+      "variantes": []
+    },
+    "prerequis": [],
+    "cap_complexite": "Deux noms et un segment écrit ; recherche sans chronomètre.",
+    "meta": {
+      "auteur": "redaction-assistee (corpus original debut commun)",
+      "date_creation": "2026-10-22",
+      "relecture_ortho": {
+        "statut": "a_revoir"
+      }
+    }
+  },
+  {
+    "id": "dc-3-06",
+    "module": "entrainement",
+    "theme": "debut-commun",
+    "type": "rappel-indice",
+    "palier": 3,
+    "fonctions_ciblees": [
+      "acces-lexical",
+      "recuperation"
+    ],
+    "contenu": {
+      "consigne": "Écris le même début devant les deux fins pour former deux noms. Les aides donnent leurs sens.",
+      "enonce": "…jet (nom masculin)\n…grès (nom masculin)",
+      "aide": null,
+      "methode": "Cherche un premier nom, puis vérifie le même début avec l’autre fin et le genre indiqué. Utilise une aide de sens si nécessaire. Les accents comptent.",
+      "debut_commun": {
+        "terminaisons": [
+          "jet",
+          "grès"
+        ],
+        "mots": [
+          "projet",
+          "progrès"
+        ],
+        "genres": [
+          "m",
+          "m"
+        ],
+        "definitions": [
+          "Action que l’on prévoit de réaliser avec un objectif.",
+          "Amélioration obtenue par rapport à une situation antérieure."
+        ]
+      },
+      "indices": [
+        {
+          "type": "semantique",
+          "texte": "Action que l’on prévoit de réaliser avec un objectif. On le prépare avant de passer à l’action."
+        },
+        {
+          "type": "semantique",
+          "texte": "Amélioration obtenue par rapport à une situation antérieure. On en fait quand on maîtrise mieux une tâche."
+        },
+        {
+          "type": "orthographique",
+          "texte": "Le début recherché commence par « p »."
+        }
+      ]
+    },
+    "reponse": {
+      "valeur": "pro",
+      "variantes": []
+    },
+    "prerequis": [],
+    "cap_complexite": "Deux noms et un segment écrit ; recherche sans chronomètre.",
+    "meta": {
+      "auteur": "redaction-assistee (corpus original debut commun)",
+      "date_creation": "2026-10-22",
+      "relecture_ortho": {
+        "statut": "a_revoir"
+      }
+    }
+  },
+  {
+    "id": "dc-3-07",
+    "module": "entrainement",
+    "theme": "debut-commun",
+    "type": "rappel-indice",
+    "palier": 3,
+    "fonctions_ciblees": [
+      "acces-lexical",
+      "recuperation"
+    ],
+    "contenu": {
+      "consigne": "Écris le même début devant les deux fins pour former deux noms. Les aides donnent leurs sens.",
+      "enonce": "…cord (nom masculin)\n…ompte (nom masculin)",
+      "aide": null,
+      "methode": "Cherche un premier nom, puis vérifie le même début avec l’autre fin et le genre indiqué. Utilise une aide de sens si nécessaire. Les accents comptent.",
+      "debut_commun": {
+        "terminaisons": [
+          "cord",
+          "ompte"
+        ],
+        "mots": [
+          "accord",
+          "acompte"
+        ],
+        "genres": [
+          "m",
+          "m"
+        ],
+        "definitions": [
+          "Entente entre plusieurs personnes.",
+          "Premier versement effectué avant le règlement complet."
+        ]
+      },
+      "indices": [
+        {
+          "type": "semantique",
+          "texte": "Entente entre plusieurs personnes. On peut le conclure après une discussion."
+        },
+        {
+          "type": "semantique",
+          "texte": "Premier versement effectué avant le règlement complet. On le déduit du montant restant à payer."
+        },
+        {
+          "type": "orthographique",
+          "texte": "Le début recherché commence par « a »."
+        }
+      ]
+    },
+    "reponse": {
+      "valeur": "ac",
+      "variantes": []
+    },
+    "prerequis": [],
+    "cap_complexite": "Deux noms et un segment écrit ; recherche sans chronomètre.",
+    "meta": {
+      "auteur": "redaction-assistee (corpus original debut commun)",
+      "date_creation": "2026-10-22",
+      "relecture_ortho": {
+        "statut": "a_revoir"
+      }
+    }
+  },
+  {
+    "id": "dc-3-08",
+    "module": "entrainement",
+    "theme": "debut-commun",
+    "type": "rappel-indice",
+    "palier": 3,
+    "fonctions_ciblees": [
+      "acces-lexical",
+      "recuperation"
+    ],
+    "contenu": {
+      "consigne": "Écris le même début devant les deux fins pour former deux noms. Les aides donnent leurs sens.",
+      "enonce": "…pel (nom masculin)\n…port (nom masculin)",
+      "aide": null,
+      "methode": "Cherche un premier nom, puis vérifie le même début avec l’autre fin et le genre indiqué. Utilise une aide de sens si nécessaire. Les accents comptent.",
+      "debut_commun": {
+        "terminaisons": [
+          "pel",
+          "port"
+        ],
+        "mots": [
+          "appel",
+          "apport"
+        ],
+        "genres": [
+          "m",
+          "m"
+        ],
+        "definitions": [
+          "Communication téléphonique que l’on établit.",
+          "Contribution fournie à une activité commune."
+        ]
+      },
+      "indices": [
+        {
+          "type": "semantique",
+          "texte": "Communication téléphonique que l’on établit. On peut le recevoir sur son téléphone."
+        },
+        {
+          "type": "semantique",
+          "texte": "Contribution fournie à une activité commune. Chacun peut fournir le sien à un projet collectif."
+        },
+        {
+          "type": "orthographique",
+          "texte": "Le début recherché commence par « a »."
+        }
+      ]
+    },
+    "reponse": {
+      "valeur": "ap",
+      "variantes": []
+    },
+    "prerequis": [],
+    "cap_complexite": "Deux noms et un segment écrit ; recherche sans chronomètre.",
+    "meta": {
+      "auteur": "redaction-assistee (corpus original debut commun)",
+      "date_creation": "2026-10-22",
+      "relecture_ortho": {
+        "statut": "a_revoir"
+      }
+    }
+  },
+  {
+    "id": "dc-3-09",
+    "module": "entrainement",
+    "theme": "debut-commun",
+    "type": "rappel-indice",
+    "palier": 3,
+    "fonctions_ciblees": [
+      "acces-lexical",
+      "recuperation"
+    ],
+    "contenu": {
+      "consigne": "Écris le même début devant les deux fins pour former deux noms. Les aides donnent leurs sens.",
+      "enonce": "…marche (nom féminin)\n…bat (nom masculin)",
+      "aide": null,
+      "methode": "Cherche un premier nom, puis vérifie le même début avec l’autre fin et le genre indiqué. Utilise une aide de sens si nécessaire. Les accents comptent.",
+      "debut_commun": {
+        "terminaisons": [
+          "marche",
+          "bat"
+        ],
+        "mots": [
+          "démarche",
+          "débat"
+        ],
+        "genres": [
+          "f",
+          "m"
+        ],
+        "definitions": [
+          "Formalité entreprise pour obtenir un document ou un droit.",
+          "Échange organisé d’arguments sur une question."
+        ]
+      },
+      "indices": [
+        {
+          "type": "semantique",
+          "texte": "Formalité entreprise pour obtenir un document ou un droit. On peut l’effectuer en mairie."
+        },
+        {
+          "type": "semantique",
+          "texte": "Échange organisé d’arguments sur une question. Les participants y défendent leurs points de vue."
+        },
+        {
+          "type": "orthographique",
+          "texte": "Le début recherché commence par « d »."
+        }
+      ]
+    },
+    "reponse": {
+      "valeur": "dé",
+      "variantes": []
+    },
+    "prerequis": [],
+    "cap_complexite": "Deux noms et un segment écrit ; recherche sans chronomètre.",
+    "meta": {
+      "auteur": "redaction-assistee (corpus original debut commun)",
+      "date_creation": "2026-10-22",
+      "relecture_ortho": {
+        "statut": "a_revoir"
+      }
+    }
+  },
+  {
+    "id": "dc-3-10",
+    "module": "entrainement",
+    "theme": "debut-commun",
+    "type": "rappel-indice",
+    "palier": 3,
+    "fonctions_ciblees": [
+      "acces-lexical",
+      "recuperation"
+    ],
+    "contenu": {
+      "consigne": "Écris le même début devant les deux fins pour former deux noms. Les aides donnent leurs sens.",
+      "enonce": "…trait (nom masculin)\n…amen (nom masculin)",
+      "aide": null,
+      "methode": "Cherche un premier nom, puis vérifie le même début avec l’autre fin et le genre indiqué. Utilise une aide de sens si nécessaire. Les accents comptent.",
+      "debut_commun": {
+        "terminaisons": [
+          "trait",
+          "amen"
+        ],
+        "mots": [
+          "extrait",
+          "examen"
+        ],
+        "genres": [
+          "m",
+          "m"
+        ],
+        "definitions": [
+          "Court passage tiré d’un texte plus long.",
+          "Observation attentive destinée à vérifier un état ou une situation."
+        ]
+      },
+      "indices": [
+        {
+          "type": "semantique",
+          "texte": "Court passage tiré d’un texte plus long. On peut le citer entre guillemets."
+        },
+        {
+          "type": "semantique",
+          "texte": "Observation attentive destinée à vérifier un état ou une situation. Il peut porter sur un dossier ou une demande."
+        },
+        {
+          "type": "orthographique",
+          "texte": "Le début recherché commence par « e »."
+        }
+      ]
+    },
+    "reponse": {
+      "valeur": "ex",
+      "variantes": []
+    },
+    "prerequis": [],
+    "cap_complexite": "Deux noms et un segment écrit ; recherche sans chronomètre.",
+    "meta": {
+      "auteur": "redaction-assistee (corpus original debut commun)",
+      "date_creation": "2026-10-22",
+      "relecture_ortho": {
+        "statut": "a_revoir"
+      }
+    }
+  },
+  {
+    "id": "dc-3-11",
+    "module": "entrainement",
+    "theme": "debut-commun",
+    "type": "rappel-indice",
+    "palier": 3,
+    "fonctions_ciblees": [
+      "acces-lexical",
+      "recuperation"
+    ],
+    "contenu": {
+      "consigne": "Écris le même début devant les deux fins pour former deux noms. Les aides donnent leurs sens.",
+      "enonce": "…tien (nom masculin)\n…hait (nom masculin)",
+      "aide": null,
+      "methode": "Cherche un premier nom, puis vérifie le même début avec l’autre fin et le genre indiqué. Utilise une aide de sens si nécessaire. Les accents comptent.",
+      "debut_commun": {
+        "terminaisons": [
+          "tien",
+          "hait"
+        ],
+        "mots": [
+          "soutien",
+          "souhait"
+        ],
+        "genres": [
+          "m",
+          "m"
+        ],
+        "definitions": [
+          "Aide apportée à une personne face à une difficulté.",
+          "Désir que quelque chose se réalise."
+        ]
+      },
+      "indices": [
+        {
+          "type": "semantique",
+          "texte": "Aide apportée à une personne face à une difficulté. Un proche peut l’apporter dans une période difficile."
+        },
+        {
+          "type": "semantique",
+          "texte": "Désir que quelque chose se réalise. On peut le formuler pour l’avenir."
+        },
+        {
+          "type": "orthographique",
+          "texte": "Le début recherché commence par « s »."
+        }
+      ]
+    },
+    "reponse": {
+      "valeur": "sou",
+      "variantes": []
+    },
+    "prerequis": [],
+    "cap_complexite": "Deux noms et un segment écrit ; recherche sans chronomètre.",
+    "meta": {
+      "auteur": "redaction-assistee (corpus original debut commun)",
+      "date_creation": "2026-10-22",
+      "relecture_ortho": {
+        "statut": "a_revoir"
+      }
+    }
+  },
+  {
+    "id": "dc-3-12",
+    "module": "entrainement",
+    "theme": "debut-commun",
+    "type": "rappel-indice",
+    "palier": 3,
+    "fonctions_ciblees": [
+      "acces-lexical",
+      "recuperation"
+    ],
+    "contenu": {
+      "consigne": "Écris le même début devant les deux fins pour former deux noms. Les aides donnent leurs sens.",
+      "enonce": "…promis (nom masculin)\n…merce (nom masculin)",
+      "aide": null,
+      "methode": "Cherche un premier nom, puis vérifie le même début avec l’autre fin et le genre indiqué. Utilise une aide de sens si nécessaire. Les accents comptent.",
+      "debut_commun": {
+        "terminaisons": [
+          "promis",
+          "merce"
+        ],
+        "mots": [
+          "compromis",
+          "commerce"
+        ],
+        "genres": [
+          "m",
+          "m"
+        ],
+        "definitions": [
+          "Accord obtenu grâce à des concessions réciproques.",
+          "Activité d’achat et de vente de produits."
+        ]
+      },
+      "indices": [
+        {
+          "type": "semantique",
+          "texte": "Accord obtenu grâce à des concessions réciproques. Chaque partie y renonce à une partie de ses demandes."
+        },
+        {
+          "type": "semantique",
+          "texte": "Activité d’achat et de vente de produits. Une boutique permet de l’exercer."
+        },
+        {
+          "type": "orthographique",
+          "texte": "Le début recherché commence par « c »."
+        }
+      ]
+    },
+    "reponse": {
+      "valeur": "com",
+      "variantes": []
+    },
+    "prerequis": [],
+    "cap_complexite": "Deux noms et un segment écrit ; recherche sans chronomètre.",
+    "meta": {
+      "auteur": "redaction-assistee (corpus original debut commun)",
+      "date_creation": "2026-10-22",
+      "relecture_ortho": {
+        "statut": "a_revoir"
+      }
+    }
+  }
+]

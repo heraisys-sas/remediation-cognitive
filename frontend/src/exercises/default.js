@@ -90,7 +90,9 @@ function afficherQuestion(item) {
     etat.enonceCourant = textePourLectureDeduction(contenu, true);
     lireSiLectureAuto(texteAutomatiquePourDeduction(contenu));
   } else {
-    etat.enonceCourant = contenu.enonce ?? "";
+    etat.enonceCourant = item.type === "logigramme"
+      ? [contenu.enonce, ...(contenu.contraintes || []).map(c => c.texte)].filter(Boolean).join(" ")
+      : contenu.enonce ?? "";
     if (item.type !== "actualiser-consigne") lireSiLectureAuto(etat.enonceCourant);
   }
 

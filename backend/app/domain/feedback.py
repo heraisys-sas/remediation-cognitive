@@ -24,6 +24,7 @@ from __future__ import annotations
 #: n'apparaît qu'après cet essai — ou à la reprise, en fin de séance.
 TYPES_ESSAI_SUPPLEMENTAIRE = frozenset({
     # Méthodes : choisir un plan, une auto-instruction, vérifier un plan.
+    "logigramme",
     "but-etapes",
     "auto-instruction",
     "plan-a-verifier",

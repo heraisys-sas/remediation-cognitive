@@ -1,0 +1,2599 @@
+[
+  {
+    "id": "lg-3-atelier-20261022",
+    "type": "logigramme",
+    "module": "entrainement",
+    "theme": "logigrammes",
+    "fonctions_ciblees": [
+      "fonctions-executives"
+    ],
+    "palier": 3,
+    "prerequis": [],
+    "cap_complexite": "4 rendez-vous, 4 catégories : recoupements successifs entre catégories",
+    "contenu": {
+      "titre": "Les rendez-vous d’un atelier partagé",
+      "consigne": "Retrouve les associations de chaque rendez-vous. Chaque horaire accueille exactement une personne et un sujet, et chaque valeur de chaque catégorie est utilisée une seule fois. Chaque rendez-vous a aussi un support distinct, utilisé une seule fois. Les horaires sont classés du plus tôt au plus tard. « Avant » signifie strictement plus tôt, sans imposer de rendez-vous consécutifs. Toutes les informations nécessaires figurent dans les indices. Tu peux utiliser le tableau comme aide externe et modifier tes choix sans limite ; aucun chronomètre.",
+      "categories": [
+        {
+          "id": "horaire",
+          "label": "Horaire",
+          "valeurs": [
+            "09 h",
+            "10 h",
+            "11 h",
+            "14 h"
+          ]
+        },
+        {
+          "id": "personne",
+          "label": "Personne",
+          "valeurs": [
+            "Aline",
+            "Boris",
+            "Céline",
+            "Dario"
+          ]
+        },
+        {
+          "id": "dossier",
+          "label": "Sujet",
+          "valeurs": [
+            "lampe",
+            "chaise",
+            "étagère",
+            "table"
+          ]
+        },
+        {
+          "id": "support",
+          "label": "Support",
+          "valeurs": [
+            "croquis",
+            "photo",
+            "notice",
+            "plan"
+          ]
+        }
+      ],
+      "contraintes": [
+        {
+          "type": "association",
+          "gauche": {
+            "categorie": "horaire",
+            "valeur": "10 h"
+          },
+          "droite": {
+            "categorie": "personne",
+            "valeur": "Aline"
+          },
+          "texte": "« 10 h » (horaire) est au même horaire que « Aline » (personne)."
+        },
+        {
+          "type": "exclusion",
+          "gauche": {
+            "categorie": "horaire",
+            "valeur": "10 h"
+          },
+          "droite": {
+            "categorie": "dossier",
+            "valeur": "chaise"
+          },
+          "texte": "« 10 h » (horaire) est à un horaire différent de « chaise » (sujet)."
+        },
+        {
+          "type": "avant",
+          "gauche": {
+            "categorie": "support",
+            "valeur": "photo"
+          },
+          "droite": {
+            "categorie": "dossier",
+            "valeur": "étagère"
+          },
+          "texte": "« photo » (support) est à un horaire strictement antérieur à « étagère » (sujet)."
+        },
+        {
+          "type": "avant",
+          "gauche": {
+            "categorie": "support",
+            "valeur": "croquis"
+          },
+          "droite": {
+            "categorie": "dossier",
+            "valeur": "lampe"
+          },
+          "texte": "« croquis » (support) est à un horaire strictement antérieur à « lampe » (sujet)."
+        },
+        {
+          "type": "association",
+          "gauche": {
+            "categorie": "dossier",
+            "valeur": "chaise"
+          },
+          "droite": {
+            "categorie": "support",
+            "valeur": "notice"
+          },
+          "texte": "« chaise » (sujet) est au même horaire que « notice » (support)."
+        },
+        {
+          "type": "exclusion",
+          "gauche": {
+            "categorie": "horaire",
+            "valeur": "09 h"
+          },
+          "droite": {
+            "categorie": "support",
+            "valeur": "croquis"
+          },
+          "texte": "« 09 h » (horaire) est à un horaire différent de « croquis » (support)."
+        },
+        {
+          "type": "exclusion",
+          "gauche": {
+            "categorie": "horaire",
+            "valeur": "09 h"
+          },
+          "droite": {
+            "categorie": "personne",
+            "valeur": "Céline"
+          },
+          "texte": "« 09 h » (horaire) est à un horaire différent de « Céline » (personne)."
+        },
+        {
+          "type": "association",
+          "gauche": {
+            "categorie": "personne",
+            "valeur": "Dario"
+          },
+          "droite": {
+            "categorie": "support",
+            "valeur": "croquis"
+          },
+          "texte": "« Dario » (personne) est au même horaire que « croquis » (support)."
+        }
+      ],
+      "aide": "Précise le but : une ligne complète par rendez-vous. Relève une contrainte, marque seulement ce qui est certain, puis vérifie avec les autres indices. Le tableau sert à organiser les informations.",
+      "indices": [
+        {
+          "niveau": 1,
+          "texte": "Relis les règles : une valeur ne peut apparaître qu’une fois dans sa catégorie."
+        },
+        {
+          "niveau": 2,
+          "texte": "Regroupe les comparaisons « avant » pour reconstituer un ordre, puis recoupe cet ordre avec les associations et les exclusions."
+        },
+        {
+          "niveau": 3,
+          "texte": "Pour chaque valeur, barre les horaires impossibles. S’il ne reste qu’un horaire, vérifie-le dans tous les indices avant de le retenir."
+        }
+      ]
+    },
+    "reponse": {
+      "valeur": "{\"09 h\": {\"dossier\": \"chaise\", \"personne\": \"Boris\", \"support\": \"notice\"}, \"10 h\": {\"dossier\": \"table\", \"personne\": \"Aline\", \"support\": \"photo\"}, \"11 h\": {\"dossier\": \"étagère\", \"personne\": \"Dario\", \"support\": \"croquis\"}, \"14 h\": {\"dossier\": \"lampe\", \"personne\": \"Céline\", \"support\": \"plan\"}}",
+      "associations": {
+        "09 h": {
+          "personne": "Boris",
+          "dossier": "chaise",
+          "support": "notice"
+        },
+        "10 h": {
+          "personne": "Aline",
+          "dossier": "table",
+          "support": "photo"
+        },
+        "11 h": {
+          "personne": "Dario",
+          "dossier": "étagère",
+          "support": "croquis"
+        },
+        "14 h": {
+          "personne": "Céline",
+          "dossier": "lampe",
+          "support": "plan"
+        }
+      },
+      "preuve_deductive": {
+        "resolu": true,
+        "solution": {
+          "09 h": {
+            "personne": "Boris",
+            "dossier": "chaise",
+            "support": "notice"
+          },
+          "10 h": {
+            "personne": "Aline",
+            "dossier": "table",
+            "support": "photo"
+          },
+          "11 h": {
+            "personne": "Dario",
+            "dossier": "étagère",
+            "support": "croquis"
+          },
+          "14 h": {
+            "personne": "Céline",
+            "dossier": "lampe",
+            "support": "plan"
+          }
+        },
+        "trace": [
+          {
+            "reference": [
+              "personne",
+              "Aline"
+            ],
+            "avant": [
+              0,
+              1,
+              2,
+              3
+            ],
+            "apres": [
+              1
+            ],
+            "regle": "indice 1"
+          },
+          {
+            "reference": [
+              "dossier",
+              "chaise"
+            ],
+            "avant": [
+              0,
+              1,
+              2,
+              3
+            ],
+            "apres": [
+              0,
+              2,
+              3
+            ],
+            "regle": "indice 2"
+          },
+          {
+            "reference": [
+              "support",
+              "photo"
+            ],
+            "avant": [
+              0,
+              1,
+              2,
+              3
+            ],
+            "apres": [
+              0,
+              1,
+              2
+            ],
+            "regle": "indice 3"
+          },
+          {
+            "reference": [
+              "dossier",
+              "étagère"
+            ],
+            "avant": [
+              0,
+              1,
+              2,
+              3
+            ],
+            "apres": [
+              1,
+              2,
+              3
+            ],
+            "regle": "indice 3"
+          },
+          {
+            "reference": [
+              "support",
+              "croquis"
+            ],
+            "avant": [
+              0,
+              1,
+              2,
+              3
+            ],
+            "apres": [
+              0,
+              1,
+              2
+            ],
+            "regle": "indice 4"
+          },
+          {
+            "reference": [
+              "dossier",
+              "lampe"
+            ],
+            "avant": [
+              0,
+              1,
+              2,
+              3
+            ],
+            "apres": [
+              1,
+              2,
+              3
+            ],
+            "regle": "indice 4"
+          },
+          {
+            "reference": [
+              "support",
+              "notice"
+            ],
+            "avant": [
+              0,
+              1,
+              2,
+              3
+            ],
+            "apres": [
+              0,
+              2,
+              3
+            ],
+            "regle": "indice 5"
+          },
+          {
+            "reference": [
+              "support",
+              "croquis"
+            ],
+            "avant": [
+              0,
+              1,
+              2
+            ],
+            "apres": [
+              1,
+              2
+            ],
+            "regle": "indice 6"
+          },
+          {
+            "reference": [
+              "personne",
+              "Céline"
+            ],
+            "avant": [
+              0,
+              1,
+              2,
+              3
+            ],
+            "apres": [
+              1,
+              2,
+              3
+            ],
+            "regle": "indice 7"
+          },
+          {
+            "reference": [
+              "personne",
+              "Dario"
+            ],
+            "avant": [
+              0,
+              1,
+              2,
+              3
+            ],
+            "apres": [
+              1,
+              2
+            ],
+            "regle": "indice 8"
+          },
+          {
+            "reference": [
+              "personne",
+              "Boris"
+            ],
+            "avant": [
+              0,
+              1,
+              2,
+              3
+            ],
+            "apres": [
+              0
+            ],
+            "regle": "une valeur par ligne et par catégorie"
+          },
+          {
+            "reference": [
+              "personne",
+              "Céline"
+            ],
+            "avant": [
+              1,
+              2,
+              3
+            ],
+            "apres": [
+              3
+            ],
+            "regle": "une valeur par ligne et par catégorie"
+          },
+          {
+            "reference": [
+              "personne",
+              "Dario"
+            ],
+            "avant": [
+              1,
+              2
+            ],
+            "apres": [
+              2
+            ],
+            "regle": "une valeur par ligne et par catégorie"
+          },
+          {
+            "reference": [
+              "dossier",
+              "lampe"
+            ],
+            "avant": [
+              1,
+              2,
+              3
+            ],
+            "apres": [
+              2,
+              3
+            ],
+            "regle": "indice 4"
+          },
+          {
+            "reference": [
+              "support",
+              "croquis"
+            ],
+            "avant": [
+              1,
+              2
+            ],
+            "apres": [
+              2
+            ],
+            "regle": "indice 8"
+          },
+          {
+            "reference": [
+              "support",
+              "photo"
+            ],
+            "avant": [
+              0,
+              1,
+              2
+            ],
+            "apres": [
+              0,
+              1
+            ],
+            "regle": "une valeur par ligne et par catégorie"
+          },
+          {
+            "reference": [
+              "support",
+              "notice"
+            ],
+            "avant": [
+              0,
+              2,
+              3
+            ],
+            "apres": [
+              0,
+              3
+            ],
+            "regle": "une valeur par ligne et par catégorie"
+          },
+          {
+            "reference": [
+              "support",
+              "plan"
+            ],
+            "avant": [
+              0,
+              1,
+              2,
+              3
+            ],
+            "apres": [
+              0,
+              1,
+              3
+            ],
+            "regle": "une valeur par ligne et par catégorie"
+          },
+          {
+            "reference": [
+              "dossier",
+              "lampe"
+            ],
+            "avant": [
+              2,
+              3
+            ],
+            "apres": [
+              3
+            ],
+            "regle": "indice 4"
+          },
+          {
+            "reference": [
+              "dossier",
+              "chaise"
+            ],
+            "avant": [
+              0,
+              2,
+              3
+            ],
+            "apres": [
+              0,
+              3
+            ],
+            "regle": "indice 5"
+          },
+          {
+            "reference": [
+              "dossier",
+              "chaise"
+            ],
+            "avant": [
+              0,
+              3
+            ],
+            "apres": [
+              0
+            ],
+            "regle": "une valeur par ligne et par catégorie"
+          },
+          {
+            "reference": [
+              "dossier",
+              "étagère"
+            ],
+            "avant": [
+              1,
+              2,
+              3
+            ],
+            "apres": [
+              1,
+              2
+            ],
+            "regle": "une valeur par ligne et par catégorie"
+          },
+          {
+            "reference": [
+              "dossier",
+              "table"
+            ],
+            "avant": [
+              0,
+              1,
+              2,
+              3
+            ],
+            "apres": [
+              1,
+              2
+            ],
+            "regle": "une valeur par ligne et par catégorie"
+          },
+          {
+            "reference": [
+              "support",
+              "notice"
+            ],
+            "avant": [
+              0,
+              3
+            ],
+            "apres": [
+              0
+            ],
+            "regle": "indice 5"
+          },
+          {
+            "reference": [
+              "support",
+              "photo"
+            ],
+            "avant": [
+              0,
+              1
+            ],
+            "apres": [
+              1
+            ],
+            "regle": "une valeur par ligne et par catégorie"
+          },
+          {
+            "reference": [
+              "support",
+              "plan"
+            ],
+            "avant": [
+              0,
+              1,
+              3
+            ],
+            "apres": [
+              3
+            ],
+            "regle": "une valeur par ligne et par catégorie"
+          },
+          {
+            "reference": [
+              "dossier",
+              "étagère"
+            ],
+            "avant": [
+              1,
+              2
+            ],
+            "apres": [
+              2
+            ],
+            "regle": "indice 3"
+          },
+          {
+            "reference": [
+              "dossier",
+              "table"
+            ],
+            "avant": [
+              1,
+              2
+            ],
+            "apres": [
+              1
+            ],
+            "regle": "une valeur par ligne et par catégorie"
+          }
+        ]
+      }
+    },
+    "meta": {
+      "auteur": "generation-originale (tools/generer_logigrammes.py)",
+      "date_creation": "2026-10-22",
+      "relecture_ortho": {
+        "statut": "a_revoir"
+      }
+    }
+  },
+  {
+    "id": "lg-3-archives-20261022",
+    "type": "logigramme",
+    "module": "entrainement",
+    "theme": "logigrammes",
+    "fonctions_ciblees": [
+      "fonctions-executives"
+    ],
+    "palier": 3,
+    "prerequis": [],
+    "cap_complexite": "4 rendez-vous, 4 catégories : recoupements successifs entre catégories",
+    "contenu": {
+      "titre": "La consultation des archives",
+      "consigne": "Retrouve les associations de chaque rendez-vous. Chaque horaire accueille exactement une personne et un sujet, et chaque valeur de chaque catégorie est utilisée une seule fois. Chaque rendez-vous a aussi un support distinct, utilisé une seule fois. Les horaires sont classés du plus tôt au plus tard. « Avant » signifie strictement plus tôt, sans imposer de rendez-vous consécutifs. Toutes les informations nécessaires figurent dans les indices. Tu peux utiliser le tableau comme aide externe et modifier tes choix sans limite ; aucun chronomètre.",
+      "categories": [
+        {
+          "id": "horaire",
+          "label": "Horaire",
+          "valeurs": [
+            "09 h",
+            "10 h",
+            "11 h",
+            "14 h"
+          ]
+        },
+        {
+          "id": "personne",
+          "label": "Personne",
+          "valeurs": [
+            "Élise",
+            "Farid",
+            "Gaëlle",
+            "Hugo"
+          ]
+        },
+        {
+          "id": "dossier",
+          "label": "Sujet",
+          "valeurs": [
+            "urbanisme",
+            "presse",
+            "cadastre",
+            "patrimoine"
+          ]
+        },
+        {
+          "id": "support",
+          "label": "Support",
+          "valeurs": [
+            "registre",
+            "microfilm",
+            "classeur",
+            "carte"
+          ]
+        }
+      ],
+      "contraintes": [
+        {
+          "type": "association",
+          "gauche": {
+            "categorie": "personne",
+            "valeur": "Gaëlle"
+          },
+          "droite": {
+            "categorie": "support",
+            "valeur": "microfilm"
+          },
+          "texte": "« Gaëlle » (personne) est au même horaire que « microfilm » (support)."
+        },
+        {
+          "type": "exclusion",
+          "gauche": {
+            "categorie": "personne",
+            "valeur": "Gaëlle"
+          },
+          "droite": {
+            "categorie": "dossier",
+            "valeur": "patrimoine"
+          },
+          "texte": "« Gaëlle » (personne) est à un horaire différent de « patrimoine » (sujet)."
+        },
+        {
+          "type": "exclusion",
+          "gauche": {
+            "categorie": "horaire",
+            "valeur": "09 h"
+          },
+          "droite": {
+            "categorie": "support",
+            "valeur": "carte"
+          },
+          "texte": "« 09 h » (horaire) est à un horaire différent de « carte » (support)."
+        },
+        {
+          "type": "avant",
+          "gauche": {
+            "categorie": "personne",
+            "valeur": "Farid"
+          },
+          "droite": {
+            "categorie": "support",
+            "valeur": "microfilm"
+          },
+          "texte": "« Farid » (personne) est à un horaire strictement antérieur à « microfilm » (support)."
+        },
+        {
+          "type": "exclusion",
+          "gauche": {
+            "categorie": "horaire",
+            "valeur": "11 h"
+          },
+          "droite": {
+            "categorie": "support",
+            "valeur": "classeur"
+          },
+          "texte": "« 11 h » (horaire) est à un horaire différent de « classeur » (support)."
+        },
+        {
+          "type": "association",
+          "gauche": {
+            "categorie": "horaire",
+            "valeur": "11 h"
+          },
+          "droite": {
+            "categorie": "dossier",
+            "valeur": "cadastre"
+          },
+          "texte": "« 11 h » (horaire) est au même horaire que « cadastre » (sujet)."
+        },
+        {
+          "type": "association",
+          "gauche": {
+            "categorie": "dossier",
+            "valeur": "presse"
+          },
+          "droite": {
+            "categorie": "support",
+            "valeur": "carte"
+          },
+          "texte": "« presse » (sujet) est au même horaire que « carte » (support)."
+        },
+        {
+          "type": "exclusion",
+          "gauche": {
+            "categorie": "personne",
+            "valeur": "Élise"
+          },
+          "droite": {
+            "categorie": "dossier",
+            "valeur": "cadastre"
+          },
+          "texte": "« Élise » (personne) est à un horaire différent de « cadastre » (sujet)."
+        },
+        {
+          "type": "exclusion",
+          "gauche": {
+            "categorie": "horaire",
+            "valeur": "11 h"
+          },
+          "droite": {
+            "categorie": "support",
+            "valeur": "microfilm"
+          },
+          "texte": "« 11 h » (horaire) est à un horaire différent de « microfilm » (support)."
+        },
+        {
+          "type": "association",
+          "gauche": {
+            "categorie": "personne",
+            "valeur": "Farid"
+          },
+          "droite": {
+            "categorie": "dossier",
+            "valeur": "presse"
+          },
+          "texte": "« Farid » (personne) est au même horaire que « presse » (sujet)."
+        }
+      ],
+      "aide": "Précise le but : une ligne complète par rendez-vous. Relève une contrainte, marque seulement ce qui est certain, puis vérifie avec les autres indices. Le tableau sert à organiser les informations.",
+      "indices": [
+        {
+          "niveau": 1,
+          "texte": "Relis les règles : une valeur ne peut apparaître qu’une fois dans sa catégorie."
+        },
+        {
+          "niveau": 2,
+          "texte": "Regroupe les comparaisons « avant » pour reconstituer un ordre, puis recoupe cet ordre avec les associations et les exclusions."
+        },
+        {
+          "niveau": 3,
+          "texte": "Pour chaque valeur, barre les horaires impossibles. S’il ne reste qu’un horaire, vérifie-le dans tous les indices avant de le retenir."
+        }
+      ]
+    },
+    "reponse": {
+      "valeur": "{\"09 h\": {\"dossier\": \"patrimoine\", \"personne\": \"Élise\", \"support\": \"classeur\"}, \"10 h\": {\"dossier\": \"presse\", \"personne\": \"Farid\", \"support\": \"carte\"}, \"11 h\": {\"dossier\": \"cadastre\", \"personne\": \"Hugo\", \"support\": \"registre\"}, \"14 h\": {\"dossier\": \"urbanisme\", \"personne\": \"Gaëlle\", \"support\": \"microfilm\"}}",
+      "associations": {
+        "09 h": {
+          "personne": "Élise",
+          "dossier": "patrimoine",
+          "support": "classeur"
+        },
+        "10 h": {
+          "personne": "Farid",
+          "dossier": "presse",
+          "support": "carte"
+        },
+        "11 h": {
+          "personne": "Hugo",
+          "dossier": "cadastre",
+          "support": "registre"
+        },
+        "14 h": {
+          "personne": "Gaëlle",
+          "dossier": "urbanisme",
+          "support": "microfilm"
+        }
+      },
+      "preuve_deductive": {
+        "resolu": true,
+        "solution": {
+          "09 h": {
+            "personne": "Élise",
+            "dossier": "patrimoine",
+            "support": "classeur"
+          },
+          "10 h": {
+            "personne": "Farid",
+            "dossier": "presse",
+            "support": "carte"
+          },
+          "11 h": {
+            "personne": "Hugo",
+            "dossier": "cadastre",
+            "support": "registre"
+          },
+          "14 h": {
+            "personne": "Gaëlle",
+            "dossier": "urbanisme",
+            "support": "microfilm"
+          }
+        },
+        "trace": [
+          {
+            "reference": [
+              "support",
+              "carte"
+            ],
+            "avant": [
+              0,
+              1,
+              2,
+              3
+            ],
+            "apres": [
+              1,
+              2,
+              3
+            ],
+            "regle": "indice 3"
+          },
+          {
+            "reference": [
+              "personne",
+              "Farid"
+            ],
+            "avant": [
+              0,
+              1,
+              2,
+              3
+            ],
+            "apres": [
+              0,
+              1,
+              2
+            ],
+            "regle": "indice 4"
+          },
+          {
+            "reference": [
+              "support",
+              "microfilm"
+            ],
+            "avant": [
+              0,
+              1,
+              2,
+              3
+            ],
+            "apres": [
+              1,
+              2,
+              3
+            ],
+            "regle": "indice 4"
+          },
+          {
+            "reference": [
+              "support",
+              "classeur"
+            ],
+            "avant": [
+              0,
+              1,
+              2,
+              3
+            ],
+            "apres": [
+              0,
+              1,
+              3
+            ],
+            "regle": "indice 5"
+          },
+          {
+            "reference": [
+              "dossier",
+              "cadastre"
+            ],
+            "avant": [
+              0,
+              1,
+              2,
+              3
+            ],
+            "apres": [
+              2
+            ],
+            "regle": "indice 6"
+          },
+          {
+            "reference": [
+              "dossier",
+              "presse"
+            ],
+            "avant": [
+              0,
+              1,
+              2,
+              3
+            ],
+            "apres": [
+              1,
+              2,
+              3
+            ],
+            "regle": "indice 7"
+          },
+          {
+            "reference": [
+              "personne",
+              "Élise"
+            ],
+            "avant": [
+              0,
+              1,
+              2,
+              3
+            ],
+            "apres": [
+              0,
+              1,
+              3
+            ],
+            "regle": "indice 8"
+          },
+          {
+            "reference": [
+              "support",
+              "microfilm"
+            ],
+            "avant": [
+              1,
+              2,
+              3
+            ],
+            "apres": [
+              1,
+              3
+            ],
+            "regle": "indice 9"
+          },
+          {
+            "reference": [
+              "personne",
+              "Farid"
+            ],
+            "avant": [
+              0,
+              1,
+              2
+            ],
+            "apres": [
+              1,
+              2
+            ],
+            "regle": "indice 10"
+          },
+          {
+            "reference": [
+              "dossier",
+              "presse"
+            ],
+            "avant": [
+              1,
+              2,
+              3
+            ],
+            "apres": [
+              1,
+              2
+            ],
+            "regle": "indice 10"
+          },
+          {
+            "reference": [
+              "dossier",
+              "urbanisme"
+            ],
+            "avant": [
+              0,
+              1,
+              2,
+              3
+            ],
+            "apres": [
+              0,
+              3
+            ],
+            "regle": "une valeur par ligne et par catégorie"
+          },
+          {
+            "reference": [
+              "dossier",
+              "presse"
+            ],
+            "avant": [
+              1,
+              2
+            ],
+            "apres": [
+              1
+            ],
+            "regle": "une valeur par ligne et par catégorie"
+          },
+          {
+            "reference": [
+              "dossier",
+              "patrimoine"
+            ],
+            "avant": [
+              0,
+              1,
+              2,
+              3
+            ],
+            "apres": [
+              0,
+              3
+            ],
+            "regle": "une valeur par ligne et par catégorie"
+          },
+          {
+            "reference": [
+              "personne",
+              "Gaëlle"
+            ],
+            "avant": [
+              0,
+              1,
+              2,
+              3
+            ],
+            "apres": [
+              1,
+              3
+            ],
+            "regle": "indice 1"
+          },
+          {
+            "reference": [
+              "support",
+              "microfilm"
+            ],
+            "avant": [
+              1,
+              3
+            ],
+            "apres": [
+              3
+            ],
+            "regle": "indice 4"
+          },
+          {
+            "reference": [
+              "support",
+              "carte"
+            ],
+            "avant": [
+              1,
+              2,
+              3
+            ],
+            "apres": [
+              1
+            ],
+            "regle": "indice 7"
+          },
+          {
+            "reference": [
+              "personne",
+              "Farid"
+            ],
+            "avant": [
+              1,
+              2
+            ],
+            "apres": [
+              1
+            ],
+            "regle": "indice 10"
+          },
+          {
+            "reference": [
+              "personne",
+              "Élise"
+            ],
+            "avant": [
+              0,
+              1,
+              3
+            ],
+            "apres": [
+              0
+            ],
+            "regle": "une valeur par ligne et par catégorie"
+          },
+          {
+            "reference": [
+              "personne",
+              "Gaëlle"
+            ],
+            "avant": [
+              1,
+              3
+            ],
+            "apres": [
+              3
+            ],
+            "regle": "une valeur par ligne et par catégorie"
+          },
+          {
+            "reference": [
+              "personne",
+              "Hugo"
+            ],
+            "avant": [
+              0,
+              1,
+              2,
+              3
+            ],
+            "apres": [
+              2
+            ],
+            "regle": "une valeur par ligne et par catégorie"
+          },
+          {
+            "reference": [
+              "support",
+              "registre"
+            ],
+            "avant": [
+              0,
+              1,
+              2,
+              3
+            ],
+            "apres": [
+              2
+            ],
+            "regle": "une valeur par ligne et par catégorie"
+          },
+          {
+            "reference": [
+              "support",
+              "classeur"
+            ],
+            "avant": [
+              0,
+              1,
+              3
+            ],
+            "apres": [
+              0
+            ],
+            "regle": "une valeur par ligne et par catégorie"
+          },
+          {
+            "reference": [
+              "dossier",
+              "patrimoine"
+            ],
+            "avant": [
+              0,
+              3
+            ],
+            "apres": [
+              0
+            ],
+            "regle": "indice 2"
+          },
+          {
+            "reference": [
+              "dossier",
+              "urbanisme"
+            ],
+            "avant": [
+              0,
+              3
+            ],
+            "apres": [
+              3
+            ],
+            "regle": "une valeur par ligne et par catégorie"
+          }
+        ]
+      }
+    },
+    "meta": {
+      "auteur": "generation-originale (tools/generer_logigrammes.py)",
+      "date_creation": "2026-10-22",
+      "relecture_ortho": {
+        "statut": "a_revoir"
+      }
+    }
+  },
+  {
+    "id": "lg-3-association-20261022",
+    "type": "logigramme",
+    "module": "entrainement",
+    "theme": "logigrammes",
+    "fonctions_ciblees": [
+      "fonctions-executives"
+    ],
+    "palier": 3,
+    "prerequis": [],
+    "cap_complexite": "4 rendez-vous, 4 catégories : recoupements successifs entre catégories",
+    "contenu": {
+      "titre": "Les permanences de l’association",
+      "consigne": "Retrouve les associations de chaque rendez-vous. Chaque horaire accueille exactement une personne et un sujet, et chaque valeur de chaque catégorie est utilisée une seule fois. Chaque rendez-vous a aussi un support distinct, utilisé une seule fois. Les horaires sont classés du plus tôt au plus tard. « Avant » signifie strictement plus tôt, sans imposer de rendez-vous consécutifs. Toutes les informations nécessaires figurent dans les indices. Tu peux utiliser le tableau comme aide externe et modifier tes choix sans limite ; aucun chronomètre.",
+      "categories": [
+        {
+          "id": "horaire",
+          "label": "Horaire",
+          "valeurs": [
+            "09 h",
+            "10 h",
+            "11 h",
+            "14 h"
+          ]
+        },
+        {
+          "id": "personne",
+          "label": "Personne",
+          "valeurs": [
+            "Inès",
+            "Jules",
+            "Karim",
+            "Léa"
+          ]
+        },
+        {
+          "id": "dossier",
+          "label": "Sujet",
+          "valeurs": [
+            "adhésions",
+            "comptabilité",
+            "matériel",
+            "bénévolat"
+          ]
+        },
+        {
+          "id": "support",
+          "label": "Support",
+          "valeurs": [
+            "cahier",
+            "tablette",
+            "dossier papier",
+            "ordinateur"
+          ]
+        }
+      ],
+      "contraintes": [
+        {
+          "type": "exclusion",
+          "gauche": {
+            "categorie": "horaire",
+            "valeur": "11 h"
+          },
+          "droite": {
+            "categorie": "support",
+            "valeur": "ordinateur"
+          },
+          "texte": "« 11 h » (horaire) est à un horaire différent de « ordinateur » (support)."
+        },
+        {
+          "type": "exclusion",
+          "gauche": {
+            "categorie": "horaire",
+            "valeur": "11 h"
+          },
+          "droite": {
+            "categorie": "personne",
+            "valeur": "Léa"
+          },
+          "texte": "« 11 h » (horaire) est à un horaire différent de « Léa » (personne)."
+        },
+        {
+          "type": "avant",
+          "gauche": {
+            "categorie": "support",
+            "valeur": "dossier papier"
+          },
+          "droite": {
+            "categorie": "dossier",
+            "valeur": "matériel"
+          },
+          "texte": "« dossier papier » (support) est à un horaire strictement antérieur à « matériel » (sujet)."
+        },
+        {
+          "type": "association",
+          "gauche": {
+            "categorie": "horaire",
+            "valeur": "14 h"
+          },
+          "droite": {
+            "categorie": "personne",
+            "valeur": "Karim"
+          },
+          "texte": "« 14 h » (horaire) est au même horaire que « Karim » (personne)."
+        },
+        {
+          "type": "association",
+          "gauche": {
+            "categorie": "horaire",
+            "valeur": "14 h"
+          },
+          "droite": {
+            "categorie": "dossier",
+            "valeur": "bénévolat"
+          },
+          "texte": "« 14 h » (horaire) est au même horaire que « bénévolat » (sujet)."
+        },
+        {
+          "type": "avant",
+          "gauche": {
+            "categorie": "personne",
+            "valeur": "Jules"
+          },
+          "droite": {
+            "categorie": "support",
+            "valeur": "cahier"
+          },
+          "texte": "« Jules » (personne) est à un horaire strictement antérieur à « cahier » (support)."
+        },
+        {
+          "type": "association",
+          "gauche": {
+            "categorie": "dossier",
+            "valeur": "comptabilité"
+          },
+          "droite": {
+            "categorie": "support",
+            "valeur": "cahier"
+          },
+          "texte": "« comptabilité » (sujet) est au même horaire que « cahier » (support)."
+        },
+        {
+          "type": "exclusion",
+          "gauche": {
+            "categorie": "personne",
+            "valeur": "Inès"
+          },
+          "droite": {
+            "categorie": "dossier",
+            "valeur": "comptabilité"
+          },
+          "texte": "« Inès » (personne) est à un horaire différent de « comptabilité » (sujet)."
+        }
+      ],
+      "aide": "Précise le but : une ligne complète par rendez-vous. Relève une contrainte, marque seulement ce qui est certain, puis vérifie avec les autres indices. Le tableau sert à organiser les informations.",
+      "indices": [
+        {
+          "niveau": 1,
+          "texte": "Relis les règles : une valeur ne peut apparaître qu’une fois dans sa catégorie."
+        },
+        {
+          "niveau": 2,
+          "texte": "Regroupe les comparaisons « avant » pour reconstituer un ordre, puis recoupe cet ordre avec les associations et les exclusions."
+        },
+        {
+          "niveau": 3,
+          "texte": "Pour chaque valeur, barre les horaires impossibles. S’il ne reste qu’un horaire, vérifie-le dans tous les indices avant de le retenir."
+        }
+      ]
+    },
+    "reponse": {
+      "valeur": "{\"09 h\": {\"dossier\": \"adhésions\", \"personne\": \"Jules\", \"support\": \"dossier papier\"}, \"10 h\": {\"dossier\": \"comptabilité\", \"personne\": \"Léa\", \"support\": \"cahier\"}, \"11 h\": {\"dossier\": \"matériel\", \"personne\": \"Inès\", \"support\": \"tablette\"}, \"14 h\": {\"dossier\": \"bénévolat\", \"personne\": \"Karim\", \"support\": \"ordinateur\"}}",
+      "associations": {
+        "09 h": {
+          "personne": "Jules",
+          "dossier": "adhésions",
+          "support": "dossier papier"
+        },
+        "10 h": {
+          "personne": "Léa",
+          "dossier": "comptabilité",
+          "support": "cahier"
+        },
+        "11 h": {
+          "personne": "Inès",
+          "dossier": "matériel",
+          "support": "tablette"
+        },
+        "14 h": {
+          "personne": "Karim",
+          "dossier": "bénévolat",
+          "support": "ordinateur"
+        }
+      },
+      "preuve_deductive": {
+        "resolu": true,
+        "solution": {
+          "09 h": {
+            "personne": "Jules",
+            "dossier": "adhésions",
+            "support": "dossier papier"
+          },
+          "10 h": {
+            "personne": "Léa",
+            "dossier": "comptabilité",
+            "support": "cahier"
+          },
+          "11 h": {
+            "personne": "Inès",
+            "dossier": "matériel",
+            "support": "tablette"
+          },
+          "14 h": {
+            "personne": "Karim",
+            "dossier": "bénévolat",
+            "support": "ordinateur"
+          }
+        },
+        "trace": [
+          {
+            "reference": [
+              "support",
+              "ordinateur"
+            ],
+            "avant": [
+              0,
+              1,
+              2,
+              3
+            ],
+            "apres": [
+              0,
+              1,
+              3
+            ],
+            "regle": "indice 1"
+          },
+          {
+            "reference": [
+              "personne",
+              "Léa"
+            ],
+            "avant": [
+              0,
+              1,
+              2,
+              3
+            ],
+            "apres": [
+              0,
+              1,
+              3
+            ],
+            "regle": "indice 2"
+          },
+          {
+            "reference": [
+              "support",
+              "dossier papier"
+            ],
+            "avant": [
+              0,
+              1,
+              2,
+              3
+            ],
+            "apres": [
+              0,
+              1,
+              2
+            ],
+            "regle": "indice 3"
+          },
+          {
+            "reference": [
+              "dossier",
+              "matériel"
+            ],
+            "avant": [
+              0,
+              1,
+              2,
+              3
+            ],
+            "apres": [
+              1,
+              2,
+              3
+            ],
+            "regle": "indice 3"
+          },
+          {
+            "reference": [
+              "personne",
+              "Karim"
+            ],
+            "avant": [
+              0,
+              1,
+              2,
+              3
+            ],
+            "apres": [
+              3
+            ],
+            "regle": "indice 4"
+          },
+          {
+            "reference": [
+              "dossier",
+              "bénévolat"
+            ],
+            "avant": [
+              0,
+              1,
+              2,
+              3
+            ],
+            "apres": [
+              3
+            ],
+            "regle": "indice 5"
+          },
+          {
+            "reference": [
+              "personne",
+              "Jules"
+            ],
+            "avant": [
+              0,
+              1,
+              2,
+              3
+            ],
+            "apres": [
+              0,
+              1,
+              2
+            ],
+            "regle": "indice 6"
+          },
+          {
+            "reference": [
+              "support",
+              "cahier"
+            ],
+            "avant": [
+              0,
+              1,
+              2,
+              3
+            ],
+            "apres": [
+              1,
+              2,
+              3
+            ],
+            "regle": "indice 6"
+          },
+          {
+            "reference": [
+              "dossier",
+              "comptabilité"
+            ],
+            "avant": [
+              0,
+              1,
+              2,
+              3
+            ],
+            "apres": [
+              1,
+              2,
+              3
+            ],
+            "regle": "indice 7"
+          },
+          {
+            "reference": [
+              "personne",
+              "Inès"
+            ],
+            "avant": [
+              0,
+              1,
+              2,
+              3
+            ],
+            "apres": [
+              0,
+              1,
+              2
+            ],
+            "regle": "une valeur par ligne et par catégorie"
+          },
+          {
+            "reference": [
+              "personne",
+              "Léa"
+            ],
+            "avant": [
+              0,
+              1,
+              3
+            ],
+            "apres": [
+              0,
+              1
+            ],
+            "regle": "une valeur par ligne et par catégorie"
+          },
+          {
+            "reference": [
+              "dossier",
+              "adhésions"
+            ],
+            "avant": [
+              0,
+              1,
+              2,
+              3
+            ],
+            "apres": [
+              0
+            ],
+            "regle": "une valeur par ligne et par catégorie"
+          },
+          {
+            "reference": [
+              "dossier",
+              "comptabilité"
+            ],
+            "avant": [
+              1,
+              2,
+              3
+            ],
+            "apres": [
+              1,
+              2
+            ],
+            "regle": "une valeur par ligne et par catégorie"
+          },
+          {
+            "reference": [
+              "dossier",
+              "matériel"
+            ],
+            "avant": [
+              1,
+              2,
+              3
+            ],
+            "apres": [
+              1,
+              2
+            ],
+            "regle": "une valeur par ligne et par catégorie"
+          },
+          {
+            "reference": [
+              "support",
+              "dossier papier"
+            ],
+            "avant": [
+              0,
+              1,
+              2
+            ],
+            "apres": [
+              0,
+              1
+            ],
+            "regle": "indice 3"
+          },
+          {
+            "reference": [
+              "support",
+              "cahier"
+            ],
+            "avant": [
+              1,
+              2,
+              3
+            ],
+            "apres": [
+              1,
+              2
+            ],
+            "regle": "indice 7"
+          },
+          {
+            "reference": [
+              "personne",
+              "Jules"
+            ],
+            "avant": [
+              0,
+              1,
+              2
+            ],
+            "apres": [
+              0,
+              1
+            ],
+            "regle": "indice 6"
+          },
+          {
+            "reference": [
+              "personne",
+              "Inès"
+            ],
+            "avant": [
+              0,
+              1,
+              2
+            ],
+            "apres": [
+              2
+            ],
+            "regle": "une valeur par ligne et par catégorie"
+          },
+          {
+            "reference": [
+              "dossier",
+              "comptabilité"
+            ],
+            "avant": [
+              1,
+              2
+            ],
+            "apres": [
+              1
+            ],
+            "regle": "indice 8"
+          },
+          {
+            "reference": [
+              "dossier",
+              "matériel"
+            ],
+            "avant": [
+              1,
+              2
+            ],
+            "apres": [
+              2
+            ],
+            "regle": "une valeur par ligne et par catégorie"
+          },
+          {
+            "reference": [
+              "support",
+              "cahier"
+            ],
+            "avant": [
+              1,
+              2
+            ],
+            "apres": [
+              1
+            ],
+            "regle": "indice 7"
+          },
+          {
+            "reference": [
+              "support",
+              "tablette"
+            ],
+            "avant": [
+              0,
+              1,
+              2,
+              3
+            ],
+            "apres": [
+              2
+            ],
+            "regle": "une valeur par ligne et par catégorie"
+          },
+          {
+            "reference": [
+              "support",
+              "dossier papier"
+            ],
+            "avant": [
+              0,
+              1
+            ],
+            "apres": [
+              0
+            ],
+            "regle": "une valeur par ligne et par catégorie"
+          },
+          {
+            "reference": [
+              "support",
+              "ordinateur"
+            ],
+            "avant": [
+              0,
+              1,
+              3
+            ],
+            "apres": [
+              3
+            ],
+            "regle": "une valeur par ligne et par catégorie"
+          },
+          {
+            "reference": [
+              "personne",
+              "Jules"
+            ],
+            "avant": [
+              0,
+              1
+            ],
+            "apres": [
+              0
+            ],
+            "regle": "indice 6"
+          },
+          {
+            "reference": [
+              "personne",
+              "Léa"
+            ],
+            "avant": [
+              0,
+              1
+            ],
+            "apres": [
+              1
+            ],
+            "regle": "une valeur par ligne et par catégorie"
+          }
+        ]
+      }
+    },
+    "meta": {
+      "auteur": "generation-originale (tools/generer_logigrammes.py)",
+      "date_creation": "2026-10-22",
+      "relecture_ortho": {
+        "statut": "a_revoir"
+      }
+    }
+  },
+  {
+    "id": "lg-3-exposition-20261022",
+    "type": "logigramme",
+    "module": "entrainement",
+    "theme": "logigrammes",
+    "fonctions_ciblees": [
+      "fonctions-executives"
+    ],
+    "palier": 3,
+    "prerequis": [],
+    "cap_complexite": "4 rendez-vous, 4 catégories : recoupements successifs entre catégories",
+    "contenu": {
+      "titre": "Les préparatifs de l’exposition",
+      "consigne": "Retrouve les associations de chaque rendez-vous. Chaque horaire accueille exactement une personne et un sujet, et chaque valeur de chaque catégorie est utilisée une seule fois. Chaque rendez-vous a aussi un support distinct, utilisé une seule fois. Les horaires sont classés du plus tôt au plus tard. « Avant » signifie strictement plus tôt, sans imposer de rendez-vous consécutifs. Toutes les informations nécessaires figurent dans les indices. Tu peux utiliser le tableau comme aide externe et modifier tes choix sans limite ; aucun chronomètre.",
+      "categories": [
+        {
+          "id": "horaire",
+          "label": "Horaire",
+          "valeurs": [
+            "09 h",
+            "10 h",
+            "11 h",
+            "14 h"
+          ]
+        },
+        {
+          "id": "personne",
+          "label": "Personne",
+          "valeurs": [
+            "Maya",
+            "Nabil",
+            "Olivia",
+            "Paul"
+          ]
+        },
+        {
+          "id": "dossier",
+          "label": "Sujet",
+          "valeurs": [
+            "affiches",
+            "éclairage",
+            "cartels",
+            "accueil"
+          ]
+        },
+        {
+          "id": "support",
+          "label": "Support",
+          "valeurs": [
+            "maquette",
+            "inventaire",
+            "fiche",
+            "schéma"
+          ]
+        }
+      ],
+      "contraintes": [
+        {
+          "type": "avant",
+          "gauche": {
+            "categorie": "dossier",
+            "valeur": "éclairage"
+          },
+          "droite": {
+            "categorie": "personne",
+            "valeur": "Maya"
+          },
+          "texte": "« éclairage » (sujet) est à un horaire strictement antérieur à « Maya » (personne)."
+        },
+        {
+          "type": "association",
+          "gauche": {
+            "categorie": "personne",
+            "valeur": "Maya"
+          },
+          "droite": {
+            "categorie": "support",
+            "valeur": "inventaire"
+          },
+          "texte": "« Maya » (personne) est au même horaire que « inventaire » (support)."
+        },
+        {
+          "type": "exclusion",
+          "gauche": {
+            "categorie": "horaire",
+            "valeur": "14 h"
+          },
+          "droite": {
+            "categorie": "dossier",
+            "valeur": "accueil"
+          },
+          "texte": "« 14 h » (horaire) est à un horaire différent de « accueil » (sujet)."
+        },
+        {
+          "type": "association",
+          "gauche": {
+            "categorie": "dossier",
+            "valeur": "éclairage"
+          },
+          "droite": {
+            "categorie": "support",
+            "valeur": "fiche"
+          },
+          "texte": "« éclairage » (sujet) est au même horaire que « fiche » (support)."
+        },
+        {
+          "type": "avant",
+          "gauche": {
+            "categorie": "personne",
+            "valeur": "Nabil"
+          },
+          "droite": {
+            "categorie": "support",
+            "valeur": "maquette"
+          },
+          "texte": "« Nabil » (personne) est à un horaire strictement antérieur à « maquette » (support)."
+        },
+        {
+          "type": "association",
+          "gauche": {
+            "categorie": "personne",
+            "valeur": "Paul"
+          },
+          "droite": {
+            "categorie": "dossier",
+            "valeur": "cartels"
+          },
+          "texte": "« Paul » (personne) est au même horaire que « cartels » (sujet)."
+        },
+        {
+          "type": "avant",
+          "gauche": {
+            "categorie": "dossier",
+            "valeur": "affiches"
+          },
+          "droite": {
+            "categorie": "support",
+            "valeur": "fiche"
+          },
+          "texte": "« affiches » (sujet) est à un horaire strictement antérieur à « fiche » (support)."
+        },
+        {
+          "type": "exclusion",
+          "gauche": {
+            "categorie": "horaire",
+            "valeur": "10 h"
+          },
+          "droite": {
+            "categorie": "personne",
+            "valeur": "Olivia"
+          },
+          "texte": "« 10 h » (horaire) est à un horaire différent de « Olivia » (personne)."
+        }
+      ],
+      "aide": "Précise le but : une ligne complète par rendez-vous. Relève une contrainte, marque seulement ce qui est certain, puis vérifie avec les autres indices. Le tableau sert à organiser les informations.",
+      "indices": [
+        {
+          "niveau": 1,
+          "texte": "Relis les règles : une valeur ne peut apparaître qu’une fois dans sa catégorie."
+        },
+        {
+          "niveau": 2,
+          "texte": "Regroupe les comparaisons « avant » pour reconstituer un ordre, puis recoupe cet ordre avec les associations et les exclusions."
+        },
+        {
+          "niveau": 3,
+          "texte": "Pour chaque valeur, barre les horaires impossibles. S’il ne reste qu’un horaire, vérifie-le dans tous les indices avant de le retenir."
+        }
+      ]
+    },
+    "reponse": {
+      "valeur": "{\"09 h\": {\"dossier\": \"affiches\", \"personne\": \"Olivia\", \"support\": \"schéma\"}, \"10 h\": {\"dossier\": \"éclairage\", \"personne\": \"Nabil\", \"support\": \"fiche\"}, \"11 h\": {\"dossier\": \"accueil\", \"personne\": \"Maya\", \"support\": \"inventaire\"}, \"14 h\": {\"dossier\": \"cartels\", \"personne\": \"Paul\", \"support\": \"maquette\"}}",
+      "associations": {
+        "09 h": {
+          "personne": "Olivia",
+          "dossier": "affiches",
+          "support": "schéma"
+        },
+        "10 h": {
+          "personne": "Nabil",
+          "dossier": "éclairage",
+          "support": "fiche"
+        },
+        "11 h": {
+          "personne": "Maya",
+          "dossier": "accueil",
+          "support": "inventaire"
+        },
+        "14 h": {
+          "personne": "Paul",
+          "dossier": "cartels",
+          "support": "maquette"
+        }
+      },
+      "preuve_deductive": {
+        "resolu": true,
+        "solution": {
+          "09 h": {
+            "personne": "Olivia",
+            "dossier": "affiches",
+            "support": "schéma"
+          },
+          "10 h": {
+            "personne": "Nabil",
+            "dossier": "éclairage",
+            "support": "fiche"
+          },
+          "11 h": {
+            "personne": "Maya",
+            "dossier": "accueil",
+            "support": "inventaire"
+          },
+          "14 h": {
+            "personne": "Paul",
+            "dossier": "cartels",
+            "support": "maquette"
+          }
+        },
+        "trace": [
+          {
+            "reference": [
+              "dossier",
+              "éclairage"
+            ],
+            "avant": [
+              0,
+              1,
+              2,
+              3
+            ],
+            "apres": [
+              0,
+              1,
+              2
+            ],
+            "regle": "indice 1"
+          },
+          {
+            "reference": [
+              "personne",
+              "Maya"
+            ],
+            "avant": [
+              0,
+              1,
+              2,
+              3
+            ],
+            "apres": [
+              1,
+              2,
+              3
+            ],
+            "regle": "indice 1"
+          },
+          {
+            "reference": [
+              "support",
+              "inventaire"
+            ],
+            "avant": [
+              0,
+              1,
+              2,
+              3
+            ],
+            "apres": [
+              1,
+              2,
+              3
+            ],
+            "regle": "indice 2"
+          },
+          {
+            "reference": [
+              "dossier",
+              "accueil"
+            ],
+            "avant": [
+              0,
+              1,
+              2,
+              3
+            ],
+            "apres": [
+              0,
+              1,
+              2
+            ],
+            "regle": "indice 3"
+          },
+          {
+            "reference": [
+              "support",
+              "fiche"
+            ],
+            "avant": [
+              0,
+              1,
+              2,
+              3
+            ],
+            "apres": [
+              0,
+              1,
+              2
+            ],
+            "regle": "indice 4"
+          },
+          {
+            "reference": [
+              "personne",
+              "Nabil"
+            ],
+            "avant": [
+              0,
+              1,
+              2,
+              3
+            ],
+            "apres": [
+              0,
+              1,
+              2
+            ],
+            "regle": "indice 5"
+          },
+          {
+            "reference": [
+              "support",
+              "maquette"
+            ],
+            "avant": [
+              0,
+              1,
+              2,
+              3
+            ],
+            "apres": [
+              1,
+              2,
+              3
+            ],
+            "regle": "indice 5"
+          },
+          {
+            "reference": [
+              "dossier",
+              "affiches"
+            ],
+            "avant": [
+              0,
+              1,
+              2,
+              3
+            ],
+            "apres": [
+              0,
+              1
+            ],
+            "regle": "indice 7"
+          },
+          {
+            "reference": [
+              "support",
+              "fiche"
+            ],
+            "avant": [
+              0,
+              1,
+              2
+            ],
+            "apres": [
+              1,
+              2
+            ],
+            "regle": "indice 7"
+          },
+          {
+            "reference": [
+              "personne",
+              "Olivia"
+            ],
+            "avant": [
+              0,
+              1,
+              2,
+              3
+            ],
+            "apres": [
+              0,
+              2,
+              3
+            ],
+            "regle": "indice 8"
+          },
+          {
+            "reference": [
+              "dossier",
+              "cartels"
+            ],
+            "avant": [
+              0,
+              1,
+              2,
+              3
+            ],
+            "apres": [
+              3
+            ],
+            "regle": "une valeur par ligne et par catégorie"
+          },
+          {
+            "reference": [
+              "support",
+              "schéma"
+            ],
+            "avant": [
+              0,
+              1,
+              2,
+              3
+            ],
+            "apres": [
+              0
+            ],
+            "regle": "une valeur par ligne et par catégorie"
+          },
+          {
+            "reference": [
+              "dossier",
+              "éclairage"
+            ],
+            "avant": [
+              0,
+              1,
+              2
+            ],
+            "apres": [
+              1,
+              2
+            ],
+            "regle": "indice 4"
+          },
+          {
+            "reference": [
+              "personne",
+              "Paul"
+            ],
+            "avant": [
+              0,
+              1,
+              2,
+              3
+            ],
+            "apres": [
+              3
+            ],
+            "regle": "indice 6"
+          },
+          {
+            "reference": [
+              "personne",
+              "Maya"
+            ],
+            "avant": [
+              1,
+              2,
+              3
+            ],
+            "apres": [
+              1,
+              2
+            ],
+            "regle": "une valeur par ligne et par catégorie"
+          },
+          {
+            "reference": [
+              "personne",
+              "Olivia"
+            ],
+            "avant": [
+              0,
+              2,
+              3
+            ],
+            "apres": [
+              0,
+              2
+            ],
+            "regle": "une valeur par ligne et par catégorie"
+          },
+          {
+            "reference": [
+              "dossier",
+              "éclairage"
+            ],
+            "avant": [
+              1,
+              2
+            ],
+            "apres": [
+              1
+            ],
+            "regle": "indice 1"
+          },
+          {
+            "reference": [
+              "personne",
+              "Maya"
+            ],
+            "avant": [
+              1,
+              2
+            ],
+            "apres": [
+              2
+            ],
+            "regle": "indice 1"
+          },
+          {
+            "reference": [
+              "support",
+              "inventaire"
+            ],
+            "avant": [
+              1,
+              2,
+              3
+            ],
+            "apres": [
+              2
+            ],
+            "regle": "indice 2"
+          },
+          {
+            "reference": [
+              "support",
+              "fiche"
+            ],
+            "avant": [
+              1,
+              2
+            ],
+            "apres": [
+              1
+            ],
+            "regle": "indice 4"
+          },
+          {
+            "reference": [
+              "dossier",
+              "affiches"
+            ],
+            "avant": [
+              0,
+              1
+            ],
+            "apres": [
+              0
+            ],
+            "regle": "indice 7"
+          },
+          {
+            "reference": [
+              "personne",
+              "Nabil"
+            ],
+            "avant": [
+              0,
+              1,
+              2
+            ],
+            "apres": [
+              1
+            ],
+            "regle": "une valeur par ligne et par catégorie"
+          },
+          {
+            "reference": [
+              "personne",
+              "Olivia"
+            ],
+            "avant": [
+              0,
+              2
+            ],
+            "apres": [
+              0
+            ],
+            "regle": "une valeur par ligne et par catégorie"
+          },
+          {
+            "reference": [
+              "dossier",
+              "accueil"
+            ],
+            "avant": [
+              0,
+              1,
+              2
+            ],
+            "apres": [
+              2
+            ],
+            "regle": "une valeur par ligne et par catégorie"
+          },
+          {
+            "reference": [
+              "support",
+              "maquette"
+            ],
+            "avant": [
+              1,
+              2,
+              3
+            ],
+            "apres": [
+              3
+            ],
+            "regle": "une valeur par ligne et par catégorie"
+          }
+        ]
+      }
+    },
+    "meta": {
+      "auteur": "generation-originale (tools/generer_logigrammes.py)",
+      "date_creation": "2026-10-22",
+      "relecture_ortho": {
+        "statut": "a_revoir"
+      }
+    }
+  }
+]

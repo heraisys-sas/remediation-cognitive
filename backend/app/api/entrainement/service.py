@@ -153,12 +153,16 @@ class SessionEnCours:
 
 def _item_sans_reponse(item: dict) -> dict:
     """Payload client d'un item : id/type/palier/contenu — JAMAIS ``reponse``."""
+    contenu = dict(item["contenu"])
+    contenu.pop("preuve_deductive", None)
+    if "debut_commun" in contenu:
+        contenu["debut_commun"] = {k: v for k, v in contenu["debut_commun"].items() if k not in {"mots", "definitions"}}
     return {
         "id": item["id"],
         "type": item["type"],
         "palier": item["palier"],
-        "contenu": ({**item["contenu"], "interface_pqrst": messages.PQRST_INTERFACE}
-                    if item["type"] == "pqrst-mise-en-oeuvre" else item["contenu"]),
+        "contenu": ({**contenu, "interface_pqrst": messages.PQRST_INTERFACE}
+                    if item["type"] == "pqrst-mise-en-oeuvre" else contenu),
     }
 
 

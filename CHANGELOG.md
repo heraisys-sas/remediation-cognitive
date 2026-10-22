@@ -933,3 +933,9 @@ Présentation du POC de remédiation, fonctions jouables et capacités Apple fac
 - Liens depuis la feuille de route, la taxonomie historique et la bibliographie ; aucun changement des exercices.
 
 - Sélection des mémoires immédiates précisée : « Quel objet était où ? » devient le quatrième exercice retenu ; les trois autres pistes complémentaires sont écartées. Référentiel v1.1, sans nouvelle recherche bibliographique.
+
+## 2026-10-22 — Débuts communs et indices croisés
+
+- Deux cartes indépendantes : recherche de débuts écrits communs et logigrammes à indices visibles.
+- Correction lexicale stricte, aides progressives et associations réversibles ; second essai pour les logigrammes.
+- Corpus original versionné, sans modification des historiques de Calcul mental et Déduction ; ADR-052.

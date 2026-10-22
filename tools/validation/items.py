@@ -201,7 +201,19 @@ def erreurs_contenu(item: dict, prefixe: str) -> list[str]:
                 if not isinstance(texte, str) or not texte.strip():
                     erreurs.append(prefixe + f"indice {position} : texte manquant")
                     continue
-                if isinstance(reponse, str) and _normaliser_texte(reponse) in _normaliser_texte(texte):
+                # Un segment court (« ca ») peut apparaître dans un mot de la
+                # définition sans être donné comme réponse. Contrôler les mots
+                # entiers et les reconstructions complètes pour ce thème seul.
+                if item.get("theme") == "debut-commun":
+                    import re
+                    import unicodedata
+                    normaliser_segment = lambda mot: unicodedata.normalize("NFC", mot).casefold().strip()
+                    mots_indice = {normaliser_segment(mot) for mot in re.findall(r"[^\W\d_]+", texte, re.UNICODE)}
+                    interdits = [reponse, *contenu.get("debut_commun", {}).get("mots", [])]
+                    divulgue = any(isinstance(mot, str) and normaliser_segment(mot) in mots_indice for mot in interdits)
+                else:
+                    divulgue = isinstance(reponse, str) and _normaliser_texte(reponse) in _normaliser_texte(texte)
+                if divulgue:
                     erreurs.append(
                         prefixe + f"indice {position} contient la réponse - un indice ne doit pas la donner"
                     )

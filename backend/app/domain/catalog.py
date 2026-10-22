@@ -111,6 +111,8 @@ CATALOGUE = {
     'deduction': ThemeSpec('deduction', 'deduction/paliers', session_parameters={'max_items': 6}),
     'methodes': ThemeSpec('methodes', 'methodes/paliers'),
     'garder-cap': ThemeSpec('garder-cap', 'garder-cap/paliers', session_parameters={'max_items': 4}),
+    'debut-commun': ThemeSpec('debut-commun', 'debut-commun/paliers', start_level=2, session_parameters={'max_items': 6}),
+    'logigrammes': ThemeSpec('logigrammes', 'logigrammes/paliers', dictation=False, session_parameters={'max_items': 3}),
     'evocation': ThemeSpec('evocation', 'evocation/paliers'),
 }
 THEMES = tuple(CATALOGUE)
