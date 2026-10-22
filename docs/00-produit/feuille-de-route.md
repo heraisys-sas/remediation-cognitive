@@ -1,5 +1,25 @@
 # Feuille de route
 
+## État d’intégration vérifié — 21 octobre 2026
+
+Les cases historiques ci-dessous décrivent leur date de validation, pas toujours
+l’état intégré. Les paliers des quatre mémoires, les stratégies appliquées V3,
+le n-back 1/2/3 et les banques enrichies sont réunis sur
+`feat/lots-cognitifs-complets`, avec le filtre d’accueil de la PR #27.
+Validation de cet ensemble : 518 tests Python réussis, 1 ignoré ; 99 tests Node,
+24 tests Playwright Chromium/WebKit (bureau et mobile jusqu’à 320 px), Ruff et
+validateurs de 1 424 items conformes. Les tests navigateur de l’accueil incluent
+les deux nouvelles cartes ; ils ne constituent pas une recette physique de tous
+les exercices ni une validation clinique.
+
+La fusion dans `dev` reste distincte de la livraison sur `main`. Le retrait du
+graphe est intégré dans `dev` par PR #26. Le déploiement local fait l’objet de la
+PR #28 ; la calibration #6 reste active. Gestion des utilisateurs et transfert
+de progression ne sont pas ajoutés. Les cinq séances hebdomadaires servent au
+dimensionnement des contenus, sans nouveau plafond global imposé. Le programme
+logiciel de huit semaines reste inchangé ; treize semaines nécessitent un choix
+explicite. Autres candidats et export de synthèse restent à arbitrer.
+
 ## Référentiel des compétences et des exercices
 
 Le [référentiel cognitif](../10-clinique/referentiel-exercices.md) relie les compétences, exercices retenus, justifications déjà examinées et implémentations réelles. Sa première version détaille les mémoires immédiates et inventorie les autres compétences à partir des cartes et de cette feuille de route. La [revue des exercices implémentés](../10-clinique/revue-competences-exercices.md), autorisée le 9 octobre 2026, apporte classification, sources Consensus et propositions de révision. Le signal a ensuite été donné : la [recherche des exercices pour les compétences prévues](../10-clinique/recherche-exercices-feuille-de-route.md) prépare leur sélection avant de nouvelles spécifications. Les formats d’observation peuvent rejoindre « Exercices ciblés », rubrique d’autoévaluation, selon la précision de l’utilisateur. Il ne vaut pas autorisation de développer de nouveaux exercices ni de réactiver le bilan historique.
@@ -85,6 +105,49 @@ Le [plan de développement cognitif](../20-specs/plan-developpement-cognitif.md)
 
 - [x] Retenir un code, Refaire le chemin, Qu’est-ce qui a changé ?, Quel objet était où ? : pratique guidée V1, interface discrète, aides/interruption et données durables séparées.
 - [x] Validation technique : 439 tests pytest, 35 tests Node dédiés et recette des quatre interfaces, dont objets à largeur mobile.
-- [ ] Intégrer la branche memoires-immediates dans dev selon le flux Git, puis livrer main après autorisation et essai d’usage. Aucun push/fusion automatique.
+- [x] Intégration dans dev : commit 44acda5 poussé le 10 octobre.
+- [ ] Livraison sur main après autorisation et essai d’usage.
 
-Les paramètres restent des choix de conception. Les candidats d’attention/inhibition/flexibilité non sélectionnés et l’application des stratégies restent en attente ; ce lot n’en développe aucun.
+Les paramètres restent des choix de conception. Les candidats d’attention/inhibition/flexibilité restent en attente de sélection. Les paliers des mémoires et l’application des stratégies sont désormais validés localement, sans intégration supplémentaire dans dev/main.
+
+### Paliers demandés le 10 octobre
+
+- [x] Progressions par charge puis rétention implémentées localement pour les quatre mémoires ; [détails et sources](../20-specs/paliers-memoires-immediates.md).
+- [ ] Valider le confort des paliers avancés en usage, puis intégrer ce nouveau lot dans dev.
+
+### Application des stratégies et paliers — livraison locale du 10 octobre
+
+- [x] Progressions persistées des quatre mémoires, avec paramètres avancés séparés et historiques conservés.
+- [x] Quatre simulations d’application : plan, rappel, message et estimation du temps ; trois situations par parcours, une carte d’accueil.
+- [x] Validation locale : 476 tests pytest réussis, 1 ignoré ; 71 tests Node réussis ; recette et limites dans le [plan](../20-specs/plan-developpement-cognitif.md#lot-4--livraison-locale-v2).
+- [ ] Relecture professionnelle et essai avec le public visé.
+- [ ] Intégration de ce nouveau lot dans dev puis livraison main après autorisation.
+
+Les [propositions d’arbitrage](../20-specs/arbitrage-prochains-lots.md) ne sélectionnent aucun candidat supplémentaire.
+
+### N-back dans Exercices ciblés — 10 octobre
+
+- [x] EX-CAND-010 sélectionné explicitement et implémenté localement : 1-back visuel à rythme libre, comparaison successive, 16 formes, 15 décisions, correction après bloc.
+- [x] Exemple hors journal, absence séparée, interruptions et retries durables, interface mobile calme.
+- [x] Validation : 494 tests pytest réussis, 1 ignoré ; 93 tests Node réussis, recette complète et interruptions.
+- [ ] Intégration dev/main après autorisation ; essai d’usage et relecture professionnelle.
+
+[Spécification de la version servie](../20-specs/nback.md). Aucun autre candidat sélectionné.
+
+### Couverture trois mois — 10 octobre
+
+- [x] Dimensionnement confirmé : 13 semaines, cinq séances par semaine au total, 65 séances réparties.
+- [x] Audit des 14 cartes hors anglais/Python : stocks par palier/parcours, répétitions FSRS, banques courtes et calendrier de huit semaines signalés.
+- [x] N-back V2 : trois distances volontaires, choix persistant, 65 séries nouvelles testées par niveau, anti-doublon durable et archives conservées.
+- [ ] Enrichir les banques courtes après choix de priorité et relecture.
+- [ ] Programme logiciel de treize semaines éventuel : nouvelle version et choix explicite à définir, sans prolongation des programmes commencés.
+
+[Rapport et répartition de 65 séances](../20-specs/couverture-trois-mois-inventaire.md). Validation : 508 pytest et 99 Node réussis, 1 pytest ignoré. Aucun commit/push.
+
+### Banques courtes enrichies — livraison locale du 10 octobre
+
+- [x] 126 nouveaux contenus relus : PQRST : 12, adapter/vérifier : 12 chacun, différé/première série : 12 chacun par modalité, SFA/PCA : 18 chacun, contexte : 20 scènes, stratégies : 12 situations par tâche.
+- [x] Sources datées et régénération testée ; anciens IDs/contenus préservés ; photos WebP640/960, dix scènes maximum par séance.
+- [x] 517 tests pytest réussis/1ignoré, 99 tests Node réussis ; validation contenu et Ruff passent. Recette8091 actualisée, aucun commit/push.
+
+La couverture vise65 séances réparties sur13 semaines, avec répétition espacée ; programme actif de 8 semaines inchangé. Relecture professionnelle/essai d’usage restent ouverts. Voir [inventaire final](../20-specs/couverture-trois-mois-inventaire.md).

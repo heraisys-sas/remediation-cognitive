@@ -2,6 +2,20 @@
 
 Corpus versionné de 70 cas, outil local lexical/Apple et mesures réelles séparées. Négations et permutations des mêmes mots ne peuvent plus contourner les contrôles du filet approximatif. Les prises de message utilisent désormais des faits et variantes explicites plutôt que le score de proximité : zéro fausse acceptation et zéro faux refus sur ce corpus exploratoire pour les deux fournisseurs. Aucun changement de seuil, de contenu ou de moteur. L’issue #6 reste ouverte pour un corpus indépendant et une revue des décisions ; aucune calibration clinique revendiquée. ADR-051.
 
+# 2026-10-21 — intégration des lots cognitifs et contenus enrichis
+
+Paliers des mémoires, stratégies V3 et n-back 1/2/3 réunis avec l’accueil filtré.
+126 ajouts de contenus (90 items et 36 simulations), sans suppression des anciens
+identifiants, scénarios ni historiques. Les banques concernées sont PQRST,
+Garder le cap, séries lues/entendues, SFA/PCA et contextes ; dix nouvelles scènes
+WebP. Le programme de huit semaines est conservé. Aucune nouvelle dépendance de
+production pour les exercices, aucun compte ni transfert de progression.
+
+518 tests Python réussis, 1 ignoré ; 99 tests Node, 24 tests navigateur de
+l’accueil et validateurs conformes. Fichiers de test DOM adaptés à l’identité des
+cartes ; attentes navigateur complétées pour stratégies et n-back. Les entrées
+historiques ci-dessous conservent leur état local à la date de rédaction.
+
 # 2026-10-21 — tests navigateur de l’accueil
 
 Ajout de Playwright verrouillé et d’un job CI pour Chromium et WebKit : six scénarios sur quatre profils, dont un écran de 320 px. Les 24 tests passent localement. Serveur et stockage éphémères, contextes navigateur indépendants, captures et rapport archivés dans GitHub ; aucune donnée personnelle utilisée. Validation sur téléphone physique et VoiceOver restant distincte.
@@ -11,6 +25,7 @@ Ajout de Playwright verrouillé et d’un job CI pour Chromium et WebKit : six s
 Choix persistants dans Réglages → Ce que tu souhaites travailler : huit domaines de difficultés, plus les apprentissages Extra. Les cartes associées sont annoncées à partir du catalogue rendu ; leur catégorie et leurs parcours sont conservés. Affichage complet par défaut, choix vide conservé, message en cas de stockage refusé. Aucune modification du moteur, des niveaux ou des historiques.
 
 Libellés et correspondances revus selon une perspective d’orthophonie neurologique avec références documentées, sans profil de gravité ni diagnostic. Vérification sur préférences synthétiques et dans le navigateur : filtrage, rechargement, sections et état vide. Voir `docs/30-technique/accueil-difficultes.md`.
+
 # 2026-10-21 — frontière de déploiement local
 
 Avertissement au démarrage ASGI : instance mono-utilisateur sans authentification,
@@ -21,6 +36,30 @@ ADR-050). L’avertissement ne bloque ni ne détecte le bind réseau.
 # 2026-10-20 — retrait du module de graphe vide
 
 Suppression de `backend/app/kg/__init__.py`, sans code exécuté ni import appelant. Architecture, taxonomie historique, README et feuille de route alignés. Une future visualisation documentaire des exercices, compétences et publications citées est envisagée, éventuellement lors d’une release ; aucun moteur de graphe ni automatisation ajouté. L’ancienne issue #8 est close sur décision utilisateur, sans annoncer l’export PDF/JSON comme livré ; son périmètre reste à décider.
+
+# 2026-10-19 — harmonisation des nouveaux parcours
+
+Titres et commandes alignés : Commencer, Suivant, Terminer la séance, Retour à l’accueil. Tutoiement des consignes des quatre mémoires immédiates, y compris placement, localisation et messages audio. Résumés exprimés en séances et exercices. Messages de sauvegarde identiques ; pause des stratégies nommée Mettre en pause. Le n-back conserve une seule commande de fin explicite : son ancien bouton de pause interrompait définitivement la série.
+
+Versions des assets actualisées pour charger les dernières corrections. Contrôles locaux : 517 tests Python réussis, 1 ignoré, 99 tests JavaScript réussis ; contenu, réponses, interface, syntaxe et Ruff conformes. Vérification mobile avec le profil iPhone SE de Chrome ; essai sur téléphone physique restant à réaliser.
+
+# 2026-10-10 — banques courtes enrichies
+
+126 nouveaux contenus : 90 items et 36 simulations. PQRST guidé : 12 ; adapter/vérifier : 12 chacun ; différé/première série : 12 chacun par modalité ; SFA/PCA : 18 chacun ; contextes : 20 scènes ; stratégies : 12 situations par tâche sous V3. Revue GPT Astra ultra, corrections appliquées ; anciens contenus et historiques conservés.
+
+Sources éditoriales datées et régénération testée. Dix photos nouvelles en WebP640/960 légers ; dix scènes maximum par séance. 517 tests pytest réussis, 1 ignoré ;99 tests Node réussis ;1 424 items validés sans erreur. Documents et serveur recette 8091 actualisés. Aucun commit/push ; programme de 8 semaines préservé.
+
+# 2026-10-10 — couverture trois mois et n-back V2
+
+Dimensionnement cinq séances hebdomadaires au total, soit65 séances sur13 semaines. Audit reproductible des14cartes horsanglais/Python, stocks et banquescourtes décrits parpalier/parcours. Le programme existant8semaines est signalé, sansprolongation automatique.
+
+N-backV2 : choixpersistant1/2/3-back,15décisions/cinqcibles constants, anti-doublon canonique durable incluantarchivesV1,65séries distinctes testéespar n. Aucun passage automatique de niveau. Observationsleurres/coïncidences archivées sansfeedbackavantfin.508pytest réussis1ignoré,99 tests Node réussis. Changementslocauxnonpoussés.
+
+# 2026-10-10 — véritable n-back dans Exercices ciblés
+
+Autorisation utilisateur et conception relue GPT Astra ultra. 1-back visuel à rythme libre : 16 formes, comparaison successive, exemple indépendant, premières réponses verrouillées et corrections après bloc. Pas d’historique visible ni de feedback de justesse pendant la série. Absences et interruptions séparées ; pause termine l’observation et rechargement tente une clôture.
+
+API/journal distincts de l’ancien exercice de position et de FSRS ; ADR-048. Validation locale : 494 pytest réussis, 1 ignoré, 93 tests Node ; recette complète et mobile320px. Pas de 2-back ou cadence fixe livrés, aucun diagnostic/score global. Nouveaux changements non commités/poussés.
 
 # 2026-10-09 — quatre exercices de mémoire immédiate
 

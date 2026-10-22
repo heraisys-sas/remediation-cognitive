@@ -1251,6 +1251,14 @@ button.mi-visual-cell { cursor: pointer; }
 .immediate-path-links line { stroke: #91a6bc; stroke-width: 2; vector-effect: non-scaling-stroke; }
 .immediate-path-cell { z-index: 1; }
 
+/* N-back : une forme stable, sans mouvement ni couleur discriminante. */
+#nback-contenu { min-height: 17rem; }
+.nback-forme.mi-visual-cell { width: min(100%, 9rem); height: 9rem; margin: 1.5rem auto; color: var(--texte); }
+.nback-forme svg { width: 7rem; max-width: 100%; height: 7rem; }
+.nback-choix { justify-content: center; gap: .75rem; }
+.nback-choix .bouton { min-height: 48px; }
+.nback-choix [aria-pressed="true"] { border-color: var(--accent); outline: 2px solid var(--accent); outline-offset: 2px; }
+
 /* Filtre documentaire de l’accueil : pas d’animation ni de nouvelle surface. */
 .reglages-difficultes { max-width: 34rem; min-width: 0; }
 #choix-difficultes { min-width: 0; margin: 1rem 0 0; padding: 0; border: 0; }

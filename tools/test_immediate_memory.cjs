@@ -161,11 +161,12 @@ test('correction code conservée pendant 3 secondes puis présentation directe, 
   const e=environment(), timers=new Map(); let id=0, starts=0;
   e.context.setTimeout=fn=>{timers.set(++id,fn);return id;};e.context.clearTimeout=id=>timers.delete(id);
   e.context.immediatePresent=()=>{assert.equal(e.get().phase,'pret');starts++;};
-  e.get().next={id:'next',index:2};e.context.immediateCorrectionCountdown();
+  e.get().next={id:'next',index:2};e.get().progression={palier:3,total:12};e.context.immediateCorrectionCountdown();
   await e.buttons().find(b=>b.textContent==='Mettre en pause').click();assert.equal(timers.size,0);
   e.context.immediateCorrectionCountdown();
   for(let i=0;i<3;i++){const [id,fn]=timers.entries().next().value;timers.delete(id);fn();}
   assert.equal(starts,1);assert.equal(e.get().trial.id,'next');
+  assert.equal(e.context.$('mi-progression').textContent,'Exercice 2 sur 4 · Palier 3 sur 12');
 });
 
 test('Entrée active le bouton principal visible sans intercepter les champs ou touches maintenues', () => {

@@ -170,8 +170,8 @@ DESCRIPTIONS = [
 ]
 
 
-def construire_paliers(rng: random.Random) -> list[list[dict]]:
-    """Assemble les paliers du thème (8 items par palier, 4 paliers)."""
+def construire_paliers(rng: random.Random, *, enrichissement: bool = True) -> list[list[dict]]:
+    """Assemble les paliers et leur complément éditorial versionné."""
     paliers = []
     for numero, composition in enumerate(COMPOSITIONS, start=1):
         prerequis = [] if numero == 1 else [f"rs-palier-{numero - 1}"]
@@ -189,6 +189,9 @@ def construire_paliers(rng: random.Random) -> list[list[dict]]:
             for rang, item in enumerate(items, 1):
                 item['id'] = f"rs2-{numero}-libre-{rang:02d}"
         paliers.append(items)
+    if enrichissement:
+        source = Path(__file__).parent / "content_sources/rappel-series_04_2026-10-10.json"
+        paliers[3].extend(json.loads(source.read_text(encoding="utf-8")))
     return paliers
 
 

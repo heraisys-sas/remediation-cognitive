@@ -349,6 +349,9 @@ def items_evocation() -> list[dict]:
     for numero, (definition, mot) in enumerate(ANALYSE_PCA, start=1):
         items.append(_item_analyse(numero, 7, "phonologique", definition, mot, ["ev-palier-6"]))
 
+    for palier in (4, 6, 7):
+        source = RACINE_DEPOT / f"tools/content_sources/evocation_{palier:02d}_2026-10-10.json"
+        items.extend(json.loads(source.read_text(encoding="utf-8")))
     return items + items_lexicaux()
 
 
