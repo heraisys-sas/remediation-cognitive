@@ -1,3 +1,7 @@
+# 2026-10-21 — mesure et garde-fous des réponses libres
+
+Corpus versionné de 70 cas, outil local lexical/Apple et mesures réelles séparées. Négations et permutations des mêmes mots ne peuvent plus contourner les contrôles du filet approximatif. Les prises de message utilisent désormais des faits et variantes explicites plutôt que le score de proximité : zéro fausse acceptation et zéro faux refus sur ce corpus exploratoire pour les deux fournisseurs. Aucun changement de seuil, de contenu ou de moteur. L’issue #6 reste ouverte pour un corpus indépendant et une revue des décisions ; aucune calibration clinique revendiquée. ADR-051.
+
 # 2026-10-21 — intégration des lots cognitifs et contenus enrichis
 
 Paliers des mémoires, stratégies V3 et n-back 1/2/3 réunis avec l’accueil filtré.
