@@ -19,3 +19,20 @@ pour justifier un seuil par ajustement opportuniste.
 Validation : 448 pytest réussis, 1 ignoré ; 14 tests ciblés réussis avec le Python
 Apple ; Ruff backend/engine/tools vert ; compilation et diff-check réussis.
 Aucune nouvelle dépendance, aucun push/PR/merge dans ce lot.
+
+## Finalisation du 22 octobre après interruption du sous-agent
+
+Reprise par le parent des changements non commités. Politique déterministe des
+prises-message finalisée (égalité, variantes explicites et enveloppes neutres),
+sans modification des contenus. Une cible négative explicite reste possible ;
+sa polarité doit correspondre. 70 cas : avant lexical 8 FA/6 FR, Apple réel
+15 FA/2 FR ; après 0/0 pour les deux. Les rapports avant/après sont conservés.
+Aucun seuil choisi, aucun contrôle indépendant revendiqué. Les critères et
+variantes se substituent au score pour ces faits précis ; les autres contrats
+restent inchangés.
+
+450 pytest réussis/1 ignoré avant le dernier test de cible négative ; puis
+17 tests ciblés réussis, Ruff vert et deux mesures --strict réussies (lexical et
+Python Apple réel). L’issue #6 garde le suivi de corpus indépendant/relecture ;
+les faux positifs reproduits sont corrigés mais la généralisation n’est pas
+prouvée.

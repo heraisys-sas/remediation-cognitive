@@ -26,6 +26,12 @@ la branche de réponse contenue dans une phrase (« pas chez la gardienne »).
 - Refuser dans le filet approximatif une permutation des mêmes mots. Même inventaire
   de mots et score élevé ne prouvent pas des rôles identiques. Ce garde-fou est
   conservateur, sans analyse syntaxique ni nouvelle dépendance.
+- Pour les prises de message, remplacer le score approximatif par une égalité
+  normalisée, des variantes explicites et des enveloppes neutres bornées. Les
+  douze cibles historiques sont des faits précis, pas des paraphrases à juger
+  globalement. Deux variantes de lieu/personne sont conservées dans le correcteur,
+  liées à l’identifiant et à la cible historique ; les nouveaux items peuvent
+  déclarer leurs variantes dans `reponse.variantes`. Aucun item n’est réécrit.
 - Versionner le corpus et des mesures séparées lexical/Apple, avec origine des cas.
   Une mesure demandée à Apple échoue si le fournisseur manque ; aucun résultat
   lexical ne doit être présenté comme une mesure Apple.
@@ -33,16 +39,18 @@ la branche de réponse contenue dans une phrase (« pas chez la gardienne »).
 
 ## Conséquences et limites
 
-Les quatre fausses acceptations visées sont supprimées dans les deux fournisseurs.
+Les 70 cas exploratoires donnent zéro fausse acceptation et zéro faux refus
+avec chacun des deux fournisseurs, après 8/6 en lexical et 15/2 avec Apple
+(fausses acceptations/faux refus).
 Le corpus reste petit, construit à la main, sans validation clinique indépendante.
 Des permutations légitimes peuvent maintenant être refusées : ce compromis est
 préféré à l'acceptation d'une inversion de rôles. Les synonymes absents du contenu,
-les référents et relations spatiales restent à traiter explicitement.
+les référents et relations spatiales demandent des règles explicites ; cette
+politique peut refuser une formulation légitime absente des variantes.
 
-L'issue #6 n'est pas clôturable : trois mauvaises substitutions restent acceptées
-par Apple ; le lexical refuse encore une reformulation légitime. Le prochain lot
-doit choisir des variantes/critères déterministes par item, étendre le corpus
-indépendamment des règles puis mesurer séparément la généralisation. Une relecture
+L’issue #6 reste ouverte pour étendre et relire un corpus indépendant des règles,
+puis mesurer séparément la généralisation. Les substitutions de personne/lieu
+observées sont désormais refusées sans consulter Apple. Une relecture
 par IA n'est pas une validation d'orthophoniste.
 
 Voir [la procédure et les résultats](../calibration-correction.md).

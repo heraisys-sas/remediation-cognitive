@@ -37,10 +37,35 @@ def test_word_permutation_cannot_prove_same_roles(response):
 def test_corpus_sources_and_lexical_measurement():
     corpus = json.loads((ROOT / "tools/calibration/reponses.json").read_text())
     report = measure("lexical", corpus)
-    assert report["cases"] == 40
+    assert report["cases"] == 70
     assert report["false_accepts"] == 0
-    # Limite documentée du repli lexical, pas un synonyme déclaré ni une norme.
-    assert [row["response"] for row in report["rows"] if not row["matches"]] == ["la cave"]
+    assert report["false_rejects"] == 0
+
+
+def test_all_message_items_ignore_similarity():
+    with patch.object(capacites, "proche", side_effect=AssertionError("Aucun score pour un fait")):
+        for item in ChargeurContenu().items("quotidien"):
+            if item["type"] == "prise-message":
+                assert corriger("quotidien", item, item["reponse"]["valeur"])
+                assert not corriger("quotidien", item, "autre réponse")
+        cave = ChargeurContenu().item("quotidien", "qo-1-message-04")
+        assert corriger("quotidien", cave, "la cave")
+        assert not corriger("quotidien", cave, "la porte du garage")
+
+
+def test_explicit_variants_and_legacy_target_guard():
+    item = {"id": "nouveau", "type": "prise-message", "reponse": {
+        "valeur": "chez la gardienne", "variantes": ["à la loge"]}}
+    assert corriger("quotidien", item, "à la loge")
+    assert not corriger("quotidien", item, "chez la voisine")
+    item = {"id": "qo-1-message-04", "type": "prise-message", "reponse": {"valeur": "le jardin"}}
+    assert not corriger("quotidien", item, "la cave")
+
+
+def test_message_target_can_explicitly_include_negation():
+    item = {"type": "prise-message", "reponse": {"valeur": "sans sucre"}}
+    assert corriger("quotidien", item, "sans sucre")
+    assert not corriger("quotidien", item, "avec sucre")
 
 
 def test_measurement_rejects_stale_content_and_never_fakes_apple():
