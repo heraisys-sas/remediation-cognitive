@@ -10,6 +10,8 @@ function immediateVisualGlyph(kind, color = "currentColor") {
     losange: "M40 5L75 40L40 75L5 40Z", diamond: "M40 5L75 40L40 75L5 40Z",
     etoile: "M40 5L49 29L75 30L54 46L62 72L40 57L18 72L26 46L5 30L31 29Z",
     croix: "M29 8H51V29H72V51H51V72H29V51H8V29H29Z",
+    maison: "M6 36L40 7L74 36H66V72H47V49H33V72H14V36Z",
+    poisson: "M12 40Q34 9 60 32L75 18V62L60 48Q34 71 12 40Z M29 34A4 4 0 1 0 29 42A4 4 0 1 0 29 34Z",
     pomme: "M40 22Q17 8 11 34Q5 65 29 70Q40 75 50 70Q76 65 70 34Q64 8 40 22Z M40 22Q38 5 52 7L54 15Q44 15 40 22Z",
     cle: "M29 13A17 17 0 1 0 29 47L41 59H50V68H60V58L43 41A17 17 0 0 0 29 13Z M23 23A6 6 0 1 1 23 35A6 6 0 1 1 23 23Z",
     tasse: "M13 18H53V27H62Q75 27 75 41Q75 55 53 55Q50 67 33 67Q13 67 13 47Z M53 34V48Q67 48 67 41Q67 34 53 34Z",
@@ -36,7 +38,8 @@ function renderImmediateVisualModel(root, trial, which = "avant") {
     }
   } else {
     board.classList.add("mi-object-board");
-    board.style.setProperty("--mi-object-count", s.positions.length);
+    board.style.setProperty("--mi-object-count", s.positions.length > 4 ? 3 : s.positions.length);
+    if (s.positions.length > 4) board.style.height = board.style.minHeight = "12rem";
     const placements = which === "modele" ? s.modele : which;
     for (const [index, position] of s.positions.entries()) {
       const cell = creerElement("div", { classe: "mi-object-slot", attributs: { "aria-label": `Emplacement ${index + 1}` } });
@@ -77,7 +80,7 @@ function renderImmediateVisual({ root, trial, wait, emit, onAnswer }) {
     controls.append(button("Identique", () => { emit("decision", { decision: "identique" }); submit({ decision: "identique", localisation: [], localisation_absente: false }); }),
       button("Différent", () => {
         emit("decision", { decision: "different" });
-        controls.replaceChildren(creerElement("p", { texte: trial.parametres.condition === "association" ? "Sélectionnez les deux éléments concernés." : "Sélectionnez l’élément concerné." }));
+        controls.replaceChildren(creerElement("p", { texte: trial.parametres.condition === "association" ? "Sélectionne les deux éléments concernés." : "Sélectionne l’élément concerné." }));
         board.replaceChildren();
         const count = trial.parametres.condition === "association" ? 2 : 1;
         const confirmation = creerElement("div", { classe: "mi-controls" });
@@ -113,7 +116,8 @@ function renderImmediateVisual({ root, trial, wait, emit, onAnswer }) {
     function draw() {
       workspace.replaceChildren(); controls.replaceChildren();
       const board = creerElement("div", { classe: "mi-visual-board mi-object-board" });
-      board.style.setProperty("--mi-object-count", s.positions.length);
+      board.style.setProperty("--mi-object-count", s.positions.length > 4 ? 3 : s.positions.length);
+    if (s.positions.length > 4) board.style.height = board.style.minHeight = "12rem";
       for (const [index, position] of s.positions.entries()) {
         const occupant = Object.keys(placements).find(id => placements[id] === position.id);
         const label = `Emplacement ${index + 1}${occupant ? ` : ${s.objets.find(o => o.id === occupant)?.nom || occupant}` : " : vide"}`;
@@ -134,7 +138,7 @@ function renderImmediateVisual({ root, trial, wait, emit, onAnswer }) {
         if (cell.disabled) { cell.classList.add("is-placed"); cell.setAttribute("aria-label", `${object?.nom || id}, déjà placé`); }
         cell.setAttribute("aria-pressed", String(selected === id)); cell.append(immediateVisualGlyph(id)); reserve.append(cell);
       }
-      workspace.append(board, creerElement("p", { texte: selected ? "Choisissez un emplacement." : "Choisissez un objet, puis son emplacement." }), reserve, creerElement("p", { classe: "indice", texte: "Si tu hésites, suis ton intuition. Tu peux aussi laisser une case vide." }));
+      workspace.append(board, creerElement("p", { texte: selected ? "Choisis un emplacement." : "Choisis un objet, puis son emplacement." }), reserve, creerElement("p", { classe: "indice", texte: "Si tu hésites, suis ton intuition. Tu peux aussi laisser une case vide." }));
       const clear = button("Vider les cases", () => { Object.keys(placements).forEach(id => delete placements[id]); selected = null; draw(); });
       clear.disabled = !Object.keys(placements).length;
       controls.append(clear, button("Valider les placements", () => {

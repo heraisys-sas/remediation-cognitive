@@ -12,7 +12,7 @@ def test_deux_passes_de_la_serie_contextes(client, erreur_decouverte):
     assert demarrage.status_code == 201
     seance = demarrage.json()
     items = seance['items']
-    assert items and all(i['type'] == 'rappel-source' for i in items)
+    assert len(items) == 10 and all(i['type'] == 'rappel-source' for i in items)
     from backend.app.domain.contenu import ChargeurContenu
     attendues = {i["id"]: i["reponse"]["valeur"] for i in ChargeurContenu().items("evocation", "memoire-source")}
     route = f"/api/entrainement/evocation/sessions/{seance['session_id']}"

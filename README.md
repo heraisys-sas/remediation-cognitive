@@ -12,11 +12,15 @@ Le public visé peut avoir un niveau intellectuel antérieur élevé : progressi
 - **Méthodes pour retenir et s’organiser** : PQRST guidé, rappel, choix et vérification de plans, auto-instructions et recherche d’informations.
 - **Tâches fonctionnelles** : actualiser une consigne, comparer deux documents, repérer l’essentiel, travailler des situations du quotidien et reprendre après interruption.
 - **Exercices ciblés** : mémoire de travail et associations, séries de mots lues ou entendues dans des parcours séparés.
+- **N-back** : comparaison successive de formes à une, deux ou trois places de distance, à rythme libre, dans Exercices ciblés.
+- **Application des stratégies** : préparer un plan, utiliser un rappel, prendre un message et organiser son temps dans des simulations avec actions observables.
 - **Activités complémentaires** : anglais et Python en Extra ; missions hors écran, journal et programme proposé de huit semaines.
 
 Le moteur gère les paliers, la maîtrise, la répétition espacée FSRS et les séances. Les départs automatiques et la longueur des séances dépendent du parcours. Les aides et propositions d’arrêt accompagnent l’exercice ; les dérogations prévues sont explicites. Les comptes de séance ne sont pas des scores cliniques normés.
 
-Une branche de développement ajoute la carte **Mémoires immédiates** : code, chemin, changement forme/couleur/association et objets à replacer ; pratique guidée, résultats descriptifs et données séparées. Voir [ADR-045](docs/30-technique/adr/ADR-045-memoires-immediates.md).
+La carte **Mémoires immédiates** regroupe code, chemin, changement forme/couleur/association et objets à replacer ; pratique guidée, résultats descriptifs et données séparées. La progression est conservée par parcours et condition. Voir [ADR-045](docs/30-technique/adr/ADR-045-memoires-immediates.md) et [les paliers](docs/20-specs/paliers-memoires-immediates.md).
+
+Les banques ont été enrichies pour une répartition de 65 séances sur treize semaines, à cinq séances par semaine au total, hors anglais/Python. Cela ne prolonge pas le programme logiciel de huit semaines. Voir [l’inventaire](docs/20-specs/couverture-trois-mois-inventaire.md).
 
 Les prototypes d’attention différée, de reproduction de figures et de tâches de couleurs sont **spécifiés, pas encore implémentés**. Le bilan standardisé et l’IRT ne font pas partie du développement autorisé actuel. L’export PDF/JSON reste différé. Le module de graphe vide a été retiré ; une visualisation documentaire reliant exercices, compétences et publications citées pourra être envisagée ultérieurement, éventuellement lors d’une release. Voir la [feuille de route](docs/00-produit/feuille-de-route.md).
 

@@ -2,10 +2,10 @@
 
 const IMMEDIATE_NAMES = { code: "Retenir un code", chemin: "Refaire le chemin", changement: "Qu’est-ce qui a changé ?", objets: "Quel objet était où ?" };
 const IMMEDIATE_INSTRUCTIONS = {
-  code: "Retenez ce code. Quand il aura disparu, entrez les chiffres dans le même ordre.",
-  chemin: "Regardez les cases indiquées. Reprenez le même chemin, dans le même ordre.",
-  changement: "Retenez les formes ; dites si une forme a changé.",
-  objets: "Retenez où se trouve chaque objet. Ensuite, replacez les objets dans les emplacements vides.",
+  code: "Retiens ce code. Quand il aura disparu, écris les chiffres dans le même ordre.",
+  chemin: "Regarde les cases indiquées. Refais le même chemin, dans le même ordre.",
+  changement: "Retiens les formes, puis indique si une forme a changé.",
+  objets: "Retiens où se trouve chaque objet. Ensuite, replace les objets dans les cases vides.",
 };
 let immediateBlock = null;
 
@@ -56,7 +56,7 @@ function carteMemoiresImmediates() {
     const kind = select.value;
     if (kind === "code") field("modalite", "Présentation du code", [["visuelle", "Chiffres vus"], ["auditive", "Chiffres entendus — voix locale"]], variants);
     if (kind === "changement") field("condition", "Détail à retenir", [["forme", "Formes"], ["couleur", "Couleurs"], ["association", "Associations forme–couleur"]], variants);
-    const max = kind === "objets" ? 4 : kind === "changement" ? 5 : 6;
+    const max = kind === "objets" ? 6 : kind === "changement" ? 5 : kind === "code" ? 12 : 9;
     field("longueur", kind === "code" ? "Nombre de chiffres" : kind === "chemin" ? "Longueur du chemin" : "Nombre d’éléments", Array.from({ length: max - 1 }, (_, i) => [i + 2, String(i + 2)]), overrides);
     if (["code", "chemin"].includes(kind)) {
       field("signal_ms", "Durée de chaque présentation", [[1000, "1 s"], [1500, "1,5 s"], [2000, "2 s"], [3000, "3 s"]], overrides);
@@ -82,7 +82,10 @@ async function demarrerMemoiresImmediates(kind) {
   try {
     // Attendre les voix natives avant la consigne : éviter un repli navigateur au démarrage.
     await CAPACITES.chargerVoixLocales?.();
-    const data = await immediateApi("/sessions", { parcours: kind, parametres: immediateParameters(kind), sans_limite_sessions: sansLimiteActivee() });
+    const settings = immediateParameters(kind);
+    const progression = !(modeDerogatoireActif() && ["longueur", "signal_ms", "intervalle_ms", "exposition_ms", "masque_ms"].some(key => preferenceLocale(`orthogone.mi.${kind}.${key}`, "") !== ""));
+    const parametres = progression ? { modalite: settings.modalite, condition: settings.condition } : settings;
+    const data = await immediateApi("/sessions", { parcours: kind, parametres, progression, sans_limite_sessions: sansLimiteActivee() });
     annulerMemo();
     immediateBlock = { ...data, trial: data.essai, next: null, renderer: null, controller: null,
       phase: "pret", facts: {}, times: {}, pending: false, assistee: false, example: false, correction: null };
@@ -90,7 +93,7 @@ async function demarrerMemoiresImmediates(kind) {
     afficherVue("immediates");
     immediateReady();
   } catch (error) {
-    afficherBandeau(error.status === 429 ? "Trois blocs déjà commencés aujourd’hui. Tu peux reprendre un autre jour." : "Impossible de commencer pour le moment.",
+    afficherBandeau(error.status === 429 ? "Trois séances déjà commencées aujourd’hui. Tu peux reprendre un autre jour." : "Impossible de commencer pour le moment.",
       error.status === 429 ? {} : { reessayer: () => demarrerMemoiresImmediates(kind) });
   } finally { etat.actionEnCours = false; }
 }
@@ -99,22 +102,22 @@ function immediateInstruction() {
   const b = immediateBlock;
   if (b.parcours === "objets") {
     const seconds = (b.parametres.exposition_ms / 1000).toLocaleString("fr-FR");
-    return `Les objets apparaissent pendant ${seconds} secondes seulement. Retenez où se trouve chaque objet. Ensuite, replacez-les dans les cases vides.`;
+    return `Les objets apparaissent pendant ${seconds} secondes seulement. Retiens où se trouve chaque objet. Ensuite, replace-les dans les cases vides.`;
   }
   if (b.parcours === "chemin") {
     const seconds = (b.parametres.signal_ms / 1000).toLocaleString("fr-FR");
-    return `Chaque case s’allume pendant ${seconds} seconde${b.parametres.signal_ms > 1000 ? "s" : ""}. Retenez le chemin, puis sélectionnez les cases dans le même ordre.`;
+    return `Chaque case s’allume pendant ${seconds} seconde${b.parametres.signal_ms > 1000 ? "s" : ""}. Retiens le chemin, puis sélectionne les cases dans le même ordre.`;
   }
   if (b.parcours === "code") {
     const seconds = (b.parametres.signal_ms / 1000).toLocaleString("fr-FR");
     return b.parametres.modalite === "auditive"
-      ? "Écoute les chiffres, puis écris le code dans le même ordre. Chaque chiffre est lu une fois."
-      : `Chaque chiffre apparaît pendant ${seconds} secondes seulement. Retiens le code, puis écris-le dans le même ordre.`;
+      ? `Écoute les chiffres, puis écris le code dans le même ordre. Chaque chiffre est lu une fois.${b.parametres.repetitions ? " Un chiffre peut revenir dans le code." : ""}`
+      : `Chaque chiffre apparaît pendant ${seconds} secondes seulement. Retiens le code, puis écris-le dans le même ordre.${b.parametres.repetitions ? " Un chiffre peut revenir dans le code." : ""}`;
   }
   if (b.parcours !== "changement") return IMMEDIATE_INSTRUCTIONS[b.parcours];
   const duration = `La première image apparaît pendant ${(b.parametres.exposition_ms / 1000).toLocaleString("fr-FR")} secondes seulement. `;
-  return duration + (b.parametres.condition === "couleur" ? "Retenez les couleurs ; dites si une couleur a changé."
-    : b.parametres.condition === "association" ? "Retenez quelle couleur porte chaque forme ; dites si les associations ont changé. Si elles ont changé, retrouvez les deux formes concernées." : IMMEDIATE_INSTRUCTIONS.changement);
+  return duration + (b.parametres.condition === "couleur" ? "Retiens les couleurs, puis indique si une couleur a changé."
+    : b.parametres.condition === "association" ? "Retiens la couleur de chaque forme, puis indique si les associations ont changé. Si elles ont changé, retrouve les deux formes concernées." : IMMEDIATE_INSTRUCTIONS.changement);
 }
 
 function immediateStop() {
@@ -130,7 +133,7 @@ function immediateReady(note = "") {
   immediateStop();
   b.phase = "pret";
   b.facts = {}; b.times = {};
-  $("mi-progression").textContent = b.example ? "Exemple — hors du bloc" : `${b.assistee ? "Avec aide · " : ""}Exercice ${b.trial.index} sur 4`;
+  $("mi-progression").textContent = b.example ? "Exemple — hors séance" : `${b.assistee ? "Avec aide · " : ""}Exercice ${b.trial.index} sur 4${b.progression ? ` · Palier ${b.progression.palier} sur ${b.progression.total}` : ""}`;
   const root = $("mi-contenu");
   root.replaceChildren(creerElement("p", { texte: note || immediateInstruction() }));
   if (b.parcours === "chemin") {
@@ -205,7 +208,7 @@ function immediateExample() {
     : b.parcours === "chemin" ? { positions, trajet: ["0", "2", "4"] }
     : b.parcours === "changement" ? { avant, apres, palette: { bleu: "#668fc0", ocre: "#c39b54", rose: "#b87892", vert: "#6ca48e" } }
     : { positions: [{ id: "0", x: .2, y: .5 }, { id: "1", x: .5, y: .5 }, { id: "2", x: .8, y: .5 }], objets: [{ id: "cle", nom: "clé" }, { id: "tasse", nom: "tasse" }, { id: "livre", nom: "livre" }], modele: { cle: "1", tasse: "0", livre: "2" }, reserve: ["livre", "cle", "tasse"] } };
-  immediateReady("Exemple : aucune réponse de cet exemple n’est enregistrée. Tu peux essayer les commandes avant le bloc.");
+  immediateReady("Exemple : aucune réponse de cet exemple n’est enregistrée. Tu peux essayer les commandes avant la séance.");
 }
 
 function immediateEmit(type, detail = {}) {
@@ -257,7 +260,7 @@ async function immediatePresent() {
     onAnswer: immediateAnswer, onIncident: reason => immediatePause(reason) });
   const commands = $("mi-commandes");
   commands.replaceChildren();
-  if (!["objets", "chemin", "changement", "code"].includes(b.parcours)) commands.append(immediateButton("Faire une pause", () => immediatePause("pause")));
+  if (!["objets", "chemin", "changement", "code"].includes(b.parcours)) commands.append(immediateButton("Mettre en pause", () => immediatePause("pause")));
   commands.append(immediateButton("Terminer la séance", immediateFinish));
   try { await b.renderer.present(); }
   catch (error) { if (error.name !== "AbortError") await immediatePause("presentation_interrompue"); }
@@ -324,7 +327,7 @@ function immediateFeedback() {
   const b = immediateBlock, c = b.correction, root = $("mi-contenu");
   root.replaceChildren(creerElement("p", { texte: c.absence_declaree ? "Absence de réponse déclarée." : c.exacte ? "Réponse exacte." : "Compare ta réponse au modèle." }));
   if (b.parcours === "code" && b.response !== null && b.response !== undefined) root.append(creerElement("p", { texte: `Ta réponse : ${b.response}` }));
-  if (["code", "chemin"].includes(b.parcours) && !c.absence_declaree) root.append(creerElement("p", { texte: `${c.positions_exactes} positions exactes sur ${c.longueur} ; ${c.elements_retrouves} éléments retrouvés, indépendamment de l’ordre.` }));
+  if (["code", "chemin"].includes(b.parcours) && !c.absence_declaree) root.append(creerElement("p", { texte: `${c.positions_exactes} position${c.positions_exactes > 1 ? "s" : ""} exacte${c.positions_exactes > 1 ? "s" : ""} sur ${c.longueur} ; ${c.elements_retrouves} élément${c.elements_retrouves > 1 ? "s" : ""} retrouvé${c.elements_retrouves > 1 ? "s" : ""}, indépendamment de l’ordre.` }));
   if (b.parcours === "objets" && !c.absence_declaree) root.append(creerElement("p", { texte: `${c.associations_exactes} association${c.associations_exactes > 1 ? "s" : ""} exacte${c.associations_exactes > 1 ? "s" : ""} sur ${c.nombre} ; ${c.associations_erronees} placement${c.associations_erronees > 1 ? "s" : ""} différent${c.associations_erronees > 1 ? "s" : ""} ; ${c.non_places} objet${c.non_places > 1 ? "s" : ""} non placé${c.non_places > 1 ? "s" : ""}.${c.permutation ? " Des objets ont été échangés." : ""}` }));
   if (b.parcours === "changement" && !c.absence_declaree) {
     const types = { detection: "Changement détecté", changement_manque: "Changement non détecté", fausse_alerte: "Différence déclarée sur des compositions identiques", rejet_correct: "Compositions identiques reconnues" };
@@ -341,14 +344,14 @@ function immediateFeedback() {
     }
   }
   immediateShowModel(root, b.trial, b.response);
-  if (b.assistee) root.append(creerElement("p", { texte: "Essai après réexposition et correction. La première réponse est conservée." }));
+  if (b.assistee) root.append(creerElement("p", { texte: "Exercice après une nouvelle présentation et la correction. La première réponse est conservée." }));
   const commands = $("mi-commandes");
   commands.replaceChildren(immediateButton(b.next ? "Suivant" : "Voir le résumé", () => {
     if (!b.next) { immediateFinish(); return; }
     b.trial = b.next; b.assistee = false;
     if (["chemin", "objets", "changement", "code"].includes(b.parcours)) immediateCountdown(); else immediateReady();
   }, true));
-  if (!b.assistee) commands.append(immediateButton("Revoir et essayer avec aide", () => immediateRequest("aide", { essai_id: b.trial.id }, data => { b.trial = data.essai; b.assistee = true; immediateReady("Cet essai suit la correction et une nouvelle présentation. Il reste séparé de la première réponse."); })));
+  if (!b.assistee) commands.append(immediateButton("Revoir et essayer avec aide", () => immediateRequest("aide", { essai_id: b.trial.id }, data => { b.trial = data.essai; b.assistee = true; immediateReady("Cet exercice suit la correction et une nouvelle présentation. Il reste séparé de la première réponse."); })));
   commands.append(immediateButton("Terminer la séance", immediateFinish));
   commands.querySelector("button")?.focus();
   if (b.parcours === "code" && b.next) immediateCorrectionCountdown();
@@ -374,7 +377,11 @@ function immediateCorrectionCountdown() {
     note.textContent = `Le prochain code commence dans ${remaining} seconde${remaining > 1 ? "s" : ""}.`;
     b.countdownTimer = setTimeout(() => {
       if (immediateBlock !== b || b.phase !== "attente_correction") return;
-      if (--remaining === 0) { b.trial = b.next; b.assistee = false; b.phase = "pret"; immediatePresent(); }
+      if (--remaining === 0) {
+        b.trial = b.next; b.assistee = false; b.phase = "pret";
+        $("mi-progression").textContent = `Exercice ${b.trial.index} sur 4${b.progression ? ` · Palier ${b.progression.palier} sur ${b.progression.total}` : ""}`;
+        immediatePresent();
+      }
       else tick();
     }, 1000);
   };
@@ -384,7 +391,7 @@ function immediateCorrectionCountdown() {
 function immediateCountdown() {
   const b = immediateBlock;
   immediateStop(); b.phase = "attente"; b.facts = {}; b.times = {};
-  $("mi-progression").textContent = `Exercice ${b.trial.index} sur 4`;
+  $("mi-progression").textContent = `Exercice ${b.trial.index} sur 4${b.progression ? ` · Palier ${b.progression.palier} sur ${b.progression.total}` : ""}`;
   const note = creerElement("p");
   $("mi-contenu").replaceChildren(note);
   $("mi-commandes").replaceChildren(immediateButton("Mettre en pause", () => immediatePause("pause")), immediateButton("Terminer la séance", immediateFinish));
@@ -416,7 +423,7 @@ async function immediatePause(reason) {
   await immediateRequest("interruption", { essai_id: b.trial.id, phase, observations: facts, assistee: b.assistee }, data => {
     b.assistee = false;
     if (!data.essai) { b.phase = "pret"; immediateFinish(); return; }
-    b.trial = data.essai; immediateReady("Essai interrompu, sans résultat. Quand tu seras prêt, un nouveau stimulus sera présenté.");
+    b.trial = data.essai; immediateReady("Exercice interrompu, sans résultat. Quand tu seras prêt, un nouvel exercice sera présenté.");
     if (reason === "audio_indisponible") $("mi-commandes").append(immediateButton("Choisir les chiffres vus", async () => { await immediateFinish(); garderPreference("orthogone.mi.code.modalite", "visuelle"); demarrerMemoiresImmediates("code"); }));
   });
 }
@@ -428,25 +435,25 @@ async function immediateFinish() {
   immediateStop(); b.phase = "fin";
   await immediateRequest("fin", undefined, data => {
     const rows = data.observations.filter(row => row.premiere), root = $("mi-contenu");
-    root.replaceChildren(creerElement("h3", { texte: "Bloc terminé" }), creerElement("p", { texte: "Tu peux faire une pause maintenant." }));
-    const details = creerElement("details", { classe: "details-resultats" }, creerElement("summary", { texte: "Voir les détails du bloc" }));
+    root.replaceChildren(creerElement("h3", { texte: "Séance terminée" }), creerElement("p", { texte: "Tu peux faire une pause maintenant." }));
+    const details = creerElement("details", { classe: "details-resultats" }, creerElement("summary", { texte: "Voir les détails de la séance" }));
     root.append(details);
-    details.append(creerElement("p", { texte: `${rows.length} réponse${rows.length > 1 ? "s" : ""} validée${rows.length > 1 ? "s" : ""} ; ${data.observations.filter(row => row.interruption).length} essais initiaux interrompus, sans score ; ${data.observations.filter(row => row.aide?.interruption).length} essais aidés interrompus.` }));
+    details.append(creerElement("p", { texte: `${rows.length} réponse${rows.length > 1 ? "s" : ""} validée${rows.length > 1 ? "s" : ""} ; ${data.observations.filter(row => row.interruption).length} exercices initiaux interrompus, sans score ; ${data.observations.filter(row => row.aide?.interruption).length} exercices aidés interrompus.` }));
     rows.forEach(row => {
       const c = row.premiere.correction;
-      if (["code", "chemin"].includes(b.parcours) && !c.absence_declaree) details.append(creerElement("p", { texte: `${c.positions_exactes} positions exactes sur ${c.longueur} ; ${c.elements_retrouves} éléments retrouvés sans tenir compte de l’ordre.` }));
+      if (["code", "chemin"].includes(b.parcours) && !c.absence_declaree) details.append(creerElement("p", { texte: `${c.positions_exactes} position${c.positions_exactes > 1 ? "s" : ""} exacte${c.positions_exactes > 1 ? "s" : ""} sur ${c.longueur} ; ${c.elements_retrouves} élément${c.elements_retrouves > 1 ? "s" : ""} retrouvé${c.elements_retrouves > 1 ? "s" : ""} sans tenir compte de l’ordre.` }));
       if (b.parcours === "objets" && !c.absence_declaree) details.append(creerElement("p", { texte: `${c.associations_exactes} association${c.associations_exactes > 1 ? "s" : ""} exacte${c.associations_exactes > 1 ? "s" : ""} sur ${c.nombre} ; ${c.associations_erronees} placement${c.associations_erronees > 1 ? "s" : ""} différent${c.associations_erronees > 1 ? "s" : ""} ; ${c.non_places} objet${c.non_places > 1 ? "s" : ""} non placé${c.non_places > 1 ? "s" : ""}.` }));
-      details.append(creerElement("p", { texte: `Exercice ${row.index} : ${c.absence_declaree ? "absence déclarée" : c.exacte ? "réponse exacte" : "réponse différente"}${row.aide?.reponse_validee ? " · essai aidé conservé séparément" : ""}.` }));
+      details.append(creerElement("p", { texte: `Exercice ${row.index} : ${c.absence_declaree ? "absence déclarée" : c.exacte ? "réponse exacte" : "réponse différente"}${row.aide?.reponse_validee ? " · exercice avec aide conservé séparément" : ""}.` }));
     });
     if (b.parcours === "changement") {
       const count = type => rows.filter(row => row.premiere.correction.type === type).length;
       const different = count("detection") + count("changement_manque"), identical = count("rejet_correct") + count("fausse_alerte");
       const localized = rows.filter(row => row.premiere.correction.type === "detection" && row.premiere.correction.localisation_exacte !== null);
-      details.append(creerElement("p", { texte: `${count("detection")} changements détectés sur ${different} essais différents ; ${count("changement_manque")} changements non détectés.` }),
-        creerElement("p", { texte: `${count("rejet_correct")} identiques reconnus sur ${identical} essais identiques ; ${count("fausse_alerte")} fausses alertes.` }),
+      details.append(creerElement("p", { texte: `${count("detection")} changements détectés sur ${different} exercices avec changement ; ${count("changement_manque")} changements non détectés.` }),
+        creerElement("p", { texte: `${count("rejet_correct")} identiques reconnus sur ${identical} exercices sans changement ; ${count("fausse_alerte")} fausses alertes.` }),
         creerElement("p", { texte: `${localized.filter(row => row.premiere.correction.localisation_exacte).length} localisations exactes sur ${localized.length} changements détectés et localisés.` }));
     }
-    details.append(creerElement("p", { classe: "ligne-discrete", texte: "Les résultats décrivent ce bloc et ses conditions. Ils ne constituent pas un bilan." }));
+    details.append(creerElement("p", { classe: "ligne-discrete", texte: "Les résultats décrivent cette séance et ses conditions. Ils ne constituent pas un bilan." }));
     $("mi-commandes").replaceChildren(immediateButton("Retour à l’accueil", () => { immediateBlock = null; revenirAuxThemes(); }, true));
     $("mi-progression").textContent = "À ton rythme";
     $("mi-commandes").querySelector("button")?.focus();

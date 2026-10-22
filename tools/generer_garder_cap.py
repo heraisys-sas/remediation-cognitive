@@ -4,6 +4,8 @@ try:
     from tools.generation import ecrire_json, arguments_generation
 except ModuleNotFoundError:
     from generation import ecrire_json, arguments_generation
+import copy
+import json
 import random
 from pathlib import Path
 
@@ -169,6 +171,8 @@ SERIES = [('Reprendre après une interruption',
 
 
 def construire():
+    source = ROOT / "tools/content_sources/garder_cap_2026-10-10.json"
+    supplements = json.loads(source.read_text(encoding="utf-8"))
     paliers=[]
     for n, (titre,methode,cas) in enumerate(SERIES,1):
         items=[]
@@ -205,6 +209,13 @@ def construire():
                 'contenu':{'enonce':situation,'options':options,'methode':methode,
                     'consigne':'Lis la situation à ton rythme. Choisis l’action qui respecte le but et toutes les contraintes ; les informations restent visibles.'},
                 'reponse':{'valeur':bonne},'meta':{'auteur':'redaction-assistee (tools/generer_garder_cap.py)','date_creation':'2026-09-30','relecture_ortho':{'statut':'a_revoir'}}})
+        for i, situation in enumerate(supplements.get(str(n), []), start=len(items) + 1):
+            item = copy.deepcopy(items[0])
+            item["id"] = f"cap-1-{n}-{i:02}"
+            item["contenu"].update(enonce=situation["enonce"], options=situation["options"])
+            item["reponse"]["valeur"] = situation["bonne"]
+            item["meta"] = situation["meta"]
+            items.append(item)
         paliers.append(items)
     return paliers
 

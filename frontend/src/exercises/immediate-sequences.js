@@ -155,7 +155,7 @@ function renderImmediateSequence({ root, trial, wait, now, emit, onAnswer, onInc
         const ranks = response.flatMap((value, rank) => value === id ? [rank + 1] : []);
         cell.textContent = ranks.join(" · ");
         cell.setAttribute("aria-label", positionLabel(trial.stimulus.positions[index]) +
-          (ranks.length ? ` ; votre choix ${ranks.join(", ")}` : ""));
+          (ranks.length ? ` ; ton choix ${ranks.join(", ")}` : ""));
       });
       links.replaceChildren();
       for (let i = 1; i < response.length; i++) {
@@ -228,13 +228,13 @@ function renderImmediateSequence({ root, trial, wait, now, emit, onAnswer, onInc
         || (typeof speechSynthesis !== "undefined" ? speechSynthesis.getVoices().find(v => v.localService && /^fr\b/i.test(v.lang)) : null) : null;
       if (auditory && !voice) {
         onIncident("audio_indisponible");
-        root.replaceChildren(el("p", "La voix française locale est indisponible. Choisissez un autre essai en mode visuel."));
+        root.replaceChildren(el("p", "La voix française locale est indisponible. Choisis un autre exercice en mode visuel."));
         return;
       }
       if (voice) emit("voix", { voix: voice.voiceURI });
       phase("exposition");
       const cells = path ? board() : null;
-      const display = !path ? el("div", auditory ? "Écoutez le code." : "", "immediate-code") : null;
+      const display = !path ? el("div", auditory ? "Écoute le code." : "", "immediate-code") : null;
       if (display) root.append(display);
       const sequence = path ? trial.stimulus.trajet : trial.stimulus.chiffres;
       for (let i = 0; i < sequence.length; i++) {

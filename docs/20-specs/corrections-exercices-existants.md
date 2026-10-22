@@ -162,3 +162,7 @@ Temps de réponse non nécessaire à ces corrections sauf durée d’interruptio
 Anglais et Python restent en **Extra**, présentés comme connaissances linguistiques et programmation. Missions et carnet restent outils de préparation et retour d’expérience ; aucun score de transfert, fréquence ou observance ajouté. Les comparaisons d’historiques dont les modalités/aides ne sont pas connues restent descriptives et signalées.
 
 Livraison proposée : EX-REV-001 à 003 et contrat éditorial en premier ; actions des stratégies EX-REV-005 à 008 ensuite, indépendamment des affinements EX-REV-004/009. Aucun calendrier ni développement réalisé par ce document. La recette de chaque future implémentation vérifie ses exemples et les exigences du cadre ; cette livraison documentaire ne modifie ni correcteur, ni contenu, ni données personnelles.
+
+## Livraison locale EX-REV-005 à 008 — 10 octobre 2026
+
+Les actions simulées des quatre fiches sont implémentées sous le protocole stratégies V2, avec trois variantes par parcours. Les QCM et leurs historiques sont conservés. La [spécification de la version servie](strategies-appliquees.md) précise les transitions, résultats observables, aides, correction conservatrice et limites. Validation locale dans le [plan](plan-developpement-cognitif.md#lot-4--livraison-locale-v2) ; aucune intégration dev/main de ce lot, aucun nouveau candidat sélectionné.

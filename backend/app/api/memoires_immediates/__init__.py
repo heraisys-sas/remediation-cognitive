@@ -10,6 +10,7 @@ from uuid import UUID, uuid4
 from fastapi import APIRouter, HTTPException, Request
 from pydantic import BaseModel, ConfigDict, Field, StrictBool
 
+from .progression import PALIERS, condition, etat
 from .protocoles import VERSION, correction, observations, parameters, stimulus
 
 router = APIRouter(prefix="/api/memoires-immediates", tags=["mémoires immédiates"])
@@ -20,6 +21,7 @@ class Creation(BaseModel):
     parcours: str
     parametres: dict = Field(default_factory=dict)
     sans_limite_sessions: StrictBool = False
+    progression: StrictBool = False
 
 
 class Reponse(BaseModel):
@@ -80,14 +82,14 @@ class Blocs:
 
     def trial(self, session, index, linked=None):
         identifier = str(uuid4())
-        trial = {"id": identifier, "index": index, "stimulus": stimulus(session["parcours"], session["parametres"], identifier, session["changements"][index - 1]), "cree": now(), "premiere": None, "aide": None, "interruption": None}
+        trial = {"id": identifier, "version": VERSION, "index": index, "stimulus": stimulus(session["parcours"], session["parametres"], identifier, session["changements"][index - 1]), "cree": now(), "premiere": None, "aide": None, "interruption": None}
         if linked:
             trial["remplace"] = linked
         session["essais"].append(trial)
         return trial
 
     def public(self, trial):
-        return {key: trial[key] for key in ("id", "index", "stimulus")}
+        return {key: trial[key] for key in ("id", "index", "stimulus")} | {"version": trial.get("version", "memoires-immediates-v1")}
 
     def active(self, session, identifier, allow_answered=False):
         if session["terminee"]:
@@ -100,8 +102,8 @@ class Blocs:
         return trial
 
     def results(self, session):
-        rows = [{"essai_id": e["id"], "index": e["index"], "premiere": e["premiere"], "aide": e["aide"], "interruption": e["interruption"], "remplace": e.get("remplace")} for e in session["essais"]]
-        return {"session_id": session["session_id"], "parcours": session["parcours"], "version": VERSION, "parametres": session["parametres"], "terminee": session["terminee"], "observations": rows}
+        rows = [{"essai_id": e["id"], "version": e.get("version", session["version"]), "index": e["index"], "premiere": e["premiere"], "aide": e["aide"], "interruption": e["interruption"], "remplace": e.get("remplace")} for e in session["essais"]]
+        return {"session_id": session["session_id"], "parcours": session["parcours"], "version": session["version"], "parametres": session["parametres"], "terminee": session["terminee"], "observations": rows}
 
 
 def store(request):
@@ -115,9 +117,19 @@ def create(body: Creation, request: Request):
     except ValueError as error:
         raise HTTPException(422, str(error)) from None
     storage = store(request)
+    progression = None
+    if body.progression:
+        if set(body.parametres) - {'modalite', 'condition'}:
+            raise HTTPException(422, 'Réglages libres incompatibles avec les paliers')
+        with storage.lock:
+            sessions = [json.loads(p.read_text()) for p in storage.root.glob('*.json')]
+            progression = etat(sessions, body.parcours, condition(body.parcours, params))
+        params.update(PALIERS[body.parcours][progression['palier'] - 1])
+        if body.parcours == 'chemin':
+            params['plateau_etendu'] = True
     changed = [True, True, False, False]
     random.SystemRandom().shuffle(changed)
-    session = {"session_id": str(uuid4()), "parcours": body.parcours, "version": VERSION, "parametres": params, "changements": changed, "cree": now(), "terminee": False, "essais": []}
+    session = {"session_id": str(uuid4()), "parcours": body.parcours, "version": VERSION, "parametres": params, "progression": progression, "changements": changed, "cree": now(), "terminee": False, "essais": []}
     trial = storage.trial(session, 1)
     with storage.lock:
         today = now()[:10]
@@ -126,7 +138,7 @@ def create(body: Creation, request: Request):
             raise HTTPException(429, "Trois blocs ont déjà été ouverts aujourd’hui")
         session["sans_limite_sessions"] = body.sans_limite_sessions
         storage.save(session)
-    return {"session_id": session["session_id"], "parcours": body.parcours, "version": VERSION, "parametres": params, "essai": storage.public(trial)}
+    return {"session_id": session["session_id"], "parcours": body.parcours, "version": VERSION, "parametres": params, "progression": progression, "essai": storage.public(trial)}
 
 
 @router.post("/sessions/{identifier}/reponses")

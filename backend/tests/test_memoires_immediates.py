@@ -117,7 +117,7 @@ def test_limits_and_unknown_ids(client):
     assert client.post('/api/memoires-immediates/sessions', json={'parcours':'code'}).status_code == 429
     assert client.post('/api/memoires-immediates/sessions', json={'parcours':'code','sans_limite_sessions':'true'}).status_code == 422
     assert client.post('/api/memoires-immediates/sessions/../../fin').status_code == 404
-    assert client.post('/api/memoires-immediates/sessions', json={'parcours':'objets','parametres':{'longueur':5}}).status_code == 422
+    assert client.post('/api/memoires-immediates/sessions', json={'parcours':'objets','parametres':{'longueur':7}}).status_code == 422
 
 
 def test_retry_and_restart_preserve_first_and_replacement(tmp_path):
@@ -187,3 +187,125 @@ def test_chemin_vide_sauvegarde_et_retry_identique(client):
     assert data['correction']['elements_retrouves'] == 0
     assert data['essai_suivant'] is not None
     assert client.post(url, json=payload).json() == data
+
+@pytest.mark.parametrize('parcours', ['code', 'chemin', 'changement', 'objets'])
+def test_progression_deux_blocs_complets_puis_palier_suivant(client, parcours):
+    def ouvrir():
+        r = client.post('/api/memoires-immediates/sessions', json={'parcours': parcours, 'progression': True, 'sans_limite_sessions': True})
+        assert r.status_code == 201
+        return r.json()
+    for _ in range(2):
+        session = ouvrir()
+        assert session['progression']['palier'] == (3 if parcours == 'code' else 2)
+        trial = session['essai']
+        for _ in range(4):
+            s = trial['stimulus']
+            if parcours == 'code':
+                response = ''.join(s['chiffres'])
+            elif parcours == 'chemin':
+                response = s['trajet']
+            elif parcours == 'objets':
+                response = s['modele']
+            else:
+                changed = [a['position'] for a, b in zip(s['avant'], s['apres']) if a != b]
+                response = {'decision': 'different' if changed else 'identique', 'localisation': changed}
+            r = client.post(f"/api/memoires-immediates/sessions/{session['session_id']}/reponses", json={'essai_id': trial['id'], 'reponse': response})
+            assert r.status_code == 200
+            trial = r.json()['essai_suivant']
+        client.post(f"/api/memoires-immediates/sessions/{session['session_id']}/fin")
+        client.post(f"/api/memoires-immediates/sessions/{session['session_id']}/fin")
+    assert ouvrir()['progression']['palier'] == (4 if parcours == 'code' else 3)
+
+
+def test_paliers_avances_stimuli_et_correction():
+    from backend.app.api.memoires_immediates.progression import PALIERS
+    for parcours, levels in PALIERS.items():
+        for level in levels:
+            params = parameters(parcours, level)
+            if parcours == 'chemin':
+                params['plateau_etendu'] = True
+            for seed in range(30):
+                s = stimulus(parcours, params, str(seed), True)
+                if parcours == 'code':
+                    assert len(s['chiffres']) == params['longueur']
+                    assert correction(parcours, s, ''.join(s['chiffres']))['exacte']
+                elif parcours == 'chemin':
+                    assert len(s['positions']) == 9
+                    assert correction(parcours, s, s['trajet'])['exacte']
+                elif parcours == 'objets':
+                    assert len(s['objets']) == params['longueur']
+                    assert correction(parcours, s, s['modele'])['exacte']
+                else:
+                    assert len(s['avant']) == params['longueur']
+                    assert sum(a != b for a, b in zip(s['avant'], s['apres'])) == 1
+
+
+def test_progression_ignore_aides_incomplets_et_separe_modalites():
+    from backend.app.api.memoires_immediates.progression import etat
+    def bloc(i, palier=3, correct=4, **extras):
+        return {'session_id': str(i), 'cree': f'2026-10-10T12:00:{i:02}', 'terminee': True, 'parcours': 'code',
+                'progression': {'version': 'paliers-mi-v1', 'palier': palier, 'condition': 'visuelle', 'revision': 0 if palier == 3 else 1},
+                'essais': [{'premiere': {'correction': {'exacte': j < correct}}} for j in range(4)], **extras}
+    a, b = bloc(1), bloc(2)
+    b['essais'][0]['aide'] = {'reponse': '1234'}
+    assert etat([a,b], 'code', 'visuelle')['palier'] == 3
+    assert etat([a,bloc(3)], 'code', 'auditive')['palier'] == 3
+    interrupted = bloc(4)
+    interrupted['essais'][0]['interruption'] = {}
+    interrupted['essais'][0]['premiere'] = None
+    assert etat([a,interrupted], 'code', 'visuelle')['palier'] == 3
+    sessions = [a,bloc(3),bloc(5,4,0),bloc(6,4,1)]
+    assert etat(sessions, 'code', 'visuelle')['palier'] == 3
+    assert etat([a,bloc(3)], 'code', 'visuelle')['palier'] == 4
+
+
+def test_progression_clotures_desordonnees_et_revision_ancienne():
+    from backend.app.api.memoires_immediates.progression import etat
+    def bloc(i, fin, palier=3, revision=0, correct=4):
+        return {'session_id': str(i), 'cree': str(i), 'fin': str(fin), 'terminee': True, 'parcours': 'code',
+                'progression': {'version': 'paliers-mi-v1', 'palier': palier, 'condition': 'visuelle', 'revision': revision},
+                'essais': [{'premiere': {'correction': {'exacte': j < correct}}} for j in range(4)]}
+    sessions = [bloc(1,1), bloc(3,2)]
+    assert etat(sessions, 'code', 'visuelle')['palier'] == 4
+    sessions.append(bloc(2,3,correct=2))
+    assert etat(sessions, 'code', 'visuelle')['palier'] == 4
+    sessions += [bloc(4,4,4,1,0), bloc(5,5,4,1,1)]
+    result = etat(sessions, 'code', 'visuelle')
+    assert (result['palier'], result['revision']) == (3,2)
+    sessions += [bloc(6,6), bloc(7,7)]
+    assert etat(sessions, 'code', 'visuelle') == result
+    sessions += [bloc(8,8,revision=2), bloc(9,9,revision=2)]
+    assert etat(sessions, 'code', 'visuelle')['palier'] == 4
+
+
+@pytest.mark.parametrize('condition', ['forme', 'couleur', 'association'])
+def test_paliers_changement_toutes_conditions(condition):
+    from backend.app.api.memoires_immediates.progression import PALIERS
+    for level in PALIERS['changement']:
+        params = parameters('changement', {**level, 'condition': condition})
+        for seed in range(30):
+            for changed in (False, True):
+                sample = stimulus('changement', params, str(seed), changed)
+                positions = [a['position'] for a,b in zip(sample['avant'],sample['apres']) if a != b]
+                assert len(positions) == (2 if condition == 'association' else 1) * changed
+                response = {'decision': 'different' if changed else 'identique', 'localisation': positions}
+                result = correction('changement', sample, response)
+                assert result['exacte']
+                if changed:
+                    assert result['localisation_exacte']
+
+
+def test_ancien_bloc_garde_version_et_stimulus_apres_mise_a_jour(client):
+    session = create(client)
+    storage = client.app.state.blocs_memoires
+    stored = storage.read(session['session_id'])
+    stored['version'] = 'memoires-immediates-v1'
+    stored['essais'][0].pop('version')
+    original = stored['essais'][0]['stimulus']
+    storage.save(stored)
+    answer(client, session, ''.join(original['chiffres']))
+    result = client.post(f"/api/memoires-immediates/sessions/{session['session_id']}/fin").json()
+    assert result['version'] == 'memoires-immediates-v1'
+    assert result['observations'][0]['version'] == 'memoires-immediates-v1'
+    assert result['observations'][1]['version'] == 'memoires-immediates-v2'
+    assert storage.read(session['session_id'])['essais'][0]['stimulus'] == original

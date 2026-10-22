@@ -1,25 +1,30 @@
-"""Stimuli originaux v1 et correction descriptive, sans moteur adaptatif."""
+"""Stimuli originaux versionnés et correction descriptive de la pratique."""
 import random
 import re
 
-VERSION = "memoires-immediates-v1"
+VERSION = "memoires-immediates-v2"
 POSITIONS = [{"id": str(i), "x": x, "y": y} for i, (x, y) in enumerate(((.15, .2), (.5, .12), (.82, .3), (.22, .72), (.58, .6), (.85, .82)))]
+POSITIONS_AVANCEES = [{"id": str(i), "x": x, "y": y} for i, (x, y) in enumerate(((.15, .2), (.5, .12), (.82, .3), (.22, .72), (.58, .6), (.85, .82), (.12, .48), (.45, .88), (.82, .55)))]
 PALETTE = {"bleu": "#668fc0", "ocre": "#c39b54", "rose": "#b87892", "vert": "#6ca48e", "violet": "#9481b5", "orange": "#c48259"}
 FORMES = ["cercle", "carre", "triangle", "losange", "etoile", "croix"]
-OBJETS = [{"id": k, "nom": "clé" if k == "cle" else k} for k in ("cle", "tasse", "livre", "pomme")]
+OBJETS = [{"id": k, "nom": "clé" if k == "cle" else k} for k in ("cle", "tasse", "livre", "pomme", "maison", "poisson")]
 
 
 def parameters(parcours, provided):
-    defaults = {"longueur": 4 if parcours == "code" else 3, "modalite": "visuelle", "condition": "forme", "exposition_ms": 6000 if parcours == "objets" else 5000, "signal_ms": 2000 if parcours == "code" else 1500, "intervalle_ms": 1000 if parcours == "code" else 500, "masque_ms": 1500 if parcours == "changement" else 1000 if parcours == "objets" else 0}
+    defaults = {"longueur": 4 if parcours == "code" else 3, "modalite": "visuelle", "condition": "forme", "exposition_ms": 6000 if parcours == "objets" else 5000, "signal_ms": 2000 if parcours == "code" else 1500, "intervalle_ms": 1000 if parcours == "code" else 500, "plateau_etendu": False, "repetitions": False, "masque_ms": 1500 if parcours == "changement" else 1000 if parcours == "objets" else 0}
     if parcours not in ("code", "chemin", "changement", "objets") or not isinstance(provided, dict) or set(provided) - set(defaults):
         raise ValueError("Paramètres inconnus")
     defaults.update(provided)
-    for key, low, high in (("longueur", 2, 6 if parcours in ("code", "chemin") else 4 if parcours == "objets" else 5), ("exposition_ms", 1000, 30000), ("signal_ms", 500, 10000), ("intervalle_ms", 0, 5000), ("masque_ms", 0, 10000)):
+    if type(defaults["plateau_etendu"]) is not bool or type(defaults["repetitions"]) is not bool:
+        raise ValueError("Plateau invalide")
+    for key, low, high in (("longueur", 2, 12 if parcours == "code" else 9 if parcours == "chemin" else 6 if parcours == "objets" else 5), ("exposition_ms", 1000, 30000), ("signal_ms", 500, 10000), ("intervalle_ms", 0, 5000), ("masque_ms", 0, 10000)):
         value = defaults[key]
         if type(value) is not int or not low <= value <= high:
             raise ValueError("Paramètre hors limites")
     if defaults["modalite"] not in ("visuelle", "auditive") or (parcours != "code" and defaults["modalite"] != "visuelle") or defaults["condition"] not in ("forme", "couleur", "association"):
         raise ValueError("Condition ou modalité inconnue")
+    if parcours == "code" and defaults["longueur"] > 10:
+        defaults["repetitions"] = True
     return defaults
 
 
@@ -27,16 +32,24 @@ def stimulus(parcours, params, seed, changed):
     rng = random.Random(f"{VERSION}:{parcours}:{seed}")
     n = params["longueur"]
     if parcours == "code":
+        if params.get("repetitions"):
+            digits = []
+            for _ in range(n):
+                digits.append(rng.choice([d for d in "0123456789" if not digits or d != digits[-1]]))
+            if len(set(digits)) == len(digits) and n > 2:
+                digits[-1] = digits[0]
+            return {"chiffres": digits}
         return {"chiffres": rng.sample(list("0123456789"), n)}
     if parcours == "chemin":
-        return {"positions": POSITIONS, "trajet": rng.sample([p["id"] for p in POSITIONS], n)}
+        positions = POSITIONS_AVANCEES if params.get("plateau_etendu") or n > 6 else POSITIONS
+        return {"positions": positions, "trajet": rng.sample([p["id"] for p in positions], n)}
     if parcours == "objets":
         objects = OBJETS[:n]
         places = [str(i) for i in range(n)]
         rng.shuffle(places)
         reserve = [o["id"] for o in objects]
         rng.shuffle(reserve)
-        return {"positions": [{"id": str(i), "x": (i + .5) / n, "y": .5} for i in range(n)], "objets": objects, "modele": dict(zip([o["id"] for o in objects], places)), "reserve": reserve}
+        return {"positions": [{"id": str(i), "x": (i % 3 + .5) / 3 if n > 4 else (i + .5) / n, "y": .25 if n > 4 and i < 3 else .75 if n > 4 else .5} for i in range(n)], "objets": objects, "modele": dict(zip([o["id"] for o in objects], places)), "reserve": reserve}
     forms = rng.sample(FORMES, n)
     colors = rng.sample(list(PALETTE), n)
     before = [{"position": str(i), "forme": forms[i], "couleur": colors[i]} for i in range(n)]
@@ -82,7 +95,7 @@ def correction(parcours, sample, response):
                 raise ValueError("Code invalide")
             answer = list(re.sub(r"[\s-]", "", response))
         else:
-            if not isinstance(response, list) or len(response) > 12 or any(x not in [p["id"] for p in POSITIONS] for x in response):
+            if not isinstance(response, list) or len(response) > 12 or any(x not in [p["id"] for p in sample["positions"]] for x in response):
                 raise ValueError("Trajet invalide")
             answer = response
         if not answer and parcours == "code":
