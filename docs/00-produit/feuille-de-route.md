@@ -1,24 +1,28 @@
 # Feuille de route
 
-## État d’intégration vérifié — 21 octobre 2026
+## État d’intégration vérifié — 22 octobre 2026
 
-Les cases historiques ci-dessous décrivent leur date de validation, pas toujours
-l’état intégré. Les paliers des quatre mémoires, les stratégies appliquées V3,
-le n-back 1/2/3 et les banques enrichies sont réunis sur
-`feat/lots-cognitifs-complets`, avec le filtre d’accueil de la PR #27.
-Validation de cet ensemble : 518 tests Python réussis, 1 ignoré ; 99 tests Node,
-24 tests Playwright Chromium/WebKit (bureau et mobile jusqu’à 320 px), Ruff et
-validateurs de 1 424 items conformes. Les tests navigateur de l’accueil incluent
-les deux nouvelles cartes ; ils ne constituent pas une recette physique de tous
-les exercices ni une validation clinique.
+Intégrés dans `dev` : retrait du graphe vide (PR #26), frontière de déploiement
+sans comptes (PR #28), accueil filtré par difficultés (PR #27), paliers des quatre
+mémoires, stratégies appliquées V3, n-back 1/2/3 et banques enrichies (PR #29).
+Les contenus historiques et le checkout habituel `remediation-dev` sont conservés.
+La livraison de ces changements sur `main` reste distincte et à autoriser.
 
-La fusion dans `dev` reste distincte de la livraison sur `main`. Le retrait du
-graphe est intégré dans `dev` par PR #26. Le déploiement local fait l’objet de la
-PR #28 ; la calibration #6 reste active. Gestion des utilisateurs et transfert
-de progression ne sont pas ajoutés. Les cinq séances hebdomadaires servent au
-dimensionnement des contenus, sans nouveau plafond global imposé. Le programme
-logiciel de huit semaines reste inchangé ; treize semaines nécessitent un choix
-explicite. Autres candidats et export de synthèse restent à arbitrer.
+Le correctif de la PR #30 supprime la proximité vectorielle pour les faits des
+prises de message : variantes explicites et enveloppes neutres bornées. Il
+protège aussi négations et permutations dans le correcteur générique. Mesures
+lexicales et Apple réelles : 70 cas exploratoires, zéro fausse acceptation et
+zéro faux refus après correction. L’issue #6 reste ouverte pour un corpus
+indépendant et une relecture des décisions ; aucun seuil ni résultat clinique
+n’est prétendu calibré. Voir [la procédure](../30-technique/calibration-correction.md).
+
+Les tests navigateur automatisés de l’accueil couvrent Chromium et WebKit,
+bureau et mobile jusqu’à 320 px. Ils ne remplacent pas un essai sur téléphone
+physique ni une relecture professionnelle. Gestion des utilisateurs et transfert
+de progression ne sont pas ajoutés. Les cinq séances hebdomadaires dimensionnent
+les contenus ; elles ne deviennent pas un nouveau plafond global. Le programme
+logiciel reste à huit semaines. Autres candidats et export de synthèse restent
+à arbitrer.
 
 ## Référentiel des compétences et des exercices
 
@@ -32,7 +36,7 @@ Le [cadre commun](../20-specs/cadre-exercices-cognitifs.md) traduit le référen
 - [x] Spécifier les [quatre mémoires immédiates retenues](../20-specs/memoires-immediates.md) ; les trois pistes écartées restent exclues.
 - [x] Rédiger les [fiches candidates](../20-specs/candidats-cognitifs.md), toutes en statut **proposition à arbitrer**, y compris les usages d’observation/réserve.
 - [ ] Arbitrer sélection/destination des candidats et paramètres proposés ; une priorité documentaire ne vaut pas décision de livraison.
-- [ ] Réaliser les corrections et les mémoires retenues par lots indépendants, après fixation des paramètres ; état logiciel actuel dans chaque fiche.
+- [x] Réaliser les corrections et les mémoires retenues par lots indépendants ; intégration `dev` par PR #29, état logiciel dans chaque fiche.
 - [ ] Effectuer relecture professionnelle et essais de compréhension/confort ; cela ne constitue pas une validation clinique.
 
 ## Lot autorisé le 1er octobre 2026
@@ -77,7 +81,7 @@ Périmètre : rester hors ligne, sans modèle supplémentaire obligatoire ; pré
 ### Autres travaux ouverts
 
 - [ ] Relecture informelle des contenus avec l’orthophoniste et essais de confort ; aucune validation clinique présumée.
-- [ ] Préciser l’usage mono-utilisateur local et les conséquences d’une exposition réseau (issue #7). Aucun chantier d’authentification imposé au POC.
+- [x] Préciser l’usage mono-utilisateur local et les conséquences d’une exposition réseau (issue #7, PR #28). Avertissement de démarrage et responsabilités d’infrastructure documentés, sans comptes applicatifs.
 - [ ] Décider de l’utilité et du périmètre d’un export JSON/PDF avant son développement. L’ancienne issue #8 est close par décision du 20 octobre 2026 : elle n’engage plus la livraison d’un export ni d’un moteur de graphe. L’export reste différé, sans fonctionnalité livrée.
 - [x] Retirer le module de graphe vide et corriger les mentions le présentant comme implémenté (20 octobre 2026).
 - [ ] Piste ultérieure : générer une représentation documentaire des exercices, compétences et articles scientifiques cités, éventuellement lors d’une release. Périmètre et automatisation à décider ; voir [l’architecture](../30-technique/architecture.md#relations-entre-exercices-compétences-et-références).
@@ -108,12 +112,13 @@ Le [plan de développement cognitif](../20-specs/plan-developpement-cognitif.md)
 - [x] Intégration dans dev : commit 44acda5 poussé le 10 octobre.
 - [ ] Livraison sur main après autorisation et essai d’usage.
 
-Les paramètres restent des choix de conception. Les candidats d’attention/inhibition/flexibilité restent en attente de sélection. Les paliers des mémoires et l’application des stratégies sont désormais validés localement, sans intégration supplémentaire dans dev/main.
+Les paramètres restent des choix de conception. Les candidats d’attention/inhibition/flexibilité restent en attente de sélection. Les paliers des mémoires et l’application des stratégies sont intégrés dans `dev` par la PR #29 ; livraison `main` encore distincte.
 
 ### Paliers demandés le 10 octobre
 
 - [x] Progressions par charge puis rétention implémentées localement pour les quatre mémoires ; [détails et sources](../20-specs/paliers-memoires-immediates.md).
-- [ ] Valider le confort des paliers avancés en usage, puis intégrer ce nouveau lot dans dev.
+- [x] Intégrer les paliers dans `dev` (PR #29).
+- [ ] Valider le confort des paliers avancés en usage.
 
 ### Application des stratégies et paliers — livraison locale du 10 octobre
 
@@ -121,7 +126,8 @@ Les paramètres restent des choix de conception. Les candidats d’attention/inh
 - [x] Quatre simulations d’application : plan, rappel, message et estimation du temps ; trois situations par parcours, une carte d’accueil.
 - [x] Validation locale : 476 tests pytest réussis, 1 ignoré ; 71 tests Node réussis ; recette et limites dans le [plan](../20-specs/plan-developpement-cognitif.md#lot-4--livraison-locale-v2).
 - [ ] Relecture professionnelle et essai avec le public visé.
-- [ ] Intégration de ce nouveau lot dans dev puis livraison main après autorisation.
+- [x] Intégration de ce nouveau lot dans `dev` (PR #29).
+- [ ] Livraison sur `main` après essai et autorisation.
 
 Les [propositions d’arbitrage](../20-specs/arbitrage-prochains-lots.md) ne sélectionnent aucun candidat supplémentaire.
 
@@ -130,7 +136,8 @@ Les [propositions d’arbitrage](../20-specs/arbitrage-prochains-lots.md) ne sé
 - [x] EX-CAND-010 sélectionné explicitement et implémenté localement : 1-back visuel à rythme libre, comparaison successive, 16 formes, 15 décisions, correction après bloc.
 - [x] Exemple hors journal, absence séparée, interruptions et retries durables, interface mobile calme.
 - [x] Validation : 494 tests pytest réussis, 1 ignoré ; 93 tests Node réussis, recette complète et interruptions.
-- [ ] Intégration dev/main après autorisation ; essai d’usage et relecture professionnelle.
+- [x] Intégration du n-back dans `dev` (PR #29).
+- [ ] Livraison `main`, essai d’usage et relecture professionnelle.
 
 [Spécification de la version servie](../20-specs/nback.md). Aucun autre candidat sélectionné.
 
@@ -139,7 +146,7 @@ Les [propositions d’arbitrage](../20-specs/arbitrage-prochains-lots.md) ne sé
 - [x] Dimensionnement confirmé : 13 semaines, cinq séances par semaine au total, 65 séances réparties.
 - [x] Audit des 14 cartes hors anglais/Python : stocks par palier/parcours, répétitions FSRS, banques courtes et calendrier de huit semaines signalés.
 - [x] N-back V2 : trois distances volontaires, choix persistant, 65 séries nouvelles testées par niveau, anti-doublon durable et archives conservées.
-- [ ] Enrichir les banques courtes après choix de priorité et relecture.
+- [x] Enrichir les banques courtes après GO et relecture IA (PR #29) ; relecture professionnelle distincte encore attendue.
 - [ ] Programme logiciel de treize semaines éventuel : nouvelle version et choix explicite à définir, sans prolongation des programmes commencés.
 
 [Rapport et répartition de 65 séances](../20-specs/couverture-trois-mois-inventaire.md). Validation : 508 pytest et 99 Node réussis, 1 pytest ignoré. Aucun commit/push.

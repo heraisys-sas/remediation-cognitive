@@ -91,3 +91,22 @@ Sources éditoriales datées et générateurs synchronisés, manifests actualis�
 Validation finale : **517 tests pytest réussis, 1 ignoré ; 99 tests Node réussis**. Validateur98 fichiers/1 424 items/12 manifests, zéro erreur ; correcteurs, Ruff, interface et diff passent. Tests de régénération et intégrité des images ; rotation 12+1 et reprise/archives stratégies V1/V2. Recette8091 chargée, dix scènes maximum constatées, nouvel asset640 servi, aucune erreur console ; onglet de test fermé. Serveur PID57657/session46354, données isolées ; checkout remediation-dev intact. Aucun commit/push.
 
 Relecture orthophonique et essai auprès du public restent à réaliser ; cette revue IA ne les remplace pas. L’[inventaire final](couverture-trois-mois-inventaire.md#banques-enrichies-après-go--état-final-du-10-octobre-2026) distingue les stocks avant/après.
+
+## Intégration du 22 octobre 2026
+
+Les lots locaux décrits ci-dessus sont commités, poussés et intégrés dans `dev`
+par PR #29 (9e31a6b), après CI verte tests et interface-mobile. L’accueil filtré
+est intégré par #27, le retrait du graphe par #26 et le déploiement sans comptes
+par #28. Les mentions « aucun commit/push » des sections du 10 octobre décrivent
+leur date de rédaction et ne sont plus l’état courant. `main` n’est pas modifiée,
+le checkout remediation-dev et les données utilisateur restent préservés.
+
+La PR #30 ajoute mesures et garde-fous de correction ; voir ADR-051. Aucun
+transfert de progression, stockage Cloudflare ni gestion d’utilisateurs ajouté.
+Relecture professionnelle, essai de confort/phone réel et sélection des autres
+candidats restent ouverts. Le programme logiciel reste à huit semaines.
+
+Validation locale finale de l’ensemble avec #30 : 531 tests Python réussis,
+1 ignoré ; Ruff vert et 70 cas stricts conformes avec chacun des deux correcteurs.
+La recette automatisée navigateur reste celle de la CI de chaque PR ; aucune
+validation clinique ni recette physique nouvelle revendiquée.

@@ -36,3 +36,8 @@ restent inchangés.
 Python Apple réel). L’issue #6 garde le suivi de corpus indépendant/relecture ;
 les faux positifs reproduits sont corrigés mais la généralisation n’est pas
 prouvée.
+
+Ensemble après intégration des PR #26 à #29 : 531 pytest réussis, 1 ignoré ;
+les 70 cas stricts passent avec lexical et Apple réel. La feuille de route et le
+plan distinguent désormais l’intégration dev, la livraison main et les anciennes
+mentions de travaux locaux. Dernier lot publié par PR #30, sans clôturer #6.
