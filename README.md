@@ -76,6 +76,10 @@ Dans l’environnement Python qui lance réellement le serveur :
 
 La similarité est un recours pour des reformulations libres, après les vérifications de sens explicites. Elle ne remplace pas la correction stricte ni ne garantit la justesse d’une réponse. Les variantes, articles et petites contextualisations peuvent être reconnus par les règles déterministes même sans moteur Apple. Le seuil historique et les divergences Apple/repli restent à valider dans l’issue #6.
 
+## Personnaliser l’accueil
+
+Dans **Réglages → Ce que tu souhaites travailler**, coche les difficultés qui te concernent : concentration, mémoire, recherche de mots, organisation… Les cartes associées sont indiquées et le choix est conservé sur cet appareil. Toutes les cartes sont visibles par défaut. Ce filtre personnalise l’affichage, sans diagnostic ni modification de progression. Voir les [correspondances et leurs sources](docs/30-technique/accueil-difficultes.md).
+
 ## Données et contenu
 
 - Les items et leurs paliers sont des données versionnées dans `content/`, distinctes du code. Toute modification substantielle d’un item déjà servi respecte les [règles d’identifiants et d’historiques](docs/30-technique/contenu-versionne.md).

@@ -35,6 +35,7 @@ function immediateButton(text, callback, primary = false) {
 function carteMemoiresImmediates() {
   const card = creerElement("article", { classe: "carte-theme" }, creerElement("h3", { texte: "Mémoires immédiates" }),
     creerElement("p", { texte: "Retenir un code, un chemin, des détails visuels ou la place des objets." }));
+  card.dataset.activite = "memoires-immediates";
   const choices = creerElement("details", { classe: "choix-parcours" }, creerElement("summary", { texte: "Choisir le parcours" }));
   const select = creerElement("select", { classe: "selecteur-palier", attributs: { "aria-label": "Parcours pour Mémoires immédiates" } });
   for (const [id, name] of Object.entries(IMMEDIATE_NAMES)) select.append(creerElement("option", { texte: name, attributs: { value: id } }));
