@@ -21,6 +21,12 @@ def corriger(theme: str, item: dict, reponse) -> bool:
                              "reprise-interrompue"}:
         from ..attention_fonctionnelle import corriger_detail
         return corriger_detail(item, reponse)[0]
+    if theme == "debut-commun":
+        from ..debut_commun import est_correct
+        return est_correct(item, reponse)
+    if theme == "logigrammes":
+        from ..logigramme import corriger_logigramme
+        return corriger_logigramme(item, reponse)
     attendue = (item.get("reponse") or {}).get("valeur")
     if theme == "calcul-mental":
         return _corriger_numerique(reponse, attendue)

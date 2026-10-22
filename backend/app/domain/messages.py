@@ -26,6 +26,8 @@ VOCABULAIRES = {
         "accompagnement_verification": "Comment as-tu vérifié que ta reformulation reprenait l'essentiel, sans ajouter d'information ?",
         # Libellés des thèmes exposés par l'API (contrat GET /themes).
         "themes": {
+            "debut-commun": {"nom": "Débuts de mots communs", "description": "Compléter deux mots avec le même début écrit, avec des indices gradués si besoin"},
+            "logigrammes": {"nom": "Croiser les indices", "description": "Organiser les liens dans un tableau, croiser les indices visibles et vérifier chaque contrainte"},
             "calcul-mental": {
                 "nom": "Calcul mental",
                 "description": "Calculer de tête : quantités, durées et situations pratiques, avec des méthodes adaptées",

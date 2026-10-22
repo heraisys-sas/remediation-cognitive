@@ -88,10 +88,10 @@ test('stockage refusé : dernier choix appliqué et erreur lisible', async ({ pa
   await page.getByRole('checkbox', { name: 'Raisonner et calculer', exact: true }).click();
   await expect(page.getByRole('checkbox', { name: 'Raisonner et calculer', exact: true })).not.toBeChecked();
   await expect(page.locator('#erreur-difficultes')).toBeVisible();
-  expect(await cartes(page).allTextContents()).toEqual(['Retrouver des mots et leur contexte']);
+  expect(await cartes(page).allTextContents()).toEqual(['Retrouver des mots et leur contexte', 'Débuts de mots communs']);
   await page.reload();
-  await expect(cartes(page)).toHaveCount(1);
-  expect(await cartes(page).allTextContents()).toEqual(['Retrouver des mots et leur contexte']);
+  await expect(cartes(page)).toHaveCount(2);
+  expect(await cartes(page).allTextContents()).toEqual(['Retrouver des mots et leur contexte', 'Débuts de mots communs']);
 });
 
 test('recouvrements et interactions rapides sans doublons', async ({ page }) => {
@@ -115,6 +115,6 @@ test('commande native au clavier et aucune erreur JavaScript', async ({ page }) 
   await champ.focus(); await champ.press('Space');
   await expect(champ).toBeChecked();
   await expect(champ).toBeFocused();
-  expect(await cartes(page).allTextContents()).toEqual(['Retrouver des mots et leur contexte']);
+  expect(await cartes(page).allTextContents()).toEqual(['Retrouver des mots et leur contexte', 'Débuts de mots communs']);
   expect(erreurs).toEqual([]);
 });

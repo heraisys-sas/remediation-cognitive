@@ -1,0 +1,746 @@
+[
+  {
+    "id": "dc-1-01",
+    "module": "entrainement",
+    "theme": "debut-commun",
+    "type": "rappel-indice",
+    "palier": 1,
+    "fonctions_ciblees": [
+      "acces-lexical",
+      "recuperation"
+    ],
+    "contenu": {
+      "consigne": "Écris le même début devant les deux fins pour former deux noms. Les aides donnent leurs sens.",
+      "enonce": "…fé (nom masculin)\n…nard (nom masculin) Le début contient 2 lettres.",
+      "aide": null,
+      "methode": "Cherche un premier nom, puis vérifie le même début avec l’autre fin et le genre indiqué. Utilise une aide de sens si nécessaire. Les accents comptent.",
+      "debut_commun": {
+        "terminaisons": [
+          "fé",
+          "nard"
+        ],
+        "mots": [
+          "café",
+          "canard"
+        ],
+        "genres": [
+          "m",
+          "m"
+        ],
+        "definitions": [
+          "Boisson chaude obtenue à partir de grains torréfiés.",
+          "Oiseau aquatique au bec large."
+        ]
+      },
+      "indices": [
+        {
+          "type": "semantique",
+          "texte": "Boisson chaude obtenue à partir de grains torréfiés. On peut le boire avec du lait."
+        },
+        {
+          "type": "semantique",
+          "texte": "Oiseau aquatique au bec large. On le rencontre sur un étang."
+        },
+        {
+          "type": "orthographique",
+          "texte": "Le début recherché commence par « c »."
+        }
+      ]
+    },
+    "reponse": {
+      "valeur": "ca",
+      "variantes": []
+    },
+    "prerequis": [],
+    "cap_complexite": "Deux noms et un segment écrit ; recherche sans chronomètre.",
+    "meta": {
+      "auteur": "redaction-assistee (corpus original debut commun)",
+      "date_creation": "2026-10-22",
+      "relecture_ortho": {
+        "statut": "a_revoir"
+      }
+    }
+  },
+  {
+    "id": "dc-1-02",
+    "module": "entrainement",
+    "theme": "debut-commun",
+    "type": "rappel-indice",
+    "palier": 1,
+    "fonctions_ciblees": [
+      "acces-lexical",
+      "recuperation"
+    ],
+    "contenu": {
+      "consigne": "Écris le même début devant les deux fins pour former deux noms. Les aides donnent leurs sens.",
+      "enonce": "…peau (nom masculin)\n…riot (nom masculin) Le début contient 3 lettres.",
+      "aide": null,
+      "methode": "Cherche un premier nom, puis vérifie le même début avec l’autre fin et le genre indiqué. Utilise une aide de sens si nécessaire. Les accents comptent.",
+      "debut_commun": {
+        "terminaisons": [
+          "peau",
+          "riot"
+        ],
+        "mots": [
+          "chapeau",
+          "chariot"
+        ],
+        "genres": [
+          "m",
+          "m"
+        ],
+        "definitions": [
+          "Accessoire porté sur la tête pour se protéger du soleil.",
+          "Véhicule à roues servant à transporter des charges."
+        ]
+      },
+      "indices": [
+        {
+          "type": "semantique",
+          "texte": "Accessoire porté sur la tête pour se protéger du soleil. Il peut avoir un bord et une calotte."
+        },
+        {
+          "type": "semantique",
+          "texte": "Véhicule à roues servant à transporter des charges. On le pousse dans un magasin."
+        },
+        {
+          "type": "orthographique",
+          "texte": "Le début recherché commence par « c »."
+        }
+      ]
+    },
+    "reponse": {
+      "valeur": "cha",
+      "variantes": []
+    },
+    "prerequis": [],
+    "cap_complexite": "Deux noms et un segment écrit ; recherche sans chronomètre.",
+    "meta": {
+      "auteur": "redaction-assistee (corpus original debut commun)",
+      "date_creation": "2026-10-22",
+      "relecture_ortho": {
+        "statut": "a_revoir"
+      }
+    }
+  },
+  {
+    "id": "dc-1-03",
+    "module": "entrainement",
+    "theme": "debut-commun",
+    "type": "rappel-indice",
+    "palier": 1,
+    "fonctions_ciblees": [
+      "acces-lexical",
+      "recuperation"
+    ],
+    "contenu": {
+      "consigne": "Écris le même début devant les deux fins pour former deux noms. Les aides donnent leurs sens.",
+      "enonce": "…gie (nom féminin)\n…ton (nom masculin) Le début contient 3 lettres.",
+      "aide": null,
+      "methode": "Cherche un premier nom, puis vérifie le même début avec l’autre fin et le genre indiqué. Utilise une aide de sens si nécessaire. Les accents comptent.",
+      "debut_commun": {
+        "terminaisons": [
+          "gie",
+          "ton"
+        ],
+        "mots": [
+          "bougie",
+          "bouton"
+        ],
+        "genres": [
+          "f",
+          "m"
+        ],
+        "definitions": [
+          "Objet en cire que l’on allume pour éclairer.",
+          "Petite pièce qui ferme un vêtement."
+        ]
+      },
+      "indices": [
+        {
+          "type": "semantique",
+          "texte": "Objet en cire que l’on allume pour éclairer. Elle possède une mèche."
+        },
+        {
+          "type": "semantique",
+          "texte": "Petite pièce qui ferme un vêtement. Il passe dans une boutonnière."
+        },
+        {
+          "type": "orthographique",
+          "texte": "Le début recherché commence par « b »."
+        }
+      ]
+    },
+    "reponse": {
+      "valeur": "bou",
+      "variantes": []
+    },
+    "prerequis": [],
+    "cap_complexite": "Deux noms et un segment écrit ; recherche sans chronomètre.",
+    "meta": {
+      "auteur": "redaction-assistee (corpus original debut commun)",
+      "date_creation": "2026-10-22",
+      "relecture_ortho": {
+        "statut": "a_revoir"
+      }
+    }
+  },
+  {
+    "id": "dc-1-04",
+    "module": "entrainement",
+    "theme": "debut-commun",
+    "type": "rappel-indice",
+    "palier": 1,
+    "fonctions_ciblees": [
+      "acces-lexical",
+      "recuperation"
+    ],
+    "contenu": {
+      "consigne": "Écris le même début devant les deux fins pour former deux noms. Les aides donnent leurs sens.",
+      "enonce": "…te (nom féminin)\n…ton (nom masculin) Le début contient 3 lettres.",
+      "aide": null,
+      "methode": "Cherche un premier nom, puis vérifie le même début avec l’autre fin et le genre indiqué. Utilise une aide de sens si nécessaire. Les accents comptent.",
+      "debut_commun": {
+        "terminaisons": [
+          "te",
+          "ton"
+        ],
+        "mots": [
+          "carte",
+          "carton"
+        ],
+        "genres": [
+          "f",
+          "m"
+        ],
+        "definitions": [
+          "Document qui représente un territoire.",
+          "Matière rigide utilisée pour fabriquer des emballages."
+        ]
+      },
+      "indices": [
+        {
+          "type": "semantique",
+          "texte": "Document qui représente un territoire. Elle peut être routière."
+        },
+        {
+          "type": "semantique",
+          "texte": "Matière rigide utilisée pour fabriquer des emballages. On en fait des boîtes de déménagement."
+        },
+        {
+          "type": "orthographique",
+          "texte": "Le début recherché commence par « c »."
+        }
+      ]
+    },
+    "reponse": {
+      "valeur": "car",
+      "variantes": []
+    },
+    "prerequis": [],
+    "cap_complexite": "Deux noms et un segment écrit ; recherche sans chronomètre.",
+    "meta": {
+      "auteur": "redaction-assistee (corpus original debut commun)",
+      "date_creation": "2026-10-22",
+      "relecture_ortho": {
+        "statut": "a_revoir"
+      }
+    }
+  },
+  {
+    "id": "dc-1-05",
+    "module": "entrainement",
+    "theme": "debut-commun",
+    "type": "rappel-indice",
+    "palier": 1,
+    "fonctions_ciblees": [
+      "acces-lexical",
+      "recuperation"
+    ],
+    "contenu": {
+      "consigne": "Écris le même début devant les deux fins pour former deux noms. Les aides donnent leurs sens.",
+      "enonce": "…nier (nom masculin)\n…quet (nom masculin) Le début contient 2 lettres.",
+      "aide": null,
+      "methode": "Cherche un premier nom, puis vérifie le même début avec l’autre fin et le genre indiqué. Utilise une aide de sens si nécessaire. Les accents comptent.",
+      "debut_commun": {
+        "terminaisons": [
+          "nier",
+          "quet"
+        ],
+        "mots": [
+          "panier",
+          "paquet"
+        ],
+        "genres": [
+          "m",
+          "m"
+        ],
+        "definitions": [
+          "Récipient à anse pour porter des courses.",
+          "Ensemble d’objets enveloppés pour être transportés."
+        ]
+      },
+      "indices": [
+        {
+          "type": "semantique",
+          "texte": "Récipient à anse pour porter des courses. On peut y mettre des fruits."
+        },
+        {
+          "type": "semantique",
+          "texte": "Ensemble d’objets enveloppés pour être transportés. On peut le remettre à la poste."
+        },
+        {
+          "type": "orthographique",
+          "texte": "Le début recherché commence par « p »."
+        }
+      ]
+    },
+    "reponse": {
+      "valeur": "pa",
+      "variantes": []
+    },
+    "prerequis": [],
+    "cap_complexite": "Deux noms et un segment écrit ; recherche sans chronomètre.",
+    "meta": {
+      "auteur": "redaction-assistee (corpus original debut commun)",
+      "date_creation": "2026-10-22",
+      "relecture_ortho": {
+        "statut": "a_revoir"
+      }
+    }
+  },
+  {
+    "id": "dc-1-06",
+    "module": "entrainement",
+    "theme": "debut-commun",
+    "type": "rappel-indice",
+    "palier": 1,
+    "fonctions_ciblees": [
+      "acces-lexical",
+      "recuperation"
+    ],
+    "contenu": {
+      "consigne": "Écris le même début devant les deux fins pour former deux noms. Les aides donnent leurs sens.",
+      "enonce": "…teau (nom masculin)\n…ché (nom masculin) Le début contient 3 lettres.",
+      "aide": null,
+      "methode": "Cherche un premier nom, puis vérifie le même début avec l’autre fin et le genre indiqué. Utilise une aide de sens si nécessaire. Les accents comptent.",
+      "debut_commun": {
+        "terminaisons": [
+          "teau",
+          "ché"
+        ],
+        "mots": [
+          "marteau",
+          "marché"
+        ],
+        "genres": [
+          "m",
+          "m"
+        ],
+        "definitions": [
+          "Outil utilisé pour enfoncer un clou.",
+          "Lieu où des commerçants vendent leurs produits sur des étals."
+        ]
+      },
+      "indices": [
+        {
+          "type": "semantique",
+          "texte": "Outil utilisé pour enfoncer un clou. Sa tête frappe le clou."
+        },
+        {
+          "type": "semantique",
+          "texte": "Lieu où des commerçants vendent leurs produits sur des étals. On y achète des légumes à un étal."
+        },
+        {
+          "type": "orthographique",
+          "texte": "Le début recherché commence par « m »."
+        }
+      ]
+    },
+    "reponse": {
+      "valeur": "mar",
+      "variantes": []
+    },
+    "prerequis": [],
+    "cap_complexite": "Deux noms et un segment écrit ; recherche sans chronomètre.",
+    "meta": {
+      "auteur": "redaction-assistee (corpus original debut commun)",
+      "date_creation": "2026-10-22",
+      "relecture_ortho": {
+        "statut": "a_revoir"
+      }
+    }
+  },
+  {
+    "id": "dc-1-07",
+    "module": "entrainement",
+    "theme": "debut-commun",
+    "type": "rappel-indice",
+    "palier": 1,
+    "fonctions_ciblees": [
+      "acces-lexical",
+      "recuperation"
+    ],
+    "contenu": {
+      "consigne": "Écris le même début devant les deux fins pour former deux noms. Les aides donnent leurs sens.",
+      "enonce": "…teau (nom masculin)\n…ssin (nom masculin) Le début contient 3 lettres.",
+      "aide": null,
+      "methode": "Cherche un premier nom, puis vérifie le même début avec l’autre fin et le genre indiqué. Utilise une aide de sens si nécessaire. Les accents comptent.",
+      "debut_commun": {
+        "terminaisons": [
+          "teau",
+          "ssin"
+        ],
+        "mots": [
+          "couteau",
+          "coussin"
+        ],
+        "genres": [
+          "m",
+          "m"
+        ],
+        "definitions": [
+          "Ustensile à lame pour couper les aliments.",
+          "Objet rembourré posé sur un siège pour le confort."
+        ]
+      },
+      "indices": [
+        {
+          "type": "semantique",
+          "texte": "Ustensile à lame pour couper les aliments. On l’utilise avec une fourchette."
+        },
+        {
+          "type": "semantique",
+          "texte": "Objet rembourré posé sur un siège pour le confort. On le place parfois derrière son dos."
+        },
+        {
+          "type": "orthographique",
+          "texte": "Le début recherché commence par « c »."
+        }
+      ]
+    },
+    "reponse": {
+      "valeur": "cou",
+      "variantes": []
+    },
+    "prerequis": [],
+    "cap_complexite": "Deux noms et un segment écrit ; recherche sans chronomètre.",
+    "meta": {
+      "auteur": "redaction-assistee (corpus original debut commun)",
+      "date_creation": "2026-10-22",
+      "relecture_ortho": {
+        "statut": "a_revoir"
+      }
+    }
+  },
+  {
+    "id": "dc-1-08",
+    "module": "entrainement",
+    "theme": "debut-commun",
+    "type": "rappel-indice",
+    "palier": 1,
+    "fonctions_ciblees": [
+      "acces-lexical",
+      "recuperation"
+    ],
+    "contenu": {
+      "consigne": "Écris le même début devant les deux fins pour former deux noms. Les aides donnent leurs sens.",
+      "enonce": "…teau (nom masculin)\n…card (nom masculin) Le début contient 3 lettres.",
+      "aide": null,
+      "methode": "Cherche un premier nom, puis vérifie le même début avec l’autre fin et le genre indiqué. Utilise une aide de sens si nécessaire. Les accents comptent.",
+      "debut_commun": {
+        "terminaisons": [
+          "teau",
+          "card"
+        ],
+        "mots": [
+          "plateau",
+          "placard"
+        ],
+        "genres": [
+          "m",
+          "m"
+        ],
+        "definitions": [
+          "Support plat pour transporter des verres.",
+          "Meuble fermé destiné au rangement."
+        ]
+      },
+      "indices": [
+        {
+          "type": "semantique",
+          "texte": "Support plat pour transporter des verres. On y pose des tasses avant de servir."
+        },
+        {
+          "type": "semantique",
+          "texte": "Meuble fermé destiné au rangement. On y range des vêtements sur des étagères."
+        },
+        {
+          "type": "orthographique",
+          "texte": "Le début recherché commence par « p »."
+        }
+      ]
+    },
+    "reponse": {
+      "valeur": "pla",
+      "variantes": []
+    },
+    "prerequis": [],
+    "cap_complexite": "Deux noms et un segment écrit ; recherche sans chronomètre.",
+    "meta": {
+      "auteur": "redaction-assistee (corpus original debut commun)",
+      "date_creation": "2026-10-22",
+      "relecture_ortho": {
+        "statut": "a_revoir"
+      }
+    }
+  },
+  {
+    "id": "dc-1-09",
+    "module": "entrainement",
+    "theme": "debut-commun",
+    "type": "rappel-indice",
+    "palier": 1,
+    "fonctions_ciblees": [
+      "acces-lexical",
+      "recuperation"
+    ],
+    "contenu": {
+      "consigne": "Écris le même début devant les deux fins pour former deux noms. Les aides donnent leurs sens.",
+      "enonce": "…deau (nom masculin)\n…vière (nom féminin) Le début contient 2 lettres.",
+      "aide": null,
+      "methode": "Cherche un premier nom, puis vérifie le même début avec l’autre fin et le genre indiqué. Utilise une aide de sens si nécessaire. Les accents comptent.",
+      "debut_commun": {
+        "terminaisons": [
+          "deau",
+          "vière"
+        ],
+        "mots": [
+          "rideau",
+          "rivière"
+        ],
+        "genres": [
+          "m",
+          "f"
+        ],
+        "definitions": [
+          "Pièce de tissu suspendue devant une fenêtre.",
+          "Cours d’eau naturel qui rejoint un autre cours d’eau."
+        ]
+      },
+      "indices": [
+        {
+          "type": "semantique",
+          "texte": "Pièce de tissu suspendue devant une fenêtre. On le tire pour masquer la lumière."
+        },
+        {
+          "type": "semantique",
+          "texte": "Cours d’eau naturel qui rejoint un autre cours d’eau. Elle coule entre deux rives."
+        },
+        {
+          "type": "orthographique",
+          "texte": "Le début recherché commence par « r »."
+        }
+      ]
+    },
+    "reponse": {
+      "valeur": "ri",
+      "variantes": []
+    },
+    "prerequis": [],
+    "cap_complexite": "Deux noms et un segment écrit ; recherche sans chronomètre.",
+    "meta": {
+      "auteur": "redaction-assistee (corpus original debut commun)",
+      "date_creation": "2026-10-22",
+      "relecture_ortho": {
+        "statut": "a_revoir"
+      }
+    }
+  },
+  {
+    "id": "dc-1-10",
+    "module": "entrainement",
+    "theme": "debut-commun",
+    "type": "rappel-indice",
+    "palier": 1,
+    "fonctions_ciblees": [
+      "acces-lexical",
+      "recuperation"
+    ],
+    "contenu": {
+      "consigne": "Écris le même début devant les deux fins pour former deux noms. Les aides donnent leurs sens.",
+      "enonce": "…teau (nom masculin)\n…lai (nom masculin) Le début contient 2 lettres.",
+      "aide": null,
+      "methode": "Cherche un premier nom, puis vérifie le même début avec l’autre fin et le genre indiqué. Utilise une aide de sens si nécessaire. Les accents comptent.",
+      "debut_commun": {
+        "terminaisons": [
+          "teau",
+          "lai"
+        ],
+        "mots": [
+          "bateau",
+          "balai"
+        ],
+        "genres": [
+          "m",
+          "m"
+        ],
+        "definitions": [
+          "Moyen de transport qui flotte sur l’eau.",
+          "Instrument à manche pour nettoyer le sol."
+        ]
+      },
+      "indices": [
+        {
+          "type": "semantique",
+          "texte": "Moyen de transport qui flotte sur l’eau. Il peut avoir une voile."
+        },
+        {
+          "type": "semantique",
+          "texte": "Instrument à manche pour nettoyer le sol. On le passe avant la serpillière."
+        },
+        {
+          "type": "orthographique",
+          "texte": "Le début recherché commence par « b »."
+        }
+      ]
+    },
+    "reponse": {
+      "valeur": "ba",
+      "variantes": []
+    },
+    "prerequis": [],
+    "cap_complexite": "Deux noms et un segment écrit ; recherche sans chronomètre.",
+    "meta": {
+      "auteur": "redaction-assistee (corpus original debut commun)",
+      "date_creation": "2026-10-22",
+      "relecture_ortho": {
+        "statut": "a_revoir"
+      }
+    }
+  },
+  {
+    "id": "dc-1-11",
+    "module": "entrainement",
+    "theme": "debut-commun",
+    "type": "rappel-indice",
+    "palier": 1,
+    "fonctions_ciblees": [
+      "acces-lexical",
+      "recuperation"
+    ],
+    "contenu": {
+      "consigne": "Écris le même début devant les deux fins pour former deux noms. Les aides donnent leurs sens.",
+      "enonce": "…von (nom masculin)\n…coche (nom féminin) Le début contient 2 lettres.",
+      "aide": null,
+      "methode": "Cherche un premier nom, puis vérifie le même début avec l’autre fin et le genre indiqué. Utilise une aide de sens si nécessaire. Les accents comptent.",
+      "debut_commun": {
+        "terminaisons": [
+          "von",
+          "coche"
+        ],
+        "mots": [
+          "savon",
+          "sacoche"
+        ],
+        "genres": [
+          "m",
+          "f"
+        ],
+        "definitions": [
+          "Produit utilisé avec de l’eau pour se laver.",
+          "Petit sac souvent muni d’une bandoulière."
+        ]
+      },
+      "indices": [
+        {
+          "type": "semantique",
+          "texte": "Produit utilisé avec de l’eau pour se laver. Il mousse quand on le frotte."
+        },
+        {
+          "type": "semantique",
+          "texte": "Petit sac souvent muni d’une bandoulière. Elle se porte sur l’épaule."
+        },
+        {
+          "type": "orthographique",
+          "texte": "Le début recherché commence par « s »."
+        }
+      ]
+    },
+    "reponse": {
+      "valeur": "sa",
+      "variantes": []
+    },
+    "prerequis": [],
+    "cap_complexite": "Deux noms et un segment écrit ; recherche sans chronomètre.",
+    "meta": {
+      "auteur": "redaction-assistee (corpus original debut commun)",
+      "date_creation": "2026-10-22",
+      "relecture_ortho": {
+        "statut": "a_revoir"
+      }
+    }
+  },
+  {
+    "id": "dc-1-12",
+    "module": "entrainement",
+    "theme": "debut-commun",
+    "type": "rappel-indice",
+    "palier": 1,
+    "fonctions_ciblees": [
+      "acces-lexical",
+      "recuperation"
+    ],
+    "contenu": {
+      "consigne": "Écris le même début devant les deux fins pour former deux noms. Les aides donnent leurs sens.",
+      "enonce": "…pis (nom masculin)\n…ble (nom féminin) Le début contient 2 lettres.",
+      "aide": null,
+      "methode": "Cherche un premier nom, puis vérifie le même début avec l’autre fin et le genre indiqué. Utilise une aide de sens si nécessaire. Les accents comptent.",
+      "debut_commun": {
+        "terminaisons": [
+          "pis",
+          "ble"
+        ],
+        "mots": [
+          "tapis",
+          "table"
+        ],
+        "genres": [
+          "m",
+          "f"
+        ],
+        "definitions": [
+          "Pièce de tissu épais posée sur le sol.",
+          "Meuble sur lequel on pose son repas."
+        ]
+      },
+      "indices": [
+        {
+          "type": "semantique",
+          "texte": "Pièce de tissu épais posée sur le sol. Il peut couvrir un parquet."
+        },
+        {
+          "type": "semantique",
+          "texte": "Meuble sur lequel on pose son repas. Elle comporte souvent quatre pieds."
+        },
+        {
+          "type": "orthographique",
+          "texte": "Le début recherché commence par « t »."
+        }
+      ]
+    },
+    "reponse": {
+      "valeur": "ta",
+      "variantes": []
+    },
+    "prerequis": [],
+    "cap_complexite": "Deux noms et un segment écrit ; recherche sans chronomètre.",
+    "meta": {
+      "auteur": "redaction-assistee (corpus original debut commun)",
+      "date_creation": "2026-10-22",
+      "relecture_ortho": {
+        "statut": "a_revoir"
+      }
+    }
+  }
+]

@@ -1,0 +1,1214 @@
+[
+  {
+    "id": "lg-1-atelier-20261022",
+    "type": "logigramme",
+    "module": "entrainement",
+    "theme": "logigrammes",
+    "fonctions_ciblees": [
+      "fonctions-executives"
+    ],
+    "palier": 1,
+    "prerequis": [],
+    "cap_complexite": "3 rendez-vous, 3 catégories : associations, comparaison et élimination",
+    "contenu": {
+      "titre": "Les rendez-vous d’un atelier partagé",
+      "consigne": "Retrouve les associations de chaque rendez-vous. Chaque horaire accueille exactement une personne et un sujet, et chaque valeur de chaque catégorie est utilisée une seule fois. Les horaires sont classés du plus tôt au plus tard. « Avant » signifie strictement plus tôt, sans imposer de rendez-vous consécutifs. Toutes les informations nécessaires figurent dans les indices. Tu peux utiliser le tableau comme aide externe et modifier tes choix sans limite ; aucun chronomètre.",
+      "categories": [
+        {
+          "id": "horaire",
+          "label": "Horaire",
+          "valeurs": [
+            "09 h",
+            "10 h",
+            "11 h"
+          ]
+        },
+        {
+          "id": "personne",
+          "label": "Personne",
+          "valeurs": [
+            "Aline",
+            "Boris",
+            "Céline"
+          ]
+        },
+        {
+          "id": "dossier",
+          "label": "Sujet",
+          "valeurs": [
+            "lampe",
+            "chaise",
+            "étagère"
+          ]
+        }
+      ],
+      "contraintes": [
+        {
+          "type": "association",
+          "gauche": {
+            "categorie": "personne",
+            "valeur": "Aline"
+          },
+          "droite": {
+            "categorie": "dossier",
+            "valeur": "chaise"
+          },
+          "texte": "« Aline » (personne) est au même horaire que « chaise » (sujet)."
+        },
+        {
+          "type": "exclusion",
+          "gauche": {
+            "categorie": "personne",
+            "valeur": "Boris"
+          },
+          "droite": {
+            "categorie": "dossier",
+            "valeur": "étagère"
+          },
+          "texte": "« Boris » (personne) est à un horaire différent de « étagère » (sujet)."
+        },
+        {
+          "type": "avant",
+          "gauche": {
+            "categorie": "dossier",
+            "valeur": "chaise"
+          },
+          "droite": {
+            "categorie": "personne",
+            "valeur": "Céline"
+          },
+          "texte": "« chaise » (sujet) est à un horaire strictement antérieur à « Céline » (personne)."
+        },
+        {
+          "type": "exclusion",
+          "gauche": {
+            "categorie": "horaire",
+            "valeur": "11 h"
+          },
+          "droite": {
+            "categorie": "personne",
+            "valeur": "Céline"
+          },
+          "texte": "« 11 h » (horaire) est à un horaire différent de « Céline » (personne)."
+        }
+      ],
+      "aide": "Précise le but : une ligne complète par rendez-vous. Relève une contrainte, marque seulement ce qui est certain, puis vérifie avec les autres indices. Le tableau sert à organiser les informations.",
+      "indices": [
+        {
+          "niveau": 1,
+          "texte": "Relis les règles : une valeur ne peut apparaître qu’une fois dans sa catégorie."
+        },
+        {
+          "niveau": 2,
+          "texte": "Regroupe les comparaisons « avant » pour reconstituer un ordre, puis recoupe cet ordre avec les associations et les exclusions."
+        },
+        {
+          "niveau": 3,
+          "texte": "Pour chaque valeur, barre les horaires impossibles. S’il ne reste qu’un horaire, vérifie-le dans tous les indices avant de le retenir."
+        }
+      ]
+    },
+    "reponse": {
+      "valeur": "{\"09 h\": {\"dossier\": \"chaise\", \"personne\": \"Aline\"}, \"10 h\": {\"dossier\": \"étagère\", \"personne\": \"Céline\"}, \"11 h\": {\"dossier\": \"lampe\", \"personne\": \"Boris\"}}",
+      "associations": {
+        "09 h": {
+          "personne": "Aline",
+          "dossier": "chaise"
+        },
+        "10 h": {
+          "personne": "Céline",
+          "dossier": "étagère"
+        },
+        "11 h": {
+          "personne": "Boris",
+          "dossier": "lampe"
+        }
+      },
+      "preuve_deductive": {
+        "resolu": true,
+        "solution": {
+          "09 h": {
+            "personne": "Aline",
+            "dossier": "chaise"
+          },
+          "10 h": {
+            "personne": "Céline",
+            "dossier": "étagère"
+          },
+          "11 h": {
+            "personne": "Boris",
+            "dossier": "lampe"
+          }
+        },
+        "trace": [
+          {
+            "reference": [
+              "dossier",
+              "chaise"
+            ],
+            "avant": [
+              0,
+              1,
+              2
+            ],
+            "apres": [
+              0,
+              1
+            ],
+            "regle": "indice 3"
+          },
+          {
+            "reference": [
+              "personne",
+              "Céline"
+            ],
+            "avant": [
+              0,
+              1,
+              2
+            ],
+            "apres": [
+              1,
+              2
+            ],
+            "regle": "indice 3"
+          },
+          {
+            "reference": [
+              "personne",
+              "Céline"
+            ],
+            "avant": [
+              1,
+              2
+            ],
+            "apres": [
+              1
+            ],
+            "regle": "indice 4"
+          },
+          {
+            "reference": [
+              "personne",
+              "Aline"
+            ],
+            "avant": [
+              0,
+              1,
+              2
+            ],
+            "apres": [
+              0,
+              2
+            ],
+            "regle": "une valeur par ligne et par catégorie"
+          },
+          {
+            "reference": [
+              "personne",
+              "Boris"
+            ],
+            "avant": [
+              0,
+              1,
+              2
+            ],
+            "apres": [
+              0,
+              2
+            ],
+            "regle": "une valeur par ligne et par catégorie"
+          },
+          {
+            "reference": [
+              "personne",
+              "Aline"
+            ],
+            "avant": [
+              0,
+              2
+            ],
+            "apres": [
+              0
+            ],
+            "regle": "indice 1"
+          },
+          {
+            "reference": [
+              "dossier",
+              "chaise"
+            ],
+            "avant": [
+              0,
+              1
+            ],
+            "apres": [
+              0
+            ],
+            "regle": "indice 1"
+          },
+          {
+            "reference": [
+              "personne",
+              "Boris"
+            ],
+            "avant": [
+              0,
+              2
+            ],
+            "apres": [
+              2
+            ],
+            "regle": "une valeur par ligne et par catégorie"
+          },
+          {
+            "reference": [
+              "dossier",
+              "lampe"
+            ],
+            "avant": [
+              0,
+              1,
+              2
+            ],
+            "apres": [
+              1,
+              2
+            ],
+            "regle": "une valeur par ligne et par catégorie"
+          },
+          {
+            "reference": [
+              "dossier",
+              "étagère"
+            ],
+            "avant": [
+              0,
+              1,
+              2
+            ],
+            "apres": [
+              1,
+              2
+            ],
+            "regle": "une valeur par ligne et par catégorie"
+          },
+          {
+            "reference": [
+              "dossier",
+              "étagère"
+            ],
+            "avant": [
+              1,
+              2
+            ],
+            "apres": [
+              1
+            ],
+            "regle": "indice 2"
+          },
+          {
+            "reference": [
+              "dossier",
+              "lampe"
+            ],
+            "avant": [
+              1,
+              2
+            ],
+            "apres": [
+              2
+            ],
+            "regle": "une valeur par ligne et par catégorie"
+          }
+        ]
+      }
+    },
+    "meta": {
+      "auteur": "generation-originale (tools/generer_logigrammes.py)",
+      "date_creation": "2026-10-22",
+      "relecture_ortho": {
+        "statut": "a_revoir"
+      }
+    }
+  },
+  {
+    "id": "lg-1-archives-20261022",
+    "type": "logigramme",
+    "module": "entrainement",
+    "theme": "logigrammes",
+    "fonctions_ciblees": [
+      "fonctions-executives"
+    ],
+    "palier": 1,
+    "prerequis": [],
+    "cap_complexite": "3 rendez-vous, 3 catégories : associations, comparaison et élimination",
+    "contenu": {
+      "titre": "La consultation des archives",
+      "consigne": "Retrouve les associations de chaque rendez-vous. Chaque horaire accueille exactement une personne et un sujet, et chaque valeur de chaque catégorie est utilisée une seule fois. Les horaires sont classés du plus tôt au plus tard. « Avant » signifie strictement plus tôt, sans imposer de rendez-vous consécutifs. Toutes les informations nécessaires figurent dans les indices. Tu peux utiliser le tableau comme aide externe et modifier tes choix sans limite ; aucun chronomètre.",
+      "categories": [
+        {
+          "id": "horaire",
+          "label": "Horaire",
+          "valeurs": [
+            "09 h",
+            "10 h",
+            "11 h"
+          ]
+        },
+        {
+          "id": "personne",
+          "label": "Personne",
+          "valeurs": [
+            "Élise",
+            "Farid",
+            "Gaëlle"
+          ]
+        },
+        {
+          "id": "dossier",
+          "label": "Sujet",
+          "valeurs": [
+            "urbanisme",
+            "presse",
+            "cadastre"
+          ]
+        }
+      ],
+      "contraintes": [
+        {
+          "type": "avant",
+          "gauche": {
+            "categorie": "personne",
+            "valeur": "Farid"
+          },
+          "droite": {
+            "categorie": "dossier",
+            "valeur": "cadastre"
+          },
+          "texte": "« Farid » (personne) est à un horaire strictement antérieur à « cadastre » (sujet)."
+        },
+        {
+          "type": "exclusion",
+          "gauche": {
+            "categorie": "horaire",
+            "valeur": "10 h"
+          },
+          "droite": {
+            "categorie": "dossier",
+            "valeur": "presse"
+          },
+          "texte": "« 10 h » (horaire) est à un horaire différent de « presse » (sujet)."
+        },
+        {
+          "type": "association",
+          "gauche": {
+            "categorie": "horaire",
+            "valeur": "10 h"
+          },
+          "droite": {
+            "categorie": "personne",
+            "valeur": "Farid"
+          },
+          "texte": "« 10 h » (horaire) est au même horaire que « Farid » (personne)."
+        },
+        {
+          "type": "exclusion",
+          "gauche": {
+            "categorie": "personne",
+            "valeur": "Élise"
+          },
+          "droite": {
+            "categorie": "dossier",
+            "valeur": "presse"
+          },
+          "texte": "« Élise » (personne) est à un horaire différent de « presse » (sujet)."
+        }
+      ],
+      "aide": "Précise le but : une ligne complète par rendez-vous. Relève une contrainte, marque seulement ce qui est certain, puis vérifie avec les autres indices. Le tableau sert à organiser les informations.",
+      "indices": [
+        {
+          "niveau": 1,
+          "texte": "Relis les règles : une valeur ne peut apparaître qu’une fois dans sa catégorie."
+        },
+        {
+          "niveau": 2,
+          "texte": "Regroupe les comparaisons « avant » pour reconstituer un ordre, puis recoupe cet ordre avec les associations et les exclusions."
+        },
+        {
+          "niveau": 3,
+          "texte": "Pour chaque valeur, barre les horaires impossibles. S’il ne reste qu’un horaire, vérifie-le dans tous les indices avant de le retenir."
+        }
+      ]
+    },
+    "reponse": {
+      "valeur": "{\"09 h\": {\"dossier\": \"presse\", \"personne\": \"Gaëlle\"}, \"10 h\": {\"dossier\": \"urbanisme\", \"personne\": \"Farid\"}, \"11 h\": {\"dossier\": \"cadastre\", \"personne\": \"Élise\"}}",
+      "associations": {
+        "09 h": {
+          "personne": "Gaëlle",
+          "dossier": "presse"
+        },
+        "10 h": {
+          "personne": "Farid",
+          "dossier": "urbanisme"
+        },
+        "11 h": {
+          "personne": "Élise",
+          "dossier": "cadastre"
+        }
+      },
+      "preuve_deductive": {
+        "resolu": true,
+        "solution": {
+          "09 h": {
+            "personne": "Gaëlle",
+            "dossier": "presse"
+          },
+          "10 h": {
+            "personne": "Farid",
+            "dossier": "urbanisme"
+          },
+          "11 h": {
+            "personne": "Élise",
+            "dossier": "cadastre"
+          }
+        },
+        "trace": [
+          {
+            "reference": [
+              "personne",
+              "Farid"
+            ],
+            "avant": [
+              0,
+              1,
+              2
+            ],
+            "apres": [
+              0,
+              1
+            ],
+            "regle": "indice 1"
+          },
+          {
+            "reference": [
+              "dossier",
+              "cadastre"
+            ],
+            "avant": [
+              0,
+              1,
+              2
+            ],
+            "apres": [
+              1,
+              2
+            ],
+            "regle": "indice 1"
+          },
+          {
+            "reference": [
+              "dossier",
+              "presse"
+            ],
+            "avant": [
+              0,
+              1,
+              2
+            ],
+            "apres": [
+              0,
+              2
+            ],
+            "regle": "indice 2"
+          },
+          {
+            "reference": [
+              "personne",
+              "Farid"
+            ],
+            "avant": [
+              0,
+              1
+            ],
+            "apres": [
+              1
+            ],
+            "regle": "indice 3"
+          },
+          {
+            "reference": [
+              "personne",
+              "Élise"
+            ],
+            "avant": [
+              0,
+              1,
+              2
+            ],
+            "apres": [
+              0,
+              2
+            ],
+            "regle": "une valeur par ligne et par catégorie"
+          },
+          {
+            "reference": [
+              "personne",
+              "Gaëlle"
+            ],
+            "avant": [
+              0,
+              1,
+              2
+            ],
+            "apres": [
+              0,
+              2
+            ],
+            "regle": "une valeur par ligne et par catégorie"
+          },
+          {
+            "reference": [
+              "dossier",
+              "cadastre"
+            ],
+            "avant": [
+              1,
+              2
+            ],
+            "apres": [
+              2
+            ],
+            "regle": "indice 1"
+          },
+          {
+            "reference": [
+              "dossier",
+              "urbanisme"
+            ],
+            "avant": [
+              0,
+              1,
+              2
+            ],
+            "apres": [
+              1
+            ],
+            "regle": "une valeur par ligne et par catégorie"
+          },
+          {
+            "reference": [
+              "dossier",
+              "presse"
+            ],
+            "avant": [
+              0,
+              2
+            ],
+            "apres": [
+              0
+            ],
+            "regle": "une valeur par ligne et par catégorie"
+          },
+          {
+            "reference": [
+              "personne",
+              "Élise"
+            ],
+            "avant": [
+              0,
+              2
+            ],
+            "apres": [
+              2
+            ],
+            "regle": "indice 4"
+          },
+          {
+            "reference": [
+              "personne",
+              "Gaëlle"
+            ],
+            "avant": [
+              0,
+              2
+            ],
+            "apres": [
+              0
+            ],
+            "regle": "une valeur par ligne et par catégorie"
+          }
+        ]
+      }
+    },
+    "meta": {
+      "auteur": "generation-originale (tools/generer_logigrammes.py)",
+      "date_creation": "2026-10-22",
+      "relecture_ortho": {
+        "statut": "a_revoir"
+      }
+    }
+  },
+  {
+    "id": "lg-1-association-20261022",
+    "type": "logigramme",
+    "module": "entrainement",
+    "theme": "logigrammes",
+    "fonctions_ciblees": [
+      "fonctions-executives"
+    ],
+    "palier": 1,
+    "prerequis": [],
+    "cap_complexite": "3 rendez-vous, 3 catégories : associations, comparaison et élimination",
+    "contenu": {
+      "titre": "Les permanences de l’association",
+      "consigne": "Retrouve les associations de chaque rendez-vous. Chaque horaire accueille exactement une personne et un sujet, et chaque valeur de chaque catégorie est utilisée une seule fois. Les horaires sont classés du plus tôt au plus tard. « Avant » signifie strictement plus tôt, sans imposer de rendez-vous consécutifs. Toutes les informations nécessaires figurent dans les indices. Tu peux utiliser le tableau comme aide externe et modifier tes choix sans limite ; aucun chronomètre.",
+      "categories": [
+        {
+          "id": "horaire",
+          "label": "Horaire",
+          "valeurs": [
+            "09 h",
+            "10 h",
+            "11 h"
+          ]
+        },
+        {
+          "id": "personne",
+          "label": "Personne",
+          "valeurs": [
+            "Inès",
+            "Jules",
+            "Karim"
+          ]
+        },
+        {
+          "id": "dossier",
+          "label": "Sujet",
+          "valeurs": [
+            "adhésions",
+            "comptabilité",
+            "matériel"
+          ]
+        }
+      ],
+      "contraintes": [
+        {
+          "type": "avant",
+          "gauche": {
+            "categorie": "personne",
+            "valeur": "Jules"
+          },
+          "droite": {
+            "categorie": "dossier",
+            "valeur": "adhésions"
+          },
+          "texte": "« Jules » (personne) est à un horaire strictement antérieur à « adhésions » (sujet)."
+        },
+        {
+          "type": "association",
+          "gauche": {
+            "categorie": "horaire",
+            "valeur": "10 h"
+          },
+          "droite": {
+            "categorie": "dossier",
+            "valeur": "matériel"
+          },
+          "texte": "« 10 h » (horaire) est au même horaire que « matériel » (sujet)."
+        },
+        {
+          "type": "exclusion",
+          "gauche": {
+            "categorie": "personne",
+            "valeur": "Inès"
+          },
+          "droite": {
+            "categorie": "dossier",
+            "valeur": "matériel"
+          },
+          "texte": "« Inès » (personne) est à un horaire différent de « matériel » (sujet)."
+        },
+        {
+          "type": "avant",
+          "gauche": {
+            "categorie": "personne",
+            "valeur": "Jules"
+          },
+          "droite": {
+            "categorie": "dossier",
+            "valeur": "matériel"
+          },
+          "texte": "« Jules » (personne) est à un horaire strictement antérieur à « matériel » (sujet)."
+        }
+      ],
+      "aide": "Précise le but : une ligne complète par rendez-vous. Relève une contrainte, marque seulement ce qui est certain, puis vérifie avec les autres indices. Le tableau sert à organiser les informations.",
+      "indices": [
+        {
+          "niveau": 1,
+          "texte": "Relis les règles : une valeur ne peut apparaître qu’une fois dans sa catégorie."
+        },
+        {
+          "niveau": 2,
+          "texte": "Regroupe les comparaisons « avant » pour reconstituer un ordre, puis recoupe cet ordre avec les associations et les exclusions."
+        },
+        {
+          "niveau": 3,
+          "texte": "Pour chaque valeur, barre les horaires impossibles. S’il ne reste qu’un horaire, vérifie-le dans tous les indices avant de le retenir."
+        }
+      ]
+    },
+    "reponse": {
+      "valeur": "{\"09 h\": {\"dossier\": \"comptabilité\", \"personne\": \"Jules\"}, \"10 h\": {\"dossier\": \"matériel\", \"personne\": \"Karim\"}, \"11 h\": {\"dossier\": \"adhésions\", \"personne\": \"Inès\"}}",
+      "associations": {
+        "09 h": {
+          "personne": "Jules",
+          "dossier": "comptabilité"
+        },
+        "10 h": {
+          "personne": "Karim",
+          "dossier": "matériel"
+        },
+        "11 h": {
+          "personne": "Inès",
+          "dossier": "adhésions"
+        }
+      },
+      "preuve_deductive": {
+        "resolu": true,
+        "solution": {
+          "09 h": {
+            "personne": "Jules",
+            "dossier": "comptabilité"
+          },
+          "10 h": {
+            "personne": "Karim",
+            "dossier": "matériel"
+          },
+          "11 h": {
+            "personne": "Inès",
+            "dossier": "adhésions"
+          }
+        },
+        "trace": [
+          {
+            "reference": [
+              "personne",
+              "Jules"
+            ],
+            "avant": [
+              0,
+              1,
+              2
+            ],
+            "apres": [
+              0,
+              1
+            ],
+            "regle": "indice 1"
+          },
+          {
+            "reference": [
+              "dossier",
+              "adhésions"
+            ],
+            "avant": [
+              0,
+              1,
+              2
+            ],
+            "apres": [
+              1,
+              2
+            ],
+            "regle": "indice 1"
+          },
+          {
+            "reference": [
+              "dossier",
+              "matériel"
+            ],
+            "avant": [
+              0,
+              1,
+              2
+            ],
+            "apres": [
+              1
+            ],
+            "regle": "indice 2"
+          },
+          {
+            "reference": [
+              "personne",
+              "Inès"
+            ],
+            "avant": [
+              0,
+              1,
+              2
+            ],
+            "apres": [
+              0,
+              2
+            ],
+            "regle": "indice 3"
+          },
+          {
+            "reference": [
+              "personne",
+              "Jules"
+            ],
+            "avant": [
+              0,
+              1
+            ],
+            "apres": [
+              0
+            ],
+            "regle": "indice 4"
+          },
+          {
+            "reference": [
+              "personne",
+              "Inès"
+            ],
+            "avant": [
+              0,
+              2
+            ],
+            "apres": [
+              2
+            ],
+            "regle": "une valeur par ligne et par catégorie"
+          },
+          {
+            "reference": [
+              "personne",
+              "Karim"
+            ],
+            "avant": [
+              0,
+              1,
+              2
+            ],
+            "apres": [
+              1
+            ],
+            "regle": "une valeur par ligne et par catégorie"
+          },
+          {
+            "reference": [
+              "dossier",
+              "adhésions"
+            ],
+            "avant": [
+              1,
+              2
+            ],
+            "apres": [
+              2
+            ],
+            "regle": "une valeur par ligne et par catégorie"
+          },
+          {
+            "reference": [
+              "dossier",
+              "comptabilité"
+            ],
+            "avant": [
+              0,
+              1,
+              2
+            ],
+            "apres": [
+              0
+            ],
+            "regle": "une valeur par ligne et par catégorie"
+          }
+        ]
+      }
+    },
+    "meta": {
+      "auteur": "generation-originale (tools/generer_logigrammes.py)",
+      "date_creation": "2026-10-22",
+      "relecture_ortho": {
+        "statut": "a_revoir"
+      }
+    }
+  },
+  {
+    "id": "lg-1-exposition-20261022",
+    "type": "logigramme",
+    "module": "entrainement",
+    "theme": "logigrammes",
+    "fonctions_ciblees": [
+      "fonctions-executives"
+    ],
+    "palier": 1,
+    "prerequis": [],
+    "cap_complexite": "3 rendez-vous, 3 catégories : associations, comparaison et élimination",
+    "contenu": {
+      "titre": "Les préparatifs de l’exposition",
+      "consigne": "Retrouve les associations de chaque rendez-vous. Chaque horaire accueille exactement une personne et un sujet, et chaque valeur de chaque catégorie est utilisée une seule fois. Les horaires sont classés du plus tôt au plus tard. « Avant » signifie strictement plus tôt, sans imposer de rendez-vous consécutifs. Toutes les informations nécessaires figurent dans les indices. Tu peux utiliser le tableau comme aide externe et modifier tes choix sans limite ; aucun chronomètre.",
+      "categories": [
+        {
+          "id": "horaire",
+          "label": "Horaire",
+          "valeurs": [
+            "09 h",
+            "10 h",
+            "11 h"
+          ]
+        },
+        {
+          "id": "personne",
+          "label": "Personne",
+          "valeurs": [
+            "Maya",
+            "Nabil",
+            "Olivia"
+          ]
+        },
+        {
+          "id": "dossier",
+          "label": "Sujet",
+          "valeurs": [
+            "affiches",
+            "éclairage",
+            "cartels"
+          ]
+        }
+      ],
+      "contraintes": [
+        {
+          "type": "exclusion",
+          "gauche": {
+            "categorie": "horaire",
+            "valeur": "10 h"
+          },
+          "droite": {
+            "categorie": "dossier",
+            "valeur": "affiches"
+          },
+          "texte": "« 10 h » (horaire) est à un horaire différent de « affiches » (sujet)."
+        },
+        {
+          "type": "association",
+          "gauche": {
+            "categorie": "horaire",
+            "valeur": "09 h"
+          },
+          "droite": {
+            "categorie": "personne",
+            "valeur": "Olivia"
+          },
+          "texte": "« 09 h » (horaire) est au même horaire que « Olivia » (personne)."
+        },
+        {
+          "type": "exclusion",
+          "gauche": {
+            "categorie": "horaire",
+            "valeur": "11 h"
+          },
+          "droite": {
+            "categorie": "personne",
+            "valeur": "Nabil"
+          },
+          "texte": "« 11 h » (horaire) est à un horaire différent de « Nabil » (personne)."
+        },
+        {
+          "type": "avant",
+          "gauche": {
+            "categorie": "dossier",
+            "valeur": "éclairage"
+          },
+          "droite": {
+            "categorie": "personne",
+            "valeur": "Nabil"
+          },
+          "texte": "« éclairage » (sujet) est à un horaire strictement antérieur à « Nabil » (personne)."
+        }
+      ],
+      "aide": "Précise le but : une ligne complète par rendez-vous. Relève une contrainte, marque seulement ce qui est certain, puis vérifie avec les autres indices. Le tableau sert à organiser les informations.",
+      "indices": [
+        {
+          "niveau": 1,
+          "texte": "Relis les règles : une valeur ne peut apparaître qu’une fois dans sa catégorie."
+        },
+        {
+          "niveau": 2,
+          "texte": "Regroupe les comparaisons « avant » pour reconstituer un ordre, puis recoupe cet ordre avec les associations et les exclusions."
+        },
+        {
+          "niveau": 3,
+          "texte": "Pour chaque valeur, barre les horaires impossibles. S’il ne reste qu’un horaire, vérifie-le dans tous les indices avant de le retenir."
+        }
+      ]
+    },
+    "reponse": {
+      "valeur": "{\"09 h\": {\"dossier\": \"éclairage\", \"personne\": \"Olivia\"}, \"10 h\": {\"dossier\": \"cartels\", \"personne\": \"Nabil\"}, \"11 h\": {\"dossier\": \"affiches\", \"personne\": \"Maya\"}}",
+      "associations": {
+        "09 h": {
+          "personne": "Olivia",
+          "dossier": "éclairage"
+        },
+        "10 h": {
+          "personne": "Nabil",
+          "dossier": "cartels"
+        },
+        "11 h": {
+          "personne": "Maya",
+          "dossier": "affiches"
+        }
+      },
+      "preuve_deductive": {
+        "resolu": true,
+        "solution": {
+          "09 h": {
+            "personne": "Olivia",
+            "dossier": "éclairage"
+          },
+          "10 h": {
+            "personne": "Nabil",
+            "dossier": "cartels"
+          },
+          "11 h": {
+            "personne": "Maya",
+            "dossier": "affiches"
+          }
+        },
+        "trace": [
+          {
+            "reference": [
+              "dossier",
+              "affiches"
+            ],
+            "avant": [
+              0,
+              1,
+              2
+            ],
+            "apres": [
+              0,
+              2
+            ],
+            "regle": "indice 1"
+          },
+          {
+            "reference": [
+              "personne",
+              "Olivia"
+            ],
+            "avant": [
+              0,
+              1,
+              2
+            ],
+            "apres": [
+              0
+            ],
+            "regle": "indice 2"
+          },
+          {
+            "reference": [
+              "personne",
+              "Nabil"
+            ],
+            "avant": [
+              0,
+              1,
+              2
+            ],
+            "apres": [
+              0,
+              1
+            ],
+            "regle": "indice 3"
+          },
+          {
+            "reference": [
+              "dossier",
+              "éclairage"
+            ],
+            "avant": [
+              0,
+              1,
+              2
+            ],
+            "apres": [
+              0
+            ],
+            "regle": "indice 4"
+          },
+          {
+            "reference": [
+              "personne",
+              "Nabil"
+            ],
+            "avant": [
+              0,
+              1
+            ],
+            "apres": [
+              1
+            ],
+            "regle": "indice 4"
+          },
+          {
+            "reference": [
+              "personne",
+              "Maya"
+            ],
+            "avant": [
+              0,
+              1,
+              2
+            ],
+            "apres": [
+              2
+            ],
+            "regle": "une valeur par ligne et par catégorie"
+          },
+          {
+            "reference": [
+              "dossier",
+              "affiches"
+            ],
+            "avant": [
+              0,
+              2
+            ],
+            "apres": [
+              2
+            ],
+            "regle": "une valeur par ligne et par catégorie"
+          },
+          {
+            "reference": [
+              "dossier",
+              "cartels"
+            ],
+            "avant": [
+              0,
+              1,
+              2
+            ],
+            "apres": [
+              1
+            ],
+            "regle": "une valeur par ligne et par catégorie"
+          }
+        ]
+      }
+    },
+    "meta": {
+      "auteur": "generation-originale (tools/generer_logigrammes.py)",
+      "date_creation": "2026-10-22",
+      "relecture_ortho": {
+        "statut": "a_revoir"
+      }
+    }
+  }
+]

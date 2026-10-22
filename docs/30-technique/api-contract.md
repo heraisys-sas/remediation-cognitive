@@ -320,3 +320,7 @@ V2 : référence de correction exactement n places avant ; anti-doublon canoniqu
 ### Dosage des contextes illustrés — enrichissement du 10 octobre
 
 Le parcours evocation/memoire-source expose une banque de vingt scènes versionnées, avec quota effectif maximal de dix items par séance (palier local 1). Le contrat de découverte `memorisation` et rappel final reste inchangé ; seul le rappel final alimente FSRS/maîtrise. Ajouter du contenu ne double pas le nombre de scènes d’une série. Voir ADR-049.
+
+### Extension ADR-052 — nouveaux exercices
+
+Thèmes `debut-commun` (type `rappel-indice`) et `logigrammes` (type `logigramme`). Les contraintes publiques logigrammes référencent des catégories et valeurs : `contenu.categories=[{id,label,valeurs}]`, `contenu.contraintes=[{type,gauche:{categorie,valeur},droite:{categorie,valeur},texte}]`. La réponse est un objet `{horaire:{categorie:valeur}}` ou sa sérialisation JSON. La première erreur permet un second essai avec `attendue:null`. La solution et la preuve déductive restent privées jusqu’au feedback. Les mots complets et définitions de contrôle du début commun ne sont jamais sérialisés dans le stimulus public.

@@ -27,3 +27,21 @@ Réutiliser infrastructure séances/feedback/aides/progression. Pas d’IA ni mo
 4. Revue, commit contenu explicitement annoncé, push et PR dev si réseau accessible. Ne pas annoncer livraison avant vérification.
 
 État initial : worktree créé propre ; fetch GitHub réussi via accès réseau élevé. Dernière inspection : dev local ancien, travail donc basé sur origin/dev actualisé. Pas de code encore modifié au présent checkpoint.
+
+## Contrôle parent en cours
+- Plan initial commité : f075ebd.
+- Trois sous-agents actifs : implementation_lexical, implementation_logigramme, integration_exercices ; écritures réparties comme ci-dessus.
+- Node absent du PATH standard ; utiliser `PATH='/Applications/AutoClaw.app/Contents/Resources/node/darwin-arm64':$PATH` pour pytest/Node. Aucun paquet installé.
+- Premier pytest avec ce PATH : 530 réussis, 1 ignoré, échec unique validateur portant sur nouveaux indices lexicaux en cours (heuristique sous-chaîne). Rapport /private/tmp/lexique-baseline-tests.txt. Ce n’est pas une suite finale.
+- Revue parent : corriger radio/râteau (accent incompatible) ; garder définitions comme indices et non dans énoncé initial ; pas aide première lettre si réponse monolettre. Éviter des logigrammes tous isomorphes (chaîne totale puis même élimination), demandé diversité réelle des graphes d’indices et test associé.
+- Skill UI appliquée par intégrateur : /Users/olivierhz/orthogone/.agents/skills/ui-ux-pro-max/SKILL.md.
+
+## Livraison locale vérifiée — 22 octobre 2026
+- Implémentation terminée : Débuts de mots communs (36 paires, 3 paliers, Auto P2) ; Croiser les indices (12 logigrammes, 3 paliers, Auto P1).
+- Les trois agents ont terminé ; aucun agent n’écrit encore. Correctifs de revue appliqués. Corps de solution privés ; correction stricte sans moteur sémantique pour ces deux types.
+- `PATH='/Applications/AutoClaw.app/Contents/Resources/node/darwin-arm64':$PATH python3 -m pytest -q` : **579 passed, 1 skipped** ; rapport /private/tmp/lexique-integration-tests-final.txt. Avertissements FastAPI/httpx préexistants.
+- Validateurs : 1472 items, 0 erreur ; réponses 0 anomalie ; interface OK ; Ruff OK (binaire temporaire /private/tmp/orthogone-lint-20261022/bin/ruff).
+- Playwright : **32 tests passent**, Chromium bureau/mobile et WebKit mobile/320px ; rapport /private/tmp/lexique-ui-complet.txt. Deux tests nouveaux couvrent saisie/correction/suivant et doublons/réversibilité/correction/absence de débordement. Serveur test éphémère, données utilisateur intactes. La dérogation de test explicite évite le quota du serveur partagé entre projets.
+- Filtres accueil adaptés, versions des ressources modifiées incrémentées. SDK Apple, micro réel et voix non modifiés ni réévalués sur matériel.
+- Limites : corpus pilote, relecture professionnelle à faire ; tableau v1 permet associations/inconnues, pas annotation d’exclusions. Aucune efficacité clinique propre ni transfert démontrés revendiqués.
+- Prochaine action de reprise : vérifier Git/PR et CI sur cette branche ; consulter AVIS-CLINIQUE.md et checkpoints agents. Essayer manuellement les parcours puis intégrer vers dev après revue. Ne pas fusionner main automatiquement.

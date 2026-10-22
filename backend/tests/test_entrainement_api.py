@@ -16,6 +16,7 @@ from backend.app.main import creer_app
 
 CONTENU = ChargeurContenu()
 THEMES_ATTENDUS = {
+    "debut-commun", "logigrammes",
     "series-entendues", "actualiser-consigne", "comparer-documents", "reperer-essentiel",
     "calcul-mental",
     "anglais",
@@ -247,7 +248,13 @@ def test_reponse_attendue_absente_du_payload_tous_themes(client):
     for theme in THEMES_ATTENDUS:
         payload = _demarrer(client, theme)
         assert not _contient_cle(payload, "reponse")
-        assert not _contient_cle(payload, "valeur")
+        if theme == "logigrammes":
+            # Les références des contraintes publiques ont une « valeur » ;
+            # ce sont les données du problème, pas sa solution.
+            assert not _contient_cle(payload, "associations")
+            assert not _contient_cle(payload, "preuve_deductive")
+        else:
+            assert not _contient_cle(payload, "valeur")
 
 
 def test_theme_inconnu_404(client):

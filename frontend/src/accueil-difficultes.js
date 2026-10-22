@@ -8,10 +8,10 @@ const AccueilDifficultes = (() => {
     { id: "immediat", nom: "Mémoire immédiate", description: "Retenir une information pendant quelques secondes.", cartes: ["memoires-immediates", "memoire", "rappel-series", "series-entendues"] },
     { id: "manipulation", nom: "Manipuler des informations en tête", description: "Garder une information tout en la transformant ou en la mettant à jour.", cartes: ["actualiser-consigne", "memoire", "nback"] },
     { id: "rappel", nom: "Retrouver une information mémorisée", description: "Se rappeler une série, un message ou son contexte.", cartes: ["rappel-series", "series-entendues", "evocation", "methodes", "strategies"] },
-    { id: "mots", nom: "Trouver ses mots", description: "Retrouver un mot et utiliser des indices pour y parvenir.", cartes: ["evocation"] },
+    { id: "mots", nom: "Trouver ses mots", description: "Retrouver un mot et utiliser des indices pour y parvenir.", cartes: ["evocation", "debut-commun"] },
     { id: "organisation", nom: "S’organiser et penser à agir", description: "Préparer ses étapes et utiliser des rappels.", cartes: ["quotidien", "methodes", "strategies"] },
     { id: "adaptation", nom: "S’adapter et vérifier ses actions", description: "Tenir compte d’un changement et contrôler ce qui a été fait.", cartes: ["garder-cap", "actualiser-consigne", "comparer-documents", "strategies"] },
-    { id: "raisonnement", nom: "Raisonner et calculer", description: "Croiser des informations ou résoudre un calcul pratique.", cartes: ["deduction", "calcul-mental"] },
+    { id: "raisonnement", nom: "Raisonner et calculer", description: "Croiser des informations ou résoudre un calcul pratique.", cartes: ["deduction", "calcul-mental", "logigrammes"] },
     { id: "extra", nom: "Autres apprentissages", description: "À part : vocabulaire anglais et commandes Python.", cartes: ["anglais", "python"] },
   ];
   let selection = lire();

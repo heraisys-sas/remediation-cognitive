@@ -56,6 +56,7 @@ const deductionHandler = {
   renderFeedback: (resultat) => rendreFeedbackGrille(resultat),
 };
 const EXERCISE_HANDLERS = {
+  "logigramme": { render: item => { rendreLogigramme(item); return true; }, readAnswer: valeur => valeur, renderFeedback: resultat => rendreFeedbackLogigramme(resultat) },
   "grille-deduction": deductionHandler,
   "pqrst-mise-en-oeuvre": sequenceHandler,
   "rappel-libre": defaultHandler,
