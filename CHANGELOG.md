@@ -933,3 +933,7 @@ Présentation du POC de remédiation, fonctions jouables et capacités Apple fac
 - Liens depuis la feuille de route, la taxonomie historique et la bibliographie ; aucun changement des exercices.
 
 - Sélection des mémoires immédiates précisée : « Quel objet était où ? » devient le quatrième exercice retenu ; les trois autres pistes complémentaires sont écartées. Référentiel v1.1, sans nouvelle recherche bibliographique.
+
+## 23 octobre 2026 — Commandes audio compactes
+
+- Écouter utilise une icône de haut-parleur ; le micro est intégré à droite du champ de réponse, harmonisé entre exercices. Noms accessibles, cible tactile de 44 px et messages de dictée visibles conservés. Aucun moteur vocal ni contenu modifié.
