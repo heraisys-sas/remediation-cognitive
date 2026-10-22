@@ -1279,5 +1279,5 @@ button.mi-visual-cell { cursor: pointer; }
 .bouton-micro::before { content: ""; display: block; width: 1.4rem; height: 1.4rem; margin: auto; background: currentColor; mask: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'%3E%3Cg fill='none' stroke='black' stroke-width='1.8' stroke-linecap='round'%3E%3Crect x='9' y='2' width='6' height='12' rx='3'/%3E%3Cpath d='M5 10v2a7 7 0 0 0 14 0v-2M12 19v3M8 22h8'/%3E%3C/g%3E%3C/svg%3E") center / contain no-repeat; }
 .champ-dictee + .bouton-micro { color: var(--accent); }
 
-.bouton-audio { font-size: 0; min-width: 2.75rem; }
+.bouton-audio { font-size: 0; min-width: 2.75rem; padding: .6rem; }
 .bouton-audio:not(:has(svg))::before { content: ""; width: 1.4rem; height: 1.4rem; background: currentColor; mask: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'%3E%3Cpath d='M3 9h4l5-4v14l-5-4H3z M16 8a6 6 0 0 1 0 8 M19 5a10 10 0 0 1 0 14' fill='none' stroke='black' stroke-width='1.8' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E") center / contain no-repeat; }
