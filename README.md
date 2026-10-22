@@ -18,9 +18,14 @@ Le moteur gère les paliers, la maîtrise, la répétition espacée FSRS et les 
 
 Une branche de développement ajoute la carte **Mémoires immédiates** : code, chemin, changement forme/couleur/association et objets à replacer ; pratique guidée, résultats descriptifs et données séparées. Voir [ADR-045](docs/30-technique/adr/ADR-045-memoires-immediates.md).
 
-Les prototypes d’attention différée, de reproduction de figures et de tâches de couleurs sont **spécifiés, pas encore implémentés**. Le bilan standardisé et l’IRT ne font pas partie du développement autorisé actuel. L’export PDF/JSON et le graphe de connaissances ne sont pas des fonctionnalités livrées. Voir la [feuille de route](docs/00-produit/feuille-de-route.md).
+Les prototypes d’attention différée, de reproduction de figures et de tâches de couleurs sont **spécifiés, pas encore implémentés**. Le bilan standardisé et l’IRT ne font pas partie du développement autorisé actuel. L’export PDF/JSON reste différé. Le module de graphe vide a été retiré ; une visualisation documentaire reliant exercices, compétences et publications citées pourra être envisagée ultérieurement, éventuellement lors d’une release. Voir la [feuille de route](docs/00-produit/feuille-de-route.md).
 
 ## Installer et démarrer
+
+L’instance actuelle est **mono-utilisateur et sans authentification applicative**.
+Conserver une écoute locale ; une exposition réseau exige un contrôle d’accès
+et une isolation par instance portés par l’infrastructure. Voir le
+[guide de déploiement](docs/30-technique/deploiement-local.md).
 
 Backend Python/FastAPI, interface HTML/CSS/JavaScript sans framework ni étape de build. La CI utilise Python 3.12 et Node.js 22 ; Node sert aux contrôles de développement, pas au lancement du serveur.
 
@@ -70,6 +75,10 @@ Dans l’environnement Python qui lance réellement le serveur :
 `nle_embedding` confirme le moteur Apple ; `lexical` indique le repli. Adapter l’exécutable si le serveur utilise `.venv` ou un autre Python. Le même diagnostic est exposé par [GET /api/capacites](http://127.0.0.1:8766/api/capacites), champ `similarite.fournisseur`. `similarite.disponible = true` signifie qu’un fournisseur existe, pas nécessairement celui d’Apple.
 
 La similarité est un recours pour des reformulations libres, après les vérifications de sens explicites. Elle ne remplace pas la correction stricte ni ne garantit la justesse d’une réponse. Les variantes, articles et petites contextualisations peuvent être reconnus par les règles déterministes même sans moteur Apple. Le seuil historique et les divergences Apple/repli restent à valider dans l’issue #6.
+
+## Personnaliser l’accueil
+
+Dans **Réglages → Ce que tu souhaites travailler**, coche les difficultés qui te concernent : concentration, mémoire, recherche de mots, organisation… Les cartes associées sont indiquées et le choix est conservé sur cet appareil. Toutes les cartes sont visibles par défaut. Ce filtre personnalise l’affichage, sans diagnostic ni modification de progression. Voir les [correspondances et leurs sources](docs/30-technique/accueil-difficultes.md).
 
 ## Données et contenu
 

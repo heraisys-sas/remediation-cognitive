@@ -261,11 +261,13 @@ function rendreThemes(themes) {
     else if (["evaluation", "cible"].includes(theme.categorie)) cible = refs.listeThemesEvaluation;
     const carte = carteTheme(theme, theme.id === "rappel-series"
       ? themes.find(t => t.id === "series-entendues") : null);
+    carte.dataset.activite = theme.id;
     cible.append(carte);
   }
   refs.listeThemes.append(carteMemoiresImmediates());
   refs.sectionEvaluation.hidden = !refs.listeThemesEvaluation.childElementCount;
   refs.sectionExtra.hidden = !refs.listeThemesExtra.childElementCount;
+  AccueilDifficultes.actualiser();
 }
 
 function carteTheme(theme, parcoursAudio = null) {
@@ -519,6 +521,7 @@ function actualiserBoutonAudio(active, bouton = refs.boutonEcouter) {
 }
 
 function init() {
+  AccueilDifficultes.initialiser();
   initialiserMemoiresImmediates();
   CAPACITES.observerLecture?.(actualiserBoutonAudio);
   initialiserChoixVoix();

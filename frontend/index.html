@@ -8,7 +8,7 @@
   <meta name="color-scheme" content="dark" />
   <meta name="theme-color" content="#192029" />
   <title>Entraînement — séances courtes</title>
-  <link rel="stylesheet" href="src/styles.css?v=20261009-memoires" />
+  <link rel="stylesheet" href="src/styles.css?v=20261020-accueil" />
 </head>
 <body>
   <!-- Lien d'évitement : première tabulation, pour sauter directement au contenu. -->
@@ -22,6 +22,13 @@
       <details class="reglages" id="reglages-interface">
         <summary>Réglages</summary>
         <div class="reglages-contenu">
+          <details id="reglages-difficultes" class="reglages-difficultes">
+            <summary>Ce que tu souhaites travailler</summary>
+            <p class="ligne-discrete">Choisis les difficultés qui te concernent pour alléger l’accueil. Plusieurs choix sont possibles ; les cartes gardent tous leurs parcours.</p>
+            <p class="ligne-discrete">Ce choix personnalise l’affichage, sans établir de diagnostic ni modifier ta progression.</p>
+            <fieldset id="choix-difficultes"><legend>Difficultés et activités associées</legend></fieldset>
+            <p id="erreur-difficultes" role="alert" hidden></p>
+          </details>
           <label class="commutateur">
             <input id="case-lecture-auto" type="checkbox" />
             <span>Lire les consignes à voix haute</span>
@@ -73,6 +80,10 @@
       <h2 id="titre-themes" class="titre-vue" tabindex="-1">Choisis ta séance</h2>
       <p class="intro-vue">Quelque chose de court et tranquille — quelques minutes suffisent.</p>
       <p id="notice-themes" class="notice" role="status" hidden></p>
+      <div id="accueil-filtre-vide" class="notice" role="status" hidden>
+        <p>Aucune carte n’est sélectionnée. Choisis ce que tu souhaites travailler dans les réglages.</p>
+        <button id="ouvrir-choix-difficultes" type="button" class="bouton bouton-secondaire">Choisir mes activités</button>
+      </div>
       <div id="liste-themes" class="grille-themes"></div>
 
       <!-- Exercices ciblés : pratique, sans interprétation diagnostique. -->
@@ -300,7 +311,8 @@
   <script src="src/programme.js?v=20261009-memoires" defer></script>
   <script src="src/exercises/immediate-sequences.js?v=20261009-memoires" defer></script>
   <script src="src/exercises/immediate-visual.js?v=20261009-memoires" defer></script>
-  <script src="src/immediate-memory.js?v=20261009-memoires" defer></script>
-  <script src="src/app.js?v=20261009-memoires" defer></script>
+  <script src="src/immediate-memory.js?v=20261020-accueil" defer></script>
+  <script src="src/accueil-difficultes.js?v=20261020" defer></script>
+  <script src="src/app.js?v=20261020-accueil" defer></script>
 </body>
 </html>

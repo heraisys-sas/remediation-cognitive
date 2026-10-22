@@ -1250,3 +1250,16 @@ button.mi-visual-cell { cursor: pointer; }
 .immediate-path-links { position: absolute; inset: 0; width: 100%; height: 100%; pointer-events: none; }
 .immediate-path-links line { stroke: #91a6bc; stroke-width: 2; vector-effect: non-scaling-stroke; }
 .immediate-path-cell { z-index: 1; }
+
+/* Filtre documentaire de l’accueil : pas d’animation ni de nouvelle surface. */
+.reglages-difficultes { max-width: 34rem; min-width: 0; }
+#choix-difficultes { min-width: 0; margin: 1rem 0 0; padding: 0; border: 0; }
+#choix-difficultes legend { font-weight: 600; padding: 0 0 .5rem; }
+.choix-difficulte { display: flex; align-items: flex-start; gap: .75rem; padding: .8rem 0; min-height: 44px; cursor: pointer; border-top: 1px solid var(--bordure); }
+.choix-difficulte input { flex: none; width: 1.2rem; height: 1.2rem; margin: .2rem 0 0; accent-color: var(--accent); }
+.choix-difficulte input:focus-visible { outline: 2px solid var(--accent); outline-offset: 4px; }
+.choix-difficulte > span { display: grid; gap: .3rem; min-width: 0; overflow-wrap: anywhere; }
+.choix-difficulte strong { font-weight: 600; }
+.choix-difficulte > span > span { font-size: .95rem; line-height: 1.5; }
+.choix-difficulte .ligne-discrete { color: var(--texte-secondaire); }
+#erreur-difficultes { line-height: 1.5; }
