@@ -75,8 +75,11 @@ function afficherQuestion(item) {
   // Capacités du poste : réinitialisées pour chaque question (la dictée ne
   // s'affiche que pour une réponse à saisir ; l'écoute suit la disponibilité).
   CAPACITES.arreter();
+  const statutDictee = refs.formulaire.querySelector?.("#statut-dictee");
+  if (statutDictee) statutDictee.hidden = true;
   refs.boutonDicter.hidden = true;
   refs.boutonDicter.textContent = "🎤 Répondre à voix haute";
+  refs.boutonDicter.title = "Dicter une réponse";
   refs.ligneAudio.hidden = !CAPACITES.syntheseDisponible();
 
   // Énoncé : grand texte ; variante monospace pour la prédiction de sortie.
@@ -157,9 +160,14 @@ function afficherQuestion(item) {
         `/evocation/sessions/${encodeURIComponent(session.session_id)}/verifier-dictee`,
         { method: "POST", body: JSON.stringify({ item_id: item.id, transcription }) }),
       afficher: texte => { refs.champReponse.value = texte; },
-      statut: texte => { refs.boutonDicter.textContent = texte; },
+      statut: texte => {
+        refs.boutonDicter.textContent = texte;
+        refs.boutonDicter.title = texte;
+        if (statutDictee) { statutDictee.textContent = texte; statutDictee.hidden = false; }
+      },
       clavier: disponible => {
         if (disponible === false) etat.dicteeAutoAutorisee = false;
+        if (statutDictee) statutDictee.hidden = true;
         etat.autoDictee = null;
         refs.boutonDicter.textContent = "🎤 Répondre à voix haute";
         refs.champReponse.focus();

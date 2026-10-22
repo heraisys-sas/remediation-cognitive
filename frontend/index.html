@@ -8,7 +8,7 @@
   <meta name="color-scheme" content="dark" />
   <meta name="theme-color" content="#192029" />
   <title>Entraînement — séances courtes</title>
-  <link rel="stylesheet" href="src/styles.css?v=20261020-accueil" />
+  <link rel="stylesheet" href="src/styles.css?v=20261023-audio" />
 </head>
 <body>
   <!-- Lien d'évitement : première tabulation, pour sauter directement au contenu. -->
@@ -187,10 +187,13 @@
       <!-- Un seul champ de saisie ; Entrée = valider (soumission du formulaire). -->
       <form id="formulaire-reponse" class="zone-reponse" novalidate>
         <label class="etiquette" for="champ-reponse">Ta réponse</label>
+        <div class="saisie-avec-micro">
         <input id="champ-reponse" name="reponse" type="text" class="champ"
                autocomplete="off" autocapitalize="none" spellcheck="false"
                enterkeyhint="done" />
-        <button id="bouton-dicter" type="button" class="bouton bouton-secondaire" hidden>🎤 Répondre à voix haute</button>
+        <button id="bouton-dicter" type="button" class="bouton bouton-secondaire bouton-micro" title="Dicter une réponse" aria-live="polite" hidden>Dicter une réponse</button>
+        </div>
+        <p id="statut-dictee" class="indice" role="status" hidden></p>
         <p id="indice-reponse" class="indice" hidden>Écris d’abord ta réponse, puis valide.</p>
         <button id="bouton-valider" type="submit" class="bouton bouton-primaire bouton-large">Valider</button>
       </form>
@@ -318,7 +321,7 @@
   <script src="src/exercises/sequence.js?v=20261009-memoires" defer></script>
   <script src="src/exercises/functional.js?v=20261009-memoires" defer></script>
   <script src="src/exercises/presentation.js?v=20261009-memoires" defer></script>
-  <script src="src/exercises/default.js?v=20261009-memoires" defer></script>
+  <script src="src/exercises/default.js?v=20261023-audio" defer></script>
   <script src="src/exercises/handlers.js?v=20261009-memoires" defer></script>
   <script src="src/session.js?v=20261009-memoires" defer></script>
   <script src="src/missions.js?v=20261009-memoires" defer></script>
@@ -329,6 +332,6 @@
   <script src="src/nback.js?v=20261020-accueil" defer></script>
   <script src="src/immediate-memory.js?v=20261020-accueil" defer></script>
   <script src="src/accueil-difficultes.js?v=20261020" defer></script>
-  <script src="src/app.js?v=20261020-accueil" defer></script>
+  <script src="src/app.js?v=20261023-audio" defer></script>
 </body>
 </html>

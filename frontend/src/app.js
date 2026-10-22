@@ -455,11 +455,11 @@ function brancherEvenements() {
       if (etat.session !== sessionDictee || etat.indexItem !== indexDictee || etat.repondu) return;
       refs.champReponse.value = [prefixe, texte].filter(Boolean).join(" ");
     };
-    refs.boutonDicter.textContent = "Préparation de la dictée locale…";
+    actualiserStatutDictee("Préparation de la dictée locale…");
     etat.dicteeActive = CAPACITES.dicter({
-      onTraitement: () => { refs.boutonDicter.textContent = "Transcription locale…"; },
+      onTraitement: () => { actualiserStatutDictee("Transcription locale…"); },
       onDebut: () => {
-        refs.boutonDicter.textContent = "Parle maintenant · Terminer la dictée";
+        actualiserStatutDictee("Parle maintenant · Terminer la dictée");
         refs.champReponse.classList.add("champ-dictee");
       },
 
@@ -467,7 +467,7 @@ function brancherEvenements() {
       onResultat: (texte) => { afficher(texte); refs.champReponse.focus(); },
       onFin: () => {
         etat.dicteeActive = null;
-        refs.boutonDicter.textContent = "🎤 Répondre à voix haute";
+        actualiserStatutDictee("Dicter une réponse");
         refs.champReponse.classList.remove("champ-dictee");
       },
       onErreur: (code) => {
@@ -479,7 +479,7 @@ function brancherEvenements() {
           delai_depasse: "Transcription trop longue — réessaie",
           transcription_trop_longue: "Transcription trop longue — réessaie",
         };
-        refs.boutonDicter.textContent = messages[code] || "Dictée locale indisponible — réessaie";
+        actualiserStatutDictee(messages[code] || "Dictée locale indisponible — réessaie");
         refs.champReponse.classList.remove("champ-dictee");
       },
     });
@@ -509,6 +509,16 @@ function initialiserChoixVoix() {
   window.speechSynthesis?.addEventListener("voiceschanged", actualiser);
   actualiser();
   CAPACITES.chargerVoixLocales?.().then(actualiser);
+}
+
+function actualiserStatutDictee(texte) {
+  refs.boutonDicter.textContent = texte;
+  refs.boutonDicter.title = texte;
+  const statut = document.getElementById("statut-dictee");
+  if (statut) {
+    statut.textContent = texte;
+    statut.hidden = texte === "Dicter une réponse";
+  }
 }
 
 function actualiserBoutonAudio(active, bouton = refs.boutonEcouter) {
