@@ -40,6 +40,7 @@ class DemarrageOptionnel(BaseModel):
 
     palier: int | None = Field(default=None, ge=1)
     parcours: str | None = Field(default=None, pattern=r"^[a-z0-9-]+$")
+    profil_contextes: str | None = Field(default=None, pattern=r"^(origine|sources-vues)$")
     rejouer_palier: bool = False
     sans_limite_sessions: bool = False
 
@@ -111,6 +112,7 @@ def demarrer_session(theme: str, request: Request, corps: DemarrageOptionnel | N
     try:
         return _gestionnaire(request).demarrer(
             theme,
+            profil_contextes=corps.profil_contextes if corps else None,
             palier_force=corps.palier if corps else None,
             sans_limite_sessions=corps.sans_limite_sessions if corps else False,
             parcours=corps.parcours if corps else None,

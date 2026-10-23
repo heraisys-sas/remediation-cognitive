@@ -124,3 +124,22 @@ for (const phase of ['decouverte', 'rappel', null]) test(`payload de réponse : 
   assert.equal(corps.reponse, 'Sur le frigo');
   assert.equal(corps.observation_contextes?.passe ?? null, phase);
 });
+
+test('les choix du rappel changent avec la passe, la découverte garde ses choix', () => {
+  const elements = () => ({ hidden: false, replaceChildren() {}, setAttribute() {}, focus() {}, querySelector() { return null; } });
+  const c = { etat: { phaseContextes: 'decouverte', consignesVues: new Set(), theme: { id: 'evocation', interface: {} } },
+    refs: new Proxy({}, { get: (obj, key) => obj[key] ??= elements() }),
+    CAPACITES: { arreter() {}, syntheseDisponible: () => false, voixDisponible: () => false },
+    TYPES_A_CHOIX: new Set(['rappel-source']), annulerMemo() {}, viderZonesReponse() {}, lireSiLectureAuto() {},
+    aideGeneriquePourItem: () => '', handlerPour: () => ({}), inputmodePour: () => 'text',
+    reglerEtatBoutons() {}, observationContexte() {}, rendreOptions(choix) { c.choix = choix; } };
+  vm.createContext(c);
+  vm.runInContext(fonction('afficherQuestion', 'rendreFeedback'), c);
+  const item = { type: 'rappel-source', contenu: { options: ['origine'], options_rappel: ['vues'] } };
+  c.afficherQuestion(item);
+  assert.deepEqual(c.choix, ['origine']);
+  c.etat.phaseContextes = 'rappel'; c.afficherQuestion(item);
+  assert.deepEqual(c.choix, ['vues']);
+  delete item.contenu.options_rappel; c.afficherQuestion(item);
+  assert.deepEqual(c.choix, ['origine']);
+});

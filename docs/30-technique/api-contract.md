@@ -320,3 +320,26 @@ V2 : référence de correction exactement n places avant ; anti-doublon canoniqu
 ### Dosage des contextes illustrés — enrichissement du 10 octobre
 
 Le parcours evocation/memoire-source expose une banque de vingt scènes versionnées, avec quota effectif maximal de dix items par séance (palier local 1). Le contrat de découverte `memorisation` et rappel final reste inchangé ; seul le rappel final alimente FSRS/maîtrise. Ajouter du contenu ne double pas le nombre de scènes d’une série. Voir ADR-049.
+
+### Contextes : profils manuels (ADR-052)
+
+`POST /api/entrainement/evocation/sessions`, parcours `memoire-source`, accepte
+`profil_contextes: "origine" | "sources-vues"` (optionnel, défaut `origine`).
+Une valeur inconnue ou un profil sur un autre parcours produit 422 avant dosage.
+Le retour comprend `protocole_contextes: {version: "contextes-source-v2", profil}`.
+Pour `sources-vues`, les items comprennent `contenu.options_rappel` : liste de
+sources distinctes ; `contenu.options` porte la même liste pour la découverte.
+Le profil `origine` seul conserve les choix historiques. Deux listes différentes
+ne sont jamais exposées dans le profil `sources-vues` : leur intersection pourrait
+révéler la réponse. Il peut y avoir moins de quatre choix, jamais un choix
+inventé pour compléter un lot. Le journal observations garde le protocole dès
+le démarrage et chaque ligne documentée comprend `protocole` et `choix_proposes`.
+
+Dans `observation_contextes`, `photo_chargee` est un booléen additif ;
+`exposition_ms` reste l’horodatage de l’exposition. Le client indique
+`photo_chargee: true` seulement après chargement et décodage de l’image, en
+conservant un éventuel `incident_photo: true`. `sources-vues` refuse une réponse
+de découverte sans ces deux faits et refuse le rappel avant la découverte de
+tous les items de la séance. Les deux passes doivent correspondre au booléen
+`memorisation` (true en découverte, false au rappel). Les faits d’exposition
+restent déclarés par le client. Une découverte ne modifie toujours pas FSRS.

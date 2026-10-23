@@ -1,3 +1,7 @@
+# 2026-10-23 — deux profils manuels pour Contextes
+
+Choix d’origine conservés par défaut ; condition « sources vues » au rappel final, avec une même liste de cohorte aux deux passes, des distracteurs issus de la même séance et une exposition requise avant rappel. Une liste unique évite de révéler la réponse par intersection de listes différentes. Protocole versionné et choix documentés, sans modifier les scènes, les identifiants, les historiques ni le moteur. Aucun changement automatique de profil. ADR-052.
+
 # 2026-10-21 — mesure et garde-fous des réponses libres
 
 Corpus versionné de 70 cas, outil local lexical/Apple et mesures réelles séparées. Négations et permutations des mêmes mots ne peuvent plus contourner les contrôles du filet approximatif. Les prises de message utilisent désormais des faits et variantes explicites plutôt que le score de proximité : zéro fausse acceptation et zéro faux refus sur ce corpus exploratoire pour les deux fournisseurs. Aucun changement de seuil, de contenu ou de moteur. L’issue #6 reste ouverte pour un corpus indépendant et une revue des décisions ; aucune calibration clinique revendiquée. ADR-051.

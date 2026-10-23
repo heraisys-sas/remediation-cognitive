@@ -143,7 +143,7 @@ function jouerAffichage(item) {
         creerElement("figcaption", { texte: description.alt, attributs: { "aria-hidden": "true" } }));
       plateau.replaceChildren(figure);
       const observation = observationContexte(item);
-      if (observation) observation.exposition_ms = Date.now();
+      if (observation) { observation.exposition_ms = Date.now(); observation.photo_chargee = true; }
       boutonPasser.hidden = false;
       // L’alternative et la voix donnent le message, jamais le contexte attendu.
       etat.enonceCourant = description.alt;
