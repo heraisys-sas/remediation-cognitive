@@ -297,6 +297,9 @@ class GestionnaireSessions:
                     autres = (candidates[rotation:] + candidates[:rotation])[:3]
                     choix = autres[:]
                     choix.insert(index % (len(autres) + 1), correcte)
+                    # Une seule liste par condition : deux listes différentes
+                    # révéleraient parfois la réponse par leur intersection.
+                    item["contenu"]["options"] = choix.copy()
                     item["contenu"]["options_rappel"] = choix
             runner = SessionRunner(
                 items=[ItemMoteur(item) for item in selection],

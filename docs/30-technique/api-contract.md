@@ -328,8 +328,10 @@ Le parcours evocation/memoire-source expose une banque de vingt scènes versionn
 Une valeur inconnue ou un profil sur un autre parcours produit 422 avant dosage.
 Le retour comprend `protocole_contextes: {version: "contextes-source-v2", profil}`.
 Pour `sources-vues`, les items comprennent `contenu.options_rappel` : liste de
-sources distinctes réservée au rappel final ; `contenu.options` reste la liste
-historique de découverte. Il peut y avoir moins de quatre choix, jamais un choix
+sources distinctes ; `contenu.options` porte la même liste pour la découverte.
+Le profil `origine` seul conserve les choix historiques. Deux listes différentes
+ne sont jamais exposées dans le profil `sources-vues` : leur intersection pourrait
+révéler la réponse. Il peut y avoir moins de quatre choix, jamais un choix
 inventé pour compléter un lot. Le journal observations garde le protocole dès
 le démarrage et chaque ligne documentée comprend `protocole` et `choix_proposes`.
 

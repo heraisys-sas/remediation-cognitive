@@ -88,7 +88,8 @@ def test_profils_contextes_et_sources_familieres(client):
         choix = item['contenu']['options_rappel']
         assert len(choix) == len(set(choix)) == min(4, len(sources))
         assert choix.count(attendues[item['id']]) == 1 and set(choix) <= sources
-        assert item['contenu']['options'] == originales[item['id']]
+        assert item['contenu']['options'] == choix
+        assert len(set(item['contenu']['options']) & set(choix)) == min(4, len(sources))
         assert client.post(route + '/reponses', json={'item_id': item['id'],
             'reponse': attendues[item['id']], 'temps_ms': 1000, 'memorisation': True,
             'observation_contextes': {'passe': 'decouverte', 'ordre': ordre, 'presentee': True, 'photo_chargee': True, 'exposition_ms': 1000}}).status_code == 200
@@ -155,4 +156,6 @@ def test_origine_par_defaut_et_journal_versionne_sans_reponse(client):
         'parcours': 'memoire-source', 'sans_limite_sessions': True}).json()
     assert seance['protocole_contextes']['profil'] == 'origine'
     assert all('options_rappel' not in i['contenu'] for i in seance['items'])
+    originales = {i['id']: i['contenu']['options'] for i in g.contenu.items('evocation', 'memoire-source')}
+    assert all(i['contenu']['options'] == originales[i['id']] for i in seance['items'])
     assert g.stockage.lire_observations(seance['session_id'])['protocole_contextes'] == seance['protocole_contextes']

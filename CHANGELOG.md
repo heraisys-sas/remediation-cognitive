@@ -1,6 +1,6 @@
 # 2026-10-23 — deux profils manuels pour Contextes
 
-Choix d’origine conservés par défaut ; condition « sources vues » au rappel final, avec distracteurs issus de la même séance et exposition requise. Protocole versionné et choix documentés, sans modifier les scènes, les identifiants, les historiques ni le moteur. Aucun changement automatique de profil. ADR-052.
+Choix d’origine conservés par défaut ; condition « sources vues » au rappel final, avec une même liste de cohorte aux deux passes, des distracteurs issus de la même séance et une exposition requise avant rappel. Une liste unique évite de révéler la réponse par intersection de listes différentes. Protocole versionné et choix documentés, sans modifier les scènes, les identifiants, les historiques ni le moteur. Aucun changement automatique de profil. ADR-052.
 
 # 2026-10-21 — mesure et garde-fous des réponses libres
 
