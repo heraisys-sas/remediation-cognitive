@@ -367,13 +367,21 @@ function carteTheme(theme, parcoursAudio = null) {
   majParcours();
   majPaliers();
 
+  const profilContextes = creerElement("select", { classe: "selecteur-palier", attributs: { "aria-label": "Choix du rappel Contextes" } });
+  for (const [valeur, texte] of [["origine", "Contextes · choix d’origine"], ["sources-vues", "Contextes · sources vues dans cette séance"]]) {
+    const option = document.createElement("option"); option.value = valeur; option.textContent = texte; profilContextes.append(option);
+  }
+  const champProfil = creerElement("label", { classe: "ligne-discrete", texte: "Choix du rappel Contextes" }, profilContextes);
+  const actualiserProfil = () => { champProfil.hidden = parcoursChoisi !== "memoire-source"; };
+  selecteurParcours?.addEventListener("change", actualiserProfil);
+  actualiserProfil(); carte.append(champProfil);
   const bouton = creerElement("button", {
     classe: "bouton bouton-primaire",
     texte: "Commencer",
     attributs: { type: "button" },
   });
   bouton.addEventListener("click", () => demarrerSession(
-    themeChoisi, modeDerogatoireActif() && choix && choix.value ? Number(choix.value) : null, parcoursChoisi
+    themeChoisi, modeDerogatoireActif() && choix && choix.value ? Number(choix.value) : null, parcoursChoisi, profilContextes.value
   ));
   carte.append(bouton);
   return carte;

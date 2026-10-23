@@ -125,7 +125,8 @@ function afficherQuestion(item) {
   refs.indiceReponse.hidden = true;
 
   // Choix de réponse ou saisie libre selon le type d'exercice.
-  const options = Array.isArray(contenu.options) ? contenu.options : null;
+  const propositions = etat.phaseContextes === "rappel" && contenu.options_rappel ? contenu.options_rappel : contenu.options;
+  const options = Array.isArray(propositions) ? propositions : null;
   const avecChoix = Boolean(options) && TYPES_A_CHOIX.has(item.type);
   refs.zoneChoix.replaceChildren();
   refs.zoneChoix.hidden = !avecChoix;

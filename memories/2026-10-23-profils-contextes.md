@@ -1,0 +1,9 @@
+# 23 octobre 2026 — Contextes, deux profils manuels
+
+Lot minimal issue #34 : profil `origine` par défaut et `sources-vues`, version `contextes-source-v2`, sur les vingt scènes existantes/quota dix. Aucun contenu servi ou ID modifié, aucune image générée, aucun niveau clinique ni bascule automatique. ADR-052 et contrat API additif.
+
+`options_rappel` est construit sur les sources distinctes de la sélection (moins de quatre si nécessaire), sans toucher `options` historique. Le rappel `sources-vues` exige toutes les découvertes acceptées et leurs faits `photo_chargee=true`/`exposition_ms`. La photo est déjà décodée avant ouverture de question ; une erreur laisse Réessayer/Terminer. Un retry réussi garde l’incident et déclare la charge réussie. Les observations portent le protocole et les choix proposés calculés côté serveur ; le journal reçoit le protocole dès le démarrage. FSRS reste réservé au rappel final.
+
+Vérifications : suite Python 537 réussites/1 ignoré avec runtime Node dans PATH ; tests ciblés Contextes/observations 23 réussites ; 11 tests Node Contextes dont sélection des choix selon passe. Validateurs interface/contenu/réponses conformes, 1424 IDs uniques et vingt scènes inchangées. Test navigateur de bout en bout sur dix photos puis rappel : quatre projets Chromium/WebKit bureau/mobile jusqu’à 320 px réussis (serveur éphémère, dérogation de quota limitée au test partagé). La première exécution Python sans Node dans PATH échouait sur 33 tests interface (shutil.which renvoyait None), corrigée par PATH, sans changement de code nécessaire.
+
+Le port iOS doit garder dans les snapshots `options_rappel`, `protocole_contextes` et le set `items_decouverts`, et transmettre `photo_chargee`/`exposition_ms` après décodage. Pas de reprise d’un ancien historique sous une condition supposée.

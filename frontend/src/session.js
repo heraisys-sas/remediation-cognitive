@@ -1,6 +1,6 @@
 "use strict";
 
-async function demarrerSession(theme, palier = null, parcours = null) {
+async function demarrerSession(theme, palier = null, parcours = null, profilContextes = null) {
   if (etat.actionEnCours) return;
   etat.actionEnCours = true;
   reglerEtatBoutons();
@@ -12,6 +12,7 @@ async function demarrerSession(theme, palier = null, parcours = null) {
     // Dérogation « dépasser la limite » (si activée en accueil) : même corps — le
     // serveur ne l'accorde qu'aux thèmes d'entraînement (ADR-021).
     const corps = {};
+    if (profilContextes && parcours === "memoire-source") corps.profil_contextes = profilContextes;
     if (palier !== null) corps.palier = palier;
     if (parcours !== null) corps.parcours = parcours;
     if (sansLimiteActivee()) corps.sans_limite_sessions = true;
@@ -63,10 +64,10 @@ async function demarrerSession(theme, palier = null, parcours = null) {
           : "Trois séances déjà faites aujourd’hui — le repos fait partie de l’entraînement."
       );
     } else if (erreur.type === "reseau") {
-      afficherErreurReseau(() => demarrerSession(theme, palier, parcours));
+      afficherErreurReseau(() => demarrerSession(theme, palier, parcours, profilContextes));
     } else {
       afficherBandeau("Impossible de démarrer la séance pour le moment.", {
-        reessayer: () => demarrerSession(theme, palier, parcours),
+        reessayer: () => demarrerSession(theme, palier, parcours, profilContextes),
       });
     }
   } finally {
@@ -199,6 +200,7 @@ async function soumettreValeur(brut, indiceUtilise) {
       passe: observation.passe, ordre: observation.ordre,
       presentee_ms: observation.presentee_ms,
       exposition_ms: observation.exposition_ms,
+      photo_chargee: observation.photo_chargee,
       incident_photo: observation.incident_photo,
     };
   }
